@@ -1,0 +1,364 @@
+24 gamemode pointer or nmi part 2?
+known pointers for $24: 
+    $8086F6
+    $8087D9
+    $8087C5
+    $8087E1
+    $808819
+    $80B3D7
+    $80FAC0
+    $80FA7C
+
+20 = main NMI pointer
+known pointers for $20: 
+    $808608     ;reset stack then set NMI pointer to  F3E6
+    $808CC9
+    $808CD9
+    $808CE9
+    $808CED
+    $808CF1
+    $808CF5
+    $808D02
+    $808D0E
+    $808D30
+    $808D4E
+    $808D7D
+    $8093B8
+    $8099C3
+    $80A2CF
+    $80A86C
+    $80B461
+    $80B681
+    $80F3E6     ; Set brightness, and thats all.
+    
+known pointers $067A:
+    $B49E48
+
+known pointers $067D:
+    $B48DFA
+    $B48E6C
+    $B49126
+    $B4BEEF
+    $BA90D9
+    $BAB1B9
+    $BAB31E
+    $BAB633
+    $BAB6F6
+
+known pointers $067F:
+    $B49043
+    $B49122
+    $B49188
+    $B491C5
+    $B4C139
+    $B4C14E
+    $BAB8F9
+    $BAB8FD
+
+    
+Known pointers for $05A9:
+    $B38052
+    $B380D5
+    
+Known pointers for $17B2:
+    $B5BC00 (ROM pointer list)
+    $B5C3F4
+    $B5C60B
+    
+known pointers for $AA:
+    $B5CA58 (ROM pointer list)
+    
+known pointers for $36:
+    $B5F3AD (ROM pointer list for JMP)
+    
+(look into CODE_808C2E)
+
+CODE_BB8089     ;<-- CGRAM DMA routine
+
+CODE_80A873     ;<-- some animation code
+
+CODE_8084E7     ;<-- primary register init
+
+CODE_BEB82A     ;<-- Some sort of execptr routine
+CODE_B3A369     ;<-- Some sort of execptr routine
+
+CODE_B6D923     ;<-- Change to bank BA
+
+DATA_EE0D86     ;Pointers to used at $32 (long)
+DATA_EE1086     ;More long pointers
+DATA_EE117B     ;Even more
+DATA_BCB600	;Collision detection pointers
+
+CODE_BA9E84     ;Relative to bank B6
+CODE_B49E48     ;DMA new message to the screen
+CODE_BAC7C0	;Set OAM offscreen
+CODE_808591	;Clear VRAM DMA
+CODE_80895F	;DMA routine (usually seems to DMA from $7F0000
+CODE_808CAC	;OAM DMA routine
+CODE_B5A919	;Sprite graphics DMA routine!
+
+
+
+$38 -- Mirror  of 211C, DMA size, and some index
+
+
+$32 layer 2 X position mirror ?
+
+
+$059B  OAM DMA enable
+$0699  Address of message
+
+$098F  layer three X position?
+$0991  layer three Y position?
+
+
+$17B8 Layer 2 X position
+
+
+$17C0  something with layers probably layer 1 X position
+$17C2 layer 1 Y position mirror
+
+$0a31 active player speed
+$0a33 active player speed
+
+
+
+
+DATA_B5A194   ;Maybe graphics replaced
+
+
+CODE_B9D143:	STA $26
+list of pointers in dp:
+$26
+$32
+$34
+$36
+$38
+$39
+$3A
+$3E
+$40
+$42
+$44
+$46
+$5E
+$54
+$7A
+$8E
+$90
+$98
+$9C
+$C8
+$CE
+$D9
+$0E (one instance)
+
+list of JML pointers in RAM
+$0032
+$05A9 (Done?)
+$09F9
+$0324
+
+list of JMP pointers in RAM
+$0020  (Done?)
+$0024  (Done?)
+$0032
+$0034
+$0036 (Done?)
+$0052 (INDEXED)
+$00AA (done?)
+$067A (done?)
+$067D (done?)
+$067F (done?)
+$17B2 (Done?)
+
+
+list of JSR pointers in RAM
+$0515
+$0024
+$0044
+$0046
+$0650
+$0006
+$0000
+$000E
+
+
+
+
+
+CODE_B6A5B0
+
+
+
+
+known DMA sources:
+
+
+
+
+
+
+known DMA trigger locations:
+    $BB8087
+    $BB8CDC
+    $BB8D49
+    $BB8D63
+    $BB8E52
+    $BB9843
+    $BB9AB3
+    $BB9B01
+    $BB9B3C
+    $BB9C3F
+    $BB9C53
+    $BB9C67
+    $BB9C7B
+    $BB9C8F
+    $BB9CA3
+    $BB9DBC
+    $BB9DD0
+    $BB9DE4
+    $BB9DF8
+    $BB9E2C
+    $BB9F9C
+    $BB9FB0
+    $BB9FC4
+    $BB9FD8
+    $BB9FEC
+    $BBA018
+    $BBA065
+    $BBA231
+    $BBA2B3
+    $BBA2CB
+    $BBA31E
+    $BBA332
+    $BBA348
+    $BBA532
+    $BBA546
+    $BBA55A
+    $BBA56E
+    $BBA582
+    $BBA6A8
+    $BBA6BC
+    $BBA86A
+    $BBA87E
+    $BBA894
+    $BBA8A8
+    $BBA8BC
+    $BBA999
+    $BBA9AD
+    $BBA9C1
+    $BBAB57
+    $BBAB6B
+    $BBAB81
+    $BBAB95
+    $BBABA9
+    $BBABBD
+    $BBABD1
+    $B5A939
+    $B5AABB
+    $B5AC50
+    $B5AC7A
+    $B5AE16
+    $B5AE7C
+    $B5B039
+    $B5B063
+    $B5B0B0
+    $B5B0DA
+    $B5D35C
+    $B5D3B1
+    $B5D921
+    $B5D935
+    $B5D949
+    $B5D95D
+    $B5E0E3
+    $808594
+    $808963
+    $808CAC
+    $80936A
+    $80937E
+    $809392
+    $8093BC
+    $809896
+    $809B3C
+    $809B5F
+    $809B7A
+    $80A029
+    $80A03D
+    $80A051
+    $80A065
+    $80A079
+    $80A08D
+    $80A0A1
+    $80A710
+    $80A891
+    $80A8CB
+    $80B10C
+    $80B8A3
+    $80B8A9
+    $80B8B1
+    $80B8B7
+    $80BD5A
+    $80BD86
+    $80C037
+    $80C111
+    $80C337
+    $80C368
+    $80C600
+    $80C914
+    $80C91A
+    $80C927
+    $80C92D
+    $80C9F3
+    $80CBE4
+    $80CC4B
+    $80CD3A
+    $80CDE5
+    $80CE13
+    $80CE41
+    $80CE73
+    $80CF34
+    $80CF7B
+    $80CFB8
+    $80CFEE
+    $80D061
+    $80D094
+    $80F341
+    $B481B3
+    $B48233
+    $B48442
+    $B48473
+    $B484E3
+    $B48CB9
+    $B48D52
+    $B48ED4
+    $B49224
+    $B493C9
+    $B498B1
+    $B499AD
+    $B499C8
+    $B49B79
+    $B49E65
+    $B49E9E
+    $B49EF1
+    $B4A22D
+    $B4A4FC
+    $B4A7F9
+    $B4A920
+    $B4AB12
+    $B4ABFC
+    $B4BDB1
+    $B4BDC7
+    $B4BF5B
+    $BAB285
+    $BAB31E
+    $BAB71E
+    $BAB74C
+    $BAB791
+
+
+
+
+
+
+
