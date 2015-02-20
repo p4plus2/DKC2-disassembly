@@ -9721,6 +9721,7 @@ CODE_80E16D:	LDA #$0000
 CODE_80E170:	STA $7E80F8,x
 CODE_80E174:	RTS
 
+DATA_80E175:
 db $FF, $FD, $FB, $F9, $F7, $F5, $F3, $F1
 db $EF, $ED, $EB, $E9, $E7, $E5, $E3, $E1
 db $DF, $DD, $DB, $D9, $D7, $D5, $D3, $D1

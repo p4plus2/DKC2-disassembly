@@ -7382,57 +7382,134 @@ CODE_BBC187:	STA $19D4
 CODE_BBC18A:	JMP ($0002,x)
 
 DATA_BBC18D:
-db $A7, $C1, $A7, $C1, $E7, $C1, $17, $C2
-db $2B, $C2, $4F, $C2, $6B, $C2, $87, $C2
-db $AB, $C2, $FF, $C1, $CF, $C2, $EB, $C2
-db $FB, $C2, $00, $00, $89, $C3, $00, $00
-db $94, $C3, $40, $00, $E5, $C3, $28, $00
-db $57, $C4, $40, $00, $E5, $C3, $50, $00
-db $57, $C4, $08, $00, $E5, $C3, $01, $00
-db $16, $C3, $A0, $00, $AE, $C3, $30, $00
-db $68, $C3, $01, $00, $5E, $C3, $48, $00
-db $C6, $C4, $08, $00, $2F, $C4, $40, $00
-db $8A, $C4, $40, $00, $4A, $C3, $01, $00
-db $13, $C5, $00, $00, $94, $C3, $40, $00
-db $2F, $C4, $2C, $00, $8A, $C4, $40, $01
-db $C6, $C4, $04, $00, $2F, $C4, $01, $00
-db $13, $C5, $00, $00, $94, $C3, $20, $00
-db $2F, $C4, $2C, $00, $8A, $C4, $40, $00
-db $C6, $C4, $04, $00, $2F, $C4, $01, $00
-db $13, $C5, $18, $00, $06, $C4, $04, $00
-db $2F, $C4, $C0, $00, $3A, $C3, $18, $00
-db $44, $C3, $01, $00, $13, $C5, $28, $00
-db $06, $C4, $01, $00, $16, $C3, $01, $00
-db $2F, $C4, $60, $00, $AE, $C3, $01, $00
-db $21, $C3, $40, $00, $C6, $C4, $40, $00
-db $3A, $C3, $88, $03, $2F, $C4, $01, $00
-db $13, $C5, $00, $00, $89, $C3, $00, $00
-db $94, $C3, $02, $00, $E5, $C3, $10, $00
-db $8A, $C4, $50, $00, $C6, $C4, $08, $00
-db $2F, $C4, $01, $00, $13, $C5, $00, $00
-db $73, $C3, $00, $00, $94, $C3, $02, $00
-db $E5, $C3, $10, $00, $8A, $C4, $50, $00
-db $C6, $C4, $08, $00, $2F, $C4, $01, $00
-db $13, $C5, $00, $00, $7E, $C3, $00, $00
-db $94, $C3, $01, $00, $E5, $C3, $20, $00
-db $57, $C4, $30, $00, $2F, $C4, $28, $00
-db $57, $C4, $50, $00, $C6, $C4, $08, $00
-db $2F, $C4, $01, $00, $13, $C5, $00, $00
-db $89, $C3, $00, $00, $94, $C3, $01, $00
-db $E5, $C3, $10, $00, $57, $C4, $50, $00
-db $2F, $C4, $13, $00, $57, $C4, $78, $00
-db $C6, $C4, $08, $00, $2F, $C4, $01, $00
-db $13, $C5, $00, $00, $89, $C3, $00, $00
-db $94, $C3, $01, $00, $E5, $C3, $4C, $00
-db $8A, $C4, $80, $00, $C6, $C4, $08, $00
-db $2F, $C4, $01, $00, $13, $C5, $30, $00
-db $06, $C4, $01, $00, $16, $C3, $00, $0C
-db $2F, $C4, $01, $00, $13, $C5, $48, $00
-db $06, $C4, $00, $02, $2F, $C4, $01, $00
-db $0B, $C3, $00, $02, $13, $C5
+dw DATA_BBC1A7
+dw DATA_BBC1A7
+dw DATA_BBC1E7
+dw DATA_BBC217
+dw DATA_BBC22B
+dw DATA_BBC24F
+dw DATA_BBC26B
+dw DATA_BBC287
+dw DATA_BBC2AB
+dw DATA_BBC1FF
+dw DATA_BBC2CF
+dw DATA_BBC2EB
+dw DATA_BBC2FB
 
+DATA_BBC1A7:
+db $00, $00 : dw CODE_BBC389
+db $00, $00 : dw CODE_BBC394
+db $40, $00 : dw CODE_BBC3E5
+db $28, $00 : dw CODE_BBC457
+db $40, $00 : dw CODE_BBC3E5
+db $50, $00 : dw CODE_BBC457
+db $08, $00 : dw CODE_BBC3E5
+db $01, $00 : dw CODE_BBC316
+db $A0, $00 : dw CODE_BBC3AE
+db $30, $00 : dw CODE_BBC368
+db $01, $00 : dw CODE_BBC35E
+db $48, $00 : dw CODE_BBC4C6
+db $08, $00 : dw CODE_BBC42F
+db $40, $00 : dw CODE_BBC48A
+db $40, $00 : dw CODE_BBC34A
+db $01, $00 : dw CODE_BBC513
 
-CODE_BBC30D:	JSL CODE_BB8158
+DATA_BBC1E7:
+db $00, $00 : dw CODE_BBC394
+db $40, $00 : dw CODE_BBC42F
+db $2C, $00 : dw CODE_BBC48A
+db $40, $01 : dw CODE_BBC4C6
+db $04, $00 : dw CODE_BBC42F
+db $01, $00 : dw CODE_BBC513
+
+DATA_BBC1FF:
+db $00, $00 : dw CODE_BBC394
+db $20, $00 : dw CODE_BBC42F
+db $2C, $00 : dw CODE_BBC48A
+db $40, $00 : dw CODE_BBC4C6
+db $04, $00 : dw CODE_BBC42F
+db $01, $00 : dw CODE_BBC513
+
+DATA_BBC217:
+db $18, $00 : dw CODE_BBC406
+db $04, $00 : dw CODE_BBC42F
+db $C0, $00 : dw CODE_BBC33A
+db $18, $00 : dw CODE_BBC344
+db $01, $00 : dw CODE_BBC513
+
+DATA_BBC22B:
+db $28, $00 : dw CODE_BBC406
+db $01, $00 : dw CODE_BBC316
+db $01, $00 : dw CODE_BBC42F
+db $60, $00 : dw CODE_BBC3AE
+db $01, $00 : dw CODE_BBC321
+db $40, $00 : dw CODE_BBC4C6
+db $40, $00 : dw CODE_BBC33A
+db $88, $03 : dw CODE_BBC42F
+db $01, $00 : dw CODE_BBC513
+
+DATA_BBC24F:
+db $00, $00 : dw CODE_BBC389
+db $00, $00 : dw CODE_BBC394
+db $02, $00 : dw CODE_BBC3E5
+db $10, $00 : dw CODE_BBC48A
+db $50, $00 : dw CODE_BBC4C6
+db $08, $00 : dw CODE_BBC42F
+db $01, $00 : dw CODE_BBC513
+
+DATA_BBC26B:
+db $00, $00 : dw CODE_BBC373
+db $00, $00 : dw CODE_BBC394
+db $02, $00 : dw CODE_BBC3E5
+db $10, $00 : dw CODE_BBC48A
+db $50, $00 : dw CODE_BBC4C6
+db $08, $00 : dw CODE_BBC42F
+db $01, $00 : dw CODE_BBC513
+
+DATA_BBC287:
+db $00, $00 : dw CODE_BBC37E
+db $00, $00 : dw CODE_BBC394
+db $01, $00 : dw CODE_BBC3E5
+db $20, $00 : dw CODE_BBC457
+db $30, $00 : dw CODE_BBC42F
+db $28, $00 : dw CODE_BBC457
+db $50, $00 : dw CODE_BBC4C6
+db $08, $00 : dw CODE_BBC42F
+db $01, $00 : dw CODE_BBC513
+
+DATA_BBC2AB:
+db $00, $00 : dw CODE_BBC389
+db $00, $00 : dw CODE_BBC394
+db $01, $00 : dw CODE_BBC3E5
+db $10, $00 : dw CODE_BBC457
+db $50, $00 : dw CODE_BBC42F
+db $13, $00 : dw CODE_BBC457
+db $78, $00 : dw CODE_BBC4C6
+db $08, $00 : dw CODE_BBC42F
+db $01, $00 : dw CODE_BBC513
+
+DATA_BBC2CF:
+db $00, $00 : dw CODE_BBC389
+db $00, $00 : dw CODE_BBC394
+db $01, $00 : dw CODE_BBC3E5
+db $4C, $00 : dw CODE_BBC48A
+db $80, $00 : dw CODE_BBC4C6
+db $08, $00 : dw CODE_BBC42F
+db $01, $00 : dw CODE_BBC513
+
+DATA_BBC2EB:
+db $30, $00 : dw CODE_BBC406
+db $01, $00 : dw CODE_BBC316
+db $00, $0C : dw CODE_BBC42F
+db $01, $00 : dw CODE_BBC513
+
+DATA_BBC2FB:
+db $48, $00 : dw CODE_BBC406
+db $00, $02 : dw CODE_BBC42F
+db $01, $00 : dw CODE_BBC30B
+db $00, $02 : dw CODE_BBC513
+
+CODE_BBC30B:	JSL CODE_BB8158
 CODE_BBC30F:	JSL CODE_B88262
 CODE_BBC313:	JMP CODE_BBC15D
 
