@@ -3992,7 +3992,7 @@ CODE_BBA32C:	LDX #$0D42
 CODE_BBA32F:	STX $4320
 CODE_BBA332:	LDX #DATA_BBA408
 CODE_BBA335:	STX $4322
-CODE_BBA338:	LDA #DATA_BBA408
+CODE_BBA338:	LDA #DATA_BBA408>>16
 CODE_BBA33A:	STA $4324
 CODE_BBA33D:	LDA #$7E
 CODE_BBA33F:	STA $4327
@@ -4030,9 +4030,11 @@ db $C6, $17, $04, $C4, $17, $04, $C6, $17
 db $04, $C4, $17, $04, $C6, $17, $04, $C4
 db $17, $04, $C6, $17, $04, $C4, $17, $04
 db $C6, $17, $04, $C4, $17, $04, $C6, $17
-db $00, $FF, $13, $80, $C9, $11, $81, $00
-db $FF, $A3, $81, $C9, $A1, $82, $00
+db $00
 
+DATA_BBA408:
+db $FF, $13, $80, $C9, $11, $81, $00, $FF
+db $A3, $81, $C9, $A1, $82, $00
 
 CODE_BBA416:	JSR CODE_BBA8DD
 CODE_BBA419:	LDA #$007F
@@ -4278,7 +4280,7 @@ CODE_BBA6B6:	LDX #$3200
 CODE_BBA6B9:	STX $4320
 CODE_BBA6BC:	LDX #DATA_BBA6D3
 CODE_BBA6BF:	STX $4322
-CODE_BBA6C2:	LDA #DATA_BBA6D3
+CODE_BBA6C2:	LDA #DATA_BBA6D3>>16
 CODE_BBA6C4:	STA $4324
 CODE_BBA6C7:	STZ $4327
 CODE_BBA6CA:	REP #$20
@@ -9094,8 +9096,7 @@ db $00, $00, $00, $00, $00, $00, $00, $00
 db $00, $00, $00, $00, $00, $00, $00, $00
 db $00
 
-org $FBE800             ;same place, just a different mirrors
-DATA_FBE800:
+%mirror(DATA_FBE800)
 db $08, $2A, $38, $2A, $66, $2A, $94, $2A
 db $DA, $2A, $2E, $2B, $3C, $2B, $4A, $2B
 db $5C, $2B, $6E, $2B, $7C, $2B, $8A, $2B
@@ -9863,4 +9864,4 @@ db $00, $00, $00, $00, $00, $00, $00, $00
 db $00, $00, $00, $00, $00, $00, $00, $00
 db $00, $00, $00, $00, $00, $00, $00, $00
 db $00, $00, $00, $00, $00, $00, $00, $00
-;db $00, $00, $00, $00, $3C, $AC, $AA, $00
+db $00, $00, $00, $00, $3C, $AC, $AA, $00

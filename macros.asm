@@ -6,6 +6,14 @@ macro offset(label, offset)
     pullpc
 endmacro
 
+macro mirror(label)
+    ?tmp:
+    pushpc
+    org ?tmp+$400000
+    <label>:
+    pullpc
+endmacro
+
 macro return(label)
     PEA <label>-1
 endmacro

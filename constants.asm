@@ -1,1 +1,1 @@
-!null_pointer = $0000
+!null_pointer = $000000

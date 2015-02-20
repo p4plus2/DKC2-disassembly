@@ -29,3 +29,6 @@ DATA_BAB6A1
 
 DATA_80CEB5+1860
 DATA_FC14E0 every 0x400 bytes is a new table until FC54E0
+
+
+CODE_B582A9	;possibly camera related
