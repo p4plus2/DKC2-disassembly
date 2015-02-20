@@ -17,3 +17,15 @@ bank_B9.asm:2912: CODE_B9D231:	JMP ($0026)
 
 CODE_BBC18A
 DATA_BAB6A1
+
+
+0B24 DMA source thingy address  ;\ Used for CGRAM DMA
+0B26 DMA source thingy bank     ;/
+
+1736 DMA source table address
+1738 DMA source table bank
+38/3A DMA source bank (from decompression?)
+
+
+DATA_80CEB5+1860
+DATA_FC14E0 every 0x400 bytes is a new table until FC54E0
