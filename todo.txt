@@ -27,3 +27,12 @@ DATA_BAB6A1
 38/3A DMA source bank (from decompression?)
 
 CODE_B582A9	;possibly camera related
+
+
+
+CODE_B3A306
+CODE_B3CE38
+
+DATA_B4C4B3
+DATA_B4C25E ;check where the data it points to points
+CODE_B4AA36 ;investigate all 079C instances
