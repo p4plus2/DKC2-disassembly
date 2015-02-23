@@ -14,6 +14,10 @@ macro mirror(label)
     pullpc
 endmacro
 
+macro font_tile_offset(label)
+	db <label>-$0660>>6
+endmacro
+
 macro return(label)
     PEA <label>-1
 endmacro

@@ -7153,14 +7153,65 @@ db $20, $3C, $04, $12, $20, $BC, $F6, $04
 db $21, $7C, $12, $04, $21, $3C
 
 DATA_B4C4B3:
-db $26, $28, $2A, $2B, $2C, $2D, $1A, $2F
-db $30, $31, $32, $26, $22, $1E, $29, $03
-db $07, $0B, $0F, $13, $17, $1B, $1F, $23
-db $27, $33, $34, $35, $36, $37, $2E, $38
-db $00, $04, $08, $0C, $10, $14, $18, $1C
-db $20, $24, $01, $05, $09, $0D, $11, $15
-db $19, $1D, $21, $25, $02, $06, $0A, $0E
-db $12, $16
+%font_tile_offset(DATA_FC0FE0)
+%font_tile_offset(DATA_FC1060)
+%font_tile_offset(DATA_FC10E0)
+%font_tile_offset(DATA_FC1120)
+%font_tile_offset(DATA_FC1160)
+%font_tile_offset(DATA_FC11A0)
+%font_tile_offset(DATA_FC0CE0)
+%font_tile_offset(DATA_FC1220)
+%font_tile_offset(DATA_FC1260)
+%font_tile_offset(DATA_FC12A0)
+%font_tile_offset(DATA_FC12E0)
+%font_tile_offset(DATA_FC0FE0)
+%font_tile_offset(DATA_FC0EE0)
+%font_tile_offset(DATA_FC0DE0)
+%font_tile_offset(DATA_FC10A0)
+%font_tile_offset(DATA_FC0720)
+%font_tile_offset(DATA_FC0820)
+%font_tile_offset(DATA_FC0920)
+%font_tile_offset(DATA_FC0A20)
+%font_tile_offset(DATA_FC0B20)
+%font_tile_offset(DATA_FC0C20)
+%font_tile_offset(DATA_FC0D20)
+%font_tile_offset(DATA_FC0E20)
+%font_tile_offset(DATA_FC0F20)
+%font_tile_offset(DATA_FC1020)
+%font_tile_offset(DATA_FC1320)
+%font_tile_offset(DATA_FC1360)
+%font_tile_offset(DATA_FC13A0)
+%font_tile_offset(DATA_FC13E0)
+%font_tile_offset(DATA_FC1420)
+%font_tile_offset(DATA_FC11E0)
+%font_tile_offset(DATA_FC1460)
+%font_tile_offset(DATA_FC0660)
+%font_tile_offset(DATA_FC0760)
+%font_tile_offset(DATA_FC0860)
+%font_tile_offset(DATA_FC0960)
+%font_tile_offset(DATA_FC0A60)
+%font_tile_offset(DATA_FC0B60)
+%font_tile_offset(DATA_FC0C60)
+%font_tile_offset(DATA_FC0D60)
+%font_tile_offset(DATA_FC0E60)
+%font_tile_offset(DATA_FC0F60)
+%font_tile_offset(DATA_FC06A0)
+%font_tile_offset(DATA_FC07A0)
+%font_tile_offset(DATA_FC08A0)
+%font_tile_offset(DATA_FC09A0)
+%font_tile_offset(DATA_FC0AA0)
+%font_tile_offset(DATA_FC0BA0)
+%font_tile_offset(DATA_FC0CA0)
+%font_tile_offset(DATA_FC0DA0)
+%font_tile_offset(DATA_FC0EA0)
+%font_tile_offset(DATA_FC0FA0)
+%font_tile_offset(DATA_FC06E0)
+%font_tile_offset(DATA_FC07E0)
+%font_tile_offset(DATA_FC08E0)
+%font_tile_offset(DATA_FC09E0)
+%font_tile_offset(DATA_FC0AE0)
+%font_tile_offset(DATA_FC0BE0)
+
 
 DATA_B4C4ED:
 dw !null_pointer
