@@ -139,6 +139,9 @@ CODE_808591	;Clear VRAM DMA
 CODE_80895F	;DMA routine (usually seems to DMA from $7F0000
 CODE_808CAC	;OAM DMA routine
 CODE_B5A919	;Sprite graphics DMA routine!
+CODE_BB940C	;load level music number
+CODE_80ABA0	;SRAM copy
+DATA_FE0000	;sprite level data
 
 
 
@@ -150,6 +153,9 @@ $32 layer 2 X position mirror ?
 
 $059B  OAM DMA enable
 $0699  Address of message
+$08C8	Also level number
+$08A8	Also parent level number
+$066E	Parent level number
 
 $098F  layer three X position?
 $0991  layer three Y position?

@@ -4561,46 +4561,156 @@ CODE_B6B69E:	RTL
 
 
 DATA_B6B69F:
-db $77, $CB
+%offset(DATA_B6B6A1, 2)
+dw CODE_B6CB77
+dw CODE_B6CC53
+dw CODE_B6C994
+dw CODE_B6B7C7
+dw CODE_B6C977
+dw CODE_B6B7C7
+dw CODE_B6B7C7
+dw CODE_B6CAD7
+dw CODE_B6CAE3
+dw CODE_B6B7C7
+dw CODE_B6CAA9
+dw CODE_B6B7C7
+dw CODE_B6C816
+dw CODE_B6B7C7
+dw CODE_B6C848
+dw CODE_B6B7C7
+dw CODE_B6C9C4
+dw CODE_B6CA27
+dw CODE_B6C7E0
+dw CODE_B6B7C7
+dw CODE_B6C7EF
+dw CODE_B6B7C7
+dw CODE_B6C7FF
+dw CODE_B6B7C7
+dw CODE_B6C6EF
+dw CODE_B6CC53
+dw CODE_B6C7B4
+dw CODE_B6B7C7
+dw CODE_B6C6DC
+dw CODE_B6B7C7
+dw CODE_B6C9E5
+dw CODE_B6CA27
+dw CODE_B6C6C8
+dw CODE_B6B7C7
+dw CODE_B6C6D2
+dw CODE_B6B7C7
+dw CODE_B6CB65
+dw CODE_B6CC53
+dw CODE_B6C6BE
+dw CODE_B6B7C7
+dw CODE_B6C7C4
+dw CODE_B6B7C7
+dw CODE_B6C68B
+dw CODE_B6B7C7
+dw CODE_B6C657
+dw CODE_B6B7C7
+dw CODE_B6C64F
+dw CODE_B6B7C7
+dw CODE_B6C635
+dw CODE_B6B7C7
+dw CODE_B6C603
+dw CODE_B6B7C7
+dw CODE_B6C9FF
+dw CODE_B6CA27
+dw CODE_B6CB0D
+dw CODE_B6B7C7
+dw CODE_B6C643
+dw CODE_B6B7C7
+dw CODE_B6C5BB
+dw CODE_B6B7C7
+dw CODE_B6C5AF
+dw CODE_B6CC53
+dw CODE_B6C591
+dw CODE_B6B7C7
+dw CODE_B6C52B
+dw CODE_B6B7C7
+dw CODE_B6C504
+dw CODE_B6C50E
+dw CODE_B6C51F
+dw CODE_B6B7C7
+dw CODE_B6C4F1
+dw CODE_B6B7C7
+dw CODE_B6C4D3
+dw CODE_B6B7C7
+dw CODE_B6C4AE
+dw CODE_B6B7C7
+dw CODE_B6C474
+dw CODE_B6CC53
+dw CODE_B6C48A
+dw CODE_B6B7C7
+dw CODE_B6C45A
+dw CODE_B6C464
+dw CODE_B6C2DA
+dw CODE_B6C36C
+dw CODE_B6C20C
+dw CODE_B6C256
+dw CODE_B6C0A0
+dw CODE_B6C122
+dw CODE_B6C082
+dw CODE_B6B7C7
+dw CODE_B6C071
+dw CODE_B6B7C7
+dw CODE_B6C00A
+dw CODE_B6B7C7
+dw CODE_B6BEEE
+dw CODE_B6BF11
+dw CODE_B6BEE8
+dw CODE_B6B7C7
+dw CODE_B6BEC5
+dw CODE_B6B7C7
+dw CODE_B6BEDA
+dw CODE_B6B7C7
+dw CODE_B6BE85
+dw CODE_B6B7C7
+dw CODE_B6BE0D
+dw CODE_B6B7C7
+dw CODE_B6BE00
+dw CODE_B6C122
+dw CODE_B6BDE2
+dw CODE_B6C464
+dw CODE_B6BD84
+dw CODE_B6BDA4
+dw CODE_B6BD73
+dw CODE_B6B7C7
+dw CODE_B6BD7D
+dw CODE_B6B7C7
+dw CODE_B6BC7B
+dw CODE_B6BCCF
+dw CODE_B6BBE2
+dw CODE_B6BC3E
+dw CODE_B6BBCB
+dw CODE_B6B7C7
+dw CODE_B6BBA4
+dw CODE_B6B7C7
+dw CODE_B6BB98
+dw CODE_B6B7C7
+dw CODE_B6BB6C
+dw CODE_B6B7C7
+dw CODE_B6BAF3
+dw CODE_B6BB2B
+dw CODE_B6BABF
+dw CODE_B6BAD8
+dw CODE_B6BA97
+dw CODE_B6B7C7
+dw CODE_B6BAB8
+dw CODE_B6B7C7
+dw CODE_B6B995
+dw CODE_B6BA3F
+dw CODE_B6B93D
+dw CODE_B6B7C7
+dw CODE_B6B903
+dw CODE_B6B7C7
+dw CODE_B6B8BD
+dw CODE_B6B7C7
+dw CODE_B6B84C
+dw CODE_B6B874
+dw CODE_B6B7C8
+dw CODE_B6B7C7
 
-DATA_B6B6A1:
-db $53, $CC, $94, $C9, $C7, $B7, $77, $C9
-db $C7, $B7, $C7, $B7, $D7, $CA, $E3, $CA
-db $C7, $B7, $A9, $CA, $C7, $B7, $16, $C8
-db $C7, $B7, $48, $C8, $C7, $B7, $C4, $C9
-db $27, $CA, $E0, $C7, $C7, $B7, $EF, $C7
-db $C7, $B7, $FF, $C7, $C7, $B7, $EF, $C6
-db $53, $CC, $B4, $C7, $C7, $B7, $DC, $C6
-db $C7, $B7, $E5, $C9, $27, $CA, $C8, $C6
-db $C7, $B7, $D2, $C6, $C7, $B7, $65, $CB
-db $53, $CC, $BE, $C6, $C7, $B7, $C4, $C7
-db $C7, $B7, $8B, $C6, $C7, $B7, $57, $C6
-db $C7, $B7, $4F, $C6, $C7, $B7, $35, $C6
-db $C7, $B7, $03, $C6, $C7, $B7, $FF, $C9
-db $27, $CA, $0D, $CB, $C7, $B7, $43, $C6
-db $C7, $B7, $BB, $C5, $C7, $B7, $AF, $C5
-db $53, $CC, $91, $C5, $C7, $B7, $2B, $C5
-db $C7, $B7, $04, $C5, $0E, $C5, $1F, $C5
-db $C7, $B7, $F1, $C4, $C7, $B7, $D3, $C4
-db $C7, $B7, $AE, $C4, $C7, $B7, $74, $C4
-db $53, $CC, $8A, $C4, $C7, $B7, $5A, $C4
-db $64, $C4, $DA, $C2, $6C, $C3, $0C, $C2
-db $56, $C2, $A0, $C0, $22, $C1, $82, $C0
-db $C7, $B7, $71, $C0, $C7, $B7, $0A, $C0
-db $C7, $B7, $EE, $BE, $11, $BF, $E8, $BE
-db $C7, $B7, $C5, $BE, $C7, $B7, $DA, $BE
-db $C7, $B7, $85, $BE, $C7, $B7, $0D, $BE
-db $C7, $B7, $00, $BE, $22, $C1, $E2, $BD
-db $64, $C4, $84, $BD, $A4, $BD, $73, $BD
-db $C7, $B7, $7D, $BD, $C7, $B7, $7B, $BC
-db $CF, $BC, $E2, $BB, $3E, $BC, $CB, $BB
-db $C7, $B7, $A4, $BB, $C7, $B7, $98, $BB
-db $C7, $B7, $6C, $BB, $C7, $B7, $F3, $BA
-db $2B, $BB, $BF, $BA, $D8, $BA, $97, $BA
-db $C7, $B7, $B8, $BA, $C7, $B7, $95, $B9
-db $3F, $BA, $3D, $B9, $C7, $B7, $03, $B9
-db $C7, $B7, $BD, $B8, $C7, $B7, $4C, $B8
-db $74, $B8, $C8, $B7, $C7, $B7
 
 CODE_B6B7C7:	RTS
 
@@ -4788,9 +4898,8 @@ CODE_B6B98C:	RTS
 
 DATA_B6B98D:
 db $00, $00, $1E, $00, $2D, $00, $3C, $00
-db $5A
 
-
+CODE_B6B995:	PHY
 CODE_B6B996:	LDX $0656
 CODE_B6B999:	LDA $30,x
 CODE_B6B99B:	ORA #$0020
@@ -7479,29 +7588,62 @@ db $02, $00, $00, $00, $FE, $FF, $00, $00
 db $FE, $FF, $00, $00, $FE, $FF, $00, $00
 
 DATA_B6D0D1:
-db $E5, $D0, $ED, $D0, $F5, $D0, $FD, $D0
-db $05, $D1, $0D, $D1, $15, $D1, $1D, $D1
-db $25, $D1, $2D, $D1, $00, $00, $00, $00
-db $00, $00, $00, $00, $B4, $00, $90, $03
-db $00, $01, $79, $92, $F0, $00, $40, $03
-db $00, $01, $41, $92, $F0, $00, $00, $03
-db $00, $01, $C7, $91, $F0, $00, $C0, $02
-db $00, $01, $A7, $91, $F0, $00, $80, $02
-db $00, $01, $87, $91, $F0, $00, $40, $02
-db $00, $01, $63, $91, $F0, $00, $00, $02
-db $00, $01, $2F, $91, $F0, $00, $C0, $01
-db $00, $01, $09, $91, $68, $01, $00, $01
-db $00, $01, $97, $90
+dw DATA_B6D0E5
+dw DATA_B6D0ED
+dw DATA_B6D0F5
+dw DATA_B6D0FD
+dw DATA_B6D105
+dw DATA_B6D10D
+dw DATA_B6D115
+dw DATA_B6D11D
+dw DATA_B6D125
+dw DATA_B6D12D
+
+DATA_B6D0E5:
+db $00, $00, $00, $00, $00, $00, $00, $00
+
+DATA_B6D0ED:
+db $B4, $00, $90, $03, $00, $01, $79, $92
+
+DATA_B6D0F5:
+db $F0, $00, $40, $03, $00, $01, $41, $92
+
+DATA_B6D0FD:
+db $F0, $00, $00, $03, $00, $01, $C7, $91
+
+DATA_B6D105:
+db $F0, $00, $C0, $02, $00, $01, $A7, $91
+
+DATA_B6D10D:
+db $F0, $00, $80, $02, $00, $01, $87, $91
+
+DATA_B6D115:
+db $F0, $00, $40, $02, $00, $01, $63, $91
+
+DATA_B6D11D:
+db $F0, $00, $00, $02, $00, $01, $2F, $91
+
+DATA_B6D125:
+db $F0, $00, $C0, $01, $00, $01, $09, $91
+
+DATA_B6D12D:
+db $68, $01, $00, $01, $00, $01, $97, $90
 
 DATA_B6D135:
-db $3B, $D1, $43, $D1, $43, $D1, $00, $00
+dw DATA_B6D13B
+dw DATA_B6D143
+dw DATA_B6D143
+
+DATA_B6D13B:
 db $00, $00, $00, $00, $00, $00, $00, $00
-db $90, $03, $00, $01, $55, $93, $03, $00
-db $38, $22, $F6, $FF, $F6, $FF, $00, $00
-db $00, $00, $80, $F9, $6A, $22, $00, $00
-db $F6, $FF, $00, $01, $00, $01, $B0, $FA
-db $6A, $22, $0A, $00, $00, $00, $00, $FE
-db $80, $FF, $80, $FA
+
+DATA_B6D143:
+db $00, $00, $90, $03, $00, $01, $55, $93
+db $03, $00, $38, $22, $F6, $FF, $F6, $FF
+db $00, $00, $00, $00, $80, $F9, $6A, $22
+db $00, $00, $F6, $FF, $00, $01, $00, $01
+db $B0, $FA, $6A, $22, $0A, $00, $00, $00
+db $00, $FE, $80, $FF, $80, $FA
 
 CODE_B6D171:	TAX
 CODE_B6D172:	PHK
@@ -9205,15 +9347,24 @@ db $A1, $00, $A2, $00, $A0, $00, $A2, $00
 db $A1, $00, $51, $00
 
 DATA_B6E0B3:
-db $00, $00, $00, $00, $00, $00, $BF, $E0
-db $D9, $E0, $00, $00, $06, $00, $30, $06
-db $20, $02, $D0, $05, $08, $02, $60, $05
-db $48, $02, $10, $05, $08, $02, $A0, $04
-db $48, $02, $50, $04, $08, $02, $06, $00
-db $F0, $03, $18, $02, $50, $04, $F8, $01
-db $B0, $04, $08, $02, $10, $05, $18, $02
-db $70, $05, $28, $02, $D0, $05, $38, $02
+dw !null_pointer
+dw !null_pointer
+dw !null_pointer
+dw DATA_B6E0BF
+dw DATA_B6E0D9
+dw !null_pointer
 
+DATA_B6E0BF:
+db $06, $00, $30, $06, $20, $02, $D0, $05
+db $08, $02, $60, $05, $48, $02, $10, $05
+db $08, $02, $A0, $04, $48, $02, $50, $04
+db $08, $02
+
+DATA_B6E0D9:
+db $06, $00, $F0, $03, $18, $02, $50, $04
+db $F8, $01, $B0, $04, $08, $02, $10, $05
+db $18, $02, $70, $05, $28, $02, $D0, $05
+db $38, $02
 
 CODE_B6E0F3:	LDX $64
 CODE_B6E0F5:	LDY $0654
@@ -10381,27 +10532,48 @@ CODE_B6EC17:	STA $42,x
 CODE_B6EC19:	RTS
 
 DATA_B6EC1A:
-db $28, $EC, $3C, $EC, $50, $EC, $64, $EC
-db $78, $EC, $8C, $EC, $A0, $EC, $00, $00
-db $96, $00, $00, $00, $00, $00, $00, $00
-db $00, $00, $DA, $E3, $EA, $E3, $00, $00
-db $00, $00, $00, $00, $5A, $00, $28, $00
-db $60, $01, $00, $00, $00, $00, $C2, $E3
-db $DA, $E3, $00, $00, $00, $00, $00, $00
-db $64, $00, $3A, $00, $48, $01, $00, $00
-db $00, $00, $C2, $E3, $DA, $E3, $00, $00
-db $00, $00, $00, $00, $6E, $00, $46, $00
-db $30, $01, $00, $00, $00, $00, $AA, $E3
-db $C2, $E3, $00, $00, $00, $00, $02, $00
-db $C8, $00, $00, $00, $A0, $01, $B4, $00
-db $41, $00, $AA, $E3, $C2, $E3, $03, $00
-db $05, $00, $02, $00, $C8, $00, $00, $00
-db $A0, $01, $C8, $00, $55, $00, $AA, $E3
-db $C2, $E3, $03, $00, $06, $00, $02, $00
-db $C8, $00, $00, $00, $A0, $01, $2C, $01
-db $69, $00, $00, $00, $00, $00, $04, $00
-db $08, $00
+dw DATA_B6EC28
+dw DATA_B6EC3C
+dw DATA_B6EC50
+dw DATA_B6EC64
+dw DATA_B6EC78
+dw DATA_B6EC8C
+dw DATA_B6ECA0
 
+DATA_B6EC28:
+db $00, $00, $96, $00, $00, $00, $00, $00
+db $00, $00, $00, $00, $DA, $E3, $EA, $E3
+db $00, $00, $00, $00
+
+DATA_B6EC3C:
+db $00, $00, $5A, $00, $28, $00, $60, $01
+db $00, $00, $00, $00, $C2, $E3, $DA, $E3
+db $00, $00, $00, $00
+
+DATA_B6EC50:
+db $00, $00, $64, $00, $3A, $00, $48, $01
+db $00, $00, $00, $00, $C2, $E3, $DA, $E3
+db $00, $00, $00, $00
+
+DATA_B6EC64:
+db $00, $00, $6E, $00, $46, $00, $30, $01
+db $00, $00, $00, $00, $AA, $E3, $C2, $E3
+db $00, $00, $00, $00
+
+DATA_B6EC78:
+db $02, $00, $C8, $00, $00, $00, $A0, $01
+db $B4, $00, $41, $00, $AA, $E3, $C2, $E3
+db $03, $00, $05, $00
+
+DATA_B6EC8C:
+db $02, $00, $C8, $00, $00, $00, $A0, $01
+db $C8, $00, $55, $00, $AA, $E3, $C2, $E3
+db $03, $00, $06, $00
+
+DATA_B6ECA0:
+db $02, $00, $C8, $00, $00, $00, $A0, $01
+db $2C, $01, $69, $00, $00, $00, $00, $00
+db $04, $00, $08, $00
 
 CODE_B6ECB4:	JSL CODE_BB82B8
 CODE_B6ECB8:	LDX $64
@@ -11978,22 +12150,35 @@ db $00, $00, $FE, $FF, $00, $00, $FE, $FF
 db $00, $00
 
 DATA_B6FE24:
-db $00, $00, $2E, $FE, $4A, $FE, $66, $FE
-db $82, $FE, $0A, $00, $64, $00, $00, $00
-db $02, $00, $00, $00, $00, $00, $00, $00
-db $00, $00, $00, $00, $00, $00, $50, $00
-db $78, $00, $01, $00, $00, $00, $0A, $00
-db $64, $00, $00, $00, $02, $00, $00, $00
+dw !null_pointer
+dw DATA_B6FE2E
+dw DATA_B6FE4A
+dw DATA_B6FE66
+dw DATA_B6FE82
+
+DATA_B6FE2E:
+db $0A, $00, $64, $00, $00, $00, $02, $00
 db $00, $00, $00, $00, $00, $00, $00, $00
-db $00, $00, $78, $00, $B4, $00, $01, $00
-db $00, $00, $2C, $01, $50, $00, $50, $00
-db $02, $00, $00, $00, $0E, $00, $00, $00
-db $00, $00, $C8, $00, $08, $00, $00, $00
-db $00, $00, $02, $00, $02, $00, $68, $01
-db $50, $00, $50, $00, $01, $00, $00, $00
-db $0C, $00, $00, $00, $00, $00, $C8, $00
-db $0A, $00, $00, $00, $00, $00, $02, $00
-db $02, $00
+db $00, $00, $00, $00, $50, $00, $78, $00
+db $01, $00, $00, $00
+
+DATA_B6FE4A:
+db $0A, $00, $64, $00, $00, $00, $02, $00
+db $00, $00, $00, $00, $00, $00, $00, $00
+db $00, $00, $00, $00, $78, $00, $B4, $00
+db $01, $00, $00, $00
+
+DATA_B6FE66:
+db $2C, $01, $50, $00, $50, $00, $02, $00
+db $00, $00, $0E, $00, $00, $00, $00, $00
+db $C8, $00, $08, $00, $00, $00, $00, $00
+db $02, $00, $02, $00
+
+DATA_B6FE82:
+db $68, $01, $50, $00, $50, $00, $01, $00
+db $00, $00, $0C, $00, $00, $00, $00, $00
+db $C8, $00, $0A, $00, $00, $00, $00, $00
+db $02, $00, $02, $00
 
 
 CODE_B6FE9E:	JSR CODE_B6FEA2
