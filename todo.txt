@@ -48,3 +48,6 @@ CODE_B38324  interesting sprite thing
 CODE_80B89C  find DMA trigger
 
 CODE_B3D59F  check for label
+CODE_B5F742  really mean pointers to decode
+
+CODE_BBBE01  Figure out how to represent this

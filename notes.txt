@@ -142,6 +142,7 @@ CODE_B5A919	;Sprite graphics DMA routine!
 CODE_BB940C	;load level music number
 CODE_80ABA0	;SRAM copy
 DATA_FE0000	;sprite level data
+CODE_B38007	;main sprite handler
 
 
 
