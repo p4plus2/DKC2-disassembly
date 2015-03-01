@@ -6605,16 +6605,30 @@ CODE_B9EBD4:	STZ $38,x
 CODE_B9EBD6:	RTS
 
 DATA_B9EBD7:
-db $DF, $EB, $F0, $EB, $01, $EC, $12, $EC
+dw DATA_B9EBDF
+dw DATA_B9EBF0
+dw DATA_B9EC01
+dw DATA_B9EC12
+
+DATA_B9EBDF:
 db $03, $CC, $22, $03, $C8, $22, $03, $CC
 db $22, $03, $D0, $22, $84, $A4, $EB, $92
-db $2C, $03, $D0, $22, $03, $CC, $22, $03
-db $D0, $22, $03, $D4, $22, $84, $A4, $EB
-db $92, $2C, $03, $D4, $22, $03, $D0, $22
-db $03, $D4, $22, $03, $D8, $22, $84, $A4
-db $EB, $92, $2C, $03, $D8, $22, $03, $D4
-db $22, $03, $D8, $22, $03, $DC, $22, $84
-db $A4, $EB, $92, $2C
+db $2C
+
+DATA_B9EBF0:
+db $03, $D0, $22, $03, $CC, $22, $03, $D0
+db $22, $03, $D4, $22, $84, $A4, $EB, $92
+db $2C
+
+DATA_B9EC01:
+db $03, $D4, $22, $03, $D0, $22, $03, $D4
+db $22, $03, $D8, $22, $84, $A4, $EB, $92
+db $2C
+
+DATA_B9EC12:
+db $03, $D8, $22, $03, $D4, $22, $03, $D8
+db $22, $03, $DC, $22, $84, $A4, $EB, $92
+db $2C
 
 CODE_B9EC23:	LDA $46,x
 CODE_B9EC25:	LSR A
