@@ -143,6 +143,8 @@ CODE_BB940C	;load level music number
 CODE_80ABA0	;SRAM copy
 DATA_FE0000	;sprite level data
 CODE_B38007	;main sprite handler
+CODE_B9D0B8	;Handle the "AI" of the kongs along with those nasty tables in F9 and early B9
+CODE_B5BCA8	;Map loading stuff
 
 
 

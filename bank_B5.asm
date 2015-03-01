@@ -5349,30 +5349,54 @@ CODE_B5BAEA:	JSL CODE_B5ADD8
 CODE_B5BAEE:	RTS
 
 DATA_B5BAEF:
-db $8B, $43
+%offset(DATA_B5BAF1, 2)
+dl DATA_E3438B
+dl DATA_E36F39
+dl DATA_E3B5D4
+dl DATA_E3E006
+dl DATA_E3F9B2
+dl DATA_E4186E
+dl DATA_E45ADE
+dl DATA_E3A1C4
+dl DATA_E479EE
+dl DATA_E49E44
+dl DATA_E4B767
+dl DATA_E4F714
+dl DATA_E5264B
+dl DATA_E52732
+dl DATA_E52832
+dl DATA_E54E8A
+dl !null_pointer
+dl DATA_E54351
+dl DATA_E4E649
+dl DATA_E43D8A
+dl DATA_E4F714
 
-DATA_B5BAF1:
-db $E3, $39, $6F, $E3, $D4, $B5, $E3, $06
-db $E0, $E3, $B2, $F9, $E3, $6E, $18, $E4
-db $DE, $5A, $E4, $C4, $A1, $E3, $EE, $79
-db $E4, $44, $9E, $E4, $67, $B7, $E4, $14
-db $F7, $E4, $4B, $26, $E5, $32, $27, $E5
-db $32, $28, $E5, $8A, $4E, $E5, $00, $00
-db $00, $51, $43, $E5, $49, $E6, $E4, $8A
-db $3D, $E4, $14, $F7, $E4
 
 DATA_B5BB2E:
-db $C5, $72
+%offset(DATA_B5BB30, 2)
+dl DATA_E572C5
+dl DATA_E597E1
+dl DATA_E5A71C
+dl DATA_E5C627
+dl DATA_E5E0C8
+dl DATA_E5F52D
+dl DATA_E60FB1
+dl DATA_E5A71C
+dl DATA_E6303A
+dl DATA_E64C7F
+dl DATA_E665F8
+dl DATA_E68077
+dl DATA_E694EC
+dl DATA_E69CE2
+dl DATA_E6A896
+dl DATA_E6C9FF
+dl !null_pointer
+dl DATA_E6A896
+dl DATA_E665F8
+dl DATA_E5F52D
+dl DATA_E68077
 
-DATA_B5BB30:
-db $E5, $E1, $97, $E5, $1C, $A7, $E5, $27
-db $C6, $E5, $C8, $E0, $E5, $2D, $F5, $E5
-db $B1, $0F, $E6, $1C, $A7, $E5, $3A, $30
-db $E6, $7F, $4C, $E6, $F8, $65, $E6, $77
-db $80, $E6, $EC, $94, $E6, $E2, $9C, $E6
-db $96, $A8, $E6, $FF, $C9, $E6, $00, $00
-db $00, $96, $A8, $E6, $F8, $65, $E6, $2D
-db $F5, $E5, $77, $80, $E6
 
 DATA_B5BB6D:
 db $00, $68, $00, $38, $00, $78, $00, $70
@@ -5383,17 +5407,29 @@ db $00, $78, $00, $78, $00, $78, $00, $78
 db $00, $68
 
 DATA_B5BB97:
-db $00, $59
+%offset(DATA_B5BB99, 2)
+dl DATA_FC5900
+dl DATA_FC5B8C
+dl DATA_FC5D94
+dl DATA_FC6154
+dl DATA_FC63FC
+dl DATA_FC665C
+dl DATA_FC689C
+dl DATA_FC5D94
+dl DATA_FC6A0C
+dl DATA_FC6AA8
+dl DATA_FC6B30
+dl DATA_FC70E8
+dl DATA_FC7478
+dl DATA_FC749C
+dl DATA_FC74E0
+dl DATA_FC7A58
+dl DATA_FC5900
+dl DATA_FC74E0
+dl DATA_FC6B30
+dl DATA_FC665C
+dl DATA_FC70E8
 
-DATA_B5BB99:
-db $FC, $8C, $5B, $FC, $94, $5D, $FC, $54
-db $61, $FC, $FC, $63, $FC, $5C, $66, $FC
-db $9C, $68, $FC, $94, $5D, $FC, $0C, $6A
-db $FC, $A8, $6A, $FC, $30, $6B, $FC, $E8
-db $70, $FC, $78, $74, $FC, $9C, $74, $FC
-db $E0, $74, $FC, $58, $7A, $FC, $00, $59
-db $FC, $E0, $74, $FC, $30, $6B, $FC, $5C
-db $66, $FC, $E8, $70, $FC
 
 DATA_B5BBD6:
 db $A3, $00, $82, $00, $F0, $00, $AA, $00
