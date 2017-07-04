@@ -141,7 +141,7 @@ CODE_8083D0:
 	JSL CODE_BB80AC			;$8083F2	 |
 	STP				;$8083F6	/
 
-CODE_8083F7:
+RESET_start:
 	SEI				;$8083F7	\
 	LDA #$80			;$8083F8	 |
 	STA $2100			;$8083FA	 |
@@ -12618,7 +12618,7 @@ CODE_80F3B0:				;		 |
 	STA $420B			;$80F3B7	 |
 	JMP CODE_80F3F2			;$80F3BA	/
 
-CODE_80F3BD:
+NMI_start:
 	JML CODE_80F3C1			;$80F3BD	/
 
 CODE_80F3C1:
@@ -12653,7 +12653,7 @@ CODE_80F3F2:				;		 |
 	PLD				;$80F3F7	 |
 	RTI				;$80F3F8	/
 
-CODE_80F3F9:
+IRQ_start:
 	SEI				;$80F3F9	\
 	RTI				;$80F3FA	/
 
@@ -13566,13 +13566,13 @@ DATA_80FFE8:
 	db $00, $00
 
 DATA_80FFEA:
-	dw CODE_80F3BD
+	dw NMI_start
 
 DATA_80FFEC:
 	db $00, $00
 
 DATA_80FFEE:
-	dw CODE_80F3F9
+	dw IRQ_start
 
 DATA_80FFF0:
 	db $44, $49, $44, $44
@@ -13590,7 +13590,7 @@ DATA_80FFFA:
 	db $00, $F8
 
 DATA_80FFFC:
-	dw CODE_8083F7
+	dw RESET_start
 
 DATA_80FFFE:
 	db $00, $70
