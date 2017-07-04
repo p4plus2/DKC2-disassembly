@@ -19,16 +19,9 @@ CODE_BBC18A
 DATA_BAB6A1
 
 
-0B24 DMA source thingy address  ;\ Used for CGRAM DMA
-0B26 DMA source thingy bank     ;/
-
-1736 DMA source table address
-1738 DMA source table bank
 38/3A DMA source bank (from decompression?)
 
 CODE_B582A9	;possibly camera related
-
-
 
 CODE_B3A306
 CODE_B3CE38
@@ -52,3 +45,5 @@ CODE_B5F742  really mean pointers to decode
 
 CODE_BBBE01  Figure out how to represent this
 CODE_B6D298  Still needs investigating
+
+CODE_808FFC  fixme, plus movement buffer probably

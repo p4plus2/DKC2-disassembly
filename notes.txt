@@ -145,6 +145,8 @@ DATA_FE0000	;sprite level data
 CODE_B38007	;main sprite handler
 CODE_B9D0B8	;Handle the "AI" of the kongs along with those nasty tables in F9 and early B9
 CODE_B5BCA8	;Map loading stuff
+CODE_808B6F	;Weird code
+CODE_BBB70C	;Looks like sprite level load code
 
 
 
@@ -427,3 +429,35 @@ Various compressed data:
 	$F99400
 	$F9C775
 	$FA4C3E
+
+;these are not exactly right, they are in the wrong order....
+command 0x80(CODE_BB84C0): SEC and return    		;success
+command 0x81(CODE_BB84C7): evil?             		;evil
+command 0x82(CODE_BB84D8): Goto next command 		;skip
+command 0x83(CODE_BB84DA): load sub config   		;subconfig
+command 0x84(CODE_BB84EE): Set palette?      		;palette
+command 0x85(CODE_BB850C): Set X/Y/priority? 		;directedpriority
+command 0x86(CODE_BB8521): reads +2 (?)      		;too tired
+command 0x87(CODE_BB8582): reads +2, relative x flip? 	;maybe
+command 0x88(CODE_BB85A2): relative x/y      		;relative
+command 0x89(CODE_BB86D5): allocate vram?    		;vram
+command 0x8A(CODE_BB85BC): read +$1A, bulk copy 	;bulk
+command 0x8B(CODE_BB860E): x/y stuff    		;ehh
+command 0x8C(CODE_BB8646): jump to cmd 0x84 		;removed probably
+command 0x8D(CODE_BB8678): more palette voodoo 		;voodoo
+command 0x8E(CODE_BB879E): vram alloc 2?    		;vram2
+
+
+
+$05FD = index to control buffer
+
+
+
+
+
+
+
+
+
+
+

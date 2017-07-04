@@ -121,10 +121,10 @@ db $00, $00, $69, $00, $00, $00, $69, $00
 db $00, $00, $69, $00, $00, $00, $69, $00
 
 DATA_8083C0:
-db $52, $61, $72, $65, $77, $61, $72, $65
+db "Rareware"
 
 DATA_8083C8:
-db $41, $20, $74, $68, $69, $65, $66, $21
+db "A thief!"
 
 CODE_8083D0:	TYA
 CODE_8083D1:	JSL CODE_BB80B0
@@ -2773,110 +2773,97 @@ dw DATA_809DD4
 dw DATA_809DDC
 
 DATA_809CD9:
-db $49, $53, $4C, $41, $4E, $44, $20, $4D
-db $41, $50, $00
+db "ISLAND MAP", $00
 
 DATA_809CE4:
-db $4D, $41, $49, $4E, $20, $54, $48, $45
-db $4D, $45, $00
+db "MAIN THEME", $00
 
 DATA_809CEF:
-db $53, $57, $41, $4D, $50, $00
+db "SWAMP", $00
 
 DATA_809CF5:
-db $53, $57, $41, $4E, $4B, $59, $00
+db "SWANKY", $00
 
 DATA_809CFC:
-db $45, $4E, $43, $48, $41, $4E, $54, $45
-db $44, $20, $57, $4F, $4F, $44, $00
+db "ENCHANTED WOOD", $00
 
 DATA_809D0B:
-db $53, $48, $49, $50, $20, $44, $45, $43
-db $4B, $00
+db "SHIP DECK", $00
 
 DATA_809D15:
-db $4D, $49, $4E, $45, $00
+db "MINE", $00
 
 DATA_809D1A:
-db $46, $55, $4E, $4B, $59, $00
+db "FUNKY", $00
 
 DATA_809D20:
-db $42, $52, $41, $4D, $42, $4C, $45, $53
-db $00
+db "BRAMBLES", $00
 
 DATA_809D29:
-db $4B, $4C, $55, $42, $42, $41, $00
+db "KLUBBA", $00
 
 DATA_809D30:
-db $57, $41, $53, $50, $20, $48, $49, $56
-db $45, $00
+db "WASP HIVE", $00
 
 DATA_809D3A:
-db $57, $52, $49, $4E, $4B, $4C, $59, $00
+db "WRINKLY", $00
 
 DATA_809D42:
-db $4C, $41, $56, $41, $00
+db "LAVA", $00
 
 DATA_809D47:
-db $52, $4F, $4C, $4C, $45, $52, $20, $43
-db $4F, $41, $53, $54, $45, $52, $00
+db "ROLLER COASTER", $00
 
 DATA_809D56:
-db $42, $4F, $4E, $55, $53, $00
+db "BONUS", $00
 
 DATA_809D5C:
-db $53, $48, $49, $50, $20, $48, $4F, $4C
-db $44, $00
+db "SHIP HOLD", $00
 
 DATA_809D66:
-db $46, $41, $4E, $46, $41, $52, $45, $00
+db "FANFARE", $00
 
 DATA_809D6E:
-db $53, $48, $49, $50, $20, $44, $45, $43
-db $4B, $20, $32, $00
+db "SHIP DECK 2", $00
 
 DATA_809D7A:
-db $52, $45, $53, $43, $55, $45, $20, $4B
-db $4F, $4E, $47, $00
+db "RESCUE KONG", $00
 
 DATA_809D86:
-db $47, $41, $4D, $45, $20, $4F, $56, $45
-db $52, $00
+db "GAME OVER", $00
 
 DATA_809D90:
-db $42, $49, $47, $20, $42, $4F, $53, $53
-db $00
+db "BIG BOSS", $00
 
 DATA_809D99:
-db $43, $41, $53, $54, $4C, $45, $00
+db "CASTLE", $00
 
 DATA_809DA0:
-db $48, $41, $55, $4E, $54, $45, $44, $00
+db "HAUNTED", $00
 
 DATA_809DA8:
-db $53, $45, $4C, $45, $43, $54, $00
+db "SELECT", $00
 
 DATA_809DAF:
-db $43, $52, $41, $4E, $4B, $59, $00
+db "CRANKY", $00
 
 DATA_809DB6:
-db $49, $43, $45, $00
+db "ICE", $00
 
 DATA_809DBA:
-db $4A, $55, $4E, $47, $4C, $45, $00
+db "JUNGLE", $00
 
 DATA_809DC1:
-db $4C, $4F, $53, $54, $20, $57, $4F, $52
-db $4C, $44, $00
+db "LOST WORLD", $00
 
 DATA_809DCC:
-db $52, $49, $47, $47, $49, $4E, $47, $00
+db "RIGGING", $00
 
 DATA_809DD4:
-db $43, $52, $45, $44, $49, $54, $53, $00
+db "CREDITS", $00
 
 DATA_809DDC:
-db $4B, $52, $4F, $4F, $4C, $00
+db "KROOL", $00
 
 
 CODE_809DE2:	LDA $84
@@ -12050,179 +12037,160 @@ dw DATA_80F93A
 dw DATA_80F940
 
 DATA_80F776:
-db $43, $41, $53, $54, $20, $4F, $46, $20
-db $43, $48, $41, $52, $41, $43, $54, $45
-db $52, $53, $00
+db "CAST OF CHARACTERS", $00
 
 DATA_80F789:
-db $4C, $41, $5A, $59, $20, $4C, $41, $4E
-db $44, $4C, $55, $42, $42, $45, $52, $53
-db $00
+db "LAZY LANDLUBBERS", $00
 
 DATA_80F79A:
-db $4E, $45, $45, $4B, $00
+db "NEEK", $00
 
 DATA_80F79F:
-db $43, $4C, $49, $43, $4B, $2D, $43, $4C
-db $41, $43, $4B, $00
+db "CLICK-CLACK", $00
 
 DATA_80F7AB:
-db $53, $50, $49, $4E, $59, $00
+db "SPINY", $00
 
 DATA_80F7B1:
-db $43, $41, $54, $20, $4F, $27, $20, $39
-db $20, $54, $41, $49, $4C, $53, $00
+db "CAT O' 9 TAILS", $00
 
 DATA_80F7C0:
-db $46, $4C, $49, $54, $54, $45, $52, $00
+db "FLITTER", $00
 
 DATA_80F7C8:
-db $4D, $49, $4E, $49, $2D, $4E, $45, $43
-db $4B, $59, $00
+db "MINI-NECKY", $00
 
 DATA_80F7D3:
-db $5A, $49, $4E, $47, $45, $52, $00
+db "ZINGER", $00
 
 DATA_80F7DA:
-db $53, $43, $52, $45, $45, $43, $48, $00
+db "SCREECH", $00
 
 DATA_80F7E2:
-db $53, $55, $42, $4D, $45, $52, $47, $45
-db $44, $20, $53, $45, $41, $44, $4F, $47
-db $53, $00
+db "SUBMERGED SEADOGS", $00
 
 DATA_80F7F4:
-db $46, $4C, $4F, $54, $53, $41, $4D, $00
+db "FLOTSAM", $00
 
 DATA_80F7FC:
-db $53, $48, $55, $52, $49, $00
+db "SHURI", $00
 
 DATA_80F802:
-db $50, $55, $46, $54, $55, $50, $00
+db "PUFTUP", $00
 
 DATA_80F809:
-db $4C, $4F, $43, $4B, $4A, $41, $57, $00
+db "LOCKJAW", $00
 
 DATA_80F811:
-db $53, $4E, $41, $50, $4A, $41, $57, $00
+db "SNAPJAW", $00
 
 DATA_80F819:
-db $4B, $52, $45, $4D, $4C, $49, $4E, $47
-db $20, $4B, $55, $54, $48, $52, $4F, $41
-db $54, $53, $00
+db "KREMLING KUTHROATS", $00
 
 DATA_80F82C:
-db $4B, $4C, $4F, $4D, $50, $00
+db "KLOMP", $00
 
 DATA_80F832:
-db $4B, $4C, $49, $4E, $47, $45, $52, $00
+db "KLINGER", $00
 
 DATA_80F83A:
-db $4B, $41, $42, $4F, $49, $4E, $47, $00
+db "KABOING", $00
 
 DATA_80F842:
-db $4B, $4C, $41, $4D, $50, $4F, $4E, $00
+db "KLAMPON", $00
 
 DATA_80F84A:
-db $4B, $4C, $4F, $42, $42, $45, $52, $00
+db "KLOBBER", $00
 
 DATA_80F852:
-db $4B, $52, $4F, $4F, $4B, $00
+db "KROOK", $00
 
 DATA_80F858:
-db $4B, $55, $54, $4C, $41, $53, $53, $00
+db "KUTLASS", $00
 
 DATA_80F860:
-db $4B, $4C, $4F, $41, $4B, $00
+db "KLOAK", $00
 
 DATA_80F866:
-db $4B, $41, $4E, $4E, $4F, $4E, $00
+db "KANNON", $00
 
 DATA_80F86D:
-db $4B, $52, $55, $4E, $43, $48, $41, $00
+db "KRUNCHA", $00
 
 DATA_80F875:
-db $4B, $4C, $41, $4E, $4B, $00
+db "KLANK", $00
 
 DATA_80F87B:
-db $4B, $41, $43, $4B, $4C, $45, $00
+db "KACKLE", $00
 
 DATA_80F882:
-db $4B, $4C, $55, $42, $42, $41, $00
+db "KLUBBA", $00
 
 DATA_80F889:
-db $42, $41, $52, $4E, $41, $43, $4C, $45
-db $44, $20, $42, $4F, $53, $53, $45, $53
-db $00
+db "BARNACLED BOSSES", $00
 
 DATA_80F89A:
-db $4B, $52, $4F, $57, $00
+db "KROW", $00
 
 DATA_80F89F:
-db $4B, $4C, $45, $45, $56, $45, $52, $00
+db "KLEEVER", $00
 
 DATA_80F8A7:
-db $4B, $55, $44, $47, $45, $4C, $00
+db "KUDGEL", $00
 
 DATA_80F8AE:
-db $4B, $49, $4E, $47, $20, $5A, $49, $4E
-db $47, $00
+db "KING ZING", $00
 
 DATA_80F8B8:
-db $4B, $41, $50, $54, $41, $49, $4E, $20
-db $4B, $2E, $52, $4F, $4F, $4C, $00
+db "KAPTAIN K.ROOL", $00
 
 DATA_80F8C7:
-db $41, $4E, $49, $4D, $41, $4C, $20, $42
-db $55, $44, $44, $49, $45, $53, $00
+db "ANIMAL BUDDIES", $00
 
 DATA_80F8D6:
-db $52, $41, $4D, $42, $49, $00
+db "RAMBI", $00
 
 DATA_80F8DC:
-db $45, $4E, $47, $55, $41, $52, $44, $45
-db $00
+db "ENGUARDE", $00
 
 DATA_80F8E5:
-db $52, $41, $54, $54, $4C, $59, $00
+db "RATTLY", $00
 
 DATA_80F8EC:
-db $53, $51, $55, $49, $54, $54, $45, $52
-db $00
+db "SQUITTER", $00
 
 DATA_80F8F5:
-db $43, $4C, $41, $50, $50, $45, $52, $00
+db "CLAPPER", $00
 
 DATA_80F8FD:
-db $53, $51, $55, $41, $57, $4B, $53, $00
+db "SQUAWKS", $00
 
 DATA_80F905:
-db $47, $4C, $49, $4D, $4D, $45, $52, $00
+db "GLIMMER", $00
 
 DATA_80F90D:
-db $4B, $4F, $4E, $47, $20, $4B, $4C, $41
-db $4E, $00
+db "KONG KLAN", $00
 
 DATA_80F917:
-db $53, $57, $41, $4E, $4B, $59, $00
+db "SWANKY", $00
 
 DATA_80F91E:
-db $46, $55, $4E, $4B, $59, $00
+db "FUNKY", $00
 
 DATA_80F924:
-db $57, $52, $49, $4E, $4B, $4C, $59, $00
+db "WRINKLY", $00
 
 DATA_80F92C:
-db $43, $52, $41, $4E, $4B, $59, $00
+db "CRANKY", $00
 
 DATA_80F933:
-db $44, $4F, $4E, $4B, $45, $59, $00
+db "DONKEY", $00
 
 DATA_80F93A:
-db $44, $49, $58, $49, $45, $00
+db "DIXIE", $00
 
 DATA_80F940:
-db $44, $49, $44, $44, $59, $00
+db "DIDDY", $00
 
 CODE_80F946:	PHB
 CODE_80F947:	PHK
@@ -12645,9 +12613,7 @@ DATA_80FFBF:
 db $00
 
 DATA_80FFC0:
-db $44, $49, $44, $44, $59, $27, $53, $20
-db $4B, $4F, $4E, $47, $20, $51, $55, $45
-db $53, $54, $20, $20, $20
+db "DIDDY'S KONG QUEST   "
 
 DATA_80FFD5:
 db $31

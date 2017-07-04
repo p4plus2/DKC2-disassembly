@@ -1,0 +1,48 @@
+Music IDs
+0x0000 -- Nothing
+0x0001 -- Island map
+0x0002 -- Main theme
+0x0003 -- Swamp
+0x0004 -- Swanky
+0x0005 -- Enchanted wood
+0x0006 -- Ship deck
+0x0007 -- Mine
+0x0008 -- Funky
+0x0009 -- Brambles
+0x000A -- Klubba
+0x000B -- Wasp hive
+0x000C -- Wrinkly
+0x000D -- Lava
+0x000E -- Roller coaster
+0x000F -- Bonus
+0x0010 -- Ship hold
+0x0011 -- Fanfare
+0x0012 -- Ship deck 2
+0x0013 -- Rescue kong
+0x0014 -- Game over
+0x0015 -- Big boss
+0x0016 -- Castle
+0x0017 -- Haunted
+0x0018 -- Select
+0x0019 -- Cranky
+0x001A -- Ice
+0x001B -- Jungle
+0x001C -- Lost world
+0x001D -- Rigging
+0x001E -- Credits
+0x001F -- Krool
+
+In level music prefixes
+0x0000 -- normal
+0x0100 -- death
+0x0200 -- diddy win
+0x0300 -- dixie win
+0x0400 -- no dance win (invalid for boss music)
+
+Bonus music prefixes
+0x0000 -- Bonus transition screen
+0x0100 -- Complete (already one)
+0x0200 -- lose
+0x0300 -- In the bonus
+
+OW music, Swanky, Cranky, Wrinkly, Fanfare, Gameover, and Credits have no prefixes

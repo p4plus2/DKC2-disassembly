@@ -1,4 +1,17 @@
 DATA_FF0000:
+%offset(DATA_FF0002, $2)
+%offset(DATA_FF0004, $4)
+%offset(DATA_FF0006, $6)
+%offset(DATA_FF0008, $8)
+%offset(DATA_FF000A, $A)
+%offset(DATA_FF000C, $C)
+%offset(DATA_FF000E, $E)
+%offset(DATA_FF0010, $10)
+%offset(DATA_FF0012, $12)
+%offset(DATA_FF0014, $14)
+%offset(DATA_FF0016, $16)
+%offset(DATA_FF0018, $18)
+%offset(DATA_FF001A, $1A)
 db $44, $49, $44, $44, $59, $20, $41, $53
 db $53, $45, $4D, $42, $4C, $59, $20, $44
 db $41, $54, $45, $20, $26, $20, $54, $49

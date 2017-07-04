@@ -1,0 +1,50 @@
+(0515) 0000 = level setting parser (possibly additional settings later)
+ 	values:
+ 		00 = normal parse
+ 		01 = set $0018 (one byte), then normal
+ 		02 = normal parse
+ 		03 = normal parse	;Seems to be used for all boss stages
+ 		04 = return success
+ 		05 = return success
+ 		06 = normal parse
+ 	
+(0517) 0002 = Index to a pointer thing with DMA (VRAM?) does CGRAM stuff too
+(0519) 0004 = Level special effects (typically HDMA)
+(051B) 0006 = Song for a given level
+(051D) 0008 = Pointer to something else
+(051F) 000A = Pointer to something
+(0521) 000C = Sprite related (sets $6E, so figure out what that is)
+(0523) 000E = Looks like this may be map related
+(0525) 0010 = Used for several camera(?) related tables
+(0527) 0012 = NMI pointer
+(0529) 0014 = Level mode execute pointer
+(052B) 0016 = A bit flag, a lot of sprite(?) references
+(052D) 0018 = Sound related?
+(052F) 001A = Not referenced?
+(0531) 001C = Not referenced?
+(0533) 001E = X position of sprite ________ (dixie/diddy maybe?)
+(0535) 0020 = Y position of sprite ________ (dixie/diddy maybe?)
+(0537) 0022 = ;\ scroll related
+(0539) 0024 = ;/
+(053B) 0026 = Not referenced?
+(053D) 0028 = ;\ Bonus/Exit table, first entry points to the next level on the OW
+(053F) 002A = ; |
+(0541) 002A = ; |
+(0543) 002C = ; |
+(0545) 002E = ; |
+(0547) 0030 = ; |
+(0549) 0032 = ; |
+(054B) 0034 = ;/
+(054D) 0036 = Mirrored to $0AB6
+(054F) 0038 = Pointer table index (two tables back to back)
+(0551) 003A = Mirrored into $26 (low word to a pointer in bank FD)
+
+
+
+
+primary parse calls:
+
+JSR CODE_BBAFE1
+JSR CODE_BBB05C
+JSR CODE_BBB066
+BRA CODE_BBAF7F

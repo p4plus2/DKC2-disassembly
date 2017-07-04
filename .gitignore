@@ -4,6 +4,7 @@
 *.sram
 *.usage
 *.sh
+*.7z
 save.rwm
 DMA.log
 how_bad_is_it.txt
