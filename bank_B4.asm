@@ -1519,7 +1519,7 @@ CODE_B48C9D:
 	LDY #$00E0			;$B48D25	 |
 	LDX #$0004			;$B48D28	 |
 	JSL CODE_BB807F			;$B48D2B	 |
-	LDA #$6682			;$B48D2F	 |
+	LDA #DATA_FD6682		;$B48D2F	 |
 	LDY #$00F0			;$B48D32	 |
 	LDX #$0004			;$B48D35	 |
 	JSL CODE_BB8089			;$B48D38	 |
@@ -7405,7 +7405,7 @@ CODE_B4BEEF:
 	TRB $06A3			;$B4BEFD	 |
 	LDA #$0020			;$B4BF00	 |
 	TSB $06A5			;$B4BF03	 |
-	LDA #$6682			;$B4BF06	 |
+	LDA #DATA_FD6682		;$B4BF06	 |
 	LDY #$00F0			;$B4BF09	 |
 	LDX #$0004			;$B4BF0C	 |
 	JSL CODE_BB8089			;$B4BF0F	 |
@@ -7457,7 +7457,7 @@ CODE_B4BF3A:				;		 |
 	JSL CODE_BB80B0			;$B4BF8E	 |
 	LDA #$0038			;$B4BF92	 |
 	JSL CODE_BB80AC			;$B4BF95	 |
-	LDA #$402E			;$B4BF99	 |
+	LDA #DATA_FD402E		;$B4BF99	 |
 	LDY #$0000			;$B4BF9C	 |
 	LDX #$0020			;$B4BF9F	 |
 	JSL CODE_BB8089			;$B4BFA2	 |
@@ -8968,56 +8968,61 @@ DATA_B4CD51:
 	dw DATA_B4CDB9
 	dw DATA_B4CDD5
 
+;block 1?
 DATA_B4CD5B:
 	db $19, $00, $08, $00, $04, $00, $0C, $00
 	db $0A, $00
 
 DATA_B4CD65:
-	db $08, $07, $F0, $0F, $E0, $FF, $AB, $00
+	db $08, $07 : dw DATA_FD0FF0 : db $E0, $FF, $AB, $00
 	db $C0, $FF, $AB, $00, $00, $00
 
 DATA_B4CD73:
 	dw CODE_B4B82A
 
+;block 2?
 DATA_B4CD75:
 	db $A0, $7B, $A0, $7A, $F1, $CD, $60, $00
 	db $40, $00, $00, $01
 
 DATA_B4CD81:
-	db $09, $08, $F0, $10, $10, $01, $C0, $00
+	db $09, $08 : dw DATA_FD10F0 : db $10, $01, $C0, $00
 	db $30, $01, $C0, $00, $01, $00
 
 DATA_B4CD8F:
 	dw CODE_B4B82B
 
+;block 3?
 DATA_B4CD91:
 	db $A0, $4B, $A0, $4A, $F6, $CD, $A0, $00
 	db $C0, $00, $00, $01
 
 DATA_B4CD9D:
-	db $0B, $07, $F0, $12, $10, $01, $B8, $00
+	db $0B, $07 : dw DATA_FD12F0 : db $10, $01, $B8, $00
 	db $30, $01, $B8, $00, $00, $00
 
 DATA_B4CDAB:
 	dw CODE_B4B7CA
-
+	
+;block 4?
 DATA_B4CDAD:
 	db $A0, $7B, $A0, $7A, $07, $CE, $A8, $00
 	db $C8, $00, $00, $01
 
 DATA_B4CDB9:
-	db $0A, $07, $F0, $11, $10, $01, $B0, $00
+	db $0A, $07 : dw DATA_FD11F0 : db $10, $01, $B0, $00
 	db $30, $01, $B0, $00, $01, $00
 
 DATA_B4CDC7:
 	dw CODE_B4B82A
 
+;block 5?
 DATA_B4CDC9:
 	db $A0, $7B, $A0, $7A, $0F, $CE, $A0, $00
 	db $C0, $00, $00, $01
 
 DATA_B4CDD5:
-	db $0C, $07, $F0, $13, $E0, $FF, $A4, $00
+	db $0C, $07 : dw DATA_FD13F0 : db $E0, $FF, $A4, $00
 	db $C0, $FF, $A4, $00, $00, $00
 
 DATA_B4CDE3:
