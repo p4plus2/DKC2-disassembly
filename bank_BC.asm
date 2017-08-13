@@ -9842,7 +9842,7 @@ CODE_BCFAEA:
 	BEQ CODE_BCFAFD			;$BCFAF8	 |
 	LDY #$09AB			;$BCFAFA	 |
 CODE_BCFAFD:				;		 |
-	JSR CODE_BCFC4D			;$BCFAFD	 |
+	JSR GetSpriteClipping		;$BCFAFD	 |
 	LDA #$09A3			;$BCFB00	 |
 	JSR CODE_BCFBEE			;$BCFB03	 |
 	PLD				;$BCFB06	 |
@@ -9854,7 +9854,7 @@ CODE_BCFAFD:				;		 |
 	BEQ CODE_BCFB1C			;$BCFB12	 |
 	PHD				;$BCFB14	 |
 	LDY #$09EB			;$BCFB15	 |
-	JSR CODE_BCFC4D			;$BCFB18	 |
+	JSR GetSpriteClipping		;$BCFB18	 |
 	PLD				;$BCFB1B	 |
 CODE_BCFB1C:				;		 |
 	RTL				;$BCFB1C	/
@@ -9862,7 +9862,7 @@ CODE_BCFB1C:				;		 |
 CODE_BCFB1D:
 	PHD				;$BCFB1D	\
 	LDY #$09AB			;$BCFB1E	 |
-	JSR CODE_BCFC4D			;$BCFB21	 |
+	JSR GetSpriteClipping		;$BCFB21	 |
 	LDA #$09A3			;$BCFB24	 |
 	JSR CODE_BCFBEE			;$BCFB27	 |
 	PLD				;$BCFB2A	 |
@@ -9878,7 +9878,7 @@ CODE_BCFB2C:
 	STY $0D38			;$BCFB3B	 |
 	LDY #$09C3			;$BCFB3E	 |
 CODE_BCFB41:				;		 |
-	JSR CODE_BCFC4D			;$BCFB41	 |
+	JSR GetSpriteClipping		;$BCFB41	 |
 	LDA #$09BB			;$BCFB44	 |
 	JSR CODE_BCFBEE			;$BCFB47	 |
 	PLD				;$BCFB4A	 |
@@ -9892,7 +9892,7 @@ CODE_BCFB58:
 	PHD				;$BCFB58	\
 	LDX $64				;$BCFB59	 |
 	LDY #$09D3			;$BCFB5B	 |
-	JSR CODE_BCFC4D			;$BCFB5E	 |
+	JSR GetSpriteClipping		;$BCFB5E	 |
 	JSR CODE_BCFBCC			;$BCFB61	 |
 	PLD				;$BCFB64	 |
 	STZ $09DF			;$BCFB65	 |
@@ -10044,13 +10044,13 @@ CODE_BCFC48:
 	STA $04				;$BCFC4A	 |
 	RTS				;$BCFC4C	/
 
-CODE_BCFC4D:
-	LDA $1A,x			;$BCFC4D	\
+GetSpriteClipping:
+	LDA $1A,x			;$BCFC4D	\ Get clipping ID
 	BEQ CODE_BCFC48			;$BCFC4F	 |
 	LSR A				;$BCFC51	 |
 	PHX				;$BCFC52	 |
 	TAX				;$BCFC53	 |
-	LDA.l DATA_BCB600,x		;$BCFC54	 |
+	LDA.l DATA_BCB600,x		;$BCFC54	 | clipping pointer
 	PLX				;$BCFC58	 |
 CODE_BCFC59:				;		 |
 	PHB				;$BCFC59	 |
@@ -10059,44 +10059,44 @@ CODE_BCFC59:				;		 |
 	PHY				;$BCFC5C	 |
 	TAY				;$BCFC5D	 |
 	PLD				;$BCFC5E	 |
-	LDA $0006,x			;$BCFC5F	 |
+	LDA $0006,x			;$BCFC5F	 | Get sprite X position
 	BIT $0012,x			;$BCFC62	 |
-	BVS CODE_BCFC75			;$BCFC65	 |
+	BVS .FlipClippingX		;$BCFC65	 |
 	CLC				;$BCFC67	 |
-	ADC $0000,y			;$BCFC68	 |
-	STA $00				;$BCFC6B	 |
+	ADC $0000,y			;$BCFC68	 | Add clipping horizontal offset
+	STA $00				;$BCFC6B	 | Store leftmost position
 	CLC				;$BCFC6D	 |
-	ADC $0004,y			;$BCFC6E	 |
-	STA $04				;$BCFC71	 |
-	BRA CODE_BCFC81			;$BCFC73	/
+	ADC $0004,y			;$BCFC6E	 | Add clipping width
+	STA $04				;$BCFC71	 | Store rightmost position
+	BRA .VerticalClipping		;$BCFC73	/
 
-CODE_BCFC75:
+.FlipClippingX:
 	SEC				;$BCFC75	\
-	SBC $0000,y			;$BCFC76	 |
-	STA $04				;$BCFC79	 |
+	SBC $0000,y			;$BCFC76	 | Subtract clipping horizontal offset
+	STA $04				;$BCFC79	 | Store rightmost position
 	SEC				;$BCFC7B	 |
-	SBC $0004,y			;$BCFC7C	 |
-	STA $00				;$BCFC7F	 |
-CODE_BCFC81:				;		 |
-	LDA $000A,x			;$BCFC81	 |
+	SBC $0004,y			;$BCFC7C	 | Subtract clipping width
+	STA $00				;$BCFC7F	 | Store leftmost position
+.VerticalClipping:			;		 |
+	LDA $000A,x			;$BCFC81	 | Get sprite Y position
 	BIT $0012,x			;$BCFC84	 |
-	BMI CODE_BCFC97			;$BCFC87	 |
+	BMI .FlipClippingY		;$BCFC87	 |
 	CLC				;$BCFC89	 |
-	ADC $0002,y			;$BCFC8A	 |
-	STA $02				;$BCFC8D	 |
+	ADC $0002,y			;$BCFC8A	 | Add clipping vertical offset
+	STA $02				;$BCFC8D	 | Store top position
 	CLC				;$BCFC8F	 |
-	ADC $0006,y			;$BCFC90	 |
-	STA $06				;$BCFC93	 |
+	ADC $0006,y			;$BCFC90	 | Add clipping height
+	STA $06				;$BCFC93	 | Store bottom position
 	PLB				;$BCFC95	 |
 	RTS				;$BCFC96	/
 
-CODE_BCFC97:
+.FlipClippingY:
 	SEC				;$BCFC97	\
-	SBC $0002,y			;$BCFC98	 |
-	STA $06				;$BCFC9B	 |
+	SBC $0002,y			;$BCFC98	 | Subtract clipping vertical offset
+	STA $06				;$BCFC9B	 | Store bottom position
 	SEC				;$BCFC9D	 |
-	SBC $0006,y			;$BCFC9E	 |
-	STA $02				;$BCFCA1	 |
+	SBC $0006,y			;$BCFC9E	 | Subtract clipping height
+	STA $02				;$BCFCA1	 | Store top position
 	PLB				;$BCFCA3	 |
 	RTS				;$BCFCA4	/
 
@@ -10105,7 +10105,7 @@ CODE_BCFCA5:
 	LDX $0597			;$BCFCA7	 |
 	STX $6A				;$BCFCAA	 |
 	LDY #$0018			;$BCFCAC	 |
-	JSR CODE_BCFD61			;$BCFCAF	 |
+	JSR CheckForCollision		;$BCFCAF	 |
 	BCC CODE_BCFCC5			;$BCFCB2	 |
 	RTL				;$BCFCB4	/
 
@@ -10114,7 +10114,7 @@ CODE_BCFCB5:
 	LDX $0593			;$BCFCB7	 |
 	STX $6A				;$BCFCBA	 |
 	LDY #$0000			;$BCFCBC	 |
-	JSR CODE_BCFD61			;$BCFCBF	 |
+	JSR CheckForCollision		;$BCFCBF	 |
 	BCC CODE_BCFCC5			;$BCFCC2	 |
 	RTL				;$BCFCC4	/
 
@@ -10126,7 +10126,7 @@ CODE_BCFCC5:
 	BEQ CODE_BCFCDD			;$BCFCCE	 |
 	STX $6A				;$BCFCD0	 |
 	LDY #$0000			;$BCFCD2	 |
-	JSR CODE_BCFD61			;$BCFCD5	 |
+	JSR CheckForCollision		;$BCFCD5	 |
 	BCC CODE_BCFCDD			;$BCFCD8	 |
 	RTL				;$BCFCDA	/
 
@@ -10189,27 +10189,27 @@ CODE_BCFD56:				;		 |
 	CMP #$0001			;$BCFD5B	 |
 	RTL				;$BCFD5E	/
 
-CODE_BCFD5F:
+ReturnNoContact:
 	CLC				;$BCFD5F	\
 	RTS				;$BCFD60	/
 
-CODE_BCFD61:
+CheckForCollision:
 	STZ $09F5			;$BCFD61	\
 	LDA $EB				;$BCFD64	 |
 	AND $30,x			;$BCFD66	 |
-	BEQ CODE_BCFD5F			;$BCFD68	 |
-	LDA $09B7,y			;$BCFD6A	 |
-	CMP $09E3			;$BCFD6D	 |
-	BCC CODE_BCFD5F			;$BCFD70	 |
-	LDA $09E7			;$BCFD72	 |
-	CMP $09B3,y			;$BCFD75	 |
-	BCC CODE_BCFD5F			;$BCFD78	 |
-	LDA $09E9			;$BCFD7A	 |
-	CMP $09B5,y			;$BCFD7D	 |
-	BCC CODE_BCFD5F			;$BCFD80	 |
-	LDA $09B9,y			;$BCFD82	 |
-	CMP $09E5			;$BCFD85	 |
-	BCC CODE_BCFD5F			;$BCFD88	 |
+	BEQ ReturnNoContact		;$BCFD68	 |
+	LDA $09B7,y			;$BCFD6A	 | Compare the right of the kong
+	CMP $09E3			;$BCFD6D	 | with the left of the sprite
+	BCC ReturnNoContact		;$BCFD70	 |
+	LDA $09E7			;$BCFD72	 | Compare the right of the sprite
+	CMP $09B3,y			;$BCFD75	 | with the left of the kong
+	BCC ReturnNoContact		;$BCFD78	 |
+	LDA $09E9			;$BCFD7A	 | Compare the bottom of the sprite
+	CMP $09B5,y			;$BCFD7D	 | with the top of the kong
+	BCC ReturnNoContact		;$BCFD80	 |
+	LDA $09B9,y			;$BCFD82	 | Compare the bottom of the kong
+	CMP $09E5			;$BCFD85	 | with the top of the sprite
+	BCC ReturnNoContact		;$BCFD88	 |
 	LDA $09AF,y			;$BCFD8A	 |
 	BEQ CODE_BCFDB2			;$BCFD8D	 |
 	CMP $09D3			;$BCFD8F	 |
