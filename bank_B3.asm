@@ -2,7 +2,7 @@ CODE_B38000:				;		 |
 	JSL CODE_BBBB99			;$B38000	 |
 	JML [$05A9]			;$B38004	/
 
-CODE_B38007:
+sprite_handler:
 	SEP #$20			;$B38007	\
 	LDA $19B2			;$B38009	 |
 	STA $19B3			;$B3800C	 |
@@ -23,25 +23,25 @@ CODE_B38007:
 	BNE CODE_B3806D			;$B38038	 |
 	LDA $0A36			;$B3803A	 |
 	BNE CODE_B38087			;$B3803D	 |
-	LDA #CODE_B38052		;$B3803F	 |
-	STA $05A9			;$B38042	 |
-	LDX #$0DE2			;$B38045	 |
-CODE_B38048:				;		 |
-	LDA $00,x			;$B38048	 |
-	BEQ CODE_B38054			;$B3804A	 |
-	STX $64				;$B3804C	 |
-	TAX				;$B3804E	 |
-	JMP (DATA_B38348,x)		;$B3804F	/
+	LDA #.sprite_return		;$B3803F	 |\ Set sprite return pointer
+	STA $05A9			;$B38042	 |/
+	LDX #$0DE2			;$B38045	 | Load sprite base pointer
+.next_slot				;		 |
+	LDA $00,x			;$B38048	 |\ If the sprite doesn't exist
+	BEQ .get_next_slot		;$B3804A	 |/ Get the next sprite
+	STX $64				;$B3804C	 |\ If the sprite was found, preserve the index
+	TAX				;$B3804E	 | |
+	JMP (DATA_B38348,x)		;$B3804F	/ / Then jump to the sprite code
 
-CODE_B38052:
-	LDX $64				;$B38052	\
-CODE_B38054:				;		 |
-	TXA				;$B38054	 |
-	CLC				;$B38055	 |
-	ADC #$005E			;$B38056	 |
-	TAX				;$B38059	 |
-	CPX #$16B2			;$B3805A	 |
-	BNE CODE_B38048			;$B3805D	 |
+.sprite_return
+	LDX $64				;$B38052	\ Reload current sprite pointer
+.get_next_slot				;		 |
+	TXA				;$B38054	 |\ Load next sprite slot
+	CLC				;$B38055	 | |
+	ADC #$005E			;$B38056	 | |
+	TAX				;$B38059	 |/
+	CPX #$16B2			;$B3805A	 |\ If not at the last sprite
+	BNE .next_slot			;$B3805D	 |/ then test if the sprite exists
 	JSL CODE_B8805E			;$B3805F	 |
 	JSR CODE_B38342			;$B38063	 |
 	JSR CODE_B38280			;$B38066	 |

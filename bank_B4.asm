@@ -1798,7 +1798,7 @@ CODE_B48FCB:				;		 |
 	LDY $07AE			;$B48FD7	 |
 	JSR CODE_B4BC51			;$B48FDA	 |
 CODE_B48FDD:				;		 |
-	JSL CODE_B38007			;$B48FDD	 |
+	JSL sprite_handler		;$B48FDD	 |
 	JSL CODE_B5A8DA			;$B48FE1	 |
 	JSR CODE_B4AE85			;$B48FE5	 |
 	RTL				;$B48FE8	/
@@ -2068,7 +2068,7 @@ CODE_B49224:				;		 |
 	STA $C8				;$B49256	 |
 	LDX #$07A5			;$B49258	 |
 	JSR CODE_B4BB62			;$B4925B	 |
-	JSL CODE_B38007			;$B4925E	 |
+	JSL sprite_handler		;$B4925E	 |
 	JSR CODE_B4AE85			;$B49262	 |
 	RTL				;$B49265	/
 
@@ -2298,7 +2298,7 @@ CODE_B49444:				;		 |
 	STA $C8				;$B4944B	 |
 	LDX #$07A5			;$B4944D	 |
 	JSR CODE_B4BB62			;$B49450	 |
-	JSL CODE_B38007			;$B49453	 |
+	JSL sprite_handler		;$B49453	 |
 	JSL CODE_B5A8DA			;$B49457	 |
 	JSR CODE_B4AE85			;$B4945B	 |
 	RTL				;$B4945E	/
@@ -2318,7 +2318,7 @@ CODE_B4945F:
 	LDX #$07A5			;$B4947B	 |
 	JSR CODE_B4BB62			;$B4947E	 |
 	PHK				;$B49481	 |
-	JSL CODE_B38007			;$B49482	 |
+	JSL sprite_handler		;$B49482	 |
 	PLB				;$B49486	 |
 	JSR CODE_B4AE85			;$B49487	 |
 	STZ $0699			;$B4948A	 |
@@ -2817,7 +2817,7 @@ CODE_B498F4:				;		 |
 	STA $C8				;$B498FE	 |
 	LDX #$07A5			;$B49900	 |
 	JSR CODE_B4BB62			;$B49903	 |
-	JSL CODE_B38007			;$B49906	 |
+	JSL sprite_handler		;$B49906	 |
 	JSR CODE_B4AE85			;$B4990A	 |
 	PLB				;$B4990D	 |
 	RTL				;$B4990E	/
@@ -2856,7 +2856,7 @@ CODE_B49953:				;		 |
 	STA $C8				;$B4995D	 |
 	LDX #$07A5			;$B4995F	 |
 	JSR CODE_B4BB62			;$B49962	 |
-	JSL CODE_B38007			;$B49965	 |
+	JSL sprite_handler		;$B49965	 |
 	JSR CODE_B4AE85			;$B49969	 |
 	PLB				;$B4996C	 |
 	RTL				;$B4996D	/
@@ -3030,7 +3030,7 @@ CODE_B49ADD:
 CODE_B49AEE:				;		 |
 	LDX #$07A5			;$B49AEE	 |
 	JSR CODE_B4BB62			;$B49AF1	 |
-	JSL CODE_B38007			;$B49AF4	 |
+	JSL sprite_handler		;$B49AF4	 |
 	JSR CODE_B4AE85			;$B49AF8	 |
 	RTL				;$B49AFB	/
 
@@ -3120,7 +3120,7 @@ CODE_B49B63:
 	STA $C8				;$B49BAB	 |
 	LDX #$07A5			;$B49BAD	 |
 	JSR CODE_B4BB62			;$B49BB0	 |
-	JSL CODE_B38007			;$B49BB3	 |
+	JSL sprite_handler		;$B49BB3	 |
 	JSR CODE_B4AE85			;$B49BB7	 |
 	RTL				;$B49BBA	/
 
@@ -4350,7 +4350,7 @@ CODE_B4A5CC:				;		 |
 	JSR CODE_B49C4D			;$B4A5D5	 |
 	LDX #$07A5			;$B4A5D8	 |
 	JSR CODE_B4BB62			;$B4A5DB	 |
-	JSL CODE_B38007			;$B4A5DE	 |
+	JSL sprite_handler		;$B4A5DE	 |
 	JSR CODE_B4AE85			;$B4A5E2	 |
 	PLA				;$B4A5E5	 |
 	RTL				;$B4A5E6	/
@@ -4613,7 +4613,7 @@ CODE_B4A815:
 	STA $C8				;$B4A81C	 |
 	LDX #$07A5			;$B4A81E	 |
 	JSR CODE_B4BB62			;$B4A821	 |
-	JSL CODE_B38007			;$B4A824	 |
+	JSL sprite_handler		;$B4A824	 |
 	JSL CODE_B5A8DA			;$B4A828	 |
 	JSR CODE_B4AE85			;$B4A82C	 |
 	RTS				;$B4A82F	/
@@ -5078,7 +5078,7 @@ CODE_B4AC48:				;		 |
 	STA $C8				;$B4AC55	 |
 	LDX #$07A5			;$B4AC57	 |
 	JSR CODE_B4BB62			;$B4AC5A	 |
-	JSL CODE_B38007			;$B4AC5D	 |
+	JSL sprite_handler		;$B4AC5D	 |
 	JSR CODE_B4AE85			;$B4AC61	 |
 	RTL				;$B4AC64	/
 
