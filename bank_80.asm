@@ -120,13 +120,13 @@ DATA_808000:
 	db $00, $00, $69, $00, $00, $00, $69, $00
 	db $00, $00, $69, $00, $00, $00, $69, $00
 
-DATA_8083C0:
+rare_string:
 	db "Rareware"
 
-DATA_8083C8:
+piracy_string:
 	db "A thief!"
 
-CODE_8083D0:
+display_error_message:
 	TYA				;$8083D0	\
 	JSL CODE_BB80B0			;$8083D1	 |
 	LDA #DATA_FD258E		;$8083D5	 |
@@ -142,149 +142,149 @@ CODE_8083D0:
 	STP				;$8083F6	/
 
 RESET_start:
-	SEI				;$8083F7	\
-	LDA #$80			;$8083F8	 |
-	STA $2100			;$8083FA	 |
-	LDA #$01			;$8083FD	 |
-	STA $4200			;$8083FF	 |
-	STA $420D			;$808402	 |
-	DEC A				;$808405	 |
-	STA $420C			;$808406	 |
-	CLC				;$808409	 |
-	XCE				;$80840A	 |
-	REP #$30			;$80840B	 |
-	TDC				;$80840D	 |
-	ADC #$FFFF			;$80840E	 |
-	BEQ CODE_808416			;$808411	 |
-	BRL CODE_8084C1			;$808413	/
+	SEI				;$8083F7	\ Disable interrupts
+	LDA #$80			;$8083F8	 |\ Enable F-Blank
+	STA $2100			;$8083FA	 |/
+	LDA #$01			;$8083FD	 |\ Enable autojoy and fastROM
+	STA $4200			;$8083FF	 | |
+	STA $420D			;$808402	 |/
+	DEC A				;$808405	 |\ Disable HDMA
+	STA $420C			;$808406	 |/
+	CLC				;$808409	 |\ Disable emulation mode
+	XCE				;$80840A	 |/
+	REP #$30			;$80840B	 |\ Anti piracy: Ensure dp is zero
+	TDC				;$80840D	 | | and the emulation flag was set
+	ADC #$FFFF			;$80840E	 | |
+	BEQ .anti_piracy_test		;$808411	 |/
+	BRL .prepare_anti_piracy	;$808413	/ Anti piracy triggered
 
-CODE_808416:
-	TSX				;$808416	\
-	LDA #$83F6			;$808417	 |
-	CMP $FFFF,x			;$80841A	 |
-	BEQ CODE_80848B			;$80841D	 |
-	LDY #$1FFD			;$80841F	 |
-	SEP #$20			;$808422	 |
-CODE_808424:				;		 |
-	LDA $0000,y			;$808424	 |
-	CMP #$4C			;$808427	 |
-	BEQ CODE_808459			;$808429	 |
-	CMP #$6C			;$80842B	 |
-	BEQ CODE_808467			;$80842D	 |
-	CMP #$60			;$80842F	 |
-	BEQ CODE_80847F			;$808431	 |
-CODE_808433:				;		 |
-	DEY				;$808433	 |
-	BPL CODE_808424			;$808434	 |
-	REP #$20			;$808436	 |
-	LDA.l $B06000			;$808438	 |
-	INC A				;$80843C	 |
-	STA $B06000			;$80843D	 |
-	CMP $B06000			;$808441	 |
-	BNE CODE_8084C1			;$808445	 |
-	DEC A				;$808447	 |
-	STA $B06000			;$808448	 |
-	LDY #$003D			;$80844C	 |
-	LDA $213F			;$80844F	 |
-	AND #$0010			;$808452	 |
-	BNE CODE_8084C4			;$808455	 |
-	BRA CODE_8084D4			;$808457	/
+.anti_piracy_test			;		\
+	TSX				;$808416	 |\ Check if the reset vector was 
+	LDA #RESET_start-1		;$808417	 | | the most recent popped value
+	CMP $FFFF,x			;$80841A	 | |
+	BEQ .check_for_false_positive	;$80841D	 |/
+	LDY #$1FFD			;$80841F	 | Load number of RAM bytes to scan
+	SEP #$20			;$808422	 | Use 8 bit to check each byte 
+.next_byte				;		 |
+	LDA $0000,y			;$808424	 | Load byte to scan
+	CMP #$4C			;$808427	 |\ Test for JMP $83F7 (reset vector)
+	BEQ .jmp_test			;$808429	 |/
+	CMP #$6C			;$80842B	 |\ Test for JMP ($xxxx) (indirect reset vector)
+	BEQ .indirect_jmp_test		;$80842D	 |/
+	CMP #$60			;$80842F	 |\ Test for #$60-#$7F being sequential
+	BEQ .sequential_test		;$808431	 |/
+.resume_scanning			;		 |
+	DEY				;$808433	 |\ If not at the end of RAM continue scanning
+	BPL .next_byte			;$808434	 |/
+	REP #$20			;$808436	 |\ Test that SRAM is present
+	LDA.l $B06000			;$808438	 | |
+	INC A				;$80843C	 | |
+	STA $B06000			;$80843D	 | |
+	CMP $B06000			;$808441	 | |
+	BNE .prepare_anti_piracy	;$808445	 |/ Otherwise trigger anti piracy
+	DEC A				;$808447	 |\ Restore byte modified from SRAM test
+	STA $B06000			;$808448	 |/
+	LDY #$003D			;$80844C	 | Load wrong console message
+	LDA $213F			;$80844F	 |\ Verify the console is NTSC
+	AND #$0010			;$808452	 | |
+	BNE .prepare_message		;$808455	 |/ Display wrong console message
+	BRA .final_piracy_test		;$808457	/ Do the final piracy test
 
-CODE_808459:
+.jmp_test
 	REP #$20			;$808459	\
-	LDA $0001,y			;$80845B	 |
-	CMP #$83F7			;$80845E	 |
-	BEQ CODE_80848B			;$808461	 |
+	LDA $0001,y			;$80845B	 |\ Check if the operand was the reset vector
+	CMP #RESET_start		;$80845E	 | |
+	BEQ .check_for_false_positive	;$808461	 |/
 	SEP #$20			;$808463	 |
-	BRA CODE_808433			;$808465	/
+	BRA .resume_scanning		;$808465	/ Continue scanning
 
-CODE_808467:
+.indirect_jmp_test
 	REP #$20			;$808467	\
-	LDX $0001,y			;$808469	 |
-	BMI CODE_808473			;$80846C	 |
-	CPX #$2000			;$80846E	 |
-	BPL CODE_80847B			;$808471	 |
-CODE_808473:				;		 |
-	LDA $0000,x			;$808473	 |
-	CMP #$83F7			;$808476	 |
-	BEQ CODE_80848B			;$808479	 |
-CODE_80847B:				;		 |
+	LDX $0001,y			;$808469	 |\ Test if operand was ROM
+	BMI .address_rom		;$80846C	 |/
+	CPX #$2000			;$80846E	 |\ Test if the operand was low RAM
+	BPL .invalid_address		;$808471	 |/ Otherwise skip the indirect test
+.address_rom				;		 |
+	LDA $0000,x			;$808473	 |\ Check if the operand pointed to the reset vector
+	CMP #RESET_start		;$808476	 | |
+	BEQ .check_for_false_positive	;$808479	 |/
+.invalid_address			;		 |
 	SEP #$20			;$80847B	 |
-	BRA CODE_808433			;$80847D	/
+	BRA .resume_scanning		;$80847D	/ Continue scanning
 
-CODE_80847F:
-	TYX				;$80847F	\
-CODE_808480:				;		 |
-	CMP $0000,x			;$808480	 |
-	BNE CODE_808433			;$808483	 |
-	INX				;$808485	 |
-	INC A				;$808486	 |
-	BPL CODE_808480			;$808487	 |
-	REP #$20			;$808489	 |
-CODE_80848B:				;		 |
-	PHK				;$80848B	 |
-	PLB				;$80848C	 |
-	LDX #$0006			;$80848D	 |
-CODE_808490:				;		 |
-	LDA $0907,x			;$808490	 |
-	CMP DATA_8083C0,x		;$808493	 |
-	BNE CODE_80849E			;$808496	 |
-	DEX				;$808498	 |
-	DEX				;$808499	 |
-	BPL CODE_808490			;$80849A	 |
-	BRA CODE_8084E7			;$80849C	/
+.sequential_test
+	TYX				;$80847F	\ X is used so to preserve Y if the test fails
+.next_count				;		 |
+	CMP $0000,x			;$808480	 |\ Scan for the sequential string of $60-$7F
+	BNE .resume_scanning		;$808483	 | |
+	INX				;$808485	 | |
+	INC A				;$808486	 | |
+	BPL .next_count			;$808487	 |/
+	REP #$20			;$808489	 | Fall through to final check
+.check_for_false_positive		;		 |
+	PHK				;$80848B	 |\ Set current databank
+	PLB				;$80848C	 |/
+	LDX #$0006			;$80848D	 | Load anti piracy test string length
+-					;		 |
+	LDA $0907,x			;$808490	 |\ Avoid false positive by checking if
+	CMP rare_string,x		;$808493	 | | the anti piracy check was prior passed
+	BNE .write_piracy_string	;$808496	 | | Otherwise jump and fail anti piracy check
+	DEX				;$808498	 | | 
+	DEX				;$808499	 | |
+	BPL -				;$80849A	 |/
+	BRA .prepare_logo		;$80849C	/ Boot the game
 
-CODE_80849E:
-	LDX #$0006			;$80849E	\
-	LDY #$0004			;$8084A1	 |
-CODE_8084A4:				;		 |
-	LDA DATA_8083C8,x		;$8084A4	 |
-	STA $0907,x			;$8084A7	 |
-	CMP.l $B06000,x			;$8084AA	 |
-	BNE CODE_8084B1			;$8084AE	 |
-	DEY				;$8084B0	 |
-CODE_8084B1:				;		 |
-	STA $B06000,x			;$8084B1	 |
-	DEX				;$8084B5	 |
-	DEX				;$8084B6	 |
-	BPL CODE_8084A4			;$8084B7	 |
-	TYA				;$8084B9	 |
-	BEQ CODE_8084C1			;$8084BA	 |
-	LDY #$003B			;$8084BC	 |
-	BRA CODE_8084C4			;$8084BF	/
+.write_piracy_string
+	LDX #$0006			;$80849E	\  Load anti piracy string length
+	LDY #$0004			;$8084A1	 | Load target iteration count 
+.write_next_byte			;		 |
+	LDA piracy_string,x		;$8084A4	 |\ Load the current anti piracy byte
+	STA $0907,x			;$8084A7	 | | Write the anti piracy byte in RAM
+	CMP.l $B06000,x			;$8084AA	 | |\ If the byte is already in SRAM decrease the 
+	BNE +				;$8084AE	 | | | iteration count.  If zero, the full string 
+	DEY				;$8084B0	 | |/ was already present.
++					;		 | |
+	STA $B06000,x			;$8084B1	 | | Write the anti piracy byte to SRAM
+	DEX				;$8084B5	 | |\ Move anti piracy index
+	DEX				;$8084B6	 | |/
+	BPL .write_next_byte		;$8084B7	 |/ Continue writing until there are no more bytes
+	TYA				;$8084B9	 |\ If the anti piracy failure string was already in SRAM
+	BEQ .prepare_anti_piracy	;$8084BA	 |/ Display the anti piracy message
+	LDY #$003B			;$8084BC	 | Otherwise load irregularity detected message
+	BRA .prepare_message		;$8084BF	/ Display the message
+	
+.prepare_anti_piracy
+	LDY #$003C			;$8084C1	\ Load anti piracy message
+.prepare_message			;		 |
+	LDA #$0000			;$8084C4	 |\ Zero the direct page register
+	TCD				;$8084C7	 |/
+	LDX #$01FF			;$8084C8	 |\ Reset the stack register
+	TXS				;$8084CB	 |/
+	%return(display_error_message)	;$8084CC	 | Push address to decompress and display the message
+	%return(clear_vram)		;$8084CF	 | Push address for clearing vram
+	BRA initialize_registers	;$8084D2	/ Initialize MMIO registers
 
-CODE_8084C1:
-	LDY #$003C			;$8084C1	\
-CODE_8084C4:				;		 |
-	LDA #$0000			;$8084C4	 |
-	TCD				;$8084C7	 |
-	LDX #$01FF			;$8084C8	 |
-	TXS				;$8084CB	 |
-	%return(CODE_8083D0)		;$8084CC	 |
-	%return(CODE_808591)		;$8084CF	 |
-	BRA CODE_8084F8			;$8084D2	/
+.final_piracy_test			;		\
+	PHK				;$8084D4	 |\ Set current databank 
+	PLB				;$8084D5	 |/
+	LDX #$0006			;$8084D6	 | Load anti piracy string length
+-					;		 |
+	LDA $0907,x			;$8084D9	 |\ Verify the anti piracy failure string is not in RAM
+	CMP piracy_string,x		;$8084DC	 | |
+	BNE .prepare_logo		;$8084DF	 | |
+	DEX				;$8084E1	 | |
+	DEX				;$8084E2	 | |
+	BPL -				;$8084E3	 |/ 
+	BRA .prepare_anti_piracy	;$8084E5	/ If the string was matched, display anti piracy message
 
-CODE_8084D4:
-	PHK				;$8084D4	\
-	PLB				;$8084D5	 |
-	LDX #$0006			;$8084D6	 |
-CODE_8084D9:				;		 |
-	LDA $0907,x			;$8084D9	 |
-	CMP DATA_8083C8,x		;$8084DC	 |
-	BNE CODE_8084E7			;$8084DF	 |
-	DEX				;$8084E1	 |
-	DEX				;$8084E2	 |
-	BPL CODE_8084D9			;$8084E3	 |
-	BRA CODE_8084C1			;$8084E5	/
-
-CODE_8084E7:
-	LDA #$0000			;$8084E7	\
-	STA $B06000			;$8084EA	 |
-	LDX #$01FF			;$8084EE	 |
-	TXS				;$8084F1	 |
-	%return(CODE_8085B9)		;$8084F2	 |
-	%return(CODE_808591)		;$8084F5	 |
-CODE_8084F8:				;		 |
+.prepare_logo				;		\
+	LDA #$0000			;$8084E7	 |\ Clear first word of SRAM
+	STA $B06000			;$8084EA	 |/
+	LDX #$01FF			;$8084EE	 |\ Reset the stack register
+	TXS				;$8084F1	 |/
+	%return(CODE_8085B9)		;$8084F2	 | Push address to run Rareware logo
+	%return(clear_vram)		;$8084F5	 | Push address for clearing VRAM
+initialize_registers:			;		 |
 	SEP #$30			;$8084F8	 |
 	LDX #$00			;$8084FA	 |
 CODE_8084FC:				;		 |
@@ -348,14 +348,13 @@ CODE_80856D:				;		 |
 	RTS				;$80858A	/
 
 CODE_80858B:
-	JSR CODE_8084F8			;$80858B	\
+	JSR initialize_registers	;$80858B	\
 	RTL				;$80858E	/
 
 DATA_80858F:
 	db $00, $00
 
-
-CODE_808591:
+clear_vram:
 	STZ $2116			;$808591	\
 	LDA #DATA_80858F		;$808594	 |
 	STA $4302			;$808597	 |
@@ -372,7 +371,7 @@ CODE_808591:
 	RTS				;$8085B4	/
 
 CODE_8085B5:
-	JSR CODE_808591			;$8085B5	\
+	JSR clear_vram			;$8085B5	\
 	RTL				;$8085B8	/
 
 CODE_8085B9:
@@ -389,7 +388,7 @@ CODE_8085B9:
 	PLB				;$8085D2	 |
 	LDX #$0006			;$8085D3	 |
 CODE_8085D6:				;		 |
-	LDA DATA_8083C0,x		;$8085D6	 |
+	LDA rare_string,x		;$8085D6	 |
 	STA $0907,x			;$8085D9	 |
 	DEX				;$8085DC	 |
 	DEX				;$8085DD	 |
@@ -1735,8 +1734,8 @@ CODE_8090DA:
 	JSR CODE_8090CD			;$8090DA	\
 	LDA #$002C			;$8090DD	 |
 	STA $78				;$8090E0	 |
-	JSR CODE_8084F8			;$8090E2	 |
-	JSR CODE_808591			;$8090E5	 |
+	JSR initialize_registers	;$8090E2	 |
+	JSR clear_vram			;$8090E5	 |
 	STZ $2A				;$8090E8	 |
 	LDA #$AA55			;$8090EA	 |
 	STA $2E				;$8090ED	 |
@@ -2498,7 +2497,7 @@ CODE_8097CD:
 	JSL CODE_BB91D9			;$8097CD	\
 	PHK				;$8097D1	 |
 	PLB				;$8097D2	 |
-	JSR CODE_808591			;$8097D3	 |
+	JSR clear_vram			;$8097D3	 |
 	JSL CODE_80858B			;$8097D6	 |
 	JSL CODE_808E6A			;$8097DA	 |
 	JSL CODE_8088AB			;$8097DE	 |
@@ -3243,7 +3242,7 @@ CODE_809F85:
 	JSL CODE_BB91D9			;$809F85	\
 	PHK				;$809F89	 |
 	PLB				;$809F8A	 |
-	JSR CODE_808591			;$809F8B	 |
+	JSR clear_vram			;$809F8B	 |
 	JSL CODE_80858B			;$809F8E	 |
 	JSL CODE_808E6A			;$809F92	 |
 	JSL CODE_BB91F7			;$809F96	 |
@@ -3918,7 +3917,7 @@ CODE_80A5F1:
 	JSL CODE_BB91D9			;$80A5F1	\
 	PHK				;$80A5F5	 |
 	PLB				;$80A5F6	 |
-	JSR CODE_808591			;$80A5F7	 |
+	JSR clear_vram			;$80A5F7	 |
 	JSL CODE_80858B			;$80A5FA	 |
 	JSL CODE_808E6A			;$80A5FE	 |
 	JSL CODE_8088AB			;$80A602	 |
@@ -5444,7 +5443,7 @@ CODE_80B3D7:
 	PLB				;$80B3DC	 |
 	STZ $099B			;$80B3DD	 |
 	STZ $060B			;$80B3E0	 |
-	JSR CODE_808591			;$80B3E3	 |
+	JSR clear_vram			;$80B3E3	 |
 	JSL CODE_80858B			;$80B3E6	 |
 	JSL CODE_8088D2			;$80B3EA	 |
 	JSL CODE_BB91F7			;$80B3EE	 |
@@ -5667,7 +5666,7 @@ CODE_80B560:
 
 CODE_80B5FA:
 	JSL CODE_BB91D9			;$80B5FA	\
-	JSL CODE_808591			;$80B5FE	 |
+	JSL clear_vram			;$80B5FE	 |
 	JSL CODE_80858B			;$80B602	 |
 	JSL CODE_BB91F7			;$80B606	 |
 	LDA #$0001			;$80B60A	 |
