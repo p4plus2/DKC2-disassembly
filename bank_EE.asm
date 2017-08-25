@@ -57,6 +57,7 @@ CODE_0532:				;	 |
 	CMP X, $F4			;$0532	 |
 	BNE CODE_0532			;$0534	 |
 	MOV A, $F5			;$0536	 |
+DATA_0538:				;	 |	
 	MOV $0000+Y, A			;$0538	 |
 	MOV A, $F6			;$053B	 |
 	MOV $F4, X			;$053D	 |
@@ -78,7 +79,7 @@ CODE_054E:
 CODE_0556:
 	MOV $E9, X			;$0556	 |
 	MOV X, #$00			;$0558	 |
-	JMP ($0539+X)			;$055A	 |
+	JMP (DATA_0538+1+X)			;$055A	 |
 
 	db $00
 	dw $D604
@@ -161,7 +162,7 @@ CODE_06A0:
 	AND A, #$07			;$06A0	 |
 	ASL A				;$06A2	 |
 	MOV X, A			;$06A3	 |
-	JMP ($06A7+X)			;$06A4	 |
+	JMP (DATA_06A7+X)		;$06A4	 |
 
 DATA_06A7:
 	dw $070A
@@ -421,7 +422,7 @@ CODE_0850:
 	PUSH X				;$085C	 |
 	ASL A				;$085D	 |
 	MOV X, A			;$085E	 |
-	JMP ($0FA5+X)			;$085F	 |
+	JMP (DATA_0FA5+X)		;$085F	 |
 
 CODE_0862:
 	CALL CODE_0867			;$0862	 |
