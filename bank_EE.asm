@@ -79,7 +79,7 @@ CODE_054E:
 CODE_0556:
 	MOV $E9, X			;$0556	 |
 	MOV X, #$00			;$0558	 |
-	JMP (DATA_0538+1+X)			;$055A	 |
+	JMP (DATA_0538+1+X)		;$055A	 |
 
 	db $00
 	dw $D604
@@ -165,14 +165,14 @@ CODE_06A0:
 	JMP (DATA_06A7+X)		;$06A4	 |
 
 DATA_06A7:
-	dw $070A
-	dw $0702
-	dw $06FA
-	dw $06B7
-	dw $0739
-	dw $0712
-	dw $077B
-	dw $07DB
+	dw CODE_070A
+	dw CODE_0702
+	dw CODE_06FA
+	dw CODE_06B7
+	dw CODE_0739
+	dw CODE_0712
+	dw CODE_077B
+	dw CODE_07DB
 	
 CODE_06B7:
 	MOV X, #$7F			;$06B7	 |
@@ -216,7 +216,7 @@ CODE_06F7:				;	 |
 	MOV $F3, A			;$06F7	 |
 	RET				;$06F9	 |
 	
-CODE_06DA:				;	 |
+CODE_06FA:				;	 |
 	MOV A, $055D			;$06FA	 |
 	MOV $1D, A			;$06FD	 |
 	JMP CODE_0781			;$06FF	 |
