@@ -262,7 +262,7 @@ RESET_start:
 	TXS				;$8084CB	 |/
 	%return(display_error_message)	;$8084CC	 | Push address to decompress and display the message
 	%return(clear_vram)		;$8084CF	 | Push address for clearing vram
-	BRA initialize_registers	;$8084D2	/ Initialize MMIO registers
+	BRA init_registers		;$8084D2	/ Initialize MMIO registers
 
 .final_piracy_test			;		\
 	PHK				;$8084D4	 |\ Set current databank 
@@ -284,94 +284,94 @@ RESET_start:
 	TXS				;$8084F1	 |/
 	%return(CODE_8085B9)		;$8084F2	 | Push address to run Rareware logo
 	%return(clear_vram)		;$8084F5	 | Push address for clearing VRAM
-initialize_registers:			;		 |
-	SEP #$30			;$8084F8	 |
-	LDX #$00			;$8084FA	 |
-CODE_8084FC:				;		 |
-	STZ $2101,x			;$8084FC	 |
-	STZ $2101,x			;$8084FF	 |
-	INX				;$808502	 |
-	CPX #$34			;$808503	 |
-	BNE CODE_8084FC			;$808505	 |
-	LDX #$00			;$808507	 |
-CODE_808509:				;		 |
-	STZ $4202,x			;$808509	 |
-	INX				;$80850C	 |
-	CPX #$0B			;$80850D	 |
-	BNE CODE_808509			;$80850F	 |
-	LDA #$8F			;$808511	 |
-	STA $2100			;$808513	 |
-	LDA #$80			;$808516	 |
-	STA $2115			;$808518	 |
-	STA $211A			;$80851B	 |
-	LDA #$01			;$80851E	 |
-	STA $420D			;$808520	 |
-	STZ $2131			;$808523	 |
-	STZ $2133			;$808526	 |
-	STZ $4200			;$808529	 |
-	LDA #$FF			;$80852C	 |
-	STA $4201			;$80852E	 |
-	LDA #$E0			;$808531	 |
-	STA $2132			;$808533	 |
-	LDA #$30			;$808536	 |
-	STA $2130			;$808538	 |
-	LDA #$00			;$80853B	 |
-	STA $2106			;$80853D	 |
-	STZ $210D			;$808540	 |
-	STZ $210D			;$808543	 |
-	STZ $210F			;$808546	 |
-	STZ $210F			;$808549	 |
-	STZ $2111			;$80854C	 |
-	STZ $2111			;$80854F	 |
-	LDA #$FF			;$808552	 |
-	STA $210E			;$808554	 |
-	STA $210E			;$808557	 |
-	STA $2110			;$80855A	 |
-	STA $2110			;$80855D	 |
-	STA $2112			;$808560	 |
-	STA $2112			;$808563	 |
-	REP #$30			;$808566	 |
-	SEP #$20			;$808568	 |
-	LDX #$000A			;$80856A	 |
-CODE_80856D:				;		 |
-	STZ $4300,x			;$80856D	 |
-	STZ $4310,x			;$808570	 |
-	STZ $4320,x			;$808573	 |
-	STZ $4330,x			;$808576	 |
-	STZ $4340,x			;$808579	 |
-	STZ $4350,x			;$80857C	 |
-	STZ $4360,x			;$80857F	 |
-	STZ $4370,x			;$808582	 |
-	DEX				;$808585	 |
-	BPL CODE_80856D			;$808586	 |
-	REP #$20			;$808588	 |
+init_registers:    			;		 |
+	SEP #$30			;$8084F8	 | Use 8 bit to manipulate MMIO
+	LDX #$00			;$8084FA	 | Reset index to clear PPU MMIO
+.clear_PPU				;		 |
+	STZ $2101,x			;$8084FC	 |\ Clear $2101 - $2134
+	STZ $2101,x			;$8084FF	 | | Clear twice to handle write twice registers
+	INX				;$808502	 | |
+	CPX #$34			;$808503	 | |
+	BNE .clear_PPU			;$808505	 |/ 
+	LDX #$00			;$808507	 | Reset index to clear CPU MMIO
+.clear_CPU				;		 |
+	STZ $4202,x			;$808509	 |\ Clear 4202-420C
+	INX				;$80850C	 | |
+	CPX #$0B			;$80850D	 | |
+	BNE .clear_CPU			;$80850F	 |/
+	LDA #$8F			;$808511	 |\ Enable F-Blank with full brightness
+	STA $2100			;$808513	 |/
+	LDA #$80			;$808516	 |\
+	STA $2115			;$808518	 | | Increment VRAM after high byte write
+	STA $211A			;$80851B	 |/ Use large mode 7 tilemap bounds
+	LDA #$01			;$80851E	 |\ Enable fastROM
+	STA $420D			;$808520	 |/
+	STZ $2131			;$808523	 | Disable color math
+	STZ $2133			;$808526	 | Reset screen mode
+	STZ $4200			;$808529	 | Disable interrupts and autojoy
+	LDA #$FF			;$80852C	 |\ Initalize outport (unused)  
+	STA $4201			;$80852E	 |/
+	LDA #$E0			;$808531	 |\ Set fixed color
+	STA $2132			;$808533	 |/
+	LDA #$30			;$808536	 |\ Clear color math settings
+	STA $2130			;$808538	 |/
+	LDA #$00			;$80853B	 |\ Disable mosaic
+	STA $2106			;$80853D	 |/
+	STZ $210D			;$808540	 |\ Clear layer 1-3 horizontal scroll (Layer 1)
+	STZ $210D			;$808543	 | |
+	STZ $210F			;$808546	 | | Layer 2
+	STZ $210F			;$808549	 | |
+	STZ $2111			;$80854C	 | | Layer 3
+	STZ $2111			;$80854F	 |/
+	LDA #$FF			;$808552	 |\ Set layer 1-3 vertical scroll to $FFFF
+	STA $210E			;$808554	 | | Layer 1
+	STA $210E			;$808557	 | |
+	STA $2110			;$80855A	 | | Layer 2
+	STA $2110			;$80855D	 | |
+	STA $2112			;$808560	 | | Layer 3
+	STA $2112			;$808563	 |/
+	REP #$30			;$808566	 | Restore to 16 bit access...
+	SEP #$20			;$808568	 | ...Just to make A 8 bit again
+	LDX #$000A			;$80856A	 | Load up the number of H/DMA bytes to clear
+.clear_DMA				;		 |
+	STZ $4300,x			;$80856D	 |\ Zero out channels 0-7
+	STZ $4310,x			;$808570	 | |
+	STZ $4320,x			;$808573	 | |
+	STZ $4330,x			;$808576	 | |
+	STZ $4340,x			;$808579	 | |
+	STZ $4350,x			;$80857C	 | |
+	STZ $4360,x			;$80857F	 | |
+	STZ $4370,x			;$808582	 | |
+	DEX				;$808585	 | | Next byte
+	BPL .clear_DMA			;$808586	 |/ Continue until addresses from all channel are clear
+	REP #$20			;$808588	 | Back to a full 16 bit
 	RTS				;$80858A	/
 
-CODE_80858B:
-	JSR initialize_registers	;$80858B	\
+init_registers_wrapper:
+	JSR init_registers		;$80858B	\ Wrapper for long calls
 	RTL				;$80858E	/
 
-DATA_80858F:
-	db $00, $00
+vram_zero_const:
+	dw $0000			;$80858F	> Used for vram fill byte
 
 clear_vram:
-	STZ $2116			;$808591	\
-	LDA #DATA_80858F		;$808594	 |
-	STA $4302			;$808597	 |
-	STA $4308			;$80859A	 |
-	STZ $4305			;$80859D	 |
-	LDA #$1809			;$8085A0	 |
-	STA $4300			;$8085A3	 |
+	STZ $2116			;$808591	\ Initialize VRAM to zeros
+	LDA #vram_zero_fill		;$808594	 |\ Set DMA source word
+	STA $4302			;$808597	 |/
+	STA $4308			;$80859A	 | Set HDMA word (not used.)
+	STZ $4305			;$80859D	 | Set size to zero, (full 64K)
+	LDA #$1809			;$8085A0	 |\ Set DMA destination 2118, fixed transfer,
+	STA $4300			;$8085A3	 |/ with two register write once
 	SEP #$20			;$8085A6	 |
-	LDA #DATA_80858F>>16		;$8085A8	 |
-	STA $4304			;$8085AA	 |
-	LDA #$01			;$8085AD	 |
-	STA $420B			;$8085AF	 |
+	LDA #vram_zero_fill>>16		;$8085A8	 |\ Set DMA source bank
+	STA $4304			;$8085AA	 |/
+	LDA #$01			;$8085AD	 |\
+	STA $420B			;$8085AF	 |/ Enable channel 1 DMA
 	REP #$20			;$8085B2	 |
 	RTS				;$8085B4	/
 
-CODE_8085B5:
-	JSR clear_vram			;$8085B5	\
+clear_vram_wrapper:
+	JSR clear_vram			;$8085B5	\ Wrapper for long calls
 	RTL				;$8085B8	/
 
 CODE_8085B9:
@@ -1734,7 +1734,7 @@ CODE_8090DA:
 	JSR CODE_8090CD			;$8090DA	\
 	LDA #$002C			;$8090DD	 |
 	STA $78				;$8090E0	 |
-	JSR initialize_registers	;$8090E2	 |
+	JSR init_registers		;$8090E2	 |
 	JSR clear_vram			;$8090E5	 |
 	STZ $2A				;$8090E8	 |
 	LDA #$AA55			;$8090EA	 |
@@ -2498,7 +2498,7 @@ CODE_8097CD:
 	PHK				;$8097D1	 |
 	PLB				;$8097D2	 |
 	JSR clear_vram			;$8097D3	 |
-	JSL CODE_80858B			;$8097D6	 |
+	JSL init_registers_wrapper	;$8097D6	 |
 	JSL CODE_808E6A			;$8097DA	 |
 	JSL CODE_8088AB			;$8097DE	 |
 	STZ $060B			;$8097E2	 |
@@ -3243,7 +3243,7 @@ CODE_809F85:
 	PHK				;$809F89	 |
 	PLB				;$809F8A	 |
 	JSR clear_vram			;$809F8B	 |
-	JSL CODE_80858B			;$809F8E	 |
+	JSL init_registers_wrapper	;$809F8E	 |
 	JSL CODE_808E6A			;$809F92	 |
 	JSL CODE_BB91F7			;$809F96	 |
 	STZ $2A				;$809F9A	 |
@@ -3918,7 +3918,7 @@ CODE_80A5F1:
 	PHK				;$80A5F5	 |
 	PLB				;$80A5F6	 |
 	JSR clear_vram			;$80A5F7	 |
-	JSL CODE_80858B			;$80A5FA	 |
+	JSL init_registers_wrapper	;$80A5FA	 |
 	JSL CODE_808E6A			;$80A5FE	 |
 	JSL CODE_8088AB			;$80A602	 |
 	LDA #$0018			;$80A606	 |
@@ -5444,7 +5444,7 @@ CODE_80B3D7:
 	STZ $099B			;$80B3DD	 |
 	STZ $060B			;$80B3E0	 |
 	JSR clear_vram			;$80B3E3	 |
-	JSL CODE_80858B			;$80B3E6	 |
+	JSL init_registers_wrapper	;$80B3E6	 |
 	JSL CODE_8088D2			;$80B3EA	 |
 	JSL CODE_BB91F7			;$80B3EE	 |
 	LDA #$0002			;$80B3F2	 |
@@ -5667,7 +5667,7 @@ CODE_80B560:
 CODE_80B5FA:
 	JSL CODE_BB91D9			;$80B5FA	\
 	JSL clear_vram			;$80B5FE	 |
-	JSL CODE_80858B			;$80B602	 |
+	JSL init_registers_wrapper	;$80B602	 |
 	JSL CODE_BB91F7			;$80B606	 |
 	LDA #$0001			;$80B60A	 |
 	STA $2105			;$80B60D	 |
@@ -12660,8 +12660,8 @@ CODE_80F3FB:
 	JSL CODE_BB91D9			;$80F3FB	\
 	PHK				;$80F3FF	 |
 	PLB				;$80F400	 |
-	JSL CODE_8085B5			;$80F401	 |
-	JSL CODE_80858B			;$80F405	 |
+	JSL clear_vram_wrapper		;$80F401	 |
+	JSL init_registers_wrapper	;$80F405	 |
 	JSL CODE_808E6A			;$80F409	 |
 	JSL CODE_8088AB			;$80F40D	 |
 	JSL CODE_BB91F7			;$80F411	 |
@@ -13242,8 +13242,8 @@ CODE_80FA7C:
 	JSL CODE_BB91D9			;$80FA7C	\
 	PHK				;$80FA80	 |
 	PLB				;$80FA81	 |
-	JSL CODE_8085B5			;$80FA82	 |
-	JSL CODE_80858B			;$80FA86	 |
+	JSL clear_vram_wrapper		;$80FA82	 |
+	JSL init_registers_wrapper	;$80FA86	 |
 	LDA #$001F			;$80FA8A	 |
 	JSL CODE_BB80B0			;$80FA8D	 |
 	LDA #$001F			;$80FA91	 |

@@ -2775,7 +2775,7 @@ CODE_BB9265:				;		 |
 	LDA #$A002			;$BB9265	 |
 	TRB $08C2			;$BB9268	 |
 	STZ $17C8			;$BB926B	 |
-	JSL CODE_80858B			;$BB926E	 |
+	JSL init_registers_wrapper	;$BB926E	 |
 	JSL CODE_8088D2			;$BB9272	 |
 	JSR CODE_BB91FB			;$BB9276	 |
 	JSL CODE_8085B5			;$BB9279	 |
