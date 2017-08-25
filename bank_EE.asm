@@ -1,23 +1,93 @@
 DATA_EE0000:
-	db $20, $CD, $FF, $BD, $3D, $D8, $F4, $3D
-	db $D8, $E9, $E8, $00, $C4, $00, $8F, $D0
-	db $01, $FD, $D7, $00, $FC, $D0, $FB, $AB
-	db $01, $D0, $F6, $CD, $FF, $8F, $6C, $F2
-	db $D8, $F3, $8F, $7D, $F2, $8F, $00, $F3
-	db $8F, $6D, $F2, $D8, $F3, $C9, $B7, $04
-	db $F8, $E9, $3E, $F4, $D0, $FC, $BA, $F5
-	db $D8, $F4, $3D, $C5, $39, $05, $C5, $42
-	db $05, $CC, $3A, $05, $CC, $43, $05, $3E
-	db $F4, $D0, $FC, $BA, $F5, $D8, $F4, $3D
-	db $C4, $EA, $CB, $EB, $1A, $EA, $30, $26
-	db $8D, $00, $3E, $F4, $D0, $FC, $E4, $F5
-	db $D6, $00, $00, $E4, $F6, $D8, $F4, $3D
-	db $FC, $D6, $00, $00, $FC, $F0, $07, $1A
-	db $EA, $10, $E7, $5F, $0A, $05, $AC, $3A
-	db $05, $AC, $43, $05, $2F, $F1, $D8, $E9
-	db $CD, $00, $1F, $39, $05, $00, $04, $D6
+
+arch spc700
+base $04D8
+
+CODE_04D8:
+	CLRP				;$04D8	 |
+	MOV X, #$FF			;$04D9	 |
+	MOV SP, X			;$04DB	 |
+	INC X				;$04DC	 |
+	MOV $F4, X			;$04DD	 |
+	INC X				;$04DF	 |
+	MOV $E9, X			;$04E0	 |
+	MOV A, #$00			;$04E2	 |
+	MOV $00, A			;$04E4	 |
+	MOV $01, #$D0			;$04E6	 |
+CODE_04E9:				;	 |
+	MOV Y, A			;$04E9	 |
+CODE_04EA:				;	 |
+	MOV ($00)+Y, A			;$04EA	 |
+	INC Y				;$04EC	 |
+	BNE CODE_04EA			;$04ED	 |
+	INC $01				;$04EF	 |
+	BNE CODE_04E9			;$04F1	 |
+CODE_04F3:				;	 |
+	MOV X, #$FF			;$04F3	 |
+	MOV $F2, #$6C			;$04F5	 |
+	MOV $F3, X			;$04F8	 |
+	MOV $F2, #$7D			;$04FA	 |
+	MOV $F3, #$00			;$04FD	 |
+	MOV $F2, #$6D			;$0500	 |
+	MOV $F3, X			;$0503	 |
+	MOV $04B7, X			;$0505	 |
+	MOV X, $E9			;$0508	 |
+CODE_050A:				;	 |
+	CMP X, $F4			;$050A	 |
+	BNE CODE_050A			;$050C	 |
+	MOVW YA, $F5			;$050E	 |
+	MOV $F4, X			;$0510	 |
+	INC X				;$0512	 |
+	MOV $0539, A			;$0513	 |
+	MOV $0542, A			;$0516	 |
+	MOV $053A, Y			;$0519	 |
+	MOV $0543, Y			;$051C	 |
+CODE_051F:				;	 |
+	CMP X, $F4			;$051F	 |
+	BNE CODE_051F			;$0521	 |
+	MOVW YA, $F5			;$0523	 |
+	MOV $F4, X			;$0525	 |
+	INC X				;$0527	 |
+	MOV $EA, A			;$0528	 |
+	MOV $EB, Y			;$052A	 |
+	DECW $EA			;$052C	 |
+	BMI CODE_0556			;$052E	 |
+	MOV Y, #$00			;$0530	 |
+CODE_0532:				;	 |
+	CMP X, $F4			;$0532	 |
+	BNE CODE_0532			;$0534	 |
+	MOV A, $F5			;$0536	 |
+	MOV $0000+Y, A			;$0538	 |
+	MOV A, $F6			;$053B	 |
+	MOV $F4, X			;$053D	 |
+	INC X				;$053F	 |
+	INC Y				;$0540	 |
+	MOV $0000+Y, A			;$0541	 |
+	INC Y				;$0544	 |
+	BEQ CODE_054E			;$0545	 |
+CODE_0547:				;	 |
+	DECW $EA			;$0547	 |
+	BPL CODE_0532			;$0549	 |
+	JMP CODE_050A			;$054B	 |
+
+CODE_054E:
+	INC $053A			;$054E	 |
+	INC $0543			;$0551	 |
+	BRA CODE_0547			;$0554	 |
+
+CODE_0556:
+	MOV $E9, X			;$0556	 |
+	MOV X, #$00			;$0558	 |
+	JMP ($0539+X)			;$055A	 |
+
+	db $00
+	dw $D604
+
+base off
+arch 65816
 
 DATA_EE0088:
+arch spc700
 	db $00, $00, $00, $00, $00, $00, $00, $00
 	db $00, $00, $00, $00, $00, $00, $00, $00
 	db $00, $00, $00, $00, $00, $00, $00, $00
@@ -50,390 +120,1717 @@ DATA_EE0088:
 	db $00, $00, $00, $00, $00, $00, $00, $00
 	db $00, $00, $00, $00, $00, $00, $00, $00
 	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $E5, $5D, $05, $1C, $FD, $F6, $12, $13
-	db $C4, $E5, $F6, $13, $13, $C4, $E6, $5F
-	db $78, $06, $8F, $13, $E6, $8F, $00, $E5
-	db $3F, $0B, $10, $E8, $00, $C4, $1C, $C4
-	db $1D, $C4, $F1, $E4, $E9, $64, $F4, $F0
-	db $03, $5F, $81, $07, $F8, $F6, $C9, $5D
-	db $05, $F8, $F5, $C4, $F4, $BC, $C4, $E9
-	db $7D, $68, $80, $10, $03, $5F, $73, $07
-	db $28, $07, $1C, $5D, $1F, $A7, $06, $0A
-	db $07, $02, $07, $FA, $06, $B7, $06, $39
-	db $07, $12, $07, $7B, $07, $DB, $07, $CD
-	db $7F, $E8, $71, $FD, $CB, $F2, $3F, $EB
-	db $06, $DC, $CB, $F2, $3F, $EB, $06, $DD
-	db $80, $A8, $0F, $10, $EE, $8F, $0C, $F2
-	db $3F, $EB, $06, $8F, $1C, $F2, $3F, $EB
-	db $06, $8F, $2C, $F2, $3F, $EB, $06, $8F
-	db $3C, $F2, $3F, $EB, $06, $1D, $D0, $D1
-	db $5F, $60, $06, $E4, $F3, $F0, $08, $30
-	db $04, $9C, $9C, $2F, $02, $BC, $BC, $C4
-	db $F3, $6F, $E5, $5D, $05, $C4, $1D, $5F
-	db $81, $07, $E5, $5D, $05, $C4, $E7, $5F
-	db $81, $07, $E5, $5D, $05, $C4, $E8, $5F
-	db $81, $07, $E5, $B6, $04, $2D, $4D, $CD
-	db $05, $E5, $5D, $05, $C5, $B6, $04, $8F
-	db $50, $F2, $E4, $F3, $3F, $59, $0C, $C4
-	db $F3, $AB, $F2, $E4, $F3, $3F, $59, $0C
-	db $C4, $F3, $CE, $AE, $C5, $B6, $04, $2F
-	db $48, $E5, $5D, $05, $30, $0C, $60, $E5
-	db $5D, $05, $C4, $EC, $E8, $00, $C4, $ED
-	db $2F, $0C, $C5, $5D, $05, $E5, $5D, $05
-	db $C4, $EC, $E8, $FF, $C4, $ED, $BA, $EC
-	db $7A, $EC, $7A, $EC, $7A, $EC, $7A, $EC
-	db $7A, $EC, $7A, $EC, $7A, $EC, $DA, $EC
-	db $8F, $4D, $F2, $E4, $F3, $28, $DF, $C4
-	db $F3, $2F, $0E, $E9, $5D, $05, $3F, $F7
-	db $10, $2F, $13, $8F, $01, $1C, $8F, $00
-	db $F1, $E4, $1C, $D0, $03, $5F, $83, $06
-	db $FA, $E4, $FA, $8F, $01, $F1, $E4, $FD
-	db $F0, $FC, $8F, $01, $F1, $8F, $00, $20
-	db $60, $89, $1F, $1E, $6B, $20, $8F, $00
-	db $23, $60, $89, $22, $21, $6B, $23, $CD
-	db $00, $E4, $20, $D0, $05, $3F, $BC, $09
-	db $2F, $05, $3F, $13, $08, $D0, $FB, $F5
-	db $E0, $01, $F0, $14, $4D, $7D, $08, $08
-	db $5D, $E4, $23, $D0, $05, $3F, $BC, $09
-	db $2F, $05, $3F, $13, $08, $D0, $FB, $CE
-	db $3D, $C8, $08, $F0, $03, $5F, $A9, $07
-	db $5F, $83, $06, $E5, $5D, $05, $F0, $03
-	db $5F, $F3, $04, $8F, $5C, $F2, $8F, $FF
-	db $F3, $8F, $00, $F1, $8F, $C8, $FB, $8F
-	db $02, $F1, $E4, $FE, $F0, $FC, $8F, $6C
-	db $F2, $8F, $A0, $F3, $CD, $00, $8F, $4D
-	db $F2, $D8, $F3, $8F, $2C, $F2, $D8, $F3
-	db $8F, $3C, $F2, $D8, $F3, $3F, $0B, $10
-	db $5F, $F3, $04, $F5, $10, $01, $D0, $03
-	db $E8, $00, $6F, $9B, $34, $F4, $34, $68
-	db $01, $F0, $16, $68, $FF, $D0, $08, $F4
-	db $24, $F0, $25, $9B, $24, $2F, $1B, $68
-	db $00, $D0, $17, $F4, $24, $F0, $19, $2F
-	db $11, $F4, $24, $D0, $0D, $F5, $E0, $01
-	db $D0, $08, $F5, $95, $0F, $8F, $5C, $F2
-	db $C4, $F3, $3F, $BC, $09, $E8, $00, $6F
-	db $F4, $44, $FB, $54, $DA, $00, $8D, $00
-	db $F7, $00, $30, $06, $4D, $1C, $5D, $1F
-	db $A5, $0F, $3F, $67, $08, $2F, $E3, $68
-	db $80, $D0, $20, $F5, $E0, $01, $D0, $18
-	db $F5, $95, $0F, $8F, $5C, $F2, $C4, $F3
-	db $7D, $28, $07, $9F, $08, $02, $C4, $F2
-	db $E8, $00, $C4, $F3, $AB, $F2, $C4, $F3
-	db $5F, $83, $09, $68, $E0, $30, $0A, $68
-	db $E1, $F0, $04, $F4, $0C, $2F, $02, $F4
-	db $14, $60, $88, $24, $95, $40, $01, $1C
-	db $4D, $FB, $64, $F0, $3A, $5D, $CB, $04
-	db $DD, $10, $03, $48, $FF, $BC, $FD, $6D
-	db $F5, $99, $11, $CF, $CB, $02, $8F, $00
-	db $03, $EE, $F5, $9A, $11, $CF, $7A, $02
-	db $CB, $03, $4B, $03, $7C, $4B, $03, $7C
-	db $C4, $02, $F5, $9A, $11, $FD, $F5, $99
-	db $11, $F8, $04, $30, $04, $7A, $02, $2F
-	db $02, $9A, $02, $DA, $02, $2F, $0B, $5D
-	db $F5, $99, $11, $C4, $02, $F5, $9A, $11
-	db $C4, $03, $AE, $5D, $28, $07, $9F, $C4
-	db $F2, $F5, $E0, $01, $F0, $03, $5F, $83
-	db $09, $F5, $54, $02, $3F, $59, $0C, $C4
-	db $F3, $AB, $F2, $F5, $64, $02, $3F, $59
-	db $0C, $C4, $F3, $AB, $F2, $F5, $50, $01
-	db $28, $01, $F0, $17, $F5, $60, $01, $D5
-	db $A0, $01, $F5, $70, $01, $D5, $00, $01
-	db $F5, $80, $01, $D4, $94, $F5, $90, $01
-	db $D5, $C0, $01, $F5, $50, $01, $28, $02
-	db $F0, $1B, $F5, $34, $02, $10, $06, $48
-	db $FF, $BC, $D5, $34, $02, $F5, $00, $02
-	db $5C, $D4, $A4, $F5, $10, $02, $D4, $B4
-	db $F5, $20, $02, $D4, $C4, $E4, $02, $D4
-	db $84, $C4, $F3, $AB, $F2, $E4, $03, $D4
-	db $74, $C4, $F3, $AB, $F2, $F5, $44, $02
-	db $C4, $F3, $AB, $F2, $F5, $74, $02, $C4
-	db $F3, $AB, $F2, $F5, $84, $02, $C4, $F3
-	db $AB, $F2, $8F, $7F, $F3, $8F, $5C, $F2
-	db $8F, $00, $F3, $8F, $4C, $F2, $F5, $95
-	db $0F, $C4, $F3, $F5, $20, $01, $F0, $0F
-	db $8F, $01, $00, $F5, $20, $01, $D4, $34
-	db $F5, $30, $01, $D4, $24, $2F, $17, $8D
-	db $01, $F7, $00, $D4, $34, $F5, $D0, $01
-	db $F0, $09, $F4, $34, $D4, $24, $FC, $F7
-	db $00, $D4, $34, $FC, $CB, $00, $8F, $00
-	db $01, $F4, $44, $FB, $54, $7A, $00, $DB
-	db $54, $D4, $44, $6F, $F5, $50, $01, $28
-	db $01, $D0, $03, $5F, $39, $0A, $F5, $A0
-	db $01, $F0, $0F, $68, $FF, $F0, $6A, $9C
-	db $D5, $A0, $01, $D0, $64, $E8, $01, $D5
-	db $00, $01, $F5, $00, $01, $9C, $D5, $00
-	db $01, $D0, $56, $F5, $70, $01, $D5, $00
-	db $01, $F5, $C0, $01, $F0, $22, $9C, $D5
-	db $C0, $01, $F5, $B0, $01, $48, $FF, $BC
-	db $C4, $00, $10, $04, $E8, $FF, $2F, $02
-	db $E8, $00, $C4, $01, $F4, $84, $FB, $74
-	db $7A, $00, $DB, $74, $D4, $84, $2F, $0B
-	db $F5, $B0, $01, $C4, $00, $10, $E9, $E8
-	db $FF, $2F, $E7, $F5, $E0, $01, $D0, $10
-	db $7D, $28, $07, $9F, $08, $02, $C4, $F2
-	db $F4, $84, $C4, $F3, $AB, $F2, $CB, $F3
-	db $9B, $94, $D0, $05, $E8, $FF, $D5, $A0
-	db $01, $F5, $50, $01, $28, $02, $F0, $74
-	db $F4, $C4, $F0, $04, $9B, $C4, $2F, $6C
-	db $9B, $B4, $D0, $68, $F5, $10, $02, $D4
-	db $B4, $F5, $34, $02, $C4, $00, $10, $04
-	db $E8, $FF, $2F, $02, $E8, $00, $C4, $01
-	db $F4, $84, $FB, $74, $C8, $0D, $D0, $1F
-	db $2D, $E4, $EC, $64, $EE, $D0, $09, $E4
-	db $ED, $64, $EF, $D0, $03, $AE, $2F, $0F
-	db $AE, $9A, $EE, $7A, $EC, $2D, $E4, $EC
-	db $C4, $EE, $E4, $ED, $C4, $EF, $AE, $7A
-	db $00, $DB, $74, $D4, $84, $F5, $E0, $01
-	db $D0, $10, $7D, $28, $07, $9F, $08, $02
-	db $C4, $F2, $F4, $84, $C4, $F3, $AB, $F2
-	db $CB, $F3, $9B, $A4, $D0, $0E, $F5, $00
-	db $02, $D4, $A4, $F5, $34, $02, $48, $FF
-	db $BC, $D5, $34, $02, $F5, $50, $01, $28
-	db $0C, $D0, $03, $5F, $17, $0B, $F5, $A4
-	db $02, $F0, $0A, $F5, $A4, $02, $9C, $D5
-	db $A4, $02, $5F, $17, $0B, $F5, $B4, $02
-	db $9C, $D5, $B4, $02, $F0, $03, $5F, $17
-	db $0B, $F5, $C4, $02, $D5, $B4, $02, $F5
-	db $E0, $01, $D0, $14, $7D, $28, $07, $9F
-	db $08, $00, $C4, $F2, $F5, $54, $02, $C4
-	db $F3, $F5, $64, $02, $AB, $F2, $C4, $F3
-	db $F5, $E4, $02, $9C, $D5, $E4, $02, $D0
-	db $16, $F5, $50, $01, $28, $08, $D0, $0F
-	db $F5, $F4, $02, $D5, $E4, $02, $F5, $D4
-	db $02, $48, $FF, $BC, $D5, $D4, $02, $6F
-	db $CE, $E8, $00, $D5, $10, $01, $F5, $E0
-	db $01, $D0, $08, $8F, $5C, $F2, $F5, $95
-	db $0F, $C4, $F3, $7D, $68, $08, $90, $31
-	db $4D, $80, $A8, $08, $5D, $E8, $00, $D5
-	db $E0, $01, $8F, $3D, $F2, $F5, $95, $0F
-	db $48, $FF, $24, $F3, $C4, $F3, $8F, $4D
-	db $F2, $F5, $94, $02, $F0, $09, $F5, $95
-	db $0F, $04, $F3, $C4, $F3, $2F, $09, $F5
-	db $95, $0F, $48, $FF, $24, $F3, $C4, $F3
-	db $CE, $E8, $00, $6F, $EE, $AE, $CE, $2D
-	db $6D, $8D, $01, $DB, $34, $E8, $00, $D4
-	db $24, $6F, $3F, $64, $0B, $3F, $8B, $0B
-	db $8F, $02, $00, $8F, $00, $01, $F4, $44
-	db $FB, $54, $7A, $00, $DB, $54, $D4, $44
-	db $E8, $01, $6F, $4D, $F7, $00, $5D, $F5
-	db $60, $05, $CE, $D5, $44, $02, $6F, $3F
-	db $64, $0B, $3F, $8B, $0B, $FC, $F7, $00
-	db $D5, $40, $01, $FC, $F7, $00, $D4, $64
-	db $FC, $3F, $C2, $0B, $FC, $3F, $4E, $0E
-	db $8F, $08, $00, $5F, $7B, $0B, $3F, $64
-	db $0B, $3F, $C2, $0B, $8F, $03, $00, $5F
-	db $7B, $0B, $E4, $1D, $D0, $0C, $F7, $00
-	db $D5, $54, $02, $FC, $F7, $00, $D5, $64
-	db $02, $6F, $F7, $00, $10, $03, $48, $FF
-	db $BC, $5C, $C4, $03, $FC, $60, $F7, $00
-	db $10, $03, $48, $FF, $BC, $5C, $60, $84
-	db $03, $D5, $54, $02, $D5, $64, $02, $6F
-	db $3F, $64, $0B, $D5, $54, $02, $3F, $CC
-	db $0B, $F5, $64, $02, $D5, $54, $02, $5F
-	db $78, $0B, $3F, $64, $0B, $E5, $B8, $04
-	db $D5, $54, $02, $E5, $B9, $04, $D5, $64
-	db $02, $E4, $1D, $D0, $19, $5F, $D6, $0E
-	db $3F, $64, $0B, $E5, $BA, $04, $D5, $54
-	db $02, $E5, $BB, $04, $D5, $64, $02, $E4
-	db $1D, $D0, $03, $5F, $D6, $0E, $F5, $54
-	db $02, $10, $03, $48, $FF, $BC, $5C, $C4
-	db $00, $F5, $64, $02, $10, $03, $48, $FF
-	db $BC, $5C, $60, $84, $00, $D5, $54, $02
-	db $D5, $64, $02, $5F, $D6, $0E, $3F, $64
-	db $0B, $F7, $00, $C5, $B6, $04, $5F, $78
-	db $0B, $4D, $EC, $B6, $04, $C8, $08, $B0
-	db $0E, $68, $00, $30, $0C, $CF, $CD, $64
-	db $9E, $68, $7F, $30, $02, $E8, $7F, $CE
-	db $6F, $48, $FF, $BC, $CF, $CD, $64, $9E
-	db $68, $7F, $30, $02, $E8, $7F, $48, $FF
-	db $BC, $CE, $6F, $3F, $64, $0B, $F7, $00
-	db $C5, $B8, $04, $FC, $F7, $00, $C5, $B9
-	db $04, $FC, $F7, $00, $C5, $BA, $04, $FC
-	db $F7, $00, $C5, $BB, $04, $5F, $76, $0F
-	db $3F, $64, $0B, $F7, $00, $3F, $F0, $10
-	db $8F, $7D, $F2, $60, $5C, $C4, $F3, $8F
-	db $6D, $F2, $3C, $3C, $3C, $C4, $00, $E8
-	db $FF, $80, $A4, $00, $C4, $F3, $C5, $B7
-	db $04, $FD, $E8, $00, $DA, $00, $FD, $D7
-	db $00, $FC, $D0, $FB, $AB, $01, $EB, $01
-	db $AD, $00, $D0, $F2, $5F, $78, $0B, $3F
-	db $64, $0B, $F7, $00, $D4, $44, $FC, $F7
-	db $00, $D4, $54, $E8, $01, $6F, $3F, $64
-	db $0B, $F7, $00, $C4, $04, $FC, $3F, $1C
-	db $0D, $D6, $34, $03, $BB, $D4, $BA, $02
-	db $D4, $44, $DB, $54, $E8, $01, $6F, $3F
-	db $64, $0B, $8F, $01, $04, $3F, $1C, $0D
-	db $F0, $04, $9C, $5F, $F1, $0C, $9C, $D6
-	db $34, $03, $F6, $B4, $03, $9C, $D6, $B4
-	db $03, $5F, $F4, $0C, $F7, $00, $C4, $02
-	db $FC, $F7, $00, $C4, $03, $FB, $D4, $E4
-	db $04, $D6, $34, $04, $F4, $54, $D6, $B4
-	db $03, $F4, $44, $6F, $3F, $64, $0B, $9B
-	db $D4, $FB, $D4, $F6, $B4, $03, $D4, $54
-	db $F6, $34, $03, $D4, $44, $F6, $34, $04
-	db $9C, $D6, $34, $04, $F0, $1C, $F4, $44
-	db $FB, $54, $DA, $00, $8D, $02, $F7, $00
-	db $C4, $02, $FC, $F7, $00, $C4, $03, $BB
-	db $D4, $BA, $02, $D4, $44, $DB, $54, $E8
-	db $01, $6F, $8F, $04, $00, $5F, $7B, $0B
-	db $3F, $64, $0B, $F7, $00, $D5, $20, $01
-	db $F5, $D0, $01, $F0, $0C, $F5, $20, $01
-	db $D5, $30, $01, $FC, $F7, $00, $D5, $20
-	db $01, $FC, $CB, $00, $5F, $7B, $0B, $CE
-	db $E8, $00, $D5, $20, $01, $D5, $30, $01
-	db $5F, $DF, $0D, $CE, $8D, $04, $F7, $00
-	db $2F, $08, $CE, $8D, $04, $F7, $00, $48
-	db $FF, $BC, $D5, $B0, $01, $F5, $50, $01
-	db $08, $01, $D5, $50, $01, $3F, $69, $0B
-	db $F7, $00, $D5, $60, $01, $FC, $F7, $00
-	db $D5, $70, $01, $FC, $F7, $00, $D5, $80
-	db $01, $FC, $FC, $F7, $00, $D5, $90, $01
-	db $8F, $06, $00, $5F, $7B, $0B, $CE, $F5
-	db $50, $01, $28, $FE, $D5, $50, $01, $E8
-	db $01, $C4, $00, $D4, $34, $9C, $D4, $24
-	db $5F, $7B, $0B, $CE, $8D, $01, $F7, $00
-	db $C4, $1F, $3F, $69, $0B, $5F, $78, $0B
-	db $CE, $8D, $01, $F7, $00, $60, $84, $1F
-	db $C4, $1F, $5F, $F2, $0D, $CE, $F5, $50
-	db $01, $28, $FD, $D5, $50, $01, $5F, $DF
-	db $0D, $CE, $E8, $00, $3F, $25, $0E, $5F
-	db $6A, $0D, $CE, $8D, $04, $F7, $00, $3F
-	db $25, $0E, $5F, $76, $0F, $D5, $20, $02
-	db $F5, $50, $01, $08, $02, $D5, $50, $01
-	db $3F, $69, $0B, $F7, $00, $D5, $00, $02
-	db $FC, $F7, $00, $D5, $10, $02, $FC, $F7
-	db $00, $D5, $34, $02, $6F, $3F, $64, $0B
-	db $3F, $4E, $0E, $5F, $BC, $0B, $F7, $00
-	db $D5, $74, $02, $FC, $F7, $00, $D5, $84
-	db $02, $6F, $CE, $8D, $01, $F7, $00, $D4
-	db $0C, $5F, $6B, $0E, $CE, $8D, $01, $F7
-	db $00, $D4, $14, $3F, $69, $0B, $5F, $78
-	db $0B, $3F, $64, $0B, $F7, $00, $D4, $64
-	db $5F, $78, $0B, $3F, $64, $0B, $D4, $24
-	db $F7, $00, $D5, $40, $01, $5F, $78, $0B
-	db $3F, $64, $0B, $F7, $00, $60, $95, $40
-	db $01, $D5, $40, $01, $5F, $78, $0B, $CE
-	db $8F, $0D, $F2, $8D, $01, $F7, $00, $C4
-	db $F3, $FC, $8F, $2C, $F2, $F7, $00, $C5
-	db $32, $02, $C4, $F3, $8F, $3C, $F2, $FC
-	db $F7, $00, $C5, $33, $02, $C4, $F3, $E8
-	db $00, $C5, $B5, $04, $8F, $6C, $F2, $C4
-	db $F3, $5F, $6A, $0D, $3F, $64, $0B, $8F
-	db $4D, $F2, $F5, $95, $0F, $04, $F3, $C4
-	db $F3, $E8, $01, $D5, $94, $02, $8F, $01
-	db $00, $5F, $7B, $0B, $CE, $8F, $4D, $F2
-	db $F5, $95, $0F, $48, $FF, $24, $F3, $C4
-	db $F3, $E8, $00, $D5, $94, $02, $D4, $24
-	db $BC, $D4, $34, $5F, $D6, $0E, $3F, $64
-	db $0B, $8F, $0F, $F2, $F7, $00, $C4, $F3
-	db $FC, $60, $98, $10, $F2, $78, $8F, $F2
-	db $D0, $F2, $8F, $09, $00, $5F, $7B, $0B
-	db $3F, $64, $0B, $F7, $00, $C5, $B4, $04
-	db $05, $B5, $04, $8F, $6C, $F2, $C4, $F3
-	db $5F, $78, $0B, $CE, $8F, $3D, $F2, $F5
-	db $95, $0F, $04, $F3, $C4, $F3, $3F, $69
-	db $0B, $5F, $D6, $0E, $CE, $8F, $3D, $F2
-	db $F5, $95, $0F, $48, $FF, $24, $F3, $C4
-	db $F3, $5F, $2E, $0F, $CE, $8D, $04, $F7
-	db $00, $48, $FF, $BC, $2F, $05, $CE, $8D
-	db $04, $F7, $00, $D5, $B0, $01, $F5, $50
-	db $01, $08, $01, $D5, $50, $01, $3F, $69
-	db $0B, $F7, $00, $D5, $60, $01, $FC, $F7
-	db $00, $D5, $70, $01, $FC, $F7, $00, $D5
-	db $90, $01, $1C, $D5, $80, $01, $8F, $05
-	db $00, $5F, $7B, $0B, $3F, $64, $0B, $BC
-	db $D5, $D0, $01, $5F, $D6, $0E, $3F, $64
-	db $0B, $D5, $D0, $01, $5F, $D6, $0E, $8F
-	db $07, $00, $5F, $7B, $0B, $01, $02, $04
-	db $08, $10, $20, $40, $80, $01, $02, $04
-	db $08, $10, $20, $40, $80, $18, $0B, $72
-	db $0B, $B6, $0B, $D7, $0C, $E6, $0C, $34
-	db $0D, $70, $0D, $8F, $0D, $9B, $0D, $A2
-	db $0D, $D6, $0D, $EB, $0D, $F8, $0D, $11
-	db $0E, $05, $0E, $1A, $0E, $45, $0E, $00
-	db $00, $71, $0E, $7B, $0E, $88, $0E, $97
-	db $0E, $C4, $0E, $DC, $0E, $F6, $0E, $10
-	db $0F, $23, $0F, $34, $0F, $5A, $0E, $64
-	db $0E, $83, $0C, $A0, $0C, $02, $0C, $FF
-	db $0C, $97, $0B, $F0, $0B, $4E, $0C, $00
-	db $00, $44, $0F, $4E, $0F, $00, $00, $00
-	db $00, $00, $00, $7C, $0F, $86, $0F, $00
-	db $00, $00, $00, $00, $00, $DC, $0E, $18
-	db $0C, $DC, $0E, $E8, $00, $C4, $EC, $C4
-	db $ED, $C4, $EE, $C4, $EF, $8F, $6C, $F2
-	db $8F, $E0, $F3, $8F, $2C, $F2, $C5, $32
-	db $02, $C4, $F3, $8F, $3C, $F2, $C5, $33
-	db $02, $C4, $F3, $8F, $0D, $F2, $C4, $F3
-	db $8F, $4C, $F2, $C4, $F3, $8F, $5C, $F2
-	db $8F, $FF, $F3, $8F, $2D, $F2, $C4, $F3
-	db $8F, $3D, $F2, $C4, $F3, $8F, $4D, $F2
-	db $C4, $F3, $E8, $3C, $C5, $30, $02, $C5
-	db $31, $02, $8F, $0C, $F2, $C4, $F3, $8F
-	db $1C, $F2, $C4, $F3, $E8, $64, $C5, $B6
-	db $04, $8F, $5D, $F2, $8F, $31, $F3, $8D
-	db $08, $8F, $00, $F2, $E8, $7F, $C4, $F3
-	db $AB, $F2, $C4, $F3, $60, $98, $04, $F2
-	db $E8, $00, $C4, $F3, $AB, $F2, $C4, $F3
-	db $AB, $F2, $8F, $FF, $F3, $60, $98, $09
-	db $F2, $DC, $D0, $E0, $8F, $FF, $E7, $8F
-	db $FF, $E8, $E8, $64, $C4, $E4, $E8, $20
-	db $C5, $B5, $04, $8F, $08, $00, $CD, $00
-	db $8D, $00, $CB, $0A, $CC, $B4, $04, $CB
-	db $01, $E8, $01, $D4, $34, $D5, $10, $01
-	db $F7, $E5, $D4, $44, $FC, $F7, $E5, $D4
-	db $54, $E4, $01, $D4, $D4, $E8, $00, $D5
-	db $D0, $01, $D4, $24, $D5, $20, $01, $D5
-	db $30, $01, $D5, $50, $01, $D5, $40, $01
-	db $D4, $64, $D5, $E0, $01, $D5, $94, $02
-	db $3D, $FC, $60, $98, $08, $01, $6E, $00
-	db $C8, $F7, $E5, $C4, $1F, $FC, $F7, $E5
-	db $C4, $22, $E8, $00, $C4, $1E, $C4, $21
-	db $8F, $6C, $F2, $8F, $20, $F3, $6F, $2D
-	db $68, $60, $10, $08, $80, $A5, $10, $24
-	db $10, $0B, $2F, $0D, $80, $A8, $60, $80
-	db $A5, $94, $2E, $30, $04, $AE, $E8, $00
-	db $2D, $AE, $1C, $2D, $E8, $01, $D5, $E0
-	db $01, $8F, $3D, $F2, $F5, $95, $0F, $48
-	db $FF, $24, $F3, $C4, $F3, $7D, $60, $88
-	db $08, $5D, $1C, $1C, $1C, $D4, $D4, $E8
-	db $01, $D5, $10, $01, $9C, $D5, $20, $01
-	db $D5, $30, $01, $D4, $24, $D5, $D0, $01
-	db $D5, $E0, $01, $D5, $50, $01, $D5, $40
-	db $01, $D5, $94, $02, $D4, $64, $E8, $7F
-	db $D5, $54, $02, $D5, $64, $02, $D5, $14
-	db $03, $D5, $24, $03, $E8, $8E, $D5, $74
-	db $02, $E8, $E0, $D5, $84, $02, $AE, $68
-	db $C0, $B0, $0E, $FD, $F6, $12, $24, $D4
-	db $44, $FC, $F6, $12, $24, $D4, $54, $2F
-	db $0F, $80, $A8, $C0, $FD, $F6, $96, $2E
-	db $D4, $44, $FC, $F6, $96, $2E, $D4, $54
-	db $E8, $02, $D4, $34, $8F, $4D, $F2, $F5
-	db $95, $0F, $48, $FF, $24, $F3, $C4, $F3
-	db $6F, $00, $00, $40, $00, $44, $00, $48
-	db $00, $4C, $00, $51, $00, $55, $00, $5B
-	db $00, $60, $00, $66, $00, $6C, $00, $72
-	db $00, $79, $00, $80, $00, $88, $00, $90
-	db $00, $98, $00, $A1, $00, $AB, $00, $B5
-	db $00, $C0, $00, $CB, $00, $D7, $00, $E4
-	db $00, $F2, $00, $00, $01, $0F, $01, $1F
-	db $01, $30, $01, $43, $01, $56, $01, $6A
-	db $01, $80, $01, $96, $01, $AF, $01, $C8
-	db $01, $E3, $01, $00, $02, $1E, $02, $3F
-	db $02, $61, $02, $85, $02, $AB, $02, $D4
-	db $02, $FF, $02, $2D, $03, $5D, $03, $90
-	db $03, $C7, $03, $00, $04, $3D, $04, $7D
-	db $04, $C2, $04, $0A, $05, $57, $05, $A8
-	db $05, $FE, $05, $5A, $06, $BA, $06, $21
-	db $07, $8D, $07, $00, $08, $7A, $08, $FB
-	db $08, $84, $09, $14, $0A, $AE, $0A, $50
-	db $0B, $FD, $0B, $B3, $0C, $74, $0D, $41
-	db $0E, $1A, $0F, $00, $10, $F4, $10, $F6
-	db $11, $07, $13, $29, $14, $5C, $15, $A1
-	db $16, $F9, $17, $66, $19, $E9, $1A, $82
-	db $1C, $34, $1E, $00, $20, $E7, $21, $EB
-	db $23, $0E, $26, $51, $28, $B7, $2A, $41
-	db $2D, $F2, $2F, $CC, $32, $D1, $35, $04
-	db $39, $68, $3C, $FF, $3F, $FF
+	
+base $0660
+CODE_0660:
+	MOV A, $055D			;$0660	 |
+	ASL A				;$0663	 |
+	MOV Y, A			;$0664	 |
+	MOV A, $1312+Y			;$0665	 |
+	MOV $E5, A			;$0668	 |
+	MOV A, $1313+Y			;$066A	 |
+	MOV $E6, A			;$066D	 |
+	JMP CODE_0678			;$066F	 |
+	MOV $E6, #$13			;$0672	 |
+	MOV $E5, #$00			;$0675	 |
+CODE_0678:				;	 |
+	CALL $100B			;$0678	 |
+	MOV A, #$00			;$067B	 |
+	MOV $1C, A			;$067D	 |
+	MOV $1D, A			;$067F	 |
+	MOV $F1, A			;$0681	 |
+CODE_0683:				;	 |
+	MOV A, $E9			;$0683	 |
+	CMP A, $F4			;$0685	 |
+	BEQ CODE_068C			;$0687	 |
+	JMP CODE_0781			;$0689	 |
+
+CODE_068C:
+	MOV X, $F6			;$068C	 |
+	MOV $055D, X			;$068E	 |
+	MOV X, $F5			;$0691	 |
+	MOV $F4, A			;$0693	 |
+	INC A				;$0695	 |
+	MOV $E9, A			;$0696	 |
+	MOV A, X			;$0698	 |
+	CMP A, #$80			;$0699	 |
+	BPL CODE_06A0			;$069B	 |
+	JMP CODE_0773			;$069D	 |
+
+CODE_06A0:
+	AND A, #$07			;$06A0	 |
+	ASL A				;$06A2	 |
+	MOV X, A			;$06A3	 |
+	JMP ($06A7+X)			;$06A4	 |
+
+DATA_06A7:
+	dw $070A
+	dw $0702
+	dw $06FA
+	dw $06B7
+	dw $0739
+	dw $0712
+	dw $077B
+	dw $07DB
+	
+CODE_06B7:
+	MOV X, #$7F			;$06B7	 |
+CODE_06B9:				;	 |
+	MOV A, #$71			;$06B9	 |
+CODE_06BB:				;	 |
+	MOV Y, A			;$06BB	 |
+	MOV $F2, Y			;$06BC	 |
+	CALL CODE_06EB			;$06BE	 |
+	DEC Y				;$06C1	 |
+	MOV $F2, Y			;$06C2	 |
+	CALL CODE_06EB			;$06C4	 |
+	MOV A, Y			;$06C7	 |
+	SETC				;$06C8	 |
+	SBC A, #$0F			;$06C9	 |
+	BPL CODE_06BB			;$06CB	 |
+	MOV $F2, #$0C			;$06CD	 |
+	CALL CODE_06EB			;$06D0	 |
+	MOV $F2, #$1C			;$06D3	 |
+	CALL CODE_06EB			;$06D6	 |
+	MOV $F2, #$2C			;$06D9	 |
+	CALL CODE_06EB			;$06DC	 |
+	MOV $F2, #$3C			;$06DF	 |
+	CALL CODE_06EB			;$06E2	 |
+	DEC X				;$06E5	 |
+	BNE CODE_06B9			;$06E6	 |
+	JMP CODE_0660			;$06E8	 |
+
+CODE_06EB:
+	MOV A, $F3			;$06EB	 |
+	BEQ CODE_06F7			;$06ED	 |
+	BMI CODE_06F5			;$06EF	 |
+	DEC A				;$06F1	 |
+	DEC A				;$06F2	 |
+	BRA CODE_06F7			;$06F3	 |
+
+CODE_06F5:
+	INC A				;$06F5	 |
+	INC A				;$06F6	 |
+CODE_06F7:				;	 |
+	MOV $F3, A			;$06F7	 |
+	RET				;$06F9	 |
+	
+CODE_06DA:				;	 |
+	MOV A, $055D			;$06FA	 |
+	MOV $1D, A			;$06FD	 |
+	JMP CODE_0781			;$06FF	 |
+	
+CODE_0702:				;	 |
+	MOV A, $055D			;$0702	 |
+	MOV $E7, A			;$0705	 |
+	JMP CODE_0781			;$0707	 |
+	
+CODE_070A:				;	 |
+	MOV A, $055D			;$070A	 |
+	MOV $E8, A			;$070D	 |
+	JMP CODE_0781			;$070F	 |
+	
+CODE_0712:				;	 |
+	MOV A, $04B6			;$0712	 |
+	PUSH A				;$0715	 |
+	PUSH X				;$0716	 |
+	MOV X, #$05			;$0717	 |
+	MOV A, $055D			;$0719	 |
+	MOV $04B6, A			;$071C	 |
+	MOV $F2, #$50			;$071F	 |
+	MOV A, $F3			;$0722	 |
+	CALL CODE_0C59			;$0724	 |
+	MOV $F3, A			;$0727	 |
+	INC $F2				;$0729	 |
+	MOV A, $F3			;$072B	 |
+	CALL CODE_0C59			;$072D	 |
+	MOV $F3, A			;$0730	 |
+	POP X				;$0732	 |
+	POP A				;$0733	 |
+	MOV $04B6, A			;$0734	 |
+	BRA CODE_0781			;$0737	 |
+	
+CODE_0739:				;	 |
+	MOV A, $055D			;$0739	 |
+	BMI CODE_074A			;$073C	 |
+	CLRC				;$073E	 |
+	MOV A, $055D			;$073F	 |
+	MOV $EC, A			;$0742	 |
+	MOV A, #$00			;$0744	 |
+	MOV $ED, A			;$0746	 |
+	BRA CODE_0756			;$0748	 |
+
+CODE_074A:
+	MOV $055D, A			;$074A	 |
+	MOV A, $055D			;$074D	 |
+	MOV $EC, A			;$0750	 |
+	MOV A, #$FF			;$0752	 |
+	MOV $ED, A			;$0754	 |
+CODE_0756:				;	 |
+	MOVW YA, $EC			;$0756	 |
+	ADDW YA, $EC			;$0758	 |
+	ADDW YA, $EC			;$075A	 |
+	ADDW YA, $EC			;$075C	 |
+	ADDW YA, $EC			;$075E	 |
+	ADDW YA, $EC			;$0760	 |
+	ADDW YA, $EC			;$0762	 |
+	ADDW YA, $EC			;$0764	 |
+	MOVW $EC, YA			;$0766	 |
+	MOV $F2, #$4D			;$0768	 |
+	MOV A, $F3			;$076B	 |
+	AND A, #$DF			;$076D	 |
+	MOV $F3, A			;$076F	 |
+	BRA CODE_0781			;$0771	 |
+	
+CODE_0773:				;	 |
+	MOV X, $055D			;$0773	 |
+	CALL CODE_10F7			;$0776	 |
+	BRA CODE_078E			;$0779	 |
+	
+CODE_077B:				;	 |
+	MOV $1C, #$01			;$077B	 |
+	MOV $F1, #$00			;$077E	 |
+
+CODE_0781:
+	MOV A, $1C			;$0781	 |
+	BNE CODE_0788			;$0783	 |
+	JMP CODE_0683			;$0785	 |
+
+CODE_0788:
+	MOV ($FA), ($E4)		;$0788	 |
+	MOV $F1, #$01			;$078B	 |
+CODE_078E:				;	 |
+	MOV A, $FD			;$078E	 |
+	BEQ CODE_078E			;$0790	 |
+	MOV $F1, #$01			;$0792	 |
+	MOV $20, #$00			;$0795	 |
+	CLRC				;$0798	 |
+	ADC ($1E), ($1F)		;$0799	 |
+	ROR $20				;$079C	 |
+	MOV $23, #$00			;$079E	 |
+	CLRC				;$07A1	 |
+	ADC ($21), ($22)		;$07A2	 |
+	ROR $23				;$07A5	 |
+	MOV X, #$00			;$07A7	 |
+CODE_07A9:				;	 |
+	MOV A, $20			;$07A9	 |
+	BNE CODE_07B2			;$07AB	 |
+	CALL CODE_09BC			;$07AD	 |
+	BRA CODE_07B7			;$07B0	 |
+
+CODE_07B2:
+	CALL CODE_0813			;$07B2	 |
+	BNE CODE_07B2			;$07B5	 |
+CODE_07B7:				;	 |
+	MOV A, $01E0+X			;$07B7	 |
+	BEQ CODE_07D0			;$07BA	 |
+	PUSH X				;$07BC	 |
+	MOV A, X			;$07BD	 |
+	OR A, #$08			;$07BE	 |
+	MOV X, A			;$07C0	 |
+	MOV A, $23			;$07C1	 |
+	BNE CODE_07CA			;$07C3	 |
+	CALL CODE_09BC			;$07C5	 |
+	BRA CODE_07CF			;$07C8	 |
+
+CODE_07CA:
+	CALL CODE_0813			;$07CA	 |
+	BNE CODE_07CA			;$07CD	 |
+CODE_07CF:				;	 |
+	POP X				;$07CF	 |
+CODE_07D0:				;	 |
+	INC X				;$07D0	 |
+	CMP X, #$08			;$07D1	 |
+	BEQ CODE_07D8			;$07D3	 |
+	JMP CODE_07A9			;$07D5	 |
+
+CODE_07D8:
+	JMP CODE_0683			;$07D8	 |
+	
+CODE_07DB:
+	MOV A, $055D			;$07DB	 |
+	BEQ CODE_07E3			;$07DE	 |
+	JMP CODE_04F3			;$07E0	 |
+
+CODE_07E3:
+	MOV $F2, #$5C			;$07E3	 |
+	MOV $F3, #$FF			;$07E6	 |
+	MOV $F1, #$00			;$07E9	 |
+	MOV $FB, #$C8			;$07EC	 |
+	MOV $F1, #$02			;$07EF	 |
+CODE_07F2:				;	 |
+	MOV A, $FE			;$07F2	 |
+	BEQ CODE_07F2			;$07F4	 |
+	MOV $F2, #$6C			;$07F6	 |
+	MOV $F3, #$A0			;$07F9	 |
+	MOV X, #$00			;$07FC	 |
+	MOV $F2, #$4D			;$07FE	 |
+	MOV $F3, X			;$0801	 |
+	MOV $F2, #$2C			;$0803	 |
+	MOV $F3, X			;$0806	 |
+	MOV $F2, #$3C			;$0808	 |
+	MOV $F3, X			;$080B	 |
+	CALL CODE_100B			;$080D	 |
+	JMP CODE_04F3			;$0810	 |
+
+CODE_0813:
+	MOV A, $0110+X			;$0813	 |
+	BNE CODE_081B			;$0816	 |
+	MOV A, #$00			;$0818	 |
+	RET				;$081A	 |
+
+CODE_081B:
+	DEC $34+X			;$081B	 |
+	MOV A, $34+X			;$081D	 |
+	CMP A, #$01			;$081F	 |
+	BEQ CODE_0839			;$0821	 |
+	CMP A, #$FF			;$0823	 |
+	BNE CODE_082F			;$0825	 |
+	MOV A, $24+X			;$0827	 |
+	BEQ CODE_0850			;$0829	 |
+	DEC $24+X			;$082B	 |
+	BRA CODE_084A			;$082D	 |
+
+CODE_082F:
+	CMP A, #$00			;$082F	 |
+	BNE CODE_084A			;$0831	 |
+	MOV A, $24+X			;$0833	 |
+	BEQ CODE_0850			;$0835	 |
+	BRA CODE_084A			;$0837	 |
+
+CODE_0839:
+	MOV A, $24+X			;$0839	 |
+	BNE CODE_084A			;$083B	 |
+	MOV A, $01E0+X			;$083D	 |
+	BNE CODE_084A			;$0840	 |
+	MOV A, $0F95+X			;$0842	 |
+	MOV $F2, #$5C			;$0845	 |
+	MOV $F3, A			;$0848	 |
+CODE_084A:				;	 |
+	CALL CODE_09BC			;$084A	 |
+	MOV A, #$00			;$084D	 |
+	RET				;$084F	 |
+
+CODE_0850:
+	MOV A, $44+X			;$0850	 |
+	MOV Y, $54+X			;$0852	 |
+	MOVW $00, YA			;$0854	 |
+	MOV Y, #$00			;$0856	 |
+	MOV A, ($00)+Y			;$0858	 |
+	BMI CODE_0862			;$085A	 |
+	PUSH X				;$085C	 |
+	ASL A				;$085D	 |
+	MOV X, A			;$085E	 |
+	JMP ($0FA5+X)			;$085F	 |
+
+CODE_0862:
+	CALL CODE_0867			;$0862	 |
+	BRA CODE_084A			;$0865	 |
+
+CODE_0867:
+	CMP A, #$80			;$0867	 |
+	BNE CODE_088B			;$0869	 |
+	MOV A, $01E0+X			;$086B	 |
+	BNE CODE_0888			;$086E	 |
+	MOV A, $0F95+X			;$0870	 |
+	MOV $F2, #$5C			;$0873	 |
+	MOV $F3, A			;$0876	 |
+	MOV A, X			;$0878	 |
+	AND A, #$07			;$0879	 |
+	XCN A				;$087B	 |
+	OR A, #$02			;$087C	 |
+	MOV $F2, A			;$087E	 |
+	MOV A, #$00			;$0880	 |
+	MOV $F3, A			;$0882	 |
+	INC $F2				;$0884	 |
+	MOV $F3, A			;$0886	 |
+CODE_0888:				;	 |
+	JMP CODE_0983			;$0888	 |
+
+CODE_088B:
+	CMP A, #$E0			;$088B	 |
+	BMI CODE_0899			;$088D	 |
+	CMP A, #$E1			;$088F	 |
+	BEQ CODE_0897			;$0891	 |
+	MOV A, $0C+X			;$0893	 |
+	BRA CODE_0899			;$0895	 |
+
+CODE_0897:
+	MOV A, $14+X			;$0897	 |
+CODE_0899:				;	 |
+	CLRC				;$0899	 |
+	ADC A, #$24			;$089A	 |
+	ADC A, $0140+X			;$089C	 |
+	ASL A				;$089F	 |
+	PUSH X				;$08A0	 |
+	MOV Y, $64+X			;$08A1	 |
+	BEQ CODE_08DF			;$08A3	 |
+	MOV X, A			;$08A5	 |
+	MOV $04, Y			;$08A6	 |
+	MOV A, Y			;$08A8	 |
+	BPL CODE_08AE			;$08A9	 |
+	EOR A, #$FF			;$08AB	 |
+	INC A				;$08AD	 |
+CODE_08AE:				;	 |
+	MOV Y, A			;$08AE	 |
+	PUSH Y				;$08AF	 |
+	MOV A, $1199+X			;$08B0	 |
+	MUL YA				;$08B3	 |
+	MOV $02, Y			;$08B4	 |
+	MOV $03, #$00			;$08B6	 |
+	POP Y				;$08B9	 |
+	MOV A, $119A+X			;$08BA	 |
+	MUL YA				;$08BD	 |
+	ADDW YA, $02			;$08BE	 |
+	MOV $03, Y			;$08C0	 |
+	LSR $03				;$08C2	 |
+	ROR A				;$08C4	 |
+	LSR $03				;$08C5	 |
+	ROR A				;$08C7	 |
+	MOV $02, A			;$08C8	 |
+	MOV A, $119A+X			;$08CA	 |
+	MOV Y, A			;$08CD	 |
+	MOV A, $1199+X			;$08CE	 |
+	MOV X, $04			;$08D1	 |
+	BMI CODE_08D9			;$08D3	 |
+	ADDW YA, $02			;$08D5	 |
+	BRA CODE_08DB			;$08D7	 |
+
+CODE_08D9:
+	SUBW YA, $02			;$08D9	 |
+CODE_08DB:				;	 |
+	MOVW $02, YA			;$08DB	 |
+	BRA CODE_08EA			;$08DD	 |
+
+CODE_08DF:
+	MOV X, A			;$08DF	 |
+	MOV A, $1199+X			;$08E0	 |
+	MOV $02, A			;$08E3	 |
+	MOV A, $119A+X			;$08E5	 |
+	MOV $03, A			;$08E8	 |
+CODE_08EA:				;	 |
+	POP A				;$08EA	 |
+	MOV X, A			;$08EB	 |
+	AND A, #$07			;$08EC	 |
+	XCN A				;$08EE	 |
+	MOV $F2, A			;$08EF	 |
+	MOV A, $01E0+X			;$08F1	 |
+	BEQ CODE_08F9			;$08F4	 |
+	JMP CODE_0983			;$08F6	 |
+
+CODE_08F9:
+	MOV A, $0254+X			;$08F9	 |
+	CALL CODE_0C59			;$08FC	 |
+	MOV $F3, A			;$08FF	 |
+	INC $F2				;$0901	 |
+	MOV A, $0264+X			;$0903	 |
+	CALL CODE_0C59			;$0906	 |
+	MOV $F3, A			;$0909	 |
+	INC $F2				;$090B	 |
+	MOV A, $0150+X			;$090D	 |
+	AND A, #$01			;$0910	 |
+	BEQ CODE_092B			;$0912	 |
+	MOV A, $0160+X			;$0914	 |
+	MOV $01A0+X, A			;$0917	 |
+	MOV A, $0170+X			;$091A	 |
+	MOV $0100+X, A			;$091D	 |
+	MOV A, $0180+X			;$0920	 |
+	MOV $94+X, A			;$0923	 |
+	MOV A, $0190+X			;$0925	 |
+	MOV $01C0+X, A			;$0928	 |
+CODE_092B:				;	 |
+	MOV A, $0150+X			;$092B	 |
+	AND A, #$02			;$092E	 |
+	BEQ CODE_094D			;$0930	 |
+	MOV A, $0234+X			;$0932	 |
+	BPL CODE_093D			;$0935	 |
+	EOR A, #$FF			;$0937	 |
+	INC A				;$0939	 |
+	MOV $0234+X, A			;$093A	 |
+CODE_093D:				;	 |
+	MOV A, $0200+X			;$093D	 |
+	LSR A				;$0940	 |
+	MOV $A4+X, A			;$0941	 |
+	MOV A, $0210+X			;$0943	 |
+	MOV $B4+X, A			;$0946	 |
+	MOV A, $0220+X			;$0948	 |
+	MOV $C4+X, A			;$094B	 |
+CODE_094D:				;	 |
+	MOV A, $02			;$094D	 |
+	MOV $84+X, A			;$094F	 |
+	MOV $F3, A			;$0951	 |
+	INC $F2				;$0953	 |
+	MOV A, $03			;$0955	 |
+	MOV $74+X, A			;$0957	 |
+	MOV $F3, A			;$0959	 |
+	INC $F2				;$095B	 |
+	MOV A, $0244+X			;$095D	 |
+	MOV $F3, A			;$0960	 |
+	INC $F2				;$0962	 |
+	MOV A, $0274+X			;$0964	 |
+	MOV $F3, A			;$0967	 |
+	INC $F2				;$0969	 |
+	MOV A, $0284+X			;$096B	 |
+	MOV $F3, A			;$096E	 |
+	INC $F2				;$0970	 |
+	MOV $F3, #$7F			;$0972	 |
+	MOV $F2, #$5C			;$0975	 |
+	MOV $F3, #$00			;$0978	 |
+	MOV $F2, #$4C			;$097B	 |
+	MOV A, $0F95+X			;$097E	 |
+	MOV $F3, A			;$0981	 |
+CODE_0983:				;	 |
+	MOV A, $0120+X			;$0983	 |
+	BEQ CODE_0997			;$0986	 |
+	MOV $00, #$01			;$0988	 |
+	MOV A, $0120+X			;$098B	 |
+	MOV $34+X, A			;$098E	 |
+	MOV A, $0130+X			;$0990	 |
+	MOV $24+X, A			;$0993	 |
+	BRA CODE_09AE			;$0995	 |
+
+CODE_0997:
+	MOV Y, #$01			;$0997	 |
+	MOV A, ($00)+Y			;$0999	 |
+	MOV $34+X, A			;$099B	 |
+	MOV A, $01D0+X			;$099D	 |
+	BEQ CODE_09AB			;$09A0	 |
+	MOV A, $34+X			;$09A2	 |
+	MOV $24+X, A			;$09A4	 |
+	INC Y				;$09A6	 |
+	MOV A, ($00)+Y			;$09A7	 |
+	MOV $34+X, A			;$09A9	 |
+CODE_09AB:				;	 |
+	INC Y				;$09AB	 |
+	MOV $00, Y			;$09AC	 |
+CODE_09AE:				;	 |
+	MOV $01, #$00			;$09AE	 |
+	MOV A, $44+X			;$09B1	 |
+	MOV Y, $54+X			;$09B3	 |
+	ADDW YA, $00			;$09B5	 |
+	MOV $54+X, Y			;$09B7	 |
+	MOV $44+X, A			;$09B9	 |
+	RET				;$09BB	 |
+
+CODE_09BC:
+	MOV A, $0150+X			;$09BC	 |
+	AND A, #$01			;$09BF	 |
+	BNE CODE_09C6			;$09C1	 |
+	JMP CODE_0A39			;$09C3	 |
+
+CODE_09C6:
+	MOV A, $01A0+X			;$09C6	 |
+	BEQ CODE_09DA			;$09C9	 |
+	CMP A, #$FF			;$09CB	 |
+	BEQ CODE_0A39			;$09CD	 |
+	DEC A				;$09CF	 |
+	MOV $01A0+X, A			;$09D0	 |
+	BNE CODE_0A39			;$09D3	 |
+	MOV A, #$01			;$09D5	 |
+	MOV $0100+X, A			;$09D7	 |
+CODE_09DA:				;	 |
+	MOV A, $0100+X			;$09DA	 |
+	DEC A				;$09DD	 |
+	MOV $0100+X, A			;$09DE	 |
+	BNE CODE_0A39			;$09E1	 |
+	MOV A, $0170+X			;$09E3	 |
+	MOV $0100+X, A			;$09E6	 |
+	MOV A, $01C0+X			;$09E9	 |
+	BEQ CODE_0A10			;$09EC	 |
+	DEC A				;$09EE	 |
+	MOV $01C0+X, A			;$09EF	 |
+	MOV A, $01B0+X			;$09F2	 |
+	EOR A, #$FF			;$09F5	 |
+	INC A				;$09F7	 |
+	MOV $00, A			;$09F8	 |
+	BPL CODE_0A00			;$09FA	 |
+	MOV A, #$FF			;$09FC	 |
+	BRA CODE_0A02			;$09FE	 |
+
+CODE_0A00:
+	MOV A, #$00			;$0A00	 |
+CODE_0A02:				;	 |
+	MOV $01, A			;$0A02	 |
+	MOV A, $84+X			;$0A04	 |
+	MOV Y, $74+X			;$0A06	 |
+	ADDW YA, $00			;$0A08	 |
+	MOV $74+X, Y			;$0A0A	 |
+	MOV $84+X, A			;$0A0C	 |
+	BRA CODE_0A1B			;$0A0E	 |
+
+CODE_0A10:
+	MOV A, $01B0+X			;$0A10	 |
+	MOV $00, A			;$0A13	 |
+	BPL CODE_0A00			;$0A15	 |
+	MOV A, #$FF			;$0A17	 |
+	BRA CODE_0A02			;$0A19	 |
+
+CODE_0A1B:
+	MOV A, $01E0+X			;$0A1B	 |
+	BNE CODE_0A30			;$0A1E	 |
+	MOV A, X			;$0A20	 |
+	AND A, #$07			;$0A21	 |
+	XCN A				;$0A23	 |
+	OR A, #$02			;$0A24	 |
+	MOV $F2, A			;$0A26	 |
+	MOV A, $84+X			;$0A28	 |
+	MOV $F3, A			;$0A2A	 |
+	INC $F2				;$0A2C	 |
+	MOV $F3, Y			;$0A2E	 |
+CODE_0A30:				;	 |
+	DEC $94+X			;$0A30	 |
+	BNE CODE_0A39			;$0A32	 |
+	MOV A, #$FF			;$0A34	 |
+	MOV $01A0+X, A			;$0A36	 |
+CODE_0A39:				;	 |
+	MOV A, $0150+X			;$0A39	 |
+	AND A, #$02			;$0A3C	 |
+	BEQ CODE_0AB4			;$0A3E	 |
+	MOV A, $C4+X			;$0A40	 |
+	BEQ CODE_0A48			;$0A42	 |
+	DEC $C4+X			;$0A44	 |
+	BRA CODE_0AB4			;$0A46	 |
+
+CODE_0A48:
+	DEC $B4+X			;$0A48	 |
+	BNE CODE_0AB4			;$0A4A	 |
+	MOV A, $0210+X			;$0A4C	 |
+	MOV $B4+X, A			;$0A4F	 |
+	MOV A, $0234+X			;$0A51	 |
+	MOV $00, A			;$0A54	 |
+	BPL CODE_0A5C			;$0A56	 |
+	MOV A, #$FF			;$0A58	 |
+	BRA CODE_0A5E			;$0A5A	 |
+
+CODE_0A5C:
+	MOV A, #$00			;$0A5C	 |
+CODE_0A5E:				;	 |
+	MOV $01, A			;$0A5E	 |
+	MOV A, $84+X			;$0A60	 |
+	MOV Y, $74+X			;$0A62	 |
+	CMP X, #$0D			;$0A64	 |
+	BNE CODE_0A87			;$0A66	 |
+	PUSH A				;$0A68	 |
+	MOV A, $EC			;$0A69	 |
+	CMP A, $EE			;$0A6B	 |
+	BNE CODE_0A78			;$0A6D	 |
+	MOV A, $ED			;$0A6F	 |
+	CMP A, $EF			;$0A71	 |
+	BNE CODE_0A78			;$0A73	 |
+	POP A				;$0A75	 |
+	BRA CODE_0A87			;$0A76	 |
+
+CODE_0A78:
+	POP A				;$0A78	 |
+	SUBW YA, $EE			;$0A79	 |
+	ADDW YA, $EC			;$0A7B	 |
+	PUSH A				;$0A7D	 |
+	MOV A, $EC			;$0A7E	 |
+	MOV $EE, A			;$0A80	 |
+	MOV A, $ED			;$0A82	 |
+	MOV $EF, A			;$0A84	 |
+	POP A				;$0A86	 |
+CODE_0A87:				;	 |
+	ADDW YA, $00			;$0A87	 |
+	MOV $74+X, Y			;$0A89	 |
+	MOV $84+X, A			;$0A8B	 |
+	MOV A, $01E0+X			;$0A8D	 |
+	BNE CODE_0AA2			;$0A90	 |
+	MOV A, X			;$0A92	 |
+	AND A, #$07			;$0A93	 |
+	XCN A				;$0A95	 |
+	OR A, #$02			;$0A96	 |
+	MOV $F2, A			;$0A98	 |
+	MOV A, $84+X			;$0A9A	 |
+	MOV $F3, A			;$0A9C	 |
+	INC $F2				;$0A9E	 |
+	MOV $F3, Y			;$0AA0	 |
+CODE_0AA2:				;	 |
+	DEC $A4+X			;$0AA2	 |
+	BNE CODE_0AB4			;$0AA4	 |
+	MOV A, $0200+X			;$0AA6	 |
+	MOV $A4+X, A			;$0AA9	 |
+	MOV A, $0234+X			;$0AAB	 |
+	EOR A, #$FF			;$0AAE	 |
+	INC A				;$0AB0	 |
+	MOV $0234+X, A			;$0AB1	 |
+CODE_0AB4:				;	 |
+	MOV A, $0150+X			;$0AB4	 |
+	AND A, #$0C			;$0AB7	 |
+	BNE CODE_0ABE			;$0AB9	 |
+	JMP CODE_0B17			;$0ABB	 |
+
+CODE_0ABE:
+	MOV A, $02A4+X			;$0ABE	 |
+	BEQ CODE_0ACD			;$0AC1	 |
+	MOV A, $02A4+X			;$0AC3	 |
+	DEC A				;$0AC6	 |
+	MOV $02A4+X, A			;$0AC7	 |
+	JMP CODE_0B17			;$0ACA	 |
+
+CODE_0ACD:
+	MOV A, $02B4+X			;$0ACD	 |
+	DEC A				;$0AD0	 |
+	MOV $02B4+X, A			;$0AD1	 |
+	BEQ CODE_0AD9			;$0AD4	 |
+	JMP CODE_0B17			;$0AD6	 |
+
+CODE_0AD9:
+	MOV A, $02C4+X			;$0AD9	 |
+	MOV $02B4+X, A			;$0ADC	 |
+	MOV A, $01E0+X			;$0ADF	 |
+	BNE CODE_0AF8			;$0AE2	 |
+	MOV A, X			;$0AE4	 |
+	AND A, #$07			;$0AE5	 |
+	XCN A				;$0AE7	 |
+	OR A, #$00			;$0AE8	 |
+	MOV $F2, A			;$0AEA	 |
+	MOV A, $0254+X			;$0AEC	 |
+	MOV $F3, A			;$0AEF	 |
+	MOV A, $0264+X			;$0AF1	 |
+	INC $F2				;$0AF4	 |
+	MOV $F3, A			;$0AF6	 |
+CODE_0AF8:				;	 |
+	MOV A, $02E4+X			;$0AF8	 |
+	DEC A				;$0AFB	 |
+	MOV $02E4+X, A			;$0AFC	 |
+	BNE CODE_0B17			;$0AFF	 |
+	MOV A, $0150+X			;$0B01	 |
+	AND A, #$08			;$0B04	 |
+	BNE CODE_0B17			;$0B06	 |
+	MOV A, $02F4+X			;$0B08	 |
+	MOV $02E4+X, A			;$0B0B	 |
+	MOV A, $02D4+X			;$0B0E	 |
+	EOR A, #$FF			;$0B11	 |
+	INC A				;$0B13	 |
+	MOV $02D4+X, A			;$0B14	 |
+CODE_0B17:
+	RET				;$0B17	 |
+	
+CODE_0B18:				;	 |
+	POP X				;$0B18	 |
+	MOV A, #$00			;$0B19	 |
+	MOV $0110+X, A			;$0B1B	 |
+	MOV A, $01E0+X			;$0B1E	 |
+	BNE CODE_0B2B			;$0B21	 |
+	MOV $F2, #$5C			;$0B23	 |
+	MOV A, $0F95+X			;$0B26	 |
+	MOV $F3, A			;$0B29	 |
+CODE_0B2B:				;	 |
+	MOV A, X			;$0B2B	 |
+	CMP A, #$08			;$0B2C	 |
+	BCC CODE_0B61			;$0B2E	 |
+	PUSH X				;$0B30	 |
+	SETC				;$0B31	 |
+	SBC A, #$08			;$0B32	 |
+	MOV X, A			;$0B34	 |
+	MOV A, #$00			;$0B35	 |
+	MOV $01E0+X, A			;$0B37	 |
+	MOV $F2, #$3D			;$0B3A	 |
+	MOV A, $0F95+X			;$0B3D	 |
+	EOR A, #$FF			;$0B40	 |
+	AND A, $F3			;$0B42	 |
+	MOV $F3, A			;$0B44	 |
+	MOV $F2, #$4D			;$0B46	 |
+	MOV A, $0294+X			;$0B49	 |
+	BEQ CODE_0B57			;$0B4C	 |
+	MOV A, $0F95+X			;$0B4E	 |
+	OR A, $F3			;$0B51	 |
+	MOV $F3, A			;$0B53	 |
+	BRA CODE_0B60			;$0B55	 |
+
+CODE_0B57:
+	MOV A, $0F95+X			;$0B57	 |
+	EOR A, #$FF			;$0B5A	 |
+	AND A, $F3			;$0B5C	 |
+	MOV $F3, A			;$0B5E	 |
+CODE_0B60:				;	 |
+	POP X				;$0B60	 |
+CODE_0B61:				;	 |
+	MOV A, #$00			;$0B61	 |
+	RET				;$0B63	 |
+
+CODE_0B64:
+	POP Y				;$0B64	 |
+	POP A				;$0B65	 |
+	POP X				;$0B66	 |
+	PUSH A				;$0B67	 |
+	PUSH Y				;$0B68	 |
+CODE_0B69:				;	 |
+	MOV Y, #$01			;$0B69	 |
+	MOV $34+X, Y			;$0B6B	 |
+	MOV A, #$00			;$0B6D	 |
+	MOV $24+X, A			;$0B6F	 |
+	RET				;$0B71	 |
+
+CODE_0B72:				;	 |
+	CALL CODE_0B64			;$0B72	 |
+	CALL CODE_0B8B			;$0B75	 |
+CODE_0B78:				;	 |
+	MOV $00, #$02			;$0B78	 |
+CODE_0B7B:				;	 |
+	MOV $01, #$00			;$0B7B	 |
+	MOV A, $44+X			;$0B7E	 |
+	MOV Y, $54+X			;$0B80	 |
+	ADDW YA, $00			;$0B82	 |
+	MOV $54+X, Y			;$0B84	 |
+	MOV $44+X, A			;$0B86	 |
+	MOV A, #$01			;$0B88	 |
+	RET				;$0B8A	 |
+
+CODE_0B8B:
+	PUSH X				;$0B8B	 |
+	MOV A, ($00)+Y			;$0B8C	 |
+	MOV X, A			;$0B8E	 |
+	MOV A, $0560+X			;$0B8F	 |
+	POP X				;$0B92	 |
+	MOV $0244+X, A			;$0B93	 |
+	RET				;$0B96	 |
+	
+CODE_0B97:				;	 |
+	CALL CODE_0B64			;$0B97	 |
+	CALL CODE_0B8B			;$0B9A	 |
+	INC Y				;$0B9D	 |
+	MOV A, ($00)+Y			;$0B9E	 |
+	MOV $0140+X, A			;$0BA0	 |
+	INC Y				;$0BA3	 |
+	MOV A, ($00)+Y			;$0BA4	 |
+	MOV $64+X, A			;$0BA6	 |
+	INC Y				;$0BA8	 |
+	CALL CODE_0BC2			;$0BA9	 |
+	INC Y				;$0BAC	 |
+	CALL CODE_0E4E			;$0BAD	 |
+	MOV $00, #$08			;$0BB0	 |
+	JMP CODE_0B7B			;$0BB3	 |
+	
+CODE_0BB6:				;	 |
+	CALL CODE_0B64			;$0BB6	 |
+	CALL CODE_0BC2			;$0BB9	 |
+CODE_0BBC:				;	 |
+	MOV $00, #$03			;$0BBC	 |
+	JMP CODE_0B7B			;$0BBF	 |
+
+CODE_0BC2:
+	MOV A, $1D			;$0BC2	 |
+	BNE CODE_0BD2			;$0BC4	 |
+	MOV A, ($00)+Y			;$0BC6	 |
+	MOV $0254+X, A			;$0BC8	 |
+	INC Y				;$0BCB	 |
+CODE_0BCC:				;	 |
+	MOV A, ($00)+Y			;$0BCC	 |
+	MOV $0264+X, A			;$0BCE	 |
+	RET				;$0BD1	 |
+
+CODE_0BD2:
+	MOV A, ($00)+Y			;$0BD2	 |
+	BPL CODE_0BD9			;$0BD4	 |
+	EOR A, #$FF			;$0BD6	 |
+	INC A				;$0BD8	 |
+CODE_0BD9:				;	 |
+	LSR A				;$0BD9	 |
+	MOV $03, A			;$0BDA	 |
+	INC Y				;$0BDC	 |
+	CLRC				;$0BDD	 |
+	MOV A, ($00)+Y			;$0BDE	 |
+	BPL CODE_0BE5			;$0BE0	 |
+	EOR A, #$FF			;$0BE2	 |
+	INC A				;$0BE4	 |
+CODE_0BE5:				;	 |
+	LSR A				;$0BE5	 |
+	CLRC				;$0BE6	 |
+	ADC A, $03			;$0BE7	 |
+	MOV $0254+X, A			;$0BE9	 |
+	MOV $0264+X, A			;$0BEC	 |
+	RET				;$0BEF	 |
+	
+CODE_0BF0:				;	 |
+	CALL CODE_0B64			;$0BF0	 |
+	MOV $0254+X, A			;$0BF3	 |
+	CALL CODE_0BCC			;$0BF6	 |
+	MOV A, $0264+X			;$0BF9	 |
+	MOV $0254+X, A			;$0BFC	 |
+	JMP CODE_0B78			;$0BFF	 |
+	
+CODE_0C02:				;	 |
+	CALL CODE_0B64			;$0C02	 |
+	MOV A, $04B8			;$0C05	 |
+	MOV $0254+X, A			;$0C08	 |
+	MOV A, $04B9			;$0C0B	 |
+	MOV $0264+X, A			;$0C0E	 |
+	MOV A, $1D			;$0C11	 |
+	BNE CODE_0C2E			;$0C13	 |
+	JMP CODE_0ED6			;$0C15	 |
+	
+CODE_0C18:				;	 |
+	CALL CODE_0B64			;$0C18	 |
+	MOV A, $04BA			;$0C1B	 |
+	MOV $0254+X, A			;$0C1E	 |
+	MOV A, $04BB			;$0C21	 |
+	MOV $0264+X, A			;$0C24	 |
+	MOV A, $1D			;$0C27	 |
+	BNE CODE_0C2E			;$0C29	 |
+	JMP CODE_0ED6			;$0C2B	 |
+
+CODE_0C2E:
+	MOV A, $0254+X			;$0C2E	 |
+	BPL CODE_0C36			;$0C31	 |
+	EOR A, #$FF			;$0C33	 |
+	INC A				;$0C35	 |
+CODE_0C36:				;	 |
+	LSR A				;$0C36	 |
+	MOV $00, A			;$0C37	 |
+	MOV A, $0264+X			;$0C39	 |
+	BPL CODE_0C41			;$0C3C	 |
+	EOR A, #$FF			;$0C3E	 |
+	INC A				;$0C40	 |
+CODE_0C41:				;	 |
+	LSR A				;$0C41	 |
+	CLRC				;$0C42	 |
+	ADC A, $00			;$0C43	 |
+	MOV $0254+X, A			;$0C45	 |
+	MOV $0264+X, A			;$0C48	 |
+	JMP CODE_0ED6			;$0C4B	 |
+	
+CODE_0C4E:				;	 |
+	CALL CODE_0B64			;$0C4E	 |
+	MOV A, ($00)+Y			;$0C51	 |
+	MOV $04B6, A			;$0C53	 |
+	JMP CODE_0B78			;$0C56	 |
+
+CODE_0C59:
+	PUSH X				;$0C59	 |
+	MOV Y, $04B6			;$0C5A	 |
+	CMP X, #$08			;$0C5D	 |
+	BCS CODE_0C6F			;$0C5F	 |
+	CMP A, #$00			;$0C61	 |
+	BMI CODE_0C71			;$0C63	 |
+	MUL YA				;$0C65	 |
+	MOV X, #$64			;$0C66	 |
+	DIV YA, X			;$0C68	 |
+	CMP A, #$7F			;$0C69	 |
+	BMI CODE_0C6F			;$0C6B	 |
+	MOV A, #$7F			;$0C6D	 |
+CODE_0C6F:				;	 |
+	POP X				;$0C6F	 |
+	RET				;$0C70	 |
+
+CODE_0C71:
+	EOR A, #$FF			;$0C71	 |
+	INC A				;$0C73	 |
+	MUL YA				;$0C74	 |
+	MOV X, #$64			;$0C75	 |
+	DIV YA, X			;$0C77	 |
+	CMP A, #$7F			;$0C78	 |
+	BMI CODE_0C7E			;$0C7A	 |
+	MOV A, #$7F			;$0C7C	 |
+CODE_0C7E:				;	 |
+	EOR A, #$FF			;$0C7E	 |
+	INC A				;$0C80	 |
+	POP X				;$0C81	 |
+	RET				;$0C82	 |
+	
+CODE_0C83:				;	 |
+	CALL CODE_0B64			;$0C83	 |
+	MOV A, ($00)+Y			;$0C86	 |
+	MOV $04B8, A			;$0C88	 |
+	INC Y				;$0C8B	 |
+	MOV A, ($00)+Y			;$0C8C	 |
+	MOV $04B9, A			;$0C8E	 |
+	INC Y				;$0C91	 |
+	MOV A, ($00)+Y			;$0C92	 |
+	MOV $04BA, A			;$0C94	 |
+	INC Y				;$0C97	 |
+	MOV A, ($00)+Y			;$0C98	 |
+	MOV $04BB, A			;$0C9A	 |
+	JMP CODE_0F76			;$0C9D	 |
+	
+CODE_0CA0:				;	 |
+	CALL CODE_0B64			;$0CA0	 |
+	MOV A, ($00)+Y			;$0CA3	 |
+	CALL CODE_10F0			;$0CA5	 |
+	MOV $F2, #$7D			;$0CA8	 |
+	CLRC				;$0CAB	 |
+	LSR A				;$0CAC	 |
+	MOV $F3, A			;$0CAD	 |
+	MOV $F2, #$6D			;$0CAF	 |
+	ROL A				;$0CB2	 |
+	ROL A				;$0CB3	 |
+	ROL A				;$0CB4	 |
+	MOV $00, A			;$0CB5	 |
+	MOV A, #$FF			;$0CB7	 |
+	SETC				;$0CB9	 |
+	SBC A, $00			;$0CBA	 |
+	MOV $F3, A			;$0CBC	 |
+	MOV $04B7, A			;$0CBE	 |
+	MOV Y, A			;$0CC1	 |
+	MOV A, #$00			;$0CC2	 |
+	MOVW $00, YA			;$0CC4	 |
+CODE_0CC6:				;	 |
+	MOV Y, A			;$0CC6	 |
+CODE_0CC7:				;	 |
+	MOV ($00)+Y, A			;$0CC7	 |
+	INC Y				;$0CC9	 |
+	BNE CODE_0CC7			;$0CCA	 |
+	INC $01				;$0CCC	 |
+	MOV Y, $01			;$0CCE	 |
+	CMP Y, #$00			;$0CD0	 |
+	BNE CODE_0CC6			;$0CD2	 |
+	JMP CODE_0B78			;$0CD4	 |
+	
+CODE_0CD7:				;	 |
+	CALL CODE_0B64			;$0CD7	 |
+	MOV A, ($00)+Y			;$0CDA	 |
+	MOV $44+X, A			;$0CDC	 |
+	INC Y				;$0CDE	 |
+	MOV A, ($00)+Y			;$0CDF	 |
+	MOV $54+X, A			;$0CE1	 |
+	MOV A, #$01			;$0CE3	 |
+	RET				;$0CE5	 |
+
+CODE_0CE6:				;	 |
+	CALL CODE_0B64			;$0CE6	 |
+	MOV A, ($00)+Y			;$0CE9	 |
+	MOV $04, A			;$0CEB	 |
+	INC Y				;$0CED	 |
+	CALL CODE_0D1C			;$0CEE	 |
+CODE_0CF1:				;	 |
+	MOV $0334+Y, A			;$0CF1	 |
+CODE_0CF4:				;	 |
+	INC $D4+X			;$0CF4	 |
+	MOVW YA, $02			;$0CF6	 |
+	MOV $44+X, A			;$0CF8	 |
+	MOV $54+X, Y			;$0CFA	 |
+	MOV A, #$01			;$0CFC	 |
+	RET				;$0CFE	 |
+
+CODE_0CFF:				;	 |
+	CALL CODE_0B64			;$0CFF	 |
+	MOV $04, #$01			;$0D02	 |
+	CALL CODE_0D1C			;$0D05	 |
+	BEQ CODE_0D0E			;$0D08	 |
+	DEC A				;$0D0A	 |
+	JMP CODE_0CF1			;$0D0B	 |
+
+CODE_0D0E:
+	DEC A				;$0D0E	 |
+	MOV $0334+Y, A			;$0D0F	 |
+	MOV A, $03B4+Y			;$0D12	 |
+	DEC A				;$0D15	 |
+	MOV $03B4+Y, A			;$0D16	 |
+	JMP CODE_0CF4			;$0D19	 |
+
+CODE_0D1C:
+	MOV A, ($00)+Y			;$0D1C	 |
+	MOV $02, A			;$0D1E	 |
+	INC Y				;$0D20	 |
+	MOV A, ($00)+Y			;$0D21	 |
+	MOV $03, A			;$0D23	 |
+	MOV Y, $D4+X			;$0D25	 |
+	MOV A, $04			;$0D27	 |
+	MOV $0434+Y, A			;$0D29	 |
+	MOV A, $54+X			;$0D2C	 |
+	MOV $03B4+Y, A			;$0D2E	 |
+	MOV A, $44+X			;$0D31	 |
+	RET				;$0D33	 |
+	
+CODE_0D34:				;	 |
+	CALL CODE_0B64			;$0D34	 |
+	DEC $D4+X			;$0D37	 |
+	MOV Y, $D4+X			;$0D39	 |
+	MOV A, $03B4+Y			;$0D3B	 |
+	MOV $54+X, A			;$0D3E	 |
+	MOV A, $0334+Y			;$0D40	 |
+	MOV $44+X, A			;$0D43	 |
+	MOV A, $0434+Y			;$0D45	 |
+	DEC A				;$0D48	 |
+	MOV $0434+Y, A			;$0D49	 |
+	BEQ CODE_0D6A			;$0D4C	 |
+	MOV A, $44+X			;$0D4E	 |
+	MOV Y, $54+X			;$0D50	 |
+	MOVW $00, YA			;$0D52	 |
+	MOV Y, #$02			;$0D54	 |
+	MOV A, ($00)+Y			;$0D56	 |
+	MOV $02, A			;$0D58	 |
+	INC Y				;$0D5A	 |
+	MOV A, ($00)+Y			;$0D5B	 |
+	MOV $03, A			;$0D5D	 |
+	INC $D4+X			;$0D5F	 |
+	MOVW YA, $02			;$0D61	 |
+	MOV $44+X, A			;$0D63	 |
+	MOV $54+X, Y			;$0D65	 |
+	MOV A, #$01			;$0D67	 |
+	RET				;$0D69	 |
+
+CODE_0D6A:
+	MOV $00, #$04			;$0D6A	 |
+	JMP CODE_0B7B			;$0D6D	 |
+	
+CODE_0D70:				;	 |
+	CALL CODE_0B64			;$0D70	 |
+	MOV A, ($00)+Y			;$0D73	 |
+	MOV $0120+X, A			;$0D75	 |
+	MOV A, $01D0+X			;$0D78	 |
+	BEQ CODE_0D89			;$0D7B	 |
+	MOV A, $0120+X			;$0D7D	 |
+	MOV $0130+X, A			;$0D80	 |
+	INC Y				;$0D83	 |
+	MOV A, ($00)+Y			;$0D84	 |
+	MOV $0120+X, A			;$0D86	 |
+CODE_0D89:				;	 |
+	INC Y				;$0D89	 |
+	MOV $00, Y			;$0D8A	 |
+	JMP CODE_0B7B			;$0D8C	 |
+	
+CODE_0D8F:				;	 |
+	POP X				;$0D8F	 |
+	MOV A, #$00			;$0D90	 |
+	MOV $0120+X, A			;$0D92	 |
+	MOV $0130+X, A			;$0D95	 |
+	JMP CODE_0DDF			;$0D98	 |
+	
+CODE_0D9B:				;	 |
+	POP X				;$0D9B	 |
+	MOV Y, #$04			;$0D9C	 |
+	MOV A, ($00)+Y			;$0D9E	 |
+	BRA CODE_0DAA			;$0DA0	 |
+	
+CODE_0DA2:				;	 |
+	POP X				;$0DA2	 |
+	MOV Y, #$04			;$0DA3	 |
+	MOV A, ($00)+Y			;$0DA5	 |
+	EOR A, #$FF			;$0DA7	 |
+	INC A				;$0DA9	 |
+CODE_0DAA:				;	 |
+	MOV $01B0+X, A			;$0DAA	 |
+	MOV A, $0150+X			;$0DAD	 |
+	OR A, #$01			;$0DB0	 |
+	MOV $0150+X, A			;$0DB2	 |
+	CALL CODE_0B69			;$0DB5	 |
+	MOV A, ($00)+Y			;$0DB8	 |
+	MOV $0160+X, A			;$0DBA	 |
+	INC Y				;$0DBD	 |
+	MOV A, ($00)+Y			;$0DBE	 |
+	MOV $0170+X, A			;$0DC0	 |
+	INC Y				;$0DC3	 |
+	MOV A, ($00)+Y			;$0DC4	 |
+	MOV $0180+X, A			;$0DC6	 |
+	INC Y				;$0DC9	 |
+	INC Y				;$0DCA	 |
+	MOV A, ($00)+Y			;$0DCB	 |
+	MOV $0190+X, A			;$0DCD	 |
+	MOV $00, #$06			;$0DD0	 |
+	JMP CODE_0B7B			;$0DD3	 |
+	
+CODE_0DD6:				;	 |
+	POP X				;$0DD6	 |
+	MOV A, $0150+X			;$0DD7	 |
+	AND A, #$FE			;$0DDA	 |
+	MOV $0150+X, A			;$0DDC	 |
+CODE_0DDF:				;	 |
+	MOV A, #$01			;$0DDF	 |
+	MOV $00, A			;$0DE1	 |
+	MOV $34+X, A			;$0DE3	 |
+	DEC A				;$0DE5	 |
+	MOV $24+X, A			;$0DE6	 |
+	JMP CODE_0B7B			;$0DE8	 |
+	
+CODE_0DEB:				;	 |
+	POP X				;$0DEB	 |
+	MOV Y, #$01			;$0DEC	 |
+	MOV A, ($00)+Y			;$0DEE	 |
+	MOV $1F, A			;$0DF0	 |
+CODE_0DF2:				;	 |
+	CALL CODE_0B69			;$0DF2	 |
+	JMP CODE_0B78			;$0DF5	 |
+	
+CODE_0DF8:				;	 |
+	POP X				;$0DF8	 |
+	MOV Y, #$01			;$0DF9	 |
+	MOV A, ($00)+Y			;$0DFB	 |
+	CLRC				;$0DFD	 |
+	ADC A, $1F			;$0DFE	 |
+	MOV $1F, A			;$0E00	 |
+	JMP CODE_0DF2			;$0E02	 |
+	
+CODE_0E05:				;	 |
+	POP X				;$0E05	 |
+	MOV A, $0150+X			;$0E06	 |
+	AND A, #$FD			;$0E09	 |
+	MOV $0150+X, A			;$0E0B	 |
+	JMP CODE_0DDF			;$0E0E	 |
+
+CODE_0E11:				;	 |	
+	POP X				;$0E11	 |
+	MOV A, #$00			;$0E12	 |
+	CALL CODE_0E25			;$0E14	 |
+	JMP CODE_0D6A			;$0E17	 |
+	
+CODE_0E1A:				;	 |
+	POP X				;$0E1A	 |
+	MOV Y, #$04			;$0E1B	 |
+	MOV A, ($00)+Y			;$0E1D	 |
+	CALL CODE_0E25			;$0E1F	 |
+	JMP CODE_0F76			;$0E22	 |
+
+CODE_0E25:
+	MOV $0220+X, A			;$0E25	 |
+	MOV A, $0150+X			;$0E28	 |
+	OR A, #$02			;$0E2B	 |
+	MOV $0150+X, A			;$0E2D	 |
+	CALL CODE_0B69			;$0E30	 |
+	MOV A, ($00)+Y			;$0E33	 |
+	MOV $0200+X, A			;$0E35	 |
+	INC Y				;$0E38	 |
+	MOV A, ($00)+Y			;$0E39	 |
+	MOV $0210+X, A			;$0E3B	 |
+	INC Y				;$0E3E	 |
+	MOV A, ($00)+Y			;$0E3F	 |
+	MOV $0234+X, A			;$0E41	 |
+	RET				;$0E44	 |
+	
+CODE_0E45:				;	 |
+	CALL CODE_0B64			;$0E45	 |
+	CALL CODE_0E4E			;$0E48	 |
+	JMP CODE_0BBC			;$0E4B	 |
+
+CODE_0E4E:
+	MOV A, ($00)+Y			;$0E4E	 |
+	MOV $0274+X, A			;$0E50	 |
+	INC Y				;$0E53	 |
+	MOV A, ($00)+Y			;$0E54	 |
+	MOV $0284+X, A			;$0E56	 |
+	RET				;$0E59	 |
+	
+CODE_0E5A:				;	 |
+	POP X				;$0E5A	 |
+	MOV Y, #$01			;$0E5B	 |
+	MOV A, ($00)+Y			;$0E5D	 |
+	MOV $0C+X, A			;$0E5F	 |
+	JMP CODE_0E6B			;$0E61	 |
+	
+CODE_0E64:				;	 |
+	POP X				;$0E64	 |
+	MOV Y, #$01			;$0E65	 |
+	MOV A, ($00)+Y			;$0E67	 |
+	MOV $14+X, A			;$0E69	 |
+CODE_0E6B:				;	 |
+	CALL CODE_0B69			;$0E6B	 |
+	JMP CODE_0B78			;$0E6E	 |
+	
+CODE_0E71:				;	 |
+	CALL CODE_0B64			;$0E71	 |
+	MOV A, ($00)+Y			;$0E74	 |
+	MOV $64+X, A			;$0E76	 |
+	JMP CODE_0B78			;$0E78	 |
+	
+CODE_0E7B:				;	 |
+	CALL CODE_0B64			;$0E7B	 |
+	MOV $24+X, A			;$0E7E	 |
+	MOV A, ($00)+Y			;$0E80	 |
+	MOV $0140+X, A			;$0E82	 |
+	JMP CODE_0B78			;$0E85	 |
+	
+CODE_0E88:				;	 |
+	CALL CODE_0B64			;$0E88	 |
+	MOV A, ($00)+Y			;$0E8B	 |
+	CLRC				;$0E8D	 |
+	ADC A, $0140+X			;$0E8E	 |
+	MOV $0140+X, A			;$0E91	 |
+	JMP CODE_0B78			;$0E94	 |
+	
+CODE_0E97:				;	 |
+	POP X				;$0E97	 |
+	MOV $F2, #$0D			;$0E98	 |
+	MOV Y, #$01			;$0E9B	 |
+	MOV A, ($00)+Y			;$0E9D	 |
+	MOV $F3, A			;$0E9F	 |
+	INC Y				;$0EA1	 |
+	MOV $F2, #$2C			;$0EA2	 |
+	MOV A, ($00)+Y			;$0EA5	 |
+	MOV $0232, A			;$0EA7	 |
+	MOV $F3, A			;$0EAA	 |
+	MOV $F2, #$3C			;$0EAC	 |
+	INC Y				;$0EAF	 |
+	MOV A, ($00)+Y			;$0EB0	 |
+	MOV $0233, A			;$0EB2	 |
+	MOV $F3, A			;$0EB5	 |
+	MOV A, #$00			;$0EB7	 |
+	MOV $04B5, A			;$0EB9	 |
+	MOV $F2, #$6C			;$0EBC	 |
+	MOV $F3, A			;$0EBF	 |
+	JMP CODE_0D6A			;$0EC1	 |
+	
+CODE_0EC4:				;	 |
+	CALL CODE_0B64			;$0EC4	 |
+	MOV $F2, #$4D			;$0EC7	 |
+	MOV A, $0F95+X			;$0ECA	 |
+	OR A, $F3			;$0ECD	 |
+	MOV $F3, A			;$0ECF	 |
+	MOV A, #$01			;$0ED1	 |
+	MOV $0294+X, A			;$0ED3	 |
+CODE_0ED6:				;	 |
+	MOV $00, #$01			;$0ED6	 |
+	JMP CODE_0B7B			;$0ED9	 |
+	
+CODE_0EDC:				;	 |
+	POP X				;$0EDC	 |
+	MOV $F2, #$4D			;$0EDD	 |
+	MOV A, $0F95+X			;$0EE0	 |
+	EOR A, #$FF			;$0EE3	 |
+	AND A, $F3			;$0EE5	 |
+	MOV $F3, A			;$0EE7	 |
+	MOV A, #$00			;$0EE9	 |
+	MOV $0294+X, A			;$0EEB	 |
+	MOV $24+X, A			;$0EEE	 |
+	INC A				;$0EF0	 |
+	MOV $34+X, A			;$0EF1	 |
+	JMP CODE_0ED6			;$0EF3	 |
+	
+CODE_0EF6:				;	 |
+	CALL CODE_0B64			;$0EF6	 |
+	MOV $F2, #$0F			;$0EF9	 |
+CODE_0EFC:				;	 |
+	MOV A, ($00)+Y			;$0EFC	 |
+	MOV $F3, A			;$0EFE	 |
+	INC Y				;$0F00	 |
+	CLRC				;$0F01	 |
+	ADC $F2, #$10			;$0F02	 |
+	CMP $F2, #$8F			;$0F05	 |
+	BNE CODE_0EFC			;$0F08	 |
+	MOV $00, #$09			;$0F0A	 |
+	JMP CODE_0B7B			;$0F0D	 |
+	
+CODE_0F10:				;	 |
+	CALL CODE_0B64			;$0F10	 |
+	MOV A, ($00)+Y			;$0F13	 |
+	MOV $04B4, A			;$0F15	 |
+	OR A, $04B5			;$0F18	 |
+	MOV $F2, #$6C			;$0F1B	 |
+	MOV $F3, A			;$0F1E	 |
+	JMP CODE_0B78			;$0F20	 |
+	
+CODE_0F23:				;	 |
+	POP X				;$0F23	 |
+	MOV $F2, #$3D			;$0F24	 |
+	MOV A, $0F95+X			;$0F27	 |
+	OR A, $F3			;$0F2A	 |
+	MOV $F3, A			;$0F2C	 |
+CODE_0F2E:				;	 |
+	CALL CODE_0B69			;$0F2E	 |
+	JMP CODE_0ED6			;$0F31	 |
+	
+CODE_0F34:				;	 |
+	POP X				;$0F34	 |
+	MOV $F2, #$3D			;$0F35	 |
+	MOV A, $0F95+X			;$0F38	 |
+	EOR A, #$FF			;$0F3B	 |
+	AND A, $F3			;$0F3D	 |
+	MOV $F3, A			;$0F3F	 |
+	JMP CODE_0F2E			;$0F41	 |
+
+CODE_0F44:				;	 |
+	POP X				;$0F44	 |
+	MOV Y, #$04			;$0F45	 |
+	MOV A, ($00)+Y			;$0F47	 |
+	EOR A, #$FF			;$0F49	 |
+	INC A				;$0F4B	 |
+	BRA CODE_0F53			;$0F4C	 |
+	
+CODE_0F4E:				;	 |
+	POP X				;$0F4E	 |
+	MOV Y, #$04			;$0F4F	 |
+	MOV A, ($00)+Y			;$0F51	 |
+CODE_0F53:				;	 |
+	MOV $01B0+X, A			;$0F53	 |
+	MOV A, $0150+X			;$0F56	 |
+	OR A, #$01			;$0F59	 |
+	MOV $0150+X, A			;$0F5B	 |
+	CALL CODE_0B69			;$0F5E	 |
+	MOV A, ($00)+Y			;$0F61	 |
+	MOV $0160+X, A			;$0F63	 |
+	INC Y				;$0F66	 |
+	MOV A, ($00)+Y			;$0F67	 |
+	MOV $0170+X, A			;$0F69	 |
+	INC Y				;$0F6C	 |
+	MOV A, ($00)+Y			;$0F6D	 |
+	MOV $0190+X, A			;$0F6F	 |
+	ASL A				;$0F72	 |
+	MOV $0180+X, A			;$0F73	 |
+CODE_0F76:				;	 |
+	MOV $00, #$05			;$0F76	 |
+	JMP CODE_0B7B			;$0F79	 |
+	
+CODE_0F7C:				;	 |
+	CALL CODE_0B64			;$0F7C	 |
+	INC A				;$0F7F	 |
+	MOV $01D0+X, A			;$0F80	 |
+	JMP CODE_0ED6			;$0F83	 |
+
+CODE_0F86:
+	CALL CODE_0B64			;$0F86	 |
+	MOV $01D0+X, A			;$0F89	 |
+	JMP CODE_0ED6			;$0F8C	 |
+
+CODE_0F8F:				;	 |
+	MOV $00, #$07			;$0F8F	 |
+	JMP CODE_0B7B			;$0F92	 |
+
+DATA_0F95:
+	db $01, $02, $04, $08, $10, $20, $40, $80
+	db $01, $02, $04, $08, $10, $20, $40, $80
+	
+DATA_0FA5:
+	dw CODE_0B18
+	dw CODE_0B72
+	dw CODE_0BB6
+	dw CODE_0CD7
+	dw CODE_0CE6
+	dw CODE_0D34
+	dw CODE_0D70
+	dw CODE_0D8F
+	dw CODE_0D9B
+	dw CODE_0DA2
+	dw CODE_0DD6
+	dw CODE_0DEB
+	dw CODE_0DF8
+	dw CODE_0E11
+	dw CODE_0E05
+	dw CODE_0E1A
+	dw CODE_0E45
+	dw !null_pointer
+	dw CODE_0E71
+	dw CODE_0E7B
+	dw CODE_0E88
+	dw CODE_0E97
+	dw CODE_0EC4
+	dw CODE_0EDC
+	dw CODE_0EF6
+	dw CODE_0F10
+	dw CODE_0F23
+	dw CODE_0F34
+	dw CODE_0E5A
+	dw CODE_0E64
+	dw CODE_0C83
+	dw CODE_0CA0
+	dw CODE_0C02
+	dw CODE_0CFF
+	dw CODE_0B97
+	dw CODE_0BF0
+	dw CODE_0C4E
+	dw !null_pointer
+	dw CODE_0F44
+	dw CODE_0F4E
+	dw !null_pointer
+	dw !null_pointer
+	dw !null_pointer
+	dw CODE_0F7C
+	dw CODE_0F86
+	dw !null_pointer
+	dw !null_pointer
+	dw !null_pointer
+	dw CODE_0EDC
+	dw CODE_0C18
+	dw CODE_0EDC
+
+CODE_100B:
+	MOV A, #$00			;$100B	 |
+	MOV $EC, A			;$100D	 |
+	MOV $ED, A			;$100F	 |
+	MOV $EE, A			;$1011	 |
+	MOV $EF, A			;$1013	 |
+	MOV $F2, #$6C			;$1015	 |
+	MOV $F3, #$E0			;$1018	 |
+	MOV $F2, #$2C			;$101B	 |
+	MOV $0232, A			;$101E	 |
+	MOV $F3, A			;$1021	 |
+	MOV $F2, #$3C			;$1023	 |
+	MOV $0233, A			;$1026	 |
+	MOV $F3, A			;$1029	 |
+	MOV $F2, #$0D			;$102B	 |
+	MOV $F3, A			;$102E	 |
+	MOV $F2, #$4C			;$1030	 |
+	MOV $F3, A			;$1033	 |
+	MOV $F2, #$5C			;$1035	 |
+	MOV $F3, #$FF			;$1038	 |
+	MOV $F2, #$2D			;$103B	 |
+	MOV $F3, A			;$103E	 |
+	MOV $F2, #$3D			;$1040	 |
+	MOV $F3, A			;$1043	 |
+	MOV $F2, #$4D			;$1045	 |
+	MOV $F3, A			;$1048	 |
+	MOV A, #$3C			;$104A	 |
+	MOV $0230, A			;$104C	 |
+	MOV $0231, A			;$104F	 |
+	MOV $F2, #$0C			;$1052	 |
+	MOV $F3, A			;$1055	 |
+	MOV $F2, #$1C			;$1057	 |
+	MOV $F3, A			;$105A	 |
+	MOV A, #$64			;$105C	 |
+	MOV $04B6, A			;$105E	 |
+	MOV $F2, #$5D			;$1061	 |
+	MOV $F3, #$31			;$1064	 |
+	MOV Y, #$08			;$1067	 |
+	MOV $F2, #$00			;$1069	 |
+CODE_106C:				;	 |
+	MOV A, #$7F			;$106C	 |
+	MOV $F3, A			;$106E	 |
+	INC $F2				;$1070	 |
+	MOV $F3, A			;$1072	 |
+	CLRC				;$1074	 |
+	ADC $F2, #$04			;$1075	 |
+	MOV A, #$00			;$1078	 |
+	MOV $F3, A			;$107A	 |
+	INC $F2				;$107C	 |
+	MOV $F3, A			;$107E	 |
+	INC $F2				;$1080	 |
+	MOV $F3, #$FF			;$1082	 |
+	CLRC				;$1085	 |
+	ADC $F2, #$09			;$1086	 |
+	DEC Y				;$1089	 |
+	BNE CODE_106C			;$108A	 |
+	MOV $E7, #$FF			;$108C	 |
+	MOV $E8, #$FF			;$108F	 |
+	MOV A, #$64			;$1092	 |
+	MOV $E4, A			;$1094	 |
+	MOV A, #$20			;$1096	 |
+	MOV $04B5, A			;$1098	 |
+	MOV $00, #$08			;$109B	 |
+	MOV X, #$00			;$109E	 |
+	MOV Y, #$00			;$10A0	 |
+	MOV $0A, Y			;$10A2	 |
+	MOV $04B4, Y			;$10A4	 |
+	MOV $01, Y			;$10A7	 |
+CODE_10A9:				;	 |
+	MOV A, #$01			;$10A9	 |
+	MOV $34+X, A			;$10AB	 |
+	MOV $0110+X, A			;$10AD	 |
+	MOV A, ($E5)+Y			;$10B0	 |
+	MOV $44+X, A			;$10B2	 |
+	INC Y				;$10B4	 |
+	MOV A, ($E5)+Y			;$10B5	 |
+	MOV $54+X, A			;$10B7	 |
+	MOV A, $01			;$10B9	 |
+	MOV $D4+X, A			;$10BB	 |
+	MOV A, #$00			;$10BD	 |
+	MOV $01D0+X, A			;$10BF	 |
+	MOV $24+X, A			;$10C2	 |
+	MOV $0120+X, A			;$10C4	 |
+	MOV $0130+X, A			;$10C7	 |
+	MOV $0150+X, A			;$10CA	 |
+	MOV $0140+X, A			;$10CD	 |
+	MOV $64+X, A			;$10D0	 |
+	MOV $01E0+X, A			;$10D2	 |
+	MOV $0294+X, A			;$10D5	 |
+	INC X				;$10D8	 |
+	INC Y				;$10D9	 |
+	CLRC				;$10DA	 |
+	ADC $01, #$08			;$10DB	 |
+	DBNZ $00, CODE_10A9		;$10DE	 |
+	MOV A, ($E5)+Y			;$10E1	 |
+	MOV $1F, A			;$10E3	 |
+	INC Y				;$10E5	 |
+	MOV A, ($E5)+Y			;$10E6	 |
+	MOV $22, A			;$10E8	 |
+	MOV A, #$00			;$10EA	 |
+	MOV $1E, A			;$10EC	 |
+	MOV $21, A			;$10EE	 |
+CODE_10F0:				;	 |
+	MOV $F2, #$6C			;$10F0	 |
+	MOV $F3, #$20			;$10F3	 |
+	RET				;$10F6	 |
+	
+CODE_10F7:
+	PUSH A				;$10F7	 |
+	CMP A, #$60			;$10F8	 |
+	BPL CODE_1104			;$10FA	 |
+	SETC				;$10FC	 |
+	SBC A, $2410			;$10FD	 |
+	BPL CODE_110D			;$1100	 |
+	BRA CODE_1111			;$1102	 |
+
+CODE_1104:
+	SETC				;$1104	 |
+	SBC A, #$60			;$1105	 |
+	SETC				;$1107	 |
+	SBC A, $2E94			;$1108	 |
+	BMI CODE_1111			;$110B	 |
+CODE_110D:				;	 |
+	POP A				;$110D	 |
+	MOV A, #$00			;$110E	 |
+	PUSH A				;$1110	 |
+CODE_1111:				;	 |
+	POP A				;$1111	 |
+	ASL A				;$1112	 |
+	PUSH A				;$1113	 |
+	MOV A, #$01			;$1114	 |
+	MOV $01E0+X, A			;$1116	 |
+	MOV $F2, #$3D			;$1119	 |
+	MOV A, $0F95+X			;$111C	 |
+	EOR A, #$FF			;$111F	 |
+	AND A, $F3			;$1121	 |
+	MOV $F3, A			;$1123	 |
+	MOV A, X			;$1125	 |
+	CLRC				;$1126	 |
+	ADC A, #$08			;$1127	 |
+	MOV X, A			;$1129	 |
+	ASL A				;$112A	 |
+	ASL A				;$112B	 |
+	ASL A				;$112C	 |
+	MOV $D4+X, A			;$112D	 |
+	MOV A, #$01			;$112F	 |
+	MOV $0110+X, A			;$1131	 |
+	DEC A				;$1134	 |
+	MOV $0120+X, A			;$1135	 |
+	MOV $0130+X, A			;$1138	 |
+	MOV $24+X, A			;$113B	 |
+	MOV $01D0+X, A			;$113D	 |
+	MOV $01E0+X, A			;$1140	 |
+	MOV $0150+X, A			;$1143	 |
+	MOV $0140+X, A			;$1146	 |
+	MOV $0294+X, A			;$1149	 |
+	MOV $64+X, A			;$114C	 |
+	MOV A, #$7F			;$114E	 |
+	MOV $0254+X, A			;$1150	 |
+	MOV $0264+X, A			;$1153	 |
+	MOV $0314+X, A			;$1156	 |
+	MOV $0324+X, A			;$1159	 |
+	MOV A, #$8E			;$115C	 |
+	MOV $0274+X, A			;$115E	 |
+	MOV A, #$E0			;$1161	 |
+	MOV $0284+X, A			;$1163	 |
+	POP A				;$1166	 |
+	CMP A, #$C0			;$1167	 |
+	BCS CODE_1179			;$1169	 |
+	MOV Y, A			;$116B	 |
+	MOV A, $2412+Y			;$116C	 |
+	MOV $44+X, A			;$116F	 |
+	INC Y				;$1171	 |
+	MOV A, $2412+Y			;$1172	 |
+	MOV $54+X, A			;$1175	 |
+	BRA CODE_1188			;$1177	 |
+
+CODE_1179:
+	SETC				;$1179	 |
+	SBC A, #$C0			;$117A	 |
+	MOV Y, A			;$117C	 |
+	MOV A, $2E96+Y			;$117D	 |
+	MOV $44+X, A			;$1180	 |
+	INC Y				;$1182	 |
+	MOV A, $2E96+Y			;$1183	 |
+	MOV $54+X, A			;$1186	 |
+CODE_1188:				;	 |
+	MOV A, #$02			;$1188	 |
+	MOV $34+X, A			;$118A	 |
+	MOV $F2, #$4D			;$118C	 |
+	MOV A, $0F95+X			;$118F	 |
+	EOR A, #$FF			;$1192	 |
+	AND A, $F3			;$1194	 |
+	MOV $F3, A			;$1196	 |
+	RET				;$1198	 |
+
+DATA_1199:
+	dw $0000
+	dw $0040
+	dw $0044
+	dw $0048
+	dw $004C
+	dw $0051
+	dw $0055
+	dw $005B
+	dw $0060
+	dw $0066
+	dw $006C
+	dw $0072
+	dw $0079
+	dw $0080
+	dw $0088
+	dw $0090
+	dw $0098
+	dw $00A1
+	dw $00AB
+	dw $00B5
+	dw $00C0
+	dw $00CB
+	dw $00D7
+	dw $00E4
+	dw $00F2
+	dw $0100
+	dw $010F
+	dw $011F
+	dw $0130
+	dw $0143
+	dw $0156
+	dw $016A
+	dw $0180
+	dw $0196
+	dw $01AF
+	dw $01C8
+	dw $01E3
+	dw $0200
+	dw $021E
+	dw $023F
+	dw $0261
+	dw $0285
+	dw $02AB
+	dw $02D4
+	dw $02FF
+	dw $032D
+	dw $035D
+	dw $0390
+	dw $03C7
+	dw $0400
+	dw $043D
+	dw $047D
+	dw $04C2
+	dw $050A
+	dw $0557
+	dw $05A8
+	dw $05FE
+	dw $065A
+	dw $06BA
+	dw $0721
+	dw $078D
+	dw $0800
+	dw $087A
+	dw $08FB
+	dw $0984
+	dw $0A14
+	dw $0AAE
+	dw $0B50
+	dw $0BFD
+	dw $0CB3
+	dw $0D74
+	dw $0E41
+	dw $0F1A
+	dw $1000
+	dw $10F4
+	dw $11F6
+	dw $1307
+	dw $1429
+	dw $155C
+	dw $16A1
+	dw $17F9
+	dw $1966
+	dw $1AE9
+	dw $1C82
+	dw $1E34
+	dw $2000
+	dw $21E7
+	dw $23EB
+	dw $260E
+	dw $2851
+	dw $2AB7
+	dw $2D41
+	dw $2FF2
+	dw $32CC
+	dw $35D1
+	dw $3904
+	dw $3C68
+	dw $3FFF
+	
+	db $FF
+base off
+arch 65816
 
 DATA_EE0D86:
 	%offset(DATA_EE0D88, 2)
