@@ -2778,7 +2778,7 @@ CODE_BB9265:				;		 |
 	JSL init_registers_wrapper	;$BB926E	 |
 	JSL CODE_8088D2			;$BB9272	 |
 	JSR CODE_BB91FB			;$BB9276	 |
-	JSL CODE_8085B5			;$BB9279	 |
+	JSL clear_vram_wrapper		;$BB9279	 |
 	LDA $08A6			;$BB927D	 |
 	XBA				;$BB9280	 |
 	ORA $D3				;$BB9281	 |
@@ -2885,7 +2885,7 @@ CODE_BB9358:				;		 |
 CODE_BB9379:				;		 |
 	RTL				;$BB9379	/
 
-	JSL CODE_8085B5			;$BB937A	 |
+	JSL clear_vram_wrapper		;$BB937A	 |
 	SEP #$20			;$BB937E	 |
 	LDA #$03			;$BB9380	 |
 	STA $212C			;$BB9382	 |

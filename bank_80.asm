@@ -282,7 +282,7 @@ RESET_start:
 	STA $B06000			;$8084EA	 |/
 	LDX #$01FF			;$8084EE	 |\ Reset the stack register
 	TXS				;$8084F1	 |/
-	%return(CODE_8085B9)		;$8084F2	 | Push address to run Rareware logo
+	%return(start_engine)		;$8084F2	 | Push address to start the game engine
 	%return(clear_vram)		;$8084F5	 | Push address for clearing VRAM
 init_registers:    			;		 |
 	SEP #$30			;$8084F8	 | Use 8 bit to manipulate MMIO
@@ -351,7 +351,7 @@ init_registers_wrapper:
 	JSR init_registers		;$80858B	\ Wrapper for long calls
 	RTL				;$80858E	/
 
-vram_zero_const:
+vram_zero_fill:
 	dw $0000			;$80858F	> Used for vram fill byte
 
 clear_vram:
@@ -374,30 +374,30 @@ clear_vram_wrapper:
 	JSR clear_vram			;$8085B5	\ Wrapper for long calls
 	RTL				;$8085B8	/
 
-CODE_8085B9:
-	STZ $00				;$8085B9	\
-	LDX #$0000			;$8085BB	 |
-	LDY #$0001			;$8085BE	 |
-	LDA #$FFFF			;$8085C1	 |
-	MVN $7E, $7E			;$8085C4	 |
-	LDY #$0000			;$8085C7	 |
-	TYX				;$8085CA	 |
-	LDA #$FFFF			;$8085CB	 |
-	MVN $7F, $7E			;$8085CE	 |
-	PHK				;$8085D1	 |
-	PLB				;$8085D2	 |
-	LDX #$0006			;$8085D3	 |
-CODE_8085D6:				;		 |
-	LDA rare_string,x		;$8085D6	 |
-	STA $0907,x			;$8085D9	 |
-	DEX				;$8085DC	 |
-	DEX				;$8085DD	 |
-	BPL CODE_8085D6			;$8085DE	 |
-	JSL CODE_B58000			;$8085E0	 |
-CODE_8085E4:				;		 |
-	JSL CODE_BB91D9			;$8085E4	 |
-	JSR CODE_808EAE			;$8085E8	 |
-	JML CODE_8090DA			;$8085EB	/
+start_engine:				;		\ 
+	STZ $00				;$8085B9	 |\ Zero the first byte of WRAM
+	LDX #$0000			;$8085BB	 | | Set up MVN
+	LDY #$0001			;$8085BE	 | |
+	LDA #$FFFF			;$8085C1	 | | 64K
+	MVN $7E, $7E			;$8085C4	 |/ Copy first byte of WRAM across bank 7E (zero bank 7E)
+	LDY #$0000			;$8085C7	 |\ Set up another MVN 
+	TYX				;$8085CA	 | |
+	LDA #$FFFF			;$8085CB	 | |
+	MVN $7F, $7E			;$8085CE	 |/ Copy 64K from bank 7E to 7F (zero bank 7F)
+	PHK				;$8085D1	 |\ Set the program bank to the data bank
+	PLB				;$8085D2	 |/
+	LDX #$0006			;$8085D3	 |\ Number of bytes minus one to copy (due to 16 bit)
+.rare_string_copy			;		 | |
+	LDA rare_string,x		;$8085D6	 | | Use the Rareware anti piracy success string,
+	STA $0907,x			;$8085D9	 | | and copy that into RAM
+	DEX				;$8085DC	 | |
+	DEX				;$8085DD	 | |
+	BPL .rare_string_copy		;$8085DE	 |/ Copy the string until there are no more bytes
+	JSL CODE_B58000			;$8085E0	 | Upload the SPC engine
+init_rare_logo:				;		 |
+	JSL CODE_BB91D9			;$8085E4	 | Disable the screen
+	JSR CODE_808EAE			;$8085E8	 | Clear WRAM
+	JML CODE_8090DA			;$8085EB	/ Run the Rareware logo
 
 CODE_8085EF:
 	LDA #$FFFF			;$8085EF	\
@@ -571,7 +571,7 @@ CODE_80875E:				;		 |
 	AND #$0003			;$808762	 |
 	CMP #$0003			;$808765	 |
 	BNE CODE_80876E			;$808768	 |
-	JML CODE_8085E4			;$80876A	/
+	JML init_rare_logo		;$80876A	/
 
 CODE_80876E:
 	ASL A				;$80876E	\
@@ -3586,7 +3586,7 @@ CODE_80A350:				;		 |
 	LDA $0512			;$80A350	 |
 	CMP #$8201			;$80A353	 |
 	BNE CODE_80A35B			;$80A356	 |
-	JMP CODE_8085E4			;$80A358	/
+	JMP init_rare_logo		;$80A358	/
 
 CODE_80A35B:
 	LDA $2A				;$80A35B	\

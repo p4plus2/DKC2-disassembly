@@ -9978,7 +9978,7 @@ CODE_B5E0A1:
 	INX				;$B5E0A2	 |
 	PHK				;$B5E0A3	 |
 	PLB				;$B5E0A4	 |
-	JSL CODE_8085B5			;$B5E0A5	 |
+	JSL clear_vram_wrapper		;$B5E0A5	 |
 	LDA $0000,x			;$B5E0A9	 |
 	AND #$00FF			;$B5E0AC	 |
 	PHX				;$B5E0AF	 |
