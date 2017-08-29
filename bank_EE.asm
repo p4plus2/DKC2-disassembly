@@ -1,4 +1,4 @@
-DATA_EE0000:
+spc_base_engine:
 
 arch spc700
 base $04D8
@@ -87,7 +87,7 @@ CODE_0556:
 base off
 arch 65816
 
-DATA_EE0088:
+spc_sound_engine:
 arch spc700
 	db $00, $00, $00, $00, $00, $00, $00, $00
 	db $00, $00, $00, $00, $00, $00, $00, $00

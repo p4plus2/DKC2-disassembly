@@ -246,14 +246,14 @@ CODE_B5818D:
 	RTL				;$B58190	/
 
 CODE_B58191:
-	JSR CODE_B58213			;$B58191	\
-	JSR CODE_B5828F			;$B58194	 |
+	JSR upload_spc_base_engine	;$B58191	\
+	JSR upload_spc_sound_engine	;$B58194	 |
 	JSR CODE_B582A9			;$B58197	 |
 	LDA #DATA_F2E730		;$B5819A	 |
 	STA $32				;$B5819D	 |
 	LDA.w #DATA_F2E730>>16		;$B5819F	 |
 	STA $34				;$B581A2	 |
-	JSR CODE_B583FB			;$B581A4	 |
+	JSR upload_inline_spc_block	;$B581A4	 |
 	JSR CODE_B581AC			;$B581A7	 |
 	RTS				;$B581AA	/
 
@@ -263,13 +263,14 @@ CODE_B581AC:
 	LDA #$0672			;$B581AC	\
 	STA $35				;$B581AF	 |
 	STZ $37				;$B581B1	 |
-	JSR CODE_B5840D			;$B581B3	 |
+	JSR upload_spc_block		;$B581B3	 |
 	RTS				;$B581B6	/
 
-	LDA #$06E3			;$B581B7	 |
+CODE_B581B7:
+	LDA #$06E3			;$B581B7	\
 	STA $35				;$B581BA	 |
 	STZ $37				;$B581BC	 |
-	JSR CODE_B5840D			;$B581BE	 |
+	JSR upload_spc_block		;$B581BE	 |
 	RTS				;$B581C1	/
 
 CODE_B581C2:
@@ -325,44 +326,44 @@ CODE_B58202:				;		 |
 	REP #$30			;$B58210	 |
 	RTS				;$B58212	/
 
-CODE_B58213:
+upload_spc_base_engine:
 	REP #$20			;$B58213	\
-	SEP #$10			;$B58215	 |
-	LDA #$BBAA			;$B58217	 |
-CODE_B5821A:				;		 |
-	CMP $2140			;$B5821A	 |
-	BNE CODE_B5821A			;$B5821D	 |
-	LDA #$04D8			;$B5821F	 |
-	STA $2142			;$B58222	 |
-	LDA #$01CC			;$B58225	 |
-	STA $2140			;$B58228	 |
-	TAX				;$B5822B	 |
-CODE_B5822C:				;		 |
-	CPX $2140			;$B5822C	 |
-	BNE CODE_B5822C			;$B5822F	 |
-	LDX #$00			;$B58231	 |
-CODE_B58233:				;		 |
-	LDA.l DATA_EE0000,x		;$B58233	 |
-	TAY				;$B58237	 |
-	STY $2141			;$B58238	 |
-	STX $2140			;$B5823B	 |
-CODE_B5823E:				;		 |
-	CPX $2140			;$B5823E	 |
-	BNE CODE_B5823E			;$B58241	 |
-	INX				;$B58243	 |
-	CPX #$88			;$B58244	 |
-	BNE CODE_B58233			;$B58246	 |
-	INX				;$B58248	 |
-	TXA				;$B58249	 |
-	STA $2140			;$B5824A	 |
-CODE_B5824D:				;		 |
-	CPX $2140			;$B5824D	 |
-	BNE CODE_B5824D			;$B58250	 |
-	STZ $00				;$B58252	 |
-	LDA #$0001			;$B58254	 |
-	STA $1E				;$B58257	 |
+	SEP #$10			;$B58215	 | Use index as 8 bit, with 16 bit accumulator
+	LDA #$BBAA			;$B58217	 | The IPL uses BBAA to indicate ready state
+-					;		 |\ Wait for the SPC 700 to be ready
+	CMP $2140			;$B5821A	 | |
+	BNE -				;$B5821D	 |/
+	LDA #$04D8			;$B5821F	 |\ Set ARAM address for data transfer
+	STA $2142			;$B58222	 |/
+	LDA #$01CC			;$B58225	 |\ Acknowledge the SPC-700 IPL and initiate a data transfer
+	STA $2140			;$B58228	 |/
+	TAX				;$B5822B	 | SPC echo is only a single byte, so use index registers
+-					;		 |\ Wait for the SPC-700 to acknowledge the SNES CPU
+	CPX $2140			;$B5822C	 | |
+	BNE -				;$B5822F	 |/
+	LDX #$00			;$B58231	 | Initialize the transfer counter
+.next_byte				;		 |\ 
+	LDA.l spc_base_engine,x		;$B58233	 | |\ Load and store the current engine byte
+	TAY				;$B58237	 | | |
+	STY $2141			;$B58238	 | |/
+	STX $2140			;$B5823B	 | | Store the transaction counter
+-					;		 | |\ Wait for the SPC to echo the counter
+	CPX $2140			;$B5823E	 | | |
+	BNE -				;$B58241	 | |/
+	INX				;$B58243	 | | Increment the counter
+	CPX #$88			;$B58244	 | | Compare against the engine size
+	BNE .next_byte			;$B58246	 |/ If we haven't hit the engine size, load the next byte
+	INX				;$B58248	 |\ Increment counter by two to end transfer
+	TXA				;$B58249	 | | Use A to write the counter for 16 bit (high byte = 00)
+	STA $2140			;$B5824A	 |/ Since the high byte is 00, It will execute the uploaded code
+-					;		 |\ Wait for the SPC echo
+	CPX $2140			;$B5824D	 | |
+	BNE -				;$B58250	 |/
+	STZ $00				;$B58252	 | Reset the SPC transaction id
+	LDA #$0001			;$B58254	 |\ Default to mono audio
+	STA $1E				;$B58257	 |/
 	REP #$30			;$B58259	 |
-	RTS				;$B5825B	/
+	RTS				;$B5825B	/ All done, new SPC base engine set up.
 
 CODE_B5825C:
 	LDA $1C				;$B5825C	\
@@ -377,7 +378,7 @@ CODE_B5825C:
 	STA $32				;$B5826B	 |
 	LDA.l DATA_EE1088,x		;$B5826D	 |
 	STA $34				;$B58271	 |
-	JSR CODE_B583FB			;$B58273	 |
+	JSR upload_inline_spc_block	;$B58273	 |
 	RTS				;$B58276	/
 
 CODE_B58277:
@@ -390,20 +391,20 @@ CODE_B58277:
 	STA $32				;$B58283	 |
 	LDA.l DATA_EE117D,x		;$B58285	 |
 	STA $34				;$B58289	 |
-	JSR CODE_B583FB			;$B5828B	 |
+	JSR upload_inline_spc_block	;$B5828B	 |
 	RTS				;$B5828E	/
 
-CODE_B5828F:
+upload_spc_sound_engine:
 	REP #$30			;$B5828F	\
-	LDA #DATA_EE0088		;$B58291	 |
-	STA $32				;$B58294	 |
-	LDA.w #DATA_EE0088>>16		;$B58296	 |
-	STA $34				;$B58299	 |
-	LDA #$0560			;$B5829B	 |
-	STA $35				;$B5829E	 |
-	LDA #$067F			;$B582A0	 |
-	STA $37				;$B582A3	 |
-	JSR CODE_B5840D			;$B582A5	 |
+	LDA #spc_sound_engine		;$B58291	 |\ Load a pointer to SPC sound engine
+	STA $32				;$B58294	 | |
+	LDA.w #spc_sound_engine>>16	;$B58296	 | |
+	STA $34				;$B58299	 |/
+	LDA #$0560			;$B5829B	 |\ Set the ARAM destination
+	STA $35				;$B5829E	 |/
+	LDA #$067F			;$B582A0	 |\ Set the number of bytes to transfer
+	STA $37				;$B582A3	 |/
+	JSR upload_spc_block		;$B582A5	 | Upload SPC block
 	RTS				;$B582A8	/
 
 CODE_B582A9:
@@ -492,7 +493,7 @@ CODE_B58333:
 	INC A				;$B58348	 |
 	LSR A				;$B58349	 |
 	STA $37				;$B5834A	 |
-	JSR CODE_B5840D			;$B5834C	 |
+	JSR upload_spc_block		;$B5834C	 |
 	LDA #DATA_EE11F9		;$B5834F	 |
 	STA $3E				;$B58352	 |
 	LDA.w #DATA_EE11F9>>16		;$B58354	 |
@@ -545,7 +546,7 @@ CODE_B583A1:
 	STA $35				;$B583AE	 |
 	LDA #$0080			;$B583B0	 |
 	STA $37				;$B583B3	 |
-	JSR CODE_B5840D			;$B583B5	 |
+	JSR upload_spc_block		;$B583B5	 |
 CODE_B583B8:				;		 |
 	LDA $44				;$B583B8	 |
 	STA $06				;$B583BA	 |
@@ -578,79 +579,79 @@ CODE_B583BC:				;		 |
 	LSR $37				;$B583EF	 |
 	INC $32				;$B583F1	 |
 	INC $32				;$B583F3	 |
-	JSR CODE_B5840D			;$B583F5	 |
+	JSR upload_spc_block		;$B583F5	 |
 	BRA CODE_B583BC			;$B583F8	/
 
 CODE_B583FA:
 	RTS				;$B583FA	/
 
-CODE_B583FB:
-	LDA [$32]			;$B583FB	\
-	STA $35				;$B583FD	 |
-	INC $32				;$B583FF	 |
-	INC $32				;$B58401	 |
-	LDA [$32]			;$B58403	 |
-	STA $37				;$B58405	 |
-	INC $32				;$B58407	 |
-	INC $32				;$B58409	 |
-	BRA CODE_B5840D			;$B5840B	/
+upload_inline_spc_block:		;		\ 
+	LDA [$32]			;$B583FB	 |\ Load the destination ARAM address from the block
+	STA $35				;$B583FD	 |/
+	INC $32				;$B583FF	 |\ Increment the pointer
+	INC $32				;$B58401	 |/
+	LDA [$32]			;$B58403	 |\ Load the transfer length from the block
+	STA $37				;$B58405	 |/
+	INC $32				;$B58407	 |\ Increment the pointer
+	INC $32				;$B58409	 |/
+	BRA upload_spc_block		;$B5840B	/ Continue to the normal SPC block upload
 
-CODE_B5840D:
-	SEP #$10			;$B5840D	\
-	LDX $00				;$B5840F	 |
-CODE_B58411:				;		 |
-	CPX $2140			;$B58411	 |
-	BNE CODE_B58411			;$B58414	 |
-	LDA $35				;$B58416	 |
-	STA $2141			;$B58418	 |
-	INX				;$B5841B	 |
-	STX $2140			;$B5841C	 |
-	LDA $37				;$B5841F	 |
-	STA $39				;$B58421	 |
-CODE_B58423:				;		 |
-	CPX $2140			;$B58423	 |
-	BNE CODE_B58423			;$B58426	 |
-	STA $2141			;$B58428	 |
-	INX				;$B5842B	 |
-	STX $2140			;$B5842C	 |
-	LDA $37				;$B5842F	 |
-	BEQ CODE_B5844B			;$B58431	 |
+upload_spc_block:
+	SEP #$10			;$B5840D	\ 16 bit A, with 8 bit index
+	LDX $00				;$B5840F	 | Load the last SPC transaction id
+-					;		 |\ Wait for the previous transaction id to be echoed
+	CPX $2140			;$B58411	 | | Which will signify the SPC engine is ready.
+	BNE -				;$B58414	 |/
+	LDA $35				;$B58416	 |\ Write the ARAM target address
+	STA $2141			;$B58418	 |/
+	INX				;$B5841B	 |\ Increment and set the transaction id
+	STX $2140			;$B5841C	 |/
+	LDA $37				;$B5841F	 |\ Copy the byte count
+	STA $39				;$B58421	 |/
+-					;		 |\ Wait for the transaction id to echo for completion
+	CPX $2140			;$B58423	 | |
+	BNE -				;$B58426	 |/
+	STA $2141			;$B58428	 | Write the length of the transfer
+	INX				;$B5842B	 |\ Increment and set the transaction id
+	STX $2140			;$B5842C	 |/
+	LDA $37				;$B5842F	 |\ If there are no bytes to transfer simply exit
+	BEQ .return			;$B58431	 |/
 	LDY #$00			;$B58433	 |
-CODE_B58435:				;		 |
-	LDA [$32],y			;$B58435	 |
-	INY				;$B58437	 |
-	INY				;$B58438	 |
-	BEQ CODE_B58453			;$B58439	 |
-CODE_B5843B:				;		 |
-	CPX $2140			;$B5843B	 |
-	BNE CODE_B5843B			;$B5843E	 |
-	INX				;$B58440	 |
-	STA $2141			;$B58441	 |
-	STX $2140			;$B58444	 |
-	DEC $37				;$B58447	 |
-	BNE CODE_B58435			;$B58449	 |
-CODE_B5844B:				;		 |
-	STX $00				;$B5844B	 |
-	REP #$30			;$B5844D	 |
-	LDA $39				;$B5844F	 |
-	ASL A				;$B58451	 |
-	RTS				;$B58452	/
+.next_byte				;		 |
+	LDA [$32],y			;$B58435	 | Load next byte
+	INY				;$B58437	 |\ Advance the data index
+	INY				;$B58438	 |/
+	BEQ .advance_pointer		;$B58439	 | If the index has wrapped, advance the pointer
+.wait_for_echo				;		 |\ Wait for the transaction id to echo for completion
+	CPX $2140			;$B5843B	 | |
+	BNE .wait_for_echo		;$B5843E	 |/
+	INX				;$B58440	 | Increment the transaction id
+	STA $2141			;$B58441	 | Write the data (two bytes)
+	STX $2140			;$B58444	 | Write the transaction id
+	DEC $37				;$B58447	 |\ Continue if there are more bytes to upload
+	BNE .next_byte			;$B58449	 |/
+.return					;		 |
+	STX $00				;$B5844B	 | Store the final SPC transaction id
+	REP #$30			;$B5844D	 | Return to full 16 bit
+	LDA $39				;$B5844F	 |\ Store double the transfer count in A
+	ASL A				;$B58451	 |/
+	RTS				;$B58452	/ Finished with SPC block upload
 
-CODE_B58453:
-	LDY $33				;$B58453	\
-	INY				;$B58455	 |
-	BNE CODE_B58463			;$B58456	 |
-	STY $33				;$B58458	 |
-	LDY $34				;$B5845A	 |
-	INY				;$B5845C	 |
-	STY $34				;$B5845D	 |
-	LDY #$00			;$B5845F	 |
-	BRA CODE_B5843B			;$B58461	/
+.advance_pointer			;		\ 
+	LDY $33				;$B58453	 |\ Increment the pointer high byte 
+	INY				;$B58455	 |/
+	BNE .skip_pointer_bank_cross	;$B58456	 | If it doesn't roll over, skip incrementing the bank
+	STY $33				;$B58458	 | Set the new pointer mid byte
+	LDY $34				;$B5845A	 |\ Increment the pointer bank
+	INY				;$B5845C	 | |
+	STY $34				;$B5845D	 |/
+	LDY #$00			;$B5845F	 | Reset the data index
+	BRA .wait_for_echo		;$B58461	/
 
-CODE_B58463:
-	STY $33				;$B58463	\
-	LDY #$00			;$B58465	 |
-	BRA CODE_B5843B			;$B58467	/
+.skip_pointer_bank_cross
+	STY $33				;$B58463	\ Store the new pointer offset
+	LDY #$00			;$B58465	 | Reset the data index
+	BRA .wait_for_echo		;$B58467	/
 
 CODE_B58469:
 	LDA $1C				;$B58469	\
