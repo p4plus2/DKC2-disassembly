@@ -155,7 +155,7 @@ CODE_B580D5:
 	JSR CODE_B58469			;$B580E0	 |
 	JSR CODE_B5825C			;$B580E3	 |
 	JSR CODE_B58277			;$B580E6	 |
-	JSR CODE_B581AC			;$B580E9	 |
+	JSR execute_spc_sound_engine	;$B580E9	 |
 	PLB				;$B580EC	 |
 	RTL				;$B580ED	/
 
@@ -185,7 +185,7 @@ CODE_B58106:
 	JSR CODE_B5825C			;$B58114	 |
 	JSR CODE_B58277			;$B58117	 |
 	JSR CODE_B5816D			;$B5811A	 |
-	JSR CODE_B581AC			;$B5811D	 |
+	JSR execute_spc_sound_engine	;$B5811D	 |
 	LDX #$00FE			;$B58120	 |
 	JSR CODE_B581FB			;$B58123	 |
 	LDA $1E				;$B58126	 |
@@ -209,7 +209,7 @@ CODE_B58132:
 	JSR CODE_B5825C			;$B58144	 |
 	JSR CODE_B58277			;$B58147	 |
 	JSR CODE_B5816D			;$B5814A	 |
-	JSR CODE_B581AC			;$B5814D	 |
+	JSR execute_spc_sound_engine	;$B5814D	 |
 	PLA				;$B58150	 |
 	AND #$FF00			;$B58151	 |
 	ORA #$00FB			;$B58154	 |
@@ -246,28 +246,29 @@ CODE_B5818D:
 	RTL				;$B58190	/
 
 CODE_B58191:
-	JSR upload_spc_base_engine	;$B58191	\
-	JSR upload_spc_sound_engine	;$B58194	 |
+	JSR upload_spc_base_engine	;$B58191	\ Upload the core of the SPC engine
+	JSR upload_spc_sound_engine	;$B58194	 | Upload the sound processor of the SPC engine
 	JSR CODE_B582A9			;$B58197	 |
-	LDA #DATA_F2E730		;$B5819A	 |
-	STA $32				;$B5819D	 |
-	LDA.w #DATA_F2E730>>16		;$B5819F	 |
-	STA $34				;$B581A2	 |
+	LDA #DATA_F2E730		;$B5819A	 |\
+	STA $32				;$B5819D	 | |
+	LDA.w #DATA_F2E730>>16		;$B5819F	 | |
+	STA $34				;$B581A2	 |/
 	JSR upload_inline_spc_block	;$B581A4	 |
-	JSR CODE_B581AC			;$B581A7	 |
+	JSR execute_spc_sound_engine	;$B581A7	 | Jump to the sound engine entry
 	RTS				;$B581AA	/
 
+CODE_B581AB:
 	RTS				;$B581AB	/
 
-CODE_B581AC:
-	LDA #$0672			;$B581AC	\
-	STA $35				;$B581AF	 |
-	STZ $37				;$B581B1	 |
+execute_spc_sound_engine:		;		\ 
+	LDA #$0672			;$B581AC	 |\ Load the sound engine entry point
+	STA $35				;$B581AF	 |/
+	STZ $37				;$B581B1	 | Zero size transfer means execute jump
 	JSR upload_spc_block		;$B581B3	 |
 	RTS				;$B581B6	/
 
 CODE_B581B7:
-	LDA #$06E3			;$B581B7	\
+	LDA #$06E3			;$B581B7	\ Dead code, would crash SPC engine.
 	STA $35				;$B581BA	 |
 	STZ $37				;$B581BC	 |
 	JSR upload_spc_block		;$B581BE	 |
@@ -615,7 +616,7 @@ upload_spc_block:
 	INX				;$B5842B	 |\ Increment and set the transaction id
 	STX $2140			;$B5842C	 |/
 	LDA $37				;$B5842F	 |\ If there are no bytes to transfer simply exit
-	BEQ .return			;$B58431	 |/
+	BEQ .return			;$B58431	 |/ This means we were only executing a jump
 	LDY #$00			;$B58433	 |
 .next_byte				;		 |
 	LDA [$32],y			;$B58435	 | Load next byte
