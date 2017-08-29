@@ -418,6 +418,7 @@ CODE_80860C:				;		 |
 	INC $2A				;$808611	 |
 	JMP ($0024)			;$808613	/
 
+CODE_808616:
 	LDA #$0100			;$808616	 |
 	CLC				;$808619	 |
 	ADC $0985			;$80861A	 |
@@ -479,6 +480,7 @@ CODE_80867E:				;		 |
 	STA $0987			;$80867E	 |
 	JMP CODE_80860C			;$808681	/
 
+CODE_808684:
 	JSL disable_screen		;$808684	 |
 	SEP #$20			;$808688	 |
 	LDA #$FF			;$80868A	 |
@@ -622,6 +624,7 @@ CODE_8087B9:
 CODE_8087C5:
 	JML CODE_80F482			;$8087C5	/
 
+CODE_8087C9:
 	JSL disable_screen		;$8087C9	 |
 	PHK				;$8087CD	 |
 	PLB				;$8087CE	 |
@@ -652,6 +655,7 @@ CODE_8087E1:
 	LDA #CODE_808819		;$808804	 |
 	JMP CODE_808C9E			;$808807	/
 
+CODE_80880A:
 	SEP #$20			;$80880A	 |
 	STA $96				;$80880C	 |
 	XBA				;$80880E	 |
