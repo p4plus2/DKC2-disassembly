@@ -148,6 +148,8 @@ CODE_B5BCA8	;Map loading stuff
 CODE_808B6F	;Weird code
 CODE_BBB70C	;Looks like sprite level load code
 
+DATA_FD819A	;has pointers in some interlaced format (possibly RLE tilemap decoding)
+
 
 
 $38 -- Mirror  of 211C, DMA size, and some index

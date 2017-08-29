@@ -395,14 +395,14 @@ start_engine:				;		\
 	BPL .rare_string_copy		;$8085DE	 |/ Copy the string until there are no more bytes
 	JSL CODE_B58000			;$8085E0	 | Upload the SPC engine
 init_rare_logo:				;		 |
-	JSL CODE_BB91D9			;$8085E4	 | Disable the screen
-	JSR CODE_808EAE			;$8085E8	 | Clear WRAM
+	JSL disable_screen		;$8085E4	 | Disable the screen
+	JSR clear_wram_reset		;$8085E8	 | Clear WRAM
 	JML CODE_8090DA			;$8085EB	/ Run the Rareware logo
 
 CODE_8085EF:
 	LDA #$FFFF			;$8085EF	\
 	STA $00090F			;$8085F2	 |
-	JSL CODE_BB91D9			;$8085F6	 |
+	JSL disable_screen		;$8085F6	 |
 	LDA #CODE_80B3D7		;$8085FA	 |
 	STA $24				;$8085FD	 |
 	STZ $2102			;$8085FF	 |
@@ -479,7 +479,7 @@ CODE_80867E:				;		 |
 	STA $0987			;$80867E	 |
 	JMP CODE_80860C			;$808681	/
 
-	JSL CODE_BB91D9			;$808684	 |
+	JSL disable_screen		;$808684	 |
 	SEP #$20			;$808688	 |
 	LDA #$FF			;$80868A	 |
 	STA $210E			;$80868C	 |
@@ -525,7 +525,7 @@ CODE_8086F4:				;		 |
 	BRA CODE_8086F4			;$8086F4	/
 
 CODE_8086F6:
-	JSL CODE_BB91D9			;$8086F6	\
+	JSL disable_screen		;$8086F6	\
 	PHK				;$8086FA	 |
 	PLB				;$8086FB	 |
 	LDA #$8000			;$8086FC	 |
@@ -622,7 +622,7 @@ CODE_8087B9:
 CODE_8087C5:
 	JML CODE_80F482			;$8087C5	/
 
-	JSL CODE_BB91D9			;$8087C9	 |
+	JSL disable_screen		;$8087C9	 |
 	PHK				;$8087CD	 |
 	PLB				;$8087CE	 |
 	JSR CODE_808712			;$8087CF	 |
@@ -636,7 +636,7 @@ CODE_8087D9:
 CODE_8087E1:
 	PHK				;$8087E1	\
 	PLB				;$8087E2	 |
-	JSL CODE_BB91D9			;$8087E3	 |
+	JSL disable_screen		;$8087E3	 |
 	JSL CODE_BB9210			;$8087E7	 |
 	PHK				;$8087EB	 |
 	PLB				;$8087EC	 |
@@ -1036,7 +1036,7 @@ CODE_808B41:
 	LDA.l DATA_808B7E,x		;$808B48	 |
 	CMP #$1000			;$808B4C	 |
 	BNE CODE_808B40			;$808B4F	 |
-	JSL CODE_BB91D9			;$808B51	 |
+	JSL disable_screen		;$808B51	 |
 	LDA #$0505			;$808B55	 |
 	JSL CODE_B58021			;$808B58	 |
 	LDA #$0000			;$808B5C	 |
@@ -1468,36 +1468,36 @@ CODE_808E6A:
 	PLB				;$808EAC	 |
 	RTL				;$808EAD	/
 
-CODE_808EAE:
-	PLA				;$808EAE	\
-	INC A				;$808EAF	 |
-	STA $32				;$808EB0	 |
-	LDA #$0000			;$808EB2	 |
-	STA $7F0000			;$808EB5	 |
-	LDX #$0000			;$808EB9	 |
-	LDA #$FFFF			;$808EBC	 |
-	TXY				;$808EBF	 |
-	INY				;$808EC0	 |
-	MVN $7F, $7F			;$808EC1	 |
-	LDA #$0000			;$808EC4	 |
-	STA $000911			;$808EC7	 |
-	LDX #$0911			;$808ECB	 |
-	LDA #$F6ED			;$808ECE	 |
-	TXY				;$808ED1	 |
-	INY				;$808ED2	 |
-	MVN $7E, $7E			;$808ED3	 |
-	STZ $34				;$808ED6	 |
-	LDX #$0034			;$808ED8	 |
-	LDA #$08D1			;$808EDB	 |
-	TXY				;$808EDE	 |
-	INY				;$808EDF	 |
-	MVN $80, $80			;$808EE0	 |
-	LDX #$01FF			;$808EE3	 |
-	TXS				;$808EE6	 |
-	JMP ($0032)			;$808EE7	/
+clear_wram_reset:			;		\ 
+	PLA				;$808EAE	 |\ Store the return address in scratch ram
+	INC A				;$808EAF	 | |
+	STA $32				;$808EB0	 |/
+	LDA #$0000			;$808EB2	 |\ Clear bank 7F using an MVN copy
+	STA $7F0000			;$808EB5	 | | (Clear the first byte the recursive MVN)
+	LDX #$0000			;$808EB9	 | |
+	LDA #$FFFF			;$808EBC	 | |
+	TXY				;$808EBF	 | |
+	INY				;$808EC0	 | |
+	MVN $7F, $7F			;$808EC1	 |/
+	LDA #$0000			;$808EC4	 |\ Clear bank 7E above $0911 using an MVN copy
+	STA $000911			;$808EC7	 | |
+	LDX #$0911			;$808ECB	 | |
+	LDA #$F6ED			;$808ECE	 | |
+	TXY				;$808ED1	 | |
+	INY				;$808ED2	 | |
+	MVN $7E, $7E			;$808ED3	 |/
+	STZ $34				;$808ED6	 |\ Clean $7E0034-$7E0906 with an MVN copy
+	LDX #$0034			;$808ED8	 | |
+	LDA #$08D1			;$808EDB	 | |
+	TXY				;$808EDE	 | |
+	INY				;$808EDF	 | |
+	MVN $80, $80			;$808EE0	 |/
+	LDX #$01FF			;$808EE3	 |\ Reset the stack
+	TXS				;$808EE6	 |/
+	JMP ($0032)			;$808EE7	/ Return using address from scratch RAM
 
 CODE_808EEA:
-	JSL CODE_BB91D9			;$808EEA	\
+	JSL disable_screen		;$808EEA	\
 	PHK				;$808EEE	 |
 	PLB				;$808EEF	 |
 	JSR CODE_808FFB			;$808EF0	 |
@@ -1508,7 +1508,7 @@ CODE_808EEA:
 	JML CODE_808C9E			;$808F00	/
 
 CODE_808F04:
-	JSL CODE_BB91D9			;$808F04	\
+	JSL disable_screen		;$808F04	\
 	PHK				;$808F08	 |
 	PLB				;$808F09	 |
 	JSR CODE_808FFB			;$808F0A	 |
@@ -1717,7 +1717,7 @@ CODE_8090B1:
 	RTS				;$8090BA	/
 
 CODE_8090BB:
-	JSL CODE_BB91D9			;$8090BB	\
+	JSL disable_screen		;$8090BB	\
 	LDA #$0006			;$8090BF	 |
 	STA $000689			;$8090C2	 |
 	LDA #CODE_808D02		;$8090C6	 |
@@ -1772,7 +1772,7 @@ CODE_809139:				;		 |
 	LDX #DATA_FA4C3E		;$80913F	 |
 	LDY.w #DATA_FA4C3E>>16		;$809142	 |
 	LDA #$0000			;$809145	 |
-	JSL CODE_BB8D91			;$809148	 |
+	JSL decompress_data		;$809148	 |
 	STZ $2116			;$80914C	 |
 	SEP #$20			;$80914F	 |
 	LDX #$0000			;$809151	 |
@@ -1820,7 +1820,7 @@ CODE_809154:				;		 |
 	LDX #DATA_F52FC7		;$8091B2	 |
 	LDY.w #DATA_F52FC7>>16		;$8091B5	 |
 	LDA #$0000			;$8091B8	 |
-	JSL CODE_BB8D91			;$8091BB	 |
+	JSL decompress_data		;$8091BB	 |
 	LDA #$0000			;$8091BF	 |
 	STA $7F0100			;$8091C2	 |
 	STA $7F013E			;$8091C6	 |
@@ -1833,7 +1833,7 @@ CODE_809154:				;		 |
 	LDX #DATA_F80D10		;$8091DD	 |
 	LDY.w #DATA_F80D10>>16		;$8091E0	 |
 	LDA #$0000			;$8091E3	 |
-	JSL CODE_BB8D91			;$8091E6	 |
+	JSL decompress_data		;$8091E6	 |
 	LDA #$76BA			;$8091EA	 |
 	STA $2116			;$8091ED	 |
 	LDX #$007F			;$8091F0	 |
@@ -1843,7 +1843,7 @@ CODE_809154:				;		 |
 	LDX #DATA_F50004		;$8091FD	 |
 	LDY.w #DATA_F50004>>16		;$809200	 |
 	LDA #$0000			;$809203	 |
-	JSL CODE_BB8D91			;$809206	 |
+	JSL decompress_data		;$809206	 |
 	LDA #$78E0			;$80920A	 |
 	STA $2116			;$80920D	 |
 	LDX #$007F			;$809210	 |
@@ -1853,7 +1853,7 @@ CODE_809154:				;		 |
 	LDX #DATA_F56AC9		;$80921D	 |
 	LDY.w #DATA_F56AC9>>16		;$809220	 |
 	LDA #$0000			;$809223	 |
-	JSL CODE_BB8D91			;$809226	 |
+	JSL decompress_data		;$809226	 |
 	LDA #$7CE0			;$80922A	 |
 	STA $2116			;$80922D	 |
 	LDX #$007F			;$809230	 |
@@ -1863,7 +1863,7 @@ CODE_809154:				;		 |
 	LDX #DATA_F55D4A		;$80923D	 |
 	LDY.w #DATA_F55D4A>>16		;$809240	 |
 	LDA #$0000			;$809243	 |
-	JSL CODE_BB8D91			;$809246	 |
+	JSL decompress_data		;$809246	 |
 	LDA #$4000			;$80924A	 |
 	STA $2116			;$80924D	 |
 	LDX #$007F			;$809250	 |
@@ -1873,7 +1873,7 @@ CODE_809154:				;		 |
 	LDX #DATA_F8063E		;$80925D	 |
 	LDY.w #DATA_F8063E>>16		;$809260	 |
 	LDA #$0000			;$809263	 |
-	JSL CODE_BB8D91			;$809266	 |
+	JSL decompress_data		;$809266	 |
 	LDA #$6000			;$80926A	 |
 	STA $2116			;$80926D	 |
 	LDX #$007F			;$809270	 |
@@ -1883,7 +1883,7 @@ CODE_809154:				;		 |
 	LDX #DATA_D9F7C9		;$80927D	 |
 	LDY.w #DATA_D9F7C9>>16		;$809280	 |
 	LDA #$0000			;$809283	 |
-	JSL CODE_BB8D91			;$809286	 |
+	JSL decompress_data		;$809286	 |
 	LDA #$7000			;$80928A	 |
 	STA $2116			;$80928D	 |
 	LDX #$007F			;$809290	 |
@@ -1893,15 +1893,15 @@ CODE_809154:				;		 |
 	LDX #DATA_F5325B		;$80929D	 |
 	LDY.w #DATA_F5325B>>16		;$8092A0	 |
 	LDA #$0000			;$8092A3	 |
-	JSL CODE_BB8D91			;$8092A6	 |
+	JSL decompress_data		;$8092A6	 |
 	LDX #DATA_EB2B84		;$8092AA	 |
 	LDY.w #DATA_EB2B84>>16		;$8092AD	 |
 	LDA #$0000			;$8092B0	 |
-	JSL CODE_BB8D91			;$8092B3	 |
+	JSL decompress_data		;$8092B3	 |
 	LDX #DATA_F5325B		;$8092B7	 |
 	LDY.w #DATA_F5325B>>16		;$8092BA	 |
 	LDA #$0500			;$8092BD	 |
-	JSL CODE_BB8D91			;$8092C0	 |
+	JSL decompress_data		;$8092C0	 |
 	LDA #$000F			;$8092C4	 |
 	STA $0512			;$8092C7	 |
 	LDA #$0000			;$8092CA	 |
@@ -2494,7 +2494,7 @@ CODE_8097CA:				;		 |
 	BRA CODE_8097CA			;$8097CB	/
 
 CODE_8097CD:
-	JSL CODE_BB91D9			;$8097CD	\
+	JSL disable_screen		;$8097CD	\
 	PHK				;$8097D1	 |
 	PLB				;$8097D2	 |
 	JSR clear_vram			;$8097D3	 |
@@ -2572,7 +2572,7 @@ CODE_8097EB:				;		 |
 	LDX #DATA_EC83A0		;$8098A6	 |
 	LDY.w #DATA_EC83A0>>16		;$8098A9	 |
 	LDA #$0000			;$8098AC	 |
-	JSL CODE_BB8D91			;$8098AF	 |
+	JSL decompress_data		;$8098AF	 |
 	LDA #$1000			;$8098B3	 |
 	STA $2116			;$8098B6	 |
 	LDX #$007F			;$8098B9	 |
@@ -2582,7 +2582,7 @@ CODE_8097EB:				;		 |
 	LDX #DATA_EC4D40		;$8098C6	 |
 	LDY.w #DATA_EC4D40>>16		;$8098C9	 |
 	LDA #$0000			;$8098CC	 |
-	JSL CODE_BB8D91			;$8098CF	 |
+	JSL decompress_data		;$8098CF	 |
 	LDA #$4000			;$8098D3	 |
 	STA $2116			;$8098D6	 |
 	LDX #$007F			;$8098D9	 |
@@ -2598,7 +2598,7 @@ CODE_8097EB:				;		 |
 	LDX #DATA_EC7CF0		;$8098F9	 |
 	LDY.w #DATA_EC7CF0>>16		;$8098FC	 |
 	LDA #$0000			;$8098FF	 |
-	JSL CODE_BB8D91			;$809902	 |
+	JSL decompress_data		;$809902	 |
 	LDA #$7C00			;$809906	 |
 	STA $2116			;$809909	 |
 	LDX #$007F			;$80990C	 |
@@ -2612,7 +2612,7 @@ CODE_8097EB:				;		 |
 	LDX #DATA_EC4749		;$809925	 |
 	LDY.w #DATA_EC4749>>16		;$809928	 |
 	LDA #$0000			;$80992B	 |
-	JSL CODE_BB8D91			;$80992E	 |
+	JSL decompress_data		;$80992E	 |
 	LDA #$7420			;$809932	 |
 	STA $2116			;$809935	 |
 	LDX #$007F			;$809938	 |
@@ -2622,7 +2622,7 @@ CODE_8097EB:				;		 |
 	LDX #DATA_EC4AAD		;$809945	 |
 	LDY.w #DATA_EC4AAD>>16		;$809948	 |
 	LDA #$0000			;$80994B	 |
-	JSL CODE_BB8D91			;$80994E	 |
+	JSL decompress_data		;$80994E	 |
 	LDA #$7780			;$809952	 |
 	STA $2116			;$809955	 |
 	LDX #$007F			;$809958	 |
@@ -2632,7 +2632,7 @@ CODE_8097EB:				;		 |
 	LDX #DATA_EC4C1C		;$809965	 |
 	LDY.w #DATA_EC4C1C>>16		;$809968	 |
 	LDA #$0000			;$80996B	 |
-	JSL CODE_BB8D91			;$80996E	 |
+	JSL decompress_data		;$80996E	 |
 	LDA #$78C0			;$809972	 |
 	STA $2116			;$809975	 |
 	LDX #$007F			;$809978	 |
@@ -3239,7 +3239,7 @@ DATA_809F6C:
 	db $00
 
 CODE_809F85:
-	JSL CODE_BB91D9			;$809F85	\
+	JSL disable_screen		;$809F85	\
 	PHK				;$809F89	 |
 	PLB				;$809F8A	 |
 	JSR clear_vram			;$809F8B	 |
@@ -3397,7 +3397,7 @@ CODE_80A0E9:				;		 |
 	LDX #DATA_F99400		;$80A133	 |
 	LDY.w #DATA_F99400>>16		;$80A136	 |
 	LDA #$0000			;$80A139	 |
-	JSL CODE_BB8D91			;$80A13C	 |
+	JSL decompress_data		;$80A13C	 |
 	LDA #$2000			;$80A140	 |
 	STA $2116			;$80A143	 |
 	LDX #$007F			;$80A146	 |
@@ -3407,7 +3407,7 @@ CODE_80A0E9:				;		 |
 	LDX #DATA_F661C1		;$80A153	 |
 	LDY.w #DATA_F661C1>>16		;$80A156	 |
 	LDA #$0000			;$80A159	 |
-	JSL CODE_BB8D91			;$80A15C	 |
+	JSL decompress_data		;$80A15C	 |
 	LDA #$6000			;$80A160	 |
 	STA $2116			;$80A163	 |
 	LDX #$007F			;$80A166	 |
@@ -3417,7 +3417,7 @@ CODE_80A0E9:				;		 |
 	LDX #DATA_F9C775		;$80A173	 |
 	LDY.w #DATA_F9C775>>16		;$80A176	 |
 	LDA #$0000			;$80A179	 |
-	JSL CODE_BB8D91			;$80A17C	 |
+	JSL decompress_data		;$80A17C	 |
 	LDA #$7C20			;$80A180	 |
 	STA $2116			;$80A183	 |
 	LDX #$007F			;$80A186	 |
@@ -3433,7 +3433,7 @@ CODE_80A0E9:				;		 |
 	LDX #DATA_F67D1B		;$80A1A6	 |
 	LDY.w #DATA_F67D1B>>16		;$80A1A9	 |
 	LDA #$0000			;$80A1AC	 |
-	JSL CODE_BB8D91			;$80A1AF	 |
+	JSL decompress_data		;$80A1AF	 |
 	LDA #$7800			;$80A1B3	 |
 	STA $2116			;$80A1B6	 |
 	LDX #$007F			;$80A1B9	 |
@@ -3914,7 +3914,7 @@ CODE_80A5D1:				;		 |
 	RTS				;$80A5F0	/
 
 CODE_80A5F1:
-	JSL CODE_BB91D9			;$80A5F1	\
+	JSL disable_screen		;$80A5F1	\
 	PHK				;$80A5F5	 |
 	PLB				;$80A5F6	 |
 	JSR clear_vram			;$80A5F7	 |
@@ -4031,7 +4031,7 @@ CODE_80A65D:				;		 |
 	LDX #DATA_ED5E3F		;$80A720	 |
 	LDY.w #DATA_ED5E3F>>16		;$80A723	 |
 	LDA #$0000			;$80A726	 |
-	JSL CODE_BB8D91			;$80A729	 |
+	JSL decompress_data		;$80A729	 |
 	LDA #$5000			;$80A72D	 |
 	STA $2116			;$80A730	 |
 	LDX #$007F			;$80A733	 |
@@ -4073,7 +4073,7 @@ CODE_80A795:				;		 |
 	LDX #DATA_EC83A0		;$80A795	 |
 	LDY.w #DATA_EC83A0>>16		;$80A798	 |
 	LDA #$0000			;$80A79B	 |
-	JSL CODE_BB8D91			;$80A79E	 |
+	JSL decompress_data		;$80A79E	 |
 	LDA #$1000			;$80A7A2	 |
 	STA $2116			;$80A7A5	 |
 	LDX #$007F			;$80A7A8	 |
@@ -4083,7 +4083,7 @@ CODE_80A795:				;		 |
 	LDX #DATA_EC7CF0		;$80A7B5	 |
 	LDY.w #DATA_EC7CF0>>16		;$80A7B8	 |
 	LDA #$0000			;$80A7BB	 |
-	JSL CODE_BB8D91			;$80A7BE	 |
+	JSL decompress_data		;$80A7BE	 |
 	LDA #$7C00			;$80A7C2	 |
 	STA $2116			;$80A7C5	 |
 	LDX #$007F			;$80A7C8	 |
@@ -5438,7 +5438,7 @@ DATA_80B379:
 	db $00, $00, $06, $00, $01, $07
 
 CODE_80B3D7:
-	JSL CODE_BB91D9			;$80B3D7	\
+	JSL disable_screen		;$80B3D7	\
 	PHK				;$80B3DB	 |
 	PLB				;$80B3DC	 |
 	STZ $099B			;$80B3DD	 |
@@ -5636,7 +5636,7 @@ CODE_80B560:
 	LDX #DATA_ED0997		;$80B59C	 |
 	LDY.w #DATA_ED0997>>16		;$80B59F	 |
 	LDA #$0000			;$80B5A2	 |
-	JSL CODE_BB8D91			;$80B5A5	 |
+	JSL decompress_data		;$80B5A5	 |
 	LDA #$4000			;$80B5A9	 |
 	STA $2116			;$80B5AC	 |
 	LDX #$007F			;$80B5AF	 |
@@ -5646,7 +5646,7 @@ CODE_80B560:
 	LDX #DATA_ED02A1		;$80B5BC	 |
 	LDY.w #DATA_ED02A1>>16		;$80B5BF	 |
 	LDA #$0000			;$80B5C2	 |
-	JSL CODE_BB8D91			;$80B5C5	 |
+	JSL decompress_data		;$80B5C5	 |
 	LDA #$1C00			;$80B5C9	 |
 	STA $2116			;$80B5CC	 |
 	LDX #$007F			;$80B5CF	 |
@@ -5665,7 +5665,7 @@ CODE_80B560:
 	RTS				;$80B5F9	/
 
 CODE_80B5FA:
-	JSL CODE_BB91D9			;$80B5FA	\
+	JSL disable_screen		;$80B5FA	\
 	JSL clear_vram			;$80B5FE	 |
 	JSL init_registers_wrapper	;$80B602	 |
 	JSL CODE_BB91F7			;$80B606	 |
@@ -12657,7 +12657,7 @@ IRQ_start:
 	RTI				;$80F3FA	/
 
 CODE_80F3FB:
-	JSL CODE_BB91D9			;$80F3FB	\
+	JSL disable_screen		;$80F3FB	\
 	PHK				;$80F3FF	 |
 	PLB				;$80F400	 |
 	JSL clear_vram_wrapper		;$80F401	 |
@@ -13239,7 +13239,7 @@ CODE_80FA70:				;		 |
 	JML [$05A9]			;$80FA79	/
 
 CODE_80FA7C:
-	JSL CODE_BB91D9			;$80FA7C	\
+	JSL disable_screen		;$80FA7C	\
 	PHK				;$80FA80	 |
 	PLB				;$80FA81	 |
 	JSL clear_vram_wrapper		;$80FA82	 |

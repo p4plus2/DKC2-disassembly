@@ -7876,7 +7876,7 @@ CODE_B5CDEF:
 
 CODE_B5CDFD:
 	STA $0006B1			;$B5CDFD	\
-	JSL CODE_BB91D9			;$B5CE01	 |
+	JSL disable_screen		;$B5CE01	 |
 	JSL CODE_8088D2			;$B5CE05	 |
 	JSL init_registers_wrapper	;$B5CE09	 |
 	JSL CODE_808E6A			;$B5CE0D	 |

@@ -684,7 +684,7 @@ CODE_B485E6:
 	STA $065A			;$B485F5	 |
 	LDX #$065A			;$B485F8	 |
 	JSR ($0000,x)			;$B485FB	 |
-	JSL CODE_BB91D9			;$B485FE	 |
+	JSL disable_screen		;$B485FE	 |
 	LDA #CODE_8087D9		;$B48602	 |
 	JML CODE_808C9E			;$B48605	/
 
@@ -1475,7 +1475,7 @@ CODE_B48C9D:
 	LDA $06A1			;$B48CA4	 |
 	AND #$DDFF			;$B48CA7	 |
 	STA $06A1			;$B48CAA	 |
-	JSL CODE_BB91D9			;$B48CAD	 |
+	JSL disable_screen		;$B48CAD	 |
 	JSL clear_vram_wrapper		;$B48CB1	 |
 	JSL CODE_BAC7C0			;$B48CB5	 |
 	LDA #$0200			;$B48CB9	 |
@@ -1610,7 +1610,7 @@ CODE_B48DF9:				;		 |
 	RTS				;$B48DF9	/
 
 CODE_B48DFA:
-	JSL CODE_BB91D9			;$B48DFA	\
+	JSL disable_screen		;$B48DFA	\
 	LDA #$0040			;$B48DFE	 |
 	TSB $08FB			;$B48E01	 |
 	LDA #$0040			;$B48E04	 |
@@ -2006,7 +2006,7 @@ CODE_B491BF:				;		 |
 CODE_B491C5:
 	JSR CODE_B4AE58			;$B491C5	\
 	STZ $08FE			;$B491C8	 |
-	JSL CODE_BB91D9			;$B491CB	 |
+	JSL disable_screen		;$B491CB	 |
 	JSL CODE_BBC5AB			;$B491CF	 |
 	JML CODE_809F85			;$B491D3	/
 
@@ -3986,7 +3986,7 @@ CODE_B4A288:
 	RTS				;$B4A291	/
 
 CODE_B4A292:
-	JSL CODE_BB91D9			;$B4A292	\
+	JSL disable_screen		;$B4A292	\
 	JSL CODE_BBC5F4			;$B4A296	 |
 	LDA #$0001			;$B4A29A	 |
 	STA $0613			;$B4A29D	 |
@@ -7423,7 +7423,7 @@ CODE_B4BEEF:
 	LDA #$0019			;$B4BF33	 |
 	JSL CODE_B5800C			;$B4BF36	 |
 CODE_B4BF3A:				;		 |
-	JSL CODE_BB91D9			;$B4BF3A	 |
+	JSL disable_screen		;$B4BF3A	 |
 	JSL clear_vram_wrapper		;$B4BF3E	 |
 	JSL CODE_BAC7C0			;$B4BF42	 |
 	JSL CODE_8088D2			;$B4BF46	 |
@@ -7634,7 +7634,7 @@ CODE_B4C122:				;		 |
 	BRA CODE_B4C0DE			;$B4C137	/
 
 CODE_B4C139:
-	JSL CODE_BB91D9			;$B4C139	\
+	JSL disable_screen		;$B4C139	\
 	LDA #$0010			;$B4C13D	 |
 	TRB $08FC			;$B4C140	 |
 	STZ $08FE			;$B4C143	 |

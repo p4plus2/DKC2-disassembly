@@ -3370,7 +3370,7 @@ CODE_BAB1B9:
 	TAX				;$BAB1D1	 |
 	LDA DATA_BAB3FE,x		;$BAB1D2	 |
 	STA $000650			;$BAB1D5	 |
-	JSL CODE_BB91D9			;$BAB1D9	 |
+	JSL disable_screen		;$BAB1D9	 |
 	JSL clear_vram_wrapper		;$BAB1DD	 |
 	JSL CODE_BAC7C0			;$BAB1E1	 |
 	SEP #$20			;$BAB1E5	 |
@@ -3847,7 +3847,7 @@ CODE_BAB633:
 	PHK				;$BAB645	 |
 	PLA				;$BAB646	 |
 	STA $CC				;$BAB647	 |
-	JSL CODE_BB91D9			;$BAB649	 |
+	JSL disable_screen		;$BAB649	 |
 	JSL clear_vram_wrapper		;$BAB64D	 |
 	JSL CODE_BAC7C0			;$BAB651	 |
 	JSL CODE_8088D2			;$BAB655	 |
