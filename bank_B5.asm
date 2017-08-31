@@ -1,5 +1,5 @@
-CODE_B58000:
-	JMP CODE_B5818D			;$B58000	 |
+upload_spc_engine_entry:
+	JMP upload_spc_engine_wrapper	;$B58000	 |
 
 CODE_B58003:
 	JMP CODE_B58030			;$B58003	 |
@@ -241,11 +241,11 @@ CODE_B58170:				;		 |
 	STZ $19B0			;$B58189	 |
 	RTS				;$B5818C	/
 
-CODE_B5818D:
-	JSR CODE_B58191			;$B5818D	\
+upload_spc_engine_wrapper:
+	JSR upload_spc_engine		;$B5818D	\
 	RTL				;$B58190	/
 
-CODE_B58191:
+upload_spc_engine:
 	JSR upload_spc_base_engine	;$B58191	\ Upload the core of the SPC engine
 	JSR upload_spc_sound_engine	;$B58194	 | Upload the sound processor of the SPC engine
 	JSR CODE_B582A9			;$B58197	 |
@@ -264,7 +264,7 @@ execute_spc_sound_engine:		;		\
 	LDA #$0672			;$B581AC	 |\ Load the sound engine entry point
 	STA $35				;$B581AF	 |/
 	STZ $37				;$B581B1	 | Zero size transfer means execute jump
-	JSR upload_spc_block		;$B581B3	 |
+	JSR upload_spc_block		;$B581B3	 | Call the upload routine
 	RTS				;$B581B6	/
 
 CODE_B581B7:
@@ -408,16 +408,16 @@ upload_spc_sound_engine:
 	JSR upload_spc_block		;$B582A5	 | Upload SPC block
 	RTS				;$B582A8	/
 
-CODE_B582A9:
-	LDA #DATA_EE11F9		;$B582A9	\
-	STA $0E				;$B582AC	 |
-	LDA.w #DATA_EE11F9>>16		;$B582AE	 |
-	STA $10				;$B582B1	 |
-	LDA #$3100			;$B582B3	 |
-	STA $02				;$B582B6	 |
+CODE_B582A9:				;		\ 
+	LDA #DATA_EE11F9		;$B582A9	 |\
+	STA $0E				;$B582AC	 | |
+	LDA.w #DATA_EE11F9>>16		;$B582AE	 | |
+	STA $10				;$B582B1	 |/
+	LDA #$3100			;$B582B3	 |\ ARAM destination
+	STA $02				;$B582B6	 |/
 	STZ $0A				;$B582B8	 |
-	LDA #$3400			;$B582BA	 |
-	STA $06				;$B582BD	 |
+	LDA #$3400			;$B582BA	 |\
+	STA $06				;$B582BD	 |/
 	STZ $0A				;$B582BF	 |
 	JSR CODE_B582D1			;$B582C1	 |
 	LDA $02				;$B582C4	 |

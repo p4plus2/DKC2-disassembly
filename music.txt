@@ -46,3 +46,130 @@ Bonus music prefixes
 0x0300 -- In the bonus
 
 OW music, Swanky, Cranky, Wrinkly, Fanfare, Gameover, and Credits have no prefixes
+
+
+Sound effects:
+0x00 -- Nothing
+0x01 -- Nothing?
+0x02 -- Klomp walking
+0x03 -- Monkey sound (unused)
+0x04 -- Spin/cartwheel into enemy
+0x05 -- Switch Kongs
+0x06 -- Diddy hurt/lost
+0x07 -- Dixie hurt/lost
+0x08 -- Collect bananna
+0x09 -- Collect something (unused)
+0x0A -- Diddy loses life
+0x0B -- Rambi charging
+0x0C -- Something breaking (investigate)
+0x0D -- Zinger like sound (investigate)
+0x0E -- Zinger killed
+0x0F -- Klick-Klack walking
+0x10 -- Klick-Klack splat
+0x11 -- Klobber skidding
+0x12 -- Klobber waking up
+0x13 -- Quiet sound (investigate)
+0x14 -- Explosion of some sort (investigate)
+0x15 -- Kannon shooting
+0x16 -- Klampon eating player
+0x17 -- Klampon snapping jaw while walking
+0x18 -- Jump on kroc type enemy
+0x19 -- Blow open bonus wall
+0x1A -- Shoot from cannon
+0x1B -- Kong in barrel
+0x1C -- Count down in bonus game
+0x1D -- Rattly jump
+0x1E -- More monkey sounds (unused?)
+0x1F -- Klinger sliding down
+0x20 -- Dixie loses life
+0x21 -- Blowing sound (unused?)
+0x22 -- Reveal token (unused?)
+0x23 -- Diddy juggling
+0x24 -- Neek squeak
+0x25 -- Blowing gum variant (unused?)
+0x26 -- Dixie blowing gum
+0x27 -- Collect kong letter pitch 1
+0x28 -- Collect kong letter pitch 2
+0x29 -- Collect kong letter pitch 3
+0x2A -- Collect kong letter pitch 4
+0x2B -- Lose life/ballon pop
+0x2C -- Gain life
+0x2D -- Collect coin
+0x2E -- K. Rool message
+0x2F -- Squawks attack
+0x30 -- Squawks flapping 1
+0x31 -- Squawks flapping 2
+0x32 -- Spiny walking (investigate)
+0x33 -- Menu move
+0x34 -- Menu select
+0x35 -- Reveal token
+0x36 -- Collect kremcoin
+0x37 -- Klick Klack flipping over
+0x38 -- Collect life
+0x39 -- Krow ghost exploding twinkle
+0x3A -- Krow ghost exploding
+0x3B -- Zinger sound (unused?)
+0x3C -- Zinger sound higher pitch(unused?)
+0x3D -- Zinger buzzing
+0x3E -- Increase tempo/stop buzzing
+0x3F -- Flitter buzzing
+0x40 -- Team up
+0x41 -- Animal buddy destoryed by sign (used with 0x42, 0x43, 0x44)
+0x42 -- Animal buddy destoryed by sign (used with 0x41, 0x43, 0x44)
+0x43 -- Animal buddy destoryed by sign (used with 0x41, 0x42, 0x44)
+0x44 -- Animal buddy destoryed by sign (used with 0x41, 0x42, 0x43)
+0x45 -- Rattly hurt
+0x46 -- Squitter shoot web
+0x47 -- Squitter shooting platform
+0x48 -- Rattly idle jump
+0x49 -- Rattly high jump
+0x4A -- Load cannon ball into cannon
+0x4B -- Shoot cannon (unused?)
+0x4C -- Cannon ball falling from sky
+0x4D -- Squitter jump (investigate)
+0x4E -- Spiny walking
+0x4F -- Squawks hurt
+0x50 -- Invincible
+0x51 -- Hit Kruncha
+0x52 -- Rolling barrel
+0x53 -- Rambi headbutt
+0x54 -- Rambi trample
+0x55 -- Animal transformation sound (semi unused)
+0x56 -- Collect DK coin
+0x57 -- Necky attacking
+0x58 -- Cat-O-9-Tails hurt
+0x59 -- Kudgel hurt
+0x5A -- K. Rool passing out
+0x5B -- K. Rool falling into water
+0x5C -- K. Rool falling into water (unused?)
+0x5D -- Krook jumped on
+0x5E -- Pause/unpause game
+0x5F -- Wrong/invalid selection
+0x60 -- Egg cracking sound
+0x61 -- Krow flapping
+0x62 -- Jumping in and out of water, or krow hit
+0x63 -- Clapper arf
+0x64 -- Krow grabbing egg
+0x65 -- Enguard jab
+0x66 -- Lost Enguard, Kleaver hooks
+0x67 -- Time running out in bonus
+0x68 -- Ambient in water
+0x69 -- Puft up inflating, Kleaver sinking 
+0x6A -- Puft up exploding, Kleaver sinking 2
+0x6B -- Swimming, Kleaver vibrating, Race count down
+0x6C -- Shuri spinning, Kleaver boiling, Race go
+0x6D -- Clapper clap
+0x6E -- Jump on green kroc head, Klapper blowing
+0x6F -- Jump on brown kroc head
+0x70 -- Crashing mixed with DK (unused?)
+0x71 -- Deeper rambi head butt (unused?)
+0x72 -- Quieter monkey sound (unused?)
+0x73 -- Engaurd-like jab (unused?)
+0x74 -- Monkey sound (unused?)
+0x75 -- Weird monkey echo (Unused?)
+0x76 -- quieter monkey sound (unused?)
+0x77 -- Unknown
+0x78 -- Scared by boss
+0x79 -- Caw of Krow
+
+Note: 0x60+ can have multiple uses.  Ones before that may still be sample dependant. 

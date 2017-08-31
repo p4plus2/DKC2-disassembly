@@ -393,7 +393,7 @@ start_engine:				;		\
 	DEX				;$8085DC	 | |
 	DEX				;$8085DD	 | |
 	BPL .rare_string_copy		;$8085DE	 |/ Copy the string until there are no more bytes
-	JSL CODE_B58000			;$8085E0	 | Upload the SPC engine
+	JSL upload_spc_engine_entry	;$8085E0	 | Upload the SPC engine
 init_rare_logo:				;		 |
 	JSL disable_screen		;$8085E4	 | Disable the screen
 	JSR clear_wram_reset		;$8085E8	 | Clear WRAM
