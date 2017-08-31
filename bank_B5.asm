@@ -420,166 +420,166 @@ CODE_B582A9:				;		\
 	STA $06				;$B582BD	 |/
 	STZ $0A				;$B582BF	 |
 	JSR CODE_B582D1			;$B582C1	 |
-	LDA $02				;$B582C4	 |
-	STA $04				;$B582C6	 |
-	LDA $06				;$B582C8	 |
-	STA $08				;$B582CA	 |
-	LDA $0A				;$B582CC	 |
-	STA $0C				;$B582CE	 |
+	LDA $02				;$B582C4	 |\ 
+	STA $04				;$B582C6	 |/
+	LDA $06				;$B582C8	 |\ 
+	STA $08				;$B582CA	 |/
+	LDA $0A				;$B582CC	 |\ 
+	STA $0C				;$B582CE	 |/
 	RTS				;$B582D0	/
 
 CODE_B582D1:
 	STZ $0A				;$B582D1	\
 	LDX #$0000			;$B582D3	 |
-	LDA $0A				;$B582D6	 |
-	STA $3A				;$B582D8	 |
-	LDA $0E				;$B582DA	 |
-	STA $3E				;$B582DC	 |
-	LDA $10				;$B582DE	 |
-	STA $40				;$B582E0	 |
-	LDA $02				;$B582E2	 |
-	STA $42				;$B582E4	 |
-	LDA $06				;$B582E6	 |
-	STA $44				;$B582E8	 |
+	LDA $0A				;$B582D6	 |\ 
+	STA $3A				;$B582D8	 |/
+	LDA $0E				;$B582DA	 |\ 
+	STA $3E				;$B582DC	 |/
+	LDA $10				;$B582DE	 |\ 
+	STA $40				;$B582E0	 |/
+	LDA $02				;$B582E2	 |\ 
+	STA $42				;$B582E4	 |/
+	LDA $06				;$B582E6	 |\ 
+	STA $44				;$B582E8	 |/
 CODE_B582EA:				;		 |
 	LDA [$3E]			;$B582EA	 |
-	INC $3E				;$B582EC	 |
-	INC $3E				;$B582EE	 |
-	CMP #$FFFF			;$B582F0	 |
-	BEQ CODE_B58333			;$B582F3	 |
-	STA $3C				;$B582F5	 |
-	CLC				;$B582F7	 |
-	ADC $3C				;$B582F8	 |
-	ADC $3C				;$B582FA	 |
+	INC $3E				;$B582EC	 |\ 
+	INC $3E				;$B582EE	 |/
+	CMP #$FFFF			;$B582F0	 |\ 
+	BEQ .upload_sample_directory	;$B582F3	 |/
+	STA $3C				;$B582F5	 |\ 
+	CLC				;$B582F7	 | |
+	ADC $3C				;$B582F8	 | |
+	ADC $3C				;$B582FA	 |/
 	TXY				;$B582FC	 |
 	TAX				;$B582FD	 |
-	LDA.l DATA_EE0D86,x		;$B582FE	 |
-	STA $32				;$B58302	 |
-	LDA.l DATA_EE0D88,x		;$B58304	 |
-	STA $34				;$B58308	 |
+	LDA.l DATA_EE0D86,x		;$B582FE	 |\ 
+	STA $32				;$B58302	 | |
+	LDA.l DATA_EE0D88,x		;$B58304	 | |
+	STA $34				;$B58308	 |/
 	TYX				;$B5830A	 |
-	LDA $06				;$B5830B	 |
-	STA $7E2200,x			;$B5830D	 |
-	INX				;$B58311	 |
-	INX				;$B58312	 |
-	LDA [$32]			;$B58313	 |
-	CLC				;$B58315	 |
-	ADC $06				;$B58316	 |
-	STA $7E2200,x			;$B58318	 |
-	INX				;$B5831C	 |
-	INX				;$B5831D	 |
-	INC $02				;$B5831E	 |
-	INC $02				;$B58320	 |
-	INC $02				;$B58322	 |
-	INC $02				;$B58324	 |
-	INC $32				;$B58326	 |
-	INC $32				;$B58328	 |
-	LDA [$32]			;$B5832A	 |
-	CLC				;$B5832C	 |
-	ADC $06				;$B5832D	 |
-	STA $06				;$B5832F	 |
+	LDA $06				;$B5830B	 |\ 
+	STA $7E2200,x			;$B5830D	 |/
+	INX				;$B58311	 |\ 
+	INX				;$B58312	 |/
+	LDA [$32]			;$B58313	 |\ 
+	CLC				;$B58315	 | |
+	ADC $06				;$B58316	 | |
+	STA $7E2200,x			;$B58318	 |/ 
+	INX				;$B5831C	 |\ 
+	INX				;$B5831D	 |/
+	INC $02				;$B5831E	 |\ 
+	INC $02				;$B58320	 | |
+	INC $02				;$B58322	 | |
+	INC $02				;$B58324	 |/
+	INC $32				;$B58326	 |\ 
+	INC $32				;$B58328	 |/
+	LDA [$32]			;$B5832A	 |\ 
+	CLC				;$B5832C	 | |
+	ADC $06				;$B5832D	 | |
+	STA $06				;$B5832F	 |/
 	BRA CODE_B582EA			;$B58331	/
 
-CODE_B58333:
-	LDA #$2200			;$B58333	\
-	STA $32				;$B58336	 |
-	LDA #$007E			;$B58338	 |
-	STA $34				;$B5833B	 |
-	LDA $42				;$B5833D	 |
-	STA $35				;$B5833F	 |
-	LDA #$3400			;$B58341	 |
-	SEC				;$B58344	 |
-	SBC $42				;$B58345	 |
-	CLC				;$B58347	 |
-	INC A				;$B58348	 |
-	LSR A				;$B58349	 |
-	STA $37				;$B5834A	 |
-	JSR upload_spc_block		;$B5834C	 |
-	LDA #DATA_EE11F9		;$B5834F	 |
-	STA $3E				;$B58352	 |
-	LDA.w #DATA_EE11F9>>16		;$B58354	 |
-	STA $40				;$B58357	 |
-	LDA $0E				;$B58359	 |
-	CMP $3E				;$B5835B	 |
-	BNE CODE_B58365			;$B5835D	 |
-	LDA $10				;$B5835F	 |
-	CMP $40				;$B58361	 |
-	BEQ CODE_B583B8			;$B58363	 |
+.upload_sample_directory		;		\ 
+	LDA #$2200			;$B58333	 |\ Set upload source to $7E2200
+	STA $32				;$B58336	 | |
+	LDA #$007E			;$B58338	 | |
+	STA $34				;$B5833B	 |/
+	LDA $42				;$B5833D	 |\ Set ARAM destination
+	STA $35				;$B5833F	 |/
+	LDA #$3400			;$B58341	 |\ Calculate and set upload size
+	SEC				;$B58344	 | |
+	SBC $42				;$B58345	 | | ($3400 - ARAM dest + 1) / 2
+	CLC				;$B58347	 | |
+	INC A				;$B58348	 | |
+	LSR A				;$B58349	 | |
+	STA $37				;$B5834A	 |/
+	JSR upload_spc_block		;$B5834C	 | Upload sample directory
+	LDA #DATA_EE11F9		;$B5834F	 |\ 
+	STA $3E				;$B58352	 | |
+	LDA.w #DATA_EE11F9>>16		;$B58354	 | |
+	STA $40				;$B58357	 |/
+	LDA $0E				;$B58359	 |\ 
+	CMP $3E				;$B5835B	 | |
+	BNE CODE_B58365			;$B5835D	 |/
+	LDA $10				;$B5835F	 |\ 
+	CMP $40				;$B58361	 | |
+	BEQ CODE_B583B8			;$B58363	 |/
 CODE_B58365:				;		 |
-	LDA [$3E]			;$B58365	 |
-	CMP #$FFFF			;$B58367	 |
-	BEQ CODE_B5837F			;$B5836A	 |
-	INC $3E				;$B5836C	 |
-	INC $3E				;$B5836E	 |
+	LDA [$3E]			;$B58365	 |\ 
+	CMP #$FFFF			;$B58367	 | |
+	BEQ CODE_B5837F			;$B5836A	 |/
+	INC $3E				;$B5836C	 |\ 
+	INC $3E				;$B5836E	 |/
 	TAX				;$B58370	 |
-	LDA $0A				;$B58371	 |
-	SEP #$20			;$B58373	 |
-	STA $7E2200,x			;$B58375	 |
+	LDA $0A				;$B58371	 |\ 
+	SEP #$20			;$B58373	 | |
+	STA $7E2200,x			;$B58375	 |/
 	REP #$20			;$B58379	 |
 	INC $0A				;$B5837B	 |
 	BRA CODE_B58365			;$B5837D	/
 
-CODE_B5837F:
-	LDA $0E				;$B5837F	\
-	STA $3E				;$B58381	 |
-	LDA $10				;$B58383	 |
-	STA $40				;$B58385	 |
+CODE_B5837F:				;		\ 
+	LDA $0E				;$B5837F	 |\ 
+	STA $3E				;$B58381	 |/
+	LDA $10				;$B58383	 |\ 
+	STA $40				;$B58385	 |/
 CODE_B58387:				;		 |
-	LDA [$3E]			;$B58387	 |
-	CMP #$FFFF			;$B58389	 |
-	BEQ CODE_B583A1			;$B5838C	 |
-	INC $3E				;$B5838E	 |
-	INC $3E				;$B58390	 |
+	LDA [$3E]			;$B58387	 |\ 
+	CMP #$FFFF			;$B58389	 | |
+	BEQ .upload_source_number_table	;$B5838C	 |/
+	INC $3E				;$B5838E	 |\ 
+	INC $3E				;$B58390	 |/
 	TAX				;$B58392	 |
-	LDA $0A				;$B58393	 |
-	SEP #$20			;$B58395	 |
-	STA $7E2200,x			;$B58397	 |
-	REP #$20			;$B5839B	 |
+	LDA $0A				;$B58393	 |\ 
+	SEP #$20			;$B58395	 | |
+	STA $7E2200,x			;$B58397	 | |
+	REP #$20			;$B5839B	 |/
 	INC $0A				;$B5839D	 |
 	BRA CODE_B58387			;$B5839F	/
 
-CODE_B583A1:
-	LDA #$2200			;$B583A1	\
-	STA $32				;$B583A4	 |
-	LDA #$007E			;$B583A6	 |
-	STA $34				;$B583A9	 |
-	LDA #$0560			;$B583AB	 |
-	STA $35				;$B583AE	 |
-	LDA #$0080			;$B583B0	 |
-	STA $37				;$B583B3	 |
-	JSR upload_spc_block		;$B583B5	 |
+.upload_source_number_table		;		\ 
+	LDA #$2200			;$B583A1	 |\ Set upload source to $7E2200
+	STA $32				;$B583A4	 | |
+	LDA #$007E			;$B583A6	 | | 
+	STA $34				;$B583A9	 |/
+	LDA #$0560			;$B583AB	 |\ Set ARAM Destination to $0560 
+	STA $35				;$B583AE	 |/
+	LDA #$0080			;$B583B0	 |\ Set transfer size to 128 bytes
+	STA $37				;$B583B3	 |/
+	JSR upload_spc_block		;$B583B5	 | Upload the source number table
 CODE_B583B8:				;		 |
-	LDA $44				;$B583B8	 |
-	STA $06				;$B583BA	 |
+	LDA $44				;$B583B8	 |\ 
+	STA $06				;$B583BA	 |/
 CODE_B583BC:				;		 |
-	LDA [$0E]			;$B583BC	 |
-	CMP #$FFFF			;$B583BE	 |
-	BEQ CODE_B583FA			;$B583C1	 |
-	INC $0E				;$B583C3	 |
-	INC $0E				;$B583C5	 |
-	STA $3C				;$B583C7	 |
-	CLC				;$B583C9	 |
-	ADC $3C				;$B583CA	 |
-	ADC $3C				;$B583CC	 |
+	LDA [$0E]			;$B583BC	 |\ 
+	CMP #$FFFF			;$B583BE	 | |
+	BEQ CODE_B583FA			;$B583C1	 |/
+	INC $0E				;$B583C3	 |\ 
+	INC $0E				;$B583C5	 |/
+	STA $3C				;$B583C7	 |\ 
+	CLC				;$B583C9	 | |
+	ADC $3C				;$B583CA	 | |
+	ADC $3C				;$B583CC	 |/
 	TAX				;$B583CE	 |
-	LDA.l DATA_EE0D86,x		;$B583CF	 |
-	STA $32				;$B583D3	 |
-	LDA.l DATA_EE0D88,x		;$B583D5	 |
-	STA $34				;$B583D9	 |
-	INC $32				;$B583DB	 |
-	INC $32				;$B583DD	 |
-	LDA $06				;$B583DF	 |
-	STA $35				;$B583E1	 |
-	LDA [$32]			;$B583E3	 |
-	STA $37				;$B583E5	 |
-	CLC				;$B583E7	 |
-	ADC $35				;$B583E8	 |
-	STA $06				;$B583EA	 |
-	CLC				;$B583EC	 |
-	INC $37				;$B583ED	 |
-	LSR $37				;$B583EF	 |
-	INC $32				;$B583F1	 |
-	INC $32				;$B583F3	 |
+	LDA.l DATA_EE0D86,x		;$B583CF	 |\ 
+	STA $32				;$B583D3	 | |
+	LDA.l DATA_EE0D88,x		;$B583D5	 | |
+	STA $34				;$B583D9	 |/
+	INC $32				;$B583DB	 |\ 
+	INC $32				;$B583DD	 |/
+	LDA $06				;$B583DF	 |\ 
+	STA $35				;$B583E1	 |/
+	LDA [$32]			;$B583E3	 |\ 
+	STA $37				;$B583E5	 |/
+	CLC				;$B583E7	 |\ 
+	ADC $35				;$B583E8	 | |
+	STA $06				;$B583EA	 |/
+	CLC				;$B583EC	 |\
+	INC $37				;$B583ED	 | |
+	LSR $37				;$B583EF	 |/
+	INC $32				;$B583F1	 |\ 
+	INC $32				;$B583F3	 |/
 	JSR upload_spc_block		;$B583F5	 |
 	BRA CODE_B583BC			;$B583F8	/
 
