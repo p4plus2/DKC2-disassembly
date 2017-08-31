@@ -40,7 +40,7 @@ CODE_B58024:
 	PLB				;$B58026	 |
 	ORA #$0500			;$B58027	 |
 	TAX				;$B5802A	 |
-	JSR CODE_B581FB			;$B5802B	 |
+	JSR write_spc_command		;$B5802B	 |
 	PLB				;$B5802E	 |
 	RTL				;$B5802F	/
 
@@ -111,7 +111,7 @@ CODE_B58094:				;		 |
 	STA $0619,x			;$B58096	 |
 	REP #$30			;$B58099	 |
 	TAX				;$B5809B	 |
-	JMP CODE_B581FB			;$B5809C	/
+	JMP write_spc_command		;$B5809C	/
 
 CODE_B5809F:
 	LDX #$04			;$B5809F	\
@@ -139,7 +139,7 @@ CODE_B580C3:				;		 |
 	LDA $0619,x			;$B580C3	 |
 	REP #$30			;$B580C6	 |
 	TAX				;$B580C8	 |
-	JSR CODE_B581FB			;$B580C9	 |
+	JSR write_spc_command		;$B580C9	 |
 	RTL				;$B580CC	/
 
 DATA_B580CD:
@@ -151,7 +151,7 @@ CODE_B580D5:
 	PLB				;$B580D7	 |
 	STA $1C				;$B580D8	 |
 	LDX #$00FF			;$B580DA	 |
-	JSR CODE_B581FB			;$B580DD	 |
+	JSR write_spc_command		;$B580DD	 |
 	JSR CODE_B58469			;$B580E0	 |
 	JSR CODE_B5825C			;$B580E3	 |
 	JSR CODE_B58277			;$B580E6	 |
@@ -165,12 +165,12 @@ CODE_B580EE:
 	PLB				;$B580F0	 |
 	JSR CODE_B5816D			;$B580F1	 |
 	LDX #$00FE			;$B580F4	 |
-	JSR CODE_B581FB			;$B580F7	 |
+	JSR write_spc_command		;$B580F7	 |
 	LDA $1E				;$B580FA	 |
 	XBA				;$B580FC	 |
 	ORA #$00FA			;$B580FD	 |
 	TAX				;$B58100	 |
-	JSR CODE_B581FB			;$B58101	 |
+	JSR write_spc_command		;$B58101	 |
 	PLB				;$B58104	 |
 	RTL				;$B58105	/
 
@@ -180,19 +180,19 @@ CODE_B58106:
 	PLB				;$B58108	 |
 	STA $1C				;$B58109	 |
 	LDX #$00FF			;$B5810B	 |
-	JSR CODE_B581FB			;$B5810E	 |
+	JSR write_spc_command		;$B5810E	 |
 	JSR CODE_B58469			;$B58111	 |
 	JSR CODE_B5825C			;$B58114	 |
 	JSR CODE_B58277			;$B58117	 |
 	JSR CODE_B5816D			;$B5811A	 |
 	JSR execute_spc_sound_engine	;$B5811D	 |
 	LDX #$00FE			;$B58120	 |
-	JSR CODE_B581FB			;$B58123	 |
+	JSR write_spc_command		;$B58123	 |
 	LDA $1E				;$B58126	 |
 	XBA				;$B58128	 |
 	ORA #$00FA			;$B58129	 |
 	TAX				;$B5812C	 |
-	JSR CODE_B581FB			;$B5812D	 |
+	JSR write_spc_command		;$B5812D	 |
 	PLB				;$B58130	 |
 	RTL				;$B58131	/
 
@@ -204,7 +204,7 @@ CODE_B58132:
 	AND #$00FF			;$B58136	 |
 	STA $1C				;$B58139	 |
 	LDX #$00FF			;$B5813B	 |
-	JSR CODE_B581FB			;$B5813E	 |
+	JSR write_spc_command		;$B5813E	 |
 	JSR CODE_B58469			;$B58141	 |
 	JSR CODE_B5825C			;$B58144	 |
 	JSR CODE_B58277			;$B58147	 |
@@ -214,14 +214,14 @@ CODE_B58132:
 	AND #$FF00			;$B58151	 |
 	ORA #$00FB			;$B58154	 |
 	TAX				;$B58157	 |
-	JSR CODE_B581FB			;$B58158	 |
+	JSR write_spc_command		;$B58158	 |
 	LDX #$00FE			;$B5815B	 |
-	JSR CODE_B581FB			;$B5815E	 |
+	JSR write_spc_command		;$B5815E	 |
 	LDA $1E				;$B58161	 |
 	XBA				;$B58163	 |
 	ORA #$00FA			;$B58164	 |
 	TAX				;$B58167	 |
-	JSR CODE_B581FB			;$B58168	 |
+	JSR write_spc_command		;$B58168	 |
 	PLB				;$B5816B	 |
 	RTL				;$B5816C	/
 
@@ -279,7 +279,7 @@ CODE_B581C2:
 	XBA				;$B581C5	 |
 	ORA #$00FC			;$B581C6	 |
 	TAX				;$B581C9	 |
-	JSR CODE_B581FB			;$B581CA	 |
+	JSR write_spc_command		;$B581CA	 |
 	RTL				;$B581CD	/
 
 CODE_B581CE:
@@ -287,7 +287,7 @@ CODE_B581CE:
 	XBA				;$B581D1	 |
 	ORA #$00FD			;$B581D2	 |
 	TAX				;$B581D5	 |
-	JSR CODE_B581FB			;$B581D6	 |
+	JSR write_spc_command		;$B581D6	 |
 	RTL				;$B581D9	/
 
 CODE_B581DA:
@@ -301,35 +301,35 @@ CODE_B581DB:
 	XBA				;$B581E1	 |
 	ORA #$00FB			;$B581E2	 |
 	TAX				;$B581E5	 |
-	JSR CODE_B581FB			;$B581E6	 |
+	JSR write_spc_command		;$B581E6	 |
 	LDX #$00FE			;$B581E9	 |
-	JSR CODE_B581FB			;$B581EC	 |
+	JSR write_spc_command		;$B581EC	 |
 	LDA $1E				;$B581EF	 |
 	XBA				;$B581F1	 |
 	ORA #$00FA			;$B581F2	 |
 	TAX				;$B581F5	 |
-	JSR CODE_B581FB			;$B581F6	 |
+	JSR write_spc_command		;$B581F6	 |
 	PLB				;$B581F9	 |
 	RTL				;$B581FA	/
 
-CODE_B581FB:
-	TXA				;$B581FB	\
-	REP #$20			;$B581FC	 |
-	SEP #$10			;$B581FE	 |
-	LDX $00				;$B58200	 |
-CODE_B58202:				;		 |
-	CPX $2140			;$B58202	 |
-	BNE CODE_B58202			;$B58205	 |
-	STA $2141			;$B58207	 |
-	INX				;$B5820A	 |
-	STX $2140			;$B5820B	 |
-	STX $00				;$B5820E	 |
+write_spc_command:
+	TXA				;$B581FB	\ Move the command into A
+	REP #$20			;$B581FC	 |\ Use index as 8 bit, with 16 bit accumulator
+	SEP #$10			;$B581FE	 |/
+	LDX $00				;$B58200	 | Load the previous SPC transaction id
+-					;		 |
+	CPX $2140			;$B58202	 |\ Wait for the SPC engine to echo the previous transaction id
+	BNE -				;$B58205	 |/
+	STA $2141			;$B58207	 | Write the command to the SPC engine
+	INX				;$B5820A	 |\ Increment and send the SPC transaction id
+	STX $2140			;$B5820B	 |/
+	STX $00				;$B5820E	 | Store the SPC transaction id
 	REP #$30			;$B58210	 |
-	RTS				;$B58212	/
+	RTS				;$B58212	/ Command upload finished
 
-upload_spc_base_engine:
-	REP #$20			;$B58213	\
-	SEP #$10			;$B58215	 | Use index as 8 bit, with 16 bit accumulator
+upload_spc_base_engine:			;		\
+	REP #$20			;$B58213	 |\ Use index as 8 bit, with 16 bit accumulator
+	SEP #$10			;$B58215	 |/
 	LDA #$BBAA			;$B58217	 | The IPL uses BBAA to indicate ready state
 -					;		 |\ Wait for the SPC 700 to be ready
 	CMP $2140			;$B5821A	 | |
