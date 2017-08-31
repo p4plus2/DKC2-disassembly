@@ -249,11 +249,11 @@ CODE_B58191:
 	JSR upload_spc_base_engine	;$B58191	\ Upload the core of the SPC engine
 	JSR upload_spc_sound_engine	;$B58194	 | Upload the sound processor of the SPC engine
 	JSR CODE_B582A9			;$B58197	 |
-	LDA #DATA_F2E730		;$B5819A	 |\
+	LDA #sound_effect_data		;$B5819A	 |\ Load pointer to sound effect data
 	STA $32				;$B5819D	 | |
-	LDA.w #DATA_F2E730>>16		;$B5819F	 | |
+	LDA.w #sound_effect_data>>16	;$B5819F	 | |
 	STA $34				;$B581A2	 |/
-	JSR upload_inline_spc_block	;$B581A4	 |
+	JSR upload_inline_spc_block	;$B581A4	 | Upload the sound effect data
 	JSR execute_spc_sound_engine	;$B581A7	 | Jump to the sound engine entry
 	RTS				;$B581AA	/
 
