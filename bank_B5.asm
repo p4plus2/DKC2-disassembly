@@ -248,7 +248,7 @@ upload_spc_engine_wrapper:
 upload_spc_engine:
 	JSR upload_spc_base_engine	;$B58191	\ Upload the core of the SPC engine
 	JSR upload_spc_sound_engine	;$B58194	 | Upload the sound processor of the SPC engine
-	JSR CODE_B582A9			;$B58197	 |
+	JSR upload_global_samples	;$B58197	 |
 	LDA #sound_effect_data		;$B5819A	 |\ Load pointer to sound effect data
 	STA $32				;$B5819D	 | |
 	LDA.w #sound_effect_data>>16	;$B5819F	 | |
@@ -403,23 +403,23 @@ upload_spc_sound_engine:
 	STA $34				;$B58299	 |/
 	LDA #$0560			;$B5829B	 |\ Set the ARAM destination
 	STA $35				;$B5829E	 |/
-	LDA #$067F			;$B582A0	 |\ Set the number of bytes to transfer
+	LDA #$067F			;$B582A0	 |\ Set the number of words to transfer
 	STA $37				;$B582A3	 |/
 	JSR upload_spc_block		;$B582A5	 | Upload SPC block
 	RTS				;$B582A8	/
 
-CODE_B582A9:				;		\ 
-	LDA #DATA_EE11F9		;$B582A9	 |\
+upload_global_samples:			;		\ 
+	LDA #global_sample_map		;$B582A9	 |\ Load the pointer to the global sample map
 	STA $0E				;$B582AC	 | |
-	LDA.w #DATA_EE11F9>>16		;$B582AE	 | |
+	LDA.w #global_sample_map>>16	;$B582AE	 | |
 	STA $10				;$B582B1	 |/
-	LDA #$3100			;$B582B3	 |\ ARAM destination
+	LDA #$3100			;$B582B3	 |\ Source directory ARAM destination
 	STA $02				;$B582B6	 |/
 	STZ $0A				;$B582B8	 |
-	LDA #$3400			;$B582BA	 |\
+	LDA #$3400			;$B582BA	 |\ Sample data ARAM destination
 	STA $06				;$B582BD	 |/
-	STZ $0A				;$B582BF	 |
-	JSR CODE_B582D1			;$B582C1	 |
+	STZ $0A				;$B582BF	 | Reset the sample counter
+	JSR sample_uploader		;$B582C1	 |
 	LDA $02				;$B582C4	 |\ 
 	STA $04				;$B582C6	 |/
 	LDA $06				;$B582C8	 |\ 
@@ -428,57 +428,57 @@ CODE_B582A9:				;		\
 	STA $0C				;$B582CE	 |/
 	RTS				;$B582D0	/
 
-CODE_B582D1:
-	STZ $0A				;$B582D1	\
+sample_uploader:
+	STZ $0A				;$B582D1	\ Reset the sample counter
 	LDX #$0000			;$B582D3	 |
 	LDA $0A				;$B582D6	 |\ 
 	STA $3A				;$B582D8	 |/
-	LDA $0E				;$B582DA	 |\ 
-	STA $3E				;$B582DC	 |/
-	LDA $10				;$B582DE	 |\ 
+	LDA $0E				;$B582DA	 |\ Copy sample map pointer
+	STA $3E				;$B582DC	 | |
+	LDA $10				;$B582DE	 | |
 	STA $40				;$B582E0	 |/
-	LDA $02				;$B582E2	 |\ 
+	LDA $02				;$B582E2	 |\ Copy source directory ARAM destination
 	STA $42				;$B582E4	 |/
-	LDA $06				;$B582E6	 |\ 
+	LDA $06				;$B582E6	 |\ Copy sample data ARAM destination 
 	STA $44				;$B582E8	 |/
-CODE_B582EA:				;		 |
-	LDA [$3E]			;$B582EA	 |
-	INC $3E				;$B582EC	 |\ 
+.parse_next_sample			;		 |
+	LDA [$3E]			;$B582EA	 | Load sample number
+	INC $3E				;$B582EC	 |\  Increment the sample map pointer
 	INC $3E				;$B582EE	 |/
-	CMP #$FFFF			;$B582F0	 |\ 
+	CMP #$FFFF			;$B582F0	 |\ Sample number FFFF implies end of table, branch and upload
 	BEQ .upload_sample_directory	;$B582F3	 |/
-	STA $3C				;$B582F5	 |\ 
+	STA $3C				;$B582F5	 |\ Triple sample number to index sample pointer table 
 	CLC				;$B582F7	 | |
 	ADC $3C				;$B582F8	 | |
 	ADC $3C				;$B582FA	 |/
-	TXY				;$B582FC	 |
-	TAX				;$B582FD	 |
-	LDA.l DATA_EE0D86,x		;$B582FE	 |\ 
+	TXY				;$B582FC	 | Preserve ARAM buffer index
+	TAX				;$B582FD	 |\ Load pointer to the current sample
+	LDA.l sample_table,x		;$B582FE	 | |
 	STA $32				;$B58302	 | |
-	LDA.l DATA_EE0D88,x		;$B58304	 | |
+	LDA.l sample_table+2,x		;$B58304	 | |
 	STA $34				;$B58308	 |/
-	TYX				;$B5830A	 |
-	LDA $06				;$B5830B	 |\ 
+	TYX				;$B5830A	 | Restore ARAM buffer index
+	LDA $06				;$B5830B	 |\ Store sample data ARAM destination
 	STA $7E2200,x			;$B5830D	 |/
-	INX				;$B58311	 |\ 
+	INX				;$B58311	 |\ Increment ARAM buffer index
 	INX				;$B58312	 |/
-	LDA [$32]			;$B58313	 |\ 
+	LDA [$32]			;$B58313	 |\ Load size of unlooped sample data
 	CLC				;$B58315	 | |
-	ADC $06				;$B58316	 | |
-	STA $7E2200,x			;$B58318	 |/ 
-	INX				;$B5831C	 |\ 
+	ADC $06				;$B58316	 | | Add unlooped sample data and ARAM destination
+	STA $7E2200,x			;$B58318	 |/ Store destination of sample loop entry
+	INX				;$B5831C	 |\ Increment ARAM buffer index 
 	INX				;$B5831D	 |/
-	INC $02				;$B5831E	 |\ 
+	INC $02				;$B5831E	 |\ Increase source directory ARAM destination by 4 bytes
 	INC $02				;$B58320	 | |
 	INC $02				;$B58322	 | |
 	INC $02				;$B58324	 |/
-	INC $32				;$B58326	 |\ 
+	INC $32				;$B58326	 |\ Increment pointer to current sample data
 	INC $32				;$B58328	 |/
-	LDA [$32]			;$B5832A	 |\ 
+	LDA [$32]			;$B5832A	 |\ Load size of looped sample data
 	CLC				;$B5832C	 | |
-	ADC $06				;$B5832D	 | |
-	STA $06				;$B5832F	 |/
-	BRA CODE_B582EA			;$B58331	/
+	ADC $06				;$B5832D	 | | Add looped sample data and ARAM destination
+	STA $06				;$B5832F	 |/ Store next potential ARAM sample destination
+	BRA .parse_next_sample		;$B58331	/ Parse the next sample
 
 .upload_sample_directory		;		\ 
 	LDA #$2200			;$B58333	 |\ Set upload source to $7E2200
@@ -489,102 +489,102 @@ CODE_B582EA:				;		 |
 	STA $35				;$B5833F	 |/
 	LDA #$3400			;$B58341	 |\ Calculate and set upload size
 	SEC				;$B58344	 | |
-	SBC $42				;$B58345	 | | ($3400 - ARAM dest + 1) / 2
+	SBC $42				;$B58345	 | | word count = ($3400 - ARAM dest + 1) / 2
 	CLC				;$B58347	 | |
 	INC A				;$B58348	 | |
 	LSR A				;$B58349	 | |
 	STA $37				;$B5834A	 |/
 	JSR upload_spc_block		;$B5834C	 | Upload sample directory
-	LDA #DATA_EE11F9		;$B5834F	 |\ 
+	LDA #global_sample_map		;$B5834F	 |\ Load global sample map pointer
 	STA $3E				;$B58352	 | |
-	LDA.w #DATA_EE11F9>>16		;$B58354	 | |
+	LDA.w #global_sample_map>>16	;$B58354	 | |
 	STA $40				;$B58357	 |/
-	LDA $0E				;$B58359	 |\ 
-	CMP $3E				;$B5835B	 | |
-	BNE CODE_B58365			;$B5835D	 |/
-	LDA $10				;$B5835F	 |\ 
+	LDA $0E				;$B58359	 |\ If the sample map pointer is not the global samples
+	CMP $3E				;$B5835B	 | | 
+	BNE  .map_global_sample		;$B5835D	 |/ Branch and include global samples in the mapping
+	LDA $10				;$B5835F	 |\ If the pointer does match the global samples
 	CMP $40				;$B58361	 | |
-	BEQ CODE_B583B8			;$B58363	 |/
-CODE_B58365:				;		 |
-	LDA [$3E]			;$B58365	 |\ 
-	CMP #$FFFF			;$B58367	 | |
-	BEQ CODE_B5837F			;$B5836A	 |/
-	INC $3E				;$B5836C	 |\ 
+	BEQ .upload_samples		;$B58363	 |/ Branch ahead and don't double map global samples
+ .map_global_sample			;		 |
+	LDA [$3E]			;$B58365	 | Load the sample number 
+	CMP #$FFFF			;$B58367	 |\ Sample number FFFF implies end of table, in that case
+	BEQ .map_set_specific_samples	;$B5836A	 |/ Branch and map set specific samples
+	INC $3E				;$B5836C	 |\ Increment sample map pointer
 	INC $3E				;$B5836E	 |/
-	TAX				;$B58370	 |
-	LDA $0A				;$B58371	 |\ 
+	TAX				;$B58370	 | Use sample number as an index
+	LDA $0A				;$B58371	 |\ Store the sample id at the sample number index
 	SEP #$20			;$B58373	 | |
-	STA $7E2200,x			;$B58375	 |/
-	REP #$20			;$B58379	 |
-	INC $0A				;$B5837B	 |
-	BRA CODE_B58365			;$B5837D	/
+	STA $7E2200,x			;$B58375	 | |
+	REP #$20			;$B58379	 |/
+	INC $0A				;$B5837B	 | Increment the sample number count
+	BRA .map_global_sample		;$B5837D	/ Parse next sample map entry
 
-CODE_B5837F:				;		\ 
-	LDA $0E				;$B5837F	 |\ 
-	STA $3E				;$B58381	 |/
-	LDA $10				;$B58383	 |\ 
+.map_set_specific_samples		;		\ 
+	LDA $0E				;$B5837F	 |\ Load target sample map pointer
+	STA $3E				;$B58381	 | |
+	LDA $10				;$B58383	 | | 
 	STA $40				;$B58385	 |/
-CODE_B58387:				;		 |
-	LDA [$3E]			;$B58387	 |\ 
-	CMP #$FFFF			;$B58389	 | |
-	BEQ .upload_source_number_table	;$B5838C	 |/
-	INC $3E				;$B5838E	 |\ 
+.map_sample				;		 |
+	LDA [$3E]			;$B58387	 | Load the sample number   
+	CMP #$FFFF			;$B58389	 |\ Sample number FFFF implies end of table, branch and upload
+	BEQ .upload_source_number_map	;$B5838C	 |/
+	INC $3E				;$B5838E	 |\ Increment sample map pointer 
 	INC $3E				;$B58390	 |/
-	TAX				;$B58392	 |
-	LDA $0A				;$B58393	 |\ 
+	TAX				;$B58392	 | Use sample number as an index
+	LDA $0A				;$B58393	 |\ Store the sample id at the sample number index
 	SEP #$20			;$B58395	 | |
 	STA $7E2200,x			;$B58397	 | |
 	REP #$20			;$B5839B	 |/
-	INC $0A				;$B5839D	 |
-	BRA CODE_B58387			;$B5839F	/
+	INC $0A				;$B5839D	 | Increment the sample number count
+	BRA .map_sample			;$B5839F	/ Parse next sample map entry
 
-.upload_source_number_table		;		\ 
+.upload_source_number_map		;		\ 
 	LDA #$2200			;$B583A1	 |\ Set upload source to $7E2200
 	STA $32				;$B583A4	 | |
 	LDA #$007E			;$B583A6	 | | 
 	STA $34				;$B583A9	 |/
 	LDA #$0560			;$B583AB	 |\ Set ARAM Destination to $0560 
 	STA $35				;$B583AE	 |/
-	LDA #$0080			;$B583B0	 |\ Set transfer size to 128 bytes
+	LDA #$0080			;$B583B0	 |\ Set transfer size to 128 words
 	STA $37				;$B583B3	 |/
 	JSR upload_spc_block		;$B583B5	 | Upload the source number table
-CODE_B583B8:				;		 |
-	LDA $44				;$B583B8	 |\ 
+.upload_samples				;		 |
+	LDA $44				;$B583B8	 |\ Load and copy the sample destination pointer
 	STA $06				;$B583BA	 |/
-CODE_B583BC:				;		 |
-	LDA [$0E]			;$B583BC	 |\ 
-	CMP #$FFFF			;$B583BE	 | |
-	BEQ CODE_B583FA			;$B583C1	 |/
-	INC $0E				;$B583C3	 |\ 
+.upload_next_sample			;		 |
+	LDA [$0E]			;$B583BC	 | Load the sample number   
+	CMP #$FFFF			;$B583BE	 |\ Sample number FFFF implies end of table, branch and return
+	BEQ .return			;$B583C1	 |/
+	INC $0E				;$B583C3	 |\ Increment sample map pointer 
 	INC $0E				;$B583C5	 |/
-	STA $3C				;$B583C7	 |\ 
+	STA $3C				;$B583C7	 |\ Triple sample number to index sample data pointer table
 	CLC				;$B583C9	 | |
 	ADC $3C				;$B583CA	 | |
-	ADC $3C				;$B583CC	 |/
-	TAX				;$B583CE	 |
-	LDA.l DATA_EE0D86,x		;$B583CF	 |\ 
+	ADC $3C				;$B583CC	 | |
+	TAX				;$B583CE	 |/
+	LDA.l sample_table,x		;$B583CF	 |\ Load a the pointer to the sample.
 	STA $32				;$B583D3	 | |
-	LDA.l DATA_EE0D88,x		;$B583D5	 | |
+	LDA.l sample_table+2,x		;$B583D5	 | |
 	STA $34				;$B583D9	 |/
-	INC $32				;$B583DB	 |\ 
+	INC $32				;$B583DB	 |\ Skip unlooped intro size
 	INC $32				;$B583DD	 |/
-	LDA $06				;$B583DF	 |\ 
+	LDA $06				;$B583DF	 |\ Load and copy the ARAM destination
 	STA $35				;$B583E1	 |/
-	LDA [$32]			;$B583E3	 |\ 
+	LDA [$32]			;$B583E3	 |\ Load and copy the size of the sample to upload
 	STA $37				;$B583E5	 |/
-	CLC				;$B583E7	 |\ 
-	ADC $35				;$B583E8	 | |
-	STA $06				;$B583EA	 |/
-	CLC				;$B583EC	 |\
+	CLC				;$B583E7	 |\ Add the ARAM destination and sample size
+	ADC $35				;$B583E8	 | | 
+	STA $06				;$B583EA	 |/ Store this as the next ARAM destination
+	CLC				;$B583EC	 |\ Convert bytes to upload to words to upload
 	INC $37				;$B583ED	 | |
 	LSR $37				;$B583EF	 |/
-	INC $32				;$B583F1	 |\ 
+	INC $32				;$B583F1	 |\ Increment pointer so the sample data start is the next byte
 	INC $32				;$B583F3	 |/
-	JSR upload_spc_block		;$B583F5	 |
-	BRA CODE_B583BC			;$B583F8	/
+	JSR upload_spc_block		;$B583F5	 | Upload the sample data
+	BRA .upload_next_sample		;$B583F8	/ Continue uploading samples
 
-CODE_B583FA:
-	RTS				;$B583FA	/
+.return
+	RTS				;$B583FA	> All done, no more samples.
 
 upload_inline_spc_block:		;		\ 
 	LDA [$32]			;$B583FB	 |\ Load the destination ARAM address from the block
@@ -673,7 +673,7 @@ CODE_B58469:
 	STA $06				;$B58486	 |
 	LDA $0C				;$B58488	 |
 	STA $0A				;$B5848A	 |
-	JSR CODE_B582D1			;$B5848C	 |
+	JSR sample_uploader		;$B5848C	 |
 	RTS				;$B5848F	/
 
 DATA_B58490:

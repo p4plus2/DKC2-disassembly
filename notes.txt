@@ -127,7 +127,6 @@ CODE_B3A369	 ;<-- Some sort of execptr routine
 
 CODE_B6D923	 ;<-- Change to bank BA
 
-DATA_EE0D86	 ;Pointers to used at $32 (long)
 DATA_EE1086	 ;More long pointers
 DATA_EE117B	 ;Even more
 DATA_BCB600	;Collision detection pointers

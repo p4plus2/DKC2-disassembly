@@ -1833,8 +1833,7 @@ DATA_1199:
 base off
 arch 65816
 
-DATA_EE0D86:
-	%offset(DATA_EE0D88, 2)
+sample_table:
 	dl DATA_EECE62
 	dl DATA_EECFFC
 	dl DATA_EED1CC
@@ -2229,7 +2228,7 @@ DATA_EE117B:
 DATA_EE11F6:
 	db $00, $00, $00
 
-DATA_EE11F9:
+global_sample_map:
 	db $01, $00, $02, $00, $03, $00, $04, $00
 	db $06, $00, $08, $00, $07, $00, $05, $00
 	db $00, $00, $A5, $00, $0C, $00, $09, $00
