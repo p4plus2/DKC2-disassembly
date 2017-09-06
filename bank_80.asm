@@ -129,14 +129,14 @@ piracy_string:
 display_error_message:
 	TYA				;$8083D0	\
 	JSL CODE_BB80B0			;$8083D1	 |
-	LDA #DATA_FD258E		;$8083D5	 |
-	LDY #$0000			;$8083D8	 |
-	LDX #$0020			;$8083DB	 |
-	JSL CODE_BB8089			;$8083DE	 |
-	LDA #DATA_FD0408		;$8083E2	 |
-	LDY #$0000			;$8083E5	 |
-	LDX #$0001			;$8083E8	 |
-	JSL CODE_BB8089			;$8083EB	 |
+	LDA #DATA_FD258E		;$8083D5	 |\ Upload background palette
+	LDY #$0000			;$8083D8	 | |
+	LDX #$0020			;$8083DB	 | |
+	JSL DMA_palette			;$8083DE	 |/
+	LDA #DATA_FD0408		;$8083E2	 |\ Upload piracy text color
+	LDY #$0000			;$8083E5	 | |
+	LDX #$0001			;$8083E8	 | |
+	JSL DMA_palette			;$8083EB	 |/
 	LDA #$0039			;$8083EF	 |
 	JSL CODE_BB80AC			;$8083F2	 |
 	STP				;$8083F6	/
@@ -490,7 +490,7 @@ CODE_808684:
 	LDA #DATA_FD0FF0		;$808694	 |
 	LDY #$0000			;$808697	 |
 	LDX #$0040			;$80869A	 |
-	JSL CODE_BB8089			;$80869D	 |
+	JSL DMA_palette			;$80869D	 |
 	LDA #$0008			;$8086A1	 |
 	JSL CODE_BB80B0			;$8086A4	 |
 	LDA #$0007			;$8086A8	 |
@@ -1736,37 +1736,37 @@ CODE_8090CD:
 
 CODE_8090DA:
 	JSR CODE_8090CD			;$8090DA	\
-	LDA #$002C			;$8090DD	 |
-	STA $78				;$8090E0	 |
-	JSR init_registers		;$8090E2	 |
-	JSR clear_vram			;$8090E5	 |
-	STZ $2A				;$8090E8	 |
-	LDA #$AA55			;$8090EA	 |
-	STA $2E				;$8090ED	 |
-	LDA #$3765			;$8090EF	 |
-	STA $30				;$8090F2	 |
-	LDA #$0011			;$8090F4	 |
-	JSL CODE_B58006			;$8090F7	 |
+	LDA #$002C			;$8090DD	 |\ 
+	STA $78				;$8090E0	 |/
+	JSR init_registers		;$8090E2	 | Reset registers to a known state
+	JSR clear_vram			;$8090E5	 | Nuke VRAM
+	STZ $2A				;$8090E8	 | Reset effective frame counter
+	LDA #$AA55			;$8090EA	 |\
+	STA $2E				;$8090ED	 | |
+	LDA #$3765			;$8090EF	 | |
+	STA $30				;$8090F2	 |/
+	LDA #$0011			;$8090F4	 | Load Intro fanfare sound
+	JSL set_song			;$8090F7	 |
 	SEP #$20			;$8090FB	 |
-	LDA #$01			;$8090FD	 |
-	STA $4200			;$8090FF	 |
-	LDA #$8F			;$809102	 |
-	STA $2100			;$809104	 |
+	LDA #$01			;$8090FD	 |\ Enable auto polling
+	STA $4200			;$8090FF	 |/
+	LDA #$8F			;$809102	 |\ Enable F-Blank
+	STA $2100			;$809104	 |/
 	STZ $2101			;$809107	 |
 	STZ $2133			;$80910A	 |
 	REP #$30			;$80910D	 |
-	LDA #$0003			;$80910F	 |
-	STA $2105			;$809112	 |
-	LDA #$0102			;$809115	 |
-	STA $212C			;$809118	 |
-	LDA #$0202			;$80911B	 |
-	STA $2130			;$80911E	 |
-	LDA #$0364			;$809121	 |
-	STA $210B			;$809124	 |
-	LDA #$787C			;$809127	 |
-	STA $2107			;$80912A	 |
-	LDA #$0070			;$80912D	 |
-	STA $2109			;$809130	 |
+	LDA #$0003			;$80910F	 |\ 
+	STA $2105			;$809112	 |/
+	LDA #$0102			;$809115	 |\ 
+	STA $212C			;$809118	 |/
+	LDA #$0202			;$80911B	 |\ 
+	STA $2130			;$80911E	 |/
+	LDA #$0364			;$809121	 |\ 
+	STA $210B			;$809124	 |/
+	LDA #$787C			;$809127	 |\ 
+	STA $2107			;$80912A	 |/
+	LDA #$0070			;$80912D	 |\ 
+	STA $2109			;$809130	 |/
 	STZ $2116			;$809133	 |
 	LDX #$4000			;$809136	 |
 CODE_809139:				;		 |
@@ -2646,11 +2646,11 @@ CODE_8097EB:				;		 |
 	LDY #$0000			;$809985	 |
 	LDX #$0040			;$809988	 |
 	LDA #DATA_FD3C6E		;$80998B	 |
-	JSL CODE_BB8089			;$80998E	 |
+	JSL DMA_palette			;$80998E	 |
 	LDY #$0080			;$809992	 |
 	LDX #$0004			;$809995	 |
 	LDA #$00AA			;$809998	 |
-	JSL CODE_BB807F			;$80999B	 |
+	JSL DMA_global_palette		;$80999B	 |
 	STZ $84				;$80999F	 |
 	LDA #$0300			;$8099A1	 |
 	JSR CODE_808C32			;$8099A4	 |
@@ -3510,17 +3510,17 @@ CODE_80A0E9:				;		 |
 	LDY #$0000			;$80A283	 |
 	LDX #$0020			;$80A286	 |
 	LDA #DATA_FD420E		;$80A289	 |
-	JSL CODE_BB8089			;$80A28C	 |
+	JSL DMA_palette			;$80A28C	 |
 	LDY #$0080			;$80A290	 |
 	LDX #$0020			;$80A293	 |
 	LDA #DATA_FD416E		;$80A296	 |
-	JSL CODE_BB8089			;$80A299	 |
+	JSL DMA_palette			;$80A299	 |
 	LDY #$00D0			;$80A29D	 |
 	LDX #$0004			;$80A2A0	 |
 	LDA.l DATA_FD6044		;$80A2A3	 |
 	DEC A				;$80A2A7	 |
 	DEC A				;$80A2A8	 |
-	JSL CODE_BB8089			;$80A2A9	 |
+	JSL DMA_palette			;$80A2A9	 |
 	SEP #$20			;$80A2AD	 |
 	LDA $4211			;$80A2AF	 |
 	LDA #$80			;$80A2B2	 |
@@ -3551,7 +3551,7 @@ CODE_80A2CF:
 	LDY #$0090			;$80A2EB	 |
 	LDX #$0004			;$80A2EE	 |
 	LDA #DATA_FD418E		;$80A2F1	 |
-	JSL CODE_BB8089			;$80A2F4	 |
+	JSL DMA_palette			;$80A2F4	 |
 	JSL CODE_B5A919			;$80A2F8	 |
 	LDA $17C0			;$80A2FC	 |
 	SEP #$20			;$80A2FF	 |
@@ -4098,7 +4098,7 @@ CODE_80A795:				;		 |
 	LDY #$0000			;$80A7D8	 |
 	LDX #$0040			;$80A7DB	 |
 	LDA #DATA_FD3C6E		;$80A7DE	 |
-	JSL CODE_BB8089			;$80A7E1	 |
+	JSL DMA_palette			;$80A7E1	 |
 	STZ $2116			;$80A7E5	 |
 	LDX.w #DATA_FB0180>>16		;$80A7E8	 |
 	LDA #DATA_FB0180		;$80A7EB	 |
@@ -5665,7 +5665,7 @@ CODE_80B560:
 	LDY #$0000			;$80B5EC	 |
 	LDX #$0040			;$80B5EF	 |
 	LDA #DATA_FD26AE		;$80B5F2	 |
-	JSL CODE_BB8089			;$80B5F5	 |
+	JSL DMA_palette			;$80B5F5	 |
 	RTS				;$80B5F9	/
 
 CODE_80B5FA:
@@ -5696,11 +5696,11 @@ CODE_80B5FA:
 	LDA #DATA_FD27CE		;$80B648	 |
 	LDY #$0000			;$80B64B	 |
 	LDX #$0004			;$80B64E	 |
-	JSL CODE_BB8089			;$80B651	 |
+	JSL DMA_palette			;$80B651	 |
 	LDA #DATA_FD27CE		;$80B655	 |
 	LDY #$0070			;$80B658	 |
 	LDX #$0004			;$80B65B	 |
-	JSL CODE_BB8089			;$80B65E	 |
+	JSL DMA_palette			;$80B65E	 |
 	LDA #$0200			;$80B662	 |
 	STA $0512			;$80B665	 |
 	SEP #$20			;$80B668	 |
@@ -6356,7 +6356,7 @@ CODE_80BBD5:
 	CLC				;$80BBEC	 |
 	ADC #DATA_FD61C2		;$80BBED	 |
 	LDX #$0004			;$80BBF0	 |
-	JSL CODE_BB8089			;$80BBF3	 |
+	JSL DMA_palette			;$80BBF3	 |
 CODE_80BBF7:				;		 |
 	SEP #$20			;$80BBF7	 |
 	LDA #$E0			;$80BBF9	 |
@@ -7460,7 +7460,7 @@ CODE_80C515:				;		 |
 CODE_80C55C:
 	TXA				;$80C55C	\
 	LDX #$0004			;$80C55D	 |
-	JSL CODE_BB8089			;$80C560	 |
+	JSL DMA_palette			;$80C560	 |
 	SEP #$20			;$80C564	 |
 	STZ $2121			;$80C566	 |
 	LDA $0913			;$80C569	 |
@@ -7668,7 +7668,7 @@ CODE_80C6E7:				;		 |
 CODE_80C72E:
 	TXA				;$80C72E	\
 	LDX #$0004			;$80C72F	 |
-	JSL CODE_BB8089			;$80C732	 |
+	JSL DMA_palette			;$80C732	 |
 	SEP #$20			;$80C736	 |
 	STZ $2121			;$80C738	 |
 	LDA $0913			;$80C73B	 |
@@ -12679,7 +12679,7 @@ CODE_80F3FB:
 	LDY #$0000			;$80F42D	 |
 	LDA #DATA_FD13F0		;$80F430	 |
 	LDX #$0020			;$80F433	 |
-	JSL CODE_BB8089			;$80F436	 |
+	JSL DMA_palette			;$80F436	 |
 	LDA #$0100			;$80F43A	 |
 	JSL CODE_808C2E			;$80F43D	 |
 	LDA #$0100			;$80F441	 |
@@ -12700,7 +12700,7 @@ CODE_80F3FB:
 	LDY #$00F0			;$80F46E	 |
 	LDX #$0004			;$80F471	 |
 	LDA #$00AA			;$80F474	 |
-	JSL CODE_BB807F			;$80F477	 |
+	JSL DMA_global_palette		;$80F477	 |
 	LDA #$0001			;$80F47B	 |
 	STA $059B			;$80F47E	 |
 	RTL				;$80F481	/
@@ -13259,7 +13259,7 @@ CODE_80FA7C:
 	LDA #DATA_FD258E		;$80FAA5	 |
 	LDY #$0000			;$80FAA8	 |
 	LDX #$0020			;$80FAAB	 |
-	JSL CODE_BB8089			;$80FAAE	 |
+	JSL DMA_palette			;$80FAAE	 |
 	STZ $2A				;$80FAB2	 |
 	LDA #$0001			;$80FAB4	 |
 	STA $059B			;$80FAB7	 |

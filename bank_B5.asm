@@ -4,7 +4,7 @@ upload_spc_engine_entry:
 CODE_B58003:
 	JMP CODE_B58030			;$B58003	 |
 
-CODE_B58006:
+set_song:
 	JMP CODE_B580D5			;$B58006	 |
 
 CODE_B58009:
@@ -8967,13 +8967,13 @@ CODE_B5D7C4:
 	LDA.l DATA_FD616E		;$B5D88A	 |
 	DEC A				;$B5D88E	 |
 	DEC A				;$B5D88F	 |
-	JSL CODE_BB8089			;$B5D890	 |
+	JSL DMA_palette			;$B5D890	 |
 	LDX #$0004			;$B5D894	 |
 	LDY #$00F0			;$B5D897	 |
 	LDA.l DATA_FD6170		;$B5D89A	 |
 	DEC A				;$B5D89E	 |
 	DEC A				;$B5D89F	 |
-	JSL CODE_BB8089			;$B5D8A0	 |
+	JSL DMA_palette			;$B5D8A0	 |
 	LDA #$0000			;$B5D8A4	 |
 	STA $17C0			;$B5D8A7	 |
 	STA $D2				;$B5D8AA	 |
@@ -8999,7 +8999,7 @@ CODE_B5D8AE:
 	LDA.l DATA_FD616E		;$B5D8DD	 |
 	DEC A				;$B5D8E1	 |
 	DEC A				;$B5D8E2	 |
-	JSL CODE_BB8089			;$B5D8E3	 |
+	JSL DMA_palette			;$B5D8E3	 |
 	BRA CODE_B5D8FB			;$B5D8E7	/
 
 CODE_B5D8E9:
@@ -9826,7 +9826,7 @@ CODE_B5DF4F:
 CODE_B5DF6C:				;		 |
 	LDX #$0004			;$B5DF6C	 |
 	LDY #$00A0			;$B5DF6F	 |
-	JSL CODE_BB8089			;$B5DF72	 |
+	JSL DMA_palette			;$B5DF72	 |
 	LDX #$0000			;$B5DF76	 |
 	LDA $2A				;$B5DF79	 |
 	BIT #$0080			;$B5DF7B	 |
@@ -9998,7 +9998,7 @@ CODE_B5E0A1:
 	PHX				;$B5E0C6	 |
 	LDY #$0000			;$B5E0C7	 |
 	LDX #$0040			;$B5E0CA	 |
-	JSL CODE_BB8089			;$B5E0CD	 |
+	JSL DMA_palette			;$B5E0CD	 |
 	PLX				;$B5E0D1	 |
 	INX				;$B5E0D2	 |
 	INX				;$B5E0D3	 |

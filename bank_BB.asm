@@ -127,28 +127,28 @@ copy_future_word_2_entry:
 	NOP                             ;$BB807B	\ Decompression command entry
 	JMP copy_future_word_2          ;$BB807C	/
 
-CODE_BB807F:
-	STX $32				;$BB807F	\
-	ASL A				;$BB8081	 |
-	TAX				;$BB8082	 |
-	LDA.l DATA_FD5FEE,x		;$BB8083	 |
-	LDX $32				;$BB8087	 |
-CODE_BB8089:				;		 |
-	STA $4302			;$BB8089	 |
-	TXA				;$BB808C	 |
-	ASL A				;$BB808D	 |
-	ASL A				;$BB808E	 |
-	ASL A				;$BB808F	 |
-	STA $4305			;$BB8090	 |
-	LDA #$2200			;$BB8093	 |
-	STA $4300			;$BB8096	 |
+DMA_global_palette:
+	STX $32				;$BB807F	\ Store palette id in scratch RAM
+	ASL A				;$BB8081	 |\ Double palette id and transfer to index register
+	TAX				;$BB8082	 |/
+	LDA.l DATA_FD5FEE,x		;$BB8083	 | Load DMA source
+	LDX $32				;$BB8087	 | Reload palette id
+DMA_palette:				;		 |
+	STA $4302			;$BB8089	 | Set DMA source word
+	TXA				;$BB808C	 |\ Set DMA size to 8 times the input
+	ASL A				;$BB808D	 | | Double for number of bytes
+	ASL A				;$BB808E	 | | Quadruple further for four times the number of colors
+	ASL A				;$BB808F	 | |
+	STA $4305			;$BB8090	 |/
+	LDA #$2200			;$BB8093	 |\ DMA to CGRAM, write once to one register
+	STA $4300			;$BB8096	 |/
 	SEP #$20			;$BB8099	 |
-	LDA #$FD			;$BB809B	 |
-	STA $4304			;$BB809D	 |
-	TYA				;$BB80A0	 |
-	STA $2121			;$BB80A1	 |
-	LDA #$01			;$BB80A4	 |
-	STA $420B			;$BB80A6	 |
+	LDA #$FD			;$BB809B	 |\ Set DMA source bank to FD
+	STA $4304			;$BB809D	 |/
+	TYA				;$BB80A0	 |\ Set CGRAM destination
+	STA $2121			;$BB80A1	 |/
+	LDA #$01			;$BB80A4	 |\ Do the DMA! (https://www.youtube.com/watch?v=j9Zj4chxeCM)
+	STA $420B			;$BB80A6	 |/
 	REP #$20			;$BB80A9	 |
 	RTL				;$BB80AB	/
 
@@ -1955,12 +1955,12 @@ CODE_BB8CB1:
 	RTS				;$BB8CB4	/
 
 CODE_BB8CB5:
-	PHB				;$BB8CB5	\
-	PEA $FD81			;$BB8CB6	 |
-	PLB				;$BB8CB9	 |
-	PLB				;$BB8CBA	 |
-	ASL A				;$BB8CBB	 |
-	TAY				;$BB8CBC	 |
+	PHB				;$BB8CB5	\ Preserve current data bank
+	PEA $FD81			;$BB8CB6	 |\ Change data bank to FD
+	PLB				;$BB8CB9	 | |
+	PLB				;$BB8CBA	 |/
+	ASL A				;$BB8CBB	 |\ 
+	TAY				;$BB8CBC	 |/
 	LDX.w DATA_FD819A,y		;$BB8CBD	 |
 CODE_BB8CC0:				;		 |
 	SEP #$20			;$BB8CC0	 |
@@ -3117,7 +3117,7 @@ CODE_BB94B6:
 	LDY #$0000			;$BB94B6	\
 	LDA $0A8E			;$BB94B9	 |
 	LDX #$0020			;$BB94BC	 |
-	JSL CODE_BB8089			;$BB94BF	 |
+	JSL DMA_palette			;$BB94BF	 |
 	RTS				;$BB94C3	/
 
 DATA_BB94C4:
@@ -3220,7 +3220,7 @@ CODE_BB960B:
 	LDY #$0070			;$BB961C	 |
 	LDA #DATA_FD15F0		;$BB961F	 |
 	LDX #$0004			;$BB9622	 |
-	JSL CODE_BB8089			;$BB9625	 |
+	JSL DMA_palette			;$BB9625	 |
 	LDA $0537			;$BB9629	 |
 	JSL CODE_BB80AC			;$BB962C	 |
 	RTS				;$BB9630	/
@@ -3258,7 +3258,7 @@ CODE_BB966F:
 	LDY #$0010			;$BB9680	 |
 	LDA #DATA_FD268E		;$BB9683	 |
 	LDX #$0004			;$BB9686	 |
-	JSL CODE_BB8089			;$BB9689	 |
+	JSL DMA_palette			;$BB9689	 |
 	LDA $0537			;$BB968D	 |
 	JSL CODE_BB80AC			;$BB9690	 |
 	LDX #DATA_E98B07		;$BB9694	 |
@@ -3298,7 +3298,7 @@ CODE_BB96D5:
 	LDY #$0000			;$BB96EA	 |
 	LDA #DATA_FD3A4E		;$BB96ED	 |
 	LDX #$0020			;$BB96F0	 |
-	JSL CODE_BB8089			;$BB96F3	 |
+	JSL DMA_palette			;$BB96F3	 |
 	RTS				;$BB96F7	/
 
 CODE_BB96F8:
@@ -3311,7 +3311,7 @@ CODE_BB96F8:
 	LDY #$0000			;$BB970D	 |
 	LDA #DATA_FD324E		;$BB9710	 |
 	LDX #$0020			;$BB9713	 |
-	JSL CODE_BB8089			;$BB9716	 |
+	JSL DMA_palette			;$BB9716	 |
 	RTS				;$BB971A	/
 
 CODE_BB971B:
@@ -3324,7 +3324,7 @@ CODE_BB971B:
 	LDY #$0000			;$BB9730	 |
 	LDA #DATA_FD304E		;$BB9733	 |
 	LDX #$0020			;$BB9736	 |
-	JSL CODE_BB8089			;$BB9739	 |
+	JSL DMA_palette			;$BB9739	 |
 	RTS				;$BB973D	/
 
 CODE_BB973E:
@@ -3337,7 +3337,7 @@ CODE_BB973E:
 	LDY #$0000			;$BB9753	 |
 	LDA #DATA_FD07F0		;$BB9756	 |
 	LDX #$0020			;$BB9759	 |
-	JSL CODE_BB8089			;$BB975C	 |
+	JSL DMA_palette			;$BB975C	 |
 	RTS				;$BB9760	/
 
 CODE_BB9761:
@@ -3351,7 +3351,7 @@ CODE_BB9761:
 	LDY #$0000			;$BB9779	 |
 	LDA #DATA_FD2EEE		;$BB977C	 |
 	LDX #$0020			;$BB977F	 |
-	JSL CODE_BB8089			;$BB9782	 |
+	JSL DMA_palette			;$BB9782	 |
 	BRA CODE_BB9798			;$BB9786	/
 
 CODE_BB9788:
@@ -3359,7 +3359,7 @@ CODE_BB9788:
 	LDY #$0000			;$BB978B	 |
 	LDA #DATA_FD1710		;$BB978E	 |
 	LDX #$0020			;$BB9791	 |
-	JSL CODE_BB8089			;$BB9794	 |
+	JSL DMA_palette			;$BB9794	 |
 CODE_BB9798:				;		 |
 	SEP #$20			;$BB9798	 |
 	LDA #$03			;$BB979A	 |
@@ -3386,7 +3386,7 @@ CODE_BB97B4:
 	LDY #$0000			;$BB97CC	 |
 	LDA #DATA_FD2BEE		;$BB97CF	 |
 	LDX #$0020			;$BB97D2	 |
-	JSL CODE_BB8089			;$BB97D5	 |
+	JSL DMA_palette			;$BB97D5	 |
 	RTS				;$BB97D9	/
 
 CODE_BB97DA:
@@ -3410,7 +3410,7 @@ CODE_BB97F9:
 	LDY #$0070			;$BB980A	 |
 	LDA #DATA_FD268E		;$BB980D	 |
 	LDX #$0004			;$BB9810	 |
-	JSL CODE_BB8089			;$BB9813	 |
+	JSL DMA_palette			;$BB9813	 |
 	LDA $0537			;$BB9817	 |
 	JSL CODE_BB80AC			;$BB981A	 |
 	LDA #$0300			;$BB981E	 |
@@ -3449,7 +3449,7 @@ CODE_BB9866:
 	LDY #$0010			;$BB9866	\
 	LDA #DATA_FD326E		;$BB9869	 |
 	LDX #$0004			;$BB986C	 |
-	JSL CODE_BB8089			;$BB986F	 |
+	JSL DMA_palette			;$BB986F	 |
 	RTS				;$BB9873	/
 
 CODE_BB9874:
@@ -3457,7 +3457,7 @@ CODE_BB9874:
 	LDY #$0000			;$BB9877	 |
 	LDA #DATA_FD0DD0		;$BB987A	 |
 	LDX #$0004			;$BB987D	 |
-	JSL CODE_BB8089			;$BB9880	 |
+	JSL DMA_palette			;$BB9880	 |
 	RTS				;$BB9884	/
 
 CODE_BB9885:
@@ -3487,7 +3487,7 @@ CODE_BB98B4:
 	LDY #$0000			;$BB98BD	 |
 	LDA #DATA_FD2DCE		;$BB98C0	 |
 	LDX #$0004			;$BB98C3	 |
-	JSL CODE_BB8089			;$BB98C6	 |
+	JSL DMA_palette			;$BB98C6	 |
 	LDA #$2700			;$BB98CA	 |
 	STA $0D4E			;$BB98CD	 |
 	JSR CODE_BBABE2			;$BB98D0	 |

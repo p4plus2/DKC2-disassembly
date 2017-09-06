@@ -3401,17 +3401,17 @@ CODE_BAB1B9:
 	LDA #$00AA			;$BAB229	 |
 	LDY #$00E0			;$BAB22C	 |
 	LDX #$0004			;$BAB22F	 |
-	JSL CODE_BB807F			;$BAB232	 |
+	JSL DMA_global_palette		;$BAB232	 |
 	LDA #DATA_FD3DAE		;$BAB236	 |
 	LDY #$0000			;$BAB239	 |
 	LDX #$0008			;$BAB23C	 |
-	JSL CODE_BB8089			;$BAB23F	 |
+	JSL DMA_palette			;$BAB23F	 |
 	PLX				;$BAB243	 |
 	PHX				;$BAB244	 |
 	LDA $0002,x			;$BAB245	 |
 	LDY #$0020			;$BAB248	 |
 	LDX #$0018			;$BAB24B	 |
-	JSL CODE_BB8089			;$BAB24E	 |
+	JSL DMA_palette			;$BAB24E	 |
 	PLA				;$BAB252	 |
 	ADC #$0006			;$BAB253	 |
 	TAX				;$BAB256	 |
@@ -3875,19 +3875,19 @@ CODE_BAB671:				;		 |
 	LDA #DATA_FD3DAE		;$BAB69C	 |
 	LDY #$0000			;$BAB69F	 |
 	LDX #$0008			;$BAB6A2	 |
-	JSL CODE_BB8089			;$BAB6A5	 |
+	JSL DMA_palette			;$BAB6A5	 |
 	LDA #DATA_FD412E		;$BAB6A9	 |
 	LDY #$0030			;$BAB6AC	 |
 	LDX #$0004			;$BAB6AF	 |
-	JSL CODE_BB8089			;$BAB6B2	 |
+	JSL DMA_palette			;$BAB6B2	 |
 	LDA #$00AA			;$BAB6B6	 |
 	LDY #$0020			;$BAB6B9	 |
 	LDX #$0004			;$BAB6BC	 |
-	JSL CODE_BB807F			;$BAB6BF	 |
+	JSL DMA_global_palette		;$BAB6BF	 |
 	LDA #DATA_FD414E		;$BAB6C3	 |
 	LDY #$0040			;$BAB6C6	 |
 	LDX #$0004			;$BAB6C9	 |
-	JSL CODE_BB8089			;$BAB6CC	 |
+	JSL DMA_palette			;$BAB6CC	 |
 	LDA #$73C0			;$BAB6D0	 |
 	STA $000652			;$BAB6D3	 |
 	LDA #$FF08			;$BAB6D7	 |

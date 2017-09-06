@@ -268,11 +268,11 @@ CODE_B4826F:				;		 |
 	TXA				;$B4826F	 |
 	LDY #$00F0			;$B48270	 |
 	LDX #$0004			;$B48273	 |
-	JSL CODE_BB807F			;$B48276	 |
+	JSL DMA_global_palette		;$B48276	 |
 	LDA #$00AB			;$B4827A	 |
 	LDY #$00D0			;$B4827D	 |
 	LDX #$0004			;$B48280	 |
-	JSL CODE_BB807F			;$B48283	 |
+	JSL DMA_global_palette		;$B48283	 |
 	LDA $060F			;$B48287	 |
 	BEQ CODE_B48291			;$B4828A	 |
 	LDA #$0080			;$B4828C	 |
@@ -283,25 +283,25 @@ CODE_B48291:
 CODE_B48294:				;		 |
 	LDY #$00E0			;$B48294	 |
 	LDX #$0004			;$B48297	 |
-	JSL CODE_BB807F			;$B4829A	 |
+	JSL DMA_global_palette		;$B4829A	 |
 	LDA $06B1			;$B4829E	 |
 	BEQ CODE_B482D7			;$B482A1	 |
 	LDA #$00AD			;$B482A3	 |
 	LDY #$0080			;$B482A6	 |
 	LDX #$0004			;$B482A9	 |
-	JSL CODE_BB807F			;$B482AC	 |
+	JSL DMA_global_palette		;$B482AC	 |
 	LDA #$00AE			;$B482B0	 |
 	LDY #$0090			;$B482B3	 |
 	LDX #$0004			;$B482B6	 |
-	JSL CODE_BB807F			;$B482B9	 |
+	JSL DMA_global_palette		;$B482B9	 |
 	LDA #$00A5			;$B482BD	 |
 	LDY #$00A0			;$B482C0	 |
 	LDX #$0004			;$B482C3	 |
-	JSL CODE_BB807F			;$B482C6	 |
+	JSL DMA_global_palette		;$B482C6	 |
 	LDA #$00A6			;$B482CA	 |
 	LDY #$00B0			;$B482CD	 |
 	LDX #$0004			;$B482D0	 |
-	JSL CODE_BB807F			;$B482D3	 |
+	JSL DMA_global_palette		;$B482D3	 |
 CODE_B482D7:				;		 |
 	LDA #$000A			;$B482D7	 |
 	STA $069F			;$B482DA	 |
@@ -1514,15 +1514,15 @@ CODE_B48C9D:
 	LDA $0002,x			;$B48D15	 |
 	LDY #$0000			;$B48D18	 |
 	LDX #$0020			;$B48D1B	 |
-	JSL CODE_BB8089			;$B48D1E	 |
+	JSL DMA_palette			;$B48D1E	 |
 	LDA #$00AA			;$B48D22	 |
 	LDY #$00E0			;$B48D25	 |
 	LDX #$0004			;$B48D28	 |
-	JSL CODE_BB807F			;$B48D2B	 |
+	JSL DMA_global_palette		;$B48D2B	 |
 	LDA #DATA_FD6682		;$B48D2F	 |
 	LDY #$00F0			;$B48D32	 |
 	LDX #$0004			;$B48D35	 |
-	JSL CODE_BB8089			;$B48D38	 |
+	JSL DMA_palette			;$B48D38	 |
 	JSL CODE_8088D2			;$B48D3C	 |
 	JSL CODE_808D8A			;$B48D40	 |
 	STZ $067A			;$B48D44	 |
@@ -7408,11 +7408,11 @@ CODE_B4BEEF:
 	LDA #DATA_FD6682		;$B4BF06	 |
 	LDY #$00F0			;$B4BF09	 |
 	LDX #$0004			;$B4BF0C	 |
-	JSL CODE_BB8089			;$B4BF0F	 |
+	JSL DMA_palette			;$B4BF0F	 |
 	LDA #$00AA			;$B4BF13	 |
 	LDY #$00E0			;$B4BF16	 |
 	LDX #$0004			;$B4BF19	 |
-	JSL CODE_BB807F			;$B4BF1C	 |
+	JSL DMA_global_palette		;$B4BF1C	 |
 	LDA $0672			;$B4BF20	 |
 	STA $065C			;$B4BF23	 |
 	LDA $067F			;$B4BF26	 |
@@ -7460,7 +7460,7 @@ CODE_B4BF3A:				;		 |
 	LDA #DATA_FD402E		;$B4BF99	 |
 	LDY #$0000			;$B4BF9C	 |
 	LDX #$0020			;$B4BF9F	 |
-	JSL CODE_BB8089			;$B4BFA2	 |
+	JSL DMA_palette			;$B4BFA2	 |
 	LDA #$0100			;$B4BFA6	 |
 	JSL CODE_808C2E			;$B4BFA9	 |
 	LDA $08A4			;$B4BFAD	 |
