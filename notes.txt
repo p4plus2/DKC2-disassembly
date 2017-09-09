@@ -441,12 +441,12 @@ command 0x85(CODE_BB850C): Set X/Y/priority? 		;directedpriority
 command 0x86(CODE_BB8521): reads +2 (?)      		;too tired
 command 0x87(CODE_BB8582): reads +2, relative x flip? 	;maybe
 command 0x88(CODE_BB85A2): relative x/y      		;relative
-command 0x89(CODE_BB86D5): allocate vram?    		;vram
+command 0x89(CODE_BB86D5): allocate VRAM?    		;VRAM
 command 0x8A(CODE_BB85BC): read +$1A, bulk copy 	;bulk
 command 0x8B(CODE_BB860E): x/y stuff    		;ehh
 command 0x8C(CODE_BB8646): jump to cmd 0x84 		;removed probably
 command 0x8D(CODE_BB8678): more palette voodoo 		;voodoo
-command 0x8E(CODE_BB879E): vram alloc 2?    		;vram2
+command 0x8E(CODE_BB879E): VRAM alloc 2?    		;VRAM2
 
 
 

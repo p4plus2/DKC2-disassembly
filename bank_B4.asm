@@ -1476,7 +1476,7 @@ CODE_B48C9D:
 	AND #$DDFF			;$B48CA7	 |
 	STA $06A1			;$B48CAA	 |
 	JSL disable_screen		;$B48CAD	 |
-	JSL clear_vram_wrapper		;$B48CB1	 |
+	JSL clear_VRAM_wrapper		;$B48CB1	 |
 	JSL CODE_BAC7C0			;$B48CB5	 |
 	LDA #$0200			;$B48CB9	 |
 	STA $4302			;$B48CBC	 |
@@ -1504,12 +1504,12 @@ CODE_B48C9D:
 	LDA $0000,x			;$B48CFD	 |
 	AND #$00FF			;$B48D00	 |
 	PHX				;$B48D03	 |
-	JSL CODE_BB80B0			;$B48D04	 |
+	JSL handle_VRAM_payload_wrapper	;$B48D04	 |
 	PLX				;$B48D08	 |
 	LDA $0001,x			;$B48D09	 |
 	AND #$00FF			;$B48D0C	 |
 	PHX				;$B48D0F	 |
-	JSL CODE_BB80AC			;$B48D10	 |
+	JSL set_PPU_registers_wrapper	;$B48D10	 |
 	PLX				;$B48D14	 |
 	LDA $0002,x			;$B48D15	 |
 	LDY #$0000			;$B48D18	 |
@@ -7424,7 +7424,7 @@ CODE_B4BEEF:
 	JSL CODE_B5800C			;$B4BF36	 |
 CODE_B4BF3A:				;		 |
 	JSL disable_screen		;$B4BF3A	 |
-	JSL clear_vram_wrapper		;$B4BF3E	 |
+	JSL clear_VRAM_wrapper		;$B4BF3E	 |
 	JSL CODE_BAC7C0			;$B4BF42	 |
 	JSL CODE_8088D2			;$B4BF46	 |
 	PHK				;$B4BF4A	 |
@@ -7454,9 +7454,9 @@ CODE_B4BF3A:				;		 |
 	PLA				;$B4BF88	 |
 	STA $CC				;$B4BF89	 |
 	LDA #$0039			;$B4BF8B	 |
-	JSL CODE_BB80B0			;$B4BF8E	 |
+	JSL handle_VRAM_payload_wrapper	;$B4BF8E	 |
 	LDA #$0038			;$B4BF92	 |
-	JSL CODE_BB80AC			;$B4BF95	 |
+	JSL set_PPU_registers_wrapper	;$B4BF95	 |
 	LDA #DATA_FD402E		;$B4BF99	 |
 	LDY #$0000			;$B4BF9C	 |
 	LDX #$0020			;$B4BF9F	 |

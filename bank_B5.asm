@@ -9981,17 +9981,17 @@ CODE_B5E0A1:
 	INX				;$B5E0A2	 |
 	PHK				;$B5E0A3	 |
 	PLB				;$B5E0A4	 |
-	JSL clear_vram_wrapper		;$B5E0A5	 |
+	JSL clear_VRAM_wrapper		;$B5E0A5	 |
 	LDA $0000,x			;$B5E0A9	 |
 	AND #$00FF			;$B5E0AC	 |
 	PHX				;$B5E0AF	 |
-	JSL CODE_BB80B0			;$B5E0B0	 |
+	JSL handle_VRAM_payload_wrapper	;$B5E0B0	 |
 	PLX				;$B5E0B4	 |
 	INX				;$B5E0B5	 |
 	LDA $0000,x			;$B5E0B6	 |
 	AND #$00FF			;$B5E0B9	 |
 	PHX				;$B5E0BC	 |
-	JSL CODE_BB80AC			;$B5E0BD	 |
+	JSL set_PPU_registers_wrapper	;$B5E0BD	 |
 	PLX				;$B5E0C1	 |
 	INX				;$B5E0C2	 |
 	LDA $0000,x			;$B5E0C3	 |

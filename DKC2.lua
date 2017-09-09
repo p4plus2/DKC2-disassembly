@@ -213,6 +213,13 @@ local function trace(address, size)
 	end
 end
 
+local layer_state = {[0] = true, true, true, true}
+local function toggle_layer(layer)
+	layer_state[layer] = not layer_state[layer]
+	bsnes.enablelayer(layer, 0, layer_state[layer])
+	bsnes.enablelayer(layer, 1, layer_state[layer])
+end
+
 local sprite_table = 0x0DE2
 local function display_sprite()
 	local sprite_slot = clamp(slot, 0, 23)
@@ -635,6 +642,14 @@ local function display_watch()
 	text(0, 0, watch_string)
 end
 
+local function display_ppu_state()
+	ppu_layer_state = "\n{" .. (layer_state[0] and "Enabled, " or "Disabled, ")
+	ppu_layer_state = ppu_layer_state .. (layer_state[1] and "Enabled, " or "Disabled, ")
+	ppu_layer_state = ppu_layer_state .. (layer_state[2] and "Enabled, " or "Disabled, ")
+	ppu_layer_state = ppu_layer_state .. (layer_state[3] and "Enabled" or "Disabled") .. "}"
+	text(0, 550, dump_mmio_string() .. ppu_layer_state)
+end
+
 local keys = {}
 keys.press = {}
 
@@ -665,6 +680,11 @@ keys.register_keypress("4" , function() active_screen = engine_screen ; gui.repa
 keys.register_keypress("5" , function() active_screen = level_screen ; gui.repaint() end)
 keys.register_keypress("6" , function() active_screen = watch_screen ; gui.repaint() end)
 
+keys.register_keypress("numpad1" , function() toggle_layer(0) end)
+keys.register_keypress("numpad2" , function() toggle_layer(1) end)
+keys.register_keypress("numpad3" , function() toggle_layer(2) end)
+keys.register_keypress("numpad4" , function() toggle_layer(3) end)
+
 function on_paint(not_synth)
 	if show_debug then
 		if active_screen == sprite_screen then
@@ -680,39 +700,64 @@ function on_paint(not_synth)
 		elseif active_screen == watch_screen then
 			display_watch()
 		end
+		
+		display_ppu_state()
 	end
 end
 
+local counter = 0
+local zip_file = zip.writer.new("DMA_log.zip", 0)
+local dma_table = {}
+local filter_dma = true
 function on_dma(trigger_addr, source_addr, dest_addr, size, mode, dir, fixed)
-	if not show_dma_debug then
-		return
-	end
-	
-	local exclusion_list = {
-				0xB5D3DF, --OAM DMA
-				0xB5A945 -- sprite DMA
-				}
-	for i, addr in pairs(exclusion_list) do
-		if trigger_addr == addr then
+	if filter_dma == true then
+		if dest_addr == 0x04 or dest_addr == 0x22 or fixed == 1 then
 			return
 		end
 	end
 	
-	--if trigger_addr == 0xBB8D0A then 
-	if dest_addr == 0x18 and source_addr < 0x800000 then 
-		local dma_string = "trigger: 0x%06X, source: 0x%06X, dest: 0x%02X, size: 0x%04X, mode: %d, dir: %d, fixed: %d"
-		print(string.format(dma_string, trigger_addr, source_addr, dest_addr, size, mode, dir, fixed))
-		dump_mmio()
-		print("\n")
+	name = string.format("(%d)_$%06X:_$%06X_to_$21%02X.bin", counter, trigger_addr, source_addr, dest_addr)
+	zip_file:create_file(name)
+	
+	if size == 0 then
+		size = 65536
 	end
+	
+	for i=0, size-1 do
+		if fixed == 1 then
+			zip_file:write(string.char(memory2.BUS:read(source_addr)))
+		else
+			zip_file:write(string.char(memory2.BUS:read(source_addr+i)))
+		end
+	end
+	
+	if fixed == true then
+		size = 1
+	end
+	extra_details = ""
+	
+	if dest_addr == 0x18 then
+		extra_details = dump_mmio_string()
+	else
+		extra_details = "N/A"
+	end
+	
+	dma_table[counter] = string.format("%s: %s\n %s\n\n", name, memory2.BUS:sha256(source_addr, size), extra_details)
+	
+	counter = counter + 1
 end
 
 function on_vm_reset()
+	zip_file:create_file("summary.txt")
+	for i=0, #dma_table do 
+		zip_file:write(dma_table[i])
+	end
+	zip_file:commit()
 	rom_restore_all()
 end 
 
 
-function dump_mmio()
+function dump_mmio_string()
 	local layers_string = ""
 	local layer_string = "Layer: %d, tilemap: 0x%04X, tiledata: 0x%04X, S: %d, X: 0x%04X, Y: 0x%04X\n"
 	
@@ -737,10 +782,14 @@ function dump_mmio()
 				"VRAM addr: $%04X\n" ..
 				layers_string ..
 				oam_string
-	print(string.format(mmio_string,
+	return string.format(mmio_string,
 				register("ppu_bg_mode"),
-				register("ppu_vram_addr")
-			))
+				register("ppu_vram_addr") * 2
+			)
+end
+
+function dump_mmio()
+	print(dump_mmio_string())
 end
 
 function dump_registers()

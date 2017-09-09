@@ -3371,7 +3371,7 @@ CODE_BAB1B9:
 	LDA DATA_BAB3FE,x		;$BAB1D2	 |
 	STA $000650			;$BAB1D5	 |
 	JSL disable_screen		;$BAB1D9	 |
-	JSL clear_vram_wrapper		;$BAB1DD	 |
+	JSL clear_VRAM_wrapper		;$BAB1DD	 |
 	JSL CODE_BAC7C0			;$BAB1E1	 |
 	SEP #$20			;$BAB1E5	 |
 	STZ $210F			;$BAB1E7	 |
@@ -3392,12 +3392,12 @@ CODE_BAB1B9:
 	LDA $0000,x			;$BAB212	 |
 	AND #$00FF			;$BAB215	 |
 	PHX				;$BAB218	 |
-	JSL CODE_BB80B0			;$BAB219	 |
+	JSL handle_VRAM_payload_wrapper	;$BAB219	 |
 	PLX				;$BAB21D	 |
 	LDA $0001,x			;$BAB21E	 |
 	AND #$00FF			;$BAB221	 |
 	PHX				;$BAB224	 |
-	JSL CODE_BB80AC			;$BAB225	 |
+	JSL set_PPU_registers_wrapper	;$BAB225	 |
 	LDA #$00AA			;$BAB229	 |
 	LDY #$00E0			;$BAB22C	 |
 	LDX #$0004			;$BAB22F	 |
@@ -3848,7 +3848,7 @@ CODE_BAB633:
 	PLA				;$BAB646	 |
 	STA $CC				;$BAB647	 |
 	JSL disable_screen		;$BAB649	 |
-	JSL clear_vram_wrapper		;$BAB64D	 |
+	JSL clear_VRAM_wrapper		;$BAB64D	 |
 	JSL CODE_BAC7C0			;$BAB651	 |
 	JSL CODE_8088D2			;$BAB655	 |
 	JSL CODE_BB91F7			;$BAB659	 |
@@ -3863,9 +3863,9 @@ CODE_BAB671:				;		 |
 	DEC $0650			;$BAB674	 |
 	BNE CODE_BAB671			;$BAB677	 |
 	LDA #$0038			;$BAB679	 |
-	JSL CODE_BB80B0			;$BAB67C	 |
+	JSL handle_VRAM_payload_wrapper	;$BAB67C	 |
 	LDA #$0037			;$BAB680	 |
-	JSL CODE_BB80AC			;$BAB683	 |
+	JSL set_PPU_registers_wrapper	;$BAB683	 |
 	LDA #DATA_BAB90B		;$BAB687	 |
 	STA $000662			;$BAB68A	 |
 	LDA #$0008			;$BAB68E	 |

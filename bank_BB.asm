@@ -152,12 +152,12 @@ DMA_palette:				;		 |
 	REP #$20			;$BB80A9	 |
 	RTL				;$BB80AB	/
 
-CODE_BB80AC:
-	JSR CODE_BB8C7F			;$BB80AC	\
+set_PPU_registers_wrapper:
+	JSR set_PPU_registers		;$BB80AC	\ Trampoline to the main PPU register routine
 	RTL				;$BB80AF	/
 
-CODE_BB80B0:
-	JSR CODE_BB8CB5			;$BB80B0	\
+handle_VRAM_payload_wrapper:
+	JSR handle_VRAM_payload		;$BB80B0	\ Trampoline to the main VRAM upload
 	RTL				;$BB80B3	/
 
 CODE_BB80B4:
@@ -1918,148 +1918,148 @@ CODE_BB8C6E:				;		 |
 	STA $12,x			;$BB8C7C	 |
 	RTS				;$BB8C7E	/
 
-CODE_BB8C7F:
-	PHB				;$BB8C7F	\
-	PEA $FD79			;$BB8C80	 |
-	PLB				;$BB8C83	 |
-	PLB				;$BB8C84	 |
+set_PPU_registers:
+	PHB				;$BB8C7F	\ Preserve current data bank
+	PEA $FD79			;$BB8C80	 |\ Change data bank to FD
+	PLB				;$BB8C83	 | |
+	PLB				;$BB8C84	 |/
 	SEP #$20			;$BB8C85	 |
-	STA $000D70			;$BB8C87	 |
-	ASL A				;$BB8C8B	 |
-	TAY				;$BB8C8C	 |
-	LDX.w DATA_FD79E2,y		;$BB8C8D	 |
-	TXY				;$BB8C90	 |
-CODE_BB8C91:				;		 |
-	LDX.w DATA_FD79E2,y		;$BB8C91	 |
-	BEQ CODE_BB8CB1			;$BB8C94	 |
-	INY				;$BB8C96	 |
-	INY				;$BB8C97	 |
-	STX $76				;$BB8C98	 |
-	ASL $77				;$BB8C9A	 |
-	BCC CODE_BB8CA9			;$BB8C9C	 |
-	LSR $77				;$BB8C9E	 |
-	LDX $76				;$BB8CA0	 |
-	LDA.w DATA_FD79E2,y		;$BB8CA2	 |
-	STA $00,x			;$BB8CA5	 |
-	INX				;$BB8CA7	 |
-	INY				;$BB8CA8	 |
-CODE_BB8CA9:				;		 |
-	LDA.w DATA_FD79E2,y		;$BB8CA9	 |
-	STA $00,x			;$BB8CAC	 |
-	INY				;$BB8CAE	 |
-	BRA CODE_BB8C91			;$BB8CAF	/
+	STA $000D70			;$BB8C87	 | Store index to current VRAM setting id
+	ASL A				;$BB8C8B	 |\ Double the VRAM setting id for use as an index
+	TAY				;$BB8C8C	 |/
+	LDX.w DATA_FD79E2,y		;$BB8C8D	 |\ Load relative offset to register config index
+	TXY				;$BB8C90	 |/
+.next_register				;		 |
+	LDX.w DATA_FD79E2,y		;$BB8C91	 |\ A value of zero terminates the table
+	BEQ .return			;$BB8C94	 |/
+	INY				;$BB8C96	 |\ Move the settings index forward two byets
+	INY				;$BB8C97	 |/
+	STX $76				;$BB8C98	 | Store the register to set
+	ASL $77				;$BB8C9A	 |\ Clear and test for high bit
+	BCC .single_register		;$BB8C9C	 |/ If the high bit is clear, then the destination is one byte
+	LSR $77				;$BB8C9E	 | Undo the bit test shift
+	LDX $76				;$BB8CA0	 | Reload masked register to set
+	LDA.w DATA_FD79E2,y		;$BB8CA2	 |\ Load the byte for the register and set it
+	STA $00,x			;$BB8CA5	 |/
+	INX				;$BB8CA7	 | Move to the next register
+	INY				;$BB8CA8	 | Increment the settings index
+.single_register			;		 |
+	LDA.w DATA_FD79E2,y		;$BB8CA9	 |\ Load the byte for the register and set it
+	STA $00,x			;$BB8CAC	 |/
+	INY				;$BB8CAE	 | Increment the settings index
+	BRA .next_register		;$BB8CAF	/
 
-CODE_BB8CB1:
-	REP #$20			;$BB8CB1	\
-	PLB				;$BB8CB3	 |
-	RTS				;$BB8CB4	/
+.return
+	REP #$20			;$BB8CB1	\ Return to full 16 bit
+	PLB				;$BB8CB3	 | Restore the data bank
+	RTS				;$BB8CB4	/ Finished setting registers
 
-CODE_BB8CB5:
+handle_VRAM_payload:
 	PHB				;$BB8CB5	\ Preserve current data bank
 	PEA $FD81			;$BB8CB6	 |\ Change data bank to FD
 	PLB				;$BB8CB9	 | |
 	PLB				;$BB8CBA	 |/
-	ASL A				;$BB8CBB	 |\ 
+	ASL A				;$BB8CBB	 |\ Double the VRAM payload id an index to the relative pointer
 	TAY				;$BB8CBC	 |/
-	LDX.w DATA_FD819A,y		;$BB8CBD	 |
-CODE_BB8CC0:				;		 |
+	LDX.w DATA_FD819A,y		;$BB8CBD	 | Load relative offset to VRAM payload
+.next_payload				;		 |
 	SEP #$20			;$BB8CC0	 |
-	LDA.w DATA_FD819A,x		;$BB8CC2	 |
-	BEQ CODE_BB8D14			;$BB8CC5	 |
-	LDA.w DATA_FD819E,x		;$BB8CC7	 |
-	BMI CODE_BB8D18			;$BB8CCA	 |
+	LDA.w DATA_FD819A,x		;$BB8CC2	 |\ If the payload data is zero, we are done uploadingh
+	BEQ .return			;$BB8CC5	 |/
+	LDA.w DATA_FD819E,x		;$BB8CC7	 |\ If the payload data is negative handle compressed data
+	BMI .compressed_payload		;$BB8CCA	 |/
 	REP #$20			;$BB8CCC	 |
-	BRL CODE_BB8D54			;$BB8CCE	/
+	BRL .static_payload		;$BB8CCE	/ Otherwise handle static data
 
-CODE_BB8CD1:
-	SEP #$20			;$BB8CD1	 |
-	LDA.w DATA_FD819A,x		;$BB8CD3	 |
-	STA $004304			;$BB8CD6	 |
-	REP #$20			;$BB8CDA	 |
-	LDA.w DATA_FD819B,x		;$BB8CDC	 |
-	STA $004302			;$BB8CDF	 |
-	LDA.w DATA_FD819D,x		;$BB8CE3	 |
-	STA $002116			;$BB8CE6	 |
-	SEP #$20			;$BB8CEA	 |
-CODE_BB8CEC:				;		 |
-	LDA.w DATA_FD819F,x		;$BB8CEC	 |
-	STA $004305			;$BB8CEF	 |
-	LDA.w DATA_FD81A0,x		;$BB8CF3	 |
-	STA $004306			;$BB8CF6	 |
-	LDA #$18			;$BB8CFA	 |
-	STA $004301			;$BB8CFC	 |
-	LDA #$01			;$BB8D00	 |
-	STA $004300			;$BB8D02	 |
-	STA $00420B			;$BB8D06	 |
+.raw_pointer_payload
+	SEP #$20			;$BB8CD1	 |\ Dead code as far as I can tell, but here is what it could do
+	LDA.w DATA_FD819A,x		;$BB8CD3	 | |\ Set the DMA source bank
+	STA $004304			;$BB8CD6	 | |/
+	REP #$20			;$BB8CDA	 | |
+	LDA.w DATA_FD819B,x		;$BB8CDC	 | |\ Set the DMA source word
+	STA $004302			;$BB8CDF	 | |/
+	LDA.w DATA_FD819D,x		;$BB8CE3	 | |\ Set the VRAM address
+	STA $002116			;$BB8CE6	 | |/
+	SEP #$20			;$BB8CEA	 |/ Basically this code would set up a raw DMA source payload
+.DMA_payload				;		 |
+	LDA.w DATA_FD819F,x		;$BB8CEC	 |\ Load and set DMA size
+	STA $004305			;$BB8CEF	 | |
+	LDA.w DATA_FD81A0,x		;$BB8CF3	 | |
+	STA $004306			;$BB8CF6	 |/
+	LDA #$18			;$BB8CFA	 |\ Set the DMA destination to $2118
+	STA $004301			;$BB8CFC	 |/
+	LDA #$01			;$BB8D00	 |\ Set DMA transfer mode 01 (two registers, write once)
+	STA $004300			;$BB8D02	 |/
+	STA $00420B			;$BB8D06	 | Enable channel 1 DMA
 	REP #$20			;$BB8D0A	 |
-	TXA				;$BB8D0C	 |
-	CLC				;$BB8D0D	 |
-	ADC #$0007			;$BB8D0E	 |
-	TAX				;$BB8D11	 |
-	BRA CODE_BB8CC0			;$BB8D12	/
+	TXA				;$BB8D0C	 |\ Add 7 bytes to the payload index to bypass DMA/VRAM settings
+	CLC				;$BB8D0D	 | |
+	ADC #$0007			;$BB8D0E	 | |
+	TAX				;$BB8D11	 |/
+	BRA .next_payload		;$BB8D12	/ Go to the next payload chunk
 
-CODE_BB8D14:
+.return
 	REP #$20			;$BB8D14	\
-	PLB				;$BB8D16	 |
-	RTS				;$BB8D17	/
+	PLB				;$BB8D16	 | Restore the data bank
+	RTS				;$BB8D17	/ Done uploading VRAM data
 
-CODE_BB8D18:
+.compressed_payload
 	REP #$20			;$BB8D18	\
-	LDY.w DATA_FD819B,x		;$BB8D1A	 |
-	LDA.w DATA_FD819A,x		;$BB8D1D	 |
+	LDY.w DATA_FD819B,x		;$BB8D1A	 |\ Load pointer to data to decompress
+	LDA.w DATA_FD819A,x		;$BB8D1D	 |/
 	AND #$00FF			;$BB8D20	 |
-	PHX				;$BB8D23	 |
-	TYX				;$BB8D24	 |
-	TAY				;$BB8D25	 |
-	PHB				;$BB8D26	 |
-	PHK				;$BB8D27	 |
-	PLB				;$BB8D28	 |
-	JSL decompress_data_default	;$BB8D29	 |
-	PLB				;$BB8D2D	 |
-	PLX				;$BB8D2E	 |
+	PHX				;$BB8D23	 | Preserve the payload index
+	TYX				;$BB8D24	 | Move pointer word to X
+	TAY				;$BB8D25	 | Move pointer bank to Y
+	PHB				;$BB8D26	 |\ Push current data bank and change data bank to BB
+	PHK				;$BB8D27	 | |
+	PLB				;$BB8D28	 |/
+	JSL decompress_data_default	;$BB8D29	 | Decompress the data
+	PLB				;$BB8D2D	 | Restore the data bank
+	PLX				;$BB8D2E	 | Restore the payload index
 	SEP #$20			;$BB8D2F	 |
-	LDA.w DATA_FD819D,x		;$BB8D31	 |
-	STA $002116			;$BB8D34	 |
-	LDA.w DATA_FD819E,x		;$BB8D38	 |
-	AND #$7F			;$BB8D3B	 |
-	STA $002117			;$BB8D3D	 |
-	LDA #$7F			;$BB8D41	 |
-	STA $004304			;$BB8D43	 |
-	REP #$20			;$BB8D47	 |
-	LDA #$0000			;$BB8D49	 |
-	STA $004302			;$BB8D4C	 |
+	LDA.w DATA_FD819D,x		;$BB8D31	 |\ Load and set the VRAM address (masks off top bit) 
+	STA $002116			;$BB8D34	 | |
+	LDA.w DATA_FD819E,x		;$BB8D38	 | |
+	AND #$7F			;$BB8D3B	 | |
+	STA $002117			;$BB8D3D	 |/
+	LDA #$7F			;$BB8D41	 |\ Set DMA source to $7F0000
+	STA $004304			;$BB8D43	 | |
+	REP #$20			;$BB8D47	 | |
+	LDA #$0000			;$BB8D49	 | |
+	STA $004302			;$BB8D4C	 |/
 	SEP #$20			;$BB8D50	 |
-	BRA CODE_BB8CEC			;$BB8D52	/
+	BRA .DMA_payload		;$BB8D52	/ Launch the DMA to VRAM
 
-CODE_BB8D54:
-	SEP #$20			;$BB8D54	\
-	LDA.w DATA_FD819A,x		;$BB8D56	 |
-	STA $28				;$BB8D59	 |
-	LDA #$7F			;$BB8D5B	 |
-	STA $004304			;$BB8D5D	 |
+.static_payload
+	SEP #$20			;$BB8D54	\ 
+	LDA.w DATA_FD819A,x		;$BB8D56	 |\ Get and set the bank of the source pointer
+	STA $28				;$BB8D59	 |/
+	LDA #$7F			;$BB8D5B	 |\ Set DMA source bank to 7F
+	STA $004304			;$BB8D5D	 |/
 	REP #$20			;$BB8D61	 |
-	LDA #$0000			;$BB8D63	 |
-	STA $004302			;$BB8D66	 |
-	LDA.w DATA_FD819B,x		;$BB8D6A	 |
-	STA $26				;$BB8D6D	 |
-	LDA.w DATA_FD819D,x		;$BB8D6F	 |
-	STA $002116			;$BB8D72	 |
-	PHX				;$BB8D76	 |
-	LDA.w DATA_FD819F,x		;$BB8D77	 |
-	INC A				;$BB8D7A	 |
-	AND #$FFFE			;$BB8D7B	 |
-	TAY				;$BB8D7E	 |
-	TAX				;$BB8D7F	 |
-CODE_BB8D80:				;		 |
-	LDA [$26],y			;$BB8D80	 |
-	STA $7F0000,x			;$BB8D82	 |
-	DEY				;$BB8D86	 |
-	DEY				;$BB8D87	 |
-	TYX				;$BB8D88	 |
-	BPL CODE_BB8D80			;$BB8D89	 |
-	PLX				;$BB8D8B	 |
+	LDA #$0000			;$BB8D63	 |\ Set DMA source word to 0000
+	STA $004302			;$BB8D66	 |/ (Full source becomes $7F0000)
+	LDA.w DATA_FD819B,x		;$BB8D6A	 |\ Get and set the word portion of the source pointer
+	STA $26				;$BB8D6D	 |/
+	LDA.w DATA_FD819D,x		;$BB8D6F	 |\ Get and set the VRAM destination address
+	STA $002116			;$BB8D72	 |/
+	PHX				;$BB8D76	 | Preserve the payload index
+	LDA.w DATA_FD819F,x		;$BB8D77	 | Load the number of bytes to copy
+	INC A				;$BB8D7A	 |\ Ensure an even number of bytes to copy
+	AND #$FFFE			;$BB8D7B	 |/
+	TAY				;$BB8D7E	 |\ X and Y mirror for using different addressing mods
+	TAX				;$BB8D7F	 |/
+.next_byte				;		 |
+	LDA [$26],y			;$BB8D80	 |\ Copy one byte from source to destination
+	STA $7F0000,x			;$BB8D82	 |/
+	DEY				;$BB8D86	 |\ Count down two bytes 
+	DEY				;$BB8D87	 | |
+	TYX				;$BB8D88	 |/
+	BPL .next_byte			;$BB8D89	 | Continue until there are no remaining bytes
+	PLX				;$BB8D8B	 | Restore the payload index
 	SEP #$20			;$BB8D8C	 |
-	BRL CODE_BB8CEC			;$BB8D8E	/
+	BRL .DMA_payload		;$BB8D8E	/ Launch the DMA to VRAM
 	
 ;$38  -- destination
 ;$34 -- source
@@ -2836,7 +2836,7 @@ CODE_BB9265:				;		 |
 	JSL init_registers_wrapper	;$BB926E	 |
 	JSL CODE_8088D2			;$BB9272	 |
 	JSR CODE_BB91FB			;$BB9276	 |
-	JSL clear_vram_wrapper		;$BB9279	 |
+	JSL clear_VRAM_wrapper		;$BB9279	 |
 	LDA $08A6			;$BB927D	 |
 	XBA				;$BB9280	 |
 	ORA $D3				;$BB9281	 |
@@ -2865,7 +2865,7 @@ CODE_BB929D:				;		 |
 	CMP #$0002			;$BB92BD	 |
 	BNE CODE_BB92C9			;$BB92C0	 |
 	LDA #$0016			;$BB92C2	 |
-	JSL CODE_BB80B0			;$BB92C5	 |
+	JSL handle_VRAM_payload_wrapper	;$BB92C5	 |
 CODE_BB92C9:				;		 |
 	LDX #$000A			;$BB92C9	 |
 	JSR ($0515,x)			;$BB92CC	 |
@@ -2943,7 +2943,7 @@ CODE_BB9358:				;		 |
 CODE_BB9379:				;		 |
 	RTL				;$BB9379	/
 
-	JSL clear_vram_wrapper		;$BB937A	 |
+	JSL clear_VRAM_wrapper		;$BB937A	 |
 	SEP #$20			;$BB937E	 |
 	LDA #$03			;$BB9380	 |
 	STA $212C			;$BB9382	 |
@@ -3203,64 +3203,64 @@ DATA_BB95BC:
 
 CODE_BB95F2:
 	LDA #$0001			;$BB95F2	\
-	JSL CODE_BB80B0			;$BB95F5	 |
+	JSL handle_VRAM_payload_wrapper	;$BB95F5	 |
 	LDA $0539			;$BB95F9	 |
-	JSL CODE_BB80B0			;$BB95FC	 |
+	JSL handle_VRAM_payload_wrapper	;$BB95FC	 |
 	JSR CODE_BB94B6			;$BB9600	 |
 	LDA $0537			;$BB9603	 |
-	JSL CODE_BB80AC			;$BB9606	 |
+	JSL set_PPU_registers_wrapper	;$BB9606	 |
 	RTS				;$BB960A	/
 
 CODE_BB960B:
 	LDA #$0001			;$BB960B	\
-	JSL CODE_BB80B0			;$BB960E	 |
+	JSL handle_VRAM_payload_wrapper	;$BB960E	 |
 	LDA $0539			;$BB9612	 |
-	JSL CODE_BB80B0			;$BB9615	 |
+	JSL handle_VRAM_payload_wrapper	;$BB9615	 |
 	JSR CODE_BB94B6			;$BB9619	 |
 	LDY #$0070			;$BB961C	 |
 	LDA #DATA_FD15F0		;$BB961F	 |
 	LDX #$0004			;$BB9622	 |
 	JSL DMA_palette			;$BB9625	 |
 	LDA $0537			;$BB9629	 |
-	JSL CODE_BB80AC			;$BB962C	 |
+	JSL set_PPU_registers_wrapper	;$BB962C	 |
 	RTS				;$BB9630	/
 
 CODE_BB9631:
 	LDA #$0001			;$BB9631	\
-	JSL CODE_BB80B0			;$BB9634	 |
+	JSL handle_VRAM_payload_wrapper	;$BB9634	 |
 	LDA $0539			;$BB9638	 |
-	JSL CODE_BB80B0			;$BB963B	 |
+	JSL handle_VRAM_payload_wrapper	;$BB963B	 |
 	LDA #DATA_FD29EE		;$BB963F	 |
 	STA $0A8E			;$BB9642	 |
 	JSR CODE_BB94B6			;$BB9645	 |
 	LDA $0537			;$BB9648	 |
-	JSL CODE_BB80AC			;$BB964B	 |
+	JSL set_PPU_registers_wrapper	;$BB964B	 |
 	RTS				;$BB964F	/
 
 CODE_BB9650:
 	LDA #$0001			;$BB9650	\
-	JSL CODE_BB80B0			;$BB9653	 |
+	JSL handle_VRAM_payload_wrapper	;$BB9653	 |
 	LDA $0539			;$BB9657	 |
-	JSL CODE_BB80B0			;$BB965A	 |
+	JSL handle_VRAM_payload_wrapper	;$BB965A	 |
 	LDA #DATA_FD2AEE		;$BB965E	 |
 	STA $0A8E			;$BB9661	 |
 	JSR CODE_BB94B6			;$BB9664	 |
 	LDA $0537			;$BB9667	 |
-	JSL CODE_BB80AC			;$BB966A	 |
+	JSL set_PPU_registers_wrapper	;$BB966A	 |
 	RTS				;$BB966E	/
 
 CODE_BB966F:
 	LDA #$0001			;$BB966F	\
-	JSL CODE_BB80B0			;$BB9672	 |
+	JSL handle_VRAM_payload_wrapper	;$BB9672	 |
 	LDA $0539			;$BB9676	 |
-	JSL CODE_BB80B0			;$BB9679	 |
+	JSL handle_VRAM_payload_wrapper	;$BB9679	 |
 	JSR CODE_BB94B6			;$BB967D	 |
 	LDY #$0010			;$BB9680	 |
 	LDA #DATA_FD268E		;$BB9683	 |
 	LDX #$0004			;$BB9686	 |
 	JSL DMA_palette			;$BB9689	 |
 	LDA $0537			;$BB968D	 |
-	JSL CODE_BB80AC			;$BB9690	 |
+	JSL set_PPU_registers_wrapper	;$BB9690	 |
 	LDX #DATA_E98B07		;$BB9694	 |
 	LDY.w #DATA_E98B07>>16		;$BB9697	 |
 	LDA #$F800			;$BB969A	 |
@@ -3280,21 +3280,21 @@ CODE_BB96AA:				;		 |
 
 CODE_BB96BC:
 	LDA #$0001			;$BB96BC	\
-	JSL CODE_BB80B0			;$BB96BF	 |
+	JSL handle_VRAM_payload_wrapper	;$BB96BF	 |
 	LDA $0539			;$BB96C3	 |
-	JSL CODE_BB80B0			;$BB96C6	 |
+	JSL handle_VRAM_payload_wrapper	;$BB96C6	 |
 	JSR CODE_BB94B6			;$BB96CA	 |
 	LDA $0537			;$BB96CD	 |
-	JSL CODE_BB80AC			;$BB96D0	 |
+	JSL set_PPU_registers_wrapper	;$BB96D0	 |
 	RTS				;$BB96D4	/
 
 CODE_BB96D5:
 	LDA #$0001			;$BB96D5	\
-	JSL CODE_BB80B0			;$BB96D8	 |
+	JSL handle_VRAM_payload_wrapper	;$BB96D8	 |
 	LDA $0539			;$BB96DC	 |
-	JSL CODE_BB80B0			;$BB96DF	 |
+	JSL handle_VRAM_payload_wrapper	;$BB96DF	 |
 	LDA $0537			;$BB96E3	 |
-	JSL CODE_BB80AC			;$BB96E6	 |
+	JSL set_PPU_registers_wrapper	;$BB96E6	 |
 	LDY #$0000			;$BB96EA	 |
 	LDA #DATA_FD3A4E		;$BB96ED	 |
 	LDX #$0020			;$BB96F0	 |
@@ -3303,11 +3303,11 @@ CODE_BB96D5:
 
 CODE_BB96F8:
 	LDA #$0001			;$BB96F8	\
-	JSL CODE_BB80B0			;$BB96FB	 |
+	JSL handle_VRAM_payload_wrapper	;$BB96FB	 |
 	LDA $0539			;$BB96FF	 |
-	JSL CODE_BB80B0			;$BB9702	 |
+	JSL handle_VRAM_payload_wrapper	;$BB9702	 |
 	LDA $0537			;$BB9706	 |
-	JSL CODE_BB80AC			;$BB9709	 |
+	JSL set_PPU_registers_wrapper	;$BB9709	 |
 	LDY #$0000			;$BB970D	 |
 	LDA #DATA_FD324E		;$BB9710	 |
 	LDX #$0020			;$BB9713	 |
@@ -3316,11 +3316,11 @@ CODE_BB96F8:
 
 CODE_BB971B:
 	LDA #$0001			;$BB971B	\
-	JSL CODE_BB80B0			;$BB971E	 |
+	JSL handle_VRAM_payload_wrapper	;$BB971E	 |
 	LDA $0539			;$BB9722	 |
-	JSL CODE_BB80B0			;$BB9725	 |
+	JSL handle_VRAM_payload_wrapper	;$BB9725	 |
 	LDA $0537			;$BB9729	 |
-	JSL CODE_BB80AC			;$BB972C	 |
+	JSL set_PPU_registers_wrapper	;$BB972C	 |
 	LDY #$0000			;$BB9730	 |
 	LDA #DATA_FD304E		;$BB9733	 |
 	LDX #$0020			;$BB9736	 |
@@ -3329,11 +3329,11 @@ CODE_BB971B:
 
 CODE_BB973E:
 	LDA #$0001			;$BB973E	\
-	JSL CODE_BB80B0			;$BB9741	 |
+	JSL handle_VRAM_payload_wrapper	;$BB9741	 |
 	LDA $0539			;$BB9745	 |
-	JSL CODE_BB80B0			;$BB9748	 |
+	JSL handle_VRAM_payload_wrapper	;$BB9748	 |
 	LDA $0537			;$BB974C	 |
-	JSL CODE_BB80AC			;$BB974F	 |
+	JSL set_PPU_registers_wrapper	;$BB974F	 |
 	LDY #$0000			;$BB9753	 |
 	LDA #DATA_FD07F0		;$BB9756	 |
 	LDX #$0020			;$BB9759	 |
@@ -3342,12 +3342,12 @@ CODE_BB973E:
 
 CODE_BB9761:
 	LDA #$0001			;$BB9761	\
-	JSL CODE_BB80B0			;$BB9764	 |
+	JSL handle_VRAM_payload_wrapper	;$BB9764	 |
 	LDA $0539			;$BB9768	 |
-	JSL CODE_BB80B0			;$BB976B	 |
+	JSL handle_VRAM_payload_wrapper	;$BB976B	 |
 	JSR CODE_BB94B6			;$BB976F	 |
 	LDA $0537			;$BB9772	 |
-	JSL CODE_BB80AC			;$BB9775	 |
+	JSL set_PPU_registers_wrapper	;$BB9775	 |
 	LDY #$0000			;$BB9779	 |
 	LDA #DATA_FD2EEE		;$BB977C	 |
 	LDX #$0020			;$BB977F	 |
@@ -3377,12 +3377,12 @@ CODE_BB97AB:				;		 |
 
 CODE_BB97B4:
 	LDA #$0001			;$BB97B4	\
-	JSL CODE_BB80B0			;$BB97B7	 |
+	JSL handle_VRAM_payload_wrapper	;$BB97B7	 |
 	LDA $0539			;$BB97BB	 |
-	JSL CODE_BB80B0			;$BB97BE	 |
+	JSL handle_VRAM_payload_wrapper	;$BB97BE	 |
 	JSR CODE_BB94B6			;$BB97C2	 |
 	LDA $0537			;$BB97C5	 |
-	JSL CODE_BB80AC			;$BB97C8	 |
+	JSL set_PPU_registers_wrapper	;$BB97C8	 |
 	LDY #$0000			;$BB97CC	 |
 	LDA #DATA_FD2BEE		;$BB97CF	 |
 	LDX #$0020			;$BB97D2	 |
@@ -3391,28 +3391,28 @@ CODE_BB97B4:
 
 CODE_BB97DA:
 	LDA #$0001			;$BB97DA	\
-	JSL CODE_BB80B0			;$BB97DD	 |
+	JSL handle_VRAM_payload_wrapper	;$BB97DD	 |
 	LDA $0539			;$BB97E1	 |
-	JSL CODE_BB80B0			;$BB97E4	 |
+	JSL handle_VRAM_payload_wrapper	;$BB97E4	 |
 	LDA #DATA_FD1610		;$BB97E8	 |
 	STA $0A8E			;$BB97EB	 |
 	JSR CODE_BB94B6			;$BB97EE	 |
 	LDA $0537			;$BB97F1	 |
-	JSL CODE_BB80AC			;$BB97F4	 |
+	JSL set_PPU_registers_wrapper	;$BB97F4	 |
 	RTS				;$BB97F8	/
 
 CODE_BB97F9:
 	LDA #$0001			;$BB97F9	\
-	JSL CODE_BB80B0			;$BB97FC	 |
+	JSL handle_VRAM_payload_wrapper	;$BB97FC	 |
 	LDA $0539			;$BB9800	 |
-	JSL CODE_BB80B0			;$BB9803	 |
+	JSL handle_VRAM_payload_wrapper	;$BB9803	 |
 	JSR CODE_BB94B6			;$BB9807	 |
 	LDY #$0070			;$BB980A	 |
 	LDA #DATA_FD268E		;$BB980D	 |
 	LDX #$0004			;$BB9810	 |
 	JSL DMA_palette			;$BB9813	 |
 	LDA $0537			;$BB9817	 |
-	JSL CODE_BB80AC			;$BB981A	 |
+	JSL set_PPU_registers_wrapper	;$BB981A	 |
 	LDA #$0300			;$BB981E	 |
 	STA $19BE			;$BB9821	 |
 	STZ $19C2			;$BB9824	 |

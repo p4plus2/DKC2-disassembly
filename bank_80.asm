@@ -127,8 +127,8 @@ piracy_string:
 	db "A thief!"
 
 display_error_message:
-	TYA				;$8083D0	\
-	JSL CODE_BB80B0			;$8083D1	 |
+	TYA				;$8083D0	\ Copy message id to A
+	JSL handle_VRAM_payload_wrapper	;$8083D1	 | Upload the anti-piracy screen contents
 	LDA #DATA_FD258E		;$8083D5	 |\ Upload background palette
 	LDY #$0000			;$8083D8	 | |
 	LDX #$0020			;$8083DB	 | |
@@ -137,8 +137,8 @@ display_error_message:
 	LDY #$0000			;$8083E5	 | |
 	LDX #$0001			;$8083E8	 | |
 	JSL DMA_palette			;$8083EB	 |/
-	LDA #$0039			;$8083EF	 |
-	JSL CODE_BB80AC			;$8083F2	 |
+	LDA #$0039			;$8083EF	 |\ Load PPU settings for anti-piracy screen
+	JSL set_PPU_registers_wrapper	;$8083F2	 |/
 	STP				;$8083F6	/
 
 RESET_start:
@@ -261,7 +261,7 @@ RESET_start:
 	LDX #$01FF			;$8084C8	 |\ Reset the stack register
 	TXS				;$8084CB	 |/
 	%return(display_error_message)	;$8084CC	 | Push address to decompress and display the message
-	%return(clear_vram)		;$8084CF	 | Push address for clearing vram
+	%return(clear_VRAM)		;$8084CF	 | Push address for clearing VRAM
 	BRA init_registers		;$8084D2	/ Initialize MMIO registers
 
 .final_piracy_test			;		\
@@ -283,7 +283,7 @@ RESET_start:
 	LDX #$01FF			;$8084EE	 |\ Reset the stack register
 	TXS				;$8084F1	 |/
 	%return(start_engine)		;$8084F2	 | Push address to start the game engine
-	%return(clear_vram)		;$8084F5	 | Push address for clearing VRAM
+	%return(clear_VRAM)		;$8084F5	 | Push address for clearing VRAM
 init_registers:    			;		 |
 	SEP #$30			;$8084F8	 | Use 8 bit to manipulate MMIO
 	LDX #$00			;$8084FA	 | Reset index to clear PPU MMIO
@@ -351,27 +351,27 @@ init_registers_wrapper:
 	JSR init_registers		;$80858B	\ Wrapper for long calls
 	RTL				;$80858E	/
 
-vram_zero_fill:
-	dw $0000			;$80858F	> Used for vram fill byte
+VRAM_zero_fill:
+	dw $0000			;$80858F	> Used for VRAM fill byte
 
-clear_vram:
+clear_VRAM:
 	STZ $2116			;$808591	\ Initialize VRAM to zeros
-	LDA #vram_zero_fill		;$808594	 |\ Set DMA source word
+	LDA #VRAM_zero_fill		;$808594	 |\ Set DMA source word
 	STA $4302			;$808597	 |/
 	STA $4308			;$80859A	 | Set HDMA word (not used.)
 	STZ $4305			;$80859D	 | Set size to zero, (full 64K)
 	LDA #$1809			;$8085A0	 |\ Set DMA destination 2118, fixed transfer,
 	STA $4300			;$8085A3	 |/ with two register write once
 	SEP #$20			;$8085A6	 |
-	LDA #vram_zero_fill>>16		;$8085A8	 |\ Set DMA source bank
+	LDA #VRAM_zero_fill>>16		;$8085A8	 |\ Set DMA source bank
 	STA $4304			;$8085AA	 |/
 	LDA #$01			;$8085AD	 |\
 	STA $420B			;$8085AF	 |/ Enable channel 1 DMA
 	REP #$20			;$8085B2	 |
 	RTS				;$8085B4	/
 
-clear_vram_wrapper:
-	JSR clear_vram			;$8085B5	\ Wrapper for long calls
+clear_VRAM_wrapper:
+	JSR clear_VRAM			;$8085B5	\ Wrapper for long calls
 	RTL				;$8085B8	/
 
 start_engine:				;		\ 
@@ -492,9 +492,9 @@ CODE_808684:
 	LDX #$0040			;$80869A	 |
 	JSL DMA_palette			;$80869D	 |
 	LDA #$0008			;$8086A1	 |
-	JSL CODE_BB80B0			;$8086A4	 |
+	JSL handle_VRAM_payload_wrapper	;$8086A4	 |
 	LDA #$0007			;$8086A8	 |
-	JSL CODE_BB80AC			;$8086AB	 |
+	JSL set_PPU_registers_wrapper	;$8086AB	 |
 	LDA #$7000			;$8086AF	 |
 	STA $2116			;$8086B2	 |
 	LDY #$0064			;$8086B5	 |
@@ -1739,7 +1739,7 @@ CODE_8090DA:
 	LDA #$002C			;$8090DD	 |\ 
 	STA $78				;$8090E0	 |/
 	JSR init_registers		;$8090E2	 | Reset registers to a known state
-	JSR clear_vram			;$8090E5	 | Nuke VRAM
+	JSR clear_VRAM			;$8090E5	 | Nuke VRAM
 	STZ $2A				;$8090E8	 | Reset effective frame counter
 	LDA #$AA55			;$8090EA	 |\
 	STA $2E				;$8090ED	 | |
@@ -2501,7 +2501,7 @@ CODE_8097CD:
 	JSL disable_screen		;$8097CD	\
 	PHK				;$8097D1	 |
 	PLB				;$8097D2	 |
-	JSR clear_vram			;$8097D3	 |
+	JSR clear_VRAM			;$8097D3	 |
 	JSL init_registers_wrapper	;$8097D6	 |
 	JSL CODE_808E6A			;$8097DA	 |
 	JSL CODE_8088AB			;$8097DE	 |
@@ -3246,7 +3246,7 @@ CODE_809F85:
 	JSL disable_screen		;$809F85	\
 	PHK				;$809F89	 |
 	PLB				;$809F8A	 |
-	JSR clear_vram			;$809F8B	 |
+	JSR clear_VRAM			;$809F8B	 |
 	JSL init_registers_wrapper	;$809F8E	 |
 	JSL CODE_808E6A			;$809F92	 |
 	JSL CODE_BB91F7			;$809F96	 |
@@ -3921,7 +3921,7 @@ CODE_80A5F1:
 	JSL disable_screen		;$80A5F1	\
 	PHK				;$80A5F5	 |
 	PLB				;$80A5F6	 |
-	JSR clear_vram			;$80A5F7	 |
+	JSR clear_VRAM			;$80A5F7	 |
 	JSL init_registers_wrapper	;$80A5FA	 |
 	JSL CODE_808E6A			;$80A5FE	 |
 	JSL CODE_8088AB			;$80A602	 |
@@ -5447,7 +5447,7 @@ CODE_80B3D7:
 	PLB				;$80B3DC	 |
 	STZ $099B			;$80B3DD	 |
 	STZ $060B			;$80B3E0	 |
-	JSR clear_vram			;$80B3E3	 |
+	JSR clear_VRAM			;$80B3E3	 |
 	JSL init_registers_wrapper	;$80B3E6	 |
 	JSL CODE_8088D2			;$80B3EA	 |
 	JSL CODE_BB91F7			;$80B3EE	 |
@@ -5670,7 +5670,7 @@ CODE_80B560:
 
 CODE_80B5FA:
 	JSL disable_screen		;$80B5FA	\
-	JSL clear_vram			;$80B5FE	 |
+	JSL clear_VRAM			;$80B5FE	 |
 	JSL init_registers_wrapper	;$80B602	 |
 	JSL CODE_BB91F7			;$80B606	 |
 	LDA #$0001			;$80B60A	 |
@@ -12664,7 +12664,7 @@ CODE_80F3FB:
 	JSL disable_screen		;$80F3FB	\
 	PHK				;$80F3FF	 |
 	PLB				;$80F400	 |
-	JSL clear_vram_wrapper		;$80F401	 |
+	JSL clear_VRAM_wrapper		;$80F401	 |
 	JSL init_registers_wrapper	;$80F405	 |
 	JSL CODE_808E6A			;$80F409	 |
 	JSL CODE_8088AB			;$80F40D	 |
@@ -12673,9 +12673,9 @@ CODE_80F3FB:
 	JSL CODE_B5800C			;$80F418	 |
 	STZ $1730			;$80F41C	 |
 	LDA #$000E			;$80F41F	 |
-	JSL CODE_BB80AC			;$80F422	 |
+	JSL set_PPU_registers_wrapper	;$80F422	 |
 	LDA #$003A			;$80F426	 |
-	JSL CODE_BB80B0			;$80F429	 |
+	JSL handle_VRAM_payload_wrapper	;$80F429	 |
 	LDY #$0000			;$80F42D	 |
 	LDA #DATA_FD13F0		;$80F430	 |
 	LDX #$0020			;$80F433	 |
@@ -13246,12 +13246,12 @@ CODE_80FA7C:
 	JSL disable_screen		;$80FA7C	\
 	PHK				;$80FA80	 |
 	PLB				;$80FA81	 |
-	JSL clear_vram_wrapper		;$80FA82	 |
+	JSL clear_VRAM_wrapper		;$80FA82	 |
 	JSL init_registers_wrapper	;$80FA86	 |
 	LDA #$001F			;$80FA8A	 |
-	JSL CODE_BB80B0			;$80FA8D	 |
+	JSL handle_VRAM_payload_wrapper	;$80FA8D	 |
 	LDA #$001F			;$80FA91	 |
-	JSL CODE_BB80AC			;$80FA94	 |
+	JSL set_PPU_registers_wrapper	;$80FA94	 |
 	LDA #$0014			;$80FA98	 |
 	JSL CODE_B5800C			;$80FA9B	 |
 	LDA #$0100			;$80FA9F	 |
