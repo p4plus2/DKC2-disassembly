@@ -3540,7 +3540,7 @@ CODE_BB9926:				;		 |
 	LDA #$FB00			;$BB993F	 |
 	LDX #$007F			;$BB9942	 |
 	LDY #$0300			;$BB9945	 |
-	JSL CODE_80895F			;$BB9948	 |
+	JSL DMA_to_VRAM			;$BB9948	 |
 	LDX #DATA_C6FC11		;$BB994C	 |
 	LDY.w #DATA_C6FC11>>16		;$BB994F	 |
 	LDA #$F800			;$BB9952	 |
@@ -3563,7 +3563,7 @@ CODE_BB9962:				;		 |
 	LDA #$FB00			;$BB997B	 |
 	LDX #$007F			;$BB997E	 |
 	LDY #$0300			;$BB9981	 |
-	JSL CODE_80895F			;$BB9984	 |
+	JSL DMA_to_VRAM			;$BB9984	 |
 	PLA				;$BB9988	 |
 	STA $17B6			;$BB9989	 |
 	PLA				;$BB998C	 |
@@ -7737,7 +7737,7 @@ CODE_BBBEA0:
 	JML CODE_B5CDFD			;$BBBECF	/
 
 CODE_BBBED3:
-	JML init_rare_logo		;$BBBED3	|
+	JML restart_rareware_logo	;$BBBED3	|
 
 CODE_BBBED7:
 	LDA $060D			;$BBBED7	\

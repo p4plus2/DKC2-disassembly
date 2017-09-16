@@ -135,12 +135,13 @@ local play_sound_effect = false
 --debug display control
 local show_debug = true
 local show_dma_debug = false
-local active_screen = sprite_screen
+local active_screen = engine_screen
 local opacity = 0x80
 local fg_color = 0x00FFFFFF
 local bg_color = 0x00000000
 local x_padding = -400
 local y_padding = 0
+local context = gui.renderctx.new(256, 224) 
 
 --Add transparency to a color with default opacity
 local function trans(color)
@@ -541,17 +542,24 @@ local game_loop = 0x0024
 local game_mode_NMI = 0x0094
 local game_mode = 0x0096
 
+local frame_counter = 0x002A
+local active_frame_counter = 0x002C
+
 local function display_engine()
 	local engine_string = "NMI: %04X\n" ..
-				"game loop: %04X\n" ..
-				"game mode NMI: %04X\n" ..
-				"game mode: %04X"
+				"Game loop: %04X\n" ..
+				"Game mode NMI: %04X\n" ..
+				"Game mode: %04X\n"..
+				"Frame counter: %04X\n" ..
+				"Active frame counter: %04X"
 	
 	text(0, 0, string.format(engine_string,
 					read_word(NMI),
 					read_word(game_loop),
 					read_word(game_mode_NMI),
-					read_word(game_mode)
+					read_word(game_mode),
+					read_word(frame_counter),
+					read_word(active_frame_counter)
 				))
 end
 
@@ -650,6 +658,15 @@ local function display_ppu_state()
 	text(0, 550, dump_mmio_string() .. ppu_layer_state)
 end
 
+local function display_cgram_state()
+
+	colors = bsnes.dump_palette("CGRAM", 0, true, true)
+	for i=0, 255 do
+		gui.solidrectangle(350 + ((i % 16) * 8), 550 + (math.floor(i / 16) * 8), 8, 8, colors:get(i))
+	end
+	--text(0, 550, "state")
+end
+
 local keys = {}
 keys.press = {}
 
@@ -687,6 +704,9 @@ keys.register_keypress("numpad4" , function() toggle_layer(3) end)
 
 function on_paint(not_synth)
 	if show_debug then
+		context:clear()
+		context:set()
+		
 		if active_screen == sprite_screen then
 			display_sprite()
 		elseif active_screen == sound_screen then
@@ -702,8 +722,19 @@ function on_paint(not_synth)
 		end
 		
 		display_ppu_state()
+		display_cgram_state()
+		
+		gui.renderctx.setnull()
+		context:run()
 	end
 end
+
+function on_video()
+	h,v = gui.resolution()
+	gui.set_video_scale((256*2)/h, (224*2)/v)
+	context:run()
+end
+
 
 local counter = 0
 local zip_file = zip.writer.new("DMA_log.zip", 0)

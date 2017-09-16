@@ -1942,7 +1942,7 @@ CODE_B490FF:				;		 |
 	JML CODE_808C84			;$B4911E	/
 
 CODE_B49122:
-	JML init_rare_logo		;$B49122	|
+	JML restart_rareware_logo	;$B49122	|
 
 CODE_B49126:
 	LDA #$4000			;$B49126	\

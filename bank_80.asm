@@ -394,10 +394,10 @@ start_engine:				;		\
 	DEX				;$8085DD	 | |
 	BPL .rare_string_copy		;$8085DE	 |/ Copy the string until there are no more bytes
 	JSL upload_spc_engine_entry	;$8085E0	 | Upload the SPC engine
-init_rare_logo:				;		 |
+restart_rareware_logo:			;		 |
 	JSL disable_screen		;$8085E4	 | Disable the screen
 	JSR clear_wram_reset		;$8085E8	 | Clear WRAM
-	JML CODE_8090DA			;$8085EB	/ Run the Rareware logo
+	JML init_rareware_logo		;$8085EB	/ Initialize the Rareware logo
 
 CODE_8085EF:
 	LDA #$FFFF			;$8085EF	\
@@ -573,7 +573,7 @@ CODE_80875E:				;		 |
 	AND #$0003			;$808762	 |
 	CMP #$0003			;$808765	 |
 	BNE CODE_80876E			;$808768	 |
-	JML init_rare_logo		;$80876A	/
+	JML restart_rareware_logo	;$80876A	/
 
 CODE_80876E:
 	ASL A				;$80876E	\
@@ -816,19 +816,19 @@ DATA_8088F1:
 	db $02, $0B, $02, $00, $FF, $FF
 
 
-CODE_80895F:
-	JSR CODE_808963			;$80895F	\
+DMA_to_VRAM:
+	JSR .DMA_to_VRAM		;$80895F	\ Simple JSL to RTS wrapper
 	RTL				;$808962	/
 
-CODE_808963:
-	STA $4302			;$808963	\
-	STY $4305			;$808966	 |
-	LDA #$1801			;$808969	 |
-	STA $4300			;$80896C	 |
+.DMA_to_VRAM
+	STA $4302			;$808963	\ Store the DMA source word
+	STY $4305			;$808966	 | Store the DMA size
+	LDA #$1801			;$808969	 |\ Set DMA destination to $2118, write once, two registers
+	STA $4300			;$80896C	 |/
 	SEP #$30			;$80896F	 |
-	STX $4304			;$808971	 |
-	LDA #$01			;$808974	 |
-	STA $420B			;$808976	 |
+	STX $4304			;$808971	 | Store the DMA source bank
+	LDA #$01			;$808974	 |\ Enable the DMA
+	STA $420B			;$808976	 |/
 	REP #$30			;$808979	 |
 	RTS				;$80897B	/
 
@@ -1727,348 +1727,348 @@ CODE_8090BB:
 	LDA #CODE_808D02		;$8090C6	 |
 	JML CODE_808C80			;$8090C9	/
 
-CODE_8090CD:
+reset_controller_state:
 	STZ $060F			;$8090CD	\
 	STZ $060D			;$8090D0	 |
 	LDA #$0001			;$8090D3	 |
 	STA $08A2			;$8090D6	 |
 	RTS				;$8090D9	/
 
-CODE_8090DA:
-	JSR CODE_8090CD			;$8090DA	\
+init_rareware_logo:
+	JSR reset_controller_state	;$8090DA	\
 	LDA #$002C			;$8090DD	 |\ 
 	STA $78				;$8090E0	 |/
 	JSR init_registers		;$8090E2	 | Reset registers to a known state
 	JSR clear_VRAM			;$8090E5	 | Nuke VRAM
 	STZ $2A				;$8090E8	 | Reset effective frame counter
-	LDA #$AA55			;$8090EA	 |\
+	LDA #$AA55			;$8090EA	 |\ TODO: figure out $2E/30 use.
 	STA $2E				;$8090ED	 | |
 	LDA #$3765			;$8090EF	 | |
 	STA $30				;$8090F2	 |/
-	LDA #$0011			;$8090F4	 | Load Intro fanfare sound
-	JSL set_song			;$8090F7	 |
+	LDA #$0011			;$8090F4	 |\ Load Intro fanfare sound
+	JSL set_song_simple_entry	;$8090F7	 |/
 	SEP #$20			;$8090FB	 |
 	LDA #$01			;$8090FD	 |\ Enable auto polling
 	STA $4200			;$8090FF	 |/
 	LDA #$8F			;$809102	 |\ Enable F-Blank
 	STA $2100			;$809104	 |/
-	STZ $2101			;$809107	 |
-	STZ $2133			;$80910A	 |
+	STZ $2101			;$809107	 | User 8x8 sprites with sprite tile data at $0000
+	STZ $2133			;$80910A	 | Turn off special video modes
 	REP #$30			;$80910D	 |
-	LDA #$0003			;$80910F	 |\ 
+	LDA #$0003			;$80910F	 |\ Set background mode to 3
 	STA $2105			;$809112	 |/
-	LDA #$0102			;$809115	 |\ 
+	LDA #$0102			;$809115	 |\ Set layer 2 on the main screen, layer 1 on the subscreen
 	STA $212C			;$809118	 |/
-	LDA #$0202			;$80911B	 |\ 
+	LDA #$0202			;$80911B	 |\ Enable color math on layer 2, add subscreen to mainscreen
 	STA $2130			;$80911E	 |/
-	LDA #$0364			;$809121	 |\ 
-	STA $210B			;$809124	 |/
-	LDA #$787C			;$809127	 |\ 
-	STA $2107			;$80912A	 |/
-	LDA #$0070			;$80912D	 |\ 
-	STA $2109			;$809130	 |/
-	STZ $2116			;$809133	 |
-	LDX #$4000			;$809136	 |
-CODE_809139:				;		 |
-	STZ $2118			;$809139	 |
-	DEX				;$80913C	 |
-	BNE CODE_809139			;$80913D	 |
-	LDX #DATA_FA4C3E		;$80913F	 |
-	LDY.w #DATA_FA4C3E>>16		;$809142	 |
-	LDA #$0000			;$809145	 |
-	JSL decompress_data		;$809148	 |
-	STZ $2116			;$80914C	 |
-	SEP #$20			;$80914F	 |
-	LDX #$0000			;$809151	 |
-CODE_809154:				;		 |
-	TXA				;$809154	 |
-	LSR A				;$809155	 |
-	LSR A				;$809156	 |
-	LSR A				;$809157	 |
-	LSR A				;$809158	 |
-	LSR A				;$809159	 |
-	LSR A				;$80915A	 |
-	LDA.l $7F0000,x			;$80915B	 |
-	STA $2119			;$80915F	 |
-	INX				;$809162	 |
-	CPX #$3400			;$809163	 |
-	BNE CODE_809154			;$809166	 |
+	LDA #$0364			;$809121	 |\ Set layer 1,2,3,4 tile data address
+	STA $210B			;$809124	 |/ Addresses: $8000, $C000, $6000, $0000
+	LDA #$787C			;$809127	 |\ Set layer 1 and 2 tile map address
+	STA $2107			;$80912A	 |/ Addresses: $F800, $F000
+	LDA #$0070			;$80912D	 |\ Set layer 1 and 2 tile map address
+	STA $2109			;$809130	 |/ Addresses: $E000, $0000
+	STZ $2116			;$809133	 | Zero VRAM address
+	LDX #$4000			;$809136	 | Load number of VRAM words to clear (minus 1...)
+.clear_VRAM				;		 |
+	STZ $2118			;$809139	 |\ Clear VRAM byte
+	DEX				;$80913C	 | | Decrement counter
+	BNE .clear_VRAM			;$80913D	 |/ Loop until done
+	LDX #DATA_FA4C3E		;$80913F	 |\ Decompress mode 7 tile data to $7F0000
+	LDY.w #DATA_FA4C3E>>16		;$809142	 | |
+	LDA #$0000			;$809145	 | |
+	JSL decompress_data		;$809148	 |/
+	STZ $2116			;$80914C	 |\ Zero VRAM address and reset index for upload.
+	SEP #$20			;$80914F	 | |
+	LDX #$0000			;$809151	 |/
+.mode_7_tile_data_upload		;		 |\
+	TXA				;$809154	 | |\ Useless, due to the load immediately after.
+	LSR A				;$809155	 | | |
+	LSR A				;$809156	 | | |
+	LSR A				;$809157	 | | |
+	LSR A				;$809158	 | | |
+	LSR A				;$809159	 | | |
+	LSR A				;$80915A	 | |/
+	LDA.l $7F0000,x			;$80915B	 | |\ Copy byte to VRAM
+	STA $2119			;$80915F	 | |/
+	INX				;$809162	 | | Increment byte counter
+	CPX #$3400			;$809163	 | | Check if we've uploaded $3400 bytes
+	BNE .mode_7_tile_data_upload	;$809166	 |/ Branch until we have
 	REP #$20			;$809168	 |
-	LDA #$038B			;$80916A	 |
-	STA $32				;$80916D	 |
-	LDA #DATA_F547BC		;$80916F	 |
-	LDX.w #DATA_F547BC>>16		;$809172	 |
-	JSR CODE_80AFBA			;$809175	 |
-	LDA #$0100			;$809178	 |
-	STA $7C				;$80917B	 |
-	STA $7A				;$80917D	 |
+	LDA #$038B			;$80916A	 |\ Load initial VRAM address for the mode 7 tilemap
+	STA $32				;$80916D	 |/
+	LDA #DATA_F547BC		;$80916F	 |\ Load pointer to the mode 7 tilemap
+	LDX.w #DATA_F547BC>>16		;$809172	 |/
+	JSR upload_mode_7_tilemap	;$809175	 | Upload mode 7 tilemap
+	LDA #$0100			;$809178	 |\ Set mode 7 X/Y scale to $0100 (100%)
+	STA $7C				;$80917B	 | |
+	STA $7A				;$80917D	 |/
 	SEP #$20			;$80917F	 |
-	LDA #$05			;$809181	 |
-	STA $211F			;$809183	 |
-	LDA #$01			;$809186	 |
-	STA $211F			;$809188	 |
-	LDA #$D7			;$80918B	 |
-	STA $2120			;$80918D	 |
-	STZ $2120			;$809190	 |
-	LDA #$80			;$809193	 |
-	STA $211A			;$809195	 |
+	LDA #$05			;$809181	 |\ Set mode 7 X center to $0105
+	STA $211F			;$809183	 | |
+	LDA #$01			;$809186	 | |
+	STA $211F			;$809188	 |/
+	LDA #$D7			;$80918B	 |\ Set mode 7 Y center to $00D7
+	STA $2120			;$80918D	 | |
+	STZ $2120			;$809190	 |/
+	LDA #$80			;$809193	 |\ Fill empty mode 7 space with transparency
+	STA $211A			;$809195	 |/
 	REP #$20			;$809198	 |
-	LDA #$7400			;$80919A	 |
-	JSR CODE_80B109			;$80919D	 |
-	LDA #$7000			;$8091A0	 |
-	JSR CODE_80B109			;$8091A3	 |
-	LDA #$7800			;$8091A6	 |
-	JSR CODE_80B109			;$8091A9	 |
-	LDA #$7C00			;$8091AC	 |
-	JSR CODE_80B109			;$8091AF	 |
-	LDX #DATA_F52FC7		;$8091B2	 |
-	LDY.w #DATA_F52FC7>>16		;$8091B5	 |
-	LDA #$0000			;$8091B8	 |
-	JSL decompress_data		;$8091BB	 |
-	LDA #$0000			;$8091BF	 |
-	STA $7F0100			;$8091C2	 |
-	STA $7F013E			;$8091C6	 |
-	LDA #$74A0			;$8091CA	 |
-	STA $2116			;$8091CD	 |
-	LDX #$007F			;$8091D0	 |
-	LDA #$0000			;$8091D3	 |
-	LDY #$0340			;$8091D6	 |
-	JSL CODE_80895F			;$8091D9	 |
-	LDX #DATA_F80D10		;$8091DD	 |
-	LDY.w #DATA_F80D10>>16		;$8091E0	 |
-	LDA #$0000			;$8091E3	 |
-	JSL decompress_data		;$8091E6	 |
-	LDA #$76BA			;$8091EA	 |
-	STA $2116			;$8091ED	 |
-	LDX #$007F			;$8091F0	 |
-	LDA #$0000			;$8091F3	 |
-	LDY #$00C8			;$8091F6	 |
-	JSL CODE_80895F			;$8091F9	 |
-	LDX #DATA_F50004		;$8091FD	 |
-	LDY.w #DATA_F50004>>16		;$809200	 |
-	LDA #$0000			;$809203	 |
-	JSL decompress_data		;$809206	 |
-	LDA #$78E0			;$80920A	 |
-	STA $2116			;$80920D	 |
-	LDX #$007F			;$809210	 |
-	LDA #$0000			;$809213	 |
-	LDY #$0380			;$809216	 |
-	JSL CODE_80895F			;$809219	 |
-	LDX #DATA_F56AC9		;$80921D	 |
-	LDY.w #DATA_F56AC9>>16		;$809220	 |
-	LDA #$0000			;$809223	 |
-	JSL decompress_data		;$809226	 |
-	LDA #$7CE0			;$80922A	 |
-	STA $2116			;$80922D	 |
-	LDX #$007F			;$809230	 |
-	LDA #$0000			;$809233	 |
-	LDY #$0380			;$809236	 |
-	JSL CODE_80895F			;$809239	 |
-	LDX #DATA_F55D4A		;$80923D	 |
-	LDY.w #DATA_F55D4A>>16		;$809240	 |
-	LDA #$0000			;$809243	 |
-	JSL decompress_data		;$809246	 |
-	LDA #$4000			;$80924A	 |
-	STA $2116			;$80924D	 |
-	LDX #$007F			;$809250	 |
-	LDA #$0000			;$809253	 |
-	LDY #$2400			;$809256	 |
-	JSL CODE_80895F			;$809259	 |
-	LDX #DATA_F8063E		;$80925D	 |
-	LDY.w #DATA_F8063E>>16		;$809260	 |
-	LDA #$0000			;$809263	 |
-	JSL decompress_data		;$809266	 |
-	LDA #$6000			;$80926A	 |
-	STA $2116			;$80926D	 |
-	LDX #$007F			;$809270	 |
-	LDA #$0000			;$809273	 |
-	LDY #$1000			;$809276	 |
-	JSL CODE_80895F			;$809279	 |
-	LDX #DATA_D9F7C9		;$80927D	 |
-	LDY.w #DATA_D9F7C9>>16		;$809280	 |
-	LDA #$0000			;$809283	 |
-	JSL decompress_data		;$809286	 |
-	LDA #$7000			;$80928A	 |
-	STA $2116			;$80928D	 |
-	LDX #$007F			;$809290	 |
-	LDA #$0000			;$809293	 |
-	LDY #$0800			;$809296	 |
-	JSL CODE_80895F			;$809299	 |
-	LDX #DATA_F5325B		;$80929D	 |
-	LDY.w #DATA_F5325B>>16		;$8092A0	 |
-	LDA #$0000			;$8092A3	 |
-	JSL decompress_data		;$8092A6	 |
-	LDX #DATA_EB2B84		;$8092AA	 |
-	LDY.w #DATA_EB2B84>>16		;$8092AD	 |
-	LDA #$0000			;$8092B0	 |
-	JSL decompress_data		;$8092B3	 |
-	LDX #DATA_F5325B		;$8092B7	 |
-	LDY.w #DATA_F5325B>>16		;$8092BA	 |
-	LDA #$0500			;$8092BD	 |
-	JSL decompress_data		;$8092C0	 |
-	LDA #$000F			;$8092C4	 |
-	STA $0512			;$8092C7	 |
-	LDA #$0000			;$8092CA	 |
-	LDX #$01FE			;$8092CD	 |
-CODE_8092D0:				;		 |
-	STA $7E8928,x			;$8092D0	 |
-	DEX				;$8092D4	 |
-	DEX				;$8092D5	 |
-	BPL CODE_8092D0			;$8092D6	 |
-	LDX #$001C			;$8092D8	 |
-CODE_8092DB:				;		 |
-	STZ $32,x			;$8092DB	 |
-	DEX				;$8092DD	 |
-	DEX				;$8092DE	 |
-	BPL CODE_8092DB			;$8092DF	 |
-	LDA #$007F			;$8092E1	 |
-	STA $7E8012			;$8092E4	 |
-	LDA #$0003			;$8092E8	 |
-	STA $7E8013			;$8092EB	 |
-	LDA #$0018			;$8092EF	 |
-	STA $7E8014			;$8092F2	 |
-	LDA #$0003			;$8092F6	 |
-	STA $7E8015			;$8092F9	 |
-	STA $7E8016			;$8092FD	 |
-	STA $7E8017			;$809301	 |
-	LDA #$0000			;$809305	 |
-	STA $7E8018			;$809308	 |
-	LDA #$007F			;$80930C	 |
-	STA $7E8022			;$80930F	 |
-	LDA #$0002			;$809313	 |
-	STA $7E8023			;$809316	 |
-	LDA #$0018			;$80931A	 |
-	STA $7E8024			;$80931D	 |
-	LDA #$0002			;$809321	 |
-	STA $7E8025			;$809324	 |
-	STA $7E8026			;$809328	 |
-	STA $7E8027			;$80932C	 |
-	LDA #$0000			;$809330	 |
-	STA $7E8028			;$809333	 |
-	LDA #$007F			;$809337	 |
-	STA $7E8032			;$80933A	 |
-	LDA #$0001			;$80933E	 |
-	STA $7E8033			;$809341	 |
-	LDA #$0018			;$809345	 |
-	STA $7E8034			;$809348	 |
-	LDA #$0001			;$80934C	 |
-	STA $7E8035			;$80934F	 |
-	STA $7E8036			;$809353	 |
-	STA $7E8037			;$809357	 |
-	LDA #$0000			;$80935B	 |
-	STA $7E8038			;$80935E	 |
-	SEP #$20			;$809362	 |
-	LDX #$0500			;$809364	 |
-	STX $4320			;$809367	 |
-	LDX #$8012			;$80936A	 |
-	STX $4322			;$80936D	 |
-	LDA #$7E			;$809370	 |
-	STA $4324			;$809372	 |
-	STZ $4327			;$809375	 |
-	LDX #$3100			;$809378	 |
-	STX $4330			;$80937B	 |
-	LDX #$8022			;$80937E	 |
-	STX $4332			;$809381	 |
-	LDA #$7E			;$809384	 |
-	STA $4334			;$809386	 |
-	STZ $4337			;$809389	 |
-	LDX #$2D00			;$80938C	 |
-	STX $4340			;$80938F	 |
-	LDX #$8032			;$809392	 |
-	STX $4342			;$809395	 |
-	LDA #$7E			;$809398	 |
-	STA $4344			;$80939A	 |
-	STZ $4347			;$80939D	 |
-	LDA $4211			;$8093A0	 |
-	LDA #$80			;$8093A3	 |
-	STA $2103			;$8093A5	 |
-	LDA #$01			;$8093A8	 |
-	STA $420D			;$8093AA	 |
+	LDA #$7400			;$80919A	 |\ Clear $800 of VRAM at $E800
+	JSR CODE_80B109			;$80919D	 |/
+	LDA #$7000			;$8091A0	 |\ Clear $800 of VRAM at $E000
+	JSR CODE_80B109			;$8091A3	 |/
+	LDA #$7800			;$8091A6	 |\ Clear $800 of VRAM at $F000
+	JSR CODE_80B109			;$8091A9	 |/
+	LDA #$7C00			;$8091AC	 |\ Clear $800 of VRAM at $F800
+	JSR CODE_80B109			;$8091AF	 |/
+	LDX #DATA_F52FC7		;$8091B2	 |\ Load pointer to Nintendo presents layer 1 tilemap
+	LDY.w #DATA_F52FC7>>16		;$8091B5	 | |
+	LDA #$0000			;$8091B8	 | |
+	JSL decompress_data		;$8091BB	 |/ Decompress the tilemap
+	LDA #$0000			;$8091BF	 |\ Patch decompressed data, removes a couple of garbage tiles
+	STA $7F0100			;$8091C2	 | |
+	STA $7F013E			;$8091C6	 |/
+	LDA #$74A0			;$8091CA	 |\ Set VRAM address to $E940
+	STA $2116			;$8091CD	 |/
+	LDX #$007F			;$8091D0	 |\ Upload $0340 bytes from $7F0000 to VRAM address $E940
+	LDA #$0000			;$8091D3	 | |
+	LDY #$0340			;$8091D6	 | |
+	JSL DMA_to_VRAM			;$8091D9	 |/ DMA the payload
+	LDX #DATA_F80D10		;$8091DD	 |\ Load pointer to mini Rare logo layer 1 tilemap
+	LDY.w #DATA_F80D10>>16		;$8091E0	 | |
+	LDA #$0000			;$8091E3	 | |
+	JSL decompress_data		;$8091E6	 |/ Decompress the tilemap
+	LDA #$76BA			;$8091EA	 |\ Set VRAM address to $ED74
+	STA $2116			;$8091ED	 |/
+	LDX #$007F			;$8091F0	 |\ Upload $00C8 bytes from $7F0000 to VRAM address $ED74
+	LDA #$0000			;$8091F3	 | |
+	LDY #$00C8			;$8091F6	 | |
+	JSL DMA_to_VRAM			;$8091F9	 |/ DMA the payload
+	LDX #DATA_F50004		;$8091FD	 |\
+	LDY.w #DATA_F50004>>16		;$809200	 | |
+	LDA #$0000			;$809203	 | |
+	JSL decompress_data		;$809206	 |/
+	LDA #$78E0			;$80920A	 |\ Set VRAM address to $F1C0
+	STA $2116			;$80920D	 |/
+	LDX #$007F			;$809210	 |\
+	LDA #$0000			;$809213	 | |
+	LDY #$0380			;$809216	 | |
+	JSL DMA_to_VRAM			;$809219	 |/
+	LDX #DATA_F56AC9		;$80921D	 |\ Upload $0380 bytes from $7F0000 to VRAM address $F1C0
+	LDY.w #DATA_F56AC9>>16		;$809220	 | |
+	LDA #$0000			;$809223	 | |
+	JSL decompress_data		;$809226	 |/ DMA the payload
+	LDA #$7CE0			;$80922A	 |\ Set VRAM address to $F9C0
+	STA $2116			;$80922D	 |/
+	LDX #$007F			;$809230	 |\ Upload $0380 bytes from $7F0000 to VRAM address $F9C0
+	LDA #$0000			;$809233	 | |
+	LDY #$0380			;$809236	 | |
+	JSL DMA_to_VRAM			;$809239	 |/ DMA the payload
+	LDX #DATA_F55D4A		;$80923D	 |\
+	LDY.w #DATA_F55D4A>>16		;$809240	 | |
+	LDA #$0000			;$809243	 | |
+	JSL decompress_data		;$809246	 |/
+	LDA #$4000			;$80924A	 |\ Set VRAM address to $8000
+	STA $2116			;$80924D	 |/
+	LDX #$007F			;$809250	 |\ Upload $2400 bytes from $7F0000 to VRAM address $8000
+	LDA #$0000			;$809253	 | |
+	LDY #$2400			;$809256	 | |
+	JSL DMA_to_VRAM			;$809259	 |/ DMA the payload
+	LDX #DATA_F8063E		;$80925D	 |\
+	LDY.w #DATA_F8063E>>16		;$809260	 | |
+	LDA #$0000			;$809263	 | |
+	JSL decompress_data		;$809266	 |/
+	LDA #$6000			;$80926A	 |\ Set VRAM address to $C000
+	STA $2116			;$80926D	 |/
+	LDX #$007F			;$809270	 |\ Upload $1000 bytes from $7F0000 to VRAM address $C000
+	LDA #$0000			;$809273	 | |
+	LDY #$1000			;$809276	 | |
+	JSL DMA_to_VRAM			;$809279	 |/ DMA the payload
+	LDX #DATA_D9F7C9		;$80927D	 |\ Load pointer to Nintendo presents screen layer 3 tilemap
+	LDY.w #DATA_D9F7C9>>16		;$809280	 | |
+	LDA #$0000			;$809283	 | |
+	JSL decompress_data		;$809286	 |/ Decompress the tilemap
+	LDA #$7000			;$80928A	 |\ Set VRAM address to $E000
+	STA $2116			;$80928D	 |/
+	LDX #$007F			;$809290	 |\ Upload $800 bytes from $7F0000 to VRAM address $E000
+	LDA #$0000			;$809293	 | |
+	LDY #$0800			;$809296	 | |
+	JSL DMA_to_VRAM			;$809299	 |/ DMA the payload
+	LDX #DATA_F5325B		;$80929D	 |\ Todo: something with the sparkles
+	LDY.w #DATA_F5325B>>16		;$8092A0	 | |
+	LDA #$0000			;$8092A3	 | |
+	JSL decompress_data		;$8092A6	 | |
+	LDX #DATA_EB2B84		;$8092AA	 | |
+	LDY.w #DATA_EB2B84>>16		;$8092AD	 | |
+	LDA #$0000			;$8092B0	 | |
+	JSL decompress_data		;$8092B3	 | |
+	LDX #DATA_F5325B		;$8092B7	 | |
+	LDY.w #DATA_F5325B>>16		;$8092BA	 | |
+	LDA #$0500			;$8092BD	 | |
+	JSL decompress_data		;$8092C0	 |/
+	LDA #$000F			;$8092C4	 |\ Set the screen brightness mirror to full brightness
+	STA $0512			;$8092C7	 |/
+	LDA #$0000			;$8092CA	 | Value to initialize scratch RAM and palette mirrors to
+	LDX #$01FE			;$8092CD	 | Load number of bytes minus two to clear
+CODE_8092D0:				;		 |\ Clear scratch RAM
+	STA $7E8928,x			;$8092D0	 | |
+	DEX				;$8092D4	 | |
+	DEX				;$8092D5	 | |
+	BPL CODE_8092D0			;$8092D6	 |/ Continue to loop until all is cleared
+	LDX #$001C			;$8092D8	 | Load number of bytes minus two to clear
+.clear_scratch_RAM			;		 |\ Clear scratch RAM
+	STZ $32,x			;$8092DB	 | |
+	DEX				;$8092DD	 | |
+	DEX				;$8092DE	 | |
+	BPL .clear_scratch_RAM		;$8092DF	 |/ Continue to loop until all is cleared
+	LDA #$007F			;$8092E1	 |\ For $7F scanlines set the bg mode to 3
+	STA $7E8012			;$8092E4	 | |
+	LDA #$0003			;$8092E8	 | |
+	STA $7E8013			;$8092EB	 | |
+	LDA #$0018			;$8092EF	 | | For $18 scanlines set the bg mode to 3
+	STA $7E8014			;$8092F2	 | |
+	LDA #$0003			;$8092F6	 | |
+	STA $7E8015			;$8092F9	 | | For $3 scanlines set the bg mode to 3
+	STA $7E8016			;$8092FD	 | |
+	STA $7E8017			;$809301	 | |
+	LDA #$0000			;$809305	 | | Terminate HDMA table
+	STA $7E8018			;$809308	 |/
+	LDA #$007F			;$80930C	 |\ For $7F scanlines enable color math on layer 2
+	STA $7E8022			;$80930F	 | |
+	LDA #$0002			;$809313	 | |
+	STA $7E8023			;$809316	 | |
+	LDA #$0018			;$80931A	 | | For $18 scanlines enable color math on layer 2
+	STA $7E8024			;$80931D	 | |
+	LDA #$0002			;$809321	 | |
+	STA $7E8025			;$809324	 | | For $2 scanlines enable color math on layer 2
+	STA $7E8026			;$809328	 | |
+	STA $7E8027			;$80932C	 | |
+	LDA #$0000			;$809330	 | | Terminate HDMA table
+	STA $7E8028			;$809333	 |/
+	LDA #$007F			;$809337	 |\ For $7F scanlines set layer 1 on the subscreen
+	STA $7E8032			;$80933A	 | |
+	LDA #$0001			;$80933E	 | |
+	STA $7E8033			;$809341	 | |
+	LDA #$0018			;$809345	 | | For $18 scanlines set layer 1 on the subscreen
+	STA $7E8034			;$809348	 | |
+	LDA #$0001			;$80934C	 | |
+	STA $7E8035			;$80934F	 | | For $1 scanlines set layer 1 on the subscreen
+	STA $7E8036			;$809353	 | |
+	STA $7E8037			;$809357	 | |
+	LDA #$0000			;$80935B	 | | Terminate HDMA table
+	STA $7E8038			;$80935E	 |/
+	SEP #$20			;$809362	 |\
+	LDX #$0500			;$809364	 | |\ Set up write once HDMA with $2105 destination
+	STX $4320			;$809367	 | |/
+	LDX #$8012			;$80936A	 | |\ Set HDMA source to $7E8012
+	STX $4322			;$80936D	 | | |
+	LDA #$7E			;$809370	 | | |
+	STA $4324			;$809372	 | |/
+	STZ $4327			;$809375	 |_| Zero indirect HDMA bank byte
+	LDX #$3100			;$809378	 | |\Set up write once HDMA with $2131 destination
+	STX $4330			;$80937B	 | |/
+	LDX #$8022			;$80937E	 | |\ Set HDMA source to $7E8022
+	STX $4332			;$809381	 | | |
+	LDA #$7E			;$809384	 | | |
+	STA $4334			;$809386	 | |/
+	STZ $4337			;$809389	 |_| Zero indirect HDMA bank byte
+	LDX #$2D00			;$80938C	 | |\ Set up write once HDMA with $212D destination
+	STX $4340			;$80938F	 | |/
+	LDX #$8032			;$809392	 | |\ Set HDMA source to $7E8032
+	STX $4342			;$809395	 | | |
+	LDA #$7E			;$809398	 | | |
+	STA $4344			;$80939A	 | |/
+	STZ $4347			;$80939D	 |/ Zero indirect HDMA bank byte
+	LDA $4211			;$8093A0	 | Read IRQ flag to clear
+	LDA #$80			;$8093A3	 |\ Disable sprite 0 priority 
+	STA $2103			;$8093A5	 |/
+	LDA #$01			;$8093A8	 |\ Enable fast ROM
+	STA $420D			;$8093AA	 |/
 	REP #$20			;$8093AD	 |
 	INC $0993			;$8093AF	 |
-	LDA #CODE_8093B8		;$8093B2	 |
-	JMP CODE_80B0EE			;$8093B5	/
+	LDA #run_rareware_logo		;$8093B2	 | Load NMI pointer for Rareware logo
+	JMP CODE_80B0EE			;$8093B5	/ Set NMI pointer and wait for NMI
 
-CODE_8093B8:
-	LDX #$01FF			;$8093B8	\
-	TXS				;$8093BB	 |
-	LDA #$8928			;$8093BC	 |
-	STA $4312			;$8093BF	 |
-	STA $4318			;$8093C2	 |
-	LDA #$0200			;$8093C5	 |
-	STA $4315			;$8093C8	 |
-	LDA #$2200			;$8093CB	 |
-	STA $4310			;$8093CE	 |
+run_rareware_logo:			;		\
+	LDX #$01FF			;$8093B8	 |\ Reset the stack
+	TXS				;$8093BB	 |/
+	LDA #$8928			;$8093BC	 |\ Set DMA source word $8928
+	STA $4312			;$8093BF	 | |
+	STA $4318			;$8093C2	 |/
+	LDA #$0200			;$8093C5	 |\ Set DMA size to 512 bytes
+	STA $4315			;$8093C8	 |/
+	LDA #$2200			;$8093CB	 |\ Set DMA destination to $2122 with write once, one register
+	STA $4310			;$8093CE	 |/
 	SEP #$20			;$8093D1	 |
-	LDA #$7E			;$8093D3	 |
-	STA $4314			;$8093D5	 |
-	STZ $2121			;$8093D8	 |
-	LDA #$02			;$8093DB	 |
-	STA $420B			;$8093DD	 |
+	LDA #$7E			;$8093D3	 |\ DMA source bank to $7E
+	STA $4314			;$8093D5	 |/
+	STZ $2121			;$8093D8	 | Set CGRAM destination address to zero
+	LDA #$02			;$8093DB	 |\ Run palette DMA
+	STA $420B			;$8093DD	 |/
 	REP #$20			;$8093E0	 |
-	LDA #$1C00			;$8093E2	 |
-	STA $420B			;$8093E5	 |
-	LDA $2A				;$8093E8	 |
-	CMP #$00E0			;$8093EA	 |
-	BCC CODE_8093F3			;$8093ED	 |
-	JSL CODE_80B15E			;$8093EF	 |
-CODE_8093F3:				;		 |
-	LDA $2A				;$8093F3	 |
-	CMP #$00E0			;$8093F5	 |
-	BNE CODE_809416			;$8093F8	 |
+	LDA #$1C00			;$8093E2	 |\ Enable HDMA on channels 3, 4, 5
+	STA $420B			;$8093E5	 |/
+	LDA $2A				;$8093E8	 |\ Check if the frame count is less than $E0
+	CMP #$00E0			;$8093EA	 | |
+	BCC .skip_mode_7_update		;$8093ED	 |/ If so, skip mode 7 updates
+	JSL CODE_80B15E			;$8093EF	 | Run mode 7 update.
+.skip_mode_7_update			;		 |
+	LDA $2A				;$8093F3	 |\ If the frame count is not exactly $E0
+	CMP #$00E0			;$8093F5	 | |
+	BNE .skip_mode_7_enable		;$8093F8	 |/ Skip enabling mode 7
 	SEP #$20			;$8093FA	 |
-	LDA #$07			;$8093FC	 |
-	STA $7E8013			;$8093FE	 |
-	STA $7E8015			;$809402	 |
-	STA $7E8017			;$809406	 |
-	LDA #$74			;$80940A	 |
-	STA $2107			;$80940C	 |
-	LDA #$01			;$80940F	 |
-	STA $212C			;$809411	 |
+	LDA #$07			;$8093FC	 |\ Set background mode HDMA values to 7
+	STA $7E8013			;$8093FE	 | |
+	STA $7E8015			;$809402	 | |
+	STA $7E8017			;$809406	 |/
+	LDA #$74			;$80940A	 |\ Place layer 1 tilemap at $E800 in VRAM
+	STA $2107			;$80940C	 |/
+	LDA #$01			;$80940F	 |\ Put layer 1 on the pain screen
+	STA $212C			;$809411	 |/
 	REP #$20			;$809414	 |
-CODE_809416:				;		 |
-	LDA $2A				;$809416	 |
-	CMP #$0110			;$809418	 |
-	BNE CODE_809430			;$80941B	 |
-	LDA #$4000			;$80941D	 |
-	STA $2116			;$809420	 |
-	LDX #$007F			;$809423	 |
-	LDA #$0500			;$809426	 |
-	LDY #$1440			;$809429	 |
-	JSL CODE_80895F			;$80942C	 |
+.skip_mode_7_enable			;		 |
+	LDA $2A				;$809416	 |\
+	CMP #$0110			;$809418	 | |
+	BNE CODE_809430			;$80941B	 |/
+	LDA #$4000			;$80941D	 |\ Set VRAM address to $8000
+	STA $2116			;$809420	 |/
+	LDX #$007F			;$809423	 |\
+	LDA #$0500			;$809426	 | |
+	LDY #$1440			;$809429	 | |
+	JSL DMA_to_VRAM			;$80942C	 |/
 CODE_809430:				;		 |
-	LDA $2A				;$809430	 |
-	CMP #$0111			;$809432	 |
-	BNE CODE_809458			;$809435	 |
-	LDA #$4A20			;$809437	 |
-	STA $2116			;$80943A	 |
-	LDX #$007F			;$80943D	 |
-	LDA #$1940			;$809440	 |
-	LDY #$1440			;$809443	 |
-	JSL CODE_80895F			;$809446	 |
+	LDA $2A				;$809430	 |\
+	CMP #$0111			;$809432	 | |
+	BNE CODE_809458			;$809435	 |/
+	LDA #$4A20			;$809437	 |\ Set VRAM address to $9440
+	STA $2116			;$80943A	 |/
+	LDX #$007F			;$80943D	 |\
+	LDA #$1940			;$809440	 | |
+	LDY #$1440			;$809443	 | |
+	JSL DMA_to_VRAM			;$809446	 |/
 	LDA #$0000			;$80944A	 |
 	LDX #$001E			;$80944D	 |
 CODE_809450:				;		 |
-	STA $7E8928,x			;$809450	 |
-	DEX				;$809454	 |
-	DEX				;$809455	 |
-	BNE CODE_809450			;$809456	 |
+	STA $7E8928,x			;$809450	 |\
+	DEX				;$809454	 | |
+	DEX				;$809455	 | |
+	BNE CODE_809450			;$809456	 |/
 CODE_809458:				;		 |
-	LDA $2A				;$809458	 |
-	CMP #$0112			;$80945A	 |
-	BNE CODE_8094A0			;$80945D	 |
-	LDA #$3000			;$80945F	 |
-	STA $2116			;$809462	 |
-	LDX #$007F			;$809465	 |
-	LDA #$0000			;$809468	 |
-	LDY #$0500			;$80946B	 |
-	JSL CODE_80895F			;$80946E	 |
+	LDA $2A				;$809458	 |\
+	CMP #$0112			;$80945A	 | |
+	BNE CODE_8094A0			;$80945D	 |/
+	LDA #$3000			;$80945F	 |\ Set VRAM address to $6000
+	STA $2116			;$809462	 |/
+	LDX #$007F			;$809465	 |\
+	LDA #$0000			;$809468	 | |
+	LDY #$0500			;$80946B	 | |
+	JSL DMA_to_VRAM			;$80946E	 |/
 	SEP #$20			;$809472	 |
-	LDA #$01			;$809474	 |
-	STA $7E8013			;$809476	 |
-	STA $7E8015			;$80947A	 |
-	LDA #$05			;$80947E	 |
-	STA $7E8017			;$809480	 |
+	LDA #$01			;$809474	 |\ Use mode 1 for $97 scanlines
+	STA $7E8013			;$809476	 | |
+	STA $7E8015			;$80947A	 |/
+	LDA #$05			;$80947E	 |\ 
+	STA $7E8017			;$809480	 |/
 	LDA #$21			;$809484	 |
 	STA $7E8023			;$809486	 |
 	STA $7E8025			;$80948A	 |
@@ -2582,7 +2582,7 @@ CODE_8097EB:				;		 |
 	LDX #$007F			;$8098B9	 |
 	LDA #$0000			;$8098BC	 |
 	LDY #$6000			;$8098BF	 |
-	JSL CODE_80895F			;$8098C2	 |
+	JSL DMA_to_VRAM			;$8098C2	 |
 	LDX #DATA_EC4D40		;$8098C6	 |
 	LDY.w #DATA_EC4D40>>16		;$8098C9	 |
 	LDA #$0000			;$8098CC	 |
@@ -2592,13 +2592,13 @@ CODE_8097EB:				;		 |
 	LDX #$007F			;$8098D9	 |
 	LDA #$0000			;$8098DC	 |
 	LDY #$8000			;$8098DF	 |
-	JSL CODE_80895F			;$8098E2	 |
+	JSL DMA_to_VRAM			;$8098E2	 |
 	LDA #$0020			;$8098E6	 |
 	STA $2116			;$8098E9	 |
 	LDX.w #DATA_FC0660>>16		;$8098EC	 |
 	LDA #DATA_FC0660		;$8098EF	 |
 	LDY #$1E00			;$8098F2	 |
-	JSL CODE_80895F			;$8098F5	 |
+	JSL DMA_to_VRAM			;$8098F5	 |
 	LDX #DATA_EC7CF0		;$8098F9	 |
 	LDY.w #DATA_EC7CF0>>16		;$8098FC	 |
 	LDA #$0000			;$8098FF	 |
@@ -2608,7 +2608,7 @@ CODE_8097EB:				;		 |
 	LDX #$007F			;$80990C	 |
 	LDA #$0000			;$80990F	 |
 	LDY #$0800			;$809912	 |
-	JSL CODE_80895F			;$809915	 |
+	JSL DMA_to_VRAM			;$809915	 |
 	LDA #$7400			;$809919	 |
 	JSR CODE_80B109			;$80991C	 |
 	LDA #$7800			;$80991F	 |
@@ -2622,7 +2622,7 @@ CODE_8097EB:				;		 |
 	LDX #$007F			;$809938	 |
 	LDA #$0000			;$80993B	 |
 	LDY #$0680			;$80993E	 |
-	JSL CODE_80895F			;$809941	 |
+	JSL DMA_to_VRAM			;$809941	 |
 	LDX #DATA_EC4AAD		;$809945	 |
 	LDY.w #DATA_EC4AAD>>16		;$809948	 |
 	LDA #$0000			;$80994B	 |
@@ -2632,7 +2632,7 @@ CODE_8097EB:				;		 |
 	LDX #$007F			;$809958	 |
 	LDA #$0000			;$80995B	 |
 	LDY #$0240			;$80995E	 |
-	JSL CODE_80895F			;$809961	 |
+	JSL DMA_to_VRAM			;$809961	 |
 	LDX #DATA_EC4C1C		;$809965	 |
 	LDY.w #DATA_EC4C1C>>16		;$809968	 |
 	LDA #$0000			;$80996B	 |
@@ -2642,7 +2642,7 @@ CODE_8097EB:				;		 |
 	LDX #$007F			;$809978	 |
 	LDA #$0000			;$80997B	 |
 	LDY #$01C0			;$80997E	 |
-	JSL CODE_80895F			;$809981	 |
+	JSL DMA_to_VRAM			;$809981	 |
 	LDY #$0000			;$809985	 |
 	LDX #$0040			;$809988	 |
 	LDA #DATA_FD3C6E		;$80998B	 |
@@ -3407,7 +3407,7 @@ CODE_80A0E9:				;		 |
 	LDX #$007F			;$80A146	 |
 	LDA #$0000			;$80A149	 |
 	LDY #$8000			;$80A14C	 |
-	JSL CODE_80895F			;$80A14F	 |
+	JSL DMA_to_VRAM			;$80A14F	 |
 	LDX #DATA_F661C1		;$80A153	 |
 	LDY.w #DATA_F661C1>>16		;$80A156	 |
 	LDA #$0000			;$80A159	 |
@@ -3417,7 +3417,7 @@ CODE_80A0E9:				;		 |
 	LDX #$007F			;$80A166	 |
 	LDA #$0000			;$80A169	 |
 	LDY #$4000			;$80A16C	 |
-	JSL CODE_80895F			;$80A16F	 |
+	JSL DMA_to_VRAM			;$80A16F	 |
 	LDX #DATA_F9C775		;$80A173	 |
 	LDY.w #DATA_F9C775>>16		;$80A176	 |
 	LDA #$0000			;$80A179	 |
@@ -3427,13 +3427,13 @@ CODE_80A0E9:				;		 |
 	LDX #$007F			;$80A186	 |
 	LDA #$0000			;$80A189	 |
 	LDY #$0700			;$80A18C	 |
-	JSL CODE_80895F			;$80A18F	 |
+	JSL DMA_to_VRAM			;$80A18F	 |
 	LDA #$7C00			;$80A193	 |
 	STA $2116			;$80A196	 |
 	LDX #$007F			;$80A199	 |
 	LDA #$0000			;$80A19C	 |
 	LDY #$0700			;$80A19F	 |
-	JSL CODE_80895F			;$80A1A2	 |
+	JSL DMA_to_VRAM			;$80A1A2	 |
 	LDX #DATA_F67D1B		;$80A1A6	 |
 	LDY.w #DATA_F67D1B>>16		;$80A1A9	 |
 	LDA #$0000			;$80A1AC	 |
@@ -3443,7 +3443,7 @@ CODE_80A0E9:				;		 |
 	LDX #$007F			;$80A1B9	 |
 	LDA #$0000			;$80A1BC	 |
 	LDY #$0800			;$80A1BF	 |
-	JSL CODE_80895F			;$80A1C2	 |
+	JSL DMA_to_VRAM			;$80A1C2	 |
 	STZ $17BA			;$80A1C6	 |
 	LDA #$0100			;$80A1C9	 |
 	STZ $17C0			;$80A1CC	 |
@@ -3590,7 +3590,7 @@ CODE_80A350:				;		 |
 	LDA $0512			;$80A350	 |
 	CMP #$8201			;$80A353	 |
 	BNE CODE_80A35B			;$80A356	 |
-	JMP init_rare_logo		;$80A358	/
+	JMP restart_rareware_logo	;$80A358	/
 
 CODE_80A35B:
 	LDA $2A				;$80A35B	\
@@ -4041,7 +4041,7 @@ CODE_80A65D:				;		 |
 	LDX #$007F			;$80A733	 |
 	LDA #$0000			;$80A736	 |
 	LDY #$6000			;$80A739	 |
-	JSL CODE_80895F			;$80A73C	 |
+	JSL DMA_to_VRAM			;$80A73C	 |
 	LDX #DATA_ED7507		;$80A740	 |
 	LDY.w #DATA_ED7507>>16		;$80A743	 |
 	LDA #$7428			;$80A746	 |
@@ -4083,7 +4083,7 @@ CODE_80A795:				;		 |
 	LDX #$007F			;$80A7A8	 |
 	LDA #$0000			;$80A7AB	 |
 	LDY #$8000			;$80A7AE	 |
-	JSL CODE_80895F			;$80A7B1	 |
+	JSL DMA_to_VRAM			;$80A7B1	 |
 	LDX #DATA_EC7CF0		;$80A7B5	 |
 	LDY.w #DATA_EC7CF0>>16		;$80A7B8	 |
 	LDA #$0000			;$80A7BB	 |
@@ -4093,7 +4093,7 @@ CODE_80A795:				;		 |
 	LDX #$007F			;$80A7C8	 |
 	LDA #$0000			;$80A7CB	 |
 	LDY #$0800			;$80A7CE	 |
-	JSL CODE_80895F			;$80A7D1	 |
+	JSL DMA_to_VRAM			;$80A7D1	 |
 	JSR CODE_80AC63			;$80A7D5	 |
 	LDY #$0000			;$80A7D8	 |
 	LDX #$0040			;$80A7DB	 |
@@ -4103,11 +4103,11 @@ CODE_80A795:				;		 |
 	LDX.w #DATA_FB0180>>16		;$80A7E8	 |
 	LDA #DATA_FB0180		;$80A7EB	 |
 	LDY #$0080			;$80A7EE	 |
-	JSL CODE_80895F			;$80A7F1	 |
+	JSL DMA_to_VRAM			;$80A7F1	 |
 	LDX.w #DATA_FB0400>>16		;$80A7F5	 |
 	LDA #DATA_FB0400		;$80A7F8	 |
 	LDY #$0080			;$80A7FB	 |
-	JSL CODE_80895F			;$80A7FE	 |
+	JSL DMA_to_VRAM			;$80A7FE	 |
 	STZ $0400			;$80A802	 |
 	STZ $0402			;$80A805	 |
 	STZ $0404			;$80A808	 |
@@ -5056,41 +5056,41 @@ CODE_80AFA3:				;		 |
 	BNE CODE_80AF9E			;$80AFB7	 |
 	RTS				;$80AFB9	/
 
-CODE_80AFBA:
-	STA $34				;$80AFBA	\
-	STX $36				;$80AFBC	 |
-	STZ $39				;$80AFBE	 |
+upload_mode_7_tilemap:			;		\
+	STA $34				;$80AFBA	 |\ Set pointer to mode 7 tilemap data
+	STX $36				;$80AFBC	 |/
+	STZ $39				;$80AFBE	 | Clear the 
 	SEP #$20			;$80AFC0	 |
-	STZ $2115			;$80AFC2	 |
+	STZ $2115			;$80AFC2	 | Set VRAM increment after $2118 writes
 	REP #$20			;$80AFC5	 |
-	LDY #$0000			;$80AFC7	 |
-	LDA [$34],y			;$80AFCA	 |
-	STA $38				;$80AFCC	 |
-	INY				;$80AFCE	 |
-	INY				;$80AFCF	 |
-CODE_80AFD0:				;		 |
-	LDA $32				;$80AFD0	 |
-	STA $2116			;$80AFD2	 |
-	LDA $38				;$80AFD5	 |
-	AND #$00FF			;$80AFD7	 |
-	TAX				;$80AFDA	 |
-CODE_80AFDB:				;		 |
+	LDY #$0000			;$80AFC7	 | Clear the index that will be used for mode 7 tilemap data
+	LDA [$34],y			;$80AFCA	 |\ Load the column and row lengths
+	STA $38				;$80AFCC	 |/
+	INY				;$80AFCE	 |\ Advanced passed the column and row lengths
+	INY				;$80AFCF	 |/
+.next_row				;		 |
+	LDA $32				;$80AFD0	 |\ Set VRAM address
+	STA $2116			;$80AFD2	 |/
+	LDA $38				;$80AFD5	 |\ Load the number of columns per row
+	AND #$00FF			;$80AFD7	 | |
+	TAX				;$80AFDA	 |/
+.next_column				;		 |
 	SEP #$20			;$80AFDB	 |
-	LDA [$34],y			;$80AFDD	 |
-	STA $2118			;$80AFDF	 |
+	LDA [$34],y			;$80AFDD	 |\ Copy one byte of mode 7 tilemap data to VRAM
+	STA $2118			;$80AFDF	 |/
 	REP #$20			;$80AFE2	 |
-	INY				;$80AFE4	 |
-	DEX				;$80AFE5	 |
-	BNE CODE_80AFDB			;$80AFE6	 |
-	LDA $32				;$80AFE8	 |
-	CLC				;$80AFEA	 |
-	ADC #$0080			;$80AFEB	 |
-	STA $32				;$80AFEE	 |
-	DEC $39				;$80AFF0	 |
-	BNE CODE_80AFD0			;$80AFF2	 |
+	INY				;$80AFE4	 | Advance index to mode 7 tilemap data
+	DEX				;$80AFE5	 |\ Decrement the column counter
+	BNE .next_column		;$80AFE6	 |/ Branch until all columns are uploaded
+	LDA $32				;$80AFE8	 |\ Advance VRAM address to the next row of tiles
+	CLC				;$80AFEA	 | |
+	ADC #$0080			;$80AFEB	 | |
+	STA $32				;$80AFEE	 |/
+	DEC $39				;$80AFF0	 |\ Decrement row count
+	BNE .next_row			;$80AFF2	 |/ Branch until all rows are uploaded
 	SEP #$20			;$80AFF4	 |
-	LDA #$80			;$80AFF6	 |
-	STA $2115			;$80AFF8	 |
+	LDA #$80			;$80AFF6	 |\ Set VRAM increment after $2119 writes
+	STA $2115			;$80AFF8	 |/
 	REP #$20			;$80AFFB	 |
 	RTS				;$80AFFD	/
 
@@ -5646,7 +5646,7 @@ CODE_80B560:
 	LDX #$007F			;$80B5AF	 |
 	LDA #$0000			;$80B5B2	 |
 	LDY #$6400			;$80B5B5	 |
-	JSL CODE_80895F			;$80B5B8	 |
+	JSL DMA_to_VRAM			;$80B5B8	 |
 	LDX #DATA_ED02A1		;$80B5BC	 |
 	LDY.w #DATA_ED02A1>>16		;$80B5BF	 |
 	LDA #$0000			;$80B5C2	 |
@@ -5656,12 +5656,12 @@ CODE_80B560:
 	LDX #$007F			;$80B5CF	 |
 	LDA #$0000			;$80B5D2	 |
 	LDY #$0700			;$80B5D5	 |
-	JSL CODE_80895F			;$80B5D8	 |
+	JSL DMA_to_VRAM			;$80B5D8	 |
 	STZ $2116			;$80B5DC	 |
 	LDX.w #DATA_C00C01>>16		;$80B5DF	 |
 	LDA #DATA_C00C01		;$80B5E2	 |
 	LDY #$01A0			;$80B5E5	 |
-	JSL CODE_80895F			;$80B5E8	 |
+	JSL DMA_to_VRAM			;$80B5E8	 |
 	LDY #$0000			;$80B5EC	 |
 	LDX #$0040			;$80B5EF	 |
 	LDA #DATA_FD26AE		;$80B5F2	 |
@@ -5684,7 +5684,7 @@ CODE_80B5FA:
 	LDX.w #DATA_F80FA6>>16		;$80B622	 |
 	LDA #DATA_F80FA6		;$80B625	 |
 	LDY #$2000			;$80B628	 |
-	JSL CODE_80895F			;$80B62B	 |
+	JSL DMA_to_VRAM			;$80B62B	 |
 	LDA #$7C00			;$80B62F	 |
 	JSR CODE_80B109			;$80B632	 |
 	LDA #$7D00			;$80B635	 |
@@ -5692,7 +5692,7 @@ CODE_80B5FA:
 	LDX.w #DATA_F80D66>>16		;$80B63B	 |
 	LDA #DATA_F80D66		;$80B63E	 |
 	LDY #$0240			;$80B641	 |
-	JSL CODE_80895F			;$80B644	 |
+	JSL DMA_to_VRAM			;$80B644	 |
 	LDA #DATA_FD27CE		;$80B648	 |
 	LDY #$0000			;$80B64B	 |
 	LDX #$0004			;$80B64E	 |
@@ -7015,7 +7015,7 @@ CODE_80C1C5:				;		 |
 	LDA.l DATA_80C25F,x		;$80C1D0	 |
 	LDY #$0380			;$80C1D4	 |
 	LDX #$00F5			;$80C1D7	 |
-	JSL CODE_80895F			;$80C1DA	 |
+	JSL DMA_to_VRAM			;$80C1DA	 |
 	LDA $0B00			;$80C1DE	 |
 	STA $78				;$80C1E1	 |
 	BRA CODE_80C1F0			;$80C1E3	/

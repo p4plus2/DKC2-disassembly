@@ -4,7 +4,7 @@ upload_spc_engine_entry:
 CODE_B58003:
 	JMP CODE_B58030			;$B58003	 |
 
-set_song:
+set_song_simple_entry:
 	JMP CODE_B580D5			;$B58006	 |
 
 CODE_B58009:
