@@ -1894,16 +1894,16 @@ init_rareware_logo:
 	LDA #$0000			;$809293	 | |
 	LDY #$0800			;$809296	 | |
 	JSL DMA_to_VRAM			;$809299	 |/ DMA the payload
-	LDX #DATA_F5325B		;$80929D	 |\ Todo: something with the sparkles
+	LDX #DATA_F5325B		;$80929D	 |\ Decompress the Nintendo presents logo
 	LDY.w #DATA_F5325B>>16		;$8092A0	 | |
 	LDA #$0000			;$8092A3	 | |
-	JSL decompress_data		;$8092A6	 | |
-	LDX #DATA_EB2B84		;$8092AA	 | |
-	LDY.w #DATA_EB2B84>>16		;$8092AD	 | |
+	JSL decompress_data		;$8092A6	 |/
+	LDX #DATA_EB2B84		;$8092AA	 |\ Decompress tilemap for Nintendo presents sparkles
+	LDY.w #DATA_EB2B84>>16		;$8092AD	 | | (This overwrites the Nintendo presents logo)
 	LDA #$0000			;$8092B0	 | |
-	JSL decompress_data		;$8092B3	 | |
-	LDX #DATA_F5325B		;$8092B7	 | |
-	LDY.w #DATA_F5325B>>16		;$8092BA	 | |
+	JSL decompress_data		;$8092B3	 |/
+	LDX #DATA_F5325B		;$8092B7	 |\ Redecompress the Nintendo presents logo
+	LDY.w #DATA_F5325B>>16		;$8092BA	 | | This time Decompress over the Sparkles
 	LDA #$0500			;$8092BD	 | |
 	JSL decompress_data		;$8092C0	 |/
 	LDA #$000F			;$8092C4	 |\ Set the screen brightness mirror to full brightness
@@ -2011,7 +2011,7 @@ run_rareware_logo:			;		\
 	LDA $2A				;$8093E8	 |\ Check if the frame count is less than $E0
 	CMP #$00E0			;$8093EA	 | |
 	BCC .skip_mode_7_update		;$8093ED	 |/ If so, skip mode 7 updates
-	JSL CODE_80B15E			;$8093EF	 | Run mode 7 update.
+	JSL update_mode_7		;$8093EF	 | Run mode 7 update.
 .skip_mode_7_update			;		 |
 	LDA $2A				;$8093F3	 |\ If the frame count is not exactly $E0
 	CMP #$00E0			;$8093F5	 | |
@@ -2027,71 +2027,71 @@ run_rareware_logo:			;		\
 	STA $212C			;$809411	 |/
 	REP #$20			;$809414	 |
 .skip_mode_7_enable			;		 |
-	LDA $2A				;$809416	 |\
+	LDA $2A				;$809416	 |\ If the frame count is not exactly $0110
 	CMP #$0110			;$809418	 | |
-	BNE CODE_809430			;$80941B	 |/
+	BNE CODE_809430			;$80941B	 |/ Skip uploading the first half of Nintendo Presents
 	LDA #$4000			;$80941D	 |\ Set VRAM address to $8000
 	STA $2116			;$809420	 |/
-	LDX #$007F			;$809423	 |\
-	LDA #$0500			;$809426	 | |
+	LDX #$007F			;$809423	 |\ Upload $1440 bytes from $7F0500 to VRAM address $8000
+	LDA #$0500			;$809426	 | | The first half of tiledata for the Nintendo Presents
 	LDY #$1440			;$809429	 | |
 	JSL DMA_to_VRAM			;$80942C	 |/
 CODE_809430:				;		 |
-	LDA $2A				;$809430	 |\
+	LDA $2A				;$809430	 |\ If the frame count is not exactly $0111
 	CMP #$0111			;$809432	 | |
-	BNE CODE_809458			;$809435	 |/
+	BNE CODE_809458			;$809435	 |/ Skip uploading the second half of Nintendo Presents
 	LDA #$4A20			;$809437	 |\ Set VRAM address to $9440
 	STA $2116			;$80943A	 |/
-	LDX #$007F			;$80943D	 |\
-	LDA #$1940			;$809440	 | |
+	LDX #$007F			;$80943D	 |\ Upload $1440 bytes from $7F1940 to VRAM address $9440
+	LDA #$1940			;$809440	 | | The second half of tiledata for the Nintendo Presents
 	LDY #$1440			;$809443	 | |
 	JSL DMA_to_VRAM			;$809446	 |/
 	LDA #$0000			;$80944A	 |
-	LDX #$001E			;$80944D	 |
-CODE_809450:				;		 |
-	STA $7E8928,x			;$809450	 |\
+	LDX #$001E			;$80944D	 | Number of bytes to clear minus 2
+.clear_palette				;		 |
+	STA $7E8928,x			;$809450	 |\ Clear palette
 	DEX				;$809454	 | |
 	DEX				;$809455	 | |
-	BNE CODE_809450			;$809456	 |/
+	BNE .clear_palette		;$809456	 |/ Loop until all clear
 CODE_809458:				;		 |
-	LDA $2A				;$809458	 |\
+	LDA $2A				;$809458	 |\ If the frame count is not exactly $0112
 	CMP #$0112			;$80945A	 | |
-	BNE CODE_8094A0			;$80945D	 |/
+	BNE CODE_8094A0			;$80945D	 |/ Skip uploading the sparkle tilemap
 	LDA #$3000			;$80945F	 |\ Set VRAM address to $6000
 	STA $2116			;$809462	 |/
-	LDX #$007F			;$809465	 |\
-	LDA #$0000			;$809468	 | |
+	LDX #$007F			;$809465	 |\ Upload $500 bytes from $7F0000 to VRAM address $6000
+	LDA #$0000			;$809468	 | | The source is the tiledata for the sparkles
 	LDY #$0500			;$80946B	 | |
-	JSL DMA_to_VRAM			;$80946E	 |/
+	JSL DMA_to_VRAM			;$80946E	 |/ DMA the payload
 	SEP #$20			;$809472	 |
 	LDA #$01			;$809474	 |\ Use mode 1 for $97 scanlines
 	STA $7E8013			;$809476	 | |
 	STA $7E8015			;$80947A	 |/
-	LDA #$05			;$80947E	 |\ 
+	LDA #$05			;$80947E	 |\ Use mode 5 for the remainder of the screen
 	STA $7E8017			;$809480	 |/
-	LDA #$21			;$809484	 |
-	STA $7E8023			;$809486	 |
-	STA $7E8025			;$80948A	 |
-	LDA #$04			;$80948E	 |
-	STA $7E8033			;$809490	 |
-	STA $7E8035			;$809494	 |
-	LDA #$00			;$809498	 |
-	STA $7E8027			;$80949A	 |
+	LDA #$21			;$809484	 |\ Enable color math on layer 1 and backgroup
+	STA $7E8023			;$809486	 | |
+	STA $7E8025			;$80948A	 |/
+	LDA #$04			;$80948E	 |\ Place layer 3 on the subscreen
+	STA $7E8033			;$809490	 | |
+	STA $7E8035			;$809494	 |/
+	LDA #$00			;$809498	 |\ Terminate color math HDMA
+	STA $7E8027			;$80949A	 |/
 	REP #$20			;$80949E	 |
 CODE_8094A0:				;		 |
 	SEP #$20			;$8094A0	 |
-	LDA $098F			;$8094A2	 |
-	STA $2111			;$8094A5	 |
-	STZ $2111			;$8094A8	 |
-	LDA $0991			;$8094AB	 |
-	STA $2112			;$8094AE	 |
-	STZ $2112			;$8094B1	 |
-	LDA $0512			;$8094B4	 |
-	STA $2100			;$8094B7	 |
+	LDA $098F			;$8094A2	 |\ Set Layer 3 X position
+	STA $2111			;$8094A5	 | |
+	STZ $2111			;$8094A8	 |/
+	LDA $0991			;$8094AB	 |\ Set Layer 3 Y position
+	STA $2112			;$8094AE	 | |
+	STZ $2112			;$8094B1	 |/
+	LDA $0512			;$8094B4	 |\ Set screen brightness
+	STA $2100			;$8094B7	 |/
 	REP #$20			;$8094BA	 |
-	LDA $2A				;$8094BC	 |
-	SEC				;$8094BE	 |
-	SBC #$00E0			;$8094BF	 |
+	LDA $2A				;$8094BC	 |\ Subtract $E0 from the frame counter
+	SEC				;$8094BE	 | | This results in frame counter relative to mode 7 start
+	SBC #$00E0			;$8094BF	 |/
 	CMP #$002F			;$8094C2	 |
 	BCS CODE_8094DC			;$8094C5	 |
 	BIT #$0020			;$8094C7	 |
@@ -5267,69 +5267,69 @@ CODE_80B13E:
 	REP #$20			;$80B15B	 |
 	RTS				;$80B15D	/
 
-CODE_80B15E:
+update_mode_7:
 	SEP #$30			;$80B15E	\
-	JSR CODE_80B18E			;$80B160	 |
-	LDA $86				;$80B163	 |
-	STA $211B			;$80B165	 |
-	LDA $87				;$80B168	 |
-	STA $211B			;$80B16A	 |
-	LDA $82				;$80B16D	 |
-	STA $211C			;$80B16F	 |
-	LDA $83				;$80B172	 |
-	STA $211C			;$80B174	 |
-	LDA $80				;$80B177	 |
-	STA $211D			;$80B179	 |
-	LDA $81				;$80B17C	 |
-	STA $211D			;$80B17E	 |
-	LDA $7E				;$80B181	 |
-	STA $211E			;$80B183	 |
-	LDA $7F				;$80B186	 |
-	STA $211E			;$80B188	 |
+	JSR .scale_and_rotate		;$80B160	 | Apply scale and rotation transformations
+	LDA $86				;$80B163	 |\ Write mode 7 matrix A parameter
+	STA $211B			;$80B165	 | |
+	LDA $87				;$80B168	 | |
+	STA $211B			;$80B16A	 |/
+	LDA $82				;$80B16D	 |\ Write mode 7 matrix B parameter
+	STA $211C			;$80B16F	 | |
+	LDA $83				;$80B172	 | |
+	STA $211C			;$80B174	 |/
+	LDA $80				;$80B177	 |\ Write mode 7 matrix C parameter
+	STA $211D			;$80B179	 | |
+	LDA $81				;$80B17C	 | |
+	STA $211D			;$80B17E	 |/
+	LDA $7E				;$80B181	 |\ Write mode 7 matrix D parameter
+	STA $211E			;$80B183	 | |
+	LDA $7F				;$80B186	 | |
+	STA $211E			;$80B188	 |/
 	REP #$30			;$80B18B	 |
 	RTL				;$80B18D	/
 
-CODE_80B18E:
-	LDY $7C				;$80B18E	\
-	LDX $7D				;$80B190	 |
-	LDA $84				;$80B192	 |
-	JSR CODE_80B1EC			;$80B194	 |
-	STY $86				;$80B197	 |
-	STX $87				;$80B199	 |
-	LDY $7C				;$80B19B	 |
-	LDX $7D				;$80B19D	 |
-	LDA $84				;$80B19F	 |
-	JSR CODE_80B1CF			;$80B1A1	 |
-	STY $82				;$80B1A4	 |
-	STX $83				;$80B1A6	 |
-	LDY $7A				;$80B1A8	 |
-	LDX $7B				;$80B1AA	 |
-	LDA $84				;$80B1AC	 |
-	JSR CODE_80B1CF			;$80B1AE	 |
-	TYA				;$80B1B1	 |
-	EOR #$FF			;$80B1B2	 |
-	STA $80				;$80B1B4	 |
-	TXA				;$80B1B6	 |
-	EOR #$FF			;$80B1B7	 |
-	STA $81				;$80B1B9	 |
-	INC $80				;$80B1BB	 |
-	BNE CODE_80B1C1			;$80B1BD	 |
-	INC $81				;$80B1BF	 |
-CODE_80B1C1:				;		 |
-	LDY $7A				;$80B1C1	 |
-	LDX $7B				;$80B1C3	 |
-	LDA $84				;$80B1C5	 |
-	JSR CODE_80B1EC			;$80B1C7	 |
-	STY $7E				;$80B1CA	 |
-	STX $7F				;$80B1CC	 |
+.scale_and_rotate			;		\
+	LDY $7C				;$80B18E	 |\ Load horizontal scale
+	LDX $7D				;$80B190	 |/
+	LDA $84				;$80B192	 | Load rotation amount
+	JSR .multiply_cos		;$80B194	 | Multiply scale by the cos of the rotation amount
+	STY $86				;$80B197	 |\ Store mode 7 parameter A
+	STX $87				;$80B199	 |/
+	LDY $7C				;$80B19B	 |\ Load horizontal scale
+	LDX $7D				;$80B19D	 |/
+	LDA $84				;$80B19F	 | Load rotation amount
+	JSR .multiply_sin		;$80B1A1	 | Multiply scale by the sin of the rotation amount
+	STY $82				;$80B1A4	 |\ Store mode 7 parameter B
+	STX $83				;$80B1A6	 |/
+	LDY $7A				;$80B1A8	 |\ Load vertical scale
+	LDX $7B				;$80B1AA	 |/
+	LDA $84				;$80B1AC	 | Load rotation amount
+	JSR .multiply_sin		;$80B1AE	 | Multiply scale by the sin of the rotation amount
+	TYA				;$80B1B1	 |\ Flip the sign of the parameter C and store
+	EOR #$FF			;$80B1B2	 | |\ Xor the low and high byte with $FF to flip the sign
+	STA $80				;$80B1B4	 | | | Store the parameter low byte
+	TXA				;$80B1B6	 | | |
+	EOR #$FF			;$80B1B7	 | | | Store the parameter high byte
+	STA $81				;$80B1B9	 | |/
+	INC $80				;$80B1BB	 | |\ Increment to finish sign flip
+	BNE .skip_negative_carry	;$80B1BD	 | | | Branch if the low byte wasn't overflowed
+	INC $81				;$80B1BF	 | |/
+.skip_negative_carry			;		 |/
+	LDY $7A				;$80B1C1	 |\ Load vertical scale
+	LDX $7B				;$80B1C3	 |/
+	LDA $84				;$80B1C5	 | Load rotation amount
+	JSR .multiply_cos		;$80B1C7	 | Multiply scale by the cos of the rotation amount
+	STY $7E				;$80B1CA	 |\ Store mode 7 parameter D
+	STX $7F				;$80B1CC	 |/
 	RTS				;$80B1CE	/
 
-CODE_80B1CF:
-	STY $211B			;$80B1CF	\
-	STX $211B			;$80B1D2	 |
-	JSR CODE_80B20C			;$80B1D5	 |
-	BCS CODE_80B1EB			;$80B1D8	 |
-	STA $211C			;$80B1DA	 |
+.multiply_sin				;		\
+	STY $211B			;$80B1CF	 |\ Store scale
+	STX $211B			;$80B1D2	 |/
+	JSR .get_sin			;$80B1D5	 |
+	BCS ..optimize_90_degrees	;$80B1D8	 | If carry is set, rotation by 90 degrees (1), skip multiply
+	STA $211C			;$80B1DA	 | Store sin amount
 	LDA $2134			;$80B1DD	 |
 	ASL A				;$80B1E0	 |
 	LDA $2135			;$80B1E1	 |
@@ -5338,14 +5338,14 @@ CODE_80B1CF:
 	LDA $2136			;$80B1E6	 |
 	ROL A				;$80B1E9	 |
 	TAX				;$80B1EA	 |
-CODE_80B1EB:				;		 |
-	RTS				;$80B1EB	/
+..optimize_90_degrees			;		 |
+	RTS				;$80B1EB	/ return scaled sin
 
-CODE_80B1EC:
-	STY $211B			;$80B1EC	\
-	STX $211B			;$80B1EF	 |
-	JSR CODE_80B209			;$80B1F2	 |
-	BCS CODE_80B208			;$80B1F5	 |
+.multiply_cos				;		\
+	STY $211B			;$80B1EC	 |\
+	STX $211B			;$80B1EF	 |/
+	JSR .get_cos			;$80B1F2	 |
+	BCS ..optimize_90_degress	;$80B1F5	 | If carry is set, rotation by 90 degrees (1), skip multiply
 	STA $211C			;$80B1F7	 |
 	LDA $2134			;$80B1FA	 |
 	ASL A				;$80B1FD	 |
@@ -5355,20 +5355,20 @@ CODE_80B1EC:
 	LDA $2136			;$80B203	 |
 	ROL A				;$80B206	 |
 	TAX				;$80B207	 |
-CODE_80B208:				;		 |
-	RTS				;$80B208	/
+..optimize_90_degress			;		 |
+	RTS				;$80B208	/ return scaled cos
 
-CODE_80B209:
-	CLC				;$80B209	\
-	ADC #$40			;$80B20A	 |
-CODE_80B20C:				;		 |
-	CMP #$40			;$80B20C	 |
-	BEQ CODE_80B216			;$80B20E	 |
-	TAX				;$80B210	 |
-	LDA.l DATA_80B217,x		;$80B211	 |
-	CLC				;$80B215	 |
-CODE_80B216:				;		 |
-	RTS				;$80B216	/
+.get_cos				;		\
+	CLC				;$80B209	 |\ Offset rotation amount to index cos instead of sin
+	ADC #$40			;$80B20A	 |/ (Phase shift by 90 degrees)
+.get_sin				;		 |
+	CMP #$40			;$80B20C	 |\ If our rotation amount is #$40 (90 degrees)
+	BEQ ..optimize_90_degress	;$80B20E	 |/ Branch and optimize for quicker multiply
+	TAX				;$80B210	 | Turn the rotation into an index
+	LDA.l DATA_80B217,x		;$80B211	 | Preform sin/cos lookup
+	CLC				;$80B215	 | Disable 90 degree optimization
+..optimize_90_degress			;		 |
+	RTS				;$80B216	/ Return with cos/sin
 
 DATA_80B217:
 	db $00, $03, $06, $09, $0C, $0F, $12, $15
