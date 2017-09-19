@@ -5325,37 +5325,37 @@ update_mode_7:
 	RTS				;$80B1CE	/
 
 .multiply_sin				;		\
-	STY $211B			;$80B1CF	 |\ Store scale
+	STY $211B			;$80B1CF	 |\ Store scale as muliplication operand
 	STX $211B			;$80B1D2	 |/
-	JSR .get_sin			;$80B1D5	 |
+	JSR .get_sin			;$80B1D5	 | Lookup sin from rotation amount
 	BCS ..optimize_90_degrees	;$80B1D8	 | If carry is set, rotation by 90 degrees (1), skip multiply
-	STA $211C			;$80B1DA	 | Store sin amount
-	LDA $2134			;$80B1DD	 |
-	ASL A				;$80B1E0	 |
-	LDA $2135			;$80B1E1	 |
-	ROL A				;$80B1E4	 |
-	TAY				;$80B1E5	 |
-	LDA $2136			;$80B1E6	 |
-	ROL A				;$80B1E9	 |
-	TAX				;$80B1EA	 |
-..optimize_90_degrees			;		 |
+	STA $211C			;$80B1DA	 | Store sin of the rotation amount as muliplication operand
+	LDA $2134			;$80B1DD	 |\ Bit shift the long returned left by 1.
+	ASL A				;$80B1E0	 | | This shift improves accuracy when scale isn't very large
+	LDA $2135			;$80B1E1	 | |
+	ROL A				;$80B1E4	 | |
+	TAY				;$80B1E5	 | | Move the low byte to Y
+	LDA $2136			;$80B1E6	 | |
+	ROL A				;$80B1E9	 | |
+	TAX				;$80B1EA	 | | Move the high byte to X
+..optimize_90_degrees			;		 |/
 	RTS				;$80B1EB	/ return scaled sin
 
 .multiply_cos				;		\
-	STY $211B			;$80B1EC	 |\
+	STY $211B			;$80B1EC	 |\ Store scale as muliplication operand
 	STX $211B			;$80B1EF	 |/
-	JSR .get_cos			;$80B1F2	 |
+	JSR .get_cos			;$80B1F2	 | Lookup cos from rotation amount
 	BCS ..optimize_90_degress	;$80B1F5	 | If carry is set, rotation by 90 degrees (1), skip multiply
-	STA $211C			;$80B1F7	 |
-	LDA $2134			;$80B1FA	 |
-	ASL A				;$80B1FD	 |
-	LDA $2135			;$80B1FE	 |
-	ROL A				;$80B201	 |
-	TAY				;$80B202	 |
-	LDA $2136			;$80B203	 |
-	ROL A				;$80B206	 |
-	TAX				;$80B207	 |
-..optimize_90_degress			;		 |
+	STA $211C			;$80B1F7	 | Store cos of the rotation amount as muliplication operand
+	LDA $2134			;$80B1FA	 |\ Bit shift the long returned left by 1.
+	ASL A				;$80B1FD	 | | This shift improves accuracy when scale isn't very large
+	LDA $2135			;$80B1FE	 | |
+	ROL A				;$80B201	 | |
+	TAY				;$80B202	 | | Move the low byte to Y
+	LDA $2136			;$80B203	 | |
+	ROL A				;$80B206	 | |
+	TAX				;$80B207	 | | Move the high byte to X
+..optimize_90_degress			;		 |/
 	RTS				;$80B208	/ return scaled cos
 
 .get_cos				;		\
