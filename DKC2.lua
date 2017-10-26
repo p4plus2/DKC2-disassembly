@@ -1,9 +1,53 @@
+getmetatable('').__index = function(str, i) return string.sub(str, i, i) end
+
 local function remove(data, value)
 	data = table.remove(data, value)
 	if type(data) == "nil" then
 		data = {}
 	end
 	return data
+end
+
+local function parse_line(line) 
+	local result = {}
+	local pos = string.find(line, '%g') or (string.len(line) + 1)
+	while line[pos] ~= "" do 
+		if (line[pos] == '"') then
+			local start_pos, end_pos = string.find(line, '%b""', pos)
+			table.insert(result, string.sub(line, start_pos + 1, end_pos - 1))
+			pos = end_pos + 2
+		else	
+			local found_at = string.find(line, ',', pos)
+			table.insert(result, string.sub(line, pos, found_at and (found_at - 1) or -1))
+			pos = (found_at and found_at or string.len(line)) + 1
+		end
+		pos = string.find(line, '%g', pos) or (string.len(line) + 1)
+	end
+	return result
+end
+
+local function load_csv(path)
+	local file = io.open(path, "rb") 
+	local csv = {}
+	
+	if file then 
+		for line in io.lines(path) do
+			table.insert(csv, parse_line(line))
+		end
+		file:close()
+	end
+	
+	return csv;
+end
+
+local function list_to_map(list)
+	local map = {}
+	
+	for index, entry in ipairs(list) do
+		map[tonumber(entry[1])] = entry[2]
+	end
+	
+	return map
 end
 
 local function write_long(value, offset)
@@ -143,6 +187,13 @@ local x_padding = -400
 local y_padding = 0
 local context = gui.renderctx.new(256, 224) 
 
+--config files
+local sound_effects_path = "sound_effects.txt"
+local musics_path = "music.txt"
+local sprites_path = "sprites.txt"
+local ram_watch_path = "ram_watch.txt"
+local exec_watch_path = "exec_watch.txt"
+
 --Add transparency to a color with default opacity
 local function trans(color)
 	return color + (opacity * 0x1000000)
@@ -221,11 +272,17 @@ local function toggle_layer(layer)
 	bsnes.enablelayer(layer, 1, layer_state[layer])
 end
 
+local sprites_list = load_csv(sprites_path)
+local sprites_map = list_to_map(sprites_list)
+
 local sprite_table = 0x0DE2
+local sprite_routine_list = to_pc(0xB38348)
 local function display_sprite()
 	local sprite_slot = clamp(slot, 0, 23)
 	local slot_offset = sprite_table + sprite_slot * 0x5E
 	local sprite_string = "Slot number (0x%04X): %d\n" ..
+				"Sprite: %s\n" ..
+				"Sprite routine: $B3%04X\n" ..
 				"Sprite number(0x00): %04X\n" ..
 				"Render order(0x02): %04X\n" ..
 				"Position(0x04/0x08): (%04X.%04X, %04X.%04X)\n" ..
@@ -248,8 +305,11 @@ local function display_sprite()
 				"Spawn code(0x58):%04X\n" ..
 				"Unknown data(0x5A):\n%s\n"
 	
+	sprite_name = sprites_map[read_word(slot_offset)] or "UNKNOWN"
 	text(0, 0, string.format(sprite_string, 
 					slot_offset, sprite_slot,					--current slot
+					sprite_name,				--sprite name
+					read_rom_word(sprite_routine_list + read_word(slot_offset)),	--sprite routine
 					read_word(slot_offset), 					--Sprite number
 					read_word(slot_offset+0x02),					--Render order
 					read_word(slot_offset+0x06), read_word(slot_offset+0x04),	--X position
@@ -257,7 +317,7 @@ local function display_sprite()
 					read_word(slot_offset+0x0C),					--Potential ground height (7F00 == no ground)
 					read_word(slot_offset+0x0E),					--Potential ground distance (80xx == no ground)
 					read_word(slot_offset+0x010),					--Interaction type, dictates movements relative to blocks
-					read_word(slot_offset+0x012),					--YXPPCCCCT TTTTTTTT properties
+					read_word(slot_offset+0x012),					--YXPPCCCT TTTTTTTT properties
 					read_word(slot_offset+0x014),					--Unknown
 					read_word(slot_offset+0x16),					--Sprite frame copy 1
 					read_word(slot_offset+0x18),					--Sprite frame copy 2
@@ -277,130 +337,11 @@ local function display_sprite()
 				))
 end
 
-local sound_effect_map = {
-	"0x00 -- Nothing",
-	"0x01 -- Nothing?",
-	"0x02 -- Klomp walking",
-	"0x03 -- Monkey sound (unused)",
-	"0x04 -- Spin/cartwheel into enemy",
-	"0x05 -- Switch Kongs",
-	"0x06 -- Diddy hurt/lost",
-	"0x07 -- Dixie hurt/lost",
-	"0x08 -- Collect bananna",
-	"0x09 -- Collect something (unused)",
-	"0x0A -- Diddy loses life",
-	"0x0B -- Rambi charging",
-	"0x0C -- Something breaking (investigate)",
-	"0x0D -- Zinger like sound (investigate)",
-	"0x0E -- Zinger killed",
-	"0x0F -- Klick-Klack walking",
-	"0x10 -- Klick-Klack splat",
-	"0x11 -- Klobber skidding",
-	"0x12 -- Klobber waking up",
-	"0x13 -- Quiet sound (investigate)",
-	"0x14 -- Explosion of some sort (investigate)",
-	"0x15 -- Kannon shooting",
-	"0x16 -- Klampon eating player",
-	"0x17 -- Klampon snapping jaw while walking",
-	"0x18 -- Jump on kroc type enemy",
-	"0x19 -- Blow open bonus wall (investigate)",
-	"0x1A -- Shoot from cannon",
-	"0x1B -- Kong in barrel",
-	"0x1C -- Count down in bonus game",
-	"0x1D -- Rattly jump",
-	"0x1E -- More monkey sounds (unused?)",
-	"0x1F -- Klinger sliding down",
-	"0x20 -- Dixie loses life",
-	"0x21 -- Blowing sound (unused?)",
-	"0x22 -- Reveal token (unused?)",
-	"0x23 -- Diddy juggling",
-	"0x24 -- Neek squeak",
-	"0x25 -- Blowing gum variant (unused?)",
-	"0x26 -- Dixie blowing gum",
-	"0x27 -- Collect kong letter pitch 1",
-	"0x28 -- Collect kong letter pitch 2",
-	"0x29 -- Collect kong letter pitch 3",
-	"0x2A -- Collect kong letter pitch 4",
-	"0x2B -- Lose life/ballon pop",
-	"0x2C -- Gain life",
-	"0x2D -- Collect coin",
-	"0x2E -- K. Rool message",
-	"0x2F -- Squawks attack",
-	"0x30 -- Squawks flapping 1",
-	"0x31 -- Squawks flapping 2",
-	"0x32 -- Necky attacking",
-	"0x33 -- Menu move",
-	"0x34 -- Menu select",
-	"0x35 -- Reveal token",
-	"0x36 -- Collect token",
-	"0x37 -- Klick Klack flipping over",
-	"0x38 -- Collect life",
-	"0x39 -- Krow ghost exploding twinkle",
-	"0x3A -- Krow ghost exploding",
-	"0x3B -- Zinger sound (unused?)",
-	"0x3C -- Zinger sound higher pitch(unused?)",
-	"0x3D -- Zinger buzzing",
-	"0x3E -- Increase tempo/stop buzzing",
-	"0x3F -- Flitter buzzing",
-	"0x40 -- Team up",
-	"0x41 -- Animal buddy destoryed by sign (used with 0x42, 0x43, 0x44)",
-	"0x42 -- Animal buddy destoryed by sign (used with 0x41, 0x43, 0x44)",
-	"0x43 -- Animal buddy destoryed by sign (used with 0x41, 0x42, 0x44)",
-	"0x44 -- Animal buddy destoryed by sign (used with 0x41, 0x42, 0x43)",
-	"0x45 -- Rattly hurt",
-	"0x46 -- Squitter shoot web",
-	"0x47 -- Squitter shooting platform",
-	"0x48 -- Rattly idle jump",
-	"0x49 -- Rattly high jump",
-	"0x4A -- Load cannon ball into cannon",
-	"0x4B -- Shoot cannon (From Kannon)",
-	"0x4C -- Cannon ball falling from sky",
-	"0x4D -- Squitter jump (investigate)",
-	"0x4E -- Spiny walking",
-	"0x4F -- Squawks hurt",
-	"0x50 -- Invincible",
-	"0x51 -- Hit Kruncha",
-	"0x52 -- Rolling barrel",
-	"0x53 -- Rambi headbutt",
-	"0x54 -- Rambi trample",
-	"0x55 -- Animal transformation sound (semi unused)",
-	"0x56 -- Collect DK coin",
-	"0x57 -- Necky dying",
-	"0x58 -- Cat-O-9-Tails hurt",
-	"0x59 -- Kudgel hurt",
-	"0x5A -- K. Rool passing out",
-	"0x5B -- K. Rool falling into water",
-	"0x5C -- K. Rool falling into water (unused?)",
-	"0x5D -- Krook jumped on",
-	"0x5E -- Pause/unpause game",
-	"0x5F -- Wrong/invalid selection",
-	"0x60 -- Egg cracking sound",
-	"0x61 -- Krow flapping",
-	"0x62 -- Jumping in and out of water, or krow getting hit",
-	"0x63 -- Clapper arf",
-	"0x64 -- Krow grabbing egg",
-	"0x65 -- Enguard jab, or egg falling",
-	"0x66 -- Lost Enguard, Kleaver hooks",
-	"0x67 -- Time running out in bonus",
-	"0x68 -- Ambient in water",
-	"0x69 -- Puft up inflating, Kleaver sinking",
-	"0x6A -- Puft up exploding, Kleaver sinking 2",
-	"0x6B -- Swimming, Kleaver vibrating, Race count down",
-	"0x6C -- Shuri spinning, Kleaver boiling, Race go",
-	"0x6D -- Clapper clap",
-	"0x6E -- Jump on green kroc head/Klapper blowing",
-	"0x6F -- Jump on brown kroc head",
-	"0x70 -- Crashing mixed with DK (unused?)",
-	"0x71 -- Deeper rambi head butt (unused?)",
-	"0x72 -- Quieter monkey sound (unused?)",
-	"0x73 -- Engaurd-like jab (unused?)",
-	"0x74 -- Monkey sound (unused?)",
-	"0x75 -- Weird monkey echo (Unused?)",
-	"0x76 -- quieter monkey sound (unused?)",
-	"0x77 -- Unknown",
-	"0x78 -- Scared by boss",
-	"0x79 -- Caw of Krow"
-}
+local musics_list = load_csv(musics_path)
+local musics_map = list_to_map(musics_list)
+
+local sound_effect_list = load_csv(sound_effects_path)
+local sound_effect_map = list_to_map(sound_effect_list)
 
 local sound_index = 0x0632
 local sound_buffer = 0x0622
@@ -454,7 +395,7 @@ local function display_sound()
 				"sfx E(0x0E): %02X\n" ..
 				"sfx F(0x0F): %02X\n\n" ..
 				"SPC transfer id 0x%02X\n" ..
-				"Current song 0x%04X\n" ..
+				"Current song 0x%04X (%s)\n" ..
 				"Mono/Stereo 0x%02X\n\n" ..
 				"Play sound effect: %s\n"
 	
@@ -486,8 +427,9 @@ local function display_sound()
 					read_byte(effect_buffer+0x0F),
 					read_byte(spc_transfer_id),
 					read_byte(current_song),
+					musics_map[read_byte(current_song)],
 					read_byte(stereo_flag),
-					sound_effect_map[sound_effect+1]
+					sound_effect_map[sound_effect]
 				))
 end
 
@@ -575,7 +517,7 @@ local function display_level()
 				"$0515 (0x00) Header: 0x%04X\n" ..
 				"$0517 (0x02): 0x%04X\n" ..
 				"$0519 (0x04): 0x%04X\n" ..
-				"$051B (0x06): 0x%04X\n" ..
+				"$051B (0x06): Music id 0x%04X\n" ..
 				"$051D (0x08): 0x%04X\n" ..
 				"$051F (0x0A): 0x%04X\n" ..
 				"$0521 (0x0C): 0x%04X\n" ..
@@ -640,10 +582,16 @@ local function display_level()
 end
 
 local watched_addresses = {}
+local exec_watched_addresses = {}
+local exec_watched_count = {}
 local function display_watch()
 	local watch_string = ""
 	
 	for address, read_callback in pairs(watched_addresses) do 
+		watch_string = watch_string .. read_callback()
+	end
+	watch_string = watch_string .. "\n\n"
+	for address, read_callback in pairs(exec_watched_addresses) do 
 		watch_string = watch_string .. read_callback()
 	end
 	
@@ -867,6 +815,16 @@ end
 
 function delete_watch(address)
 	watched_addresses = remove(watched_addresses, address)
+end
+
+function add_exec_watch(name, address)
+	exec_watched_addresses[address] = function() return string.format(name .. ": %02X\n", exec_watched_count[address]) end
+	exec_watched_count[address] = 0
+	memory2.ROM:registerexec(to_pc(address), function() exec_watched_count[address] = exec_watched_count[address] + 1 end)
+end
+
+function delete_exec_watch(address)
+	exec_watched_addresses = remove(exec_watched_addresses, address)
 end
 
 

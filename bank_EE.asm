@@ -132,10 +132,12 @@ CODE_0660:
 	MOV A, $1313+Y			;$066A	 |
 	MOV $E6, A			;$066D	 |
 	JMP CODE_0678			;$066F	 |
+
+CODE_0672:
 	MOV $E6, #$13			;$0672	 |
 	MOV $E5, #$00			;$0675	 |
 CODE_0678:				;	 |
-	CALL $100B			;$0678	 |
+	CALL CODE_100B			;$0678	 |
 	MOV A, #$00			;$067B	 |
 	MOV $1C, A			;$067D	 |
 	MOV $1D, A			;$067F	 |
@@ -2091,12 +2093,9 @@ sample_table:
 	dl !null_pointer
 	dl !null_pointer
 
-DATA_EE1086:
-	%offset(DATA_EE1088, 2)
+song_data:
+	%offset(song_sample_sets, 3)
 	dl DATA_EE1939
-
-DATA_EE1089:
-	%offset(DATA_EE108B, 2)
 	dl DATA_EE1223
 	dl DATA_EE195F
 	dl DATA_EE124D

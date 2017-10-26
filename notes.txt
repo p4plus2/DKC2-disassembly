@@ -431,23 +431,21 @@ Various compressed data:
 	$F9C775
 	$FA4C3E
 
-;these are not exactly right, they are in the wrong order....
-command 0x80(CODE_BB84C0): SEC and return    		;success
-command 0x81(CODE_BB84C7): evil?             		;evil
-command 0x82(CODE_BB84D8): Goto next command 		;skip
-command 0x83(CODE_BB84DA): load sub config   		;subconfig
-command 0x84(CODE_BB84EE): Set palette?      		;palette
-command 0x85(CODE_BB850C): Set X/Y/priority? 		;directedpriority
-command 0x86(CODE_BB8521): reads +2 (?)      		;too tired
-command 0x87(CODE_BB8582): reads +2, relative x flip? 	;maybe
-command 0x88(CODE_BB85A2): relative x/y      		;relative
-command 0x89(CODE_BB86D5): allocate VRAM?    		;VRAM
-command 0x8A(CODE_BB85BC): read +$1A, bulk copy 	;bulk
-command 0x8B(CODE_BB860E): x/y stuff    		;ehh
-command 0x8C(CODE_BB8646): jump to cmd 0x84 		;removed probably
-command 0x8D(CODE_BB8678): more palette voodoo 		;voodoo
-command 0x8E(CODE_BB879E): VRAM alloc 2?    		;VRAM2
-
++0	command 0x80(CODE_BB84C0)	return success
++4	command 0x81(CODE_BB84C7)	todo
++4	command 0x82(CODE_BB84D8)	null command (goto next)
++4	command 0x83(CODE_BB84DA)	load subconfig
++4	command 0x84(CODE_BB84EE)	set palette
++4	command 0x85(CODE_BB850C)	Set x/y/priority
++6	command 0x86(CODE_BB8521)	shift spawn relative to parent sprite/set render priority/something with $1C
++6	command 0x87(CODE_BB8582)	set property in sprite (based on parent X flip)
++2	command 0x88(CODE_BB85A2)	Spawn at to $0A3E/$0A40
++A	command 0x89(CODE_BB86D5)	alloc palette/vram
++1C	command 0x8A(CODE_BB85BC)	bulk settings
++4	command 0x8B(CODE_BB860E)	Set sprite proiroty
++4	command 0x8C(CODE_BB8646)	jump to command CODE_BB84EE
++4	command 0x8D(CODE_BB8678)	Alt set palette (uses FD5EE table)
++A	command 0x8E(CODE_BB879E)	Another palette/vram allocation routine
 
 
 $05FD = index to control buffer
@@ -457,8 +455,23 @@ $05FD = index to control buffer
 
 
 
+CODE_BB842C one of several spawn sprite routines
 
 
+music notes:
+sound effects 0x60+ can have multiple uses.  Ones before that may still be sample dependant. 
 
+In level music prefixes
+0x0000 -- normal
+0x0100 -- death
+0x0200 -- diddy win
+0x0300 -- dixie win
+0x0400 -- no dance win (invalid for boss music)
 
+Bonus music prefixes
+0x0000 -- Bonus transition screen
+0x0100 -- Complete (already one)
+0x0200 -- lose
+0x0300 -- In the bonus
 
+OW music, Swanky, Cranky, Wrinkly, Fanfare, Gameover, and Credits have no prefixes

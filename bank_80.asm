@@ -1814,13 +1814,13 @@ init_rareware_logo:
 	STA $211A			;$809195	 |/
 	REP #$20			;$809198	 |
 	LDA #$7400			;$80919A	 |\ Clear $800 of VRAM at $E800
-	JSR CODE_80B109			;$80919D	 |/
+	JSR clear_VRAM_block		;$80919D	 |/
 	LDA #$7000			;$8091A0	 |\ Clear $800 of VRAM at $E000
-	JSR CODE_80B109			;$8091A3	 |/
+	JSR clear_VRAM_block		;$8091A3	 |/
 	LDA #$7800			;$8091A6	 |\ Clear $800 of VRAM at $F000
-	JSR CODE_80B109			;$8091A9	 |/
+	JSR clear_VRAM_block		;$8091A9	 |/
 	LDA #$7C00			;$8091AC	 |\ Clear $800 of VRAM at $F800
-	JSR CODE_80B109			;$8091AF	 |/
+	JSR clear_VRAM_block		;$8091AF	 |/
 	LDX #DATA_F52FC7		;$8091B2	 |\ Load pointer to Nintendo presents layer 1 tilemap
 	LDY.w #DATA_F52FC7>>16		;$8091B5	 | |
 	LDA #$0000			;$8091B8	 | |
@@ -2035,7 +2035,7 @@ run_rareware_logo:			;		\
 	LDX #$007F			;$809423	 |\ Upload $1440 bytes from $7F0500 to VRAM address $8000
 	LDA #$0500			;$809426	 | | The first half of tiledata for the Nintendo Presents
 	LDY #$1440			;$809429	 | |
-	JSL DMA_to_VRAM			;$80942C	 |/
+	JSL DMA_to_VRAM			;$80942C	 |/ DMA the payload
 CODE_809430:				;		 |
 	LDA $2A				;$809430	 |\ If the frame count is not exactly $0111
 	CMP #$0111			;$809432	 | |
@@ -2045,7 +2045,7 @@ CODE_809430:				;		 |
 	LDX #$007F			;$80943D	 |\ Upload $1440 bytes from $7F1940 to VRAM address $9440
 	LDA #$1940			;$809440	 | | The second half of tiledata for the Nintendo Presents
 	LDY #$1440			;$809443	 | |
-	JSL DMA_to_VRAM			;$809446	 |/
+	JSL DMA_to_VRAM			;$809446	 |/ DMA the payload
 	LDA #$0000			;$80944A	 |
 	LDX #$001E			;$80944D	 | Number of bytes to clear minus 2
 .clear_palette				;		 |
@@ -2108,10 +2108,10 @@ CODE_8094CF:				;		 |
 	STA $7A				;$8094DA	 |
 CODE_8094DC:				;		 |
 	JSR CODE_80B061			;$8094DC	 |
-	INC $2A				;$8094DF	 |
-	LDA $2A				;$8094E1	 |
-	CMP #$0001			;$8094E3	 |
-	BNE CODE_8094EC			;$8094E6	 |
+	INC $2A				;$8094DF	 | Increment the frame counter
+	LDA $2A				;$8094E1	 |\ Check if this is the first frame of the logo
+	CMP #$0001			;$8094E3	 | |
+	BNE CODE_8094EC			;$8094E6	 |/
 	JSL CODE_B58009			;$8094E8	 |
 CODE_8094EC:				;		 |
 	LDA $2A				;$8094EC	 |
@@ -2610,9 +2610,9 @@ CODE_8097EB:				;		 |
 	LDY #$0800			;$809912	 |
 	JSL DMA_to_VRAM			;$809915	 |
 	LDA #$7400			;$809919	 |
-	JSR CODE_80B109			;$80991C	 |
+	JSR clear_VRAM_block		;$80991C	 |
 	LDA #$7800			;$80991F	 |
-	JSR CODE_80B109			;$809922	 |
+	JSR clear_VRAM_block		;$809922	 |
 	LDX #DATA_EC4749		;$809925	 |
 	LDY.w #DATA_EC4749>>16		;$809928	 |
 	LDA #$0000			;$80992B	 |
@@ -5225,22 +5225,22 @@ CODE_80B106:				;		 |
 	WAI				;$80B106	 |
 	BRA CODE_80B106			;$80B107	/
 
-CODE_80B109:
-	STA $2116			;$80B109	\
-	LDA #DATA_80B116		;$80B10C	 |
-	STA $4302			;$80B10F	 |
-	STA $4308			;$80B112	 |
-	%offset(DATA_80B116, 1)
-	LDA #$0800			;$80B115	 |
-	STA $4305			;$80B118	 |
-	LDA #$1809			;$80B11B	 |
-	STA $4300			;$80B11E	 |
+clear_VRAM_block:
+	STA $2116			;$80B109	\ Store address to VRAM block to clear
+	LDA #.VRAM_zero_fill		;$80B10C	 |\ Set DMA source word (uses low byte of size as fixed data)
+	STA $4302			;$80B10F	 | |
+	STA $4308			;$80B112	 |/
+	%offset(.VRAM_zero_fill, 1)	;		 | Generate a label for fixed VRAM data
+	LDA #$0800			;$80B115	 |\ Set DMA size to $0800
+	STA $4305			;$80B118	 |/
+	LDA #$1809			;$80B11B	 |\ Set DMA destination to $2118, two register write once, fixed
+	STA $4300			;$80B11E	 |/
 	SEP #$20			;$80B121	 |
-	STZ $4304			;$80B123	 |
-	LDA #$01			;$80B126	 |
-	STA $420B			;$80B128	 |
+	STZ $4304			;$80B123	 | Set DMA source bank to 00.
+	LDA #$01			;$80B126	 |\ Enable channel 1 DMA
+	STA $420B			;$80B128	 |/
 	REP #$20			;$80B12B	 |
-	RTS				;$80B12D	/
+	RTS				;$80B12D	/ VRAM block is clear, return
 
 DATA_80B12E:
 	db $00, $17, $1B, $1F, $00, $0C, $11, $17
@@ -5686,7 +5686,7 @@ CODE_80B5FA:
 	LDY #$2000			;$80B628	 |
 	JSL DMA_to_VRAM			;$80B62B	 |
 	LDA #$7C00			;$80B62F	 |
-	JSR CODE_80B109			;$80B632	 |
+	JSR clear_VRAM_block		;$80B632	 |
 	LDA #$7D00			;$80B635	 |
 	STA $2116			;$80B638	 |
 	LDX.w #DATA_F80D66>>16		;$80B63B	 |
@@ -12617,6 +12617,7 @@ CODE_80F3B0:				;		 |
 	STZ $1730			;$80F3B0	 |
 	RTS				;$80F3B3	/
 
+CODE_80F3B4:
 	LDA #$0001			;$80F3B4	 |
 	STA $420B			;$80F3B7	 |
 	JMP CODE_80F3F2			;$80F3BA	/

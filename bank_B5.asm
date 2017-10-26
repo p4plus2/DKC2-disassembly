@@ -19,8 +19,8 @@ CODE_B5800F:
 CODE_B58012:
 	JMP CODE_B581CE			;$B58012	 |
 
-CODE_B58015:
-	JMP CODE_B581DA			;$B58015	 |
+null_spc_command_entry:
+	JMP null_spc_command		;$B58015	 |
 
 CODE_B58018:
 	JMP CODE_B581DB			;$B58018	 |
@@ -152,26 +152,26 @@ CODE_B580D5:
 	STA $1C				;$B580D8	 |
 	LDX #$00FF			;$B580DA	 |
 	JSR write_spc_command		;$B580DD	 |
-	JSR CODE_B58469			;$B580E0	 |
-	JSR CODE_B5825C			;$B580E3	 |
-	JSR CODE_B58277			;$B580E6	 |
+	JSR upload_song_sample_set	;$B580E0	 |
+	JSR upload_song_data		;$B580E3	 |
+	JSR upload_song_sound_effects	;$B580E6	 |
 	JSR execute_spc_sound_engine	;$B580E9	 |
 	PLB				;$B580EC	 |
 	RTL				;$B580ED	/
 
-CODE_B580EE:
-	PHB				;$B580EE	\
-	PHK				;$B580EF	 |
-	PLB				;$B580F0	 |
-	JSR CODE_B5816D			;$B580F1	 |
-	LDX #$00FE			;$B580F4	 |
-	JSR write_spc_command		;$B580F7	 |
-	LDA $1E				;$B580FA	 |
-	XBA				;$B580FC	 |
-	ORA #$00FA			;$B580FD	 |
-	TAX				;$B58100	 |
-	JSR write_spc_command		;$B58101	 |
-	PLB				;$B58104	 |
+CODE_B580EE:				;		\
+	PHB				;$B580EE	 |\ Change to current databank
+	PHK				;$B580EF	 | |
+	PLB				;$B580F0	 |/
+	JSR clear_sound_buffers		;$B580F1	 |
+	LDX #$00FE			;$B580F4	 |\ Tell the SPC engine to start playing music
+	JSR write_spc_command		;$B580F7	 |/
+	LDA $1E				;$B580FA	 |\ Write mono or stereo setting to SPC engine
+	XBA				;$B580FC	 | |
+	ORA #$00FA			;$B580FD	 | |
+	TAX				;$B58100	 | |
+	JSR write_spc_command		;$B58101	 |/
+	PLB				;$B58104	 | Restore databank
 	RTL				;$B58105	/
 
 CODE_B58106:
@@ -181,19 +181,19 @@ CODE_B58106:
 	STA $1C				;$B58109	 |
 	LDX #$00FF			;$B5810B	 |
 	JSR write_spc_command		;$B5810E	 |
-	JSR CODE_B58469			;$B58111	 |
-	JSR CODE_B5825C			;$B58114	 |
-	JSR CODE_B58277			;$B58117	 |
-	JSR CODE_B5816D			;$B5811A	 |
+	JSR upload_song_sample_set	;$B58111	 |
+	JSR upload_song_data		;$B58114	 |
+	JSR upload_song_sound_effects	;$B58117	 |
+	JSR clear_sound_buffers		;$B5811A	 |
 	JSR execute_spc_sound_engine	;$B5811D	 |
-	LDX #$00FE			;$B58120	 |
-	JSR write_spc_command		;$B58123	 |
-	LDA $1E				;$B58126	 |
-	XBA				;$B58128	 |
-	ORA #$00FA			;$B58129	 |
-	TAX				;$B5812C	 |
-	JSR write_spc_command		;$B5812D	 |
-	PLB				;$B58130	 |
+	LDX #$00FE			;$B58120	 |\ Tell the SPC engine to start playing music
+	JSR write_spc_command		;$B58123	 |/
+	LDA $1E				;$B58126	 |\ Write mono or stereo setting to SPC engine
+	XBA				;$B58128	 | |
+	ORA #$00FA			;$B58129	 | |
+	TAX				;$B5812C	 | |
+	JSR write_spc_command		;$B5812D	 |/
+	PLB				;$B58130	 | Restore databank
 	RTL				;$B58131	/
 
 CODE_B58132:
@@ -205,35 +205,35 @@ CODE_B58132:
 	STA $1C				;$B58139	 |
 	LDX #$00FF			;$B5813B	 |
 	JSR write_spc_command		;$B5813E	 |
-	JSR CODE_B58469			;$B58141	 |
-	JSR CODE_B5825C			;$B58144	 |
-	JSR CODE_B58277			;$B58147	 |
-	JSR CODE_B5816D			;$B5814A	 |
+	JSR upload_song_sample_set	;$B58141	 |
+	JSR upload_song_data		;$B58144	 |
+	JSR upload_song_sound_effects	;$B58147	 |
+	JSR clear_sound_buffers		;$B5814A	 |
 	JSR execute_spc_sound_engine	;$B5814D	 |
 	PLA				;$B58150	 |
 	AND #$FF00			;$B58151	 |
 	ORA #$00FB			;$B58154	 |
 	TAX				;$B58157	 |
 	JSR write_spc_command		;$B58158	 |
-	LDX #$00FE			;$B5815B	 |
-	JSR write_spc_command		;$B5815E	 |
-	LDA $1E				;$B58161	 |
-	XBA				;$B58163	 |
-	ORA #$00FA			;$B58164	 |
-	TAX				;$B58167	 |
-	JSR write_spc_command		;$B58168	 |
-	PLB				;$B5816B	 |
+	LDX #$00FE			;$B5815B	 |\ Tell the SPC engine to start playing music
+	JSR write_spc_command		;$B5815E	 |/
+	LDA $1E				;$B58161	 |\ Write mono or stereo setting to SPC engine
+	XBA				;$B58163	 | |
+	ORA #$00FA			;$B58164	 | |
+	TAX				;$B58167	 | |
+	JSR write_spc_command		;$B58168	 |/
+	PLB				;$B5816B	 | Restore databank
 	RTL				;$B5816C	/
 
-CODE_B5816D:
+clear_sound_buffers:
 	LDX #$0007			;$B5816D	\
-CODE_B58170:				;		 |
+.clear_buffer_entry			;		 |
 	STZ $0621,x			;$B58170	 |
 	STZ $0629,x			;$B58173	 |
 	STZ $0619,x			;$B58176	 |
 	DEX				;$B58179	 |
 	DEX				;$B5817A	 |
-	BPL CODE_B58170			;$B5817B	 |
+	BPL .clear_buffer_entry		;$B5817B	 |
 	STZ $0634			;$B5817D	 |
 	STZ $0636			;$B58180	 |
 	LDA #$0002			;$B58183	 |
@@ -242,7 +242,7 @@ CODE_B58170:				;		 |
 	RTS				;$B5818C	/
 
 upload_spc_engine_wrapper:
-	JSR upload_spc_engine		;$B5818D	\
+	JSR upload_spc_engine		;$B5818D	\ Wrapper around SPC engine upload routine
 	RTL				;$B58190	/
 
 upload_spc_engine:
@@ -257,8 +257,8 @@ upload_spc_engine:
 	JSR execute_spc_sound_engine	;$B581A7	 | Jump to the sound engine entry
 	RTS				;$B581AA	/
 
-CODE_B581AB:
-	RTS				;$B581AB	/
+.dead_code
+	RTS				;$B581AB	> Dead code
 
 execute_spc_sound_engine:		;		\ 
 	LDA #$0672			;$B581AC	 |\ Load the sound engine entry point
@@ -290,8 +290,8 @@ CODE_B581CE:
 	JSR write_spc_command		;$B581D6	 |
 	RTL				;$B581D9	/
 
-CODE_B581DA:
-	RTL				;$B581DA	/
+null_spc_command:
+	RTL				;$B581DA	> Unused SPC command that does nothing
 
 CODE_B581DB:
 	PHB				;$B581DB	\
@@ -302,14 +302,14 @@ CODE_B581DB:
 	ORA #$00FB			;$B581E2	 |
 	TAX				;$B581E5	 |
 	JSR write_spc_command		;$B581E6	 |
-	LDX #$00FE			;$B581E9	 |
-	JSR write_spc_command		;$B581EC	 |
-	LDA $1E				;$B581EF	 |
-	XBA				;$B581F1	 |
-	ORA #$00FA			;$B581F2	 |
-	TAX				;$B581F5	 |
-	JSR write_spc_command		;$B581F6	 |
-	PLB				;$B581F9	 |
+	LDX #$00FE			;$B581E9	 |\ Tell the SPC engine to start playing music
+	JSR write_spc_command		;$B581EC	 |/
+	LDA $1E				;$B581EF	 |\ Write mono or stereo setting to SPC engine
+	XBA				;$B581F1	 | |
+	ORA #$00FA			;$B581F2	 | |
+	TAX				;$B581F5	 | |
+	JSR write_spc_command		;$B581F6	 |/
+	PLB				;$B581F9	 | Restore databank
 	RTL				;$B581FA	/
 
 write_spc_command:
@@ -366,33 +366,33 @@ upload_spc_base_engine:			;		\
 	REP #$30			;$B58259	 |
 	RTS				;$B5825B	/ All done, new SPC base engine set up.
 
-CODE_B5825C:
-	LDA $1C				;$B5825C	\
-	CLC				;$B5825E	 |
-	ROL A				;$B5825F	 |
-	STA $32				;$B58260	 |
-	ROL A				;$B58262	 |
-	CLC				;$B58263	 |
-	ADC $32				;$B58264	 |
-	TAX				;$B58266	 |
-	LDA.l DATA_EE1086,x		;$B58267	 |
-	STA $32				;$B5826B	 |
-	LDA.l DATA_EE1088,x		;$B5826D	 |
-	STA $34				;$B58271	 |
-	JSR upload_inline_spc_block	;$B58273	 |
+upload_song_data:
+	LDA $1C				;$B5825C	\ Load currently set song
+	CLC				;$B5825E	 |\ Multiply song number by 6 to get an offset to song data
+	ROL A				;$B5825F	 | | Effectively (X << 1) + (X << 2)
+	STA $32				;$B58260	 | |
+	ROL A				;$B58262	 | |
+	CLC				;$B58263	 | | 
+	ADC $32				;$B58264	 |/
+	TAX				;$B58266	 | Move offset to an index register
+	LDA.l song_data,x		;$B58267	 |\ Load pointer to song data
+	STA $32				;$B5826B	 | |
+	LDA.l song_data+2,x		;$B5826D	 | |
+	STA $34				;$B58271	 |/
+	JSR upload_inline_spc_block	;$B58273	 | Upload song data
 	RTS				;$B58276	/
 
-CODE_B58277:
-	LDA $1C				;$B58277	\
-	CLC				;$B58279	 |
-	ADC $1C				;$B5827A	 |
-	ADC $1C				;$B5827C	 |
-	TAX				;$B5827E	 |
-	LDA.l DATA_EE117B,x		;$B5827F	 |
-	STA $32				;$B58283	 |
-	LDA.l DATA_EE117D,x		;$B58285	 |
-	STA $34				;$B58289	 |
-	JSR upload_inline_spc_block	;$B5828B	 |
+upload_song_sound_effects:		;		\
+	LDA $1C				;$B58277	 |\ Triple song id
+	CLC				;$B58279	 | |
+	ADC $1C				;$B5827A	 | |
+	ADC $1C				;$B5827C	 |/
+	TAX				;$B5827E	 | Move offset to an index register
+	LDA.l DATA_EE117B,x		;$B5827F	 |\ Load pointer to song specific sound effects
+	STA $32				;$B58283	 | |
+	LDA.l DATA_EE117D,x		;$B58285	 | |
+	STA $34				;$B58289	 |/
+	JSR upload_inline_spc_block	;$B5828B	 | Upload sound effect data
 	RTS				;$B5828E	/
 
 upload_spc_sound_engine:
@@ -420,18 +420,18 @@ upload_global_samples:			;		\
 	STA $06				;$B582BD	 |/
 	STZ $0A				;$B582BF	 | Reset the sample counter
 	JSR sample_uploader		;$B582C1	 |
-	LDA $02				;$B582C4	 |\ 
+	LDA $02				;$B582C4	 |\ Set next pending source directory ARAM destination
 	STA $04				;$B582C6	 |/
-	LDA $06				;$B582C8	 |\ 
+	LDA $06				;$B582C8	 |\ Set next pending sample data ARAM destination
 	STA $08				;$B582CA	 |/
-	LDA $0A				;$B582CC	 |\ 
+	LDA $0A				;$B582CC	 |\ Set next pending sample number
 	STA $0C				;$B582CE	 |/
 	RTS				;$B582D0	/
 
 sample_uploader:
 	STZ $0A				;$B582D1	\ Reset the sample counter
 	LDX #$0000			;$B582D3	 |
-	LDA $0A				;$B582D6	 |\ 
+	LDA $0A				;$B582D6	 |\ Copy sample number (always zero in this case)
 	STA $3A				;$B582D8	 |/
 	LDA $0E				;$B582DA	 |\ Copy sample map pointer
 	STA $3E				;$B582DC	 | |
@@ -654,26 +654,26 @@ upload_spc_block:
 	LDY #$00			;$B58465	 | Reset the data index
 	BRA .wait_for_echo		;$B58467	/
 
-CODE_B58469:
-	LDA $1C				;$B58469	\
-	CLC				;$B5846B	 |
-	ROL A				;$B5846C	 |
-	STA $32				;$B5846D	 |
-	ROL A				;$B5846F	 |
-	CLC				;$B58470	 |
-	ADC $32				;$B58471	 |
-	TAX				;$B58473	 |
-	LDA.l DATA_EE1089,x		;$B58474	 |
-	STA $0E				;$B58478	 |
-	LDA.l DATA_EE108B,x		;$B5847A	 |
-	STA $10				;$B5847E	 |
-	LDA $04				;$B58480	 |
-	STA $02				;$B58482	 |
-	LDA $08				;$B58484	 |
-	STA $06				;$B58486	 |
-	LDA $0C				;$B58488	 |
-	STA $0A				;$B5848A	 |
-	JSR sample_uploader		;$B5848C	 |
+upload_song_sample_set:
+	LDA $1C				;$B58469	\ Load currently set song
+	CLC				;$B5846B	 |\ Multiply song number by 6 to song sample set offset
+	ROL A				;$B5846C	 | | Effectively (X << 1) + (X << 2)
+	STA $32				;$B5846D	 | |
+	ROL A				;$B5846F	 | |
+	CLC				;$B58470	 | | 
+	ADC $32				;$B58471	 |/
+	TAX				;$B58473	 | Move offset to an index register
+	LDA.l song_sample_sets,x	;$B58474	 |\ Load pointer to song sample set
+	STA $0E				;$B58478	 | |
+	LDA.l song_sample_sets+2,x	;$B5847A	 | |
+	STA $10				;$B5847E	 |/
+	LDA $04				;$B58480	 |\ Set next pending source directory ARAM destination
+	STA $02				;$B58482	 |/
+	LDA $08				;$B58484	 |\ Set next pending sample data ARAM destination
+	STA $06				;$B58486	 |/
+	LDA $0C				;$B58488	 |\ Set next pending sample number
+	STA $0A				;$B5848A	 |/
+	JSR sample_uploader		;$B5848C	 | Upload the samples
 	RTS				;$B5848F	/
 
 DATA_B58490:
