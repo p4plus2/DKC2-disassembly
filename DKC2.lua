@@ -79,15 +79,15 @@ local function read_byte(offset)
 end
 
 local function read_rom_long(offset)
-	return memory2.ROM:read(offset) + (memory2.ROM:read(offset+1)*0x100) + (memory2.ROM:read(offset+1)*0x10000)
+	return memory2.BUS:read(offset) + (memory2.BUS:read(offset+1)*0x100) + (memory2.BUS:read(offset+1)*0x10000)
 end
 
 local function read_rom_word(offset)
-	return memory2.ROM:read(offset) + (memory2.ROM:read(offset+1)*0x100)
+	return memory2.BUS:read(offset) + (memory2.BUS:read(offset+1)*0x100)
 end
 
 local function read_rom_byte(offset)
-	return memory2.ROM:read(offset)
+	return memory2.BUS:read(offset)
 end
 
 local function to_pc(address)
@@ -98,32 +98,32 @@ end
 local rom_write_buffer = {}
 
 local function rom_preserve(address, size)
-	address = to_pc(address)
+	address = address
 	if type(rom_write_buffer[address]) == "nil" then
-		rom_write_buffer[address] = memory2.ROM:readregion(address, size)
+		rom_write_buffer[address] = memory2.BUS:readregion(address, size)
 	end
 end
 
 local function rom_restore(address)
-	memory2.ROM:writeregion(address, rom_write_buffer[address])
+	memory2.BUS:writeregion(address, rom_write_buffer[address])
 	rom_write_buffer = remove(rom_write_buffer, address)
 end
 
 local function rom_restore_all(address)
 	for address, data in pairs(rom_write_buffer) do 
 		print(address, data, type(data))
-		memory2.ROM:writeregion(address, data)
+		memory2.BUS:writeregion(address, data)
 	end
 	rom_write_buffer = {}
 end
 
 local function write_rom_byte(byte, address)
-	memory2.ROM:write(byte, to_pc(address))
+	memory2.BUS:write(byte, address)
 end
 
 local function write_rom_byte_preserve(byte, address)
 	rom_preserve(address, 1)
-	memory2.ROM:write(byte, to_pc(address))
+	memory2.BUS:write(byte, address)
 end
 
 local function write_rom_nop(address, size)
@@ -276,7 +276,7 @@ local sprites_list = load_csv(sprites_path)
 local sprites_map = list_to_map(sprites_list)
 
 local sprite_table = 0x0DE2
-local sprite_routine_list = to_pc(0xB38348)
+local sprite_routine_list = 0xB38348
 local function display_sprite()
 	local sprite_slot = clamp(slot, 0, 23)
 	local slot_offset = sprite_table + sprite_slot * 0x5E
@@ -506,7 +506,7 @@ local function display_engine()
 end
 
 local level = 0x00D3
-local sprite_pointers = to_pc(0xFE0000)
+local sprite_pointers = 0xFE0000
 local level_header = 0x0515
 
 local function display_level()
@@ -784,20 +784,20 @@ end
 function register_trace(address)
 	if (type(address) == "table") then
 		for i, trace in pairs(address) do
-			memory2.ROM:registerexec(to_pc(trace), dump_registers)
+			memory2.BUS:registerexec(trace, dump_registers)
 		end
 	else
-		memory2.ROM:registerexec(to_pc(address), dump_registers)
+		memory2.BUS:registerexec(address, dump_registers)
 	end
 end
 
 function unregister_trace(address)
 	if (type(address) == "table") then
 		for i, trace in pairs(address) do
-			memory2.ROM:unregisterexec(to_pc(trace), dump_registers)
+			memory2.BUS:unregisterexec(trace, dump_registers)
 		end
 	else
-		memory2.ROM:unregisterexec(to_pc(address), dump_registers)
+		memory2.BUS:unregisterexec(address, dump_registers)
 	end
 end
 
@@ -820,7 +820,7 @@ end
 function add_exec_watch(name, address)
 	exec_watched_addresses[address] = function() return string.format(name .. ": %02X\n", exec_watched_count[address]) end
 	exec_watched_count[address] = 0
-	memory2.ROM:registerexec(to_pc(address), function() exec_watched_count[address] = exec_watched_count[address] + 1 end)
+	memory2.BUS:registerexec(address, function() exec_watched_count[address] = exec_watched_count[address] + 1 end)
 end
 
 function delete_exec_watch(address)

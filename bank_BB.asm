@@ -909,7 +909,6 @@ CODE_BB8565:				;		 |
 	STA $12,x			;$BB8579	 |
 	PLY				;$BB857B	 |
 	PLB				;$BB857C	 |
-	t:
 	INY				;$BB857D	 |
 	INY				;$BB857E	 |
 	JMP CODE_BB8485			;$BB857F	/
