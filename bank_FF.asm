@@ -12,14 +12,18 @@ DATA_FF0000:
 	%offset(DATA_FF0016, $16)
 	%offset(DATA_FF0018, $18)
 	%offset(DATA_FF001A, $1A)
-	db $44, $49, $44, $44, $59, $20, $41, $53
-	db $53, $45, $4D, $42, $4C, $59, $20, $44
-	db $41, $54, $45, $20, $26, $20, $54, $49
-	db $4D, $45, $20, $30, $38, $2F, $31, $31
-	db $2F, $39, $35, $20, $40, $20, $31, $37
-	db $3A, $30, $36, $0D, $0A, $00, $00, $00
+
+if !version == 0
+	db "DIDDY ASSEMBLY DATE & TIME 22/10/95 @  1:46"
+else
+	db "DIDDY ASSEMBLY DATE & TIME 08/11/95 @ 17:06"
+endif
+	db $0D, $0A
+
+DATA_FF002E:
 	db $00, $00, $00, $00, $00, $00, $00, $00
 	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00
 
 DATA_FF0040:
 	db $70, $00
@@ -384,5284 +388,7462 @@ DATA_FF047E:
 	dw DATA_FF2946
 
 DATA_FF0620:
-	db $A2, $06, $B0, $06, $BE, $06, $D0, $06
-	db $DE, $06, $F0, $06, $06, $07, $18, $07
-	db $36, $07, $44, $07, $52, $07, $60, $07
-	db $6E, $07, $7C, $07, $8A, $07, $A4, $07
-	db $CE, $07, $DC, $07, $F6, $07, $08, $08
-	db $16, $08, $24, $08, $36, $08, $4C, $08
-	db $5A, $08, $6C, $08, $7A, $08, $88, $08
-	db $96, $08, $A8, $08, $BA, $08, $D0, $08
-	db $DE, $08, $EC, $08, $FE, $08, $18, $09
-	db $32, $09, $50, $09, $6A, $09, $84, $09
-	db $9E, $09, $B8, $09, $D2, $09, $EC, $09
-	db $06, $0A, $20, $0A, $42, $0A, $64, $0A
-	db $86, $0A, $A8, $0A, $CA, $0A, $E4, $0A
-	db $FE, $0A, $18, $0B, $3A, $0B, $5C, $0B
-	db $00, $00, $14, $03, $06, $00, $E0, $00
-	db $0A, $00, $A0, $01, $00, $85, $00, $30
-	db $00, $80, $00, $83, $90, $06, $00, $8D
-	db $1D, $00, $00, $81, $8D, $01, $00, $80
-	db $00, $83, $90, $06, $00, $8D, $1C, $00
-	db $00, $81, $6F, $01, $00, $80, $00, $83
-	db $90, $06, $1E, $00, $01, $00, $00, $8D
-	db $10, $00, $00, $81, $63, $01, $00, $80
-	db $00, $83, $90, $06, $00, $8D, $50, $00
-	db $00, $81, $A3, $01, $00, $80, $00, $83
-	db $90, $06, $0A, $00, $80, $01, $00, $8D
-	db $3B, $00, $00, $81, $9A, $01, $00, $80
-	db $00, $83, $90, $06, $2A, $00, $00, $80
-	db $0A, $00, $80, $01, $00, $8D, $1E, $00
-	db $00, $81, $93, $01, $00, $80, $00, $83
-	db $90, $06, $0A, $00, $80, $01, $00, $8D
-	db $38, $00, $00, $81, $96, $01, $00, $80
-	db $00, $00, $14, $03, $06, $00, $E0, $00
-	db $0A, $00, $80, $01, $28, $00, $00, $01
-	db $00, $8D, $77, $00, $00, $85, $00, $30
-	db $00, $81, $DD, $02, $00, $80, $00, $83
-	db $90, $06, $00, $8D, $3C, $00, $00, $81
-	db $A9, $01, $00, $80, $00, $83, $90, $06
-	db $00, $8D, $0B, $00, $00, $81, $80, $01
-	db $00, $80, $00, $83, $90, $06, $00, $8D
-	db $32, $00, $00, $81, $83, $01, $00, $80
-	db $00, $83, $90, $06, $00, $8D, $0E, $00
-	db $00, $81, $77, $01, $00, $80, $00, $83
-	db $90, $06, $00, $8D, $B2, $00, $00, $81
-	db $07, $03, $00, $80, $00, $83, $90, $06
-	db $00, $8D, $07, $00, $00, $81, $60, $01
-	db $00, $80, $00, $00, $14, $03, $06, $00
-	db $E0, $00, $0A, $00, $70, $01, $00, $8D
-	db $3A, $00, $00, $85, $00, $30, $00, $81
-	db $A8, $01, $00, $80, $00, $00, $14, $03
-	db $06, $00, $E0, $00, $0A, $00, $A0, $01
-	db $22, $00, $68, $00, $0E, $00, $00, $00
-	db $50, $00, $00, $00, $2A, $00, $80, $FB
-	db $00, $8D, $2F, $00, $00, $85, $00, $30
-	db $00, $81, $91, $01, $00, $80, $00, $83
-	db $90, $06, $00, $8D, $53, $00, $00, $81
-	db $9F, $01, $00, $80, $00, $00, $14, $03
-	db $06, $00, $DD, $00, $0A, $00, $70, $01
-	db $00, $8D, $01, $00, $00, $85, $00, $30
-	db $00, $81, $4F, $02, $00, $80, $00, $83
-	db $90, $06, $00, $8D, $1F, $00, $00, $85
-	db $00, $30, $00, $81, $F5, $01, $00, $80
-	db $00, $83, $90, $06, $00, $8D, $55, $00
-	db $00, $81, $EE, $01, $00, $80, $00, $83
-	db $90, $06, $00, $8D, $12, $00, $00, $81
-	db $69, $01, $00, $80, $00, $83, $90, $06
-	db $0A, $00, $80, $01, $00, $8D, $5C, $00
-	db $00, $81, $D0, $02, $00, $80, $00, $83
-	db $90, $06, $50, $00, $80, $00, $2F, $00
-	db $01, $00, $00, $8D, $08, $00, $00, $81
-	db $7D, $01, $00, $80, $00, $83, $90, $06
-	db $00, $8D, $0C, $00, $00, $81, $72, $01
-	db $00, $80, $00, $83, $90, $06, $48, $00
-	db $09, $00, $00, $8D, $24, $00, $00, $81
-	db $AF, $01, $00, $80, $00, $83, $90, $06
-	db $00, $8D, $5F, $00, $00, $81, $8C, $02
-	db $00, $80, $00, $83, $90, $06, $1A, $00
-	db $C4, $14, $00, $8D, $27, $00, $00, $80
-	db $00, $83, $90, $06, $00, $8D, $5E, $00
-	db $00, $81, $8D, $02, $00, $80, $00, $83
-	db $90, $06, $0A, $00, $80, $01, $00, $8D
-	db $22, $00, $00, $81, $FD, $01, $00, $80
-	db $00, $83, $90, $06, $0A, $00, $80, $01
-	db $00, $8D, $21, $00, $00, $81, $04, $02
-	db $00, $80, $00, $83, $90, $06, $0A, $00
-	db $80, $01, $00, $8D, $51, $00, $00, $85
-	db $00, $70, $00, $81, $1A, $02, $00, $80
-	db $00, $83, $90, $06, $00, $8D, $96, $00
-	db $00, $81, $8C, $02, $00, $80, $00, $83
-	db $90, $06, $00, $8D, $97, $00, $00, $81
-	db $8D, $02, $00, $80, $00, $83, $90, $06
-	db $0A, $00, $80, $01, $00, $8D, $38, $00
-	db $00, $81, $30, $02, $00, $80, $00, $00
-	db $14, $03, $06, $00, $E0, $00, $0A, $00
-	db $A0, $01, $00, $8D, $69, $00, $00, $85
-	db $00, $30, $00, $81, $60, $02, $00, $80
-	db $00, $00, $14, $03, $06, $00, $E0, $00
-	db $0A, $00, $A0, $01, $00, $8D, $6A, $00
-	db $00, $85, $00, $30, $00, $81, $61, $02
-	db $00, $80, $00, $00, $14, $03, $06, $00
-	db $E0, $00, $0A, $00, $A0, $01, $02, $00
-	db $F8, $00, $00, $8D, $2B, $00, $00, $85
-	db $00, $40, $00, $81, $69, $02, $00, $80
-	db $00, $00, $14, $03, $06, $00, $E0, $00
-	db $0A, $00, $A0, $01, $00, $8D, $43, $00
-	db $00, $85, $00, $30, $00, $81, $9D, $00
-	db $00, $80, $00, $00, $14, $03, $06, $00
-	db $E0, $00, $0A, $00, $A0, $01, $00, $8D
-	db $60, $00, $00, $85, $00, $30, $00, $81
-	db $6C, $00, $00, $80, $00, $00, $14, $03
-	db $06, $00, $E0, $00, $0A, $00, $A0, $01
-	db $00, $8D, $0D, $00, $00, $85, $00, $30
-	db $00, $81, $09, $03, $00, $80, $00, $00
-	db $14, $03, $06, $00, $E0, $00, $0A, $00
-	db $A0, $01, $00, $8D, $05, $00, $00, $85
-	db $00, $30, $00, $81, $08, $03, $00, $80
-	db $00, $00, $14, $03, $06, $00, $E0, $00
-	db $0A, $00, $A0, $01, $00, $8D, $6F, $00
-	db $00, $85, $00, $30, $00, $81, $B7, $01
-	db $00, $80, $00, $00, $14, $03, $06, $00
-	db $E0, $00, $0A, $00, $80, $01, $00, $8D
-	db $0F, $00, $00, $85, $00, $30, $00, $81
-	db $49, $01, $00, $80, $00, $00, $14, $03
-	db $06, $00, $E0, $00, $0A, $00, $A0, $01
-	db $00, $8D, $49, $00, $00, $85, $00, $30
-	db $00, $81, $CE, $02, $00, $80, $00, $00
-	db $14, $03, $06, $00, $E0, $00, $0A, $00
-	db $A0, $01, $00, $8D, $37, $00, $00, $85
-	db $00, $30, $00, $81, $D2, $01, $00, $80
-	db $00, $00, $18, $03, $06, $00, $E0, $00
-	db $0A, $00, $80, $01, $42, $00, $00, $00
-	db $44, $00, $6F, $C2, $00, $8D, $23, $00
-	db $00, $85, $00, $30, $00, $81, $CA, $01
-	db $00, $80, $00, $00, $18, $03, $06, $00
-	db $E0, $00, $0A, $00, $80, $01, $42, $00
-	db $00, $00, $44, $00, $8D, $C2, $00, $8D
-	db $04, $00, $00, $85, $00, $30, $00, $81
-	db $CB, $01, $00, $80, $00, $00, $18, $03
-	db $06, $00, $E0, $00, $0A, $00, $A0, $01
-	db $42, $00, $00, $00, $44, $00, $C3, $C2
-	db $00, $8D, $A3, $00, $00, $85, $00, $30
-	db $00, $81, $D9, $01, $00, $80, $00, $00
-	db $18, $03, $06, $00, $E0, $00, $0A, $00
-	db $A0, $01, $42, $00, $00, $00, $44, $00
-	db $E3, $C2, $00, $8D, $A4, $00, $00, $85
-	db $00, $30, $00, $81, $D9, $01, $00, $80
-	db $00, $00, $18, $03, $06, $00, $E0, $00
-	db $0A, $00, $A0, $01, $42, $00, $00, $00
-	db $44, $00, $59, $C2, $00, $8D, $26, $00
-	db $00, $85, $00, $30, $00, $81, $D9, $01
-	db $00, $80, $00, $00, $14, $03, $06, $00
-	db $E0, $00, $0A, $00, $80, $01, $00, $8D
-	db $A8, $00, $00, $85, $00, $30, $00, $81
-	db $0B, $03, $00, $80, $00, $00, $14, $03
-	db $06, $00, $E0, $00, $0A, $00, $80, $01
-	db $00, $8D, $6A, $00, $00, $85, $00, $30
-	db $00, $81, $44, $02, $00, $80, $00, $00
-	db $14, $03, $06, $00, $E0, $00, $0A, $00
-	db $38, $01, $00, $8D, $6A, $00, $00, $85
-	db $00, $30, $00, $81, $4F, $02, $00, $80
-	db $00, $00, $14, $03, $06, $00, $E0, $00
-	db $26, $00, $80, $01, $20, $00, $80, $01
-	db $0A, $00, $A0, $01, $00, $8D, $04, $00
-	db $00, $85, $00, $30, $00, $81, $A6, $00
-	db $00, $80, $00, $00, $14, $03, $06, $00
-	db $E0, $00, $26, $00, $80, $01, $20, $00
-	db $80, $01, $0A, $00, $A0, $01, $00, $8D
-	db $01, $00, $00, $85, $00, $30, $00, $81
-	db $03, $00, $00, $80, $00, $83, $90, $06
-	db $00, $8D, $02, $00, $00, $85, $00, $30
-	db $00, $81, $0A, $03, $00, $80, $00, $00
-	db $08, $03, $1C, $00, $00, $00, $00, $84
-	db $82, $66, $00, $81, $BF, $01, $00, $80
+	dw DATA_FF06A2
+	dw DATA_FF06B0
+	dw DATA_FF06BE
+	dw DATA_FF06D0
+	dw DATA_FF06DE
+	dw DATA_FF06F0
+	dw DATA_FF0706
+	dw DATA_FF0718
+	dw DATA_FF0736
+	dw DATA_FF0744
+	dw DATA_FF0752
+	dw DATA_FF0760
+	dw DATA_FF076E
+	dw DATA_FF077C
+	dw DATA_FF078A
+	dw DATA_FF07A4
+	dw DATA_FF07CE
+	dw DATA_FF07DC
+	dw DATA_FF07F6
+	dw DATA_FF0808
+	dw DATA_FF0816
+	dw DATA_FF0824
+	dw DATA_FF0836
+	dw DATA_FF084C
+	dw DATA_FF085A
+	dw DATA_FF086C
+	dw DATA_FF087A
+	dw DATA_FF0888
+	dw DATA_FF0896
+	dw DATA_FF08A8
+	dw DATA_FF08BA
+	dw DATA_FF08D0
+	dw DATA_FF08DE
+	dw DATA_FF08EC
+	dw DATA_FF08FE
+	dw DATA_FF0918
+	dw DATA_FF0932
+	dw DATA_FF0950
+	dw DATA_FF096A
+	dw DATA_FF0984
+	dw DATA_FF099E
+	dw DATA_FF09B8
+	dw DATA_FF09D2
+	dw DATA_FF09EC
+	dw DATA_FF0A06
+	dw DATA_FF0A20
+	dw DATA_FF0A42
+	dw DATA_FF0A64
+	dw DATA_FF0A86
+	dw DATA_FF0AA8
+	dw DATA_FF0ACA
+	dw DATA_FF0AE4
+	dw DATA_FF0AFE
+	dw DATA_FF0B18
+	dw DATA_FF0B3A
+	dw DATA_FF0B5C
+
+DATA_FF0690:
+	dw sprite.number, $0314
+	dw sprite.x_position, $00E0
+	dw sprite.y_position, $01A0
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_success
+
+DATA_FF06A2:
+	dw !initcommand_load_subconfig, DATA_FF0690
+	dw !initcommand_set_alt_palette, $001D
+	dw !initcommand_set_animation, $018D
+	dw !initcommand_success
+
+DATA_FF06B0:
+	dw !initcommand_load_subconfig, DATA_FF0690
+	dw !initcommand_set_alt_palette, $001C
+	dw !initcommand_set_animation, $016F
+	dw !initcommand_success
+
+DATA_FF06BE:
+	dw !initcommand_load_subconfig, DATA_FF0690
+	dw sprite.unknown_1E, $0001
+	dw !initcommand_set_alt_palette, $0010
+	dw !initcommand_set_animation, $0163
+	dw !initcommand_success
+
+DATA_FF06D0:
+	dw !initcommand_load_subconfig, DATA_FF0690
+	dw !initcommand_set_alt_palette, $0050
+	dw !initcommand_set_animation, $01A3
+	dw !initcommand_success
+
+DATA_FF06DE:
+	dw !initcommand_load_subconfig, DATA_FF0690
+	dw sprite.y_position, $0180
+	dw !initcommand_set_alt_palette, $003B
+	dw !initcommand_set_animation, $019A
+	dw !initcommand_success
+
+DATA_FF06F0:
+	dw !initcommand_load_subconfig, DATA_FF0690
+	dw sprite.unknown_2A, $8000
+	dw sprite.y_position, $0180
+	dw !initcommand_set_alt_palette, $001E
+	dw !initcommand_set_animation, $0193
+	dw !initcommand_success
+
+DATA_FF0706:
+	dw !initcommand_load_subconfig, DATA_FF0690
+	dw sprite.y_position, $0180
+	dw !initcommand_set_alt_palette, $0038
+	dw !initcommand_set_animation, $0196
+	dw !initcommand_success
+
+DATA_FF0718:
+	dw sprite.number, $0314
+	dw sprite.x_position, $00E0
+	dw sprite.y_position, $0180
+	dw sprite.unknown_28, $0100
+	dw !initcommand_set_alt_palette, $0077
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $02DD
+	dw !initcommand_success
+
+DATA_FF0736:
+	dw !initcommand_load_subconfig, DATA_FF0690
+	dw !initcommand_set_alt_palette, $003C
+	dw !initcommand_set_animation, $01A9
+	dw !initcommand_success
+
+DATA_FF0744:
+	dw !initcommand_load_subconfig, DATA_FF0690
+	dw !initcommand_set_alt_palette, $000B
+	dw !initcommand_set_animation, $0180
+	dw !initcommand_success
+
+DATA_FF0752:
+	dw !initcommand_load_subconfig, DATA_FF0690
+	dw !initcommand_set_alt_palette, $0032
+	dw !initcommand_set_animation, $0183
+	dw !initcommand_success
+
+DATA_FF0760:
+	dw !initcommand_load_subconfig, DATA_FF0690
+	dw !initcommand_set_alt_palette, $000E
+	dw !initcommand_set_animation, $0177
+	dw !initcommand_success
+
+DATA_FF076E:
+	dw !initcommand_load_subconfig, DATA_FF0690
+	dw !initcommand_set_alt_palette, $00B2
+	dw !initcommand_set_animation, $0307
+	dw !initcommand_success
+
+DATA_FF077C:
+	dw !initcommand_load_subconfig, DATA_FF0690
+	dw !initcommand_set_alt_palette, $0007
+	dw !initcommand_set_animation, $0160
+	dw !initcommand_success
+
+DATA_FF078A:
+	dw sprite.number, $0314
+	dw sprite.x_position, $00E0
+	dw sprite.y_position, $0170
+	dw !initcommand_set_alt_palette, $003A
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $01A8
+	dw !initcommand_success
+
+DATA_FF07A4:
+	dw sprite.number, $0314
+	dw sprite.x_position, $00E0
+	dw sprite.y_position, $01A0
+	dw sprite.unknown_22, $0068
+	dw sprite.ground_distance, $0000
+	dw sprite.parameter, $0000
+	dw sprite.unknown_2A, $FB80
+	dw !initcommand_set_alt_palette, $002F
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $0191
+	dw !initcommand_success
+
+DATA_FF07CE:
+	dw !initcommand_load_subconfig, DATA_FF0690
+	dw !initcommand_set_alt_palette, $0053
+	dw !initcommand_set_animation, $019F
+	dw !initcommand_success
+
+DATA_FF07DC:
+	dw sprite.number, $0314
+	dw sprite.x_position, $00DD
+	dw sprite.y_position, $0170
+	dw !initcommand_set_alt_palette, $0001
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $024F
+	dw !initcommand_success
+
+DATA_FF07F6:
+	dw !initcommand_load_subconfig, DATA_FF0690
+	dw !initcommand_set_alt_palette, $001F
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $01F5
+	dw !initcommand_success
+
+DATA_FF0808:
+	dw !initcommand_load_subconfig, DATA_FF0690
+	dw !initcommand_set_alt_palette, $0055
+	dw !initcommand_set_animation, $01EE
+	dw !initcommand_success
+
+DATA_FF0816:
+	dw !initcommand_load_subconfig, DATA_FF0690
+	dw !initcommand_set_alt_palette, $0012
+	dw !initcommand_set_animation, $0169
+	dw !initcommand_success
+
+DATA_FF0824:
+	dw !initcommand_load_subconfig, DATA_FF0690
+	dw sprite.y_position, $0180
+	dw !initcommand_set_alt_palette, $005C
+	dw !initcommand_set_animation, $02D0
+	dw !initcommand_success
+DATA_FF0836:
+	dw !initcommand_load_subconfig, DATA_FF0690
+	dw sprite.parameter, $0080
+	dw sprite.unknown_2F, $0001
+	dw !initcommand_set_alt_palette, $0008
+	dw !initcommand_set_animation, $017D
+	dw !initcommand_success
+
+DATA_FF084C:
+	dw !initcommand_load_subconfig, DATA_FF0690
+	dw !initcommand_set_alt_palette, $000C
+	dw !initcommand_set_animation, $0172
+	dw !initcommand_success
+
+DATA_FF085A:
+	dw !initcommand_load_subconfig, DATA_FF0690
+	dw sprite.unknown_48, $0009
+	dw !initcommand_set_alt_palette, $0024
+	dw !initcommand_set_animation, $01AF
+	dw !initcommand_success
+
+DATA_FF086C:
+	dw !initcommand_load_subconfig, DATA_FF0690
+	dw !initcommand_set_alt_palette, $005F
+	dw !initcommand_set_animation, $028C
+	dw !initcommand_success
+
+DATA_FF087A:
+	dw !initcommand_load_subconfig, DATA_FF0690
+	dw sprite.unknown_1A, $14C4
+	dw !initcommand_set_alt_palette, $0027
+	dw !initcommand_success
+
+DATA_FF0888:
+	dw !initcommand_load_subconfig, DATA_FF0690
+	dw !initcommand_set_alt_palette, $005E
+	dw !initcommand_set_animation, $028D
+	dw !initcommand_success
+
+DATA_FF0896:
+	dw !initcommand_load_subconfig, DATA_FF0690
+	dw sprite.y_position, $0180
+	dw !initcommand_set_alt_palette, $0022
+	dw !initcommand_set_animation, $01FD
+	dw !initcommand_success
+
+DATA_FF08A8:
+	dw !initcommand_load_subconfig, DATA_FF0690
+	dw sprite.y_position, $0180
+	dw !initcommand_set_alt_palette, $0021
+	dw !initcommand_set_animation, $0204
+	dw !initcommand_success
+
+DATA_FF08BA:
+	dw !initcommand_load_subconfig, DATA_FF0690
+	dw sprite.y_position, $0180
+	dw !initcommand_set_alt_palette, $0051
+	dw !initcommand_set_oam, $7000
+	dw !initcommand_set_animation, $021A
+	dw !initcommand_success
+
+DATA_FF08D0:
+	dw !initcommand_load_subconfig, DATA_FF0690
+	dw !initcommand_set_alt_palette, $0096
+	dw !initcommand_set_animation, $028C
+	dw !initcommand_success
+
+DATA_FF08DE:
+	dw !initcommand_load_subconfig, DATA_FF0690
+	dw !initcommand_set_alt_palette, $0097
+	dw !initcommand_set_animation, $028D
+	dw !initcommand_success
+
+DATA_FF08EC:
+	dw !initcommand_load_subconfig, DATA_FF0690
+	dw sprite.y_position, $0180
+	dw !initcommand_set_alt_palette, $0038
+	dw !initcommand_set_animation, $0230
+	dw !initcommand_success
+
+DATA_FF08FE:
+	dw sprite.number, $0314
+	dw sprite.x_position, $00E0
+	dw sprite.y_position, $01A0
+	dw !initcommand_set_alt_palette, $0069
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $0260
+	dw !initcommand_success
+
+DATA_FF0918:
+	dw sprite.number, $0314
+	dw sprite.x_position, $00E0
+	dw sprite.y_position, $01A0
+	dw !initcommand_set_alt_palette, $006A
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $0261
+	dw !initcommand_success
+
+DATA_FF0932:
+	dw sprite.number, $0314
+	dw sprite.x_position, $00E0
+	dw sprite.y_position, $01A0
+	dw sprite.render_order, $00F8
+	dw !initcommand_set_alt_palette, $002B
+	dw !initcommand_set_oam, $4000
+	dw !initcommand_set_animation, $0269
+	dw !initcommand_success
+
+DATA_FF0950:
+	dw sprite.number, $0314
+	dw sprite.x_position, $00E0
+	dw sprite.y_position, $01A0
+	dw !initcommand_set_alt_palette, $0043
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $009D
+	dw !initcommand_success
+
+DATA_FF096A:
+	dw sprite.number, $0314
+	dw sprite.x_position, $00E0
+	dw sprite.y_position, $01A0
+	dw !initcommand_set_alt_palette, $0060
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $006C
+	dw !initcommand_success
+
+DATA_FF0984:
+	dw sprite.number, $0314
+	dw sprite.x_position, $00E0
+	dw sprite.y_position, $01A0
+	dw !initcommand_set_alt_palette, $000D
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $0309
+	dw !initcommand_success
+
+DATA_FF099E:
+	dw sprite.number, $0314
+	dw sprite.x_position, $00E0
+	dw sprite.y_position, $01A0
+	dw !initcommand_set_alt_palette, $0005
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $0308
+	dw !initcommand_success
+
+DATA_FF09B8:
+	dw sprite.number, $0314
+	dw sprite.x_position, $00E0
+	dw sprite.y_position, $01A0
+	dw !initcommand_set_alt_palette, $006F
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $01B7
+	dw !initcommand_success
+
+DATA_FF09D2:
+	dw sprite.number, $0314
+	dw sprite.x_position, $00E0
+	dw sprite.y_position, $0180
+	dw !initcommand_set_alt_palette, $000F
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $0149
+	dw !initcommand_success
+
+DATA_FF09EC:
+	dw sprite.number, $0314
+	dw sprite.x_position, $00E0
+	dw sprite.y_position, $01A0
+	dw !initcommand_set_alt_palette, $0049
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $02CE
+	dw !initcommand_success
+
+DATA_FF0A06:
+	dw sprite.number, $0314
+	dw sprite.x_position, $00E0
+	dw sprite.y_position, $01A0
+	dw !initcommand_set_alt_palette, $0037
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $01D2
+	dw !initcommand_success
+
+DATA_FF0A20:
+	dw sprite.number, $0318
+	dw sprite.x_position, $00E0
+	dw sprite.y_position, $0180
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, DATA_BAC26F
+	dw !initcommand_set_alt_palette, $0023
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $01CA
+	dw !initcommand_success
+
+DATA_FF0A42:
+	dw sprite.number, $0318
+	dw sprite.x_position, $00E0
+	dw sprite.y_position, $0180
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, DATA_BAC28D
+	dw !initcommand_set_alt_palette, $0004
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $01CB
+	dw !initcommand_success
+
+DATA_FF0A64:
+	dw sprite.number, $0318
+	dw sprite.x_position, $00E0
+	dw sprite.y_position, $01A0
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, DATA_BAC2C3
+	dw !initcommand_set_alt_palette, $00A3
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $01D9
+	dw !initcommand_success
+
+DATA_FF0A86:
+	dw sprite.number, $0318
+	dw sprite.x_position, $00E0
+	dw sprite.y_position, $01A0
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, DATA_BAC2E3
+	dw !initcommand_set_alt_palette, $00A4
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $01D9
+	dw !initcommand_success
+
+DATA_FF0AA8:
+	dw sprite.number, $0318
+	dw sprite.x_position, $00E0
+	dw sprite.y_position, $01A0
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, DATA_BAC259
+	dw !initcommand_set_alt_palette, $0026
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $01D9
+	dw !initcommand_success
+
+DATA_FF0ACA:
+	dw sprite.number, $0314
+	dw sprite.x_position, $00E0
+	dw sprite.y_position, $0180
+	dw !initcommand_set_alt_palette, $00A8
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $030B
+	dw !initcommand_success
+
+DATA_FF0AE4:
+	dw sprite.number, $0314
+	dw sprite.x_position, $00E0
+	dw sprite.y_position, $0180
+	dw !initcommand_set_alt_palette, $006A
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $0244
+	dw !initcommand_success
+
+DATA_FF0AFE:
+	dw sprite.number, $0314
+	dw sprite.x_position, $00E0
+	dw sprite.y_position, $0138
+	dw !initcommand_set_alt_palette, $006A
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $024F
+	dw !initcommand_success
+
+DATA_FF0B18:
+	dw sprite.number, $0314
+	dw sprite.x_position, $00E0
+	dw sprite.max_x_speed, $0180
+	dw sprite.x_speed, $0180
+	dw sprite.y_position, $01A0
+	dw !initcommand_set_alt_palette, $0004
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $00A6
+	dw !initcommand_success
+
+DATA_FF0B3A:
+	dw sprite.number, $0314
+	dw sprite.x_position, $00E0
+	dw sprite.max_x_speed, $0180
+	dw sprite.x_speed, $0180
+	dw sprite.y_position, $01A0
+	dw !initcommand_set_alt_palette, $0001
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $0003
+	dw !initcommand_success
+
+DATA_FF0B5C:
+	dw !initcommand_load_subconfig, DATA_FF0690
+	dw !initcommand_set_alt_palette, $0002
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $030A
+	dw !initcommand_success
+
+DATA_FF0B6E:
+	dw sprite.number, $0308
+	dw sprite.unknown_1C, $0000
+	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_set_animation, $01BF
+	dw !initcommand_success
 
 DATA_FF0B80:
-	db $00, $86, $00, $00, $00, $00, $00, $83
-	db $6E, $0B, $00, $80
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw !initcommand_load_subconfig, DATA_FF0B6E
+	dw !initcommand_success
 
 DATA_FF0B8C:
-	db $00, $86, $F0, $FF, $0E, $00, $00, $83
-	db $6E, $0B, $00, $80
+	dw !initcommand_spawn_relative, $FFF0, $000E
+	dw !initcommand_load_subconfig, DATA_FF0B6E
+	dw !initcommand_success
 
 DATA_FF0B98:
-	db $00, $86, $10, $00, $14, $00, $00, $83
-	db $6E, $0B, $00, $80
+	dw !initcommand_spawn_relative, $0010, $0014
+	dw !initcommand_load_subconfig, DATA_FF0B6E
+	dw !initcommand_success
 
 DATA_FF0BA4:
-	db $00, $00, $C4, $00, $54, $00, $FC, $D5
-	db $2E, $00, $00, $00, $00, $80
+	dw sprite.number, $00C4
+	dw sprite.unknown_54, DATA_FFD5FC
+	dw sprite.action, $0000
+	dw !initcommand_success
 
 DATA_FF0BB2:
-	db $00, $00, $C4, $00, $54, $00, $28, $D7
-	db $2E, $00, $00, $00, $00, $80
+	dw sprite.number, $00C4
+	dw sprite.unknown_54, DATA_FFD728
+	dw sprite.action, $0000
+	dw !initcommand_success
 
 DATA_FF0BC0:
-	db $00, $00, $00, $03, $02, $00, $F8, $00
-	db $06, $00, $80, $17, $0A, $00, $00, $12
-	db $2E, $00, $00, $00, $30, $00, $00, $00
-	db $1C, $00, $00, $80, $00, $85, $00, $30
-	db $00, $84, $82, $66, $00, $80, $00, $00
-	db $C4, $00, $54, $00, $FC, $D5, $2E, $00
-	db $00, $00, $00, $80
+	dw sprite.number, $0300
+	dw sprite.render_order, $00F8
+	dw sprite.x_position, $1780
+	dw sprite.y_position, $1200
+	dw sprite.action, $0000
+	dw sprite.unknown_30, $0000
+	dw sprite.unknown_1C, $8000
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_success
+
+DATA_FF0BE6:
+	dw sprite.number, $00C4
+	dw sprite.unknown_54, DATA_FFD5FC
+	dw sprite.action, $0000
+	dw !initcommand_success
 
 DATA_FF0BF4:
-	db $00, $00, $C0, $00, $54, $00, $60, $D4
-	db $2E, $00, $00, $00, $00, $80
+	dw sprite.number, $00C0
+	dw sprite.unknown_54, DATA_FFD460
+	dw sprite.action, $0000
+	dw !initcommand_success
 
 DATA_FF0C02:
-	db $00, $00, $C0, $00, $54, $00, $F4, $D4
-	db $2E, $00, $00, $00, $00, $80
+	dw sprite.number, $00C0
+	dw sprite.unknown_54, DATA_FFD4F4
+	dw sprite.action, $0000
+	dw !initcommand_success
 
 DATA_FF0C10:
-	db $00, $00, $C0, $00, $54, $00, $00, $D5
-	db $2E, $00, $00, $00, $00, $80
+	dw sprite.number, $00C0
+	dw sprite.unknown_54, DATA_FFD500
+	dw sprite.action, $0000
+	dw !initcommand_success
 
 DATA_FF0C1E:
-	db $00, $00, $C0, $00, $54, $00, $0C, $D5
-	db $2E, $00, $00, $00, $00, $80
+	dw sprite.number, $00C0
+	dw sprite.unknown_54, DATA_FFD50C
+	dw sprite.action, $0000
+	dw !initcommand_success
 
 DATA_FF0C2C:
-	db $00, $86, $00, $00, $F0, $FF, $00, $00
-	db $D4, $01, $54, $00, $1C, $02, $2E, $00
-	db $00, $00, $20, $00, $00, $00, $26, $00
-	db $00, $00, $24, $00, $00, $00, $2A, $00
-	db $00, $00, $02, $00, $D6, $00, $00, $81
-	db $BF, $01, $00, $84, $82, $66, $52, $00
-	db $00, $00, $00, $80
+	dw !initcommand_spawn_relative, $0000, $FFF0
+	dw sprite.number, $01D4
+	dw sprite.unknown_54, $021C
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.max_x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_2A, $0000
+	dw sprite.render_order, $00D6
+	dw !initcommand_set_animation, $01BF
+	dw !initcommand_set_palette, DATA_FD6682
+	dw sprite.unknown_52, $0000
+	dw !initcommand_success
 
 DATA_FF0C60:
-	db $00, $00, $38, $01, $02, $00, $F8, $00
-	db $2E, $00, $02, $00, $30, $00, $00, $00
-	db $1C, $00, $00, $80, $00, $85, $00, $30
-	db $00, $84, $82, $66, $00, $80
+	dw sprite.number, $0138
+	dw sprite.render_order, $00F8
+	dw sprite.action, $0002
+	dw sprite.unknown_30, $0000
+	dw sprite.unknown_1C, $8000
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_success
 
 DATA_FF0C7E:
-	db $00, $00, $E0, $00, $2E, $00, $00, $00
-	db $00, $80
+	dw sprite.number, $00E0
+	dw sprite.action, $0000
+	dw !initcommand_success
 
 DATA_FF0C88:
-	db $00, $00, $2C, $01, $02, $00, $C0, $00
-	db $1C, $00, $00, $E0, $06, $00, $80, $00
-	db $0A, $00, $50, $00, $2E, $00, $00, $00
-	db $20, $00, $00, $00, $24, $00, $00, $00
-	db $30, $00, $00, $00, $00, $85, $00, $10
-	db $00, $84, $82, $66, $00, $81, $5F, $01
-	db $00, $80
+	dw sprite.number, $012C
+	dw sprite.render_order, $00C0
+	dw sprite.unknown_1C, $E000
+	dw sprite.x_position, $0080
+	dw sprite.y_position, $0050
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_30, $0000
+	dw !initcommand_set_oam, $1000
+	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_set_animation, $015F
+	dw !initcommand_success
 
 DATA_FF0CBA:
-	db $00, $00, $CC, $01, $00, $86, $00, $00
-	db $00, $00, $1A, $00, $00, $00, $16, $00
-	db $00, $00, $00, $8D, $33, $00, $00, $80
+	dw sprite.number, $01CC
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.unknown_1A, $0000
+	dw sprite.unknown_16, $0000
+	dw !initcommand_set_alt_palette, $0033
+	dw !initcommand_success
 
 DATA_FF0CD2:
-	db $00, $00, $CC, $01, $00, $86, $00, $00
-	db $00, $00, $1A, $00, $00, $00, $16, $00
-	db $00, $00, $00, $8D, $6C, $00, $00, $80
-	db $00, $00, $34, $01, $02, $00, $F8, $00
-	db $1C, $00, $00, $80, $2E, $00, $00, $00
-	db $00, $85, $00, $30, $00, $80
+	dw sprite.number, $01CC
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.unknown_1A, $0000
+	dw sprite.unknown_16, $0000
+	dw !initcommand_set_alt_palette, $006C
+	dw !initcommand_success
+
+DATA_FF0CEA:
+	dw sprite.number, $0134
+	dw sprite.render_order, $00F8
+	dw sprite.unknown_1C, $8000
+	dw sprite.action, $0000
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_success
 
 DATA_FF0D00:
-	db $0A, $0D, $1C, $0D, $2E, $0D, $40, $0D
-	db $52, $0D, $00, $83, $EA, $0C, $42, $00
-	db $14, $00, $44, $00, $CD, $00, $00, $8D
-	db $05, $00, $00, $80, $00, $83, $EA, $0C
-	db $42, $00, $14, $00, $44, $00, $CD, $00
-	db $00, $8D, $0D, $00, $00, $80, $00, $83
-	db $EA, $0C, $42, $00, $14, $00, $44, $00
-	db $CD, $00, $00, $8D, $0F, $00, $00, $80
-	db $00, $83, $EA, $0C, $42, $00, $14, $00
-	db $44, $00, $CD, $00, $00, $8D, $43, $00
-	db $00, $80, $00, $83, $EA, $0C, $42, $00
-	db $14, $00, $44, $00, $CD, $00, $00, $8D
-	db $60, $00, $00, $80
+	dw DATA_FF0D0A
+	dw DATA_FF0D1C
+	dw DATA_FF0D2E
+	dw DATA_FF0D40
+	dw DATA_FF0D52
+
+DATA_FF0D0A:
+	dw !initcommand_load_subconfig, DATA_FF0CEA
+	dw sprite.unknown_42, $0014
+	dw sprite.unknown_44, $00CD
+	dw !initcommand_set_alt_palette, $0005
+	dw !initcommand_success
+
+DATA_FF0D1C:
+	dw !initcommand_load_subconfig, DATA_FF0CEA
+	dw sprite.unknown_42, $0014
+	dw sprite.unknown_44, $00CD
+	dw !initcommand_set_alt_palette, $000D
+	dw !initcommand_success
+
+DATA_FF0D2E:
+	dw !initcommand_load_subconfig, DATA_FF0CEA
+	dw sprite.unknown_42, $0014
+	dw sprite.unknown_44, $00CD
+	dw !initcommand_set_alt_palette, $000F
+	dw !initcommand_success
+
+DATA_FF0D40:
+	dw !initcommand_load_subconfig, DATA_FF0CEA
+	dw sprite.unknown_42, $0014
+	dw sprite.unknown_44, $00CD
+	dw !initcommand_set_alt_palette, $0043
+	dw !initcommand_success
+
+DATA_FF0D52:
+	dw !initcommand_load_subconfig, DATA_FF0CEA
+	dw sprite.unknown_42, $0014
+	dw sprite.unknown_44, $00CD
+	dw !initcommand_set_alt_palette, $0060
+	dw !initcommand_success
+
 
 DATA_FF0D64:
-	db $6E, $0D, $A2, $0D, $D6, $0D, $0E, $0E
-	db $42, $0E, $00, $00, $90, $01, $00, $86
-	db $00, $00, $00, $00, $02, $00, $D0, $00
-	db $54, $00, $2C, $02, $42, $00, $00, $00
-	db $2E, $00, $00, $00, $20, $00, $00, $00
-	db $24, $00, $00, $00, $5A, $00, $FF, $00
-	db $30, $00, $02, $00, $00, $8D, $05, $00
-	db $00, $81, $47, $01, $00, $80, $00, $00
-	db $94, $01, $00, $86, $00, $00, $00, $00
-	db $02, $00, $D0, $00, $54, $00, $34, $02
-	db $42, $00, $00, $00, $2E, $00, $00, $00
-	db $20, $00, $00, $00, $24, $00, $00, $00
-	db $5A, $00, $FF, $00, $30, $00, $02, $00
-	db $00, $8D, $0D, $00, $00, $81, $48, $01
-	db $00, $80, $00, $00, $98, $01, $00, $86
-	db $00, $00, $00, $00, $02, $00, $D0, $00
-	db $54, $00, $3C, $02, $42, $00, $00, $00
-	db $4A, $00, $00, $00, $2E, $00, $00, $00
-	db $20, $00, $00, $00, $24, $00, $00, $00
-	db $30, $00, $00, $00, $5A, $00, $FF, $00
-	db $00, $8D, $0F, $00, $00, $81, $49, $01
-	db $00, $80, $00, $00, $9C, $01, $00, $86
-	db $00, $00, $00, $00, $02, $00, $D0, $00
-	db $54, $00, $4A, $02, $42, $00, $00, $00
-	db $2E, $00, $00, $00, $20, $00, $00, $00
-	db $24, $00, $00, $00, $5A, $00, $FF, $00
-	db $30, $00, $02, $00, $00, $8D, $43, $00
-	db $00, $81, $4A, $01, $00, $80, $00, $00
-	db $A0, $01, $00, $86, $00, $00, $00, $00
-	db $02, $00, $D0, $00, $54, $00, $58, $02
-	db $42, $00, $00, $00, $2E, $00, $04, $00
-	db $20, $00, $00, $00, $24, $00, $00, $00
-	db $5A, $00, $88, $00, $30, $00, $00, $00
-	db $00, $8D, $60, $00, $00, $81, $4B, $01
-	db $00, $80
+	dw DATA_FF0D6E
+	dw DATA_FF0DA2
+	dw DATA_FF0DD6
+	dw DATA_FF0E0E
+	dw DATA_FF0E42
+
+DATA_FF0D6E:
+	dw sprite.number, $0190
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.render_order, $00D0
+	dw sprite.unknown_54, $022C
+	dw sprite.unknown_42, $0000
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_5A, $00FF
+	dw sprite.unknown_30, $0002
+	dw !initcommand_set_alt_palette, $0005
+	dw !initcommand_set_animation, $0147
+	dw !initcommand_success
+
+DATA_FF0DA2:
+	dw sprite.number, $0194
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.render_order, $00D0
+	dw sprite.unknown_54, $0234
+	dw sprite.unknown_42, $0000
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_5A, $00FF
+	dw sprite.unknown_30, $0002
+	dw !initcommand_set_alt_palette, $000D
+	dw !initcommand_set_animation, $0148
+	dw !initcommand_success
+
+DATA_FF0DD6:
+	dw sprite.number, $0198
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.render_order, $00D0
+	dw sprite.unknown_54, $023C
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_4A, $0000
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_30, $0000
+	dw sprite.unknown_5A, $00FF
+	dw !initcommand_set_alt_palette, $000F
+	dw !initcommand_set_animation, $0149
+	dw !initcommand_success
+
+DATA_FF0E0E:
+	dw sprite.number, $019C
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.render_order, $00D0
+	dw sprite.unknown_54, $024A
+	dw sprite.unknown_42, $0000
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_5A, $00FF
+	dw sprite.unknown_30, $0002
+	dw !initcommand_set_alt_palette, $0043
+	dw !initcommand_set_animation, $014A
+	dw !initcommand_success
+
+DATA_FF0E42:
+	dw sprite.number, $01A0
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.render_order, $00D0
+	dw sprite.unknown_54, $0258
+	dw sprite.unknown_42, $0000
+	dw sprite.action, $0004
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+if !version == 1
+	dw sprite.unknown_5A, $0088
+endif
+	dw sprite.unknown_30, $0000
+	dw !initcommand_set_alt_palette, $0060
+	dw !initcommand_set_animation, $014B
+	dw !initcommand_success
 
 DATA_FF0E76:
-	db $00, $86, $DC, $FF, $E8, $FF, $00, $83
-	db $8A, $17, $02, $00, $D6, $00, $00, $81
-	db $BB, $01, $52, $00, $00, $00, $00, $80
+	dw !initcommand_spawn_relative, $FFDC, $FFE8
+	dw !initcommand_load_subconfig, DATA_FF178A
+	dw sprite.render_order, $00D6
+	dw !initcommand_set_animation, $01BB
+	dw sprite.unknown_52, $0000
+	dw !initcommand_success
 
 DATA_FF0E8E:
-	db $00, $00, $60, $02, $54, $00, $1C, $02
-	db $30, $00, $20, $00, $00, $86, $19, $00
-	db $F6, $FF, $2E, $00, $00, $00, $00, $8D
-	db $55, $00, $00, $81, $F3, $01, $00, $80
+	dw sprite.number, $0260
+	dw sprite.unknown_54, $021C
+	dw sprite.unknown_30, $0020
+	dw !initcommand_spawn_relative, $0019, $FFF6
+	dw sprite.action, $0000
+	dw !initcommand_set_alt_palette, $0055
+	dw !initcommand_set_animation, $01F3
+	dw !initcommand_success
 
 DATA_FF0EAE:
-	db $00, $00, $30, $01, $00, $88, $00, $8D
-	db $52, $00, $00, $85, $00, $30, $00, $81
-	db $F9, $01, $00, $80
+	dw sprite.number, $0130
+	dw !initcommand_set_position
+	dw !initcommand_set_alt_palette, $0052
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $01F9
+	dw !initcommand_success
 
 DATA_FF0EC2:
-	db $00, $00, $E4, $00, $02, $00, $D8, $00
-	db $54, $00, $40, $00, $0C, $00, $C0, $FF
-	db $1E, $00, $00, $00, $2E, $00, $00, $00
-	db $30, $00, $1C, $00, $00, $8B, $00, $20
-	db $00, $80
+	dw sprite.number, $00E4
+	dw sprite.render_order, $00D8
+	dw sprite.unknown_54, $0040
+	dw sprite.ground_y_position, $FFC0
+	dw sprite.unknown_1E, $0000
+	dw sprite.action, $0000
+	dw sprite.unknown_30, $001C
+	dw !initcommand_set_oam_special, $2000
+	dw !initcommand_success
 
 DATA_FF0EE4:
-	db $00, $00, $E8, $00, $02, $00, $E4, $00
-	db $54, $00, $2A, $01, $0C, $00, $C0, $FF
-	db $1E, $00, $00, $00, $2E, $00, $00, $00
-	db $30, $00, $1C, $00, $00, $8B, $00, $20
-	db $00, $80
+	dw sprite.number, $00E8
+	dw sprite.render_order, $00E4
+	dw sprite.unknown_54, $012A
+	dw sprite.ground_y_position, $FFC0
+	dw sprite.unknown_1E, $0000
+	dw sprite.action, $0000
+	dw sprite.unknown_30, $001C
+	dw !initcommand_set_oam_special, $2000
+	dw !initcommand_success
 
 DATA_FF0F06:
-	db $00, $00, $EC, $00, $06, $00, $80, $00
-	db $0A, $00, $78, $00, $1A, $00, $0C, $00
-	db $00, $80
+	dw sprite.number, $00EC
+	dw sprite.x_position, $0080
+	dw sprite.y_position, $0078
+	dw sprite.unknown_1A, $000C
+	dw !initcommand_success
 
 DATA_FF0F18:
-	db $00, $00, $FC, $00, $00, $86, $00, $00
-	db $00, $00, $00, $84, $74, $65, $00, $81
-	db $5C, $01, $00, $80
+	dw sprite.number, $00FC
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw !initcommand_set_palette, DATA_FD6574
+	dw !initcommand_set_animation, $015C
+	dw !initcommand_success
 
 DATA_FF0F2C:
-	db $00, $00, $00, $01, $00, $86, $FB, $FF
-	db $E2, $FF, $42, $00, $00, $04, $00, $85
-	db $00, $30, $00, $84, $84, $64, $00, $81
-	db $5D, $01, $00, $80
+	dw sprite.number, $0100
+	dw !initcommand_spawn_relative, $FFFB, $FFE2
+	dw sprite.unknown_42, $0400
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_palette, DATA_FD6484
+	dw !initcommand_set_animation, $015D
+	dw !initcommand_success
 
 DATA_FF0F48:
-	db $00, $00, $0C, $01, $00, $86, $00, $00
-	db $F6, $FF, $00, $84, $82, $66, $00, $81
-	db $B6, $01, $00, $80
+	dw sprite.number, $010C
+	dw !initcommand_spawn_relative, $0000, $FFF6
+	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_set_animation, $01B6
+	dw !initcommand_success
 
 DATA_FF0F5C:
-	db $00, $00, $0C, $01, $00, $86, $00, $00
-	db $00, $00, $00, $84, $82, $66, $00, $81
-	db $B6, $01, $00, $80
+	dw sprite.number, $010C
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_set_animation, $01B6
+	dw !initcommand_success
 
 DATA_FF0F70:
-	db $00, $00, $10, $01, $00, $86, $00, $00
-	db $00, $00, $00, $8D, $6E, $00, $00, $81
-	db $52, $01, $00, $80
+	dw sprite.number, $0110
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw !initcommand_set_alt_palette, $006E
+	dw !initcommand_set_animation, $0152
+	dw !initcommand_success
 
 DATA_FF0F84:
-	db $00, $00, $10, $01, $00, $86, $00, $00
-	db $00, $00, $00, $84, $6E, $00, $00, $81
-	db $51, $01, $00, $80
+	dw sprite.number, $0110
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw !initcommand_set_palette, $006E
+	dw !initcommand_set_animation, $0151
+	dw !initcommand_success
 
 DATA_FF0F98:
-	db $00, $00, $10, $01, $00, $86, $0A, $00
-	db $08, $00, $00, $84, $74, $65, $00, $81
-	db $53, $01, $00, $80
+	dw sprite.number, $0110
+	dw !initcommand_spawn_relative, $000A, $0008
+	dw !initcommand_set_palette, DATA_FD6574
+	dw !initcommand_set_animation, $0153
+	dw !initcommand_success
 
 DATA_FF0FAC:
-	db $00, $00, $8C, $00, $06, $00, $00, $00
-	db $0A, $00, $00, $00, $1A, $00, $00, $00
-	db $16, $00, $00, $00, $44, $00, $00, $00
-	db $46, $00, $00, $00, $56, $00, $FF, $FF
-	db $5A, $00, $00, $00, $00, $80
+	dw sprite.number, $008C
+	dw sprite.x_position, $0000
+	dw sprite.y_position, $0000
+	dw sprite.unknown_1A, $0000
+	dw sprite.unknown_16, $0000
+	dw sprite.unknown_44, $0000
+	dw sprite.unknown_46, $0000
+	dw sprite.unknown_56, $FFFF
+	dw sprite.unknown_5A, $0000
+	dw !initcommand_success
 
 DATA_FF0FD2:
-	db $00, $89, $28, $00, $82, $66, $21, $0B
-	db $C0, $06, $00, $80
+	dw !initcommand_setup_static, $0028, $6682 : dl DATA_C00B21 : db $06
+	dw !initcommand_success
 
 DATA_FF0FDE:
-	db $00, $8E, $0C, $00, $02, $00, $21, $1B
-	db $C0, $20, $00, $86, $00, $00, $00, $00
-	db $02, $00, $C8, $00, $20, $00, $00, $00
-	db $24, $00, $00, $FF, $00, $85, $00, $20
-	db $00, $81, $54, $01, $00, $80
+	dw !initcommand_setup_static2, $000C, $0002 : dl DATA_C01B21 : db $20
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.render_order, $00C8
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $FF00
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_animation, $0154
+	dw !initcommand_success
 
 DATA_FF1004:
-	db $00, $8E, $10, $00, $0F, $00, $21, $1F
-	db $C0, $20, $00, $86, $08, $00, $F0, $FF
-	db $54, $00, $44, $02, $2E, $00, $00, $00
-	db $02, $00, $C8, $00, $00, $87, $20, $00
-	db $80, $06, $00, $87, $26, $00, $00, $01
-	db $24, $00, $80, $FE, $1C, $00, $00, $00
-	db $00, $81, $56, $01, $00, $80
+	dw !initcommand_setup_static2, $0010, $000F : dl DATA_C01F21 : db $20
+	dw !initcommand_spawn_relative, $0008, $FFF0
+	dw sprite.unknown_54, $0244
+	dw sprite.action, $0000
+	dw sprite.render_order, $00C8
+	dw !initcommand_set_directional, sprite.x_speed, $0680
+	dw !initcommand_set_directional, sprite.max_x_speed, $0100
+	dw sprite.y_speed, $FE80
+	dw sprite.unknown_1C, $0000
+	dw !initcommand_set_animation, $0156
+	dw !initcommand_success
 
 DATA_FF103A:
-	db $00, $00, $38, $02, $00, $88, $00, $84
-	db $82, $66, $00, $85, $00, $30, $00, $81
-	db $68, $01, $00, $80
+	dw sprite.number, $0238
+	dw !initcommand_set_position
+	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $0168
+	dw !initcommand_success
 
 DATA_FF104E:
-	db $00, $00, $38, $02, $00, $86, $00, $00
-	db $00, $00, $00, $84, $82, $66, $00, $85
-	db $00, $30, $00, $81, $68, $01, $00, $80
-	db $00, $00, $E8, $01, $02, $00, $D5, $00
-	db $00, $86, $00, $00, $00, $00, $20, $00
-	db $00, $00, $24, $00, $00, $00, $2E, $00
-	db $00, $00, $00, $85, $00, $20, $30, $00
-	db $20, $00, $00, $80
+	dw sprite.number, $0238
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $0168
+	dw !initcommand_success
+
+DATA_FF1066:
+	dw sprite.number, $01E8
+	dw sprite.render_order, $00D5
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.action, $0000
+	dw !initcommand_set_oam, $2000
+	dw sprite.unknown_30, $0020
+	dw !initcommand_success
 
 DATA_FF108A:
-	db $00, $83, $66, $10, $00, $8D, $1F, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF1066
+	dw !initcommand_set_alt_palette, $001F
+	dw !initcommand_success
 
 DATA_FF1094:
-	db $00, $83, $66, $10, $00, $8D, $2A, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF1066
+	dw !initcommand_set_alt_palette, $002A
+	dw !initcommand_success
 
 DATA_FF109E:
-	db $00, $83, $66, $10, $00, $8D, $65, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF1066
+	dw !initcommand_set_alt_palette, $0065
+	dw !initcommand_success
 
 DATA_FF10A8:
-	db $00, $83, $66, $10, $00, $8D, $66, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF1066
+	dw !initcommand_set_alt_palette, $0066
+	dw !initcommand_success
 
 DATA_FF10B2:
-	db $00, $8D, $18, $00, $42, $00, $01, $00
-	db $00, $00, $78, $01, $54, $00, $1C, $02
-	db $02, $00, $D4, $00, $26, $00, $00, $00
-	db $20, $00, $00, $00, $24, $00, $00, $00
-	db $30, $00, $00, $00, $00, $85, $00, $20
-	db $00, $81, $C0, $02, $2A, $00, $40, $FF
-	db $04, $00, $1E, $00, $2E, $00, $03, $00
-	db $52, $00, $10, $01, $24, $00, $00, $FA
-	db $00, $80
+	dw !initcommand_set_alt_palette, $0018
+	dw sprite.unknown_42, $0001
+	dw sprite.number, $0178
+	dw sprite.unknown_54, $021C
+	dw sprite.render_order, $00D4
+	dw sprite.max_x_speed, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_30, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_animation, $02C0
+	dw sprite.unknown_2A, $FF40
+	dw sprite.x_sub_position, $001E
+	dw sprite.action, $0003
+	dw sprite.unknown_52, $0110
+	dw sprite.y_speed, $FA00
+	dw !initcommand_success
 
 DATA_FF10F4:
-	db $00, $00, $70, $01, $54, $00, $1C, $02
-	db $02, $00, $C8, $00, $00, $85, $00, $20
-	db $00, $84, $82, $66, $00, $81, $B2, $02
-	db $2E, $00, $02, $00, $4E, $00, $10, $00
-	db $52, $00, $10, $01, $24, $00, $00, $FA
-	db $50, $00, $B4, $00, $00, $80
+	dw sprite.number, $0170
+	dw sprite.unknown_54, $021C
+	dw sprite.render_order, $00C8
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_set_animation, $02B2
+	dw sprite.action, $0002
+	dw sprite.unknown_4E, $0010
+	dw sprite.unknown_52, $0110
+	dw sprite.y_speed, $FA00
+	dw sprite.parameter, $00B4
+	dw !initcommand_success
 
 DATA_FF1122:
-	db $00, $00, $20, $01, $00, $86, $00, $00
-	db $00, $00, $02, $00, $ED, $00, $2E, $00
-	db $00, $00, $4E, $00, $20, $20, $00, $8D
-	db $02, $00, $00, $85, $00, $20, $00, $80
+	dw sprite.number, $0120
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.render_order, $00ED
+	dw sprite.action, $0000
+	dw sprite.unknown_4E, $2020
+	dw !initcommand_set_alt_palette, $0002
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF1142:
-	db $00, $00, $20, $01, $00, $86, $00, $00
-	db $00, $00, $02, $00, $ED, $00, $2E, $00
-	db $00, $00, $4E, $00, $20, $20, $00, $8D
-	db $00, $00, $00, $85, $00, $20, $00, $80
+	dw sprite.number, $0120
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.render_order, $00ED
+	dw sprite.action, $0000
+	dw sprite.unknown_4E, $2020
+	dw !initcommand_set_alt_palette, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF1162:
-	db $00, $00, $20, $01, $00, $86, $00, $00
-	db $00, $00, $02, $00, $ED, $00, $2E, $00
-	db $00, $00, $4E, $00, $20, $20, $00, $84
-	db $84, $64, $00, $85, $00, $20, $00, $80
+	dw sprite.number, $0120
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.render_order, $00ED
+	dw sprite.action, $0000
+	dw sprite.unknown_4E, $2020
+	dw !initcommand_set_palette, DATA_FD6484
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF1182:
-	db $00, $00, $20, $01, $00, $86, $00, $00
-	db $00, $00, $02, $00, $ED, $00, $2E, $00
-	db $00, $00, $4E, $00, $20, $20, $00, $84
-	db $74, $65, $00, $85, $00, $20, $00, $80
-	db $00, $00, $20, $01, $00, $86, $00, $00
-	db $00, $00, $02, $00, $ED, $00, $2E, $00
-	db $00, $00, $4E, $00, $20, $20, $00, $85
-	db $00, $20, $00, $80
+	dw sprite.number, $0120
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.render_order, $00ED
+	dw sprite.action, $0000
+	dw sprite.unknown_4E, $2020
+	dw !initcommand_set_palette, DATA_FD6574
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
+
+DATA_FF11A2:
+	dw sprite.number, $0120
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.render_order, $00ED
+	dw sprite.action, $0000
+	dw sprite.unknown_4E, $2020
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF11BE:
-	db $2C, $01, $2E, $01, $30, $01, $32, $01
-	db $34, $01
+	dw $012C, $012E, $0130, $0132, $0134
 
 DATA_FF11C8:
-	db $00, $83, $A2, $11, $00, $8D, $05, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF11A2
+	dw !initcommand_set_alt_palette, $0005
+	dw !initcommand_success
 
 DATA_FF11D2:
-	db $00, $83, $A2, $11, $00, $8D, $0D, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF11A2
+	dw !initcommand_set_alt_palette, $000D
+	dw !initcommand_success
 
 DATA_FF11DC:
-	db $00, $83, $A2, $11, $00, $8D, $0F, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF11A2
+	dw !initcommand_set_alt_palette, $000F
+	dw !initcommand_success
 
 DATA_FF11E6:
-	db $00, $83, $A2, $11, $00, $8D, $43, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF11A2
+	dw !initcommand_set_alt_palette, $0043
+	dw !initcommand_success
 
 DATA_FF11F0:
-	db $00, $83, $A2, $11, $00, $8D, $60, $00
-	db $00, $80, $00, $00, $3C, $02, $02, $00
-	db $F0, $00, $30, $00, $00, $00, $00, $84
-	db $82, $66, $00, $81, $BB, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF11A2
+	dw !initcommand_set_alt_palette, $0060
+	dw !initcommand_success
+
+DATA_FF11FA:
+	dw sprite.number, $023C
+	dw sprite.render_order, $00F0
+	dw sprite.unknown_30, $0000
+	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_set_animation, $01BB
+	dw !initcommand_success
 
 DATA_FF1210:
-	db $00, $86, $00, $00, $00, $00, $00, $83
-	db $FA, $11, $20, $00, $00, $00, $24, $00
-	db $00, $00, $00, $85, $00, $20, $02, $00
-	db $F4, $00, $00, $80
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw !initcommand_load_subconfig, DATA_FF11FA
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw !initcommand_set_oam, $2000
+	dw sprite.render_order, $00F4
+	dw !initcommand_success
 
 DATA_FF122C:
-	db $00, $86, $00, $00, $00, $00, $00, $83
-	db $FA, $11, $3A, $00, $00, $02, $20, $00
-	db $00, $00, $24, $00, $80, $00, $00, $85
-	db $00, $20, $02, $00, $F4, $00, $00, $80
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw !initcommand_load_subconfig, DATA_FF11FA
+	dw sprite.unknown_3A, $0200
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0080
+	dw !initcommand_set_oam, $2000
+	dw sprite.render_order, $00F4
+	dw !initcommand_success
 
 DATA_FF124C:
-	db $00, $00, $30, $01, $00, $88, $00, $8D
-	db $11, $00, $00, $85, $00, $30, $00, $81
-	db $B5, $01, $00, $80, $00, $89, $14, $00
-	db $82, $66, $21, $23, $C0, $20, $54, $00
-	db $1C, $02, $00, $81, $F8, $01, $52, $00
-	db $01, $00, $00, $80
+	dw sprite.number, $0130
+	dw !initcommand_set_position
+	dw !initcommand_set_alt_palette, $0011
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $01B5
+	dw !initcommand_success
+
+DATA_FF1260:
+	dw !initcommand_setup_static, $0014, $6682 : dl DATA_C02321 : db $20
+	dw sprite.unknown_54, $021C
+	dw !initcommand_set_animation, $01F8
+	dw sprite.unknown_52, $0001
+	dw !initcommand_success
 
 DATA_FF1278:
-	db $00, $83, $60, $12, $00, $86, $F8, $FF
-	db $08, $00, $02, $00, $C4, $00, $20, $00
-	db $00, $FF, $24, $00, $E0, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF1260
+	dw !initcommand_spawn_relative, $FFF8, $0008
+	dw sprite.render_order, $00C4
+	dw sprite.x_speed, $FF00
+	dw sprite.y_speed, $FFE0
+	dw !initcommand_success
 
 DATA_FF1290:
-	db $00, $83, $60, $12, $00, $86, $F4, $FF
-	db $08, $00, $02, $00, $C4, $00, $20, $00
-	db $00, $01, $24, $00, $E0, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF1260
+	dw !initcommand_spawn_relative, $FFF4, $0008
+	dw sprite.render_order, $00C4
+	dw sprite.x_speed, $0100
+	dw sprite.y_speed, $FFE0
+	dw !initcommand_success
 
 DATA_FF12A8:
-	db $00, $83, $60, $12, $00, $86, $06, $00
-	db $DE, $FF, $02, $00, $C4, $00, $20, $00
-	db $00, $00, $24, $00, $80, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF1260
+	dw !initcommand_spawn_relative, $0006, $FFDE
+	dw sprite.render_order, $00C4
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $FF80
+	dw !initcommand_success
 
 DATA_FF12C0:
-	db $00, $83, $60, $12, $00, $86, $08, $00
-	db $08, $00, $02, $00, $E6, $00, $00, $87
-	db $20, $00, $00, $FF, $24, $00, $E0, $FF
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF1260
+	dw !initcommand_spawn_relative, $0008, $0008
+	dw sprite.render_order, $00E6
+	dw !initcommand_set_directional, sprite.x_speed, $FF00
+	dw sprite.y_speed, $FFE0
+	dw !initcommand_success
 
 DATA_FF12DA:
-	db $00, $83, $60, $12, $00, $86, $12, $00
-	db $02, $00, $00, $87, $20, $00, $00, $02
-	db $24, $00, $00, $02, $3A, $00, $00, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF1260
+	dw !initcommand_spawn_relative, $0012, $0002
+	dw !initcommand_set_directional, sprite.x_speed, $0200
+	dw sprite.y_speed, $0200
+	dw sprite.unknown_3A, $0100
+	dw !initcommand_success
 
 DATA_FF12F4:
-	db $00, $00, $88, $01, $06, $00, $30, $00
-	db $0A, $00, $60, $00, $02, $00, $F0, $00
-	db $00, $85, $00, $30, $00, $8D, $14, $00
-	db $00, $81, $C1, $01, $00, $80
+	dw sprite.number, $0188
+	dw sprite.x_position, $0030
+	dw sprite.y_position, $0060
+	dw sprite.render_order, $00F0
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_alt_palette, $0014
+	dw !initcommand_set_animation, $01C1
+	dw !initcommand_success
 
 DATA_FF1312:
-	db $00, $00, $88, $01, $06, $00, $A0, $00
-	db $0A, $00, $A0, $00, $02, $00, $F0, $00
-	db $00, $85, $00, $30, $00, $8D, $14, $00
-	db $00, $81, $C2, $01, $00, $80, $00, $00
-	db $E4, $00, $02, $00, $D8, $00, $06, $00
-	db $A0, $00, $0A, $00, $D0, $00, $20, $00
-	db $00, $00, $26, $00, $00, $00, $24, $00
-	db $00, $00, $42, $00, $00, $00, $54, $00
-	db $40, $00, $0C, $00, $C0, $FF, $1E, $00
-	db $00, $00, $2E, $00, $00, $00, $30, $00
-	db $1E, $00, $00, $85, $00, $20, $00, $84
-	db $84, $64, $00, $80, $00, $00, $E8, $00
-	db $02, $00, $E4, $00, $06, $00, $D0, $00
-	db $0A, $00, $D0, $00, $20, $00, $00, $00
-	db $26, $00, $00, $00, $24, $00, $00, $00
-	db $42, $00, $00, $00, $54, $00, $2A, $01
-	db $0C, $00, $C0, $FF, $1E, $00, $00, $00
-	db $2E, $00, $00, $00, $30, $00, $1E, $00
-	db $00, $85, $00, $20, $00, $84, $74, $65
-	db $00, $80
+	dw sprite.number, $0188
+	dw sprite.x_position, $00A0
+	dw sprite.y_position, $00A0
+	dw sprite.render_order, $00F0
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_alt_palette, $0014
+	dw !initcommand_set_animation, $01C2
+	dw !initcommand_success
+
+DATA_FF1330:
+	dw sprite.number, $00E4
+	dw sprite.render_order, $00D8
+	dw sprite.x_position, $00A0
+	dw sprite.y_position, $00D0
+	dw sprite.x_speed, $0000
+	dw sprite.max_x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_54, $0040
+	dw sprite.ground_y_position, $FFC0
+	dw sprite.unknown_1E, $0000
+	dw sprite.action, $0000
+	dw sprite.unknown_30, $001E
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_palette, DATA_FD6484
+	dw !initcommand_success
+
+DATA_FF136E:
+	dw sprite.number, $00E8
+	dw sprite.render_order, $00E4
+	dw sprite.x_position, $00D0
+	dw sprite.y_position, $00D0
+	dw sprite.x_speed, $0000
+	dw sprite.max_x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_54, $012A
+	dw sprite.ground_y_position, $FFC0
+	dw sprite.unknown_1E, $0000
+	dw sprite.action, $0000
+	dw sprite.unknown_30, $001E
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_palette, DATA_FD6574
+	dw !initcommand_success
 
 DATA_FF13AC:
-	db $00, $86, $14, $00, $E8, $FF, $00, $83
-	db $8A, $17, $02, $00, $D6, $00, $00, $81
-	db $BB, $01, $52, $00, $0F, $00, $00, $80
-	db $00, $00, $F0, $02, $02, $00, $D4, $00
-	db $54, $00, $76, $04, $30, $00, $20, $01
-	db $2E, $00, $00, $00, $4A, $00, $00, $00
-	db $00, $85, $00, $20, $00, $81, $AF, $01
-	db $00, $80
+	dw !initcommand_spawn_relative, $0014, $FFE8
+	dw !initcommand_load_subconfig, DATA_FF178A
+	dw sprite.render_order, $00D6
+	dw !initcommand_set_animation, $01BB
+	dw sprite.unknown_52, $000F
+	dw !initcommand_success
+
+DATA_FF13C4:
+	dw sprite.number, $02F0
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_54, $0476
+	dw sprite.unknown_30, $0120
+	dw sprite.action, $0000
+	dw sprite.unknown_4A, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_animation, $01AF
+	dw !initcommand_success
 
 DATA_FF13E6:
-	db $00, $83, $C4, $13, $00, $8D, $6D, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF13C4
+	dw !initcommand_set_alt_palette, $006D
+	dw !initcommand_success
 
 DATA_FF13F0:
-	db $00, $83, $C4, $13, $00, $8D, $24, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF13C4
+	dw !initcommand_set_alt_palette, $0024
+	dw !initcommand_success
 
 DATA_FF13FA:
-	db $00, $83, $C4, $13, $00, $8D, $12, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF13C4
+	dw !initcommand_set_alt_palette, $0012
+	dw !initcommand_success
 
 DATA_FF1404:
-	db $00, $83, $C4, $13, $00, $8D, $B4, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF13C4
+	dw !initcommand_set_alt_palette, $00B4
+	dw !initcommand_success
 
 DATA_FF140E:
-	db $00, $83, $C4, $13, $00, $8D, $29, $00
-	db $00, $80, $00, $00, $10, $03, $00, $85
-	db $00, $30, $1A, $00, $00, $33, $02, $00
-	db $EC, $00, $06, $00, $73, $00, $0A, $00
-	db $41, $00, $1C, $00, $00, $80, $44, $00
-	db $78, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF13C4
+	dw !initcommand_set_alt_palette, $0029
+	dw !initcommand_success
+
+DATA_FF1418:
+	dw sprite.number, $0310
+	dw !initcommand_set_oam, $3000
+	dw sprite.unknown_1A, $3300
+	dw sprite.render_order, $00EC
+	dw sprite.x_position, $0073
+	dw sprite.y_position, $0041
+	dw sprite.unknown_1C, $8000
+	dw sprite.unknown_44, $0078
+	dw !initcommand_success
 
 DATA_FF143A:
-	db $00, $83, $18, $14, $00, $8D, $35, $00
-	db $2E, $00, $01, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF1418
+	dw !initcommand_set_alt_palette, $0035
+	dw sprite.action, $0001
+	dw !initcommand_success
 
 DATA_FF1448:
-	db $00, $83, $18, $14, $46, $00, $35, $00
-	db $4E, $00, $43, $0C, $2E, $00, $01, $03
-	db $1C, $00, $00, $C0, $44, $00, $F0, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF1418
+	dw sprite.unknown_46, $0035
+	dw sprite.unknown_4E, $0C43
+	dw sprite.action, $0301
+	dw sprite.unknown_1C, $C000
+	dw sprite.unknown_44, $00F0
+	dw !initcommand_success
 
 DATA_FF1462:
-	db $00, $00, $10, $03, $00, $85, $00, $30
-	db $1A, $00, $04, $33, $00, $8D, $36, $00
-	db $02, $00, $EC, $00, $06, $00, $E4, $00
-	db $0A, $00, $F8, $FF, $1C, $00, $00, $80
-	db $2E, $00, $00, $00, $42, $00, $28, $14
-	db $44, $00, $36, $00, $46, $00, $03, $00
-	db $00, $80
+	dw sprite.number, $0310
+	dw !initcommand_set_oam, $3000
+	dw sprite.unknown_1A, $3304
+	dw !initcommand_set_alt_palette, $0036
+	dw sprite.render_order, $00EC
+	dw sprite.x_position, $00E4
+	dw sprite.y_position, $FFF8
+	dw sprite.unknown_1C, $8000
+	dw sprite.action, $0000
+	dw sprite.unknown_42, $1428
+	dw sprite.unknown_44, $0036
+	dw sprite.unknown_46, $0003
+	dw !initcommand_success
 
 DATA_FF1494:
-	db $00, $83, $62, $14, $06, $00, $14, $00
-	db $2E, $00, $00, $05, $4E, $00, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF1462
+	dw sprite.x_position, $0014
+	dw sprite.action, $0500
+	dw sprite.unknown_4E, $0000
+	dw !initcommand_success
 
 DATA_FF14A6:
-	db $00, $00, $B8, $00, $2E, $00, $1E, $15
-	db $00, $83, $BC, $14, $00, $80
+	dw sprite.number, $00B8
+if !version == 0
+	dw sprite.action, $151A
+else
+	dw sprite.action, $151E
+endif
+	dw !initcommand_load_subconfig, DATA_FF14BC
+	dw !initcommand_success
 
 DATA_FF14B4:
-	db $00, $00, $B4, $00, $2E, $00, $28, $15
-	db $00, $86, $00, $00, $00, $00, $20, $00
-	db $C0, $00, $24, $00, $00, $00, $42, $00
-	db $00, $00, $4A, $00, $0A, $00, $44, $00
-	db $00, $00, $46, $00, $04, $00, $48, $00
-	db $04, $00, $00, $80
+	dw sprite.number, $00B4
+if !version == 0
+	dw sprite.action, $1524
+else
+	dw sprite.action, $1528
+endif
+DATA_FF14BC:
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.x_speed, $00C0
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_4A, $000A
+	dw sprite.unknown_44, $0000
+	dw sprite.unknown_46, $0004
+	dw sprite.unknown_48, $0004
+	dw !initcommand_success
 
 DATA_FF14E0:
-	db $00, $00, $B8, $00, $2E, $00, $1E, $15
-	db $00, $83, $F6, $14, $00, $80
+	dw sprite.number, $00B8
+if !version == 0
+	dw sprite.action, $151A
+else
+	dw sprite.action, $151E
+endif
+	dw !initcommand_load_subconfig, DATA_FF14F6
+	dw !initcommand_success
 
 DATA_FF14EE:
-	db $00, $00, $B4, $00, $2E, $00, $28, $15
-	db $00, $86, $00, $00, $00, $00, $00, $00
-	db $B4, $00, $20, $00, $40, $FF, $24, $00
-	db $00, $00, $42, $00, $06, $00, $4A, $00
-	db $0A, $00, $44, $00, $00, $00, $46, $00
-	db $04, $00, $48, $00, $04, $00, $00, $80
+	dw sprite.number, $00B4
+if !version == 0
+	dw sprite.action, $1524
+else
+	dw sprite.action, $1528
+endif
+DATA_FF14F6:
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.number, $00B4
+	dw sprite.x_speed, $FF40
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_42, $0006
+	dw sprite.unknown_4A, $000A
+	dw sprite.unknown_44, $0000
+	dw sprite.unknown_46, $0004
+	dw sprite.unknown_48, $0004
+	dw !initcommand_success
 
 DATA_FF151E:
-	db $00, $00, $48, $02, $00, $83, $2C, $15
-	db $00, $80
+	dw sprite.number, $0248
+	dw !initcommand_load_subconfig, DATA_FF152C
+	dw !initcommand_success
 
 DATA_FF1528:
-	db $00, $00, $4C, $02, $00, $86, $00, $00
-	db $00, $00, $1C, $00, $00, $00, $02, $00
-	db $F4, $00, $30, $00, $00, $00, $20, $00
-	db $00, $00, $24, $00, $00, $FF, $1C, $00
-	db $00, $00, $00, $84, $66, $71, $00, $81
-	db $BC, $01, $00, $80
+	dw sprite.number, $024C
+DATA_FF152C:
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.unknown_1C, $0000
+	dw sprite.render_order, $00F4
+	dw sprite.unknown_30, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $FF00
+	dw sprite.unknown_1C, $0000
+	dw !initcommand_set_palette, DATA_FD7166
+	dw !initcommand_set_animation, $01BC
+	dw !initcommand_success
 
 DATA_FF1554:
-	db $00, $00, $50, $02, $02, $00, $C0, $00
-	db $2E, $00, $00, $00, $30, $00, $00, $00
-	db $20, $00, $00, $00, $1C, $00, $00, $E0
-	db $00, $85, $00, $00, $00, $84, $C2, $61
-	db $00, $80, $00, $8E, $60, $00, $02, $00
-	db $00, $08, $FB, $17, $02, $00, $F4, $00
-	db $2E, $00, $00, $00, $30, $00, $00, $00
-	db $00, $85, $00, $30, $00, $81, $A4, $02
-	db $00, $80, $00, $8E, $64, $00, $02, $00
-	db $60, $06, $FA, $20, $02, $00, $F4, $00
-	db $2E, $00, $00, $00, $30, $00, $00, $00
-	db $00, $85, $00, $30, $00, $81, $A5, $02
-	db $00, $80
+	dw sprite.number, $0250
+	dw sprite.render_order, $00C0
+	dw sprite.action, $0000
+	dw sprite.unknown_30, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.unknown_1C, $E000
+	dw !initcommand_set_oam, $0000
+	dw !initcommand_set_palette, DATA_FD61C2
+	dw !initcommand_success
+
+DATA_FF1576:
+	dw !initcommand_setup_static2, $0060, $0002 : dl DATA_FB0800 : db $17
+	dw sprite.render_order, $00F4
+	dw sprite.action, $0000
+	dw sprite.unknown_30, $0000
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $02A4
+	dw !initcommand_success
+
+DATA_FF1596:
+	dw !initcommand_setup_static2, $0064, $0002 : dl DATA_FA0660 : db $20
+	dw sprite.render_order, $00F4
+	dw sprite.action, $0000
+	dw sprite.unknown_30, $0000
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $02A5
+	dw !initcommand_success
 
 DATA_FF15B6:
-	db $00, $83, $76, $15, $00, $86, $00, $00
-	db $00, $00, $20, $00, $00, $02, $24, $00
-	db $00, $FB, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF1576
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.x_speed, $0200
+	dw sprite.y_speed, $FB00
+	dw !initcommand_success
 
 DATA_FF15CA:
-	db $00, $83, $76, $15, $00, $86, $00, $00
-	db $00, $00, $20, $00, $00, $FF, $24, $00
-	db $00, $FA, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF1576
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.x_speed, $FF00
+	dw sprite.y_speed, $FA00
+	dw !initcommand_success
 
 DATA_FF15DE:
-	db $00, $83, $96, $15, $00, $86, $00, $00
-	db $00, $00, $20, $00, $00, $FE, $24, $00
-	db $00, $FB, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF1596
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.x_speed, $FE00
+	dw sprite.y_speed, $FB00
+	dw !initcommand_success
 
 DATA_FF15F2:
-	db $00, $83, $96, $15, $00, $86, $00, $00
-	db $00, $00, $20, $00, $00, $01, $24, $00
-	db $80, $F9, $00, $80, $00, $8E, $64, $00
-	db $28, $00, $60, $06, $FA, $20, $02, $00
-	db $F4, $00, $2E, $00, $00, $00, $30, $00
-	db $00, $00, $00, $85, $00, $30, $00, $81
-	db $A5, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF1596
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.x_speed, $0100
+	dw sprite.y_speed, $F980
+	dw !initcommand_success
+
+DATA_FF1606:
+	dw !initcommand_setup_static2, $0064, $0028 : dl DATA_FA0660 : db $20
+	dw sprite.render_order, $00F4
+	dw sprite.action, $0000
+	dw sprite.unknown_30, $0000
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $02A5
+	dw !initcommand_success
 
 DATA_FF1626:
-	db $00, $83, $06, $16, $00, $86, $00, $00
-	db $00, $00, $20, $00, $00, $FE, $24, $00
-	db $00, $FB, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF1606
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.x_speed, $FE00
+	dw sprite.y_speed, $FB00
+	dw !initcommand_success
 
 DATA_FF163A:
-	db $00, $83, $06, $16, $00, $86, $00, $00
-	db $00, $00, $20, $00, $00, $01, $24, $00
-	db $80, $F9, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF1606
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.x_speed, $0100
+	dw sprite.y_speed, $F980
+	dw !initcommand_success
 
 DATA_FF164E:
-	db $00, $00, $1C, $01, $00, $86, $00, $00
-	db $00, $00, $02, $00, $CC, $00, $2E, $00
-	db $00, $00, $00, $84, $82, $66, $00, $81
-	db $BF, $02, $00, $80
+	dw sprite.number, $011C
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.render_order, $00CC
+	dw sprite.action, $0000
+	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_set_animation, $02BF
+	dw !initcommand_success
 
 DATA_FF166A:
-	db $00, $83, $60, $12, $00, $86, $03, $00
-	db $05, $00, $02, $00, $C4, $00, $00, $87
-	db $20, $00, $30, $00, $24, $00, $F0, $FF
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF1260
+	dw !initcommand_spawn_relative, $0003, $0005
+	dw sprite.render_order, $00C4
+	dw !initcommand_set_directional, sprite.x_speed, $0030
+	dw sprite.y_speed, $FFF0
+	dw !initcommand_success
 
 DATA_FF1684:
-	db $00, $83, $60, $12, $00, $86, $03, $00
-	db $05, $00, $02, $00, $C4, $00, $00, $87
-	db $20, $00, $D0, $FF, $24, $00, $F0, $FF
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF1260
+	dw !initcommand_spawn_relative, $0003, $0005
+	dw sprite.render_order, $00C4
+	dw !initcommand_set_directional, sprite.x_speed, $FFD0
+	dw sprite.y_speed, $FFF0
+	dw !initcommand_success
 
 DATA_FF169E:
-	db $00, $83, $60, $12, $00, $86, $03, $00
-	db $08, $00, $02, $00, $C4, $00, $20, $00
-	db $00, $00, $24, $00, $10, $00, $3A, $00
-	db $80, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF1260
+	dw !initcommand_spawn_relative, $0003, $0008
+	dw sprite.render_order, $00C4
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0010
+	dw sprite.unknown_3A, $0180
+	dw !initcommand_success
 
 DATA_FF16BA:
-	db $00, $86, $00, $00, $F2, $FF, $00, $83
-	db $8A, $17, $02, $00, $D6, $00, $00, $81
-	db $BF, $01, $52, $00, $00, $00, $00, $80
+	dw !initcommand_spawn_relative, $0000, $FFF2
+	dw !initcommand_load_subconfig, DATA_FF178A
+	dw sprite.render_order, $00D6
+	dw !initcommand_set_animation, $01BF
+	dw sprite.unknown_52, $0000
+	dw !initcommand_success
 
 DATA_FF16D2:
-	db $00, $86, $E9, $FF, $E8, $FF, $00, $83
-	db $8A, $17, $02, $00, $D6, $00, $00, $81
-	db $BF, $01, $24, $00, $C0, $01, $2A, $00
-	db $A0, $FF, $52, $00, $0F, $00, $00, $80
+	dw !initcommand_spawn_relative, $FFE9, $FFE8
+	dw !initcommand_load_subconfig, DATA_FF178A
+	dw sprite.render_order, $00D6
+	dw !initcommand_set_animation, $01BF
+	dw sprite.y_speed, $01C0
+	dw sprite.unknown_2A, $FFA0
+	dw sprite.unknown_52, $000F
+	dw !initcommand_success
 
 DATA_FF16F2:
-	db $00, $86, $FE, $FF, $E2, $FF, $00, $83
-	db $8A, $17, $02, $00, $D6, $00, $00, $81
-	db $BF, $01, $00, $87, $20, $00, $00, $02
-	db $24, $00, $C0, $FF, $52, $00, $0F, $00
-	db $00, $80
+	dw !initcommand_spawn_relative, $FFFE, $FFE2
+	dw !initcommand_load_subconfig, DATA_FF178A
+	dw sprite.render_order, $00D6
+	dw !initcommand_set_animation, $01BF
+	dw !initcommand_set_directional, sprite.x_speed, $0200
+	dw sprite.y_speed, $FFC0
+	dw sprite.unknown_52, $000F
+	dw !initcommand_success
 
 DATA_FF1714:
-	db $54, $00, $1C, $02, $00, $00, $D0, $01
-	db $30, $00, $20, $00, $00, $8D, $09, $00
-	db $00, $81, $E3, $02, $2E, $00, $00, $00
-	db $4A, $00, $00, $00, $00, $86, $E9, $FF
-	db $F4, $FF, $00, $80, $00, $83, $18, $17
-	db $54, $00, $48, $04, $00, $80, $00, $00
-	db $D0, $01, $54, $00, $1C, $02, $30, $00
-	db $20, $00, $00, $8D, $09, $00, $00, $81
-	db $FD, $02, $2E, $00, $01, $00, $4A, $00
-	db $00, $00, $00, $86, $04, $00, $EC, $FF
-	db $00, $80, $00, $00, $D0, $01, $54, $00
-	db $1C, $02, $30, $00, $20, $00, $00, $8D
-	db $02, $00, $00, $81, $FA, $02, $2E, $00
-	db $02, $00, $4A, $00, $08, $40, $00, $86
-	db $04, $00, $EC, $FF, $00, $80, $00, $84
-	db $82, $66, $00, $00, $D4, $01, $54, $00
-	db $1C, $02, $2E, $00, $00, $00, $20, $00
-	db $00, $00, $26, $00, $00, $00, $24, $00
-	db $00, $00, $2A, $00, $00, $00, $00, $80
+	dw sprite.unknown_54, $021C
+DATA_FF1718:
+	dw sprite.number, $01D0
+	dw sprite.unknown_30, $0020
+	dw !initcommand_set_alt_palette, $0009
+	dw !initcommand_set_animation, $02E3
+	dw sprite.action, $0000
+	dw sprite.unknown_4A, $0000
+	dw !initcommand_spawn_relative, $FFE9, $FFF4
+	dw !initcommand_success
+
+DATA_FF1738:
+	dw !initcommand_load_subconfig, DATA_FF1718
+	dw sprite.unknown_54, $0448
+	dw !initcommand_success
+
+DATA_FF1742:
+	dw sprite.number, $01D0
+	dw sprite.unknown_54, $021C
+	dw sprite.unknown_30, $0020
+	dw !initcommand_set_alt_palette, $0009
+	dw !initcommand_set_animation, $02FD
+	dw sprite.action, $0001
+	dw sprite.unknown_4A, $0000
+	dw !initcommand_spawn_relative, $0004, $FFEC
+	dw !initcommand_success
+
+DATA_FF1766:
+	dw sprite.number, $01D0
+	dw sprite.unknown_54, $021C
+	dw sprite.unknown_30, $0020
+	dw !initcommand_set_alt_palette, $0002
+	dw !initcommand_set_animation, $02FA
+	dw sprite.action, $0002
+	dw sprite.unknown_4A, $4008
+	dw !initcommand_spawn_relative, $0004, $FFEC
+	dw !initcommand_success
+
+DATA_FF178A:
+	dw !initcommand_set_palette, DATA_FD6682
+	dw sprite.number, $01D4
+	dw sprite.unknown_54, $021C
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.max_x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_2A, $0000
+	dw !initcommand_success
 
 DATA_FF17AC:
-	db $00, $86, $00, $00, $00, $00, $00, $00
-	db $04, $01, $00, $84, $82, $66, $00, $81
-	db $9E, $01, $00, $80
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.number, $0104
+	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_set_animation, $019E
+	dw !initcommand_success
 
 DATA_FF17C0:
-	db $00, $86, $15, $00, $BE, $FF, $00, $00
-	db $68, $01, $02, $00, $C9, $00, $2E, $00
-	db $00, $00, $00, $8D, $02, $00, $00, $85
-	db $00, $20, $00, $81, $C1, $02, $00, $80
+	dw !initcommand_spawn_relative, $0015, $FFBE
+	dw sprite.number, $0168
+	dw sprite.render_order, $00C9
+	dw sprite.action, $0000
+	dw !initcommand_set_alt_palette, $0002
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_animation, $02C1
+	dw !initcommand_success
 
 DATA_FF17E0:
-	db $00, $86, $15, $00, $00, $00, $00, $00
-	db $64, $01, $02, $00, $CA, $00, $2E, $00
-	db $00, $00, $20, $00, $00, $00, $00, $8D
-	db $02, $00, $00, $85, $00, $20, $00, $81
-	db $C2, $02, $00, $80
+	dw !initcommand_spawn_relative, $0015, $0000
+	dw sprite.number, $0164
+	dw sprite.render_order, $00CA
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw !initcommand_set_alt_palette, $0002
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_animation, $02C2
+	dw !initcommand_success
 
 DATA_FF1804:
-	db $00, $86, $15, $00, $92, $FF, $00, $00
-	db $6C, $01, $02, $00, $CA, $00, $2E, $00
-	db $00, $00, $00, $8D, $00, $00, $00, $85
-	db $00, $20, $00, $81, $B2, $02, $00, $80
+	dw !initcommand_spawn_relative, $0015, $FF92
+	dw sprite.number, $016C
+	dw sprite.render_order, $00CA
+	dw sprite.action, $0000
+	dw !initcommand_set_alt_palette, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_animation, $02B2
+	dw !initcommand_success
 
 DATA_FF1824:
-	db $00, $8E, $5C, $00, $58, $00, $E1, $08
-	db $C0, $12, $00, $00, $5C, $00, $00, $86
-	db $00, $00, $00, $00, $2E, $00, $00, $00
-	db $00, $85, $00, $30, $00, $81, $CC, $02
-	db $00, $80
+	dw !initcommand_setup_static2, $005C, $0058 : dl DATA_C008E1 : db $12
+	dw sprite.number, $005C
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.action, $0000
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $02CC
+	dw !initcommand_success
 
 DATA_FF1846:
-	db $00, $8E, $58, $00, $32, $00, $E1, $06
-	db $C0, $10, $00, $86, $00, $00, $00, $00
-	db $54, $00, $1C, $02, $52, $00, $01, $00
-	db $20, $00, $00, $00, $26, $00, $00, $00
-	db $24, $00, $00, $00, $2A, $00, $00, $00
-	db $00, $80, $00, $83, $9E, $B2, $2E, $00
-	db $00, $00, $04, $00, $0A, $00, $00, $80
-	db $00, $83, $7A, $B2, $2E, $00, $00, $00
-	db $04, $00, $0A, $00, $00, $80, $00, $83
-	db $8C, $B2, $2E, $00, $00, $00, $04, $00
-	db $0A, $00, $00, $80, $00, $86, $00, $00
-	db $00, $00, $00, $00, $DC, $02, $02, $00
-	db $C4, $00, $54, $00, $14, $02, $30, $00
-	db $00, $00, $24, $00, $00, $FA, $1C, $00
-	db $00, $00, $1E, $00, $00, $00, $2E, $00
-	db $00, $00, $20, $00, $00, $00, $26, $00
-	db $00, $00, $00, $85, $00, $20, $00, $80
+	dw !initcommand_setup_static2, $0058, $0032 : dl DATA_C006E1 : db $10
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.unknown_54, $021C
+	dw sprite.unknown_52, $0001
+	dw sprite.x_speed, $0000
+	dw sprite.max_x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_2A, $0000
+	dw !initcommand_success
+
+DATA_FF1870:
+	dw !initcommand_load_subconfig, DATA_FFB29E
+	dw sprite.action, $0000
+	dw sprite.x_sub_position, $000A
+	dw !initcommand_success
+
+DATA_FF187E:
+	dw !initcommand_load_subconfig, DATA_FFB27A
+	dw sprite.action, $0000
+	dw sprite.x_sub_position, $000A
+	dw !initcommand_success
+
+DATA_FF188C:
+	dw !initcommand_load_subconfig, DATA_FFB28C
+	dw sprite.action, $0000
+	dw sprite.x_sub_position, $000A
+	dw !initcommand_success
+
+DATA_FF189A:
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.number, $02DC
+	dw sprite.render_order, $00C4
+	dw sprite.unknown_54, $0214
+	dw sprite.unknown_30, $0000
+	dw sprite.y_speed, $FA00
+	dw sprite.unknown_1C, $0000
+	dw sprite.unknown_1E, $0000
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.max_x_speed, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF18CE:
-	db $06, $19, $14, $19, $22, $19, $30, $19
-	db $3E, $19, $4C, $19, $5A, $19, $68, $19
-	db $76, $19, $84, $19, $92, $19, $A0, $19
-	db $AE, $19, $BC, $19, $CA, $19, $D8, $19
-	db $E6, $19
+	dw DATA_FF1906
+	dw DATA_FF1914
+	dw DATA_FF1922
+	dw DATA_FF1930
+	dw DATA_FF193E
+	dw DATA_FF194C
+	dw DATA_FF195A
+	dw DATA_FF1968
+	dw DATA_FF1976
+	dw DATA_FF1984
+	dw DATA_FF1992
+	dw DATA_FF19A0
+	dw DATA_FF19AE
+	dw DATA_FF19BC
+	dw DATA_FF19CA
+	dw DATA_FF19D8
+	dw DATA_FF19E6
 
 DATA_FF18F0:
-	db $F4, $19, $02, $1A, $10, $1A, $1E, $1A
-	db $2C, $1A, $3A, $1A, $48, $1A, $56, $1A
-	db $64, $1A, $72, $1A
+	dw DATA_FF19F4
+	dw DATA_FF1A02
+	dw DATA_FF1A10
+	dw DATA_FF1A1E
+	dw DATA_FF1A2C
+	dw DATA_FF1A3A
+	dw DATA_FF1A48
+	dw DATA_FF1A56
+	dw DATA_FF1A64
+	dw DATA_FF1A72
 
 DATA_FF1904:
-	db $80, $1A, $00, $83, $9A, $18, $00, $8D
-	db $00, $00, $00, $81, $B2, $02, $00, $80
-	db $00, $83, $9A, $18, $00, $8D, $00, $00
-	db $00, $81, $BB, $02, $00, $80, $00, $83
-	db $9A, $18, $00, $8D, $00, $00, $00, $81
-	db $BC, $02, $00, $80, $00, $83, $9A, $18
-	db $00, $8D, $00, $00, $00, $81, $BD, $02
-	db $00, $80, $00, $83, $9A, $18, $00, $8D
-	db $00, $00, $00, $81, $BE, $02, $00, $80
-	db $00, $83, $9A, $18, $00, $8D, $02, $00
-	db $00, $81, $E1, $02, $00, $80, $00, $83
-	db $9A, $18, $00, $8D, $02, $00, $00, $81
-	db $E5, $02, $00, $80, $00, $83, $9A, $18
-	db $00, $8D, $02, $00, $00, $81, $CD, $02
-	db $00, $80, $00, $83, $9A, $18, $00, $8D
-	db $18, $00, $00, $81, $C0, $02, $00, $80
-	db $00, $83, $9A, $18, $00, $8D, $19, $00
-	db $00, $81, $C0, $02, $00, $80, $00, $83
-	db $9A, $18, $00, $8D, $1A, $00, $00, $81
-	db $C0, $02, $00, $80, $00, $83, $9A, $18
-	db $00, $8D, $00, $00, $00, $81, $B2, $02
-	db $00, $80, $00, $83, $9A, $18, $00, $8D
-	db $14, $00, $00, $81, $C1, $01, $00, $80
-	db $00, $83, $9A, $18, $00, $8D, $14, $00
-	db $00, $81, $C1, $01, $00, $80, $00, $83
-	db $9A, $18, $00, $8D, $14, $00, $00, $81
-	db $C1, $01, $00, $80, $00, $83, $9A, $18
-	db $00, $8D, $14, $00, $00, $81, $C1, $01
-	db $00, $80, $00, $83, $9A, $18, $00, $8D
-	db $14, $00, $00, $81, $C2, $01, $00, $80
-	db $00, $83, $9A, $18, $00, $8D, $14, $00
-	db $00, $81, $C3, $01, $00, $80, $00, $83
-	db $9A, $18, $00, $8D, $09, $00, $00, $81
-	db $E3, $02, $00, $80, $00, $83, $9A, $18
-	db $00, $8D, $02, $00, $00, $81, $E7, $02
-	db $00, $80, $00, $83, $9A, $18, $00, $8D
-	db $00, $00, $00, $81, $B2, $02, $00, $80
-	db $00, $83, $9A, $18, $00, $8D, $00, $00
-	db $00, $81, $B2, $02, $00, $80, $00, $83
-	db $9A, $18, $00, $8D, $00, $00, $00, $81
-	db $B2, $02, $00, $80, $00, $83, $9A, $18
-	db $00, $8D, $00, $00, $00, $81, $B2, $02
-	db $00, $80, $00, $83, $9A, $18, $00, $8D
-	db $00, $00, $00, $81, $B2, $02, $00, $80
-	db $00, $83, $9A, $18, $00, $8D, $00, $00
-	db $00, $81, $DF, $02, $00, $80, $00, $83
-	db $9A, $18, $00, $8D, $14, $00, $00, $81
-	db $C5, $01, $00, $80, $00, $83, $9A, $18
-	db $00, $8D, $14, $00, $00, $81, $C2, $01
-	db $00, $80
+	dw DATA_FF1A80
+
+DATA_FF1906:
+	dw !initcommand_load_subconfig, DATA_FF189A
+	dw !initcommand_set_alt_palette, $0000
+	dw !initcommand_set_animation, $02B2
+	dw !initcommand_success
+
+DATA_FF1914:
+	dw !initcommand_load_subconfig, DATA_FF189A
+	dw !initcommand_set_alt_palette, $0000
+	dw !initcommand_set_animation, $02BB
+	dw !initcommand_success
+
+DATA_FF1922:
+	dw !initcommand_load_subconfig, DATA_FF189A
+	dw !initcommand_set_alt_palette, $0000
+	dw !initcommand_set_animation, $02BC
+	dw !initcommand_success
+
+DATA_FF1930:
+	dw !initcommand_load_subconfig, DATA_FF189A
+	dw !initcommand_set_alt_palette, $0000
+	dw !initcommand_set_animation, $02BD
+	dw !initcommand_success
+
+DATA_FF193E:
+	dw !initcommand_load_subconfig, DATA_FF189A
+	dw !initcommand_set_alt_palette, $0000
+	dw !initcommand_set_animation, $02BE
+	dw !initcommand_success
+
+DATA_FF194C:
+	dw !initcommand_load_subconfig, DATA_FF189A
+	dw !initcommand_set_alt_palette, $0002
+	dw !initcommand_set_animation, $02E1
+	dw !initcommand_success
+
+DATA_FF195A:
+	dw !initcommand_load_subconfig, DATA_FF189A
+	dw !initcommand_set_alt_palette, $0002
+	dw !initcommand_set_animation, $02E5
+	dw !initcommand_success
+
+DATA_FF1968:
+	dw !initcommand_load_subconfig, DATA_FF189A
+	dw !initcommand_set_alt_palette, $0002
+	dw !initcommand_set_animation, $02CD
+	dw !initcommand_success
+
+DATA_FF1976:
+	dw !initcommand_load_subconfig, DATA_FF189A
+	dw !initcommand_set_alt_palette, $0018
+	dw !initcommand_set_animation, $02C0
+	dw !initcommand_success
+
+DATA_FF1984:
+	dw !initcommand_load_subconfig, DATA_FF189A
+	dw !initcommand_set_alt_palette, $0019
+	dw !initcommand_set_animation, $02C0
+	dw !initcommand_success
+
+DATA_FF1992:
+	dw !initcommand_load_subconfig, DATA_FF189A
+	dw !initcommand_set_alt_palette, $001A
+	dw !initcommand_set_animation, $02C0
+	dw !initcommand_success
+
+DATA_FF19A0:
+	dw !initcommand_load_subconfig, DATA_FF189A
+	dw !initcommand_set_alt_palette, $0000
+	dw !initcommand_set_animation, $02B2
+	dw !initcommand_success
+
+DATA_FF19AE:
+	dw !initcommand_load_subconfig, DATA_FF189A
+	dw !initcommand_set_alt_palette, $0014
+	dw !initcommand_set_animation, $01C1
+	dw !initcommand_success
+
+DATA_FF19BC:
+	dw !initcommand_load_subconfig, DATA_FF189A
+	dw !initcommand_set_alt_palette, $0014
+	dw !initcommand_set_animation, $01C1
+	dw !initcommand_success
+
+DATA_FF19CA:
+	dw !initcommand_load_subconfig, DATA_FF189A
+	dw !initcommand_set_alt_palette, $0014
+	dw !initcommand_set_animation, $01C1
+	dw !initcommand_success
+
+DATA_FF19D8:
+	dw !initcommand_load_subconfig, DATA_FF189A
+	dw !initcommand_set_alt_palette, $0014
+	dw !initcommand_set_animation, $01C1
+	dw !initcommand_success
+
+DATA_FF19E6:
+	dw !initcommand_load_subconfig, DATA_FF189A
+	dw !initcommand_set_alt_palette, $0014
+	dw !initcommand_set_animation, $01C2
+	dw !initcommand_success
+
+DATA_FF19F4:
+	dw !initcommand_load_subconfig, DATA_FF189A
+	dw !initcommand_set_alt_palette, $0014
+	dw !initcommand_set_animation, $01C3
+	dw !initcommand_success
+
+DATA_FF1A02:
+	dw !initcommand_load_subconfig, DATA_FF189A
+	dw !initcommand_set_alt_palette, $0009
+	dw !initcommand_set_animation, $02E3
+	dw !initcommand_success
+
+DATA_FF1A10:
+	dw !initcommand_load_subconfig, DATA_FF189A
+	dw !initcommand_set_alt_palette, $0002
+	dw !initcommand_set_animation, $02E7
+	dw !initcommand_success
+
+DATA_FF1A1E:
+	dw !initcommand_load_subconfig, DATA_FF189A
+	dw !initcommand_set_alt_palette, $0000
+	dw !initcommand_set_animation, $02B2
+	dw !initcommand_success
+
+DATA_FF1A2C:
+	dw !initcommand_load_subconfig, DATA_FF189A
+	dw !initcommand_set_alt_palette, $0000
+	dw !initcommand_set_animation, $02B2
+	dw !initcommand_success
+
+DATA_FF1A3A:
+	dw !initcommand_load_subconfig, DATA_FF189A
+	dw !initcommand_set_alt_palette, $0000
+	dw !initcommand_set_animation, $02B2
+	dw !initcommand_success
+
+DATA_FF1A48:
+	dw !initcommand_load_subconfig, DATA_FF189A
+	dw !initcommand_set_alt_palette, $0000
+	dw !initcommand_set_animation, $02B2
+	dw !initcommand_success
+
+DATA_FF1A56:
+	dw !initcommand_load_subconfig, DATA_FF189A
+	dw !initcommand_set_alt_palette, $0000
+	dw !initcommand_set_animation, $02B2
+	dw !initcommand_success
+
+DATA_FF1A64:
+	dw !initcommand_load_subconfig, DATA_FF189A
+	dw !initcommand_set_alt_palette, $0000
+	dw !initcommand_set_animation, $02DF
+	dw !initcommand_success
+
+DATA_FF1A72:
+	dw !initcommand_load_subconfig, DATA_FF189A
+	dw !initcommand_set_alt_palette, $0014
+	dw !initcommand_set_animation, $01C5
+	dw !initcommand_success
+
+DATA_FF1A80:
+	dw !initcommand_load_subconfig, DATA_FF189A
+	dw !initcommand_set_alt_palette, $0014
+	dw !initcommand_set_animation, $01C2
+	dw !initcommand_success
 
 DATA_FF1A8E:
-	db $84, $C5, $EA, $97, $16, $98, $3C, $98
-	db $62, $98, $30, $AB, $E8, $AA, $CE, $34
-	db $70, $18, $7E, $18, $8C, $18, $84, $C5
-	db $C4, $96, $C4, $96, $C4, $96, $C4, $96
-	db $D4, $96, $A8, $97, $EA, $65, $52, $BA
-	db $84, $C5, $84, $C5, $84, $C5, $84, $C5
-	db $84, $C5, $C6, $1A, $B2, $97, $D4, $96
-	db $00, $00, $70, $01, $54, $00, $1C, $02
-	db $02, $00, $C8, $00, $00, $85, $00, $20
-	db $00, $8D, $00, $00, $00, $81, $DF, $02
-	db $2E, $00, $00, $00, $4E, $00, $01, $00
-	db $00, $80, $00, $80
+	dw DATA_FFC584
+	dw DATA_FF97EA
+	dw DATA_FF9816
+	dw DATA_FF983C
+	dw DATA_FF9862
+	dw DATA_FFAB30
+	dw DATA_FFAAE8
+	dw DATA_FF34CE
+	dw DATA_FF1870
+	dw DATA_FF187E
+	dw DATA_FF188C
+	dw DATA_FFC584
+	dw DATA_FF96C4
+	dw DATA_FF96C4
+	dw DATA_FF96C4
+	dw DATA_FF96C4
+	dw DATA_FF96D4
+	dw DATA_FF97A8
+	dw DATA_FF65EA
+	dw DATA_FFBA52
+	dw DATA_FFC584
+	dw DATA_FFC584
+	dw DATA_FFC584
+	dw DATA_FFC584
+	dw DATA_FFC584
+	dw DATA_FF1AC6
+	dw DATA_FF97B2
+	dw DATA_FF96D4
+
+DATA_FF1AC6:
+	dw sprite.number, $0170
+	dw sprite.unknown_54, $021C
+	dw sprite.render_order, $00C8
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0000
+	dw !initcommand_set_animation, $02DF
+	dw sprite.action, $0000
+	dw sprite.unknown_4E, $0001
+	dw !initcommand_success
+
+DATA_FF1AE8:
+	dw !initcommand_success
 
 DATA_FF1AEA:
-	db $00, $00, $00, $01, $00, $86, $FF, $FF
-	db $DD, $FF, $42, $00, $2D, $00, $00, $85
-	db $00, $30, $00, $84, $84, $64, $00, $81
-	db $5D, $01, $00, $80
+	dw sprite.number, $0100
+	dw !initcommand_spawn_relative, $FFFF, $FFDD
+	dw sprite.unknown_42, $002D
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_palette, DATA_FD6484
+	dw !initcommand_set_animation, $015D
+	dw !initcommand_success
 
 DATA_FF1B06:
-	db $00, $00, $08, $01, $02, $00, $D0, $00
-	db $00, $86, $0C, $00, $04, $00, $24, $00
-	db $00, $00, $48, $00, $00, $00, $1C, $00
-	db $00, $00, $00, $84, $82, $66, $00, $81
-	db $D5, $02, $00, $80
+	dw sprite.number, $0108
+	dw sprite.render_order, $00D0
+	dw !initcommand_spawn_relative, $000C, $0004
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_48, $0000
+	dw sprite.unknown_1C, $0000
+	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_set_animation, $02D5
+	dw !initcommand_success
 
 DATA_FF1B2A:
-	db $00, $00, $18, $01, $02, $00, $D4, $00
-	db $00, $86, $0C, $00, $FA, $FF, $2E, $00
-	db $00, $00, $24, $00, $00, $00, $42, $00
-	db $00, $00, $44, $00, $00, $00, $48, $00
-	db $00, $00, $1C, $00, $00, $00, $00, $84
-	db $82, $66, $00, $80
+	dw sprite.number, $0118
+	dw sprite.render_order, $00D4
+	dw !initcommand_spawn_relative, $000C, $FFFA
+	dw sprite.action, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $0000
+	dw sprite.unknown_48, $0000
+	dw sprite.unknown_1C, $0000
+	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_success
 
 DATA_FF1B56:
-	db $00, $00, $F4, $02, $00, $86, $00, $00
-	db $00, $00, $00, $85, $00, $20, $00, $8D
-	db $27, $00, $00, $81, $B1, $01, $2E, $00
-	db $00, $00, $00, $80
+	dw sprite.number, $02F4
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0027
+	dw !initcommand_set_animation, $01B1
+	dw sprite.action, $0000
+	dw !initcommand_success
 
 DATA_FF1B72:
-	db $00, $8E, $18, $00, $20, $00, $21, $10
-	db $C0, $20, $00, $86, $00, $00, $00, $00
-	db $54, $00, $52, $02, $02, $00, $C8, $00
-	db $26, $00, $00, $00, $20, $00, $00, $00
-	db $24, $00, $00, $F8, $00, $85, $00, $30
-	db $00, $81, $57, $01, $00, $80
+	dw !initcommand_setup_static2, $0018, $0020 : dl DATA_C01021 : db $20
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.unknown_54, $0252
+	dw sprite.render_order, $00C8
+	dw sprite.max_x_speed, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $F800
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $0157
+	dw !initcommand_success
 
 DATA_FF1BA0:
-	db $00, $8E, $1C, $00, $20, $00, $21, $14
-	db $C0, $19, $00, $86, $00, $00, $00, $00
-	db $54, $00, $52, $02, $02, $00, $C8, $00
-	db $26, $00, $00, $01, $20, $00, $00, $01
-	db $24, $00, $00, $F8, $00, $85, $00, $30
-	db $00, $81, $58, $01, $00, $80
+	dw !initcommand_setup_static2, $001C, $0020 : dl DATA_C01421 : db $19
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.unknown_54, $0252
+	dw sprite.render_order, $00C8
+	dw sprite.max_x_speed, $0100
+	dw sprite.x_speed, $0100
+	dw sprite.y_speed, $F800
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $0158
+	dw !initcommand_success
 
 DATA_FF1BCE:
-	db $00, $8E, $20, $00, $20, $00, $41, $17
-	db $C0, $1F, $00, $86, $00, $00, $00, $00
-	db $54, $00, $52, $02, $02, $00, $C8, $00
-	db $26, $00, $00, $FF, $20, $00, $80, $FF
-	db $24, $00, $00, $F8, $00, $85, $00, $30
-	db $00, $81, $59, $01, $00, $80
+	dw !initcommand_setup_static2, $0020, $0020 : dl DATA_C01741 : db $1F
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.unknown_54, $0252
+	dw sprite.render_order, $00C8
+	dw sprite.max_x_speed, $FF00
+	dw sprite.x_speed, $FF80
+	dw sprite.y_speed, $F800
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $0159
+	dw !initcommand_success
 
 DATA_FF1BFC:
-	db $00, $00, $28, $02, $30, $00, $20, $00
-	db $00, $86, $00, $00, $00, $00, $00, $85
-	db $00, $70, $00, $8D, $21, $00, $00, $81
-	db $04, $02, $00, $80
+	dw sprite.number, $0228
+	dw sprite.unknown_30, $0020
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw !initcommand_set_oam, $7000
+	dw !initcommand_set_alt_palette, $0021
+	dw !initcommand_set_animation, $0204
+	dw !initcommand_success
 
 DATA_FF1C18:
-	db $00, $00, $30, $02, $30, $00, $20, $00
-	db $00, $86, $00, $00, $00, $00, $00, $85
-	db $00, $10, $00, $8D, $B8, $00, $00, $81
-	db $04, $02, $00, $80
+	dw sprite.number, $0230
+	dw sprite.unknown_30, $0020
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw !initcommand_set_oam, $1000
+	dw !initcommand_set_alt_palette, $00B8
+	dw !initcommand_set_animation, $0204
+	dw !initcommand_success
 
 DATA_FF1C34:
-	db $00, $00, $B8, $02, $32, $00, $00, $00
-	db $30, $00, $00, $02, $00, $86, $00, $00
-	db $00, $00, $00, $85, $00, $30, $00, $8D
-	db $38, $00, $00, $81, $32, $02, $00, $80
+	dw sprite.number, $02B8
+	dw sprite.unknown_32, $0000
+	dw sprite.unknown_30, $0200
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_alt_palette, $0038
+	dw !initcommand_set_animation, $0232
+	dw !initcommand_success
 
 DATA_FF1C54:
-	db $00, $00, $B4, $01, $02, $00, $C8, $00
-	db $2E, $00, $00, $00, $24, $00, $00, $00
-	db $30, $00, $00, $00, $1E, $00, $01, $10
-	db $00, $85, $00, $20, $00, $8D, $20, $00
-	db $00, $81, $E4, $02, $00, $80
+	dw sprite.number, $01B4
+	dw sprite.render_order, $00C8
+	dw sprite.action, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_30, $0000
+	dw sprite.unknown_1E, $1001
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0020
+	dw !initcommand_set_animation, $02E4
+	dw !initcommand_success
 
 DATA_FF1C7A:
-	db $00, $00, $C4, $01, $02, $00, $C8, $00
-	db $2E, $00, $00, $00, $30, $00, $20, $00
-	db $58, $00, $20, $00, $00, $85, $00, $20
-	db $00, $8D, $20, $00, $00, $81, $03, $03
-	db $00, $80
+	dw sprite.number, $01C4
+	dw sprite.render_order, $00C8
+	dw sprite.action, $0000
+	dw sprite.unknown_30, $0020
+	dw sprite.unknown_58, $0020
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0020
+	dw !initcommand_set_animation, $0303
+	dw !initcommand_success
 
 DATA_FF1C9C:
-	db $00, $00, $C8, $02, $02, $00, $D4, $00
-	db $30, $00, $20, $00, $2E, $00, $00, $00
-	db $00, $85, $00, $20, $00, $8D, $2B, $00
-	db $00, $81, $11, $02, $00, $80
+	dw sprite.number, $02C8
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_30, $0020
+	dw sprite.action, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $002B
+	dw !initcommand_set_animation, $0211
+	dw !initcommand_success
 
 DATA_FF1CBA:
-	db $00, $00, $D0, $02, $02, $00, $F8, $00
-	db $30, $00, $00, $00, $2E, $00, $00, $00
-	db $1C, $00, $00, $C0, $00, $85, $00, $20
-	db $00, $84, $66, $71, $00, $81, $18, $02
-	db $00, $80
+	dw sprite.number, $02D0
+	dw sprite.render_order, $00F8
+	dw sprite.unknown_30, $0000
+	dw sprite.action, $0000
+	dw sprite.unknown_1C, $C000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_palette, DATA_FD7166
+	dw !initcommand_set_animation, $0218
+	dw !initcommand_success
 
 DATA_FF1CDC:
-	db $00, $00, $C4, $02, $02, $00, $D4, $00
-	db $30, $00, $00, $00, $2E, $00, $00, $00
-	db $00, $85, $00, $20, $00, $8D, $2B, $00
-	db $00, $81, $0F, $02, $00, $80
+	dw sprite.number, $02C4
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_30, $0000
+	dw sprite.action, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $002B
+	dw !initcommand_set_animation, $020F
+	dw !initcommand_success
 
 DATA_FF1CFA:
-	db $00, $00, $B0, $02, $00, $86, $00, $00
-	db $00, $00, $02, $00, $FA, $00, $48, $00
-	db $01, $00, $00, $85, $00, $20, $00, $8D
-	db $51, $00, $00, $81, $2E, $02, $00, $80
+	dw sprite.number, $02B0
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.render_order, $00FA
+	dw sprite.unknown_48, $0001
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0051
+	dw !initcommand_set_animation, $022E
+	dw !initcommand_success
 
 DATA_FF1D1A:
-	db $00, $00, $B4, $02, $00, $86, $00, $00
-	db $00, $00, $02, $00, $F8, $00, $00, $85
-	db $00, $20, $00, $8D, $2B, $00, $00, $81
-	db $2F, $02, $00, $80
+	dw sprite.number, $02B4
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.render_order, $00F8
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $002B
+	dw !initcommand_set_animation, $022F
+	dw !initcommand_success
 
 DATA_FF1D36:
-	db $00, $00, $CC, $02, $02, $00, $EC, $00
-	db $30, $00, $20, $00, $2E, $00, $00, $00
-	db $00, $85, $00, $20, $00, $8D, $2B, $00
-	db $00, $81, $14, $02, $00, $80
+	dw sprite.number, $02CC
+	dw sprite.render_order, $00EC
+	dw sprite.unknown_30, $0020
+	dw sprite.action, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $002B
+	dw !initcommand_set_animation, $0214
+	dw !initcommand_success
 
 DATA_FF1D54:
-	db $00, $00, $44, $01, $54, $00, $14, $02
-	db $2E, $00, $00, $00, $20, $00, $00, $00
-	db $26, $00, $00, $00, $24, $00, $00, $00
-	db $30, $00, $11, $02, $00, $80
+	dw sprite.number, $0144
+	dw sprite.unknown_54, $0214
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.max_x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_30, $0211
+	dw !initcommand_success
 
 DATA_FF1D72:
-	db $00, $00, $B8, $01, $30, $00, $01, $00
-	db $2E, $00, $00, $00, $00, $80
+	dw sprite.number, $01B8
+	dw sprite.unknown_30, $0001
+	dw sprite.action, $0000
+	dw !initcommand_success
 
 DATA_FF1D80:
-	db $00, $00, $B8, $01, $30, $00, $01, $02
-	db $2E, $00, $00, $00, $00, $80
+	dw sprite.number, $01B8
+	dw sprite.unknown_30, $0201
+	dw sprite.action, $0000
+	dw !initcommand_success
 
 DATA_FF1D8E:
-	db $00, $00, $7C, $01, $02, $00, $C8, $00
-	db $54, $00, $14, $02, $2E, $00, $00, $00
-	db $20, $00, $00, $00, $26, $00, $00, $00
-	db $24, $00, $00, $00, $4A, $00, $00, $00
-	db $30, $00, $00, $00, $00, $85, $00, $20
-	db $00, $8D, $09, $00, $00, $81, $E3, $02
-	db $52, $00, $20, $00, $4E, $00, $54, $1D
-	db $00, $80
+	dw sprite.number, $017C
+	dw sprite.render_order, $00C8
+	dw sprite.unknown_54, $0214
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.max_x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_4A, $0000
+	dw sprite.unknown_30, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0009
+	dw !initcommand_set_animation, $02E3
+	dw sprite.unknown_52, $0020
+if !version == 0
+	dw sprite.unknown_4E, $1D50
+else
+	dw sprite.unknown_4E, $1D54
+endif
+	dw !initcommand_success
 
 DATA_FF1DC8:
-	db $00, $8E, $24, $00, $09, $00, $A1, $0D
-	db $C0, $14, $02, $00, $D4, $00, $0A, $00
-	db $00, $01, $42, $00, $00, $00, $44, $00
-	db $00, $00, $46, $00, $FF, $FF, $4E, $00
-	db $00, $E0, $2E, $00, $03, $00, $26, $00
-	db $00, $00, $20, $00, $00, $00, $2A, $00
-	db $00, $05, $24, $00, $00, $02, $1C, $00
-	db $00, $00, $00, $85, $00, $20, $00, $81
-	db $AB, $02, $00, $80
+	dw !initcommand_setup_static2, $0024, $0009 : dl DATA_C00DA1 : db $14
+	dw sprite.render_order, $00D4
+	dw sprite.y_position, $0100
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $0000
+	dw sprite.unknown_46, $FFFF
+	dw sprite.unknown_4E, $E000
+	dw sprite.action, $0003
+	dw sprite.max_x_speed, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.unknown_2A, $0500
+	dw sprite.y_speed, $0200
+	dw sprite.unknown_1C, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_animation, $02AB
+	dw !initcommand_success
 
 DATA_FF1E0C:
-	db $00, $83, $D0, $74, $0C, $00, $00, $08
-	db $0E, $00, $80, $FF, $22, $00, $00, $00
-	db $28, $00, $00, $FB, $2E, $00, $01, $00
-	db $50, $00, $3C, $00, $20, $00, $80, $FF
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF74D0
+	dw sprite.ground_y_position, $0800
+	dw sprite.ground_distance, $FF80
+	dw sprite.unknown_22, $0000
+	dw sprite.unknown_28, $FB00
+	dw sprite.action, $0001
+	dw sprite.parameter, $003C
+	dw sprite.x_speed, $FF80
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF1E32:
-	db $00, $83, $D0, $74, $0C, $00, $00, $08
-	db $0E, $00, $80, $00, $22, $00, $00, $00
-	db $28, $00, $00, $05, $2E, $00, $01, $00
-	db $50, $00, $3C, $00, $20, $00, $80, $00
-	db $00, $85, $00, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF74D0
+	dw sprite.ground_y_position, $0800
+	dw sprite.ground_distance, $0080
+	dw sprite.unknown_22, $0000
+	dw sprite.unknown_28, $0500
+	dw sprite.action, $0001
+	dw sprite.parameter, $003C
+	dw sprite.x_speed, $0080
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF1E58:
-	db $00, $86, $FD, $FF, $F8, $FF, $00, $83
-	db $FA, $11, $20, $00, $00, $00, $24, $00
-	db $80, $FF, $00, $85, $00, $20, $02, $00
-	db $F4, $00, $00, $80
+	dw !initcommand_spawn_relative, $FFFD, $FFF8
+	dw !initcommand_load_subconfig, DATA_FF11FA
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $FF80
+	dw !initcommand_set_oam, $2000
+	dw sprite.render_order, $00F4
+	dw !initcommand_success
 
 DATA_FF1E74:
-	db $00, $00, $A4, $01, $02, $00, $C8, $00
-	db $54, $00, $14, $02, $2E, $00, $00, $00
-	db $20, $00, $00, $00, $26, $00, $00, $00
-	db $24, $00, $00, $00, $30, $00, $21, $00
-	db $58, $00, $22, $00, $1C, $00, $00, $00
-	db $00, $85, $00, $20, $00, $8D, $02, $00
-	db $00, $81, $E0, $02, $00, $80
+	dw sprite.number, $01A4
+	dw sprite.render_order, $00C8
+	dw sprite.unknown_54, $0214
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.max_x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_30, $0021
+	dw sprite.unknown_58, $0022
+	dw sprite.unknown_1C, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0002
+	dw !initcommand_set_animation, $02E0
+	dw !initcommand_success
 
 DATA_FF1EAA:
-	db $00, $8E, $68, $00, $32, $00, $E1, $06
-	db $C0, $10, $00, $86, $00, $00, $F6, $FF
-	db $02, $00, $D3, $00, $1C, $00, $00, $00
-	db $00, $85, $00, $20, $00, $80
+	dw !initcommand_setup_static2, $0068, $0032 : dl DATA_C006E1 : db $10
+	dw !initcommand_spawn_relative, $0000, $FFF6
+	dw sprite.render_order, $00D3
+	dw sprite.unknown_1C, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF1EC8:
-	db $00, $00, $BC, $02, $2E, $00, $00, $00
-	db $20, $00, $00, $00, $24, $00, $00, $00
-	db $26, $00, $00, $00, $2A, $00, $00, $00
-	db $42, $00, $01, $00, $44, $00, $00, $00
-	db $46, $00, $00, $00, $48, $00, $00, $00
-	db $00, $85, $00, $20, $1C, $00, $00, $C0
-	db $02, $00, $F5, $00, $00, $80
+	dw sprite.number, $02BC
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.max_x_speed, $0000
+	dw sprite.unknown_2A, $0000
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_44, $0000
+	dw sprite.unknown_46, $0000
+	dw sprite.unknown_48, $0000
+	dw !initcommand_set_oam, $2000
+	dw sprite.unknown_1C, $C000
+	dw sprite.render_order, $00F5
+	dw !initcommand_success
 
 DATA_FF1EFE:
-	db $00, $00, $C0, $02, $54, $00, $1C, $02
-	db $02, $00, $D4, $00, $2E, $00, $00, $00
-	db $20, $00, $00, $00, $24, $00, $00, $00
-	db $30, $00, $20, $00, $1C, $00, $00, $C0
-	db $00, $85, $00, $20, $00, $8D, $38, $00
-	db $00, $81, $40, $02, $00, $80
+	dw sprite.number, $02C0
+	dw sprite.unknown_54, $021C
+	dw sprite.render_order, $00D4
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_30, $0020
+	dw sprite.unknown_1C, $C000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0038
+	dw !initcommand_set_animation, $0240
+	dw !initcommand_success
 
 DATA_FF1F2C:
-	db $00, $00, $68, $02, $32, $00, $00, $00
-	db $30, $00, $20, $00, $02, $00, $D4, $00
-	db $1C, $00, $00, $00, $00, $86, $00, $00
-	db $00, $00, $00, $85, $00, $60, $00, $8D
-	db $6A, $00, $00, $81, $5F, $02, $00, $80
-	db $54, $00, $1C, $02, $2E, $00, $00, $00
-	db $02, $00, $D8, $00, $20, $00, $00, $00
-	db $26, $00, $00, $00, $24, $00, $00, $00
-	db $2A, $00, $00, $00, $42, $00, $00, $00
-	db $44, $00, $00, $00, $30, $00, $20, $00
-	db $58, $00, $22, $00, $1C, $00, $00, $00
-	db $00, $85, $00, $20, $00, $80
+	dw sprite.number, $0268
+	dw sprite.unknown_32, $0000
+	dw sprite.unknown_30, $0020
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_1C, $0000
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_alt_palette, $006A
+	dw !initcommand_set_animation, $025F
+	dw !initcommand_success
+
+DATA_FF1F54:
+	dw sprite.unknown_54, $021C
+	dw sprite.action, $0000
+	dw sprite.render_order, $00D8
+	dw sprite.x_speed, $0000
+	dw sprite.max_x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_2A, $0000
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $0000
+	dw sprite.unknown_30, $0020
+	dw sprite.unknown_58, $0022
+	dw sprite.unknown_1C, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF1F8A:
-	db $00, $83, $54, $1F, $00, $00, $70, $02
-	db $00, $8D, $09, $00, $00, $81, $FD, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF1F54
+	dw sprite.number, $0270
+	dw !initcommand_set_alt_palette, $0009
+	dw !initcommand_set_animation, $02FD
+	dw !initcommand_success
 
 DATA_FF1F9C:
-	db $00, $83, $54, $1F, $00, $00, $A0, $02
-	db $00, $8D, $09, $00, $00, $81, $FD, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF1F54
+	dw sprite.number, $02A0
+	dw !initcommand_set_alt_palette, $0009
+	dw !initcommand_set_animation, $02FD
+	dw !initcommand_success
 
 DATA_FF1FAE:
-	db $00, $83, $54, $1F, $00, $00, $A0, $02
-	db $00, $8D, $02, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF1F54
+	dw sprite.number, $02A0
+	dw !initcommand_set_alt_palette, $0002
+	dw !initcommand_success
 
 DATA_FF1FBC:
-	db $00, $83, $54, $1F, $00, $00, $A0, $02
-	db $00, $8D, $71, $00, $00, $81, $7E, $02
-	db $00, $85, $00, $10, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF1F54
+	dw sprite.number, $02A0
+	dw !initcommand_set_alt_palette, $0071
+	dw !initcommand_set_animation, $027E
+	dw !initcommand_set_oam, $1000
+	dw !initcommand_success
 
 DATA_FF1FD2:
-	db $00, $83, $54, $1F, $00, $00, $A0, $02
-	db $00, $8D, $72, $00, $00, $81, $7E, $02
-	db $00, $85, $00, $10, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF1F54
+	dw sprite.number, $02A0
+	dw !initcommand_set_alt_palette, $0072
+	dw !initcommand_set_animation, $027E
+	dw !initcommand_set_oam, $1000
+	dw !initcommand_success
 
 DATA_FF1FE8:
-	db $00, $83, $54, $1F, $00, $00, $A0, $02
-	db $00, $8D, $73, $00, $00, $81, $7E, $02
-	db $00, $85, $00, $10, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF1F54
+	dw sprite.number, $02A0
+	dw !initcommand_set_alt_palette, $0073
+	dw !initcommand_set_animation, $027E
+	dw !initcommand_set_oam, $1000
+	dw !initcommand_success
 
 DATA_FF1FFE:
-	db $00, $00, $74, $02, $02, $00, $D6, $00
-	db $30, $00, $00, $00, $2E, $00, $00, $00
-	db $1C, $00, $00, $C0, $00, $85, $00, $10
-	db $00, $8D, $2B, $00, $00, $81, $69, $02
-	db $00, $80
+	dw sprite.number, $0274
+	dw sprite.render_order, $00D6
+	dw sprite.unknown_30, $0000
+	dw sprite.action, $0000
+	dw sprite.unknown_1C, $C000
+	dw !initcommand_set_oam, $1000
+	dw !initcommand_set_alt_palette, $002B
+	dw !initcommand_set_animation, $0269
+	dw !initcommand_success
 
 DATA_FF2020:
-	db $00, $00, $6C, $02, $02, $00, $D4, $00
-	db $30, $00, $00, $00, $2E, $00, $00, $00
-	db $00, $85, $00, $20, $1C, $00, $00, $00
-	db $00, $8D, $70, $00, $00, $81, $6C, $02
-	db $00, $80, $00, $00, $98, $02, $2E, $00
-	db $00, $00, $20, $00, $00, $00, $24, $00
-	db $00, $00, $26, $00, $00, $00, $2A, $00
-	db $00, $00, $42, $00, $00, $00, $44, $00
-	db $00, $00, $1C, $00, $00, $00, $00, $85
-	db $00, $20, $00, $80
+	dw sprite.number, $026C
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_30, $0000
+	dw sprite.action, $0000
+	dw !initcommand_set_oam, $2000
+	dw sprite.unknown_1C, $0000
+	dw !initcommand_set_alt_palette, $0070
+	dw !initcommand_set_animation, $026C
+	dw !initcommand_success
+
+DATA_FF2042:
+	dw sprite.number, $0298
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.max_x_speed, $0000
+	dw sprite.unknown_2A, $0000
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $0000
+	dw sprite.unknown_1C, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF206C:
-	db $00, $83, $42, $20, $00, $8D, $00, $00
-	db $02, $00, $F8, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2042
+	dw !initcommand_set_alt_palette, $0000
+	dw sprite.render_order, $00F8
+	dw !initcommand_success
 
 DATA_FF207A:
-	db $00, $83, $42, $20, $00, $8D, $42, $00
-	db $02, $00, $F8, $00, $00, $81, $9E, $02
-	db $00, $85, $00, $10, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2042
+	dw !initcommand_set_alt_palette, $0042
+	dw sprite.render_order, $00F8
+	dw !initcommand_set_animation, $029E
+	dw !initcommand_set_oam, $1000
+	dw !initcommand_success
 
 DATA_FF2090:
-	db $00, $83, $42, $20, $00, $8D, $2B, $00
-	db $02, $00, $F8, $00, $42, $00, $02, $00
-	db $44, $00, $02, $00, $00, $86, $00, $00
-	db $EC, $FF, $00, $81, $A0, $02, $00, $85
-	db $00, $10, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2042
+	dw !initcommand_set_alt_palette, $002B
+	dw sprite.render_order, $00F8
+	dw sprite.unknown_42, $0002
+	dw sprite.unknown_44, $0002
+	dw !initcommand_spawn_relative, $0000, $FFEC
+	dw !initcommand_set_animation, $02A0
+	dw !initcommand_set_oam, $1000
+	dw !initcommand_success
 
 DATA_FF20B4:
-	db $00, $83, $42, $20, $00, $8D, $1B, $00
-	db $02, $00, $F8, $00, $42, $00, $02, $00
-	db $44, $00, $02, $00, $00, $86, $00, $00
-	db $0A, $00, $00, $81, $9F, $02, $00, $85
-	db $00, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2042
+	dw !initcommand_set_alt_palette, $001B
+	dw sprite.render_order, $00F8
+	dw sprite.unknown_42, $0002
+	dw sprite.unknown_44, $0002
+	dw !initcommand_spawn_relative, $0000, $000A
+	dw !initcommand_set_animation, $029F
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF20D8:
-	db $00, $83, $42, $20, $00, $8D, $1B, $00
-	db $02, $00, $F8, $00, $42, $00, $02, $00
-	db $44, $00, $02, $00, $00, $86, $00, $00
-	db $EC, $FF, $00, $81, $9F, $02, $00, $85
-	db $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2042
+	dw !initcommand_set_alt_palette, $001B
+	dw sprite.render_order, $00F8
+	dw sprite.unknown_42, $0002
+	dw sprite.unknown_44, $0002
+	dw !initcommand_spawn_relative, $0000, $FFEC
+	dw !initcommand_set_animation, $029F
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF20FC:
-	db $00, $83, $42, $20, $00, $8D, $2B, $00
-	db $02, $00, $F8, $00, $42, $00, $02, $00
-	db $44, $00, $02, $00, $00, $86, $00, $00
-	db $EC, $FF, $00, $81, $75, $02, $00, $85
-	db $00, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2042
+	dw !initcommand_set_alt_palette, $002B
+	dw sprite.render_order, $00F8
+	dw sprite.unknown_42, $0002
+	dw sprite.unknown_44, $0002
+	dw !initcommand_spawn_relative, $0000, $FFEC
+	dw !initcommand_set_animation, $0275
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF2120:
-	db $00, $83, $42, $20, $00, $8D, $2B, $00
-	db $02, $00, $F8, $00, $00, $86, $00, $00
-	db $EC, $FF, $00, $81, $75, $02, $00, $85
-	db $00, $A0, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2042
+	dw !initcommand_set_alt_palette, $002B
+	dw sprite.render_order, $00F8
+	dw !initcommand_spawn_relative, $0000, $FFEC
+	dw !initcommand_set_animation, $0275
+	dw !initcommand_set_oam, $A000
+	dw !initcommand_success
 
 DATA_FF213C:
-	db $00, $83, $42, $20, $00, $8D, $2B, $00
-	db $02, $00, $F8, $00, $00, $80, $00, $83
-	db $60, $12, $00, $86, $F8, $FF, $08, $00
-	db $02, $00, $C4, $00, $24, $00, $E0, $FF
-	db $1C, $00, $00, $00, $00, $80, $00, $83
-	db $60, $12, $00, $86, $F4, $FF, $08, $00
-	db $02, $00, $C4, $00, $24, $00, $E0, $FF
-	db $1C, $00, $00, $00, $00, $80, $00, $89
-	db $98, $02, $82, $66, $21, $23, $C0, $20
-	db $00, $86, $00, $00, $05, $00, $02, $00
-	db $F8, $00, $20, $00, $50, $FE, $24, $00
-	db $00, $00, $26, $00, $A0, $FF, $2A, $00
-	db $60, $FF, $42, $00, $06, $00, $44, $00
-	db $02, $00, $1C, $00, $00, $00, $00, $85
-	db $00, $20, $00, $81, $A2, $02, $00, $80
-	db $00, $89, $98, $02, $82, $66, $21, $23
-	db $C0, $20, $00, $86, $00, $00, $05, $00
-	db $02, $00, $F8, $00, $20, $00, $B0, $01
-	db $24, $00, $00, $00, $26, $00, $60, $00
-	db $2A, $00, $60, $FF, $42, $00, $06, $00
-	db $44, $00, $02, $00, $1C, $00, $00, $00
-	db $00, $85, $00, $20, $00, $81, $A2, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2042
+	dw !initcommand_set_alt_palette, $002B
+	dw sprite.render_order, $00F8
+	dw !initcommand_success
+
+DATA_FF214A:
+	dw !initcommand_load_subconfig, DATA_FF1260
+	dw !initcommand_spawn_relative, $FFF8, $0008
+	dw sprite.render_order, $00C4
+	dw sprite.y_speed, $FFE0
+	dw sprite.unknown_1C, $0000
+	dw !initcommand_success
+
+DATA_FF2162:
+	dw !initcommand_load_subconfig, DATA_FF1260
+	dw !initcommand_spawn_relative, $FFF4, $0008
+	dw sprite.render_order, $00C4
+	dw sprite.y_speed, $FFE0
+	dw sprite.unknown_1C, $0000
+	dw !initcommand_success
+
+DATA_FF217A:
+	dw !initcommand_setup_static, $0298, $6682 : dl DATA_C02321 : db $20
+	dw !initcommand_spawn_relative, $0000, $0005
+	dw sprite.render_order, $00F8
+	dw sprite.x_speed, $FE50
+	dw sprite.y_speed, $0000
+	dw sprite.max_x_speed, $FFA0
+	dw sprite.unknown_2A, $FF60
+	dw sprite.unknown_42, $0006
+	dw sprite.unknown_44, $0002
+	dw sprite.unknown_1C, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_animation, $02A2
+	dw !initcommand_success
+
+DATA_FF21B4:
+	dw !initcommand_setup_static, $0298, $6682 : dl DATA_C02321 : db $20
+	dw !initcommand_spawn_relative, $0000, $0005
+	dw sprite.render_order, $00F8
+	dw sprite.x_speed, $01B0
+	dw sprite.y_speed, $0000
+	dw sprite.max_x_speed, $0060
+	dw sprite.unknown_2A, $FF60
+	dw sprite.unknown_42, $0006
+	dw sprite.unknown_44, $0002
+	dw sprite.unknown_1C, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_animation, $02A2
+	dw !initcommand_success
 
 DATA_FF21EE:
-	db $00, $00, $9C, $02, $32, $00, $00, $00
-	db $30, $00, $00, $00, $02, $00, $D6, $00
-	db $00, $85, $00, $60, $00, $8D, $6B, $00
-	db $00, $81, $73, $02, $00, $86, $00, $00
-	db $00, $00, $1C, $00, $00, $00, $00, $80
-	db $00, $00, $A8, $01, $02, $00, $C8, $00
-	db $54, $00, $14, $02, $2E, $00, $04, $00
-	db $30, $00, $00, $00, $00, $85, $00, $20
-	db $00, $8D, $02, $00, $00, $81, $E1, $02
-	db $00, $80, $00, $8E, $18, $00, $74, $00
-	db $21, $10, $C0, $20, $00, $86, $00, $00
-	db $00, $00, $54, $00, $52, $02, $02, $00
-	db $C8, $00, $26, $00, $00, $00, $20, $00
-	db $00, $00, $24, $00, $00, $F8, $1C, $00
-	db $00, $00, $00, $85, $00, $30, $00, $81
-	db $57, $01, $00, $80, $00, $8E, $1C, $00
-	db $74, $00, $21, $14, $C0, $19, $00, $86
-	db $00, $00, $00, $00, $54, $00, $52, $02
-	db $02, $00, $C8, $00, $26, $00, $00, $01
-	db $20, $00, $00, $01, $24, $00, $00, $F8
-	db $1C, $00, $00, $00, $00, $85, $00, $30
-	db $00, $81, $58, $01, $00, $80
+	dw sprite.number, $029C
+	dw sprite.unknown_32, $0000
+	dw sprite.unknown_30, $0000
+	dw sprite.render_order, $00D6
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_alt_palette, $006B
+	dw !initcommand_set_animation, $0273
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.unknown_1C, $0000
+	dw !initcommand_success
+
+DATA_FF2216:
+	dw sprite.number, $01A8
+	dw sprite.render_order, $00C8
+	dw sprite.unknown_54, $0214
+	dw sprite.action, $0004
+	dw sprite.unknown_30, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0002
+	dw !initcommand_set_animation, $02E1
+	dw !initcommand_success
+
+DATA_FF2238:
+	dw !initcommand_setup_static2, $0018, $0074 : dl DATA_C01021 : db $20
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.unknown_54, $0252
+	dw sprite.render_order, $00C8
+	dw sprite.max_x_speed, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $F800
+	dw sprite.unknown_1C, $0000
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $0157
+	dw !initcommand_success
+
+DATA_FF226A:
+	dw !initcommand_setup_static2, $001C, $0074 : dl DATA_C01421 : db $19
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.unknown_54, $0252
+	dw sprite.render_order, $00C8
+	dw sprite.max_x_speed, $0100
+	dw sprite.x_speed, $0100
+	dw sprite.y_speed, $F800
+	dw sprite.unknown_1C, $0000
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $0158
+	dw !initcommand_success
 
 DATA_FF229C:
-	db $00, $00, $74, $00, $06, $00, $90, $00
-	db $0A, $00, $9A, $00, $42, $00, $00, $00
-	db $02, $00, $D4, $00, $00, $85, $00, $60
-	db $00, $8D, $5F, $00, $00, $81, $8C, $02
-	db $00, $80
+	dw sprite.number, $0074
+	dw sprite.x_position, $0090
+	dw sprite.y_position, $009A
+	dw sprite.unknown_42, $0000
+	dw sprite.render_order, $00D4
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_alt_palette, $005F
+	dw !initcommand_set_animation, $028C
+	dw !initcommand_success
 
 DATA_FF22BE:
-	db $00, $00, $78, $02, $06, $00, $90, $00
-	db $0A, $00, $9A, $00, $02, $00, $D4, $00
-	db $00, $85, $00, $60, $00, $8D, $5E, $00
-	db $00, $81, $8D, $02, $00, $80
+	dw sprite.number, $0278
+	dw sprite.x_position, $0090
+	dw sprite.y_position, $009A
+	dw sprite.render_order, $00D4
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_alt_palette, $005E
+	dw !initcommand_set_animation, $028D
+	dw !initcommand_success
 
 DATA_FF22DC:
-	db $00, $00, $7C, $02, $32, $00, $00, $00
-	db $30, $00, $20, $00, $02, $00, $D4, $00
-	db $1C, $00, $00, $00, $00, $86, $00, $00
-	db $00, $00, $58, $00, $22, $00, $00, $85
-	db $00, $60, $00, $8D, $97, $00, $00, $81
-	db $8D, $02, $00, $80
+	dw sprite.number, $027C
+	dw sprite.unknown_32, $0000
+	dw sprite.unknown_30, $0020
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_1C, $0000
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.unknown_58, $0022
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_alt_palette, $0097
+	dw !initcommand_set_animation, $028D
+	dw !initcommand_success
 
 DATA_FF2308:
-	db $00, $00, $B4, $00, $2E, $00, $28, $15
-	db $00, $86, $00, $00, $00, $00, $20, $00
-	db $C0, $00, $24, $00, $00, $00, $42, $00
-	db $00, $00, $4A, $00, $0E, $00, $44, $00
-	db $00, $00, $46, $00, $02, $00, $48, $00
-	db $04, $00, $00, $80
+	dw sprite.number, $00B4
+if !version == 0
+	dw sprite.action, $1524
+else
+	dw sprite.action, $1528
+endif
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.x_speed, $00C0
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_4A, $000E
+	dw sprite.unknown_44, $0000
+	dw sprite.unknown_46, $0002
+	dw sprite.unknown_48, $0004
+	dw !initcommand_success
 
 DATA_FF2334:
-	db $00, $00, $B4, $00, $2E, $00, $28, $15
-	db $00, $86, $00, $00, $00, $00, $00, $00
-	db $B4, $00, $20, $00, $40, $FF, $24, $00
-	db $00, $00, $42, $00, $06, $00, $4A, $00
-	db $0E, $00, $44, $00, $00, $00, $46, $00
-	db $01, $00, $48, $00, $04, $00, $00, $80
+	dw sprite.number, $00B4
+if !version == 0
+	dw sprite.action, $1524
+else
+	dw sprite.action, $1528
+endif
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.number, $00B4
+	dw sprite.x_speed, $FF40
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_42, $0006
+	dw sprite.unknown_4A, $000E
+	dw sprite.unknown_44, $0000
+	dw sprite.unknown_46, $0001
+	dw sprite.unknown_48, $0004
+	dw !initcommand_success
 
 DATA_FF2364:
-	db $00, $83, $42, $20, $00, $8D, $41, $00
-	db $00, $86, $00, $00, $00, $00, $0A, $00
-	db $C0, $02, $02, $00, $F8, $00, $1C, $00
-	db $00, $00, $00, $81, $9E, $02, $00, $85
-	db $00, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2042
+	dw !initcommand_set_alt_palette, $0041
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.y_position, $02C0
+	dw sprite.render_order, $00F8
+	dw sprite.unknown_1C, $0000
+	dw !initcommand_set_animation, $029E
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF2388:
-	db $00, $83, $42, $20, $00, $8D, $41, $00
-	db $00, $86, $FB, $FF, $05, $00, $0A, $00
-	db $CA, $02, $02, $00, $F8, $00, $1C, $00
-	db $00, $00, $00, $81, $9E, $02, $00, $85
-	db $00, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2042
+	dw !initcommand_set_alt_palette, $0041
+	dw !initcommand_spawn_relative, $FFFB, $0005
+	dw sprite.y_position, $02CA
+	dw sprite.render_order, $00F8
+	dw sprite.unknown_1C, $0000
+	dw !initcommand_set_animation, $029E
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF23AC:
-	db $00, $83, $42, $20, $00, $8D, $41, $00
-	db $00, $86, $06, $00, $08, $00, $0A, $00
-	db $CF, $02, $02, $00, $F8, $00, $1C, $00
-	db $00, $00, $00, $81, $9E, $02, $00, $85
-	db $00, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2042
+	dw !initcommand_set_alt_palette, $0041
+	dw !initcommand_spawn_relative, $0006, $0008
+	dw sprite.y_position, $02CF
+	dw sprite.render_order, $00F8
+	dw sprite.unknown_1C, $0000
+	dw !initcommand_set_animation, $029E
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF23D0:
-	db $00, $8E, $34, $00, $51, $00, $E0, $64
-	db $FB, $17, $02, $00, $F9, $00, $46, $00
-	db $00, $00, $00, $85, $00, $20, $00, $81
-	db $1E, $02, $00, $80
+	dw !initcommand_setup_static2, $0034, $0051 : dl DATA_FB64E0 : db $17
+	dw sprite.render_order, $00F9
+	dw sprite.unknown_46, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_animation, $021E
+	dw !initcommand_success
 
 DATA_FF23EC:
-	db $00, $8E, $38, $00, $51, $00, $C0, $67
-	db $FB, $20, $02, $00, $F9, $00, $46, $00
-	db $00, $00, $00, $85, $00, $20, $00, $81
-	db $1F, $02, $00, $80
+	dw !initcommand_setup_static2, $0038, $0051 : dl DATA_FB67C0 : db $20
+	dw sprite.render_order, $00F9
+	dw sprite.unknown_46, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_animation, $021F
+	dw !initcommand_success
 
 DATA_FF2408:
-	db $00, $8E, $3C, $00, $51, $00, $C0, $6B
-	db $FB, $20, $02, $00, $F9, $00, $46, $00
-	db $00, $00, $00, $85, $00, $20, $00, $81
-	db $20, $02, $00, $80
+	dw !initcommand_setup_static2, $003C, $0051 : dl DATA_FB6BC0 : db $20
+	dw sprite.render_order, $00F9
+	dw sprite.unknown_46, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_animation, $0220
+	dw !initcommand_success
 
 DATA_FF2424:
-	db $00, $8E, $44, $00, $51, $00, $60, $03
-	db $FA, $18, $02, $00, $F9, $00, $46, $00
-	db $00, $00, $00, $85, $00, $20, $00, $81
-	db $21, $02, $00, $80
+	dw !initcommand_setup_static2, $0044, $0051 : dl DATA_FA0360 : db $18
+	dw sprite.render_order, $00F9
+	dw sprite.unknown_46, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_animation, $0221
+	dw !initcommand_success
 
 DATA_FF2440:
-	db $00, $8E, $48, $00, $51, $00, $80, $56
-	db $FC, $14, $02, $00, $F9, $00, $46, $00
-	db $00, $00, $00, $85, $00, $20, $00, $81
-	db $23, $02, $00, $80
+	dw !initcommand_setup_static2, $0048, $0051 : dl DATA_FC5680 : db $14
+	dw sprite.render_order, $00F9
+	dw sprite.unknown_46, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_animation, $0223
+	dw !initcommand_success
 
 DATA_FF245C:
-	db $00, $8E, $2C, $00, $51, $00, $00, $00
-	db $FA, $1B, $02, $00, $F9, $00, $46, $00
-	db $00, $00, $00, $85, $00, $20, $00, $81
-	db $1B, $02, $00, $80
+	dw !initcommand_setup_static2, $002C, $0051 : dl DATA_FA0000 : db $1B
+	dw sprite.render_order, $00F9
+	dw sprite.unknown_46, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_animation, $021B
+	dw !initcommand_success
 
 DATA_FF2478:
-	db $00, $00, $8C, $01, $06, $00, $AA, $00
-	db $0A, $00, $A1, $00, $02, $00, $F0, $00
-	db $42, $00, $00, $00, $44, $00, $59, $C2
-	db $00, $85, $00, $60, $00, $8D, $26, $00
-	db $00, $80
+	dw sprite.number, $018C
+	dw sprite.x_position, $00AA
+	dw sprite.y_position, $00A1
+	dw sprite.render_order, $00F0
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, DATA_BAC259
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_alt_palette, $0026
+	dw !initcommand_success
 
 DATA_FF249A:
-	db $00, $00, $8C, $01, $06, $00, $80, $00
-	db $0A, $00, $80, $00, $02, $00, $F0, $00
-	db $42, $00, $00, $00, $44, $00, $6F, $C2
-	db $00, $85, $00, $60, $00, $8D, $23, $00
-	db $00, $80
+	dw sprite.number, $018C
+	dw sprite.x_position, $0080
+	dw sprite.y_position, $0080
+	dw sprite.render_order, $00F0
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, DATA_BAC26F
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_alt_palette, $0023
+	dw !initcommand_success
 
 DATA_FF24BC:
-	db $00, $00, $8C, $01, $06, $00, $80, $00
-	db $0A, $00, $80, $00, $02, $00, $F0, $00
-	db $42, $00, $00, $00, $44, $00, $8D, $C2
-	db $00, $85, $00, $60, $00, $8D, $04, $00
-	db $00, $80
+	dw sprite.number, $018C
+	dw sprite.x_position, $0080
+	dw sprite.y_position, $0080
+	dw sprite.render_order, $00F0
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, DATA_BAC28D
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_alt_palette, $0004
+	dw !initcommand_success
 
 DATA_FF24DE:
-	db $00, $00, $8C, $01, $06, $00, $80, $00
-	db $0A, $00, $A0, $00, $02, $00, $F0, $00
-	db $42, $00, $00, $00, $44, $00, $AB, $C2
-	db $00, $85, $00, $20, $00, $8D, $37, $00
-	db $00, $80
+	dw sprite.number, $018C
+	dw sprite.x_position, $0080
+	dw sprite.y_position, $00A0
+	dw sprite.render_order, $00F0
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, DATA_BAC2AB
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0037
+	dw !initcommand_success
 
 DATA_FF2500:
-	db $00, $00, $8C, $01, $06, $00, $80, $00
-	db $0A, $00, $A0, $00, $02, $00, $F8, $00
-	db $42, $00, $00, $00, $44, $00, $BD, $C2
-	db $1C, $00, $00, $C0, $00, $85, $00, $20
-	db $00, $8D, $37, $00, $00, $80
+	dw sprite.number, $018C
+	dw sprite.x_position, $0080
+	dw sprite.y_position, $00A0
+	dw sprite.render_order, $00F8
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, DATA_BAC2BD
+	dw sprite.unknown_1C, $C000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0037
+	dw !initcommand_success
 
 DATA_FF2526:
-	db $00, $00, $8C, $01, $06, $00, $58, $00
-	db $0A, $00, $B0, $00, $02, $00, $F0, $00
-	db $42, $00, $00, $00, $44, $00, $C3, $C2
-	db $00, $85, $00, $20, $00, $8D, $A3, $00
-	db $00, $80
+	dw sprite.number, $018C
+	dw sprite.x_position, $0058
+	dw sprite.y_position, $00B0
+	dw sprite.render_order, $00F0
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, DATA_BAC2C3
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $00A3
+	dw !initcommand_success
 
 DATA_FF2548:
-	db $00, $00, $8C, $01, $06, $00, $58, $00
-	db $0A, $00, $B0, $00, $02, $00, $F0, $00
-	db $42, $00, $00, $00, $44, $00, $E3, $C2
-	db $00, $85, $00, $20, $00, $8D, $A4, $00
-	db $00, $80, $06, $00, $28, $00, $0A, $00
-	db $70, $00, $26, $00, $00, $00, $2A, $00
-	db $00, $01, $20, $00, $00, $00, $24, $00
-	db $00, $00, $42, $00, $00, $00, $44, $00
-	db $04, $00, $46, $00, $0F, $00, $48, $00
-	db $0D, $00, $4A, $00, $1E, $00, $4C, $00
-	db $1B, $00, $00, $81, $EA, $01, $00, $80
+	dw sprite.number, $018C
+	dw sprite.x_position, $0058
+	dw sprite.y_position, $00B0
+	dw sprite.render_order, $00F0
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, DATA_BAC2E3
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $00A4
+	dw !initcommand_success
+
+DATA_FF256A:
+	dw sprite.x_position, $0028
+	dw sprite.y_position, $0070
+	dw sprite.max_x_speed, $0000
+	dw sprite.unknown_2A, $0100
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $0004
+	dw sprite.unknown_46, $000F
+	dw sprite.unknown_48, $000D
+	dw sprite.unknown_4A, $001E
+	dw sprite.unknown_4C, $001B
+	dw !initcommand_set_animation, $01EA
+	dw !initcommand_success
 
 DATA_FF25A0:
-	db $00, $00, $84, $01, $00, $83, $6A, $25
-	db $02, $00, $D4, $00, $00, $85, $00, $60
-	db $00, $81, $E9, $01, $00, $8D, $5D, $00
-	db $00, $80
+	dw sprite.number, $0184
+	dw !initcommand_load_subconfig, DATA_FF256A
+	dw sprite.render_order, $00D4
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_animation, $01E9
+	dw !initcommand_set_alt_palette, $005D
+	dw !initcommand_success
 
 DATA_FF25BA:
-	db $00, $00, $84, $01, $00, $83, $6A, $25
-	db $02, $00, $D2, $00, $00, $85, $00, $20
-	db $00, $8D, $02, $00, $00, $80
+	dw sprite.number, $0184
+	dw !initcommand_load_subconfig, DATA_FF256A
+	dw sprite.render_order, $00D2
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0002
+	dw !initcommand_success
 
 DATA_FF25D0:
-	db $00, $00, $84, $01, $00, $83, $6A, $25
-	db $02, $00, $D4, $00, $00, $85, $00, $60
-	db $00, $81, $EB, $01, $00, $8D, $5D, $00
-	db $00, $80, $00, $00, $84, $01, $02, $00
-	db $D4, $00, $26, $00, $00, $01, $2A, $00
-	db $00, $01, $20, $00, $00, $00, $24, $00
-	db $00, $00, $42, $00, $00, $00, $44, $00
-	db $04, $00, $46, $00, $0F, $00, $48, $00
-	db $0D, $00, $4A, $00, $1E, $00, $4C, $00
-	db $1B, $00, $00, $85, $00, $20, $00, $80
+	dw sprite.number, $0184
+	dw !initcommand_load_subconfig, DATA_FF256A
+	dw sprite.render_order, $00D4
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_animation, $01EB
+	dw !initcommand_set_alt_palette, $005D
+	dw !initcommand_success
+
+DATA_FF25EA:
+	dw sprite.number, $0184
+	dw sprite.render_order, $00D4
+	dw sprite.max_x_speed, $0100
+	dw sprite.unknown_2A, $0100
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $0004
+	dw sprite.unknown_46, $000F
+	dw sprite.unknown_48, $000D
+	dw sprite.unknown_4A, $001E
+	dw sprite.unknown_4C, $001B
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF2620:
-	db $00, $83, $EA, $25, $06, $00, $C8, $00
-	db $0A, $00, $50, $00, $02, $00, $D4, $00
-	db $00, $8D, $14, $00, $00, $81, $D8, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF25EA
+	dw sprite.x_position, $00C8
+	dw sprite.y_position, $0050
+	dw sprite.render_order, $00D4
+	dw !initcommand_set_alt_palette, $0014
+	dw !initcommand_set_animation, $01D8
+	dw !initcommand_success
 
 DATA_FF263A:
-	db $00, $00, $08, $00, $02, $00, $08, $01
-	db $12, $00, $60, $3E, $00, $81, $EC, $01
-	db $00, $80
+	dw sprite.number, $0008
+	dw sprite.render_order, $0108
+	dw sprite.oam_property, $3E60
+	dw !initcommand_set_animation, $01EC
+	dw !initcommand_success
 
 DATA_FF264C:
-	db $00, $00, $08, $00, $02, $00, $08, $01
-	db $12, $00, $70, $3E, $00, $81, $B9, $01
-	db $00, $80
+	dw sprite.number, $0008
+	dw sprite.render_order, $0108
+	dw sprite.oam_property, $3E70
+	dw !initcommand_set_animation, $01B9
+	dw !initcommand_success
 
 DATA_FF265E:
-	db $00, $00, $08, $00, $02, $00, $08, $01
-	db $12, $00, $60, $3E, $00, $81, $BA, $01
-	db $00, $80
+	dw sprite.number, $0008
+	dw sprite.render_order, $0108
+	dw sprite.oam_property, $3E60
+	dw !initcommand_set_animation, $01BA
+	dw !initcommand_success
 
 DATA_FF2670:
-	db $00, $00, $08, $00, $02, $00, $08, $01
-	db $12, $00, $A0, $36, $00, $81, $56, $02
-	db $00, $80
+	dw sprite.number, $0008
+	dw sprite.render_order, $0108
+	dw sprite.oam_property, $36A0
+	dw !initcommand_set_animation, $0256
+	dw !initcommand_success
 
 DATA_FF2682:
-	db $00, $00, $08, $00, $02, $00, $08, $01
-	db $12, $00, $C0, $36, $00, $81, $56, $02
-	db $00, $80
+	dw sprite.number, $0008
+	dw sprite.render_order, $0108
+	dw sprite.oam_property, $36C0
+	dw !initcommand_set_animation, $0256
+	dw !initcommand_success
 
 DATA_FF2694:
-	db $00, $00, $08, $00, $02, $00, $08, $01
-	db $12, $00, $E0, $36, $00, $81, $56, $02
-	db $00, $80
+	dw sprite.number, $0008
+	dw sprite.render_order, $0108
+	dw sprite.oam_property, $36E0
+	dw !initcommand_set_animation, $0256
+	dw !initcommand_success
 
 DATA_FF26A6:
-	db $00, $00, $08, $00, $02, $00, $08, $01
-	db $12, $00, $00, $37, $00, $81, $56, $02
-	db $00, $80
+	dw sprite.number, $0008
+	dw sprite.render_order, $0108
+	dw sprite.oam_property, $3700
+	dw !initcommand_set_animation, $0256
+	dw !initcommand_success
 
 DATA_FF26B8:
-	db $00, $00, $08, $00, $02, $00, $08, $01
-	db $12, $00, $20, $37, $00, $81, $56, $02
-	db $00, $80, $2E, $00, $02, $00, $20, $00
-	db $00, $00, $24, $00, $00, $00, $26, $00
-	db $00, $00, $2A, $00, $00, $00, $42, $00
-	db $00, $00, $44, $00, $38, $02, $46, $00
-	db $C1, $01, $06, $00, $38, $02, $0A, $00
-	db $00, $01, $30, $00, $00, $02, $00, $80
+	dw sprite.number, $0008
+	dw sprite.render_order, $0108
+	dw sprite.oam_property, $3720
+	dw !initcommand_set_animation, $0256
+	dw !initcommand_success
+
+DATA_FF26CA:
+	dw sprite.action, $0002
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.max_x_speed, $0000
+	dw sprite.unknown_2A, $0000
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $0238
+	dw sprite.unknown_46, $01C1
+	dw sprite.x_position, $0238
+	dw sprite.y_position, $0100
+	dw sprite.unknown_30, $0200
+	dw !initcommand_success
 
 DATA_FF26F8:
-	db $00, $00, $80, $02, $00, $83, $CA, $26
-	db $1C, $00, $00, $00, $02, $00, $D2, $00
-	db $00, $85, $00, $20, $00, $81, $4F, $02
-	db $00, $8D, $6A, $00, $00, $80
+	dw sprite.number, $0280
+	dw !initcommand_load_subconfig, DATA_FF26CA
+	dw sprite.unknown_1C, $0000
+	dw sprite.render_order, $00D2
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_animation, $024F
+	dw !initcommand_set_alt_palette, $006A
+	dw !initcommand_success
 
 DATA_FF2716:
-	db $00, $00, $84, $02, $00, $83, $CA, $26
-	db $1C, $00, $00, $00, $02, $00, $D9, $00
-	db $00, $85, $00, $20, $00, $81, $44, $02
-	db $00, $8D, $6A, $00, $00, $80
+	dw sprite.number, $0284
+	dw !initcommand_load_subconfig, DATA_FF26CA
+	dw sprite.unknown_1C, $0000
+	dw sprite.render_order, $00D9
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_animation, $0244
+	dw !initcommand_set_alt_palette, $006A
+	dw !initcommand_success
 
 DATA_FF2734:
-	db $00, $00, $88, $02, $00, $83, $CA, $26
-	db $1C, $00, $00, $00, $02, $00, $D9, $00
-	db $00, $85, $00, $20, $00, $81, $43, $02
-	db $00, $8D, $A8, $00, $00, $80
+	dw sprite.number, $0288
+	dw !initcommand_load_subconfig, DATA_FF26CA
+	dw sprite.unknown_1C, $0000
+	dw sprite.render_order, $00D9
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_animation, $0243
+	dw !initcommand_set_alt_palette, $00A8
+	dw !initcommand_success
 
 DATA_FF2752:
-	db $00, $83, $54, $1F, $00, $00, $8C, $02
-	db $42, $00, $03, $00, $44, $00, $07, $00
-	db $42, $00, $00, $00, $02, $00, $DA, $00
-	db $00, $8D, $09, $00, $00, $81, $FD, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF1F54
+	dw sprite.number, $028C
+	dw sprite.unknown_42, $0003
+	dw sprite.unknown_44, $0007
+	dw sprite.unknown_42, $0000
+	dw sprite.render_order, $00DA
+	dw !initcommand_set_alt_palette, $0009
+	dw !initcommand_set_animation, $02FD
+	dw !initcommand_success
 
 DATA_FF2774:
-	db $00, $00, $A8, $02, $02, $00, $D4, $00
-	db $00, $81, $24, $02, $00, $85, $00, $60
-	db $1C, $00, $00, $00, $00, $8D, $AF, $00
-	db $00, $80
+	dw sprite.number, $02A8
+	dw sprite.render_order, $00D4
+	dw !initcommand_set_animation, $0224
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_1C, $0000
+	dw !initcommand_set_alt_palette, $00AF
+	dw !initcommand_success
 
 DATA_FF278E:
-	db $00, $8E, $54, $00, $AF, $00, $E0, $54
-	db $FC, $0D, $00, $86, $00, $00, $00, $00
-	db $02, $00, $F8, $00, $20, $00, $00, $00
-	db $24, $00, $00, $00, $2E, $00, $00, $00
-	db $00, $85, $00, $70, $00, $80
+	dw !initcommand_setup_static2, $0054, $00AF : dl DATA_FC54E0 : db $0D
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.render_order, $00F8
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.action, $0000
+	dw !initcommand_set_oam, $7000
+	dw !initcommand_success
 
 DATA_FF27B4:
-	db $00, $00, $AC, $02, $02, $00, $F8, $00
-	db $2E, $00, $00, $00, $00, $85, $00, $30
-	db $00, $81, $59, $02, $00, $8D, $A9, $00
-	db $00, $80
+	dw sprite.number, $02AC
+	dw sprite.render_order, $00F8
+	dw sprite.action, $0000
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $0259
+	dw !initcommand_set_alt_palette, $00A9
+	dw !initcommand_success
 
 DATA_FF27CE:
-	db $00, $00, $9C, $02, $02, $00, $D4, $00
-	db $1C, $00, $00, $00, $00, $85, $00, $20
-	db $00, $81, $2A, $02, $00, $8D, $75, $00
-	db $00, $80
+	dw sprite.number, $029C
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_1C, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_animation, $022A
+	dw !initcommand_set_alt_palette, $0075
+	dw !initcommand_success
 
 DATA_FF27E8:
-	db $00, $00, $9C, $02, $02, $00, $D4, $00
-	db $1C, $00, $00, $00, $00, $85, $00, $20
-	db $00, $81, $2B, $02, $00, $8D, $76, $00
-	db $00, $80
+	dw sprite.number, $029C
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_1C, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_animation, $022B
+	dw !initcommand_set_alt_palette, $0076
+	dw !initcommand_success
 
 DATA_FF2802:
-	db $00, $00, $9C, $02, $02, $00, $D4, $00
-	db $1C, $00, $00, $00, $00, $85, $00, $60
-	db $00, $81, $2C, $02, $00, $8D, $81, $00
-	db $00, $80
+	dw sprite.number, $029C
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_1C, $0000
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_animation, $022C
+	dw !initcommand_set_alt_palette, $0081
+	dw !initcommand_success
 
 DATA_FF281C:
-	db $00, $00, $98, $00, $06, $00, $00, $02
-	db $0A, $00, $70, $01, $42, $00, $01, $00
-	db $46, $00, $00, $00, $48, $00, $00, $00
-	db $4A, $00, $01, $00, $4C, $00, $00, $00
-	db $4E, $00, $00, $00, $00, $80
+	dw sprite.number, $0098
+	dw sprite.x_position, $0200
+	dw sprite.y_position, $0170
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_46, $0000
+	dw sprite.unknown_48, $0000
+	dw sprite.unknown_4A, $0001
+	dw sprite.unknown_4C, $0000
+	dw sprite.unknown_4E, $0000
+	dw !initcommand_success
 
 DATA_FF2842:
-	db $00, $83, $4E, $10, $00, $86, $00, $00
-	db $E8, $FF, $00, $85, $00, $30, $02, $00
-	db $F8, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF104E
+	dw !initcommand_spawn_relative, $0000, $FFE8
+	dw !initcommand_set_oam, $3000
+	dw sprite.render_order, $00F8
+	dw !initcommand_success
 
 DATA_FF2856:
-	db $00, $83, $4E, $10, $00, $86, $18, $00
-	db $DD, $FF, $00, $85, $00, $30, $02, $00
-	db $F8, $00, $00, $80, $00, $00, $9C, $00
-	db $06, $00, $80, $01, $0A, $00, $70, $01
-	db $42, $00, $01, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF104E
+	dw !initcommand_spawn_relative, $0018, $FFDD
+	dw !initcommand_set_oam, $3000
+	dw sprite.render_order, $00F8
+	dw !initcommand_success
+
+DATA_FF286A:
+	dw sprite.number, $009C
+	dw sprite.x_position, $0180
+	dw sprite.y_position, $0170
+	dw sprite.unknown_42, $0001
+	dw !initcommand_success
 
 DATA_FF287C:
-	db $00, $89, $A0, $00, $82, $66, $01, $0C
-	db $C0, $0D, $02, $00, $FA, $00, $1C, $00
-	db $00, $00, $00, $85, $00, $30, $00, $84
-	db $82, $66, $00, $81, $2D, $02, $00, $80
+	dw !initcommand_setup_static, $00A0, $6682 : dl DATA_C00C01 : db $0D
+	dw sprite.render_order, $00FA
+	dw sprite.unknown_1C, $0000
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_set_animation, $022D
+	dw !initcommand_success
 
 DATA_FF289C:
-	db $00, $83, $42, $20, $00, $86, $F0, $FF
-	db $F5, $FF, $00, $8D, $00, $00, $02, $00
-	db $F8, $00, $24, $00, $A0, $FF, $00, $81
-	db $6F, $02, $00, $85, $00, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2042
+	dw !initcommand_spawn_relative, $FFF0, $FFF5
+	dw !initcommand_set_alt_palette, $0000
+	dw sprite.render_order, $00F8
+	dw sprite.y_speed, $FFA0
+	dw !initcommand_set_animation, $026F
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF28BC:
-	db $00, $83, $42, $20, $00, $86, $08, $00
-	db $0A, $00, $00, $8D, $00, $00, $02, $00
-	db $F8, $00, $24, $00, $70, $FF, $00, $81
-	db $7F, $02, $00, $85, $00, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2042
+	dw !initcommand_spawn_relative, $0008, $000A
+	dw !initcommand_set_alt_palette, $0000
+	dw sprite.render_order, $00F8
+	dw sprite.y_speed, $FF70
+	dw !initcommand_set_animation, $027F
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF28DC:
-	db $00, $83, $42, $20, $00, $86, $10, $00
-	db $FC, $FF, $00, $8D, $00, $00, $02, $00
-	db $F8, $00, $24, $00, $A0, $FF, $00, $81
-	db $9F, $02, $00, $85, $00, $20, $00, $80
-	db $00, $83, $42, $20, $02, $00, $F8, $00
-	db $00, $84, $82, $66, $00, $85, $00, $30
-	db $00, $81, $FE, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2042
+	dw !initcommand_spawn_relative, $0010, $FFFC
+	dw !initcommand_set_alt_palette, $0000
+	dw sprite.render_order, $00F8
+	dw sprite.y_speed, $FFA0
+	dw !initcommand_set_animation, $029F
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
+
+DATA_FF28FC:
+	dw !initcommand_load_subconfig, DATA_FF2042
+	dw sprite.render_order, $00F8
+	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_animation, $01FE
+	dw !initcommand_success
 
 DATA_FF2912:
-	db $00, $83, $FC, $28, $00, $86, $00, $00
-	db $F2, $FF, $3A, $00, $C0, $00, $24, $00
-	db $00, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF28FC
+	dw !initcommand_spawn_relative, $0000, $FFF2
+	dw sprite.unknown_3A, $00C0
+	dw sprite.y_speed, $FF00
+	dw !initcommand_success
 
 DATA_FF2926:
-	db $00, $83, $FC, $28, $00, $86, $F7, $FF
-	db $EE, $FF, $3A, $00, $60, $00, $20, $00
-	db $80, $FE, $24, $00, $80, $FF, $2A, $00
-	db $80, $00, $44, $00, $03, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF28FC
+	dw !initcommand_spawn_relative, $FFF7, $FFEE
+	dw sprite.unknown_3A, $0060
+	dw sprite.x_speed, $FE80
+	dw sprite.y_speed, $FF80
+	dw sprite.unknown_2A, $0080
+	dw sprite.unknown_44, $0003
+	dw !initcommand_success
 
 DATA_FF2946:
-	db $00, $83, $FC, $28, $00, $86, $09, $00
-	db $EB, $FF, $3A, $00, $80, $00, $20, $00
-	db $80, $01, $26, $00, $80, $00, $42, $00
-	db $03, $00, $24, $00, $B0, $FE, $2A, $00
-	db $80, $00, $44, $00, $03, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF28FC
+	dw !initcommand_spawn_relative, $0009, $FFEB
+	dw sprite.unknown_3A, $0080
+	dw sprite.x_speed, $0180
+	dw sprite.max_x_speed, $0080
+	dw sprite.unknown_42, $0003
+	dw sprite.y_speed, $FEB0
+	dw sprite.unknown_2A, $0080
+	dw sprite.unknown_44, $0003
+	dw !initcommand_success
 
 DATA_FF296E:
-	db $00, $83, $FC, $28, $00, $86, $06, $00
-	db $FA, $FF, $3A, $00, $B0, $00, $20, $00
-	db $40, $01, $26, $00, $40, $00, $42, $00
-	db $03, $00, $24, $00, $80, $FF, $2A, $00
-	db $80, $00, $44, $00, $02, $00, $1C, $00
-	db $00, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF28FC
+	dw !initcommand_spawn_relative, $0006, $FFFA
+	dw sprite.unknown_3A, $00B0
+	dw sprite.x_speed, $0140
+	dw sprite.max_x_speed, $0040
+	dw sprite.unknown_42, $0003
+	dw sprite.y_speed, $FF80
+	dw sprite.unknown_2A, $0080
+	dw sprite.unknown_44, $0002
+	dw sprite.unknown_1C, $0000
+	dw !initcommand_success
 
 DATA_FF299A:
-	db $00, $89, $4C, $00, $82, $66, $01, $0C
-	db $C0, $0D, $00, $86, $00, $00, $00, $00
-	db $02, $00, $FA, $00, $1C, $00, $00, $00
-	db $00, $85, $00, $20, $00, $81, $FF, $01
-	db $00, $80
+	dw !initcommand_setup_static, $004C, $6682 : dl DATA_C00C01 : db $0D
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.render_order, $00FA
+	dw sprite.unknown_1C, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_animation, $01FF
+	dw !initcommand_success
 
 DATA_FF29BC:
-	db $00, $83, $FC, $28, $00, $86, $EE, $FF
-	db $EB, $FF, $3A, $00, $70, $00, $20, $00
-	db $C0, $FE, $26, $00, $C0, $FF, $42, $00
-	db $03, $00, $24, $00, $50, $FE, $2A, $00
-	db $B0, $00, $44, $00, $03, $00, $1C, $00
-	db $00, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF28FC
+	dw !initcommand_spawn_relative, $FFEE, $FFEB
+	dw sprite.unknown_3A, $0070
+	dw sprite.x_speed, $FEC0
+	dw sprite.max_x_speed, $FFC0
+	dw sprite.unknown_42, $0003
+	dw sprite.y_speed, $FE50
+	dw sprite.unknown_2A, $00B0
+	dw sprite.unknown_44, $0003
+	dw sprite.unknown_1C, $0000
+	dw !initcommand_success
 
 DATA_FF29E8:
-	db $00, $89, $50, $00, $82, $66, $01, $0C
-	db $C0, $0D, $02, $00, $FA, $00, $1C, $00
-	db $00, $00, $00, $85, $00, $20, $00, $81
-	db $FF, $01, $3A, $00, $80, $02, $00, $80
+	dw !initcommand_setup_static, $0050, $6682 : dl DATA_C00C01 : db $0D
+	dw sprite.render_order, $00FA
+	dw sprite.unknown_1C, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_animation, $01FF
+	dw sprite.unknown_3A, $0280
+	dw !initcommand_success
 
 DATA_FF2A08:
-	db $00, $00, $88, $00, $2E, $00, $00, $00
-	db $54, $00, $26, $2A, $42, $00, $66, $B9
-	db $44, $00, $04, $00, $46, $00, $19, $00
-	db $48, $00, $10, $00, $00, $80, $4C, $01
-	db $C0, $01, $74, $01, $C0, $01, $9C, $01
-	db $C0, $01, $C4, $01, $C0, $01, $00, $00
+	dw sprite.number, $0088
+	dw sprite.action, $0000
+if !version == 0
+	dw sprite.unknown_54, $2A22
+	dw sprite.unknown_42, $B968
+else
+	dw sprite.unknown_54, $2A26
+	dw sprite.unknown_42, $B966
+endif
+	dw sprite.unknown_44, $0004
+	dw sprite.unknown_46, $0019
+	dw sprite.unknown_48, $0010
+	dw !initcommand_success
+
+DATA_FF2A26:
+	db $4C, $01, $C0, $01, $74, $01, $C0, $01
+	db $9C, $01, $C0, $01, $C4, $01, $C0, $01
+	db $00, $00
 
 DATA_FF2A38:
-	db $00, $00, $64, $02, $06, $00, $78, $02
-	db $0A, $00, $C1, $01, $02, $00, $D4, $00
-	db $30, $00, $20, $00, $2E, $00, $00, $00
-	db $46, $00, $97, $90, $42, $00, $00, $00
-	db $00, $85, $00, $60, $00, $8D, $69, $00
-	db $00, $81, $5E, $02, $00, $80
+	dw sprite.number, $0264
+	dw sprite.x_position, $0278
+	dw sprite.y_position, $01C1
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_30, $0020
+	dw sprite.action, $0000
+	dw sprite.unknown_46, $9097
+	dw sprite.unknown_42, $0000
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_alt_palette, $0069
+	dw !initcommand_set_animation, $025E
+	dw !initcommand_success
 
 DATA_FF2A66:
-	db $00, $00, $78, $00, $06, $00, $80, $01
-	db $0A, $00, $50, $01, $02, $00, $D4, $00
-	db $30, $00, $20, $00, $2E, $00, $00, $00
-	db $46, $00, $D4, $84, $42, $00, $00, $00
-	db $00, $85, $00, $60, $00, $8D, $96, $00
-	db $00, $81, $FB, $01, $00, $80
+	dw sprite.number, $0078
+	dw sprite.x_position, $0180
+	dw sprite.y_position, $0150
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_30, $0020
+	dw sprite.action, $0000
+	dw sprite.unknown_46, $84D4
+	dw sprite.unknown_42, $0000
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_alt_palette, $0096
+	dw !initcommand_set_animation, $01FB
+	dw !initcommand_success
 
 DATA_FF2A94:
-	db $00, $00, $94, $02, $2E, $00, $03, $00
-	db $20, $00, $00, $00, $24, $00, $00, $00
-	db $26, $00, $00, $00, $2A, $00, $00, $00
-	db $42, $00, $00, $00, $44, $00, $3D, $02
-	db $46, $00, $B1, $01, $4E, $00, $00, $00
-	db $06, $00, $3D, $02, $0A, $00, $B1, $01
-	db $1C, $00, $00, $00, $02, $00, $D4, $00
-	db $00, $85, $00, $60, $00, $81, $43, $02
-	db $00, $8D, $A8, $00, $00, $80
+	dw sprite.number, $0294
+	dw sprite.action, $0003
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.max_x_speed, $0000
+	dw sprite.unknown_2A, $0000
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $023D
+	dw sprite.unknown_46, $01B1
+	dw sprite.unknown_4E, $0000
+	dw sprite.x_position, $023D
+	dw sprite.y_position, $01B1
+	dw sprite.unknown_1C, $0000
+	dw sprite.render_order, $00D4
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_animation, $0243
+	dw !initcommand_set_alt_palette, $00A8
+	dw !initcommand_success
 
 DATA_FF2ADA:
-	db $00, $00, $A4, $02, $0A, $00, $30, $03
-	db $02, $00, $D4, $00, $42, $00, $00, $00
-	db $30, $00, $20, $00, $2E, $00, $00, $00
-	db $00, $85, $00, $20, $00, $8D, $51, $00
-	db $00, $81, $10, $02, $00, $80, $00, $00
-	db $EC, $01, $54, $00, $94, $02, $02, $00
-	db $D4, $00, $2E, $00, $00, $00, $20, $00
-	db $00, $00, $24, $00, $00, $00, $30, $00
-	db $20, $01, $00, $85, $00, $20, $00, $8D
-	db $07, $00, $00, $81, $60, $01, $52, $00
-	db $23, $00, $00, $80
+	dw sprite.number, $02A4
+	dw sprite.y_position, $0330
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_30, $0020
+	dw sprite.action, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0051
+	dw !initcommand_set_animation, $0210
+	dw !initcommand_success
+
+DATA_FF2B00:
+	dw sprite.number, $01EC
+	dw sprite.unknown_54, $0294
+	dw sprite.render_order, $00D4
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_30, $0120
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0007
+	dw !initcommand_set_animation, $0160
+	dw sprite.unknown_52, $0023
+	dw !initcommand_success
 
 DATA_FF2B2E:
-	db $00, $83, $00, $2B, $26, $00, $40, $01
-	db $46, $00, $48, $48, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $0140
+	dw sprite.unknown_46, $4848
+	dw !initcommand_success
 
 DATA_FF2B3C:
-	db $00, $83, $00, $2B, $26, $00, $40, $01
-	db $46, $00, $B0, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $0140
+	dw sprite.unknown_46, $00B0
+	dw !initcommand_success
 
 DATA_FF2B4A:
-	db $00, $83, $00, $2B, $26, $00, $C0, $FE
-	db $46, $00, $00, $B0, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $FEC0
+	dw sprite.unknown_46, $B000
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF2B5C:
-	db $00, $83, $00, $2B, $26, $00, $C0, $FE
-	db $46, $00, $60, $60, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $FEC0
+	dw sprite.unknown_46, $6060
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF2B6E:
-	db $00, $83, $00, $2B, $26, $00, $40, $01
-	db $46, $00, $30, $30, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $0140
+	dw sprite.unknown_46, $3030
+	dw !initcommand_success
 
 DATA_FF2B7C:
-	db $00, $83, $00, $2B, $26, $00, $80, $01
-	db $46, $00, $60, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $0180
+	dw sprite.unknown_46, $0060
+	dw !initcommand_success
 
 DATA_FF2B8A:
-	db $00, $83, $00, $2B, $26, $00, $80, $FE
-	db $46, $00, $00, $60, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $FE80
+	dw sprite.unknown_46, $6000
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF2B9C:
-	db $00, $83, $00, $2B, $26, $00, $C0, $FE
-	db $00, $85, $00, $60, $46, $00, $30, $30
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_46, $3030
+	dw !initcommand_success
 
 DATA_FF2BAE:
-	db $00, $83, $00, $2B, $26, $00, $40, $01
-	db $46, $00, $40, $40, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $0140
+	dw sprite.unknown_46, $4040
+	dw !initcommand_success
 
 DATA_FF2BBC:
-	db $00, $83, $00, $2B, $26, $00, $40, $01
-	db $46, $00, $20, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $0140
+	dw sprite.unknown_46, $2020
+	dw !initcommand_success
 
 DATA_FF2BCA:
-	db $00, $83, $00, $2B, $26, $00, $40, $01
-	db $46, $00, $18, $18, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $0140
+	dw sprite.unknown_46, $1818
+	dw !initcommand_success
 
 DATA_FF2BD8:
-	db $00, $83, $00, $2B, $26, $00, $00, $FF
-	db $52, $00, $22, $00, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $FF00
+	dw sprite.unknown_52, $0022
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF2BEA:
-	db $00, $83, $00, $2B, $26, $00, $40, $01
-	db $46, $00, $88, $28, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $0140
+	dw sprite.unknown_46, $2888
+	dw !initcommand_success
 
 DATA_FF2BF8:
-	db $00, $83, $00, $2B, $26, $00, $40, $01
-	db $00, $85, $00, $20, $46, $00, $30, $30
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $0140
+	dw !initcommand_set_oam, $2000
+	dw sprite.unknown_46, $3030
+	dw !initcommand_success
 
 DATA_FF2C0A:
-	db $00, $83, $00, $2B, $26, $00, $80, $FE
-	db $46, $00, $00, $60, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $FE80
+	dw sprite.unknown_46, $6000
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF2C1C:
-	db $00, $83, $00, $2B, $26, $00, $80, $01
-	db $46, $00, $20, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $0180
+	dw sprite.unknown_46, $2020
+	dw !initcommand_success
 
 DATA_FF2C2A:
-	db $00, $83, $00, $2B, $26, $00, $40, $01
-	db $46, $00, $48, $48, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $0140
+	dw sprite.unknown_46, $4848
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF2C3C:
-	db $00, $83, $00, $2B, $26, $00, $80, $01
-	db $46, $00, $40, $40, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $0180
+	dw sprite.unknown_46, $4040
+	dw !initcommand_success
 
 DATA_FF2C4A:
-	db $00, $83, $00, $2B, $26, $00, $A0, $FE
-	db $46, $00, $10, $70, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $FEA0
+	dw sprite.unknown_46, $7010
+	dw !initcommand_success
 
 DATA_FF2C58:
-	db $00, $83, $00, $2B, $26, $00, $80, $01
-	db $46, $00, $10, $30, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $0180
+	dw sprite.unknown_46, $3010
+	dw !initcommand_success
 
 DATA_FF2C66:
-	db $00, $83, $00, $2B, $26, $00, $60, $01
-	db $46, $00, $78, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $0160
+	dw sprite.unknown_46, $0078
+	dw !initcommand_success
 
 DATA_FF2C74:
-	db $00, $83, $00, $2B, $26, $00, $A0, $FE
-	db $46, $00, $00, $78, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $FEA0
+	dw sprite.unknown_46, $7800
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF2C86:
-	db $00, $83, $00, $2B, $26, $00, $80, $FE
-	db $46, $00, $28, $28, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $FE80
+	dw sprite.unknown_46, $2828
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF2C98:
-	db $00, $83, $00, $2B, $26, $00, $80, $FE
-	db $46, $00, $10, $10, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $FE80
+	dw sprite.unknown_46, $1010
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF2CAA:
-	db $00, $83, $00, $2B, $26, $00, $80, $FE
-	db $46, $00, $70, $A0, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $FE80
+	dw sprite.unknown_46, $A070
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF2CBC:
-	db $00, $83, $00, $2B, $26, $00, $80, $FE
-	db $46, $00, $50, $90, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $FE80
+	dw sprite.unknown_46, $9050
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF2CCE:
-	db $00, $83, $00, $2B, $26, $00, $80, $FE
-	db $46, $00, $80, $60, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $FE80
+	dw sprite.unknown_46, $6080
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF2CE0:
-	db $00, $83, $00, $2B, $26, $00, $80, $FE
-	db $46, $00, $B0, $30, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $FE80
+	dw sprite.unknown_46, $30B0
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF2CF2:
-	db $00, $83, $00, $2B, $26, $00, $60, $FE
-	db $46, $00, $30, $30, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $FE60
+	dw sprite.unknown_46, $3030
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF2D04:
-	db $00, $83, $00, $2B, $26, $00, $C0, $FE
-	db $46, $00, $10, $30, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $FEC0
+	dw sprite.unknown_46, $3010
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF2D16:
-	db $00, $83, $00, $2B, $26, $00, $40, $01
-	db $46, $00, $00, $80, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $0140
+	dw sprite.unknown_46, $8000
+	dw !initcommand_success
 
 DATA_FF2D24:
-	db $00, $83, $00, $2B, $26, $00, $C0, $FE
-	db $46, $00, $48, $48, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $FEC0
+	dw sprite.unknown_46, $4848
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF2D36:
-	db $00, $83, $00, $2B, $26, $00, $20, $01
-	db $46, $00, $20, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $0120
+	dw sprite.unknown_46, $2020
+	dw !initcommand_success
 
 DATA_FF2D44:
-	db $00, $83, $00, $2B, $26, $00, $80, $01
-	db $46, $00, $E0, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $0180
+	dw sprite.unknown_46, $00E0
+	dw !initcommand_success
 
 DATA_FF2D52:
-	db $00, $83, $00, $2B, $26, $00, $80, $01
-	db $46, $00, $B0, $30, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $0180
+	dw sprite.unknown_46, $30B0
+	dw !initcommand_success
 
 DATA_FF2D60:
-	db $00, $83, $00, $2B, $26, $00, $80, $01
-	db $46, $00, $80, $60, $00, $80, $00, $00
-	db $DC, $01, $02, $00, $D4, $00, $54, $00
-	db $52, $03, $30, $00, $20, $01, $2E, $00
-	db $00, $00, $20, $00, $00, $00, $24, $00
-	db $00, $00, $00, $85, $00, $20, $00, $81
-	db $63, $01, $52, $00, $22, $00, $00, $80
-	db $00, $83, $6E, $2D, $00, $8D, $B7, $00
-	db $00, $80, $00, $83, $6E, $2D, $00, $8D
-	db $B7, $00, $00, $80, $00, $00, $DC, $01
-	db $02, $00, $D4, $00, $54, $00, $52, $03
-	db $30, $00, $20, $01, $2E, $00, $00, $00
-	db $20, $00, $00, $00, $24, $00, $00, $00
-	db $00, $85, $00, $20, $00, $81, $63, $01
-	db $52, $00, $23, $00, $00, $80, $00, $83
-	db $AC, $2D, $00, $8D, $B7, $00, $00, $80
-	db $00, $83, $AC, $2D, $00, $8D, $B7, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $0180
+	dw sprite.unknown_46, $6080
+	dw !initcommand_success
+
+DATA_FF2D6E:
+	dw sprite.number, $01DC
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_54, $0352
+	dw sprite.unknown_30, $0120
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_animation, $0163
+	dw sprite.unknown_52, $0022
+	dw !initcommand_success
+
+DATA_FF2D98:
+	dw !initcommand_load_subconfig, DATA_FF2D6E
+	dw !initcommand_set_alt_palette, $00B7
+	dw !initcommand_success
+
+DATA_FF2DA2:
+	dw !initcommand_load_subconfig, DATA_FF2D6E
+	dw !initcommand_set_alt_palette, $00B7
+	dw !initcommand_success
+
+DATA_FF2DAC:
+	dw sprite.number, $01DC
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_54, $0352
+	dw sprite.unknown_30, $0120
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_animation, $0163
+	dw sprite.unknown_52, $0023
+	dw !initcommand_success
+
+DATA_FF2DD6:
+	dw !initcommand_load_subconfig, DATA_FF2DAC
+	dw !initcommand_set_alt_palette, $00B7
+	dw !initcommand_success
+
+DATA_FF2DE0:
+	dw !initcommand_load_subconfig, DATA_FF2DAC
+	dw !initcommand_set_alt_palette, $00B7
+	dw !initcommand_success
 
 DATA_FF2DEA:
-	db $00, $83, $98, $2D, $26, $00, $00, $FF
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2D98
+	dw sprite.max_x_speed, $FF00
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF2DF8:
-	db $00, $83, $98, $2D, $26, $00, $00, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2D98
+	dw sprite.max_x_speed, $0100
+	dw !initcommand_success
 
 DATA_FF2E02:
-	db $00, $83, $98, $2D, $26, $00, $C0, $FE
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2D98
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF2E10:
-	db $00, $83, $98, $2D, $26, $00, $80, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2D98
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_success
 
 DATA_FF2E1A:
-	db $00, $83, $D6, $2D, $26, $00, $40, $01
-	db $46, $00, $28, $28, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $0140
+	dw sprite.unknown_46, $2828
+	dw !initcommand_success
 
 DATA_FF2E28:
-	db $00, $83, $D6, $2D, $26, $00, $40, $01
-	db $46, $00, $38, $38, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $0140
+	dw sprite.unknown_46, $3838
+	dw !initcommand_success
 
 DATA_FF2E36:
-	db $00, $83, $D6, $2D, $26, $00, $40, $01
-	db $46, $00, $98, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $0140
+	dw sprite.unknown_46, $0098
+	dw !initcommand_success
 
 DATA_FF2E44:
-	db $00, $83, $D6, $2D, $26, $00, $40, $01
-	db $46, $00, $00, $98, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $0140
+	dw sprite.unknown_46, $9800
+	dw !initcommand_success
 
 DATA_FF2E52:
-	db $00, $83, $D6, $2D, $26, $00, $40, $01
-	db $46, $00, $08, $08, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $0140
+	dw sprite.unknown_46, $0808
+	dw !initcommand_success
 
 DATA_FF2E60:
-	db $00, $83, $E0, $2D, $26, $00, $C0, $FE
-	db $00, $85, $00, $60, $46, $00, $00, $80
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DE0
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_46, $8000
+	dw !initcommand_success
 
 DATA_FF2E72:
-	db $00, $83, $E0, $2D, $26, $00, $C0, $FE
-	db $00, $85, $00, $60, $46, $00, $00, $A8
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DE0
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_46, $A800
+	dw !initcommand_success
 
 DATA_FF2E84:
-	db $00, $83, $D6, $2D, $26, $00, $40, $01
-	db $46, $00, $58, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $0140
+	dw sprite.unknown_46, $0058
+	dw !initcommand_success
 
 DATA_FF2E92:
-	db $00, $83, $D6, $2D, $26, $00, $40, $01
-	db $46, $00, $2C, $2C, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $0140
+	dw sprite.unknown_46, $2C2C
+	dw !initcommand_success
 
 DATA_FF2EA0:
-	db $00, $83, $D6, $2D, $26, $00, $40, $01
-	db $46, $00, $00, $58, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $0140
+	dw sprite.unknown_46, $5800
+	dw !initcommand_success
 
 DATA_FF2EAE:
-	db $00, $83, $E0, $2D, $26, $00, $C0, $FE
-	db $00, $85, $00, $60, $46, $00, $18, $90
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DE0
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_46, $9018
+	dw !initcommand_success
 
 DATA_FF2EC0:
-	db $00, $83, $E0, $2D, $26, $00, $C0, $FE
-	db $00, $85, $00, $60, $46, $00, $00, $90
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DE0
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_46, $9000
+	dw !initcommand_success
 
 DATA_FF2ED2:
-	db $00, $83, $E0, $2D, $26, $00, $00, $01
-	db $46, $00, $C8, $28, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DE0
+	dw sprite.max_x_speed, $0100
+	dw sprite.unknown_46, $28C8
+	dw !initcommand_success
 
 DATA_FF2EE0:
-	db $00, $83, $E0, $2D, $26, $00, $00, $01
-	db $46, $00, $C0, $78, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DE0
+	dw sprite.max_x_speed, $0100
+	dw sprite.unknown_46, $78C0
+	dw !initcommand_success
 
 DATA_FF2EEE:
-	db $00, $83, $E0, $2D, $26, $00, $00, $01
-	db $46, $00, $FF, $38, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DE0
+	dw sprite.max_x_speed, $0100
+	dw sprite.unknown_46, $38FF
+	dw !initcommand_success
 
 DATA_FF2EFC:
-	db $00, $83, $E0, $2D, $26, $00, $C0, $FE
-	db $00, $85, $00, $60, $46, $00, $10, $FF
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DE0
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_46, $FF10
+	dw !initcommand_success
 
 DATA_FF2F0E:
-	db $00, $83, $D6, $2D, $26, $00, $80, $FE
-	db $00, $85, $00, $60, $46, $00, $48, $88
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_46, $8848
+	dw !initcommand_success
 
 DATA_FF2F20:
-	db $00, $83, $D6, $2D, $26, $00, $80, $FE
-	db $00, $85, $00, $60, $46, $00, $C0, $70
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_46, $70C0
+	dw !initcommand_success
 
 DATA_FF2F32:
-	db $00, $83, $D6, $2D, $26, $00, $80, $FE
-	db $00, $85, $00, $60, $46, $00, $90, $A0
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_46, $A090
+	dw !initcommand_success
 
 DATA_FF2F44:
-	db $00, $83, $D6, $2D, $26, $00, $80, $01
-	db $46, $00, $78, $38, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $0180
+	dw sprite.unknown_46, $3878
+	dw !initcommand_success
 
 DATA_FF2F52:
-	db $00, $83, $98, $2D, $26, $00, $80, $FE
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2D98
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF2F60:
-	db $00, $83, $D6, $2D, $26, $00, $C0, $FE
-	db $00, $85, $00, $60, $46, $00, $3C, $B8
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_46, $B83C
+	dw !initcommand_success
 
 DATA_FF2F72:
-	db $00, $83, $D6, $2D, $26, $00, $C0, $FE
-	db $00, $85, $00, $60, $46, $00, $18, $E8
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_46, $E818
+	dw !initcommand_success
 
 DATA_FF2F84:
-	db $00, $83, $D6, $2D, $26, $00, $80, $FE
-	db $00, $85, $00, $60, $46, $00, $10, $10
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_46, $1010
+	dw !initcommand_success
 
 DATA_FF2F96:
-	db $00, $83, $D6, $2D, $26, $00, $60, $01
-	db $46, $00, $C0, $40, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $0160
+	dw sprite.unknown_46, $40C0
+	dw !initcommand_success
 
 DATA_FF2FA4:
-	db $00, $83, $D6, $2D, $26, $00, $A0, $FE
-	db $46, $00, $F0, $10, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $FEA0
+	dw sprite.unknown_46, $10F0
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF2FB6:
-	db $00, $83, $E0, $2D, $26, $00, $40, $01
-	db $46, $00, $90, $18, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DE0
+	dw sprite.max_x_speed, $0140
+	dw sprite.unknown_46, $1890
+	dw !initcommand_success
 
 DATA_FF2FC4:
-	db $00, $83, $D6, $2D, $26, $00, $80, $01
-	db $46, $00, $78, $A0, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $0180
+	dw sprite.unknown_46, $A078
+	dw !initcommand_success
 
 DATA_FF2FD2:
-	db $00, $83, $D6, $2D, $26, $00, $80, $FE
-	db $46, $00, $A8, $70, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $FE80
+	dw sprite.unknown_46, $70A8
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF2FE4:
-	db $00, $83, $D6, $2D, $26, $00, $80, $01
-	db $46, $00, $90, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $0180
+	dw sprite.unknown_46, $0090
+	dw !initcommand_success
 
 DATA_FF2FF2:
-	db $00, $83, $D6, $2D, $26, $00, $80, $FE
-	db $00, $85, $00, $60, $46, $00, $38, $A8
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_46, $A838
+	dw !initcommand_success
 
 DATA_FF3004:
-	db $00, $83, $D6, $2D, $26, $00, $80, $FE
-	db $00, $85, $00, $60, $46, $00, $00, $E0
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_46, $E000
+	dw !initcommand_success
 
 DATA_FF3016:
-	db $00, $83, $D6, $2D, $26, $00, $80, $FE
-	db $00, $85, $00, $60, $46, $00, $00, $98
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_46, $9800
+	dw !initcommand_success
 
 DATA_FF3028:
-	db $00, $83, $D6, $2D, $26, $00, $80, $FE
-	db $00, $85, $00, $60, $46, $00, $40, $B0
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_46, $B040
+	dw !initcommand_success
 
 DATA_FF303A:
-	db $00, $83, $D6, $2D, $26, $00, $80, $FE
-	db $00, $85, $00, $60, $46, $00, $20, $D0
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_46, $D020
+	dw !initcommand_success
 
 DATA_FF304C:
-	db $00, $83, $D6, $2D, $26, $00, $80, $FE
-	db $00, $85, $00, $60, $46, $00, $00, $F0
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_46, $F000
+	dw !initcommand_success
 
 DATA_FF305E:
-	db $00, $83, $D6, $2D, $26, $00, $80, $FE
-	db $00, $85, $00, $60, $46, $00, $20, $90
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_46, $9020
+	dw !initcommand_success
 
 DATA_FF3070:
-	db $00, $83, $D6, $2D, $26, $00, $80, $FE
-	db $00, $85, $00, $60, $46, $00, $18, $18
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_46, $1818
+	dw !initcommand_success
 
 DATA_FF3082:
-	db $00, $83, $D6, $2D, $26, $00, $C0, $FE
-	db $00, $85, $00, $60, $46, $00, $14, $E0
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_46, $E014
+	dw !initcommand_success
 
 DATA_FF3094:
-	db $00, $83, $D6, $2D, $26, $00, $40, $01
-	db $46, $00, $20, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $0140
+	dw sprite.unknown_46, $2020
+	dw !initcommand_success
 
 DATA_FF30A2:
-	db $00, $83, $D6, $2D, $26, $00, $20, $01
-	db $46, $00, $70, $70, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $0120
+	dw sprite.unknown_46, $7070
+	dw !initcommand_success
 
 DATA_FF30B0:
-	db $00, $83, $A2, $2D, $26, $00, $00, $FF
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DA2
+	dw sprite.max_x_speed, $FF00
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF30BE:
-	db $00, $83, $A2, $2D, $26, $00, $00, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DA2
+	dw sprite.max_x_speed, $0100
+	dw !initcommand_success
 
 DATA_FF30C8:
-	db $00, $83, $D6, $2D, $26, $00, $A0, $FE
-	db $00, $85, $00, $60, $46, $00, $30, $A0
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $FEA0
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_46, $A030
+	dw !initcommand_success
 
 DATA_FF30DA:
-	db $00, $83, $D6, $2D, $26, $00, $A0, $FE
-	db $00, $85, $00, $60, $46, $00, $00, $D0
-	db $00, $80, $00, $00, $E4, $01, $02, $00
-	db $D4, $00, $54, $00, $7E, $02, $2E, $00
-	db $00, $00, $20, $00, $00, $00, $26, $00
-	db $00, $FF, $24, $00, $00, $00, $30, $00
-	db $20, $01, $00, $85, $00, $20, $00, $8D
-	db $1C, $00, $00, $81, $6F, $01, $52, $00
-	db $22, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $FEA0
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_46, $D000
+	dw !initcommand_success
+
+DATA_FF30EC:
+	dw sprite.number, $01E4
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_54, $027E
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.max_x_speed, $FF00
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_30, $0120
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $001C
+	dw !initcommand_set_animation, $016F
+	dw sprite.unknown_52, $0022
+	dw !initcommand_success
 
 DATA_FF311E:
-	db $00, $83, $EC, $30, $52, $00, $23, $00
-	db $46, $00, $80, $80, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF30EC
+	dw sprite.unknown_52, $0023
+	dw sprite.unknown_46, $8080
+	dw !initcommand_success
 
 DATA_FF312C:
-	db $00, $83, $EC, $30, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF30EC
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF3136:
-	db $00, $83, $EC, $30, $26, $00, $80, $FE
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF30EC
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF3144:
-	db $00, $83, $EC, $30, $26, $00, $40, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF30EC
+	dw sprite.max_x_speed, $0140
+	dw !initcommand_success
 
 DATA_FF314E:
-	db $00, $83, $EC, $30, $26, $00, $80, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF30EC
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_success
 
 DATA_FF3158:
-	db $00, $83, $EC, $30, $26, $00, $00, $01
-	db $52, $00, $23, $00, $46, $00, $08, $08
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF30EC
+	dw sprite.max_x_speed, $0100
+	dw sprite.unknown_52, $0023
+	dw sprite.unknown_46, $0808
+	dw !initcommand_success
 
 DATA_FF316A:
-	db $00, $83, $EC, $30, $26, $00, $C0, $FE
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF30EC
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF3178:
-	db $00, $83, $EC, $30, $26, $00, $80, $FE
-	db $52, $00, $23, $00, $46, $00, $60, $90
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF30EC
+	dw sprite.max_x_speed, $FE80
+	dw sprite.unknown_52, $0023
+	dw sprite.unknown_46, $9060
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF318E:
-	db $00, $83, $EC, $30, $26, $00, $80, $FE
-	db $52, $00, $23, $00, $46, $00, $C0, $30
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF30EC
+	dw sprite.max_x_speed, $FE80
+	dw sprite.unknown_52, $0023
+	dw sprite.unknown_46, $30C0
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF31A4:
-	db $00, $83, $EC, $30, $26, $00, $80, $FE
-	db $52, $00, $23, $00, $46, $00, $50, $90
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF30EC
+	dw sprite.max_x_speed, $FE80
+	dw sprite.unknown_52, $0023
+	dw sprite.unknown_46, $9050
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF31BA:
-	db $00, $83, $EC, $30, $26, $00, $80, $FE
-	db $52, $00, $23, $00, $46, $00, $18, $18
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF30EC
+	dw sprite.max_x_speed, $FE80
+	dw sprite.unknown_52, $0023
+	dw sprite.unknown_46, $1818
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF31D0:
-	db $00, $83, $EC, $30, $26, $00, $80, $01
-	db $52, $00, $23, $00, $46, $00, $18, $18
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF30EC
+	dw sprite.max_x_speed, $0180
+	dw sprite.unknown_52, $0023
+	dw sprite.unknown_46, $1818
+	dw !initcommand_success
 
 DATA_FF31E2:
-	db $00, $83, $EC, $30, $26, $00, $20, $01
-	db $00, $80, $4E, $00, $03, $00, $46, $00
-	db $3E, $00, $00, $83, $1E, $32, $00, $80
-	db $4E, $00, $02, $00, $46, $00, $3C, $00
-	db $00, $83, $1E, $32, $00, $80, $4E, $00
-	db $00, $00, $46, $00, $3A, $00, $00, $83
-	db $1E, $32, $00, $80, $4E, $00, $01, $00
-	db $46, $00, $38, $00, $52, $00, $0E, $0F
-	db $04, $00, $60, $A0, $00, $83, $66, $32
-	db $00, $80, $4E, $00, $03, $00, $46, $00
-	db $3E, $00, $00, $83, $5E, $32, $00, $80
-	db $4E, $00, $02, $00, $46, $00, $3C, $00
-	db $00, $83, $5E, $32, $00, $80, $4E, $00
-	db $00, $00, $46, $00, $3A, $00, $00, $83
-	db $5E, $32, $00, $80, $4E, $00, $01, $00
-	db $46, $00, $38, $00, $52, $00, $0C, $00
-	db $04, $00, $78, $00, $54, $00, $60, $02
-	db $00, $00, $AC, $01, $02, $00, $D4, $00
-	db $00, $85, $00, $60, $00, $8D, $02, $00
-	db $2E, $00, $00, $01, $20, $00, $00, $00
-	db $24, $00, $00, $00, $00, $81, $E2, $02
-	db $22, $00, $96, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF30EC
+	dw sprite.max_x_speed, $0120
+	dw !initcommand_success
+
+DATA_FF31EC:
+	dw sprite.unknown_4E, $0003
+	dw sprite.unknown_46, $003E
+	dw !initcommand_load_subconfig, DATA_FF321E
+	dw !initcommand_success
+
+DATA_FF31FA:
+	dw sprite.unknown_4E, $0002
+	dw sprite.unknown_46, $003C
+	dw !initcommand_load_subconfig, DATA_FF321E
+	dw !initcommand_success
+
+DATA_FF3208:
+	dw sprite.unknown_4E, $0000
+	dw sprite.unknown_46, $003A
+	dw !initcommand_load_subconfig, DATA_FF321E
+	dw !initcommand_success
+
+DATA_FF3216:
+	dw sprite.unknown_4E, $0001
+	dw sprite.unknown_46, $0038
+DATA_FF321E:
+	dw sprite.unknown_52, $0F0E
+	dw sprite.x_sub_position, $A060
+	dw !initcommand_load_subconfig, DATA_FF3266
+	dw !initcommand_success
+
+DATA_FF322C:
+	dw sprite.unknown_4E, $0003
+	dw sprite.unknown_46, $003E
+	dw !initcommand_load_subconfig, DATA_FF325E
+	dw !initcommand_success
+
+DATA_FF323A:
+	dw sprite.unknown_4E, $0002
+	dw sprite.unknown_46, $003C
+	dw !initcommand_load_subconfig, DATA_FF325E
+	dw !initcommand_success
+
+DATA_FF3248:
+	dw sprite.unknown_4E, $0000
+	dw sprite.unknown_46, $003A
+	dw !initcommand_load_subconfig, DATA_FF325E
+	dw !initcommand_success
+
+DATA_FF3256:
+	dw sprite.unknown_4E, $0001
+	dw sprite.unknown_46, $0038
+DATA_FF325E:
+	dw sprite.unknown_52, $000C
+	dw sprite.x_sub_position, $0078
+DATA_FF3266:
+	dw sprite.unknown_54, $0260
+	dw sprite.number, $01AC
+	dw sprite.render_order, $00D4
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_alt_palette, $0002
+	dw sprite.action, $0100
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw !initcommand_set_animation, $02E2
+	dw sprite.unknown_22, $0096
+	dw !initcommand_success
 
 DATA_FF3290:
-	db $00, $83, $56, $32, $04, $00, $1E, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3256
+	dw sprite.x_sub_position, $001E
+	dw !initcommand_success
 
 DATA_FF329A:
-	db $00, $83, $16, $32, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3216
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF32A4:
-	db $00, $83, $56, $32, $04, $00, $0F, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3256
+	dw sprite.x_sub_position, $000F
+	dw !initcommand_success
 
 DATA_FF32AE:
-	db $00, $83, $56, $32, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3256
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF32B8:
-	db $00, $83, $16, $32, $04, $00, $60, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3216
+	dw sprite.x_sub_position, $6060
+	dw !initcommand_success
 
 DATA_FF32C2:
-	db $00, $83, $16, $32, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3216
+	dw !initcommand_success
 
 DATA_FF32C8:
-	db $00, $83, $16, $32, $04, $00, $60, $90
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3216
+	dw sprite.x_sub_position, $9060
+	dw !initcommand_success
 
 DATA_FF32D2:
-	db $00, $83, $16, $32, $00, $85, $00, $20
-	db $04, $00, $20, $A0, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3216
+	dw !initcommand_set_oam, $2000
+	dw sprite.x_sub_position, $A020
+	dw !initcommand_success
 
 DATA_FF32E0:
-	db $00, $83, $16, $32, $04, $00, $20, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3216
+	dw sprite.x_sub_position, $6020
+	dw !initcommand_success
 
 DATA_FF32EA:
-	db $00, $83, $16, $32, $04, $00, $20, $A0
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3216
+	dw sprite.x_sub_position, $A020
+	dw !initcommand_success
 
 DATA_FF32F4:
-	db $00, $83, $08, $32, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3208
+	dw !initcommand_success
 
 DATA_FF32FA:
-	db $00, $83, $08, $32, $04, $00, $60, $C0
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3208
+	dw sprite.x_sub_position, $C060
+	dw !initcommand_success
 
 DATA_FF3304:
-	db $00, $83, $08, $32, $54, $00, $74, $02
-	db $04, $00, $60, $A0, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3208
+	dw sprite.unknown_54, $0274
+	dw sprite.x_sub_position, $A060
+	dw !initcommand_success
 
 DATA_FF3312:
-	db $00, $83, $08, $32, $04, $00, $A0, $A0
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3208
+	dw sprite.x_sub_position, $A0A0
+	dw !initcommand_success
 
 DATA_FF331C:
-	db $00, $83, $08, $32, $04, $00, $60, $88
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3208
+	dw sprite.x_sub_position, $8860
+	dw !initcommand_success
 
 DATA_FF3326:
-	db $00, $83, $3A, $32, $54, $00, $6A, $02
-	db $04, $00, $0F, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF323A
+	dw sprite.unknown_54, $026A
+	dw sprite.x_sub_position, $000F
+	dw !initcommand_success
 
 DATA_FF3334:
-	db $00, $83, $FA, $31, $54, $00, $6A, $02
-	db $04, $00, $50, $50, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF31FA
+	dw sprite.unknown_54, $026A
+	dw sprite.x_sub_position, $5050
+	dw !initcommand_success
 
 DATA_FF3342:
-	db $00, $83, $FA, $31, $54, $00, $6A, $02
-	db $04, $00, $50, $50, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF31FA
+	dw sprite.unknown_54, $026A
+	dw sprite.x_sub_position, $5050
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF3354:
-	db $00, $83, $FA, $31, $54, $00, $6A, $02
-	db $04, $00, $80, $80, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF31FA
+	dw sprite.unknown_54, $026A
+	dw sprite.x_sub_position, $8080
+	dw !initcommand_success
 
 DATA_FF3362:
-	db $00, $83, $FA, $31, $54, $00, $6A, $02
-	db $04, $00, $10, $80, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF31FA
+	dw sprite.unknown_54, $026A
+	dw sprite.x_sub_position, $8010
+	dw !initcommand_success
 
 DATA_FF3370:
-	db $00, $83, $FA, $31, $54, $00, $6A, $02
-	db $04, $00, $70, $80, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF31FA
+	dw sprite.unknown_54, $026A
+	dw sprite.x_sub_position, $8070
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF3382:
-	db $00, $83, $FA, $31, $54, $00, $6A, $02
-	db $04, $00, $70, $80, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF31FA
+	dw sprite.unknown_54, $026A
+	dw sprite.x_sub_position, $8070
+	dw !initcommand_success
 
 DATA_FF3390:
-	db $00, $83, $FA, $31, $54, $00, $6A, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF31FA
+	dw sprite.unknown_54, $026A
+	dw !initcommand_success
 
 DATA_FF339A:
-	db $00, $83, $FA, $31, $54, $00, $6A, $02
-	db $04, $00, $A0, $A0, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF31FA
+	dw sprite.unknown_54, $026A
+	dw sprite.x_sub_position, $A0A0
+	dw !initcommand_success
 
 DATA_FF33A8:
-	db $00, $83, $FA, $31, $54, $00, $6A, $02
-	db $04, $00, $20, $A0, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF31FA
+	dw sprite.unknown_54, $026A
+	dw sprite.x_sub_position, $A020
+	dw !initcommand_success
 
 DATA_FF33B6:
-	db $00, $83, $FA, $31, $54, $00, $6A, $02
-	db $00, $85, $00, $20, $04, $00, $20, $A0
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF31FA
+	dw sprite.unknown_54, $026A
+	dw !initcommand_set_oam, $2000
+	dw sprite.x_sub_position, $A020
+	dw !initcommand_success
 
 DATA_FF33C8:
-	db $00, $83, $FA, $31, $54, $00, $6A, $02
-	db $04, $00, $50, $60, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF31FA
+	dw sprite.unknown_54, $026A
+	dw sprite.x_sub_position, $6050
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF33DA:
-	db $00, $83, $EC, $31, $54, $00, $6A, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF31EC
+	dw sprite.unknown_54, $026A
+	dw !initcommand_success
 
 DATA_FF33E4:
-	db $00, $83, $EC, $31, $54, $00, $6A, $02
-	db $04, $00, $50, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF31EC
+	dw sprite.unknown_54, $026A
+	dw sprite.x_sub_position, $6050
+	dw !initcommand_success
 
 DATA_FF33F2:
-	db $00, $83, $EC, $31, $54, $00, $6A, $02
-	db $04, $00, $80, $80, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF31EC
+	dw sprite.unknown_54, $026A
+	dw sprite.x_sub_position, $8080
+	dw !initcommand_success
 
 DATA_FF3400:
-	db $00, $83, $EC, $31, $54, $00, $6A, $02
-	db $04, $00, $A0, $A0, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF31EC
+	dw sprite.unknown_54, $026A
+	dw sprite.x_sub_position, $A0A0
+	dw !initcommand_success
 
 DATA_FF340E:
-	db $00, $83, $EC, $31, $54, $00, $6A, $02
-	db $04, $00, $80, $80, $22, $00, $3C, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF31EC
+	dw sprite.unknown_54, $026A
+	dw sprite.x_sub_position, $8080
+	dw sprite.unknown_22, $003C
+	dw !initcommand_success
 
 DATA_FF3420:
-	db $00, $83, $EC, $31, $54, $00, $6A, $02
-	db $04, $00, $80, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF31EC
+	dw sprite.unknown_54, $026A
+	dw sprite.x_sub_position, $6080
+	dw !initcommand_success
 
 DATA_FF342E:
-	db $00, $83, $EC, $31, $54, $00, $6A, $02
-	db $04, $00, $20, $A0, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF31EC
+	dw sprite.unknown_54, $026A
+	dw sprite.x_sub_position, $A020
+	dw !initcommand_success
 
 DATA_FF343C:
-	db $00, $83, $EC, $31, $54, $00, $6A, $02
-	db $04, $00, $50, $60, $00, $85, $00, $20
-	db $00, $80, $00, $00, $A4, $01, $02, $00
-	db $C8, $00, $54, $00, $14, $02, $2E, $00
-	db $00, $00, $20, $00, $00, $00, $26, $00
-	db $00, $00, $24, $00, $00, $00, $30, $00
-	db $01, $00, $00, $85, $00, $20, $00, $8D
-	db $02, $00, $00, $81, $E0, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF31EC
+	dw sprite.unknown_54, $026A
+	dw sprite.x_sub_position, $6050
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
+
+DATA_FF344E:
+	dw sprite.number, $01A4
+	dw sprite.render_order, $00C8
+	dw sprite.unknown_54, $0214
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.max_x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_30, $0001
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0002
+	dw !initcommand_set_animation, $02E0
+	dw !initcommand_success
 
 DATA_FF347C:
-	db $00, $83, $4E, $34, $00, $80, $00, $00
-	db $3C, $01, $02, $00, $C8, $00, $2E, $00
-	db $00, $00, $2A, $00, $00, $00, $5C, $00
-	db $00, $00, $50, $00, $00, $00, $30, $00
-	db $00, $04, $00, $85, $00, $20, $00, $8D
-	db $0A, $00, $00, $81, $5E, $01, $00, $80
-	db $00, $00, $50, $01, $02, $00, $C8, $00
-	db $2E, $00, $00, $00, $30, $00, $00, $00
-	db $42, $00, $E0, $01, $00, $85, $00, $20
-	db $00, $8D, $02, $00, $00, $81, $CD, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF344E
+	dw !initcommand_success
+
+DATA_FF3482:
+	dw sprite.number, $013C
+	dw sprite.render_order, $00C8
+	dw sprite.action, $0000
+	dw sprite.unknown_2A, $0000
+	dw sprite.unknown_5C, $0000
+	dw sprite.parameter, $0000
+	dw sprite.unknown_30, $0400
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $000A
+	dw !initcommand_set_animation, $015E
+	dw !initcommand_success
+
+DATA_FF34AC:
+	dw sprite.number, $0150
+	dw sprite.render_order, $00C8
+	dw sprite.action, $0000
+	dw sprite.unknown_30, $0000
+	dw sprite.unknown_42, $01E0
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0002
+	dw !initcommand_set_animation, $02CD
+	dw !initcommand_success
 
 DATA_FF34CE:
-	db $00, $83, $AC, $34, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF34AC
+	dw !initcommand_success
 
 DATA_FF34D4:
-	db $00, $83, $AC, $34, $42, $00, $84, $03
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF34AC
+	dw sprite.unknown_42, $0384
+	dw !initcommand_success
 
 DATA_FF34DE:
-	db $00, $83, $AC, $34, $42, $00, $D0, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF34AC
+	dw sprite.unknown_42, $02D0
+	dw !initcommand_success
 
 DATA_FF34E8:
-	db $00, $83, $AC, $34, $42, $00, $B0, $04
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF34AC
+	dw sprite.unknown_42, $04B0
+	dw !initcommand_success
 
 DATA_FF34F2:
-	db $00, $83, $AC, $34, $42, $00, $58, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF34AC
+	dw sprite.unknown_42, $0258
+	dw !initcommand_success
 
 DATA_FF34FC:
-	db $00, $83, $AC, $34, $42, $00, $D0, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF34AC
+	dw sprite.unknown_42, $02D0
+	dw !initcommand_success
 
 DATA_FF3506:
-	db $00, $83, $AC, $34, $42, $00, $D0, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF34AC
+	dw sprite.unknown_42, $02D0
+	dw !initcommand_success
 
 DATA_FF3510:
-	db $00, $83, $AC, $34, $42, $00, $A4, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF34AC
+	dw sprite.unknown_42, $01A4
+	dw !initcommand_success
 
 DATA_FF351A:
-	db $00, $83, $AC, $34, $42, $00, $0C, $03
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF34AC
+	dw sprite.unknown_42, $030C
+	dw !initcommand_success
 
 DATA_FF3524:
-	db $00, $83, $AC, $34, $42, $00, $D0, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF34AC
+	dw sprite.unknown_42, $02D0
+	dw !initcommand_success
 
 DATA_FF352E:
-	db $00, $83, $AC, $34, $42, $00, $E0, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF34AC
+	dw sprite.unknown_42, $01E0
+	dw !initcommand_success
 
 DATA_FF3538:
-	db $00, $83, $AC, $34, $42, $00, $E0, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF34AC
+	dw sprite.unknown_42, $01E0
+	dw !initcommand_success
 
 DATA_FF3542:
-	db $00, $83, $AC, $34, $42, $00, $B0, $04
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF34AC
+	dw sprite.unknown_42, $04B0
+	dw !initcommand_success
 
 DATA_FF354C:
-	db $00, $83, $AC, $34, $42, $00, $D0, $02
-	db $1C, $00, $00, $C0, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF34AC
+	dw sprite.unknown_42, $02D0
+	dw sprite.unknown_1C, $C000
+	dw !initcommand_success
 
 DATA_FF355A:
-	db $00, $83, $AC, $34, $42, $00, $48, $03
-	db $1C, $00, $00, $C0, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF34AC
+	dw sprite.unknown_42, $0348
+	dw sprite.unknown_1C, $C000
+	dw !initcommand_success
 
 DATA_FF3568:
-	db $00, $83, $82, $34, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $30, $00
-	db $30, $00, $02, $01, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3482
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0030, $0102, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF358A:
-	db $00, $83, $82, $34, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $30, $00
-	db $30, $00, $03, $02, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3482
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0030, $0203, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF35AC:
-	db $00, $83, $82, $34, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $30, $00
-	db $30, $00, $03, $01, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3482
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0030, $0103, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF35CE:
-	db $00, $83, $82, $34, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $30, $00
-	db $30, $00, $04, $03, $00, $04, $00, $00
-	db $00, $80, $00, $00, $40, $01, $02, $00
-	db $EC, $00, $2E, $00, $00, $00, $5C, $00
-	db $00, $00, $50, $00, $00, $00, $00, $85
-	db $00, $20, $1A, $00, $CC, $08, $00, $80
-	db $00, $83, $F0, $35, $00, $8D, $02, $00
-	db $00, $80, $00, $83, $F0, $35, $00, $8D
-	db $00, $00, $00, $80, $00, $00, $40, $01
-	db $02, $00, $EC, $00, $2E, $00, $0E, $00
-	db $3E, $00, $03, $00, $5C, $00, $00, $00
-	db $50, $00, $00, $00, $00, $85, $00, $00
-	db $00, $8D, $00, $00, $1A, $00, $CC, $08
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3482
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0030, $0304, $0400, $0000
+	dw !initcommand_success
+
+DATA_FF35F0:
+	dw sprite.number, $0140
+	dw sprite.render_order, $00EC
+	dw sprite.action, $0000
+	dw sprite.unknown_5C, $0000
+	dw sprite.parameter, $0000
+	dw !initcommand_set_oam, $2000
+	dw sprite.unknown_1A, $08CC
+	dw !initcommand_success
+
+DATA_FF360E:
+	dw !initcommand_load_subconfig, DATA_FF35F0
+	dw !initcommand_set_alt_palette, $0002
+	dw !initcommand_success
+
+DATA_FF3618:
+	dw !initcommand_load_subconfig, DATA_FF35F0
+	dw !initcommand_set_alt_palette, $0000
+	dw !initcommand_success
+
+DATA_FF3622:
+	dw sprite.number, $0140
+	dw sprite.render_order, $00EC
+	dw sprite.action, $000E
+	dw sprite.unknown_3E, $0003
+	dw sprite.unknown_5C, $0000
+	dw sprite.parameter, $0000
+	dw !initcommand_set_oam, $0000
+	dw !initcommand_set_alt_palette, $0000
+	dw sprite.unknown_1A, $08CC
+	dw !initcommand_success
 
 DATA_FF3648:
-	db $00, $83, $0E, $36, $00, $8A, $04, $88
-	db $00, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $18, $00
-	db $00, $00, $00, $00, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $8804, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0018, $0000, $0000, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF366A:
-	db $00, $83, $0E, $36, $00, $8A, $04, $88
-	db $00, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $18, $00
-	db $00, $00, $01, $00, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $8804, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0018, $0000, $0001, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF368C:
-	db $00, $83, $0E, $36, $00, $8A, $04, $88
-	db $00, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $18, $00
-	db $00, $00, $02, $00, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $8804, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0018, $0000, $0002, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF36AE:
-	db $00, $83, $0E, $36, $00, $8A, $04, $88
-	db $00, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $18, $00
-	db $00, $00, $03, $00, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $8804, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0018, $0000, $0003, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF36D0:
-	db $00, $83, $0E, $36, $00, $8A, $04, $88
-	db $00, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $18, $00
-	db $00, $00, $04, $00, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $8804, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0018, $0000, $0004, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF36F2:
-	db $00, $83, $0E, $36, $00, $8A, $04, $88
-	db $00, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $18, $00
-	db $00, $00, $02, $00, $00, $04, $00, $00
-	db $5C, $00, $25, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $8804, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0018, $0000, $0002, $0400, $0000
+	dw sprite.unknown_5C, $0025
+	dw !initcommand_success
 
 DATA_FF3718:
-	db $00, $83, $0E, $36, $00, $8A, $04, $88
-	db $00, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $18, $00
-	db $00, $00, $00, $00, $00, $04, $00, $00
-	db $5C, $00, $07, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $8804, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0018, $0000, $0000, $0400, $0000
+	dw sprite.unknown_5C, $0007
+	dw !initcommand_success
 
 DATA_FF373E:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $30, $00
-	db $80, $00, $03, $02, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0080, $0203, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF3760:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $30, $00
-	db $80, $00, $03, $02, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0080, $0203, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF3782:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $30, $00
-	db $80, $00, $02, $01, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0080, $0102, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF37A4:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $30, $00
-	db $80, $00, $04, $03, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0080, $0304, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF37C6:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $30, $00
-	db $80, $00, $02, $01, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0080, $0102, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF37E8:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $30, $00
-	db $80, $00, $03, $02, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0080, $0203, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF380A:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $30, $00
-	db $80, $00, $04, $03, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0080, $0304, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF382C:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $30, $00
-	db $80, $00, $05, $04, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0080, $0405, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF384E:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $30, $00
-	db $80, $00, $02, $01, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0080, $0102, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF3870:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $30, $00
-	db $80, $00, $03, $02, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0080, $0203, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF3892:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $30, $00
-	db $80, $00, $02, $01, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0080, $0102, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF38B4:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $30, $00
-	db $80, $00, $04, $03, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0080, $0304, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF38D6:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $30, $00
-	db $80, $00, $02, $01, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0080, $0102, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF38F8:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $30, $00
-	db $80, $00, $03, $02, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0080, $0203, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF391A:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $30, $00
-	db $80, $00, $03, $02, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0080, $0203, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF393C:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $30, $00
-	db $80, $00, $02, $01, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0080, $0102, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF395E:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $30, $00
-	db $80, $00, $03, $02, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0080, $0203, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF3980:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $30, $00
-	db $80, $00, $04, $03, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0080, $0304, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF39A2:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $30, $00
-	db $80, $00, $02, $01, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0080, $0102, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF39C4:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $30, $00
-	db $80, $00, $03, $02, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0080, $0203, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF39E6:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $30, $00
-	db $80, $00, $04, $03, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0080, $0304, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF3A08:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $30, $00
-	db $80, $00, $02, $01, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0080, $0102, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF3A2A:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $30, $00
-	db $80, $00, $02, $01, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0080, $0102, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF3A4C:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $30, $00
-	db $80, $00, $02, $01, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0080, $0102, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF3A6E:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $30, $00
-	db $80, $00, $02, $01, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0080, $0102, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF3A90:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $30, $00
-	db $80, $00, $02, $01, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0080, $0102, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF3AB2:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $18, $00
-	db $80, $00, $03, $02, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0018, $0080, $0203, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF3AD4:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $18, $00
-	db $80, $00, $02, $01, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0018, $0080, $0102, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF3AF6:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $00, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $18, $00
-	db $80, $00, $02, $01, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0018, $0080, $0102, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF3B18:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $18, $00
-	db $80, $00, $03, $02, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0018, $0080, $0203, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF3B3A:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $18, $00
-	db $80, $00, $02, $01, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0018, $0080, $0102, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF3B5C:
-	db $00, $83, $0E, $36, $00, $8A, $0C, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $18, $00
-	db $80, $00, $02, $01, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $200C, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0018, $0080, $0102, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF3B7E:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $18, $00
-	db $80, $00, $02, $01, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0018, $0080, $0102, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF3BA0:
-	db $00, $83, $0E, $36, $00, $8A, $0C, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $18, $00
-	db $80, $00, $05, $04, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $200C, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0018, $0080, $0405, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF3BC2:
-	db $00, $83, $0E, $36, $00, $8A, $0C, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $18, $00
-	db $80, $00, $04, $03, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $200C, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0018, $0080, $0304, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF3BE4:
-	db $00, $83, $0E, $36, $00, $8A, $0C, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $18, $00
-	db $80, $00, $03, $02, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $200C, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0018, $0080, $0203, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF3C06:
-	db $00, $83, $22, $36, $3E, $00, $02, $00
-	db $00, $8A, $0C, $00, $00, $00, $03, $00
-	db $40, $00, $0C, $00, $00, $02, $80, $00
-	db $1F, $00, $00, $00, $80, $00, $00, $00
-	db $00, $08, $DE, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3622
+	dw sprite.unknown_3E, $0002
+	dw !initcommand_bulk_set
+	dw $000C, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0000, $0080, $0000, $0800, $00DE
+	dw !initcommand_success
 
 DATA_FF3C2C:
-	db $00, $83, $22, $36, $3E, $00, $03, $00
-	db $00, $8A, $0C, $00, $00, $00, $03, $00
-	db $40, $00, $0C, $00, $00, $02, $80, $00
-	db $1F, $00, $00, $00, $80, $00, $00, $00
-	db $00, $08, $DE, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3622
+	dw sprite.unknown_3E, $0003
+	dw !initcommand_bulk_set
+	dw $000C, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0000, $0080, $0000, $0800, $00DE
+	dw !initcommand_success
 
 DATA_FF3C52:
-	db $00, $83, $22, $36, $3E, $00, $04, $00
-	db $00, $8A, $0C, $00, $00, $00, $03, $00
-	db $40, $00, $0C, $00, $00, $02, $80, $00
-	db $1F, $00, $00, $00, $80, $00, $00, $00
-	db $00, $08, $DE, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3622
+	dw sprite.unknown_3E, $0004
+	dw !initcommand_bulk_set
+	dw $000C, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0000, $0080, $0000, $0800, $00DE
+	dw !initcommand_success
 
 DATA_FF3C78:
-	db $00, $83, $22, $36, $3E, $00, $05, $00
-	db $00, $8A, $0C, $00, $00, $00, $03, $00
-	db $40, $00, $0C, $00, $00, $02, $80, $00
-	db $1F, $00, $00, $00, $80, $00, $00, $00
-	db $00, $08, $DE, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3622
+	dw sprite.unknown_3E, $0005
+	dw !initcommand_bulk_set
+	dw $000C, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0000, $0080, $0000, $0800, $00DE
+	dw !initcommand_success
 
 DATA_FF3C9E:
-	db $00, $83, $22, $36, $3E, $00, $04, $00
-	db $00, $8A, $0C, $00, $80, $00, $03, $00
-	db $40, $00, $0C, $00, $00, $02, $80, $00
-	db $1F, $00, $00, $00, $80, $00, $00, $00
-	db $A0, $02, $00, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3622
+	dw sprite.unknown_3E, $0004
+	dw !initcommand_bulk_set
+	dw $000C, $0080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0000, $0080, $0000, $02A0, $0000
+	dw !initcommand_success
 
 DATA_FF3CC4:
-	db $00, $83, $22, $36, $3E, $00, $03, $00
-	db $00, $8A, $0C, $00, $00, $F0, $03, $00
-	db $40, $00, $0C, $00, $00, $02, $80, $00
-	db $1F, $00, $08, $00, $20, $00, $00, $00
-	db $00, $08, $DE, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3622
+	dw sprite.unknown_3E, $0003
+	dw !initcommand_bulk_set
+	dw $000C, $F000, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0008, $0020, $0000, $0800, $00DE
+	dw !initcommand_success
 
 DATA_FF3CEA:
-	db $00, $83, $22, $36, $3E, $00, $03, $00
-	db $00, $8A, $0C, $00, $88, $00, $03, $00
-	db $40, $00, $0C, $00, $00, $02, $80, $00
-	db $1F, $00, $08, $00, $80, $00, $00, $00
-	db $00, $09, $DE, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3622
+	dw sprite.unknown_3E, $0003
+	dw !initcommand_bulk_set
+	dw $000C, $0088, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0008, $0080, $0000, $0900, $00DE
+	dw !initcommand_success
 
 DATA_FF3D10:
-	db $00, $83, $22, $36, $3E, $00, $03, $00
-	db $00, $8A, $0C, $00, $80, $00, $03, $00
-	db $40, $00, $0C, $00, $00, $02, $80, $00
-	db $1F, $00, $00, $00, $80, $00, $00, $00
-	db $80, $04, $DE, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3622
+	dw sprite.unknown_3E, $0003
+	dw !initcommand_bulk_set
+	dw $000C, $0080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0000, $0080, $0000, $0480, $00DE
+	dw !initcommand_success
 
 DATA_FF3D36:
-	db $00, $83, $22, $36, $3E, $00, $05, $00
-	db $00, $8A, $0C, $00, $00, $00, $03, $00
-	db $40, $00, $0C, $00, $00, $02, $80, $00
-	db $1F, $00, $00, $00, $80, $00, $00, $00
-	db $00, $08, $DE, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3622
+	dw sprite.unknown_3E, $0005
+	dw !initcommand_bulk_set
+	dw $000C, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0000, $0080, $0000, $0800, $00DE
+	dw !initcommand_success
 
 DATA_FF3D5C:
-	db $00, $83, $22, $36, $3E, $00, $02, $00
-	db $00, $8A, $0C, $00, $00, $80, $03, $00
-	db $40, $00, $0C, $00, $00, $02, $80, $00
-	db $1C, $00, $28, $00, $28, $00, $00, $00
-	db $00, $05, $00, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3622
+	dw sprite.unknown_3E, $0002
+	dw !initcommand_bulk_set
+	dw $000C, $8000, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $0028, $0028, $0000, $0500, $0000
+	dw !initcommand_success
 
 DATA_FF3D82:
-	db $00, $83, $22, $36, $3E, $00, $00, $00
-	db $00, $8A, $0C, $00, $90, $90, $03, $00
-	db $40, $00, $0C, $00, $00, $02, $80, $00
-	db $1C, $00, $13, $00, $40, $00, $00, $00
-	db $00, $08, $00, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3622
+	dw sprite.unknown_3E, $0000
+	dw !initcommand_bulk_set
+	dw $000C, $9090, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $0013, $0040, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF3DA8:
-	db $00, $83, $22, $36, $3E, $00, $02, $00
-	db $00, $8A, $0C, $00, $80, $80, $03, $00
-	db $40, $00, $0C, $00, $00, $02, $80, $00
-	db $1F, $00, $30, $00, $30, $00, $00, $00
-	db $00, $08, $00, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3622
+	dw sprite.unknown_3E, $0002
+	dw !initcommand_bulk_set
+	dw $000C, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0030, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF3DCE:
-	db $00, $83, $22, $36, $3E, $00, $02, $00
-	db $00, $8A, $0C, $00, $00, $00, $03, $00
-	db $40, $00, $0C, $00, $00, $02, $80, $00
-	db $1F, $00, $00, $00, $80, $00, $00, $00
-	db $00, $08, $DE, $00, $5C, $00, $0C, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3622
+	dw sprite.unknown_3E, $0002
+	dw !initcommand_bulk_set
+	dw $000C, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0000, $0080, $0000, $0800, $00DE
+	dw sprite.unknown_5C, $000C
+	dw !initcommand_success
 
 DATA_FF3DF8:
-	db $00, $83, $22, $36, $3E, $00, $02, $00
-	db $00, $8A, $0C, $00, $01, $01, $03, $00
-	db $40, $00, $0C, $00, $00, $02, $80, $00
-	db $1F, $00, $00, $00, $80, $00, $00, $00
-	db $00, $08, $19, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3622
+	dw sprite.unknown_3E, $0002
+	dw !initcommand_bulk_set
+	dw $000C, $0101, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0000, $0080, $0000, $0800, $0019
+	dw !initcommand_success
 
 DATA_FF3E1E:
-	db $00, $83, $22, $36, $3E, $00, $04, $00
-	db $00, $8A, $0C, $00, $01, $01, $03, $00
-	db $40, $00, $0C, $00, $00, $02, $80, $00
-	db $1F, $00, $00, $00, $80, $00, $00, $00
-	db $00, $08, $23, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3622
+	dw sprite.unknown_3E, $0004
+	dw !initcommand_bulk_set
+	dw $000C, $0101, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0000, $0080, $0000, $0800, $0023
+	dw !initcommand_success
 
 DATA_FF3E44:
-	db $00, $83, $22, $36, $3E, $00, $04, $00
-	db $00, $8A, $0C, $00, $01, $01, $03, $00
-	db $40, $00, $0C, $00, $00, $02, $80, $00
-	db $1C, $00, $00, $00, $10, $00, $00, $00
-	db $00, $08, $19, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3622
+	dw sprite.unknown_3E, $0004
+	dw !initcommand_bulk_set
+	dw $000C, $0101, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $0000, $0010, $0000, $0800, $0019
+	dw !initcommand_success
 
 DATA_FF3E6A:
-	db $00, $83, $0E, $36, $00, $8A, $10, $08
-	db $20, $20, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $02, $10, $00
-	db $10, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0810, $2020, $0003, $0040, $000C, $0200
+	dw $0080, $021C, $0010, $0010, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF3E8C:
-	db $00, $83, $0E, $36, $00, $8A, $10, $08
-	db $00, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $05, $10, $00
-	db $10, $00, $00, $00, $00, $08, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0810, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $0520, $0010, $0010, $0000, $0800, $00E2
+	dw !initcommand_success
 
 DATA_FF3EAE:
-	db $00, $83, $0E, $36, $00, $8A, $10, $48
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $03, $08, $00
-	db $00, $00, $00, $00, $00, $08, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4810, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $031C, $0008, $0000, $0000, $0800, $00E2
+	dw !initcommand_success
 
 DATA_FF3ED0:
-	db $00, $83, $0E, $36, $00, $8A, $10, $48
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $04, $0C, $00
-	db $00, $00, $00, $00, $00, $08, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4810, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $041A, $000C, $0000, $0000, $0800, $00E2
+	dw !initcommand_success
 
 DATA_FF3EF2:
-	db $00, $83, $0E, $36, $00, $8A, $10, $48
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $04, $08, $00
-	db $00, $00, $00, $00, $00, $08, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4810, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $041A, $0008, $0000, $0000, $0800, $00E2
+	dw !initcommand_success
 
 DATA_FF3F14:
-	db $00, $83, $0E, $36, $00, $8A, $10, $48
-	db $00, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $05, $08, $00
-	db $00, $00, $00, $00, $00, $08, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4810, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $051A, $0008, $0000, $0000, $0800, $00E2
+	dw !initcommand_success
 
 DATA_FF3F36:
-	db $00, $83, $0E, $36, $00, $8A, $10, $48
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $02, $08, $00
-	db $00, $00, $00, $00, $00, $08, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4810, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $021A, $0008, $0000, $0000, $0800, $00E2
+	dw !initcommand_success
 
 DATA_FF3F58:
-	db $00, $83, $0E, $36, $00, $8A, $10, $48
-	db $00, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $02, $08, $00
-	db $00, $00, $00, $00, $00, $08, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4810, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $021A, $0008, $0000, $0000, $0800, $00E2
+	dw !initcommand_success
 
 DATA_FF3F7A:
-	db $00, $83, $0E, $36, $00, $8A, $10, $48
-	db $C0, $C0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $02, $08, $00
-	db $00, $00, $00, $00, $00, $08, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4810, $C0C0, $0003, $0040, $000C, $0200
+	dw $0080, $021A, $0008, $0000, $0000, $0800, $00E2
+	dw !initcommand_success
 
 DATA_FF3F9C:
-	db $00, $83, $0E, $36, $00, $8A, $10, $48
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $04, $06, $00
-	db $00, $00, $00, $00, $00, $08, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4810, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $041A, $0006, $0000, $0000, $0800, $00E2
+	dw !initcommand_success
 
 DATA_FF3FBE:
-	db $00, $83, $0E, $36, $00, $8A, $10, $48
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $01, $08, $00
-	db $00, $00, $00, $00, $00, $08, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4810, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $011A, $0008, $0000, $0000, $0800, $00E2
+	dw !initcommand_success
 
 DATA_FF3FE0:
-	db $00, $83, $0E, $36, $00, $8A, $10, $08
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $01, $10, $00
-	db $00, $00, $00, $00, $00, $08, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0810, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $011A, $0010, $0000, $0000, $0800, $00E2
+	dw !initcommand_success
 
 DATA_FF4002:
-	db $00, $83, $0E, $36, $00, $8A, $10, $48
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $03, $0C, $00
-	db $00, $00, $00, $00, $00, $08, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4810, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $031A, $000C, $0000, $0000, $0800, $00E2
+	dw !initcommand_success
 
 DATA_FF4024:
-	db $00, $83, $0E, $36, $00, $8A, $10, $48
-	db $C0, $C0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $01, $08, $00
-	db $00, $00, $00, $00, $00, $08, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4810, $C0C0, $0003, $0040, $000C, $0200
+	dw $0080, $011A, $0008, $0000, $0000, $0800, $00E2
+	dw !initcommand_success
 
 DATA_FF4046:
-	db $00, $83, $0E, $36, $00, $8A, $10, $48
-	db $A0, $A0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $01, $05, $00
-	db $00, $00, $00, $00, $00, $08, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4810, $A0A0, $0003, $0040, $000C, $0200
+	dw $0080, $011A, $0005, $0000, $0000, $0800, $00E2
+	dw !initcommand_success
 
 DATA_FF4068:
-	db $00, $83, $0E, $36, $00, $8A, $10, $48
-	db $40, $40, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $05, $08, $00
-	db $00, $00, $00, $00, $00, $08, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4810, $4040, $0003, $0040, $000C, $0200
+	dw $0080, $051A, $0008, $0000, $0000, $0800, $00E2
+	dw !initcommand_success
 
 DATA_FF408A:
-	db $00, $83, $0E, $36, $00, $8A, $10, $48
-	db $A0, $A0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $05, $10, $00
-	db $00, $00, $00, $00, $00, $08, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4810, $A0A0, $0003, $0040, $000C, $0200
+	dw $0080, $051A, $0010, $0000, $0000, $0800, $00E2
+	dw !initcommand_success
 
 DATA_FF40AC:
-	db $00, $83, $0E, $36, $00, $8A, $10, $48
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $05, $08, $00
-	db $00, $00, $00, $00, $00, $08, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4810, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $051A, $0008, $0000, $0000, $0800, $00E2
+	dw !initcommand_success
 
 DATA_FF40CE:
-	db $00, $83, $0E, $36, $00, $8A, $10, $48
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $03, $0A, $00
-	db $08, $00, $00, $00, $00, $08, $E2, $19
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4810, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $031C, $000A, $0008, $0000, $0800, $19E2
+	dw !initcommand_success
 
 DATA_FF40F0:
-	db $00, $83, $0E, $36, $00, $8A, $10, $48
-	db $00, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $0C, $00
-	db $00, $00, $00, $00, $00, $08, $00, $0A
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4810, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $000C, $0000, $0000, $0800, $0A00
+	dw !initcommand_success
 
 DATA_FF4112:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $08, $00
-	db $08, $00, $00, $00, $00, $08, $00, $EC
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $0008, $0008, $0000, $0800, $EC00
+	dw !initcommand_success
 
 DATA_FF4134:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $08, $00
-	db $01, $00, $00, $00, $00, $08, $00, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $0008, $0001, $0000, $0800, $2800
+	dw !initcommand_success
+
+DATA_FF4154:
+if !version == 0
+	db $00, $00
+endif
 
 DATA_FF4156:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $0D, $00
-	db $10, $00, $00, $00, $00, $08, $00, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $000D, $0010, $0000, $0800, $1E00
+	dw !initcommand_success
 
 DATA_FF4178:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $14, $00
-	db $14, $00, $00, $00, $00, $08, $00, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $0014, $0014, $0000, $0800, $1E00
+	dw !initcommand_success
 
 DATA_FF419A:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $0B, $00
-	db $0C, $00, $00, $00, $00, $08, $0A, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $000B, $000C, $0000, $0800, $280A
+	dw !initcommand_success
 
 DATA_FF41BC:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $0D, $00
-	db $0D, $00, $00, $00, $00, $08, $14, $27
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $000D, $000D, $0000, $0800, $2714
+	dw !initcommand_success
 
 DATA_FF41DE:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $0E, $00
-	db $0E, $00, $00, $00, $00, $08, $F6, $23
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $000E, $000E, $0000, $0800, $23F6
+	dw !initcommand_success
 
 DATA_FF4200:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $0E, $00
-	db $0E, $00, $00, $00, $00, $08, $00, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $000E, $000E, $0000, $0800, $1E00
+	dw !initcommand_success
 
 DATA_FF4222:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $0E, $00
-	db $0E, $00, $00, $00, $00, $08, $1E, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $000E, $000E, $0000, $0800, $1E1E
+	dw !initcommand_success
 
 DATA_FF4244:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $12, $00
-	db $12, $00, $00, $00, $00, $08, $00, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $0012, $0012, $0000, $0800, $1E00
+	dw !initcommand_success
 
 DATA_FF4266:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $70, $A0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $FF, $00
-	db $FF, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $A070, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $00FF, $00FF, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF4288:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $20, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $FF, $00
-	db $FF, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $0020, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $00FF, $00FF, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF42AA:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $80, $40, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $FF, $00
-	db $FF, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $4080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $00FF, $00FF, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF42CC:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $C0, $60, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $FF, $00
-	db $FF, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $60C0, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $00FF, $00FF, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF42EE:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $16, $00, $1C, $00
-	db $1C, $00, $00, $00, $00, $08, $00, $40
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $0016, $001C, $001C, $0000, $0800, $4000
+	dw !initcommand_success
 
 DATA_FF4310:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $07, $00
-	db $08, $00, $00, $00, $00, $08, $14, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $0007, $0008, $0000, $0800, $1E14
+	dw !initcommand_success
 
 DATA_FF4332:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $08, $00
-	db $08, $00, $00, $00, $00, $08, $0A, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $0008, $0008, $0000, $0800, $000A
+	dw !initcommand_success
 
 DATA_FF4354:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $06, $00
-	db $08, $00, $00, $00, $00, $08, $0A, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $0006, $0008, $0000, $0800, $1E0A
+	dw !initcommand_success
 
 DATA_FF4376:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $08, $00
-	db $08, $00, $00, $00, $00, $08, $0A, $0A
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $0008, $0008, $0000, $0800, $0A0A
+	dw !initcommand_success
 
 DATA_FF4398:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $0A, $00
-	db $08, $00, $00, $00, $00, $08, $00, $23
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $000A, $0008, $0000, $0800, $2300
+	dw !initcommand_success
 
 DATA_FF43BA:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $1E, $00
-	db $1E, $00, $00, $00, $00, $08, $00, $50
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+if !version == 0
+	dw $0080, $001C, $0024, $0024, $0000, $0800, $5000
+else
+	dw $0080, $001C, $001E, $001E, $0000, $0800, $5000
+endif
+	dw !initcommand_success
 
 DATA_FF43DC:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $18, $00
-	db $18, $00, $00, $00, $00, $08, $00, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $0018, $0018, $0000, $0800, $2800
+	dw !initcommand_success
 
 DATA_FF43FE:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $40, $40, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $0C, $00
-	db $0C, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $4040, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $000C, $000C, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF4420:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $0C, $00
-	db $0C, $00, $00, $00, $00, $08, $00, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $000C, $000C, $0000, $0800, $1E00
+	dw !initcommand_success
 
 DATA_FF4442:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $60, $60, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $0C, $00
-	db $00, $00, $00, $00, $00, $08, $F6, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $6060, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $000C, $0000, $0000, $0800, $00F6
+	dw !initcommand_success
 
 DATA_FF4464:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $A0, $A0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $0C, $00
-	db $00, $01, $00, $00, $00, $08, $EC, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $A0A0, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $000C, $0100, $0000, $0800, $00EC
+	dw !initcommand_success
 
 DATA_FF4486:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $7F, $7F, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $0A, $00
-	db $0A, $00, $00, $00, $00, $08, $28, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+if !version == 0
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+else
+	dw $4004, $7F7F, $0003, $0040, $000C, $0200
+endif
+	dw $0080, $001A, $000A, $000A, $0000, $0800, $1E28
+	dw !initcommand_success
 
 DATA_FF44A8:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $0D, $00
-	db $0D, $00, $00, $00, $00, $08, $00, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $000D, $000D, $0000, $0800, $2800
+	dw !initcommand_success
 
 DATA_FF44CA:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $0D, $00
-	db $0D, $00, $00, $00, $00, $08, $00, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $000D, $000D, $0000, $0800, $2800
+	dw !initcommand_success
 
 DATA_FF44EC:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $07, $00
-	db $0C, $00, $00, $00, $00, $08, $EC, $23
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $0007, $000C, $0000, $0800, $23EC
+	dw !initcommand_success
 
 DATA_FF450E:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $08, $00
-	db $0C, $00, $00, $00, $00, $08, $D3, $23
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $0008, $000C, $0000, $0800, $23D3
+	dw !initcommand_success
 
 DATA_FF4530:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $28, $00
-	db $28, $00, $00, $00, $00, $08, $00, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $0028, $0028, $0000, $0800, $2800
+	dw !initcommand_success
 
 DATA_FF4552:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $0A, $00
-	db $0C, $00, $00, $00, $00, $08, $50, $23
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $000A, $000C, $0000, $0800, $2350
+	dw !initcommand_success
 
 DATA_FF4574:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $0A, $00
-	db $0C, $00, $00, $00, $00, $08, $14, $23
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $000A, $000C, $0000, $0800, $2314
+	dw !initcommand_success
 
 DATA_FF4596:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $20, $00
-	db $20, $00, $00, $00, $00, $08, $00, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $0020, $0020, $0000, $0800, $2800
+	dw !initcommand_success
 
 DATA_FF45B8:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $10, $00
-	db $10, $00, $00, $00, $00, $08, $00, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $0010, $0010, $0000, $0800, $2800
+	dw !initcommand_success
 
 DATA_FF45DA:
-	db $00, $83, $0E, $36, $00, $8A, $E4, $42
-	db $80, $80, $70, $01, $C0, $01, $0C, $00
-	db $00, $01, $80, $00, $1A, $00, $0C, $00
-	db $16, $00, $00, $00, $00, $08, $E7, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $42E4, $8080, $0170, $01C0, $000C, $0100
+	dw $0080, $001A, $000C, $0016, $0000, $0800, $00E7
+	dw !initcommand_success
 
 DATA_FF45FC:
-	db $00, $83, $0E, $36, $00, $8A, $05, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $10, $00
-	db $10, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4005, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $0010, $0010, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF461E:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $A0, $A0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $18, $00, $01, $00
-	db $20, $00, $00, $00, $00, $08, $D8, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $A0A0, $0003, $0040, $000C, $0200
+	dw $0080, $0018, $0001, $0020, $0000, $0800, $28D8
+	dw !initcommand_success
 
 DATA_FF4640:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $7F, $7F, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $20, $00
-	db $18, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $7F7F, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $0020, $0018, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF4662:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $00, $00, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $20, $05, $08, $00
-	db $08, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $0000, $0003, $0400, $000C, $0100
+	dw $0080, $0520, $0008, $0008, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF4684:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $00, $00, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $20, $03, $0C, $00
-	db $0C, $00, $00, $00, $00, $08, $EC, $0A
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $0000, $0003, $0400, $000C, $0100
+	dw $0080, $0320, $000C, $000C, $0000, $0800, $0AEC
+	dw !initcommand_success
 
 DATA_FF46A6:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $20, $20, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $20, $03, $3C, $00
-	db $3C, $00, $00, $00, $00, $08, $EC, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $2020, $0003, $0400, $000C, $0100
+	dw $0080, $0320, $003C, $003C, $0000, $0800, $00EC
+	dw !initcommand_success
 
 DATA_FF46C8:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $80, $80, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $18, $03, $20, $00
-	db $20, $00, $00, $00, $00, $08, $EC, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $8080, $0003, $0400, $000C, $0100
+	dw $0080, $0318, $0020, $0020, $0000, $0800, $00EC
+	dw !initcommand_success
 
 DATA_FF46EA:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $40, $40, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $20, $03, $14, $00
-	db $14, $00, $00, $00, $00, $08, $E7, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $4040, $0003, $0400, $000C, $0100
+	dw $0080, $0320, $0014, $0014, $0000, $0800, $00E7
+	dw !initcommand_success
 
 DATA_FF470C:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $60, $60, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $20, $02, $0D, $00
-	db $10, $00, $00, $00, $00, $08, $DE, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $6060, $0003, $0400, $000C, $0100
+	dw $0080, $0220, $000D, $0010, $0000, $0800, $00DE
+	dw !initcommand_success
 
 DATA_FF472E:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $40, $40, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $20, $02, $0D, $00
-	db $10, $00, $00, $00, $00, $08, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $4040, $0003, $0400, $000C, $0100
+	dw $0080, $0220, $000D, $0010, $0000, $0800, $00E2
+	dw !initcommand_success
 
 DATA_FF4750:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $40, $40, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $20, $02, $08, $00
-	db $08, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $4040, $0003, $0400, $000C, $0100
+	dw $0080, $0220, $0008, $0008, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF4772:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $00, $00, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $20, $02, $28, $00
-	db $28, $00, $00, $00, $00, $08, $E2, $E2
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $0000, $0003, $0400, $000C, $0100
+	dw $0080, $0220, $0028, $0028, $0000, $0800, $E2E2
+	dw !initcommand_success
 
 DATA_FF4794:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $40, $40, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $20, $02, $14, $00
-	db $14, $00, $00, $00, $00, $08, $D3, $EC
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $4040, $0003, $0400, $000C, $0100
+	dw $0080, $0220, $0014, $0014, $0000, $0800, $ECD3
+	dw !initcommand_success
 
 DATA_FF47B6:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $60, $60, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $20, $02, $08, $00
-	db $08, $00, $00, $00, $00, $08, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $6060, $0003, $0400, $000C, $0100
+	dw $0080, $0220, $0008, $0008, $0000, $0800, $00E2
+	dw !initcommand_success
 
 DATA_FF47D8:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $20, $20, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $20, $02, $28, $00
-	db $28, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $2020, $0003, $0400, $000C, $0100
+	dw $0080, $0220, $0028, $0028, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF47FA:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $00, $00, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $20, $01, $08, $00
-	db $08, $00, $00, $00, $00, $08, $EC, $05
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $0000, $0003, $0400, $000C, $0100
+	dw $0080, $0120, $0008, $0008, $0000, $0800, $05EC
+	dw !initcommand_success
 
 DATA_FF481C:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $00, $00, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $20, $01, $20, $00
-	db $20, $00, $00, $00, $00, $08, $EC, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $0000, $0003, $0400, $000C, $0100
+	dw $0080, $0120, $0020, $0020, $0000, $0800, $00EC
+	dw !initcommand_success
 
 DATA_FF483E:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $40, $40, $03, $00, $00, $04, $0C, $00
-	db $00, $02, $80, $00, $20, $05, $08, $00
-	db $20, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $4040, $0003, $0400, $000C, $0200
+	dw $0080, $0520, $0008, $0020, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF4860:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $00, $00, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $1E, $04, $06, $00
-	db $06, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $0000, $0003, $0400, $000C, $0100
+	dw $0080, $041E, $0006, $0006, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF4882:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $00, $00, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $1C, $03, $0C, $00
-	db $0C, $00, $00, $00, $00, $01, $E7, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $0000, $0003, $0400, $000C, $0100
+	dw $0080, $031C, $000C, $000C, $0000, $0100, $00E7
+	dw !initcommand_success
 
 DATA_FF48A4:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $40, $40, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $20, $03, $08, $00
-	db $08, $00, $00, $00, $00, $03, $E7, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $4040, $0003, $0400, $000C, $0100
+	dw $0080, $0320, $0008, $0008, $0000, $0300, $00E7
+	dw !initcommand_success
 
 DATA_FF48C6:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $40, $40, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $20, $03, $30, $00
-	db $30, $00, $00, $00, $00, $03, $E7, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $4040, $0003, $0400, $000C, $0100
+	dw $0080, $0320, $0030, $0030, $0000, $0300, $00E7
+	dw !initcommand_success
 
 DATA_FF48E8:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $40, $40, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $1A, $03, $02, $00
-	db $02, $00, $00, $00, $00, $03, $E7, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $4040, $0003, $0400, $000C, $0100
+	dw $0080, $031A, $0002, $0002, $0000, $0300, $00E7
+	dw !initcommand_success
 
 DATA_FF490A:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $40, $40, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $20, $03, $10, $00
-	db $10, $00, $00, $00, $00, $03, $E7, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $4040, $0003, $0400, $000C, $0100
+	dw $0080, $0320, $0010, $0010, $0000, $0300, $00E7
+	dw !initcommand_success
 
 DATA_FF492C:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $40, $40, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $19, $03, $01, $00
-	db $01, $00, $00, $00, $00, $03, $E7, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $4040, $0003, $0400, $000C, $0100
+	dw $0080, $0319, $0001, $0001, $0000, $0300, $00E7
+	dw !initcommand_success
 
 DATA_FF494E:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $40, $40, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $20, $03, $18, $00
-	db $18, $00, $00, $00, $00, $03, $D3, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $4040, $0003, $0400, $000C, $0100
+	dw $0080, $0320, $0018, $0018, $0000, $0300, $00D3
+	dw !initcommand_success
 
 DATA_FF4970:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $40, $40, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $18, $03, $01, $00
-	db $01, $00, $00, $00, $00, $03, $E7, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $4040, $0003, $0400, $000C, $0100
+	dw $0080, $0318, $0001, $0001, $0000, $0300, $00E7
+	dw !initcommand_success
 
 DATA_FF4992:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $40, $40, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $18, $03, $01, $00
-	db $01, $00, $00, $00, $00, $03, $E7, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $4040, $0003, $0400, $000C, $0100
+	dw $0080, $0318, $0001, $0001, $0000, $0300, $00E7
+	dw !initcommand_success
 
 DATA_FF49B4:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $60, $60, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $20, $01, $10, $00
-	db $10, $00, $00, $00, $00, $03, $EC, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $6060, $0003, $0400, $000C, $0100
+	dw $0080, $0120, $0010, $0010, $0000, $0300, $00EC
+	dw !initcommand_success
 
 DATA_FF49D6:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $40, $40, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $1C, $02, $08, $00
-	db $08, $00, $00, $00, $00, $03, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $4040, $0003, $0400, $000C, $0100
+	dw $0080, $021C, $0008, $0008, $0000, $0300, $0000
+	dw !initcommand_success
 
 DATA_FF49F8:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $00, $00, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $1C, $01, $08, $00
-	db $08, $00, $00, $00, $00, $03, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $0000, $0003, $0400, $000C, $0100
+	dw $0080, $011C, $0008, $0008, $0000, $0300, $00E2
+	dw !initcommand_success
 
 DATA_FF4A1A:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $40, $40, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $1C, $01, $08, $00
-	db $08, $00, $00, $00, $00, $03, $F6, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $4040, $0003, $0400, $000C, $0100
+	dw $0080, $011C, $0008, $0008, $0000, $0300, $00F6
+	dw !initcommand_success
 
 DATA_FF4A3C:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $60, $60, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $1E, $02, $10, $00
-	db $10, $00, $00, $00, $00, $03, $D8, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $6060, $0003, $0400, $000C, $0100
+	dw $0080, $021E, $0010, $0010, $0000, $0300, $00D8
+	dw !initcommand_success
 
 DATA_FF4A5E:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $40, $40, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $1E, $02, $0C, $00
-	db $0C, $00, $00, $00, $00, $03, $14, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $4040, $0003, $0400, $000C, $0100
+	dw $0080, $021E, $000C, $000C, $0000, $0300, $0014
+	dw !initcommand_success
 
 DATA_FF4A80:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $20, $20, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $20, $02, $10, $00
-	db $10, $00, $00, $00, $00, $03, $EC, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $2020, $0003, $0400, $000C, $0100
+	dw $0080, $0220, $0010, $0010, $0000, $0300, $00EC
+	dw !initcommand_success
 
 DATA_FF4AA2:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $40, $40, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $20, $02, $10, $00
-	db $10, $00, $00, $00, $00, $03, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $4040, $0003, $0400, $000C, $0100
+	dw $0080, $0220, $0010, $0010, $0000, $0300, $0000
+	dw !initcommand_success
 
 DATA_FF4AC4:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $60, $60, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $20, $02, $10, $00
-	db $10, $00, $00, $00, $00, $03, $EC, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $6060, $0003, $0400, $000C, $0100
+	dw $0080, $0220, $0010, $0010, $0000, $0300, $00EC
+	dw !initcommand_success
 
 DATA_FF4AE6:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $20, $20, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $1E, $01, $08, $00
-	db $0C, $00, $00, $00, $00, $03, $EC, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $2020, $0003, $0400, $000C, $0100
+	dw $0080, $011E, $0008, $000C, $0000, $0300, $00EC
+	dw !initcommand_success
 
 DATA_FF4B08:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $60, $60, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $1E, $02, $08, $00
-	db $08, $00, $00, $00, $00, $03, $EC, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $6060, $0003, $0400, $000C, $0100
+	dw $0080, $021E, $0008, $0008, $0000, $0300, $00EC
+	dw !initcommand_success
 
 DATA_FF4B2A:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $20, $20, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $1E, $02, $0C, $00
-	db $0C, $00, $00, $00, $00, $03, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $2020, $0003, $0400, $000C, $0100
+	dw $0080, $021E, $000C, $000C, $0000, $0300, $00E2
+	dw !initcommand_success
 
 DATA_FF4B4C:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $40, $40, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $20, $03, $10, $00
-	db $10, $00, $00, $00, $00, $03, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $4040, $0003, $0400, $000C, $0100
+	dw $0080, $0320, $0010, $0010, $0000, $0300, $0000
+	dw !initcommand_success
 
 DATA_FF4B6E:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $40, $40, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $20, $03, $10, $00
-	db $10, $00, $00, $00, $00, $03, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $4040, $0003, $0400, $000C, $0100
+	dw $0080, $0320, $0010, $0010, $0000, $0300, $0000
+	dw !initcommand_success
 
 DATA_FF4B90:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $00, $00, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $1C, $02, $46, $00
-	db $46, $00, $00, $00, $00, $01, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $0000, $0003, $0400, $000C, $0100
+	dw $0080, $021C, $0046, $0046, $0000, $0100, $0000
+	dw !initcommand_success
 
 DATA_FF4BB2:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $20, $20, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $18, $02, $10, $00
-	db $18, $00, $00, $00, $00, $01, $E2, $14
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $2020, $0003, $0400, $000C, $0100
+	dw $0080, $0218, $0010, $0018, $0000, $0100, $14E2
+	dw !initcommand_success
 
 DATA_FF4BD4:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $60, $60, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $18, $02, $0C, $00
-	db $18, $00, $00, $00, $00, $01, $E2, $E2
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $6060, $0003, $0400, $000C, $0100
+	dw $0080, $0218, $000C, $0018, $0000, $0100, $E2E2
+	dw !initcommand_success
 
 DATA_FF4BF6:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $20, $20, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $18, $02, $14, $00
-	db $18, $00, $00, $00, $00, $01, $D8, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $2020, $0003, $0400, $000C, $0100
+	dw $0080, $0218, $0014, $0018, $0000, $0100, $1ED8
+	dw !initcommand_success
 
 DATA_FF4C18:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $40, $40, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $18, $02, $0C, $00
-	db $18, $00, $00, $00, $00, $01, $D8, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $4040, $0003, $0400, $000C, $0100
+	dw $0080, $0218, $000C, $0018, $0000, $0100, $00D8
+	dw !initcommand_success
 
 DATA_FF4C3A:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $00, $00, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $1E, $04, $04, $00
-	db $04, $00, $00, $00, $00, $03, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $0000, $0003, $0400, $000C, $0100
+	dw $0080, $041E, $0004, $0004, $0000, $0300, $0000
+	dw !initcommand_success
 
 DATA_FF4C5C:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $40, $40, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $20, $03, $14, $00
-	db $14, $00, $00, $00, $00, $08, $E7, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $4040, $0003, $0400, $000C, $0100
+	dw $0080, $0320, $0014, $0014, $0000, $0800, $00E7
+	dw !initcommand_success
 
 DATA_FF4C7E:
-	db $00, $83, $0E, $36, $00, $8A, $E0, $12
-	db $80, $80, $D0, $04, $20, $05, $0C, $00
-	db $40, $01, $80, $00, $1A, $00, $0A, $00
-	db $0A, $00, $00, $00, $00, $03, $D8, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $12E0, $8080, $04D0, $0520, $000C, $0140
+	dw $0080, $001A, $000A, $000A, $0000, $0300, $00D8
+	dw !initcommand_success
 
 DATA_FF4CA0:
-	db $00, $83, $0E, $36, $00, $8A, $E0, $12
-	db $80, $80, $D0, $0A, $00, $0B, $0C, $00
-	db $40, $01, $80, $00, $1A, $00, $0C, $00
-	db $0C, $00, $00, $00, $00, $03, $D8, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $12E0, $8080, $0AD0, $0B00, $000C, $0140
+	dw $0080, $001A, $000C, $000C, $0000, $0300, $00D8
+	dw !initcommand_success
 
 DATA_FF4CC2:
-	db $00, $83, $0E, $36, $00, $8A, $E4, $42
-	db $80, $80, $00, $01, $80, $01, $0C, $00
-	db $40, $01, $80, $00, $1A, $00, $10, $00
-	db $01, $00, $00, $00, $00, $03, $00, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $42E4, $8080, $0100, $0180, $000C, $0140
+	dw $0080, $001A, $0010, $0001, $0000, $0300, $1E00
+	dw !initcommand_success
 
 DATA_FF4CE4:
-	db $00, $83, $0E, $36, $00, $8A, $60, $11
-	db $60, $60, $00, $00, $80, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $03, $0B, $00
-	db $0B, $00, $00, $00, $00, $03, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1160, $6060, $0000, $0080, $000C, $0200
+	dw $0080, $0320, $000B, $000B, $0000, $0300, $00E2
+	dw !initcommand_success
 
 DATA_FF4D06:
-	db $00, $83, $0E, $36, $00, $8A, $60, $15
-	db $40, $40, $00, $00, $80, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $05, $14, $00
-	db $14, $00, $00, $00, $00, $03, $D4, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1560, $4040, $0000, $0080, $000C, $0200
+	dw $0080, $0520, $0014, $0014, $0000, $0300, $00D4
+	dw !initcommand_success
 
 DATA_FF4D28:
-	db $00, $83, $0E, $36, $00, $8A, $60, $15
-	db $40, $40, $00, $00, $80, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $03, $10, $00
-	db $10, $00, $00, $00, $00, $03, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1560, $4040, $0000, $0080, $000C, $0200
+	dw $0080, $0320, $0010, $0010, $0000, $0300, $0000
+	dw !initcommand_success
 
 DATA_FF4D4A:
-	db $00, $83, $0E, $36, $00, $8A, $60, $15
-	db $40, $40, $00, $00, $D0, $00, $08, $00
-	db $00, $02, $80, $00, $1C, $03, $08, $00
-	db $08, $00, $00, $00, $00, $03, $E7, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1560, $4040, $0000, $00D0, $0008, $0200
+	dw $0080, $031C, $0008, $0008, $0000, $0300, $00E7
+	dw !initcommand_success
 
 DATA_FF4D6C:
-	db $00, $83, $0E, $36, $00, $8A, $90, $0B
-	db $A0, $A0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $01, $00
-	db $01, $00, $00, $00, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0B90, $A0A0, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0001, $0001, $0000, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF4D8E:
-	db $00, $83, $0E, $36, $00, $8A, $E4, $0B
-	db $00, $A0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $30, $00
-	db $00, $00, $00, $00, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0BE4, $A000, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0000, $0000, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF4DB0:
-	db $00, $83, $0E, $36, $00, $8A, $80, $03
-	db $00, $A0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $10, $00, $10, $00
-	db $10, $00, $00, $00, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0380, $A000, $0003, $0040, $000C, $0200
+	dw $0080, $0010, $0010, $0010, $0000, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF4DD2:
-	db $00, $83, $0E, $36, $00, $8A, $E0, $13
-	db $00, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $10, $00, $10, $00
-	db $10, $00, $00, $00, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $13E0, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $0010, $0010, $0010, $0000, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF4DF4:
-	db $00, $83, $0E, $36, $00, $8A, $84, $0B
-	db $00, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $10, $00, $10, $00
-	db $10, $00, $00, $00, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0B84, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $0010, $0010, $0010, $0000, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF4E16:
-	db $00, $83, $0E, $36, $00, $8A, $64, $0D
-	db $00, $A0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $30, $00
-	db $00, $00, $00, $00, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0D64, $A000, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0000, $0000, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF4E38:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $00, $90, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $01, $00
-	db $20, $00, $00, $00, $00, $08, $E2, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $9000, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0001, $0020, $0000, $0800, $1EE2
+	dw !initcommand_success
 
 DATA_FF4E5A:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $80, $C0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $80, $00
-	db $80, $00, $00, $00, $00, $08, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $C080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0080, $0080, $0000, $0800, $00E2
+	dw !initcommand_success
 
 DATA_FF4E7C:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $40, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $20, $00
-	db $20, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $8040, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0020, $0020, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF4E9E:
-	db $00, $83, $0E, $36, $00, $8A, $0C, $00
-	db $00, $A0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $14, $00
-	db $14, $00, $00, $00, $00, $04, $00, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $000C, $A000, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0014, $0014, $0000, $0400, $2800
+	dw !initcommand_success
 
 DATA_FF4EC0:
-	db $00, $83, $0E, $36, $00, $8A, $0C, $00
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $08, $00
-	db $08, $00, $00, $00, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $000C, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0008, $0008, $0000, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF4EE2:
-	db $00, $83, $18, $36, $00, $8A, $0C, $00
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $18, $00
-	db $18, $00, $00, $00, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3618
+	dw !initcommand_bulk_set
+	dw $000C, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0018, $0018, $0000, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF4F04:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $40, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $04, $00
-	db $00, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $8040, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0004, $0000, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF4F26:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $00, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $18, $00, $38, $00
-	db $88, $00, $00, $00, $00, $06, $00, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $8000, $0003, $0040, $000C, $0200
+	dw $0080, $0018, $0038, $0088, $0000, $0600, $2800
+	dw !initcommand_success
 
 DATA_FF4F48:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $00, $60, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $22, $00
-	db $30, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $6000, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0022, $0030, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF4F6A:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $80, $A0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $0A, $00
-	db $0A, $00, $00, $00, $00, $08, $DD, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $A080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $000A, $000A, $0000, $0800, $00DD
+	dw !initcommand_success
 
 DATA_FF4F8C:
-	db $00, $83, $0E, $36, $00, $8A, $00, $08
-	db $C0, $C0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $10, $00
-	db $10, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0800, $C0C0, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0010, $0010, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF4FAE:
-	db $00, $83, $0E, $36, $00, $8A, $00, $08
-	db $C0, $C0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $0A, $00
-	db $0A, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0800, $C0C0, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $000A, $000A, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF4FD0:
-	db $00, $83, $0E, $36, $00, $8A, $00, $08
-	db $C0, $C0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $18, $00
-	db $18, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0800, $C0C0, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0018, $0018, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF4FF2:
-	db $00, $83, $0E, $36, $00, $8A, $00, $08
-	db $C0, $C0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $18, $00
-	db $18, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0800, $C0C0, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0018, $0018, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF5014:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $40, $C0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $10, $00
-	db $10, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $C040, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0010, $0010, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF5036:
-	db $00, $83, $0E, $36, $00, $8A, $00, $08
-	db $C0, $C0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $0C, $00
-	db $0C, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0800, $C0C0, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $000C, $000C, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF5058:
-	db $00, $83, $0E, $36, $00, $8A, $00, $08
-	db $40, $C0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $18, $00
-	db $18, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0800, $C040, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0018, $0018, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF507A:
-	db $00, $83, $0E, $36, $00, $8A, $00, $08
-	db $C0, $C0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $10, $00
-	db $10, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0800, $C0C0, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0010, $0010, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF509C:
-	db $00, $83, $0E, $36, $00, $8A, $00, $08
-	db $C0, $40, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $10, $00
-	db $10, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0800, $40C0, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0010, $0010, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF50BE:
-	db $00, $83, $0E, $36, $00, $8A, $00, $08
-	db $40, $C0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $20, $00
-	db $20, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0800, $C040, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0020, $0020, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF50E0:
-	db $00, $83, $0E, $36, $00, $8A, $00, $08
-	db $40, $C0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $18, $00
-	db $18, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0800, $C040, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0018, $0018, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF5102:
-	db $00, $83, $0E, $36, $00, $8A, $00, $08
-	db $C0, $C0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $20, $00
-	db $20, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0800, $C0C0, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0020, $0020, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF5124:
-	db $00, $83, $0E, $36, $00, $8A, $00, $08
-	db $40, $C0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $10, $00
-	db $10, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0800, $C040, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0010, $0010, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF5146:
-	db $00, $83, $0E, $36, $00, $8A, $60, $0D
-	db $C0, $C0, $03, $00, $80, $00, $0C, $00
-	db $00, $03, $80, $00, $1F, $00, $1C, $00
-	db $10, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0D60, $C0C0, $0003, $0080, $000C, $0300
+	dw $0080, $001F, $001C, $0010, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF5168:
-	db $00, $83, $0E, $36, $00, $8A, $00, $08
-	db $C0, $C0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $18, $00
-	db $18, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0800, $C0C0, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0018, $0018, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF518A:
-	db $00, $83, $0E, $36, $00, $8A, $00, $08
-	db $C0, $C0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $30, $00
-	db $30, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0800, $C0C0, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0030, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF51AC:
-	db $00, $83, $0E, $36, $00, $8A, $00, $08
-	db $40, $C0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $18, $00
-	db $18, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0800, $C040, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0018, $0018, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF51CE:
-	db $00, $83, $0E, $36, $00, $8A, $00, $08
-	db $C0, $C0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $30, $00
-	db $30, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0800, $C0C0, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0030, $0030, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF51F0:
-	db $00, $83, $0E, $36, $00, $8A, $00, $42
-	db $40, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $06, $00
-	db $00, $00, $00, $00, $80, $02, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4200, $8040, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $0006, $0000, $0000, $0280, $0000
+	dw !initcommand_success
 
 DATA_FF5212:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $C0, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $08, $00
-	db $08, $00, $00, $00, $00, $08, $EC, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $80C0, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0008, $0008, $0000, $0800, $00EC
+	dw !initcommand_success
 
 DATA_FF5234:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $7F, $7F, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $40, $00
-	db $30, $00, $00, $00, $00, $02, $00, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $7F7F, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $0040, $0030, $0000, $0200, $1E00
+	dw !initcommand_success
 
 DATA_FF5256:
-	db $00, $83, $0E, $36, $00, $8A, $C0, $0A
-	db $80, $80, $03, $00, $30, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $44, $00
-	db $32, $00, $00, $00, $00, $02, $00, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0AC0, $8080, $0003, $0030, $000C, $0200
+	dw $0080, $001F, $0044, $0032, $0000, $0200, $1E00
+	dw !initcommand_success
 
 DATA_FF5278:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $7F, $7F, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $68, $00
-	db $58, $00, $00, $00, $00, $02, $00, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $7F7F, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $0068, $0058, $0000, $0200, $1E00
+	dw !initcommand_success
 
 DATA_FF529A:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $40, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $18, $00
-	db $18, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $8040, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0018, $0018, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF52BC:
-	db $00, $83, $0E, $36, $00, $8A, $04, $28
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $18, $00
-	db $18, $00, $00, $03, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2804, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0018, $0018, $0300, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF52DE:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $18, $00, $80, $00
-	db $28, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $0018, $0080, $0028, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF5300:
-	db $00, $83, $0E, $36, $00, $8A, $0C, $00
-	db $C0, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $16, $00, $2C, $00
-	db $20, $00, $00, $00, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $000C, $80C0, $0003, $0040, $000C, $0200
+	dw $0080, $0016, $002C, $0020, $0000, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF5322:
-	db $00, $83, $0E, $36, $00, $8A, $04, $08
-	db $00, $70, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $14, $00, $02, $00
-	db $10, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0804, $7000, $0003, $0040, $000C, $0200
+	dw $0080, $0014, $0002, $0010, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF5344:
-	db $00, $83, $0E, $36, $00, $8A, $04, $08
-	db $C0, $40, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $14, $00, $20, $00
-	db $20, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0804, $40C0, $0003, $0040, $000C, $0200
+	dw $0080, $0014, $0020, $0020, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF5366:
-	db $00, $83, $0E, $36, $00, $8A, $05, $40
-	db $80, $80, $03, $00, $5C, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $04, $00
-	db $00, $00, $00, $00, $00, $08, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4005, $8080, $0003, $005C, $000C, $0200
+	dw $0080, $001A, $0004, $0000, $0000, $0800, $00E2
+	dw !initcommand_success
 
 DATA_FF5388:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $00, $A0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $20, $00
-	db $20, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $A000, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0020, $0020, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF53AA:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $20, $C0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1E, $00, $2D, $00
-	db $00, $06, $00, $00, $00, $08, $00, $D8
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $C020, $0003, $0040, $000C, $0200
+	dw $0080, $001E, $002D, $0600, $0000, $0800, $D800
+	dw !initcommand_success
 
 DATA_FF53CC:
-	db $00, $83, $0E, $36, $00, $8A, $0C, $00
-	db $00, $C0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $60, $00
-	db $60, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $000C, $C000, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0060, $0060, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF53EE:
-	db $00, $83, $0E, $36, $00, $8A, $0C, $00
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $10, $00
-	db $10, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $000C, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $0010, $0010, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF5410:
-	db $00, $83, $0E, $36, $00, $8A, $0C, $00
-	db $40, $E0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $20, $00
-	db $20, $00, $00, $00, $00, $06, $E2, $E2
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $000C, $E040, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0020, $0020, $0000, $0600, $E2E2
+	dw !initcommand_success
 
 DATA_FF5432:
-	db $00, $83, $0E, $36, $00, $8A, $0C, $00
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $14, $00
-	db $00, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $000C, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0014, $0000, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF5454:
-	db $00, $83, $0E, $36, $00, $8A, $0C, $00
-	db $70, $70, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $06, $00
-	db $20, $00, $00, $00, $00, $08, $1E, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $000C, $7070, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $0006, $0020, $0000, $0800, $1E1E
+	dw !initcommand_success
 
 DATA_FF5476:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $00, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $2C, $00
-	db $2C, $00, $00, $00, $00, $08, $00, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $8000, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $002C, $002C, $0000, $0800, $2800
+	dw !initcommand_success
 
 DATA_FF5498:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $00, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $40, $00
-	db $40, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $8000, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0040, $0040, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF54BA:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $00, $C0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $80, $00
-	db $80, $00, $00, $00, $00, $08, $00, $D8
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $C000, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0080, $0080, $0000, $0800, $D800
+	dw !initcommand_success
 
 DATA_FF54DC:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $40, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $80, $00
-	db $80, $00, $00, $00, $00, $08, $00, $D8
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $0040, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0080, $0080, $0000, $0800, $D800
+	dw !initcommand_success
 
 DATA_FF54FE:
-	db $00, $83, $0E, $36, $00, $8A, $06, $00
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $FF, $00
-	db $FF, $00, $00, $00, $00, $08, $00, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0006, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $00FF, $00FF, $0000, $0800, $2800
+	dw !initcommand_success
 
 DATA_FF5520:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $00, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $08, $00
-	db $08, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $8000, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $0008, $0008, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF5542:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $00, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $0E, $00
-	db $0E, $00, $00, $00, $00, $08, $00, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $8000, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $000E, $000E, $0000, $0800, $2800
+	dw !initcommand_success
 
 DATA_FF5564:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $F0, $90, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $FF, $00
-	db $FF, $00, $00, $00, $00, $08, $00, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $90F0, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $00FF, $00FF, $0000, $0800, $2800
+	dw !initcommand_success
 
 DATA_FF5586:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $10, $70, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $08, $00
-	db $08, $00, $00, $00, $00, $08, $00, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $7010, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $0008, $0008, $0000, $0800, $2800
+	dw !initcommand_success
 
 DATA_FF55A8:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $00, $60, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $FF, $00
-	db $FF, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $6000, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $00FF, $00FF, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF55CA:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $E0, $20, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $FF, $00
-	db $FF, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $20E0, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $00FF, $00FF, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF55EC:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $00, $C0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $FF, $00
-	db $FF, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $C000, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $00FF, $00FF, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF560E:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $40, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $FF, $00
-	db $FF, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $0040, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $00FF, $00FF, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF5630:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $80, $40, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $16, $00
-	db $16, $00, $00, $00, $00, $08, $00, $14
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $4080, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $0016, $0016, $0000, $0800, $1400
+	dw !initcommand_success
 
 DATA_FF5652:
-	db $00, $83, $0E, $36, $00, $8A, $00, $08
-	db $80, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $20, $00
-	db $20, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0800, $0080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0020, $0020, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF5674:
-	db $00, $83, $0E, $36, $00, $8A, $10, $10
-	db $00, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $05, $20, $00
-	db $20, $00, $00, $00, $80, $02, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1010, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $051F, $0020, $0020, $0000, $0280, $0000
+	dw !initcommand_success
 
 DATA_FF5696:
-	db $00, $83, $0E, $36, $00, $8A, $E0, $48
-	db $7F, $7F, $38, $00, $70, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $14, $00
-	db $14, $00, $00, $00, $80, $02, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $48E0, $7F7F, $0038, $0070, $000C, $0200
+	dw $0080, $001C, $0014, $0014, $0000, $0280, $0000
+	dw !initcommand_success
 
 DATA_FF56B8:
-	db $00, $83, $0E, $36, $00, $8A, $C0, $08
-	db $80, $80, $03, $00, $4C, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $30, $00
-	db $30, $00, $00, $00, $80, $02, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $08C0, $8080, $0003, $004C, $000C, $0200
+	dw $0080, $001C, $0030, $0030, $0000, $0280, $0000
+	dw !initcommand_success
 
 DATA_FF56DA:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $05, $38, $00
-	db $30, $00, $00, $00, $80, $02, $E7, $00
-	db $5C, $00, $06, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $051C, $0038, $0030, $0000, $0280, $00E7
+	dw sprite.unknown_5C, $0006
+	dw !initcommand_success
 
 DATA_FF5700:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $04, $00
-	db $04, $00, $00, $00, $80, $02, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $0004, $0004, $0000, $0280, $00E2
+	dw !initcommand_success
 
 DATA_FF5722:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $00, $B0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $20, $00
-	db $50, $00, $00, $00, $00, $08, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $B000, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0020, $0050, $0000, $0800, $00E2
+	dw !initcommand_success
 
 DATA_FF5744:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $00, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $0C, $00
-	db $0C, $00, $00, $00, $00, $04, $00, $19
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $000C, $000C, $0000, $0400, $1900
+	dw !initcommand_success
 
 DATA_FF5766:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $00, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1E, $00, $04, $00
-	db $08, $00, $00, $00, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $001E, $0004, $0008, $0000, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF5788:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1E, $00, $2A, $00
-	db $20, $00, $00, $00, $00, $04, $00, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001E, $002A, $0020, $0000, $0400, $1E00
+	dw !initcommand_success
 
 DATA_FF57AA:
-	db $00, $83, $0E, $36, $00, $8A, $0C, $00
-	db $00, $C0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $02, $00
-	db $20, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $000C, $C000, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $0002, $0020, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF57CC:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $00, $C0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $18, $00, $00, $00
-	db $40, $00, $00, $00, $00, $0A, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $C000, $0003, $0040, $000C, $0200
+	dw $0080, $0018, $0000, $0040, $0000, $0A00, $0000
+	dw !initcommand_success
 
 DATA_FF57EE:
-	db $00, $83, $0E, $36, $00, $8A, $05, $40
-	db $00, $C0, $03, $00, $5C, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $40, $00
-	db $40, $00, $00, $00, $00, $08, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4005, $C000, $0003, $005C, $000C, $0200
+	dw $0080, $001C, $0040, $0040, $0000, $0800, $00E2
+	dw !initcommand_success
 
 DATA_FF5810:
-	db $00, $83, $0E, $36, $00, $8A, $06, $40
-	db $00, $80, $03, $00, $5C, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $20, $00
-	db $20, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4006, $8000, $0003, $005C, $000C, $0200
+	dw $0080, $001C, $0020, $0020, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF5832:
-	db $00, $83, $0E, $36, $00, $8A, $05, $40
-	db $00, $C0, $03, $00, $5C, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $20, $00
-	db $20, $00, $00, $00, $00, $08, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4005, $C000, $0003, $005C, $000C, $0200
+	dw $0080, $001C, $0020, $0020, $0000, $0800, $00E2
+	dw !initcommand_success
 
 DATA_FF5854:
-	db $00, $83, $0E, $36, $00, $8A, $05, $40
-	db $80, $80, $03, $00, $5C, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $08, $00
-	db $08, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4005, $8080, $0003, $005C, $000C, $0200
+	dw $0080, $001C, $0008, $0008, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF5876:
-	db $00, $83, $0E, $36, $00, $8A, $06, $00
-	db $80, $80, $03, $00, $5C, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $08, $00
-	db $08, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0006, $8080, $0003, $005C, $000C, $0200
+	dw $0080, $001C, $0008, $0008, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF5898:
-	db $00, $83, $0E, $36, $00, $8A, $06, $00
-	db $00, $80, $03, $00, $5C, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $10, $00
-	db $10, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0006, $8000, $0003, $005C, $000C, $0200
+	dw $0080, $001C, $0010, $0010, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF58BA:
-	db $00, $83, $0E, $36, $00, $8A, $05, $00
-	db $40, $C0, $03, $00, $5C, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $20, $00
-	db $20, $00, $00, $00, $00, $08, $E7, $E7
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0005, $C040, $0003, $005C, $000C, $0200
+	dw $0080, $001C, $0020, $0020, $0000, $0800, $E7E7
+	dw !initcommand_success
 
 DATA_FF58DC:
-	db $00, $83, $0E, $36, $00, $8A, $06, $00
-	db $40, $C0, $03, $00, $5C, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $20, $00
-	db $20, $00, $00, $00, $00, $08, $E7, $19
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0006, $C040, $0003, $005C, $000C, $0200
+	dw $0080, $001C, $0020, $0020, $0000, $0800, $19E7
+	dw !initcommand_success
 
 DATA_FF58FE:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $40, $40, $03, $00, $5C, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $10, $00
-	db $10, $00, $00, $00, $00, $04, $E7, $E7
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $4040, $0003, $005C, $000C, $0200
+	dw $0080, $001C, $0010, $0010, $0000, $0400, $E7E7
+	dw !initcommand_success
 
 DATA_FF5920:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $40, $40, $03, $00, $5C, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $10, $00
-	db $10, $00, $00, $00, $00, $03, $E7, $19
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $4040, $0003, $005C, $000C, $0200
+	dw $0080, $001C, $0010, $0010, $0000, $0300, $19E7
+	dw !initcommand_success
 
 DATA_FF5942:
-	db $00, $83, $0E, $36, $00, $8A, $05, $00
-	db $80, $80, $03, $00, $5C, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $20, $00
-	db $20, $00, $00, $00, $00, $08, $00, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0005, $8080, $0003, $005C, $000C, $0200
+	dw $0080, $001C, $0020, $0020, $0000, $0800, $1E00
+	dw !initcommand_success
 
 DATA_FF5964:
-	db $00, $83, $0E, $36, $00, $8A, $06, $00
-	db $80, $C0, $03, $00, $5C, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $20, $00
-	db $20, $00, $00, $00, $00, $08, $EC, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0006, $C080, $0003, $005C, $000C, $0200
+	dw $0080, $001C, $0020, $0020, $0000, $0800, $00EC
+	dw !initcommand_success
 
 DATA_FF5986:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $00, $C0, $03, $00, $5C, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $40, $00
-	db $40, $00, $00, $00, $00, $08, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $C000, $0003, $005C, $000C, $0200
+	dw $0080, $001C, $0040, $0040, $0000, $0800, $00E2
+	dw !initcommand_success
 
 DATA_FF59A8:
-	db $00, $83, $0E, $36, $00, $8A, $06, $00
-	db $80, $80, $03, $00, $5C, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $20, $00
-	db $20, $00, $00, $00, $00, $08, $00, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0006, $8080, $0003, $005C, $000C, $0200
+	dw $0080, $001C, $0020, $0020, $0000, $0800, $1E00
+	dw !initcommand_success
 
 DATA_FF59CA:
-	db $00, $83, $0E, $36, $00, $8A, $05, $00
-	db $80, $C0, $03, $00, $5C, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $20, $00
-	db $20, $00, $00, $00, $00, $08, $EC, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0005, $C080, $0003, $005C, $000C, $0200
+	dw $0080, $001C, $0020, $0020, $0000, $0800, $00EC
+	dw !initcommand_success
 
 DATA_FF59EC:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $00, $E0, $03, $00, $5C, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $40, $00
-	db $40, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $E000, $0003, $005C, $000C, $0200
+	dw $0080, $001C, $0040, $0040, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF5A0E:
-	db $00, $83, $0E, $36, $00, $8A, $06, $00
-	db $00, $C0, $03, $00, $5C, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $20, $00
-	db $20, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0006, $C000, $0003, $005C, $000C, $0200
+	dw $0080, $001C, $0020, $0020, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF5A30:
-	db $00, $83, $0E, $36, $00, $8A, $05, $00
-	db $80, $C0, $03, $00, $5C, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $20, $00
-	db $20, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0005, $C080, $0003, $005C, $000C, $0200
+	dw $0080, $001C, $0020, $0020, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF5A52:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $20, $20, $03, $00, $5C, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $08, $00
-	db $08, $00, $00, $00, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $2020, $0003, $005C, $000C, $0200
+	dw $0080, $001C, $0008, $0008, $0000, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF5A74:
-	db $00, $83, $0E, $36, $00, $8A, $06, $00
-	db $00, $A0, $03, $00, $5C, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $20, $00
-	db $20, $00, $00, $00, $00, $08, $EC, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0006, $A000, $0003, $005C, $000C, $0200
+	dw $0080, $001C, $0020, $0020, $0000, $0800, $00EC
+	dw !initcommand_success
 
 DATA_FF5A96:
-	db $00, $83, $0E, $36, $00, $8A, $00, $08
-	db $00, $C0, $03, $00, $5C, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $0C, $00
-	db $0C, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0800, $C000, $0003, $005C, $000C, $0200
+	dw $0080, $001C, $000C, $000C, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF5AB8:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $00, $F0, $03, $00, $5C, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $02, $00
-	db $02, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $F000, $0003, $005C, $000C, $0200
+	dw $0080, $001A, $0002, $0002, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF5ADA:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $00, $50, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $1C, $00
-	db $80, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $5000, $0003, $0040, $000C, $0200
+if !version == 0
+	dw $0080, $001F, $001C, $0030, $0000, $0800, $0000
+else
+	dw $0080, $001F, $001C, $0080, $0000, $0800, $0000
+endif
+	dw !initcommand_success
 
 DATA_FF5AFC:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $1C, $00
-	db $30, $00, $00, $00, $00, $08, $F2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $001C, $0030, $0000, $0800, $00F2
+	dw !initcommand_success
 
 DATA_FF5B1E:
-	db $00, $83, $0E, $36, $00, $8A, $0C, $00
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $04, $00
-	db $04, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $000C, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $0004, $0004, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF5B40:
-	db $00, $83, $0E, $36, $00, $8A, $00, $48
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $18, $00, $0A, $00
-	db $0A, $00, $00, $00, $00, $08, $D3, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4800, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $0018, $000A, $000A, $0000, $0800, $1ED3
+	dw !initcommand_success
 
 DATA_FF5B62:
-	db $00, $83, $0E, $36, $00, $8A, $00, $48
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $18, $00, $10, $00
-	db $10, $00, $00, $00, $00, $08, $D3, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4800, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $0018, $0010, $0010, $0000, $0800, $1ED3
+	dw !initcommand_success
 
 DATA_FF5B84:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $18, $00, $10, $00
-	db $10, $00, $00, $00, $00, $08, $D8, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $0018, $0010, $0010, $0000, $0800, $1ED8
+	dw !initcommand_success
 
 DATA_FF5BA6:
-	db $00, $83, $0E, $36, $00, $8A, $00, $48
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $18, $00, $06, $00
-	db $00, $00, $00, $00, $00, $08, $D8, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4800, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $0018, $0006, $0000, $0000, $0800, $1ED8
+	dw !initcommand_success
 
 DATA_FF5BC8:
-	db $00, $83, $0E, $36, $00, $8A, $00, $40
-	db $F0, $F0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $0C, $00
-	db $0C, $00, $00, $00, $80, $03, $1E, $19
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4000, $F0F0, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $000C, $000C, $0000, $0380, $191E
+	dw !initcommand_success
 
 DATA_FF5BEA:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $60, $60, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $08, $00
-	db $08, $00, $00, $00, $80, $03, $DD, $0A
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $6060, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $0008, $0008, $0000, $0380, $0ADD
+	dw !initcommand_success
 
 DATA_FF5C0C:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $60, $60, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $08, $00
-	db $08, $00, $00, $00, $80, $03, $EC, $0A
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $6060, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $0008, $0008, $0000, $0380, $0AEC
+	dw !initcommand_success
 
 DATA_FF5C2E:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $00, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $0C, $00
-	db $0C, $00, $00, $00, $80, $03, $E2, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $000C, $000C, $0000, $0380, $1EE2
+	dw !initcommand_success
 
 DATA_FF5C50:
-	db $00, $83, $0E, $36, $00, $8A, $00, $40
-	db $20, $20, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $0C, $00
-	db $0C, $00, $00, $00, $80, $03, $E2, $23
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4000, $2020, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $000C, $000C, $0000, $0380, $23E2
+	dw !initcommand_success
 
 DATA_FF5C72:
-	db $00, $83, $0E, $36, $00, $8A, $05, $00
-	db $00, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $20, $00
-	db $20, $00, $00, $00, $00, $08, $31, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0005, $8000, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0020, $0020, $0000, $0800, $2831
+	dw !initcommand_success
 
 DATA_FF5C94:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $00, $40, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $20, $00
-	db $20, $00, $00, $00, $00, $08, $31, $D8
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $4000, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0020, $0020, $0000, $0800, $D831
+	dw !initcommand_success
 
 DATA_FF5CB6:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $C0, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $20, $00
-	db $20, $00, $00, $00, $00, $08, $00, $D8
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $00C0, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0020, $0020, $0000, $0800, $D800
+	dw !initcommand_success
 
 DATA_FF5CD8:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $80, $C0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $04, $00
-	db $80, $00, $00, $00, $00, $08, $00, $D8
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $C080, $0003, $0040, $000C, $0200
+if !version == 0
+	dw $0080, $001C, $0004, $0004, $0000, $0800, $D800
+else
+	dw $0080, $001C, $0004, $0080, $0000, $0800, $D800
+endif
+	dw !initcommand_success
 
 DATA_FF5CFA:
-	db $00, $83, $0E, $36, $00, $8A, $00, $40
-	db $20, $20, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $10, $00
-	db $18, $00, $00, $00, $00, $04, $00, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4000, $2020, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $0010, $0018, $0000, $0400, $2800
+	dw !initcommand_success
 
 DATA_FF5D1C:
-	db $00, $83, $0E, $36, $00, $8A, $00, $40
-	db $00, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $10, $00
-	db $18, $00, $00, $00, $80, $03, $00, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4000, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $0010, $0018, $0000, $0380, $2800
+	dw !initcommand_success
 
 DATA_FF5D3E:
-	db $00, $83, $0E, $36, $00, $8A, $00, $40
-	db $00, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $12, $00
-	db $16, $00, $00, $00, $80, $03, $00, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4000, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $0012, $0016, $0000, $0380, $2800
+	dw !initcommand_success
 
 DATA_FF5D60:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $E0, $E0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $10, $00
-	db $10, $00, $00, $00, $80, $03, $E7, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $E0E0, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $0010, $0010, $0000, $0380, $1EE7
+	dw !initcommand_success
 
 DATA_FF5D82:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $20, $20, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $10, $00
-	db $10, $00, $00, $00, $80, $03, $19, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $2020, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $0010, $0010, $0000, $0380, $1E19
+	dw !initcommand_success
 
 DATA_FF5DA4:
-	db $00, $83, $0E, $36, $00, $8A, $00, $40
-	db $E0, $E0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $10, $00
-	db $10, $00, $00, $00, $80, $03, $00, $23
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4000, $E0E0, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $0010, $0010, $0000, $0380, $2300
+	dw !initcommand_success
 
 DATA_FF5DC6:
-	db $00, $83, $0E, $36, $00, $8A, $00, $40
-	db $00, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $12, $00
-	db $12, $00, $00, $00, $80, $03, $00, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4000, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $0012, $0012, $0000, $0380, $2800
+	dw !initcommand_success
 
 DATA_FF5DE8:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $00, $40, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $20, $00
-	db $20, $00, $00, $00, $00, $08, $1E, $0A
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $4000, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $0020, $0020, $0000, $0800, $0A1E
+	dw !initcommand_success
 
 DATA_FF5E0A:
-	db $00, $83, $0E, $36, $00, $8A, $00, $40
-	db $00, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $12, $00
-	db $12, $00, $00, $00, $00, $04, $00, $27
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4000, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $0012, $0012, $0000, $0400, $2700
+	dw !initcommand_success
 
 DATA_FF5E2C:
-	db $00, $83, $0E, $36, $00, $8A, $00, $40
-	db $00, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $10, $00
-	db $10, $00, $00, $00, $00, $04, $00, $27
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4000, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $0010, $0010, $0000, $0400, $2700
+	dw !initcommand_success
 
 DATA_FF5E4E:
-	db $00, $83, $0E, $36, $00, $8A, $00, $40
-	db $00, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $0E, $00
-	db $0E, $00, $00, $00, $00, $04, $00, $27
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4000, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $000E, $000E, $0000, $0400, $2700
+	dw !initcommand_success
 
 DATA_FF5E70:
-	db $00, $83, $0E, $36, $00, $8A, $00, $40
-	db $00, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $10, $00
-	db $10, $00, $00, $00, $00, $04, $00, $27
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4000, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $0010, $0010, $0000, $0400, $2700
+	dw !initcommand_success
 
 DATA_FF5E92:
-	db $00, $83, $0E, $36, $00, $8A, $00, $40
-	db $00, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $01, $00
-	db $01, $00, $00, $00, $00, $04, $D4, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4000, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $0001, $0001, $0000, $0400, $00D4
+	dw !initcommand_success
 
 DATA_FF5EB4:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $00, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $1C, $00
-	db $30, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $001C, $0030, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF5ED6:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $00, $7F, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $0C, $00
-	db $0C, $00, $00, $00, $00, $08, $00, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $7F00, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $000C, $000C, $0000, $0800, $1E00
+	dw !initcommand_success
 
 DATA_FF5EF8:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $00, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $01, $60, $00, $18, $00, $18, $00
-	db $18, $00, $00, $00, $00, $08, $00, $14
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8000, $0003, $0040, $000C, $0100
+	dw $0060, $0018, $0018, $0018, $0000, $0800, $1400
+	dw !initcommand_success
 
 DATA_FF5F1A:
-	db $00, $83, $0E, $36, $00, $8A, $01, $08
-	db $00, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $01, $60, $00, $1C, $00, $20, $00
-	db $20, $00, $00, $00, $00, $08, $E7, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0801, $0000, $0003, $0040, $000C, $0100
+	dw $0060, $001C, $0020, $0020, $0000, $0800, $00E7
+	dw !initcommand_success
 
 DATA_FF5F3C:
-	db $00, $83, $0E, $36, $00, $8A, $06, $00
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $01, $80, $00, $18, $00, $18, $00
-	db $28, $00, $00, $00, $00, $04, $00, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0006, $8080, $0003, $0040, $000C, $0100
+	dw $0080, $0018, $0018, $0028, $0000, $0400, $2800
+	dw !initcommand_success
 
 DATA_FF5F5E:
-	db $00, $83, $0E, $36, $00, $8A, $05, $00
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $01, $80, $00, $18, $00, $36, $00
-	db $38, $00, $00, $00, $00, $04, $00, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0005, $8080, $0003, $0040, $000C, $0100
+	dw $0080, $0018, $0036, $0038, $0000, $0400, $2800
+	dw !initcommand_success
 
 DATA_FF5F80:
-	db $00, $83, $0E, $36, $00, $8A, $06, $00
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $01, $80, $00, $18, $00, $37, $00
-	db $38, $00, $00, $00, $00, $04, $00, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0006, $8080, $0003, $0040, $000C, $0100
+	dw $0080, $0018, $0037, $0038, $0000, $0400, $2800
+	dw !initcommand_success
 
 DATA_FF5FA2:
-	db $00, $83, $0E, $36, $00, $8A, $05, $00
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $01, $80, $00, $18, $00, $18, $00
-	db $28, $00, $00, $00, $00, $04, $00, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0005, $8080, $0003, $0040, $000C, $0100
+	dw $0080, $0018, $0018, $0028, $0000, $0400, $2800
+	dw !initcommand_success
 
 DATA_FF5FC4:
-	db $00, $83, $0E, $36, $00, $8A, $06, $00
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $01, $80, $00, $18, $00, $0E, $00
-	db $28, $00, $00, $00, $00, $04, $00, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0006, $8080, $0003, $0040, $000C, $0100
+	dw $0080, $0018, $000E, $0028, $0000, $0400, $2800
+	dw !initcommand_success
 
 DATA_FF5FE6:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $60, $00, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $18, $01, $0C, $00
-	db $18, $00, $00, $00, $00, $06, $D8, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $0060, $0003, $0400, $000C, $0100
+	dw $0080, $0118, $000C, $0018, $0000, $0600, $00D8
+	dw !initcommand_success
 
 DATA_FF6008:
-	db $00, $83, $0E, $36, $00, $8A, $04, $08
-	db $21, $9F, $03, $00, $40, $00, $0C, $00
-	db $00, $01, $40, $00, $18, $00, $01, $00
-	db $20, $00, $00, $00, $00, $05, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0804, $9F21, $0003, $0040, $000C, $0100
+	dw $0040, $0018, $0001, $0020, $0000, $0500, $0000
+	dw !initcommand_success
 
 DATA_FF602A:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $01, $40, $00, $24, $00, $80, $00
-	db $80, $00, $00, $00, $00, $08, $F2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $8080, $0003, $0040, $000C, $0100
+	dw $0040, $0024, $0080, $0080, $0000, $0800, $00F2
+	dw !initcommand_success
 
 DATA_FF604C:
-	db $00, $83, $0E, $36, $00, $8A, $00, $08
-	db $00, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $01, $40, $00, $1A, $00, $04, $00
-	db $04, $00, $00, $00, $00, $08, $00, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0800, $8000, $0003, $0040, $000C, $0100
+	dw $0040, $001A, $0004, $0004, $0000, $0800, $1E00
+	dw !initcommand_success
 
 DATA_FF606E:
-	db $00, $83, $0E, $36, $00, $8A, $00, $48
-	db $60, $60, $03, $00, $5C, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $04, $00
-	db $00, $00, $00, $00, $00, $08, $28, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4800, $6060, $0003, $005C, $000C, $0200
+	dw $0080, $001A, $0004, $0000, $0000, $0800, $0028
+	dw !initcommand_success
 
 DATA_FF6090:
-	db $00, $83, $0E, $36, $00, $8A, $00, $48
-	db $E0, $E0, $03, $00, $5C, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $10, $00
-	db $00, $01, $00, $00, $00, $08, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4800, $E0E0, $0003, $005C, $000C, $0200
+	dw $0080, $001A, $0010, $0100, $0000, $0800, $00E2
+	dw !initcommand_success
 
 DATA_FF60B2:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $80, $A0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $0C, $00
-	db $00, $01, $00, $00, $00, $08, $DD, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $A080, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $000C, $0100, $0000, $0800, $00DD
+	dw !initcommand_success
 
 DATA_FF60D4:
-	db $00, $83, $0E, $36, $00, $8A, $00, $48
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $19, $00, $0E, $00
-	db $0C, $00, $00, $00, $00, $08, $D8, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4800, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $0019, $000E, $000C, $0000, $0800, $1ED8
+	dw !initcommand_success
 
 DATA_FF60F6:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $40, $B0, $03, $00, $5C, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $10, $00
-	db $10, $00, $00, $00, $00, $08, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $B040, $0003, $005C, $000C, $0200
+	dw $0080, $001A, $0010, $0010, $0000, $0800, $00E2
+	dw !initcommand_success
 
 DATA_FF6118:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $60, $60, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $14, $00
-	db $20, $00, $00, $00, $00, $03, $00, $27
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $6060, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $0014, $0020, $0000, $0300, $2700
+	dw !initcommand_success
 
 DATA_FF613A:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $20, $90, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $05, $00
-	db $30, $00, $00, $00, $00, $08, $E7, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $9020, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $0005, $0030, $0000, $0800, $00E7
+	dw !initcommand_success
 
 DATA_FF615C:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $E0, $20, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $02, $00
-	db $20, $00, $00, $00, $80, $02, $E7, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $20E0, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $0002, $0020, $0000, $0280, $00E7
+	dw !initcommand_success
 
 DATA_FF617E:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $20, $20, $00, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $08, $00
-	db $10, $00, $00, $00, $00, $06, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $2020, $0000, $0040, $000C, $0200
+	dw $0080, $001C, $0008, $0010, $0000, $0600, $0000
+	dw !initcommand_success
 
 DATA_FF61A0:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $00, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $18, $00
-	db $10, $00, $00, $00, $00, $06, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0000, $0040, $000C, $0200
+	dw $0080, $001C, $0018, $0010, $0000, $0600, $0000
+	dw !initcommand_success
 
 DATA_FF61C2:
-	db $00, $83, $0E, $36, $00, $8A, $00, $08
-	db $00, $00, $00, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $40, $00
-	db $40, $00, $00, $00, $00, $06, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0800, $0000, $0000, $0040, $000C, $0200
+	dw $0080, $001C, $0040, $0040, $0000, $0600, $0000
+	dw !initcommand_success
 
 DATA_FF61E4:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $80, $00, $00, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $40, $00
-	db $40, $00, $00, $00, $00, $04, $E7, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $0080, $0000, $0040, $000C, $0200
+	dw $0080, $001C, $0040, $0040, $0000, $0400, $00E7
+	dw !initcommand_success
 
 DATA_FF6206:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $40, $00, $00, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $40, $00
-	db $40, $00, $00, $00, $00, $08, $EC, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $0040, $0000, $0040, $000C, $0200
+	dw $0080, $001C, $0040, $0040, $0000, $0800, $00EC
+	dw !initcommand_success
 
 DATA_FF6228:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $20, $00
-	db $20, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $0020, $0020, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF624A:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $00, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $20, $00
-	db $20, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $0020, $0020, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FF626C:
-	db $00, $83, $0E, $36, $00, $8A, $C0, $08
-	db $00, $00, $03, $00, $60, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $20, $00
-	db $20, $00, $00, $00, $00, $08, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $08C0, $0000, $0003, $0060, $000C, $0200
+	dw $0080, $001A, $0020, $0020, $0000, $0800, $00E2
+	dw !initcommand_success
 
 DATA_FF628E:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $C0, $40, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $0C, $00, $01, $00
-	db $08, $00, $00, $00, $00, $08, $00, $14
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $40C0, $0003, $0040, $000C, $0200
+	dw $0080, $000C, $0001, $0008, $0000, $0800, $1400
+	dw !initcommand_success
 
 DATA_FF62B0:
-	db $00, $83, $0E, $36, $00, $8A, $0C, $00
-	db $C0, $40, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $80, $00
-	db $80, $00, $00, $00, $00, $0A, $00, $14
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $000C, $40C0, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0080, $0080, $0000, $0A00, $1400
+	dw !initcommand_success
 
 DATA_FF62D2:
-	db $00, $83, $0E, $36, $00, $8A, $0C, $00
-	db $C0, $81, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $70, $00
-	db $70, $00, $00, $00, $00, $0A, $00, $14
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $000C, $81C0, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0070, $0070, $0000, $0A00, $1400
+	dw !initcommand_success
 
 DATA_FF62F4:
-	db $00, $83, $0E, $36, $00, $8A, $0C, $00
-	db $00, $C0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $10, $00
-	db $10, $00, $00, $00, $00, $0A, $00, $14
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $000C, $C000, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $0010, $0010, $0000, $0A00, $1400
+	dw !initcommand_success
 
 DATA_FF6316:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $00, $60, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $14, $00, $08, $00
-	db $40, $00, $00, $00, $00, $08, $00, $14
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $6000, $0003, $0040, $000C, $0200
+	dw $0080, $0014, $0008, $0040, $0000, $0800, $1400
+	dw !initcommand_success
 
 DATA_FF6338:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $C0, $C0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $28, $00
-	db $01, $00, $00, $00, $00, $03, $28, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $C0C0, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0028, $0001, $0000, $0300, $1E28
+	dw !initcommand_success
 
 DATA_FF635A:
-	db $00, $83, $0E, $36, $00, $8A, $2E, $05
-	db $A0, $A0, $03, $00, $00, $80, $0C, $00
-	db $20, $00, $80, $00, $1C, $00, $30, $00
-	db $30, $00, $01, $01, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $052E, $A0A0, $0003, $8000, $000C, $0020
+	dw $0080, $001C, $0030, $0030, $0101, $0400, $0000
+	dw !initcommand_success
 
 DATA_FF637C:
-	db $00, $83, $0E, $36, $00, $8A, $0C, $00
-	db $80, $C0, $03, $00, $00, $80, $0C, $00
-	db $20, $00, $80, $00, $1F, $00, $80, $00
-	db $80, $00, $00, $00, $00, $08, $E7, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $000C, $C080, $0003, $8000, $000C, $0020
+	dw $0080, $001F, $0080, $0080, $0000, $0800, $00E7
+	dw !initcommand_success
 
 DATA_FF639E:
-	db $00, $83, $0E, $36, $00, $8A, $0C, $00
-	db $00, $00, $03, $00, $00, $80, $0C, $00
-	db $20, $00, $80, $00, $1F, $00, $80, $00
-	db $80, $00, $00, $00, $00, $08, $DD, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $000C, $0000, $0003, $8000, $000C, $0020
+	dw $0080, $001F, $0080, $0080, $0000, $0800, $00DD
+	dw !initcommand_success
 
 DATA_FF63C0:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $80, $80, $03, $00, $00, $80, $0C, $00
-	db $20, $00, $80, $00, $1F, $00, $04, $00
-	db $00, $00, $00, $00, $00, $08, $00, $19
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $8080, $0003, $8000, $000C, $0020
+	dw $0080, $001F, $0004, $0000, $0000, $0800, $1900
+	dw !initcommand_success
 
 DATA_FF63E2:
-	db $00, $83, $0E, $36, $00, $8A, $00, $08
-	db $80, $A0, $03, $00, $00, $80, $0C, $00
-	db $20, $00, $80, $00, $19, $00, $00, $00
-	db $00, $00, $00, $00, $00, $08, $D8, $FB
-	db $00, $80, $00, $00, $4C, $01, $02, $00
-	db $D4, $00, $42, $00, $00, $00, $4E, $00
-	db $00, $00, $2E, $00, $00, $00, $00, $85
-	db $00, $20, $00, $81, $AA, $02, $00, $80
-	db $00, $83, $04, $64, $00, $8D, $09, $00
-	db $00, $80, $00, $83, $04, $64, $00, $8D
-	db $B6, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0800, $A080, $0003, $8000, $000C, $0020
+	dw $0080, $0019, $0000, $0000, $0000, $0800, $FBD8
+	dw !initcommand_success
+
+DATA_FF6404:
+	dw sprite.number, $014C
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_4E, $0000
+	dw sprite.action, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_animation, $02AA
+	dw !initcommand_success
+
+DATA_FF6422:
+	dw !initcommand_load_subconfig, DATA_FF6404
+	dw !initcommand_set_alt_palette, $0009
+	dw !initcommand_success
+
+DATA_FF642C:
+	dw !initcommand_load_subconfig, DATA_FF6404
+	dw !initcommand_set_alt_palette, $00B6
+	dw !initcommand_success
 
 DATA_FF6436:
-	db $00, $83, $22, $64, $4E, $00, $00, $10
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6422
+	dw sprite.unknown_4E, $1000
+	dw !initcommand_success
 
 DATA_FF6440:
-	db $00, $83, $22, $64, $4E, $00, $F8, $10
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6422
+	dw sprite.unknown_4E, $10F8
+	dw !initcommand_success
 
 DATA_FF644A:
-	db $00, $83, $22, $64, $4E, $00, $18, $10
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6422
+	dw sprite.unknown_4E, $1018
+	dw !initcommand_success
 
 DATA_FF6454:
-	db $00, $83, $22, $64, $4E, $00, $40, $10
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6422
+	dw sprite.unknown_4E, $1040
+	dw !initcommand_success
 
 DATA_FF645E:
-	db $00, $83, $22, $64, $4E, $00, $60, $10
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6422
+	dw sprite.unknown_4E, $1060
+	dw !initcommand_success
 
 DATA_FF6468:
-	db $00, $83, $22, $64, $4E, $00, $50, $10
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6422
+	dw sprite.unknown_4E, $1050
+	dw !initcommand_success
 
 DATA_FF6472:
-	db $00, $83, $22, $64, $4E, $00, $20, $10
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6422
+	dw sprite.unknown_4E, $1020
+	dw !initcommand_success
 
 DATA_FF647C:
-	db $00, $83, $22, $64, $4E, $00, $40, $10
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6422
+	dw sprite.unknown_4E, $1040
+	dw !initcommand_success
 
 DATA_FF6486:
-	db $00, $83, $22, $64, $4E, $00, $00, $10
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6422
+	dw sprite.unknown_4E, $1000
+	dw !initcommand_success
 
 DATA_FF6490:
-	db $00, $83, $22, $64, $4E, $00, $40, $30
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6422
+	dw sprite.unknown_4E, $3040
+	dw !initcommand_success
 
 DATA_FF649A:
-	db $00, $83, $22, $64, $4E, $00, $20, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6422
+	dw sprite.unknown_4E, $2020
+	dw !initcommand_success
 
 DATA_FF64A4:
-	db $00, $83, $22, $64, $4E, $00, $10, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6422
+	dw sprite.unknown_4E, $0010
+	dw !initcommand_success
 
 DATA_FF64AE:
-	db $00, $83, $22, $64, $4E, $00, $30, $10
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6422
+	dw sprite.unknown_4E, $1030
+	dw !initcommand_success
 
 DATA_FF64B8:
-	db $00, $83, $22, $64, $4E, $00, $20, $10
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6422
+	dw sprite.unknown_4E, $1020
+	dw !initcommand_success
 
 DATA_FF64C2:
-	db $00, $83, $22, $64, $4E, $00, $30, $10
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6422
+	dw sprite.unknown_4E, $1030
+	dw !initcommand_success
 
 DATA_FF64CC:
-	db $00, $83, $22, $64, $4E, $00, $00, $10
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6422
+	dw sprite.unknown_4E, $1000
+	dw !initcommand_success
 
 DATA_FF64D6:
-	db $00, $83, $22, $64, $4E, $00, $40, $10
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6422
+	dw sprite.unknown_4E, $1040
+	dw !initcommand_success
 
 DATA_FF64E0:
-	db $00, $83, $22, $64, $4E, $00, $E8, $E8
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6422
+	dw sprite.unknown_4E, $E8E8
+	dw !initcommand_success
 
 DATA_FF64EA:
-	db $00, $83, $22, $64, $4E, $00, $E8, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6422
+	dw sprite.unknown_4E, $00E8
+	dw !initcommand_success
 
 DATA_FF64F4:
-	db $00, $83, $22, $64, $4E, $00, $E8, $F4
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6422
+	dw sprite.unknown_4E, $F4E8
+	dw !initcommand_success
 
 DATA_FF64FE:
-	db $00, $83, $22, $64, $4E, $00, $D0, $F4
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6422
+	dw sprite.unknown_4E, $F4D0
+	dw !initcommand_success
 
 DATA_FF6508:
-	db $00, $83, $22, $64, $4E, $00, $E0, $F4
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6422
+	dw sprite.unknown_4E, $F4E0
+	dw !initcommand_success
 
 DATA_FF6512:
-	db $00, $83, $22, $64, $4E, $00, $D0, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6422
+	dw sprite.unknown_4E, $00D0
+	dw !initcommand_success
 
 DATA_FF651C:
-	db $00, $83, $22, $64, $4E, $00, $D0, $E8
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6422
+	dw sprite.unknown_4E, $E8D0
+	dw !initcommand_success
 
 DATA_FF6526:
-	db $00, $83, $22, $64, $4E, $00, $D8, $E8
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6422
+	dw sprite.unknown_4E, $E8D8
+	dw !initcommand_success
 
 DATA_FF6530:
-	db $00, $83, $22, $64, $4E, $00, $20, $F0
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6422
+	dw sprite.unknown_4E, $F020
+	dw !initcommand_success
 
 DATA_FF653A:
-	db $00, $83, $22, $64, $4E, $00, $20, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6422
+	dw sprite.unknown_4E, $0020
+	dw !initcommand_success
 
 DATA_FF6544:
-	db $00, $83, $22, $64, $4E, $00, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6422
+	dw sprite.unknown_4E, $0000
+	dw !initcommand_success
 
 DATA_FF654E:
-	db $00, $83, $22, $64, $4E, $00, $10, $04
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6422
+	dw sprite.unknown_4E, $0410
+	dw !initcommand_success
 
 DATA_FF6558:
-	db $00, $83, $22, $64, $4E, $00, $C0, $08
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6422
+	dw sprite.unknown_4E, $08C0
+	dw !initcommand_success
 
 DATA_FF6562:
-	db $00, $83, $22, $64, $4E, $00, $D8, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6422
+	dw sprite.unknown_4E, $00D8
+	dw !initcommand_success
 
 DATA_FF656C:
-	db $00, $83, $2C, $64, $4E, $00, $00, $10
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF642C
+	dw sprite.unknown_4E, $1000
+	dw !initcommand_success
 
 DATA_FF6576:
-	db $00, $83, $2C, $64, $4E, $00, $18, $10
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF642C
+	dw sprite.unknown_4E, $1018
+	dw !initcommand_success
 
 DATA_FF6580:
-	db $00, $83, $2C, $64, $4E, $00, $40, $10
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF642C
+	dw sprite.unknown_4E, $1040
+	dw !initcommand_success
 
 DATA_FF658A:
-	db $00, $83, $2C, $64, $4E, $00, $20, $10
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF642C
+	dw sprite.unknown_4E, $1020
+	dw !initcommand_success
 
 DATA_FF6594:
-	db $00, $83, $2C, $64, $4E, $00, $20, $F0
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF642C
+	dw sprite.unknown_4E, $F020
+	dw !initcommand_success
 
 DATA_FF659E:
-	db $00, $83, $2C, $64, $4E, $00, $F0, $10
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF642C
+	dw sprite.unknown_4E, $10F0
+	dw !initcommand_success
 
 DATA_FF65A8:
-	db $00, $83, $2C, $64, $4E, $00, $40, $10
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF642C
+	dw sprite.unknown_4E, $1040
+	dw !initcommand_success
 
 DATA_FF65B2:
-	db $00, $83, $22, $64, $4E, $00, $F0, $00
-	db $1C, $00, $00, $C0, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6422
+	dw sprite.unknown_4E, $00F0
+	dw sprite.unknown_1C, $C000
+	dw !initcommand_success
 
 DATA_FF65C0:
-	db $00, $83, $22, $64, $4E, $00, $50, $00
-	db $1C, $00, $00, $C0, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6422
+	dw sprite.unknown_4E, $0050
+	dw sprite.unknown_1C, $C000
+	dw !initcommand_success
 
 DATA_FF65CE:
-	db $00, $83, $2C, $64, $4E, $00, $50, $00
-	db $1C, $00, $00, $C0, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF642C
+	dw sprite.unknown_4E, $0050
+	dw sprite.unknown_1C, $C000
+	dw !initcommand_success
 
 DATA_FF65DC:
-	db $00, $83, $2C, $64, $4E, $00, $00, $0A
-	db $1C, $00, $00, $C0, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF642C
+	dw sprite.unknown_4E, $0A00
+	dw sprite.unknown_1C, $C000
+	dw !initcommand_success
 
 DATA_FF65EA:
-	db $00, $00, $B0, $01, $02, $00, $C8, $00
-	db $54, $00, $14, $02, $2E, $00, $00, $00
-	db $20, $00, $00, $00, $26, $00, $00, $00
-	db $24, $00, $00, $00, $30, $00, $01, $00
-	db $00, $85, $00, $20, $00, $8D, $09, $00
-	db $00, $81, $E3, $02, $00, $80, $00, $00
-	db $6C, $00, $02, $00, $D4, $00, $54, $00
-	db $1C, $02, $30, $00, $20, $01, $2E, $00
-	db $00, $00, $20, $00, $00, $00, $26, $00
-	db $00, $00, $24, $00, $00, $00, $2A, $00
-	db $00, $00, $4E, $00, $01, $00, $50, $00
-	db $00, $00, $00, $85, $00, $20, $00, $8D
-	db $08, $00, $00, $80
+	dw sprite.number, $01B0
+	dw sprite.render_order, $00C8
+	dw sprite.unknown_54, $0214
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.max_x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_30, $0001
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0009
+	dw !initcommand_set_animation, $02E3
+	dw !initcommand_success
+
+DATA_FF6618:
+	dw sprite.number, $006C
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_54, $021C
+	dw sprite.unknown_30, $0120
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.max_x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_2A, $0000
+	dw sprite.unknown_4E, $0001
+	dw sprite.parameter, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0008
+	dw !initcommand_success
 
 DATA_FF664E:
-	db $00, $83, $18, $66, $00, $81, $7E, $01
-	db $52, $00, $10, $00, $54, $00, $3C, $04
-	db $22, $00, $EC, $6A, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_animation, $017E
+	dw sprite.unknown_52, $0010
+	dw sprite.unknown_54, $043C
+	dw sprite.unknown_22, DATA_FF6AEC
+	dw !initcommand_success
 
 DATA_FF6664:
-	db $00, $83, $18, $66, $00, $85, $00, $60
-	db $00, $81, $7D, $01, $52, $00, $11, $00
-	db $54, $00, $50, $04, $22, $00, $AA, $6B
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6BAA
+	dw !initcommand_success
 
 DATA_FF667E:
-	db $00, $83, $18, $66, $00, $81, $7D, $01
-	db $52, $00, $11, $00, $54, $00, $50, $04
-	db $22, $00, $B0, $6B, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6BB0
+	dw !initcommand_success
 
 DATA_FF6694:
-	db $00, $83, $18, $66, $00, $85, $00, $60
-	db $00, $81, $7D, $01, $52, $00, $11, $00
-	db $54, $00, $50, $04, $22, $00, $10, $6C
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6C10
+	dw !initcommand_success
 
 DATA_FF66AE:
-	db $00, $83, $18, $66, $00, $85, $00, $60
-	db $00, $81, $7D, $01, $52, $00, $11, $00
-	db $54, $00, $50, $04, $22, $00, $B0, $6B
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6BB0
+	dw !initcommand_success
 
 DATA_FF66C8:
-	db $00, $83, $18, $66, $00, $85, $00, $60
-	db $00, $81, $7D, $01, $52, $00, $11, $00
-	db $54, $00, $50, $04, $22, $00, $BC, $6B
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6BBC
+	dw !initcommand_success
 
 DATA_FF66E2:
-	db $00, $83, $18, $66, $00, $81, $7D, $01
-	db $52, $00, $11, $00, $50, $00, $0F, $00
-	db $54, $00, $50, $04, $22, $00, $B6, $6B
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.parameter, $000F
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6BB6
+	dw !initcommand_success
 
 DATA_FF66FC:
-	db $00, $83, $18, $66, $00, $85, $00, $60
-	db $00, $81, $7D, $01, $52, $00, $11, $00
-	db $54, $00, $50, $04, $22, $00, $C6, $6B
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6BC6
+	dw !initcommand_success
 
 DATA_FF6716:
-	db $00, $83, $18, $66, $00, $81, $7D, $01
-	db $52, $00, $11, $00, $54, $00, $50, $04
-	db $22, $00, $D0, $6B, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6BD0
+	dw !initcommand_success
 
 DATA_FF672C:
-	db $00, $83, $18, $66, $00, $81, $7E, $01
-	db $52, $00, $10, $00, $54, $00, $3C, $04
-	db $22, $00, $F2, $6A, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_animation, $017E
+	dw sprite.unknown_52, $0010
+	dw sprite.unknown_54, $043C
+	dw sprite.unknown_22, DATA_FF6AF2
+	dw !initcommand_success
 
 DATA_FF6742:
-	db $00, $83, $18, $66, $00, $85, $00, $60
-	db $00, $81, $7D, $01, $52, $00, $11, $00
-	db $50, $00, $1E, $00, $54, $00, $50, $04
-	db $22, $00, $50, $6C, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.parameter, $001E
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6C50
+	dw !initcommand_success
 
 DATA_FF6760:
-	db $00, $83, $18, $66, $00, $81, $7E, $01
-	db $52, $00, $10, $00, $54, $00, $3C, $04
-	db $22, $00, $F8, $6A, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_animation, $017E
+	dw sprite.unknown_52, $0010
+	dw sprite.unknown_54, $043C
+	dw sprite.unknown_22, DATA_FF6AF8
+	dw !initcommand_success
 
 DATA_FF6776:
-	db $00, $83, $18, $66, $00, $85, $00, $60
-	db $00, $81, $7D, $01, $52, $00, $11, $00
-	db $50, $00, $3C, $00, $54, $00, $50, $04
-	db $22, $00, $44, $6C, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.parameter, $003C
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6C44
+	dw !initcommand_success
 
 DATA_FF6794:
-	db $00, $83, $18, $66, $00, $85, $00, $60
-	db $00, $81, $7D, $01, $52, $00, $11, $00
-	db $54, $00, $50, $04, $22, $00, $F2, $6B
-	db $4E, $00, $F0, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6BF2
+	dw sprite.unknown_4E, $00F0
+	dw !initcommand_success
 
 DATA_FF67B2:
-	db $00, $83, $18, $66, $00, $85, $00, $60
-	db $00, $81, $7D, $01, $52, $00, $11, $00
-	db $50, $00, $5A, $00, $54, $00, $50, $04
-	db $22, $00, $4A, $6C, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.parameter, $005A
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6C4A
+	dw !initcommand_success
 
 DATA_FF67D0:
-	db $00, $83, $18, $66, $00, $81, $7D, $01
-	db $52, $00, $11, $00, $54, $00, $50, $04
-	db $22, $00, $44, $6C, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6C44
+	dw !initcommand_success
 
 DATA_FF67E6:
-	db $00, $83, $18, $66, $00, $85, $00, $60
-	db $00, $81, $7D, $01, $52, $00, $11, $00
-	db $50, $00, $3C, $00, $54, $00, $50, $04
-	db $22, $00, $38, $6C, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.parameter, $003C
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6C38
+	dw !initcommand_success
 
 DATA_FF6804:
-	db $00, $83, $18, $66, $00, $85, $00, $60
-	db $00, $81, $7D, $01, $52, $00, $11, $00
-	db $54, $00, $50, $04, $22, $00, $FE, $6B
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6BFE
+	dw !initcommand_success
 
 DATA_FF681E:
-	db $00, $83, $18, $66, $00, $85, $00, $60
-	db $00, $81, $7D, $01, $52, $00, $11, $00
-	db $54, $00, $50, $04, $22, $00, $04, $6C
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6C04
+	dw !initcommand_success
 
 DATA_FF6838:
-	db $00, $83, $18, $66, $00, $85, $00, $60
-	db $00, $81, $7D, $01, $52, $00, $11, $00
-	db $50, $00, $5F, $00, $54, $00, $50, $04
-	db $22, $00, $62, $6C, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.parameter, $005F
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6C62
+	dw !initcommand_success
 
 DATA_FF6856:
-	db $00, $83, $18, $66, $00, $85, $00, $60
-	db $00, $81, $7D, $01, $52, $00, $11, $00
-	db $54, $00, $50, $04, $22, $00, $68, $6C
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6C68
+	dw !initcommand_success
 
 DATA_FF6870:
-	db $00, $83, $18, $66, $00, $81, $7E, $01
-	db $52, $00, $10, $00, $54, $00, $3C, $04
-	db $22, $00, $DE, $6A, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_animation, $017E
+	dw sprite.unknown_52, $0010
+	dw sprite.unknown_54, $043C
+	dw sprite.unknown_22, DATA_FF6ADE
+	dw !initcommand_success
 
 DATA_FF6886:
-	db $00, $83, $18, $66, $00, $81, $7E, $01
-	db $52, $00, $10, $00, $54, $00, $3C, $04
-	db $22, $00, $06, $6B, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_animation, $017E
+	dw sprite.unknown_52, $0010
+	dw sprite.unknown_54, $043C
+	dw sprite.unknown_22, DATA_FF6B06
+	dw !initcommand_success
 
 DATA_FF689C:
-	db $00, $83, $18, $66, $00, $85, $00, $60
-	db $00, $81, $7D, $01, $52, $00, $11, $00
-	db $54, $00, $50, $04, $22, $00, $1A, $6C
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6C1A
+	dw !initcommand_success
 
 DATA_FF68B6:
-	db $00, $83, $18, $66, $00, $85, $00, $60
-	db $00, $81, $7D, $01, $52, $00, $11, $00
-	db $50, $00, $3C, $00, $54, $00, $50, $04
-	db $22, $00, $E6, $6B, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.parameter, $003C
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6BE6
+	dw !initcommand_success
 
 DATA_FF68D4:
-	db $00, $83, $18, $66, $00, $81, $7E, $01
-	db $52, $00, $10, $00, $54, $00, $3C, $04
-	db $22, $00, $14, $6B, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_animation, $017E
+	dw sprite.unknown_52, $0010
+	dw sprite.unknown_54, $043C
+	dw sprite.unknown_22, DATA_FF6B14
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF68EE:
-	db $00, $83, $18, $66, $00, $81, $7E, $01
-	db $52, $00, $10, $00, $50, $00, $4B, $00
-	db $54, $00, $3C, $04, $22, $00, $14, $6B
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_animation, $017E
+	dw sprite.unknown_52, $0010
+	dw sprite.parameter, $004B
+	dw sprite.unknown_54, $043C
+	dw sprite.unknown_22, DATA_FF6B14
+	dw !initcommand_success
 
 DATA_FF6908:
-	db $00, $83, $18, $66, $00, $81, $7D, $01
-	db $52, $00, $11, $00, $54, $00, $50, $04
-	db $22, $00, $20, $6C, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6C20
+	dw !initcommand_success
 
 DATA_FF691E:
-	db $00, $83, $18, $66, $00, $81, $7D, $01
-	db $52, $00, $11, $00, $54, $00, $50, $04
-	db $22, $00, $5C, $6C, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6C5C
+	dw !initcommand_success
 
 DATA_FF6934:
-	db $00, $83, $18, $66, $00, $85, $00, $60
-	db $00, $81, $7D, $01, $52, $00, $11, $00
-	db $54, $00, $50, $04, $22, $00, $26, $6C
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6C26
+	dw !initcommand_success
 
 DATA_FF694E:
-	db $00, $83, $18, $66, $00, $85, $00, $60
-	db $00, $81, $7D, $01, $52, $00, $11, $00
-	db $50, $00, $3C, $00, $54, $00, $50, $04
-	db $22, $00, $2C, $6C, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.parameter, $003C
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6C2C
+	dw !initcommand_success
 
 DATA_FF696C:
-	db $00, $83, $18, $66, $00, $81, $7D, $01
-	db $52, $00, $11, $00, $50, $00, $3C, $00
-	db $54, $00, $50, $04, $22, $00, $32, $6C
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.parameter, $003C
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6C32
+	dw !initcommand_success
 
 DATA_FF6986:
-	db $00, $83, $18, $66, $00, $81, $7D, $01
-	db $52, $00, $11, $00, $50, $00, $32, $00
-	db $54, $00, $50, $04, $22, $00, $B0, $6B
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.parameter, $0032
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6BB0
+	dw !initcommand_success
 
 DATA_FF69A0:
-	db $00, $83, $18, $66, $00, $85, $00, $60
-	db $00, $81, $7D, $01, $52, $00, $11, $00
-	db $54, $00, $50, $04, $22, $00, $76, $6C
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6C76
+	dw !initcommand_success
 
 DATA_FF69BA:
-	db $00, $83, $18, $66, $00, $85, $00, $60
-	db $00, $81, $7D, $01, $52, $00, $11, $00
-	db $54, $00, $50, $04, $22, $00, $56, $6C
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6C56
+	dw !initcommand_success
 
 DATA_FF69D4:
-	db $00, $83, $18, $66, $00, $81, $7E, $01
-	db $52, $00, $10, $00, $54, $00, $3C, $04
-	db $22, $00, $1A, $6B, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_animation, $017E
+	dw sprite.unknown_52, $0010
+	dw sprite.unknown_54, $043C
+	dw sprite.unknown_22, DATA_FF6B1A
+	dw !initcommand_success
 
 DATA_FF69EA:
-	db $00, $83, $18, $66, $00, $85, $00, $60
-	db $00, $81, $7D, $01, $52, $00, $11, $00
-	db $54, $00, $50, $04, $22, $00, $3E, $6C
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6C3E
+	dw !initcommand_success
 
 DATA_FF6A04:
-	db $00, $83, $18, $66, $00, $81, $7D, $01
-	db $52, $00, $11, $00, $54, $00, $50, $04
-	db $22, $00, $7C, $6C, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6C7C
+	dw !initcommand_success
 
 DATA_FF6A1A:
-	db $00, $83, $18, $66, $00, $81, $7E, $01
-	db $52, $00, $10, $00, $54, $00, $3C, $04
-	db $22, $00, $F8, $6A, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_animation, $017E
+	dw sprite.unknown_52, $0010
+	dw sprite.unknown_54, $043C
+	dw sprite.unknown_22, DATA_FF6AF8
+	dw !initcommand_success
 
 DATA_FF6A30:
-	db $00, $83, $18, $66, $00, $85, $00, $60
-	db $00, $81, $7D, $01, $52, $00, $11, $00
-	db $54, $00, $50, $04, $22, $00, $82, $6C
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6C82
+	dw !initcommand_success
 
 DATA_FF6A4A:
-	db $00, $83, $18, $66, $00, $81, $7D, $01
-	db $52, $00, $11, $00, $54, $00, $50, $04
-	db $22, $00, $F8, $6B, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6BF8
+	dw !initcommand_success
 
 DATA_FF6A60:
-	db $00, $83, $18, $66, $00, $85, $00, $60
-	db $00, $81, $7D, $01, $52, $00, $11, $00
-	db $54, $00, $50, $04, $22, $00, $20, $6C
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6C20
+	dw !initcommand_success
 
 DATA_FF6A7A:
-	db $00, $83, $18, $66, $00, $85, $00, $60
-	db $00, $81, $7D, $01, $52, $00, $11, $00
-	db $50, $00, $3C, $00, $54, $00, $50, $04
-	db $22, $00, $88, $6C, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.parameter, $003C
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6C88
+	dw !initcommand_success
+
 
 DATA_FF6A98:
 	db $C0, $FF
@@ -5683,15 +7865,41 @@ DATA_FF6AA0:
 	db $00, $00, $00, $04, $20, $00, $00, $05
 	db $00, $00, $00, $00, $00, $02, $30, $00
 	db $00, $02, $00, $00, $00, $00, $00, $04
-	db $40, $00, $80, $02, $00, $00, $14, $17
-	db $00, $3C, $14, $17, $01, $3C, $14, $17
-	db $02, $3C, $00, $00, $14, $17, $03, $3C
-	db $00, $00, $14, $17, $04, $3C, $00, $00
-	db $14, $17, $06, $0A, $14, $17, $06, $0A
-	db $14, $17, $06, $1E, $00, $00, $14, $17
-	db $00, $3C, $14, $17, $01, $3C, $14, $17
-	db $02, $3C, $00, $00, $38, $17, $05, $78
-	db $00, $00, $14, $17, $03, $4B, $00, $00
+	db $40, $00, $80, $02, $00, $00
+
+DATA_FF6ADE:
+	dw DATA_FF1714, $3C00
+	dw DATA_FF1714, $3C01
+	dw DATA_FF1714, $3C02
+	dw $0000
+
+DATA_FF6AEC:
+	dw DATA_FF1714, $3C03
+	dw $0000
+
+DATA_FF6AF2:
+	dw DATA_FF1714, $3C04
+	dw $0000
+
+DATA_FF6AF8:
+	dw DATA_FF1714, $0A06
+	dw DATA_FF1714, $0A06
+	dw DATA_FF1714, $1E06
+	dw $0000
+
+DATA_FF6B06:
+	dw DATA_FF1714, $3C00
+	dw DATA_FF1714, $3C01
+	dw DATA_FF1714, $3C02
+	dw $0000
+
+DATA_FF6B14:
+	dw DATA_FF1738, $7805
+	dw $0000
+
+DATA_FF6B1A:
+	dw DATA_FF1714, $4B03
+	dw $0000
 
 DATA_FF6B20:
 	db $00, $03
@@ -5727,707 +7935,1238 @@ DATA_FF6B29:
 	db $00, $00, $00, $00, $00, $C0, $01, $C0
 	db $01, $06, $00, $00, $00, $00, $00, $00
 	db $40, $03, $40, $03, $06, $00, $00, $00
-	db $00, $00, $00, $42, $17, $00, $0F, $00
-	db $00, $66, $17, $00, $2D, $00, $00, $42
-	db $17, $03, $2D, $00, $00, $66, $17, $00
-	db $4B, $00, $00, $66, $17, $00, $3C, $42
-	db $17, $02, $3C, $00, $00, $42, $17, $03
-	db $1E, $42, $17, $04, $FF, $00, $00, $42
-	db $17, $03, $2D, $42, $17, $03, $2D, $42
-	db $17, $03, $2D, $42, $17, $03, $2D, $66
-	db $17, $03, $2D, $00, $00, $42, $17, $08
-	db $46, $00, $00, $66, $17, $05, $5A, $00
-	db $00, $42, $17, $03, $69, $00, $00, $42
-	db $17, $0B, $3C, $00, $00, $66, $17, $0B
-	db $46, $00, $00, $66, $17, $06, $69, $00
-	db $00, $66, $17, $05, $5A, $00, $00, $66
-	db $17, $00, $4B, $42, $17, $00, $4B, $00
-	db $00, $66, $17, $00, $78, $00, $00, $66
-	db $17, $00, $3C, $00, $00, $42, $17, $03
-	db $2D, $00, $00, $42, $17, $03, $1E, $00
-	db $00, $66, $17, $03, $96, $00, $00, $66
-	db $17, $0A, $3C, $00, $00, $66, $17, $05
-	db $3C, $00, $00, $66, $17, $06, $96, $00
-	db $00, $66, $17, $07, $6E, $00, $00, $42
-	db $17, $08, $4B, $00, $00, $66, $17, $05
-	db $78, $00, $00, $42, $17, $00, $50, $00
-	db $00, $42, $17, $05, $1E, $00, $00, $66
-	db $17, $05, $5A, $66, $17, $05, $5A, $66
-	db $17, $09, $96, $00, $00, $42, $17, $07
-	db $5A, $00, $00, $66, $17, $03, $32, $00
-	db $00, $66, $17, $06, $27, $00, $00, $42
-	db $17, $05, $78, $00, $00
+	db $00, $00, $00
+
+DATA_FF6BA4:
+	dw DATA_FF1742, $0F00
+	dw $0000
+
+DATA_FF6BAA:
+	dw DATA_FF1766, $2D00
+	dw $0000
+
+DATA_FF6BB0:
+	dw DATA_FF1742, $2D03
+	dw $0000
+
+DATA_FF6BB6:
+	dw DATA_FF1766, $4B00
+	dw $0000
+
+DATA_FF6BBC:
+	dw DATA_FF1766, $3C00
+	dw DATA_FF1742, $3C02
+	dw $0000
+
+DATA_FF6BC6:
+	dw DATA_FF1742, $1E03
+	dw DATA_FF1742, $FF04
+	dw $0000
+
+DATA_FF6BD0:
+	dw DATA_FF1742, $2D03
+	dw DATA_FF1742, $2D03
+	dw DATA_FF1742, $2D03
+	dw DATA_FF1742, $2D03
+	dw DATA_FF1766, $2D03
+	dw $0000
+
+DATA_FF6BE6:
+	dw DATA_FF1742, $4608
+	dw $0000
+	dw DATA_FF1766, $5A05
+	dw $0000
+
+DATA_FF6BF2:
+	dw DATA_FF1742, $6903
+	dw $0000
+
+DATA_FF6BF8:
+	dw DATA_FF1742, $3C0B
+	dw $0000
+
+DATA_FF6BFE:
+	dw DATA_FF1766, $460B
+	dw $0000
+
+DATA_FF6C04:
+	dw DATA_FF1766, $6906
+	dw $0000
+	dw DATA_FF1766, $5A05
+	dw $0000
+
+DATA_FF6C10:
+	dw DATA_FF1766, $4B00
+	dw DATA_FF1742, $4B00
+	dw $0000
+
+DATA_FF6C1A:
+	dw DATA_FF1766, $7800
+	dw $0000
+
+DATA_FF6C20:
+	dw DATA_FF1766, $3C00
+	dw $0000
+
+DATA_FF6C26:
+	dw DATA_FF1742, $2D03
+	dw $0000
+
+DATA_FF6C2C:
+	dw DATA_FF1742, $1E03
+	dw $0000
+
+DATA_FF6C32:
+	dw DATA_FF1766, $9603
+	dw $0000
+
+DATA_FF6C38:
+	dw DATA_FF1766, $3C0A
+	dw $0000
+
+DATA_FF6C3E:
+	dw DATA_FF1766, $3C05
+	dw $0000
+
+DATA_FF6C44:
+	dw DATA_FF1766, $9606
+	dw $0000
+
+DATA_FF6C4A:
+	dw DATA_FF1766, $6E07
+	dw $0000
+
+DATA_FF6C50:
+	dw DATA_FF1742, $4B08
+	dw $0000
+
+DATA_FF6C56:
+	dw DATA_FF1766, $7805
+	dw $0000
+
+DATA_FF6C5C:
+	dw DATA_FF1742, $5000
+	dw $0000
+
+DATA_FF6C62:
+	dw DATA_FF1742, $1E05
+	dw $0000
+
+DATA_FF6C68:
+	dw DATA_FF1766, $5A05
+	dw DATA_FF1766, $5A05
+	dw DATA_FF1766, $9609
+	dw $0000
+
+DATA_FF6C76:
+	dw DATA_FF1742, $5A07
+	dw $0000
+
+DATA_FF6C7C:
+	dw DATA_FF1766, $3203
+	dw $0000
+
+DATA_FF6C82:
+	dw DATA_FF1766, $2706
+	dw $0000
+
+DATA_FF6C88:
+	dw DATA_FF1742, $7805
+	dw $0000
 
 DATA_FF6C8E:
-	db $00, $00, $A0, $01, $02, $00, $D0, $00
-	db $54, $00, $58, $02, $42, $00, $00, $00
-	db $2E, $00, $08, $00, $20, $00, $00, $00
-	db $24, $00, $00, $00, $30, $00, $00, $00
-	db $00, $85, $00, $20, $00, $8D, $60, $00
-	db $00, $81, $4B, $01, $00, $80, $00, $00
-	db $9C, $01, $02, $00, $D0, $00, $54, $00
-	db $4A, $02, $42, $00, $00, $00, $2E, $00
-	db $08, $00, $20, $00, $00, $00, $24, $00
-	db $00, $00, $30, $00, $00, $00, $00, $8D
-	db $43, $00, $00, $81, $4A, $01, $00, $80
+	dw sprite.number, $01A0
+	dw sprite.render_order, $00D0
+	dw sprite.unknown_54, $0258
+	dw sprite.unknown_42, $0000
+	dw sprite.action, $0008
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_30, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0060
+	dw !initcommand_set_animation, $014B
+	dw !initcommand_success
+
+DATA_FF6CBC:
+	dw sprite.number, $019C
+	dw sprite.render_order, $00D0
+	dw sprite.unknown_54, $024A
+	dw sprite.unknown_42, $0000
+	dw sprite.action, $0008
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_30, $0000
+	dw !initcommand_set_alt_palette, $0043
+	dw !initcommand_set_animation, $014A
+	dw !initcommand_success
 
 DATA_FF6CE6:
-	db $00, $83, $BC, $6C, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6CBC
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF6CF0:
-	db $00, $83, $BC, $6C, $00, $85, $00, $60
-	db $00, $80, $00, $00, $94, $01, $02, $00
-	db $D0, $00, $54, $00, $34, $02, $42, $00
-	db $00, $00, $2E, $00, $08, $00, $20, $00
-	db $00, $00, $24, $00, $00, $00, $30, $00
-	db $00, $00, $00, $8D, $0D, $00, $00, $81
-	db $48, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6CBC
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
+
+DATA_FF6CFA:
+	dw sprite.number, $0194
+	dw sprite.render_order, $00D0
+	dw sprite.unknown_54, $0234
+	dw sprite.unknown_42, $0000
+	dw sprite.action, $0008
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_30, $0000
+	dw !initcommand_set_alt_palette, $000D
+	dw !initcommand_set_animation, $0148
+	dw !initcommand_success
 
 DATA_FF6D24:
-	db $00, $83, $FA, $6C, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6CFA
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF6D2E:
-	db $00, $83, $FA, $6C, $00, $85, $00, $60
-	db $00, $80, $00, $00, $90, $01, $02, $00
-	db $D0, $00, $54, $00, $2C, $02, $42, $00
-	db $00, $00, $2E, $00, $08, $00, $20, $00
-	db $00, $00, $24, $00, $00, $00, $30, $00
-	db $00, $00, $00, $8D, $05, $00, $00, $81
-	db $47, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6CFA
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
+
+DATA_FF6D38:
+	dw sprite.number, $0190
+	dw sprite.render_order, $00D0
+	dw sprite.unknown_54, $022C
+	dw sprite.unknown_42, $0000
+	dw sprite.action, $0008
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_30, $0000
+	dw !initcommand_set_alt_palette, $0005
+	dw !initcommand_set_animation, $0147
+	dw !initcommand_success
 
 DATA_FF6D62:
-	db $00, $83, $38, $6D, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6D38
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF6D6C:
-	db $00, $83, $38, $6D, $00, $85, $00, $60
-	db $00, $80, $00, $00, $98, $01, $02, $00
-	db $D0, $00, $54, $00, $3C, $02, $42, $00
-	db $00, $00, $2E, $00, $08, $00, $20, $00
-	db $00, $00, $24, $00, $00, $00, $30, $00
-	db $00, $00, $00, $85, $00, $20, $00, $81
-	db $49, $01, $00, $80, $00, $83, $76, $6D
-	db $00, $8D, $54, $00, $00, $80, $00, $83
-	db $76, $6D, $00, $8D, $0F, $00, $4A, $00
-	db $00, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6D38
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
+
+DATA_FF6D76:
+	dw sprite.number, $0198
+	dw sprite.render_order, $00D0
+	dw sprite.unknown_54, $023C
+	dw sprite.unknown_42, $0000
+	dw sprite.action, $0008
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_30, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_animation, $0149
+	dw !initcommand_success
+
+DATA_FF6DA0:
+	dw !initcommand_load_subconfig, DATA_FF6D76
+	dw !initcommand_set_alt_palette, $0054
+	dw !initcommand_success
+
+DATA_FF6DAA:
+	dw !initcommand_load_subconfig, DATA_FF6D76
+	dw !initcommand_set_alt_palette, $000F
+	dw sprite.unknown_4A, $0000
+	dw !initcommand_success
 
 DATA_FF6DB8:
-	db $00, $83, $AA, $6D, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6DAA
+	dw !initcommand_success
 
 DATA_FF6DBE:
-	db $00, $83, $AA, $6D, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6DAA
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF6DC8:
-	db $00, $83, $A0, $6D, $4A, $00, $01, $00
-	db $4C, $00, $40, $04, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6DA0
+	dw sprite.unknown_4A, $0001
+	dw sprite.unknown_4C, $0440
+	dw !initcommand_success
 
 DATA_FF6DD6:
-	db $00, $83, $A0, $6D, $4A, $00, $01, $00
-	db $4C, $00, $60, $07, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6DA0
+	dw sprite.unknown_4A, $0001
+	dw sprite.unknown_4C, $0760
+	dw !initcommand_success
 
 DATA_FF6DE4:
-	db $00, $83, $A0, $6D, $4A, $00, $01, $00
-	db $4C, $00, $90, $0B, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6DA0
+	dw sprite.unknown_4A, $0001
+	dw sprite.unknown_4C, $0B90
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF6DF6:
-	db $00, $83, $A0, $6D, $4A, $00, $01, $00
-	db $4C, $00, $40, $11, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6DA0
+	dw sprite.unknown_4A, $0001
+	dw sprite.unknown_4C, $1140
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF6E08:
-	db $00, $83, $A0, $6D, $4A, $00, $01, $00
-	db $4C, $00, $00, $17, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6DA0
+	dw sprite.unknown_4A, $0001
+	dw sprite.unknown_4C, $1700
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF6E1A:
-	db $00, $83, $A0, $6D, $4A, $00, $01, $00
-	db $4C, $00, $D8, $1B, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6DA0
+	dw sprite.unknown_4A, $0001
+	dw sprite.unknown_4C, $1BD8
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF6E2C:
-	db $00, $83, $A0, $6D, $4A, $00, $01, $00
-	db $4C, $00, $C8, $1D, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6DA0
+	dw sprite.unknown_4A, $0001
+	dw sprite.unknown_4C, $1DC8
+	dw !initcommand_success
 
 DATA_FF6E3A:
-	db $00, $83, $A0, $6D, $4A, $00, $01, $00
-	db $4C, $00, $10, $26, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6DA0
+	dw sprite.unknown_4A, $0001
+	dw sprite.unknown_4C, $2610
+	dw !initcommand_success
 
 DATA_FF6E48:
-	db $00, $83, $A0, $6D, $4A, $00, $01, $00
-	db $4C, $00, $B0, $2B, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6DA0
+	dw sprite.unknown_4A, $0001
+	dw sprite.unknown_4C, $2BB0
+	dw !initcommand_success
 
 DATA_FF6E56:
-	db $00, $83, $A0, $6D, $4A, $00, $01, $00
-	db $4C, $00, $70, $32, $00, $80, $00, $00
-	db $0C, $02, $02, $00, $D4, $00, $54, $00
-	db $5E, $03, $2E, $00, $00, $00, $20, $00
-	db $00, $00, $26, $00, $40, $FF, $2A, $00
-	db $40, $00, $4A, $00, $02, $02, $52, $00
-	db $07, $00, $24, $00, $00, $00, $30, $00
-	db $20, $00, $00, $85, $00, $60, $00, $8D
-	db $0E, $00, $00, $81, $77, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6DA0
+	dw sprite.unknown_4A, $0001
+	dw sprite.unknown_4C, $3270
+	dw !initcommand_success
+
+DATA_FF6E64:
+	dw sprite.number, $020C
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_54, $035E
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.max_x_speed, $FF40
+	dw sprite.unknown_2A, $0040
+	dw sprite.unknown_4A, $0202
+	dw sprite.unknown_52, $0007
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_30, $0020
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_alt_palette, $000E
+	dw !initcommand_set_animation, $0177
+	dw !initcommand_success
 
 DATA_FF6E9E:
-	db $00, $83, $64, $6E, $46, $00, $30, $30
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6E64
+	dw sprite.unknown_46, $3030
+	dw !initcommand_success
 
 DATA_FF6EA8:
-	db $00, $83, $64, $6E, $46, $00, $50, $50
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6E64
+	dw sprite.unknown_46, $5050
+	dw !initcommand_success
 
 DATA_FF6EB2:
-	db $00, $83, $64, $6E, $46, $00, $18, $18
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6E64
+	dw sprite.unknown_46, $1818
+	dw !initcommand_success
 
 DATA_FF6EBC:
-	db $00, $83, $64, $6E, $46, $00, $40, $40
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6E64
+	dw sprite.unknown_46, $4040
+	dw !initcommand_success
 
 DATA_FF6EC6:
-	db $00, $83, $64, $6E, $46, $00, $30, $30
-	db $26, $00, $C0, $00, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6E64
+	dw sprite.unknown_46, $3030
+	dw sprite.max_x_speed, $00C0
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF6ED8:
-	db $00, $83, $64, $6E, $46, $00, $60, $60
-	db $26, $00, $E0, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6E64
+	dw sprite.unknown_46, $6060
+	dw sprite.max_x_speed, $FEE0
+	dw !initcommand_success
 
 DATA_FF6EE6:
-	db $00, $83, $64, $6E, $46, $00, $50, $50
-	db $26, $00, $C0, $00, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6E64
+	dw sprite.unknown_46, $5050
+	dw sprite.max_x_speed, $00C0
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF6EF8:
-	db $00, $83, $64, $6E, $46, $00, $58, $58
-	db $26, $00, $E0, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6E64
+	dw sprite.unknown_46, $5858
+	dw sprite.max_x_speed, $FEE0
+	dw !initcommand_success
 
 DATA_FF6F06:
-	db $00, $83, $64, $6E, $46, $00, $40, $40
-	db $26, $00, $C0, $00, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6E64
+	dw sprite.unknown_46, $4040
+	dw sprite.max_x_speed, $00C0
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF6F18:
-	db $00, $83, $64, $6E, $46, $00, $60, $60
-	db $26, $00, $00, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6E64
+	dw sprite.unknown_46, $6060
+	dw sprite.max_x_speed, $0100
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF6F2A:
-	db $00, $83, $64, $6E, $46, $00, $60, $60
-	db $26, $00, $00, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6E64
+	dw sprite.unknown_46, $6060
+	dw sprite.max_x_speed, $FF00
+	dw !initcommand_success
 
 DATA_FF6F38:
-	db $00, $83, $64, $6E, $54, $00, $82, $03
-	db $46, $00, $50, $50, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6E64
+	dw sprite.unknown_54, $0382
+	dw sprite.unknown_46, $5050
+	dw !initcommand_success
 
 DATA_FF6F46:
-	db $00, $83, $64, $6E, $54, $00, $70, $03
-	db $46, $00, $18, $18, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6E64
+	dw sprite.unknown_54, $0370
+	dw sprite.unknown_46, $1818
+	dw !initcommand_success
 
 DATA_FF6F54:
-	db $00, $83, $64, $6E, $54, $00, $94, $03
-	db $46, $00, $50, $50, $26, $00, $20, $FF
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6E64
+	dw sprite.unknown_54, $0394
+	dw sprite.unknown_46, $5050
+	dw sprite.max_x_speed, $FF20
+	dw !initcommand_success
 
 DATA_FF6F66:
-	db $00, $83, $64, $6E, $54, $00, $94, $03
-	db $46, $00, $50, $50, $26, $00, $E0, $00
-	db $00, $85, $00, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6E64
+	dw sprite.unknown_54, $0394
+	dw sprite.unknown_46, $5050
+	dw sprite.max_x_speed, $00E0
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF6F7C:
-	db $00, $83, $64, $6E, $46, $00, $30, $30
-	db $54, $00, $A6, $03, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6E64
+	dw sprite.unknown_46, $3030
+	dw sprite.unknown_54, $03A6
+	dw !initcommand_success
 
 DATA_FF6F8A:
-	db $00, $83, $64, $6E, $46, $00, $20, $20
-	db $54, $00, $A6, $03, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6E64
+	dw sprite.unknown_46, $2020
+	dw sprite.unknown_54, $03A6
+	dw !initcommand_success
 
 DATA_FF6F98:
-	db $00, $83, $64, $6E, $46, $00, $30, $30
-	db $54, $00, $B8, $03, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6E64
+	dw sprite.unknown_46, $3030
+	dw sprite.unknown_54, $03B8
+	dw !initcommand_success
 
 DATA_FF6FA6:
-	db $00, $83, $64, $6E, $46, $00, $40, $40
-	db $54, $00, $B8, $03, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6E64
+	dw sprite.unknown_46, $4040
+	dw sprite.unknown_54, $03B8
+	dw !initcommand_success
 
 DATA_FF6FB4:
-	db $00, $83, $64, $6E, $46, $00, $30, $30
-	db $54, $00, $CA, $03, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6E64
+	dw sprite.unknown_46, $3030
+	dw sprite.unknown_54, $03CA
+	dw !initcommand_success
 
 DATA_FF6FC2:
-	db $00, $83, $64, $6E, $46, $00, $18, $18
-	db $54, $00, $CA, $03, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6E64
+	dw sprite.unknown_46, $1818
+	dw sprite.unknown_54, $03CA
+	dw !initcommand_success
 
 DATA_FF6FD0:
-	db $00, $83, $64, $6E, $46, $00, $40, $40
-	db $54, $00, $CA, $03, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6E64
+	dw sprite.unknown_46, $4040
+	dw sprite.unknown_54, $03CA
+	dw !initcommand_success
 
 DATA_FF6FDE:
-	db $00, $83, $64, $6E, $46, $00, $30, $30
-	db $26, $00, $C0, $00, $54, $00, $CA, $03
-	db $00, $85, $00, $20, $00, $80, $00, $00
-	db $10, $02, $02, $00, $EC, $00, $2E, $00
-	db $04, $00, $52, $00, $07, $00, $30, $00
-	db $00, $00, $24, $00, $00, $00, $2A, $00
-	db $40, $00, $4A, $00, $02, $02, $00, $85
-	db $00, $60, $00, $8D, $B2, $00, $00, $81
-	db $77, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6E64
+	dw sprite.unknown_46, $3030
+	dw sprite.max_x_speed, $00C0
+	dw sprite.unknown_54, $03CA
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
+
+DATA_FF6FF4:
+	dw sprite.number, $0210
+	dw sprite.render_order, $00EC
+	dw sprite.action, $0004
+	dw sprite.unknown_52, $0007
+	dw sprite.unknown_30, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_2A, $0040
+	dw sprite.unknown_4A, $0202
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_alt_palette, $00B2
+	dw !initcommand_set_animation, $0177
+	dw !initcommand_success
 
 DATA_FF7022:
-	db $00, $83, $F4, $6F, $54, $00, $DC, $03
-	db $5C, $00, $00, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6FF4
+	dw sprite.unknown_54, $03DC
+	dw sprite.unknown_5C, $0000
+	dw !initcommand_success
 
 DATA_FF7030:
-	db $00, $83, $F4, $6F, $54, $00, $FA, $03
-	db $5C, $00, $FF, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6FF4
+	dw sprite.unknown_54, $03FA
+	dw sprite.unknown_5C, $FFFF
+	dw !initcommand_success
 
 DATA_FF703E:
-	db $00, $83, $F4, $6F, $54, $00, $DC, $03
-	db $5C, $00, $02, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6FF4
+	dw sprite.unknown_54, $03DC
+	dw sprite.unknown_5C, $0202
+	dw !initcommand_success
 
 DATA_FF704C:
-	db $00, $83, $F4, $6F, $54, $00, $18, $04
-	db $5C, $00, $00, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6FF4
+	dw sprite.unknown_54, $0418
+	dw sprite.unknown_5C, $0000
+	dw !initcommand_success
 
 DATA_FF705A:
-	db $00, $83, $F4, $6F, $54, $00, $18, $04
-	db $5C, $00, $02, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6FF4
+	dw sprite.unknown_54, $0418
+	dw sprite.unknown_5C, $0102
+	dw !initcommand_success
 
 DATA_FF7068:
-	db $00, $83, $F4, $6F, $54, $00, $18, $04
-	db $5C, $00, $03, $03, $00, $80, $00, $00
-	db $1C, $02, $02, $00, $D4, $00, $54, $00
-	db $36, $04, $30, $00, $20, $01, $26, $00
-	db $00, $00, $20, $00, $00, $00, $24, $00
-	db $00, $00, $52, $00, $25, $00, $00, $85
-	db $00, $20, $00, $8D, $2F, $00, $00, $81
-	db $91, $01, $00, $80, $00, $00, $1C, $02
-	db $02, $00, $D4, $00, $54, $00, $36, $04
-	db $30, $00, $20, $01, $26, $00, $00, $00
-	db $20, $00, $00, $00, $24, $00, $00, $00
-	db $00, $85, $00, $20, $00, $8D, $4D, $00
-	db $00, $81, $90, $01, $52, $00, $25, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6FF4
+	dw sprite.unknown_54, $0418
+	dw sprite.unknown_5C, $0303
+	dw !initcommand_success
+
+DATA_FF7076:
+	dw sprite.number, $021C
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_54, $0436
+	dw sprite.unknown_30, $0120
+	dw sprite.max_x_speed, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_52, $0025
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $002F
+	dw !initcommand_set_animation, $0191
+	dw !initcommand_success
+
+DATA_FF70A4:
+	dw sprite.number, $021C
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_54, $0436
+	dw sprite.unknown_30, $0120
+	dw sprite.max_x_speed, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $004D
+	dw !initcommand_set_animation, $0190
+	dw sprite.unknown_52, $0025
+	dw !initcommand_success
 
 DATA_FF70D2:
-	db $00, $83, $76, $70, $2E, $00, $00, $00
-	db $50, $00, $00, $00, $2A, $00, $40, $F9
-	db $22, $00, $44, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7076
+	dw sprite.action, $0000
+	dw sprite.parameter, $0000
+	dw sprite.unknown_2A, $F940
+	dw sprite.unknown_22, $0044
+	dw !initcommand_success
 
 DATA_FF70E8:
-	db $00, $83, $76, $70, $2E, $00, $00, $00
-	db $50, $00, $00, $00, $2A, $00, $C0, $FA
-	db $22, $00, $3C, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7076
+	dw sprite.action, $0000
+	dw sprite.parameter, $0000
+	dw sprite.unknown_2A, $FAC0
+	dw sprite.unknown_22, $003C
+	dw !initcommand_success
 
 DATA_FF70FE:
-	db $00, $83, $76, $70, $2E, $00, $00, $00
-	db $50, $00, $00, $00, $2A, $00, $C0, $FA
-	db $22, $00, $3C, $00, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7076
+	dw sprite.action, $0000
+	dw sprite.parameter, $0000
+	dw sprite.unknown_2A, $FAC0
+	dw sprite.unknown_22, $003C
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF7118:
-	db $00, $83, $76, $70, $2E, $00, $00, $00
-	db $50, $00, $00, $00, $2A, $00, $40, $F9
-	db $22, $00, $44, $00, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7076
+	dw sprite.action, $0000
+	dw sprite.parameter, $0000
+	dw sprite.unknown_2A, $F940
+	dw sprite.unknown_22, $0044
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF7132:
-	db $00, $83, $76, $70, $2E, $00, $00, $00
-	db $50, $00, $00, $00, $2A, $00, $00, $F8
-	db $22, $00, $48, $00, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7076
+	dw sprite.action, $0000
+	dw sprite.parameter, $0000
+	dw sprite.unknown_2A, $F800
+	dw sprite.unknown_22, $0048
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF714C:
-	db $00, $83, $76, $70, $2E, $00, $00, $00
-	db $50, $00, $00, $00, $2A, $00, $00, $F8
-	db $22, $00, $48, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7076
+	dw sprite.action, $0000
+	dw sprite.parameter, $0000
+	dw sprite.unknown_2A, $F800
+	dw sprite.unknown_22, $0048
+	dw !initcommand_success
 
 DATA_FF7162:
-	db $00, $83, $76, $70, $2E, $00, $00, $00
-	db $50, $00, $00, $00, $2A, $00, $00, $F7
-	db $22, $00, $48, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7076
+	dw sprite.action, $0000
+	dw sprite.parameter, $0000
+	dw sprite.unknown_2A, $F700
+	dw sprite.unknown_22, $0048
+	dw !initcommand_success
 
 DATA_FF7178:
-	db $00, $83, $76, $70, $2E, $00, $00, $00
-	db $50, $00, $00, $FF, $2A, $00, $40, $F9
-	db $22, $00, $44, $00, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7076
+	dw sprite.action, $0000
+	dw sprite.parameter, $FF00
+	dw sprite.unknown_2A, $F940
+	dw sprite.unknown_22, $0044
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF7192:
-	db $00, $83, $76, $70, $2E, $00, $00, $00
-	db $50, $00, $00, $FF, $2A, $00, $20, $F8
-	db $22, $00, $48, $00, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7076
+	dw sprite.action, $0000
+	dw sprite.parameter, $FF00
+	dw sprite.unknown_2A, $F820
+	dw sprite.unknown_22, $0048
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF71AC:
-	db $00, $83, $76, $70, $2E, $00, $00, $00
-	db $50, $00, $00, $FF, $2A, $00, $00, $F7
-	db $22, $00, $4C, $00, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7076
+	dw sprite.action, $0000
+	dw sprite.parameter, $FF00
+	dw sprite.unknown_2A, $F700
+	dw sprite.unknown_22, $004C
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF71C6:
-	db $00, $83, $76, $70, $2E, $00, $00, $00
-	db $50, $00, $B0, $FE, $2A, $00, $80, $FB
-	db $22, $00, $48, $00, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7076
+	dw sprite.action, $0000
+	dw sprite.parameter, $FEB0
+	dw sprite.unknown_2A, $FB80
+	dw sprite.unknown_22, $0048
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF71E0:
-	db $00, $83, $76, $70, $2E, $00, $00, $00
-	db $50, $00, $B0, $FE, $2A, $00, $C0, $FA
-	db $22, $00, $48, $00, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7076
+	dw sprite.action, $0000
+	dw sprite.parameter, $FEB0
+	dw sprite.unknown_2A, $FAC0
+	dw sprite.unknown_22, $0048
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF71FA:
-	db $00, $83, $76, $70, $2E, $00, $00, $00
-	db $50, $00, $20, $01, $2A, $00, $80, $FB
-	db $22, $00, $48, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7076
+	dw sprite.action, $0000
+	dw sprite.parameter, $0120
+	dw sprite.unknown_2A, $FB80
+	dw sprite.unknown_22, $0048
+	dw !initcommand_success
 
 DATA_FF7210:
-	db $00, $83, $76, $70, $2E, $00, $00, $00
-	db $50, $00, $00, $01, $2A, $00, $00, $F7
-	db $22, $00, $4C, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7076
+	dw sprite.action, $0000
+	dw sprite.parameter, $0100
+	dw sprite.unknown_2A, $F700
+	dw sprite.unknown_22, $004C
+	dw !initcommand_success
 
 DATA_FF7226:
-	db $00, $83, $76, $70, $2E, $00, $01, $00
-	db $42, $00, $00, $00, $44, $00, $00, $FD
-	db $46, $00, $38, $00, $48, $00, $00, $00
-	db $4A, $00, $00, $F7, $4C, $00, $50, $00
-	db $1C, $00, $01, $02, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7076
+	dw sprite.action, $0001
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $FD00
+	dw sprite.unknown_46, $0038
+	dw sprite.unknown_48, $0000
+	dw sprite.unknown_4A, $F700
+	dw sprite.unknown_4C, $0050
+	dw sprite.unknown_1C, $0201
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF7250:
-	db $00, $83, $76, $70, $2E, $00, $01, $00
-	db $42, $00, $00, $00, $44, $00, $00, $F7
-	db $46, $00, $50, $00, $48, $00, $00, $00
-	db $4A, $00, $00, $FD, $4C, $00, $38, $00
-	db $1C, $00, $01, $02, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7076
+	dw sprite.action, $0001
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $F700
+	dw sprite.unknown_46, $0050
+	dw sprite.unknown_48, $0000
+	dw sprite.unknown_4A, $FD00
+	dw sprite.unknown_4C, $0038
+	dw sprite.unknown_1C, $0201
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF727A:
-	db $00, $83, $76, $70, $2E, $00, $01, $00
-	db $42, $00, $00, $00, $44, $00, $00, $FD
-	db $46, $00, $38, $00, $48, $00, $00, $00
-	db $4A, $00, $40, $F9, $4C, $00, $44, $00
-	db $1C, $00, $01, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7076
+	dw sprite.action, $0001
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $FD00
+	dw sprite.unknown_46, $0038
+	dw sprite.unknown_48, $0000
+	dw sprite.unknown_4A, $F940
+	dw sprite.unknown_4C, $0044
+	dw sprite.unknown_1C, $0101
+	dw !initcommand_success
 
 DATA_FF72A0:
-	db $00, $83, $76, $70, $2E, $00, $01, $00
-	db $42, $00, $00, $00, $44, $00, $00, $FD
-	db $46, $00, $38, $00, $48, $00, $00, $00
-	db $4A, $00, $C0, $FA, $4C, $00, $3C, $00
-	db $1C, $00, $01, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7076
+	dw sprite.action, $0001
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $FD00
+	dw sprite.unknown_46, $0038
+	dw sprite.unknown_48, $0000
+	dw sprite.unknown_4A, $FAC0
+	dw sprite.unknown_4C, $003C
+	dw sprite.unknown_1C, $0101
+	dw !initcommand_success
 
 DATA_FF72C6:
-	db $00, $83, $76, $70, $2E, $00, $01, $00
-	db $42, $00, $00, $00, $44, $00, $00, $FD
-	db $46, $00, $38, $00, $48, $00, $00, $00
-	db $4A, $00, $00, $F8, $4C, $00, $48, $00
-	db $1C, $00, $01, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7076
+	dw sprite.action, $0001
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $FD00
+	dw sprite.unknown_46, $0038
+	dw sprite.unknown_48, $0000
+	dw sprite.unknown_4A, $F800
+	dw sprite.unknown_4C, $0048
+	dw sprite.unknown_1C, $0101
+	dw !initcommand_success
 
 DATA_FF72EC:
-	db $00, $83, $76, $70, $2E, $00, $01, $00
-	db $42, $00, $40, $FD, $44, $00, $80, $F7
-	db $46, $00, $3E, $00, $48, $00, $C0, $02
-	db $4A, $00, $80, $F7, $4C, $00, $3E, $00
-	db $1C, $00, $01, $01, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7076
+	dw sprite.action, $0001
+	dw sprite.unknown_42, $FD40
+	dw sprite.unknown_44, $F780
+	dw sprite.unknown_46, $003E
+	dw sprite.unknown_48, $02C0
+	dw sprite.unknown_4A, $F780
+	dw sprite.unknown_4C, $003E
+	dw sprite.unknown_1C, $0101
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF7316:
-	db $00, $83, $76, $70, $2E, $00, $01, $00
-	db $42, $00, $C0, $FE, $44, $00, $00, $FB
-	db $46, $00, $48, $00, $48, $00, $40, $01
-	db $4A, $00, $00, $FB, $4C, $00, $48, $00
-	db $1C, $00, $01, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7076
+	dw sprite.action, $0001
+	dw sprite.unknown_42, $FEC0
+	dw sprite.unknown_44, $FB00
+	dw sprite.unknown_46, $0048
+	dw sprite.unknown_48, $0140
+	dw sprite.unknown_4A, $FB00
+	dw sprite.unknown_4C, $0048
+	dw sprite.unknown_1C, $0101
+	dw !initcommand_success
 
 DATA_FF733C:
-	db $00, $83, $A4, $70, $2E, $00, $00, $00
-	db $50, $00, $00, $FF, $2A, $00, $00, $F8
-	db $22, $00, $48, $00, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF70A4
+	dw sprite.action, $0000
+	dw sprite.parameter, $FF00
+	dw sprite.unknown_2A, $F800
+	dw sprite.unknown_22, $0048
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF7356:
-	db $00, $83, $A4, $70, $2E, $00, $00, $00
-	db $50, $00, $00, $01, $2A, $00, $00, $F8
-	db $22, $00, $48, $00, $52, $00, $18, $25
-	db $04, $00, $08, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF70A4
+	dw sprite.action, $0000
+	dw sprite.parameter, $0100
+	dw sprite.unknown_2A, $F800
+	dw sprite.unknown_22, $0048
+	dw sprite.unknown_52, $2518
+	dw sprite.x_sub_position, $0008
+	dw !initcommand_success
 
 DATA_FF7374:
-	db $00, $83, $A4, $70, $2E, $00, $00, $00
-	db $50, $00, $00, $FF, $2A, $00, $00, $F8
-	db $22, $00, $48, $00, $52, $00, $18, $25
-	db $04, $00, $A0, $00, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF70A4
+	dw sprite.action, $0000
+	dw sprite.parameter, $FF00
+	dw sprite.unknown_2A, $F800
+	dw sprite.unknown_22, $0048
+	dw sprite.unknown_52, $2518
+	dw sprite.x_sub_position, $00A0
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF7396:
-	db $00, $83, $A4, $70, $2E, $00, $00, $00
-	db $50, $00, $00, $02, $2A, $00, $00, $FA
-	db $22, $00, $48, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF70A4
+	dw sprite.action, $0000
+	dw sprite.parameter, $0200
+	dw sprite.unknown_2A, $FA00
+	dw sprite.unknown_22, $0048
+	dw !initcommand_success
 
 DATA_FF73AC:
-	db $00, $83, $A4, $70, $2E, $00, $00, $00
-	db $50, $00, $00, $00, $2A, $00, $C0, $FA
-	db $22, $00, $3C, $00, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF70A4
+	dw sprite.action, $0000
+	dw sprite.parameter, $0000
+	dw sprite.unknown_2A, $FAC0
+	dw sprite.unknown_22, $003C
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF73C6:
-	db $00, $83, $28, $75, $2E, $00, $06, $00
-	db $10, $00, $00, $F0, $1E, $00, $70, $70
-	db $0C, $00, $80, $06, $28, $00, $80, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7528
+	dw sprite.action, $0006
+	dw sprite.interaction_type, $F000
+	dw sprite.unknown_1E, $7070
+	dw sprite.ground_y_position, $0680
+	dw sprite.unknown_28, $0280
+	dw !initcommand_success
 
 DATA_FF73E0:
-	db $00, $83, $0A, $75, $2E, $00, $06, $00
-	db $10, $00, $00, $F0, $1E, $00, $70, $70
-	db $0C, $00, $80, $06, $28, $00, $80, $FD
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF750A
+	dw sprite.action, $0006
+	dw sprite.interaction_type, $F000
+	dw sprite.unknown_1E, $7070
+	dw sprite.ground_y_position, $0680
+	dw sprite.unknown_28, $FD80
+	dw !initcommand_success
 
 DATA_FF73FA:
-	db $00, $83, $28, $75, $2E, $00, $06, $00
-	db $10, $00, $00, $F0, $1E, $00, $70, $70
-	db $0C, $00, $80, $06, $28, $00, $80, $03
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7528
+	dw sprite.action, $0006
+	dw sprite.interaction_type, $F000
+	dw sprite.unknown_1E, $7070
+	dw sprite.ground_y_position, $0680
+	dw sprite.unknown_28, $0380
+	dw !initcommand_success
 
 DATA_FF7414:
-	db $00, $83, $0A, $75, $2E, $00, $06, $00
-	db $10, $00, $00, $F0, $1E, $00, $70, $70
-	db $0C, $00, $80, $06, $28, $00, $80, $FC
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF750A
+	dw sprite.action, $0006
+	dw sprite.interaction_type, $F000
+	dw sprite.unknown_1E, $7070
+	dw sprite.ground_y_position, $0680
+	dw sprite.unknown_28, $FC80
+	dw !initcommand_success
 
 DATA_FF742E:
-	db $00, $83, $28, $75, $2E, $00, $06, $00
-	db $10, $00, $00, $F0, $1E, $00, $80, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7528
+	dw sprite.action, $0006
+	dw sprite.interaction_type, $F000
+	dw sprite.unknown_1E, $0080
+	dw !initcommand_success
 
 DATA_FF7440:
-	db $00, $83, $28, $75, $2E, $00, $06, $00
-	db $10, $00, $00, $F0, $1E, $00, $60, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7528
+	dw sprite.action, $0006
+	dw sprite.interaction_type, $F000
+	dw sprite.unknown_1E, $0060
+	dw !initcommand_success
 
 DATA_FF7452:
-	db $00, $83, $0A, $75, $2E, $00, $06, $00
-	db $10, $00, $00, $F0, $1E, $00, $80, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF750A
+	dw sprite.action, $0006
+	dw sprite.interaction_type, $F000
+	dw sprite.unknown_1E, $0080
+	dw !initcommand_success
 
 DATA_FF7464:
-	db $00, $83, $28, $75, $2E, $00, $06, $00
-	db $10, $00, $00, $F0, $1E, $00, $80, $00
-	db $20, $00, $00, $00, $0C, $00, $00, $07
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7528
+	dw sprite.action, $0006
+	dw sprite.interaction_type, $F000
+	dw sprite.unknown_1E, $0080
+	dw sprite.x_speed, $0000
+	dw sprite.ground_y_position, $0700
+	dw !initcommand_success
 
 DATA_FF747E:
-	db $00, $83, $0A, $75, $2E, $00, $06, $00
-	db $10, $00, $00, $F0, $1E, $00, $80, $00
-	db $20, $00, $00, $00, $0C, $00, $00, $07
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF750A
+	dw sprite.action, $0006
+	dw sprite.interaction_type, $F000
+	dw sprite.unknown_1E, $0080
+	dw sprite.x_speed, $0000
+	dw sprite.ground_y_position, $0700
+	dw !initcommand_success
 
 DATA_FF7498:
-	db $00, $83, $0A, $75, $2E, $00, $06, $00
-	db $10, $00, $00, $60, $1E, $00, $80, $00
-	db $20, $00, $00, $00, $0C, $00, $00, $0B
-	db $0E, $00, $A0, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF750A
+	dw sprite.action, $0006
+	dw sprite.interaction_type, $6000
+	dw sprite.unknown_1E, $0080
+	dw sprite.x_speed, $0000
+	dw sprite.ground_y_position, $0B00
+	dw sprite.ground_distance, $FFA0
+	dw !initcommand_success
 
 DATA_FF74B6:
-	db $00, $83, $0A, $75, $2E, $00, $06, $00
-	db $10, $00, $00, $90, $1E, $00, $FF, $FF
-	db $0C, $00, $00, $07, $28, $00, $00, $FC
-	db $00, $80, $00, $00, $14, $02, $54, $00
-	db $1C, $02, $00, $81, $93, $01, $00, $8D
-	db $1E, $00, $30, $00, $20, $01, $02, $00
-	db $D4, $00, $24, $00, $00, $00, $52, $00
-	db $07, $00, $4A, $00, $00, $05, $2A, $00
-	db $A0, $FE, $46, $00, $02, $02, $26, $00
-	db $20, $00, $2E, $00, $00, $00, $4E, $00
-	db $01, $00, $00, $80, $00, $83, $D0, $74
-	db $0C, $00, $00, $08, $0E, $00, $80, $FF
-	db $22, $00, $00, $00, $28, $00, $00, $FB
-	db $20, $00, $00, $FD, $00, $85, $00, $60
-	db $00, $80, $00, $83, $D0, $74, $0C, $00
-	db $00, $08, $0E, $00, $C0, $FF, $22, $00
-	db $00, $00, $28, $00, $00, $05, $20, $00
-	db $00, $03, $00, $85, $00, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF750A
+	dw sprite.action, $0006
+	dw sprite.interaction_type, $9000
+	dw sprite.unknown_1E, $FFFF
+	dw sprite.ground_y_position, $0700
+	dw sprite.unknown_28, $FC00
+	dw !initcommand_success
+
+DATA_FF74D0:
+	dw sprite.number, $0214
+	dw sprite.unknown_54, $021C
+	dw !initcommand_set_animation, $0193
+	dw !initcommand_set_alt_palette, $001E
+	dw sprite.unknown_30, $0120
+	dw sprite.render_order, $00D4
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_52, $0007
+	dw sprite.unknown_4A, $0500
+	dw sprite.unknown_2A, $FEA0
+	dw sprite.unknown_46, $0202
+	dw sprite.max_x_speed, $0020
+	dw sprite.action, $0000
+	dw sprite.unknown_4E, $0001
+	dw !initcommand_success
+
+DATA_FF750A:
+	dw !initcommand_load_subconfig, DATA_FF74D0
+	dw sprite.ground_y_position, $0800
+	dw sprite.ground_distance, $FF80
+	dw sprite.unknown_22, $0000
+	dw sprite.unknown_28, $FB00
+	dw sprite.x_speed, $FD00
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
+
+DATA_FF7528:
+	dw !initcommand_load_subconfig, DATA_FF74D0
+	dw sprite.ground_y_position, $0800
+	dw sprite.ground_distance, $FFC0
+	dw sprite.unknown_22, $0000
+	dw sprite.unknown_28, $0500
+	dw sprite.x_speed, $0300
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF7546:
-	db $00, $83, $28, $75, $4E, $00, $3C, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7528
+	dw sprite.unknown_4E, $003C
+	dw !initcommand_success
 
 DATA_FF7550:
-	db $00, $83, $0A, $75, $4E, $00, $1E, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF750A
+	dw sprite.unknown_4E, $001E
+	dw !initcommand_success
 
 DATA_FF755A:
-	db $00, $83, $0A, $75, $4E, $00, $78, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF750A
+	dw sprite.unknown_4E, $0078
+	dw !initcommand_success
 
 DATA_FF7564:
-	db $00, $83, $28, $75, $4E, $00, $78, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7528
+	dw sprite.unknown_4E, $0078
+	dw !initcommand_success
 
 DATA_FF756E:
-	db $00, $83, $0A, $75, $0C, $00, $00, $0A
-	db $0E, $00, $A0, $FF, $22, $00, $00, $00
-	db $28, $00, $40, $FD, $4E, $00, $78, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF750A
+	dw sprite.ground_y_position, $0A00
+	dw sprite.ground_distance, $FFA0
+	dw sprite.unknown_22, $0000
+	dw sprite.unknown_28, $FD40
+	dw sprite.unknown_4E, $0078
+	dw !initcommand_success
 
 DATA_FF7588:
-	db $00, $83, $0A, $75, $4E, $00, $3C, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF750A
+	dw sprite.unknown_4E, $003C
+	dw !initcommand_success
 
 DATA_FF7592:
-	db $00, $83, $0A, $75, $4E, $00, $28, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF750A
+	dw sprite.unknown_4E, $0028
+	dw !initcommand_success
 
 DATA_FF759C:
-	db $00, $83, $0A, $75, $4E, $00, $04, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF750A
+	dw sprite.unknown_4E, $0004
+	dw !initcommand_success
 
 DATA_FF75A6:
-	db $00, $83, $0A, $75, $0C, $00, $80, $07
-	db $0E, $00, $80, $FF, $22, $00, $00, $00
-	db $28, $00, $00, $FD, $4E, $00, $3C, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF750A
+	dw sprite.ground_y_position, $0780
+	dw sprite.ground_distance, $FF80
+	dw sprite.unknown_22, $0000
+	dw sprite.unknown_28, $FD00
+	dw sprite.unknown_4E, $003C
+	dw !initcommand_success
 
 DATA_FF75C0:
-	db $00, $83, $28, $75, $4E, $00, $1E, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7528
+	dw sprite.unknown_4E, $001E
+	dw !initcommand_success
 
 DATA_FF75CA:
-	db $00, $83, $28, $75, $0C, $00, $00, $05
-	db $0E, $00, $A0, $FF, $22, $00, $00, $00
-	db $28, $00, $00, $03, $4E, $00, $2D, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7528
+	dw sprite.ground_y_position, $0500
+	dw sprite.ground_distance, $FFA0
+	dw sprite.unknown_22, $0000
+	dw sprite.unknown_28, $0300
+	dw sprite.unknown_4E, $002D
+	dw !initcommand_success
 
 DATA_FF75E4:
-	db $00, $83, $28, $75, $4E, $00, $3C, $00
-	db $0C, $00, $00, $05, $0E, $00, $80, $FF
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7528
+	dw sprite.unknown_4E, $003C
+	dw sprite.ground_y_position, $0500
+	dw sprite.ground_distance, $FF80
+	dw !initcommand_success
 
 DATA_FF75F6:
-	db $00, $83, $0A, $75, $4E, $00, $2D, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF750A
+	dw sprite.unknown_4E, $002D
+	dw !initcommand_success
 
 DATA_FF7600:
-	db $00, $83, $0A, $75, $4E, $00, $1E, $00
-	db $28, $00, $00, $FC, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF750A
+	dw sprite.unknown_4E, $001E
+	dw sprite.unknown_28, $FC00
+	dw !initcommand_success
 
 DATA_FF760E:
-	db $00, $83, $0A, $75, $0C, $00, $00, $05
-	db $0E, $00, $80, $FF, $4E, $00, $B4, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF750A
+	dw sprite.ground_y_position, $0500
+	dw sprite.ground_distance, $FF80
+	dw sprite.unknown_4E, $00B4
+	dw !initcommand_success
 
 DATA_FF7620:
-	db $00, $83, $0A, $75, $4E, $00, $4B, $00
-	db $28, $00, $80, $FC, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF750A
+	dw sprite.unknown_4E, $004B
+	dw sprite.unknown_28, $FC80
+	dw !initcommand_success
 
 DATA_FF762E:
-	db $00, $83, $0A, $75, $4E, $00, $2D, $00
-	db $28, $00, $80, $FC, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF750A
+	dw sprite.unknown_4E, $002D
+	dw sprite.unknown_28, $FC80
+	dw !initcommand_success
 
 DATA_FF763C:
-	db $00, $83, $0A, $75, $4E, $00, $4B, $00
-	db $28, $00, $80, $FC, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF750A
+	dw sprite.unknown_4E, $004B
+	dw sprite.unknown_28, $FC80
+	dw !initcommand_success
 
 DATA_FF764A:
-	db $00, $83, $0A, $75, $0C, $00, $00, $08
-	db $0E, $00, $80, $FF, $22, $00, $00, $00
-	db $28, $00, $40, $FC, $4E, $00, $3C, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF750A
+	dw sprite.ground_y_position, $0800
+	dw sprite.ground_distance, $FF80
+	dw sprite.unknown_22, $0000
+	dw sprite.unknown_28, $FC40
+	dw sprite.unknown_4E, $003C
+	dw !initcommand_success
 
 DATA_FF7664:
-	db $00, $83, $0A, $75, $0C, $00, $00, $08
-	db $0E, $00, $80, $FF, $22, $00, $00, $00
-	db $28, $00, $40, $FC, $4E, $00, $1E, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF750A
+	dw sprite.ground_y_position, $0800
+	dw sprite.ground_distance, $FF80
+	dw sprite.unknown_22, $0000
+	dw sprite.unknown_28, $FC40
+	dw sprite.unknown_4E, $001E
+	dw !initcommand_success
 
 DATA_FF767E:
-	db $00, $83, $0A, $75, $0C, $00, $00, $08
-	db $0E, $00, $80, $FF, $22, $00, $00, $00
-	db $28, $00, $E0, $FB, $4E, $00, $04, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF750A
+	dw sprite.ground_y_position, $0800
+	dw sprite.ground_distance, $FF80
+	dw sprite.unknown_22, $0000
+	dw sprite.unknown_28, $FBE0
+	dw sprite.unknown_4E, $0004
+	dw !initcommand_success
 
 DATA_FF7698:
-	db $00, $83, $0A, $75, $0C, $00, $00, $08
-	db $0E, $00, $80, $FF, $22, $00, $00, $00
-	db $28, $00, $E0, $FB, $4E, $00, $1E, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF750A
+	dw sprite.ground_y_position, $0800
+	dw sprite.ground_distance, $FF80
+	dw sprite.unknown_22, $0000
+	dw sprite.unknown_28, $FBE0
+	dw sprite.unknown_4E, $001E
+	dw !initcommand_success
 
 DATA_FF76B2:
-	db $00, $83, $0A, $75, $0C, $00, $00, $08
-	db $0E, $00, $80, $FF, $22, $00, $00, $00
-	db $28, $00, $E0, $FB, $4E, $00, $28, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF750A
+	dw sprite.ground_y_position, $0800
+	dw sprite.ground_distance, $FF80
+	dw sprite.unknown_22, $0000
+	dw sprite.unknown_28, $FBE0
+	dw sprite.unknown_4E, $0028
+	dw !initcommand_success
 
 DATA_FF76CC:
-	db $00, $83, $0A, $75, $4E, $00, $5A, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF750A
+	dw sprite.unknown_4E, $005A
+	dw !initcommand_success
 
 DATA_FF76D6:
-	db $00, $83, $0A, $75, $4E, $00, $0F, $00
-	db $00, $80, $00, $00, $18, $02, $02, $00
-	db $D4, $00, $54, $00, $EC, $02, $30, $00
-	db $20, $01, $2E, $00, $00, $00, $20, $00
-	db $00, $00, $24, $00, $00, $00, $52, $00
-	db $07, $00, $00, $85, $00, $60, $00, $80
-	db $00, $00, $18, $02, $02, $00, $D4, $00
-	db $54, $00, $EC, $02, $30, $00, $20, $01
-	db $2E, $00, $00, $00, $20, $00, $00, $00
-	db $24, $00, $00, $00, $00, $85, $00, $60
-	db $00, $80, $00, $00, $1C, $03, $02, $00
-	db $D4, $00, $54, $00, $1C, $02, $00, $8D
-	db $38, $00, $00, $81, $97, $01, $00, $85
-	db $00, $20, $22, $00, $00, $20, $30, $00
-	db $00, $00, $2E, $00, $00, $00, $52, $00
-	db $07, $00, $20, $00, $00, $00, $24, $00
-	db $00, $00, $46, $00, $02, $02, $26, $00
-	db $40, $00, $4A, $00, $03, $02, $2A, $00
-	db $60, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF750A
+	dw sprite.unknown_4E, $000F
+	dw !initcommand_success
+
+DATA_FF76E0:
+	dw sprite.number, $0218
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_54, $02EC
+	dw sprite.unknown_30, $0120
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_52, $0007
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
+
+DATA_FF7706:
+	dw sprite.number, $0218
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_54, $02EC
+	dw sprite.unknown_30, $0120
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
+
+DATA_FF7728:
+	dw sprite.number, $031C
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_54, $021C
+	dw !initcommand_set_alt_palette, $0038
+	dw !initcommand_set_animation, $0197
+	dw !initcommand_set_oam, $2000
+	dw sprite.unknown_22, $2000
+	dw sprite.unknown_30, $0000
+	dw sprite.action, $0000
+	dw sprite.unknown_52, $0007
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_46, $0202
+	dw sprite.max_x_speed, $0040
+	dw sprite.unknown_4A, $0203
+	dw sprite.unknown_2A, $0060
+	dw !initcommand_success
 
 DATA_FF776A:
-	db $00, $83, $28, $77, $5C, $00, $40, $68
-	db $50, $00, $60, $80, $4E, $00, $B2, $77
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7728
+	dw sprite.unknown_5C, $6840
+	dw sprite.parameter, $8060
+	dw sprite.unknown_4E, DATA_FF77B2
+	dw !initcommand_success
 
 DATA_FF777C:
-	db $00, $83, $28, $77, $5C, $00, $40, $48
-	db $50, $00, $60, $80, $4E, $00, $BC, $77
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7728
+	dw sprite.unknown_5C, $4840
+	dw sprite.parameter, $8060
+	dw sprite.unknown_4E, DATA_FF77BC
+	dw !initcommand_success
 
 DATA_FF778E:
-	db $00, $83, $28, $77, $5C, $00, $40, $70
-	db $50, $00, $F0, $60, $4E, $00, $C6, $77
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7728
+	dw sprite.unknown_5C, $7040
+	dw sprite.parameter, $60F0
+	dw sprite.unknown_4E, DATA_FF77C6
+	dw !initcommand_success
 
 DATA_FF77A0:
-	db $00, $83, $28, $77, $5C, $00, $40, $50
-	db $50, $00, $F0, $60, $4E, $00, $D0, $77
-	db $00, $80, $52, $00, $09, $00, $42, $00
-	db $DA, $77, $00, $80, $52, $00, $09, $00
-	db $42, $00, $28, $78, $00, $80, $52, $00
-	db $09, $00, $42, $00, $76, $78, $00, $80
-	db $52, $00, $09, $00, $42, $00, $CC, $78
-	db $00, $80, $FE, $FF, $E0, $01, $FB, $FF
-	db $0C, $00, $0C, $00, $FC, $01, $E0, $07
-	db $FB, $FF, $00, $00, $00, $00, $FC, $01
-	db $C0, $07, $FC, $01, $E0, $07, $FB, $FF
-	db $0C, $00, $0C, $00, $FC, $01, $70, $08
-	db $FC, $01, $70, $09, $FC, $01, $70, $0A
-	db $FB, $FF, $00, $00, $00, $00, $FC, $01
-	db $90, $0A, $FC, $01, $70, $0A, $FB, $FF
-	db $0C, $00, $0C, $00, $FC, $01, $70, $09
-	db $FC, $01, $70, $08, $FD, $FF, $E4, $77
+	dw !initcommand_load_subconfig, DATA_FF7728
+	dw sprite.unknown_5C, $5040
+	dw sprite.parameter, $60F0
+	dw sprite.unknown_4E, DATA_FF77D0
+	dw !initcommand_success
+
+DATA_FF77B2:
+	dw sprite.unknown_52, $0009
+	dw sprite.unknown_42, DATA_FF77DA
+	dw !initcommand_success
+
+DATA_FF77BC:
+	dw sprite.unknown_52, $0009
+	dw sprite.unknown_42, DATA_FF7828
+	dw !initcommand_success
+
+DATA_FF77C6:
+	dw sprite.unknown_52, $0009
+	dw sprite.unknown_42, DATA_FF7876
+	dw !initcommand_success
+
+DATA_FF77D0:
+	dw sprite.unknown_52, $0009
+	dw sprite.unknown_42, DATA_FF78CC
+	dw !initcommand_success
+
+DATA_FF77DA:
 	db $FE, $FF, $E0, $01, $FB, $FF, $0C, $00
-	db $F4, $FF, $1C, $02, $E0, $07, $FB, $FF
-	db $00, $00, $00, $00, $1C, $02, $C0, $07
-	db $1C, $02, $E0, $07, $FB, $FF, $0C, $00
-	db $F4, $FF, $1C, $02, $70, $08, $1C, $02
-	db $70, $09, $1C, $02, $70, $0A, $FB, $FF
-	db $00, $00, $00, $00, $1C, $02, $90, $0A
-	db $1C, $02, $70, $0A, $FB, $FF, $0C, $00
-	db $F4, $FF, $1C, $02, $70, $09, $1C, $02
-	db $70, $08, $FD, $FF, $32, $78, $FE, $FF
-	db $00, $02, $FB, $FF, $0C, $00, $0C, $00
+	db $0C, $00
+
+DATA_FF77E4:
+	db $FC, $01, $E0, $07, $FB, $FF, $00, $00
+	db $00, $00, $FC, $01, $C0, $07, $FC, $01
+	db $E0, $07, $FB, $FF, $0C, $00, $0C, $00
+	db $FC, $01, $70, $08, $FC, $01, $70, $09
+	db $FC, $01, $70, $0A, $FB, $FF, $00, $00
+	db $00, $00, $FC, $01, $90, $0A, $FC, $01
+	db $70, $0A, $FB, $FF, $0C, $00, $0C, $00
+	db $FC, $01, $70, $09, $FC, $01, $70, $08
+	db $FD, $FF : dw DATA_FF77E4
+
+DATA_FF7828:
+	db $FE, $FF, $E0, $01, $FB, $FF, $0C, $00
+	db $F4, $FF
+
+DATA_FF7832:
+	db $1C, $02, $E0, $07, $FB, $FF, $00, $00
+	db $00, $00, $1C, $02, $C0, $07, $1C, $02
+	db $E0, $07, $FB, $FF, $0C, $00, $F4, $FF
+	db $1C, $02, $70, $08, $1C, $02, $70, $09
+	db $1C, $02, $70, $0A, $FB, $FF, $00, $00
+	db $00, $00, $1C, $02, $90, $0A, $1C, $02
+	db $70, $0A, $FB, $FF, $0C, $00, $F4, $FF
+	db $1C, $02, $70, $09, $1C, $02, $70, $08
+	db $FD, $FF : dw DATA_FF7832
+
+DATA_FF7876:
+	db $FE, $FF, $00, $02, $FB, $FF, $0C, $00
+	db $0C, $00
+
+DATA_FF7880:
 	db $30, $01, $70, $0A, $FB, $FF, $00, $00
 	db $00, $00, $30, $01, $90, $0A, $30, $01
 	db $70, $0A, $FB, $FF, $0C, $00, $0C, $00
@@ -6437,7716 +9176,12087 @@ DATA_FF77A0:
 	db $C0, $06, $30, $01, $E0, $06, $FB, $FF
 	db $0C, $00, $0C, $00, $30, $01, $70, $07
 	db $30, $01, $70, $08, $30, $01, $70, $09
-	db $FD, $FF, $80, $78, $FE, $FF, $00, $02
-	db $FB, $FF, $0C, $00, $F4, $FF, $50, $01
-	db $70, $0A, $FB, $FF, $00, $00, $00, $00
-	db $50, $01, $90, $0A, $50, $01, $70, $0A
-	db $FB, $FF, $0C, $00, $F4, $FF, $50, $01
-	db $70, $09, $50, $01, $70, $08, $50, $01
-	db $70, $07, $50, $01, $E0, $06, $FB, $FF
-	db $00, $00, $00, $00, $50, $01, $C0, $06
-	db $50, $01, $E0, $06, $FB, $FF, $0C, $00
-	db $F4, $FF, $50, $01, $70, $07, $50, $01
-	db $70, $08, $50, $01, $70, $09, $FD, $FF
-	db $D6, $78
+	db $FD, $FF : dw DATA_FF7880
+
+DATA_FF78CC:
+	db $FE, $FF, $00, $02, $FB, $FF, $0C, $00
+	db $F4, $FF
+
+DATA_FF78D6:
+	db $50, $01, $70, $0A, $FB, $FF, $00, $00
+	db $00, $00, $50, $01, $90, $0A, $50, $01
+	db $70, $0A, $FB, $FF, $0C, $00, $F4, $FF
+	db $50, $01, $70, $09, $50, $01, $70, $08
+	db $50, $01, $70, $07, $50, $01, $E0, $06
+	db $FB, $FF, $00, $00, $00, $00, $50, $01
+	db $C0, $06, $50, $01, $E0, $06, $FB, $FF
+	db $0C, $00, $F4, $FF, $50, $01, $70, $07
+	db $50, $01, $70, $08, $50, $01, $70, $09
+	db $FD, $FF : dw DATA_FF78D6
 
 DATA_FF7922:
-	db $00, $00, $0C, $03, $02, $00, $D4, $00
-	db $54, $00, $1C, $02, $00, $8D, $77, $00
-	db $00, $85, $00, $60, $22, $00, $00, $60
-	db $30, $00, $00, $00, $2E, $00, $00, $00
-	db $52, $00, $07, $00, $20, $00, $00, $00
-	db $24, $00, $00, $00, $46, $00, $02, $02
-	db $26, $00, $40, $00, $4A, $00, $03, $02
-	db $2A, $00, $60, $00, $00, $81, $DD, $02
-	db $5C, $00, $20, $20, $50, $00, $C0, $00
-	db $4E, $00, $70, $79, $00, $80, $52, $00
-	db $09, $00, $42, $00, $90, $79, $00, $80
-	db $52, $00, $07, $00, $46, $00, $02, $02
-	db $26, $00, $40, $00, $4A, $00, $03, $02
-	db $2A, $00, $60, $00, $00, $80, $FE, $FF
-	db $00, $03, $FC, $FF, $06, $06, $FB, $FF
-	db $10, $00, $08, $00, $FA, $FF, $28, $00
-	db $00, $01, $A0, $06, $E0, $07, $FA, $FF
-	db $28, $00, $C0, $00, $30, $06, $18, $08
-	db $FA, $FF, $28, $00, $00, $01, $30, $04
-	db $00, $08, $FA, $FF, $28, $00, $80, $01
-	db $30, $04, $C8, $06, $FA, $FF, $28, $00
-	db $00, $01, $80, $03, $C8, $06, $FA, $FF
-	db $28, $00, $C0, $00, $80, $03, $D0, $07
-	db $FA, $FF, $28, $00, $00, $01, $D8, $02
-	db $D0, $07, $FA, $FF, $22, $00, $00, $00
-	db $FA, $FF, $28, $00, $80, $01, $D8, $02
-	db $E0, $06, $FA, $FF, $28, $00, $80, $01
-	db $90, $02, $50, $06, $FA, $FF, $28, $00
-	db $80, $01, $90, $02, $C0, $03, $FA, $FF
-	db $28, $00, $80, $01, $F0, $02, $00, $03
-	db $FA, $FF, $28, $00, $80, $01, $E4, $02
-	db $A8, $01, $FA, $FF, $28, $00, $00, $01
-	db $80, $03, $A8, $01, $FA, $FF, $28, $00
-	db $C0, $00, $C0, $03, $B4, $01, $FA, $FF
-	db $28, $00, $00, $01, $88, $06, $B4, $01
-	db $FA, $FF, $22, $00, $00, $40, $FA, $FF
-	db $28, $00, $C0, $00, $88, $06, $10, $05
-	db $FA, $FF, $28, $00, $00, $01, $48, $06
-	db $10, $05, $FA, $FF, $28, $00, $80, $01
-	db $38, $06, $B0, $03, $FA, $FF, $28, $00
-	db $00, $01, $E8, $05, $B0, $03, $FA, $FF
-	db $28, $00, $C0, $00, $E8, $04, $C0, $04
-	db $FA, $FF, $22, $00, $00, $00, $FA, $FF
-	db $28, $00, $C0, $00, $D8, $04, $B0, $05
-	db $FA, $FF, $28, $00, $00, $01, $58, $05
-	db $B0, $05, $FA, $FF, $28, $00, $C0, $00
-	db $58, $05, $70, $06, $FA, $FF, $28, $00
-	db $00, $01, $10, $07, $70, $06, $FA, $FF
-	db $28, $00, $80, $01, $50, $07, $68, $06
-	db $FA, $FF, $28, $00, $00, $01, $10, $09
-	db $68, $06, $FA, $FF, $28, $00, $80, $01
-	db $40, $09, $30, $06, $FA, $FF, $28, $00
-	db $00, $01, $F0, $09, $30, $06, $FA, $FF
-	db $28, $00, $80, $01, $48, $0A, $B0, $05
-	db $FA, $FF, $28, $00, $C0, $00, $D0, $0A
-	db $18, $06, $FA, $FF, $28, $00, $80, $01
-	db $D0, $0B, $48, $05, $FA, $FF, $22, $00
-	db $00, $40, $FA, $FF, $28, $00, $80, $01
-	db $D0, $0B, $90, $04, $FA, $FF, $28, $00
-	db $80, $01, $98, $0B, $40, $04, $FA, $FF
-	db $28, $00, $00, $01, $C0, $0A, $40, $04
-	db $FA, $FF, $28, $00, $C0, $00, $70, $0A
-	db $60, $04, $FA, $FF, $28, $00, $00, $01
-	db $30, $0A, $60, $04, $FA, $FF, $28, $00
-	db $C0, $00, $00, $0A, $80, $04, $FA, $FF
-	db $28, $00, $00, $01, $68, $08, $80, $04
-	db $FE, $FF, $00, $03, $FA, $FF, $22, $00
+	dw sprite.number, $030C
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_54, $021C
+	dw !initcommand_set_alt_palette, $0077
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_22, $6000
+	dw sprite.unknown_30, $0000
+	dw sprite.action, $0000
+	dw sprite.unknown_52, $0007
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_46, $0202
+	dw sprite.max_x_speed, $0040
+	dw sprite.unknown_4A, $0203
+	dw sprite.unknown_2A, $0060
+	dw !initcommand_set_animation, $02DD
+	dw sprite.unknown_5C, $2020
+	dw sprite.parameter, $00C0
+	dw sprite.unknown_4E, DATA_FF7970
+	dw !initcommand_success
+
+DATA_FF7970:
+	dw sprite.unknown_52, $0009
+	dw sprite.unknown_42, DATA_FF7990
+	dw !initcommand_success
+
+DATA_FF797A:
+	dw sprite.unknown_52, $0007
+	dw sprite.unknown_46, $0202
+	dw sprite.max_x_speed, $0040
+	dw sprite.unknown_4A, $0203
+	dw sprite.unknown_2A, $0060
+	dw !initcommand_success
+
+DATA_FF7990:
+	db $FE, $FF, $00, $03, $FC, $FF, $06, $06
+	db $FB, $FF, $10, $00, $08, $00, $FA, $FF
+	db $28, $00, $00, $01, $A0, $06, $E0, $07
+	db $FA, $FF, $28, $00, $C0, $00, $30, $06
+	db $18, $08, $FA, $FF, $28, $00, $00, $01
+	db $30, $04, $00, $08, $FA, $FF, $28, $00
+	db $80, $01, $30, $04, $C8, $06, $FA, $FF
+	db $28, $00, $00, $01, $80, $03, $C8, $06
+	db $FA, $FF, $28, $00, $C0, $00, $80, $03
+	db $D0, $07, $FA, $FF, $28, $00, $00, $01
+	db $D8, $02, $D0, $07, $FA, $FF, $22, $00
 	db $00, $00, $FA, $FF, $28, $00, $80, $01
-	db $68, $08, $50, $03, $FA, $FF, $28, $00
-	db $80, $01, $68, $08, $00, $03, $FA, $FF
-	db $28, $00, $80, $01, $68, $08, $F8, $01
-	db $FA, $FF, $28, $00, $00, $01, $30, $09
-	db $08, $02, $FA, $FF, $28, $00, $80, $01
-	db $80, $09, $7C, $01, $FA, $FF, $28, $00
-	db $00, $01, $F8, $0A, $80, $01, $FF, $FF
+	db $D8, $02, $E0, $06, $FA, $FF, $28, $00
+	db $80, $01, $90, $02, $50, $06, $FA, $FF
+	db $28, $00, $80, $01, $90, $02, $C0, $03
+	db $FA, $FF, $28, $00, $80, $01, $F0, $02
+	db $00, $03, $FA, $FF, $28, $00, $80, $01
+	db $E4, $02, $A8, $01, $FA, $FF, $28, $00
+	db $00, $01, $80, $03, $A8, $01, $FA, $FF
+	db $28, $00, $C0, $00, $C0, $03, $B4, $01
+	db $FA, $FF, $28, $00, $00, $01, $88, $06
+	db $B4, $01, $FA, $FF, $22, $00, $00, $40
+	db $FA, $FF, $28, $00, $C0, $00, $88, $06
+	db $10, $05, $FA, $FF, $28, $00, $00, $01
+	db $48, $06, $10, $05, $FA, $FF, $28, $00
+	db $80, $01, $38, $06, $B0, $03, $FA, $FF
+	db $28, $00, $00, $01, $E8, $05, $B0, $03
+	db $FA, $FF, $28, $00, $C0, $00, $E8, $04
+	db $C0, $04, $FA, $FF, $22, $00, $00, $00
+	db $FA, $FF, $28, $00, $C0, $00, $D8, $04
+	db $B0, $05, $FA, $FF, $28, $00, $00, $01
+	db $58, $05, $B0, $05, $FA, $FF, $28, $00
+	db $C0, $00, $58, $05, $70, $06, $FA, $FF
+	db $28, $00, $00, $01, $10, $07, $70, $06
+	db $FA, $FF, $28, $00, $80, $01, $50, $07
+	db $68, $06, $FA, $FF, $28, $00, $00, $01
+	db $10, $09, $68, $06, $FA, $FF, $28, $00
+	db $80, $01, $40, $09, $30, $06, $FA, $FF
+	db $28, $00, $00, $01, $F0, $09, $30, $06
+	db $FA, $FF, $28, $00, $80, $01, $48, $0A
+	db $B0, $05, $FA, $FF, $28, $00, $C0, $00
+	db $D0, $0A, $18, $06, $FA, $FF, $28, $00
+	db $80, $01, $D0, $0B, $48, $05, $FA, $FF
+	db $22, $00, $00, $40, $FA, $FF, $28, $00
+	db $80, $01, $D0, $0B, $90, $04, $FA, $FF
+	db $28, $00, $80, $01, $98, $0B, $40, $04
+	db $FA, $FF, $28, $00, $00, $01, $C0, $0A
+	db $40, $04, $FA, $FF, $28, $00, $C0, $00
+	db $70, $0A, $60, $04, $FA, $FF, $28, $00
+	db $00, $01, $30, $0A, $60, $04, $FA, $FF
+	db $28, $00, $C0, $00, $00, $0A, $80, $04
+	db $FA, $FF, $28, $00, $00, $01, $68, $08
+	db $80, $04, $FE, $FF, $00, $03, $FA, $FF
+	db $22, $00, $00, $00, $FA, $FF, $28, $00
+	db $80, $01, $68, $08, $50, $03, $FA, $FF
+	db $28, $00, $80, $01, $68, $08, $00, $03
+	db $FA, $FF, $28, $00, $80, $01, $68, $08
+	db $F8, $01, $FA, $FF, $28, $00, $00, $01
+	db $30, $09, $08, $02, $FA, $FF, $28, $00
+	db $80, $01, $80, $09, $7C, $01, $FA, $FF
+	db $28, $00, $00, $01, $F8, $0A, $80, $01
+	db $FF, $FF
 
 DATA_FF7B7A:
-	db $00, $00, $7C, $00, $02, $00, $D4, $00
-	db $54, $00, $1C, $02, $00, $8D, $38, $00
-	db $00, $81, $DB, $02, $00, $85, $00, $20
-	db $22, $00, $00, $20, $30, $00, $00, $00
-	db $2E, $00, $00, $00, $52, $00, $07, $00
-	db $20, $00, $00, $00, $24, $00, $00, $00
-	db $46, $00, $02, $02, $26, $00, $40, $00
-	db $4A, $00, $03, $02, $2A, $00, $60, $00
-	db $5C, $00, $00, $FF, $50, $00, $00, $40
-	db $4E, $00, $C8, $7B, $00, $80, $52, $00
-	db $09, $00, $42, $00, $E8, $7B, $00, $80
-	db $52, $00, $07, $00, $46, $00, $02, $02
-	db $26, $00, $40, $00, $4A, $00, $03, $02
-	db $2A, $00, $60, $00, $00, $80, $FE, $FF
-	db $40, $01, $FC, $FF, $19, $19, $FA, $FF
-	db $22, $00, $00, $00, $00, $06, $10, $06
-	db $FE, $FF, $80, $01, $80, $06, $10, $06
-	db $FE, $FF, $40, $02, $00, $07, $10, $06
-	db $FE, $FF, $C0, $02, $40, $07, $10, $06
-	db $FC, $FF, $19, $19, $B0, $07, $50, $06
-	db $B5, $07, $50, $06, $D0, $08, $50, $06
-	db $FC, $FF, $19, $19, $D0, $09, $D0, $05
-	db $D5, $09, $D0, $05, $FC, $FF, $09, $06
-	db $9C, $0A, $D0, $05, $FA, $FF, $22, $00
-	db $00, $40, $FE, $FF, $80, $04, $9C, $0A
-	db $26, $07, $FE, $FF, $20, $03, $00, $0A
-	db $26, $07, $FC, $FF, $19, $19, $90, $09
-	db $90, $07, $8B, $09, $90, $07, $50, $09
-	db $90, $07, $E0, $07, $70, $07, $D8, $07
-	db $70, $07, $FC, $FF, $09, $06, $50, $07
-	db $70, $07, $FA, $FF, $22, $00, $00, $00
-	db $FE, $FF, $80, $04, $50, $07, $20, $09
-	db $FE, $FF, $20, $03, $38, $08, $26, $09
-	db $FE, $FF, $80, $01, $70, $08, $50, $09
-	db $FF, $FF, $00, $83, $E0, $76, $00, $81
-	db $97, $01, $46, $00, $02, $02, $26, $00
-	db $40, $00, $4A, $00, $03, $02, $2A, $00
-	db $60, $00, $00, $8D, $38, $00, $00, $80
+	dw sprite.number, $007C
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_54, $021C
+	dw !initcommand_set_alt_palette, $0038
+	dw !initcommand_set_animation, $02DB
+	dw !initcommand_set_oam, $2000
+	dw sprite.unknown_22, $2000
+	dw sprite.unknown_30, $0000
+	dw sprite.action, $0000
+	dw sprite.unknown_52, $0007
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_46, $0202
+	dw sprite.max_x_speed, $0040
+	dw sprite.unknown_4A, $0203
+	dw sprite.unknown_2A, $0060
+	dw sprite.unknown_5C, $FF00
+	dw sprite.parameter, $4000
+	dw sprite.unknown_4E, DATA_FF7BC8
+	dw !initcommand_success
+
+DATA_FF7BC8:
+	dw sprite.unknown_52, $0009
+	dw sprite.unknown_42, DATA_FF7BE8
+	dw !initcommand_success
+
+DATA_FF7BD2:
+	dw sprite.unknown_52, $0007
+	dw sprite.unknown_46, $0202
+	dw sprite.max_x_speed, $0040
+	dw sprite.unknown_4A, $0203
+	dw sprite.unknown_2A, $0060
+	dw !initcommand_success
+
+DATA_FF7BE8:
+	db $FE, $FF, $40, $01, $FC, $FF, $19, $19
+	db $FA, $FF, $22, $00, $00, $00, $00, $06
+	db $10, $06, $FE, $FF, $80, $01, $80, $06
+	db $10, $06, $FE, $FF, $40, $02, $00, $07
+	db $10, $06, $FE, $FF, $C0, $02, $40, $07
+	db $10, $06, $FC, $FF, $19, $19, $B0, $07
+	db $50, $06, $B5, $07, $50, $06, $D0, $08
+	db $50, $06, $FC, $FF, $19, $19, $D0, $09
+	db $D0, $05, $D5, $09, $D0, $05, $FC, $FF
+	db $09, $06, $9C, $0A, $D0, $05, $FA, $FF
+	db $22, $00, $00, $40, $FE, $FF, $80, $04
+	db $9C, $0A, $26, $07, $FE, $FF, $20, $03
+	db $00, $0A, $26, $07, $FC, $FF, $19, $19
+	db $90, $09, $90, $07, $8B, $09, $90, $07
+	db $50, $09, $90, $07, $E0, $07, $70, $07
+	db $D8, $07, $70, $07, $FC, $FF, $09, $06
+	db $50, $07, $70, $07, $FA, $FF, $22, $00
+	db $00, $00, $FE, $FF, $80, $04, $50, $07
+	db $20, $09, $FE, $FF, $20, $03, $38, $08
+	db $26, $09, $FE, $FF, $80, $01, $70, $08
+	db $50, $09, $FF, $FF
+
+DATA_FF7C8C:
+	dw !initcommand_load_subconfig, DATA_FF76E0
+	dw !initcommand_set_animation, $0197
+	dw sprite.unknown_46, $0202
+	dw sprite.max_x_speed, $0040
+	dw sprite.unknown_4A, $0203
+	dw sprite.unknown_2A, $0060
+	dw !initcommand_set_alt_palette, $0038
+	dw !initcommand_success
 
 DATA_FF7CAA:
-	db $00, $83, $8C, $7C, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7C8C
+	dw !initcommand_success
 
 DATA_FF7CB0:
-	db $00, $83, $8C, $7C, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7C8C
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF7CBA:
-	db $00, $83, $8C, $7C, $46, $00, $02, $03
-	db $26, $00, $3C, $00, $4A, $00, $04, $03
-	db $2A, $00, $58, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7C8C
+	dw sprite.unknown_46, $0302
+	dw sprite.max_x_speed, $003C
+	dw sprite.unknown_4A, $0304
+	dw sprite.unknown_2A, $0058
+	dw !initcommand_success
 
 DATA_FF7CD0:
-	db $00, $83, $8C, $7C, $46, $00, $04, $02
-	db $26, $00, $44, $00, $4A, $00, $02, $01
-	db $2A, $00, $68, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7C8C
+	dw sprite.unknown_46, $0204
+	dw sprite.max_x_speed, $0044
+	dw sprite.unknown_4A, $0102
+	dw sprite.unknown_2A, $0068
+	dw !initcommand_success
 
 DATA_FF7CE6:
-	db $00, $83, $8C, $7C, $46, $00, $02, $03
-	db $26, $00, $3C, $00, $4A, $00, $04, $03
-	db $2A, $00, $58, $00, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7C8C
+	dw sprite.unknown_46, $0302
+	dw sprite.max_x_speed, $003C
+	dw sprite.unknown_4A, $0304
+	dw sprite.unknown_2A, $0058
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF7D00:
-	db $00, $83, $8C, $7C, $46, $00, $04, $02
-	db $26, $00, $44, $00, $4A, $00, $02, $01
-	db $2A, $00, $68, $00, $00, $85, $00, $20
-	db $00, $80, $00, $83, $E0, $76, $00, $81
-	db $97, $01, $52, $00, $08, $00, $4A, $00
-	db $03, $02, $2A, $00, $60, $00, $00, $85
-	db $00, $20, $00, $8D, $38, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7C8C
+	dw sprite.unknown_46, $0204
+	dw sprite.max_x_speed, $0044
+	dw sprite.unknown_4A, $0102
+	dw sprite.unknown_2A, $0068
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
+
+DATA_FF7D1A:
+	dw !initcommand_load_subconfig, DATA_FF76E0
+	dw !initcommand_set_animation, $0197
+	dw sprite.unknown_52, $0008
+	dw sprite.unknown_4A, $0203
+	dw sprite.unknown_2A, $0060
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0038
+	dw !initcommand_success
 
 DATA_FF7D38:
-	db $00, $83, $1A, $7D, $26, $00, $60, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D1A
+	dw sprite.max_x_speed, $0060
+	dw !initcommand_success
 
 DATA_FF7D42:
-	db $00, $83, $1A, $7D, $26, $00, $90, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D1A
+	dw sprite.max_x_speed, $0090
+	dw !initcommand_success
 
 DATA_FF7D4C:
-	db $00, $83, $1A, $7D, $26, $00, $20, $FF
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D1A
+	dw sprite.max_x_speed, $FF20
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF7D5A:
-	db $00, $83, $1A, $7D, $26, $00, $E0, $FE
-	db $00, $85, $00, $60, $00, $80, $00, $83
-	db $E0, $76, $00, $81, $97, $01, $46, $00
-	db $02, $02, $26, $00, $40, $00, $00, $8D
-	db $38, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D1A
+	dw sprite.max_x_speed, $FEE0
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
+
+DATA_FF7D68:
+	dw !initcommand_load_subconfig, DATA_FF76E0
+	dw !initcommand_set_animation, $0197
+	dw sprite.unknown_46, $0202
+	dw sprite.max_x_speed, $0040
+	dw !initcommand_set_alt_palette, $0038
+	dw !initcommand_success
 
 DATA_FF7D7E:
-	db $00, $83, $68, $7D, $4A, $00, $30, $30
-	db $2A, $00, $80, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $3030
+	dw sprite.unknown_2A, $0180
+	dw !initcommand_success
 
 DATA_FF7D8C:
-	db $00, $83, $68, $7D, $4A, $00, $30, $30
-	db $2A, $00, $00, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $3030
+	dw sprite.unknown_2A, $0200
+	dw !initcommand_success
 
 DATA_FF7D9A:
-	db $00, $83, $68, $7D, $4A, $00, $50, $50
-	db $2A, $00, $20, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $5050
+	dw sprite.unknown_2A, $0120
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF7DAC:
-	db $00, $83, $68, $7D, $4A, $00, $38, $38
-	db $2A, $00, $40, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $3838
+	dw sprite.unknown_2A, $0140
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF7DBE:
-	db $00, $83, $68, $7D, $4A, $00, $38, $38
-	db $2A, $00, $80, $FE, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $3838
+	dw sprite.unknown_2A, $FE80
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF7DD0:
-	db $00, $83, $68, $7D, $4A, $00, $50, $50
-	db $2A, $00, $60, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $5050
+	dw sprite.unknown_2A, $0160
+	dw !initcommand_success
 
 DATA_FF7DDE:
-	db $00, $83, $68, $7D, $4A, $00, $40, $20
-	db $2A, $00, $80, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $2040
+	dw sprite.unknown_2A, $0180
+	dw !initcommand_success
 
 DATA_FF7DEC:
-	db $00, $83, $68, $7D, $4A, $00, $60, $00
-	db $2A, $00, $C0, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $0060
+	dw sprite.unknown_2A, $01C0
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF7DFE:
-	db $00, $83, $68, $7D, $4A, $00, $40, $20
-	db $2A, $00, $00, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $2040
+	dw sprite.unknown_2A, $FE00
+	dw !initcommand_success
 
 DATA_FF7E0C:
-	db $00, $83, $68, $7D, $4A, $00, $30, $30
-	db $2A, $00, $80, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $3030
+	dw sprite.unknown_2A, $0180
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF7E1E:
-	db $00, $83, $68, $7D, $4A, $00, $50, $50
-	db $2A, $00, $A0, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $5050
+	dw sprite.unknown_2A, $01A0
+	dw !initcommand_success
 
 DATA_FF7E2C:
-	db $00, $83, $68, $7D, $4A, $00, $60, $00
-	db $2A, $00, $80, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $0060
+	dw sprite.unknown_2A, $0180
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF7E3E:
-	db $00, $83, $68, $7D, $4A, $00, $00, $60
-	db $2A, $00, $80, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $6000
+	dw sprite.unknown_2A, $0180
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF7E50:
-	db $00, $83, $68, $7D, $4A, $00, $50, $20
-	db $2A, $00, $C0, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $2050
+	dw sprite.unknown_2A, $FEC0
+	dw !initcommand_success
 
 DATA_FF7E5E:
-	db $00, $83, $68, $7D, $4A, $00, $18, $18
-	db $2A, $00, $40, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $1818
+	dw sprite.unknown_2A, $0140
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF7E70:
-	db $00, $83, $68, $7D, $4A, $00, $30, $30
-	db $2A, $00, $C0, $01, $46, $00, $08, $08
-	db $26, $00, $40, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $3030
+	dw sprite.unknown_2A, $01C0
+	dw sprite.unknown_46, $0808
+	dw sprite.max_x_speed, $0140
+	dw !initcommand_success
 
 DATA_FF7E86:
-	db $00, $83, $68, $7D, $4A, $00, $28, $38
-	db $2A, $00, $40, $01, $46, $00, $04, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $3828
+	dw sprite.unknown_2A, $0140
+	dw sprite.unknown_46, $0204
+	dw !initcommand_success
 
 DATA_FF7E98:
-	db $00, $83, $68, $7D, $4A, $00, $28, $38
-	db $2A, $00, $40, $01, $46, $00, $02, $03
-	db $26, $00, $44, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $3828
+	dw sprite.unknown_2A, $0140
+	dw sprite.unknown_46, $0302
+	dw sprite.max_x_speed, $0044
+	dw !initcommand_success
 
 DATA_FF7EAE:
-	db $00, $83, $68, $7D, $4A, $00, $28, $38
-	db $2A, $00, $40, $01, $46, $00, $03, $05
-	db $26, $00, $3C, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $3828
+	dw sprite.unknown_2A, $0140
+	dw sprite.unknown_46, $0503
+	dw sprite.max_x_speed, $003C
+	dw !initcommand_success
 
 DATA_FF7EC4:
-	db $00, $83, $68, $7D, $4A, $00, $40, $40
-	db $2A, $00, $80, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $4040
+	dw sprite.unknown_2A, $0180
+	dw !initcommand_success
 
 DATA_FF7ED2:
-	db $00, $83, $68, $7D, $4A, $00, $40, $40
-	db $2A, $00, $80, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $4040
+	dw sprite.unknown_2A, $FE80
+	dw !initcommand_success
 
 DATA_FF7EE0:
-	db $00, $83, $68, $7D, $4A, $00, $30, $30
-	db $2A, $00, $80, $01, $46, $00, $03, $05
-	db $26, $00, $3C, $00, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $3030
+	dw sprite.unknown_2A, $0180
+	dw sprite.unknown_46, $0503
+	dw sprite.max_x_speed, $003C
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF7EFA:
-	db $00, $83, $68, $7D, $4A, $00, $50, $50
-	db $2A, $00, $80, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $5050
+	dw sprite.unknown_2A, $0180
+	dw !initcommand_success
 
 DATA_FF7F08:
-	db $00, $83, $68, $7D, $4A, $00, $30, $30
-	db $2A, $00, $00, $02, $46, $00, $03, $01
-	db $26, $00, $30, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $3030
+	dw sprite.unknown_2A, $0200
+	dw sprite.unknown_46, $0103
+	dw sprite.max_x_speed, $0030
+	dw !initcommand_success
 
 DATA_FF7F1E:
-	db $00, $83, $68, $7D, $4A, $00, $30, $30
-	db $2A, $00, $00, $02, $46, $00, $03, $03
-	db $26, $00, $50, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $3030
+	dw sprite.unknown_2A, $0200
+	dw sprite.unknown_46, $0303
+	dw sprite.max_x_speed, $0050
+	dw !initcommand_success
 
 DATA_FF7F34:
-	db $00, $83, $68, $7D, $4A, $00, $60, $30
-	db $2A, $00, $40, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $3060
+	dw sprite.unknown_2A, $0140
+	dw !initcommand_success
 
 DATA_FF7F42:
-	db $00, $83, $68, $7D, $4A, $00, $A0, $00
-	db $2A, $00, $E0, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $00A0
+	dw sprite.unknown_2A, $FEE0
+	dw !initcommand_success
 
 DATA_FF7F50:
-	db $00, $83, $68, $7D, $4A, $00, $30, $30
-	db $2A, $00, $C0, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $3030
+	dw sprite.unknown_2A, $FEC0
+	dw !initcommand_success
 
 DATA_FF7F5E:
-	db $00, $83, $68, $7D, $4A, $00, $40, $40
-	db $2A, $00, $00, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $4040
+	dw sprite.unknown_2A, $0200
+	dw !initcommand_success
 
 DATA_FF7F6C:
-	db $00, $83, $68, $7D, $4A, $00, $28, $28
-	db $2A, $00, $80, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $2828
+	dw sprite.unknown_2A, $0180
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF7F7E:
-	db $00, $83, $68, $7D, $4A, $00, $18, $18
-	db $2A, $00, $40, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $1818
+	dw sprite.unknown_2A, $0140
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF7F90:
-	db $00, $83, $68, $7D, $4A, $00, $00, $60
-	db $2A, $00, $40, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $6000
+	dw sprite.unknown_2A, $0140
+	dw !initcommand_success
 
 DATA_FF7F9E:
-	db $00, $83, $68, $7D, $4A, $00, $60, $00
-	db $2A, $00, $40, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $0060
+	dw sprite.unknown_2A, $0140
+	dw !initcommand_success
 
 DATA_FF7FAC:
-	db $00, $83, $68, $7D, $4A, $00, $30, $30
-	db $2A, $00, $40, $FE, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $3030
+	dw sprite.unknown_2A, $FE40
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF7FBE:
-	db $00, $83, $68, $7D, $4A, $00, $50, $50
-	db $2A, $00, $40, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $5050
+	dw sprite.unknown_2A, $0140
+	dw !initcommand_success
 
 DATA_FF7FCC:
-	db $00, $83, $68, $7D, $46, $00, $03, $05
-	db $26, $00, $3C, $00, $4A, $00, $50, $50
-	db $2A, $00, $40, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_46, $0503
+	dw sprite.max_x_speed, $003C
+	dw sprite.unknown_4A, $5050
+	dw sprite.unknown_2A, $0140
+	dw !initcommand_success
 
 DATA_FF7FE2:
-	db $00, $83, $68, $7D, $4A, $00, $40, $40
-	db $2A, $00, $80, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $4040
+	dw sprite.unknown_2A, $FE80
+	dw !initcommand_success
 
 DATA_FF7FF0:
-	db $00, $83, $68, $7D, $4A, $00, $30, $30
-	db $2A, $00, $80, $FE, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $3030
+	dw sprite.unknown_2A, $FE80
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF8002:
-	db $00, $83, $68, $7D, $4A, $00, $30, $30
-	db $2A, $00, $80, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $3030
+	dw sprite.unknown_2A, $0180
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF8014:
-	db $00, $83, $68, $7D, $4A, $00, $00, $68
-	db $2A, $00, $80, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $6800
+	dw sprite.unknown_2A, $FE80
+	dw !initcommand_success
 
 DATA_FF8022:
-	db $00, $83, $68, $7D, $4A, $00, $10, $50
-	db $2A, $00, $60, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $5010
+	dw sprite.unknown_2A, $0160
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF8034:
-	db $00, $83, $68, $7D, $4A, $00, $20, $20
-	db $2A, $00, $80, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $2020
+	dw sprite.unknown_2A, $0280
+	dw !initcommand_success
 
 DATA_FF8042:
-	db $00, $83, $68, $7D, $4A, $00, $50, $50
-	db $2A, $00, $60, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $5050
+	dw sprite.unknown_2A, $FE60
+	dw !initcommand_success
 
 DATA_FF8050:
-	db $00, $83, $68, $7D, $4A, $00, $40, $40
-	db $2A, $00, $80, $01, $46, $00, $03, $05
-	db $26, $00, $3C, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $4040
+	dw sprite.unknown_2A, $0180
+	dw sprite.unknown_46, $0503
+	dw sprite.max_x_speed, $003C
+	dw !initcommand_success
 
 DATA_FF8066:
-	db $00, $83, $68, $7D, $4A, $00, $40, $40
-	db $2A, $00, $80, $FE, $46, $00, $04, $01
-	db $26, $00, $44, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $4040
+	dw sprite.unknown_2A, $FE80
+	dw sprite.unknown_46, $0104
+	dw sprite.max_x_speed, $0044
+	dw !initcommand_success
 
 DATA_FF807C:
-	db $00, $83, $68, $7D, $4A, $00, $40, $60
-	db $2A, $00, $A0, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $6040
+	dw sprite.unknown_2A, $01A0
+	dw !initcommand_success
 
 DATA_FF808A:
-	db $00, $83, $68, $7D, $4A, $00, $20, $60
-	db $2A, $00, $80, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $6020
+	dw sprite.unknown_2A, $0180
+	dw !initcommand_success
 
 DATA_FF8098:
-	db $00, $83, $68, $7D, $4A, $00, $20, $60
-	db $2A, $00, $80, $01, $46, $00, $03, $05
-	db $26, $00, $3C, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $6020
+	dw sprite.unknown_2A, $0180
+	dw sprite.unknown_46, $0503
+	dw sprite.max_x_speed, $003C
+	dw !initcommand_success
 
 DATA_FF80AE:
-	db $00, $83, $68, $7D, $4A, $00, $30, $30
-	db $2A, $00, $00, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $3030
+	dw sprite.unknown_2A, $0100
+	dw !initcommand_success
 
 DATA_FF80BC:
-	db $00, $83, $68, $7D, $4A, $00, $30, $30
-	db $2A, $00, $00, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $3030
+	dw sprite.unknown_2A, $FF00
+	dw !initcommand_success
 
 DATA_FF80CA:
-	db $00, $83, $68, $7D, $4A, $00, $40, $20
-	db $2A, $00, $40, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $2040
+	dw sprite.unknown_2A, $0140
+	dw !initcommand_success
 
 DATA_FF80D8:
-	db $00, $83, $68, $7D, $4A, $00, $50, $30
-	db $2A, $00, $80, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $3050
+	dw sprite.unknown_2A, $0180
+	dw !initcommand_success
 
 DATA_FF80E6:
-	db $00, $83, $68, $7D, $4A, $00, $30, $30
-	db $2A, $00, $E0, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $3030
+	dw sprite.unknown_2A, $FEE0
+	dw !initcommand_success
 
 DATA_FF80F4:
-	db $00, $83, $68, $7D, $52, $00, $1B, $00
-	db $4A, $00, $36, $54, $2A, $00, $80, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_52, $001B
+	dw sprite.unknown_4A, $5436
+	dw sprite.unknown_2A, $0180
+	dw !initcommand_success
 
 DATA_FF8106:
-	db $00, $83, $68, $7D, $52, $00, $1B, $00
-	db $4A, $00, $44, $64, $2A, $00, $C0, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_52, $001B
+	dw sprite.unknown_4A, $6444
+	dw sprite.unknown_2A, $01C0
+	dw !initcommand_success
 
 DATA_FF8118:
-	db $00, $83, $68, $7D, $52, $00, $1B, $00
-	db $4A, $00, $6A, $48, $2A, $00, $00, $FE
-	db $00, $85, $00, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_52, $001B
+	dw sprite.unknown_4A, $486A
+	dw sprite.unknown_2A, $FE00
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF812E:
-	db $00, $83, $68, $7D, $52, $00, $1B, $00
-	db $4A, $00, $35, $BC, $2A, $00, $E0, $01
-	db $00, $85, $00, $20, $00, $80, $00, $83
-	db $E0, $76, $00, $81, $96, $01, $4A, $00
-	db $03, $02, $2A, $00, $60, $00, $00, $8D
-	db $38, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_52, $001B
+	dw sprite.unknown_4A, $BC35
+	dw sprite.unknown_2A, $01E0
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
+
+DATA_FF8144:
+	dw !initcommand_load_subconfig, DATA_FF76E0
+	dw !initcommand_set_animation, $0196
+	dw sprite.unknown_4A, $0203
+	dw sprite.unknown_2A, $0060
+	dw !initcommand_set_alt_palette, $0038
+	dw !initcommand_success
 
 DATA_FF815A:
-	db $00, $83, $44, $81, $46, $00, $30, $30
-	db $26, $00, $80, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $3030
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_success
 
 DATA_FF8168:
-	db $00, $83, $44, $81, $46, $00, $20, $40
-	db $26, $00, $80, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $4020
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_success
 
 DATA_FF8176:
-	db $00, $83, $44, $81, $46, $00, $28, $28
-	db $26, $00, $C0, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $2828
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_success
 
 DATA_FF8184:
-	db $00, $83, $44, $81, $46, $00, $30, $50
-	db $26, $00, $80, $FE, $4A, $00, $0A, $0A
-	db $2A, $00, $60, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $5030
+	dw sprite.max_x_speed, $FE80
+	dw sprite.unknown_4A, $0A0A
+	dw sprite.unknown_2A, $0160
+	dw !initcommand_success
 
 DATA_FF819A:
-	db $00, $83, $44, $81, $46, $00, $30, $30
-	db $26, $00, $00, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $3030
+	dw sprite.max_x_speed, $FE00
+	dw !initcommand_success
 
 DATA_FF81A8:
-	db $00, $83, $44, $81, $46, $00, $40, $40
-	db $26, $00, $C0, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $4040
+	dw sprite.max_x_speed, $01C0
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF81BA:
-	db $00, $83, $44, $81, $46, $00, $28, $58
-	db $26, $00, $C0, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $5828
+	dw sprite.max_x_speed, $01C0
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF81CC:
-	db $00, $83, $44, $81, $46, $00, $48, $48
-	db $26, $00, $80, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $4848
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_success
 
 DATA_FF81DA:
-	db $00, $83, $44, $81, $46, $00, $60, $00
-	db $26, $00, $80, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $0060
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF81EC:
-	db $00, $83, $44, $81, $46, $00, $20, $40
-	db $26, $00, $A0, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $4020
+	dw sprite.max_x_speed, $FEA0
+	dw !initcommand_success
 
 DATA_FF81FA:
-	db $00, $83, $44, $81, $46, $00, $50, $20
-	db $26, $00, $80, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $2050
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_success
 
 DATA_FF8208:
-	db $00, $83, $44, $81, $46, $00, $48, $48
-	db $26, $00, $A0, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $4848
+	dw sprite.max_x_speed, $FEA0
+	dw !initcommand_success
 
 DATA_FF8216:
-	db $00, $83, $44, $81, $46, $00, $48, $48
-	db $26, $00, $60, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $4848
+	dw sprite.max_x_speed, $0160
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF8228:
-	db $00, $83, $44, $81, $46, $00, $28, $58
-	db $26, $00, $80, $02, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $5828
+	dw sprite.max_x_speed, $0280
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF823A:
-	db $00, $83, $44, $81, $46, $00, $50, $50
-	db $26, $00, $C0, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $5050
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_success
 
 DATA_FF8248:
-	db $00, $83, $44, $81, $46, $00, $64, $3C
-	db $26, $00, $C0, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $3C64
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_success
 
 DATA_FF8256:
-	db $00, $83, $44, $81, $46, $00, $3C, $64
-	db $26, $00, $C0, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $643C
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_success
 
 DATA_FF8264:
-	db $00, $83, $44, $81, $46, $00, $50, $50
-	db $26, $00, $40, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $5050
+	dw sprite.max_x_speed, $0140
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF8276:
-	db $00, $83, $44, $81, $46, $00, $20, $20
-	db $26, $00, $E0, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $2020
+	dw sprite.max_x_speed, $FEE0
+	dw !initcommand_success
 
 DATA_FF8284:
-	db $00, $83, $44, $81, $46, $00, $20, $20
-	db $26, $00, $20, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $2020
+	dw sprite.max_x_speed, $0120
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF8296:
-	db $00, $83, $44, $81, $46, $00, $64, $3C
-	db $26, $00, $80, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $3C64
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF82A8:
-	db $00, $83, $44, $81, $46, $00, $3C, $64
-	db $26, $00, $80, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $643C
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF82BA:
-	db $00, $83, $44, $81, $46, $00, $64, $3C
-	db $26, $00, $00, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $3C64
+	dw sprite.max_x_speed, $FE00
+	dw !initcommand_success
 
 DATA_FF82C8:
-	db $00, $83, $44, $81, $46, $00, $3C, $64
-	db $26, $00, $00, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $643C
+	dw sprite.max_x_speed, $FE00
+	dw !initcommand_success
 
 DATA_FF82D6:
-	db $00, $83, $44, $81, $46, $00, $38, $38
-	db $26, $00, $80, $FE, $4A, $00, $08, $08
-	db $2A, $00, $40, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $3838
+	dw sprite.max_x_speed, $FE80
+	dw sprite.unknown_4A, $0808
+	dw sprite.unknown_2A, $0140
+	dw !initcommand_success
 
 DATA_FF82EC:
-	db $00, $83, $44, $81, $46, $00, $30, $30
-	db $26, $00, $00, $FF, $4A, $00, $08, $08
-	db $2A, $00, $20, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $3030
+	dw sprite.max_x_speed, $FF00
+	dw sprite.unknown_4A, $0808
+	dw sprite.unknown_2A, $0120
+	dw !initcommand_success
 
 DATA_FF8302:
-	db $00, $83, $44, $81, $46, $00, $10, $50
-	db $26, $00, $C0, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $5010
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_success
 
 DATA_FF8310:
-	db $00, $83, $44, $81, $46, $00, $38, $28
-	db $26, $00, $E0, $00, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $2838
+	dw sprite.max_x_speed, $00E0
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF8322:
-	db $00, $83, $44, $81, $46, $00, $70, $40
-	db $26, $00, $40, $FD, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $4070
+	dw sprite.max_x_speed, $FD40
+	dw !initcommand_success
 
 DATA_FF8330:
-	db $00, $83, $44, $81, $46, $00, $28, $38
-	db $26, $00, $20, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $3828
+	dw sprite.max_x_speed, $FF20
+	dw !initcommand_success
 
 DATA_FF833E:
-	db $00, $83, $44, $81, $46, $00, $28, $58
-	db $26, $00, $80, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $5828
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_success
 
 DATA_FF834C:
-	db $00, $83, $44, $81, $46, $00, $00, $60
-	db $26, $00, $80, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $6000
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_success
 
 DATA_FF835A:
-	db $00, $83, $44, $81, $46, $00, $28, $28
-	db $26, $00, $C0, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $2828
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_success
 
 DATA_FF8368:
-	db $00, $83, $44, $81, $46, $00, $50, $50
-	db $26, $00, $40, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $5050
+	dw sprite.max_x_speed, $FE40
+	dw !initcommand_success
 
 DATA_FF8376:
-	db $00, $83, $44, $81, $46, $00, $A0, $00
-	db $26, $00, $C0, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $00A0
+	dw sprite.max_x_speed, $01C0
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF8388:
-	db $00, $83, $44, $81, $46, $00, $00, $A0
-	db $26, $00, $C0, $FD, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $A000
+	dw sprite.max_x_speed, $FDC0
+	dw !initcommand_success
 
 DATA_FF8396:
-	db $00, $83, $44, $81, $46, $00, $30, $30
-	db $26, $00, $E0, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $3030
+	dw sprite.max_x_speed, $FEE0
+	dw !initcommand_success
 
 DATA_FF83A4:
-	db $00, $83, $44, $81, $46, $00, $28, $28
-	db $26, $00, $00, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $2828
+	dw sprite.max_x_speed, $FE00
+	dw !initcommand_success
 
 DATA_FF83B2:
-	db $00, $83, $44, $81, $46, $00, $50, $50
-	db $26, $00, $40, $02, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $5050
+	dw sprite.max_x_speed, $0240
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF83C4:
-	db $00, $83, $44, $81, $46, $00, $50, $50
-	db $26, $00, $C0, $FD, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $5050
+	dw sprite.max_x_speed, $FDC0
+	dw !initcommand_success
 
 DATA_FF83D2:
-	db $00, $83, $44, $81, $46, $00, $30, $30
-	db $26, $00, $80, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $3030
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF83E4:
-	db $00, $83, $44, $81, $46, $00, $30, $30
-	db $26, $00, $60, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $3030
+	dw sprite.max_x_speed, $FE60
+	dw !initcommand_success
 
 DATA_FF83F2:
-	db $00, $83, $44, $81, $46, $00, $30, $30
-	db $26, $00, $40, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $3030
+	dw sprite.max_x_speed, $FE40
+	dw !initcommand_success
 
 DATA_FF8400:
-	db $00, $83, $44, $81, $46, $00, $30, $30
-	db $26, $00, $20, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $3030
+	dw sprite.max_x_speed, $0120
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF8412:
-	db $00, $83, $44, $81, $46, $00, $30, $30
-	db $26, $00, $60, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $3030
+	dw sprite.max_x_speed, $0160
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF8424:
-	db $00, $83, $44, $81, $46, $00, $70, $40
-	db $26, $00, $20, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $4070
+	dw sprite.max_x_speed, $0120
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF8436:
-	db $00, $83, $44, $81, $46, $00, $30, $30
-	db $26, $00, $80, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $3030
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF8448:
-	db $00, $83, $44, $81, $46, $00, $60, $20
-	db $26, $00, $C0, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $2060
+	dw sprite.max_x_speed, $01C0
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF845A:
-	db $00, $83, $44, $81, $46, $00, $40, $40
-	db $26, $00, $C0, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $4040
+	dw sprite.max_x_speed, $01C0
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF846C:
-	db $00, $83, $44, $81, $46, $00, $10, $70
-	db $26, $00, $80, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $7010
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF847E:
-	db $00, $83, $44, $81, $46, $00, $38, $38
-	db $26, $00, $40, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $3838
+	dw sprite.max_x_speed, $FF40
+	dw !initcommand_success
 
 DATA_FF848C:
-	db $00, $83, $44, $81, $46, $00, $38, $38
-	db $26, $00, $C0, $00, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $3838
+	dw sprite.max_x_speed, $00C0
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF849E:
-	db $00, $83, $44, $81, $46, $00, $10, $60
-	db $26, $00, $40, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $6010
+	dw sprite.max_x_speed, $FF40
+	dw !initcommand_success
 
 DATA_FF84AC:
-	db $00, $83, $44, $81, $46, $00, $60, $10
-	db $26, $00, $C0, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $1060
+	dw sprite.max_x_speed, $00C0
+	dw !initcommand_success
 
 DATA_FF84BA:
-	db $00, $83, $44, $81, $46, $00, $48, $58
-	db $26, $00, $E0, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $5848
+	dw sprite.max_x_speed, $FEE0
+	dw !initcommand_success
 
 DATA_FF84C8:
-	db $00, $83, $44, $81, $46, $00, $88, $48
-	db $26, $00, $C0, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $4888
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_success
 
 DATA_FF84D6:
-	db $00, $83, $44, $81, $46, $00, $28, $68
-	db $26, $00, $00, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $6828
+	dw sprite.max_x_speed, $FF00
+	dw !initcommand_success
 
 DATA_FF84E4:
-	db $00, $83, $44, $81, $46, $00, $00, $70
-	db $26, $00, $E0, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $7000
+	dw sprite.max_x_speed, $FEE0
+	dw !initcommand_success
 
 DATA_FF84F2:
-	db $00, $83, $44, $81, $46, $00, $20, $28
-	db $26, $00, $C0, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $2820
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_success
 
 DATA_FF8500:
-	db $00, $83, $44, $81, $46, $00, $30, $38
-	db $26, $00, $60, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $3830
+	dw sprite.max_x_speed, $0160
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF8512:
-	db $00, $83, $44, $81, $46, $00, $28, $28
-	db $26, $00, $00, $FF, $00, $80, $00, $83
-	db $06, $77, $00, $81, $96, $01, $52, $00
-	db $0A, $00, $00, $85, $00, $20, $00, $8D
-	db $38, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $2828
+	dw sprite.max_x_speed, $FF00
+	dw !initcommand_success
+
+DATA_FF8520:
+	dw !initcommand_load_subconfig, DATA_FF7706
+	dw !initcommand_set_animation, $0196
+	dw sprite.unknown_52, $000A
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0038
+	dw !initcommand_success
 
 DATA_FF8536:
-	db $00, $83, $20, $85, $46, $00, $00, $80
-	db $48, $00, $00, $50, $26, $00, $A0, $FE
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $8000
+	dw sprite.unknown_48, $5000
+	dw sprite.max_x_speed, $FEA0
+	dw !initcommand_success
 
 DATA_FF8548:
-	db $00, $83, $20, $85, $46, $00, $00, $5C
-	db $48, $00, $00, $50, $26, $00, $A0, $FE
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $5C00
+	dw sprite.unknown_48, $5000
+	dw sprite.max_x_speed, $FEA0
+	dw !initcommand_success
 
 DATA_FF855A:
-	db $00, $83, $20, $85, $46, $00, $00, $38
-	db $48, $00, $00, $50, $26, $00, $A0, $FE
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $3800
+	dw sprite.unknown_48, $5000
+	dw sprite.max_x_speed, $FEA0
+	dw !initcommand_success
 
 DATA_FF856C:
-	db $00, $83, $20, $85, $46, $00, $00, $14
-	db $48, $00, $00, $50, $26, $00, $A0, $FE
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $1400
+	dw sprite.unknown_48, $5000
+	dw sprite.max_x_speed, $FEA0
+	dw !initcommand_success
 
 DATA_FF857E:
-	db $00, $83, $20, $85, $46, $00, $00, $F0
-	db $48, $00, $00, $50, $26, $00, $A0, $FE
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $F000
+	dw sprite.unknown_48, $5000
+	dw sprite.max_x_speed, $FEA0
+	dw !initcommand_success
 
 DATA_FF8590:
-	db $00, $83, $20, $85, $46, $00, $80, $00
-	db $48, $00, $00, $30, $26, $00, $80, $FD
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $0080
+	dw sprite.unknown_48, $3000
+	dw sprite.max_x_speed, $FD80
+	dw !initcommand_success
 
 DATA_FF85A2:
-	db $00, $83, $20, $85, $46, $00, $00, $80
-	db $48, $00, $00, $70, $26, $00, $E0, $FE
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $8000
+	dw sprite.unknown_48, $7000
+	dw sprite.max_x_speed, $FEE0
+	dw !initcommand_success
 
 DATA_FF85B4:
-	db $00, $83, $20, $85, $46, $00, $00, $00
-	db $48, $00, $00, $50, $26, $00, $80, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $0000
+	dw sprite.unknown_48, $5000
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_success
 
 DATA_FF85C6:
-	db $00, $83, $20, $85, $46, $00, $00, $80
-	db $48, $00, $00, $50, $26, $00, $80, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $8000
+	dw sprite.unknown_48, $5000
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_success
 
 DATA_FF85D8:
-	db $00, $83, $20, $85, $46, $00, $00, $80
-	db $48, $00, $00, $30, $26, $00, $80, $01
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $8000
+	dw sprite.unknown_48, $3000
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF85EE:
-	db $00, $83, $20, $85, $46, $00, $00, $80
-	db $48, $00, $00, $30, $26, $00, $80, $02
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $8000
+	dw sprite.unknown_48, $3000
+	dw sprite.max_x_speed, $0280
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF8604:
-	db $00, $83, $20, $85, $46, $00, $00, $00
-	db $48, $00, $00, $30, $26, $00, $80, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $0000
+	dw sprite.unknown_48, $3000
+	dw sprite.max_x_speed, $0280
+	dw !initcommand_success
 
 DATA_FF8616:
-	db $00, $83, $84, $8D, $46, $00, $00, $5C
-	db $48, $00, $00, $68, $26, $00, $C0, $FE
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8D84
+	dw sprite.unknown_46, $5C00
+	dw sprite.unknown_48, $6800
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_success
 
 DATA_FF8628:
-	db $00, $83, $84, $8D, $46, $00, $00, $14
-	db $48, $00, $00, $68, $26, $00, $C0, $FE
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8D84
+	dw sprite.unknown_46, $1400
+	dw sprite.unknown_48, $6800
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_success
 
 DATA_FF863A:
-	db $00, $83, $20, $85, $46, $00, $00, $00
-	db $48, $00, $00, $58, $26, $00, $20, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $0000
+	dw sprite.unknown_48, $5800
+	dw sprite.max_x_speed, $0120
+	dw !initcommand_success
 
 DATA_FF864C:
-	db $00, $83, $20, $85, $46, $00, $00, $DC
-	db $48, $00, $00, $58, $26, $00, $20, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $DC00
+	dw sprite.unknown_48, $5800
+	dw sprite.max_x_speed, $0120
+	dw !initcommand_success
 
 DATA_FF865E:
-	db $00, $83, $20, $85, $46, $00, $00, $00
-	db $48, $00, $00, $28, $26, $00, $60, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $0000
+	dw sprite.unknown_48, $2800
+	dw sprite.max_x_speed, $0160
+	dw !initcommand_success
 
 DATA_FF8670:
-	db $00, $83, $20, $85, $46, $00, $00, $80
-	db $48, $00, $00, $30, $26, $00, $00, $03
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $8000
+	dw sprite.unknown_48, $3000
+	dw sprite.max_x_speed, $0300
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF8686:
-	db $00, $83, $20, $85, $46, $00, $00, $80
-	db $48, $00, $00, $48, $26, $00, $00, $02
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $8000
+	dw sprite.unknown_48, $4800
+	dw sprite.max_x_speed, $0200
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF869C:
-	db $00, $83, $20, $85, $46, $00, $00, $C0
-	db $48, $00, $00, $48, $26, $00, $80, $01
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $C000
+	dw sprite.unknown_48, $4800
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF86B2:
-	db $00, $83, $20, $85, $46, $00, $00, $00
-	db $48, $00, $00, $30, $26, $00, $00, $FE
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $0000
+	dw sprite.unknown_48, $3000
+	dw sprite.max_x_speed, $FE00
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF86C8:
-	db $00, $83, $20, $85, $46, $00, $00, $00
-	db $48, $00, $00, $30, $26, $00, $80, $02
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $0000
+	dw sprite.unknown_48, $3000
+	dw sprite.max_x_speed, $0280
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF86DE:
-	db $00, $83, $20, $85, $46, $00, $00, $80
-	db $48, $00, $00, $40, $26, $00, $C0, $01
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $8000
+	dw sprite.unknown_48, $4000
+	dw sprite.max_x_speed, $01C0
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF86F4:
-	db $00, $83, $20, $85, $46, $00, $00, $00
-	db $48, $00, $00, $70, $26, $00, $F8, $00
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $0000
+	dw sprite.unknown_48, $7000
+	dw sprite.max_x_speed, $00F8
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF870A:
-	db $00, $83, $20, $85, $46, $00, $00, $40
-	db $48, $00, $00, $70, $26, $00, $F8, $00
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $4000
+	dw sprite.unknown_48, $7000
+	dw sprite.max_x_speed, $00F8
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF8720:
-	db $00, $83, $20, $85, $46, $00, $00, $80
-	db $48, $00, $00, $70, $26, $00, $F8, $00
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $8000
+	dw sprite.unknown_48, $7000
+	dw sprite.max_x_speed, $00F8
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF8736:
-	db $00, $83, $20, $85, $46, $00, $00, $C0
-	db $48, $00, $00, $70, $26, $00, $F8, $00
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $C000
+	dw sprite.unknown_48, $7000
+	dw sprite.max_x_speed, $00F8
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF874C:
-	db $00, $83, $20, $85, $46, $00, $00, $00
-	db $48, $00, $00, $30, $26, $00, $40, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $0000
+	dw sprite.unknown_48, $3000
+	dw sprite.max_x_speed, $0140
+	dw !initcommand_success
 
 DATA_FF875E:
-	db $00, $83, $20, $85, $46, $00, $00, $80
-	db $48, $00, $00, $20, $26, $00, $80, $03
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $8000
+	dw sprite.unknown_48, $2000
+	dw sprite.max_x_speed, $0380
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF8774:
-	db $00, $83, $20, $85, $46, $00, $00, $80
-	db $48, $00, $00, $20, $26, $00, $80, $02
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $8000
+	dw sprite.unknown_48, $2000
+	dw sprite.max_x_speed, $0280
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF878A:
-	db $00, $83, $20, $85, $46, $00, $00, $E0
-	db $48, $00, $00, $30, $26, $00, $80, $01
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $E000
+	dw sprite.unknown_48, $3000
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF87A0:
-	db $00, $83, $20, $85, $46, $00, $00, $10
-	db $48, $00, $00, $30, $26, $00, $80, $01
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $1000
+	dw sprite.unknown_48, $3000
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF87B6:
-	db $00, $83, $20, $85, $46, $00, $00, $40
-	db $48, $00, $00, $30, $26, $00, $80, $01
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $4000
+	dw sprite.unknown_48, $3000
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF87CC:
-	db $00, $83, $20, $85, $46, $00, $00, $70
-	db $48, $00, $00, $30, $26, $00, $80, $01
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $7000
+	dw sprite.unknown_48, $3000
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF87E2:
-	db $00, $83, $20, $85, $46, $00, $00, $00
-	db $48, $00, $00, $30, $26, $00, $40, $01
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $0000
+	dw sprite.unknown_48, $3000
+	dw sprite.max_x_speed, $0140
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF87F8:
-	db $00, $83, $20, $85, $46, $00, $00, $80
-	db $48, $00, $00, $30, $26, $00, $40, $01
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $8000
+	dw sprite.unknown_48, $3000
+	dw sprite.max_x_speed, $0140
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF880E:
-	db $00, $83, $20, $85, $46, $00, $00, $40
-	db $48, $00, $00, $30, $26, $00, $80, $02
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $4000
+	dw sprite.unknown_48, $3000
+	dw sprite.max_x_speed, $0280
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF8824:
-	db $00, $83, $20, $85, $46, $00, $00, $C0
-	db $48, $00, $00, $30, $26, $00, $80, $02
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $C000
+	dw sprite.unknown_48, $3000
+	dw sprite.max_x_speed, $0280
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF883A:
-	db $00, $83, $20, $85, $46, $00, $00, $80
-	db $48, $00, $00, $30, $26, $00, $00, $FE
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $8000
+	dw sprite.unknown_48, $3000
+	dw sprite.max_x_speed, $FE00
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF8850:
-	db $00, $83, $20, $85, $46, $00, $00, $20
-	db $48, $00, $00, $30, $26, $00, $00, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $2000
+	dw sprite.unknown_48, $3000
+	dw sprite.max_x_speed, $0200
+	dw !initcommand_success
 
 DATA_FF8862:
-	db $00, $83, $20, $85, $46, $00, $00, $80
-	db $48, $00, $00, $20, $26, $00, $80, $02
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $8000
+	dw sprite.unknown_48, $2000
+	dw sprite.max_x_speed, $0280
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF8878:
-	db $00, $83, $20, $85, $46, $00, $00, $80
-	db $48, $00, $00, $28, $26, $00, $60, $01
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $8000
+	dw sprite.unknown_48, $2800
+	dw sprite.max_x_speed, $0160
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF888E:
-	db $00, $83, $20, $85, $46, $00, $00, $80
-	db $48, $00, $00, $38, $26, $00, $80, $01
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $8000
+	dw sprite.unknown_48, $3800
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF88A4:
-	db $00, $83, $20, $85, $46, $00, $00, $20
-	db $48, $00, $00, $30, $26, $00, $00, $03
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $2000
+	dw sprite.unknown_48, $3000
+	dw sprite.max_x_speed, $0300
+	dw !initcommand_success
 
 DATA_FF88B6:
-	db $00, $83, $20, $85, $46, $00, $00, $80
-	db $48, $00, $00, $28, $26, $00, $A0, $FE
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $8000
+	dw sprite.unknown_48, $2800
+	dw sprite.max_x_speed, $FEA0
+	dw !initcommand_success
 
 DATA_FF88C8:
-	db $00, $83, $20, $85, $46, $00, $00, $80
-	db $48, $00, $00, $48, $26, $00, $00, $01
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $8000
+	dw sprite.unknown_48, $4800
+	dw sprite.max_x_speed, $0100
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF88DE:
-	db $00, $83, $20, $85, $46, $00, $00, $20
-	db $48, $00, $00, $24, $26, $00, $60, $FE
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $2000
+	dw sprite.unknown_48, $2400
+	dw sprite.max_x_speed, $FE60
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF88F4:
-	db $00, $83, $20, $85, $46, $00, $00, $00
-	db $48, $00, $00, $30, $26, $00, $80, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $0000
+	dw sprite.unknown_48, $3000
+	dw sprite.max_x_speed, $0280
+	dw !initcommand_success
 
 DATA_FF8906:
-	db $00, $83, $20, $85, $46, $00, $00, $10
-	db $48, $00, $00, $30, $26, $00, $80, $02
-	db $00, $85, $00, $60, $00, $80, $00, $83
-	db $06, $77, $00, $81, $96, $01, $52, $00
-	db $0B, $00, $00, $8D, $38, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $1000
+	dw sprite.unknown_48, $3000
+	dw sprite.max_x_speed, $0280
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
+
+DATA_FF891C:
+	dw !initcommand_load_subconfig, DATA_FF7706
+	dw !initcommand_set_animation, $0196
+	dw sprite.unknown_52, $000B
+	dw !initcommand_set_alt_palette, $0038
+	dw !initcommand_success
 
 DATA_FF892E:
-	db $00, $83, $1C, $89, $46, $00, $00, $00
-	db $48, $00, $00, $40, $4A, $00, $C0, $40
-	db $26, $00, $40, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF891C
+	dw sprite.unknown_46, $0000
+	dw sprite.unknown_48, $4000
+	dw sprite.unknown_4A, $40C0
+	dw sprite.max_x_speed, $FE40
+	dw !initcommand_success
 
 DATA_FF8944:
-	db $00, $83, $1C, $89, $00, $81, $97, $01
-	db $46, $00, $00, $A0, $48, $00, $00, $30
-	db $4A, $00, $80, $00, $26, $00, $00, $FE
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF891C
+	dw !initcommand_set_animation, $0197
+	dw sprite.unknown_46, $A000
+	dw sprite.unknown_48, $3000
+	dw sprite.unknown_4A, $0080
+	dw sprite.max_x_speed, $FE00
+	dw !initcommand_success
 
 DATA_FF895E:
-	db $00, $83, $1C, $89, $00, $81, $97, $01
-	db $46, $00, $00, $40, $48, $00, $00, $20
-	db $4A, $00, $00, $80, $26, $00, $00, $FE
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF891C
+	dw !initcommand_set_animation, $0197
+	dw sprite.unknown_46, $4000
+	dw sprite.unknown_48, $2000
+	dw sprite.unknown_4A, $8000
+	dw sprite.max_x_speed, $FE00
+	dw !initcommand_success
 
 DATA_FF8978:
-	db $00, $83, $1C, $89, $00, $81, $97, $01
-	db $46, $00, $00, $A0, $48, $00, $00, $30
-	db $4A, $00, $80, $00, $26, $00, $A0, $FD
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF891C
+	dw !initcommand_set_animation, $0197
+	dw sprite.unknown_46, $A000
+	dw sprite.unknown_48, $3000
+	dw sprite.unknown_4A, $0080
+	dw sprite.max_x_speed, $FDA0
+	dw !initcommand_success
 
 DATA_FF8992:
-	db $00, $83, $1C, $89, $00, $81, $97, $01
-	db $46, $00, $00, $80, $48, $00, $00, $30
-	db $4A, $00, $80, $00, $26, $00, $C0, $02
-	db $00, $85, $00, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF891C
+	dw !initcommand_set_animation, $0197
+	dw sprite.unknown_46, $8000
+	dw sprite.unknown_48, $3000
+	dw sprite.unknown_4A, $0080
+	dw sprite.max_x_speed, $02C0
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF89B0:
-	db $00, $83, $1C, $89, $46, $00, $00, $00
-	db $48, $00, $00, $38, $4A, $00, $C0, $3C
-	db $26, $00, $60, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF891C
+	dw sprite.unknown_46, $0000
+	dw sprite.unknown_48, $3800
+	dw sprite.unknown_4A, $3CC0
+	dw sprite.max_x_speed, $FE60
+	dw !initcommand_success
 
 DATA_FF89C6:
-	db $00, $83, $1C, $89, $46, $00, $00, $00
-	db $48, $00, $00, $40, $4A, $00, $C0, $3F
-	db $26, $00, $80, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF891C
+	dw sprite.unknown_46, $0000
+	dw sprite.unknown_48, $4000
+	dw sprite.unknown_4A, $3FC0
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_success
 
 DATA_FF89DC:
-	db $00, $83, $1C, $89, $46, $00, $00, $40
-	db $48, $00, $00, $30, $4A, $00, $C0, $40
-	db $26, $00, $C0, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF891C
+	dw sprite.unknown_46, $4000
+	dw sprite.unknown_48, $3000
+	dw sprite.unknown_4A, $40C0
+	dw sprite.max_x_speed, $01C0
+	dw !initcommand_success
 
 DATA_FF89F2:
-	db $00, $83, $1C, $89, $00, $81, $97, $01
-	db $46, $00, $00, $C0, $48, $00, $00, $30
-	db $4A, $00, $00, $80, $26, $00, $00, $02
-	db $00, $80, $00, $83, $E0, $76, $54, $00
-	db $02, $03, $00, $8D, $48, $00, $00, $80
-	db $00, $83, $06, $77, $54, $00, $02, $03
-	db $00, $8D, $48, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF891C
+	dw !initcommand_set_animation, $0197
+	dw sprite.unknown_46, $C000
+	dw sprite.unknown_48, $3000
+	dw sprite.unknown_4A, $8000
+	dw sprite.max_x_speed, $0200
+	dw !initcommand_success
+
+DATA_FF8A0C:
+	dw !initcommand_load_subconfig, DATA_FF76E0
+	dw sprite.unknown_54, $0302
+	dw !initcommand_set_alt_palette, $0048
+	dw !initcommand_success
+
+DATA_FF8A1A:
+	dw !initcommand_load_subconfig, DATA_FF7706
+	dw sprite.unknown_54, $0302
+	dw !initcommand_set_alt_palette, $0048
+	dw !initcommand_success
 
 DATA_FF8A28:
-	db $00, $83, $0C, $8A, $00, $81, $97, $01
-	db $46, $00, $02, $02, $26, $00, $40, $00
-	db $4A, $00, $03, $02, $2A, $00, $60, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8A0C
+	dw !initcommand_set_animation, $0197
+	dw sprite.unknown_46, $0202
+	dw sprite.max_x_speed, $0040
+	dw sprite.unknown_4A, $0203
+	dw sprite.unknown_2A, $0060
+	dw !initcommand_success
 
 DATA_FF8A42:
-	db $00, $83, $0C, $8A, $00, $81, $97, $01
-	db $46, $00, $02, $02, $26, $00, $40, $00
-	db $4A, $00, $03, $02, $2A, $00, $60, $00
-	db $00, $85, $00, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8A0C
+	dw !initcommand_set_animation, $0197
+	dw sprite.unknown_46, $0202
+	dw sprite.max_x_speed, $0040
+	dw sprite.unknown_4A, $0203
+	dw sprite.unknown_2A, $0060
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF8A60:
-	db $00, $83, $0C, $8A, $00, $81, $97, $01
-	db $46, $00, $04, $02, $26, $00, $48, $00
-	db $4A, $00, $01, $03, $2A, $00, $58, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8A0C
+	dw !initcommand_set_animation, $0197
+	dw sprite.unknown_46, $0204
+	dw sprite.max_x_speed, $0048
+	dw sprite.unknown_4A, $0301
+	dw sprite.unknown_2A, $0058
+	dw !initcommand_success
 
 DATA_FF8A7A:
-	db $00, $83, $0C, $8A, $00, $81, $97, $01
-	db $46, $00, $03, $01, $26, $00, $50, $00
-	db $4A, $00, $01, $02, $2A, $00, $68, $00
-	db $00, $85, $00, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8A0C
+	dw !initcommand_set_animation, $0197
+	dw sprite.unknown_46, $0103
+	dw sprite.max_x_speed, $0050
+	dw sprite.unknown_4A, $0201
+	dw sprite.unknown_2A, $0068
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF8A98:
-	db $00, $83, $0C, $8A, $00, $81, $97, $01
-	db $46, $00, $01, $02, $26, $00, $38, $00
-	db $4A, $00, $04, $02, $2A, $00, $58, $00
-	db $00, $85, $00, $20, $00, $80, $00, $83
-	db $0C, $8A, $00, $81, $97, $01, $52, $00
-	db $08, $00, $4A, $00, $03, $02, $2A, $00
-	db $60, $00, $00, $85, $00, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8A0C
+	dw !initcommand_set_animation, $0197
+	dw sprite.unknown_46, $0201
+	dw sprite.max_x_speed, $0038
+	dw sprite.unknown_4A, $0204
+	dw sprite.unknown_2A, $0058
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
+
+DATA_FF8AB6:
+	dw !initcommand_load_subconfig, DATA_FF8A0C
+	dw !initcommand_set_animation, $0197
+	dw sprite.unknown_52, $0008
+	dw sprite.unknown_4A, $0203
+	dw sprite.unknown_2A, $0060
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF8AD0:
-	db $00, $83, $B6, $8A, $26, $00, $60, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8AB6
+	dw sprite.max_x_speed, $0060
+	dw !initcommand_success
 
 DATA_FF8ADA:
-	db $00, $83, $B6, $8A, $26, $00, $70, $FF
-	db $00, $85, $00, $60, $00, $80, $00, $83
-	db $0C, $8A, $00, $81, $96, $01, $4A, $00
-	db $03, $02, $2A, $00, $60, $00, $00, $85
-	db $00, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8AB6
+	dw sprite.max_x_speed, $FF70
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
+
+DATA_FF8AE8:
+	dw !initcommand_load_subconfig, DATA_FF8A0C
+	dw !initcommand_set_animation, $0196
+	dw sprite.unknown_4A, $0203
+	dw sprite.unknown_2A, $0060
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF8AFE:
-	db $00, $83, $E8, $8A, $46, $00, $30, $30
-	db $26, $00, $80, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8AE8
+	dw sprite.unknown_46, $3030
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_success
 
 DATA_FF8B0C:
-	db $00, $83, $E8, $8A, $46, $00, $30, $30
-	db $26, $00, $80, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8AE8
+	dw sprite.unknown_46, $3030
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_success
 
 DATA_FF8B1A:
-	db $00, $83, $E8, $8A, $46, $00, $50, $50
-	db $26, $00, $40, $01, $4A, $00, $01, $03
-	db $2A, $00, $48, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8AE8
+	dw sprite.unknown_46, $5050
+	dw sprite.max_x_speed, $0140
+	dw sprite.unknown_4A, $0301
+	dw sprite.unknown_2A, $0048
+	dw !initcommand_success
 
 DATA_FF8B30:
-	db $00, $83, $E8, $8A, $46, $00, $A8, $70
-	db $26, $00, $40, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8AE8
+	dw sprite.unknown_46, $70A8
+	dw sprite.max_x_speed, $0240
+	dw !initcommand_success
 
 DATA_FF8B3E:
-	db $00, $83, $E8, $8A, $46, $00, $58, $58
-	db $26, $00, $80, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8AE8
+	dw sprite.unknown_46, $5858
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_success
 
 DATA_FF8B4C:
-	db $00, $83, $E8, $8A, $46, $00, $68, $B0
-	db $26, $00, $40, $02, $4A, $00, $03, $04
-	db $2A, $00, $50, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8AE8
+	dw sprite.unknown_46, $B068
+	dw sprite.max_x_speed, $0240
+	dw sprite.unknown_4A, $0403
+	dw sprite.unknown_2A, $0050
+	dw !initcommand_success
 
 DATA_FF8B62:
-	db $00, $83, $E8, $8A, $46, $00, $30, $30
-	db $26, $00, $C0, $FE, $4A, $00, $03, $02
-	db $2A, $00, $60, $00, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8AE8
+	dw sprite.unknown_46, $3030
+	dw sprite.max_x_speed, $FEC0
+	dw sprite.unknown_4A, $0203
+	dw sprite.unknown_2A, $0060
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF8B7C:
-	db $00, $83, $E8, $8A, $46, $00, $28, $28
-	db $26, $00, $00, $01, $4A, $00, $03, $04
-	db $2A, $00, $50, $00, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8AE8
+	dw sprite.unknown_46, $2828
+	dw sprite.max_x_speed, $0100
+	dw sprite.unknown_4A, $0403
+	dw sprite.unknown_2A, $0050
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF8B96:
-	db $00, $83, $E8, $8A, $46, $00, $50, $50
-	db $26, $00, $80, $FE, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8AE8
+	dw sprite.unknown_46, $5050
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF8BA8:
-	db $00, $83, $E8, $8A, $46, $00, $40, $40
-	db $26, $00, $C0, $FE, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8AE8
+	dw sprite.unknown_46, $4040
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF8BBA:
-	db $00, $83, $E8, $8A, $46, $00, $48, $48
-	db $26, $00, $80, $FD, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8AE8
+	dw sprite.unknown_46, $4848
+	dw sprite.max_x_speed, $FD80
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF8BCC:
-	db $00, $83, $E8, $8A, $46, $00, $30, $30
-	db $26, $00, $40, $FE, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8AE8
+	dw sprite.unknown_46, $3030
+	dw sprite.max_x_speed, $FE40
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF8BDE:
-	db $00, $83, $E8, $8A, $46, $00, $18, $78
-	db $26, $00, $80, $FD, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8AE8
+	dw sprite.unknown_46, $7818
+	dw sprite.max_x_speed, $FD80
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF8BF0:
-	db $00, $83, $E8, $8A, $46, $00, $30, $30
-	db $26, $00, $60, $FE, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8AE8
+	dw sprite.unknown_46, $3030
+	dw sprite.max_x_speed, $FE60
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF8C02:
-	db $00, $83, $E8, $8A, $46, $00, $30, $30
-	db $26, $00, $40, $FE, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8AE8
+	dw sprite.unknown_46, $3030
+	dw sprite.max_x_speed, $FE40
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF8C14:
-	db $00, $83, $E8, $8A, $46, $00, $98, $98
-	db $26, $00, $C0, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8AE8
+	dw sprite.unknown_46, $9898
+	dw sprite.max_x_speed, $01C0
+	dw !initcommand_success
 
 DATA_FF8C22:
-	db $00, $83, $0C, $8A, $00, $81, $97, $01
-	db $46, $00, $02, $02, $26, $00, $40, $00
-	db $4A, $00, $40, $40, $2A, $00, $80, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8A0C
+	dw !initcommand_set_animation, $0197
+	dw sprite.unknown_46, $0202
+	dw sprite.max_x_speed, $0040
+	dw sprite.unknown_4A, $4040
+	dw sprite.unknown_2A, $0180
+	dw !initcommand_success
 
 DATA_FF8C3C:
-	db $00, $83, $0C, $8A, $00, $81, $97, $01
-	db $46, $00, $02, $02, $26, $00, $40, $00
-	db $4A, $00, $30, $30, $2A, $00, $80, $01
-	db $00, $85, $00, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8A0C
+	dw !initcommand_set_animation, $0197
+	dw sprite.unknown_46, $0202
+	dw sprite.max_x_speed, $0040
+	dw sprite.unknown_4A, $3030
+	dw sprite.unknown_2A, $0180
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF8C5A:
-	db $00, $83, $0C, $8A, $00, $81, $97, $01
-	db $46, $00, $02, $02, $26, $00, $40, $00
-	db $4A, $00, $30, $30, $2A, $00, $80, $FE
-	db $00, $85, $00, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8A0C
+	dw !initcommand_set_animation, $0197
+	dw sprite.unknown_46, $0202
+	dw sprite.max_x_speed, $0040
+	dw sprite.unknown_4A, $3030
+	dw sprite.unknown_2A, $FE80
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF8C78:
-	db $00, $83, $0C, $8A, $00, $81, $97, $01
-	db $46, $00, $02, $02, $26, $00, $40, $00
-	db $4A, $00, $18, $18, $2A, $00, $E0, $FE
-	db $00, $85, $00, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8A0C
+	dw !initcommand_set_animation, $0197
+	dw sprite.unknown_46, $0202
+	dw sprite.max_x_speed, $0040
+	dw sprite.unknown_4A, $1818
+	dw sprite.unknown_2A, $FEE0
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF8C96:
-	db $00, $83, $0C, $8A, $00, $81, $97, $01
-	db $46, $00, $02, $02, $26, $00, $40, $00
-	db $4A, $00, $50, $50, $2A, $00, $80, $01
-	db $00, $85, $00, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8A0C
+	dw !initcommand_set_animation, $0197
+	dw sprite.unknown_46, $0202
+	dw sprite.max_x_speed, $0040
+	dw sprite.unknown_4A, $5050
+	dw sprite.unknown_2A, $0180
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF8CB4:
-	db $00, $83, $0C, $8A, $00, $81, $97, $01
-	db $46, $00, $03, $01, $26, $00, $50, $00
-	db $4A, $00, $6C, $44, $2A, $00, $80, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8A0C
+	dw !initcommand_set_animation, $0197
+	dw sprite.unknown_46, $0103
+	dw sprite.max_x_speed, $0050
+	dw sprite.unknown_4A, $446C
+	dw sprite.unknown_2A, $0180
+	dw !initcommand_success
 
 DATA_FF8CCE:
-	db $00, $83, $0C, $8A, $00, $81, $97, $01
-	db $46, $00, $02, $02, $26, $00, $40, $00
-	db $4A, $00, $44, $6C, $2A, $00, $80, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8A0C
+	dw !initcommand_set_animation, $0197
+	dw sprite.unknown_46, $0202
+	dw sprite.max_x_speed, $0040
+	dw sprite.unknown_4A, $6C44
+	dw sprite.unknown_2A, $0180
+	dw !initcommand_success
 
 DATA_FF8CE8:
-	db $00, $83, $0C, $8A, $00, $81, $97, $01
-	db $46, $00, $01, $03, $26, $00, $50, $00
-	db $4A, $00, $50, $50, $2A, $00, $80, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8A0C
+	dw !initcommand_set_animation, $0197
+	dw sprite.unknown_46, $0301
+	dw sprite.max_x_speed, $0050
+	dw sprite.unknown_4A, $5050
+	dw sprite.unknown_2A, $0180
+	dw !initcommand_success
 
 DATA_FF8D02:
-	db $00, $83, $0C, $8A, $00, $81, $97, $01
-	db $46, $00, $02, $02, $26, $00, $40, $00
-	db $4A, $00, $80, $20, $2A, $00, $60, $FE
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8A0C
+	dw !initcommand_set_animation, $0197
+	dw sprite.unknown_46, $0202
+	dw sprite.max_x_speed, $0040
+	dw sprite.unknown_4A, $2080
+	dw sprite.unknown_2A, $FE60
+	dw !initcommand_success
 
 DATA_FF8D1C:
-	db $00, $83, $0C, $8A, $00, $81, $97, $01
-	db $46, $00, $02, $02, $26, $00, $40, $00
-	db $4A, $00, $50, $50, $2A, $00, $60, $FE
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8A0C
+	dw !initcommand_set_animation, $0197
+	dw sprite.unknown_46, $0202
+	dw sprite.max_x_speed, $0040
+	dw sprite.unknown_4A, $5050
+	dw sprite.unknown_2A, $FE60
+	dw !initcommand_success
 
 DATA_FF8D36:
-	db $00, $83, $0C, $8A, $00, $81, $97, $01
-	db $46, $00, $02, $02, $26, $00, $40, $00
-	db $4A, $00, $60, $60, $2A, $00, $40, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8A0C
+	dw !initcommand_set_animation, $0197
+	dw sprite.unknown_46, $0202
+	dw sprite.max_x_speed, $0040
+	dw sprite.unknown_4A, $6060
+	dw sprite.unknown_2A, $0140
+	dw !initcommand_success
 
 DATA_FF8D50:
-	db $00, $83, $0C, $8A, $00, $81, $97, $01
-	db $46, $00, $02, $02, $26, $00, $40, $00
-	db $4A, $00, $30, $30, $2A, $00, $80, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8A0C
+	dw !initcommand_set_animation, $0197
+	dw sprite.unknown_46, $0202
+	dw sprite.max_x_speed, $0040
+	dw sprite.unknown_4A, $3030
+	dw sprite.unknown_2A, $0180
+	dw !initcommand_success
 
 DATA_FF8D6A:
-	db $00, $83, $0C, $8A, $00, $81, $97, $01
-	db $46, $00, $02, $02, $26, $00, $40, $00
-	db $4A, $00, $50, $50, $2A, $00, $00, $FE
-	db $00, $80, $00, $83, $1A, $8A, $00, $81
-	db $96, $01, $52, $00, $0A, $00, $00, $85
-	db $00, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8A0C
+	dw !initcommand_set_animation, $0197
+	dw sprite.unknown_46, $0202
+	dw sprite.max_x_speed, $0040
+	dw sprite.unknown_4A, $5050
+	dw sprite.unknown_2A, $FE00
+	dw !initcommand_success
+
+DATA_FF8D84:
+	dw !initcommand_load_subconfig, DATA_FF8A1A
+	dw !initcommand_set_animation, $0196
+	dw sprite.unknown_52, $000A
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF8D96:
-	db $00, $83, $84, $8D, $46, $00, $00, $80
-	db $48, $00, $00, $30, $26, $00, $80, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8D84
+	dw sprite.unknown_46, $8000
+	dw sprite.unknown_48, $3000
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_success
 
 DATA_FF8DA8:
-	db $00, $83, $20, $85, $46, $00, $00, $80
-	db $48, $00, $00, $68, $26, $00, $C0, $FE
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $8000
+	dw sprite.unknown_48, $6800
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_success
 
 DATA_FF8DBA:
-	db $00, $83, $84, $8D, $46, $00, $00, $38
-	db $48, $00, $00, $68, $26, $00, $C0, $FE
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8D84
+	dw sprite.unknown_46, $3800
+	dw sprite.unknown_48, $6800
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_success
 
 DATA_FF8DCC:
-	db $00, $83, $20, $85, $46, $00, $00, $F0
-	db $48, $00, $00, $68, $26, $00, $C0, $FE
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $F000
+	dw sprite.unknown_48, $6800
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_success
 
 DATA_FF8DDE:
-	db $00, $83, $84, $8D, $46, $00, $00, $5C
-	db $48, $00, $00, $68, $26, $00, $C0, $FE
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8D84
+	dw sprite.unknown_46, $5C00
+	dw sprite.unknown_48, $6800
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_success
 
 DATA_FF8DF0:
-	db $00, $83, $84, $8D, $46, $00, $00, $14
-	db $48, $00, $00, $68, $26, $00, $C0, $FE
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8D84
+	dw sprite.unknown_46, $1400
+	dw sprite.unknown_48, $6800
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_success
 
 DATA_FF8E02:
-	db $00, $83, $84, $8D, $46, $00, $00, $80
-	db $48, $00, $00, $78, $26, $00, $40, $FF
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8D84
+	dw sprite.unknown_46, $8000
+	dw sprite.unknown_48, $7800
+	dw sprite.max_x_speed, $FF40
+	dw !initcommand_success
 
 DATA_FF8E14:
-	db $00, $83, $84, $8D, $46, $00, $00, $5C
-	db $48, $00, $00, $78, $26, $00, $40, $FF
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8D84
+	dw sprite.unknown_46, $5C00
+	dw sprite.unknown_48, $7800
+	dw sprite.max_x_speed, $FF40
+	dw !initcommand_success
 
 DATA_FF8E26:
-	db $00, $83, $84, $8D, $46, $00, $00, $38
-	db $48, $00, $00, $78, $26, $00, $40, $FF
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8D84
+	dw sprite.unknown_46, $3800
+	dw sprite.unknown_48, $7800
+	dw sprite.max_x_speed, $FF40
+	dw !initcommand_success
 
 DATA_FF8E38:
-	db $00, $83, $84, $8D, $46, $00, $00, $14
-	db $48, $00, $00, $78, $26, $00, $40, $FF
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8D84
+	dw sprite.unknown_46, $1400
+	dw sprite.unknown_48, $7800
+	dw sprite.max_x_speed, $FF40
+	dw !initcommand_success
 
 DATA_FF8E4A:
-	db $00, $83, $84, $8D, $46, $00, $00, $F0
-	db $48, $00, $00, $78, $26, $00, $40, $FF
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8D84
+	dw sprite.unknown_46, $F000
+	dw sprite.unknown_48, $7800
+	dw sprite.max_x_speed, $FF40
+	dw !initcommand_success
 
 DATA_FF8E5C:
-	db $00, $83, $84, $8D, $46, $00, $00, $80
-	db $48, $00, $00, $78, $26, $00, $C0, $00
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8D84
+	dw sprite.unknown_46, $8000
+	dw sprite.unknown_48, $7800
+	dw sprite.max_x_speed, $00C0
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF8E72:
-	db $00, $83, $84, $8D, $46, $00, $00, $5C
-	db $48, $00, $00, $78, $26, $00, $C0, $00
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8D84
+	dw sprite.unknown_46, $5C00
+	dw sprite.unknown_48, $7800
+	dw sprite.max_x_speed, $00C0
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF8E88:
-	db $00, $83, $84, $8D, $46, $00, $00, $38
-	db $48, $00, $00, $78, $26, $00, $C0, $00
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8D84
+	dw sprite.unknown_46, $3800
+	dw sprite.unknown_48, $7800
+	dw sprite.max_x_speed, $00C0
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF8E9E:
-	db $00, $83, $84, $8D, $46, $00, $00, $14
-	db $48, $00, $00, $78, $26, $00, $C0, $00
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8D84
+	dw sprite.unknown_46, $1400
+	dw sprite.unknown_48, $7800
+	dw sprite.max_x_speed, $00C0
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF8EB4:
-	db $00, $83, $84, $8D, $46, $00, $00, $90
-	db $48, $00, $00, $30, $26, $00, $80, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8D84
+	dw sprite.unknown_46, $9000
+	dw sprite.unknown_48, $3000
+	dw sprite.max_x_speed, $0280
+	dw !initcommand_success
 
 DATA_FF8EC6:
-	db $00, $83, $84, $8D, $46, $00, $00, $00
-	db $48, $00, $00, $58, $26, $00, $40, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8D84
+	dw sprite.unknown_46, $0000
+	dw sprite.unknown_48, $5800
+	dw sprite.max_x_speed, $0140
+	dw !initcommand_success
 
 DATA_FF8ED8:
-	db $00, $83, $84, $8D, $46, $00, $00, $DC
-	db $48, $00, $00, $58, $26, $00, $40, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8D84
+	dw sprite.unknown_46, $DC00
+	dw sprite.unknown_48, $5800
+	dw sprite.max_x_speed, $0140
+	dw !initcommand_success
 
 DATA_FF8EEA:
-	db $00, $83, $84, $8D, $46, $00, $00, $B8
-	db $48, $00, $00, $58, $26, $00, $40, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8D84
+	dw sprite.unknown_46, $B800
+	dw sprite.unknown_48, $5800
+	dw sprite.max_x_speed, $0140
+	dw !initcommand_success
 
 DATA_FF8EFC:
-	db $00, $83, $84, $8D, $46, $00, $00, $94
-	db $48, $00, $00, $58, $26, $00, $40, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8D84
+	dw sprite.unknown_46, $9400
+	dw sprite.unknown_48, $5800
+	dw sprite.max_x_speed, $0140
+	dw !initcommand_success
 
 DATA_FF8F0E:
-	db $00, $83, $84, $8D, $46, $00, $00, $24
-	db $48, $00, $00, $58, $26, $00, $40, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8D84
+	dw sprite.unknown_46, $2400
+	dw sprite.unknown_48, $5800
+	dw sprite.max_x_speed, $0140
+	dw !initcommand_success
 
 DATA_FF8F20:
-	db $00, $83, $84, $8D, $46, $00, $00, $00
-	db $48, $00, $00, $70, $26, $00, $F0, $00
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8D84
+	dw sprite.unknown_46, $0000
+	dw sprite.unknown_48, $7000
+	dw sprite.max_x_speed, $00F0
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF8F36:
-	db $00, $83, $20, $85, $46, $00, $00, $40
-	db $48, $00, $00, $70, $26, $00, $F0, $00
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $4000
+	dw sprite.unknown_48, $7000
+	dw sprite.max_x_speed, $00F0
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF8F4C:
-	db $00, $83, $84, $8D, $46, $00, $00, $80
-	db $48, $00, $00, $70, $26, $00, $F0, $00
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8D84
+	dw sprite.unknown_46, $8000
+	dw sprite.unknown_48, $7000
+	dw sprite.max_x_speed, $00F0
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF8F62:
-	db $00, $83, $20, $85, $46, $00, $00, $C0
-	db $48, $00, $00, $70, $26, $00, $F0, $00
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $C000
+	dw sprite.unknown_48, $7000
+	dw sprite.max_x_speed, $00F0
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF8F78:
-	db $00, $83, $84, $8D, $46, $00, $00, $20
-	db $48, $00, $00, $60, $26, $00, $00, $FF
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8D84
+	dw sprite.unknown_46, $2000
+	dw sprite.unknown_48, $6000
+	dw sprite.max_x_speed, $FF00
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF8F8E:
-	db $00, $83, $84, $8D, $46, $00, $00, $A0
-	db $48, $00, $00, $40, $26, $00, $40, $01
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8D84
+	dw sprite.unknown_46, $A000
+	dw sprite.unknown_48, $4000
+	dw sprite.max_x_speed, $0140
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF8FA4:
-	db $00, $83, $84, $8D, $46, $00, $00, $A0
-	db $48, $00, $00, $40, $26, $00, $80, $01
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8D84
+	dw sprite.unknown_46, $A000
+	dw sprite.unknown_48, $4000
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF8FBA:
-	db $00, $83, $84, $8D, $46, $00, $00, $A0
-	db $48, $00, $00, $48, $26, $00, $80, $FE
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8D84
+	dw sprite.unknown_46, $A000
+	dw sprite.unknown_48, $4800
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_success
 
 DATA_FF8FCC:
-	db $00, $83, $84, $8D, $46, $00, $00, $20
-	db $48, $00, $00, $48, $26, $00, $80, $FE
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8D84
+	dw sprite.unknown_46, $2000
+	dw sprite.unknown_48, $4800
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_success
 
 DATA_FF8FDE:
-	db $00, $83, $1A, $8A, $00, $81, $96, $01
-	db $52, $00, $0B, $00, $46, $00, $00, $00
-	db $48, $00, $00, $40, $4A, $00, $40, $C0
-	db $26, $00, $80, $01, $00, $85, $00, $20
-	db $00, $80, $00, $00, $F0, $01, $02, $00
-	db $D4, $00, $54, $00, $AA, $02, $2E, $00
-	db $00, $00, $20, $00, $00, $00, $24, $00
-	db $00, $00, $30, $00, $20, $01, $00, $85
-	db $00, $20, $00, $8D, $53, $00, $00, $81
-	db $9F, $01, $00, $80, $00, $83, $00, $90
-	db $52, $00, $22, $00, $00, $80, $00, $83
-	db $00, $90, $52, $00, $23, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8A1A
+	dw !initcommand_set_animation, $0196
+	dw sprite.unknown_52, $000B
+	dw sprite.unknown_46, $0000
+	dw sprite.unknown_48, $4000
+	dw sprite.unknown_4A, $C040
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
+
+DATA_FF9000:
+	dw sprite.number, $01F0
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_54, $02AA
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_30, $0120
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0053
+	dw !initcommand_set_animation, $019F
+	dw !initcommand_success
+
+DATA_FF902A:
+	dw !initcommand_load_subconfig, DATA_FF9000
+	dw sprite.unknown_52, $0022
+	dw !initcommand_success
+
+DATA_FF9034:
+	dw !initcommand_load_subconfig, DATA_FF9000
+	dw sprite.unknown_52, $0023
+	dw !initcommand_success
 
 DATA_FF903E:
-	db $00, $83, $2A, $90, $26, $00, $80, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF902A
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_success
 
 DATA_FF9048:
-	db $00, $83, $2A, $90, $26, $00, $80, $FE
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF902A
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF9056:
-	db $00, $83, $2A, $90, $26, $00, $80, $FD
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF902A
+	dw sprite.max_x_speed, $FD80
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF9064:
-	db $00, $83, $2A, $90, $26, $00, $00, $FE
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF902A
+	dw sprite.max_x_speed, $FE00
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF9072:
-	db $00, $83, $34, $90, $46, $00, $30, $30
-	db $26, $00, $80, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $3030
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_success
 
 DATA_FF9080:
-	db $00, $83, $34, $90, $46, $00, $00, $A8
-	db $26, $00, $80, $FE, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $A800
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF9092:
-	db $00, $83, $34, $90, $46, $00, $14, $14
-	db $26, $00, $80, $FD, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $1414
+	dw sprite.max_x_speed, $FD80
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF90A4:
-	db $00, $83, $34, $90, $46, $00, $A8, $18
-	db $26, $00, $C0, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $18A8
+	dw sprite.max_x_speed, $01C0
+	dw !initcommand_success
 
 DATA_FF90B2:
-	db $00, $83, $34, $90, $46, $00, $30, $30
-	db $26, $00, $80, $FD, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $3030
+	dw sprite.max_x_speed, $FD80
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF90C4:
-	db $00, $83, $34, $90, $46, $00, $A8, $00
-	db $26, $00, $80, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $00A8
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_success
 
 DATA_FF90D2:
-	db $00, $83, $34, $90, $46, $00, $98, $00
-	db $26, $00, $40, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $0098
+	dw sprite.max_x_speed, $FE40
+	dw !initcommand_success
 
 DATA_FF90E0:
-	db $00, $83, $34, $90, $46, $00, $00, $98
-	db $26, $00, $C0, $01, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $9800
+	dw sprite.max_x_speed, $01C0
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF90F2:
-	db $00, $83, $34, $90, $46, $00, $98, $00
-	db $26, $00, $C0, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $0098
+	dw sprite.max_x_speed, $01C0
+	dw !initcommand_success
 
 DATA_FF9100:
-	db $00, $83, $34, $90, $46, $00, $40, $30
-	db $26, $00, $40, $FE, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $3040
+	dw sprite.max_x_speed, $FE40
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF9112:
-	db $00, $83, $34, $90, $46, $00, $40, $40
-	db $26, $00, $40, $FE, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $4040
+	dw sprite.max_x_speed, $FE40
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF9124:
-	db $00, $83, $34, $90, $46, $00, $30, $CF
-	db $26, $00, $80, $FE, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $CF30
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF9136:
-	db $00, $83, $34, $90, $46, $00, $00, $FF
-	db $26, $00, $80, $FE, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $FF00
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF9148:
-	db $00, $83, $34, $90, $46, $00, $20, $20
-	db $26, $00, $40, $FE, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $2020
+	dw sprite.max_x_speed, $FE40
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF915A:
-	db $00, $83, $34, $90, $46, $00, $30, $30
-	db $26, $00, $80, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $3030
+	dw sprite.max_x_speed, $0280
+	dw !initcommand_success
 
 DATA_FF9168:
-	db $00, $83, $34, $90, $46, $00, $00, $A8
-	db $26, $00, $80, $FE, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $A800
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF917A:
-	db $00, $83, $34, $90, $46, $00, $34, $14
-	db $26, $00, $80, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $1434
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_success
 
 DATA_FF9188:
-	db $00, $83, $34, $90, $46, $00, $30, $30
-	db $26, $00, $80, $FE, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $3030
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF919A:
-	db $00, $83, $34, $90, $46, $00, $2C, $2C
-	db $26, $00, $20, $FF, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $2C2C
+	dw sprite.max_x_speed, $FF20
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF91AC:
-	db $00, $83, $34, $90, $46, $00, $28, $28
-	db $26, $00, $80, $FD, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $2828
+	dw sprite.max_x_speed, $FD80
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF91BE:
-	db $00, $83, $34, $90, $46, $00, $28, $28
-	db $26, $00, $80, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $2828
+	dw sprite.max_x_speed, $0280
+	dw !initcommand_success
 
 DATA_FF91CC:
-	db $00, $83, $34, $90, $46, $00, $20, $20
-	db $26, $00, $00, $FD, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $2020
+	dw sprite.max_x_speed, $FD00
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF91DE:
-	db $00, $83, $34, $90, $46, $00, $18, $18
-	db $26, $00, $80, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $1818
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_success
 
 DATA_FF91EC:
-	db $00, $83, $34, $90, $46, $00, $00, $78
-	db $26, $00, $80, $FE, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $7800
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF91FE:
-	db $00, $83, $34, $90, $46, $00, $20, $CC
-	db $26, $00, $A0, $FE, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $CC20
+	dw sprite.max_x_speed, $FEA0
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF9210:
-	db $00, $83, $34, $90, $46, $00, $D0, $FF
-	db $26, $00, $80, $FE, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $FFD0
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF9222:
-	db $00, $83, $34, $90, $46, $00, $18, $18
-	db $26, $00, $80, $FE, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $1818
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF9234:
-	db $00, $83, $34, $90, $46, $00, $30, $30
-	db $26, $00, $00, $FE, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $3030
+	dw sprite.max_x_speed, $FE00
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF9246:
-	db $00, $83, $34, $90, $46, $00, $08, $08
-	db $26, $00, $C0, $FE, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $0808
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF9258:
-	db $00, $83, $34, $90, $46, $00, $30, $78
-	db $26, $00, $80, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $7830
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_success
 
 DATA_FF9266:
-	db $00, $83, $34, $90, $46, $00, $D0, $00
-	db $26, $00, $E0, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $00D0
+	dw sprite.max_x_speed, $01E0
+	dw !initcommand_success
 
 DATA_FF9274:
-	db $00, $83, $34, $90, $46, $00, $40, $C0
-	db $26, $00, $80, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $C040
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_success
 
 DATA_FF9282:
-	db $00, $83, $34, $90, $46, $00, $2A, $2A
-	db $26, $00, $80, $FE, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $2A2A
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF9294:
-	db $00, $83, $34, $90, $46, $00, $00, $EC
-	db $26, $00, $A0, $FE, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $EC00
+	dw sprite.max_x_speed, $FEA0
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF92A6:
-	db $00, $83, $34, $90, $46, $00, $14, $14
-	db $26, $00, $40, $FE, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $1414
+	dw sprite.max_x_speed, $FE40
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF92B8:
-	db $00, $83, $34, $90, $46, $00, $0C, $0C
-	db $26, $00, $60, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $0C0C
+	dw sprite.max_x_speed, $0160
+	dw !initcommand_success
 
 DATA_FF92C6:
-	db $00, $83, $34, $90, $46, $00, $30, $30
-	db $26, $00, $00, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $3030
+	dw sprite.max_x_speed, $0200
+	dw !initcommand_success
 
 DATA_FF92D4:
-	db $00, $00, $B4, $01, $02, $00, $C8, $00
-	db $54, $00, $14, $02, $2E, $00, $00, $00
-	db $20, $00, $00, $00, $26, $00, $00, $00
-	db $24, $00, $00, $00, $30, $00, $01, $00
-	db $00, $85, $00, $20, $00, $8D, $20, $00
-	db $00, $81, $E4, $02, $00, $80, $00, $00
-	db $48, $01, $02, $00, $D4, $00, $2E, $00
-	db $00, $00, $20, $00, $00, $00, $24, $00
-	db $00, $00, $5C, $00, $00, $00, $30, $00
-	db $20, $01, $00, $85, $00, $20, $00, $8D
-	db $02, $00, $00, $80
+	dw sprite.number, $01B4
+	dw sprite.render_order, $00C8
+	dw sprite.unknown_54, $0214
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.max_x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_30, $0001
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0020
+	dw !initcommand_set_animation, $02E4
+	dw !initcommand_success
+
+DATA_FF9302:
+	dw sprite.number, $0148
+	dw sprite.render_order, $00D4
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_5C, $0000
+	dw sprite.unknown_30, $0120
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0002
+	dw !initcommand_success
 
 DATA_FF9328:
-	db $00, $83, $02, $93, $00, $81, $AF, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9302
+	dw !initcommand_set_animation, $02AF
+	dw !initcommand_success
 
 DATA_FF9332:
-	db $00, $83, $02, $93, $00, $81, $AE, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9302
+	dw !initcommand_set_animation, $02AE
+	dw !initcommand_success
 
 DATA_FF933C:
-	db $00, $83, $02, $93, $00, $81, $AE, $02
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9302
+	dw !initcommand_set_animation, $02AE
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF934A:
-	db $00, $83, $02, $93, $00, $81, $AE, $02
-	db $5C, $00, $0E, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9302
+	dw !initcommand_set_animation, $02AE
+	dw sprite.unknown_5C, $000E
+	dw !initcommand_success
 
 DATA_FF9358:
-	db $00, $83, $02, $93, $00, $81, $AE, $02
-	db $5C, $00, $26, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9302
+	dw !initcommand_set_animation, $02AE
+	dw sprite.unknown_5C, $0026
+	dw !initcommand_success
 
 DATA_FF9366:
-	db $00, $83, $02, $93, $2E, $00, $03, $00
-	db $00, $81, $B0, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9302
+	dw sprite.action, $0003
+	dw !initcommand_set_animation, $02B0
+	dw !initcommand_success
 
 DATA_FF9374:
-	db $00, $83, $02, $93, $2E, $00, $03, $00
-	db $00, $81, $B0, $02, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9302
+	dw sprite.action, $0003
+	dw !initcommand_set_animation, $02B0
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF9386:
-	db $00, $83, $02, $93, $00, $81, $AD, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9302
+	dw !initcommand_set_animation, $02AD
+	dw !initcommand_success
 
 DATA_FF9390:
-	db $00, $83, $02, $93, $00, $81, $AD, $02
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9302
+	dw !initcommand_set_animation, $02AD
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF939E:
-	db $00, $83, $02, $93, $00, $81, $AC, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9302
+	dw !initcommand_set_animation, $02AC
+	dw !initcommand_success
 
 DATA_FF93A8:
-	db $00, $83, $02, $93, $00, $81, $AC, $02
-	db $00, $85, $00, $60, $00, $80, $00, $00
-	db $54, $01, $02, $00, $D4, $00, $2E, $00
-	db $00, $00, $5C, $00, $00, $00, $00, $85
-	db $00, $20, $00, $8D, $02, $00, $00, $81
-	db $B5, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9302
+	dw !initcommand_set_animation, $02AC
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
+
+DATA_FF93B6:
+	dw sprite.number, $0154
+	dw sprite.render_order, $00D4
+	dw sprite.action, $0000
+	dw sprite.unknown_5C, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0002
+	dw !initcommand_set_animation, $02B5
+	dw !initcommand_success
 
 DATA_FF93D4:
-	db $00, $83, $B6, $93, $42, $00, $01, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF93B6
+	dw sprite.unknown_42, $0001
+	dw !initcommand_success
 
 DATA_FF93DE:
-	db $00, $83, $B6, $93, $42, $00, $01, $00
-	db $5C, $00, $15, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF93B6
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_5C, $0015
+	dw !initcommand_success
 
 DATA_FF93EC:
-	db $00, $00, $BC, $01, $02, $00, $C8, $00
-	db $54, $00, $14, $02, $2E, $00, $00, $00
-	db $20, $00, $00, $00, $26, $00, $00, $00
-	db $24, $00, $00, $00, $30, $00, $01, $00
-	db $00, $85, $00, $20, $00, $8D, $02, $00
-	db $00, $81, $E6, $02, $00, $80, $00, $00
-	db $54, $02, $02, $00, $D4, $00, $54, $00
-	db $34, $94, $00, $85, $00, $20, $00, $8D
-	db $2E, $00, $00, $81, $A6, $02, $00, $80
+	dw sprite.number, $01BC
+	dw sprite.render_order, $00C8
+	dw sprite.unknown_54, $0214
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.max_x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_30, $0001
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0002
+	dw !initcommand_set_animation, $02E6
+	dw !initcommand_success
+
+DATA_FF941A:
+	dw sprite.number, $0254
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_54, DATA_FF9434
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $002E
+	dw !initcommand_set_animation, $02A6
+	dw !initcommand_success
+
+DATA_FF9434:
 	db $98, $FF, $20, $00, $C8, $FF, $0C, $00
 
+
 DATA_FF943C:
-	db $00, $83, $1A, $94, $2E, $00, $00, $00
-	db $44, $00, $20, $00, $46, $00, $20, $00
-	db $48, $00, $80, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF941A
+	dw sprite.action, $0000
+	dw sprite.unknown_44, $0020
+	dw sprite.unknown_46, $0020
+	dw sprite.unknown_48, $0080
+	dw !initcommand_success
 
 DATA_FF9452:
-	db $00, $83, $1A, $94, $2E, $00, $01, $00
-	db $44, $00, $80, $00, $46, $00, $20, $00
-	db $48, $00, $80, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF941A
+	dw sprite.action, $0001
+	dw sprite.unknown_44, $0080
+	dw sprite.unknown_46, $0020
+	dw sprite.unknown_48, $0080
+	dw !initcommand_success
 
 DATA_FF9468:
-	db $00, $83, $1A, $94, $2E, $00, $01, $00
-	db $44, $00, $78, $00, $46, $00, $20, $00
-	db $48, $00, $78, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF941A
+	dw sprite.action, $0001
+	dw sprite.unknown_44, $0078
+	dw sprite.unknown_46, $0020
+	dw sprite.unknown_48, $0078
+	dw !initcommand_success
 
 DATA_FF947E:
-	db $00, $83, $1A, $94, $2E, $00, $01, $00
-	db $44, $00, $78, $00, $46, $00, $20, $00
-	db $48, $00, $78, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF941A
+	dw sprite.action, $0001
+	dw sprite.unknown_44, $0078
+	dw sprite.unknown_46, $0020
+	dw sprite.unknown_48, $0078
+	dw !initcommand_success
 
 DATA_FF9494:
-	db $00, $83, $1A, $94, $2E, $00, $00, $00
-	db $44, $00, $30, $00, $46, $00, $20, $00
-	db $48, $00, $78, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF941A
+	dw sprite.action, $0000
+	dw sprite.unknown_44, $0030
+	dw sprite.unknown_46, $0020
+	dw sprite.unknown_48, $0078
+	dw !initcommand_success
 
 DATA_FF94AA:
-	db $00, $83, $1A, $94, $2E, $00, $01, $00
-	db $44, $00, $40, $00, $46, $00, $20, $00
-	db $48, $00, $10, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF941A
+	dw sprite.action, $0001
+	dw sprite.unknown_44, $0040
+	dw sprite.unknown_46, $0020
+	dw sprite.unknown_48, $0010
+	dw !initcommand_success
 
 DATA_FF94C0:
-	db $00, $83, $1A, $94, $2E, $00, $01, $00
-	db $44, $00, $58, $00, $46, $00, $20, $00
-	db $48, $00, $58, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF941A
+	dw sprite.action, $0001
+	dw sprite.unknown_44, $0058
+	dw sprite.unknown_46, $0020
+	dw sprite.unknown_48, $0058
+	dw !initcommand_success
 
 DATA_FF94D6:
-	db $00, $83, $1A, $94, $2E, $00, $01, $00
-	db $44, $00, $60, $00, $46, $00, $20, $00
-	db $48, $00, $50, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF941A
+	dw sprite.action, $0001
+	dw sprite.unknown_44, $0060
+	dw sprite.unknown_46, $0020
+	dw sprite.unknown_48, $0050
+	dw !initcommand_success
 
 DATA_FF94EC:
-	db $00, $83, $1A, $94, $2E, $00, $01, $00
-	db $44, $00, $68, $00, $46, $00, $20, $00
-	db $48, $00, $78, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF941A
+	dw sprite.action, $0001
+	dw sprite.unknown_44, $0068
+	dw sprite.unknown_46, $0020
+	dw sprite.unknown_48, $0078
+	dw !initcommand_success
 
 DATA_FF9502:
-	db $00, $83, $1A, $94, $2E, $00, $00, $00
-	db $44, $00, $38, $00, $46, $00, $20, $00
-	db $48, $00, $78, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF941A
+	dw sprite.action, $0000
+	dw sprite.unknown_44, $0038
+	dw sprite.unknown_46, $0020
+	dw sprite.unknown_48, $0078
+	dw !initcommand_success
 
 DATA_FF9518:
-	db $00, $83, $1A, $94, $2E, $00, $00, $00
-	db $44, $00, $70, $00, $46, $00, $20, $00
-	db $48, $00, $78, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF941A
+	dw sprite.action, $0000
+	dw sprite.unknown_44, $0070
+	dw sprite.unknown_46, $0020
+	dw sprite.unknown_48, $0078
+	dw !initcommand_success
 
 DATA_FF952E:
-	db $00, $83, $1A, $94, $2E, $00, $01, $00
-	db $44, $00, $10, $00, $46, $00, $30, $00
-	db $48, $00, $10, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF941A
+	dw sprite.action, $0001
+	dw sprite.unknown_44, $0010
+	dw sprite.unknown_46, $0030
+	dw sprite.unknown_48, $0010
+	dw !initcommand_success
 
 DATA_FF9544:
-	db $00, $83, $1A, $94, $2E, $00, $01, $00
-	db $44, $00, $0C, $00, $46, $00, $30, $00
-	db $48, $00, $10, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF941A
+	dw sprite.action, $0001
+	dw sprite.unknown_44, $000C
+	dw sprite.unknown_46, $0030
+	dw sprite.unknown_48, $0010
+	dw !initcommand_success
 
 DATA_FF955A:
-	db $00, $83, $1A, $94, $2E, $00, $01, $00
-	db $44, $00, $68, $00, $46, $00, $20, $00
-	db $48, $00, $68, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF941A
+	dw sprite.action, $0001
+	dw sprite.unknown_44, $0068
+	dw sprite.unknown_46, $0020
+	dw sprite.unknown_48, $0068
+	dw !initcommand_success
 
 DATA_FF9570:
-	db $00, $83, $1A, $94, $2E, $00, $00, $00
-	db $44, $00, $40, $00, $46, $00, $20, $00
-	db $48, $00, $68, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF941A
+	dw sprite.action, $0000
+	dw sprite.unknown_44, $0040
+	dw sprite.unknown_46, $0020
+	dw sprite.unknown_48, $0068
+	dw !initcommand_success
 
 DATA_FF9586:
-	db $00, $83, $1A, $94, $2E, $00, $01, $00
-	db $44, $00, $70, $00, $46, $00, $20, $00
-	db $48, $00, $68, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF941A
+	dw sprite.action, $0001
+	dw sprite.unknown_44, $0070
+	dw sprite.unknown_46, $0020
+	dw sprite.unknown_48, $0068
+	dw !initcommand_success
 
 DATA_FF959C:
-	db $00, $83, $1A, $94, $2E, $00, $00, $00
-	db $44, $00, $40, $00, $46, $00, $20, $00
-	db $48, $00, $68, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF941A
+	dw sprite.action, $0000
+	dw sprite.unknown_44, $0040
+	dw sprite.unknown_46, $0020
+	dw sprite.unknown_48, $0068
+	dw !initcommand_success
 
 DATA_FF95B2:
-	db $00, $83, $1A, $94, $2E, $00, $01, $00
-	db $44, $00, $70, $00, $46, $00, $20, $00
-	db $48, $00, $70, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF941A
+	dw sprite.action, $0001
+	dw sprite.unknown_44, $0070
+	dw sprite.unknown_46, $0020
+	dw sprite.unknown_48, $0070
+	dw !initcommand_success
 
 DATA_FF95C8:
-	db $00, $83, $1A, $94, $2E, $00, $00, $00
-	db $44, $00, $38, $00, $46, $00, $20, $00
-	db $48, $00, $70, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF941A
+	dw sprite.action, $0000
+	dw sprite.unknown_44, $0038
+	dw sprite.unknown_46, $0020
+	dw sprite.unknown_48, $0070
+	dw !initcommand_success
 
 DATA_FF95DE:
-	db $00, $83, $1A, $94, $2E, $00, $00, $00
-	db $44, $00, $80, $00, $46, $00, $20, $00
-	db $48, $00, $70, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF941A
+	dw sprite.action, $0000
+	dw sprite.unknown_44, $0080
+	dw sprite.unknown_46, $0020
+	dw sprite.unknown_48, $0070
+	dw !initcommand_success
 
 DATA_FF95F4:
-	db $00, $83, $1A, $94, $2E, $00, $01, $00
-	db $44, $00, $50, $00, $46, $00, $20, $00
-	db $48, $00, $50, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF941A
+	dw sprite.action, $0001
+	dw sprite.unknown_44, $0050
+	dw sprite.unknown_46, $0020
+	dw sprite.unknown_48, $0050
+	dw !initcommand_success
 
 DATA_FF960A:
-	db $00, $83, $1A, $94, $2E, $00, $00, $00
-	db $44, $00, $20, $00, $46, $00, $20, $00
-	db $48, $00, $50, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF941A
+	dw sprite.action, $0000
+	dw sprite.unknown_44, $0020
+	dw sprite.unknown_46, $0020
+	dw sprite.unknown_48, $0050
+	dw !initcommand_success
 
 DATA_FF9620:
-	db $00, $83, $1A, $94, $2E, $00, $00, $00
-	db $44, $00, $60, $00, $46, $00, $20, $00
-	db $48, $00, $50, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF941A
+	dw sprite.action, $0000
+	dw sprite.unknown_44, $0060
+	dw sprite.unknown_46, $0020
+	dw sprite.unknown_48, $0050
+	dw !initcommand_success
 
 DATA_FF9636:
-	db $00, $83, $1A, $94, $2E, $00, $00, $00
-	db $44, $00, $98, $00, $46, $00, $20, $00
-	db $48, $00, $50, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF941A
+	dw sprite.action, $0000
+	dw sprite.unknown_44, $0098
+	dw sprite.unknown_46, $0020
+	dw sprite.unknown_48, $0050
+	dw !initcommand_success
 
 DATA_FF964C:
-	db $00, $83, $1A, $94, $2E, $00, $01, $00
-	db $44, $00, $20, $01, $46, $00, $30, $00
-	db $48, $00, $20, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF941A
+	dw sprite.action, $0001
+	dw sprite.unknown_44, $0120
+	dw sprite.unknown_46, $0030
+	dw sprite.unknown_48, $0120
+	dw !initcommand_success
 
 DATA_FF9662:
-	db $00, $83, $1A, $94, $2E, $00, $00, $00
-	db $44, $00, $A8, $00, $46, $00, $20, $00
-	db $48, $00, $78, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF941A
+	dw sprite.action, $0000
+	dw sprite.unknown_44, $00A8
+	dw sprite.unknown_46, $0020
+	dw sprite.unknown_48, $0078
+	dw !initcommand_success
 
 DATA_FF9678:
-	db $00, $83, $1A, $94, $2E, $00, $01, $00
-	db $44, $00, $00, $60, $46, $00, $00, $60
-	db $48, $00, $00, $60, $00, $80, $00, $00
-	db $5C, $01, $02, $00, $C8, $00, $00, $85
-	db $00, $20, $00, $8D, $14, $00, $00, $81
-	db $C1, $01, $2E, $00, $00, $00, $50, $00
-	db $20, $F8, $48, $00, $80, $0C, $4A, $00
-	db $70, $20, $4C, $00, $CA, $08, $42, $00
-	db $01, $00, $4E, $00, $2D, $07, $5C, $00
-	db $78, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF941A
+	dw sprite.action, $0001
+	dw sprite.unknown_44, $6000
+	dw sprite.unknown_46, $6000
+	dw sprite.unknown_48, $6000
+	dw !initcommand_success
+
+DATA_FF968E:
+	dw sprite.number, $015C
+	dw sprite.render_order, $00C8
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0014
+	dw !initcommand_set_animation, $01C1
+	dw sprite.action, $0000
+	dw sprite.parameter, $F820
+	dw sprite.unknown_48, $0C80
+	dw sprite.unknown_4A, $2070
+	dw sprite.unknown_4C, $08CA
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_4E, $072D
+	dw sprite.unknown_5C, $0078
+	dw !initcommand_success
 
 DATA_FF96C4:
-	db $00, $83, $8E, $96, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF968E
+	dw !initcommand_success
 
 DATA_FF96CA:
-	db $00, $83, $8E, $96, $1C, $00, $00, $C0
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF968E
+	dw sprite.unknown_1C, $C000
+	dw !initcommand_success
 
 DATA_FF96D4:
-	db $00, $00, $5C, $01, $02, $00, $C8, $00
-	db $00, $85, $00, $20, $00, $8D, $14, $00
-	db $00, $81, $C2, $01, $2E, $00, $03, $00
-	db $50, $00, $28, $F8, $48, $00, $80, $10
-	db $4A, $00, $70, $28, $4C, $00, $CC, $08
-	db $42, $00, $01, $00, $4E, $00, $36, $07
-	db $5C, $00, $78, $00, $00, $80
+	dw sprite.number, $015C
+	dw sprite.render_order, $00C8
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0014
+	dw !initcommand_set_animation, $01C2
+	dw sprite.action, $0003
+	dw sprite.parameter, $F828
+	dw sprite.unknown_48, $1080
+	dw sprite.unknown_4A, $2870
+	dw sprite.unknown_4C, $08CC
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_4E, $0736
+	dw sprite.unknown_5C, $0078
+	dw !initcommand_success
 
 DATA_FF970A:
-	db $00, $00, $5C, $01, $02, $00, $C8, $00
-	db $00, $85, $00, $20, $00, $8D, $14, $00
-	db $00, $81, $C3, $01, $2E, $00, $03, $00
-	db $50, $00, $28, $F8, $48, $00, $80, $10
-	db $4A, $00, $70, $28, $4C, $00, $CE, $08
-	db $42, $00, $01, $00, $4E, $00, $36, $07
-	db $5C, $00, $78, $00, $00, $80
+	dw sprite.number, $015C
+	dw sprite.render_order, $00C8
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0014
+	dw !initcommand_set_animation, $01C3
+	dw sprite.action, $0003
+	dw sprite.parameter, $F828
+	dw sprite.unknown_48, $1080
+	dw sprite.unknown_4A, $2870
+	dw sprite.unknown_4C, $08CE
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_4E, $0736
+	dw sprite.unknown_5C, $0078
+	dw !initcommand_success
 
 DATA_FF9740:
-	db $00, $00, $5C, $01, $02, $00, $C8, $00
-	db $00, $85, $00, $20, $00, $8D, $14, $00
-	db $00, $81, $C2, $01, $2E, $00, $0A, $00
-	db $50, $00, $28, $F8, $48, $00, $80, $10
-	db $4A, $00, $70, $28, $4C, $00, $CC, $08
-	db $42, $00, $4B, $00, $4E, $00, $36, $07
-	db $5C, $00, $78, $00, $00, $80, $00, $00
-	db $5C, $01, $02, $00, $C8, $00, $00, $85
-	db $00, $20, $00, $81, $C3, $01, $2E, $00
-	db $08, $00, $50, $00, $2C, $F8, $48, $00
-	db $88, $10, $4A, $00, $74, $2C, $4C, $00
-	db $CE, $08, $42, $00, $01, $00, $4E, $00
-	db $56, $07, $5C, $00, $78, $00, $00, $80
+	dw sprite.number, $015C
+	dw sprite.render_order, $00C8
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0014
+	dw !initcommand_set_animation, $01C2
+	dw sprite.action, $000A
+	dw sprite.parameter, $F828
+	dw sprite.unknown_48, $1080
+	dw sprite.unknown_4A, $2870
+	dw sprite.unknown_4C, $08CC
+	dw sprite.unknown_42, $004B
+	dw sprite.unknown_4E, $0736
+	dw sprite.unknown_5C, $0078
+	dw !initcommand_success
+
+DATA_FF9776:
+	dw sprite.number, $015C
+	dw sprite.render_order, $00C8
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_animation, $01C3
+	dw sprite.action, $0008
+	dw sprite.parameter, $F82C
+	dw sprite.unknown_48, $1088
+	dw sprite.unknown_4A, $2C74
+	dw sprite.unknown_4C, $08CE
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_4E, $0756
+	dw sprite.unknown_5C, $0078
+	dw !initcommand_success
 
 DATA_FF97A8:
-	db $00, $83, $76, $97, $00, $8D, $14, $00
-	db $00, $80, $00, $83, $76, $97, $00, $8D
-	db $14, $00, $00, $80, $00, $00, $74, $01
-	db $02, $00, $D4, $00, $2E, $00, $00, $00
-	db $00, $85, $00, $20, $00, $8D, $00, $00
-	db $50, $00, $18, $F8, $42, $00, $5D, $F8
-	db $44, $00, $6F, $F8, $46, $00, $81, $F8
-	db $48, $00, $93, $F8, $5C, $00, $78, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9776
+	dw !initcommand_set_alt_palette, $0014
+	dw !initcommand_success
+
+DATA_FF97B2:
+	dw !initcommand_load_subconfig, DATA_FF9776
+	dw !initcommand_set_alt_palette, $0014
+	dw !initcommand_success
+
+DATA_FF97BC:
+	dw sprite.number, $0174
+	dw sprite.render_order, $00D4
+	dw sprite.action, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0000
+	dw sprite.parameter, $F818
+	dw sprite.unknown_42, $F85D
+	dw sprite.unknown_44, $F86F
+	dw sprite.unknown_46, $F881
+	dw sprite.unknown_48, $F893
+	dw sprite.unknown_5C, $0078
+	dw !initcommand_success
 
 DATA_FF97EA:
-	db $00, $83, $BC, $97, $00, $81, $BB, $02
-	db $4A, $00, $42, $00, $4C, $00, $01, $00
-	db $4E, $00, $27, $07, $00, $80, $00, $83
-	db $BC, $97, $00, $81, $BC, $02, $4A, $00
-	db $44, $00, $4C, $00, $02, $00, $4E, $00
-	db $28, $06, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF97BC
+	dw !initcommand_set_animation, $02BB
+	dw sprite.unknown_4A, $0042
+	dw sprite.unknown_4C, $0001
+	dw sprite.unknown_4E, $0727
+	dw !initcommand_success
+
+DATA_FF9800:
+	dw !initcommand_load_subconfig, DATA_FF97BC
+	dw !initcommand_set_animation, $02BC
+	dw sprite.unknown_4A, $0044
+	dw sprite.unknown_4C, $0002
+	dw sprite.unknown_4E, $0628
+	dw !initcommand_success
 
 DATA_FF9816:
-	db $00, $83, $00, $98, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9800
+	dw !initcommand_success
 
 DATA_FF981C:
-	db $00, $83, $00, $98, $02, $00, $D3, $00
-	db $00, $80, $00, $83, $BC, $97, $00, $81
-	db $BD, $02, $4A, $00, $46, $00, $4C, $00
-	db $04, $00, $4E, $00, $29, $05, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9800
+	dw sprite.render_order, $00D3
+	dw !initcommand_success
+
+DATA_FF9826:
+	dw !initcommand_load_subconfig, DATA_FF97BC
+	dw !initcommand_set_animation, $02BD
+	dw sprite.unknown_4A, $0046
+	dw sprite.unknown_4C, $0004
+	dw sprite.unknown_4E, $0529
+	dw !initcommand_success
 
 DATA_FF983C:
-	db $00, $83, $26, $98, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9826
+	dw !initcommand_success
 
 DATA_FF9842:
-	db $00, $83, $26, $98, $02, $00, $D3, $00
-	db $00, $80, $00, $83, $BC, $97, $00, $81
-	db $BE, $02, $4A, $00, $48, $00, $4C, $00
-	db $08, $00, $4E, $00, $2A, $04, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9826
+	dw sprite.render_order, $00D3
+	dw !initcommand_success
+
+DATA_FF984C:
+	dw !initcommand_load_subconfig, DATA_FF97BC
+	dw !initcommand_set_animation, $02BE
+	dw sprite.unknown_4A, $0048
+	dw sprite.unknown_4C, $0008
+	dw sprite.unknown_4E, $042A
+	dw !initcommand_success
 
 DATA_FF9862:
-	db $00, $83, $4C, $98, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF984C
+	dw !initcommand_success
 
 DATA_FF9868:
-	db $00, $83, $4C, $98, $1C, $00, $00, $C0
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF984C
+	dw sprite.unknown_1C, $C000
+	dw !initcommand_success
 
 DATA_FF9872:
-	db $00, $83, $4C, $98, $02, $00, $D3, $00
-	db $00, $80, $00, $00, $58, $02, $02, $00
-	db $C0, $00, $42, $00, $00, $00, $00, $85
-	db $00, $20, $00, $8D, $1B, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF984C
+	dw sprite.render_order, $00D3
+	dw !initcommand_success
+
+DATA_FF987C:
+	dw sprite.number, $0258
+	dw sprite.render_order, $00C0
+	dw sprite.unknown_42, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $001B
+	dw !initcommand_success
 
 DATA_FF9892:
-	db $00, $83, $7C, $98, $42, $00, $0C, $00
-	db $00, $81, $B6, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF987C
+	dw sprite.unknown_42, $000C
+	dw !initcommand_set_animation, $02B6
+	dw !initcommand_success
 
 DATA_FF98A0:
-	db $00, $83, $7C, $98, $00, $81, $B6, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF987C
+	dw !initcommand_set_animation, $02B6
+	dw !initcommand_success
 
 DATA_FF98AA:
-	db $00, $83, $7C, $98, $42, $00, $11, $00
-	db $00, $81, $B6, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF987C
+	dw sprite.unknown_42, $0011
+	dw !initcommand_set_animation, $02B6
+	dw !initcommand_success
 
 DATA_FF98B8:
-	db $00, $83, $7C, $98, $42, $00, $05, $00
-	db $00, $81, $B6, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF987C
+	dw sprite.unknown_42, $0005
+	dw !initcommand_set_animation, $02B6
+	dw !initcommand_success
 
 DATA_FF98C6:
-	db $00, $83, $7C, $98, $42, $00, $09, $00
-	db $00, $81, $B6, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF987C
+	dw sprite.unknown_42, $0009
+	dw !initcommand_set_animation, $02B6
+	dw !initcommand_success
 
 DATA_FF98D4:
-	db $00, $83, $7C, $98, $00, $81, $B6, $02
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF987C
+	dw !initcommand_set_animation, $02B6
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF98E2:
-	db $00, $83, $7C, $98, $00, $81, $B7, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF987C
+	dw !initcommand_set_animation, $02B7
+	dw !initcommand_success
 
 DATA_FF98EC:
-	db $00, $83, $7C, $98, $42, $00, $04, $00
-	db $00, $81, $B7, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF987C
+	dw sprite.unknown_42, $0004
+	dw !initcommand_set_animation, $02B7
+	dw !initcommand_success
 
 DATA_FF98FA:
-	db $00, $83, $7C, $98, $42, $00, $06, $00
-	db $00, $81, $B7, $02, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF987C
+	dw sprite.unknown_42, $0006
+	dw !initcommand_set_animation, $02B7
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF990C:
-	db $00, $83, $7C, $98, $00, $81, $B7, $02
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF987C
+	dw !initcommand_set_animation, $02B7
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF991A:
-	db $00, $83, $7C, $98, $42, $00, $06, $00
-	db $00, $81, $B7, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF987C
+	dw sprite.unknown_42, $0006
+	dw !initcommand_set_animation, $02B7
+	dw !initcommand_success
 
 DATA_FF9928:
-	db $00, $83, $7C, $98, $42, $00, $0C, $00
-	db $00, $81, $B7, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF987C
+	dw sprite.unknown_42, $000C
+	dw !initcommand_set_animation, $02B7
+	dw !initcommand_success
 
 DATA_FF9936:
-	db $00, $83, $7C, $98, $42, $00, $FF, $FF
-	db $00, $81, $B7, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF987C
+	dw sprite.unknown_42, $FFFF
+	dw !initcommand_set_animation, $02B7
+	dw !initcommand_success
 
 DATA_FF9944:
-	db $00, $83, $7C, $98, $00, $81, $B9, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF987C
+	dw !initcommand_set_animation, $02B9
+	dw !initcommand_success
 
 DATA_FF994E:
-	db $00, $83, $7C, $98, $42, $00, $0C, $00
-	db $00, $81, $B9, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF987C
+	dw sprite.unknown_42, $000C
+	dw !initcommand_set_animation, $02B9
+	dw !initcommand_success
 
 DATA_FF995C:
-	db $00, $83, $7C, $98, $42, $00, $08, $00
-	db $00, $81, $B9, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF987C
+	dw sprite.unknown_42, $0008
+	dw !initcommand_set_animation, $02B9
+	dw !initcommand_success
 
 DATA_FF996A:
-	db $00, $83, $7C, $98, $42, $00, $08, $00
-	db $00, $81, $B9, $02, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF987C
+	dw sprite.unknown_42, $0008
+	dw !initcommand_set_animation, $02B9
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF997C:
-	db $00, $83, $7C, $98, $42, $00, $0C, $00
-	db $00, $81, $BA, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF987C
+	dw sprite.unknown_42, $000C
+	dw !initcommand_set_animation, $02BA
+	dw !initcommand_success
 
 DATA_FF998A:
-	db $00, $83, $7C, $98, $42, $00, $0A, $00
-	db $00, $81, $BA, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF987C
+	dw sprite.unknown_42, $000A
+	dw !initcommand_set_animation, $02BA
+	dw !initcommand_success
 
 DATA_FF9998:
-	db $00, $83, $7C, $98, $00, $81, $BA, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF987C
+	dw !initcommand_set_animation, $02BA
+	dw !initcommand_success
 
 DATA_FF99A2:
-	db $00, $83, $7C, $98, $00, $81, $B8, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF987C
+	dw !initcommand_set_animation, $02B8
+	dw !initcommand_success
 
 DATA_FF99AC:
-	db $00, $83, $7C, $98, $42, $00, $0C, $00
-	db $00, $81, $B8, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF987C
+	dw sprite.unknown_42, $000C
+	dw !initcommand_set_animation, $02B8
+	dw !initcommand_success
 
 DATA_FF99BA:
-	db $00, $83, $7C, $98, $42, $00, $08, $00
-	db $00, $81, $B8, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF987C
+	dw sprite.unknown_42, $0008
+	dw !initcommand_set_animation, $02B8
+	dw !initcommand_success
 
 DATA_FF99C8:
-	db $00, $83, $7C, $98, $42, $00, $0C, $00
-	db $00, $81, $B8, $02, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF987C
+	dw sprite.unknown_42, $000C
+	dw !initcommand_set_animation, $02B8
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF99DA:
-	db $00, $83, $7C, $98, $42, $00, $08, $00
-	db $00, $81, $B8, $02, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF987C
+	dw sprite.unknown_42, $0008
+	dw !initcommand_set_animation, $02B8
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF99EC:
-	db $00, $83, $7C, $98, $42, $00, $08, $00
-	db $00, $81, $B8, $02, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF987C
+	dw sprite.unknown_42, $0008
+	dw !initcommand_set_animation, $02B8
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF99FE:
-	db $00, $83, $7C, $98, $42, $00, $04, $00
-	db $00, $81, $B8, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF987C
+	dw sprite.unknown_42, $0004
+	dw !initcommand_set_animation, $02B8
+	dw !initcommand_success
 
 DATA_FF9A0C:
-	db $00, $83, $7C, $98, $42, $00, $FF, $FF
-	db $00, $81, $B8, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF987C
+	dw sprite.unknown_42, $FFFF
+	dw !initcommand_set_animation, $02B8
+	dw !initcommand_success
 
 DATA_FF9A1A:
-	db $00, $83, $7C, $98, $42, $00, $FF, $FF
-	db $00, $81, $B8, $02, $1C, $00, $00, $C0
-	db $00, $80, $00, $00, $94, $00, $02, $00
-	db $C8, $00, $2E, $00, $00, $00, $00, $85
-	db $00, $20, $48, $00, $00, $00, $46, $00
-	db $01, $00, $00, $80, $00, $00, $94, $00
-	db $02, $00, $C8, $00, $2E, $00, $00, $00
-	db $00, $85, $00, $20, $48, $00, $00, $00
-	db $46, $00, $00, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF987C
+	dw sprite.unknown_42, $FFFF
+	dw !initcommand_set_animation, $02B8
+	dw sprite.unknown_1C, $C000
+	dw !initcommand_success
+
+DATA_FF9A2C:
+	dw sprite.number, $0094
+	dw sprite.render_order, $00C8
+	dw sprite.action, $0000
+	dw !initcommand_set_oam, $2000
+	dw sprite.unknown_48, $0000
+	dw sprite.unknown_46, $0001
+	dw !initcommand_success
+
+DATA_FF9A46:
+	dw sprite.number, $0094
+	dw sprite.render_order, $00C8
+	dw sprite.action, $0000
+	dw !initcommand_set_oam, $2000
+	dw sprite.unknown_48, $0000
+	dw sprite.unknown_46, $0000
+	dw !initcommand_success
 
 DATA_FF9A60:
-	db $00, $83, $2C, $9A, $2E, $00, $02, $00
-	db $42, $00, $00, $00, $44, $00, $00, $00
-	db $4A, $00, $30, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9A2C
+	dw sprite.action, $0002
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $0000
+	dw sprite.unknown_4A, $0030
+	dw !initcommand_success
 
 DATA_FF9A76:
-	db $00, $83, $2C, $9A, $42, $00, $01, $00
-	db $44, $00, $02, $00, $4A, $00, $30, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9A2C
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_44, $0002
+	dw sprite.unknown_4A, $0030
+	dw !initcommand_success
 
 DATA_FF9A88:
-	db $00, $83, $2C, $9A, $42, $00, $02, $00
-	db $44, $00, $03, $00, $4A, $00, $30, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9A2C
+	dw sprite.unknown_42, $0002
+	dw sprite.unknown_44, $0003
+	dw sprite.unknown_4A, $0030
+	dw !initcommand_success
 
 DATA_FF9A9A:
-	db $00, $83, $2C, $9A, $42, $00, $03, $00
-	db $44, $00, $04, $00, $4A, $00, $30, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9A2C
+	dw sprite.unknown_42, $0003
+	dw sprite.unknown_44, $0004
+	dw sprite.unknown_4A, $0030
+	dw !initcommand_success
 
 DATA_FF9AAC:
-	db $00, $83, $46, $9A, $42, $00, $00, $00
-	db $44, $00, $00, $00, $4A, $00, $30, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9A46
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $0000
+	dw sprite.unknown_4A, $0030
+	dw !initcommand_success
 
 DATA_FF9ABE:
-	db $00, $83, $46, $9A, $42, $00, $01, $00
-	db $44, $00, $02, $00, $4A, $00, $30, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9A46
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_44, $0002
+	dw sprite.unknown_4A, $0030
+	dw !initcommand_success
 
 DATA_FF9AD0:
-	db $00, $83, $46, $9A, $42, $00, $02, $00
-	db $44, $00, $03, $00, $4A, $00, $30, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9A46
+	dw sprite.unknown_42, $0002
+	dw sprite.unknown_44, $0003
+	dw sprite.unknown_4A, $0030
+	dw !initcommand_success
 
 DATA_FF9AE2:
-	db $00, $83, $46, $9A, $42, $00, $03, $00
-	db $44, $00, $04, $00, $4A, $00, $30, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9A46
+	dw sprite.unknown_42, $0003
+	dw sprite.unknown_44, $0004
+	dw sprite.unknown_4A, $0030
+	dw !initcommand_success
 
 DATA_FF9AF4:
-	db $00, $83, $2C, $9A, $42, $00, $00, $00
-	db $44, $00, $00, $00, $4A, $00, $30, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9A2C
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $0000
+	dw sprite.unknown_4A, $0030
+	dw !initcommand_success
 
 DATA_FF9B06:
-	db $00, $83, $2C, $9A, $42, $00, $00, $00
-	db $44, $00, $00, $00, $4A, $00, $01, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9A2C
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $0000
+	dw sprite.unknown_4A, $0001
+	dw !initcommand_success
 
 DATA_FF9B18:
-	db $00, $83, $46, $9A, $42, $00, $00, $00
-	db $44, $00, $00, $00, $4A, $00, $30, $00
-	db $00, $80, $54, $00, $40, $03, $00, $8D
-	db $4A, $00, $52, $00, $22, $00, $00, $85
-	db $00, $60, $26, $00, $C0, $FE, $00, $83
-	db $58, $9B, $00, $80, $54, $00, $2E, $03
-	db $00, $8D, $0C, $00, $52, $00, $23, $00
-	db $00, $85, $00, $20, $26, $00, $40, $01
-	db $00, $00, $D8, $01, $02, $00, $D4, $00
-	db $2E, $00, $00, $00, $20, $00, $00, $00
-	db $24, $00, $00, $00, $30, $00, $20, $01
-	db $00, $81, $72, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9A46
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $0000
+	dw sprite.unknown_4A, $0030
+	dw !initcommand_success
+
+DATA_FF9B2A:
+	dw sprite.unknown_54, $0340
+	dw !initcommand_set_alt_palette, $004A
+	dw sprite.unknown_52, $0022
+	dw !initcommand_set_oam, $6000
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_load_subconfig, DATA_FF9B58
+	dw !initcommand_success
+
+DATA_FF9B44:
+	dw sprite.unknown_54, $032E
+	dw !initcommand_set_alt_palette, $000C
+	dw sprite.unknown_52, $0023
+	dw !initcommand_set_oam, $2000
+	dw sprite.max_x_speed, $0140
+DATA_FF9B58:
+	dw sprite.number, $01D8
+	dw sprite.render_order, $00D4
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_30, $0120
+	dw !initcommand_set_animation, $0172
+	dw !initcommand_success
 
 DATA_FF9B76:
-	db $00, $83, $2A, $9B, $26, $00, $E0, $FE
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B2A
+	dw sprite.max_x_speed, $FEE0
+	dw !initcommand_success
 
 DATA_FF9B80:
-	db $00, $83, $2A, $9B, $26, $00, $40, $01
-	db $00, $85, $00, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B2A
+	dw sprite.max_x_speed, $0140
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF9B8E:
-	db $00, $83, $2A, $9B, $26, $00, $C0, $FE
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B2A
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_success
 
 DATA_FF9B98:
-	db $00, $83, $44, $9B, $46, $00, $50, $50
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B44
+	dw sprite.unknown_46, $5050
+	dw !initcommand_success
 
 DATA_FF9BA2:
-	db $00, $83, $44, $9B, $00, $85, $00, $60
-	db $46, $00, $00, $F0, $26, $00, $E0, $FE
-	db $20, $00, $FF, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B44
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_46, $F000
+	dw sprite.max_x_speed, $FEE0
+	dw sprite.x_speed, $FFFF
+	dw !initcommand_success
 
 DATA_FF9BB8:
-	db $00, $83, $44, $9B, $46, $00, $20, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B44
+	dw sprite.unknown_46, $2020
+	dw !initcommand_success
 
 DATA_FF9BC2:
-	db $00, $83, $44, $9B, $46, $00, $0C, $0C
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B44
+	dw sprite.unknown_46, $0C0C
+	dw !initcommand_success
 
 DATA_FF9BCC:
-	db $00, $83, $44, $9B, $00, $85, $00, $60
-	db $46, $00, $58, $F8, $26, $00, $E0, $FE
-	db $20, $00, $FF, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B44
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_46, $F858
+	dw sprite.max_x_speed, $FEE0
+	dw sprite.x_speed, $FFFF
+	dw !initcommand_success
 
 DATA_FF9BE2:
-	db $00, $83, $44, $9B, $00, $85, $00, $60
-	db $46, $00, $AF, $FF, $26, $00, $E0, $FE
-	db $20, $00, $FF, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B44
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_46, $FFAF
+	dw sprite.max_x_speed, $FEE0
+	dw sprite.x_speed, $FFFF
+	dw !initcommand_success
 
 DATA_FF9BF8:
-	db $00, $83, $44, $9B, $46, $00, $38, $38
-	db $26, $00, $00, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B44
+	dw sprite.unknown_46, $3838
+	dw sprite.max_x_speed, $0200
+	dw !initcommand_success
 
 DATA_FF9C06:
-	db $00, $83, $44, $9B, $46, $00, $40, $40
-	db $26, $00, $A0, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B44
+	dw sprite.unknown_46, $4040
+	dw sprite.max_x_speed, $01A0
+	dw !initcommand_success
 
 DATA_FF9C14:
-	db $00, $83, $44, $9B, $46, $00, $30, $30
-	db $26, $00, $60, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B44
+	dw sprite.unknown_46, $3030
+	dw sprite.max_x_speed, $0160
+	dw !initcommand_success
 
 DATA_FF9C22:
-	db $00, $83, $44, $9B, $46, $00, $20, $20
-	db $26, $00, $60, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B44
+	dw sprite.unknown_46, $2020
+	dw sprite.max_x_speed, $0160
+	dw !initcommand_success
 
 DATA_FF9C30:
-	db $00, $83, $44, $9B, $46, $00, $60, $40
-	db $26, $00, $80, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B44
+	dw sprite.unknown_46, $4060
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_success
 
 DATA_FF9C3E:
-	db $00, $83, $44, $9B, $26, $00, $A0, $FE
-	db $46, $00, $40, $20, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B44
+	dw sprite.max_x_speed, $FEA0
+	dw sprite.unknown_46, $2040
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF9C50:
-	db $00, $83, $44, $9B, $46, $00, $38, $24
-	db $26, $00, $C0, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B44
+	dw sprite.unknown_46, $2438
+	dw sprite.max_x_speed, $01C0
+	dw !initcommand_success
 
 DATA_FF9C5E:
-	db $00, $83, $44, $9B, $46, $00, $40, $34
-	db $26, $00, $C0, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B44
+	dw sprite.unknown_46, $3440
+	dw sprite.max_x_speed, $01C0
+	dw !initcommand_success
 
 DATA_FF9C6C:
-	db $00, $83, $44, $9B, $26, $00, $80, $FE
-	db $46, $00, $00, $FF, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B44
+	dw sprite.max_x_speed, $FE80
+	dw sprite.unknown_46, $FF00
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF9C7E:
-	db $00, $83, $44, $9B, $00, $85, $00, $60
-	db $46, $00, $58, $FF, $26, $00, $80, $FE
-	db $20, $00, $FF, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B44
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_46, $FF58
+	dw sprite.max_x_speed, $FE80
+	dw sprite.x_speed, $FFFF
+	dw !initcommand_success
 
 DATA_FF9C94:
-	db $00, $83, $44, $9B, $46, $00, $14, $14
-	db $00, $85, $00, $60, $26, $00, $C0, $FE
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B44
+	dw sprite.unknown_46, $1414
+	dw !initcommand_set_oam, $6000
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_success
 
 DATA_FF9CA6:
-	db $00, $83, $44, $9B, $46, $00, $28, $28
-	db $00, $85, $00, $60, $26, $00, $E0, $FE
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B44
+	dw sprite.unknown_46, $2828
+	dw !initcommand_set_oam, $6000
+	dw sprite.max_x_speed, $FEE0
+	dw !initcommand_success
 
 DATA_FF9CB8:
-	db $00, $83, $44, $9B, $26, $00, $60, $01
-	db $46, $00, $30, $48, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B44
+	dw sprite.max_x_speed, $0160
+	dw sprite.unknown_46, $4830
+	dw !initcommand_success
 
 DATA_FF9CC6:
-	db $00, $83, $44, $9B, $46, $00, $40, $40
-	db $26, $00, $00, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B44
+	dw sprite.unknown_46, $4040
+	dw sprite.max_x_speed, $0200
+	dw !initcommand_success
 
 DATA_FF9CD4:
-	db $00, $83, $44, $9B, $26, $00, $60, $FE
-	db $46, $00, $00, $B0, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B44
+	dw sprite.max_x_speed, $FE60
+	dw sprite.unknown_46, $B000
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF9CE6:
-	db $00, $83, $44, $9B, $26, $00, $40, $01
-	db $46, $00, $50, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B44
+	dw sprite.max_x_speed, $0140
+	dw sprite.unknown_46, $0050
+	dw !initcommand_success
 
 DATA_FF9CF4:
-	db $00, $83, $44, $9B, $26, $00, $80, $FE
-	db $46, $00, $38, $38, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B44
+	dw sprite.max_x_speed, $FE80
+	dw sprite.unknown_46, $3838
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF9D06:
-	db $00, $83, $44, $9B, $46, $00, $80, $98
-	db $26, $00, $00, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B44
+	dw sprite.unknown_46, $9880
+	dw sprite.max_x_speed, $0200
+	dw !initcommand_success
 
 DATA_FF9D14:
-	db $00, $83, $44, $9B, $26, $00, $80, $FE
-	db $46, $00, $00, $A0, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B44
+	dw sprite.max_x_speed, $FE80
+	dw sprite.unknown_46, $A000
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF9D26:
-	db $00, $83, $44, $9B, $00, $85, $00, $60
-	db $46, $00, $00, $40, $26, $00, $E0, $FE
-	db $20, $00, $FF, $FF, $00, $80, $00, $00
-	db $20, $02, $02, $00, $D4, $00, $54, $00
-	db $18, $03, $30, $00, $20, $01, $2E, $00
-	db $00, $00, $20, $00, $00, $00, $24, $00
-	db $00, $00, $00, $85, $00, $60, $00, $8D
-	db $3B, $00, $00, $80, $00, $00, $20, $02
-	db $02, $00, $D4, $00, $54, $00, $18, $03
-	db $30, $00, $20, $01, $2E, $00, $00, $00
-	db $20, $00, $00, $00, $24, $00, $00, $00
-	db $00, $85, $00, $20, $00, $8D, $3B, $00
-	db $00, $80, $00, $83, $3C, $9D, $00, $81
-	db $9B, $01, $52, $00, $07, $00, $46, $00
-	db $02, $02, $2A, $00, $60, $00, $4A, $00
-	db $03, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B44
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_46, $4000
+	dw sprite.max_x_speed, $FEE0
+	dw sprite.x_speed, $FFFF
+	dw !initcommand_success
+
+DATA_FF9D3C:
+	dw sprite.number, $0220
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_54, $0318
+	dw sprite.unknown_30, $0120
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_alt_palette, $003B
+	dw !initcommand_success
+
+DATA_FF9D62:
+	dw sprite.number, $0220
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_54, $0318
+	dw sprite.unknown_30, $0120
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $003B
+	dw !initcommand_success
+
+DATA_FF9D88:
+	dw !initcommand_load_subconfig, DATA_FF9D3C
+	dw !initcommand_set_animation, $019B
+	dw sprite.unknown_52, $0007
+	dw sprite.unknown_46, $0202
+	dw sprite.unknown_2A, $0060
+	dw sprite.unknown_4A, $0203
+	dw !initcommand_success
 
 DATA_FF9DA2:
-	db $00, $83, $88, $9D, $26, $00, $40, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9D88
+	dw sprite.max_x_speed, $0040
+	dw !initcommand_success
 
 DATA_FF9DAC:
-	db $00, $83, $88, $9D, $26, $00, $C0, $FF
-	db $00, $85, $00, $20, $00, $80, $00, $83
-	db $62, $9D, $00, $81, $9B, $01, $52, $00
-	db $08, $00, $4A, $00, $04, $04, $2A, $00
-	db $40, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9D88
+	dw sprite.max_x_speed, $FFC0
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
+
+DATA_FF9DBA:
+	dw !initcommand_load_subconfig, DATA_FF9D62
+	dw !initcommand_set_animation, $019B
+	dw sprite.unknown_52, $0008
+	dw sprite.unknown_4A, $0404
+	dw sprite.unknown_2A, $0040
+	dw !initcommand_success
 
 DATA_FF9DD0:
-	db $00, $83, $BA, $9D, $26, $00, $70, $FF
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9DBA
+	dw sprite.max_x_speed, $FF70
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF9DDE:
-	db $00, $83, $BA, $9D, $26, $00, $60, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9DBA
+	dw sprite.max_x_speed, $0060
+	dw !initcommand_success
 
 DATA_FF9DE8:
-	db $00, $83, $BA, $9D, $26, $00, $C0, $FE
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9DBA
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF9DF6:
-	db $00, $83, $BA, $9D, $26, $00, $00, $FF
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9DBA
+	dw sprite.max_x_speed, $FF00
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF9E04:
-	db $00, $83, $BA, $9D, $26, $00, $40, $FE
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9DBA
+	dw sprite.max_x_speed, $FE40
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF9E12:
-	db $00, $83, $BA, $9D, $26, $00, $80, $FE
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9DBA
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FF9E20:
-	db $00, $83, $BA, $9D, $26, $00, $40, $FF
-	db $00, $85, $00, $60, $00, $80, $00, $83
-	db $3C, $9D, $00, $81, $9B, $01, $52, $00
-	db $07, $00, $46, $00, $02, $02, $26, $00
-	db $40, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9DBA
+	dw sprite.max_x_speed, $FF40
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
+
+DATA_FF9E2E:
+	dw !initcommand_load_subconfig, DATA_FF9D3C
+	dw !initcommand_set_animation, $019B
+	dw sprite.unknown_52, $0007
+	dw sprite.unknown_46, $0202
+	dw sprite.max_x_speed, $0040
+	dw !initcommand_success
 
 DATA_FF9E44:
-	db $00, $83, $2E, $9E, $4A, $00, $38, $38
-	db $2A, $00, $40, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9E2E
+	dw sprite.unknown_4A, $3838
+	dw sprite.unknown_2A, $0140
+	dw !initcommand_success
 
 DATA_FF9E52:
-	db $00, $83, $2E, $9E, $4A, $00, $0C, $0C
-	db $2A, $00, $20, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9E2E
+	dw sprite.unknown_4A, $0C0C
+	dw sprite.unknown_2A, $0120
+	dw !initcommand_success
 
 DATA_FF9E60:
-	db $00, $83, $2E, $9E, $4A, $00, $00, $70
-	db $2A, $00, $C0, $FE, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9E2E
+	dw sprite.unknown_4A, $7000
+	dw sprite.unknown_2A, $FEC0
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FF9E72:
-	db $00, $83, $2E, $9E, $46, $00, $04, $04
-	db $4A, $00, $20, $20, $2A, $00, $80, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9E2E
+	dw sprite.unknown_46, $0404
+	dw sprite.unknown_4A, $2020
+	dw sprite.unknown_2A, $0180
+	dw !initcommand_success
 
 DATA_FF9E84:
-	db $00, $83, $2E, $9E, $4A, $00, $48, $28
-	db $2A, $00, $40, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9E2E
+	dw sprite.unknown_4A, $2848
+	dw sprite.unknown_2A, $0140
+	dw !initcommand_success
 
 DATA_FF9E92:
-	db $00, $83, $2E, $9E, $4A, $00, $38, $38
-	db $2A, $00, $80, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9E2E
+	dw sprite.unknown_4A, $3838
+	dw sprite.unknown_2A, $0180
+	dw !initcommand_success
 
 DATA_FF9EA0:
-	db $00, $83, $2E, $9E, $4A, $00, $00, $50
-	db $2A, $00, $C0, $FE, $00, $85, $00, $20
-	db $00, $80, $00, $83, $3C, $9D, $00, $81
-	db $9A, $01, $52, $00, $07, $00, $4A, $00
-	db $03, $02, $2A, $00, $60, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9E2E
+	dw sprite.unknown_4A, $5000
+	dw sprite.unknown_2A, $FEC0
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
+
+DATA_FF9EB2:
+	dw !initcommand_load_subconfig, DATA_FF9D3C
+	dw !initcommand_set_animation, $019A
+	dw sprite.unknown_52, $0007
+	dw sprite.unknown_4A, $0203
+	dw sprite.unknown_2A, $0060
+	dw !initcommand_success
 
 DATA_FF9EC8:
-	db $00, $83, $B2, $9E, $46, $00, $38, $38
-	db $26, $00, $C0, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9EB2
+	dw sprite.unknown_46, $3838
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_success
 
 DATA_FF9ED6:
-	db $00, $83, $B2, $9E, $46, $00, $14, $14
-	db $26, $00, $20, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9EB2
+	dw sprite.unknown_46, $1414
+	dw sprite.max_x_speed, $FF20
+	dw !initcommand_success
 
 DATA_FF9EE4:
-	db $00, $83, $B2, $9E, $46, $00, $58, $18
-	db $26, $00, $C0, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9EB2
+	dw sprite.unknown_46, $1858
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_success
 
 DATA_FF9EF2:
-	db $00, $83, $B2, $9E, $46, $00, $30, $30
-	db $26, $00, $C0, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9EB2
+	dw sprite.unknown_46, $3030
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_success
 
 DATA_FF9F00:
-	db $00, $83, $B2, $9E, $46, $00, $20, $20
-	db $26, $00, $40, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9EB2
+	dw sprite.unknown_46, $2020
+	dw sprite.max_x_speed, $0140
+	dw !initcommand_success
 
 DATA_FF9F0E:
-	db $00, $83, $B2, $9E, $46, $00, $20, $20
-	db $26, $00, $C0, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9EB2
+	dw sprite.unknown_46, $2020
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_success
 
 DATA_FF9F1C:
-	db $00, $83, $B2, $9E, $46, $00, $20, $20
-	db $26, $00, $00, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9EB2
+	dw sprite.unknown_46, $2020
+	dw sprite.max_x_speed, $FF00
+	dw !initcommand_success
 
 DATA_FF9F2A:
-	db $00, $83, $B2, $9E, $46, $00, $20, $20
-	db $26, $00, $20, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9EB2
+	dw sprite.unknown_46, $2020
+	dw sprite.max_x_speed, $0120
+	dw !initcommand_success
 
 DATA_FF9F38:
-	db $00, $83, $B2, $9E, $46, $00, $20, $20
-	db $26, $00, $00, $FF, $00, $85, $00, $60
-	db $00, $80, $00, $83, $62, $9D, $00, $81
-	db $9A, $01, $52, $00, $0A, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9EB2
+	dw sprite.unknown_46, $2020
+	dw sprite.max_x_speed, $FF00
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
+
+DATA_FF9F4A:
+	dw !initcommand_load_subconfig, DATA_FF9D62
+	dw !initcommand_set_animation, $019A
+	dw sprite.unknown_52, $000A
+	dw !initcommand_success
 
 DATA_FF9F58:
-	db $00, $83, $4A, $9F, $46, $00, $00, $40
-	db $48, $00, $00, $28, $26, $00, $40, $FE
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9F4A
+	dw sprite.unknown_46, $4000
+	dw sprite.unknown_48, $2800
+	dw sprite.max_x_speed, $FE40
+	dw !initcommand_success
 
 DATA_FF9F6A:
-	db $00, $83, $4A, $9F, $46, $00, $00, $40
-	db $48, $00, $00, $28, $26, $00, $40, $FE
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9F4A
+	dw sprite.unknown_46, $4000
+	dw sprite.unknown_48, $2800
+	dw sprite.max_x_speed, $FE40
+	dw !initcommand_success
 
 DATA_FF9F7C:
-	db $00, $83, $4A, $9F, $46, $00, $00, $00
-	db $48, $00, $00, $30, $26, $00, $80, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9F4A
+	dw sprite.unknown_46, $0000
+	dw sprite.unknown_48, $3000
+	dw sprite.max_x_speed, $0280
+	dw !initcommand_success
 
 DATA_FF9F8E:
-	db $00, $83, $3C, $9D, $00, $81, $9A, $01
-	db $52, $00, $0B, $00, $46, $00, $00, $00
-	db $48, $00, $00, $28, $4A, $00, $40, $C0
-	db $26, $00, $00, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9D3C
+	dw !initcommand_set_animation, $019A
+	dw sprite.unknown_52, $000B
+	dw sprite.unknown_46, $0000
+	dw sprite.unknown_48, $2800
+	dw sprite.unknown_4A, $C040
+	dw sprite.max_x_speed, $0200
+	dw !initcommand_success
 
 DATA_FF9FAC:
-	db $00, $83, $62, $9D, $00, $81, $9B, $01
-	db $52, $00, $0F, $00, $26, $00, $80, $00
-	db $2A, $00, $00, $00, $00, $80, $00, $00
-	db $FC, $01, $02, $00, $D4, $00, $54, $00
-	db $C0, $02, $2E, $00, $00, $00, $20, $00
-	db $00, $00, $26, $00, $C0, $FE, $24, $00
-	db $00, $00, $30, $00, $20, $00, $00, $85
-	db $00, $60, $00, $8D, $50, $00, $00, $81
-	db $A3, $01, $00, $80, $00, $83, $C2, $9F
-	db $52, $00, $22, $00, $00, $80, $00, $83
-	db $C2, $9F, $52, $00, $23, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9D62
+	dw !initcommand_set_animation, $019B
+	dw sprite.unknown_52, $000F
+	dw sprite.max_x_speed, $0080
+	dw sprite.unknown_2A, $0000
+	dw !initcommand_success
+
+DATA_FF9FC2:
+	dw sprite.number, $01FC
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_54, $02C0
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.max_x_speed, $FEC0
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_30, $0020
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_alt_palette, $0050
+	dw !initcommand_set_animation, $01A3
+	dw !initcommand_success
+
+DATA_FF9FF0:
+	dw !initcommand_load_subconfig, DATA_FF9FC2
+	dw sprite.unknown_52, $0022
+	dw !initcommand_success
+
+DATA_FF9FFA:
+	dw !initcommand_load_subconfig, DATA_FF9FC2
+	dw sprite.unknown_52, $0023
+	dw !initcommand_success
 
 DATA_FFA004:
-	db $00, $83, $F0, $9F, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FF0
+	dw !initcommand_success
 
 DATA_FFA00A:
-	db $00, $83, $F0, $9F, $26, $00, $40, $01
-	db $00, $85, $00, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FF0
+	dw sprite.max_x_speed, $0140
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFA018:
-	db $00, $83, $F0, $9F, $26, $00, $80, $FE
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FF0
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_success
 
 DATA_FFA022:
-	db $00, $83, $F0, $9F, $26, $00, $80, $01
-	db $00, $85, $00, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FF0
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFA030:
-	db $00, $83, $F0, $9F, $26, $00, $00, $FE
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FF0
+	dw sprite.max_x_speed, $FE00
+	dw !initcommand_success
 
 DATA_FFA03A:
-	db $00, $83, $FA, $9F, $46, $00, $28, $28
-	db $26, $00, $00, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $2828
+	dw sprite.max_x_speed, $FE00
+	dw !initcommand_success
 
 DATA_FFA048:
-	db $00, $83, $FA, $9F, $46, $00, $20, $20
-	db $26, $00, $40, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $2020
+	dw sprite.max_x_speed, $FE40
+	dw !initcommand_success
 
 DATA_FFA056:
-	db $00, $83, $FA, $9F, $46, $00, $10, $FF
-	db $26, $00, $20, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $FF10
+	dw sprite.max_x_speed, $0120
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFA068:
-	db $00, $83, $FA, $9F, $46, $00, $60, $60
-	db $26, $00, $C0, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $6060
+	dw sprite.max_x_speed, $01C0
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFA07A:
-	db $00, $83, $FA, $9F, $46, $00, $38, $38
-	db $26, $00, $40, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $3838
+	dw sprite.max_x_speed, $0140
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFA08C:
-	db $00, $83, $FA, $9F, $46, $00, $05, $05
-	db $26, $00, $E0, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $0505
+	dw sprite.max_x_speed, $FEE0
+	dw !initcommand_success
 
 DATA_FFA09A:
-	db $00, $83, $FA, $9F, $46, $00, $05, $05
-	db $26, $00, $20, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $0505
+	dw sprite.max_x_speed, $0120
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFA0AC:
-	db $00, $83, $FA, $9F, $46, $00, $D8, $00
-	db $26, $00, $C0, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $00D8
+	dw sprite.max_x_speed, $01C0
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFA0BE:
-	db $00, $83, $FA, $9F, $46, $00, $98, $00
-	db $26, $00, $C0, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $0098
+	dw sprite.max_x_speed, $01C0
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFA0D0:
-	db $00, $83, $FA, $9F, $46, $00, $78, $00
-	db $26, $00, $C0, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $0078
+	dw sprite.max_x_speed, $01C0
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFA0E2:
-	db $00, $83, $FA, $9F, $26, $00, $C0, $FE
-	db $46, $00, $58, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.max_x_speed, $FEC0
+	dw sprite.unknown_46, $0058
+	dw !initcommand_success
 
 DATA_FFA0F0:
-	db $00, $83, $FA, $9F, $26, $00, $C0, $FE
-	db $46, $00, $2C, $2C, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.max_x_speed, $FEC0
+	dw sprite.unknown_46, $2C2C
+	dw !initcommand_success
 
 DATA_FFA0FE:
-	db $00, $83, $FA, $9F, $26, $00, $C0, $FE
-	db $46, $00, $00, $58, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.max_x_speed, $FEC0
+	dw sprite.unknown_46, $5800
+	dw !initcommand_success
 
 DATA_FFA10C:
-	db $00, $83, $FA, $9F, $26, $00, $60, $FE
-	db $46, $00, $10, $70, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.max_x_speed, $FE60
+	dw sprite.unknown_46, $7010
+	dw !initcommand_success
 
 DATA_FFA11A:
-	db $00, $83, $FA, $9F, $26, $00, $60, $FE
-	db $46, $00, $40, $40, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.max_x_speed, $FE60
+	dw sprite.unknown_46, $4040
+	dw !initcommand_success
 
 DATA_FFA128:
-	db $00, $83, $FA, $9F, $26, $00, $60, $FE
-	db $46, $00, $30, $30, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.max_x_speed, $FE60
+	dw sprite.unknown_46, $3030
+	dw !initcommand_success
 
 DATA_FFA136:
-	db $00, $83, $FA, $9F, $46, $00, $20, $A8
-	db $26, $00, $80, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $A820
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_success
 
 DATA_FFA144:
-	db $00, $83, $FA, $9F, $46, $00, $00, $C8
-	db $26, $00, $80, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $C800
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_success
 
 DATA_FFA152:
-	db $00, $83, $FA, $9F, $46, $00, $18, $18
-	db $26, $00, $C0, $FD, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $1818
+	dw sprite.max_x_speed, $FDC0
+	dw !initcommand_success
 
 DATA_FFA160:
-	db $00, $83, $FA, $9F, $46, $00, $48, $48
-	db $26, $00, $40, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $4848
+	dw sprite.max_x_speed, $FE40
+	dw !initcommand_success
 
 DATA_FFA16E:
-	db $00, $83, $FA, $9F, $46, $00, $10, $10
-	db $26, $00, $C0, $FD, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $1010
+	dw sprite.max_x_speed, $FDC0
+	dw !initcommand_success
 
 DATA_FFA17C:
-	db $00, $83, $FA, $9F, $46, $00, $30, $30
-	db $26, $00, $C0, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $3030
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_success
 
 DATA_FFA18A:
-	db $00, $83, $FA, $9F, $46, $00, $30, $30
-	db $26, $00, $40, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $3030
+	dw sprite.max_x_speed, $0140
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFA19C:
-	db $00, $83, $FA, $9F, $46, $00, $14, $14
-	db $26, $00, $00, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $1414
+	dw sprite.max_x_speed, $FF00
+	dw !initcommand_success
 
 DATA_FFA1AA:
-	db $00, $83, $FA, $9F, $46, $00, $40, $30
-	db $26, $00, $80, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $3040
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_success
 
 DATA_FFA1B8:
-	db $00, $83, $FA, $9F, $46, $00, $18, $18
-	db $26, $00, $80, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $1818
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_success
 
 DATA_FFA1C6:
-	db $00, $83, $FA, $9F, $46, $00, $00, $88
-	db $26, $00, $40, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $8800
+	dw sprite.max_x_speed, $FE40
+	dw !initcommand_success
 
 DATA_FFA1D4:
-	db $00, $83, $FA, $9F, $46, $00, $48, $48
-	db $26, $00, $40, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $4848
+	dw sprite.max_x_speed, $FE40
+	dw !initcommand_success
 
 DATA_FFA1E2:
-	db $00, $83, $FA, $9F, $46, $00, $00, $A0
-	db $26, $00, $40, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $A000
+	dw sprite.max_x_speed, $FE40
+	dw !initcommand_success
 
 DATA_FFA1F0:
-	db $00, $83, $FA, $9F, $46, $00, $B0, $B0
-	db $26, $00, $C0, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $B0B0
+	dw sprite.max_x_speed, $01C0
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFA202:
-	db $00, $83, $FA, $9F, $46, $00, $28, $30
-	db $26, $00, $40, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $3028
+	dw sprite.max_x_speed, $0140
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFA214:
-	db $00, $83, $FA, $9F, $46, $00, $20, $20
-	db $26, $00, $C0, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $2020
+	dw sprite.max_x_speed, $01C0
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFA226:
-	db $00, $83, $FA, $9F, $46, $00, $24, $28
-	db $26, $00, $40, $FE, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $2824
+	dw sprite.max_x_speed, $FE40
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA238:
-	db $00, $83, $FA, $9F, $46, $00, $20, $14
-	db $26, $00, $40, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $1420
+	dw sprite.max_x_speed, $FE40
+	dw !initcommand_success
 
 DATA_FFA246:
-	db $00, $83, $FA, $9F, $46, $00, $E0, $00
-	db $26, $00, $80, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $00E0
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_success
 
 DATA_FFA254:
-	db $00, $83, $FA, $9F, $46, $00, $38, $2C
-	db $26, $00, $40, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $2C38
+	dw sprite.max_x_speed, $0140
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFA266:
-	db $00, $83, $FA, $9F, $46, $00, $00, $D0
-	db $26, $00, $80, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $D000
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_success
 
 DATA_FFA274:
-	db $00, $83, $FA, $9F, $46, $00, $20, $98
-	db $26, $00, $40, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $9820
+	dw sprite.max_x_speed, $0140
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFA286:
-	db $00, $83, $FA, $9F, $46, $00, $18, $18
-	db $26, $00, $40, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $1818
+	dw sprite.max_x_speed, $0140
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFA298:
-	db $00, $83, $FA, $9F, $46, $00, $20, $28
-	db $26, $00, $00, $FE, $00, $80, $00, $00
-	db $00, $02, $02, $00, $D4, $00, $54, $00
-	db $D6, $02, $2E, $00, $00, $00, $20, $00
-	db $00, $00, $24, $00, $00, $00, $30, $00
-	db $20, $01, $00, $85, $00, $20, $00, $8D
-	db $3A, $00, $00, $81, $A6, $01, $52, $00
-	db $06, $00, $48, $00, $00, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $2820
+	dw sprite.max_x_speed, $FE00
+	dw !initcommand_success
+
+DATA_FFA2A6:
+	dw sprite.number, $0200
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_54, $02D6
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_30, $0120
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $003A
+	dw !initcommand_set_animation, $01A6
+	dw sprite.unknown_52, $0006
+	dw sprite.unknown_48, $0000
+	dw !initcommand_success
 
 DATA_FFA2D8:
-	db $00, $83, $A6, $A2, $4A, $00, $38, $20
-	db $2A, $00, $C0, $00, $4E, $00, $00, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA2A6
+	dw sprite.unknown_4A, $2038
+	dw sprite.unknown_2A, $00C0
+	dw sprite.unknown_4E, $0100
+	dw !initcommand_success
 
 DATA_FFA2EA:
-	db $00, $83, $A6, $A2, $4A, $00, $10, $70
-	db $2A, $00, $C0, $00, $4E, $00, $00, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA2A6
+	dw sprite.unknown_4A, $7010
+	dw sprite.unknown_2A, $00C0
+	dw sprite.unknown_4E, $0100
+	dw !initcommand_success
 
 DATA_FFA2FC:
-	db $00, $83, $A6, $A2, $4A, $00, $70, $10
-	db $2A, $00, $40, $FF, $3A, $00, $00, $01
-	db $4E, $00, $00, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA2A6
+	dw sprite.unknown_4A, $1070
+	dw sprite.unknown_2A, $FF40
+	dw sprite.unknown_3A, $0100
+	dw sprite.unknown_4E, $0100
+	dw !initcommand_success
 
 DATA_FFA312:
-	db $00, $83, $A6, $A2, $4A, $00, $10, $70
-	db $2A, $00, $C0, $00, $4E, $00, $00, $01
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA2A6
+	dw sprite.unknown_4A, $7010
+	dw sprite.unknown_2A, $00C0
+	dw sprite.unknown_4E, $0100
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA328:
-	db $00, $83, $A6, $A2, $4A, $00, $60, $20
-	db $2A, $00, $C0, $00, $4E, $00, $00, $01
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA2A6
+	dw sprite.unknown_4A, $2060
+	dw sprite.unknown_2A, $00C0
+	dw sprite.unknown_4E, $0100
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA33E:
-	db $00, $83, $A6, $A2, $4A, $00, $38, $20
-	db $2A, $00, $C0, $00, $4E, $00, $00, $01
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA2A6
+	dw sprite.unknown_4A, $2038
+	dw sprite.unknown_2A, $00C0
+	dw sprite.unknown_4E, $0100
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA354:
-	db $00, $83, $A6, $A2, $4A, $00, $10, $60
-	db $2A, $00, $C0, $00, $4E, $00, $10, $01
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA2A6
+	dw sprite.unknown_4A, $6010
+	dw sprite.unknown_2A, $00C0
+	dw sprite.unknown_4E, $0110
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA36A:
-	db $00, $83, $A6, $A2, $4A, $00, $60, $10
-	db $2A, $00, $40, $FF, $3A, $00, $10, $01
-	db $4E, $00, $10, $01, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA2A6
+	dw sprite.unknown_4A, $1060
+	dw sprite.unknown_2A, $FF40
+	dw sprite.unknown_3A, $0110
+	dw sprite.unknown_4E, $0110
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA384:
-	db $00, $83, $A6, $A2, $4A, $00, $50, $20
-	db $2A, $00, $C0, $00, $4E, $00, $10, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA2A6
+	dw sprite.unknown_4A, $2050
+	dw sprite.unknown_2A, $00C0
+	dw sprite.unknown_4E, $0110
+	dw !initcommand_success
 
 DATA_FFA396:
-	db $00, $83, $A6, $A2, $4A, $00, $20, $38
-	db $2A, $00, $C0, $00, $4E, $00, $00, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA2A6
+	dw sprite.unknown_4A, $3820
+	dw sprite.unknown_2A, $00C0
+	dw sprite.unknown_4E, $0100
+	dw !initcommand_success
 
 DATA_FFA3A8:
-	db $00, $83, $A6, $A2, $4A, $00, $20, $38
-	db $2A, $00, $40, $FF, $4E, $00, $00, $01
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA2A6
+	dw sprite.unknown_4A, $3820
+	dw sprite.unknown_2A, $FF40
+	dw sprite.unknown_4E, $0100
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA3BE:
-	db $00, $83, $A6, $A2, $4A, $00, $00, $58
-	db $2A, $00, $60, $FF, $4E, $00, $00, $01
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA2A6
+	dw sprite.unknown_4A, $5800
+	dw sprite.unknown_2A, $FF60
+	dw sprite.unknown_4E, $0100
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA3D4:
-	db $00, $83, $A6, $A2, $4A, $00, $48, $40
-	db $2A, $00, $10, $FF, $4E, $00, $00, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA2A6
+	dw sprite.unknown_4A, $4048
+	dw sprite.unknown_2A, $FF10
+	dw sprite.unknown_4E, $0100
+	dw !initcommand_success
 
 DATA_FFA3E6:
-	db $00, $83, $A6, $A2, $4A, $00, $38, $20
-	db $2A, $00, $40, $FF, $4E, $00, $00, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA2A6
+	dw sprite.unknown_4A, $2038
+	dw sprite.unknown_2A, $FF40
+	dw sprite.unknown_4E, $0100
+	dw !initcommand_success
 
 DATA_FFA3F8:
-	db $00, $83, $A6, $A2, $4A, $00, $00, $A0
-	db $2A, $00, $00, $FF, $4E, $00, $10, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA2A6
+	dw sprite.unknown_4A, $A000
+	dw sprite.unknown_2A, $FF00
+	dw sprite.unknown_4E, $0110
+	dw !initcommand_success
 
 DATA_FFA40A:
-	db $00, $83, $A6, $A2, $4A, $00, $00, $A0
-	db $2A, $00, $00, $FF, $4E, $00, $10, $01
-	db $48, $00, $1E, $00, $00, $81, $A8, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA2A6
+	dw sprite.unknown_4A, $A000
+	dw sprite.unknown_2A, $FF00
+	dw sprite.unknown_4E, $0110
+	dw sprite.unknown_48, $001E
+	dw !initcommand_set_animation, $01A8
+	dw !initcommand_success
 
 DATA_FFA424:
-	db $00, $83, $A6, $A2, $4A, $00, $00, $A0
-	db $2A, $00, $00, $FF, $4E, $00, $10, $01
-	db $48, $00, $3C, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA2A6
+	dw sprite.unknown_4A, $A000
+	dw sprite.unknown_2A, $FF00
+	dw sprite.unknown_4E, $0110
+	dw sprite.unknown_48, $003C
+	dw !initcommand_success
 
 DATA_FFA43A:
-	db $00, $83, $A6, $A2, $4A, $00, $00, $A0
-	db $2A, $00, $00, $FF, $4E, $00, $10, $01
-	db $48, $00, $5A, $00, $00, $81, $A8, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA2A6
+	dw sprite.unknown_4A, $A000
+	dw sprite.unknown_2A, $FF00
+	dw sprite.unknown_4E, $0110
+	dw sprite.unknown_48, $005A
+	dw !initcommand_set_animation, $01A8
+	dw !initcommand_success
 
 DATA_FFA454:
-	db $00, $83, $A6, $A2, $4A, $00, $28, $10
-	db $2A, $00, $C0, $00, $4E, $00, $00, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA2A6
+	dw sprite.unknown_4A, $1028
+	dw sprite.unknown_2A, $00C0
+	dw sprite.unknown_4E, $0100
+	dw !initcommand_success
 
 DATA_FFA466:
-	db $00, $83, $A6, $A2, $4A, $00, $18, $20
-	db $2A, $00, $40, $FF, $4E, $00, $00, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA2A6
+	dw sprite.unknown_4A, $2018
+	dw sprite.unknown_2A, $FF40
+	dw sprite.unknown_4E, $0100
+	dw !initcommand_success
 
 DATA_FFA478:
-	db $00, $83, $A6, $A2, $4A, $00, $70, $00
-	db $2A, $00, $C0, $00, $4E, $00, $00, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA2A6
+	dw sprite.unknown_4A, $0070
+	dw sprite.unknown_2A, $00C0
+	dw sprite.unknown_4E, $0100
+	dw !initcommand_success
 
 DATA_FFA48A:
-	db $00, $83, $A6, $A2, $4A, $00, $58, $00
-	db $2A, $00, $C0, $00, $4E, $00, $00, $01
-	db $00, $80, $00, $00, $F8, $01, $02, $00
-	db $D4, $00, $54, $00, $1C, $02, $2E, $00
-	db $00, $00, $20, $00, $00, $00, $24, $00
-	db $00, $00, $30, $00, $20, $00, $00, $85
-	db $00, $20, $00, $81, $A9, $01, $5C, $00
-	db $01, $00, $00, $80, $00, $83, $9C, $A4
-	db $52, $00, $08, $00, $2A, $00, $60, $00
-	db $4A, $00, $06, $06, $00, $8D, $3C, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA2A6
+	dw sprite.unknown_4A, $0058
+	dw sprite.unknown_2A, $00C0
+	dw sprite.unknown_4E, $0100
+	dw !initcommand_success
+
+DATA_FFA49C:
+	dw sprite.number, $01F8
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_54, $021C
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_30, $0020
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_animation, $01A9
+	dw sprite.unknown_5C, $0001
+	dw !initcommand_success
+
+DATA_FFA4C6:
+	dw !initcommand_load_subconfig, DATA_FFA49C
+	dw sprite.unknown_52, $0008
+	dw sprite.unknown_2A, $0060
+	dw sprite.unknown_4A, $0606
+	dw !initcommand_set_alt_palette, $003C
+	dw !initcommand_success
 
 DATA_FFA4DC:
-	db $00, $83, $C6, $A4, $26, $00, $80, $FF
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA4C6
+	dw sprite.max_x_speed, $FF80
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA4EA:
-	db $00, $83, $C6, $A4, $26, $00, $80, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA4C6
+	dw sprite.max_x_speed, $0080
+	dw !initcommand_success
 
 DATA_FFA4F4:
-	db $00, $83, $C6, $A4, $26, $00, $40, $FF
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA4C6
+	dw sprite.max_x_speed, $FF40
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA502:
-	db $00, $83, $C6, $A4, $26, $00, $C0, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA4C6
+	dw sprite.max_x_speed, $00C0
+	dw !initcommand_success
 
 DATA_FFA50C:
-	db $00, $83, $C6, $A4, $26, $00, $00, $FF
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA4C6
+	dw sprite.max_x_speed, $FF00
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA51A:
-	db $00, $83, $C6, $A4, $26, $00, $00, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA4C6
+	dw sprite.max_x_speed, $0100
+	dw !initcommand_success
 
 DATA_FFA524:
-	db $00, $83, $C6, $A4, $26, $00, $60, $FF
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA4C6
+	dw sprite.max_x_speed, $FF60
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA532:
-	db $00, $83, $C6, $A4, $26, $00, $A0, $00
-	db $00, $80, $00, $83, $9C, $A4, $00, $8D
-	db $4F, $00, $52, $00, $07, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA4C6
+	dw sprite.max_x_speed, $00A0
+	dw !initcommand_success
+
+DATA_FFA53C:
+	dw !initcommand_load_subconfig, DATA_FFA49C
+	dw !initcommand_set_alt_palette, $004F
+	dw sprite.unknown_52, $0007
+	dw !initcommand_success
 
 DATA_FFA54A:
-	db $00, $83, $3C, $A5, $26, $00, $C0, $00
-	db $46, $00, $60, $60, $2A, $00, $60, $00
-	db $4A, $00, $03, $03, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA53C
+	dw sprite.max_x_speed, $00C0
+	dw sprite.unknown_46, $6060
+	dw sprite.unknown_2A, $0060
+	dw sprite.unknown_4A, $0303
+	dw !initcommand_success
 
 DATA_FFA560:
-	db $00, $83, $3C, $A5, $26, $00, $E0, $FE
-	db $46, $00, $00, $80, $2A, $00, $60, $00
-	db $4A, $00, $03, $03, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA53C
+	dw sprite.max_x_speed, $FEE0
+	dw sprite.unknown_46, $8000
+	dw sprite.unknown_2A, $0060
+	dw sprite.unknown_4A, $0303
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA57A:
-	db $00, $83, $3C, $A5, $26, $00, $20, $01
-	db $46, $00, $80, $00, $2A, $00, $60, $00
-	db $4A, $00, $03, $03, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA53C
+	dw sprite.max_x_speed, $0120
+	dw sprite.unknown_46, $0080
+	dw sprite.unknown_2A, $0060
+	dw sprite.unknown_4A, $0303
+	dw !initcommand_success
 
 DATA_FFA590:
-	db $00, $83, $3C, $A5, $26, $00, $20, $01
-	db $46, $00, $60, $60, $2A, $00, $60, $00
-	db $4A, $00, $03, $03, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA53C
+	dw sprite.max_x_speed, $0120
+	dw sprite.unknown_46, $6060
+	dw sprite.unknown_2A, $0060
+	dw sprite.unknown_4A, $0303
+	dw !initcommand_success
 
 DATA_FFA5A6:
-	db $00, $83, $3C, $A5, $26, $00, $40, $FF
-	db $46, $00, $40, $40, $2A, $00, $60, $00
-	db $4A, $00, $03, $03, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA53C
+	dw sprite.max_x_speed, $FF40
+	dw sprite.unknown_46, $4040
+	dw sprite.unknown_2A, $0060
+	dw sprite.unknown_4A, $0303
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA5C0:
-	db $00, $83, $3C, $A5, $26, $00, $00, $FF
-	db $46, $00, $50, $50, $2A, $00, $60, $00
-	db $4A, $00, $03, $03, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA53C
+	dw sprite.max_x_speed, $FF00
+	dw sprite.unknown_46, $5050
+	dw sprite.unknown_2A, $0060
+	dw sprite.unknown_4A, $0303
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA5DA:
-	db $00, $83, $3C, $A5, $26, $00, $40, $FF
-	db $46, $00, $50, $50, $2A, $00, $60, $00
-	db $4A, $00, $03, $03, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA53C
+	dw sprite.max_x_speed, $FF40
+	dw sprite.unknown_46, $5050
+	dw sprite.unknown_2A, $0060
+	dw sprite.unknown_4A, $0303
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA5F4:
-	db $00, $83, $3C, $A5, $26, $00, $40, $FF
-	db $46, $00, $30, $30, $2A, $00, $60, $00
-	db $4A, $00, $03, $03, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA53C
+	dw sprite.max_x_speed, $FF40
+	dw sprite.unknown_46, $3030
+	dw sprite.unknown_2A, $0060
+	dw sprite.unknown_4A, $0303
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA60E:
-	db $00, $83, $3C, $A5, $26, $00, $E0, $FE
-	db $46, $00, $60, $60, $2A, $00, $60, $00
-	db $4A, $00, $03, $03, $00, $85, $00, $60
-	db $5C, $00, $00, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA53C
+	dw sprite.max_x_speed, $FEE0
+	dw sprite.unknown_46, $6060
+	dw sprite.unknown_2A, $0060
+	dw sprite.unknown_4A, $0303
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_5C, $0000
+	dw !initcommand_success
 
 DATA_FFA62C:
-	db $00, $83, $3C, $A5, $26, $00, $E0, $FE
-	db $46, $00, $40, $40, $2A, $00, $60, $00
-	db $4A, $00, $03, $03, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA53C
+	dw sprite.max_x_speed, $FEE0
+	dw sprite.unknown_46, $4040
+	dw sprite.unknown_2A, $0060
+	dw sprite.unknown_4A, $0303
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA646:
-	db $00, $83, $3C, $A5, $26, $00, $00, $01
-	db $46, $00, $40, $40, $2A, $00, $60, $00
-	db $4A, $00, $03, $03, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA53C
+	dw sprite.max_x_speed, $0100
+	dw sprite.unknown_46, $4040
+	dw sprite.unknown_2A, $0060
+	dw sprite.unknown_4A, $0303
+	dw !initcommand_success
 
 DATA_FFA65C:
-	db $00, $83, $3C, $A5, $26, $00, $60, $FF
-	db $46, $00, $70, $D0, $2A, $00, $70, $00
-	db $4A, $00, $03, $03, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA53C
+	dw sprite.max_x_speed, $FF60
+	dw sprite.unknown_46, $D070
+	dw sprite.unknown_2A, $0070
+	dw sprite.unknown_4A, $0303
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA676:
-	db $00, $83, $3C, $A5, $26, $00, $20, $FF
-	db $46, $00, $00, $FF, $2A, $00, $60, $00
-	db $4A, $00, $04, $02, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA53C
+	dw sprite.max_x_speed, $FF20
+	dw sprite.unknown_46, $FF00
+	dw sprite.unknown_2A, $0060
+	dw sprite.unknown_4A, $0204
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA690:
-	db $00, $83, $3C, $A5, $26, $00, $00, $FF
-	db $46, $00, $48, $C0, $2A, $00, $60, $00
-	db $4A, $00, $03, $02, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA53C
+	dw sprite.max_x_speed, $FF00
+	dw sprite.unknown_46, $C048
+	dw sprite.unknown_2A, $0060
+	dw sprite.unknown_4A, $0203
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA6AA:
-	db $00, $83, $3C, $A5, $26, $00, $00, $FF
-	db $46, $00, $10, $C0, $2A, $00, $68, $00
-	db $4A, $00, $03, $03, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA53C
+	dw sprite.max_x_speed, $FF00
+	dw sprite.unknown_46, $C010
+	dw sprite.unknown_2A, $0068
+	dw sprite.unknown_4A, $0303
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA6C4:
-	db $00, $83, $3C, $A5, $26, $00, $40, $01
-	db $46, $00, $B0, $10, $2A, $00, $60, $00
-	db $4A, $00, $03, $03, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA53C
+	dw sprite.max_x_speed, $0140
+	dw sprite.unknown_46, $10B0
+	dw sprite.unknown_2A, $0060
+	dw sprite.unknown_4A, $0303
+	dw !initcommand_success
 
 DATA_FFA6DA:
-	db $00, $83, $3C, $A5, $26, $00, $C0, $FE
-	db $46, $00, $18, $B0, $2A, $00, $68, $00
-	db $4A, $00, $02, $03, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA53C
+	dw sprite.max_x_speed, $FEC0
+	dw sprite.unknown_46, $B018
+	dw sprite.unknown_2A, $0068
+	dw sprite.unknown_4A, $0302
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA6F4:
-	db $00, $83, $3C, $A5, $26, $00, $C0, $FE
-	db $46, $00, $38, $B0, $2A, $00, $60, $00
-	db $4A, $00, $04, $02, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA53C
+	dw sprite.max_x_speed, $FEC0
+	dw sprite.unknown_46, $B038
+	dw sprite.unknown_2A, $0060
+	dw sprite.unknown_4A, $0204
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA70E:
-	db $00, $83, $3C, $A5, $26, $00, $80, $FE
-	db $46, $00, $40, $40, $2A, $00, $60, $00
-	db $4A, $00, $03, $03, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA53C
+	dw sprite.max_x_speed, $FE80
+	dw sprite.unknown_46, $4040
+	dw sprite.unknown_2A, $0060
+	dw sprite.unknown_4A, $0303
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA728:
-	db $00, $83, $3C, $A5, $26, $00, $80, $01
-	db $46, $00, $40, $40, $2A, $00, $60, $00
-	db $4A, $00, $03, $03, $00, $80, $00, $00
-	db $34, $02, $02, $00, $D4, $00, $54, $00
-	db $1C, $02, $2E, $00, $00, $00, $52, $00
-	db $29, $00, $5C, $00, $00, $00, $00, $85
-	db $00, $20, $00, $8D, $0B, $00, $00, $81
-	db $81, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA53C
+	dw sprite.max_x_speed, $0180
+	dw sprite.unknown_46, $4040
+	dw sprite.unknown_2A, $0060
+	dw sprite.unknown_4A, $0303
+	dw !initcommand_success
+
+DATA_FFA73E:
+	dw sprite.number, $0234
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_54, $021C
+	dw sprite.action, $0000
+	dw sprite.unknown_52, $0029
+	dw sprite.unknown_5C, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $000B
+	dw !initcommand_set_animation, $0181
+	dw !initcommand_success
 
 DATA_FFA764:
-	db $00, $83, $3E, $A7, $26, $00, $C0, $00
-	db $2A, $00, $80, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA73E
+	dw sprite.max_x_speed, $00C0
+	dw sprite.unknown_2A, $0180
+	dw !initcommand_success
 
 DATA_FFA772:
-	db $00, $83, $3E, $A7, $26, $00, $C0, $00
-	db $2A, $00, $80, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA73E
+	dw sprite.max_x_speed, $00C0
+	dw sprite.unknown_2A, $FE80
+	dw !initcommand_success
 
 DATA_FFA780:
-	db $00, $83, $3E, $A7, $26, $00, $40, $FF
-	db $2A, $00, $80, $01, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA73E
+	dw sprite.max_x_speed, $FF40
+	dw sprite.unknown_2A, $0180
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA792:
-	db $00, $83, $3E, $A7, $26, $00, $40, $FF
-	db $2A, $00, $80, $FE, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA73E
+	dw sprite.max_x_speed, $FF40
+	dw sprite.unknown_2A, $FE80
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA7A4:
-	db $00, $83, $3E, $A7, $26, $00, $80, $01
-	db $2A, $00, $00, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA73E
+	dw sprite.max_x_speed, $0180
+	dw sprite.unknown_2A, $0200
+	dw !initcommand_success
 
 DATA_FFA7B2:
-	db $00, $83, $3E, $A7, $26, $00, $80, $FE
-	db $2A, $00, $00, $02, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA73E
+	dw sprite.max_x_speed, $FE80
+	dw sprite.unknown_2A, $0200
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA7C4:
-	db $00, $83, $3E, $A7, $26, $00, $80, $01
-	db $2A, $00, $00, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA73E
+	dw sprite.max_x_speed, $0180
+	dw sprite.unknown_2A, $FE00
+	dw !initcommand_success
 
 DATA_FFA7D2:
-	db $00, $83, $3E, $A7, $26, $00, $80, $FE
-	db $2A, $00, $00, $FE, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA73E
+	dw sprite.max_x_speed, $FE80
+	dw sprite.unknown_2A, $FE00
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA7E4:
-	db $00, $83, $3E, $A7, $26, $00, $00, $01
-	db $2A, $00, $00, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA73E
+	dw sprite.max_x_speed, $0100
+	dw sprite.unknown_2A, $0200
+	dw !initcommand_success
 
 DATA_FFA7F2:
-	db $00, $83, $3E, $A7, $26, $00, $00, $FF
-	db $2A, $00, $00, $FE, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA73E
+	dw sprite.max_x_speed, $FF00
+	dw sprite.unknown_2A, $FE00
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA804:
-	db $00, $83, $3E, $A7, $26, $00, $E0, $01
-	db $2A, $00, $90, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA73E
+	dw sprite.max_x_speed, $01E0
+	dw sprite.unknown_2A, $0190
+	dw !initcommand_success
 
 DATA_FFA812:
-	db $00, $83, $3E, $A7, $26, $00, $20, $FE
-	db $2A, $00, $70, $FE, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA73E
+	dw sprite.max_x_speed, $FE20
+	dw sprite.unknown_2A, $FE70
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA824:
-	db $00, $83, $3E, $A7, $26, $00, $00, $FE
-	db $2A, $00, $80, $00, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA73E
+	dw sprite.max_x_speed, $FE00
+	dw sprite.unknown_2A, $0080
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA836:
-	db $00, $83, $3E, $A7, $26, $00, $00, $02
-	db $2A, $00, $80, $00, $00, $80, $00, $83
-	db $3E, $A7, $52, $00, $09, $00, $5C, $00
-	db $01, $00, $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA73E
+	dw sprite.max_x_speed, $0200
+	dw sprite.unknown_2A, $0080
+	dw !initcommand_success
+
+DATA_FFA844:
+	dw !initcommand_load_subconfig, DATA_FFA73E
+	dw sprite.unknown_52, $0009
+	dw sprite.unknown_5C, $0001
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA856:
-	db $00, $83, $44, $A8, $42, $00, $B6, $A8
-	db $4E, $00, $FF, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA844
+	dw sprite.unknown_42, DATA_FFA8B6
+	dw sprite.unknown_4E, $00FF
+	dw !initcommand_success
 
 DATA_FFA864:
-	db $00, $83, $44, $A8, $42, $00, $CE, $A8
-	db $4E, $00, $FF, $00, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA844
+	dw sprite.unknown_42, DATA_FFA8CE
+	dw sprite.unknown_4E, $00FF
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFA876:
-	db $00, $83, $44, $A8, $42, $00, $E6, $A8
-	db $4E, $00, $FF, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA844
+	dw sprite.unknown_42, DATA_FFA8E6
+	dw sprite.unknown_4E, $00FF
+	dw !initcommand_success
 
 DATA_FFA884:
-	db $00, $83, $44, $A8, $42, $00, $FE, $A8
-	db $4E, $00, $FF, $00, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA844
+	dw sprite.unknown_42, DATA_FFA8FE
+	dw sprite.unknown_4E, $00FF
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFA896:
-	db $00, $83, $44, $A8, $42, $00, $16, $A9
-	db $4E, $00, $FF, $00, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA844
+	dw sprite.unknown_42, DATA_FFA916
+	dw sprite.unknown_4E, $00FF
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFA8A8:
-	db $00, $83, $44, $A8, $42, $00, $2E, $A9
-	db $4E, $00, $FF, $00, $00, $80, $FE, $FF
-	db $80, $01, $A0, $06, $68, $04, $F0, $06
-	db $B0, $04, $40, $07, $68, $04, $F0, $06
-	db $20, $04, $FD, $FF, $BA, $A8, $FE, $FF
-	db $80, $01, $40, $07, $68, $04, $F0, $06
-	db $20, $04, $A0, $06, $68, $04, $F0, $06
-	db $B0, $04, $FD, $FF, $D2, $A8, $FE, $FF
-	db $80, $01, $60, $06, $C8, $01, $D0, $06
-	db $50, $02, $40, $07, $C8, $01, $D0, $06
-	db $40, $01, $FD, $FF, $EA, $A8, $FE, $FF
-	db $80, $01, $D0, $06, $50, $02, $40, $07
-	db $C8, $01, $D0, $06, $40, $01, $60, $06
-	db $C8, $01, $FD, $FF, $02, $A9, $FE, $FF
-	db $80, $01, $40, $07, $C8, $01, $D0, $06
-	db $40, $01, $60, $06, $C8, $01, $D0, $06
-	db $50, $02, $FD, $FF, $1A, $A9, $FE, $FF
-	db $80, $01, $D0, $06, $40, $01, $60, $06
-	db $C8, $01, $D0, $06, $50, $02, $40, $07
-	db $C8, $01, $FD, $FF, $32, $A9, $00, $00
-	db $34, $02, $02, $00, $D4, $00, $54, $00
-	db $1C, $02, $00, $8D, $B0, $00, $00, $85
-	db $00, $20, $00, $81, $80, $01, $2E, $00
-	db $01, $00, $52, $00, $07, $00, $46, $00
-	db $02, $02, $26, $00, $40, $00, $4A, $00
-	db $03, $02, $2A, $00, $60, $00, $0C, $00
-	db $80, $80, $0E, $00, $80, $80, $1E, $00
-	db $3C, $00, $22, $00, $80, $01, $28, $00
-	db $20, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA844
+	dw sprite.unknown_42, DATA_FFA92E
+	dw sprite.unknown_4E, $00FF
+	dw !initcommand_success
+
+DATA_FFA8B6:
+	db $FE, $FF, $80, $01
+
+DATA_FFA8BA:
+	db $A0, $06, $68, $04, $F0, $06, $B0, $04
+	db $40, $07, $68, $04, $F0, $06, $20, $04
+	db $FD, $FF : dw DATA_FFA8BA
+
+DATA_FFA8CE:
+	db $FE, $FF, $80, $01
+
+DATA_FFA8D2:
+	db $40, $07, $68, $04, $F0, $06, $20, $04
+	db $A0, $06, $68, $04, $F0, $06, $B0, $04
+	db $FD, $FF : dw DATA_FFA8D2
+
+DATA_FFA8E6:
+	db $FE, $FF, $80, $01
+
+DATA_FFA8EA:
+	db $60, $06, $C8, $01, $D0, $06, $50, $02
+	db $40, $07, $C8, $01, $D0, $06, $40, $01
+	db $FD, $FF : dw DATA_FFA8EA
+
+DATA_FFA8FE:
+	db $FE, $FF, $80, $01
+
+DATA_FFA902:
+	db $D0, $06, $50, $02, $40, $07, $C8, $01
+	db $D0, $06, $40, $01, $60, $06, $C8, $01
+	db $FD, $FF : dw DATA_FFA902
+
+DATA_FFA916:
+	db $FE, $FF, $80, $01
+
+DATA_FFA91A:
+	db $40, $07, $C8, $01, $D0, $06, $40, $01
+	db $60, $06, $C8, $01, $D0, $06, $50, $02
+	db $FD, $FF : dw DATA_FFA91A
+
+DATA_FFA92E:
+	db $FE, $FF, $80, $01
+
+DATA_FFA932:
+	db $D0, $06, $40, $01, $60, $06, $C8, $01
+	db $D0, $06, $50, $02, $40, $07, $C8, $01
+	db $FD, $FF : dw DATA_FFA932
+
+DATA_FFA946:
+	dw sprite.number, $0234
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_54, $021C
+	dw !initcommand_set_alt_palette, $00B0
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_animation, $0180
+	dw sprite.action, $0001
+	dw sprite.unknown_52, $0007
+	dw sprite.unknown_46, $0202
+	dw sprite.max_x_speed, $0040
+	dw sprite.unknown_4A, $0203
+	dw sprite.unknown_2A, $0060
+	dw sprite.ground_y_position, $8080
+	dw sprite.ground_distance, $8080
+	dw sprite.unknown_1E, $003C
+	dw sprite.unknown_22, $0180
+	dw sprite.unknown_28, $0020
+	dw !initcommand_success
 
 DATA_FFA98C:
-	db $00, $83, $46, $A9, $28, $00, $1C, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA946
+	dw sprite.unknown_28, $001C
+	dw !initcommand_success
 
 DATA_FFA996:
-	db $00, $83, $46, $A9, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA946
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA9A0:
-	db $00, $83, $46, $A9, $28, $00, $14, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA946
+	dw sprite.unknown_28, $0014
+	dw !initcommand_success
 
 DATA_FFA9AA:
-	db $00, $83, $46, $A9, $0E, $00, $FF, $00
-	db $28, $00, $1C, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA946
+	dw sprite.ground_distance, $00FF
+	dw sprite.unknown_28, $001C
+	dw !initcommand_success
 
 DATA_FFA9B8:
-	db $00, $83, $46, $A9, $0E, $00, $00, $FF
-	db $28, $00, $1C, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA946
+	dw sprite.ground_distance, $FF00
+	dw sprite.unknown_28, $001C
+	dw !initcommand_success
 
 DATA_FFA9C6:
-	db $00, $83, $46, $A9, $00, $85, $00, $60
-	db $0C, $00, $00, $80, $28, $00, $1C, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA946
+	dw !initcommand_set_oam, $6000
+	dw sprite.ground_y_position, $8000
+	dw sprite.unknown_28, $001C
+	dw !initcommand_success
 
 DATA_FFA9D8:
-	db $00, $83, $46, $A9, $1E, $00, $2D, $00
-	db $0C, $00, $00, $80, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA946
+	dw sprite.unknown_1E, $002D
+	dw sprite.ground_y_position, $8000
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFA9EA:
-	db $00, $83, $46, $A9, $00, $85, $00, $60
-	db $0E, $00, $80, $20, $0C, $00, $80, $60
-	db $1E, $00, $1E, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA946
+	dw !initcommand_set_oam, $6000
+	dw sprite.ground_distance, $2080
+	dw sprite.ground_y_position, $6080
+	dw sprite.unknown_1E, $001E
+	dw !initcommand_success
 
 DATA_FFAA00:
-	db $00, $83, $46, $A9, $00, $85, $00, $60
-	db $0E, $00, $70, $20, $0C, $00, $40, $80
-	db $1E, $00, $1E, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA946
+	dw !initcommand_set_oam, $6000
+	dw sprite.ground_distance, $2070
+	dw sprite.ground_y_position, $8040
+	dw sprite.unknown_1E, $001E
+	dw !initcommand_success
 
 DATA_FFAA16:
-	db $00, $83, $46, $A9, $00, $85, $00, $60
-	db $0E, $00, $80, $20, $0C, $00, $80, $40
-	db $1E, $00, $1E, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA946
+	dw !initcommand_set_oam, $6000
+	dw sprite.ground_distance, $2080
+	dw sprite.ground_y_position, $4080
+	dw sprite.unknown_1E, $001E
+	dw !initcommand_success
 
 DATA_FFAA2C:
-	db $00, $83, $46, $A9, $00, $85, $00, $60
-	db $0E, $00, $80, $20, $0C, $00, $40, $80
-	db $1E, $00, $1E, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA946
+	dw !initcommand_set_oam, $6000
+	dw sprite.ground_distance, $2080
+	dw sprite.ground_y_position, $8040
+	dw sprite.unknown_1E, $001E
+	dw !initcommand_success
 
 DATA_FFAA42:
-	db $00, $83, $46, $A9, $00, $85, $00, $60
-	db $0E, $00, $40, $40, $0C, $00, $40, $60
-	db $1E, $00, $1E, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA946
+	dw !initcommand_set_oam, $6000
+	dw sprite.ground_distance, $4040
+	dw sprite.ground_y_position, $6040
+	dw sprite.unknown_1E, $001E
+	dw !initcommand_success
 
 DATA_FFAA58:
-	db $00, $83, $46, $A9, $0E, $00, $60, $60
-	db $0C, $00, $60, $60, $1E, $00, $1E, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA946
+	dw sprite.ground_distance, $6060
+	dw sprite.ground_y_position, $6060
+	dw sprite.unknown_1E, $001E
+	dw !initcommand_success
 
 DATA_FFAA6A:
-	db $00, $83, $46, $A9, $0E, $00, $60, $60
-	db $0C, $00, $40, $40, $1E, $00, $3C, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA946
+	dw sprite.ground_distance, $6060
+	dw sprite.ground_y_position, $4040
+	dw sprite.unknown_1E, $003C
+	dw !initcommand_success
 
 DATA_FFAA7C:
-	db $00, $83, $46, $A9, $0E, $00, $60, $60
-	db $0C, $00, $70, $70, $1E, $00, $2D, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA946
+	dw sprite.ground_distance, $6060
+	dw sprite.ground_y_position, $7070
+	dw sprite.unknown_1E, $002D
+	dw !initcommand_success
 
 DATA_FFAA8E:
-	db $00, $83, $46, $A9, $0E, $00, $40, $40
-	db $0C, $00, $60, $40, $1E, $00, $2D, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA946
+	dw sprite.ground_distance, $4040
+	dw sprite.ground_y_position, $4060
+	dw sprite.unknown_1E, $002D
+	dw !initcommand_success
 
 DATA_FFAAA0:
-	db $00, $83, $46, $A9, $00, $85, $00, $60
-	db $0E, $00, $40, $40, $0C, $00, $00, $80
-	db $1E, $00, $1E, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA946
+	dw !initcommand_set_oam, $6000
+	dw sprite.ground_distance, $4040
+	dw sprite.ground_y_position, $8000
+	dw sprite.unknown_1E, $001E
+	dw !initcommand_success
 
 DATA_FFAAB6:
-	db $00, $83, $46, $A9, $00, $85, $00, $60
-	db $28, $00, $18, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA946
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_28, $0018
+	dw !initcommand_success
 
 DATA_FFAAC4:
-	db $00, $83, $46, $A9, $00, $85, $00, $60
-	db $28, $00, $1C, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA946
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_28, $001C
+	dw !initcommand_success
 
 DATA_FFAAD2:
-	db $00, $83, $46, $A9, $00, $85, $00, $60
-	db $0E, $00, $40, $40, $0C, $00, $80, $80
-	db $1E, $00, $1E, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA946
+	dw !initcommand_set_oam, $6000
+	dw sprite.ground_distance, $4040
+	dw sprite.ground_y_position, $8080
+	dw sprite.unknown_1E, $001E
+	dw !initcommand_success
 
 DATA_FFAAE8:
-	db $00, $00, $B8, $01, $02, $00, $C8, $00
-	db $54, $00, $14, $02, $2E, $00, $00, $00
-	db $20, $00, $00, $00, $26, $00, $00, $00
-	db $24, $00, $00, $00, $30, $00, $01, $00
-	db $00, $85, $00, $20, $00, $8D, $02, $00
-	db $00, $81, $E5, $02, $00, $80
+	dw sprite.number, $01B8
+	dw sprite.render_order, $00C8
+	dw sprite.unknown_54, $0214
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.max_x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_30, $0001
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0002
+	dw !initcommand_set_animation, $02E5
+	dw !initcommand_success
 
 DATA_FFAB16:
-	db $00, $00, $84, $01, $00, $83, $EA, $25
-	db $02, $00, $C8, $00, $00, $85, $00, $60
-	db $00, $8D, $2C, $00, $00, $81, $C3, $02
-	db $00, $80
+	dw sprite.number, $0184
+	dw !initcommand_load_subconfig, DATA_FF25EA
+	dw sprite.render_order, $00C8
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_alt_palette, $002C
+	dw !initcommand_set_animation, $02C3
+	dw !initcommand_success
 
 DATA_FFAB30:
-	db $00, $00, $A8, $01, $02, $00, $C8, $00
-	db $54, $00, $14, $02, $2E, $00, $00, $00
-	db $20, $00, $00, $00, $26, $00, $00, $00
-	db $24, $00, $00, $00, $30, $00, $01, $00
-	db $00, $85, $00, $20, $00, $8D, $02, $00
-	db $00, $81, $E1, $02, $00, $80, $00, $00
-	db $A8, $01, $02, $00, $C8, $00, $54, $00
-	db $14, $02, $2E, $00, $04, $00, $30, $00
-	db $00, $00, $00, $85, $00, $20, $00, $8D
-	db $02, $00, $00, $81, $E1, $02, $00, $80
+	dw sprite.number, $01A8
+	dw sprite.render_order, $00C8
+	dw sprite.unknown_54, $0214
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.max_x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_30, $0001
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0002
+	dw !initcommand_set_animation, $02E1
+	dw !initcommand_success
+
+DATA_FFAB5E:
+	dw sprite.number, $01A8
+	dw sprite.render_order, $00C8
+	dw sprite.unknown_54, $0214
+	dw sprite.action, $0004
+	dw sprite.unknown_30, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0002
+	dw !initcommand_set_animation, $02E1
+	dw !initcommand_success
 
 DATA_FFAB80:
-	db $00, $83, $5E, $AB, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFAB5E
+	dw !initcommand_success
 
 DATA_FFAB86:
-	db $00, $83, $5E, $AB, $1C, $00, $00, $C0
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFAB5E
+	dw sprite.unknown_1C, $C000
+	dw !initcommand_success
 
 DATA_FFAB90:
-	db $00, $83, $5E, $AB, $2E, $00, $06, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFAB5E
+	dw sprite.action, $0006
+	dw !initcommand_success
 
 DATA_FFAB9A:
-	db $00, $00, $A4, $00, $2E, $00, $00, $00
-	db $42, $00, $06, $06, $00, $80
+	dw sprite.number, $00A4
+	dw sprite.action, $0000
+	dw sprite.unknown_42, $0606
+	dw !initcommand_success
 
 DATA_FFABA8:
-	db $00, $00, $A4, $00, $2E, $00, $01, $00
-	db $44, $00, $3C, $00, $42, $00, $06, $06
-	db $00, $80
+	dw sprite.number, $00A4
+	dw sprite.action, $0001
+	dw sprite.unknown_44, $003C
+	dw sprite.unknown_42, $0606
+	dw !initcommand_success
 
 DATA_FFABBA:
-	db $00, $00, $A4, $00, $2E, $00, $02, $00
-	db $42, $00, $06, $06, $00, $80, $00, $00
-	db $AC, $00, $2E, $00, $00, $00, $24, $00
-	db $00, $FF, $42, $00, $80, $80, $52, $00
-	db $00, $00, $4C, $00, $00, $00, $00, $80
-	db $00, $00, $AC, $00, $2E, $00, $01, $00
-	db $24, $00, $00, $FF, $42, $00, $80, $80
-	db $52, $00, $00, $00, $4C, $00, $00, $00
-	db $00, $80, $00, $00, $AC, $00, $2E, $00
-	db $00, $00, $24, $00, $00, $FF, $42, $00
-	db $80, $80, $52, $00, $01, $00, $4C, $00
-	db $00, $00, $00, $80, $00, $00, $AC, $00
-	db $2E, $00, $01, $00, $24, $00, $00, $FF
-	db $42, $00, $80, $80, $52, $00, $01, $00
-	db $4C, $00, $00, $00, $00, $80
+	dw sprite.number, $00A4
+	dw sprite.action, $0002
+	dw sprite.unknown_42, $0606
+	dw !initcommand_success
+
+DATA_FFABC8:
+	dw sprite.number, $00AC
+	dw sprite.action, $0000
+	dw sprite.y_speed, $FF00
+	dw sprite.unknown_42, $8080
+	dw sprite.unknown_52, $0000
+	dw sprite.unknown_4C, $0000
+	dw !initcommand_success
+
+DATA_FFABE2:
+	dw sprite.number, $00AC
+	dw sprite.action, $0001
+	dw sprite.y_speed, $FF00
+	dw sprite.unknown_42, $8080
+	dw sprite.unknown_52, $0000
+	dw sprite.unknown_4C, $0000
+	dw !initcommand_success
+
+DATA_FFABFC:
+	dw sprite.number, $00AC
+	dw sprite.action, $0000
+	dw sprite.y_speed, $FF00
+	dw sprite.unknown_42, $8080
+	dw sprite.unknown_52, $0001
+	dw sprite.unknown_4C, $0000
+	dw !initcommand_success
+
+DATA_FFAC16:
+	dw sprite.number, $00AC
+	dw sprite.action, $0001
+	dw sprite.y_speed, $FF00
+	dw sprite.unknown_42, $8080
+	dw sprite.unknown_52, $0001
+	dw sprite.unknown_4C, $0000
+	dw !initcommand_success
 
 DATA_FFAC30:
-	db $00, $83, $E2, $AB, $4C, $00, $10, $07
-	db $4E, $00, $F0, $06, $24, $00, $80, $FF
-	db $42, $00, $FF, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4C, $0710
+	dw sprite.unknown_4E, $06F0
+	dw sprite.y_speed, $FF80
+	dw sprite.unknown_42, $FFFF
+	dw !initcommand_success
 
 DATA_FFAC46:
-	db $00, $83, $E2, $AB, $4C, $00, $F0, $06
-	db $4E, $00, $60, $05, $24, $00, $80, $FD
-	db $42, $00, $C0, $C0, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4C, $06F0
+	dw sprite.unknown_4E, $0560
+	dw sprite.y_speed, $FD80
+	dw sprite.unknown_42, $C0C0
+	dw !initcommand_success
 
 DATA_FFAC5C:
-	db $00, $83, $C8, $AB, $4C, $00, $60, $05
-	db $4E, $00, $30, $04, $24, $00, $80, $FD
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABC8
+	dw sprite.unknown_4C, $0560
+	dw sprite.unknown_4E, $0430
+	dw sprite.y_speed, $FD80
+	dw !initcommand_success
 
 DATA_FFAC6E:
-	db $00, $83, $E2, $AB, $4C, $00, $30, $04
-	db $4E, $00, $70, $04, $24, $00, $40, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4C, $0430
+	dw sprite.unknown_4E, $0470
+	dw sprite.y_speed, $0140
+	dw !initcommand_success
 
 DATA_FFAC80:
-	db $00, $83, $C8, $AB, $4C, $00, $70, $04
-	db $4E, $00, $88, $03, $24, $00, $00, $FE
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABC8
+	dw sprite.unknown_4C, $0470
+	dw sprite.unknown_4E, $0388
+	dw sprite.y_speed, $FE00
+	dw !initcommand_success
 
 DATA_FFAC92:
-	db $00, $83, $E2, $AB, $4C, $00, $88, $03
-	db $4E, $00, $10, $03, $24, $00, $80, $FE
-	db $42, $00, $80, $C0, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4C, $0388
+	dw sprite.unknown_4E, $0310
+	dw sprite.y_speed, $FE80
+	dw sprite.unknown_42, $C080
+	dw !initcommand_success
 
 DATA_FFACA8:
-	db $00, $83, $C8, $AB, $4C, $00, $10, $03
-	db $4E, $00, $48, $01, $24, $00, $00, $FC
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABC8
+	dw sprite.unknown_4C, $0310
+	dw sprite.unknown_4E, $0148
+	dw sprite.y_speed, $FC00
+	dw !initcommand_success
 
 DATA_FFACBA:
-	db $00, $83, $E2, $AB, $4C, $00, $48, $01
-	db $4E, $00, $C0, $02, $24, $00, $00, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4C, $0148
+	dw sprite.unknown_4E, $02C0
+	dw sprite.y_speed, $0200
+	dw !initcommand_success
 
 DATA_FFACCC:
-	db $00, $83, $E2, $AB, $4C, $00, $C0, $02
-	db $4E, $00, $10, $03, $24, $00, $80, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4C, $02C0
+	dw sprite.unknown_4E, $0310
+	dw sprite.y_speed, $0280
+	dw !initcommand_success
 
 DATA_FFACDE:
-	db $00, $83, $16, $AC, $4C, $00, $B8, $07
-	db $4E, $00, $50, $07, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFAC16
+	dw sprite.unknown_4C, $07B8
+	dw sprite.unknown_4E, $0750
+	dw !initcommand_success
 
 DATA_FFACEC:
-	db $00, $83, $16, $AC, $4C, $00, $50, $07
-	db $4E, $00, $60, $05, $24, $00, $80, $FD
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFAC16
+	dw sprite.unknown_4C, $0750
+	dw sprite.unknown_4E, $0560
+	dw sprite.y_speed, $FD80
+	dw !initcommand_success
 
 DATA_FFACFE:
-	db $00, $83, $16, $AC, $4C, $00, $60, $05
-	db $4E, $00, $70, $05, $24, $00, $00, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFAC16
+	dw sprite.unknown_4C, $0560
+	dw sprite.unknown_4E, $0570
+	dw sprite.y_speed, $0100
+	dw !initcommand_success
 
 DATA_FFAD10:
-	db $00, $83, $16, $AC, $4C, $00, $70, $05
-	db $4E, $00, $50, $05, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFAC16
+	dw sprite.unknown_4C, $0570
+	dw sprite.unknown_4E, $0550
+	dw !initcommand_success
 
 DATA_FFAD1E:
-	db $00, $83, $FC, $AB, $4C, $00, $50, $05
-	db $4E, $00, $E0, $04, $24, $00, $80, $FD
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABFC
+	dw sprite.unknown_4C, $0550
+	dw sprite.unknown_4E, $04E0
+	dw sprite.y_speed, $FD80
+	dw !initcommand_success
 
 DATA_FFAD30:
-	db $00, $83, $16, $AC, $4C, $00, $E0, $04
-	db $4E, $00, $E0, $01, $24, $00, $80, $FD
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFAC16
+	dw sprite.unknown_4C, $04E0
+	dw sprite.unknown_4E, $01E0
+	dw sprite.y_speed, $FD80
+	dw !initcommand_success
 
 DATA_FFAD42:
-	db $00, $83, $FC, $AB, $4C, $00, $E0, $01
-	db $4E, $00, $50, $01, $24, $00, $80, $FD
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABFC
+	dw sprite.unknown_4C, $01E0
+	dw sprite.unknown_4E, $0150
+	dw sprite.y_speed, $FD80
+	dw !initcommand_success
 
 DATA_FFAD54:
-	db $00, $83, $16, $AC, $4C, $00, $50, $01
-	db $4E, $00, $30, $02, $24, $00, $80, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFAC16
+	dw sprite.unknown_4C, $0150
+	dw sprite.unknown_4E, $0230
+	dw sprite.y_speed, $0180
+	dw !initcommand_success
 
 DATA_FFAD66:
-	db $00, $83, $16, $AC, $4C, $00, $30, $02
-	db $4E, $00, $30, $03, $24, $00, $80, $03
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFAC16
+	dw sprite.unknown_4C, $0230
+	dw sprite.unknown_4E, $0330
+	dw sprite.y_speed, $0380
+	dw !initcommand_success
 
 DATA_FFAD78:
-	db $00, $83, $16, $AC, $4C, $00, $30, $03
-	db $4E, $00, $58, $03, $42, $00, $40, $40
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFAC16
+	dw sprite.unknown_4C, $0330
+	dw sprite.unknown_4E, $0358
+	dw sprite.unknown_42, $4040
+	dw !initcommand_success
 
 DATA_FFAD8A:
-	db $00, $83, $16, $AC, $4C, $00, $58, $03
-	db $4E, $00, $F8, $01, $24, $00, $80, $FD
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFAC16
+	dw sprite.unknown_4C, $0358
+	dw sprite.unknown_4E, $01F8
+	dw sprite.y_speed, $FD80
+	dw !initcommand_success
 
 DATA_FFAD9C:
-	db $00, $83, $E2, $AB, $4E, $00, $78, $08
-	db $24, $00, $40, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4E, $0878
+	dw sprite.y_speed, $0140
+	dw !initcommand_success
 
 DATA_FFADAA:
-	db $00, $83, $E2, $AB, $4E, $00, $00, $01
-	db $24, $00, $40, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4E, $0100
+	dw sprite.y_speed, $FE40
+	dw !initcommand_success
 
 DATA_FFADB8:
-	db $00, $83, $E2, $AB, $4E, $00, $38, $01
-	db $24, $00, $C0, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4E, $0138
+	dw sprite.y_speed, $FEC0
+	dw !initcommand_success
 
 DATA_FFADC6:
-	db $00, $83, $E2, $AB, $4E, $00, $10, $02
-	db $24, $00, $80, $03, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4E, $0210
+	dw sprite.y_speed, $0380
+	dw !initcommand_success
 
 DATA_FFADD4:
-	db $00, $83, $E2, $AB, $4E, $00, $50, $08
-	db $24, $00, $80, $FD, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4E, $0850
+	dw sprite.y_speed, $FD80
+	dw !initcommand_success
 
 DATA_FFADE2:
-	db $00, $83, $E2, $AB, $4E, $00, $F0, $06
-	db $24, $00, $00, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4E, $06F0
+	dw sprite.y_speed, $FF00
+	dw !initcommand_success
 
 DATA_FFADF0:
-	db $00, $83, $E2, $AB, $4E, $00, $80, $03
-	db $24, $00, $80, $FD, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4E, $0380
+	dw sprite.y_speed, $FD80
+	dw !initcommand_success
 
 DATA_FFADFE:
-	db $00, $83, $E2, $AB, $4E, $00, $D0, $01
-	db $24, $00, $00, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4E, $01D0
+	dw sprite.y_speed, $FF00
+	dw !initcommand_success
 
 DATA_FFAE0C:
-	db $00, $83, $E2, $AB, $4C, $00, $B0, $05
-	db $4E, $00, $E0, $05, $24, $00, $80, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4C, $05B0
+if !version == 0
+	dw sprite.unknown_4E, $06F8
+else
+	dw sprite.unknown_4E, $05E0
+endif
+	dw sprite.y_speed, $0280
+if !version == 0
+	dw sprite.unknown_42, $A0A0
+endif
+	dw !initcommand_success
 
 DATA_FFAE1E:
-	db $00, $83, $C8, $AB, $4C, $00, $B0, $05
-	db $4E, $00, $F8, $06, $24, $00, $80, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABC8
+	dw sprite.unknown_4C, $05B0
+	dw sprite.unknown_4E, $06F8
+	dw sprite.y_speed, $0280
+	dw !initcommand_success
+
 
 DATA_FFAE30:
-	db $00, $83, $E2, $AB, $4C, $00, $F8, $06
-	db $4E, $00, $30, $06, $24, $00, $80, $FE
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4C, $06F8
+	dw sprite.unknown_4E, $0630
+	dw sprite.y_speed, $FE80
+	dw !initcommand_success
 
 DATA_FFAE42:
-	db $00, $83, $E2, $AB, $4C, $00, $30, $06
-	db $4E, $00, $E0, $04, $24, $00, $00, $FC
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4C, $0630
+	dw sprite.unknown_4E, $04E0
+	dw sprite.y_speed, $FC00
+	dw !initcommand_success
 
 DATA_FFAE54:
-	db $00, $83, $E2, $AB, $4C, $00, $E0, $04
-	db $4E, $00, $40, $05, $24, $00, $00, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4C, $04E0
+	dw sprite.unknown_4E, $0540
+	dw sprite.y_speed, $0200
+	dw !initcommand_success
 
 DATA_FFAE66:
-	db $00, $83, $E2, $AB, $4C, $00, $40, $05
-	db $4E, $00, $B0, $02, $24, $00, $00, $FD
-	db $42, $00, $40, $40, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4C, $0540
+	dw sprite.unknown_4E, $02B0
+	dw sprite.y_speed, $FD00
+	dw sprite.unknown_42, $4040
+	dw !initcommand_success
 
 DATA_FFAE7C:
-	db $00, $83, $E2, $AB, $4C, $00, $B0, $02
-	db $4E, $00, $00, $03, $24, $00, $00, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4C, $02B0
+	dw sprite.unknown_4E, $0300
+	dw sprite.y_speed, $0100
+	dw !initcommand_success
 
 DATA_FFAE8E:
-	db $00, $83, $E2, $AB, $4C, $00, $00, $03
-	db $4E, $00, $50, $03, $24, $00, $00, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4C, $0300
+	dw sprite.unknown_4E, $0350
+	dw sprite.y_speed, $0200
+	dw !initcommand_success
 
 DATA_FFAEA0:
-	db $00, $83, $E2, $AB, $4C, $00, $50, $03
-	db $4E, $00, $80, $01, $24, $00, $80, $FC
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4C, $0350
+	dw sprite.unknown_4E, $0180
+	dw sprite.y_speed, $FC80
+	dw !initcommand_success
 
 DATA_FFAEB2:
-	db $00, $83, $E2, $AB, $4C, $00, $80, $01
-	db $4E, $00, $08, $02, $24, $00, $80, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4C, $0180
+	dw sprite.unknown_4E, $0208
+	dw sprite.y_speed, $0280
+	dw !initcommand_success
 
 DATA_FFAEC4:
-	db $00, $83, $E2, $AB, $4C, $00, $08, $02
-	db $4E, $00, $30, $01, $24, $00, $00, $FB
-	db $42, $00, $40, $40, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4C, $0208
+	dw sprite.unknown_4E, $0130
+	dw sprite.y_speed, $FB00
+	dw sprite.unknown_42, $4040
+	dw !initcommand_success
 
 DATA_FFAEDA:
-	db $00, $83, $E2, $AB, $4C, $00, $30, $01
-	db $4E, $00, $70, $01, $24, $00, $00, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4C, $0130
+	dw sprite.unknown_4E, $0170
+	dw sprite.y_speed, $0200
+	dw !initcommand_success
 
 DATA_FFAEEC:
-	db $00, $83, $E2, $AB, $4C, $00, $70, $01
-	db $4E, $00, $24, $02, $24, $00, $40, $01
-	db $42, $00, $80, $80, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4C, $0170
+	dw sprite.unknown_4E, $0224
+	dw sprite.y_speed, $0140
+	dw sprite.unknown_42, $8080
+	dw !initcommand_success
 
 DATA_FFAF02:
-	db $00, $83, $C8, $AB, $4C, $00, $24, $02
-	db $4E, $00, $D0, $02, $24, $00, $00, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABC8
+	dw sprite.unknown_4C, $0224
+	dw sprite.unknown_4E, $02D0
+	dw sprite.y_speed, $0200
+	dw !initcommand_success
 
 DATA_FFAF14:
-	db $00, $83, $E2, $AB, $4C, $00, $D0, $02
-	db $4E, $00, $70, $03, $24, $00, $80, $03
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4C, $02D0
+	dw sprite.unknown_4E, $0370
+	dw sprite.y_speed, $0380
+	dw !initcommand_success
 
 DATA_FFAF26:
-	db $00, $83, $C8, $AB, $4C, $00, $70, $03
-	db $4E, $00, $48, $04, $24, $00, $C0, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABC8
+	dw sprite.unknown_4C, $0370
+	dw sprite.unknown_4E, $0448
+	dw sprite.y_speed, $00C0
+	dw !initcommand_success
 
 DATA_FFAF38:
-	db $00, $83, $C8, $AB, $4C, $00, $00, $17
-	db $4E, $00, $A0, $14, $24, $00, $00, $FF
-	db $42, $00, $80, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABC8
+	dw sprite.unknown_4C, $1700
+	dw sprite.unknown_4E, $14A0
+	dw sprite.y_speed, $FF00
+	dw sprite.unknown_42, $0080
+	dw !initcommand_success
 
 DATA_FFAF4E:
-	db $00, $83, $C8, $AB, $4C, $00, $A0, $14
-	db $4E, $00, $A0, $14, $24, $00, $00, $FD
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABC8
+	dw sprite.unknown_4C, $14A0
+	dw sprite.unknown_4E, $14A0
+	dw sprite.y_speed, $FD00
+	dw !initcommand_success
 
 DATA_FFAF60:
-	db $00, $83, $E2, $AB, $4C, $00, $A0, $14
-	db $4E, $00, $80, $12, $24, $00, $60, $FF
-	db $42, $00, $00, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4C, $14A0
+	dw sprite.unknown_4E, $1280
+	dw sprite.y_speed, $FF60
+	dw sprite.unknown_42, $FF00
+	dw !initcommand_success
 
 DATA_FFAF76:
-	db $00, $83, $C8, $AB, $4C, $00, $A0, $14
-	db $4E, $00, $80, $12, $24, $00, $60, $FF
-	db $42, $00, $00, $80, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABC8
+	dw sprite.unknown_4C, $14A0
+	dw sprite.unknown_4E, $1280
+	dw sprite.y_speed, $FF60
+	dw sprite.unknown_42, $8000
+	dw !initcommand_success
 
 DATA_FFAF8C:
-	db $00, $83, $E2, $AB, $4C, $00, $80, $12
-	db $4E, $00, $80, $12, $24, $00, $00, $FD
-	db $42, $00, $00, $80, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4C, $1280
+	dw sprite.unknown_4E, $1280
+	dw sprite.y_speed, $FD00
+	dw sprite.unknown_42, $8000
+	dw !initcommand_success
 
 DATA_FFAFA2:
-	db $00, $83, $E2, $AB, $4C, $00, $80, $12
-	db $4E, $00, $E0, $0E, $24, $00, $60, $FF
-	db $42, $00, $30, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4C, $1280
+	dw sprite.unknown_4E, $0EE0
+	dw sprite.y_speed, $FF60
+	dw sprite.unknown_42, $FF30
+	dw !initcommand_success
 
 DATA_FFAFB8:
-	db $00, $83, $C8, $AB, $4C, $00, $80, $12
-	db $4E, $00, $E0, $0E, $24, $00, $60, $FF
-	db $42, $00, $00, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABC8
+	dw sprite.unknown_4C, $1280
+	dw sprite.unknown_4E, $0EE0
+	dw sprite.y_speed, $FF60
+	dw sprite.unknown_42, $FF00
+	dw !initcommand_success
 
 DATA_FFAFCE:
-	db $00, $83, $C8, $AB, $4C, $00, $E0, $0E
-	db $4E, $00, $E0, $0E, $24, $00, $00, $FD
-	db $42, $00, $C0, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABC8
+	dw sprite.unknown_4C, $0EE0
+	dw sprite.unknown_4E, $0EE0
+	dw sprite.y_speed, $FD00
+	dw sprite.unknown_42, $FFC0
+	dw !initcommand_success
 
 DATA_FFAFE4:
-	db $00, $83, $E2, $AB, $4C, $00, $00, $17
-	db $4E, $00, $A0, $14, $24, $00, $00, $FF
-	db $42, $00, $00, $C0, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4C, $1700
+	dw sprite.unknown_4E, $14A0
+	dw sprite.y_speed, $FF00
+	dw sprite.unknown_42, $C000
+	dw !initcommand_success
 
 DATA_FFAFFA:
-	db $00, $83, $E2, $AB, $4C, $00, $E0, $0E
-	db $4E, $00, $A8, $0B, $24, $00, $40, $FF
-	db $42, $00, $00, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4C, $0EE0
+	dw sprite.unknown_4E, $0BA8
+	dw sprite.y_speed, $FF40
+	dw sprite.unknown_42, $FF00
+	dw !initcommand_success
 
 DATA_FFB010:
-	db $00, $83, $C8, $AB, $4C, $00, $E0, $0E
-	db $4E, $00, $A8, $0B, $24, $00, $40, $FF
-	db $42, $00, $80, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABC8
+	dw sprite.unknown_4C, $0EE0
+	dw sprite.unknown_4E, $0BA8
+	dw sprite.y_speed, $FF40
+	dw sprite.unknown_42, $0080
+	dw !initcommand_success
 
 DATA_FFB026:
-	db $00, $83, $C8, $AB, $4C, $00, $A8, $0B
-	db $4E, $00, $A8, $0B, $24, $00, $00, $FD
-	db $42, $00, $FF, $80, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABC8
+	dw sprite.unknown_4C, $0BA8
+	dw sprite.unknown_4E, $0BA8
+	dw sprite.y_speed, $FD00
+	dw sprite.unknown_42, $80FF
+	dw !initcommand_success
 
 DATA_FFB03C:
-	db $00, $83, $E2, $AB, $4C, $00, $A8, $0B
-	db $4E, $00, $28, $07, $24, $00, $40, $FF
-	db $42, $00, $80, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4C, $0BA8
+	dw sprite.unknown_4E, $0728
+	dw sprite.y_speed, $FF40
+	dw sprite.unknown_42, $FF80
+	dw !initcommand_success
 
 DATA_FFB052:
-	db $00, $83, $C8, $AB, $4C, $00, $28, $07
-	db $4E, $00, $28, $07, $24, $00, $00, $FD
-	db $42, $00, $C0, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABC8
+	dw sprite.unknown_4C, $0728
+	dw sprite.unknown_4E, $0728
+	dw sprite.y_speed, $FD00
+	dw sprite.unknown_42, $FFC0
+	dw !initcommand_success
 
 DATA_FFB068:
-	db $00, $83, $E2, $AB, $4C, $00, $28, $07
-	db $4E, $00, $60, $04, $24, $00, $40, $FF
-	db $42, $00, $40, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4C, $0728
+	dw sprite.unknown_4E, $0460
+	dw sprite.y_speed, $FF40
+	dw sprite.unknown_42, $FF40
+	dw !initcommand_success
 
 DATA_FFB07E:
-	db $00, $83, $C8, $AB, $4C, $00, $28, $07
-	db $4E, $00, $60, $04, $24, $00, $40, $FF
-	db $42, $00, $00, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABC8
+	dw sprite.unknown_4C, $0728
+	dw sprite.unknown_4E, $0460
+	dw sprite.y_speed, $FF40
+	dw sprite.unknown_42, $FF00
+	dw !initcommand_success
 
 DATA_FFB094:
-	db $00, $83, $C8, $AB, $4C, $00, $60, $04
-	db $4E, $00, $60, $04, $24, $00, $00, $FD
-	db $42, $00, $80, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABC8
+	dw sprite.unknown_4C, $0460
+	dw sprite.unknown_4E, $0460
+	dw sprite.y_speed, $FD00
+	dw sprite.unknown_42, $FF80
+	dw !initcommand_success
 
 DATA_FFB0AA:
-	db $00, $83, $E2, $AB, $4C, $00, $60, $04
-	db $4E, $00, $80, $02, $24, $00, $B0, $FF
-	db $42, $00, $00, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4C, $0460
+	dw sprite.unknown_4E, $0280
+	dw sprite.y_speed, $FFB0
+	dw sprite.unknown_42, $FF00
+	dw !initcommand_success
 
 DATA_FFB0C0:
-	db $00, $83, $C8, $AB, $4C, $00, $60, $04
-	db $4E, $00, $80, $02, $24, $00, $B0, $FF
-	db $42, $00, $C0, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABC8
+	dw sprite.unknown_4C, $0460
+	dw sprite.unknown_4E, $0280
+	dw sprite.y_speed, $FFB0
+	dw sprite.unknown_42, $00C0
+	dw !initcommand_success
 
 DATA_FFB0D6:
-	db $00, $83, $C8, $AB, $4C, $00, $60, $04
-	db $4E, $00, $80, $02, $24, $00, $B0, $FF
-	db $42, $00, $FF, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABC8
+	dw sprite.unknown_4C, $0460
+	dw sprite.unknown_4E, $0280
+	dw sprite.y_speed, $FFB0
+	dw sprite.unknown_42, $FFFF
+	dw !initcommand_success
 
 DATA_FFB0EC:
-	db $00, $83, $C8, $AB, $4C, $00, $80, $02
-	db $4E, $00, $80, $02, $24, $00, $00, $FD
-	db $42, $00, $FF, $80, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABC8
+	dw sprite.unknown_4C, $0280
+	dw sprite.unknown_4E, $0280
+	dw sprite.y_speed, $FD00
+	dw sprite.unknown_42, $80FF
+	dw !initcommand_success
 
 DATA_FFB102:
-	db $00, $83, $C8, $AB, $4C, $00, $E0, $0E
-	db $4E, $00, $E0, $0E, $24, $00, $20, $FF
-	db $42, $00, $FF, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABC8
+	dw sprite.unknown_4C, $0EE0
+	dw sprite.unknown_4E, $0EE0
+	dw sprite.y_speed, $FF20
+	dw sprite.unknown_42, $FFFF
+	dw !initcommand_success
 
 DATA_FFB118:
-	db $00, $83, $E2, $AB, $4E, $00, $A8, $26
-	db $24, $00, $80, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4E, $26A8
+	dw sprite.y_speed, $FF80
+	dw !initcommand_success
 
 DATA_FFB126:
-	db $00, $83, $C8, $AB, $4E, $00, $F0, $14
-	db $24, $00, $40, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABC8
+	dw sprite.unknown_4E, $14F0
+	dw sprite.y_speed, $FF40
+	dw !initcommand_success
 
 DATA_FFB134:
-	db $00, $83, $C8, $AB, $4E, $00, $F0, $14
-	db $24, $00, $00, $FD, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABC8
+	dw sprite.unknown_4E, $14F0
+	dw sprite.y_speed, $FD00
+	dw !initcommand_success
 
 DATA_FFB142:
-	db $00, $83, $E2, $AB, $4E, $00, $68, $02
-	db $24, $00, $40, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4E, $0268
+	dw sprite.y_speed, $FF40
+	dw !initcommand_success
 
 DATA_FFB150:
-	db $00, $83, $E2, $AB, $4E, $00, $68, $02
-	db $24, $00, $00, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4E, $0268
+	dw sprite.y_speed, $FF00
+	dw !initcommand_success
 
 DATA_FFB15E:
-	db $00, $83, $E2, $AB, $4E, $00, $C8, $02
-	db $24, $00, $80, $01, $42, $00, $00, $FF
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4E, $02C8
+	dw sprite.y_speed, $0180
+	dw sprite.unknown_42, $FF00
+	dw !initcommand_success
 
 DATA_FFB170:
-	db $00, $83, $C8, $AB, $4E, $00, $68, $02
-	db $24, $00, $00, $FD, $42, $00, $40, $40
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABC8
+	dw sprite.unknown_4E, $0268
+	dw sprite.y_speed, $FD00
+	dw sprite.unknown_42, $4040
+	dw !initcommand_success
 
 DATA_FFB182:
-	db $00, $83, $E2, $AB, $4E, $00, $A8, $26
-	db $24, $00, $C0, $FE, $42, $00, $00, $A0
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4E, $26A8
+	dw sprite.y_speed, $FEC0
+	dw sprite.unknown_42, $A000
+	dw !initcommand_success
 
 DATA_FFB194:
-	db $00, $83, $C8, $AB, $4E, $00, $F0, $14
-	db $24, $00, $00, $FF, $42, $00, $FF, $FF
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABC8
+	dw sprite.unknown_4E, $14F0
+	dw sprite.y_speed, $FF00
+	dw sprite.unknown_42, $FFFF
+	dw !initcommand_success
 
 DATA_FFB1A6:
-	db $00, $83, $16, $AC, $4E, $00, $30, $02
-	db $24, $00, $80, $03, $42, $00, $FF, $FF
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFAC16
+	dw sprite.unknown_4E, $0230
+	dw sprite.y_speed, $0380
+	dw sprite.unknown_42, $FFFF
+	dw !initcommand_success
 
 DATA_FFB1B8:
-	db $00, $83, $C8, $AB, $4E, $00, $D0, $01
-	db $24, $00, $A0, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABC8
+	dw sprite.unknown_4E, $01D0
+	dw sprite.y_speed, $FEA0
+	dw !initcommand_success
 
 DATA_FFB1C6:
-	db $00, $83, $E2, $AB, $4E, $00, $D0, $01
-	db $24, $00, $00, $FD, $42, $00, $00, $FF
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4E, $01D0
+	dw sprite.y_speed, $FD00
+	dw sprite.unknown_42, $FF00
+	dw !initcommand_success
 
 DATA_FFB1D8:
-	db $00, $83, $C8, $AB, $4E, $00, $F0, $06
-	db $24, $00, $80, $FD, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABC8
+	dw sprite.unknown_4E, $06F0
+	dw sprite.y_speed, $FD80
+	dw !initcommand_success
 
 DATA_FFB1E6:
-	db $00, $83, $E2, $AB, $4E, $00, $A8, $02
-	db $24, $00, $E0, $00, $42, $00, $FF, $FF
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4E, $02A8
+	dw sprite.y_speed, $00E0
+	dw sprite.unknown_42, $FFFF
+	dw !initcommand_success
 
 DATA_FFB1F8:
-	db $00, $83, $E2, $AB, $4E, $00, $00, $03
-	db $24, $00, $E0, $00, $42, $00, $FF, $FF
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4E, $0300
+	dw sprite.y_speed, $00E0
+	dw sprite.unknown_42, $FFFF
+	dw !initcommand_success
 
 DATA_FFB20A:
-	db $00, $83, $E2, $AB, $4E, $00, $A8, $03
-	db $24, $00, $20, $01, $42, $00, $FF, $FF
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4E, $03A8
+	dw sprite.y_speed, $0120
+	dw sprite.unknown_42, $FFFF
+	dw !initcommand_success
 
 DATA_FFB21C:
-	db $00, $83, $E2, $AB, $4E, $00, $F0, $05
-	db $24, $00, $80, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4E, $05F0
+	dw sprite.y_speed, $0180
+	dw !initcommand_success
 
 DATA_FFB22A:
-	db $00, $83, $E2, $AB, $4E, $00, $70, $03
-	db $24, $00, $80, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4E, $0370
+	dw sprite.y_speed, $0280
+	dw !initcommand_success
 
 DATA_FFB238:
-	db $00, $83, $E2, $AB, $4E, $00, $F0, $02
-	db $24, $00, $80, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4E, $02F0
+	dw sprite.y_speed, $0280
+	dw !initcommand_success
 
 DATA_FFB246:
-	db $00, $83, $E2, $AB, $4E, $00, $80, $03
-	db $24, $00, $00, $03, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4E, $0380
+	dw sprite.y_speed, $0300
+	dw !initcommand_success
 
 DATA_FFB254:
-	db $00, $83, $E2, $AB, $4E, $00, $F0, $02
-	db $24, $00, $80, $03, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABE2
+	dw sprite.unknown_4E, $02F0
+	dw sprite.y_speed, $0380
+	dw !initcommand_success
 
 DATA_FFB262:
-	db $00, $83, $FC, $AB, $4C, $00, $E0, $04
-	db $4E, $00, $E0, $01, $24, $00, $80, $FD
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABFC
+	dw sprite.unknown_4C, $04E0
+	dw sprite.unknown_4E, $01E0
+	dw sprite.y_speed, $FD80
+	dw !initcommand_success
 
 DATA_FFB274:
-	db $00, $00, $B0, $00, $00, $80, $00, $83
-	db $A6, $B2, $00, $8D, $19, $00, $2A, $00
-	db $00, $FF, $42, $00, $02, $00, $00, $80
-	db $00, $83, $A6, $B2, $00, $8D, $1A, $00
-	db $2A, $00, $C0, $FE, $42, $00, $03, $00
-	db $00, $80, $00, $8D, $18, $00, $42, $00
-	db $01, $00, $00, $00, $78, $01, $54, $00
-	db $1C, $02, $02, $00, $D4, $00, $2E, $00
-	db $00, $00, $26, $00, $00, $00, $20, $00
-	db $00, $00, $24, $00, $00, $00, $30, $00
-	db $00, $00, $2A, $00, $40, $FF, $04, $00
-	db $01, $00, $52, $00, $0C, $0F, $00, $85
-	db $00, $20, $00, $81, $C0, $02, $00, $80
+	dw sprite.number, $00B0
+	dw !initcommand_success
+
+DATA_FFB27A:
+	dw !initcommand_load_subconfig, DATA_FFB2A6
+	dw !initcommand_set_alt_palette, $0019
+	dw sprite.unknown_2A, $FF00
+	dw sprite.unknown_42, $0002
+	dw !initcommand_success
+
+DATA_FFB28C:
+	dw !initcommand_load_subconfig, DATA_FFB2A6
+	dw !initcommand_set_alt_palette, $001A
+	dw sprite.unknown_2A, $FEC0
+	dw sprite.unknown_42, $0003
+	dw !initcommand_success
+
+DATA_FFB29E:
+	dw !initcommand_set_alt_palette, $0018
+	dw sprite.unknown_42, $0001
+DATA_FFB2A6:
+	dw sprite.number, $0178
+	dw sprite.unknown_54, $021C
+	dw sprite.render_order, $00D4
+	dw sprite.action, $0000
+	dw sprite.max_x_speed, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_30, $0000
+	dw sprite.unknown_2A, $FF40
+	dw sprite.x_sub_position, $0001
+	dw sprite.unknown_52, $0F0C
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_animation, $02C0
+	dw !initcommand_success
 
 DATA_FFB2DC:
-	db $00, $83, $9E, $B2, $04, $00, $5A, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB29E
+	dw sprite.x_sub_position, $005A
+	dw !initcommand_success
 
 DATA_FFB2E6:
-	db $00, $83, $9E, $B2, $2A, $00, $00, $00
-	db $04, $00, $00, $80, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB29E
+	dw sprite.unknown_2A, $0000
+	dw sprite.x_sub_position, $8000
+	dw !initcommand_success
 
 DATA_FFB2F4:
-	db $00, $83, $9E, $B2, $04, $00, $0A, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB29E
+	dw sprite.x_sub_position, $000A
+	dw !initcommand_success
 
 DATA_FFB2FE:
-	db $00, $83, $9E, $B2, $04, $00, $3C, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB29E
+	dw sprite.x_sub_position, $003C
+	dw !initcommand_success
 
 DATA_FFB308:
-	db $00, $83, $9E, $B2, $04, $00, $4A, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB29E
+	dw sprite.x_sub_position, $014A
+	dw !initcommand_success
 
 DATA_FFB312:
-	db $00, $83, $9E, $B2, $2A, $00, $00, $00
-	db $04, $00, $00, $80, $1C, $00, $00, $C0
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB29E
+	dw sprite.unknown_2A, $0000
+	dw sprite.x_sub_position, $8000
+	dw sprite.unknown_1C, $C000
+	dw !initcommand_success
 
 DATA_FFB324:
-	db $00, $83, $9E, $B2, $04, $00, $A5, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB29E
+	dw sprite.x_sub_position, $00A5
+	dw !initcommand_success
 
 DATA_FFB32E:
-	db $00, $83, $9E, $B2, $04, $00, $D2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB29E
+	dw sprite.x_sub_position, $00D2
+	dw !initcommand_success
 
 DATA_FFB338:
-	db $00, $83, $9E, $B2, $04, $00, $68, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB29E
+	dw sprite.x_sub_position, $0168
+	dw !initcommand_success
 
 DATA_FFB342:
-	db $00, $83, $9E, $B2, $2A, $00, $00, $00
-	db $04, $00, $00, $80, $2E, $00, $01, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB29E
+	dw sprite.unknown_2A, $0000
+	dw sprite.x_sub_position, $8000
+	dw sprite.action, $0001
+	dw !initcommand_success
 
 DATA_FFB354:
-	db $00, $83, $7A, $B2, $04, $00, $3C, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB27A
+	dw sprite.x_sub_position, $003C
+	dw !initcommand_success
 
 DATA_FFB35E:
-	db $00, $83, $7A, $B2, $2A, $00, $00, $00
-	db $04, $00, $00, $80, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB27A
+	dw sprite.unknown_2A, $0000
+	dw sprite.x_sub_position, $8000
+	dw !initcommand_success
 
 DATA_FFB36C:
-	db $00, $83, $7A, $B2, $04, $00, $4A, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB27A
+	dw sprite.x_sub_position, $014A
+	dw !initcommand_success
 
 DATA_FFB376:
-	db $00, $83, $7A, $B2, $2A, $00, $00, $00
-	db $1C, $00, $00, $C0, $04, $00, $00, $80
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB27A
+	dw sprite.unknown_2A, $0000
+	dw sprite.unknown_1C, $C000
+	dw sprite.x_sub_position, $8000
+	dw !initcommand_success
 
 DATA_FFB388:
-	db $00, $83, $8C, $B2, $1C, $00, $00, $C0
-	db $2A, $00, $00, $00, $04, $00, $00, $80
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB28C
+	dw sprite.unknown_1C, $C000
+	dw sprite.unknown_2A, $0000
+	dw sprite.x_sub_position, $8000
+	dw !initcommand_success
 
 DATA_FFB39A:
-	db $00, $83, $8C, $B2, $04, $00, $2C, $01
-	db $00, $80, $00, $00, $08, $02, $02, $00
-	db $D4, $00, $54, $00, $1C, $02, $30, $00
-	db $20, $00, $2E, $00, $00, $00, $20, $00
-	db $00, $00, $26, $00, $00, $00, $24, $00
-	db $00, $00, $2A, $00, $00, $00, $00, $85
-	db $00, $20, $00, $81, $83, $01, $52, $00
-	db $00, $00, $00, $80, $00, $83, $A4, $B3
-	db $00, $8D, $32, $00, $00, $80, $00, $83
-	db $A4, $B3, $00, $8D, $B1, $00, $00, $80
-	db $00, $83, $A4, $B3, $00, $8D, $BA, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB28C
+	dw sprite.x_sub_position, $012C
+	dw !initcommand_success
+
+DATA_FFB3A4:
+	dw sprite.number, $0208
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_54, $021C
+	dw sprite.unknown_30, $0020
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.max_x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_2A, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_animation, $0183
+	dw sprite.unknown_52, $0000
+	dw !initcommand_success
+
+DATA_FFB3D6:
+	dw !initcommand_load_subconfig, DATA_FFB3A4
+	dw !initcommand_set_alt_palette, $0032
+	dw !initcommand_success
+
+DATA_FFB3E0:
+	dw !initcommand_load_subconfig, DATA_FFB3A4
+	dw !initcommand_set_alt_palette, $00B1
+	dw !initcommand_success
+
+DATA_FFB3EA:
+	dw !initcommand_load_subconfig, DATA_FFB3A4
+	dw !initcommand_set_alt_palette, $00BA
+	dw !initcommand_success
 
 DATA_FFB3F4:
-	db $00, $83, $E0, $B3, $50, $00, $19, $B6
-	db $0E, $00, $00, $00, $0C, $00, $00, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3E0
+	dw sprite.parameter, DATA_FFB619
+	dw sprite.ground_distance, $0000
+	dw sprite.ground_y_position, $0100
+	dw !initcommand_success
 
 DATA_FFB406:
-	db $00, $83, $E0, $B3, $50, $00, $19, $B6
-	db $0E, $00, $00, $00, $0C, $00, $40, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3E0
+	dw sprite.parameter, DATA_FFB619
+	dw sprite.ground_distance, $0000
+	dw sprite.ground_y_position, $0140
+	dw !initcommand_success
 
 DATA_FFB418:
-	db $00, $83, $D6, $B3, $50, $00, $2C, $B6
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3D6
+	dw sprite.parameter, DATA_FFB62C
+	dw !initcommand_success
 
 DATA_FFB422:
-	db $00, $83, $D6, $B3, $50, $00, $2C, $B6
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3D6
+	dw sprite.parameter, DATA_FFB62C
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFB430:
-	db $00, $83, $D6, $B3, $50, $00, $65, $B6
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3D6
+	dw sprite.parameter, DATA_FFB665
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFB43E:
-	db $00, $83, $E0, $B3, $00, $85, $00, $60
-	db $50, $00, $6F, $B6, $0E, $00, $00, $00
-	db $0C, $00, $80, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3E0
+	dw !initcommand_set_oam, $6000
+	dw sprite.parameter, DATA_FFB66F
+	dw sprite.ground_distance, $0000
+	dw sprite.ground_y_position, $0180
+	dw !initcommand_success
 
 DATA_FFB454:
-	db $00, $83, $EA, $B3, $00, $85, $00, $60
-	db $50, $00, $6F, $B6, $0E, $00, $01, $00
-	db $0C, $00, $80, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3EA
+	dw !initcommand_set_oam, $6000
+	dw sprite.parameter, DATA_FFB66F
+	dw sprite.ground_distance, $0001
+	dw sprite.ground_y_position, $0180
+	dw !initcommand_success
 
 DATA_FFB46A:
-	db $00, $83, $EA, $B3, $50, $00, $6F, $B6
-	db $0E, $00, $01, $00, $0C, $00, $80, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3EA
+	dw sprite.parameter, DATA_FFB66F
+	dw sprite.ground_distance, $0001
+	dw sprite.ground_y_position, $0180
+	dw !initcommand_success
 
 DATA_FFB47C:
-	db $00, $83, $E0, $B3, $50, $00, $6F, $B6
-	db $0E, $00, $00, $00, $0C, $00, $80, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3E0
+	dw sprite.parameter, DATA_FFB66F
+	dw sprite.ground_distance, $0000
+	dw sprite.ground_y_position, $0180
+	dw !initcommand_success
 
 DATA_FFB48E:
-	db $00, $83, $D6, $B3, $50, $00, $36, $B6
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3D6
+	dw sprite.parameter, DATA_FFB636
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFB49C:
-	db $00, $83, $E0, $B3, $00, $85, $00, $60
-	db $50, $00, $82, $B6, $0E, $00, $00, $00
-	db $0C, $00, $80, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3E0
+	dw !initcommand_set_oam, $6000
+	dw sprite.parameter, DATA_FFB682
+	dw sprite.ground_distance, $0000
+	dw sprite.ground_y_position, $0280
+	dw !initcommand_success
 
 DATA_FFB4B2:
-	db $00, $83, $D6, $B3, $50, $00, $95, $B6
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3D6
+	dw sprite.parameter, DATA_FFB695
+	dw !initcommand_success
 
 DATA_FFB4BC:
-	db $00, $83, $D6, $B3, $50, $00, $04, $B6
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3D6
+	dw sprite.parameter, DATA_FFB604
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFB4CA:
-	db $00, $83, $D6, $B3, $50, $00, $9C, $B6
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3D6
+	dw sprite.parameter, DATA_FFB69C
+	dw !initcommand_success
 
 DATA_FFB4D4:
-	db $00, $83, $D6, $B3, $50, $00, $AF, $B6
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3D6
+	dw sprite.parameter, DATA_FFB6AF
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFB4E2:
-	db $00, $83, $D6, $B3, $50, $00, $BF, $B6
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3D6
+	dw sprite.parameter, DATA_FFB6BF
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFB4F0:
-	db $00, $83, $D6, $B3, $50, $00, $CF, $B6
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3D6
+	dw sprite.parameter, DATA_FFB6CF
+	dw !initcommand_success
 
 DATA_FFB4FA:
-	db $00, $83, $D6, $B3, $50, $00, $5D, $B7
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3D6
+	dw sprite.parameter, DATA_FFB75D
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFB508:
-	db $00, $83, $D6, $B3, $50, $00, $72, $B7
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3D6
+	dw sprite.parameter, DATA_FFB772
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFB516:
-	db $00, $83, $D6, $B3, $50, $00, $8A, $B7
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3D6
+	dw sprite.parameter, DATA_FFB78A
+	dw !initcommand_success
 
 DATA_FFB520:
-	db $00, $83, $D6, $B3, $50, $00, $72, $B7
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3D6
+	dw sprite.parameter, DATA_FFB772
+	dw !initcommand_success
 
 DATA_FFB52A:
-	db $00, $83, $D6, $B3, $50, $00, $9F, $B7
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3D6
+	dw sprite.parameter, DATA_FFB79F
+	dw !initcommand_success
 
 DATA_FFB534:
-	db $00, $83, $D6, $B3, $50, $00, $B4, $B7
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3D6
+	dw sprite.parameter, DATA_FFB7B4
+	dw !initcommand_success
 
 DATA_FFB53E:
-	db $00, $83, $D6, $B3, $50, $00, $D8, $B7
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3D6
+	dw sprite.parameter, DATA_FFB7D8
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFB54C:
-	db $00, $83, $D6, $B3, $50, $00, $FC, $B7
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3D6
+	dw sprite.parameter, DATA_FFB7FC
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFB55A:
-	db $00, $83, $D6, $B3, $50, $00, $23, $B8
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3D6
+	dw sprite.parameter, DATA_FFB823
+	dw !initcommand_success
 
 DATA_FFB564:
-	db $00, $83, $D6, $B3, $50, $00, $4A, $B8
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3D6
+	dw sprite.parameter, DATA_FFB84A
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFB572:
-	db $00, $83, $D6, $B3, $50, $00, $71, $B8
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3D6
+	dw sprite.parameter, DATA_FFB871
+	dw !initcommand_success
 
 DATA_FFB57C:
-	db $00, $83, $D6, $B3, $50, $00, $95, $B8
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3D6
+	dw sprite.parameter, DATA_FFB895
+	dw !initcommand_success
 
 DATA_FFB586:
-	db $00, $83, $D6, $B3, $50, $00, $B9, $B8
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3D6
+	dw sprite.parameter, DATA_FFB8B9
+	dw !initcommand_success
 
 DATA_FFB590:
-	db $00, $83, $E0, $B3, $00, $85, $00, $60
-	db $50, $00, $EB, $B6, $0E, $00, $00, $00
-	db $0C, $00, $00, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3E0
+	dw !initcommand_set_oam, $6000
+	dw sprite.parameter, DATA_FFB6EB
+	dw sprite.ground_distance, $0000
+	dw sprite.ground_y_position, $0200
+	dw !initcommand_success
 
 DATA_FFB5A6:
-	db $00, $83, $E0, $B3, $50, $00, $FE, $B6
-	db $0E, $00, $00, $00, $0C, $00, $00, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3E0
+	dw sprite.parameter, DATA_FFB6FE
+	dw sprite.ground_distance, $0000
+	dw sprite.ground_y_position, $0200
+	dw !initcommand_success
 
 DATA_FFB5B8:
-	db $00, $83, $E0, $B3, $00, $85, $00, $60
-	db $50, $00, $11, $B7, $0E, $00, $00, $00
-	db $0C, $00, $00, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3E0
+	dw !initcommand_set_oam, $6000
+	dw sprite.parameter, DATA_FFB711
+	dw sprite.ground_distance, $0000
+	dw sprite.ground_y_position, $0200
+	dw !initcommand_success
 
 DATA_FFB5CE:
-	db $00, $83, $E0, $B3, $50, $00, $24, $B7
-	db $0E, $00, $00, $00, $0C, $00, $00, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3E0
+	dw sprite.parameter, DATA_FFB724
+	dw sprite.ground_distance, $0000
+	dw sprite.ground_y_position, $0200
+	dw !initcommand_success
 
 DATA_FFB5E0:
-	db $00, $83, $E0, $B3, $50, $00, $37, $B7
-	db $0E, $00, $00, $00, $0C, $00, $C0, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3E0
+	dw sprite.parameter, DATA_FFB737
+	dw sprite.ground_distance, $0000
+	dw sprite.ground_y_position, $02C0
+	dw !initcommand_success
 
 DATA_FFB5F2:
-	db $00, $83, $E0, $B3, $50, $00, $4A, $B7
-	db $0E, $00, $00, $00, $0C, $00, $00, $02
-	db $00, $80, $FA, $E7, $B8, $FC, $1E, $00
-	db $FD, $86, $01, $FC, $58, $02, $FD, $87
-	db $01, $FC, $3C, $00, $FE, $0A, $B6, $FA
-	db $E7, $B8, $FD, $86, $01, $FC, $28, $00
-	db $FA, $42, $B9, $10, $02, $04, $FD, $88
-	db $01, $FF, $FA, $F7, $B8, $FC, $3C, $00
-	db $FD, $86, $01, $FF, $FA, $E7, $B8, $FC
-	db $68, $01, $FA, $F7, $B8, $FC, $0E, $01
-	db $FA, $DD, $B8, $FD, $86, $01, $FF, $FA
-	db $E7, $B8, $FC, $3C, $00, $FA, $F7, $B8
-	db $FC, $F0, $00, $FD, $86, $01, $FC, $28
-	db $00, $FA, $E7, $B8, $10, $02, $06, $FD
-	db $88, $01, $FF, $FA, $F7, $B8, $FC, $1E
-	db $00, $FD, $86, $01, $FF, $FA, $E7, $B8
-	db $FD, $86, $01, $FC, $0A, $00, $FA, $42
-	db $B9, $10, $02, $04, $FD, $88, $01, $FF
-	db $FA, $E7, $B8, $FD, $86, $01, $FC, $01
-	db $00, $FA, $48, $B9, $10, $00, $02, $FD
-	db $88, $01, $FF, $FA, $E7, $B8, $FD, $86
-	db $01, $FF, $FA, $F7, $B8, $FC, $3C, $00
-	db $FD, $86, $01, $FC, $B4, $00, $FA, $DD
-	db $B8, $FA, $E7, $B8, $FF, $FA, $F7, $B8
-	db $FC, $3C, $00, $FD, $86, $01, $FC, $5A
-	db $00, $FD, $87, $01, $FF, $FA, $F7, $B8
-	db $FC, $1E, $00, $FD, $86, $01, $FC, $5A
-	db $00, $FD, $87, $01, $FF, $FA, $F7, $B8
-	db $FC, $3C, $00, $FD, $86, $01, $FC, $64
-	db $00, $FA, $DD, $B8, $FA, $E7, $B8, $FC
-	db $3C, $00, $FD, $87, $01, $FA, $04, $B9
-	db $FF, $FA, $E7, $B8, $FD, $86, $01, $FC
-	db $0F, $00, $FA, $4E, $B9, $10, $00, $02
-	db $FD, $88, $01, $FF, $FA, $E7, $B8, $FD
-	db $86, $01, $FC, $1E, $00, $FA, $4E, $B9
-	db $10, $00, $02, $FD, $88, $01, $FF, $FA
-	db $E7, $B8, $FD, $86, $01, $FC, $2D, $00
-	db $FA, $54, $B9, $10, $00, $02, $FD, $88
-	db $01, $FF, $FA, $E7, $B8, $FD, $86, $01
-	db $FC, $1E, $00, $FA, $54, $B9, $10, $00
-	db $02, $FD, $88, $01, $FF, $FA, $E7, $B8
-	db $FD, $86, $01, $FC, $1E, $00, $FA, $5A
-	db $B9, $10, $00, $02, $FD, $88, $01, $FF
-	db $FA, $E7, $B8, $FD, $86, $01, $FC, $1E
-	db $00, $FA, $60, $B9, $10, $01, $02, $FD
-	db $88, $01, $FF, $FD, $86, $01, $FA, $F7
-	db $B8, $FC, $6E, $00, $FD, $87, $01, $FA
-	db $04, $B9, $FC, $6D, $00, $FE, $5D, $B7
-	db $FA, $F7, $B8, $2A, $70, $FF, $FD, $86
-	db $01, $FC, $50, $00, $2A, $90, $00, $FD
-	db $87, $01, $FC, $4F, $00, $FE, $75, $B7
-	db $FD, $86, $01, $FA, $F7, $B8, $2A, $70
-	db $FF, $FC, $50, $00, $2A, $90, $00, $FC
-	db $4F, $00, $FE, $90, $B7, $FD, $86, $01
-	db $FA, $35, $B9, $FC, $78, $00, $FD, $87
-	db $01, $FA, $1B, $B9, $FC, $77, $00, $FE
-	db $9F, $B7, $FA, $E7, $B8, $FD, $86, $01
-	db $FA, $11, $B9, $26, $80, $00, $FC, $62
-	db $00, $FD, $85, $01, $FC, $16, $00, $26
-	db $80, $FF, $FC, $6C, $00, $FD, $84, $01
-	db $FC, $0B, $00, $FE, $BD, $B7, $FA, $E7
-	db $B8, $FD, $86, $01, $FA, $11, $B9, $26
-	db $80, $FF, $FC, $62, $00, $FD, $85, $01
-	db $FC, $16, $00, $26, $80, $00, $FC, $6C
-	db $00, $FD, $84, $01, $FC, $0B, $00, $FE
-	db $E1, $B7, $FA, $E7, $B8, $FA, $11, $B9
-	db $FD, $86, $01, $26, $A0, $FF, $FC, $4A
-	db $00, $FD, $85, $01, $FC, $2E, $00, $FD
-	db $86, $01, $26, $60, $00, $FC, $4A, $00
-	db $FD, $85, $01, $FC, $2D, $00, $FE, $02
-	db $B8, $FA, $E7, $B8, $FA, $11, $B9, $FD
-	db $86, $01, $26, $80, $00, $FC, $4A, $00
-	db $FD, $85, $01, $FC, $2E, $00, $FD, $86
-	db $01, $26, $80, $FF, $FC, $4A, $00, $FD
-	db $85, $01, $FC, $2D, $00, $FE, $29, $B8
-	db $FA, $E7, $B8, $FA, $11, $B9, $FD, $86
-	db $01, $26, $80, $FF, $FC, $4A, $00, $FD
-	db $85, $01, $FC, $2E, $00, $FD, $86, $01
-	db $26, $80, $00, $FC, $4A, $00, $FD, $85
-	db $01, $FC, $2D, $00, $FE, $50, $B8, $FA
-	db $E7, $B8, $FD, $86, $01, $FA, $11, $B9
-	db $26, $90, $00, $FC, $3A, $00, $FD, $85
-	db $01, $FC, $16, $00, $26, $70, $FF, $FC
-	db $44, $00, $FD, $84, $01, $FC, $0B, $00
-	db $FE, $7A, $B8, $FA, $E7, $B8, $FD, $86
-	db $01, $FA, $11, $B9, $26, $80, $00, $FC
-	db $9E, $00, $FD, $85, $01, $FC, $16, $00
-	db $26, $80, $FF, $FC, $A8, $00, $FD, $84
-	db $01, $FC, $0B, $00, $FE, $9E, $B8, $FA
-	db $E7, $B8, $FD, $86, $01, $FA, $11, $B9
-	db $26, $60, $00, $FC, $58, $00, $FD, $85
-	db $01, $FC, $16, $00, $26, $A0, $FF, $FC
-	db $62, $00, $FD, $84, $01, $FC, $0B, $00
-	db $FE, $C2, $B8, $52, $00, $00, $46, $01
-	db $01, $26, $F8, $FF, $F9, $52, $07, $00
-	db $46, $01, $01, $26, $F8, $FF, $4A, $02
-	db $01, $2A, $08, $00, $F9, $52, $12, $00
-	db $46, $03, $02, $26, $C0, $FF, $2A, $A0
-	db $FF, $F9, $52, $12, $00, $46, $02, $02
-	db $26, $C0, $FF, $2A, $60, $00, $F9, $52
-	db $08, $00, $4A, $02, $01, $2A, $08, $00
-	db $F9, $52, $08, $00, $26, $A0, $FF, $4A
-	db $02, $01, $2A, $08, $00, $F9, $52, $08
-	db $00, $26, $20, $00, $4A, $02, $01, $2A
-	db $08, $00, $F9, $52, $08, $00, $26, $60
-	db $00, $4A, $02, $01, $2A, $08, $00, $F9
-	db $FB, $80, $80, $60, $60, $F9, $FB, $00
-	db $C0, $80, $80, $F9, $FB, $80, $80, $80
-	db $80, $F9, $FB, $80, $80, $40, $40, $F9
-	db $FB, $40, $40, $E0, $20, $F9, $FB, $00
-	db $50, $20, $20, $F9, $00, $00, $C0, $01
-	db $02, $00, $C8, $00, $54, $00, $14, $02
-	db $2E, $00, $00, $00, $20, $00, $00, $00
-	db $26, $00, $00, $00, $24, $00, $00, $00
-	db $30, $00, $01, $00, $00, $85, $00, $20
-	db $00, $8D, $02, $00, $00, $81, $E7, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3E0
+	dw sprite.parameter, DATA_FFB74A
+	dw sprite.ground_distance, $0000
+	dw sprite.ground_y_position, $0200
+	dw !initcommand_success
+
+DATA_FFB604:
+	db $FA : dw DATA_FFB8E7
+	db $FC, $1E, $00
+
+DATA_FFB60A:
+	db $FD, $86, $01
+	db $FC, $58, $02
+	db $FD, $87, $01
+	db $FC, $3C, $00
+	db $FE : dw DATA_FFB60A
+
+DATA_FFB619:
+	db $FA : dw DATA_FFB8E7
+	db $FD, $86, $01
+	db $FC, $28, $00
+	db $FA : dw DATA_FFB942
+	db $10, $02, $04
+	db $FD, $88, $01, $FF
+
+DATA_FFB62C:
+	db $FA : dw DATA_FFB8F7
+	db $FC, $3C, $00
+	db $FD, $86, $01, $FF
+
+DATA_FFB636:
+	db $FA : dw DATA_FFB8E7
+	db $FC, $68, $01
+	db $FA : dw DATA_FFB8F7
+	db $FC, $0E, $01
+	db $FA : dw DATA_FFB8DD
+	db $FD, $86, $01, $FF
+
+	db $FA : dw DATA_FFB8E7
+	db $FC, $3C, $00
+	db $FA : dw DATA_FFB8F7
+	db $FC, $F0, $00
+	db $FD, $86, $01
+	db $FC, $28, $00
+	db $FA : dw DATA_FFB8E7
+	db $10, $02, $06
+	db $FD, $88, $01, $FF
+
+DATA_FFB665:
+	db $FA : dw DATA_FFB8F7
+	db $FC, $1E, $00
+	db $FD, $86, $01, $FF
+
+DATA_FFB66F:
+	db $FA : dw DATA_FFB8E7
+	db $FD, $86, $01
+	db $FC, $0A, $00
+	db $FA : dw DATA_FFB942
+	db $10, $02, $04
+	db $FD, $88, $01, $FF
+
+DATA_FFB682:
+	db $FA : dw DATA_FFB8E7
+	db $FD, $86, $01
+	db $FC, $01, $00
+	db $FA : dw DATA_FFB948
+	db $10, $00, $02
+	db $FD, $88, $01, $FF
+
+DATA_FFB695:
+	db $FA : dw DATA_FFB8E7
+	db $FD, $86, $01, $FF
+
+DATA_FFB69C:
+	db $FA : dw DATA_FFB8F7
+	db $FC, $3C, $00
+	db $FD, $86, $01
+	db $FC, $B4, $00
+	db $FA : dw DATA_FFB8DD
+	db $FA : dw DATA_FFB8E7 : db $FF
+
+DATA_FFB6AF:
+	db $FA : dw DATA_FFB8F7
+	db $FC, $3C, $00
+	db $FD, $86, $01
+	db $FC, $5A, $00
+	db $FD, $87, $01, $FF
+
+DATA_FFB6BF:
+	db $FA : dw DATA_FFB8F7
+	db $FC, $1E, $00
+	db $FD, $86, $01
+	db $FC, $5A, $00
+	db $FD, $87, $01, $FF
+
+DATA_FFB6CF:
+	db $FA : dw DATA_FFB8F7
+	db $FC, $3C, $00
+	db $FD, $86, $01
+	db $FC, $64, $00
+	db $FA : dw DATA_FFB8DD
+	db $FA : dw DATA_FFB8E7
+	db $FC, $3C, $00
+	db $FD, $87, $01
+	db $FA : dw DATA_FFB904 : db $FF
+
+DATA_FFB6EB:
+	db $FA : dw DATA_FFB8E7
+	db $FD, $86, $01
+	db $FC, $0F, $00
+	db $FA : dw DATA_FFB94E
+	db $10, $00, $02, $FD
+	db $88, $01, $FF
+
+DATA_FFB6FE:
+	db $FA : dw DATA_FFB8E7
+	db $FD, $86, $01
+	db $FC, $1E, $00
+	db $FA : dw DATA_FFB94E
+	db $10, $00, $02
+	db $FD, $88, $01, $FF
+
+DATA_FFB711:
+	db $FA : dw DATA_FFB8E7
+	db $FD, $86, $01, $FC, $2D, $00
+	db $FA : dw DATA_FFB954
+	db $10, $00, $02
+	db $FD, $88, $01, $FF
+
+DATA_FFB724:
+	db $FA : dw DATA_FFB8E7
+	db $FD, $86, $01
+	db $FC, $1E, $00
+	db $FA : dw DATA_FFB954
+	db $10, $00, $02
+	db $FD, $88, $01, $FF
+
+DATA_FFB737:
+	db $FA : dw DATA_FFB8E7
+	db $FD, $86, $01
+	db $FC, $1E, $00
+	db $FA : dw DATA_FFB95A
+	db $10, $00, $02
+	db $FD, $88, $01, $FF
+
+DATA_FFB74A:
+	db $FA : dw DATA_FFB8E7
+	db $FD, $86, $01
+	db $FC, $1E, $00
+	db $FA : dw DATA_FFB960
+	db $10, $01, $02
+	db $FD, $88, $01, $FF
+
+DATA_FFB75D:
+	db $FD, $86, $01
+	db $FA : dw DATA_FFB8F7
+	db $FC, $6E, $00
+	db $FD, $87, $01
+	db $FA : dw DATA_FFB904
+	db $FC, $6D, $00
+	db $FE : dw DATA_FFB75D
+
+DATA_FFB772:
+	db $FA : dw DATA_FFB8F7
+
+DATA_FFB775:
+	db $2A, $70, $FF
+	db $FD, $86, $01
+	db $FC, $50, $00
+	db $2A, $90, $00
+	db $FD, $87, $01
+	db $FC, $4F, $00
+	db $FE : dw DATA_FFB775
+
+DATA_FFB78A:
+	db $FD, $86, $01
+	db $FA : dw DATA_FFB8F7
+
+DATA_FFB790:
+	db $2A, $70, $FF
+	db $FC, $50, $00
+	db $2A, $90, $00
+	db $FC, $4F, $00
+	db $FE : dw DATA_FFB790
+
+DATA_FFB79F:
+	db $FD, $86, $01
+	db $FA : dw DATA_FFB935
+	db $FC, $78, $00
+	db $FD, $87, $01
+	db $FA : dw DATA_FFB91B
+	db $FC, $77, $00
+	db $FE : dw DATA_FFB79F
+
+DATA_FFB7B4:
+	db $FA : dw DATA_FFB8E7
+	db $FD, $86, $01
+	db $FA : dw DATA_FFB911
+
+DATA_FFB7BD:
+	db $26, $80, $00
+	db $FC, $62, $00
+	db $FD, $85, $01
+	db $FC, $16, $00
+	db $26, $80, $FF
+	db $FC, $6C, $00
+	db $FD, $84, $01
+	db $FC, $0B, $00
+	db $FE : dw DATA_FFB7BD
+
+DATA_FFB7D8:
+	db $FA : dw DATA_FFB8E7
+	db $FD, $86, $01
+	db $FA : dw DATA_FFB911
+
+DATA_FFB7E1:
+	db $26, $80, $FF
+	db $FC, $62, $00
+	db $FD, $85, $01
+	db $FC, $16, $00
+	db $26, $80, $00
+	db $FC, $6C, $00
+	db $FD, $84, $01
+	db $FC, $0B, $00
+	db $FE : dw DATA_FFB7E1
+
+DATA_FFB7FC:
+	db $FA : dw DATA_FFB8E7
+	db $FA : dw DATA_FFB911
+
+DATA_FFB802:
+	db $FD, $86, $01
+	db $26, $A0, $FF
+	db $FC, $4A, $00
+	db $FD, $85, $01
+	db $FC, $2E, $00
+	db $FD, $86, $01
+	db $26, $60, $00
+	db $FC, $4A, $00
+	db $FD, $85, $01
+	db $FC, $2D, $00
+	db $FE : dw DATA_FFB802
+
+DATA_FFB823:
+	db $FA : dw DATA_FFB8E7
+	db $FA : dw DATA_FFB911
+
+DATA_FFB829:
+	db $FD, $86, $01
+	db $26, $80, $00
+	db $FC, $4A, $00
+	db $FD, $85, $01
+	db $FC, $2E, $00
+	db $FD, $86, $01
+	db $26, $80, $FF
+	db $FC, $4A, $00
+	db $FD, $85, $01
+	db $FC, $2D, $00
+	db $FE : dw DATA_FFB829
+
+DATA_FFB84A:
+	db $FA : dw DATA_FFB8E7
+	db $FA : dw DATA_FFB911
+
+DATA_FFB850:
+	db $FD, $86, $01
+	db $26, $80, $FF
+	db $FC, $4A, $00
+	db $FD, $85, $01
+	db $FC, $2E, $00
+	db $FD, $86, $01
+	db $26, $80, $00
+	db $FC, $4A, $00
+	db $FD, $85, $01
+	db $FC, $2D, $00
+	db $FE : dw DATA_FFB850
+
+DATA_FFB871:
+	db $FA : dw DATA_FFB8E7
+	db $FD, $86, $01
+	db $FA : dw DATA_FFB911
+
+DATA_FFB87A:
+	db $26, $90, $00
+	db $FC, $3A, $00
+	db $FD, $85, $01
+	db $FC, $16, $00
+	db $26, $70, $FF
+	db $FC, $44, $00
+	db $FD, $84, $01
+	db $FC, $0B, $00
+	db $FE : dw DATA_FFB87A
+
+DATA_FFB895:
+	db $FA : dw DATA_FFB8E7
+	db $FD, $86, $01
+	db $FA : dw DATA_FFB911
+
+DATA_FFB89E:
+	db $26, $80, $00
+	db $FC, $9E, $00
+	db $FD, $85, $01
+	db $FC, $16, $00
+	db $26, $80, $FF
+	db $FC, $A8, $00
+	db $FD, $84, $01
+	db $FC, $0B, $00
+	db $FE : dw DATA_FFB89E
+
+DATA_FFB8B9:
+	db $FA : dw DATA_FFB8E7
+	db $FD, $86, $01
+	db $FA : dw DATA_FFB911
+
+DATA_FFB8C2:
+	db $26, $60, $00
+	db $FC, $58, $00
+	db $FD, $85, $01
+	db $FC, $16, $00
+	db $26, $A0, $FF
+	db $FC, $62, $00
+	db $FD, $84, $01
+	db $FC, $0B, $00
+	db $FE : dw DATA_FFB8C2
+
+DATA_FFB8DD:
+	db $52, $00, $00, $46, $01, $01, $26, $F8
+	db $FF, $F9
+
+DATA_FFB8E7:
+	db $52, $07, $00, $46, $01, $01, $26, $F8
+	db $FF, $4A, $02, $01, $2A, $08, $00, $F9
+
+DATA_FFB8F7:
+	db $52, $12, $00, $46, $03, $02, $26, $C0
+	db $FF, $2A, $A0, $FF, $F9
+
+DATA_FFB904:
+	db $52, $12, $00, $46, $02, $02, $26, $C0
+	db $FF, $2A, $60, $00, $F9
+
+DATA_FFB911:
+	db $52, $08, $00, $4A, $02, $01, $2A, $08
+	db $00, $F9
+
+DATA_FFB91B:
+	db $52, $08, $00, $26, $A0, $FF, $4A, $02
+	db $01, $2A, $08, $00, $F9, $52, $08, $00
+	db $26, $20, $00, $4A, $02, $01, $2A, $08
+	db $00, $F9
+
+DATA_FFB935:
+	db $52, $08, $00, $26, $60, $00, $4A, $02
+	db $01, $2A, $08, $00, $F9
+
+DATA_FFB942:
+	db $FB, $80, $80, $60, $60, $F9
+
+DATA_FFB948:
+	db $FB, $00, $C0, $80, $80, $F9
+
+DATA_FFB94E:
+	db $FB, $80, $80, $80, $80, $F9
+
+DATA_FFB954:
+	db $FB, $80, $80, $40, $40, $F9
+
+DATA_FFB95A:
+	db $FB, $40, $40, $E0, $20, $F9
+
+DATA_FFB960:
+	db $FB, $00, $50, $20, $20, $F9
+
+DATA_FFB966:
+	dw sprite.number, $01C0
+	dw sprite.render_order, $00C8
+	dw sprite.unknown_54, $0214
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.max_x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_30, $0001
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0002
+	dw !initcommand_set_animation, $02E7
+	dw !initcommand_success
 
 DATA_FFB994:
-	db $00, $83, $66, $B9, $42, $00, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_42, $0000
+	dw !initcommand_success
 
 DATA_FFB99E:
-	db $00, $83, $66, $B9, $42, $00, $01, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_42, $0001
+	dw !initcommand_success
 
 DATA_FFB9A8:
-	db $00, $83, $66, $B9, $42, $00, $02, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_42, $0002
+	dw !initcommand_success
 
 DATA_FFB9B2:
-	db $00, $83, $66, $B9, $42, $00, $03, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_42, $0003
+	dw !initcommand_success
 
 DATA_FFB9BC:
-	db $00, $83, $66, $B9, $42, $00, $04, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_42, $0004
+	dw !initcommand_success
 
 DATA_FFB9C6:
-	db $00, $83, $66, $B9, $42, $00, $05, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_42, $0005
+	dw !initcommand_success
 
 DATA_FFB9D0:
-	db $00, $83, $66, $B9, $42, $00, $06, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_42, $0006
+	dw !initcommand_success
 
 DATA_FFB9DA:
-	db $00, $83, $66, $B9, $42, $00, $07, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_42, $0007
+	dw !initcommand_success
 
 DATA_FFB9E4:
-	db $00, $83, $66, $B9, $42, $00, $08, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_42, $0008
+	dw !initcommand_success
 
 DATA_FFB9EE:
-	db $00, $83, $66, $B9, $42, $00, $09, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_42, $0009
+	dw !initcommand_success
 
 DATA_FFB9F8:
-	db $00, $83, $66, $B9, $42, $00, $0A, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_42, $000A
+	dw !initcommand_success
 
 DATA_FFBA02:
-	db $00, $83, $66, $B9, $42, $00, $0B, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_42, $000B
+	dw !initcommand_success
 
 DATA_FFBA0C:
-	db $00, $83, $66, $B9, $42, $00, $0C, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_42, $000C
+	dw !initcommand_success
 
 DATA_FFBA16:
-	db $00, $83, $66, $B9, $42, $00, $0D, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_42, $000D
+	dw !initcommand_success
 
 DATA_FFBA20:
-	db $00, $83, $66, $B9, $42, $00, $0E, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_42, $000E
+	dw !initcommand_success
 
 DATA_FFBA2A:
-	db $00, $83, $66, $B9, $42, $00, $0F, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_42, $000F
+	dw !initcommand_success
 
 DATA_FFBA34:
-	db $00, $83, $66, $B9, $42, $00, $10, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_42, $0010
+	dw !initcommand_success
 
 DATA_FFBA3E:
-	db $00, $83, $66, $B9, $42, $00, $11, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_42, $0011
+	dw !initcommand_success
 
 DATA_FFBA48:
-	db $00, $83, $66, $B9, $42, $00, $12, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_42, $0012
+	dw !initcommand_success
 
 DATA_FFBA52:
-	db $00, $83, $66, $B9, $42, $00, $13, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_42, $0013
+	dw !initcommand_success
 
 DATA_FFBA5C:
-	db $00, $83, $66, $B9, $42, $00, $14, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_42, $0014
+	dw !initcommand_success
 
 DATA_FFBA66:
-	db $00, $83, $66, $B9, $42, $00, $15, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_42, $0015
+	dw !initcommand_success
 
 DATA_FFBA70:
-	db $00, $83, $66, $B9, $42, $00, $16, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_42, $0016
+	dw !initcommand_success
 
 DATA_FFBA7A:
-	db $00, $83, $66, $B9, $42, $00, $17, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_42, $0017
+	dw !initcommand_success
 
 DATA_FFBA84:
-	db $00, $83, $66, $B9, $42, $00, $18, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_42, $0018
+	dw !initcommand_success
 
 DATA_FFBA8E:
-	db $00, $83, $66, $B9, $42, $00, $19, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_42, $0019
+	dw !initcommand_success
 
 DATA_FFBA98:
-	db $00, $83, $66, $B9, $42, $00, $09, $00
-	db $00, $8D, $5B, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_42, $0009
+	dw !initcommand_set_alt_palette, $005B
+	dw !initcommand_success
 
 DATA_FFBAA6:
-	db $00, $83, $66, $B9, $1C, $00, $00, $C0
-	db $42, $00, $00, $00, $00, $80, $00, $00
-	db $D8, $02, $02, $00, $C0, $00, $54, $00
-	db $DE, $BA, $44, $00, $00, $00, $30, $00
-	db $00, $00, $2E, $00, $04, $00, $1C, $00
-	db $00, $F0, $00, $85, $00, $20, $00, $8D
-	db $58, $00, $00, $81, $C4, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_1C, $C000
+	dw sprite.unknown_42, $0000
+	dw !initcommand_success
+
+DATA_FFBAB4:
+	dw sprite.number, $02D8
+	dw sprite.render_order, $00C0
+	dw sprite.unknown_54, DATA_FFBADE
+	dw sprite.unknown_44, $0000
+	dw sprite.unknown_30, $0000
+	dw sprite.action, $0004
+	dw sprite.unknown_1C, $F000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0058
+	dw !initcommand_set_animation, $02C4
+	dw !initcommand_success
+
+DATA_FFBADE:
 	db $A0, $FF, $5C, $00, $D4, $FF, $48, $00
 
 DATA_FFBAE6:
-	db $00, $83, $B4, $BA, $4A, $00, $B8, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBAB4
+	dw sprite.unknown_4A, $02B8
+	dw !initcommand_success
 
 DATA_FFBAF0:
-	db $00, $83, $B4, $BA, $4A, $00, $98, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBAB4
+	dw sprite.unknown_4A, $0298
+	dw !initcommand_success
 
 DATA_FFBAFA:
-	db $00, $83, $B4, $BA, $4A, $00, $78, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBAB4
+	dw sprite.unknown_4A, $0278
+	dw !initcommand_success
 
 DATA_FFBB04:
-	db $00, $83, $B4, $BA, $4A, $00, $58, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBAB4
+	dw sprite.unknown_4A, $0258
+	dw !initcommand_success
 
 DATA_FFBB0E:
-	db $00, $83, $B4, $BA, $4A, $00, $BB, $02
-	db $00, $80, $00, $81, $ED, $01, $52, $00
-	db $00, $00, $00, $83, $3C, $BB, $00, $80
-	db $00, $81, $EE, $01, $52, $00, $22, $00
-	db $00, $83, $3C, $BB, $00, $80, $00, $81
-	db $EE, $01, $52, $00, $23, $00, $00, $00
-	db $5C, $02, $30, $00, $20, $01, $02, $00
-	db $D4, $00, $54, $00, $1C, $02, $00, $8D
-	db $55, $00, $2E, $00, $00, $00, $20, $00
-	db $00, $00, $50, $00, $00, $00, $00, $85
-	db $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBAB4
+	dw sprite.unknown_4A, $02BB
+	dw !initcommand_success
+
+DATA_FFBB18:
+	dw !initcommand_set_animation, $01ED
+	dw sprite.unknown_52, $0000
+	dw !initcommand_load_subconfig, DATA_FFBB3C
+	dw !initcommand_success
+
+DATA_FFBB26:
+	dw !initcommand_set_animation, $01EE
+	dw sprite.unknown_52, $0022
+	dw !initcommand_load_subconfig, DATA_FFBB3C
+	dw !initcommand_success
+
+DATA_FFBB34:
+	dw !initcommand_set_animation, $01EE
+	dw sprite.unknown_52, $0023
+DATA_FFBB3C:
+	dw sprite.number, $025C
+	dw sprite.unknown_30, $0120
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_54, $021C
+	dw !initcommand_set_alt_palette, $0055
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.parameter, $0000
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFBB62:
-	db $00, $83, $18, $BB, $4C, $00, $A0, $A0
-	db $4E, $00, $08, $28, $22, $00, $00, $04
-	db $28, $00, $40, $00, $1C, $00, $20, $00
-	db $4A, $00, $3C, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $A0A0
+	dw sprite.unknown_4E, $2808
+	dw sprite.unknown_22, $0400
+	dw sprite.unknown_28, $0040
+	dw sprite.unknown_1C, $0020
+	dw sprite.unknown_4A, $003C
+	dw !initcommand_success
 
 DATA_FFBB80:
-	db $00, $83, $18, $BB, $4C, $00, $A0, $A0
-	db $4E, $00, $38, $38, $22, $00, $00, $06
-	db $28, $00, $40, $00, $1C, $00, $30, $00
-	db $4A, $00, $2D, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $A0A0
+	dw sprite.unknown_4E, $3838
+	dw sprite.unknown_22, $0600
+	dw sprite.unknown_28, $0040
+	dw sprite.unknown_1C, $0030
+	dw sprite.unknown_4A, $002D
+	dw !initcommand_success
 
 DATA_FFBB9E:
-	db $00, $83, $18, $BB, $4C, $00, $A0, $A0
-	db $4E, $00, $08, $28, $22, $00, $00, $08
-	db $28, $00, $40, $00, $1C, $00, $30, $00
-	db $4A, $00, $1E, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $A0A0
+	dw sprite.unknown_4E, $2808
+	dw sprite.unknown_22, $0800
+	dw sprite.unknown_28, $0040
+	dw sprite.unknown_1C, $0030
+	dw sprite.unknown_4A, $001E
+	dw !initcommand_success
 
 DATA_FFBBBC:
-	db $00, $83, $18, $BB, $4C, $00, $E0, $E0
-	db $4E, $00, $08, $28, $22, $00, $00, $06
-	db $28, $00, $48, $00, $1C, $00, $28, $00
-	db $4A, $00, $00, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $E0E0
+	dw sprite.unknown_4E, $2808
+	dw sprite.unknown_22, $0600
+	dw sprite.unknown_28, $0048
+	dw sprite.unknown_1C, $0028
+	dw sprite.unknown_4A, $0000
+	dw !initcommand_success
 
 DATA_FFBBDA:
-	db $00, $83, $18, $BB, $4C, $00, $00, $A0
-	db $4E, $00, $80, $80, $22, $00, $00, $08
-	db $28, $00, $10, $00, $1C, $00, $58, $00
-	db $4A, $00, $00, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $A000
+	dw sprite.unknown_4E, $8080
+	dw sprite.unknown_22, $0800
+	dw sprite.unknown_28, $0010
+	dw sprite.unknown_1C, $0058
+	dw sprite.unknown_4A, $0000
+	dw !initcommand_success
 
 DATA_FFBBF8:
-	db $00, $83, $18, $BB, $4C, $00, $00, $C0
-	db $4E, $00, $80, $80, $22, $00, $00, $05
-	db $28, $00, $38, $00, $1C, $00, $20, $00
-	db $4A, $00, $0F, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $C000
+	dw sprite.unknown_4E, $8080
+	dw sprite.unknown_22, $0500
+	dw sprite.unknown_28, $0038
+	dw sprite.unknown_1C, $0020
+	dw sprite.unknown_4A, $000F
+	dw !initcommand_success
 
 DATA_FFBC16:
-	db $00, $83, $18, $BB, $4C, $00, $00, $C0
-	db $4E, $00, $80, $80, $22, $00, $00, $05
-	db $28, $00, $20, $00, $1C, $00, $28, $00
-	db $4A, $00, $2D, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $C000
+	dw sprite.unknown_4E, $8080
+	dw sprite.unknown_22, $0500
+	dw sprite.unknown_28, $0020
+	dw sprite.unknown_1C, $0028
+	dw sprite.unknown_4A, $002D
+	dw !initcommand_success
 
 DATA_FFBC34:
-	db $00, $83, $18, $BB, $4C, $00, $60, $60
-	db $4E, $00, $40, $40, $22, $00, $00, $08
-	db $28, $00, $30, $00, $1C, $00, $50, $00
-	db $4A, $00, $00, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $6060
+	dw sprite.unknown_4E, $4040
+	dw sprite.unknown_22, $0800
+	dw sprite.unknown_28, $0030
+	dw sprite.unknown_1C, $0050
+	dw sprite.unknown_4A, $0000
+	dw !initcommand_success
 
 DATA_FFBC52:
-	db $00, $83, $18, $BB, $4C, $00, $60, $60
-	db $4E, $00, $08, $28, $22, $00, $00, $08
-	db $28, $00, $40, $00, $1C, $00, $40, $00
-	db $4A, $00, $00, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $6060
+	dw sprite.unknown_4E, $2808
+	dw sprite.unknown_22, $0800
+	dw sprite.unknown_28, $0040
+	dw sprite.unknown_1C, $0040
+	dw sprite.unknown_4A, $0000
+	dw !initcommand_success
 
 DATA_FFBC70:
-	db $00, $83, $18, $BB, $4C, $00, $E0, $B0
-	db $4E, $00, $38, $38, $22, $00, $00, $06
-	db $28, $00, $46, $00, $1C, $00, $30, $00
-	db $4A, $00, $00, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $B0E0
+	dw sprite.unknown_4E, $3838
+	dw sprite.unknown_22, $0600
+	dw sprite.unknown_28, $0046
+	dw sprite.unknown_1C, $0030
+	dw sprite.unknown_4A, $0000
+	dw !initcommand_success
 
 DATA_FFBC8E:
-	db $00, $83, $18, $BB, $4C, $00, $C0, $C0
-	db $4E, $00, $80, $80, $22, $00, $00, $06
-	db $28, $00, $10, $00, $1C, $00, $48, $00
-	db $4A, $00, $1E, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $C0C0
+	dw sprite.unknown_4E, $8080
+	dw sprite.unknown_22, $0600
+	dw sprite.unknown_28, $0010
+	dw sprite.unknown_1C, $0048
+	dw sprite.unknown_4A, $001E
+	dw !initcommand_success
 
 DATA_FFBCAC:
-	db $00, $83, $18, $BB, $4C, $00, $A0, $C0
-	db $4E, $00, $50, $38, $22, $00, $00, $06
-	db $28, $00, $48, $00, $1C, $00, $30, $00
-	db $4A, $00, $2D, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $C0A0
+	dw sprite.unknown_4E, $3850
+	dw sprite.unknown_22, $0600
+	dw sprite.unknown_28, $0048
+	dw sprite.unknown_1C, $0030
+	dw sprite.unknown_4A, $002D
+	dw !initcommand_success
 
 DATA_FFBCCA:
-	db $00, $83, $18, $BB, $4C, $00, $C0, $C0
-	db $4E, $00, $38, $38, $22, $00, $00, $05
-	db $28, $00, $50, $00, $1C, $00, $28, $00
-	db $4A, $00, $2D, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $C0C0
+	dw sprite.unknown_4E, $3838
+	dw sprite.unknown_22, $0500
+	dw sprite.unknown_28, $0050
+	dw sprite.unknown_1C, $0028
+	dw sprite.unknown_4A, $002D
+	dw !initcommand_success
 
 DATA_FFBCE8:
-	db $00, $83, $E3, $F3, $4C, $00, $A0, $A0
-	db $4E, $00, $38, $38, $4E, $00, $28, $00
-	db $4C, $00, $D0, $0E, $22, $00, $00, $06
-	db $28, $00, $40, $00, $1C, $00, $30, $00
-	db $4A, $00, $2D, $00, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFF3E3
+	dw sprite.unknown_4C, $A0A0
+	dw sprite.unknown_4E, $3838
+	dw sprite.unknown_4E, $0028
+	dw sprite.unknown_4C, $0ED0
+	dw sprite.unknown_22, $0600
+	dw sprite.unknown_28, $0040
+	dw sprite.unknown_1C, $0030
+	dw sprite.unknown_4A, $002D
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFBD12:
-	db $00, $83, $18, $BB, $4C, $00, $00, $D0
-	db $4E, $00, $80, $80, $22, $00, $00, $08
-	db $28, $00, $20, $00, $1C, $00, $48, $00
-	db $4A, $00, $1E, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $D000
+	dw sprite.unknown_4E, $8080
+	dw sprite.unknown_22, $0800
+	dw sprite.unknown_28, $0020
+	dw sprite.unknown_1C, $0048
+	dw sprite.unknown_4A, $001E
+	dw !initcommand_success
 
 DATA_FFBD30:
-	db $00, $83, $18, $BB, $4C, $00, $00, $C0
-	db $4E, $00, $80, $80, $22, $00, $00, $08
-	db $28, $00, $10, $00, $1C, $00, $60, $00
-	db $4A, $00, $0A, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $C000
+	dw sprite.unknown_4E, $8080
+	dw sprite.unknown_22, $0800
+	dw sprite.unknown_28, $0010
+	dw sprite.unknown_1C, $0060
+	dw sprite.unknown_4A, $000A
+	dw !initcommand_success
 
 DATA_FFBD4E:
-	db $00, $83, $18, $BB, $4C, $00, $60, $E0
-	db $4E, $00, $20, $28, $22, $00, $00, $06
-	db $28, $00, $48, $00, $1C, $00, $28, $00
-	db $4A, $00, $00, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $E060
+	dw sprite.unknown_4E, $2820
+	dw sprite.unknown_22, $0600
+	dw sprite.unknown_28, $0048
+	dw sprite.unknown_1C, $0028
+	dw sprite.unknown_4A, $0000
+	dw !initcommand_success
 
 DATA_FFBD6C:
-	db $00, $83, $18, $BB, $4C, $00, $00, $F0
-	db $4E, $00, $10, $80, $22, $00, $00, $06
-	db $28, $00, $60, $00, $1C, $00, $30, $00
-	db $4A, $00, $0F, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $F000
+	dw sprite.unknown_4E, $8010
+	dw sprite.unknown_22, $0600
+	dw sprite.unknown_28, $0060
+	dw sprite.unknown_1C, $0030
+	dw sprite.unknown_4A, $000F
+	dw !initcommand_success
 
 DATA_FFBD8A:
-	db $00, $83, $18, $BB, $4C, $00, $00, $F0
-	db $4E, $00, $10, $80, $22, $00, $00, $06
-	db $28, $00, $88, $00, $1C, $00, $30, $00
-	db $4A, $00, $19, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $F000
+	dw sprite.unknown_4E, $8010
+	dw sprite.unknown_22, $0600
+	dw sprite.unknown_28, $0088
+	dw sprite.unknown_1C, $0030
+	dw sprite.unknown_4A, $0019
+	dw !initcommand_success
 
 DATA_FFBDA8:
-	db $00, $83, $18, $BB, $4C, $00, $00, $E0
-	db $4E, $00, $60, $28, $22, $00, $00, $03
-	db $28, $00, $9C, $00, $1C, $00, $20, $00
-	db $4A, $00, $00, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $E000
+	dw sprite.unknown_4E, $2860
+	dw sprite.unknown_22, $0300
+	dw sprite.unknown_28, $009C
+	dw sprite.unknown_1C, $0020
+	dw sprite.unknown_4A, $0000
+	dw !initcommand_success
 
 DATA_FFBDC6:
-	db $00, $83, $18, $BB, $4C, $00, $00, $C0
-	db $4E, $00, $08, $28, $22, $00, $00, $05
-	db $28, $00, $58, $00, $1C, $00, $30, $00
-	db $4A, $00, $1E, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $C000
+	dw sprite.unknown_4E, $2808
+	dw sprite.unknown_22, $0500
+	dw sprite.unknown_28, $0058
+	dw sprite.unknown_1C, $0030
+	dw sprite.unknown_4A, $001E
+	dw !initcommand_success
 
 DATA_FFBDE4:
-	db $00, $83, $18, $BB, $4C, $00, $00, $C0
-	db $4E, $00, $80, $80, $22, $00, $00, $05
-	db $28, $00, $20, $00, $1C, $00, $28, $00
-	db $4A, $00, $4B, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $C000
+	dw sprite.unknown_4E, $8080
+	dw sprite.unknown_22, $0500
+	dw sprite.unknown_28, $0020
+	dw sprite.unknown_1C, $0028
+	dw sprite.unknown_4A, $004B
+	dw !initcommand_success
 
 DATA_FFBE02:
-	db $00, $83, $18, $BB, $4C, $00, $A0, $A0
-	db $4E, $00, $08, $28, $22, $00, $00, $04
-	db $28, $00, $40, $00, $1C, $00, $20, $00
-	db $4A, $00, $5A, $00, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $A0A0
+	dw sprite.unknown_4E, $2808
+	dw sprite.unknown_22, $0400
+	dw sprite.unknown_28, $0040
+	dw sprite.unknown_1C, $0020
+	dw sprite.unknown_4A, $005A
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFBE24:
-	db $00, $83, $18, $BB, $4C, $00, $A0, $A0
-	db $4E, $00, $08, $28, $22, $00, $00, $06
-	db $28, $00, $38, $00, $1C, $00, $20, $00
-	db $4A, $00, $3C, $00, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $A0A0
+	dw sprite.unknown_4E, $2808
+	dw sprite.unknown_22, $0600
+	dw sprite.unknown_28, $0038
+	dw sprite.unknown_1C, $0020
+	dw sprite.unknown_4A, $003C
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFBE46:
-	db $00, $83, $18, $BB, $4C, $00, $A0, $A0
-	db $4E, $00, $08, $28, $22, $00, $00, $08
-	db $28, $00, $30, $00, $1C, $00, $20, $00
-	db $4A, $00, $1E, $00, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $A0A0
+	dw sprite.unknown_4E, $2808
+	dw sprite.unknown_22, $0800
+	dw sprite.unknown_28, $0030
+	dw sprite.unknown_1C, $0020
+	dw sprite.unknown_4A, $001E
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFBE68:
-	db $00, $83, $18, $BB, $4C, $00, $00, $A0
-	db $4E, $00, $80, $80, $22, $00, $00, $08
-	db $28, $00, $10, $00, $1C, $00, $58, $00
-	db $4A, $00, $00, $00, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $A000
+	dw sprite.unknown_4E, $8080
+	dw sprite.unknown_22, $0800
+	dw sprite.unknown_28, $0010
+	dw sprite.unknown_1C, $0058
+	dw sprite.unknown_4A, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFBE8A:
-	db $00, $83, $18, $BB, $4C, $00, $00, $A0
-	db $4E, $00, $80, $80, $22, $00, $00, $07
-	db $28, $00, $10, $00, $1C, $00, $40, $00
-	db $4A, $00, $00, $00, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $A000
+	dw sprite.unknown_4E, $8080
+	dw sprite.unknown_22, $0700
+	dw sprite.unknown_28, $0010
+	dw sprite.unknown_1C, $0040
+	dw sprite.unknown_4A, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFBEAC:
-	db $00, $83, $18, $BB, $4C, $00, $00, $C0
-	db $4E, $00, $80, $80, $22, $00, $00, $05
-	db $28, $00, $38, $00, $1C, $00, $20, $00
-	db $4A, $00, $1E, $00, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $C000
+	dw sprite.unknown_4E, $8080
+	dw sprite.unknown_22, $0500
+	dw sprite.unknown_28, $0038
+	dw sprite.unknown_1C, $0020
+	dw sprite.unknown_4A, $001E
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFBECE:
-	db $00, $83, $18, $BB, $4C, $00, $00, $C0
-	db $4E, $00, $80, $80, $22, $00, $00, $05
-	db $28, $00, $38, $00, $1C, $00, $20, $00
-	db $4A, $00, $00, $00, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $C000
+	dw sprite.unknown_4E, $8080
+	dw sprite.unknown_22, $0500
+	dw sprite.unknown_28, $0038
+	dw sprite.unknown_1C, $0020
+	dw sprite.unknown_4A, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFBEF0:
-	db $00, $83, $18, $BB, $4C, $00, $00, $C0
-	db $4E, $00, $80, $80, $22, $00, $00, $05
-	db $28, $00, $20, $00, $1C, $00, $28, $00
-	db $4A, $00, $4B, $00, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $C000
+	dw sprite.unknown_4E, $8080
+	dw sprite.unknown_22, $0500
+	dw sprite.unknown_28, $0020
+	dw sprite.unknown_1C, $0028
+	dw sprite.unknown_4A, $004B
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFBF12:
-	db $00, $83, $18, $BB, $4C, $00, $00, $F0
-	db $4E, $00, $80, $80, $22, $00, $00, $05
-	db $28, $00, $5C, $00, $1C, $00, $20, $00
-	db $4A, $00, $3C, $00, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $F000
+	dw sprite.unknown_4E, $8080
+	dw sprite.unknown_22, $0500
+	dw sprite.unknown_28, $005C
+	dw sprite.unknown_1C, $0020
+	dw sprite.unknown_4A, $003C
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFBF34:
-	db $00, $83, $18, $BB, $4C, $00, $00, $C0
-	db $4E, $00, $80, $80, $22, $00, $00, $06
-	db $28, $00, $20, $00, $1C, $00, $28, $00
-	db $4A, $00, $00, $00, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $C000
+	dw sprite.unknown_4E, $8080
+	dw sprite.unknown_22, $0600
+	dw sprite.unknown_28, $0020
+	dw sprite.unknown_1C, $0028
+	dw sprite.unknown_4A, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFBF56:
-	db $00, $83, $18, $BB, $4C, $00, $00, $C0
-	db $4E, $00, $80, $80, $22, $00, $00, $08
-	db $28, $00, $10, $00, $1C, $00, $60, $00
-	db $4A, $00, $0A, $00, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $C000
+	dw sprite.unknown_4E, $8080
+	dw sprite.unknown_22, $0800
+	dw sprite.unknown_28, $0010
+	dw sprite.unknown_1C, $0060
+	dw sprite.unknown_4A, $000A
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFBF78:
-	db $00, $83, $18, $BB, $4C, $00, $00, $E0
-	db $4E, $00, $60, $28, $22, $00, $00, $03
-	db $28, $00, $9C, $00, $1C, $00, $20, $00
-	db $4A, $00, $0F, $00, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $E000
+	dw sprite.unknown_4E, $2860
+	dw sprite.unknown_22, $0300
+	dw sprite.unknown_28, $009C
+	dw sprite.unknown_1C, $0020
+	dw sprite.unknown_4A, $000F
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFBF9A:
-	db $00, $83, $18, $BB, $4C, $00, $00, $C0
-	db $4E, $00, $C0, $40, $22, $00, $00, $06
-	db $28, $00, $40, $00, $1C, $00, $28, $00
-	db $4A, $00, $32, $00, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $C000
+	dw sprite.unknown_4E, $40C0
+	dw sprite.unknown_22, $0600
+	dw sprite.unknown_28, $0040
+	dw sprite.unknown_1C, $0028
+	dw sprite.unknown_4A, $0032
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFBFBC:
-	db $00, $83, $26, $BB, $26, $00, $C0, $FE
-	db $4C, $00, $80, $80, $4E, $00, $08, $18
-	db $22, $00, $00, $06, $28, $00, $40, $00
-	db $1C, $00, $20, $00, $4A, $00, $1E, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB26
+	dw sprite.max_x_speed, $FEC0
+	dw sprite.unknown_4C, $8080
+	dw sprite.unknown_4E, $1808
+	dw sprite.unknown_22, $0600
+	dw sprite.unknown_28, $0040
+	dw sprite.unknown_1C, $0020
+	dw sprite.unknown_4A, $001E
+	dw !initcommand_success
 
 DATA_FFBFDE:
-	db $00, $83, $34, $BB, $26, $00, $C0, $FE
-	db $46, $00, $40, $40, $4C, $00, $80, $80
-	db $4E, $00, $38, $38, $22, $00, $00, $03
-	db $28, $00, $80, $00, $1C, $00, $28, $00
-	db $4A, $00, $78, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB34
+	dw sprite.max_x_speed, $FEC0
+	dw sprite.unknown_46, $4040
+	dw sprite.unknown_4C, $8080
+	dw sprite.unknown_4E, $3838
+	dw sprite.unknown_22, $0300
+	dw sprite.unknown_28, $0080
+	dw sprite.unknown_1C, $0028
+	dw sprite.unknown_4A, $0078
+	dw !initcommand_success
 
 DATA_FFC004:
-	db $00, $83, $34, $BB, $26, $00, $40, $01
-	db $46, $00, $40, $40, $4C, $00, $80, $80
-	db $4E, $00, $38, $38, $22, $00, $00, $05
-	db $28, $00, $50, $00, $1C, $00, $30, $00
-	db $4A, $00, $3C, $00, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB34
+	dw sprite.max_x_speed, $0140
+	dw sprite.unknown_46, $4040
+	dw sprite.unknown_4C, $8080
+	dw sprite.unknown_4E, $3838
+	dw sprite.unknown_22, $0500
+	dw sprite.unknown_28, $0050
+	dw sprite.unknown_1C, $0030
+	dw sprite.unknown_4A, $003C
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFC02E:
-	db $00, $83, $34, $BB, $26, $00, $C0, $FE
-	db $46, $00, $50, $50, $4C, $00, $80, $80
-	db $4E, $00, $38, $38, $22, $00, $00, $05
-	db $28, $00, $60, $00, $1C, $00, $28, $00
-	db $4A, $00, $3C, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB34
+	dw sprite.max_x_speed, $FEC0
+	dw sprite.unknown_46, $5050
+	dw sprite.unknown_4C, $8080
+	dw sprite.unknown_4E, $3838
+	dw sprite.unknown_22, $0500
+	dw sprite.unknown_28, $0060
+	dw sprite.unknown_1C, $0028
+	dw sprite.unknown_4A, $003C
+	dw !initcommand_success
 
 DATA_FFC054:
-	db $00, $83, $34, $BB, $26, $00, $C0, $FE
-	db $46, $00, $30, $84, $4C, $00, $80, $80
-	db $4E, $00, $20, $18, $22, $00, $00, $06
-	db $28, $00, $40, $00, $1C, $00, $30, $00
-	db $4A, $00, $3C, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB34
+	dw sprite.max_x_speed, $FEC0
+	dw sprite.unknown_46, $8430
+	dw sprite.unknown_4C, $8080
+	dw sprite.unknown_4E, $1820
+	dw sprite.unknown_22, $0600
+	dw sprite.unknown_28, $0040
+	dw sprite.unknown_1C, $0030
+	dw sprite.unknown_4A, $003C
+	dw !initcommand_success
 
 DATA_FFC07A:
-	db $00, $83, $34, $BB, $26, $00, $40, $01
-	db $46, $00, $FF, $C0, $4C, $00, $80, $80
-	db $4E, $00, $20, $18, $22, $00, $00, $06
-	db $28, $00, $40, $00, $1C, $00, $30, $00
-	db $4A, $00, $1E, $00, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB34
+	dw sprite.max_x_speed, $0140
+	dw sprite.unknown_46, $C0FF
+	dw sprite.unknown_4C, $8080
+	dw sprite.unknown_4E, $1820
+	dw sprite.unknown_22, $0600
+	dw sprite.unknown_28, $0040
+	dw sprite.unknown_1C, $0030
+	dw sprite.unknown_4A, $001E
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFC0A4:
-	db $00, $83, $34, $BB, $26, $00, $C0, $FE
-	db $46, $00, $30, $70, $4C, $00, $80, $80
-	db $4E, $00, $38, $38, $22, $00, $00, $04
-	db $28, $00, $70, $00, $1C, $00, $28, $00
-	db $4A, $00, $3C, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB34
+	dw sprite.max_x_speed, $FEC0
+	dw sprite.unknown_46, $7030
+	dw sprite.unknown_4C, $8080
+	dw sprite.unknown_4E, $3838
+	dw sprite.unknown_22, $0400
+	dw sprite.unknown_28, $0070
+	dw sprite.unknown_1C, $0028
+	dw sprite.unknown_4A, $003C
+	dw !initcommand_success
 
 DATA_FFC0CA:
-	db $00, $83, $34, $BB, $26, $00, $C0, $FE
-	db $46, $00, $28, $28, $4C, $00, $80, $80
-	db $4E, $00, $38, $38, $22, $00, $00, $05
-	db $28, $00, $60, $00, $1C, $00, $28, $00
-	db $4A, $00, $3C, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB34
+	dw sprite.max_x_speed, $FEC0
+	dw sprite.unknown_46, $2828
+	dw sprite.unknown_4C, $8080
+	dw sprite.unknown_4E, $3838
+	dw sprite.unknown_22, $0500
+	dw sprite.unknown_28, $0060
+	dw sprite.unknown_1C, $0028
+	dw sprite.unknown_4A, $003C
+	dw !initcommand_success
 
 DATA_FFC0F0:
-	db $00, $83, $34, $BB, $26, $00, $C0, $FE
-	db $46, $00, $18, $18, $4C, $00, $80, $80
-	db $4E, $00, $00, $00, $22, $00, $00, $06
-	db $28, $00, $40, $00, $1C, $00, $30, $00
-	db $4A, $00, $3C, $00, $00, $80, $00, $00
-	db $E0, $01, $02, $00, $D4, $00, $54, $00
-	db $1C, $02, $30, $00, $20, $01, $2E, $00
-	db $00, $00, $20, $00, $00, $00, $24, $00
-	db $00, $00, $00, $85, $00, $20, $00, $81
-	db $69, $01, $2E, $00, $00, $00, $4C, $00
-	db $60, $60, $4E, $00, $08, $28, $1C, $00
-	db $02, $00, $4A, $00, $00, $00, $48, $00
-	db $00, $00, $00, $80, $00, $83, $16, $C1
-	db $52, $00, $22, $00, $00, $8D, $12, $00
-	db $00, $80, $00, $83, $16, $C1, $52, $00
-	db $23, $00, $00, $8D, $12, $00, $00, $80
-	db $00, $83, $16, $C1, $52, $00, $23, $00
-	db $00, $8D, $B4, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB34
+	dw sprite.max_x_speed, $FEC0
+	dw sprite.unknown_46, $1818
+	dw sprite.unknown_4C, $8080
+	dw sprite.unknown_4E, $0000
+	dw sprite.unknown_22, $0600
+	dw sprite.unknown_28, $0040
+	dw sprite.unknown_1C, $0030
+	dw sprite.unknown_4A, $003C
+	dw !initcommand_success
+
+DATA_FFC116:
+	dw sprite.number, $01E0
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_54, $021C
+	dw sprite.unknown_30, $0120
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_animation, $0169
+	dw sprite.action, $0000
+	dw sprite.unknown_4C, $6060
+	dw sprite.unknown_4E, $2808
+	dw sprite.unknown_1C, $0002
+	dw sprite.unknown_4A, $0000
+if !version == 1
+	dw sprite.unknown_48, $0000
+endif
+	dw !initcommand_success
+
+DATA_FFC154:
+	dw !initcommand_load_subconfig, DATA_FFC116
+	dw sprite.unknown_52, $0022
+	dw !initcommand_set_alt_palette, $0012
+	dw !initcommand_success
+
+DATA_FFC162:
+	dw !initcommand_load_subconfig, DATA_FFC116
+	dw sprite.unknown_52, $0023
+	dw !initcommand_set_alt_palette, $0012
+	dw !initcommand_success
+
+DATA_FFC170:
+	dw !initcommand_load_subconfig, DATA_FFC116
+	dw sprite.unknown_52, $0023
+	dw !initcommand_set_alt_palette, $00B4
+	dw !initcommand_success
 
 DATA_FFC17E:
-	db $00, $83, $54, $C1, $26, $00, $80, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC154
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_success
 
 DATA_FFC188:
-	db $00, $83, $54, $C1, $26, $00, $80, $FE
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC154
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFC196:
-	db $00, $83, $62, $C1, $26, $00, $80, $01
-	db $46, $00, $20, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC162
+	dw sprite.max_x_speed, $0180
+	dw sprite.unknown_46, $2020
+	dw !initcommand_success
 
 DATA_FFC1A4:
-	db $00, $83, $62, $C1, $26, $00, $80, $01
-	db $46, $00, $18, $18, $4E, $00, $60, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC162
+	dw sprite.max_x_speed, $0180
+	dw sprite.unknown_46, $1818
+	dw sprite.unknown_4E, $2860
+	dw !initcommand_success
 
 DATA_FFC1B6:
-	db $00, $83, $70, $C1, $00, $85, $00, $60
-	db $26, $00, $80, $FE, $46, $00, $60, $60
-	db $4C, $00, $80, $80, $4A, $00, $02, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC170
+	dw !initcommand_set_oam, $6000
+	dw sprite.max_x_speed, $FE80
+	dw sprite.unknown_46, $6060
+	dw sprite.unknown_4C, $8080
+	dw sprite.unknown_4A, $0002
+	dw !initcommand_success
 
 DATA_FFC1D0:
-	db $00, $83, $70, $C1, $26, $00, $80, $01
-	db $46, $00, $38, $38, $4C, $00, $80, $80
-	db $4E, $00, $08, $08, $4A, $00, $02, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC170
+	dw sprite.max_x_speed, $0180
+	dw sprite.unknown_46, $3838
+	dw sprite.unknown_4C, $8080
+	dw sprite.unknown_4E, $0808
+	dw sprite.unknown_4A, $0002
+	dw !initcommand_success
 
 DATA_FFC1EA:
-	db $00, $83, $70, $C1, $26, $00, $80, $01
-	db $46, $00, $30, $28, $4C, $00, $80, $80
-	db $4A, $00, $02, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC170
+	dw sprite.max_x_speed, $0180
+	dw sprite.unknown_46, $2830
+	dw sprite.unknown_4C, $8080
+	dw sprite.unknown_4A, $0002
+	dw !initcommand_success
 
 DATA_FFC200:
-	db $00, $83, $70, $C1, $00, $85, $00, $60
-	db $26, $00, $80, $FE, $46, $00, $00, $98
-	db $4C, $00, $80, $80, $4A, $00, $02, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC170
+	dw !initcommand_set_oam, $6000
+	dw sprite.max_x_speed, $FE80
+	dw sprite.unknown_46, $9800
+	dw sprite.unknown_4C, $8080
+	dw sprite.unknown_4A, $0002
+	dw !initcommand_success
 
 DATA_FFC21A:
-	db $00, $83, $70, $C1, $26, $00, $80, $01
-	db $46, $00, $30, $30, $4A, $00, $02, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC170
+	dw sprite.max_x_speed, $0180
+	dw sprite.unknown_46, $3030
+	dw sprite.unknown_4A, $0002
+	dw !initcommand_success
 
 DATA_FFC22C:
-	db $00, $83, $62, $C1, $26, $00, $80, $01
-	db $46, $00, $38, $38, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC162
+	dw sprite.max_x_speed, $0180
+	dw sprite.unknown_46, $3838
+	dw !initcommand_success
 
 DATA_FFC23A:
-	db $00, $83, $70, $C1, $26, $00, $80, $01
-	db $46, $00, $A0, $A0, $4C, $00, $80, $80
-	db $4A, $00, $01, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC170
+	dw sprite.max_x_speed, $0180
+	dw sprite.unknown_46, $A0A0
+	dw sprite.unknown_4C, $8080
+	dw sprite.unknown_4A, $0001
+	dw !initcommand_success
 
 DATA_FFC250:
-	db $00, $83, $70, $C1, $26, $00, $80, $01
-	db $46, $00, $18, $18, $4C, $00, $60, $60
-	db $4E, $00, $80, $28, $4A, $00, $01, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC170
+	dw sprite.max_x_speed, $0180
+	dw sprite.unknown_46, $1818
+	dw sprite.unknown_4C, $6060
+	dw sprite.unknown_4E, $2880
+	dw sprite.unknown_4A, $0001
+	dw !initcommand_success
 
 DATA_FFC26A:
-	db $00, $83, $62, $C1, $00, $85, $00, $60
-	db $26, $00, $80, $FE, $46, $00, $40, $C0
-	db $4C, $00, $80, $80, $1C, $00, $01, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC162
+	dw !initcommand_set_oam, $6000
+	dw sprite.max_x_speed, $FE80
+	dw sprite.unknown_46, $C040
+	dw sprite.unknown_4C, $8080
+	dw sprite.unknown_1C, $0001
+	dw !initcommand_success
 
 DATA_FFC284:
-	db $00, $83, $62, $C1, $26, $00, $40, $01
-	db $46, $00, $40, $40, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC162
+	dw sprite.max_x_speed, $0140
+	dw sprite.unknown_46, $4040
+	dw !initcommand_success
 
 DATA_FFC292:
-	db $00, $83, $62, $C1, $00, $85, $00, $60
-	db $26, $00, $80, $FE, $46, $00, $10, $10
-	db $4C, $00, $40, $40, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC162
+	dw !initcommand_set_oam, $6000
+	dw sprite.max_x_speed, $FE80
+	dw sprite.unknown_46, $1010
+	dw sprite.unknown_4C, $4040
+	dw !initcommand_success
 
 DATA_FFC2A8:
-	db $00, $83, $70, $C1, $26, $00, $80, $01
-	db $46, $00, $10, $10, $4C, $00, $40, $40
-	db $4A, $00, $01, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC170
+	dw sprite.max_x_speed, $0180
+	dw sprite.unknown_46, $1010
+	dw sprite.unknown_4C, $4040
+	dw sprite.unknown_4A, $0001
+	dw !initcommand_success
 
 DATA_FFC2BE:
-	db $00, $83, $70, $C1, $26, $00, $00, $02
-	db $46, $00, $B8, $B8, $4C, $00, $C0, $C0
-	db $4E, $00, $10, $10, $4A, $00, $02, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC170
+	dw sprite.max_x_speed, $0200
+	dw sprite.unknown_46, $B8B8
+	dw sprite.unknown_4C, $C0C0
+	dw sprite.unknown_4E, $1010
+	dw sprite.unknown_4A, $0002
+	dw !initcommand_success
 
 DATA_FFC2D8:
-	db $00, $83, $70, $C1, $26, $00, $80, $01
-	db $46, $00, $40, $30, $4C, $00, $80, $80
-	db $4E, $00, $60, $18, $4A, $00, $01, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC170
+	dw sprite.max_x_speed, $0180
+	dw sprite.unknown_46, $3040
+	dw sprite.unknown_4C, $8080
+	dw sprite.unknown_4E, $1860
+	dw sprite.unknown_4A, $0001
+	dw !initcommand_success
 
 DATA_FFC2F2:
-	db $00, $83, $62, $C1, $26, $00, $80, $01
-	db $46, $00, $18, $18, $4E, $00, $30, $28
-	db $1C, $00, $01, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC162
+	dw sprite.max_x_speed, $0180
+	dw sprite.unknown_46, $1818
+	dw sprite.unknown_4E, $2830
+	dw sprite.unknown_1C, $0001
+	dw !initcommand_success
 
 DATA_FFC308:
-	db $00, $83, $70, $C1, $26, $00, $80, $01
-	db $46, $00, $48, $00, $4C, $00, $80, $80
-	db $4E, $00, $20, $20, $4A, $00, $08, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC170
+	dw sprite.max_x_speed, $0180
+	dw sprite.unknown_46, $0048
+	dw sprite.unknown_4C, $8080
+	dw sprite.unknown_4E, $2020
+	dw sprite.unknown_4A, $0008
+	dw !initcommand_success
 
 DATA_FFC322:
-	db $00, $83, $70, $C1, $26, $00, $80, $FE
-	db $46, $00, $00, $A0, $4C, $00, $80, $80
-	db $4E, $00, $01, $20, $00, $85, $00, $60
-	db $4A, $00, $01, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC170
+	dw sprite.max_x_speed, $FE80
+	dw sprite.unknown_46, $A000
+	dw sprite.unknown_4C, $8080
+	dw sprite.unknown_4E, $2001
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_4A, $0001
+	dw !initcommand_success
 
 DATA_FFC340:
-	db $00, $83, $70, $C1, $26, $00, $80, $01
-	db $46, $00, $C0, $00, $4C, $00, $80, $80
-	db $4E, $00, $01, $20, $4A, $00, $01, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC170
+	dw sprite.max_x_speed, $0180
+	dw sprite.unknown_46, $00C0
+	dw sprite.unknown_4C, $8080
+	dw sprite.unknown_4E, $2001
+	dw sprite.unknown_4A, $0001
+	dw !initcommand_success
 
 DATA_FFC35A:
-	db $00, $83, $70, $C1, $26, $00, $80, $01
-	db $46, $00, $E0, $00, $4C, $00, $80, $80
-	db $4E, $00, $01, $20, $4A, $00, $01, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC170
+	dw sprite.max_x_speed, $0180
+	dw sprite.unknown_46, $00E0
+	dw sprite.unknown_4C, $8080
+	dw sprite.unknown_4E, $2001
+	dw sprite.unknown_4A, $0001
+	dw !initcommand_success
 
 DATA_FFC374:
-	db $00, $83, $62, $C1, $26, $00, $40, $01
-	db $46, $00, $40, $40, $5C, $00, $FF, $7F
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC162
+	dw sprite.max_x_speed, $0140
+	dw sprite.unknown_46, $4040
+	dw sprite.unknown_5C, $7FFF
+	dw !initcommand_success
 
 DATA_FFC386:
-	db $00, $83, $70, $C1, $26, $00, $80, $01
-	db $46, $00, $20, $78, $4C, $00, $80, $80
-	db $4A, $00, $02, $00, $00, $80, $00, $00
-	db $60, $01, $02, $00, $C8, $00, $2E, $00
-	db $00, $00, $00, $85, $00, $20, $00, $8D
-	db $17, $00, $00, $81, $B3, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC170
+	dw sprite.max_x_speed, $0180
+	dw sprite.unknown_46, $7820
+	dw sprite.unknown_4C, $8080
+	dw sprite.unknown_4A, $0002
+	dw !initcommand_success
+
+DATA_FFC39C:
+	dw sprite.number, $0160
+	dw sprite.render_order, $00C8
+	dw sprite.action, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0017
+	dw !initcommand_set_animation, $02B3
+	dw !initcommand_success
 
 DATA_FFC3B6:
-	db $00, $83, $9C, $C3, $54, $00, $9C, $C4
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC39C
+	dw sprite.unknown_54, DATA_FFC49C
+	dw !initcommand_success
 
 DATA_FFC3C0:
-	db $00, $83, $9C, $C3, $54, $00, $9C, $C4
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC39C
+	dw sprite.unknown_54, DATA_FFC49C
+	dw !initcommand_success
 
 DATA_FFC3CA:
-	db $00, $83, $9C, $C3, $54, $00, $A5, $C4
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC39C
+	dw sprite.unknown_54, DATA_FFC4A5
+	dw !initcommand_success
 
 DATA_FFC3D4:
-	db $00, $83, $9C, $C3, $54, $00, $AE, $C4
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC39C
+	dw sprite.unknown_54, DATA_FFC4AE
+	dw !initcommand_success
 
 DATA_FFC3DE:
-	db $00, $83, $9C, $C3, $54, $00, $B7, $C4
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC39C
+	dw sprite.unknown_54, DATA_FFC4B7
+	dw !initcommand_success
 
 DATA_FFC3E8:
-	db $00, $83, $9C, $C3, $54, $00, $C0, $C4
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC39C
+	dw sprite.unknown_54, DATA_FFC4C0
+	dw !initcommand_success
 
 DATA_FFC3F2:
-	db $00, $83, $9C, $C3, $54, $00, $C9, $C4
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC39C
+	dw sprite.unknown_54, DATA_FFC4C9
+	dw !initcommand_success
 
 DATA_FFC3FC:
-	db $00, $83, $9C, $C3, $54, $00, $D2, $C4
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC39C
+	dw sprite.unknown_54, DATA_FFC4D2
+	dw !initcommand_success
 
 DATA_FFC406:
-	db $00, $83, $9C, $C3, $54, $00, $DB, $C4
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC39C
+	dw sprite.unknown_54, DATA_FFC4DB
+	dw !initcommand_success
 
 DATA_FFC410:
-	db $00, $83, $9C, $C3, $54, $00, $E4, $C4
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC39C
+	dw sprite.unknown_54, DATA_FFC4E4
+	dw !initcommand_success
 
 DATA_FFC41A:
-	db $00, $83, $9C, $C3, $54, $00, $ED, $C4
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC39C
+	dw sprite.unknown_54, DATA_FFC4ED
+	dw !initcommand_success
 
 DATA_FFC424:
-	db $00, $83, $9C, $C3, $54, $00, $F6, $C4
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC39C
+	dw sprite.unknown_54, DATA_FFC4F6
+	dw !initcommand_success
 
 DATA_FFC42E:
-	db $00, $83, $9C, $C3, $54, $00, $FF, $C4
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC39C
+	dw sprite.unknown_54, DATA_FFC4FF
+	dw !initcommand_success
 
 DATA_FFC438:
-	db $00, $83, $9C, $C3, $54, $00, $08, $C5
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC39C
+	dw sprite.unknown_54, DATA_FFC508
+	dw !initcommand_success
 
 DATA_FFC442:
-	db $00, $83, $9C, $C3, $54, $00, $11, $C5
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC39C
+	dw sprite.unknown_54, DATA_FFC511
+	dw !initcommand_success
 
 DATA_FFC44C:
-	db $00, $83, $9C, $C3, $54, $00, $1A, $C5
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC39C
+	dw sprite.unknown_54, DATA_FFC51A
+	dw !initcommand_success
 
 DATA_FFC456:
-	db $00, $83, $9C, $C3, $54, $00, $23, $C5
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC39C
+	dw sprite.unknown_54, DATA_FFC523
+	dw !initcommand_success
 
 DATA_FFC460:
-	db $00, $83, $9C, $C3, $54, $00, $2C, $C5
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC39C
+	dw sprite.unknown_54, DATA_FFC52C
+	dw !initcommand_success
 
 DATA_FFC46A:
-	db $00, $83, $9C, $C3, $54, $00, $35, $C5
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC39C
+	dw sprite.unknown_54, DATA_FFC535
+	dw !initcommand_success
 
 DATA_FFC474:
-	db $00, $83, $9C, $C3, $54, $00, $3E, $C5
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC39C
+	dw sprite.unknown_54, DATA_FFC53E
+	dw !initcommand_success
 
 DATA_FFC47E:
-	db $00, $83, $9C, $C3, $54, $00, $47, $C5
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC39C
+	dw sprite.unknown_54, DATA_FFC547
+	dw !initcommand_success
 
 DATA_FFC488:
-	db $00, $83, $9C, $C3, $54, $00, $50, $C5
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC39C
+	dw sprite.unknown_54, DATA_FFC550
+	dw !initcommand_success
 
 DATA_FFC492:
-	db $00, $83, $9C, $C3, $54, $00, $59, $C5
-	db $00, $80, $28, $0C, $28, $19, $28, $0C
-	db $28, $00, $00, $28, $0C, $28, $00, $28
-	db $08, $28, $00, $00, $28, $08, $28, $00
-	db $28, $0C, $28, $00, $00, $28, $0C, $28
-	db $00, $28, $0C, $28, $04, $00, $28, $00
-	db $28, $19, $28, $0C, $28, $04, $00, $28
-	db $19, $28, $00, $28, $0C, $28, $00, $00
+	dw !initcommand_load_subconfig, DATA_FFC39C
+	dw sprite.unknown_54, DATA_FFC559
+	dw !initcommand_success
+
+DATA_FFC49C:
+	db $28, $0C, $28, $19, $28, $0C, $28, $00
+	db $00
+
+DATA_FFC4A5:
+	db $28, $0C, $28, $00, $28, $08, $28, $00
+	db $00
+
+DATA_FFC4AE:
+	db $28, $08, $28, $00, $28, $0C, $28, $00
+	db $00
+
+DATA_FFC4B7:
+	db $28, $0C, $28, $00, $28, $0C, $28, $04
+	db $00
+
+DATA_FFC4C0:
+	db $28, $00, $28, $19, $28, $0C, $28, $04
+	db $00
+
+DATA_FFC4C9:
+	db $28, $19, $28, $00, $28, $0C, $28, $00
+	db $00
+
+DATA_FFC4D2:
 	db $28, $00, $28, $19, $28, $00, $28, $0C
-	db $00, $28, $0C, $28, $00, $28, $0C, $28
-	db $19, $00, $28, $00, $28, $19, $28, $00
-	db $28, $04, $00, $28, $00, $28, $08, $28
-	db $19, $28, $0C, $00, $28, $11, $28, $00
-	db $28, $08, $28, $0C, $00, $28, $0C, $28
-	db $00, $28, $08, $28, $00, $00, $28, $0C
-	db $28, $19, $28, $0C, $28, $00, $00, $2C
-	db $00, $2C, $09, $2C, $00, $2C, $08, $00
+	db $00
+
+DATA_FFC4DB:
+	db $28, $0C, $28, $00, $28, $0C, $28, $19
+	db $00
+
+DATA_FFC4E4:
+	db $28, $00, $28, $19, $28, $00, $28, $04
+	db $00
+
+DATA_FFC4ED:
+	db $28, $00, $28, $08, $28, $19, $28, $0C
+	db $00
+
+DATA_FFC4F6:
+	db $28, $11, $28, $00, $28, $08, $28, $0C
+	db $00
+
+DATA_FFC4FF:
+	db $28, $0C, $28, $00, $28, $08, $28, $00
+	db $00
+
+DATA_FFC508:
+	db $28, $0C, $28, $19, $28, $0C, $28, $00
+	db $00
+
+DATA_FFC511:
+	db $2C, $00, $2C, $09, $2C, $00, $2C, $08
+	db $00
+
+DATA_FFC51A:
 	db $28, $0C, $28, $08, $28, $0C, $28, $00
-	db $00, $38, $00, $38, $08, $38, $00, $38
-	db $0C, $00, $28, $09, $28, $0C, $28, $00
-	db $28, $0C, $00, $28, $00, $28, $19, $28
-	db $00, $28, $04, $00, $28, $19, $28, $0C
-	db $28, $00, $28, $08, $00, $28, $19, $0C
-	db $11, $28, $00, $28, $0C, $00, $28, $0C
-	db $28, $00, $28, $08, $28, $19, $00, $28
-	db $00, $28, $08, $28, $00, $28, $0C, $00
-	db $00, $00, $70, $01, $54, $00, $1C, $02
-	db $02, $00, $C8, $00, $00, $85, $00, $20
-	db $00, $8D, $00, $00, $00, $81, $B2, $02
-	db $2E, $00, $00, $00, $4E, $00, $0A, $00
-	db $00, $80
+	db $00
+
+DATA_FFC523:
+	db $38, $00, $38, $08, $38, $00, $38, $0C
+	db $00
+
+DATA_FFC52C:
+	db $28, $09, $28, $0C, $28, $00, $28, $0C
+	db $00
+
+DATA_FFC535:
+	db $28, $00, $28, $19, $28, $00, $28, $04
+	db $00
+
+DATA_FFC53E:
+	db $28, $19, $28, $0C, $28, $00, $28, $08
+	db $00
+
+DATA_FFC547:
+	db $28, $19, $0C, $11, $28, $00, $28, $0C
+	db $00
+
+DATA_FFC550:
+	db $28, $0C, $28, $00, $28, $08, $28, $19
+	db $00
+
+DATA_FFC559:
+	db $28, $00, $28, $08, $28, $00, $28, $0C
+	db $00
+
+DATA_FFC562:
+	dw sprite.number, $0170
+	dw sprite.unknown_54, $021C
+	dw sprite.render_order, $00C8
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0000
+	dw !initcommand_set_animation, $02B2
+	dw sprite.action, $0000
+	dw sprite.unknown_4E, $000A
+	dw !initcommand_success
 
 DATA_FFC584:
-	db $00, $83, $62, $C5, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC562
+	dw !initcommand_success
 
 DATA_FFC58A:
-	db $00, $83, $62, $C5, $1C, $00, $00, $C0
-	db $00, $80, $00, $00, $E4, $02, $30, $00
-	db $20, $01, $02, $00, $D4, $00, $54, $00
-	db $1C, $02, $00, $8D, $5C, $00, $10, $00
-	db $00, $00, $2E, $00, $00, $00, $26, $00
-	db $00, $00, $20, $00, $00, $00, $24, $00
-	db $00, $00, $2A, $00, $00, $00, $52, $00
-	db $00, $00, $00, $85, $00, $60, $00, $81
-	db $D0, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC562
+	dw sprite.unknown_1C, $C000
+	dw !initcommand_success
+
+DATA_FFC594:
+	dw sprite.number, $02E4
+	dw sprite.unknown_30, $0120
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_54, $021C
+	dw !initcommand_set_alt_palette, $005C
+	dw sprite.interaction_type, $0000
+	dw sprite.action, $0000
+	dw sprite.max_x_speed, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_2A, $0000
+	dw sprite.unknown_52, $0000
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_animation, $02D0
+	dw !initcommand_success
 
 DATA_FFC5CE:
-	db $00, $83, $94, $C5, $50, $00, $94, $C6
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC594
+	dw sprite.parameter, DATA_FFC694
+	dw !initcommand_success
 
 DATA_FFC5D8:
-	db $00, $83, $94, $C5, $50, $00, $B3, $C6
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC594
+	dw sprite.parameter, DATA_FFC6B3
+	dw !initcommand_success
 
 DATA_FFC5E2:
-	db $00, $83, $94, $C5, $50, $00, $C4, $C6
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC594
+	dw sprite.parameter, DATA_FFC6C4
+	dw !initcommand_success
 
 DATA_FFC5EC:
-	db $00, $83, $94, $C5, $50, $00, $D6, $C6
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC594
+	dw sprite.parameter, DATA_FFC6D6
+	dw !initcommand_success
 
 DATA_FFC5F6:
-	db $00, $83, $94, $C5, $50, $00, $E4, $C6
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC594
+	dw sprite.parameter, DATA_FFC6E4
+	dw !initcommand_success
 
 DATA_FFC600:
-	db $00, $83, $94, $C5, $50, $00, $22, $C7
-	db $00, $85, $00, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC594
+	dw sprite.parameter, DATA_FFC722
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFC60E:
-	db $00, $83, $94, $C5, $50, $00, $78, $C7
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC594
+	dw sprite.parameter, DATA_FFC778
+	dw !initcommand_success
 
 DATA_FFC618:
-	db $00, $83, $94, $C5, $50, $00, $8C, $C7
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC594
+	dw sprite.parameter, DATA_FFC78C
+	dw !initcommand_success
 
 DATA_FFC622:
-	db $00, $83, $94, $C5, $50, $00, $9E, $C7
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC594
+	dw sprite.parameter, DATA_FFC79E
+	dw !initcommand_success
 
 DATA_FFC62C:
-	db $00, $83, $94, $C5, $50, $00, $B0, $C7
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC594
+	dw sprite.parameter, DATA_FFC7B0
+	dw !initcommand_success
 
 DATA_FFC636:
-	db $00, $83, $94, $C5, $50, $00, $D0, $C7
-	db $00, $85, $00, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC594
+	dw sprite.parameter, DATA_FFC7D0
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFC644:
-	db $00, $83, $94, $C5, $50, $00, $E2, $C7
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC594
+	dw sprite.parameter, DATA_FFC7E2
+	dw !initcommand_success
 
 DATA_FFC64E:
-	db $00, $83, $94, $C5, $50, $00, $F3, $C7
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC594
+	dw sprite.parameter, DATA_FFC7F3
+	dw !initcommand_success
 
 DATA_FFC658:
-	db $00, $83, $94, $C5, $50, $00, $0C, $C8
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC594
+	dw sprite.parameter, DATA_FFC80C
+	dw !initcommand_success
 
 DATA_FFC662:
-	db $00, $83, $94, $C5, $50, $00, $41, $C8
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC594
+	dw sprite.parameter, DATA_FFC841
+	dw !initcommand_success
 
 DATA_FFC66C:
-	db $00, $83, $94, $C5, $50, $00, $52, $C8
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC594
+	dw sprite.parameter, DATA_FFC852
+	dw !initcommand_success
 
 DATA_FFC676:
-	db $00, $83, $94, $C5, $50, $00, $7D, $C8
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC594
+	dw sprite.parameter, DATA_FFC87D
+	dw !initcommand_success
 
 DATA_FFC680:
-	db $00, $83, $94, $C5, $50, $00, $9A, $C8
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC594
+	dw sprite.parameter, DATA_FFC89A
+	dw !initcommand_success
 
 DATA_FFC68A:
-	db $00, $83, $94, $C5, $50, $00, $BE, $C8
-	db $00, $80, $FA, $CC, $C8, $FC, $3C, $00
-	db $10, $F7, $CA, $F8, $10, $03, $CB, $F8
-	db $10, $0F, $CB, $F8, $FA, $E6, $C8, $FC
-	db $5A, $00, $FA, $DC, $C8, $FC, $78, $00
-	db $FF, $FA, $CC, $C8, $FC, $2D, $00, $10
-	db $4F, $C9, $F8, $FC, $2D, $00, $FE, $B6
-	db $C6, $FF, $FA, $CC, $C8, $FC, $1E, $00
-	db $F7, $10, $31, $C9, $F8, $FA, $E6, $C8
-	db $FC, $3C, $00, $FF, $FA, $CC, $C8, $FC
-	db $28, $00, $10, $4F, $C9, $F8, $FE, $D9
-	db $C6, $FF, $FA, $CC, $C8, $FC, $2D, $00
-	db $10, $4F, $C9, $F8, $FC, $0F, $00, $FA
-	db $ED, $C8, $FC, $3C, $00, $FA, $E6, $C8
-	db $FC, $01, $00, $FA, $CC, $C8, $F7, $10
-	db $4F, $C9, $F8, $FC, $0F, $00, $FA, $E6
-	db $C8, $FC, $43, $00, $FA, $ED, $C8, $FC
-	db $01, $00, $FA, $CC, $C8, $10, $F7, $CA
-	db $F8, $FA, $F4, $C8, $FC, $3C, $00, $FF
-	db $FA, $CC, $C8, $FC, $2C, $01, $FA, $FB
-	db $C8, $FC, $28, $00, $FA, $CC, $C8, $F7
-	db $10, $F7, $CA, $F8, $FA, $F4, $C8, $FC
-	db $2C, $00, $FA, $CC, $C8, $FC, $2C, $01
-	db $FA, $FB, $C8, $FC, $2C, $00, $FA, $CC
-	db $C8, $10, $59, $C9, $F8, $FA, $F4, $C8
-	db $FC, $2C, $00, $FA, $CC, $C8, $FA, $E6
-	db $C8, $FC, $12, $00, $FA, $CC, $C8, $FC
-	db $F0, $00, $FA, $FB, $C8, $FC, $2C, $00
-	db $FA, $CC, $C8, $10, $59, $C9, $F8, $FA
-	db $ED, $C8, $FC, $3C, $00, $FF, $FA, $CC
-	db $C8, $FC, $1E, $00, $10, $1D, $C9, $F8
-	db $FC, $1E, $00, $FA, $F4, $C8, $FC, $3C
-	db $00, $FF, $FA, $CC, $C8, $F7, $10, $3B
-	db $C9, $F8, $FC, $1E, $00, $FA, $F4, $C8
-	db $FC, $3C, $00, $FF, $FA, $CC, $C8, $F7
-	db $10, $6D, $C9, $F8, $FC, $1E, $00, $FA
-	db $F4, $C8, $FC, $3C, $00, $FF, $FA, $CC
-	db $C8, $FC, $3C, $00, $F7, $10, $4F, $C9
-	db $F8, $FC, $78, $00, $10, $4F, $C9, $F8
-	db $FC, $3C, $00, $10, $1B, $CB, $F8, $FA
-	db $E6, $C8, $FC, $3C, $00, $FF, $FA, $CC
-	db $C8, $FC, $3C, $00, $F7, $10, $27, $CB
-	db $F8, $FA, $F4, $C8, $FC, $3C, $00, $FF
-	db $FA, $CC, $C8, $FC, $0F, $00, $10, $4F
-	db $C9, $F8, $FA, $F4, $C8, $FC, $3C, $00
-	db $FF, $FA, $CC, $C8, $FC, $3C, $00, $F7
-	db $10, $3F, $CB, $F8, $FC, $0A, $00, $10
-	db $33, $CB, $F8, $FA, $E6, $C8, $FC, $3C
-	db $00, $FF, $FA, $CC, $C8, $10, $3B, $C9
-	db $F8, $FC, $3C, $00, $10, $3B, $C9, $F8
-	db $FC, $3C, $00, $10, $3B, $C9, $F8, $FC
-	db $3C, $00, $FA, $ED, $C8, $FC, $7C, $01
-	db $FA, $E6, $C8, $FC, $01, $00, $FA, $CC
-	db $C8, $10, $77, $C9, $F8, $FC, $78, $00
-	db $FA, $02, $C9, $FC, $3C, $00, $FF, $FA
-	db $CC, $C8, $10, $09, $C9, $F8, $FC, $1E
-	db $00, $FA, $ED, $C8, $FC, $3C, $00, $FF
-	db $FA, $CC, $C8, $10, $09, $C9, $F8, $FC
-	db $3C, $00, $10, $09, $C9, $F8, $FC, $3C
-	db $00, $FA, $ED, $C8, $FC, $5A, $00, $FA
-	db $E6, $C8, $FC, $01, $00, $FA, $CC, $C8
-	db $10, $8B, $C9, $F8, $FA, $ED, $C8, $FC
-	db $3C, $00, $FF, $FA, $CC, $C8, $F7, $10
-	db $3B, $C9, $F8, $FC, $3C, $00, $10, $3B
-	db $C9, $F8, $FC, $3C, $00, $10, $27, $CB
-	db $F8, $FA, $ED, $C8, $FC, $3C, $00, $FF
-	db $FA, $CC, $C8, $F7, $10, $3B, $C9, $F8
-	db $FC, $3C, $00, $10, $3B, $C9, $F8, $FC
-	db $3C, $00, $10, $3B, $C9, $F8, $FC, $3C
-	db $00, $10, $33, $CB, $F8, $FA, $ED, $C8
-	db $FC, $3C, $00, $FF, $FA, $CC, $C8, $10
-	db $4F, $C9, $F8, $FC, $19, $00, $FE, $C1
-	db $C8, $FF, $52, $00, $00, $26, $00, $00
-	db $20, $00, $00, $2A, $00, $00, $24, $00
-	db $00, $F9, $52, $05, $00, $46, $38, $30
-	db $26, $00, $FF, $F9, $52, $0F, $00, $26
-	db $00, $03, $F9, $52, $0F, $00, $26, $00
-	db $FD, $F9, $52, $0F, $00, $2A, $00, $FD
-	db $F9, $52, $0F, $00, $2A, $00, $03, $F9
-	db $52, $0F, $00, $2A, $80, $01, $F9, $B5
-	db $C9, $80, $02, $80, $FC, $80, $80, $26
-	db $02, $95, $C9, $00, $03, $00, $FA, $84
-	db $80, $27, $02, $A7, $C9, $80, $01, $00
-	db $FC, $88, $80, $27, $02, $08, $32, $00
-	db $03, $00, $FA, $8C, $80, $27, $00, $08
-	db $32, $00, $02, $00, $FC, $8C, $80, $27
-	db $00, $D9, $C9, $00, $00, $00, $00, $80
-	db $80, $00, $02, $15, $CA, $00, $00, $00
-	db $00, $80, $80, $00, $02, $33, $CA, $00
-	db $00, $00, $00, $80, $80, $00, $02, $51
-	db $CA, $00, $00, $00, $00, $80, $80, $00
-	db $02, $D9, $CA, $00, $00, $00, $00, $80
-	db $80, $00, $02, $F7, $C9, $00, $00, $00
-	db $00, $80, $80, $00, $02, $73, $CA, $00
-	db $00, $00, $00, $80, $80, $00, $02, $95
-	db $CA, $00, $00, $00, $00, $80, $80, $00
-	db $02, $B7, $CA, $00, $00, $00, $00, $80
-	db $80, $00, $02, $00, $83, $C2, $9F, $00
-	db $85, $00, $20, $26, $00, $00, $01, $52
-	db $00, $22, $00, $00, $80, $00, $83, $C2
-	db $9F, $26, $00, $80, $FE, $52, $00, $22
-	db $00, $00, $80, $00, $83, $98, $2D, $26
-	db $00, $00, $FF, $00, $85, $00, $60, $00
-	db $80, $00, $00, $E8, $02, $02, $00, $C8
-	db $00, $54, $00, $14, $02, $00, $85, $00
-	db $60, $30, $00, $20, $00, $00, $80, $00
-	db $83, $C3, $C9, $00, $81, $FA, $02, $00
-	db $8D, $02, $00, $2E, $00, $00, $00, $24
-	db $00, $40, $FC, $20, $00, $00, $FE, $26
-	db $00, $C0, $FD, $00, $80, $00, $83, $C3
-	db $C9, $00, $81, $FA, $02, $00, $8D, $02
-	db $00, $2E, $00, $00, $00, $24, $00, $40
-	db $FC, $20, $00, $00, $FE, $26, $00, $00
-	db $FD, $00, $80, $00, $83, $C3, $C9, $00
-	db $81, $FF, $02, $00, $8D, $02, $00, $2E
-	db $00, $01, $00, $24, $00, $00, $FD, $20
-	db $00, $00, $FC, $26, $00, $00, $FE, $00
-	db $80, $00, $83, $C3, $C9, $00, $81, $E6
-	db $02, $00, $8D, $02, $00, $2E, $00, $02
-	db $00, $24, $00, $00, $FD, $20, $00, $00
-	db $FC, $26, $00, $00, $FE, $00, $80, $00
-	db $83, $C3, $C9, $00, $81, $E7, $02, $00
-	db $8D, $02, $00, $2E, $00, $03, $00, $24
-	db $00, $00, $FD, $20, $00, $00, $FC, $26
-	db $00, $00, $FE, $42, $00, $08, $00, $00
-	db $80, $00, $83, $C3, $C9, $00, $81, $E7
-	db $02, $00, $8D, $02, $00, $2E, $00, $03
-	db $00, $24, $00, $00, $FD, $20, $00, $00
-	db $FC, $26, $00, $00, $FE, $42, $00, $12
-	db $00, $00, $80, $00, $83, $C3, $C9, $00
-	db $81, $E7, $02, $00, $8D, $02, $00, $2E
-	db $00, $03, $00, $24, $00, $00, $FD, $20
-	db $00, $00, $FC, $26, $00, $00, $FE, $42
-	db $00, $03, $00, $00, $80, $00, $83, $C3
-	db $C9, $00, $81, $E7, $02, $00, $8D, $02
-	db $00, $2E, $00, $03, $00, $24, $00, $00
-	db $FD, $20, $00, $00, $FC, $26, $00, $00
-	db $FE, $42, $00, $09, $00, $00, $80, $00
-	db $83, $C3, $C9, $00, $81, $FD, $02, $00
-	db $8D, $09, $00, $2E, $00, $04, $00, $24
-	db $00, $00, $FD, $20, $00, $00, $FC, $26
-	db $00, $00, $FE, $00, $80, $84, $C5, $00
-	db $03, $00, $FB, $88, $78, $13, $82, $1F
-	db $00, $84, $C5, $00, $04, $00, $00, $88
-	db $78, $14, $82, $28, $00, $8C, $7C, $00
-	db $04, $00, $FB, $80, $80, $15, $82, $12
-	db $00, $84, $C5, $00, $03, $00, $FB, $88
-	db $78, $13, $82, $14, $00, $8C, $7C, $C0
-	db $02, $00, $FB, $80, $80, $15, $82, $27
-	db $00, $8C, $7C, $30, $03, $00, $FB, $80
-	db $80, $15, $82, $1D, $00, $84, $C5, $00
-	db $03, $00, $FB, $88, $78, $13, $82, $1C
+	dw !initcommand_load_subconfig, DATA_FFC594
+	dw sprite.parameter, DATA_FFC8BE
+	dw !initcommand_success
+
+DATA_FFC694:
+	db $FA : dw DATA_FFC8CC
+	db $FC, $3C, $00, $10 : dw DATA_FFCAF7
+	db $F8, $10 : dw DATA_FFCB03
+	db $F8, $10 : dw DATA_FFCB0F
+	db $F8, $FA : dw DATA_FFC8E6
+	db $FC, $5A, $00
+	db $FA : dw DATA_FFC8DC
+	db $FC, $78, $00, $FF
+
+DATA_FFC6B3:
+	db $FA : dw DATA_FFC8CC
+
+DATA_FFC6B6:
+	db $FC, $2D, $00, $10 : dw DATA_FFC94F
+	db $F8, $FC, $2D, $00
+	db $FE : dw DATA_FFC6B6 : db $FF
+
+DATA_FFC6C4:
+	db $FA : dw DATA_FFC8CC
+	db $FC, $1E, $00, $F7, $10 : dw DATA_FFC931
+	db $F8, $FA : dw DATA_FFC8E6
+	db $FC, $3C, $00, $FF
+
+DATA_FFC6D6:
+	db $FA : dw DATA_FFC8CC
+
+DATA_FFC6D9:
+	db $FC, $28, $00, $10 : dw DATA_FFC94F
+	db $F8, $FE : dw DATA_FFC6D9 : db $FF
+
+DATA_FFC6E4:
+	db $FA : dw DATA_FFC8CC
+	db $FC, $2D, $00, $10 : dw DATA_FFC94F
+	db $F8, $FC, $0F, $00
+	db $FA : dw DATA_FFC8ED
+	db $FC, $3C, $00
+	db $FA : dw DATA_FFC8E6
+	db $FC, $01, $00
+	db $FA : dw DATA_FFC8CC
+	db $F7, $10 : dw DATA_FFC94F
+	db $F8, $FC, $0F, $00, $FA : dw DATA_FFC8E6
+	db $FC, $43, $00, $FA : dw DATA_FFC8ED
+	db $FC, $01, $00
+	db $FA : dw DATA_FFC8CC : db $10 : dw DATA_FFCAF7
+	db $F8, $FA : dw DATA_FFC8F4
+	db $FC, $3C, $00, $FF
+
+DATA_FFC722:
+	db $FA : dw DATA_FFC8CC
+	db $FC, $2C, $01
+	db $FA : dw DATA_FFC8FB
+	db $FC, $28, $00
+	db $FA : dw DATA_FFC8CC
+	db $F7, $10 : dw DATA_FFCAF7
+	db $F8, $FA : dw DATA_FFC8F4
+	db $FC, $2C, $00, $FA : dw DATA_FFC8CC
+	db $FC, $2C, $01
+	db $FA : dw DATA_FFC8FB
+	db $FC, $2C, $00
+	db $FA : dw DATA_FFC8CC : db $10 : dw DATA_FFC959
+	db $F8, $FA : dw DATA_FFC8F4
+	db $FC, $2C, $00
+	db $FA : dw DATA_FFC8CC
+	db $FA : dw DATA_FFC8E6
+	db $FC, $12, $00
+	db $FA : dw DATA_FFC8CC
+	db $FC, $F0, $00
+	db $FA : dw DATA_FFC8FB
+	db $FC, $2C, $00
+	db $FA : dw DATA_FFC8CC : db $10 : dw DATA_FFC959
+	db $F8, $FA : dw DATA_FFC8ED
+	db $FC, $3C, $00, $FF
+
+DATA_FFC778:
+	db $FA : dw DATA_FFC8CC
+	db $FC, $1E, $00, $10 : dw DATA_FFC91D
+	db $F8, $FC, $1E, $00
+	db $FA : dw DATA_FFC8F4
+	db $FC, $3C, $00, $FF
+
+DATA_FFC78C:
+	db $FA : dw DATA_FFC8CC
+	db $F7, $10 : dw DATA_FFC93B
+	db $F8
+	db $FC, $1E, $00
+	db $FA : dw DATA_FFC8F4
+	db $FC, $3C
+	db $00, $FF
+
+DATA_FFC79E:
+	db $FA : dw DATA_FFC8CC
+	db $F7, $10 : dw DATA_FFC96D
+	db $F8, $FC, $1E, $00
+	db $FA : dw DATA_FFC8F4
+	db $FC, $3C, $00, $FF
+
+DATA_FFC7B0:
+	db $FA : dw DATA_FFC8CC
+	db $FC, $3C, $00, $F7, $10 : dw DATA_FFC94F
+	db $F8, $FC, $78, $00, $10 : dw DATA_FFC94F
+	db $F8, $FC, $3C, $00, $10 : dw DATA_FFCB1B
+	db $F8, $FA : dw DATA_FFC8E6
+	db $FC, $3C, $00, $FF
+
+DATA_FFC7D0:
+	db $FA : dw DATA_FFC8CC
+	db $FC, $3C, $00, $F7, $10 : dw DATA_FFCB27
+	db $F8, $FA : dw DATA_FFC8F4
+	db $FC, $3C, $00, $FF
+
+DATA_FFC7E2:
+	db $FA : dw DATA_FFC8CC
+	db $FC, $0F, $00, $10 : dw DATA_FFC94F
+	db $F8, $FA : dw DATA_FFC8F4
+	db $FC, $3C, $00, $FF
+
+DATA_FFC7F3:
+	db $FA : dw DATA_FFC8CC
+	db $FC, $3C, $00, $F7, $10 : dw DATA_FFCB3F
+	db $F8, $FC, $0A, $00, $10 : dw DATA_FFCB33
+	db $F8, $FA : dw DATA_FFC8E6
+	db $FC, $3C, $00, $FF
+
+DATA_FFC80C:
+	db $FA : dw DATA_FFC8CC : db $10 : dw DATA_FFC93B
+	db $F8, $FC, $3C, $00, $10 : dw DATA_FFC93B
+	db $F8, $FC, $3C, $00, $10 : dw DATA_FFC93B
+	db $F8, $FC, $3C, $00
+	db $FA : dw DATA_FFC8ED
+	db $FC, $7C, $01
+	db $FA : dw DATA_FFC8E6
+	db $FC, $01, $00
+	db $FA : dw DATA_FFC8CC : db $10 : dw DATA_FFC977
+	db $F8, $FC, $78, $00
+	db $FA : dw DATA_FFC902
+	db $FC, $3C, $00, $FF
+
+DATA_FFC841:
+	db $FA : dw DATA_FFC8CC : db $10 : dw DATA_FFC909
+	db $F8, $FC
+	db $1E, $00
+	db $FA : dw DATA_FFC8ED
+	db $FC, $3C, $00, $FF
+
+DATA_FFC852:
+	db $FA : dw DATA_FFC8CC : db $10 : dw DATA_FFC909
+	db $F8, $FC, $3C, $00, $10 : dw DATA_FFC909
+	db $F8, $FC, $3C, $00
+	db $FA : dw DATA_FFC8ED
+	db $FC, $5A, $00
+	db $FA : dw DATA_FFC8E6
+	db $FC, $01, $00
+	db $FA : dw DATA_FFC8CC
+	db $10 : dw DATA_FFC98B
+	db $F8, $FA : dw DATA_FFC8ED
+	db $FC, $3C, $00, $FF
+
+DATA_FFC87D:
+	db $FA : dw DATA_FFC8CC
+	db $F7, $10 : dw DATA_FFC93B
+	db $F8, $FC, $3C, $00, $10 : dw DATA_FFC93B
+	db $F8, $FC, $3C, $00, $10 : dw DATA_FFCB27
+	db $F8, $FA : dw DATA_FFC8ED
+	db $FC, $3C, $00, $FF
+
+DATA_FFC89A:
+	db $FA : dw DATA_FFC8CC : db $F7, $10 : dw DATA_FFC93B
+	db $F8
+	db $FC, $3C, $00, $10 : dw DATA_FFC93B
+	db $F8, $FC, $3C, $00, $10 : dw DATA_FFC93B
+	db $F8, $FC, $3C
+	db $00, $10 : dw DATA_FFCB33
+	db $F8, $FA : dw DATA_FFC8ED
+	db $FC, $3C, $00, $FF
+
+DATA_FFC8BE:
+	db $FA : dw DATA_FFC8CC
+
+DATA_FFC8C1:
+	db $10 : dw DATA_FFC94F
+	db $F8, $FC, $19, $00
+	db $FE : dw DATA_FFC8C1
+	db $FF
+
+DATA_FFC8CC:
+	db $52, $00, $00, $26, $00, $00, $20, $00
+	db $00, $2A, $00, $00, $24, $00, $00, $F9
+
+DATA_FFC8DC:
+	db $52, $05, $00, $46, $38, $30, $26, $00
+	db $FF, $F9
+
+DATA_FFC8E6:
+	db $52, $0F, $00, $26, $00, $03, $F9
+
+DATA_FFC8ED:
+	db $52, $0F, $00, $26, $00, $FD, $F9
+
+DATA_FFC8F4:
+	db $52, $0F, $00, $2A, $00, $FD, $F9
+
+DATA_FFC8FB:
+	db $52, $0F, $00, $2A, $00, $03, $F9
+
+DATA_FFC902:
+	db $52, $0F, $00, $2A, $80, $01, $F9
+
+DATA_FFC909:
+	dw DATA_FFC9B5, $0280, $FC80, $8080, $0226
+DATA_FFC913:
+	dw DATA_FFC995, $0300, $FA00, $8084, $0227
+DATA_FFC91D:
+	dw DATA_FFC9A7, $0180, $FC00, $8088, $0227
+DATA_FFC927:
+	dw DATA_FF3208, $0300, $FA00, $808C, $0027
+DATA_FFC931:
+	dw DATA_FF3208, $0200, $FC00, $808C, $0027
+DATA_FFC93B:
+	dw DATA_FFC9D9, $0000, $0000, $8080, $0200
+DATA_FFC945:
+	dw DATA_FFCA15, $0000, $0000, $8080, $0200
+DATA_FFC94F:
+	dw DATA_FFCA33, $0000, $0000, $8080, $0200
+DATA_FFC959:
+	dw DATA_FFCA51, $0000, $0000, $8080, $0200
+DATA_FFC963:
+	dw DATA_FFCAD9, $0000, $0000, $8080, $0200
+DATA_FFC96D:
+	dw DATA_FFC9F7, $0000, $0000, $8080, $0200
+DATA_FFC977:
+	dw DATA_FFCA73, $0000, $0000, $8080, $0200
+DATA_FFC981:
+	dw DATA_FFCA95, $0000, $0000, $8080, $0200
+DATA_FFC98B:
+	dw DATA_FFCAB7, $0000, $0000, $8080, $0200
+
+DATA_FFC995:
+	dw !initcommand_load_subconfig, DATA_FF9FC2
+	dw !initcommand_set_oam, $2000
+	dw sprite.max_x_speed, $0100
+	dw sprite.unknown_52, $0022
+	dw !initcommand_success
+
+DATA_FFC9A7:
+	dw !initcommand_load_subconfig, DATA_FF9FC2
+	dw sprite.max_x_speed, $FE80
+	dw sprite.unknown_52, $0022
+	dw !initcommand_success
+
+DATA_FFC9B5:
+	dw !initcommand_load_subconfig, DATA_FF2D98
+	dw sprite.max_x_speed, $FF00
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
+
+DATA_FFC9C3:
+	dw sprite.number, $02E8
+	dw sprite.render_order, $00C8
+	dw sprite.unknown_54, $0214
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_30, $0020
+	dw !initcommand_success
+
+DATA_FFC9D9:
+	dw !initcommand_load_subconfig, DATA_FFC9C3
+	dw !initcommand_set_animation, $02FA
+	dw !initcommand_set_alt_palette, $0002
+	dw sprite.action, $0000
+	dw sprite.y_speed, $FC40
+	dw sprite.x_speed, $FE00
+	dw sprite.max_x_speed, $FDC0
+	dw !initcommand_success
+
+DATA_FFC9F7:
+	dw !initcommand_load_subconfig, DATA_FFC9C3
+	dw !initcommand_set_animation, $02FA
+	dw !initcommand_set_alt_palette, $0002
+	dw sprite.action, $0000
+	dw sprite.y_speed, $FC40
+	dw sprite.x_speed, $FE00
+	dw sprite.max_x_speed, $FD00
+	dw !initcommand_success
+
+DATA_FFCA15:
+	dw !initcommand_load_subconfig, DATA_FFC9C3
+	dw !initcommand_set_animation, $02FF
+	dw !initcommand_set_alt_palette, $0002
+	dw sprite.action, $0001
+	dw sprite.y_speed, $FD00
+	dw sprite.x_speed, $FC00
+	dw sprite.max_x_speed, $FE00
+	dw !initcommand_success
+
+DATA_FFCA33:
+	dw !initcommand_load_subconfig, DATA_FFC9C3
+	dw !initcommand_set_animation, $02E6
+	dw !initcommand_set_alt_palette, $0002
+	dw sprite.action, $0002
+	dw sprite.y_speed, $FD00
+	dw sprite.x_speed, $FC00
+	dw sprite.max_x_speed, $FE00
+	dw !initcommand_success
+
+DATA_FFCA51:
+	dw !initcommand_load_subconfig, DATA_FFC9C3
+	dw !initcommand_set_animation, $02E7
+	dw !initcommand_set_alt_palette, $0002
+	dw sprite.action, $0003
+	dw sprite.y_speed, $FD00
+	dw sprite.x_speed, $FC00
+	dw sprite.max_x_speed, $FE00
+	dw sprite.unknown_42, $0008
+	dw !initcommand_success
+
+DATA_FFCA73:
+	dw !initcommand_load_subconfig, DATA_FFC9C3
+	dw !initcommand_set_animation, $02E7
+	dw !initcommand_set_alt_palette, $0002
+	dw sprite.action, $0003
+	dw sprite.y_speed, $FD00
+	dw sprite.x_speed, $FC00
+	dw sprite.max_x_speed, $FE00
+	dw sprite.unknown_42, $0012
+	dw !initcommand_success
+
+DATA_FFCA95:
+	dw !initcommand_load_subconfig, DATA_FFC9C3
+	dw !initcommand_set_animation, $02E7
+	dw !initcommand_set_alt_palette, $0002
+	dw sprite.action, $0003
+	dw sprite.y_speed, $FD00
+	dw sprite.x_speed, $FC00
+	dw sprite.max_x_speed, $FE00
+	dw sprite.unknown_42, $0003
+	dw !initcommand_success
+
+DATA_FFCAB7:
+	dw !initcommand_load_subconfig, DATA_FFC9C3
+	dw !initcommand_set_animation, $02E7
+	dw !initcommand_set_alt_palette, $0002
+	dw sprite.action, $0003
+	dw sprite.y_speed, $FD00
+	dw sprite.x_speed, $FC00
+	dw sprite.max_x_speed, $FE00
+	dw sprite.unknown_42, $0009
+	dw !initcommand_success
+
+DATA_FFCAD9:
+	dw !initcommand_load_subconfig, DATA_FFC9C3
+	dw !initcommand_set_animation, $02FD
+	dw !initcommand_set_alt_palette, $0009
+	dw sprite.action, $0004
+	dw sprite.y_speed, $FD00
+	dw sprite.x_speed, $FC00
+	dw sprite.max_x_speed, $FE00
+	dw !initcommand_success
+
+DATA_FFCAF7:
+	dw DATA_FFC584
+	db $00, $03, $00, $FB, $88, $78, $13, $82, $1F
+	db $00
+
+DATA_FFCB03:
+	dw DATA_FFC584
+	db $00, $04, $00, $00, $88, $78, $14, $82, $28
+	db $00
+
+DATA_FFCB0F:
+	dw DATA_FF7C8C
+	db $00, $04, $00, $FB, $80, $80, $15, $82, $12
+	db $00
+
+DATA_FFCB1B:
+	dw DATA_FFC584
+	db $00, $03, $00, $FB, $88, $78, $13, $82, $14
+	db $00
+
+DATA_FFCB27:
+	dw DATA_FF7C8C
+	db $C0, $02, $00, $FB, $80, $80, $15, $82, $27
+	db $00
+
+DATA_FFCB33:
+	dw DATA_FF7C8C
+	db $30, $03, $00, $FB, $80, $80, $15, $82, $1D
+	db $00
+
+DATA_FFCB3F:
+	dw DATA_FFC584
+	db $00, $03, $00, $FB, $88, $78, $13, $82, $1C
 	db $00, $00
 
 DATA_FFCB4C:
-	db $00, $00, $28, $01, $02, $00, $C1, $00
-	db $54, $00, $5C, $04, $30, $00, $00, $00
-	db $2E, $00, $00, $00, $20, $00, $00, $00
-	db $24, $00, $00, $00, $00, $85, $00, $20
-	db $00, $8D, $5A, $00, $00, $81, $D4, $02
-	db $46, $00, $03, $02, $26, $00, $20, $00
-	db $4A, $00, $01, $02, $2A, $00, $18, $00
-	db $52, $00, $17, $00, $00, $80, $00, $00
-	db $04, $02, $30, $00, $20, $01, $02, $00
-	db $D4, $00, $54, $00, $1C, $02, $00, $8D
-	db $1D, $00, $2E, $00, $00, $00, $26, $00
-	db $00, $00, $20, $00, $00, $00, $4E, $00
-	db $00, $00, $24, $00, $00, $01, $52, $00
-	db $00, $00, $00, $85, $00, $60, $00, $81
-	db $8B, $01, $00, $80
+	dw sprite.number, $0128
+	dw sprite.render_order, $00C1
+	dw sprite.unknown_54, $045C
+	dw sprite.unknown_30, $0000
+	dw sprite.action, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $005A
+	dw !initcommand_set_animation, $02D4
+	dw sprite.unknown_46, $0203
+	dw sprite.max_x_speed, $0020
+	dw sprite.unknown_4A, $0201
+	dw sprite.unknown_2A, $0018
+	dw sprite.unknown_52, $0017
+	dw !initcommand_success
+
+DATA_FFCB8A:
+	dw sprite.number, $0204
+	dw sprite.unknown_30, $0120
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_54, $021C
+	dw !initcommand_set_alt_palette, $001D
+	dw sprite.action, $0000
+	dw sprite.max_x_speed, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.unknown_4E, $0000
+	dw sprite.y_speed, $0100
+	dw sprite.unknown_52, $0000
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_set_animation, $018B
+	dw !initcommand_success
 
 DATA_FFCBC0:
-	db $00, $83, $8A, $CB, $42, $00, $A0, $A0
-	db $44, $00, $08, $60, $28, $00, $38, $00
-	db $46, $00, $80, $FC, $48, $00, $F0, $00
-	db $4A, $00, $78, $00, $4C, $00, $D0, $CC
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCB8A
+	dw sprite.unknown_42, $A0A0
+	dw sprite.unknown_44, $6008
+	dw sprite.unknown_28, $0038
+	dw sprite.unknown_46, $FC80
+	dw sprite.unknown_48, $00F0
+	dw sprite.unknown_4A, $0078
+	dw sprite.unknown_4C, DATA_FFCCD0
+	dw !initcommand_success
 
 DATA_FFCBE2:
-	db $00, $83, $8A, $CB, $42, $00, $A0, $A0
-	db $44, $00, $08, $60, $28, $00, $38, $00
-	db $46, $00, $00, $FC, $48, $00, $F0, $00
-	db $4A, $00, $78, $00, $4C, $00, $D0, $CC
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCB8A
+	dw sprite.unknown_42, $A0A0
+	dw sprite.unknown_44, $6008
+	dw sprite.unknown_28, $0038
+	dw sprite.unknown_46, $FC00
+	dw sprite.unknown_48, $00F0
+	dw sprite.unknown_4A, $0078
+	dw sprite.unknown_4C, DATA_FFCCD0
+	dw !initcommand_success
 
 DATA_FFCC04:
-	db $00, $83, $8A, $CB, $42, $00, $A0, $A0
-	db $44, $00, $08, $60, $28, $00, $38, $00
-	db $46, $00, $80, $FC, $48, $00, $F0, $00
-	db $4A, $00, $B4, $00, $4C, $00, $D8, $CC
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCB8A
+	dw sprite.unknown_42, $A0A0
+	dw sprite.unknown_44, $6008
+	dw sprite.unknown_28, $0038
+	dw sprite.unknown_46, $FC80
+	dw sprite.unknown_48, $00F0
+	dw sprite.unknown_4A, $00B4
+	dw sprite.unknown_4C, DATA_FFCCD8
+	dw !initcommand_success
 
 DATA_FFCC26:
-	db $00, $83, $8A, $CB, $42, $00, $68, $68
-	db $44, $00, $60, $60, $28, $00, $20, $00
-	db $46, $00, $80, $FC, $48, $00, $F0, $00
-	db $4A, $00, $78, $00, $4C, $00, $E0, $CC
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCB8A
+	dw sprite.unknown_42, $6868
+	dw sprite.unknown_44, $6060
+	dw sprite.unknown_28, $0020
+	dw sprite.unknown_46, $FC80
+	dw sprite.unknown_48, $00F0
+	dw sprite.unknown_4A, $0078
+	dw sprite.unknown_4C, DATA_FFCCE0
+	dw !initcommand_success
 
 DATA_FFCC48:
-	db $00, $83, $8A, $CB, $42, $00, $A0, $A0
-	db $44, $00, $08, $60, $28, $00, $20, $00
-	db $46, $00, $00, $FC, $48, $00, $F0, $00
-	db $4A, $00, $78, $00, $4C, $00, $E0, $CC
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCB8A
+	dw sprite.unknown_42, $A0A0
+	dw sprite.unknown_44, $6008
+	dw sprite.unknown_28, $0020
+	dw sprite.unknown_46, $FC00
+	dw sprite.unknown_48, $00F0
+	dw sprite.unknown_4A, $0078
+	dw sprite.unknown_4C, DATA_FFCCE0
+	dw !initcommand_success
 
 DATA_FFCC6A:
-	db $00, $83, $8A, $CB, $42, $00, $90, $90
-	db $44, $00, $08, $60, $28, $00, $38, $00
-	db $46, $00, $80, $FC, $48, $00, $F0, $00
-	db $4A, $00, $B4, $00, $4C, $00, $D8, $CC
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCB8A
+	dw sprite.unknown_42, $9090
+	dw sprite.unknown_44, $6008
+	dw sprite.unknown_28, $0038
+	dw sprite.unknown_46, $FC80
+	dw sprite.unknown_48, $00F0
+	dw sprite.unknown_4A, $00B4
+	dw sprite.unknown_4C, DATA_FFCCD8
+	dw !initcommand_success
 
 DATA_FFCC8C:
-	db $00, $83, $8A, $CB, $42, $00, $60, $60
-	db $44, $00, $08, $60, $28, $00, $20, $00
-	db $46, $00, $C0, $FC, $48, $00, $F0, $00
-	db $4A, $00, $78, $00, $4C, $00, $E0, $CC
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCB8A
+	dw sprite.unknown_42, $6060
+	dw sprite.unknown_44, $6008
+	dw sprite.unknown_28, $0020
+	dw sprite.unknown_46, $FCC0
+	dw sprite.unknown_48, $00F0
+	dw sprite.unknown_4A, $0078
+	dw sprite.unknown_4C, DATA_FFCCE0
+	dw !initcommand_success
 
 DATA_FFCCAE:
-	db $00, $83, $8A, $CB, $42, $00, $60, $60
-	db $44, $00, $08, $60, $28, $00, $20, $00
-	db $46, $00, $C0, $FC, $48, $00, $F0, $00
-	db $4A, $00, $78, $00, $4C, $00, $E8, $CC
-	db $00, $80, $10, $10, $00, $01, $00, $03
-	db $00, $FB, $10, $10, $00, $02, $00, $04
-	db $80, $F9, $10, $10, $80, $02, $00, $05
-	db $80, $F8, $10, $10, $80, $07, $00, $00
-	db $80, $F8
+	dw !initcommand_load_subconfig, DATA_FFCB8A
+	dw sprite.unknown_42, $6060
+	dw sprite.unknown_44, $6008
+	dw sprite.unknown_28, $0020
+	dw sprite.unknown_46, $FCC0
+	dw sprite.unknown_48, $00F0
+	dw sprite.unknown_4A, $0078
+	dw sprite.unknown_4C, DATA_FFCCE8
+	dw !initcommand_success
+
+DATA_FFCCD0:
+	db $10, $10, $00, $01, $00, $03, $00, $FB
+
+DATA_FFCCD8:
+	db $10, $10, $00, $02, $00, $04, $80, $F9
+
+DATA_FFCCE0:
+	db $10, $10, $80, $02, $00, $05, $80, $F8
+
+DATA_FFCCE8:
+	db $10, $10, $80, $07, $00, $00, $80, $F8
 
 DATA_FFCCF0:
-	db $00, $8E, $24, $00, $09, $00, $A1, $0D
-	db $C0, $14, $02, $00, $D4, $00, $0A, $00
-	db $00, $01, $42, $00, $00, $00, $44, $00
-	db $00, $00, $46, $00, $FF, $FF, $4E, $00
-	db $00, $E0, $2E, $00, $03, $00, $26, $00
-	db $00, $00, $20, $00, $00, $00, $2A, $00
-	db $00, $05, $24, $00, $00, $02, $1C, $00
-	db $00, $00, $00, $85, $00, $20, $00, $81
-	db $AB, $02, $00, $80
+	dw !initcommand_setup_static2, $0024, $0009 : dl DATA_C00DA1 : db $14
+	dw sprite.render_order, $00D4
+	dw sprite.y_position, $0100
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $0000
+	dw sprite.unknown_46, $FFFF
+	dw sprite.unknown_4E, $E000
+	dw sprite.action, $0003
+	dw sprite.max_x_speed, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.unknown_2A, $0500
+	dw sprite.y_speed, $0200
+	dw sprite.unknown_1C, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_animation, $02AB
+	dw !initcommand_success
 
 DATA_FFCD34:
-	db $00, $00, $24, $02, $06, $00, $B0, $01
-	db $0A, $00, $B4, $01, $02, $00, $D4, $00
-	db $30, $00, $20, $00, $2E, $00, $00, $00
-	db $46, $00, $32, $F9, $42, $00, $00, $00
-	db $4C, $00, $00, $00, $00, $85, $00, $70
-	db $00, $8D, $22, $00, $00, $81, $00, $02
-	db $00, $80
+	dw sprite.number, $0224
+	dw sprite.x_position, $01B0
+	dw sprite.y_position, $01B4
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_30, $0020
+	dw sprite.action, $0000
+if !version == 0
+	dw sprite.unknown_46, $F9CD
+else
+	dw sprite.unknown_46, $F932
+endif
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_4C, $0000
+	dw !initcommand_set_oam, $7000
+	dw !initcommand_set_alt_palette, $0022
+	dw !initcommand_set_animation, $0200
+	dw !initcommand_success
 
 DATA_FFCD66:
-	db $00, $00, $2C, $02, $06, $00, $24, $02
-	db $0A, $00, $44, $0B, $02, $00, $D4, $00
-	db $30, $00, $20, $00, $46, $00, $E7, $AF
-	db $42, $00, $00, $00, $4C, $00, $00, $00
-	db $00, $85, $00, $10, $00, $8D, $B9, $00
-	db $00, $81, $00, $02, $00, $80
+	dw sprite.number, $022C
+	dw sprite.x_position, $0224
+	dw sprite.y_position, $0B44
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_30, $0020
+if !version == 0
+	dw sprite.unknown_46, $B09C
+else
+	dw sprite.unknown_46, $AFE7
+endif
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_4C, $0000
+	dw !initcommand_set_oam, $1000
+	dw !initcommand_set_alt_palette, $00B9
+	dw !initcommand_set_animation, $0200
+	dw !initcommand_success
 
 DATA_FFCD94:
-	db $00, $00, $80, $00, $06, $00, $D4, $01
-	db $0A, $00, $1F, $02, $02, $00, $D4, $00
-	db $30, $00, $20, $00, $2E, $00, $00, $00
-	db $46, $00, $87, $AE, $42, $00, $00, $00
-	db $4C, $00, $00, $00, $00, $85, $00, $20
-	db $00, $8D, $38, $00, $00, $81, $30, $02
-	db $00, $80, $00, $00, $E0, $02, $02, $00
-	db $C8, $00, $2E, $00, $03, $00, $20, $00
-	db $00, $00, $26, $00, $00, $00, $24, $00
-	db $00, $00, $2A, $00, $00, $00, $30, $00
-	db $00, $00, $00, $8D, $49, $00, $00, $81
-	db $CE, $02, $00, $80
+	dw sprite.number, $0080
+	dw sprite.x_position, $01D4
+	dw sprite.y_position, $021F
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_30, $0020
+	dw sprite.action, $0000
+if !version == 0
+	dw sprite.unknown_46, $AF3C
+else
+	dw sprite.unknown_46, $AE87
+endif
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_4C, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0038
+	dw !initcommand_set_animation, $0230
+	dw !initcommand_success
+
+DATA_FFCDC6:
+	dw sprite.number, $02E0
+	dw sprite.render_order, $00C8
+	dw sprite.action, $0003
+	dw sprite.x_speed, $0000
+	dw sprite.max_x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_2A, $0000
+	dw sprite.unknown_30, $0000
+	dw !initcommand_set_alt_palette, $0049
+	dw !initcommand_set_animation, $02CE
+	dw !initcommand_success
 
 DATA_FFCDF0:
-	db $00, $83, $C6, $CD, $00, $85, $00, $30
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCDC6
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_success
 
 DATA_FFCDFA:
-	db $00, $83, $C6, $CD, $00, $85, $00, $70
-	db $00, $80, $00, $00, $D4, $02, $2E, $00
-	db $00, $00, $02, $00, $C8, $00, $24, $00
-	db $00, $00, $00, $85, $00, $60, $2E, $00
-	db $00, $00, $00, $80, $00, $83, $04, $CE
-	db $00, $8D, $56, $00, $00, $80, $00, $83
-	db $04, $CE, $00, $8D, $64, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCDC6
+	dw !initcommand_set_oam, $7000
+	dw !initcommand_success
+
+DATA_FFCE04:
+	dw sprite.number, $02D4
+	dw sprite.action, $0000
+	dw sprite.render_order, $00C8
+if !version == 1
+	dw sprite.y_speed, $0000
+endif
+	dw !initcommand_set_oam, $6000
+	dw sprite.action, $0000
+	dw !initcommand_success
+
+DATA_FFCE1E:
+	dw !initcommand_load_subconfig, DATA_FFCE04
+	dw !initcommand_set_alt_palette, $0056
+	dw !initcommand_success
+
+DATA_FFCE28:
+	dw !initcommand_load_subconfig, DATA_FFCE04
+	dw !initcommand_set_alt_palette, $0064
+	dw !initcommand_success
 
 DATA_FFCE32:
-	db $00, $83, $1E, $CE, $00, $81, $C7, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCE1E
+	dw !initcommand_set_animation, $02C7
+	dw !initcommand_success
 
 DATA_FFCE3C:
-	db $00, $83, $1E, $CE, $4A, $00, $82, $CE
-	db $00, $81, $CA, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCE1E
+	dw sprite.unknown_4A, DATA_FFCE82
+	dw !initcommand_set_animation, $02CA
+	dw !initcommand_success
 
 DATA_FFCE4A:
-	db $00, $83, $1E, $CE, $4A, $00, $8A, $CE
-	db $00, $81, $CA, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCE1E
+	dw sprite.unknown_4A, DATA_FFCE8A
+	dw !initcommand_set_animation, $02CA
+	dw !initcommand_success
 
 DATA_FFCE58:
-	db $00, $83, $1E, $CE, $4A, $00, $92, $CE
-	db $00, $81, $CA, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCE1E
+	dw sprite.unknown_4A, DATA_FFCE92
+	dw !initcommand_set_animation, $02CA
+	dw !initcommand_success
 
 DATA_FFCE66:
-	db $00, $83, $1E, $CE, $4A, $00, $9A, $CE
-	db $00, $81, $CA, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCE1E
+	dw sprite.unknown_4A, DATA_FFCE9A
+	dw !initcommand_set_animation, $02CA
+	dw !initcommand_success
 
 DATA_FFCE74:
-	db $00, $83, $1E, $CE, $4A, $00, $A2, $CE
-	db $00, $81, $CA, $02, $00, $80, $1E, $00
-	db $3C, $00, $FF, $FF, $82, $CE, $F0, $00
-	db $3C, $00, $FF, $FF, $8A, $CE, $2D, $00
-	db $2D, $00, $FF, $FF, $92, $CE, $3C, $00
-	db $3C, $00, $FF, $FF, $9A, $CE, $4B, $00
-	db $3C, $00, $FF, $FF, $A2, $CE, $00, $81
-	db $C6, $02, $00, $00, $80, $01, $02, $00
-	db $C8, $00, $00, $85, $00, $20, $00, $8D
-	db $56, $00, $2E, $00, $01, $00, $44, $00
-	db $00, $00, $46, $00, $00, $00, $48, $00
-	db $00, $00, $4E, $00, $D4, $CE, $00, $80
-	db $00, $86, $00, $00, $00, $00, $00, $00
-	db $80, $01, $2E, $00, $03, $00, $02, $00
-	db $C7, $00, $00, $85, $00, $20, $00, $8D
-	db $02, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCE1E
+	dw sprite.unknown_4A, DATA_FFCEA2
+	dw !initcommand_set_animation, $02CA
+	dw !initcommand_success
+
+DATA_FFCE82:
+	db $1E, $00, $3C, $00, $FF, $FF : dw DATA_FFCE82
+
+DATA_FFCE8A:
+	db $F0, $00, $3C, $00, $FF, $FF : dw DATA_FFCE8A
+
+DATA_FFCE92:
+	db $2D, $00, $2D, $00, $FF, $FF : dw DATA_FFCE92
+
+DATA_FFCE9A:
+	db $3C, $00, $3C, $00, $FF, $FF : dw DATA_FFCE9A
+
+DATA_FFCEA2:
+	db $4B, $00, $3C, $00, $FF, $FF : dw DATA_FFCEA2
+
+DATA_FFCEAA:
+	dw !initcommand_set_animation, $02C6
+	dw sprite.number, $0180
+	dw sprite.render_order, $00C8
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0056
+	dw sprite.action, $0001
+	dw sprite.unknown_44, $0000
+	dw sprite.unknown_46, $0000
+	dw sprite.unknown_48, $0000
+	dw sprite.unknown_4E, DATA_FFCED4
+	dw !initcommand_success
+
+DATA_FFCED4:
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.number, $0180
+	dw sprite.action, $0003
+	dw sprite.render_order, $00C7
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0002
+	dw !initcommand_success
 
 DATA_FFCEF0:
-	db $00, $83, $AA, $CE, $42, $00, $2C, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCEAA
+	dw sprite.unknown_42, $012C
+	dw !initcommand_success
 
 DATA_FFCEFA:
-	db $00, $83, $AA, $CE, $42, $00, $86, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCEAA
+	dw sprite.unknown_42, $0186
+	dw !initcommand_success
 
 DATA_FFCF04:
-	db $00, $83, $AA, $CE, $42, $00, $2A, $03
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCEAA
+	dw sprite.unknown_42, $032A
+	dw !initcommand_success
 
 DATA_FFCF0E:
-	db $00, $83, $AA, $CE, $42, $00, $26, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCEAA
+	dw sprite.unknown_42, $0226
+	dw !initcommand_success
 
 DATA_FFCF18:
-	db $00, $83, $AA, $CE, $42, $00, $C2, $01
-	db $00, $80, $00, $83, $1E, $CE, $00, $81
-	db $C8, $02, $2E, $00, $00, $01, $42, $00
-	db $00, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCEAA
+	dw sprite.unknown_42, $01C2
+	dw !initcommand_success
+
+DATA_FFCF22:
+	dw !initcommand_load_subconfig, DATA_FFCE1E
+	dw !initcommand_set_animation, $02C8
+	dw sprite.action, $0100
+	dw sprite.unknown_42, $0000
+	dw !initcommand_success
 
 DATA_FFCF34:
-	db $00, $83, $22, $CF, $4A, $00, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCF22
+	dw sprite.unknown_4A, $0000
+	dw !initcommand_success
 
 DATA_FFCF3E:
-	db $00, $83, $22, $CF, $4A, $00, $D2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCF22
+	dw sprite.unknown_4A, $00D2
+	dw !initcommand_success
 
 DATA_FFCF48:
-	db $00, $83, $22, $CF, $4A, $00, $AA, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCF22
+	dw sprite.unknown_4A, $00AA
+	dw !initcommand_success
 
 DATA_FFCF52:
-	db $00, $83, $22, $CF, $4A, $00, $82, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCF22
+	dw sprite.unknown_4A, $0082
+	dw !initcommand_success
 
 DATA_FFCF5C:
-	db $00, $83, $22, $CF, $4A, $00, $76, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCF22
+	dw sprite.unknown_4A, $0276
+	dw !initcommand_success
 
 DATA_FFCF66:
-	db $00, $83, $22, $CF, $4A, $00, $E0, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCF22
+	dw sprite.unknown_4A, $01E0
+	dw !initcommand_success
 
 DATA_FFCF70:
-	db $00, $83, $22, $CF, $4A, $00, $68, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCF22
+	dw sprite.unknown_4A, $0168
+	dw !initcommand_success
 
 DATA_FFCF7A:
-	db $00, $83, $22, $CF, $4A, $00, $F0, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCF22
+	dw sprite.unknown_4A, $00F0
+	dw !initcommand_success
 
 DATA_FFCF84:
-	db $00, $83, $22, $CF, $4A, $00, $96, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCF22
+	dw sprite.unknown_4A, $0096
+	dw !initcommand_success
 
 DATA_FFCF8E:
-	db $00, $83, $22, $CF, $4A, $00, $68, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCF22
+	dw sprite.unknown_4A, $0168
+	dw !initcommand_success
 
 DATA_FFCF98:
-	db $00, $83, $22, $CF, $4A, $00, $F0, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCF22
+	dw sprite.unknown_4A, $00F0
+	dw !initcommand_success
 
 DATA_FFCFA2:
-	db $00, $83, $22, $CF, $4A, $00, $78, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCF22
+	dw sprite.unknown_4A, $0078
+	dw !initcommand_success
 
 DATA_FFCFAC:
-	db $00, $83, $22, $CF, $4A, $00, $72, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCF22
+	dw sprite.unknown_4A, $0172
+	dw !initcommand_success
 
 DATA_FFCFB6:
-	db $00, $83, $22, $CF, $4A, $00, $36, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCF22
+	dw sprite.unknown_4A, $0136
+	dw !initcommand_success
 
 DATA_FFCFC0:
-	db $00, $83, $22, $CF, $4A, $00, $FA, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCF22
+	dw sprite.unknown_4A, $00FA
+	dw !initcommand_success
 
 DATA_FFCFCA:
-	db $00, $83, $22, $CF, $4A, $00, $BE, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCF22
+	dw sprite.unknown_4A, $00BE
+	dw !initcommand_success
 
 DATA_FFCFD4:
-	db $00, $83, $22, $CF, $4A, $00, $78, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCF22
+	dw sprite.unknown_4A, $0078
+	dw !initcommand_success
 
 DATA_FFCFDE:
-	db $00, $83, $22, $CF, $4A, $00, $78, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCF22
+	dw sprite.unknown_4A, $0078
+	dw !initcommand_success
 
 DATA_FFCFE8:
-	db $00, $83, $22, $CF, $4A, $00, $3C, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCF22
+	dw sprite.unknown_4A, $003C
+	dw !initcommand_success
 
 DATA_FFCFF2:
-	db $00, $83, $22, $CF, $4A, $00, $5A, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCF22
+	dw sprite.unknown_4A, $005A
+	dw !initcommand_success
 
 DATA_FFCFFC:
-	db $00, $83, $28, $CE, $00, $81, $CB, $02
-	db $46, $00, $00, $F3, $48, $00, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCE28
+	dw !initcommand_set_animation, $02CB
+	dw sprite.unknown_46, $F300
+	dw sprite.unknown_48, $0000
+	dw !initcommand_success
 
 DATA_FFD00E:
-	db $00, $83, $28, $CE, $00, $81, $CB, $02
-	db $46, $00, $80, $F1, $48, $00, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCE28
+	dw !initcommand_set_animation, $02CB
+	dw sprite.unknown_46, $F180
+	dw sprite.unknown_48, $0000
+	dw !initcommand_success
 
 DATA_FFD020:
-	db $00, $83, $28, $CE, $00, $81, $CB, $02
-	db $46, $00, $80, $F2, $48, $00, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCE28
+	dw !initcommand_set_animation, $02CB
+	dw sprite.unknown_46, $F280
+	dw sprite.unknown_48, $0000
+	dw !initcommand_success
 
 DATA_FFD032:
-	db $00, $83, $28, $CE, $00, $81, $CB, $02
-	db $46, $00, $80, $F3, $48, $00, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCE28
+	dw !initcommand_set_animation, $02CB
+	dw sprite.unknown_46, $F380
+	dw sprite.unknown_48, $0000
+	dw !initcommand_success
 
 DATA_FFD044:
-	db $00, $83, $28, $CE, $00, $81, $CB, $02
-	db $46, $00, $00, $F4, $48, $00, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCE28
+	dw !initcommand_set_animation, $02CB
+	dw sprite.unknown_46, $F400
+	dw sprite.unknown_48, $0000
+	dw !initcommand_success
 
 DATA_FFD056:
-	db $00, $83, $28, $CE, $00, $81, $CB, $02
-	db $46, $00, $80, $F5, $48, $00, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCE28
+	dw !initcommand_set_animation, $02CB
+	dw sprite.unknown_46, $F580
+	dw sprite.unknown_48, $0000
+	dw !initcommand_success
 
 DATA_FFD068:
-	db $00, $83, $28, $CE, $00, $81, $CB, $02
-	db $46, $00, $00, $F5, $48, $00, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCE28
+	dw !initcommand_set_animation, $02CB
+	dw sprite.unknown_46, $F500
+	dw sprite.unknown_48, $0000
+	dw !initcommand_success
 
 DATA_FFD07A:
-	db $00, $83, $28, $CE, $00, $81, $CB, $02
-	db $46, $00, $00, $F6, $48, $00, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCE28
+	dw !initcommand_set_animation, $02CB
+	dw sprite.unknown_46, $F600
+	dw sprite.unknown_48, $0000
+	dw !initcommand_success
 
 DATA_FFD08C:
-	db $00, $83, $28, $CE, $00, $81, $CB, $02
-	db $46, $00, $40, $F3, $48, $00, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCE28
+	dw !initcommand_set_animation, $02CB
+	dw sprite.unknown_46, $F340
+	dw sprite.unknown_48, $0000
+	dw !initcommand_success
 
 DATA_FFD09E:
-	db $00, $83, $28, $CE, $00, $81, $CB, $02
-	db $46, $00, $80, $F4, $48, $00, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCE28
+	dw !initcommand_set_animation, $02CB
+	dw sprite.unknown_46, $F480
+	dw sprite.unknown_48, $0000
+	dw !initcommand_success
 
 DATA_FFD0B0:
-	db $00, $83, $28, $CE, $00, $81, $CB, $02
-	db $46, $00, $70, $F4, $48, $00, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCE28
+	dw !initcommand_set_animation, $02CB
+	dw sprite.unknown_46, $F470
+	dw sprite.unknown_48, $0000
+	dw !initcommand_success
 
 DATA_FFD0C2:
-	db $00, $83, $30, $AB, $30, $00, $03, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFAB30
+	dw sprite.unknown_30, $0003
+	dw !initcommand_success
 
 DATA_FFD0CC:
-	db $00, $83, $44, $9B, $46, $00, $09, $09
-	db $30, $00, $22, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B44
+	dw sprite.unknown_46, $0909
+	dw sprite.unknown_30, $0122
+	dw !initcommand_success
 
 DATA_FFD0DA:
-	db $00, $83, $EC, $30, $30, $00, $22, $01
-	db $26, $00, $C0, $FE, $52, $00, $23, $00
-	db $46, $00, $07, $07, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF30EC
+	dw sprite.unknown_30, $0122
+	dw sprite.max_x_speed, $FEC0
+	dw sprite.unknown_52, $0023
+	dw sprite.unknown_46, $0707
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFD0F4:
-	db $00, $83, $E8, $AA, $30, $00, $03, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFAAE8
+	dw sprite.unknown_30, $0003
+	dw !initcommand_success
 
 DATA_FFD0FE:
-	db $00, $83, $66, $B9, $42, $00, $13, $00
-	db $44, $00, $03, $00, $46, $00, $11, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_42, $0013
+	dw sprite.unknown_44, $0003
+	dw sprite.unknown_46, $0011
+	dw !initcommand_success
 
 DATA_FFD110:
-	db $00, $83, $66, $B9, $42, $00, $13, $00
-	db $44, $00, $03, $00, $46, $00, $11, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_42, $0013
+	dw sprite.unknown_44, $0003
+	dw sprite.unknown_46, $0011
+	dw !initcommand_success
 
 DATA_FFD122:
-	db $00, $83, $66, $B9, $42, $00, $13, $00
-	db $44, $00, $08, $00, $46, $00, $10, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_42, $0013
+	dw sprite.unknown_44, $0008
+	dw sprite.unknown_46, $0010
+	dw !initcommand_success
 
 DATA_FFD134:
-	db $00, $83, $66, $B9, $42, $00, $13, $00
-	db $44, $00, $02, $00, $46, $00, $00, $00
-	db $00, $80, $00, $00, $24, $01, $02, $00
-	db $C0, $00, $30, $00, $00, $14, $2E, $00
-	db $05, $00, $00, $85, $00, $20, $48, $00
-	db $F9, $FF, $46, $00, $00, $00, $16, $00
-	db $00, $00, $00, $80, $00, $00, $24, $01
-	db $02, $00, $C0, $00, $30, $00, $00, $14
-	db $2E, $00, $05, $00, $00, $85, $00, $20
-	db $48, $00, $F9, $FF, $46, $00, $01, $00
-	db $16, $00, $00, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_42, $0013
+	dw sprite.unknown_44, $0002
+	dw sprite.unknown_46, $0000
+	dw !initcommand_success
+
+DATA_FFD146:
+	dw sprite.number, $0124
+	dw sprite.render_order, $00C0
+	dw sprite.unknown_30, $1400
+	dw sprite.action, $0005
+	dw !initcommand_set_oam, $2000
+	dw sprite.unknown_48, $FFF9
+	dw sprite.unknown_46, $0000
+	dw sprite.unknown_16, $0000
+	dw !initcommand_success
+
+DATA_FFD168:
+	dw sprite.number, $0124
+	dw sprite.render_order, $00C0
+	dw sprite.unknown_30, $1400
+	dw sprite.action, $0005
+	dw !initcommand_set_oam, $2000
+	dw sprite.unknown_48, $FFF9
+	dw sprite.unknown_46, $0001
+	dw sprite.unknown_16, $0000
+	dw !initcommand_success
 
 DATA_FFD18A:
-	db $00, $83, $46, $D1, $42, $00, $03, $00
-	db $44, $00, $04, $00, $4A, $00, $30, $00
-	db $1A, $00, $D8, $2F, $00, $8D, $3E, $00
-	db $00, $85, $00, $30, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD146
+	dw sprite.unknown_42, $0003
+	dw sprite.unknown_44, $0004
+	dw sprite.unknown_4A, $0030
+	dw sprite.unknown_1A, $2FD8
+	dw !initcommand_set_alt_palette, $003E
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_success
 
 DATA_FFD1A8:
-	db $00, $83, $68, $D1, $42, $00, $03, $00
-	db $44, $00, $04, $00, $4A, $00, $30, $00
-	db $1A, $00, $DC, $2F, $00, $8D, $3F, $00
-	db $48, $00, $09, $00, $00, $85, $00, $30
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD168
+	dw sprite.unknown_42, $0003
+	dw sprite.unknown_44, $0004
+	dw sprite.unknown_4A, $0030
+	dw sprite.unknown_1A, $2FDC
+	dw !initcommand_set_alt_palette, $003F
+	dw sprite.unknown_48, $0009
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_success
 
 DATA_FFD1CA:
-	db $00, $83, $46, $D1, $42, $00, $02, $00
-	db $44, $00, $03, $00, $4A, $00, $18, $00
-	db $1A, $00, $E0, $2F, $00, $8D, $40, $00
-	db $48, $00, $01, $00, $00, $85, $00, $30
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD146
+	dw sprite.unknown_42, $0002
+	dw sprite.unknown_44, $0003
+	dw sprite.unknown_4A, $0018
+	dw sprite.unknown_1A, $2FE0
+	dw !initcommand_set_alt_palette, $0040
+	dw sprite.unknown_48, $0001
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_success
 
 DATA_FFD1EC:
-	db $00, $83, $46, $D1, $42, $00, $03, $00
-	db $44, $00, $04, $00, $4A, $00, $18, $00
-	db $1A, $00, $E0, $2F, $00, $8D, $40, $00
-	db $48, $00, $01, $00, $00, $85, $00, $30
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD146
+	dw sprite.unknown_42, $0003
+	dw sprite.unknown_44, $0004
+	dw sprite.unknown_4A, $0018
+	dw sprite.unknown_1A, $2FE0
+	dw !initcommand_set_alt_palette, $0040
+	dw sprite.unknown_48, $0001
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_success
 
 DATA_FFD20E:
-	db $00, $83, $68, $D1, $42, $00, $01, $00
-	db $44, $00, $02, $00, $4A, $00, $30, $00
-	db $1A, $00, $E8, $2F, $00, $8D, $39, $00
-	db $48, $00, $01, $00, $00, $85, $00, $30
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD168
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_44, $0002
+	dw sprite.unknown_4A, $0030
+	dw sprite.unknown_1A, $2FE8
+	dw !initcommand_set_alt_palette, $0039
+	dw sprite.unknown_48, $0001
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_success
 
 DATA_FFD230:
-	db $00, $83, $68, $D1, $42, $00, $01, $00
-	db $44, $00, $02, $00, $4A, $00, $30, $00
-	db $1A, $00, $FC, $2F, $00, $8D, $7B, $00
-	db $48, $00, $E7, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD168
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_44, $0002
+	dw sprite.unknown_4A, $0030
+	dw sprite.unknown_1A, $2FFC
+	dw !initcommand_set_alt_palette, $007B
+	dw sprite.unknown_48, $FFE7
+	dw !initcommand_success
 
 DATA_FFD24E:
-	db $00, $83, $68, $D1, $42, $00, $01, $00
-	db $44, $00, $02, $00, $4A, $00, $20, $00
-	db $1A, $00, $00, $30, $00, $8D, $B3, $00
-	db $48, $00, $24, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD168
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_44, $0002
+	dw sprite.unknown_4A, $0020
+	dw sprite.unknown_1A, $3000
+	dw !initcommand_set_alt_palette, $00B3
+	dw sprite.unknown_48, $0024
+	dw !initcommand_success
 
 DATA_FFD26C:
-	db $00, $83, $46, $D1, $42, $00, $01, $00
-	db $44, $00, $02, $00, $4A, $00, $20, $00
-	db $1A, $00, $F8, $2F, $00, $8D, $7C, $00
-	db $48, $00, $12, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD146
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_44, $0002
+	dw sprite.unknown_4A, $0020
+	dw sprite.unknown_1A, $2FF8
+	dw !initcommand_set_alt_palette, $007C
+	dw sprite.unknown_48, $0012
+	dw !initcommand_success
 
 DATA_FFD28A:
-	db $00, $83, $46, $D1, $42, $00, $02, $00
-	db $44, $00, $03, $00, $4A, $00, $20, $00
-	db $1A, $00, $F8, $2F, $00, $8D, $7C, $00
-	db $48, $00, $12, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD146
+	dw sprite.unknown_42, $0002
+	dw sprite.unknown_44, $0003
+	dw sprite.unknown_4A, $0020
+	dw sprite.unknown_1A, $2FF8
+	dw !initcommand_set_alt_palette, $007C
+	dw sprite.unknown_48, $0012
+	dw !initcommand_success
 
 DATA_FFD2A8:
-	db $00, $83, $68, $D1, $42, $00, $01, $00
-	db $44, $00, $02, $00, $4A, $00, $20, $00
-	db $1A, $00, $F8, $2F, $00, $85, $00, $70
-	db $00, $8D, $7C, $00, $48, $00, $12, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD168
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_44, $0002
+	dw sprite.unknown_4A, $0020
+	dw sprite.unknown_1A, $2FF8
+	dw !initcommand_set_oam, $7000
+	dw !initcommand_set_alt_palette, $007C
+	dw sprite.unknown_48, $0012
+	dw !initcommand_success
 
 DATA_FFD2CA:
-	db $00, $83, $68, $D1, $42, $00, $02, $00
-	db $44, $00, $03, $00, $4A, $00, $20, $00
-	db $1A, $00, $F8, $2F, $00, $85, $00, $70
-	db $00, $8D, $7C, $00, $48, $00, $12, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD168
+	dw sprite.unknown_42, $0002
+	dw sprite.unknown_44, $0003
+	dw sprite.unknown_4A, $0020
+	dw sprite.unknown_1A, $2FF8
+	dw !initcommand_set_oam, $7000
+	dw !initcommand_set_alt_palette, $007C
+	dw sprite.unknown_48, $0012
+	dw !initcommand_success
 
 DATA_FFD2EC:
-	db $00, $83, $68, $D1, $42, $00, $01, $00
-	db $44, $00, $02, $00, $4A, $00, $1E, $00
-	db $1A, $00, $F4, $2F, $1C, $00, $01, $80
-	db $50, $00, $08, $00, $00, $8D, $7A, $00
-	db $48, $00, $1D, $00, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD168
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_44, $0002
+	dw sprite.unknown_4A, $001E
+	dw sprite.unknown_1A, $2FF4
+	dw sprite.unknown_1C, $8001
+	dw sprite.parameter, $0008
+	dw !initcommand_set_alt_palette, $007A
+	dw sprite.unknown_48, $001D
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFD316:
-	db $00, $83, $46, $D1, $42, $00, $01, $00
-	db $44, $00, $02, $00, $4A, $00, $30, $00
-	db $1A, $00, $EC, $2F, $00, $8D, $78, $00
-	db $48, $00, $22, $00, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD146
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_44, $0002
+	dw sprite.unknown_4A, $0030
+	dw sprite.unknown_1A, $2FEC
+	dw !initcommand_set_alt_palette, $0078
+	dw sprite.unknown_48, $0022
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFD338:
-	db $00, $83, $46, $D1, $42, $00, $02, $00
-	db $44, $00, $03, $00, $4A, $00, $30, $00
-	db $1A, $00, $EC, $2F, $00, $8D, $78, $00
-	db $48, $00, $22, $00, $00, $85, $00, $20
-	db $00, $80, $00, $00, $38, $01, $02, $00
-	db $F8, $00, $06, $00, $80, $17, $0A, $00
-	db $00, $12, $48, $00, $3C, $50, $4C, $00
-	db $00, $00, $2E, $00, $06, $00, $30, $00
-	db $00, $00, $1C, $00, $00, $C0, $00, $85
-	db $00, $30, $00, $84, $82, $66, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD146
+	dw sprite.unknown_42, $0002
+	dw sprite.unknown_44, $0003
+	dw sprite.unknown_4A, $0030
+	dw sprite.unknown_1A, $2FEC
+	dw !initcommand_set_alt_palette, $0078
+	dw sprite.unknown_48, $0022
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
+
+DATA_FFD35A:
+	dw sprite.number, $0138
+	dw sprite.render_order, $00F8
+	dw sprite.x_position, $1780
+	dw sprite.y_position, $1200
+	dw sprite.unknown_48, $503C
+	dw sprite.unknown_4C, $0000
+	dw sprite.action, $0006
+	dw sprite.unknown_30, $0000
+	dw sprite.unknown_1C, $C000
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_success
 
 DATA_FFD388:
-	db $00, $83, $5A, $D3, $42, $00, $00, $00
-	db $44, $00, $00, $00, $46, $00, $0A, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $0000
+	dw sprite.unknown_46, $000A
+	dw !initcommand_success
 
 DATA_FFD39A:
-	db $00, $83, $5A, $D3, $42, $00, $00, $00
-	db $44, $00, $00, $00, $46, $00, $0B, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $0000
+	dw sprite.unknown_46, $000B
+	dw !initcommand_success
 
 DATA_FFD3AC:
-	db $00, $83, $5A, $D3, $42, $00, $00, $00
-	db $44, $00, $00, $00, $46, $00, $0D, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $0000
+	dw sprite.unknown_46, $000D
+	dw !initcommand_success
 
 DATA_FFD3BE:
-	db $00, $83, $5A, $D3, $42, $00, $01, $00
-	db $44, $00, $08, $00, $46, $00, $0F, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_44, $0008
+	dw sprite.unknown_46, $000F
+	dw !initcommand_success
 
 DATA_FFD3D0:
-	db $00, $83, $5A, $D3, $42, $00, $01, $00
-	db $44, $00, $06, $00, $46, $00, $0F, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_44, $0006
+	dw sprite.unknown_46, $000F
+	dw !initcommand_success
 
 DATA_FFD3E2:
-	db $00, $83, $5A, $D3, $42, $00, $01, $00
-	db $44, $00, $08, $00, $46, $00, $23, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_44, $0008
+	dw sprite.unknown_46, $0023
+	dw !initcommand_success
 
 DATA_FFD3F4:
-	db $00, $83, $5A, $D3, $42, $00, $01, $00
-	db $44, $00, $09, $00, $46, $00, $14, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_44, $0009
+	dw sprite.unknown_46, $0014
+	dw !initcommand_success
 
 DATA_FFD406:
-	db $00, $83, $5A, $D3, $42, $00, $01, $00
-	db $44, $00, $07, $00, $46, $00, $14, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_44, $0007
+	dw sprite.unknown_46, $0014
+	dw !initcommand_success
 
 DATA_FFD418:
-	db $00, $83, $5A, $D3, $42, $00, $02, $00
-	db $44, $00, $00, $01, $46, $00, $14, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0002
+	dw sprite.unknown_44, $0100
+	dw sprite.unknown_46, $0014
+	dw !initcommand_success
 
 DATA_FFD42A:
-	db $00, $83, $5A, $D3, $42, $00, $02, $00
-	db $44, $00, $70, $00, $46, $00, $19, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0002
+	dw sprite.unknown_44, $0070
+	dw sprite.unknown_46, $0019
+	dw !initcommand_success
 
 DATA_FFD43C:
-	db $00, $83, $5A, $D3, $42, $00, $02, $00
-	db $44, $00, $40, $00, $46, $00, $1E, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0002
+	dw sprite.unknown_44, $0040
+	dw sprite.unknown_46, $001E
+	dw !initcommand_success
 
 DATA_FFD44E:
-	db $00, $83, $5A, $D3, $42, $00, $02, $00
-	db $44, $00, $75, $00, $46, $00, $23, $00
-	db $00, $80, $00, $00, $14, $D5, $20, $02
-	db $14, $D5, $B0, $03, $56, $D5, $40, $05
-	db $2A, $D5, $A0, $06, $14, $D5, $C0, $06
-	db $20, $D5, $00, $08, $14, $D5, $D0, $09
-	db $56, $D5, $80, $0B, $14, $D5, $50, $12
-	db $F2, $D5, $B0, $13, $2A, $D5, $D0, $15
-	db $42, $D5, $6F, $16, $14, $D5, $B0, $17
-	db $B4, $D5, $9F, $18, $14, $D5, $8F, $19
-	db $2A, $D5, $3F, $1B, $42, $D5, $10, $1C
-	db $14, $D5, $A0, $1D, $56, $D5, $4F, $1F
-	db $60, $D5, $88, $20, $BE, $D5, $7F, $21
-	db $78, $D5, $3F, $22, $78, $D5, $FF, $22
-	db $86, $D5, $B0, $23, $2A, $D5, $C0, $25
-	db $BE, $D5, $E9, $26, $86, $D5, $A1, $27
-	db $86, $D5, $59, $28, $86, $D5, $20, $29
-	db $14, $D5, $B7, $29, $1A, $D5, $80, $2D
-	db $DA, $D5, $9E, $2E, $CC, $D5, $36, $2F
-	db $CC, $D5, $CE, $2F, $CC, $D5, $64, $30
-	db $94, $D5, $FF, $7F, $14, $D5, $00, $00
-	db $14, $D5, $B0, $06, $AA, $D5, $FF, $7F
-	db $14, $D5, $00, $00, $14, $D5, $10, $01
-	db $1A, $D5, $FF, $7F, $14, $D5, $00, $00
-	db $14, $D5, $FF, $7F, $14, $D5, $00, $00
-	db $3C, $00, $02, $00, $01, $00, $3C, $00
-	db $02, $00, $01, $00, $B4, $00, $00, $00
-	db $B4, $00, $02, $00, $01, $40, $3C, $00
-	db $02, $00, $01, $00, $5A, $00, $00, $00
-	db $68, $01, $01, $40, $5A, $00, $00, $00
-	db $68, $01, $02, $00, $01, $00, $78, $00
-	db $00, $00, $78, $00, $02, $00, $00, $00
-	db $78, $00, $01, $00, $78, $00, $02, $00
-	db $01, $00, $F0, $00, $00, $00, $78, $00
-	db $02, $00, $01, $40, $78, $00, $00, $00
-	db $5A, $00, $02, $00, $01, $40, $78, $00
-	db $01, $00, $5A, $00, $01, $40, $3C, $00
-	db $02, $00, $01, $40, $3C, $00, $01, $00
-	db $5A, $00, $01, $40, $78, $00, $02, $00
-	db $01, $40, $3C, $00, $01, $00, $69, $00
-	db $01, $40, $78, $00, $02, $00, $00, $00
-	db $0F, $00, $01, $00, $78, $00, $00, $00
-	db $78, $00, $01, $00, $78, $00, $00, $00
-	db $69, $00, $02, $00, $01, $00, $B4, $00
-	db $01, $40, $B4, $00, $02, $00, $01, $40
-	db $78, $00, $00, $00, $78, $00, $02, $00
-	db $01, $40, $1E, $00, $01, $00, $78, $00
-	db $01, $40, $96, $00, $02, $00, $00, $00
-	db $0F, $00, $01, $00, $69, $00, $00, $00
-	db $5A, $00, $02, $00, $01, $00, $3C, $00
-	db $00, $00, $78, $00, $01, $00, $3C, $00
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0002
+	dw sprite.unknown_44, $0075
+	dw sprite.unknown_46, $0023
+	dw !initcommand_success
+
+DATA_FFD460:
+	db $00, $00 : dw DATA_FFD514
+	db $20, $02 : dw DATA_FFD514
+	db $B0, $03 : dw DATA_FFD556
+	db $40, $05 : dw DATA_FFD52A
+	db $A0, $06 : dw DATA_FFD514
+	db $C0, $06 : dw DATA_FFD520
+	db $00, $08 : dw DATA_FFD514
+	db $D0, $09 : dw DATA_FFD556
+	db $80, $0B : dw DATA_FFD514
+	db $50, $12 : dw DATA_FFD5F2
+	db $B0, $13 : dw DATA_FFD52A
+	db $D0, $15 : dw DATA_FFD542
+	db $6F, $16 : dw DATA_FFD514
+	db $B0, $17 : dw DATA_FFD5B4
+	db $9F, $18 : dw DATA_FFD514
+	db $8F, $19 : dw DATA_FFD52A
+	db $3F, $1B : dw DATA_FFD542
+	db $10, $1C : dw DATA_FFD514
+	db $A0, $1D : dw DATA_FFD556
+	db $4F, $1F : dw DATA_FFD560
+	db $88, $20 : dw DATA_FFD5BE
+	db $7F, $21 : dw DATA_FFD578
+	db $3F, $22 : dw DATA_FFD578
+	db $FF, $22 : dw DATA_FFD586
+	db $B0, $23 : dw DATA_FFD52A
+	db $C0, $25 : dw DATA_FFD5BE
+	db $E9, $26 : dw DATA_FFD586
+	db $A1, $27 : dw DATA_FFD586
+	db $59, $28 : dw DATA_FFD586
+	db $20, $29 : dw DATA_FFD514
+	db $B7, $29 : dw DATA_FFD51A
+	db $80, $2D : dw DATA_FFD5DA
+	db $9E, $2E : dw DATA_FFD5CC
+	db $36, $2F : dw DATA_FFD5CC
+	db $CE, $2F : dw DATA_FFD5CC
+	db $64, $30 : dw DATA_FFD594
+	db $FF, $7F : dw DATA_FFD514
+
+DATA_FFD4F4:
+	db $00, $00 : dw DATA_FFD514
+	db $B0, $06 : dw DATA_FFD5AA
+	db $FF, $7F : dw DATA_FFD514
+
+DATA_FFD500:
+	db $00, $00 : dw DATA_FFD514
+	db $10, $01 : dw DATA_FFD51A
+	db $FF, $7F : dw DATA_FFD514
+
+DATA_FFD50C:
+	db $00, $00 : dw DATA_FFD514
+	db $FF, $7F : dw DATA_FFD514
+
+DATA_FFD514:
+	db $00, $00, $3C, $00, $02, $00
+
+DATA_FFD51A:
+	db $01, $00, $3C, $00, $02, $00
+
+DATA_FFD520:
+	db $01, $00, $B4, $00, $00, $00, $B4, $00
+	db $02, $00
+
+DATA_FFD52A:
+	db $01, $40, $3C, $00, $02, $00, $01, $00
+	db $5A, $00, $00, $00, $68, $01, $01, $40
+	db $5A, $00, $00, $00, $68, $01, $02, $00
+
+DATA_FFD542:
+	db $01, $00, $78, $00, $00, $00, $78, $00
 	db $02, $00, $00, $00, $78, $00, $01, $00
-	db $F0, $00, $02, $00, $00, $00, $3C, $00
-	db $01, $00, $F0, $00, $02, $00, $00, $00
-	db $00, $00, $00, $00, $20, $01, $00, $00
-	db $00, $00, $50, $01, $50, $C3, $00, $FF
-	db $F4, $01, $00, $00, $00, $00, $40, $02
-	db $00, $82, $00, $FF, $B4, $01, $00, $00
-	db $00, $00, $70, $05, $00, $C2, $00, $FF
-	db $B4, $05, $00, $00, $00, $00, $98, $07
-	db $00, $C2, $00, $FF, $A0, $07, $00, $00
-	db $00, $00, $D0, $07, $00, $82, $00, $FF
-	db $F4, $07, $00, $00, $00, $00, $40, $09
-	db $00, $83, $00, $FF, $74, $09, $00, $00
-	db $00, $00, $40, $0C, $00, $83, $00, $FF
-	db $74, $0C, $00, $00, $00, $00, $10, $0D
-	db $00, $82, $80, $FF, $34, $0D, $00, $00
-	db $00, $00, $C0, $0E, $00, $C2, $00, $FF
-	db $E0, $0E, $00, $00, $00, $00, $10, $0F
-	db $00, $82, $00, $FF, $34, $0F, $00, $00
-	db $00, $00, $F0, $0F, $C0, $82, $00, $FF
-	db $08, $10, $00, $00, $00, $00, $38, $10
-	db $C0, $C2, $00, $FF, $F4, $11, $00, $00
-	db $00, $00, $20, $14, $00, $C2, $40, $FF
-	db $74, $14, $00, $00, $00, $00, $10, $15
-	db $00, $82, $00, $FF, $B4, $16, $00, $00
-	db $00, $00, $30, $17, $00, $83, $00, $FF
-	db $B4, $17, $00, $00, $00, $00, $F4, $17
-	db $00, $C3, $00, $FF, $74, $17, $00, $00
-	db $00, $00, $68, $19, $00, $83, $00, $FF
-	db $B4, $19, $00, $00, $00, $00, $F0, $1A
-	db $00, $83, $00, $FF, $44, $1B, $00, $00
-	db $00, $00, $70, $1B, $00, $00, $00, $FF
-	db $B4, $1B, $00, $00, $00, $00, $70, $1C
-	db $00, $C2, $00, $FF, $B4, $1C, $00, $00
-	db $00, $00, $A8, $1D, $00, $C2, $00, $FF
-	db $31, $1E, $00, $00, $00, $00, $34, $1E
-	db $D0, $C2, $00, $FF, $32, $1E, $00, $00
-	db $00, $00, $F8, $1E, $00, $00, $00, $FF
-	db $32, $1F, $00, $00, $00, $00, $F0, $1F
-	db $00, $83, $00, $FF, $FF, $7F, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $D4, $01, $00, $00, $00, $00, $70, $02
-	db $70, $C3, $80, $FE, $FF, $7F, $00, $00
-	db $00, $00
+	db $78, $00, $02, $00
+
+DATA_FFD556:
+	db $01, $00, $F0, $00, $00, $00, $78, $00
+	db $02, $00
+
+DATA_FFD560:
+	db $01, $40, $78, $00, $00, $00, $5A, $00
+	db $02, $00, $01, $40, $78, $00, $01, $00
+	db $5A, $00, $01, $40, $3C, $00, $02, $00
+
+DATA_FFD578:
+	db $01, $40, $3C, $00, $01, $00, $5A, $00
+	db $01, $40, $78, $00, $02, $00
+
+DATA_FFD586:
+	db $01, $40, $3C, $00, $01, $00, $69, $00
+	db $01, $40, $78, $00, $02, $00
+
+DATA_FFD594:
+	db $00, $00, $0F, $00, $01, $00, $78, $00
+	db $00, $00, $78, $00, $01, $00, $78, $00
+	db $00, $00, $69, $00, $02, $00
+
+DATA_FFD5AA:
+	db $01, $00, $B4, $00, $01, $40, $B4, $00
+	db $02, $00
+
+DATA_FFD5B4:
+	db $01, $40, $78, $00, $00, $00, $78, $00
+	db $02, $00
+
+DATA_FFD5BE:
+	db $01, $40, $1E, $00, $01, $00, $78, $00
+	db $01, $40, $96, $00, $02, $00
+
+DATA_FFD5CC:
+	db $00, $00, $0F, $00, $01, $00, $69, $00
+	db $00, $00, $5A, $00, $02, $00
+
+DATA_FFD5DA:
+	db $01, $00, $3C, $00, $00, $00, $78, $00
+	db $01, $00, $3C, $00, $02, $00, $00, $00
+	db $78, $00, $01, $00, $F0, $00, $02, $00
+
+DATA_FFD5F2:
+	db $00, $00, $3C, $00, $01, $00, $F0, $00
+	db $02, $00
+
+DATA_FFD5FC:
+	db $00, $00, $00, $00, $00, $00, $20, $01
+	db $00, $00, $00, $00, $50, $01, $50, $C3
+	db $00, $FF, $F4, $01, $00, $00, $00, $00
+	db $40, $02, $00, $82, $00, $FF, $B4, $01
+	db $00, $00, $00, $00, $70, $05, $00, $C2
+	db $00, $FF, $B4, $05, $00, $00, $00, $00
+	db $98, $07, $00, $C2, $00, $FF, $A0, $07
+	db $00, $00, $00, $00, $D0, $07, $00, $82
+	db $00, $FF, $F4, $07, $00, $00, $00, $00
+	db $40, $09, $00, $83, $00, $FF, $74, $09
+	db $00, $00, $00, $00, $40, $0C, $00, $83
+	db $00, $FF, $74, $0C, $00, $00, $00, $00
+	db $10, $0D, $00, $82, $80, $FF, $34, $0D
+	db $00, $00, $00, $00, $C0, $0E, $00, $C2
+	db $00, $FF, $E0, $0E, $00, $00, $00, $00
+	db $10, $0F, $00, $82, $00, $FF, $34, $0F
+	db $00, $00, $00, $00, $F0, $0F, $C0, $82
+	db $00, $FF, $08, $10, $00, $00, $00, $00
+	db $38, $10, $C0, $C2, $00, $FF, $F4, $11
+	db $00, $00, $00, $00, $20, $14, $00, $C2
+	db $40, $FF, $74, $14, $00, $00, $00, $00
+	db $10, $15, $00, $82, $00, $FF, $B4, $16
+	db $00, $00, $00, $00, $30, $17, $00, $83
+	db $00, $FF, $B4, $17, $00, $00, $00, $00
+	db $F4, $17, $00, $C3, $00, $FF, $74, $17
+	db $00, $00, $00, $00, $68, $19, $00, $83
+	db $00, $FF, $B4, $19, $00, $00, $00, $00
+	db $F0, $1A, $00, $83, $00, $FF, $44, $1B
+	db $00, $00, $00, $00, $70, $1B, $00, $00
+	db $00, $FF, $B4, $1B, $00, $00, $00, $00
+	db $70, $1C, $00, $C2, $00, $FF, $B4, $1C
+	db $00, $00, $00, $00, $A8, $1D, $00, $C2
+	db $00, $FF, $31, $1E, $00, $00, $00, $00
+	db $34, $1E, $D0, $C2, $00, $FF, $32, $1E
+	db $00, $00, $00, $00, $F8, $1E, $00, $00
+	db $00, $FF, $32, $1F, $00, $00, $00, $00
+	db $F0, $1F, $00, $83, $00, $FF, $FF, $7F
+	db $00, $00, $00, $00
+
+DATA_FFD728:
+	db $00, $00, $00, $00, $00, $00, $D4, $01
+	db $00, $00, $00, $00, $70, $02, $70, $C3
+	db $80, $FE, $FF, $7F, $00, $00, $00, $00
 
 DATA_FFD740:
-	db $00, $83, $2C, $9A, $42, $00, $00, $00
-	db $44, $00, $00, $00, $4A, $00, $30, $00
-	db $00, $80, $00, $00, $04, $03, $02, $00
-	db $D4, $00, $30, $00, $20, $00, $2E, $00
-	db $01, $00, $00, $85, $00, $20, $00, $8D
-	db $6F, $00, $00, $81, $B7, $01, $00, $80
-	db $00, $00, $04, $03, $02, $00, $D4, $00
-	db $30, $00, $20, $00, $2E, $00, $00, $00
-	db $00, $85, $00, $20, $00, $8D, $6F, $00
-	db $00, $81, $B7, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9A2C
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $0000
+	dw sprite.unknown_4A, $0030
+	dw !initcommand_success
+
+DATA_FFD752:
+	dw sprite.number, $0304
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_30, $0020
+	dw sprite.action, $0001
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $006F
+	dw !initcommand_set_animation, $01B7
+	dw !initcommand_success
+
+DATA_FFD770:
+	dw sprite.number, $0304
+	dw sprite.render_order, $00D4
+	dw sprite.unknown_30, $0020
+	dw sprite.action, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $006F
+	dw !initcommand_set_animation, $01B7
+	dw !initcommand_success
 
 DATA_FFD78E:
-	db $00, $83, $52, $D7, $42, $00, $00, $40
-	db $44, $00, $94, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD752
+	dw sprite.unknown_42, $4000
+	dw sprite.unknown_44, $0294
+	dw !initcommand_success
 
 DATA_FFD79C:
-	db $00, $83, $52, $D7, $42, $00, $00, $00
-	db $44, $00, $E0, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD752
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $01E0
+	dw !initcommand_success
 
 DATA_FFD7AA:
-	db $00, $83, $52, $D7, $42, $00, $00, $40
-	db $44, $00, $A4, $01, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD752
+	dw sprite.unknown_42, $4000
+	dw sprite.unknown_44, $01A4
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFD7BC:
-	db $00, $83, $52, $D7, $42, $00, $00, $40
-	db $44, $00, $58, $02, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD752
+	dw sprite.unknown_42, $4000
+	dw sprite.unknown_44, $0258
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFD7CE:
-	db $00, $83, $52, $D7, $42, $00, $00, $00
-	db $44, $00, $58, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD752
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $0258
+	dw !initcommand_success
 
 DATA_FFD7DC:
-	db $00, $83, $52, $D7, $42, $00, $00, $00
-	db $44, $00, $1C, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD752
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $021C
+	dw !initcommand_success
 
 DATA_FFD7EA:
-	db $00, $83, $70, $D7, $42, $00, $00, $40
-	db $44, $00, $0C, $03, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD770
+	dw sprite.unknown_42, $4000
+	dw sprite.unknown_44, $030C
+	dw !initcommand_success
 
 DATA_FFD7F8:
-	db $00, $83, $70, $D7, $42, $00, $00, $00
-	db $44, $00, $48, $03, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD770
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $0348
+	dw !initcommand_success
 
 DATA_FFD806:
-	db $00, $83, $70, $D7, $42, $00, $00, $40
-	db $44, $00, $84, $03, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD770
+	dw sprite.unknown_42, $4000
+	dw sprite.unknown_44, $0384
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFD818:
-	db $00, $83, $70, $D7, $42, $00, $00, $40
-	db $44, $00, $28, $05, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD770
+	dw sprite.unknown_42, $4000
+	dw sprite.unknown_44, $0528
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFD82A:
-	db $00, $83, $70, $D7, $42, $00, $00, $40
-	db $44, $00, $38, $04, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD770
+	dw sprite.unknown_42, $4000
+	dw sprite.unknown_44, $0438
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFD83C:
-	db $00, $83, $70, $D7, $42, $00, $00, $40
-	db $44, $00, $DC, $05, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD770
+	dw sprite.unknown_42, $4000
+	dw sprite.unknown_44, $05DC
+	dw !initcommand_success
 
 DATA_FFD84A:
-	db $00, $83, $70, $D7, $42, $00, $00, $40
-	db $44, $00, $28, $05, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD770
+	dw sprite.unknown_42, $4000
+	dw sprite.unknown_44, $0528
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFD85C:
-	db $00, $83, $70, $D7, $42, $00, $00, $40
-	db $44, $00, $E0, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD770
+	dw sprite.unknown_42, $4000
+	dw sprite.unknown_44, $01E0
+	dw !initcommand_success
 
 DATA_FFD86A:
-	db $00, $00, $D4, $00, $2E, $00, $01, $00
-	db $42, $00, $22, $00, $44, $00, $1D, $00
-	db $00, $80
+	dw sprite.number, $00D4
+	dw sprite.action, $0001
+	dw sprite.unknown_42, $0022
+	dw sprite.unknown_44, $001D
+	dw !initcommand_success
 
 DATA_FFD87C:
-	db $00, $00, $D4, $00, $2E, $00, $01, $00
-	db $42, $00, $04, $00, $44, $00, $0F, $00
-	db $00, $80
+	dw sprite.number, $00D4
+	dw sprite.action, $0001
+	dw sprite.unknown_42, $0004
+	dw sprite.unknown_44, $000F
+	dw !initcommand_success
 
 DATA_FFD88E:
-	db $00, $00, $D4, $00, $2E, $00, $01, $00
-	db $42, $00, $0C, $00, $44, $00, $09, $00
-	db $00, $80
+	dw sprite.number, $00D4
+	dw sprite.action, $0001
+	dw sprite.unknown_42, $000C
+	dw sprite.unknown_44, $0009
+	dw !initcommand_success
 
 DATA_FFD8A0:
-	db $00, $00, $D4, $00, $2E, $00, $01, $00
-	db $42, $00, $06, $00, $44, $00, $0A, $00
-	db $00, $80
+	dw sprite.number, $00D4
+	dw sprite.action, $0001
+	dw sprite.unknown_42, $0006
+	dw sprite.unknown_44, $000A
+	dw !initcommand_success
 
 DATA_FFD8B2:
-	db $00, $00, $D4, $00, $2E, $00, $01, $00
-	db $42, $00, $08, $00, $44, $00, $04, $00
-	db $00, $80
+	dw sprite.number, $00D4
+	dw sprite.action, $0001
+	dw sprite.unknown_42, $0008
+	dw sprite.unknown_44, $0004
+	dw !initcommand_success
 
 DATA_FFD8C4:
-	db $00, $00, $D4, $00, $2E, $00, $01, $00
-	db $42, $00, $0C, $00, $44, $00, $17, $00
-	db $00, $80, $00, $00, $D4, $00, $2E, $00
-	db $00, $00, $00, $80
+	dw sprite.number, $00D4
+	dw sprite.action, $0001
+	dw sprite.unknown_42, $000C
+	dw sprite.unknown_44, $0017
+	dw !initcommand_success
+
+DATA_FFD8D6:
+	dw sprite.number, $00D4
+	dw sprite.action, $0000
+	dw !initcommand_success
 
 DATA_FFD8E0:
-	db $00, $83, $D6, $D8, $42, $00, $09, $00
-	db $44, $00, $10, $10, $46, $00, $00, $80
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD8D6
+	dw sprite.unknown_42, $0009
+	dw sprite.unknown_44, $1010
+	dw sprite.unknown_46, $8000
+	dw !initcommand_success
 
 DATA_FFD8F2:
-	db $00, $83, $D6, $D8, $42, $00, $0B, $00
-	db $44, $00, $20, $20, $46, $00, $20, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD8D6
+	dw sprite.unknown_42, $000B
+	dw sprite.unknown_44, $2020
+	dw sprite.unknown_46, $2020
+	dw !initcommand_success
 
 DATA_FFD904:
-	db $00, $83, $D6, $D8, $42, $00, $12, $00
-	db $44, $00, $20, $20, $46, $00, $20, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD8D6
+	dw sprite.unknown_42, $0012
+	dw sprite.unknown_44, $2020
+	dw sprite.unknown_46, $2020
+	dw !initcommand_success
 
 DATA_FFD916:
-	db $00, $83, $D6, $D8, $42, $00, $14, $00
-	db $44, $00, $40, $40, $46, $00, $20, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD8D6
+	dw sprite.unknown_42, $0014
+	dw sprite.unknown_44, $4040
+	dw sprite.unknown_46, $2020
+	dw !initcommand_success
 
 DATA_FFD928:
-	db $00, $83, $D6, $D8, $42, $00, $0F, $00
-	db $44, $00, $40, $40, $46, $00, $20, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD8D6
+	dw sprite.unknown_42, $000F
+	dw sprite.unknown_44, $4040
+	dw sprite.unknown_46, $2020
+	dw !initcommand_success
 
 DATA_FFD93A:
-	db $00, $83, $D6, $D8, $42, $00, $0B, $00
-	db $44, $00, $40, $40, $46, $00, $20, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD8D6
+	dw sprite.unknown_42, $000B
+	dw sprite.unknown_44, $4040
+	dw sprite.unknown_46, $2020
+	dw !initcommand_success
 
 DATA_FFD94C:
-	db $00, $83, $D6, $D8, $42, $00, $06, $00
-	db $44, $00, $40, $40, $46, $00, $20, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD8D6
+	dw sprite.unknown_42, $0006
+	dw sprite.unknown_44, $4040
+	dw sprite.unknown_46, $2020
+	dw !initcommand_success
 
 DATA_FFD95E:
-	db $00, $83, $D6, $D8, $42, $00, $02, $00
-	db $44, $00, $20, $20, $46, $00, $20, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD8D6
+	dw sprite.unknown_42, $0002
+	dw sprite.unknown_44, $2020
+	dw sprite.unknown_46, $2020
+	dw !initcommand_success
 
 DATA_FFD970:
-	db $00, $83, $D6, $D8, $42, $00, $05, $00
-	db $44, $00, $20, $20, $46, $00, $20, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD8D6
+	dw sprite.unknown_42, $0005
+	dw sprite.unknown_44, $2020
+	dw sprite.unknown_46, $2020
+	dw !initcommand_success
 
 DATA_FFD982:
-	db $00, $83, $D6, $D8, $42, $00, $04, $00
-	db $44, $00, $20, $20, $46, $00, $20, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD8D6
+	dw sprite.unknown_42, $0004
+	dw sprite.unknown_44, $2020
+	dw sprite.unknown_46, $2020
+	dw !initcommand_success
 
 DATA_FFD994:
-	db $00, $83, $D6, $D8, $42, $00, $0E, $00
-	db $44, $00, $18, $18, $46, $00, $20, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD8D6
+	dw sprite.unknown_42, $000E
+	dw sprite.unknown_44, $1818
+	dw sprite.unknown_46, $2020
+	dw !initcommand_success
 
 DATA_FFD9A6:
-	db $00, $83, $D6, $D8, $42, $00, $0D, $00
-	db $44, $00, $30, $30, $46, $00, $20, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD8D6
+	dw sprite.unknown_42, $000D
+	dw sprite.unknown_44, $3030
+	dw sprite.unknown_46, $2020
+	dw !initcommand_success
 
 DATA_FFD9B8:
-	db $00, $83, $D6, $D8, $42, $00, $21, $00
-	db $44, $00, $50, $50, $46, $00, $20, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD8D6
+	dw sprite.unknown_42, $0021
+	dw sprite.unknown_44, $5050
+	dw sprite.unknown_46, $2020
+	dw !initcommand_success
 
 DATA_FFD9CA:
-	db $00, $83, $D6, $D8, $42, $00, $07, $00
-	db $44, $00, $18, $18, $46, $00, $20, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD8D6
+	dw sprite.unknown_42, $0007
+	dw sprite.unknown_44, $1818
+	dw sprite.unknown_46, $2020
+	dw !initcommand_success
 
 DATA_FFD9DC:
-	db $00, $83, $D6, $D8, $42, $00, $19, $00
-	db $44, $00, $50, $50, $46, $00, $20, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD8D6
+	dw sprite.unknown_42, $0019
+	dw sprite.unknown_44, $5050
+	dw sprite.unknown_46, $2020
+	dw !initcommand_success
 
 DATA_FFD9EE:
-	db $00, $83, $D6, $D8, $42, $00, $1C, $00
-	db $44, $00, $18, $18, $46, $00, $20, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD8D6
+	dw sprite.unknown_42, $001C
+	dw sprite.unknown_44, $1818
+	dw sprite.unknown_46, $2020
+	dw !initcommand_success
 
 DATA_FFDA00:
-	db $00, $83, $D6, $D8, $42, $00, $02, $00
-	db $44, $00, $18, $18, $46, $00, $20, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD8D6
+	dw sprite.unknown_42, $0002
+	dw sprite.unknown_44, $1818
+	dw sprite.unknown_46, $2020
+	dw !initcommand_success
 
 DATA_FFDA12:
-	db $00, $83, $D6, $D8, $42, $00, $0C, $00
-	db $44, $00, $60, $60, $46, $00, $50, $50
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD8D6
+	dw sprite.unknown_42, $000C
+	dw sprite.unknown_44, $6060
+	dw sprite.unknown_46, $5050
+	dw !initcommand_success
 
 DATA_FFDA24:
-	db $00, $83, $D6, $D8, $42, $00, $09, $00
-	db $44, $00, $60, $60, $46, $00, $40, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD8D6
+	dw sprite.unknown_42, $0009
+	dw sprite.unknown_44, $6060
+	dw sprite.unknown_46, $2040
+	dw !initcommand_success
 
 DATA_FFDA36:
-	db $00, $83, $D6, $D8, $42, $00, $0D, $00
-	db $44, $00, $60, $B0, $46, $00, $00, $FF
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD8D6
+	dw sprite.unknown_42, $000D
+	dw sprite.unknown_44, $B060
+	dw sprite.unknown_46, $FF00
+	dw !initcommand_success
 
 DATA_FFDA48:
-	db $00, $83, $D6, $D8, $42, $00, $10, $00
-	db $44, $00, $B0, $B0, $46, $00, $00, $FF
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD8D6
+	dw sprite.unknown_42, $0010
+	dw sprite.unknown_44, $B0B0
+	dw sprite.unknown_46, $FF00
+	dw !initcommand_success
 
 DATA_FFDA5A:
-	db $00, $83, $D6, $D8, $42, $00, $0F, $00
-	db $44, $00, $B0, $B0, $46, $00, $00, $FF
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD8D6
+	dw sprite.unknown_42, $000F
+	dw sprite.unknown_44, $B0B0
+	dw sprite.unknown_46, $FF00
+	dw !initcommand_success
 
 DATA_FFDA6C:
-	db $00, $83, $D6, $D8, $42, $00, $0E, $00
-	db $44, $00, $B0, $B0, $46, $00, $00, $FF
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD8D6
+	dw sprite.unknown_42, $000E
+	dw sprite.unknown_44, $B0B0
+	dw sprite.unknown_46, $FF00
+	dw !initcommand_success
 
 DATA_FFDA7E:
-	db $00, $83, $D6, $D8, $42, $00, $10, $00
-	db $44, $00, $B0, $B0, $46, $00, $00, $FF
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD8D6
+	dw sprite.unknown_42, $0010
+	dw sprite.unknown_44, $B0B0
+	dw sprite.unknown_46, $FF00
+	dw !initcommand_success
 
 DATA_FFDA90:
-	db $00, $83, $D6, $D8, $42, $00, $02, $00
-	db $44, $00, $B0, $B0, $46, $00, $00, $FF
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD8D6
+	dw sprite.unknown_42, $0002
+	dw sprite.unknown_44, $B0B0
+	dw sprite.unknown_46, $FF00
+	dw !initcommand_success
 
 DATA_FFDAA2:
-	db $00, $83, $D6, $D8, $42, $00, $0C, $00
-	db $44, $00, $00, $B0, $46, $00, $00, $80
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD8D6
+	dw sprite.unknown_42, $000C
+	dw sprite.unknown_44, $B000
+	dw sprite.unknown_46, $8000
+	dw !initcommand_success
 
 DATA_FFDAB4:
-	db $00, $83, $D6, $D8, $42, $00, $08, $00
-	db $44, $00, $B0, $B0, $46, $00, $00, $FF
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD8D6
+	dw sprite.unknown_42, $0008
+	dw sprite.unknown_44, $B0B0
+	dw sprite.unknown_46, $FF00
+	dw !initcommand_success
 
 DATA_FFDAC6:
-	db $00, $83, $D6, $D8, $42, $00, $04, $00
-	db $44, $00, $C0, $00, $46, $00, $00, $FF
-	db $00, $80
+if !version == 1
+	dw !initcommand_load_subconfig, DATA_FFD8D6
+	dw sprite.unknown_42, $0004
+	dw sprite.unknown_44, $00C0
+	dw sprite.unknown_46, $FF00
+	dw !initcommand_success
+endif
 
 DATA_FFDAD8:
-	db $00, $00, $D8, $00, $00, $80
+	dw sprite.number, $00D8
+	dw !initcommand_success
 
 DATA_FFDADE:
-	db $00, $00, $84, $00, $2E, $00, $00, $00
-	db $00, $80
+	dw sprite.number, $0084
+	dw sprite.action, $0000
+	dw !initcommand_success
 
 DATA_FFDAE8:
-	db $00, $00, $88, $00, $2E, $00, $00, $00
-	db $42, $00, $66, $B9, $44, $00, $04, $00
-	db $46, $00, $19, $00, $48, $00, $10, $00
-	db $54, $00, $06, $DB, $00, $80, $4C, $01
-	db $C0, $01, $74, $01, $C0, $01, $9C, $01
-	db $C0, $01, $C4, $01, $C0, $01, $00, $00
-	db $40, $01, $02, $00, $EC, $00, $2E, $00
-	db $00, $00, $50, $00, $14, $00, $00, $85
-	db $00, $30, $00, $8D, $02, $00, $1A, $00
-	db $CC, $08, $00, $80
+	dw sprite.number, $0088
+	dw sprite.action, $0000
+	dw sprite.unknown_42, DATA_FFB966
+	dw sprite.unknown_44, $0004
+	dw sprite.unknown_46, $0019
+	dw sprite.unknown_48, $0010
+	dw sprite.unknown_54, DATA_FFDB06
+	dw !initcommand_success
+
+DATA_FFDB06:
+	db $4C, $01, $C0, $01, $74, $01, $C0, $01
+	db $9C, $01, $C0, $01, $C4, $01, $C0, $01
+
+DATA_FFDB16:
+	dw sprite.number, $0140
+	dw sprite.render_order, $00EC
+	dw sprite.action, $0000
+	dw sprite.parameter, $0014
+	dw !initcommand_set_oam, $3000
+	dw !initcommand_set_alt_palette, $0002
+	dw sprite.unknown_1A, $08CC
+	dw !initcommand_success
 
 DATA_FFDB34:
-	db $00, $83, $16, $DB, $00, $8A, $00, $00
-	db $A0, $A0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $01, $00
-	db $01, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFDB16
+	dw !initcommand_bulk_set
+	dw $0000, $A0A0, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0001, $0001, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FFDB56:
-	db $00, $83, $16, $DB, $00, $8A, $00, $00
-	db $1F, $A0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $01, $00
-	db $01, $00, $00, $00, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFDB16
+	dw !initcommand_bulk_set
+	dw $0000, $A01F, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0001, $0001, $0000, $0400, $0000
+	dw !initcommand_success
 
 DATA_FFDB78:
-	db $00, $83, $16, $DB, $00, $8A, $00, $00
-	db $E0, $20, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $01, $00
-	db $01, $00, $00, $00, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFDB16
+	dw !initcommand_bulk_set
+	dw $0000, $20E0, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0001, $0001, $0000, $0400, $0000
+	dw !initcommand_success
 
 DATA_FFDB9A:
-	db $00, $83, $2C, $9A, $2E, $00, $02, $00
-	db $42, $00, $00, $00, $44, $00, $00, $00
-	db $4A, $00, $08, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9A2C
+	dw sprite.action, $0002
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $0000
+	dw sprite.unknown_4A, $0008
+	dw !initcommand_success
 
 DATA_FFDBB0:
-	db $00, $83, $66, $B9, $42, $00, $13, $00
-	db $44, $00, $05, $00, $46, $00, $10, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_42, $0013
+	dw sprite.unknown_44, $0005
+	dw sprite.unknown_46, $0010
+	dw !initcommand_success
 
 DATA_FFDBC2:
-	db $00, $83, $66, $B9, $42, $00, $13, $00
-	db $44, $00, $04, $00, $46, $00, $10, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_42, $0013
+	dw sprite.unknown_44, $0004
+	dw sprite.unknown_46, $0010
+	dw !initcommand_success
 
 DATA_FFDBD4:
-	db $00, $83, $66, $B9, $42, $00, $13, $00
-	db $44, $00, $07, $00, $46, $00, $10, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB966
+	dw sprite.unknown_42, $0013
+	dw sprite.unknown_44, $0007
+	dw sprite.unknown_46, $0010
+	dw !initcommand_success
 
 DATA_FFDBE6:
-	db $00, $83, $3C, $A5, $26, $00, $40, $FF
-	db $46, $00, $30, $F0, $2A, $00, $60, $00
-	db $4A, $00, $03, $03, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA53C
+	dw sprite.max_x_speed, $FF40
+	dw sprite.unknown_46, $F030
+	dw sprite.unknown_2A, $0060
+	dw sprite.unknown_4A, $0303
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFDC00:
-	db $00, $83, $3C, $A5, $26, $00, $40, $FF
-	db $46, $00, $00, $E8, $2A, $00, $60, $00
-	db $4A, $00, $03, $03, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA53C
+	dw sprite.max_x_speed, $FF40
+	dw sprite.unknown_46, $E800
+	dw sprite.unknown_2A, $0060
+	dw sprite.unknown_4A, $0303
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFDC1A:
-	db $00, $83, $3C, $A5, $26, $00, $40, $FF
-	db $46, $00, $58, $F0, $2A, $00, $60, $00
-	db $4A, $00, $03, $03, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA53C
+	dw sprite.max_x_speed, $FF40
+	dw sprite.unknown_46, $F058
+	dw sprite.unknown_2A, $0060
+	dw sprite.unknown_4A, $0303
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFDC34:
-	db $00, $83, $3C, $A5, $26, $00, $C0, $00
-	db $46, $00, $C8, $00, $2A, $00, $60, $00
-	db $4A, $00, $03, $03, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA53C
+	dw sprite.max_x_speed, $00C0
+	dw sprite.unknown_46, $00C8
+	dw sprite.unknown_2A, $0060
+	dw sprite.unknown_4A, $0303
+	dw !initcommand_success
+
 
 DATA_FFDC4A:
-	db $00, $83, $3C, $A5, $26, $00, $C0, $00
-	db $46, $00, $E8, $00, $2A, $00, $60, $00
-	db $4A, $00, $03, $03, $00, $80, $FA, $E7
-	db $B8, $FC, $1E, $00, $FF
+	dw !initcommand_load_subconfig, DATA_FFA53C
+	dw sprite.max_x_speed, $00C0
+	dw sprite.unknown_46, $00E8
+	dw sprite.unknown_2A, $0060
+	dw sprite.unknown_4A, $0303
+	dw !initcommand_success
+
+DATA_FFDC60:
+	db $FA : dw DATA_FFB8E7
+	db $FC, $1E, $00, $FF
 
 DATA_FFDC67:
-	db $00, $83, $D6, $B3, $50, $00, $60, $DC
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3D6
+	dw sprite.parameter, DATA_FFDC60
+	dw !initcommand_success
 
 DATA_FFDC71:
-	db $00, $83, $D6, $B3, $50, $00, $60, $DC
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFB3D6
+	dw sprite.parameter, DATA_FFDC60
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFDC7F:
-	db $00, $83, $C8, $AB, $4E, $00, $F0, $05
-	db $24, $00, $00, $02, $42, $00, $C0, $C0
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABC8
+	dw sprite.unknown_4E, $05F0
+	dw sprite.y_speed, $0200
+	dw sprite.unknown_42, $C0C0
+	dw !initcommand_success
 
 DATA_FFDC91:
-	db $00, $83, $C8, $AB, $4E, $00, $2C, $01
-	db $24, $00, $70, $FF, $42, $00, $FF, $FF
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABC8
+	dw sprite.unknown_4E, $012C
+	dw sprite.y_speed, $FF70
+	dw sprite.unknown_42, $FFFF
+	dw !initcommand_success
 
 DATA_FFDCA3:
-	db $00, $83, $C8, $AB, $4E, $00, $2C, $01
-	db $24, $00, $40, $FF, $42, $00, $FF, $FF
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABC8
+	dw sprite.unknown_4E, $012C
+	dw sprite.y_speed, $FF40
+	dw sprite.unknown_42, $FFFF
+	dw !initcommand_success
 
 DATA_FFDCB5:
-	db $00, $83, $C8, $AB, $4E, $00, $0C, $01
-	db $24, $00, $00, $FE, $42, $00, $FF, $FF
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABC8
+	dw sprite.unknown_4E, $010C
+	dw sprite.y_speed, $FE00
+	dw sprite.unknown_42, $FFFF
+	dw !initcommand_success
 
 DATA_FFDCC7:
-	db $00, $83, $C8, $AB, $4E, $00, $0C, $01
-	db $24, $00, $A0, $FE, $42, $00, $FF, $FF
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABC8
+	dw sprite.unknown_4E, $010C
+	dw sprite.y_speed, $FEA0
+	dw sprite.unknown_42, $FFFF
+	dw !initcommand_success
 
 DATA_FFDCD9:
-	db $00, $83, $C8, $AB, $4E, $00, $0C, $01
-	db $24, $00, $F0, $FE, $42, $00, $FF, $FF
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABC8
+	dw sprite.unknown_4E, $010C
+	dw sprite.y_speed, $FEF0
+	dw sprite.unknown_42, $FFFF
+	dw !initcommand_success
 
 DATA_FFDCEB:
-	db $00, $83, $C8, $AB, $4E, $00, $2C, $01
-	db $24, $00, $B0, $FF, $42, $00, $FF, $FF
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFABC8
+	dw sprite.unknown_4E, $012C
+	dw sprite.y_speed, $FFB0
+	dw sprite.unknown_42, $FFFF
+	dw !initcommand_success
 
 DATA_FFDCFD:
-	db $00, $83, $5A, $D3, $42, $00, $00, $00
-	db $44, $00, $00, $00, $46, $00, $0A, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $0000
+	dw sprite.unknown_46, $000A
+	dw !initcommand_success
 
 DATA_FFDD0F:
-	db $00, $83, $5A, $D3, $42, $00, $00, $00
-	db $44, $00, $00, $00, $46, $00, $0F, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $0000
+	dw sprite.unknown_46, $000F
+	dw !initcommand_success
 
 DATA_FFDD21:
-	db $00, $83, $5A, $D3, $42, $00, $00, $00
-	db $44, $00, $00, $00, $46, $00, $14, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $0000
+	dw sprite.unknown_46, $0014
+	dw !initcommand_success
 
 DATA_FFDD33:
-	db $00, $83, $5A, $D3, $42, $00, $00, $00
-	db $44, $00, $00, $00, $46, $00, $19, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $0000
+	dw sprite.unknown_46, $0019
+	dw !initcommand_success
 
 DATA_FFDD45:
-	db $00, $83, $5A, $D3, $42, $00, $00, $00
-	db $44, $00, $00, $00, $46, $00, $28, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $0000
+	dw sprite.unknown_46, $0028
+	dw !initcommand_success
 
 DATA_FFDD57:
-	db $00, $83, $5A, $D3, $42, $00, $00, $00
-	db $44, $00, $00, $00, $46, $00, $23, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $0000
+	dw sprite.unknown_46, $0023
+	dw !initcommand_success
 
 DATA_FFDD69:
-	db $00, $83, $5A, $D3, $42, $00, $00, $00
-	db $44, $00, $00, $00, $46, $00, $3C, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $0000
+	dw sprite.unknown_46, $003C
+	dw !initcommand_success
 
 DATA_FFDD7B:
-	db $00, $83, $5A, $D3, $42, $00, $00, $00
-	db $44, $00, $00, $00, $46, $00, $1E, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $0000
+	dw sprite.unknown_46, $001E
+	dw !initcommand_success
 
 DATA_FFDD8D:
-	db $00, $83, $5A, $D3, $42, $00, $01, $00
-	db $44, $00, $08, $00, $46, $00, $14, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_44, $0008
+	dw sprite.unknown_46, $0014
+	dw !initcommand_success
 
 DATA_FFDD9F:
-	db $00, $83, $5A, $D3, $42, $00, $01, $00
-	db $44, $00, $05, $00, $46, $00, $23, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_44, $0005
+	dw sprite.unknown_46, $0023
+	dw !initcommand_success
 
 DATA_FFDDB1:
-	db $00, $83, $5A, $D3, $42, $00, $01, $00
-	db $44, $00, $07, $00, $46, $00, $0F, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_44, $0007
+	dw sprite.unknown_46, $000F
+	dw !initcommand_success
 
 DATA_FFDDC3:
-	db $00, $83, $5A, $D3, $42, $00, $01, $00
-	db $44, $00, $08, $00, $46, $00, $0F, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_44, $0008
+	dw sprite.unknown_46, $000F
+	dw !initcommand_success
 
 DATA_FFDDD5:
-	db $00, $83, $5A, $D3, $42, $00, $01, $00
-	db $44, $00, $08, $00, $46, $00, $19, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_44, $0008
+	dw sprite.unknown_46, $0019
+	dw !initcommand_success
 
 DATA_FFDDE7:
-	db $00, $83, $5A, $D3, $42, $00, $01, $00
-	db $44, $00, $03, $00, $46, $00, $0F, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_44, $0003
+	dw sprite.unknown_46, $000F
+	dw !initcommand_success
 
 DATA_FFDDF9:
-	db $00, $83, $5A, $D3, $42, $00, $01, $00
-	db $44, $00, $04, $00, $46, $00, $0F, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_44, $0004
+	dw sprite.unknown_46, $000F
+	dw !initcommand_success
 
 DATA_FFDE0B:
-	db $00, $83, $5A, $D3, $42, $00, $01, $00
-	db $44, $00, $05, $00, $46, $00, $19, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_44, $0005
+	dw sprite.unknown_46, $0019
+	dw !initcommand_success
 
 DATA_FFDE1D:
-	db $00, $83, $5A, $D3, $42, $00, $01, $00
-	db $44, $00, $09, $00, $46, $00, $1E, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_44, $0009
+	dw sprite.unknown_46, $001E
+	dw !initcommand_success
 
 DATA_FFDE2F:
-	db $00, $83, $5A, $D3, $42, $00, $01, $00
-	db $44, $00, $0A, $00, $46, $00, $23, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_44, $000A
+	dw sprite.unknown_46, $0023
+	dw !initcommand_success
 
 DATA_FFDE41:
-	db $00, $83, $5A, $D3, $42, $00, $01, $00
-	db $44, $00, $05, $00, $46, $00, $14, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_44, $0005
+	dw sprite.unknown_46, $0014
+	dw !initcommand_success
 
 DATA_FFDE53:
-	db $00, $83, $5A, $D3, $42, $00, $01, $00
-	db $44, $00, $0C, $00, $46, $00, $28, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_44, $000C
+	dw sprite.unknown_46, $0028
+	dw !initcommand_success
 
 DATA_FFDE65:
-	db $00, $83, $5A, $D3, $42, $00, $01, $00
-	db $44, $00, $08, $00, $46, $00, $1E, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_44, $0008
+	dw sprite.unknown_46, $001E
+	dw !initcommand_success
 
 DATA_FFDE77:
-	db $00, $83, $5A, $D3, $42, $00, $01, $00
-	db $44, $00, $0C, $00, $46, $00, $0F, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_44, $000C
+	dw sprite.unknown_46, $000F
+	dw !initcommand_success
 
 DATA_FFDE89:
-	db $00, $83, $5A, $D3, $42, $00, $01, $00
-	db $44, $00, $06, $00, $46, $00, $0A, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_44, $0006
+	dw sprite.unknown_46, $000A
+	dw !initcommand_success
 
 DATA_FFDE9B:
-	db $00, $83, $5A, $D3, $42, $00, $01, $00
-	db $44, $00, $05, $00, $46, $00, $0A, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_44, $0005
+	dw sprite.unknown_46, $000A
+	dw !initcommand_success
 
 DATA_FFDEAD:
-	db $00, $83, $5A, $D3, $42, $00, $02, $00
-	db $44, $00, $50, $00, $46, $00, $14, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0002
+	dw sprite.unknown_44, $0050
+	dw sprite.unknown_46, $0014
+	dw !initcommand_success
 
 DATA_FFDEBF:
-	db $00, $83, $5A, $D3, $42, $00, $02, $00
-	db $44, $00, $75, $00, $46, $00, $28, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0002
+	dw sprite.unknown_44, $0075
+	dw sprite.unknown_46, $0028
+	dw !initcommand_success
 
 DATA_FFDED1:
-	db $00, $83, $5A, $D3, $42, $00, $02, $00
-	db $44, $00, $65, $00, $46, $00, $28, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0002
+	dw sprite.unknown_44, $0065
+	dw sprite.unknown_46, $0028
+	dw !initcommand_success
 
 DATA_FFDEE3:
-	db $00, $83, $5A, $D3, $42, $00, $02, $00
-	db $44, $00, $00, $01, $46, $00, $14, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0002
+	dw sprite.unknown_44, $0100
+	dw sprite.unknown_46, $0014
+	dw !initcommand_success
 
 DATA_FFDEF5:
-	db $00, $83, $5A, $D3, $42, $00, $02, $00
-	db $44, $00, $40, $00, $46, $00, $28, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0002
+	dw sprite.unknown_44, $0040
+	dw sprite.unknown_46, $0028
+	dw !initcommand_success
 
 DATA_FFDF07:
-	db $00, $83, $5A, $D3, $42, $00, $02, $00
-	db $44, $00, $75, $00, $46, $00, $19, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0002
+	dw sprite.unknown_44, $0075
+	dw sprite.unknown_46, $0019
+	dw !initcommand_success
 
 DATA_FFDF19:
-	db $00, $83, $5A, $D3, $42, $00, $02, $00
-	db $44, $00, $40, $00, $46, $00, $1E, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0002
+	dw sprite.unknown_44, $0040
+	dw sprite.unknown_46, $001E
+	dw !initcommand_success
 
 DATA_FFDF2B:
-	db $00, $83, $5A, $D3, $42, $00, $02, $00
-	db $44, $00, $60, $00, $46, $00, $14, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0002
+	dw sprite.unknown_44, $0060
+	dw sprite.unknown_46, $0014
+	dw !initcommand_success
 
 DATA_FFDF3D:
-	db $00, $83, $5A, $D3, $42, $00, $02, $00
-	db $44, $00, $30, $00, $46, $00, $14, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0002
+	dw sprite.unknown_44, $0030
+	dw sprite.unknown_46, $0014
+	dw !initcommand_success
 
 DATA_FFDF4F:
-	db $00, $83, $5A, $D3, $42, $00, $02, $00
-	db $44, $00, $80, $00, $46, $00, $0F, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0002
+	dw sprite.unknown_44, $0080
+	dw sprite.unknown_46, $000F
+	dw !initcommand_success
 
 DATA_FFDF61:
-	db $00, $83, $5A, $D3, $42, $00, $02, $00
-	db $44, $00, $20, $01, $46, $00, $11, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0002
+	dw sprite.unknown_44, $0120
+	dw sprite.unknown_46, $0011
+	dw !initcommand_success
 
 DATA_FFDF73:
-	db $00, $83, $5A, $D3, $42, $00, $02, $00
-	db $44, $00, $30, $00, $46, $00, $1E, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFD35A
+	dw sprite.unknown_42, $0002
+	dw sprite.unknown_44, $0030
+	dw sprite.unknown_46, $001E
+	dw !initcommand_success
 
 DATA_FFDF85:
-	db $00, $83, $AC, $34, $42, $00, $68, $01
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF34AC
+	dw sprite.unknown_42, $0168
+	dw !initcommand_success
 
 DATA_FFDF8F:
-	db $00, $83, $1A, $94, $2E, $00, $00, $00
-	db $44, $00, $20, $00, $46, $00, $20, $00
-	db $48, $00, $40, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF941A
+	dw sprite.action, $0000
+	dw sprite.unknown_44, $0020
+	dw sprite.unknown_46, $0020
+	dw sprite.unknown_48, $0040
+	dw !initcommand_success
 
 DATA_FFDFA5:
-	db $00, $83, $00, $2B, $26, $00, $40, $FF
-	db $46, $00, $08, $08, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $FF40
+	dw sprite.unknown_46, $0808
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFDFB7:
-	db $00, $83, $00, $2B, $26, $00, $C0, $FE
-	db $00, $85, $00, $60, $46, $00, $70, $70
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_46, $7070
+	dw !initcommand_success
 
 DATA_FFDFC9:
-	db $00, $83, $00, $2B, $26, $00, $C0, $FE
-	db $00, $85, $00, $60, $46, $00, $30, $B0
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_46, $B030
+	dw !initcommand_success
 
 DATA_FFDFDB:
-	db $00, $83, $00, $2B, $26, $00, $C0, $FE
-	db $00, $85, $00, $60, $46, $00, $48, $48
-	db $00, $80, $00, $83, $D0, $74, $0C, $00
-	db $00, $08, $0E, $00, $80, $FF, $22, $00
-	db $00, $00, $28, $00, $00, $05, $20, $00
-	db $00, $03, $00, $85, $00, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2B00
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_46, $4848
+	dw !initcommand_success
+
+DATA_FFDFED:
+	dw !initcommand_load_subconfig, DATA_FF74D0
+	dw sprite.ground_y_position, $0800
+	dw sprite.ground_distance, $FF80
+	dw sprite.unknown_22, $0000
+	dw sprite.unknown_28, $0500
+	dw sprite.x_speed, $0300
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFE00B:
-	db $00, $83, $28, $75, $4E, $00, $FF, $7F
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7528
+	dw sprite.unknown_4E, $7FFF
+	dw !initcommand_success
 
 DATA_FFE015:
-	db $00, $83, $0A, $75, $4E, $00, $FF, $7F
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF750A
+	dw sprite.unknown_4E, $7FFF
+	dw !initcommand_success
 
 DATA_FFE01F:
-	db $00, $83, $ED, $DF, $4E, $00, $78, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFDFED
+	dw sprite.unknown_4E, $0078
+	dw !initcommand_success
 
 DATA_FFE029:
-	db $00, $83, $EC, $30, $26, $00, $00, $01
-	db $52, $00, $23, $00, $46, $00, $38, $38
-	db $00, $85, $00, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF30EC
+	dw sprite.max_x_speed, $0100
+	dw sprite.unknown_52, $0023
+	dw sprite.unknown_46, $3838
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFE03F:
-	db $00, $83, $EC, $30, $26, $00, $C0, $00
-	db $52, $00, $23, $00, $46, $00, $08, $08
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF30EC
+	dw sprite.max_x_speed, $00C0
+	dw sprite.unknown_52, $0023
+	dw sprite.unknown_46, $0808
+	dw !initcommand_success
 
 DATA_FFE051:
-	db $00, $83, $EC, $30, $26, $00, $80, $FE
-	db $00, $85, $00, $60, $52, $00, $0C, $22
-	db $04, $00, $78, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF30EC
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_52, $220C
+	dw sprite.x_sub_position, $0078
+	dw !initcommand_success
 
 DATA_FFE067:
-	db $00, $83, $EC, $30, $26, $00, $80, $FC
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF30EC
+	dw sprite.max_x_speed, $FC80
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFE075:
-	db $00, $83, $D6, $2D, $26, $00, $C0, $FE
-	db $00, $85, $00, $60, $46, $00, $68, $68
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_46, $6868
+	dw !initcommand_success
 
 DATA_FFE087:
-	db $00, $83, $D6, $2D, $26, $00, $C0, $FE
-	db $00, $85, $00, $60, $46, $00, $00, $D0
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_46, $D000
+	dw !initcommand_success
 
 DATA_FFE099:
-	db $00, $83, $D6, $2D, $26, $00, $00, $01
-	db $46, $00, $20, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2DD6
+	dw sprite.max_x_speed, $0100
+	dw sprite.unknown_46, $2020
+	dw !initcommand_success
 
 DATA_FFE0A7:
-	db $00, $83, $98, $2D, $26, $00, $80, $FE
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF2D98
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFE0B5:
-	db $00, $83, $A6, $A2, $4A, $00, $00, $A0
-	db $2A, $00, $00, $FF, $4E, $00, $10, $01
-	db $48, $00, $78, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA2A6
+	dw sprite.unknown_4A, $A000
+	dw sprite.unknown_2A, $FF00
+	dw sprite.unknown_4E, $0110
+	dw sprite.unknown_48, $0078
+	dw !initcommand_success
 
 DATA_FFE0CB:
-	db $00, $83, $68, $7D, $4A, $00, $40, $40
-	db $2A, $00, $00, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $4040
+	dw sprite.unknown_2A, $FF00
+	dw !initcommand_success
 
 DATA_FFE0D9:
-	db $00, $83, $68, $7D, $4A, $00, $20, $20
-	db $2A, $00, $A0, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $2020
+	dw sprite.unknown_2A, $00A0
+	dw !initcommand_success
 
 DATA_FFE0E7:
-	db $00, $83, $68, $7D, $4A, $00, $30, $30
-	db $2A, $00, $E0, $FE, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $3030
+	dw sprite.unknown_2A, $FEE0
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFE0F9:
-	db $00, $83, $68, $7D, $4A, $00, $40, $40
-	db $2A, $00, $C0, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $4040
+	dw sprite.unknown_2A, $FEC0
+	dw !initcommand_success
 
 DATA_FFE107:
-	db $00, $83, $68, $7D, $4A, $00, $30, $30
-	db $2A, $00, $00, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $3030
+	dw sprite.unknown_2A, $0100
+	dw !initcommand_success
 
 DATA_FFE115:
-	db $00, $83, $68, $7D, $4A, $00, $00, $60
-	db $2A, $00, $00, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $6000
+	dw sprite.unknown_2A, $0100
+	dw !initcommand_success
 
 DATA_FFE123:
-	db $00, $83, $68, $7D, $4A, $00, $50, $50
-	db $2A, $00, $30, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF7D68
+	dw sprite.unknown_4A, $5050
+	dw sprite.unknown_2A, $FF30
+	dw !initcommand_success
 
 DATA_FFE131:
-	db $00, $83, $44, $81, $46, $00, $28, $38
-	db $26, $00, $80, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $3828
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFE143:
-	db $00, $83, $44, $81, $46, $00, $60, $60
-	db $26, $00, $80, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $6060
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFE155:
-	db $00, $83, $44, $81, $46, $00, $A0, $20
-	db $26, $00, $80, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $20A0
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_success
 
 DATA_FFE163:
-	db $00, $83, $44, $81, $46, $00, $30, $30
-	db $26, $00, $00, $FF, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $3030
+	dw sprite.max_x_speed, $FF00
+	dw !initcommand_success
 
 DATA_FFE171:
-	db $00, $83, $44, $81, $46, $00, $58, $08
-	db $26, $00, $80, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8144
+	dw sprite.unknown_46, $0858
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_success
 
 DATA_FFE17F:
-	db $00, $83, $1C, $89, $00, $81, $96, $01
-	db $46, $00, $00, $A0, $48, $00, $00, $30
-	db $4A, $00, $A0, $40, $26, $00, $80, $04
-	db $00, $85, $00, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF891C
+	dw !initcommand_set_animation, $0196
+	dw sprite.unknown_46, $A000
+	dw sprite.unknown_48, $3000
+	dw sprite.unknown_4A, $40A0
+	dw sprite.max_x_speed, $0480
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFE19D:
-	db $00, $83, $20, $85, $46, $00, $80, $00
-	db $48, $00, $00, $30, $26, $00, $80, $FC
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $0080
+	dw sprite.unknown_48, $3000
+	dw sprite.max_x_speed, $FC80
+	dw !initcommand_success
 
 DATA_FFE1AF:
-	db $00, $83, $20, $85, $46, $00, $00, $00
-	db $48, $00, $00, $30, $26, $00, $80, $03
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $0000
+	dw sprite.unknown_48, $3000
+	dw sprite.max_x_speed, $0380
+	dw !initcommand_success
 
 DATA_FFE1C1:
-	db $00, $83, $20, $85, $46, $00, $00, $80
-	db $48, $00, $00, $50, $26, $00, $C0, $FE
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $8000
+	dw sprite.unknown_48, $5000
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_success
 
 DATA_FFE1D3:
-	db $00, $83, $20, $85, $46, $00, $00, $C0
-	db $48, $00, $00, $30, $26, $00, $80, $FD
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $C000
+	dw sprite.unknown_48, $3000
+	dw sprite.max_x_speed, $FD80
+	dw !initcommand_success
 
 DATA_FFE1E5:
-	db $00, $83, $20, $85, $46, $00, $00, $40
-	db $48, $00, $00, $30, $26, $00, $80, $02
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8520
+	dw sprite.unknown_46, $4000
+	dw sprite.unknown_48, $3000
+	dw sprite.max_x_speed, $0280
+	dw !initcommand_success
 
 DATA_FFE1F7:
-	db $00, $83, $84, $8D, $46, $00, $00, $80
-	db $48, $00, $00, $40, $26, $00, $20, $01
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8D84
+	dw sprite.unknown_46, $8000
+	dw sprite.unknown_48, $4000
+	dw sprite.max_x_speed, $0120
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFE20D:
-	db $00, $83, $84, $8D, $46, $00, $00, $00
-	db $48, $00, $00, $40, $26, $00, $40, $01
-	db $00, $85, $00, $60, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8D84
+	dw sprite.unknown_46, $0000
+	dw sprite.unknown_48, $4000
+	dw sprite.max_x_speed, $0140
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFE223:
-	db $00, $83, $0C, $8A, $00, $81, $97, $01
-	db $46, $00, $02, $02, $26, $00, $40, $00
-	db $4A, $00, $70, $10, $2A, $00, $60, $FE
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8A0C
+	dw !initcommand_set_animation, $0197
+	dw sprite.unknown_46, $0202
+	dw sprite.max_x_speed, $0040
+	dw sprite.unknown_4A, $1070
+	dw sprite.unknown_2A, $FE60
+	dw !initcommand_success
 
 DATA_FFE23D:
-	db $00, $83, $0C, $8A, $00, $81, $97, $01
-	db $46, $00, $02, $02, $26, $00, $40, $00
-	db $4A, $00, $10, $70, $2A, $00, $60, $FE
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8A0C
+	dw !initcommand_set_animation, $0197
+	dw sprite.unknown_46, $0202
+	dw sprite.max_x_speed, $0040
+	dw sprite.unknown_4A, $7010
+	dw sprite.unknown_2A, $FE60
+	dw !initcommand_success
 
 DATA_FFE257:
-	db $00, $83, $0C, $8A, $00, $81, $97, $01
-	db $46, $00, $02, $02, $26, $00, $40, $00
-	db $4A, $00, $40, $40, $2A, $00, $60, $FE
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8A0C
+	dw !initcommand_set_animation, $0197
+	dw sprite.unknown_46, $0202
+	dw sprite.max_x_speed, $0040
+	dw sprite.unknown_4A, $4040
+	dw sprite.unknown_2A, $FE60
+	dw !initcommand_success
 
 DATA_FFE271:
-	db $00, $83, $0C, $8A, $00, $81, $97, $01
-	db $46, $00, $02, $02, $26, $00, $40, $00
-	db $4A, $00, $38, $38, $2A, $00, $00, $FF
-	db $00, $85, $00, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF8A0C
+	dw !initcommand_set_animation, $0197
+	dw sprite.unknown_46, $0202
+	dw sprite.max_x_speed, $0040
+	dw sprite.unknown_4A, $3838
+	dw sprite.unknown_2A, $FF00
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFE28F:
-	db $00, $83, $44, $9B, $46, $00, $58, $60
-	db $26, $00, $00, $FF, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B44
+	dw sprite.unknown_46, $6058
+	dw sprite.max_x_speed, $FF00
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFE2A1:
-	db $00, $83, $44, $9B, $46, $00, $50, $50
-	db $26, $00, $00, $01, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B44
+	dw sprite.unknown_46, $5050
+	dw sprite.max_x_speed, $0100
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFE2B3:
-	db $00, $83, $44, $9B, $46, $00, $30, $88
-	db $26, $00, $80, $FE, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B44
+	dw sprite.unknown_46, $8830
+	dw sprite.max_x_speed, $FE80
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFE2C5:
-	db $00, $83, $44, $9B, $46, $00, $B8, $00
-	db $26, $00, $40, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B44
+	dw sprite.unknown_46, $00B8
+	dw sprite.max_x_speed, $0140
+	dw !initcommand_success
 
 DATA_FFE2D3:
-	db $00, $83, $44, $9B, $46, $00, $78, $40
-	db $26, $00, $40, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B44
+	dw sprite.unknown_46, $4078
+	dw sprite.max_x_speed, $0140
+	dw !initcommand_success
 
 DATA_FFE2E1:
-	db $00, $83, $44, $9B, $46, $00, $80, $80
-	db $26, $00, $00, $02, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9B44
+	dw sprite.unknown_46, $8080
+	dw sprite.max_x_speed, $0200
+	dw !initcommand_success
 
 DATA_FFE2EF:
-	db $00, $83, $3C, $9D, $00, $81, $9A, $01
-	db $52, $00, $07, $00, $46, $00, $20, $20
-	db $26, $00, $C0, $FE, $4A, $00, $03, $02
-	db $2A, $00, $60, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9D3C
+	dw !initcommand_set_animation, $019A
+	dw sprite.unknown_52, $0007
+	dw sprite.unknown_46, $2020
+	dw sprite.max_x_speed, $FEC0
+	dw sprite.unknown_4A, $0203
+	dw sprite.unknown_2A, $0060
+	dw !initcommand_success
 
 DATA_FFE30D:
-	db $00, $83, $3C, $9D, $00, $81, $9A, $01
-	db $52, $00, $07, $00, $46, $00, $70, $B0
-	db $26, $00, $00, $FF, $4A, $00, $03, $02
-	db $2A, $00, $60, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9D3C
+	dw !initcommand_set_animation, $019A
+	dw sprite.unknown_52, $0007
+	dw sprite.unknown_46, $B070
+	dw sprite.max_x_speed, $FF00
+	dw sprite.unknown_4A, $0203
+	dw sprite.unknown_2A, $0060
+	dw !initcommand_success
 
 DATA_FFE32B:
-	db $00, $83, $3C, $9D, $00, $81, $9A, $01
-	db $52, $00, $07, $00, $46, $00, $21, $FF
-	db $26, $00, $00, $FF, $4A, $00, $03, $02
-	db $2A, $00, $60, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9D3C
+	dw !initcommand_set_animation, $019A
+	dw sprite.unknown_52, $0007
+	dw sprite.unknown_46, $FF21
+	dw sprite.max_x_speed, $FF00
+	dw sprite.unknown_4A, $0203
+	dw sprite.unknown_2A, $0060
+	dw !initcommand_success
 
 DATA_FFE349:
-	db $00, $83, $B2, $9E, $46, $00, $50, $50
-	db $26, $00, $C0, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9EB2
+	dw sprite.unknown_46, $5050
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_success
 
 DATA_FFE357:
-	db $00, $83, $B2, $9E, $46, $00, $50, $50
-	db $26, $00, $40, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9EB2
+	dw sprite.unknown_46, $5050
+	dw sprite.max_x_speed, $0140
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFE369:
-	db $00, $83, $2E, $9E, $4A, $00, $10, $10
-	db $2A, $00, $00, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9E2E
+	dw sprite.unknown_4A, $1010
+	dw sprite.unknown_2A, $0100
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFE37B:
-	db $00, $83, $46, $A9, $0C, $00, $80, $80
-	db $0E, $00, $80, $80, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFA946
+	dw sprite.ground_y_position, $8080
+	dw sprite.ground_distance, $8080
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFE38D:
-	db $00, $83, $FA, $9F, $46, $00, $24, $24
-	db $26, $00, $00, $02, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $2424
+	dw sprite.max_x_speed, $0200
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFE39F:
-	db $00, $83, $FA, $9F, $46, $00, $70, $20
-	db $26, $00, $C0, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $2070
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_success
 
 DATA_FFE3AD:
-	db $00, $83, $FA, $9F, $46, $00, $20, $70
-	db $26, $00, $40, $01, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+	dw sprite.unknown_46, $7020
+	dw sprite.max_x_speed, $0140
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFE3BF:
-	db $00, $83, $FA, $9F, $46, $00, $50, $30
-	db $26, $00, $C0, $FE, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FFA
+if !version == 0
+	dw sprite.unknown_46, $3060
+else
+	dw sprite.unknown_46, $3050
+endif
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_success
 
 DATA_FFE3CD:
-	db $00, $83, $F0, $9F, $52, $00, $0C, $22
-	db $04, $00, $8C, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FF0
+	dw sprite.unknown_52, $220C
+	dw sprite.x_sub_position, $008C
+	dw !initcommand_success
 
 DATA_FFE3DB:
-	db $00, $83, $F0, $9F, $26, $00, $40, $01
-	db $00, $85, $00, $20, $52, $00, $0C, $22
-	db $04, $00, $8C, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9FF0
+	dw sprite.max_x_speed, $0140
+	dw !initcommand_set_oam, $2000
+	dw sprite.unknown_52, $220C
+	dw sprite.x_sub_position, $008C
+	dw !initcommand_success
 
 DATA_FFE3F1:
-	db $00, $83, $18, $66, $00, $81, $7D, $01
-	db $52, $00, $11, $00, $54, $00, $50, $04
-	db $22, $00, $AA, $6B, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF6618
+	dw !initcommand_set_animation, $017D
+	dw sprite.unknown_52, $0011
+	dw sprite.unknown_54, $0450
+	dw sprite.unknown_22, DATA_FF6BAA
+	dw !initcommand_success
 
 DATA_FFE407:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $40, $40, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $04, $11, $00
-	db $40, $00, $00, $00, $00, $03, $00, $D8
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $4040, $0003, $0040, $000C, $0200
+	dw $0080, $0420, $0011, $0040, $0000, $0300, $D800
+	dw !initcommand_success
 
 DATA_FFE429:
-	db $00, $83, $16, $DB, $00, $8A, $00, $00
-	db $20, $20, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $20, $00
-	db $20, $00, $00, $00, $00, $06, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFDB16
+	dw !initcommand_bulk_set
+	dw $0000, $2020, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0020, $0020, $0000, $0600, $0000
+	dw !initcommand_success
 
 DATA_FFE44B:
-	db $00, $83, $16, $DB, $00, $8A, $00, $00
-	db $60, $A0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $20, $00
-	db $20, $00, $00, $00, $00, $06, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFDB16
+	dw !initcommand_bulk_set
+	dw $0000, $A060, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0020, $0020, $0000, $0600, $0000
+	dw !initcommand_success
 
 DATA_FFE46D:
-	db $00, $83, $16, $DB, $00, $8A, $00, $00
-	db $20, $E0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $20, $00
-	db $01, $00, $00, $00, $00, $06, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFDB16
+	dw !initcommand_bulk_set
+	dw $0000, $E020, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0020, $0001, $0000, $0600, $0000
+	dw !initcommand_success
 
 DATA_FFE48F:
-	db $00, $83, $16, $DB, $00, $8A, $00, $00
-	db $E0, $A0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $20, $00
-	db $01, $00, $00, $00, $00, $06, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFDB16
+	dw !initcommand_bulk_set
+	dw $0000, $A0E0, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0020, $0001, $0000, $0600, $0000
+	dw !initcommand_success
 
 DATA_FFE4B1:
-	db $00, $83, $16, $DB, $00, $8A, $00, $00
-	db $20, $60, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $20, $00
-	db $20, $00, $00, $00, $00, $06, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFDB16
+	dw !initcommand_bulk_set
+	dw $0000, $6020, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0020, $0020, $0000, $0600, $0000
+	dw !initcommand_success
 
 DATA_FFE4D3:
-	db $00, $83, $16, $DB, $00, $8A, $00, $00
-	db $A0, $E0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $20, $00
-	db $01, $00, $00, $00, $00, $06, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFDB16
+	dw !initcommand_bulk_set
+	dw $0000, $E0A0, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0020, $0001, $0000, $0600, $0000
+	dw !initcommand_success
 
 DATA_FFE4F5:
-	db $00, $83, $0E, $36, $00, $8A, $00, $08
-	db $21, $A0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $20, $00
-	db $20, $00, $00, $00, $00, $06, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0800, $A021, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0020, $0020, $0000, $0600, $0000
+	dw !initcommand_success
 
 DATA_FFE517:
-	db $00, $83, $16, $DB, $00, $8A, $00, $00
-	db $1F, $A1, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $20, $00
-	db $20, $00, $00, $00, $00, $06, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFDB16
+	dw !initcommand_bulk_set
+	dw $0000, $A11F, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0020, $0020, $0000, $0600, $0000
+	dw !initcommand_success
 
 DATA_FFE539:
-	db $00, $83, $16, $DB, $00, $8A, $00, $00
-	db $61, $DF, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $20, $00
-	db $20, $00, $00, $00, $00, $06, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFDB16
+	dw !initcommand_bulk_set
+	dw $0000, $DF61, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0020, $0020, $0000, $0600, $0000
+	dw !initcommand_success
 
 DATA_FFE55B:
-	db $00, $83, $16, $DB, $00, $8A, $00, $00
-	db $A1, $1F, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $20, $00
-	db $20, $00, $00, $00, $00, $06, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFDB16
+	dw !initcommand_bulk_set
+	dw $0000, $1FA1, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0020, $0020, $0000, $0600, $0000
+	dw !initcommand_success
 
 DATA_FFE57D:
-	db $00, $83, $16, $DB, $00, $8A, $00, $00
-	db $DF, $61, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $20, $00
-	db $20, $00, $00, $00, $00, $06, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFDB16
+	dw !initcommand_bulk_set
+	dw $0000, $61DF, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0020, $0020, $0000, $0600, $0000
+	dw !initcommand_success
 
 DATA_FFE59F:
-	db $00, $83, $16, $DB, $00, $8A, $00, $00
-	db $21, $9F, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $20, $00
-	db $20, $00, $00, $00, $00, $06, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFDB16
+	dw !initcommand_bulk_set
+	dw $0000, $9F21, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0020, $0020, $0000, $0600, $0000
+	dw !initcommand_success
 
 DATA_FFE5C1:
-	db $00, $83, $16, $DB, $00, $8A, $00, $00
-	db $9F, $21, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $20, $00
-	db $20, $00, $00, $00, $00, $06, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFDB16
+	dw !initcommand_bulk_set
+	dw $0000, $219F, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0020, $0020, $0000, $0600, $0000
+	dw !initcommand_success
 
 DATA_FFE5E3:
-	db $00, $83, $16, $DB, $00, $8A, $00, $00
-	db $5F, $E1, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $20, $00
-	db $20, $00, $00, $00, $00, $06, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFDB16
+	dw !initcommand_bulk_set
+	dw $0000, $E15F, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0020, $0020, $0000, $0600, $0000
+	dw !initcommand_success
 
 DATA_FFE605:
-	db $00, $83, $16, $DB, $00, $8A, $00, $00
-	db $E1, $5F, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $20, $00
-	db $20, $00, $00, $00, $00, $06, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFDB16
+	dw !initcommand_bulk_set
+	dw $0000, $5FE1, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0020, $0020, $0000, $0600, $0000
+	dw !initcommand_success
 
 DATA_FFE627:
-	db $00, $83, $16, $DB, $00, $8A, $00, $00
-	db $E0, $20, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $20, $00
-	db $20, $00, $00, $00, $00, $06, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFDB16
+	dw !initcommand_bulk_set
+	dw $0000, $20E0, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0020, $0020, $0000, $0600, $0000
+	dw !initcommand_success
 
 DATA_FFE649:
-	db $00, $83, $0E, $36, $00, $8A, $00, $08
-	db $E0, $20, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $20, $00
-	db $01, $00, $00, $00, $00, $03, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0800, $20E0, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0020, $0001, $0000, $0300, $0000
+	dw !initcommand_success
 
 DATA_FFE66B:
-	db $00, $83, $16, $DB, $00, $8A, $00, $00
-	db $A0, $60, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $20, $00
-	db $01, $00, $00, $00, $00, $06, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFDB16
+	dw !initcommand_bulk_set
+	dw $0000, $60A0, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0020, $0001, $0000, $0600, $0000
+	dw !initcommand_success
 
 DATA_FFE68D:
-	db $00, $83, $0E, $36, $00, $8A, $04, $08
-	db $60, $A0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $20, $00
-	db $30, $00, $00, $00, $00, $03, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0804, $A060, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0020, $0030, $0000, $0300, $0000
+	dw !initcommand_success
 
 DATA_FFE6AF:
-	db $00, $83, $0E, $36, $00, $8A, $04, $08
-	db $20, $60, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $20, $00
-	db $30, $00, $00, $00, $00, $03, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0804, $6020, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0020, $0030, $0000, $0300, $0000
+	dw !initcommand_success
 
 DATA_FFE6D1:
-	db $00, $83, $16, $DB, $00, $8A, $00, $00
-	db $E0, $E0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $20, $00
-	db $20, $00, $00, $00, $00, $06, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFDB16
+	dw !initcommand_bulk_set
+	dw $0000, $E0E0, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0020, $0020, $0000, $0600, $0000
+	dw !initcommand_success
 
 DATA_FFE6F3:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $10, $00
-	db $01, $00, $00, $00, $00, $03, $EC, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0010, $0001, $0000, $0300, $1EEC
+	dw !initcommand_success
 
 DATA_FFE715:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $60, $60, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $08, $00
-	db $01, $00, $00, $00, $00, $03, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $6060, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0008, $0001, $0000, $0300, $0000
+	dw !initcommand_success
 
 DATA_FFE737:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $20, $20, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $08, $00
-	db $01, $00, $00, $00, $00, $03, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $2020, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0008, $0001, $0000, $0300, $0000
+	dw !initcommand_success
 
 DATA_FFE759:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $E0, $E0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $08, $00
-	db $01, $00, $00, $00, $00, $03, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $E0E0, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0008, $0001, $0000, $0300, $0000
+	dw !initcommand_success
 
 DATA_FFE77B:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $A0, $A0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $28, $00
-	db $01, $00, $00, $00, $00, $03, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $A0A0, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0028, $0001, $0000, $0300, $0000
+	dw !initcommand_success
 
 DATA_FFE79D:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $40, $40, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $28, $00
-	db $01, $00, $00, $00, $00, $03, $00, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $4040, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0028, $0001, $0000, $0300, $1E00
+	dw !initcommand_success
 
 DATA_FFE7BF:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $00, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $08, $00
-	db $01, $00, $00, $00, $00, $03, $23, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0008, $0001, $0000, $0300, $0023
+	dw !initcommand_success
 
 DATA_FFE7E1:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $20, $E0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $08, $00
-	db $01, $00, $00, $00, $00, $03, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $E020, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0008, $0001, $0000, $0300, $0000
+	dw !initcommand_success
 
 DATA_FFE803:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $60, $60, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $14, $00
-	db $20, $00, $00, $00, $00, $03, $00, $27
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $6060, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $0014, $0020, $0000, $0300, $2700
+	dw !initcommand_success
 
 DATA_FFE825:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $60, $A0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $03, $00
-	db $10, $00, $00, $00, $00, $03, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $A060, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0003, $0010, $0000, $0300, $0000
+	dw !initcommand_success
 
 DATA_FFE847:
-	db $00, $83, $0E, $36, $00, $8A, $04, $08
-	db $20, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $08, $00
-	db $01, $00, $00, $00, $00, $03, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0804, $0020, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0008, $0001, $0000, $0300, $0000
+	dw !initcommand_success
 
 DATA_FFE869:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $A0, $60, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $03, $00
-	db $50, $02, $00, $00, $00, $03, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $60A0, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0003, $0250, $0000, $0300, $0000
+	dw !initcommand_success
 
 DATA_FFE88B:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $E0, $E0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $08, $00
-	db $01, $00, $00, $00, $00, $03, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $E0E0, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0008, $0001, $0000, $0300, $0000
+	dw !initcommand_success
 
 DATA_FFE8AD:
-	db $00, $83, $0E, $36, $00, $8A, $04, $08
-	db $80, $C0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $20, $00
-	db $01, $00, $00, $00, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0804, $C080, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0020, $0001, $0000, $0400, $0000
+	dw !initcommand_success
 
 DATA_FFE8CF:
-	db $00, $83, $0E, $36, $00, $8A, $04, $08
-	db $00, $40, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $10, $00
-	db $24, $00, $00, $00, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0804, $4000, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0010, $0024, $0000, $0400, $0000
+	dw !initcommand_success
 
 DATA_FFE8F1:
-	db $00, $83, $0E, $36, $00, $8A, $0C, $00
-	db $00, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $14, $00
-	db $14, $00, $03, $02, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $000C, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0014, $0014, $0203, $0400, $0000
+	dw !initcommand_success
 
 DATA_FFE913:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $80, $90, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1D, $00, $1F, $00
-	db $50, $00, $03, $02, $00, $04, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $9080, $0003, $0040, $000C, $0200
+	dw $0080, $001D, $001F, $0050, $0203, $0400, $00E2
+	dw !initcommand_success
 
 DATA_FFE935:
-	db $00, $83, $16, $DB, $00, $8A, $00, $00
-	db $5F, $E1, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $20, $00
-	db $01, $00, $00, $00, $00, $06, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFDB16
+	dw !initcommand_bulk_set
+	dw $0000, $E15F, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0020, $0001, $0000, $0600, $0000
+	dw !initcommand_success
 
 DATA_FFE957:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $60, $A0, $03, $00, $40, $00, $0C, $00
-	db $90, $01, $80, $00, $1C, $00, $14, $00
-	db $48, $00, $00, $00, $00, $08, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $A060, $0003, $0040, $000C, $0190
+	dw $0080, $001C, $0014, $0048, $0000, $0800, $00E2
+	dw !initcommand_success
 
 DATA_FFE979:
-	db $00, $83, $16, $DB, $00, $8A, $00, $00
-	db $E0, $A0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $20, $00
-	db $01, $00, $00, $00, $00, $06, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFDB16
+	dw !initcommand_bulk_set
+	dw $0000, $A0E0, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0020, $0001, $0000, $0600, $00E2
+	dw !initcommand_success
 
 DATA_FFE99B:
-	db $00, $83, $16, $DB, $00, $8A, $00, $00
-	db $A0, $E0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $20, $00
-	db $01, $00, $00, $00, $00, $06, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFDB16
+	dw !initcommand_bulk_set
+	dw $0000, $E0A0, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0020, $0001, $0000, $0600, $00E2
+	dw !initcommand_success
 
 DATA_FFE9BD:
-	db $00, $83, $16, $DB, $00, $8A, $00, $00
-	db $20, $60, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $20, $00
-	db $01, $00, $00, $00, $00, $06, $1E, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFDB16
+	dw !initcommand_bulk_set
+	dw $0000, $6020, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0020, $0001, $0000, $0600, $001E
+	dw !initcommand_success
 
 DATA_FFE9DF:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $A0, $A0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $28, $00
-	db $01, $00, $00, $00, $00, $03, $28, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $A0A0, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0028, $0001, $0000, $0300, $0028
+	dw !initcommand_success
 
 DATA_FFEA01:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $E0, $E0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $08, $00
-	db $01, $00, $00, $00, $00, $03, $28, $E2
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $E0E0, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0008, $0001, $0000, $0300, $E228
+	dw !initcommand_success
 
 DATA_FFEA23:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $10, $00
-	db $01, $00, $00, $00, $00, $03, $E2, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0010, $0001, $0000, $0300, $28E2
+	dw !initcommand_success
 
 DATA_FFEA45:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $A0, $A0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $28, $00
-	db $01, $00, $00, $00, $00, $03, $E2, $D8
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $A0A0, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0028, $0001, $0000, $0300, $D8E2
+	dw !initcommand_success
 
 DATA_FFEA67:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $60, $A0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $03, $00
-	db $10, $00, $00, $00, $00, $03, $D3, $EC
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $A060, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0003, $0010, $0000, $0300, $ECD3
+	dw !initcommand_success
 
 DATA_FFEA89:
-	db $00, $83, $16, $DB, $00, $8A, $00, $00
-	db $E1, $5F, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $20, $00
-	db $20, $00, $00, $00, $00, $06, $00, $14
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFDB16
+	dw !initcommand_bulk_set
+	dw $0000, $5FE1, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0020, $0020, $0000, $0600, $1400
+	dw !initcommand_success
 
 DATA_FFEAAB:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $A0, $60, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $03, $00
-	db $50, $02, $00, $00, $00, $03, $2D, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $60A0, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0003, $0250, $0000, $0300, $002D
+	dw !initcommand_success
 
 DATA_FFEACD:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $20, $20, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $08, $00
-	db $01, $00, $00, $00, $00, $03, $D8, $14
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $2020, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0008, $0001, $0000, $0300, $14D8
+	dw !initcommand_success
 
 DATA_FFEAEF:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $20, $20, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $08, $00
-	db $01, $00, $00, $00, $00, $03, $D8, $EC
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $2020, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0008, $0001, $0000, $0300, $ECD8
+	dw !initcommand_success
 
 DATA_FFEB11:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $60, $A0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $03, $00
-	db $10, $00, $00, $00, $00, $03, $D8, $14
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $A060, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0003, $0010, $0000, $0300, $14D8
+	dw !initcommand_success
 
 DATA_FFEB33:
-	db $00, $83, $16, $DB, $00, $8A, $00, $00
-	db $A0, $60, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $20, $00
-	db $01, $00, $00, $00, $00, $06, $00, $14
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFDB16
+	dw !initcommand_bulk_set
+	dw $0000, $60A0, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0020, $0001, $0000, $0600, $1400
+	dw !initcommand_success
 
 DATA_FFEB55:
-	db $00, $83, $16, $DB, $00, $8A, $00, $00
-	db $20, $20, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $20, $00
-	db $20, $00, $00, $00, $00, $06, $00, $14
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFDB16
+	dw !initcommand_bulk_set
+	dw $0000, $2020, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0020, $0020, $0000, $0600, $1400
+	dw !initcommand_success
 
 DATA_FFEB77:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $40, $40, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $28, $00
-	db $01, $00, $00, $00, $00, $03, $D8, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $4040, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0028, $0001, $0000, $0300, $28D8
+	dw !initcommand_success
 
 DATA_FFEB99:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $A0, $A0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $28, $00
-	db $01, $00, $00, $00, $00, $03, $28, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $A0A0, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0028, $0001, $0000, $0300, $1E28
+	dw !initcommand_success
 
 DATA_FFEBBB:
-	db $00, $83, $16, $DB, $00, $8A, $00, $00
-	db $A0, $E0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $20, $00
-	db $01, $00, $00, $00, $00, $06, $EC, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFDB16
+	dw !initcommand_bulk_set
+	dw $0000, $E0A0, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0020, $0001, $0000, $0600, $00EC
+	dw !initcommand_success
 
 DATA_FFEBDD:
-	db $00, $83, $16, $DB, $00, $8A, $00, $00
-	db $60, $20, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $20, $00
-	db $01, $00, $00, $00, $00, $06, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFDB16
+	dw !initcommand_bulk_set
+	dw $0000, $2060, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0020, $0001, $0000, $0600, $0000
+	dw !initcommand_success
 
 DATA_FFEBFF:
-	db $00, $83, $0E, $36, $00, $8A, $04, $08
-	db $21, $9F, $03, $00, $40, $00, $0C, $00
-	db $00, $01, $40, $00, $18, $00, $08, $00
-	db $01, $00, $00, $00, $00, $05, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0804, $9F21, $0003, $0040, $000C, $0100
+	dw $0040, $0018, $0008, $0001, $0000, $0500, $0000
+	dw !initcommand_success
 
 DATA_FFEC21:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $C0, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $01, $80, $00, $1D, $00, $2D, $00
-	db $01, $00, $00, $00, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $80C0, $0003, $0040, $000C, $0100
+	dw $0080, $001D, $002D, $0001, $0000, $0400, $0000
+	dw !initcommand_success
 
 DATA_FFEC43:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $20, $40, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $03, $20, $00
-	db $40, $00, $00, $00, $00, $03, $1E, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $4020, $0003, $0040, $000C, $0200
+	dw $0080, $0320, $0020, $0040, $0000, $0300, $001E
+	dw !initcommand_success
 
 DATA_FFEC65:
-	db $00, $83, $0E, $36, $00, $8A, $04, $08
-	db $80, $C0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $50, $00
-	db $50, $00, $00, $00, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0804, $C080, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0050, $0050, $0000, $0400, $0000
+	dw !initcommand_success
 
 DATA_FFEC87:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $3F, $C1, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $50, $00
-	db $50, $00, $00, $00, $00, $08, $D3, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $C13F, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0050, $0050, $0000, $0800, $00D3
+	dw !initcommand_success
 
 DATA_FFECA9:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $3F, $C1, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $50, $00
-	db $50, $00, $00, $00, $00, $0A, $D3, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $C13F, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0050, $0050, $0000, $0A00, $00D3
+	dw !initcommand_success
 
 DATA_FFECCB:
-	db $00, $83, $0E, $36, $00, $8A, $00, $08
-	db $40, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $20, $00, $04, $00
-	db $04, $00, $00, $00, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0800, $8040, $0003, $0040, $000C, $0200
+	dw $0080, $0020, $0004, $0004, $0000, $0400, $0000
+	dw !initcommand_success
 
 DATA_FFECED:
-	db $00, $83, $0E, $36, $00, $8A, $00, $08
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $10, $00
-	db $05, $00, $00, $00, $00, $04, $D8, $14
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0800, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $0010, $0005, $0000, $0400, $14D8
+	dw !initcommand_success
 
 DATA_FFED0F:
-	db $00, $83, $0E, $36, $00, $8A, $00, $08
-	db $00, $C0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $16, $00, $01, $00
-	db $20, $00, $00, $00, $00, $05, $00, $D8
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0800, $C000, $0003, $0040, $000C, $0200
+	dw $0080, $0016, $0001, $0020, $0000, $0500, $D800
+	dw !initcommand_success
 
 DATA_FFED31:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $A0, $A0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $06, $00
-	db $30, $00, $00, $00, $00, $08, $D8, $E2
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $A0A0, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $0006, $0030, $0000, $0800, $E2D8
+	dw !initcommand_success
 
 DATA_FFED53:
-	db $00, $83, $0E, $36, $00, $8A, $0C, $00
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $10, $00, $14, $00
-	db $0C, $00, $00, $00, $00, $04, $D8, $14
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $000C, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $0010, $0014, $000C, $0000, $0400, $14D8
+	dw !initcommand_success
 
 DATA_FFED75:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $A0, $A0, $03, $00, $40, $00, $0C, $00
-	db $90, $01, $80, $00, $1C, $00, $14, $00
-	db $48, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $A0A0, $0003, $0040, $000C, $0190
+	dw $0080, $001C, $0014, $0048, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FFED97:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $E0, $E0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $1A, $00
-	db $48, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $E0E0, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $001A, $0048, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FFEDB9:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $20, $20, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $1A, $00
-	db $48, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $2020, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $001A, $0048, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FFEDDB:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $60, $60, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $1A, $00
-	db $48, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $6060, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $001A, $0048, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FFEDFD:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $C0, $C0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $10, $00
-	db $48, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $C0C0, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $0010, $0048, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FFEE1F:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $40, $00
-	db $48, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $0040, $0048, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FFEE41:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $A0, $A0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $60, $00
-	db $48, $00, $00, $00, $00, $08, $EC, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $A0A0, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $0060, $0048, $0000, $0800, $00EC
+	dw !initcommand_success
 
 DATA_FFEE63:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $20, $00
-	db $18, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $0020, $0018, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FFEE85:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $A0, $A0, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $0D, $00
-	db $18, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $A0A0, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $000D, $0018, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FFEEA7:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $1F, $00
-	db $60, $00, $00, $00, $00, $08, $E2, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $001F, $0060, $0000, $0800, $28E2
+	dw !initcommand_success
 
 DATA_FFEEC9:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $01, $60, $00, $16, $00, $20, $00
-	db $28, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0100
+	dw $0060, $0016, $0020, $0028, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FFEEEB:
-	db $00, $83, $0E, $36, $00, $8A, $04, $00
-	db $60, $B0, $03, $00, $40, $00, $0C, $00
-	db $90, $01, $80, $00, $1C, $00, $18, $00
-	db $48, $00, $00, $00, $00, $08, $E7, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0004, $B060, $0003, $0040, $000C, $0190
+	dw $0080, $001C, $0018, $0048, $0000, $0800, $00E7
+	dw !initcommand_success
 
 DATA_FFEF0D:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $0C, $00
-	db $0C, $00, $00, $00, $00, $08, $0A, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $000C, $000C, $0000, $0800, $280A
+	dw !initcommand_success
 
 DATA_FFEF2F:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $06, $00
-	db $0C, $00, $00, $00, $00, $08, $0A, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $0006, $000C, $0000, $0800, $280A
+	dw !initcommand_success
 
 DATA_FFEF51:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $12, $00
-	db $0C, $00, $00, $00, $00, $08, $0A, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $0012, $000C, $0000, $0800, $280A
+	dw !initcommand_success
 
 DATA_FFEF73:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $1E, $00
-	db $18, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $001E, $0018, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FFEF95:
-	db $00, $83, $0E, $36, $00, $8A, $04, $40
-	db $80, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1C, $00, $16, $00
-	db $18, $00, $00, $00, $00, $08, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4004, $8080, $0003, $0040, $000C, $0200
+	dw $0080, $001C, $0016, $0018, $0000, $0800, $0000
+	dw !initcommand_success
 
 DATA_FFEFB7:
-	db $00, $83, $0E, $36, $00, $8A, $E4, $42
-	db $80, $80, $00, $01, $80, $01, $0C, $00
-	db $40, $01, $80, $00, $1A, $00, $10, $00
-	db $01, $00, $00, $00, $00, $03, $00, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $42E4, $8080, $0100, $0180, $000C, $0140
+	dw $0080, $001A, $0010, $0001, $0000, $0300, $1E00
+	dw !initcommand_success
 
 DATA_FFEFD9:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $00, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $0D, $00
-	db $00, $00, $02, $01, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $000D, $0000, $0102, $0400, $0000
+	dw !initcommand_success
 
 DATA_FFEFFB:
-	db $00, $83, $0E, $36, $00, $8A, $04, $20
-	db $40, $80, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1F, $00, $0D, $00
-	db $00, $00, $02, $01, $00, $04, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $2004, $8040, $0003, $0040, $000C, $0200
+	dw $0080, $001F, $000D, $0000, $0102, $0400, $0000
+	dw !initcommand_success
 
 DATA_FFF01D:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $80, $80, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $18, $02, $0C, $00
-	db $18, $00, $00, $00, $00, $01, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $8080, $0003, $0400, $000C, $0100
+	dw $0080, $0218, $000C, $0018, $0000, $0100, $00E2
+	dw !initcommand_success
 
 DATA_FFF03F:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $00, $00, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $18, $02, $0C, $00
-	db $18, $00, $00, $00, $00, $01, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $0000, $0003, $0400, $000C, $0100
+	dw $0080, $0218, $000C, $0018, $0000, $0100, $00E2
+	dw !initcommand_success
 
 DATA_FFF061:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $60, $60, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $18, $02, $0C, $00
-	db $18, $00, $00, $00, $00, $01, $E2, $14
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $6060, $0003, $0400, $000C, $0100
+	dw $0080, $0218, $000C, $0018, $0000, $0100, $14E2
+	dw !initcommand_success
 
 DATA_FFF083:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $20, $20, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $18, $02, $0C, $00
-	db $18, $00, $00, $00, $00, $01, $E2, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $2020, $0003, $0400, $000C, $0100
+	dw $0080, $0218, $000C, $0018, $0000, $0100, $1EE2
+	dw !initcommand_success
 
 DATA_FFF0A5:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $40, $40, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $18, $02, $0C, $00
-	db $18, $00, $00, $00, $00, $01, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $4040, $0003, $0400, $000C, $0100
+	dw $0080, $0218, $000C, $0018, $0000, $0100, $00E2
+	dw !initcommand_success
 
 DATA_FFF0C7:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $40, $40, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $18, $02, $0C, $00
-	db $18, $00, $00, $00, $00, $01, $E2, $E2
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $4040, $0003, $0400, $000C, $0100
+	dw $0080, $0218, $000C, $0018, $0000, $0100, $E2E2
+	dw !initcommand_success
 
 DATA_FFF0E9:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $60, $60, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $18, $02, $0C, $00
-	db $18, $00, $00, $00, $00, $01, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $6060, $0003, $0400, $000C, $0100
+	dw $0080, $0218, $000C, $0018, $0000, $0100, $00E2
+	dw !initcommand_success
 
 DATA_FFF10B:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $E0, $E0, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $1F, $01, $0C, $00
-	db $00, $00, $00, $00, $00, $03, $E2, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $E0E0, $0003, $0400, $000C, $0100
+	dw $0080, $011F, $000C, $0000, $0000, $0300, $1EE2
+	dw !initcommand_success
 
 DATA_FFF12D:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $00, $00, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $1F, $01, $0C, $00
-	db $00, $00, $00, $00, $00, $03, $28, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $0000, $0003, $0400, $000C, $0100
+	dw $0080, $011F, $000C, $0000, $0000, $0300, $1E28
+	dw !initcommand_success
 
 DATA_FFF14F:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $E0, $E0, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $1F, $01, $0C, $00
-	db $00, $00, $00, $00, $00, $03, $1E, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $E0E0, $0003, $0400, $000C, $0100
+	dw $0080, $011F, $000C, $0000, $0000, $0300, $1E1E
+	dw !initcommand_success
 
 DATA_FFF171:
-	db $00, $83, $0E, $36, $00, $8A, $C0, $10
-	db $20, $20, $60, $00, $C0, $00, $0C, $00
-	db $C0, $01, $80, $00, $1A, $03, $12, $00
-	db $10, $00, $00, $00, $00, $01, $00, $23
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $10C0, $2020, $0060, $00C0, $000C, $01C0
+	dw $0080, $031A, $0012, $0010, $0000, $0100, $2300
+	dw !initcommand_success
 
 DATA_FFF193:
-	db $00, $83, $0E, $36, $00, $8A, $C0, $12
-	db $20, $20, $00, $00, $C0, $00, $0C, $00
-	db $C0, $01, $80, $00, $1A, $03, $12, $00
-	db $10, $00, $00, $00, $00, $01, $00, $23
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $12C0, $2020, $0000, $00C0, $000C, $01C0
+	dw $0080, $031A, $0012, $0010, $0000, $0100, $2300
+	dw !initcommand_success
 
 DATA_FFF1B5:
-	db $00, $83, $0E, $36, $00, $8A, $C0, $10
-	db $E0, $E0, $00, $00, $C0, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $03, $12, $00
-	db $10, $00, $00, $00, $00, $01, $00, $23
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $10C0, $E0E0, $0000, $00C0, $000C, $0200
+	dw $0080, $031A, $0012, $0010, $0000, $0100, $2300
+	dw !initcommand_success
 
 DATA_FFF1D7:
-	db $00, $83, $0E, $36, $00, $8A, $C0, $50
-	db $E0, $E0, $00, $00, $C0, $00, $0C, $00
-	db $C0, $01, $80, $00, $1A, $03, $18, $00
-	db $18, $00, $00, $00, $00, $01, $00, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $50C0, $E0E0, $0000, $00C0, $000C, $01C0
+	dw $0080, $031A, $0018, $0018, $0000, $0100, $2800
+	dw !initcommand_success
 
 DATA_FFF1F9:
-	db $00, $83, $0E, $36, $00, $8A, $00, $10
-	db $E0, $E0, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $18, $01, $13, $00
-	db $18, $00, $00, $00, $00, $01, $E2, $14
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $1000, $E0E0, $0003, $0400, $000C, $0100
+	dw $0080, $0118, $0013, $0018, $0000, $0100, $14E2
+	dw !initcommand_success
 
 DATA_FFF21B:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $00, $00, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $1A, $01, $01, $00
-	db $18, $00, $00, $00, $00, $03, $E2, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $0000, $0003, $0400, $000C, $0100
+	dw $0080, $011A, $0001, $0018, $0000, $0300, $00E2
+	dw !initcommand_success
 
 DATA_FFF23D:
-	db $00, $83, $0E, $36, $00, $8A, $00, $00
-	db $20, $20, $03, $00, $00, $04, $0C, $00
-	db $00, $01, $80, $00, $1F, $01, $0C, $00
-	db $00, $00, $00, $00, $00, $03, $E2, $1E
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $0000, $2020, $0003, $0400, $000C, $0100
+	dw $0080, $011F, $000C, $0000, $0000, $0300, $1EE2
+	dw !initcommand_success
 
 DATA_FFF25F:
-	db $00, $83, $0E, $36, $00, $8A, $10, $48
-	db $00, $00, $03, $00, $40, $00, $0C, $00
-	db $00, $02, $80, $00, $1A, $00, $0C, $00
-	db $00, $00, $00, $00, $00, $08, $00, $28
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF360E
+	dw !initcommand_bulk_set
+	dw $4810, $0000, $0003, $0040, $000C, $0200
+	dw $0080, $001A, $000C, $0000, $0000, $0800, $2800
+	dw !initcommand_success
 
 DATA_FFF281:
-	db $00, $83, $34, $90, $46, $00, $F0, $00
-	db $26, $00, $80, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $00F0
+	dw sprite.max_x_speed, $0180
+	dw !initcommand_success
 
 DATA_FFF28F:
-	db $00, $83, $34, $90, $46, $00, $60, $30
-	db $26, $00, $C0, $FE, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $3060
+	dw sprite.max_x_speed, $FEC0
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFF2A1:
-	db $00, $83, $34, $90, $46, $00, $90, $00
-	db $26, $00, $40, $01, $00, $80, $00, $83
-	db $18, $BB, $24, $00, $00, $00, $26, $00
-	db $00, $00, $20, $00, $00, $00, $52, $00
-	db $20, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF9034
+	dw sprite.unknown_46, $0090
+	dw sprite.max_x_speed, $0140
+	dw !initcommand_success
+
+DATA_FFF2AF:
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.y_speed, $0000
+	dw sprite.max_x_speed, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.unknown_52, $0020
+	dw !initcommand_success
 
 DATA_FFF2C5:
-	db $00, $83, $AF, $F2, $4C, $00, $D0, $D0
-	db $4E, $00, $3B, $2B, $22, $00, $00, $04
-	db $28, $00, $66, $00, $1C, $00, $20, $00
-	db $4A, $00, $1E, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFF2AF
+	dw sprite.unknown_4C, $D0D0
+	dw sprite.unknown_4E, $2B3B
+	dw sprite.unknown_22, $0400
+	dw sprite.unknown_28, $0066
+	dw sprite.unknown_1C, $0020
+	dw sprite.unknown_4A, $001E
+	dw !initcommand_success
 
 DATA_FFF2E3:
-	db $00, $83, $E3, $F3, $4C, $00, $00, $09
-	db $22, $00, $00, $06, $28, $00, $58, $00
-	db $1C, $00, $60, $00, $4A, $00, $50, $00
-	db $4E, $00, $C8, $80, $00, $85, $00, $60
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFF3E3
+	dw sprite.unknown_4C, $0900
+	dw sprite.unknown_22, $0600
+	dw sprite.unknown_28, $0058
+	dw sprite.unknown_1C, $0060
+if !version == 0
+	dw sprite.unknown_4A, $0046
+	dw sprite.unknown_4E, $80D2
+else
+	dw sprite.unknown_4A, $0050
+	dw sprite.unknown_4E, $80C8
+endif
+	dw !initcommand_set_oam, $6000
+	dw !initcommand_success
 
 DATA_FFF305:
-	db $00, $83, $18, $BB, $4C, $00, $D0, $D0
-	db $4E, $00, $50, $2B, $22, $00, $00, $02
-	db $28, $00, $00, $01, $1C, $00, $20, $00
-	db $4A, $00, $64, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $D0D0
+	dw sprite.unknown_4E, $2B50
+	dw sprite.unknown_22, $0200
+	dw sprite.unknown_28, $0100
+	dw sprite.unknown_1C, $0020
+	dw sprite.unknown_4A, $0064
+	dw !initcommand_success
 
 DATA_FFF323:
-	db $00, $83, $18, $BB, $4C, $00, $D0, $FF
-	db $4E, $00, $80, $2B, $22, $00, $80, $03
-	db $28, $00, $68, $00, $1C, $00, $20, $00
-	db $4A, $00, $3C, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $FFD0
+	dw sprite.unknown_4E, $2B80
+	dw sprite.unknown_22, $0380
+	dw sprite.unknown_28, $0068
+	dw sprite.unknown_1C, $0020
+	dw sprite.unknown_4A, $003C
+	dw !initcommand_success
 
 DATA_FFF341:
-	db $00, $83, $18, $BB, $4C, $00, $D0, $FF
-	db $4E, $00, $A0, $2B, $22, $00, $00, $02
-	db $28, $00, $D0, $00, $1C, $00, $20, $00
-	db $4A, $00, $64, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $FFD0
+	dw sprite.unknown_4E, $2BA0
+	dw sprite.unknown_22, $0200
+	dw sprite.unknown_28, $00D0
+	dw sprite.unknown_1C, $0020
+	dw sprite.unknown_4A, $0064
+	dw !initcommand_success
 
 DATA_FFF35F:
-	db $00, $83, $E3, $F3, $4C, $00, $00, $09
-	db $22, $00, $00, $06, $28, $00, $58, $00
-	db $1C, $00, $60, $00, $4A, $00, $50, $00
-	db $4E, $00, $2C, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFF3E3
+	dw sprite.unknown_4C, $0900
+	dw sprite.unknown_22, $0600
+	dw sprite.unknown_28, $0058
+	dw sprite.unknown_1C, $0060
+if !version == 0
+	dw sprite.unknown_4A, $0046
+else
+	dw sprite.unknown_4A, $0050
+endif
+	dw sprite.unknown_4E, $012C
+	dw !initcommand_success
 
 DATA_FFF37D:
-	db $00, $83, $18, $BB, $4C, $00, $00, $A8
-	db $4E, $00, $80, $80, $22, $00, $00, $08
-	db $28, $00, $30, $00, $1C, $00, $58, $00
-	db $4A, $00, $14, $00, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $A800
+	dw sprite.unknown_4E, $8080
+	dw sprite.unknown_22, $0800
+	dw sprite.unknown_28, $0030
+	dw sprite.unknown_1C, $0058
+	dw sprite.unknown_4A, $0014
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFF39F:
-	db $00, $83, $18, $BB, $4C, $00, $D0, $FF
-	db $4E, $00, $A0, $2B, $22, $00, $00, $02
-	db $28, $00, $D0, $00, $1C, $00, $20, $00
-	db $4A, $00, $64, $00, $00, $85, $00, $20
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $FFD0
+	dw sprite.unknown_4E, $2BA0
+	dw sprite.unknown_22, $0200
+	dw sprite.unknown_28, $00D0
+	dw sprite.unknown_1C, $0020
+	dw sprite.unknown_4A, $0064
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFF3C1:
-	db $00, $83, $AF, $F2, $4C, $00, $D0, $D0
-	db $4E, $00, $10, $60, $22, $00, $00, $06
-	db $28, $00, $70, $00, $1C, $00, $40, $00
-	db $4A, $00, $C8, $00, $00, $85, $00, $20
-	db $00, $80, $00, $83, $AF, $F2, $2E, $00
-	db $05, $00, $22, $00, $00, $04, $28, $00
-	db $60, $00, $1C, $00, $20, $00, $4A, $00
-	db $1E, $00, $00, $85, $00, $20, $4C, $00
-	db $00, $19, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFF2AF
+	dw sprite.unknown_4C, $D0D0
+	dw sprite.unknown_4E, $6010
+	dw sprite.unknown_22, $0600
+	dw sprite.unknown_28, $0070
+	dw sprite.unknown_1C, $0040
+	dw sprite.unknown_4A, $00C8
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
+
+DATA_FFF3E3:
+	dw !initcommand_load_subconfig, DATA_FFF2AF
+	dw sprite.action, $0005
+	dw sprite.unknown_22, $0400
+	dw sprite.unknown_28, $0060
+	dw sprite.unknown_1C, $0020
+	dw sprite.unknown_4A, $001E
+	dw !initcommand_set_oam, $2000
+	dw sprite.unknown_4C, $1900
+	dw !initcommand_success
 
 DATA_FFF405:
-	db $00, $83, $E3, $F3, $28, $00, $70, $00
-	db $4E, $00, $A0, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFF3E3
+	dw sprite.unknown_28, $0070
+	dw sprite.unknown_4E, $00A0
+	dw !initcommand_success
 
 DATA_FFF413:
-	db $00, $83, $E3, $F3, $28, $00, $70, $00
-	db $4E, $00, $64, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFF3E3
+	dw sprite.unknown_28, $0070
+	dw sprite.unknown_4E, $0064
+	dw !initcommand_success
 
 DATA_FFF421:
-	db $00, $83, $E3, $F3, $28, $00, $70, $00
-	db $4E, $00, $28, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFF3E3
+	dw sprite.unknown_28, $0070
+	dw sprite.unknown_4E, $0028
+	dw !initcommand_success
 
 DATA_FFF42F:
-	db $00, $83, $54, $C1, $4E, $00, $01, $01
-	db $4C, $00, $01, $01, $26, $00, $01, $00
-	db $46, $00, $01, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC154
+	dw sprite.unknown_4E, $0101
+	dw sprite.unknown_4C, $0101
+	dw sprite.max_x_speed, $0001
+	dw sprite.unknown_46, $0101
+	dw !initcommand_success
 
 DATA_FFF445:
-	db $00, $83, $62, $C1, $00, $85, $00, $60
-	db $26, $00, $80, $FE, $46, $00, $50, $50
-	db $4C, $00, $80, $80, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFC162
+	dw !initcommand_set_oam, $6000
+	dw sprite.max_x_speed, $FE80
+	dw sprite.unknown_46, $5050
+	dw sprite.unknown_4C, $8080
+if !version == 0
+	dw sprite.unknown_4A, $0002
+endif
+	dw !initcommand_success
+
 
 DATA_FFF45B:
-	db $00, $83, $16, $32, $04, $00, $60, $F0
-	db $00, $85, $00, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3216
+	dw sprite.x_sub_position, $F060
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFF469:
-	db $00, $83, $16, $32, $04, $00, $24, $D0
-	db $00, $85, $00, $20, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3216
+	dw sprite.x_sub_position, $D024
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
 
 DATA_FFF477:
-	db $00, $83, $16, $32, $04, $00, $24, $D0
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FF3216
+	dw sprite.x_sub_position, $D024
+	dw !initcommand_success
 
 DATA_FFF481:
-	db $00, $83, $FA, $31, $54, $00, $6A, $02
-	db $04, $00, $E0, $E0, $00, $80
+	dw !initcommand_load_subconfig, DATA_FF31FA
+	dw sprite.unknown_54, $026A
+	dw sprite.x_sub_position, $E0E0
+if !version == 0
+	dw sprite.unknown_22, $003C
+endif
+	dw !initcommand_success
 
 DATA_FFF48F:
-	db $00, $83, $8A, $CB, $42, $00, $38, $38
-	db $44, $00, $18, $C0, $28, $00, $20, $00
-	db $46, $00, $00, $FD, $48, $00, $E0, $01
-	db $4A, $00, $64, $00, $4C, $00, $D0, $CC
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCB8A
+	dw sprite.unknown_42, $3838
+	dw sprite.unknown_44, $C018
+	dw sprite.unknown_28, $0020
+	dw sprite.unknown_46, $FD00
+	dw sprite.unknown_48, $01E0
+	dw sprite.unknown_4A, $0064
+	dw sprite.unknown_4C, DATA_FFCCD0
+	dw !initcommand_success
 
 DATA_FFF4B1:
-	db $00, $83, $8A, $CB, $42, $00, $40, $40
-	db $44, $00, $08, $60, $28, $00, $20, $00
-	db $46, $00, $00, $FD, $48, $00, $E0, $01
-	db $4A, $00, $78, $00, $4C, $00, $D0, $CC
-	db $00, $80, $00, $00, $58, $01, $02, $00
-	db $D0, $00, $54, $00, $6E, $04, $00, $85
-	db $00, $20, $00, $8D, $27, $00, $3E, $00
-	db $10, $00, $2C, $00, $00, $00, $50, $00
-	db $00, $00, $00, $80, $00, $83, $D3, $F4
-	db $46, $00, $03, $00, $22, $00, $00, $03
-	db $28, $00, $00, $05, $2C, $00, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFCB8A
+	dw sprite.unknown_42, $4040
+	dw sprite.unknown_44, $6008
+	dw sprite.unknown_28, $0020
+	dw sprite.unknown_46, $FD00
+	dw sprite.unknown_48, $01E0
+	dw sprite.unknown_4A, $0078
+	dw sprite.unknown_4C, DATA_FFCCD0
+	dw !initcommand_success
+
+DATA_FFF4D3:
+	dw sprite.number, $0158
+	dw sprite.render_order, $00D0
+	dw sprite.unknown_54, $046E
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0027
+	dw sprite.unknown_3E, $0010
+	dw sprite.x_force, $0000
+	dw sprite.parameter, $0000
+	dw !initcommand_success
+
+DATA_FFF4F5:
+	dw !initcommand_load_subconfig, DATA_FFF4D3
+	dw sprite.unknown_46, $0003
+	dw sprite.unknown_22, $0300
+	dw sprite.unknown_28, $0500
+	dw sprite.x_force, $0000
+	dw !initcommand_success
 
 DATA_FFF50B:
-	db $00, $83, $F5, $F4, $2E, $00, $00, $00
-	db $2A, $00, $C0, $03, $5C, $00, $F1, $F5
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFF4F5
+	dw sprite.action, $0000
+	dw sprite.unknown_2A, $03C0
+	dw sprite.unknown_5C, DATA_FFF5F1
+	dw !initcommand_success
 
 DATA_FFF51D:
-	db $00, $83, $F5, $F4, $2E, $00, $00, $01
-	db $42, $00, $01, $00, $2A, $00, $00, $03
-	db $5C, $00, $51, $F6, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFF4F5
+	dw sprite.action, $0100
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_2A, $0300
+	dw sprite.unknown_5C, DATA_FFF651
+	dw !initcommand_success
 
 DATA_FFF533:
-	db $00, $83, $F5, $F4, $2E, $00, $00, $01
-	db $42, $00, $02, $00, $2A, $00, $00, $03
-	db $2C, $00, $00, $F8, $4E, $00, $40, $50
-	db $5C, $00, $B3, $F6, $3E, $00, $00, $86
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFF4F5
+	dw sprite.action, $0100
+	dw sprite.unknown_42, $0002
+	dw sprite.unknown_2A, $0300
+	dw sprite.x_force, $F800
+	dw sprite.unknown_4E, $5040
+	dw sprite.unknown_5C, DATA_FFF6B3
+	dw sprite.unknown_3E, $8600
+	dw !initcommand_success
 
 DATA_FFF555:
-	db $00, $83, $F5, $F4, $2E, $00, $00, $01
-	db $42, $00, $03, $00, $2A, $00, $00, $03
-	db $5C, $00, $27, $F6, $3E, $00, $10, $05
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFF4F5
+	dw sprite.action, $0100
+	dw sprite.unknown_42, $0003
+	dw sprite.unknown_2A, $0300
+	dw sprite.unknown_5C, DATA_FFF627
+	dw sprite.unknown_3E, $0510
+	dw !initcommand_success
 
 DATA_FFF56F:
-	db $00, $83, $F5, $F4, $2E, $00, $00, $01
-	db $42, $00, $04, $00, $2A, $00, $80, $03
-	db $5C, $00, $87, $F6, $3E, $00, $10, $06
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFF4F5
+	dw sprite.action, $0100
+	dw sprite.unknown_42, $0004
+	dw sprite.unknown_2A, $0380
+	dw sprite.unknown_5C, DATA_FFF687
+	dw sprite.unknown_3E, $0610
+	dw !initcommand_success
 
 DATA_FFF589:
-	db $00, $83, $F5, $F4, $22, $00, $00, $FB
-	db $28, $00, $00, $05, $2A, $00, $20, $04
-	db $5C, $00, $B9, $F6, $3E, $00, $10, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFF4F5
+	dw sprite.unknown_22, $FB00
+	dw sprite.unknown_28, $0500
+	dw sprite.unknown_2A, $0420
+	dw sprite.unknown_5C, DATA_FFF6B9
+	dw sprite.unknown_3E, $0010
+	dw !initcommand_success
 
 DATA_FFF5A3:
-	db $00, $83, $F5, $F4, $2E, $00, $00, $00
-	db $2A, $00, $00, $08, $22, $00, $00, $07
-	db $28, $00, $00, $08, $5C, $00, $F1, $F5
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFF4F5
+	dw sprite.action, $0000
+	dw sprite.unknown_2A, $0800
+	dw sprite.unknown_22, $0700
+	dw sprite.unknown_28, $0800
+	dw sprite.unknown_5C, DATA_FFF5F1
+	dw !initcommand_success
 
 DATA_FFF5BD:
-	db $00, $83, $F5, $F4, $2E, $00, $00, $00
-	db $2A, $00, $00, $05, $22, $00, $00, $04
-	db $28, $00, $00, $05, $5C, $00, $F1, $F5
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFF4F5
+	dw sprite.action, $0000
+	dw sprite.unknown_2A, $0500
+	dw sprite.unknown_22, $0400
+	dw sprite.unknown_28, $0500
+	dw sprite.unknown_5C, DATA_FFF5F1
+	dw !initcommand_success
 
 DATA_FFF5D7:
-	db $00, $83, $F5, $F4, $2E, $00, $00, $00
-	db $2A, $00, $80, $04, $22, $00, $00, $04
-	db $28, $00, $00, $05, $5C, $00, $F1, $F5
-	db $00, $80, $A0, $07, $00, $00, $80, $00
-	db $20, $08, $00, $00, $80, $00, $E0, $0F
-	db $00, $00, $80, $00, $60, $10, $00, $00
-	db $80, $00, $F0, $12, $8D, $02, $00, $02
-	db $F8, $12, $0D, $02, $30, $00, $40, $13
-	db $0D, $02, $00, $05, $60, $13, $C1, $01
-	db $00, $03, $E0, $14, $89, $02, $00, $02
+	dw !initcommand_load_subconfig, DATA_FFF4F5
+	dw sprite.action, $0000
+	dw sprite.unknown_2A, $0480
+	dw sprite.unknown_22, $0400
+	dw sprite.unknown_28, $0500
+	dw sprite.unknown_5C, DATA_FFF5F1
+	dw !initcommand_success
+
+DATA_FFF5F1:
+	db $A0, $07, $00, $00, $80, $00, $20, $08
+	db $00, $00, $80, $00, $E0, $0F, $00, $00
+	db $80, $00, $60, $10, $00, $00, $80, $00
+	db $F0, $12, $8D, $02, $00, $02, $F8, $12
+	db $0D, $02, $30, $00, $40, $13, $0D, $02
+	db $00, $05, $60, $13, $C1, $01, $00, $03
+	db $E0, $14, $89, $02, $00, $02
+
+DATA_FFF627:
 	db $A0, $15, $0D, $02, $00, $05, $00, $17
 	db $00, $00, $80, $00, $80, $17, $00, $00
 	db $80, $00, $00, $19, $00, $00, $40, $00
 	db $A0, $19, $00, $00, $40, $00, $20, $27
 	db $00, $00, $80, $00, $A0, $27, $00, $00
-	db $80, $00, $80, $29, $00, $00, $40, $00
-	db $00, $2A, $00, $00, $40, $00, $00, $2B
-	db $00, $00, $80, $00, $80, $2B, $00, $00
-	db $80, $00, $40, $2C, $00, $00, $40, $00
-	db $C0, $2C, $00, $00, $40, $00, $C0, $39
-	db $00, $00, $80, $00, $40, $3A, $00, $00
-	db $80, $00, $C0, $3B, $55, $02, $00, $06
+	db $80, $00
+
+DATA_FFF651:
+	db $80, $29, $00, $00, $40, $00, $00, $2A
+	db $00, $00, $40, $00, $00, $2B, $00, $00
+	db $80, $00, $80, $2B, $00, $00, $80, $00
+	db $40, $2C, $00, $00, $40, $00, $C0, $2C
+	db $00, $00, $40, $00, $C0, $39, $00, $00
+	db $80, $00, $40, $3A, $00, $00, $80, $00
+	db $C0, $3B, $55, $02, $00, $06
+
+DATA_FFF687:
 	db $70, $3D, $6D, $02, $00, $06, $40, $40
 	db $00, $00, $80, $00, $C0, $40, $00, $00
 	db $80, $00, $60, $47, $00, $00, $40, $00
 	db $D0, $47, $00, $00, $40, $00, $00, $54
 	db $00, $00, $80, $00, $80, $54, $00, $00
-	db $80, $00, $FF, $FF, $20, $13, $0D, $02
-	db $00, $03, $FF, $FF, $00, $83, $D3, $F4
-	db $46, $00, $02, $00, $2A, $00, $00, $01
-	db $22, $00, $00, $FC, $28, $00, $00, $06
-	db $00, $80
+	db $80, $00, $FF, $FF
+
+DATA_FFF6B3:
+	db $20, $13, $0D, $02, $00, $03
+
+DATA_FFF6B9:
+	db $FF, $FF
+
+DATA_FFF6BB:
+	dw !initcommand_load_subconfig, DATA_FFF4D3
+	dw sprite.unknown_46, $0002
+	dw sprite.unknown_2A, $0100
+	dw sprite.unknown_22, $FC00
+	dw sprite.unknown_28, $0600
+	dw !initcommand_success
 
 DATA_FFF6D1:
-	db $00, $83, $BB, $F6, $2E, $00, $00, $00
-	db $5C, $00, $DF, $F6, $00, $80, $80, $04
-	db $00, $00, $00, $10, $00, $02, $F8, $0A
-	db $00, $00, $40, $00, $68, $0B, $00, $00
-	db $40, $00, $F8, $14, $00, $00, $40, $00
-	db $88, $15, $00, $00, $40, $00, $18, $3D
-	db $00, $00, $40, $00, $A8, $3D, $00, $00
-	db $40, $00, $FF, $FF, $00, $83, $D3, $F4
-	db $2E, $00, $00, $00, $46, $00, $01, $00
-	db $22, $00, $80, $02, $28, $00, $80, $04
-	db $3E, $00, $10, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFF6BB
+	dw sprite.action, $0000
+	dw sprite.unknown_5C, DATA_FFF6DF
+	dw !initcommand_success
+
+DATA_FFF6DF:
+	db $80, $04, $00, $00, $00, $10, $00, $02
+	db $F8, $0A, $00, $00, $40, $00, $68, $0B
+	db $00, $00, $40, $00, $F8, $14, $00, $00
+	db $40, $00, $88, $15, $00, $00, $40, $00
+	db $18, $3D, $00, $00, $40, $00, $A8, $3D
+	db $00, $00, $40, $00, $FF, $FF
+
+DATA_FFF70D:
+	dw !initcommand_load_subconfig, DATA_FFF4D3
+	dw sprite.action, $0000
+	dw sprite.unknown_46, $0001
+	dw sprite.unknown_22, $0280
+	dw sprite.unknown_28, $0480
+	dw sprite.unknown_3E, $0010
+	dw !initcommand_success
 
 DATA_FFF727:
-	db $5C, $00, $47, $F8, $00, $83, $0D, $F7
-	db $2A, $00, $00, $01, $00, $80
+	dw sprite.unknown_5C, DATA_FFF847
+	dw !initcommand_load_subconfig, DATA_FFF70D
+	dw sprite.unknown_2A, $0100
+	dw !initcommand_success
 
 DATA_FFF735:
-	db $5C, $00, $61, $F8, $00, $83, $0D, $F7
-	db $22, $00, $80, $02, $28, $00, $80, $04
-	db $2A, $00, $00, $02, $00, $80
+	dw sprite.unknown_5C, DATA_FFF861
+	dw !initcommand_load_subconfig, DATA_FFF70D
+	dw sprite.unknown_22, $0280
+	dw sprite.unknown_28, $0480
+	dw sprite.unknown_2A, $0200
+	dw !initcommand_success
 
 DATA_FFF74B:
-	db $5C, $00, $6F, $F8, $00, $83, $0D, $F7
-	db $22, $00, $80, $02, $2A, $00, $80, $03
-	db $00, $80
+	dw sprite.unknown_5C, DATA_FFF86F
+	dw !initcommand_load_subconfig, DATA_FFF70D
+	dw sprite.unknown_22, $0280
+	dw sprite.unknown_2A, $0380
+	dw !initcommand_success
 
 DATA_FFF75D:
-	db $5C, $00, $95, $F8, $00, $83, $0D, $F7
-	db $2A, $00, $80, $02, $00, $80
+	dw sprite.unknown_5C, DATA_FFF895
+	dw !initcommand_load_subconfig, DATA_FFF70D
+	dw sprite.unknown_2A, $0280
+	dw !initcommand_success
 
 DATA_FFF76B:
-	db $5C, $00, $A3, $F8, $00, $83, $0D, $F7
-	db $2A, $00, $80, $03, $00, $80
+	dw sprite.unknown_5C, DATA_FFF8A3
+	dw !initcommand_load_subconfig, DATA_FFF70D
+	dw sprite.unknown_2A, $0380
+	dw !initcommand_success
 
 DATA_FFF779:
-	db $5C, $00, $BB, $F8, $00, $83, $0D, $F7
-	db $2A, $00, $00, $02, $00, $80
+	dw sprite.unknown_5C, DATA_FFF8BB
+	dw !initcommand_load_subconfig, DATA_FFF70D
+	dw sprite.unknown_2A, $0200
+	dw !initcommand_success
 
 DATA_FFF787:
-	db $5C, $00, $BD, $F8, $00, $83, $0D, $F7
-	db $2A, $00, $00, $03, $00, $80
+	dw sprite.unknown_5C, DATA_FFF8BD
+	dw !initcommand_load_subconfig, DATA_FFF70D
+	dw sprite.unknown_2A, $0300
+	dw !initcommand_success
 
 DATA_FFF795:
-	db $5C, $00, $D7, $F8, $00, $83, $0D, $F7
-	db $2A, $00, $80, $03, $00, $80
+	dw sprite.unknown_5C, DATA_FFF8D7
+	dw !initcommand_load_subconfig, DATA_FFF70D
+	dw sprite.unknown_2A, $0380
+	dw !initcommand_success
 
 DATA_FFF7A3:
-	db $5C, $00, $E5, $F8, $00, $83, $0D, $F7
-	db $2A, $00, $00, $03, $00, $80
+	dw sprite.unknown_5C, DATA_FFF8E5
+	dw !initcommand_load_subconfig, DATA_FFF70D
+	dw sprite.unknown_2A, $0300
+	dw !initcommand_success
 
 DATA_FFF7B1:
-	db $5C, $00, $FF, $F8, $00, $83, $0D, $F7
-	db $2A, $00, $00, $03, $00, $80
+	dw sprite.unknown_5C, DATA_FFF8FF
+	dw !initcommand_load_subconfig, DATA_FFF70D
+	dw sprite.unknown_2A, $0300
+	dw !initcommand_success
 
 DATA_FFF7BF:
-	db $5C, $00, $0D, $F9, $00, $83, $0D, $F7
-	db $2A, $00, $00, $03, $00, $80
+	dw sprite.unknown_5C, DATA_FFF90D
+	dw !initcommand_load_subconfig, DATA_FFF70D
+	dw sprite.unknown_2A, $0300
+	dw !initcommand_success
 
 DATA_FFF7CD:
-	db $5C, $00, $1B, $F9, $00, $83, $0D, $F7
-	db $2A, $00, $00, $03, $00, $80
+	dw sprite.unknown_5C, DATA_FFF91B
+	dw !initcommand_load_subconfig, DATA_FFF70D
+	dw sprite.unknown_2A, $0300
+	dw !initcommand_success
 
 DATA_FFF7DB:
-	db $5C, $00, $F1, $F8, $00, $83, $0D, $F7
-	db $2E, $00, $00, $01, $42, $00, $03, $00
-	db $22, $00, $80, $02, $2A, $00, $80, $03
-	db $00, $80
+	dw sprite.unknown_5C, DATA_FFF8F1
+	dw !initcommand_load_subconfig, DATA_FFF70D
+	dw sprite.action, $0100
+	dw sprite.unknown_42, $0003
+	dw sprite.unknown_22, $0280
+	dw sprite.unknown_2A, $0380
+	dw !initcommand_success
 
 DATA_FFF7F5:
-	db $5C, $00, $BB, $F8, $00, $83, $0D, $F7
-	db $3E, $00, $08, $04, $2A, $00, $80, $03
-	db $00, $80
+	dw sprite.unknown_5C, DATA_FFF8BB
+	dw !initcommand_load_subconfig, DATA_FFF70D
+	dw sprite.unknown_3E, $0408
+	dw sprite.unknown_2A, $0380
+	dw !initcommand_success
 
 DATA_FFF807:
-	db $5C, $00, $FF, $F8, $00, $83, $0D, $F7
-	db $28, $00, $00, $06, $2A, $00, $00, $03
-	db $00, $80
+	dw sprite.unknown_5C, DATA_FFF8FF
+	dw !initcommand_load_subconfig, DATA_FFF70D
+	dw sprite.unknown_28, $0600
+	dw sprite.unknown_2A, $0300
+	dw !initcommand_success
 
 DATA_FFF819:
-	db $5C, $00, $D7, $F8, $00, $83, $0D, $F7
-	db $2A, $00, $80, $04, $00, $80
+	dw sprite.unknown_5C, DATA_FFF8D7
+	dw !initcommand_load_subconfig, DATA_FFF70D
+	dw sprite.unknown_2A, $0480
+	dw !initcommand_success
 
 DATA_FFF827:
-	db $5C, $00, $35, $F9, $00, $83, $0D, $F7
-	db $2A, $00, $80, $04, $00, $80
+	dw sprite.unknown_5C, DATA_FFF935
+	dw !initcommand_load_subconfig, DATA_FFF70D
+	dw sprite.unknown_2A, $0480
+	dw !initcommand_success
 
 DATA_FFF835:
-	db $5C, $00, $35, $F9, $00, $83, $0D, $F7
-	db $3E, $00, $10, $04, $2A, $00, $80, $04
-	db $00, $80, $80, $03, $00, $00, $40, $00
-	db $20, $04, $00, $00, $40, $00, $80, $0A
-	db $00, $00, $18, $00, $40, $0B, $00, $00
-	db $18, $00, $FF, $FF, $40, $0F, $00, $00
-	db $18, $00, $00, $10, $00, $00, $18, $00
-	db $FF, $FF, $60, $17, $00, $00, $18, $00
-	db $20, $18, $00, $00, $18, $00, $00, $1A
-	db $00, $00, $18, $00, $C0, $1A, $00, $00
-	db $18, $00, $00, $1B, $00, $00, $40, $00
-	db $80, $1B, $00, $00, $40, $00, $FF, $FF
+	dw sprite.unknown_5C, DATA_FFF935
+	dw !initcommand_load_subconfig, DATA_FFF70D
+	dw sprite.unknown_3E, $0410
+	dw sprite.unknown_2A, $0480
+	dw !initcommand_success
+
+DATA_FFF847:
+	db $80, $03, $00, $00, $40, $00, $20, $04
+	db $00, $00, $40, $00, $80, $0A, $00, $00
+	db $18, $00, $40, $0B, $00, $00, $18, $00
+	db $FF, $FF
+
+DATA_FFF861:
+	db $40, $0F, $00, $00, $18, $00, $00, $10
+	db $00, $00, $18, $00, $FF, $FF
+
+DATA_FFF86F:
+	db $60, $17, $00, $00, $18, $00, $20, $18
+	db $00, $00, $18, $00, $00, $1A, $00, $00
+	db $18, $00, $C0, $1A, $00, $00, $18, $00
+	db $00, $1B, $00, $00, $40, $00, $80, $1B
+	db $00, $00, $40, $00, $FF, $FF
+
+DATA_FFF895:
 	db $60, $22, $00, $00, $18, $00, $20, $23
-	db $00, $00, $18, $00, $FF, $FF, $E0, $23
-	db $00, $00, $00, $01, $A0, $24, $00, $00
-	db $00, $01, $C0, $24, $00, $00, $00, $01
-	db $80, $25, $00, $00, $00, $01, $FF, $FF
+	db $00, $00, $18, $00, $FF, $FF
+
+DATA_FFF8A3:
+	db $E0, $23, $00, $00, $00, $01, $A0, $24
+	db $00, $00, $00, $01, $C0, $24, $00, $00
+	db $00, $01, $80, $25, $00, $00, $00, $01
+
+DATA_FFF8BB:
+	db $FF, $FF
+
+DATA_FFF8BD:
 	db $C0, $27, $00, $00, $18, $00, $80, $28
 	db $00, $00, $18, $00, $40, $29, $00, $00
 	db $18, $00, $00, $2A, $00, $00, $18, $00
-	db $FF, $FF, $E0, $2B, $00, $00, $18, $00
-	db $A0, $2C, $00, $00, $18, $00, $FF, $FF
+	db $FF, $FF
+
+DATA_FFF8D7:
+	db $E0, $2B, $00, $00, $18, $00, $A0, $2C
+	db $00, $00, $18, $00, $FF, $FF
+
+DATA_FFF8E5:
 	db $20, $35, $00, $00, $18, $00, $E0, $35
-	db $00, $00, $18, $00, $E0, $37, $00, $00
-	db $18, $00, $A0, $38, $00, $00, $18, $00
-	db $FF, $FF, $80, $3A, $00, $00, $18, $00
-	db $40, $3B, $00, $00, $18, $00, $FF, $FF
+	db $00, $00, $18, $00
+
+DATA_FFF8F1:
+	db $E0, $37, $00, $00, $18, $00, $A0, $38
+	db $00, $00, $18, $00, $FF, $FF
+
+DATA_FFF8FF:
+	db $80, $3A, $00, $00, $18, $00, $40, $3B
+	db $00, $00, $18, $00, $FF, $FF
+
+DATA_FFF90D:
 	db $C0, $3D, $00, $00, $18, $00, $80, $3E
-	db $00, $00, $18, $00, $FF, $FF, $20, $40
-	db $00, $00, $18, $00, $E0, $40, $00, $00
-	db $18, $00, $A0, $41, $00, $00, $18, $00
-	db $60, $42, $00, $00, $18, $04, $FF, $FF
+	db $00, $00, $18, $00, $FF, $FF
+
+DATA_FFF91B:
+	db $20, $40, $00, $00, $18, $00, $E0, $40
+	db $00, $00, $18, $00, $A0, $41, $00, $00
+	db $18, $00, $60, $42, $00, $00, $18, $04
+	db $FF, $FF
+
+DATA_FFF935:
 	db $FF, $FF
 
 DATA_FFF937:
-	db $00, $83, $D3, $F4, $3E, $00, $00, $00
-	db $5C, $00, $A1, $F9, $2E, $00, $00, $02
-	db $46, $00, $04, $00, $2A, $00, $20, $02
-	db $22, $00, $00, $02, $28, $00, $00, $06
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFF4D3
+	dw sprite.unknown_3E, $0000
+	dw sprite.unknown_5C, DATA_FFF9A1
+	dw sprite.action, $0200
+	dw sprite.unknown_46, $0004
+	dw sprite.unknown_2A, $0220
+	dw sprite.unknown_22, $0200
+	dw sprite.unknown_28, $0600
+	dw !initcommand_success
 
 DATA_FFF959:
-	db $00, $83, $D3, $F4, $3E, $00, $00, $00
-	db $5C, $00, $C1, $F9, $2E, $00, $00, $02
-	db $46, $00, $04, $00, $2A, $00, $00, $03
-	db $22, $00, $80, $01, $28, $00, $00, $06
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFF4D3
+	dw sprite.unknown_3E, $0000
+	dw sprite.unknown_5C, DATA_FFF9C1
+	dw sprite.action, $0200
+	dw sprite.unknown_46, $0004
+	dw sprite.unknown_2A, $0300
+	dw sprite.unknown_22, $0180
+	dw sprite.unknown_28, $0600
+	dw !initcommand_success
 
 DATA_FFF97B:
-	db $00, $83, $D3, $F4, $3E, $00, $00, $10
-	db $00, $85, $00, $60, $5C, $00, $FF, $F9
-	db $2E, $00, $00, $02, $46, $00, $04, $00
-	db $2A, $00, $C0, $FE, $22, $00, $C0, $FE
-	db $28, $00, $C0, $FE, $00, $80, $00, $14
-	db $40, $00, $80, $02, $08, $00, $80, $14
-	db $40, $00, $B8, $03, $08, $00, $40, $15
-	db $00, $01, $80, $15, $80, $00, $29, $FA
-	db $E0, $16, $00, $10, $FF, $FF, $A0, $30
-	db $00, $01, $A8, $30, $80, $00, $29, $FA
+	dw !initcommand_load_subconfig, DATA_FFF4D3
+	dw sprite.unknown_3E, $1000
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_5C, DATA_FFF9FF
+	dw sprite.action, $0200
+	dw sprite.unknown_46, $0004
+	dw sprite.unknown_2A, $FEC0
+	dw sprite.unknown_22, $FEC0
+	dw sprite.unknown_28, $FEC0
+	dw !initcommand_success
+
+DATA_FFF9A1:
+	db $00, $14, $40, $00, $80, $02, $08, $00
+	db $80, $14, $40, $00, $B8, $03, $08, $00
+	db $40, $15, $00, $01, $80, $15, $80, $00 : dw DATA_FFFA29
+	db $E0, $16, $00, $10, $FF, $FF
+
+DATA_FFF9C1:
+	db $A0, $30, $00, $01, $A8, $30, $80, $00 : dw DATA_FFFA29
 	db $B8, $30, $40, $00, $C0, $03, $28, $00
 	db $00, $31, $00, $08, $04, $00, $E0, $31
 	db $00, $08, $00, $00, $40, $32, $00, $01
-	db $48, $32, $80, $00, $29, $FA, $80, $32
-	db $40, $00, $00, $03, $28, $00, $C0, $33
-	db $40, $00, $00, $03, $28, $00, $00, $35
-	db $00, $10, $FF, $FF, $FF, $FF
+	db $48, $32, $80, $00 : dw DATA_FFFA29
+	db $80, $32, $40, $00, $00, $03, $28, $00
+	db $C0, $33, $40, $00, $00, $03, $28, $00
+	db $00, $35, $00, $10, $FF, $FF
+
+DATA_FFF9FF:
+	db $FF, $FF
 
 DATA_FFFA01:
-	db $00, $00, $DC, $00, $2E, $00, $00, $00
-	db $42, $00, $00, $00, $44, $00, $0A, $00
-	db $36, $00, $17, $FA, $00, $80, $00, $83
-	db $D3, $F4, $3E, $00, $00, $00, $2E, $00
-	db $00, $03, $46, $00, $04, $00, $00, $80
-	db $6B, $FA, $00, $00, $00, $00, $80, $80
-	db $00, $02, $33, $CA, $00, $00, $00, $00
-	db $80, $88, $00, $02, $B7, $FA, $00, $FD
-	db $00, $FD, $80, $88, $27, $02, $89, $FA
+	dw sprite.number, $00DC
+	dw sprite.action, $0000
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $000A
+	dw sprite.animation_id, DATA_FFFA17
+	dw !initcommand_success
+
+DATA_FFFA17:
+	dw !initcommand_load_subconfig, DATA_FFF4D3
+	dw sprite.unknown_3E, $0000
+	dw sprite.action, $0300
+	dw sprite.unknown_46, $0004
+	dw !initcommand_success
+
+DATA_FFFA29:
+	dw DATA_FFFA6B
+	db $00, $00, $00, $00, $80, $80, $00, $02
+
+	dw DATA_FFCA33
+	db $00, $00, $00, $00, $80, $88, $00, $02
+
+	dw DATA_FFFAB7
+	db $00, $FD, $00, $FD, $80, $88, $27, $02
+
+	dw DATA_FFFA89
 	db $00, $FD, $00, $00, $80, $70, $14, $82
-	db $00, $00, $89, $FA, $00, $FD, $00, $00
-	db $80, $9C, $14, $82, $00, $00, $84, $C5
+	db $00, $00
+
+	dw DATA_FFFA89
+	db $00, $FD, $00, $00, $80, $9C, $14, $82
+	db $00, $00
+
+	dw DATA_FFC584
 	db $00, $FD, $00, $FB, $88, $78, $13, $81
-	db $1C, $00, $00, $83, $C3, $C9, $00, $81
-	db $FA, $02, $00, $8D, $02, $00, $2E, $00
-	db $00, $00, $24, $00, $00, $FD, $20, $00
-	db $00, $FC, $26, $00, $C0, $FD, $00, $80
-	db $00, $00, $D0, $01, $54, $00, $1C, $02
-	db $02, $00, $C8, $00, $54, $00, $14, $02
-	db $00, $85, $00, $60, $30, $00, $20, $00
-	db $00, $8D, $02, $00, $00, $81, $FA, $02
-	db $4A, $00, $08, $40, $2E, $00, $02, $00
-	db $50, $00, $00, $00, $00, $80, $00, $83
-	db $09, $FC, $54, $00, $1C, $02, $00, $81
-	db $B3, $01, $42, $00, $00, $FD, $2E, $00
-	db $01, $00, $00, $80, $00, $00, $EC, $02
-	db $02, $00, $EC, $00, $54, $00, $1C, $02
-	db $2E, $00, $00, $00, $00, $85, $00, $20
-	db $00, $8D, $30, $00, $00, $81, $AC, $01
-	db $42, $00, $00, $00, $44, $00, $F7, $FA
-	db $46, $00, $00, $00, $00, $80, $00, $86
-	db $00, $00, $00, $00, $00, $00, $EC, $02
-	db $02, $00, $C4, $00, $54, $00, $1C, $02
-	db $2E, $00, $01, $01, $42, $00, $FF, $FF
-	db $46, $00, $00, $00, $00, $85, $00, $20
-	db $00, $8D, $30, $00, $00, $81, $AD, $01
-	db $00, $80
+	db $1C, $00
+
+DATA_FFFA6B:
+	dw !initcommand_load_subconfig, DATA_FFC9C3
+	dw !initcommand_set_animation, $02FA
+	dw !initcommand_set_alt_palette, $0002
+	dw sprite.action, $0000
+	dw sprite.y_speed, $FD00
+	dw sprite.x_speed, $FC00
+	dw sprite.max_x_speed, $FDC0
+	dw !initcommand_success
+
+DATA_FFFA89:
+	dw sprite.number, $01D0
+	dw sprite.unknown_54, $021C
+	dw sprite.render_order, $00C8
+	dw sprite.unknown_54, $0214
+	dw !initcommand_set_oam, $6000
+	dw sprite.unknown_30, $0020
+	dw !initcommand_set_alt_palette, $0002
+	dw !initcommand_set_animation, $02FA
+	dw sprite.unknown_4A, $4008
+	dw sprite.action, $0002
+	dw sprite.parameter, $0000
+	dw !initcommand_success
+
+DATA_FFFAB7:
+	dw !initcommand_load_subconfig, DATA_FFFC09
+	dw sprite.unknown_54, $021C
+	dw !initcommand_set_animation, $01B3
+	dw sprite.unknown_42, $FD00
+	dw sprite.action, $0001
+	dw !initcommand_success
+
+DATA_FFFACD:
+	dw sprite.number, $02EC
+	dw sprite.render_order, $00EC
+	dw sprite.unknown_54, $021C
+	dw sprite.action, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0030
+	dw !initcommand_set_animation, $01AC
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, DATA_FFFAF7
+	dw sprite.unknown_46, $0000
+	dw !initcommand_success
+
+DATA_FFFAF7:
+	dw !initcommand_spawn_relative, $0000, $0000
+	dw sprite.number, $02EC
+	dw sprite.render_order, $00C4
+	dw sprite.unknown_54, $021C
+	dw sprite.action, $0101
+	dw sprite.unknown_42, $FFFF
+	dw sprite.unknown_46, $0000
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0030
+	dw !initcommand_set_animation, $01AD
+	dw !initcommand_success
 
 DATA_FFFB23:
-	db $00, $83, $CD, $FA, $4C, $00, $00, $04
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFFACD
+	dw sprite.unknown_4C, $0400
+	dw !initcommand_success
 
 DATA_FFFB2D:
-	db $00, $83, $CD, $FA, $4C, $00, $00, $05
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFFACD
+	dw sprite.unknown_4C, $0500
+	dw !initcommand_success
 
 DATA_FFFB37:
-	db $00, $83, $CD, $FA, $4C, $00, $00, $04
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFFACD
+	dw sprite.unknown_4C, $0400
+	dw !initcommand_success
 
 DATA_FFFB41:
-	db $00, $83, $CD, $FA, $4C, $00, $00, $04
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFFACD
+	dw sprite.unknown_4C, $0400
+	dw !initcommand_success
 
 DATA_FFFB4B:
-	db $00, $83, $CD, $FA, $4C, $00, $00, $04
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFFACD
+	dw sprite.unknown_4C, $0400
+	dw !initcommand_success
 
 DATA_FFFB55:
-	db $00, $83, $CD, $FA, $4C, $00, $00, $04
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFFACD
+	dw sprite.unknown_4C, $0400
+	dw !initcommand_success
 
 DATA_FFFB5F:
-	db $00, $83, $CD, $FA, $4C, $00, $00, $04
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFFACD
+	dw sprite.unknown_4C, $0400
+	dw !initcommand_success
 
 DATA_FFFB69:
-	db $00, $83, $CD, $FA, $4C, $00, $00, $04
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFFACD
+	dw sprite.unknown_4C, $0400
+	dw !initcommand_success
 
 DATA_FFFB73:
-	db $42, $00, $00, $00, $44, $00, $50, $00
-	db $00, $00, $EC, $02, $02, $00, $C4, $00
-	db $54, $00, $1C, $02, $00, $85, $00, $20
-	db $00, $8D, $2D, $00, $00, $81, $AE, $01
-	db $2E, $00, $02, $00, $46, $00, $50, $00
-	db $00, $80
+	dw sprite.unknown_42, $0000
+	dw sprite.unknown_44, $0050
+DATA_FFFB7B:
+	dw sprite.number, $02EC
+	dw sprite.render_order, $00C4
+	dw sprite.unknown_54, $021C
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $002D
+	dw !initcommand_set_animation, $01AE
+	dw sprite.action, $0002
+	dw sprite.unknown_46, $0050
+	dw !initcommand_success
 
 DATA_FFFB9D:
-	db $42, $00, $01, $00, $44, $00, $00, $00
-	db $00, $83, $7B, $FB, $00, $80
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_44, $0000
+	dw !initcommand_load_subconfig, DATA_FFFB7B
+	dw !initcommand_success
 
 DATA_FFFBAB:
-	db $00, $83, $7B, $FB, $44, $00, $50, $00
-	db $2E, $00, $02, $03, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFFB7B
+	dw sprite.unknown_44, $0050
+	dw sprite.action, $0302
+	dw !initcommand_success
 
 DATA_FFFBB9:
-	db $42, $00, $12, $18, $44, $00, $FD, $71
-	db $46, $00, $32, $18, $48, $00, $FD, $71
-	db $4E, $00, $00, $00, $00, $81, $DA, $02
-	db $00, $00, $FC, $02, $02, $00, $C8, $00
-	db $00, $85, $00, $20, $00, $8D, $28, $00
-	db $2E, $00, $00, $00, $4A, $00, $52, $18
-	db $4C, $00, $FD, $71, $00, $80
+	dw sprite.unknown_42, $1812
+	dw sprite.unknown_44, $71FD
+	dw sprite.unknown_46, $1832
+	dw sprite.unknown_48, $71FD
+	dw sprite.unknown_4E, $0000
+DATA_FFFBCD:
+	dw !initcommand_set_animation, $02DA
+	dw sprite.number, $02FC
+	dw sprite.render_order, $00C8
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_alt_palette, $0028
+	dw sprite.action, $0000
+	dw sprite.unknown_4A, $1852
+	dw sprite.unknown_4C, $71FD
+	dw !initcommand_success
 
 DATA_FFFBEF:
-	db $42, $00, $32, $18, $44, $00, $FD, $71
-	db $46, $00, $12, $18, $48, $00, $FD, $71
-	db $4E, $00, $01, $00, $00, $83, $CD, $FB
-	db $00, $80, $00, $00, $F8, $02, $00, $8D
-	db $28, $00, $02, $00, $C8, $00, $00, $85
-	db $00, $20, $4E, $00, $00, $00, $00, $80
+	dw sprite.unknown_42, $1832
+	dw sprite.unknown_44, $71FD
+	dw sprite.unknown_46, $1812
+	dw sprite.unknown_48, $71FD
+	dw sprite.unknown_4E, $0001
+	dw !initcommand_load_subconfig, DATA_FFFBCD
+	dw !initcommand_success
+
+DATA_FFFC09:
+	dw sprite.number, $02F8
+	dw !initcommand_set_alt_palette, $0028
+	dw sprite.render_order, $00C8
+	dw !initcommand_set_oam, $2000
+	dw sprite.unknown_4E, $0000
+	dw !initcommand_success
 
 DATA_FFFC1F:
-	db $00, $83, $09, $FC, $00, $81, $B2, $01
-	db $42, $00, $05, $00, $2E, $00, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFFC09
+	dw !initcommand_set_animation, $01B2
+	dw sprite.unknown_42, $0005
+	dw sprite.action, $0000
+	dw !initcommand_success
 
 DATA_FFFC31:
-	db $00, $83, $09, $FC, $00, $81, $B2, $01
-	db $42, $00, $01, $00, $2E, $00, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFFC09
+	dw !initcommand_set_animation, $01B2
+	dw sprite.unknown_42, $0001
+	dw sprite.action, $0000
+	dw !initcommand_success
 
 DATA_FFFC43:
-	db $00, $83, $09, $FC, $00, $81, $B2, $01
-	db $42, $00, $04, $00, $2E, $00, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFFC09
+	dw !initcommand_set_animation, $01B2
+	dw sprite.unknown_42, $0004
+	dw sprite.action, $0000
+	dw !initcommand_success
 
 DATA_FFFC55:
-	db $00, $83, $09, $FC, $00, $81, $B2, $01
-	db $42, $00, $06, $00, $2E, $00, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFFC09
+	dw !initcommand_set_animation, $01B2
+	dw sprite.unknown_42, $0006
+	dw sprite.action, $0000
+	dw !initcommand_success
 
 DATA_FFFC67:
-	db $00, $83, $09, $FC, $00, $81, $B3, $01
-	db $42, $00, $FB, $FF, $2E, $00, $00, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFFC09
+	dw !initcommand_set_animation, $01B3
+	dw sprite.unknown_42, $FFFB
+	dw sprite.action, $0000
+	dw !initcommand_success
 
 DATA_FFFC79:
-	db $00, $83, $09, $FC, $00, $81, $B3, $01
-	db $42, $00, $00, $FC, $2E, $00, $01, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFFC09
+	dw !initcommand_set_animation, $01B3
+	dw sprite.unknown_42, $FC00
+	dw sprite.action, $0001
+	dw !initcommand_success
 
 DATA_FFFC8B:
-	db $00, $83, $09, $FC, $00, $81, $B4, $01
-	db $2E, $00, $02, $00, $42, $00, $00, $02
-	db $44, $00, $00, $07, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFFC09
+	dw !initcommand_set_animation, $01B4
+	dw sprite.action, $0002
+	dw sprite.unknown_42, $0200
+	dw sprite.unknown_44, $0700
+	dw !initcommand_success
 
 DATA_FFFCA1:
-	db $00, $83, $09, $FC, $00, $81, $B4, $01
-	db $2E, $00, $02, $00, $42, $00, $00, $FB
-	db $44, $00, $00, $00, $4E, $00, $01, $00
-	db $00, $80, $00, $00, $BC, $00, $54, $00
-	db $1C, $02, $12, $00, $02, $15, $2E, $00
-	db $00, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFFC09
+	dw !initcommand_set_animation, $01B4
+	dw sprite.action, $0002
+	dw sprite.unknown_42, $FB00
+	dw sprite.unknown_44, $0000
+	dw sprite.unknown_4E, $0001
+	dw !initcommand_success
+
+DATA_FFFCBB:
+	dw sprite.number, $00BC
+	dw sprite.unknown_54, $021C
+	dw sprite.oam_property, $1502
+	dw sprite.action, $0000
+	dw !initcommand_success
 
 DATA_FFFCCD:
-	db $00, $83, $BB, $FC, $50, $00, $05, $FD
-	db $04, $00, $00, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFFCBB
+	dw sprite.parameter, DATA_FFFD05
+	dw sprite.x_sub_position, $0000
+	dw !initcommand_success
 
 DATA_FFFCDB:
-	db $00, $83, $BB, $FC, $50, $00, $23, $FD
-	db $04, $00, $00, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFFCBB
+	dw sprite.parameter, DATA_FFFD23
+	dw sprite.x_sub_position, $0100
+	dw !initcommand_success
 
 DATA_FFFCE9:
-	db $00, $83, $BB, $FC, $50, $00, $41, $FD
-	db $04, $00, $20, $01, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFFCBB
+	dw sprite.parameter, DATA_FFFD41
+	dw sprite.x_sub_position, $0120
+	dw !initcommand_success
 
 DATA_FFFCF7:
-	db $00, $83, $BB, $FC, $50, $00, $5F, $FD
-	db $04, $00, $40, $01, $00, $80, $FA, $CC
-	db $C8, $FA, $7D, $FD, $FC, $3C, $00, $5C
-	db $34, $00, $0E, $38, $00, $1C, $09, $1E
-	db $FA, $90, $FD, $F6, $20, $10, $00, $00
-	db $FA, $7D, $FD, $FF, $FA, $CC, $C8, $FA
-	db $7D, $FD, $FC, $3C, $00, $5C, $34, $00
-	db $0E, $38, $00, $1C, $08, $1E, $FA, $90
-	db $FD, $F6, $60, $27, $00, $00, $FA, $7D
-	db $FD, $FF, $FA, $CC, $C8, $FA, $7D, $FD
-	db $FC, $3C, $00, $5C, $34, $00, $0E, $38
-	db $00, $1C, $23, $1E, $FA, $90, $FD, $F6
-	db $00, $3A, $00, $00, $FA, $7D, $FD, $FF
-	db $FA, $CC, $C8, $FA, $7D, $FD, $FC, $3C
-	db $00, $5C, $34, $00, $0E, $38, $00, $1C
-	db $0C, $1E, $FA, $90, $FD, $F6, $50, $54
-	db $00, $00, $FA, $7D, $FD, $FF, $52, $07
-	db $00, $46, $04, $04, $26, $40, $00, $4A
-	db $04, $04, $2A, $00, $01, $2C, $00, $00
-	db $F9, $52, $24, $00, $4A, $04, $04, $2A
-	db $00, $FF, $F9, $00, $86, $00, $00, $C0
-	db $FF, $00, $83, $D2, $FD, $52, $00, $27
-	db $28, $00, $80, $00, $86, $00, $00, $C0
-	db $FF, $00, $83, $D2, $FD, $52, $00, $27
-	db $28, $4A, $00, $00, $F1, $00, $80, $00
-	db $86, $00, $00, $C0, $FF, $00, $83, $D2
-	db $FD, $52, $00, $27, $28, $4A, $00, $80
-	db $F2, $00, $80, $00, $00, $D0, $00, $2E
-	db $00, $00, $02, $1C, $00, $00, $00, $00
-	db $8D, $B5, $00, $00, $81, $C6, $01, $00
-	db $85, $00, $20, $54, $00, $1C, $02, $02
-	db $00, $D4, $00, $50, $00, $00, $00, $30
-	db $00, $00, $00, $20, $00, $00, $00, $24
-	db $00, $00, $00, $52, $00, $28, $00, $42
-	db $00, $20, $00, $44, $00, $00, $FE, $48
-	db $00, $00, $03, $4A, $00, $00, $F4, $4C
-	db $00, $70, $00, $4E, $00, $00, $08, $00
-	db $80
+	dw !initcommand_load_subconfig, DATA_FFFCBB
+	dw sprite.parameter, DATA_FFFD5F
+	dw sprite.x_sub_position, $0140
+	dw !initcommand_success
+
+DATA_FFFD05:
+	db $FA : dw DATA_FFC8CC
+	db $FA : dw DATA_FFFD7D
+	db $FC, $3C, $00
+	db $5C, $34, $00
+	db $0E, $38, $00
+	db $1C, $09, $1E
+	db $FA : dw DATA_FFFD90
+	db $F6, $20, $10, $00, $00
+	db $FA : dw DATA_FFFD7D : db $FF
+
+DATA_FFFD23:
+	db $FA : dw DATA_FFC8CC
+	db $FA : dw DATA_FFFD7D
+	db $FC, $3C, $00
+	db $5C, $34, $00
+	db $0E, $38, $00
+	db $1C, $08, $1E
+	db $FA : dw DATA_FFFD90
+	db $F6, $60, $27, $00, $00
+	db $FA : dw DATA_FFFD7D :  db $FF
+
+DATA_FFFD41:
+	db $FA : dw DATA_FFC8CC
+	db $FA : dw DATA_FFFD7D
+	db $FC, $3C, $00
+	db $5C, $34, $00
+	db $0E, $38, $00
+	db $1C, $23, $1E
+	db $FA : dw DATA_FFFD90
+	db $F6, $00, $3A, $00, $00
+	db $FA : dw DATA_FFFD7D : db $FF
+
+DATA_FFFD5F:
+	db $FA : dw DATA_FFC8CC
+	db $FA : dw DATA_FFFD7D
+	db $FC, $3C, $00
+	db $5C, $34, $00
+	db $0E, $38, $00
+	db $1C, $0C, $1E
+	db $FA : dw DATA_FFFD90
+	db $F6, $50, $54, $00, $00
+	db $FA : dw DATA_FFFD7D : db $FF
+
+DATA_FFFD7D:
+	db $52, $07, $00, $46, $04, $04, $26, $40
+	db $00, $4A, $04, $04, $2A, $00, $01, $2C
+	db $00, $00, $F9
+
+DATA_FFFD90:
+	db $52, $24, $00, $4A, $04, $04, $2A, $00
+	db $FF, $F9, $00, $86, $00, $00, $C0, $FF
+
+DATA_FFFDA0:
+	dw !initcommand_load_subconfig, DATA_FFFDD2
+	dw sprite.unknown_52, $2827
+	dw !initcommand_success
+
+DATA_FFFDB0:
+	dw !initcommand_spawn_relative, $0000, $FFC0
+	dw !initcommand_load_subconfig, DATA_FFFDD2
+	dw sprite.unknown_52, $2827
+	dw sprite.unknown_4A, $F100
+	dw !initcommand_success
+
+DATA_FFFDBE:
+	dw !initcommand_spawn_relative, $0000, $FFC0
+	dw !initcommand_load_subconfig, DATA_FFFDD2
+	dw sprite.unknown_52, $2827
+	dw sprite.unknown_4A, $F280
+	dw !initcommand_success
+
+DATA_FFFDD2:
+	dw sprite.number, $00D0
+	dw sprite.action, $0200
+	dw sprite.unknown_1C, $0000
+	dw !initcommand_set_alt_palette, $00B5
+	dw !initcommand_set_animation, $01C6
+	dw !initcommand_set_oam, $2000
+	dw sprite.unknown_54, $021C
+	dw sprite.render_order, $00D4
+	dw sprite.parameter, $0000
+	dw sprite.unknown_30, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.unknown_52, $0028
+	dw sprite.unknown_42, $0020
+	dw sprite.unknown_44, $FE00
+	dw sprite.unknown_48, $0300
+	dw sprite.unknown_4A, $F400
+	dw sprite.unknown_4C, $0070
+	dw sprite.unknown_4E, $0800
+	dw !initcommand_success
 
 DATA_FFFE20:
-	db $00, $83, $D2, $FD, $24, $00, $00, $00
-	db $26, $00, $00, $FC, $42, $00, $08, $00
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFFDD2
+	dw sprite.y_speed, $0000
+	dw sprite.max_x_speed, $FC00
+	dw sprite.unknown_42, $0008
+	dw !initcommand_success
 
 DATA_FFFE32:
-	db $00, $83, $D2, $FD, $24, $00, $00, $00
-	db $26, $00, $80, $FC, $42, $00, $08, $00
-	db $00, $80, $00, $00, $D0, $00, $2E, $00
-	db $00, $01, $12, $00, $00, $00, $44, $00
-	db $00, $00, $48, $00, $9A, $FD, $4A, $00
-	db $80, $00, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFFDD2
+	dw sprite.y_speed, $0000
+	dw sprite.max_x_speed, $FC80
+	dw sprite.unknown_42, $0008
+	dw !initcommand_success
+
+DATA_FFFE44:
+	dw sprite.number, $00D0
+	dw sprite.action, $0100
+	dw sprite.oam_property, $0000
+	dw sprite.unknown_44, $0000
+if !version == 0
+	dw sprite.unknown_48, $FD8A
+else
+	dw sprite.unknown_48, $FD9A
+endif
+	dw sprite.unknown_4A, $0080
+	dw !initcommand_success
 
 DATA_FFFE5E:
-	db $00, $83, $44, $FE, $42, $00, $02, $00
-	db $46, $00, $64, $00, $24, $00, $00, $01
-	db $20, $00, $00, $FF, $26, $00, $00, $FD
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFFE44
+	dw sprite.unknown_42, $0002
+	dw sprite.unknown_46, $0064
+	dw sprite.y_speed, $0100
+	dw sprite.x_speed, $FF00
+	dw sprite.max_x_speed, $FD00
+	dw !initcommand_success
 
 DATA_FFFE78:
-	db $00, $83, $44, $FE, $42, $00, $03, $00
-	db $46, $00, $A5, $00, $24, $00, $00, $01
-	db $20, $00, $80, $FF, $26, $00, $00, $FD
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFFE44
+	dw sprite.unknown_42, $0003
+	dw sprite.unknown_46, $00A5
+	dw sprite.y_speed, $0100
+	dw sprite.x_speed, $FF80
+	dw sprite.max_x_speed, $FD00
+	dw !initcommand_success
 
 DATA_FFFE92:
-	db $00, $83, $44, $FE, $42, $00, $06, $00
-	db $46, $00, $64, $00, $24, $00, $00, $01
-	db $20, $00, $80, $FF, $26, $00, $00, $FD
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFFE44
+	dw sprite.unknown_42, $0006
+	dw sprite.unknown_46, $0064
+	dw sprite.y_speed, $0100
+	dw sprite.x_speed, $FF80
+	dw sprite.max_x_speed, $FD00
+	dw !initcommand_success
 
 DATA_FFFEAC:
-	db $00, $83, $44, $FE, $42, $00, $06, $00
-	db $46, $00, $73, $00, $24, $00, $00, $01
-	db $20, $00, $80, $FF, $26, $00, $00, $FD
-	db $48, $00, $AA, $FD, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFFE44
+	dw sprite.unknown_42, $0006
+	dw sprite.unknown_46, $0073
+	dw sprite.y_speed, $0100
+	dw sprite.x_speed, $FF80
+	dw sprite.max_x_speed, $FD00
+if !version == 0
+	dw sprite.unknown_48, $FD9A
+else
+	dw sprite.unknown_48, $FDAA
+endif
+	dw !initcommand_success
 
 DATA_FFFECA:
-	db $00, $83, $44, $FE, $42, $00, $01, $00
-	db $44, $00, $6E, $00, $46, $00, $D0, $07
-	db $24, $00, $00, $01, $20, $00, $80, $FF
-	db $26, $00, $00, $FD, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFFE44
+	dw sprite.unknown_42, $0001
+	dw sprite.unknown_44, $006E
+	dw sprite.unknown_46, $07D0
+	dw sprite.y_speed, $0100
+	dw sprite.x_speed, $FF80
+	dw sprite.max_x_speed, $FD00
+	dw !initcommand_success
 
 DATA_FFFEE8:
-	db $00, $83, $44, $FE, $42, $00, $06, $00
-	db $46, $00, $64, $00, $24, $00, $00, $01
-	db $20, $00, $80, $FF, $26, $00, $00, $FD
-	db $48, $00, $BE, $FD, $00, $80
+	dw !initcommand_load_subconfig, DATA_FFFE44
+	dw sprite.unknown_42, $0006
+	dw sprite.unknown_46, $0064
+	dw sprite.y_speed, $0100
+	dw sprite.x_speed, $FF80
+	dw sprite.max_x_speed, $FD00
+if !version == 0
+	dw sprite.unknown_48, $FDAE
+else
+	dw sprite.unknown_48, $FDBE
+endif
+	dw !initcommand_success
 
 DATA_FFFF06:
-	db $00, $83, $44, $FE, $42, $00, $06, $00
-	db $46, $00, $64, $00, $24, $00, $00, $01
-	db $20, $00, $80, $FF, $26, $00, $00, $FD
-	db $00, $80
+	dw !initcommand_load_subconfig, DATA_FFFE44
+	dw sprite.unknown_42, $0006
+	dw sprite.unknown_46, $0064
+	dw sprite.y_speed, $0100
+	dw sprite.x_speed, $FF80
+	dw sprite.max_x_speed, $FD00
+	dw !initcommand_success
 
 DATA_FFFF20:
-	db $00, $83, $44, $FE, $42, $00, $06, $00
-	db $46, $00, $6E, $00, $24, $00, $00, $01
-	db $20, $00, $80, $FF, $26, $00, $00, $FD
-	db $00, $80, $00, $00, $00, $00, $00, $00
+	dw !initcommand_load_subconfig, DATA_FFFE44
+	dw sprite.unknown_42, $0006
+	dw sprite.unknown_46, $006E
+	dw sprite.y_speed, $0100
+	dw sprite.x_speed, $FF80
+	dw sprite.max_x_speed, $FD00
+	dw !initcommand_success
+
+if !version == 0
+DATA_FFFF2A:
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $A800
+	dw sprite.unknown_4E, $8080
+	dw sprite.unknown_22, $0800
+	dw sprite.unknown_28, $0030
+	dw sprite.unknown_1C, $0058
+	dw sprite.unknown_4A, $0014
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_success
+
+DATA_FFFF4C:
+	dw !initcommand_load_subconfig, DATA_FFBB18
+	dw sprite.unknown_4C, $FFD0
+	dw sprite.unknown_4E, $2B80
+	dw sprite.unknown_22, $0380
+	dw sprite.unknown_28, $0068
+	dw sprite.unknown_1C, $0020
+	dw sprite.unknown_4A, $003C
+	dw !initcommand_success
+DATA_FFFF6A:
+else
 	db $00, $00, $00, $00, $00, $00, $00, $00
 	db $00, $00, $00, $00, $00, $00, $00, $00
 	db $00, $00, $00, $00, $00, $00, $00, $00
@@ -14155,6 +21265,7 @@ DATA_FFFF20:
 	db $00, $00, $00, $00, $00, $00, $00, $00
 	db $00, $00, $00, $00, $00, $00, $00, $00
 	db $00, $00, $00, $00, $00, $00, $00, $00
+endif
 	db $00, $00, $00, $00, $00, $00, $00, $00
 	db $00, $00, $00, $00, $00, $00, $00, $00
 	db $00, $00, $00, $00, $00, $00, $00, $00

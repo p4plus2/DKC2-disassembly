@@ -1,7 +1,11 @@
 hirom
+!version = 1
+
+
 org $008000			;dummy org so functions work
 	incsrc macros.asm
 	incsrc constants.asm
+	incsrc structs.asm
 
 org $C00000
 	incsrc bank_C0.asm
@@ -131,7 +135,7 @@ org $B88000
 	incsrc bank_B8.asm
 org $F90000
 	incsrc bank_F9.asm
-org $B98000
+org $B9D000
 	incsrc bank_B9.asm
 org $FA0000
 	incsrc bank_FA.asm
@@ -149,7 +153,9 @@ org $FD0000
 	incsrc bank_FD.asm
 org $FE0000
 	incsrc bank_FE.asm
-org $BE8000
+org $BEB800
 	incsrc bank_BE.asm
 org $FF0000
 	incsrc bank_FF.asm
+org $FFFFFF
+	db $00

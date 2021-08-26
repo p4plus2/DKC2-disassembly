@@ -228,8 +228,13 @@ CODE_B58132:
 clear_sound_buffers:
 	LDX #$0007			;$B5816D	\
 .clear_buffer_entry			;		 |
+if !version == 0			;		 |
+	STZ $0622,x			;$B58170	 |
+	STZ $062A,x			;$B58173	 |
+else					;		 |
 	STZ $0621,x			;$B58170	 |
 	STZ $0629,x			;$B58173	 |
+endif					;		 |
 	STZ $0619,x			;$B58176	 |
 	DEX				;$B58179	 |
 	DEX				;$B5817A	 |
@@ -260,7 +265,7 @@ upload_spc_engine:
 .dead_code
 	RTS				;$B581AB	> Dead code
 
-execute_spc_sound_engine:		;		\ 
+execute_spc_sound_engine:		;		\
 	LDA #$0672			;$B581AC	 |\ Load the sound engine entry point
 	STA $35				;$B581AF	 |/
 	STZ $37				;$B581B1	 | Zero size transfer means execute jump
@@ -343,7 +348,7 @@ upload_spc_base_engine:			;		\
 	CPX $2140			;$B5822C	 | |
 	BNE -				;$B5822F	 |/
 	LDX #$00			;$B58231	 | Initialize the transfer counter
-.next_byte				;		 |\ 
+.next_byte				;		 |\
 	LDA.l spc_base_engine,x		;$B58233	 | |\ Load and store the current engine byte
 	TAY				;$B58237	 | | |
 	STY $2141			;$B58238	 | |/
@@ -372,7 +377,7 @@ upload_song_data:
 	ROL A				;$B5825F	 | | Effectively (X << 1) + (X << 2)
 	STA $32				;$B58260	 | |
 	ROL A				;$B58262	 | |
-	CLC				;$B58263	 | | 
+	CLC				;$B58263	 | |
 	ADC $32				;$B58264	 |/
 	TAX				;$B58266	 | Move offset to an index register
 	LDA.l song_data,x		;$B58267	 |\ Load pointer to song data
@@ -408,7 +413,7 @@ upload_spc_sound_engine:
 	JSR upload_spc_block		;$B582A5	 | Upload SPC block
 	RTS				;$B582A8	/
 
-upload_global_samples:			;		\ 
+upload_global_samples:			;		\
 	LDA #global_sample_map		;$B582A9	 |\ Load the pointer to the global sample map
 	STA $0E				;$B582AC	 | |
 	LDA.w #global_sample_map>>16	;$B582AE	 | |
@@ -439,7 +444,7 @@ sample_uploader:
 	STA $40				;$B582E0	 |/
 	LDA $02				;$B582E2	 |\ Copy source directory ARAM destination
 	STA $42				;$B582E4	 |/
-	LDA $06				;$B582E6	 |\ Copy sample data ARAM destination 
+	LDA $06				;$B582E6	 |\ Copy sample data ARAM destination
 	STA $44				;$B582E8	 |/
 .parse_next_sample			;		 |
 	LDA [$3E]			;$B582EA	 | Load sample number
@@ -447,7 +452,7 @@ sample_uploader:
 	INC $3E				;$B582EE	 |/
 	CMP #$FFFF			;$B582F0	 |\ Sample number FFFF implies end of table, branch and upload
 	BEQ .upload_sample_directory	;$B582F3	 |/
-	STA $3C				;$B582F5	 |\ Triple sample number to index sample pointer table 
+	STA $3C				;$B582F5	 |\ Triple sample number to index sample pointer table
 	CLC				;$B582F7	 | |
 	ADC $3C				;$B582F8	 | |
 	ADC $3C				;$B582FA	 |/
@@ -466,7 +471,7 @@ sample_uploader:
 	CLC				;$B58315	 | |
 	ADC $06				;$B58316	 | | Add unlooped sample data and ARAM destination
 	STA $7E2200,x			;$B58318	 |/ Store destination of sample loop entry
-	INX				;$B5831C	 |\ Increment ARAM buffer index 
+	INX				;$B5831C	 |\ Increment ARAM buffer index
 	INX				;$B5831D	 |/
 	INC $02				;$B5831E	 |\ Increase source directory ARAM destination by 4 bytes
 	INC $02				;$B58320	 | |
@@ -480,7 +485,7 @@ sample_uploader:
 	STA $06				;$B5832F	 |/ Store next potential ARAM sample destination
 	BRA .parse_next_sample		;$B58331	/ Parse the next sample
 
-.upload_sample_directory		;		\ 
+.upload_sample_directory		;		\
 	LDA #$2200			;$B58333	 |\ Set upload source to $7E2200
 	STA $32				;$B58336	 | |
 	LDA #$007E			;$B58338	 | |
@@ -500,13 +505,13 @@ sample_uploader:
 	LDA.w #global_sample_map>>16	;$B58354	 | |
 	STA $40				;$B58357	 |/
 	LDA $0E				;$B58359	 |\ If the sample map pointer is not the global samples
-	CMP $3E				;$B5835B	 | | 
+	CMP $3E				;$B5835B	 | |
 	BNE  .map_global_sample		;$B5835D	 |/ Branch and include global samples in the mapping
 	LDA $10				;$B5835F	 |\ If the pointer does match the global samples
 	CMP $40				;$B58361	 | |
 	BEQ .upload_samples		;$B58363	 |/ Branch ahead and don't double map global samples
  .map_global_sample			;		 |
-	LDA [$3E]			;$B58365	 | Load the sample number 
+	LDA [$3E]			;$B58365	 | Load the sample number
 	CMP #$FFFF			;$B58367	 |\ Sample number FFFF implies end of table, in that case
 	BEQ .map_set_specific_samples	;$B5836A	 |/ Branch and map set specific samples
 	INC $3E				;$B5836C	 |\ Increment sample map pointer
@@ -519,16 +524,16 @@ sample_uploader:
 	INC $0A				;$B5837B	 | Increment the sample number count
 	BRA .map_global_sample		;$B5837D	/ Parse next sample map entry
 
-.map_set_specific_samples		;		\ 
+.map_set_specific_samples		;		\
 	LDA $0E				;$B5837F	 |\ Load target sample map pointer
 	STA $3E				;$B58381	 | |
-	LDA $10				;$B58383	 | | 
+	LDA $10				;$B58383	 | |
 	STA $40				;$B58385	 |/
 .map_sample				;		 |
-	LDA [$3E]			;$B58387	 | Load the sample number   
+	LDA [$3E]			;$B58387	 | Load the sample number
 	CMP #$FFFF			;$B58389	 |\ Sample number FFFF implies end of table, branch and upload
 	BEQ .upload_source_number_map	;$B5838C	 |/
-	INC $3E				;$B5838E	 |\ Increment sample map pointer 
+	INC $3E				;$B5838E	 |\ Increment sample map pointer
 	INC $3E				;$B58390	 |/
 	TAX				;$B58392	 | Use sample number as an index
 	LDA $0A				;$B58393	 |\ Store the sample id at the sample number index
@@ -538,12 +543,12 @@ sample_uploader:
 	INC $0A				;$B5839D	 | Increment the sample number count
 	BRA .map_sample			;$B5839F	/ Parse next sample map entry
 
-.upload_source_number_map		;		\ 
+.upload_source_number_map		;		\
 	LDA #$2200			;$B583A1	 |\ Set upload source to $7E2200
 	STA $32				;$B583A4	 | |
-	LDA #$007E			;$B583A6	 | | 
+	LDA #$007E			;$B583A6	 | |
 	STA $34				;$B583A9	 |/
-	LDA #$0560			;$B583AB	 |\ Set ARAM Destination to $0560 
+	LDA #$0560			;$B583AB	 |\ Set ARAM Destination to $0560
 	STA $35				;$B583AE	 |/
 	LDA #$0080			;$B583B0	 |\ Set transfer size to 128 words
 	STA $37				;$B583B3	 |/
@@ -552,10 +557,10 @@ sample_uploader:
 	LDA $44				;$B583B8	 |\ Load and copy the sample destination pointer
 	STA $06				;$B583BA	 |/
 .upload_next_sample			;		 |
-	LDA [$0E]			;$B583BC	 | Load the sample number   
+	LDA [$0E]			;$B583BC	 | Load the sample number
 	CMP #$FFFF			;$B583BE	 |\ Sample number FFFF implies end of table, branch and return
 	BEQ .return			;$B583C1	 |/
-	INC $0E				;$B583C3	 |\ Increment sample map pointer 
+	INC $0E				;$B583C3	 |\ Increment sample map pointer
 	INC $0E				;$B583C5	 |/
 	STA $3C				;$B583C7	 |\ Triple sample number to index sample data pointer table
 	CLC				;$B583C9	 | |
@@ -573,7 +578,7 @@ sample_uploader:
 	LDA [$32]			;$B583E3	 |\ Load and copy the size of the sample to upload
 	STA $37				;$B583E5	 |/
 	CLC				;$B583E7	 |\ Add the ARAM destination and sample size
-	ADC $35				;$B583E8	 | | 
+	ADC $35				;$B583E8	 | |
 	STA $06				;$B583EA	 |/ Store this as the next ARAM destination
 	CLC				;$B583EC	 |\ Convert bytes to upload to words to upload
 	INC $37				;$B583ED	 | |
@@ -586,7 +591,7 @@ sample_uploader:
 .return
 	RTS				;$B583FA	> All done, no more samples.
 
-upload_inline_spc_block:		;		\ 
+upload_inline_spc_block:		;		\
 	LDA [$32]			;$B583FB	 |\ Load the destination ARAM address from the block
 	STA $35				;$B583FD	 |/
 	INC $32				;$B583FF	 |\ Increment the pointer
@@ -638,8 +643,8 @@ upload_spc_block:
 	ASL A				;$B58451	 |/
 	RTS				;$B58452	/ Finished with SPC block upload
 
-.advance_pointer			;		\ 
-	LDY $33				;$B58453	 |\ Increment the pointer high byte 
+.advance_pointer			;		\
+	LDY $33				;$B58453	 |\ Increment the pointer high byte
 	INY				;$B58455	 |/
 	BNE .skip_pointer_bank_cross	;$B58456	 | If it doesn't roll over, skip incrementing the bank
 	STY $33				;$B58458	 | Set the new pointer mid byte
@@ -660,7 +665,7 @@ upload_song_sample_set:
 	ROL A				;$B5846C	 | | Effectively (X << 1) + (X << 2)
 	STA $32				;$B5846D	 | |
 	ROL A				;$B5846F	 | |
-	CLC				;$B58470	 | | 
+	CLC				;$B58470	 | |
 	ADC $32				;$B58471	 |/
 	TAX				;$B58473	 | Move offset to an index register
 	LDA.l song_sample_sets,x	;$B58474	 |\ Load pointer to song sample set
@@ -5874,7 +5879,7 @@ DATA_B5BC54:
 	dw $0420, $0420, $0420, $0420
 	dw $0420, $0020, $0420, $0420
 	dw $0000, $0420, $0420, $0420
-	dw $0420 
+	dw $0420
 
 DATA_B5BC7E:
 	dw DATA_B5BD05
@@ -6342,7 +6347,8 @@ CODE_B5C3ED:				;		 |
 	JMP ($17B2)			;$B5C3F1	/
 
 CODE_B5C3F4:
-	LDA $0A,x			;$B5C3F4	\
+if !version == 1			;		\
+	LDA $0A,x			;$B5C3F4	 |
 	CMP #$0B50			;$B5C3F6	 |
 	BPL CODE_B5C414			;$B5C3F9	 |
 	PHX				;$B5C3FB	 |
@@ -6361,6 +6367,7 @@ CODE_B5C40A:				;		 |
 
 CODE_B5C413:
 	PLX				;$B5C413	\
+endif					;		 |
 CODE_B5C414:				;		 |
 	LDA $32				;$B5C414	 |
 	AND #$001F			;$B5C416	 |
@@ -7917,7 +7924,7 @@ CODE_B5CE40:
 
 DATA_B5CE43:
 	db $05, $04 : dw DATA_FD0B10 : db $04, $04
-	
+
 
 CODE_B5CE49:
 	JSR CODE_B5CE4F			;$B5CE49	\
@@ -10507,8 +10514,26 @@ CODE_B5E4E6:				;		 |
 	STX $0ABC			;$B5E509	 |
 	RTS				;$B5E50C	/
 
-CODE_B5E50D:
-	LDA $0AC3			;$B5E50D	\
+CODE_B5E50D:				;		\
+if !version == 0			;		 |
+	LDA $0ABE			;$B5E50D	 |
+	STA $0A9A			;$B5E510	 |
+	LDA $0AC0			;$B5E513	 |
+	STA $0A9C			;$B5E516	 |
+	LDA $0AC2			;$B5E519	 |
+	STA $0AC2			;$B5E51C	 |
+	LDA $0AC4			;$B5E51F	 |
+	STA $0AC4			;$B5E522	 |
+	LDA $0ADE			;$B5E525	 |
+	STA $0AA2			;$B5E528	 |
+	LDA $0AE0			;$B5E52B	 |
+	STA $0AA4			;$B5E52E	 |
+	LDA $0AE2			;$B5E531	 |
+	STA $0AA6			;$B5E534	 |
+	LDA $0AE4			;$B5E537	 |
+	STA $0AA8			;$B5E53A	 |
+else					;		 |
+	LDA $0AC3			;$B5E50D	 |
 	STA $0A9E			;$B5E510	 |
 	LDA $0ADE			;$B5E513	 |
 	STA $0AA0			;$B5E516	 |
@@ -10518,6 +10543,7 @@ CODE_B5E50D:
 	STA $0AA4			;$B5E522	 |
 	LDA $0AE4			;$B5E525	 |
 	STA $0AA6			;$B5E528	 |
+endif					;		 |
 	LDY $0AE8			;$B5E52B	 |
 	BNE CODE_B5E533			;$B5E52E	 |
 	LDY $0593			;$B5E530	 |
@@ -10914,7 +10940,11 @@ CODE_B5E84F:				;		 |
 	LDY $92				;$B5E84F	 |
 CODE_B5E851:				;		 |
 	LDA $8D28,y			;$B5E851	 |
+if !version == 0			;		 |
+	STA $AA				;$B5E854	 |
+else					;		 |
 	STA $A8				;$B5E854	 |
+endif
 	LDX $BC				;$B5E856	 |
 	STX $92				;$B5E858	 |
 	TXY				;$B5E85A	 |
@@ -10944,7 +10974,11 @@ CODE_B5E88E:				;		 |
 	LDY $92				;$B5E88E	 |
 CODE_B5E890:				;		 |
 	LDA $8E28,y			;$B5E890	 |
+if !version == 0			;		 |
+	STA $AC				;$B5E893	 |
+else					;		 |
 	STA $AA				;$B5E893	 |
+endif					;		 |
 	LDX $BC				;$B5E895	 |
 	STX $92				;$B5E897	 |
 	TXY				;$B5E899	 |
@@ -10971,7 +11005,11 @@ CODE_B5E8C6:				;		 |
 	LDY $92				;$B5E8C6	 |
 CODE_B5E8C8:				;		 |
 	LDA $8F28,y			;$B5E8C8	 |
+if !version == 0			;		 |
+	STA $AE				;$B5E8CB	 |
+else					;		 |
 	STA $AC				;$B5E8CB	 |
+endif					;		 |
 	LDX $BC				;$B5E8CD	 |
 	STX $92				;$B5E8CF	 |
 	TXY				;$B5E8D1	 |
@@ -10999,7 +11037,11 @@ CODE_B5E901:				;		 |
 	LDY $92				;$B5E901	 |
 CODE_B5E903:				;		 |
 	LDA $9028,y			;$B5E903	 |
+if !version == 0			;		 |
+	STA $B0				;$B5E906	 |
+else					;		 |
 	STA $AE				;$B5E906	 |
+endif					;		 |
 	INC $90				;$B5E908	 |
 	BPL CODE_B5E90E			;$B5E90A	 |
 	DEC $90				;$B5E90C	 |
@@ -11144,20 +11186,36 @@ DATA_B5E9F4:
 	dw CODE_B5EA3C
 
 CODE_B5E9F8:
-	LDA $AA				;$B5E9F8	\
+if !version == 0			;		\
+	LDA $AC				;$B5E9F8	 |
+else					;		 |
+	LDA $AA				;$B5E9F8	 |
+endif					;		 |
 	SEC				;$B5E9FA	 |
 	SBC #$0100			;$B5E9FB	 |
 	BCC CODE_B5EA15			;$B5E9FE	 |
+if !version == 0			;		 |
+	CMP $AA				;$B5EA00	 |
+else					;		 |
 	CMP $A8				;$B5EA00	 |
+endif					;		 |
 	BCS CODE_B5EA09			;$B5EA02	 |
+if !version == 0			;		 |
+	ADC $AA				;$B5EA04	 |
+else					;		 |
 	ADC $A8				;$B5EA04	 |
+endif					;		 |
 	LSR A				;$B5EA06	 |
 	BRA CODE_B5EA18			;$B5EA07	/
 
 CODE_B5EA09:
 	CMP $DF				;$B5EA09	\
 	BCC CODE_B5EA18			;$B5EA0B	 |
+if !version == 0			;		 |
+	LDA $AA				;$B5EA0D	 |
+else					;		 |
 	LDA $A8				;$B5EA0D	 |
+endif					;		 |
 	CMP $DF				;$B5EA0F	 |
 	BCS CODE_B5EA18			;$B5EA11	 |
 	BCC CODE_B5EA1A			;$B5EA13	 |
@@ -11166,20 +11224,36 @@ CODE_B5EA15:				;		 |
 CODE_B5EA18:				;		 |
 	STA $DF				;$B5EA18	 |
 CODE_B5EA1A:				;		 |
+if !version == 0			;		 |
+	LDA $B0				;$B5EA1A	 |
+else					;		 |
 	LDA $AE				;$B5EA1A	 |
+endif					;		 |
 	SEC				;$B5EA1C	 |
 	SBC #$00E0			;$B5EA1D	 |
 	BCC CODE_B5EA36			;$B5EA20	 |
+if !version == 0			;		 |
+	CMP $AE				;$B5EA22	 |
+else					;		 |
 	CMP $AC				;$B5EA22	 |
+endif					;		 |
 	BCS CODE_B5EA2B			;$B5EA24	 |
+if !version == 0			;		 |
+	ADC $AE				;$B5EA26	 |
+else					;		 |
 	ADC $AC				;$B5EA26	 |
+endif					;		 |
 	LSR A				;$B5EA28	 |
 	BRA CODE_B5EA39			;$B5EA29	/
 
 CODE_B5EA2B:
 	CMP $E3				;$B5EA2B	\
 	BCC CODE_B5EA39			;$B5EA2D	 |
+if !version == 0			;		 |
+	LDA $AE				;$B5EA2F	 |
+else					;		 |
 	LDA $AC				;$B5EA2F	 |
+endif					;		 |
 	CMP $E3				;$B5EA31	 |
 	BCS CODE_B5EA39			;$B5EA33	 |
 	RTS				;$B5EA35	/
@@ -11229,7 +11303,11 @@ CODE_B5EA66:
 	EOR #$FFFF			;$B5EA83	 |
 	SEC				;$B5EA86	 |
 	ADC $8F28,x			;$B5EA87	 |
+if !version == 0			;		 |
+	STA $AE				;$B5EA8A	 |
+else					;		 |
 	STA $AC				;$B5EA8A	 |
+endif					;		 |
 	LDA $9028,x			;$B5EA8C	 |
 	SEC				;$B5EA8F	 |
 	SBC $9028,y			;$B5EA90	 |
@@ -11238,7 +11316,11 @@ CODE_B5EA66:
 	EOR #$FFFF			;$B5EA99	 |
 	SEC				;$B5EA9C	 |
 	ADC $9028,x			;$B5EA9D	 |
+if !version == 0			;		 |
+	STA $B0				;$B5EAA0	 |
+else					;		 |
 	STA $AE				;$B5EAA0	 |
+endif					;		 |
 	JMP CODE_B5EB78			;$B5EAA2	/
 
 CODE_B5EAA5:
@@ -11257,7 +11339,11 @@ CODE_B5EAA5:
 	JSR CODE_B5EBBB			;$B5EABF	 |
 	CLC				;$B5EAC2	 |
 	ADC $8F28,x			;$B5EAC3	 |
+if !version == 0			;		 |
+	STA $AE				;$B5EAC6	 |
+else					;		 |
 	STA $AC				;$B5EAC6	 |
+endif					;		 |
 	LDA $9028,y			;$B5EAC8	 |
 	SEC				;$B5EACB	 |
 	SBC $9028,x			;$B5EACC	 |
@@ -11265,7 +11351,11 @@ CODE_B5EAA5:
 	JSR CODE_B5EBBB			;$B5EAD2	 |
 	CLC				;$B5EAD5	 |
 	ADC $9028,x			;$B5EAD6	 |
+if !version == 0			;		 |
+	STA $B0				;$B5EAD9	 |
+else					;		 |
 	STA $AE				;$B5EAD9	 |
+endif					;		 |
 	JMP CODE_B5EB78			;$B5EADB	/
 
 CODE_B5EADE:
@@ -11285,7 +11375,11 @@ CODE_B5EADE:
 	EOR #$FFFF			;$B5EAFB	 |
 	SEC				;$B5EAFE	 |
 	ADC $8D28,x			;$B5EAFF	 |
+if !version == 0			;		 |
+	STA $AA				;$B5EB02	 |
+else					;		 |
 	STA $A8				;$B5EB02	 |
+endif					;		 |
 	LDA $8E28,x			;$B5EB04	 |
 	SEC				;$B5EB07	 |
 	SBC $8E28,y			;$B5EB08	 |
@@ -11294,7 +11388,11 @@ CODE_B5EADE:
 	EOR #$FFFF			;$B5EB11	 |
 	SEC				;$B5EB14	 |
 	ADC $8E28,x			;$B5EB15	 |
+if !version == 0			;		 |
+	STA $AC				;$B5EB18	 |
+else					;		 |
 	STA $AA				;$B5EB18	 |
+endif					;		 |
 	JMP CODE_B5EB56			;$B5EB1A	/
 
 CODE_B5EB1D:
@@ -11313,7 +11411,11 @@ CODE_B5EB1D:
 	JSR CODE_B5EB9A			;$B5EB37	 |
 	CLC				;$B5EB3A	 |
 	ADC $8D28,x			;$B5EB3B	 |
+if !version == 0			;		 |
+	STA $AA				;$B5EB3E	 |
+else					;		 |
 	STA $A8				;$B5EB3E	 |
+endif					;		 |
 	LDA $8E28,y			;$B5EB40	 |
 	SEC				;$B5EB43	 |
 	SBC $8E28,x			;$B5EB44	 |
@@ -11321,24 +11423,44 @@ CODE_B5EB1D:
 	JSR CODE_B5EB9A			;$B5EB4A	 |
 	CLC				;$B5EB4D	 |
 	ADC $8E28,x			;$B5EB4E	 |
+if !version == 0			;		 |
+	STA $AC				;$B5EB51	 |
+else					;		 |
 	STA $AA				;$B5EB51	 |
+endif					;		 |
 	JMP CODE_B5EB56			;$B5EB53	/
 
 CODE_B5EB56:
-	LDA $AA				;$B5EB56	\
+if !version == 0			;		\
+	LDA $AC				;$B5EB56	 |
+else					;		 |
+	LDA $AA				;$B5EB56	 |
+endif					;		 |
 	SEC				;$B5EB58	 |
 	SBC #$0100			;$B5EB59	 |
 	BCC CODE_B5EB72			;$B5EB5C	 |
+if !version == 0			;		 |
+	CMP $AA				;$B5EB5E	 |
+else					;		 |
 	CMP $A8				;$B5EB5E	 |
+endif					;		 |
 	BCS CODE_B5EB67			;$B5EB60	 |
+if !version == 0			;		 |
+	ADC $AA				;$B5EB62	 |
+else					;		 |
 	ADC $A8				;$B5EB62	 |
+endif					;		 |
 	LSR A				;$B5EB64	 |
 	BRA CODE_B5EB75			;$B5EB65	/
 
 CODE_B5EB67:
 	CMP $DF				;$B5EB67	\
 	BCC CODE_B5EB75			;$B5EB69	 |
+if !version == 0			;		 |
+	LDA $AA				;$B5EB6B	 |
+else					;		 |
 	LDA $A8				;$B5EB6B	 |
+endif					;		 |
 	CMP $DF				;$B5EB6D	 |
 	BCS CODE_B5EB75			;$B5EB6F	 |
 	RTS				;$B5EB71	/
@@ -11350,20 +11472,36 @@ CODE_B5EB75:				;		 |
 	RTS				;$B5EB77	/
 
 CODE_B5EB78:
-	LDA $AE				;$B5EB78	\
+if !version == 0			;		\
+	LDA $B0				;$B5EB78	 |
+else					;		 |
+	LDA $AE				;$B5EB78	 |
+endif					;		 |
 	SEC				;$B5EB7A	 |
 	SBC #$00E0			;$B5EB7B	 |
 	BCC CODE_B5EB94			;$B5EB7E	 |
+if !version == 0			;		 |
+	CMP $AE				;$B5EB80	 |
+else					;		 |
 	CMP $AC				;$B5EB80	 |
+endif					;		 |
 	BCS CODE_B5EB89			;$B5EB82	 |
+if !version == 0			;		 |
+	ADC $AE				;$B5EB84	 |
+else					;		 |
 	ADC $AC				;$B5EB84	 |
+endif					;		 |
 	LSR A				;$B5EB86	 |
 	BRA CODE_B5EB97			;$B5EB87	/
 
 CODE_B5EB89:
 	CMP $E3				;$B5EB89	\
 	BCC CODE_B5EB97			;$B5EB8B	 |
+if !version == 0			;		 |
+	LDA $AE				;$B5EB8D	 |
+else					;		 |
 	LDA $AC				;$B5EB8D	 |
+endif					;		 |
 	CMP $E3				;$B5EB8F	 |
 	BCS CODE_B5EB97			;$B5EB91	 |
 	RTS				;$B5EB93	/
@@ -11698,12 +11836,20 @@ CODE_B5EDA0:
 	BIT #$0002			;$B5EDA6	 |
 	BNE CODE_B5EE0A			;$B5EDA9	 |
 	JSR CODE_B5EF97			;$B5EDAB	 |
+if !version == 0			;		 |
+	LDA $9E				;$B5EDAE	 |
+else					;		 |
 	LDA $9C				;$B5EDAE	 |
+endif					;		 |
 	CLC				;$B5EDB0	 |
 	ADC $D2				;$B5EDB1	 |
 	TAY				;$B5EDB3	 |
 	LDA #$0000			;$B5EDB4	 |
+if !version == 0			;		 |
+	BIT $9E				;$B5EDB7	 |
+else					;		 |
 	BIT $9C				;$B5EDB7	 |
+endif					;		 |
 	BPL CODE_B5EDBC			;$B5EDB9	 |
 	DEC A				;$B5EDBB	 |
 CODE_B5EDBC:				;		 |
@@ -11847,24 +11993,55 @@ CODE_B5EE98:				;		 |
 CODE_B5EEAD:
 	LDA #$0000			;$B5EEAD	\
 CODE_B5EEB0:				;		 |
+if !version == 0			;		 |
+	STA $9E				;$B5EEB0	 |
+else					;		 |
 	STA $9C				;$B5EEB0	 |
+endif					;		 |
 	LDA $FA				;$B5EEB2	 |
 	EOR #$C000			;$B5EEB4	 |
 	STA $FA				;$B5EEB7	 |
 	RTS				;$B5EEB9	/
 
-CODE_B5EEBA:
-	STZ $9A				;$B5EEBA	\
+CODE_B5EEBA:				;		\
+	STZ $9A				;$B5EEBA	 |
+if !version == 0			;		 |
+	STZ $9E				;$B5EEBC	 |
+else					;		 |
 	STZ $9C				;$B5EEBC	 |
+endif					;		 |
 	RTS				;$B5EEBE	/
 
 CODE_B5EEBF:
 	SEP #$10			;$B5EEBF	\
 	LDX $C8				;$B5EEC1	 |
 	LDY $C9				;$B5EEC3	 |
+if !version == 0			;		 |
+	LDA $A2				;$B5EEC5	 |
+else					;		 |
 	LDA $A0				;$B5EEC5	 |
+endif					;		 |
 	SEC				;$B5EEC7	 |
 	SBC $D6				;$B5EEC8	 |
+if !version == 0			;		 |
+	STA $AE				;$B5EECA	 |
+	LDA $A4				;$B5EECC	 |
+	SBC $D8				;$B5EECE	 |
+	STA $B0				;$B5EED0	 |
+	LDA $DE				;$B5EED2	 |
+	SEC				;$B5EED4	 |
+	SBC $A2				;$B5EED5	 |
+	STA $AA				;$B5EED7	 |
+	LDA $E0				;$B5EED9	 |
+	SBC $A4				;$B5EEDB	 |
+	STA $AC				;$B5EEDD	 |
+	LDA $AA				;$B5EEDF	 |
+	CLC				;$B5EEE1	 |
+	ADC $AE				;$B5EEE2	 |
+	STA $92				;$B5EEE4	 |
+	LDA $AC				;$B5EEE6	 |
+	ADC $B0				;$B5EEE8	 |
+else					;		 |
 	STA $AC				;$B5EECA	 |
 	LDA $A2				;$B5EECC	 |
 	SBC $D8				;$B5EECE	 |
@@ -11882,6 +12059,7 @@ CODE_B5EEBF:
 	STA $92				;$B5EEE4	 |
 	LDA $AA				;$B5EEE6	 |
 	ADC $AE				;$B5EEE8	 |
+endif					;		 |
 	DEX				;$B5EEEA	 |
 	BMI CODE_B5EEF6			;$B5EEEB	 |
 CODE_B5EEED:				;		 |
@@ -11911,14 +12089,23 @@ CODE_B5EF11:				;		 |
 CODE_B5EF13:				;		 |
 	DEY				;$B5EF13	 |
 	BMI CODE_B5EF47			;$B5EF14	 |
+if !version == 0			;		 |
+	LDA $AE				;$B5EF16	 |
+	BIT $B0				;$B5EF18	 |
+else					;		 |
 	LDA $AC				;$B5EF16	 |
 	BIT $AE				;$B5EF18	 |
+endif					;		 |
 	BPL CODE_B5EF32			;$B5EF1A	 |
 	CMP #$FFE0			;$B5EF1C	 |
 	BCS CODE_B5EF45			;$B5EF1F	 |
 CODE_B5EF21:				;		 |
 	SEC				;$B5EF21	 |
+if !version == 0			;		 |
+	ROR $B0				;$B5EF22	 |
+else					;		 |
 	ROR $AE				;$B5EF22	 |
+endif					;		 |
 	ROR A				;$B5EF24	 |
 	DEY				;$B5EF25	 |
 	BPL CODE_B5EF21			;$B5EF26	 |
@@ -11931,7 +12118,11 @@ CODE_B5EF32:
 	CMP #$0020			;$B5EF32	\
 	BCC CODE_B5EF45			;$B5EF35	 |
 CODE_B5EF37:				;		 |
+if !version == 0			;		 |
+	LSR $B0				;$B5EF37	 |
+else					;		 |
 	LSR $AE				;$B5EF37	 |
+endif					;		 |
 	ROR A				;$B5EF39	 |
 	DEY				;$B5EF3A	 |
 	BPL CODE_B5EF37			;$B5EF3B	 |
@@ -11939,6 +12130,18 @@ CODE_B5EF37:				;		 |
 	BCS CODE_B5EF45			;$B5EF40	 |
 	LDA #$0008			;$B5EF42	 |
 CODE_B5EF45:				;		 |
+if !version == 0			;		 |
+	STA $AE				;$B5EF45	 |
+CODE_B5EF47:				;		 |
+	LDA $AA				;$B5EF47	 |
+	CLC				;$B5EF49	 |
+	ADC $AE				;$B5EF4A	 |
+	STA $AE				;$B5EF4C	 |
+	LDA $AC				;$B5EF4E	 |
+	ADC $B0				;$B5EF50	 |
+	STA $B0				;$B5EF52	 |
+	ORA $AE				;$B5EF54	 |
+else					;		 |
 	STA $AC				;$B5EF45	 |
 CODE_B5EF47:				;		 |
 	LDA $A8				;$B5EF47	 |
@@ -11949,6 +12152,7 @@ CODE_B5EF47:				;		 |
 	ADC $AE				;$B5EF50	 |
 	STA $AE				;$B5EF52	 |
 	ORA $AC				;$B5EF54	 |
+endif					;		 |
 	BEQ CODE_B5EF83			;$B5EF56	 |
 	LDA $CE				;$B5EF58	 |
 	CLC				;$B5EF5A	 |
@@ -11957,6 +12161,15 @@ CODE_B5EF47:				;		 |
 	LDA $D0				;$B5EF5F	 |
 	ADC $94				;$B5EF61	 |
 	STA $D0				;$B5EF63	 |
+if !version == 0			;		 |
+	EOR $B0				;$B5EF65	 |
+	BMI CODE_B5EF8E			;$B5EF67	 |
+	LDA $B0				;$B5EF69	 |
+	BPL CODE_B5EF79			;$B5EF6B	 |
+	CMP $D0				;$B5EF6D	 |
+	BNE CODE_B5EF75			;$B5EF6F	 |
+	LDA $AE				;$B5EF71	 |
+else					;		 |
 	EOR $AE				;$B5EF65	 |
 	BMI CODE_B5EF8E			;$B5EF67	 |
 	LDA $AE				;$B5EF69	 |
@@ -11964,6 +12177,7 @@ CODE_B5EF47:				;		 |
 	CMP $D0				;$B5EF6D	 |
 	BNE CODE_B5EF75			;$B5EF6F	 |
 	LDA $AC				;$B5EF71	 |
+endif					;		 |
 	CMP $CE				;$B5EF73	 |
 CODE_B5EF75:				;		 |
 	BCS CODE_B5EF83			;$B5EF75	 |
@@ -11971,14 +12185,24 @@ CODE_B5EF75:				;		 |
 CODE_B5EF79:				;		 |
 	CMP $D0				;$B5EF79	 |
 	BNE CODE_B5EF81			;$B5EF7B	 |
+if !version == 0			;		 |
+	LDA $AE				;$B5EF7D	 |
+else					;		 |
 	LDA $AC				;$B5EF7D	 |
+endif					;		 |
 	CMP $CE				;$B5EF7F	 |
 CODE_B5EF81:				;		 |
 	BCS CODE_B5EF8B			;$B5EF81	 |
 CODE_B5EF83:				;		 |
+if !version == 0			;		 |
+	LDA $AE				;$B5EF83	 |
+	STA $CE				;$B5EF85	 |
+	LDA $B0				;$B5EF87	 |
+else					;		 |
 	LDA $AC				;$B5EF83	 |
 	STA $CE				;$B5EF85	 |
 	LDA $AE				;$B5EF87	 |
+endif					;		 |
 	STA $D0				;$B5EF89	 |
 CODE_B5EF8B:				;		 |
 	REP #$10			;$B5EF8B	 |
@@ -11995,12 +12219,19 @@ CODE_B5EF97:
 	SEP #$10			;$B5EF97	\
 	LDA $C3				;$B5EF99	 |
 	SEC				;$B5EF9B	 |
+if !version == 0			;		 |
+	SBC $9F				;$B5EF9C	 |
+	XBA    				;$B5EF9E	 |
+	LDA $E3				;$B5EF9F	 |
+	CMP $A7				;$B5EFA1	 |
+else					;		 |
 	SBC $9E				;$B5EF9C	 |
 	TAX				;$B5EF9E	 |
 	LDA $E3				;$B5EF9F	 |
 	CMP $A5				;$B5EFA1	 |
 	BCS CODE_B5EFC9			;$B5EFA3	 |
 	CMP $DB				;$B5EFA5	 |
+endif					;		 |
 	BCS CODE_B5EFC9			;$B5EFA7	 |
 	LDA $C3				;$B5EFA9	 |
 	SEC				;$B5EFAB	 |
@@ -12010,8 +12241,10 @@ CODE_B5EF97:
 CODE_B5EFB4:				;		 |
 	CMP $DB				;$B5EFB4	 |
 	BCS CODE_B5EFF3			;$B5EFB6	 |
+if !version == 1
 	CPX #$FD			;$B5EFB8	 |
 	BCS CODE_B5EFF3			;$B5EFBA	 |
+endif
 	CPX #$FA			;$B5EFBC	 |
 	BCC CODE_B5EFEA			;$B5EFBE	 |
 CODE_B5EFC0:				;		 |
@@ -12027,6 +12260,16 @@ CODE_B5EFC9:
 	BPL CODE_B5EFD4			;$B5EFCF	 |
 	LDA #$0000			;$B5EFD1	 |
 CODE_B5EFD4:				;		 |
+if !version == 0			;		 |
+	CMP $DB				;$B5EFD4	 |
+	BCC CODE_B5EFF3			;$B5EFD6	 |
+	CPX #$06			;$B5EFD8	 |
+	BCS $E4				;$B5EFDA	 |
+CODE_B5EFEA:				;		 |
+	LDX #$02			;$B5EFDC	 |
+	LDY #$02			;$B5EFEE	 |
+	LDA #$0100			;$B5EFE0	 |
+else					;		 |
 	SEC				;$B5EFD4	 |
 	SBC $DB				;$B5EFD5	 |
 	BCC CODE_B5EFF3			;$B5EFD7	 |
@@ -12042,6 +12285,7 @@ CODE_B5EFEA:				;		 |
 	LDX #$02			;$B5EFEA	 |
 	LDY #$02			;$B5EFEC	 |
 	LDA #$0240			;$B5EFEE	 |
+endif					;		 |
 	BRA CODE_B5EFF9			;$B5EFF1	/
 
 CODE_B5EFF3:
@@ -12050,6 +12294,28 @@ CODE_B5EFF3:
 	LDA $CA				;$B5EFF7	 |
 CODE_B5EFF9:				;		 |
 	STA $96				;$B5EFF9	 |
+if !version == 0			;		 |
+	LDA $A6				;$B5EFFB	 |
+	SEC				;$B5EFFD	 |
+	SBC $DA				;$B5EFFE	 |
+	STA $AE				;$B5F000	 |
+	LDA $A8				;$B5F002	 |
+	SBC $DC				;$B5F004	 |
+	STA $B0				;$B5F006	 |
+	LDA $E2				;$B5F008	 |
+	SEC				;$B5F00A	 |
+	SBC $A6				;$B5F00B	 |
+	STA $AA				;$B5F00D	 |
+	LDA $E4				;$B5F00F	 |
+	SBC $A8				;$B5F011	 |
+	STA $AC				;$B5F013	 |
+	LDA $AA				;$B5F015	 |
+	CLC				;$B5F017	 |
+	ADC $AE				;$B5F018	 |
+	STA $92				;$B5F01A	 |
+	LDA $AC				;$B5F01C	 |
+	ADC $B0				;$B5F01E	 |
+else					;		 |
 	LDA $A4				;$B5EFFB	 |
 	SEC				;$B5EFFD	 |
 	SBC $DA				;$B5EFFE	 |
@@ -12070,6 +12336,7 @@ CODE_B5EFF9:				;		 |
 	STA $92				;$B5F01A	 |
 	LDA $AA				;$B5F01C	 |
 	ADC $AE				;$B5F01E	 |
+endif					;		 |
 	DEX				;$B5F020	 |
 	BMI CODE_B5F02C			;$B5F021	 |
 CODE_B5F023:				;		 |
@@ -12099,14 +12366,23 @@ CODE_B5F047:				;		 |
 CODE_B5F049:				;		 |
 	DEY				;$B5F049	 |
 	BMI CODE_B5F07D			;$B5F04A	 |
+if !version == 0			;		 |
+	LDA $AE				;$B5F04C	 |
+	BIT $B0				;$B5F04E	 |
+else					;		 |
 	LDA $AC				;$B5F04C	 |
 	BIT $AE				;$B5F04E	 |
+endif					;		 |
 	BPL CODE_B5F068			;$B5F050	 |
 	CMP #$FFE0			;$B5F052	 |
 	BCS CODE_B5F07B			;$B5F055	 |
 CODE_B5F057:				;		 |
 	SEC				;$B5F057	 |
+if !version == 0			;		 |
+	ROR $B0				;$B5F058	 |
+else					;		 |
 	ROR $AE				;$B5F058	 |
+endif					;		 |
 	ROR A				;$B5F05A	 |
 	DEY				;$B5F05B	 |
 	BPL CODE_B5F057			;$B5F05C	 |
@@ -12119,13 +12395,30 @@ CODE_B5F068:
 	CMP #$0020			;$B5F068	\
 	BCC CODE_B5F07B			;$B5F06B	 |
 CODE_B5F06D:				;		 |
+if !version == 0			;		 |
+	LSR $B0				;$B5F06D	 |
+else					;		 |
 	LSR $AE				;$B5F06D	 |
+endif					;		 |
 	ROR A				;$B5F06F	 |
 	DEY				;$B5F070	 |
 	BPL CODE_B5F06D			;$B5F071	 |
 	CMP #$0008			;$B5F073	 |
 	BCS CODE_B5F07B			;$B5F076	 |
 	LDA #$0008			;$B5F078	 |
+if !version == 0			;		 |
+CODE_B5F07B:				;		 |
+	STA $AE				;$B5F07B	 |
+CODE_B5F07D:				;		 |
+	LDA $AA				;$B5F07D	 |
+	CLC				;$B5F07F	 |
+	ADC $AE				;$B5F080	 |
+	STA $AE				;$B5F082	 |
+	LDA $AC				;$B5F084	 |
+	ADC $B0				;$B5F086	 |
+	STA $B0				;$B5F088	 |
+	ORA $AE				;$B5F08A	 |
+else					;		 |
 CODE_B5F07B:				;		 |
 	STA $AC				;$B5F07B	 |
 CODE_B5F07D:				;		 |
@@ -12137,6 +12430,7 @@ CODE_B5F07D:				;		 |
 	ADC $AE				;$B5F086	 |
 	STA $AE				;$B5F088	 |
 	ORA $AC				;$B5F08A	 |
+endif					;		 |
 	BEQ CODE_B5F0B9			;$B5F08C	 |
 	LDA $D2				;$B5F08E	 |
 	CLC				;$B5F090	 |
@@ -12145,13 +12439,23 @@ CODE_B5F07D:				;		 |
 	LDA $D4				;$B5F095	 |
 	ADC $94				;$B5F097	 |
 	STA $D4				;$B5F099	 |
+if !version == 0			;		 |
+	EOR $B0				;$B5F09B	 |
+	BMI CODE_B5F0C4			;$B5F09D	 |
+	LDA $B0				;$B5F09F	 |
+else					;		 |
 	EOR $AE				;$B5F09B	 |
 	BMI CODE_B5F0C4			;$B5F09D	 |
 	LDA $AE				;$B5F09F	 |
+endif					;		 |
 	BPL CODE_B5F0AF			;$B5F0A1	 |
 	CMP $D4				;$B5F0A3	 |
 	BNE CODE_B5F0AB			;$B5F0A5	 |
+if !version == 0			;		 |
+	LDA $AE				;$B5F0A7	 |
+else					;		 |
 	LDA $AC				;$B5F0A7	 |
+endif					;		 |
 	CMP $D2				;$B5F0A9	 |
 CODE_B5F0AB:				;		 |
 	BCS CODE_B5F0B9			;$B5F0AB	 |
@@ -12159,14 +12463,24 @@ CODE_B5F0AB:				;		 |
 CODE_B5F0AF:				;		 |
 	CMP $D4				;$B5F0AF	 |
 	BNE CODE_B5F0B7			;$B5F0B1	 |
+if !version == 0			;		 |
+	LDA $AE				;$B5F0B3	 |
+else					;		 |
 	LDA $AC				;$B5F0B3	 |
+endif					;		 |
 	CMP $D2				;$B5F0B5	 |
 CODE_B5F0B7:				;		 |
 	BCS CODE_B5F0C1			;$B5F0B7	 |
 CODE_B5F0B9:				;		 |
+if !version == 0			;		 |
+	LDA $AE				;$B5F0B9	 |
+	STA $D2				;$B5F0BB	 |
+	LDA $B0				;$B5F0BD	 |
+else					;		 |
 	LDA $AC				;$B5F0B9	 |
 	STA $D2				;$B5F0BB	 |
 	LDA $AE				;$B5F0BD	 |
+endif					;		 |
 	STA $D4				;$B5F0BF	 |
 CODE_B5F0C1:				;		 |
 	REP #$10			;$B5F0C1	 |
@@ -13675,46 +13989,3 @@ DATA_B5FDA8:
 	db $40, $40, $40, $40, $40, $40, $40, $40
 	db $40, $40, $40, $40, $40, $40, $40, $40
 	db $40, $40, $40, $40, $40, $40, $40, $40
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00

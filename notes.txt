@@ -1,5 +1,5 @@
 24 gamemode pointer or nmi part 2?
-known pointers for $24: 
+known pointers for $24:
 	$8086F6
 	$8087D9
 	$8087C5
@@ -10,7 +10,7 @@ known pointers for $24:
 	$80FA7C
 
 20 = main NMI pointer
-known pointers for $20: 
+known pointers for $20:
 	$808608	 ;reset stack then set NMI pointer to  F3E6
 	$808CC9
 	$808CD9
@@ -33,7 +33,7 @@ known pointers for $20:
 	$80B461
 	$80B681
 	$80F3E6	 ; Set brightness, and thats all.
-	
+
 known pointers $067A:
 	$B49E48
 
@@ -57,15 +57,15 @@ known pointers $067F:
 	$B4C14E
 	$BAB8F9
 	$BAB8FD
-	
+
 Known pointers for $17B2:
 	$B5BC00 (ROM pointer list)
 	$B5C3F4
 	$B5C60B
-	
+
 known pointers for $AA:
 	$B5CA58 (ROM pointer list)
-	
+
 known pointers for $50,x:
 	$B6D9DD
 	$B6DA16
@@ -86,14 +86,14 @@ known pointers for $34:
 
 known pointers for $36:
 	$B5F3AD (ROM pointer list for JMP)
-	
+
 Known pointers for $05A9:
 	$B38052
 	$B380D5
-	
+
 known pointers for $32 (JMP)
 	$8085EB
-	
+
 known pointers for 0A8A (stored in $32 for JML):
 	$B3992E
 	$B398D7
@@ -106,14 +106,14 @@ known pointers for 0A8A (stored in $32 for JML):
 known pointers for $09F9:
 	$BCFCB5
 	$BCFCA5
-	
+
 known pointer for $0005
 	$B4B82A
 	$B4B7CA
 	$B4B82B
 
-	
-	
+
+
 (look into CODE_808C2E)
 
 CODE_BB8089	 ;<-- CGRAM DMA routine
@@ -432,7 +432,7 @@ Various compressed data:
 	$FA4C3E
 
 +0	command 0x80(CODE_BB84C0)	return success
-+4	command 0x81(CODE_BB84C7)	todo
++4	command 0x81(CODE_BB84C7)	set animation
 +4	command 0x82(CODE_BB84D8)	null command (goto next)
 +4	command 0x83(CODE_BB84DA)	load subconfig
 +4	command 0x84(CODE_BB84EE)	set palette
@@ -448,6 +448,54 @@ Various compressed data:
 +A	command 0x8E(CODE_BB879E)	Another palette/vram allocation routine
 
 
+command: 0x80
+	dw !initcommand_success
+
+command: 0x81
+	dw !initcommand_set_animation, dw <id>
+
+command: 0x82
+	dw !initcommand_skip, dw <unused parm>
+
+command: 0x83
+	dw !initcommand_load_subconfig, dw <cfg_ptr>
+
+command: 0x84
+	dw !initcommand_set_palette, dw <pal_id>
+
+command: 0x85
+	dw !initcommand_set_oam, dw <properties>  (upper 4 bits of oam props)
+
+command: 0x86
+	dw !initcommand_spawn_relative, dw <x_shift>, dw <y_shift>
+
+command: 0x87
+	dw !initcommand_set_direction, dw <sprite_obj_member>, dw <value>
+
+command: 0x88
+	dw !initcommand_set_position
+
+command: 0x89
+	dw !initcommand_setup_static, dw <sprite_number>, dw <pal_id>, dw <source_word>, dw <source_bank_size> SSBB
+
+command: 0x8A
+	dw !initcommand_bulk_set, <sprite_obj_member_46>, <sprite_obj_member_42>, <sprite_obj_member_4C>
+	dw <sprite_obj_member_4E>, <sprite_obj_member_52>, <sprite_obj_member_28>, <sprite_obj_member_22>
+	dw <sprite_obj_member_2C>, <sprite_obj_member_20>, <sprite_obj_member_24>, <sprite_obj_member_26>
+	dw <sprite_obj_member_3A>, <sprite_obj_member_36>
+
+command: 0x8B
+	dw !initcommand_set_oam_special, dw <properties>
+
+command: 0x8C
+	dw !initcommand_set_palette2, dw <pal_id>
+
+command: 0x8D
+	dw !initcommand_set_alt_palette, dw <pal_id>
+
+command: 0x8D
+	dw !initcommand_setup_static2, dw <sprite_number>, dw <pal_id>, dw <source_word>, dw <source_bank_size> SSBB
+
 $05FD = index to control buffer
 
 
@@ -459,7 +507,7 @@ CODE_BB842C one of several spawn sprite routines
 
 
 music notes:
-sound effects 0x60+ can have multiple uses.  Ones before that may still be sample dependant. 
+sound effects 0x60+ can have multiple uses.  Ones before that may still be sample dependant.
 
 In level music prefixes
 0x0000 -- normal
@@ -475,3 +523,10 @@ Bonus music prefixes
 0x0300 -- In the bonus
 
 OW music, Swanky, Cranky, Wrinkly, Fanfare, Gameover, and Credits have no prefixes
+
+
+
+
+2 byte offset in $A2-B0 between v0/v1
+
+LDY $0617 <-- text message pointers

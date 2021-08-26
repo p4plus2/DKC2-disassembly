@@ -2,128 +2,128 @@
 copy_or_return_1_entry:
 	NOP				;$BB8000	\ Decompression command entry
 	JMP copy_or_return_1            ;$BB8001	/
-                                        
-stream_byte_1_entry:                    
+
+stream_byte_1_entry:
 	NOP                             ;$BB8004	\ Decompression command entry
 	JMP stream_byte_1               ;$BB8005	/
-                                        
-stream_word_1_entry:                    
+
+stream_word_1_entry:
 	NOP                             ;$BB8008	\ Decompression command entry
 	JMP stream_word_1               ;$BB8009	/
-                                        
-stream_byte_fill_1_entry:               
+
+stream_byte_fill_1_entry:
 	NOP                             ;$BB800C	\ Decompression command entry
 	JMP stream_byte_fill_1          ;$BB800D	/
-                                        
-direct_byte_1_fill_1_entry:             
+
+direct_byte_1_fill_1_entry:
 	NOP                             ;$BB8010	\ Decompression command entry
 	JMP direct_byte_1_fill_1        ;$BB8011	/
-                                        
-direct_byte_2_fill_1_entry:             
+
+direct_byte_2_fill_1_entry:
 	NOP                             ;$BB8014	\ Decompression command entry
 	JMP direct_byte_2_fill_1        ;$BB8015	/
-                                        
-direct_word_put_1_entry:                
+
+direct_word_put_1_entry:
 	NOP                             ;$BB8018	\ Decompression command entry
 	JMP direct_word_put_1           ;$BB8019	/
-                                        
-direct_byte_1_put_1_entry:              
+
+direct_byte_1_put_1_entry:
 	NOP                             ;$BB801C	\ Decompression command entry
 	JMP direct_byte_1_put_1         ;$BB801D	/
-                                        
-direct_byte_2_put_1_entry:              
+
+direct_byte_2_put_1_entry:
 	NOP                             ;$BB8020	\ Decompression command entry
 	JMP direct_byte_2_put_1         ;$BB8021	/
-                                        
-back_copy_word_1_entry:                 
+
+back_copy_word_1_entry:
 	NOP                             ;$BB8024	\ Decompression command entry
 	JMP back_copy_word_1            ;$BB8025	/
-                                        
-back_copy_1_entry:                      
+
+back_copy_1_entry:
 	NOP                             ;$BB8028	\ Decompression command entry
 	JMP back_copy_1                 ;$BB8029	/
-                                        
-back_copy_far_1_entry:                  
+
+back_copy_far_1_entry:
 	NOP                             ;$BB802C	\ Decompression command entry
 	JMP back_copy_far_1             ;$BB802D	/
-                                        
-back_copy_arbitrary_1_entry:            
+
+back_copy_arbitrary_1_entry:
 	NOP                             ;$BB8030	\ Decompression command entry
 	JMP back_copy_arbitrary_1       ;$BB8031	/
-                                        
-duplicate_byte_1_entry:                 
+
+duplicate_byte_1_entry:
 	NOP                             ;$BB8034	\ Decompression command entry
 	JMP duplicate_byte_1            ;$BB8035	/
-                                        
-duplicate_word_1_entry:                 
+
+duplicate_word_1_entry:
 	NOP                             ;$BB8038	\ Decompression command entry
 	JMP duplicate_word_1            ;$BB8039	/
-                                        
-copy_future_word_1_entry:               
+
+copy_future_word_1_entry:
 	NOP                             ;$BB803C	\ Decompression command entry
 	JMP copy_future_word_1          ;$BB803D	/
 
 ;Command set 2 jump table
 copy_or_return_2_entry:
 	JMP copy_or_return_2		;$BB8040	> Decompression command entry
-                                        
-stream_byte_2_entry:                    
+
+stream_byte_2_entry:
 	NOP                             ;$BB8043	\ Decompression command entry
 	JMP stream_byte_2               ;$BB8044	/
-                                        
-stream_word_2_entry:                    
+
+stream_word_2_entry:
 	NOP                             ;$BB8047	\ Decompression command entry
 	JMP stream_word_2               ;$BB8048	/
-                                        
-stream_byte_fill_2_entry:               
+
+stream_byte_fill_2_entry:
 	NOP                             ;$BB804B	\ Decompression command entry
 	JMP stream_byte_fill_2          ;$BB804C	/
-                                        
-direct_byte_1_fill_2_entry:             
+
+direct_byte_1_fill_2_entry:
 	NOP                             ;$BB804F	\ Decompression command entry
 	JMP direct_byte_1_fill_2        ;$BB8050	/
-                                        
-direct_byte_2_fill_2_entry:             
+
+direct_byte_2_fill_2_entry:
 	NOP                             ;$BB8053	\ Decompression command entry
 	JMP direct_byte_2_fill_2        ;$BB8054	/
-                                        
-direct_word_put_2_entry:                
+
+direct_word_put_2_entry:
 	NOP                             ;$BB8057	\ Decompression command entry
 	JMP direct_word_put_2           ;$BB8058	/
-                                        
-direct_byte_1_put_2_entry:              
+
+direct_byte_1_put_2_entry:
 	NOP                             ;$BB805B	\ Decompression command entry
 	JMP direct_byte_1_put_2         ;$BB805C	/
-                                        
-direct_byte_2_put_2_entry:              
+
+direct_byte_2_put_2_entry:
 	NOP                             ;$BB805F	\ Decompression command entry
 	JMP direct_byte_2_put_2         ;$BB8060	/
-                                        
-back_copy_word_2_entry:                 
+
+back_copy_word_2_entry:
 	NOP                             ;$BB8063	\ Decompression command entry
 	JMP back_copy_word_2            ;$BB8064	/
-                                        
-back_copy_2_entry:                      
+
+back_copy_2_entry:
 	NOP                             ;$BB8067	\ Decompression command entry
 	JMP back_copy_2                 ;$BB8068	/
-                                        
-back_copy_far_2_entry:                  
+
+back_copy_far_2_entry:
 	NOP                             ;$BB806B	\ Decompression command entry
 	JMP back_copy_far_2             ;$BB806C	/
-                                        
-back_copy_arbitrary_2_entry:            
+
+back_copy_arbitrary_2_entry:
 	NOP                             ;$BB806F	\ Decompression command entry
 	JMP back_copy_arbitrary_2       ;$BB8070	/
-                                        
-duplicate_byte_2_entry:                 
+
+duplicate_byte_2_entry:
 	NOP                             ;$BB8073	\ Decompression command entry
 	JMP duplicate_byte_2            ;$BB8074	/
-                                        
-duplicate_word_2_entry:                 
+
+duplicate_word_2_entry:
 	NOP                             ;$BB8077	\ Decompression command entry
 	JMP duplicate_word_2            ;$BB8078	/
-                                        
-copy_future_word_2_entry:               
+
+copy_future_word_2_entry:
 	NOP                             ;$BB807B	\ Decompression command entry
 	JMP copy_future_word_2          ;$BB807C	/
 
@@ -746,48 +746,48 @@ CODE_BB8474:				;		 |
 	PEA $FF00			;$BB8475	 |
 	PLB				;$BB8478	 |
 	PLB				;$BB8479	 |
-	BRA CODE_BB8489			;$BB847A	/
+	BRA parse_initscript_entry	;$BB847A	/
 
-CODE_BB847C:
+parse_initscript:
 	PHB				;$BB847C	\
-	BRA CODE_BB8489			;$BB847D	/
+	BRA parse_initscript_entry	;$BB847D	/
 
-CODE_BB847F:
+set_sprite_config:
 	TCD				;$BB847F	\
 	LDA.w DATA_FF0002,y		;$BB8480	 |
 	STA $00,x			;$BB8483	 |
-CODE_BB8485:				;		 |
+initscript_next:			;		 |
 	INY				;$BB8485	 |
 	INY				;$BB8486	 |
-CODE_BB8487:				;		 |
+initscript_next_no_operand:		;		 |
 	INY				;$BB8487	 |
 	INY				;$BB8488	 |
-CODE_BB8489:				;		 |
+parse_initscript_entry:			;		 |
 	LDA.w DATA_FF0000,y		;$BB8489	 |
-	BPL CODE_BB847F			;$BB848C	 |
+	BPL set_sprite_config		;$BB848C	 |
 	AND #$FF00			;$BB848E	 |
 	XBA				;$BB8491	 |
 	SEC				;$BB8492	 |
 	SBC #$0080			;$BB8493	 |
 	ASL A				;$BB8496	 |
 	TAX				;$BB8497	 |
-	JMP (DATA_BB849B,x)		;$BB8498	/
+	JMP (initscript_commands,x)	;$BB8498	/
 
-DATA_BB849B:
-	dw CODE_BB84C0
-	dw CODE_BB84C7
-	dw CODE_BB84D8
-	dw CODE_BB84DA
-	dw CODE_BB84EE
-	dw CODE_BB850C
-	dw CODE_BB8521
-	dw CODE_BB8582
-	dw CODE_BB85A2
+initscript_commands:
+	dw init_command_success
+	dw initcommand_set_animation
+	dw init_command_skip_operand
+	dw init_command_load_subconfig
+	dw init_command_set_palette
+	dw init_command_set_oam_properties
+	dw init_command_spawn_relative
+	dw init_command_set_directional
+	dw init_command_set_position
 	dw CODE_BB86D5
-	dw CODE_BB85BC
-	dw CODE_BB860E
-	dw CODE_BB8646
-	dw CODE_BB8678
+	dw init_command_bulk_set
+	dw init_command_set_oam_special
+	dw init_command_set_palette_copy
+	dw init_command_set_alt_palette
 	dw CODE_BB879E
 
 
@@ -798,14 +798,14 @@ CODE_BB84B9:
 	TCD				;$BB84BE	 |
 	RTL				;$BB84BF	/
 
-CODE_BB84C0:
+init_command_success:
 	PLB				;$BB84C0	\
 	CLC				;$BB84C1	 |
 	LDA #$0000			;$BB84C2	 |
 	TCD				;$BB84C5	 |
 	RTL				;$BB84C6	/
 
-CODE_BB84C7:
+initcommand_set_animation:
 	LDA #$0000			;$BB84C7	\
 	TCD				;$BB84CA	 |
 	LDA.w DATA_FF0002,y		;$BB84CB	 |
@@ -813,24 +813,24 @@ CODE_BB84C7:
 	JSL CODE_B9D09B			;$BB84CF	 |
 	PLY				;$BB84D3	 |
 	LDX $68				;$BB84D4	 |
-	BRA CODE_BB8485			;$BB84D6	/
+	BRA initscript_next		;$BB84D6	/
 
-CODE_BB84D8:
-	BRA CODE_BB8485			;$BB84D8	/
+init_command_skip_operand:
+	BRA initscript_next		;$BB84D8	/
 
-CODE_BB84DA:
+init_command_load_subconfig:
 	LDA #$0000			;$BB84DA	\
 	TCD				;$BB84DD	 |
 	PHY				;$BB84DE	 |
 	LDA.w DATA_FF0002,y		;$BB84DF	 |
 	TAY				;$BB84E2	 |
 	LDX $68				;$BB84E3	 |
-	JSL CODE_BB847C			;$BB84E5	 |
+	JSL parse_initscript		;$BB84E5	 |
 	PLY				;$BB84E9	 |
 	LDX $68				;$BB84EA	 |
-	BRA CODE_BB8485			;$BB84EC	/
+	BRA initscript_next		;$BB84EC	/
 
-CODE_BB84EE:
+init_command_set_palette:
 	LDA #$0000			;$BB84EE	\
 	TCD				;$BB84F1	 |
 	LDA.w DATA_FF0002,y		;$BB84F2	 |
@@ -846,9 +846,9 @@ CODE_BB84EE:
 	EOR $12,x			;$BB8504	 |
 	STA $12,x			;$BB8506	 |
 	PLB				;$BB8508	 |
-	JMP CODE_BB8485			;$BB8509	/
+	JMP initscript_next		;$BB8509	/
 
-CODE_BB850C:
+init_command_set_oam_properties:
 	LDA #$0000			;$BB850C	\
 	TCD				;$BB850F	 |
 	LDX $68				;$BB8510	 |
@@ -857,9 +857,9 @@ CODE_BB850C:
 	AND #$F000			;$BB8517	 |
 	EOR $12,x			;$BB851A	 |
 	STA $12,x			;$BB851C	 |
-	JMP CODE_BB8485			;$BB851E	/
+	JMP initscript_next		;$BB851E	/
 
-CODE_BB8521:
+init_command_spawn_relative:
 	LDA #$0000			;$BB8521	\
 	TCD				;$BB8524	 |
 	LDA.w DATA_FF0002,y		;$BB8525	 |
@@ -911,9 +911,9 @@ CODE_BB8565:				;		 |
 	PLB				;$BB857C	 |
 	INY				;$BB857D	 |
 	INY				;$BB857E	 |
-	JMP CODE_BB8485			;$BB857F	/
+	JMP initscript_next		;$BB857F	/
 
-CODE_BB8582:
+init_command_set_directional:
 	LDA #$0000			;$BB8582	\
 	TCD				;$BB8585	 |
 	LDA.w DATA_FF0004,y		;$BB8586	 |
@@ -931,9 +931,9 @@ CODE_BB8593:				;		 |
 	STA $00,x			;$BB859B	 |
 	INY				;$BB859D	 |
 	INY				;$BB859E	 |
-	JMP CODE_BB8485			;$BB859F	/
+	JMP initscript_next		;$BB859F	/
 
-CODE_BB85A2:
+init_command_set_position:
 	LDA #$0000			;$BB85A2	\
 	TCD				;$BB85A5	 |
 	LDX $68				;$BB85A6	 |
@@ -943,9 +943,9 @@ CODE_BB85A2:
 	STA $0A,x			;$BB85B2	 |
 	LDA #$00F8			;$BB85B4	 |
 	STA $02,x			;$BB85B7	 |
-	JMP CODE_BB8487			;$BB85B9	/
+	JMP initscript_next_no_operand	;$BB85B9	/
 
-CODE_BB85BC:
+init_command_bulk_set:
 	LDA #$0000			;$BB85BC	\
 	TCD				;$BB85BF	 |
 	LDX $68				;$BB85C0	 |
@@ -980,9 +980,9 @@ CODE_BB85BC:
 	CLC				;$BB8606	 |
 	ADC #$001C			;$BB8607	 |
 	TAY				;$BB860A	 |
-	JMP CODE_BB8489			;$BB860B	/
+	JMP parse_initscript_entry	;$BB860B	/
 
-CODE_BB860E:
+init_command_set_oam_special:
 	LDA #$0000			;$BB860E	\
 	TCD				;$BB8611	 |
 	LDX $68				;$BB8612	 |
@@ -999,7 +999,7 @@ CODE_BB860E:
 	CMP #$3000			;$BB862E	 |
 	BNE CODE_BB8636			;$BB8631	 |
 CODE_BB8633:				;		 |
-	JMP CODE_BB8485			;$BB8633	/
+	JMP initscript_next		;$BB8633	/
 
 CODE_BB8636:
 	CLC				;$BB8636	\
@@ -1008,10 +1008,10 @@ CODE_BB8636:
 	AND #$3000			;$BB863C	 |
 	EOR $12,x			;$BB863F	 |
 	STA $12,x			;$BB8641	 |
-	JMP CODE_BB8485			;$BB8643	/
+	JMP initscript_next		;$BB8643	/
 
-CODE_BB8646:
-	JML CODE_BB84EE			;$BB8646	/
+init_command_set_palette_copy:
+	JML init_command_set_palette	;$BB8646	/
 
 	LDA #$0000			;$BB864A	 |
 	TCD				;$BB864D	 |
@@ -1036,9 +1036,9 @@ CODE_BB865C:				;		 |
 	EOR $12,x			;$BB8670	 |
 	STA $12,x			;$BB8672	 |
 	PLB				;$BB8674	 |
-	JMP CODE_BB8485			;$BB8675	/
+	JMP initscript_next		;$BB8675	/
 
-CODE_BB8678:
+init_command_set_alt_palette:
 	LDA #$0000			;$BB8678	\
 	TCD				;$BB867B	 |
 	LDA.w DATA_FF0002,y		;$BB867C	 |
@@ -1054,7 +1054,7 @@ CODE_BB8678:
 	EOR $12,x			;$BB868E	 |
 	STA $12,x			;$BB8690	 |
 	PLB				;$BB8692	 |
-	JMP CODE_BB8485			;$BB8693	/
+	JMP initscript_next		;$BB8693	/
 
 	LDA $D9				;$BB8696	 |
 	CMP $E1				;$BB8698	 |
@@ -1205,18 +1205,18 @@ CODE_BB8790:				;		 |
 	INY				;$BB8798	 |
 	INY				;$BB8799	 |
 	INY				;$BB879A	 |
-	JMP CODE_BB8485			;$BB879B	/
+	JMP initscript_next		;$BB879B	/
 
 CODE_BB879E:
 	LDA #$0000			;$BB879E	\
 	TCD				;$BB87A1	 |
-	LDA $0002,y			;$BB87A2	 |
+	LDA.w DATA_FF0002,y		;$BB87A2	 |
 	STA $32				;$BB87A5	 |
-	LDA $0004,y			;$BB87A7	 |
+	LDA.w DATA_FF0004,y		;$BB87A7	 |
 	STA $34				;$BB87AA	 |
-	LDA $0006,y			;$BB87AC	 |
+	LDA.w DATA_FF0006,y		;$BB87AC	 |
 	STA $36				;$BB87AF	 |
-	LDA $0008,y			;$BB87B1	 |
+	LDA.w DATA_FF0008,y		;$BB87B1	 |
 	STA $38				;$BB87B4	 |
 	PHB				;$BB87B6	 |
 	PHB				;$BB87B7	 |
@@ -1321,7 +1321,7 @@ CODE_BB885F:				;		 |
 	INY				;$BB8867	 |
 	INY				;$BB8868	 |
 	INY				;$BB8869	 |
-	JMP CODE_BB8485			;$BB886A	/
+	JMP initscript_next		;$BB886A	/
 
 CODE_BB886D:
 	LDX #$0000			;$BB886D	\
@@ -2018,7 +2018,7 @@ handle_VRAM_payload:
 	PLB				;$BB8D2D	 | Restore the data bank
 	PLX				;$BB8D2E	 | Restore the payload index
 	SEP #$20			;$BB8D2F	 |
-	LDA.w DATA_FD819D,x		;$BB8D31	 |\ Load and set the VRAM address (masks off top bit) 
+	LDA.w DATA_FD819D,x		;$BB8D31	 |\ Load and set the VRAM address (masks off top bit)
 	STA $002116			;$BB8D34	 | |
 	LDA.w DATA_FD819E,x		;$BB8D38	 | |
 	AND #$7F			;$BB8D3B	 | |
@@ -2032,7 +2032,7 @@ handle_VRAM_payload:
 	BRA .DMA_payload		;$BB8D52	/ Launch the DMA to VRAM
 
 .static_payload
-	SEP #$20			;$BB8D54	\ 
+	SEP #$20			;$BB8D54	\
 	LDA.w DATA_FD819A,x		;$BB8D56	 |\ Get and set the bank of the source pointer
 	STA $28				;$BB8D59	 |/
 	LDA #$7F			;$BB8D5B	 |\ Set DMA source bank to 7F
@@ -2051,16 +2051,16 @@ handle_VRAM_payload:
 	TAY				;$BB8D7E	 |\ X and Y mirror for using different addressing mods
 	TAX				;$BB8D7F	 |/
 .next_byte				;		 |
-	LDA [$26],y			;$BB8D80	 |\ Copy one byte from source to destination
+	LDA [$26],y			;$BB8D80	 |\ Copy two bytes from source to destination
 	STA $7F0000,x			;$BB8D82	 |/
-	DEY				;$BB8D86	 |\ Count down two bytes 
+	DEY				;$BB8D86	 |\ Count down two bytes
 	DEY				;$BB8D87	 | |
 	TYX				;$BB8D88	 |/
 	BPL .next_byte			;$BB8D89	 | Continue until there are no remaining bytes
 	PLX				;$BB8D8B	 | Restore the payload index
 	SEP #$20			;$BB8D8C	 |
 	BRL .DMA_payload		;$BB8D8E	/ Launch the DMA to VRAM
-	
+
 ;$38  -- destination
 ;$34 -- source
 ;$32 -- run dma after upload (always #$FFFF so never)
@@ -2800,9 +2800,17 @@ CODE_BB9201:				;		 |
 CODE_BB9210:
 	JSL CODE_BB819F			;$BB9210	\
 	JSL CODE_808E6A			;$BB9214	 |
+if !version == 0			;		 |
+	LDA #$0104			;$BB9218	 |
+else					;		 |
 	LDA #$0144			;$BB9218	 |
+endif					;		 |
 	TRB $08C2			;$BB921B	 |
+if !version == 0			;		 |
+	LDA #$0002			;$BB921E	 |
+else					;		 |
 	LDA #$0012			;$BB921E	 |
+endif					;		 |
 	TRB $08C4			;$BB9221	 |
 	LDA $08A4			;$BB9224	 |
 	JSL CODE_808837			;$BB9227	 |
@@ -2921,12 +2929,14 @@ CODE_BB933E:				;		 |
 	LDA #CODE_B5C60B		;$BB9345	 |
 	STA $17B2			;$BB9348	 |
 CODE_BB934B:				;		 |
+if !version == 1			;		 |
 	LDA $D3				;$BB934B	 |
 	CMP #$000D			;$BB934D	 |
 	BNE CODE_BB9358			;$BB9350	 |
 	LDA #CODE_B5C3F4		;$BB9352	 |
 	STA $17B2			;$BB9355	 |
 CODE_BB9358:				;		 |
+endif					;		 |
 	LDA $0519			;$BB9358	 |
 	ASL A				;$BB935B	 |
 	TAX				;$BB935C	 |
@@ -4169,7 +4179,7 @@ CODE_BB9F4A:				;		 |
 	STA $4374			;$BB9FF4	 |
 	STZ $4377			;$BB9FF7	 |
 	REP #$20			;$BB9FFA	 |
-	LDY #$0FD2			;$BB9FFC	 |
+	LDY #DATA_FF0FD2		;$BB9FFC	 |
 	JSL CODE_BB8418			;$BB9FFF	 |
 	JSR CODE_BBABE2			;$BBA003	 |
 	LDA #$DC01			;$BBA006	 |
@@ -4579,7 +4589,7 @@ CODE_BBA4E0:				;		 |
 	LDA #$1680			;$BBA592	 |
 	STA $0D4E			;$BBA595	 |
 	JSR CODE_BBABE2			;$BBA598	 |
-	LDY #$0FD2			;$BBA59B	 |
+	LDY #DATA_FF0FD2		;$BBA59B	 |
 	JSL CODE_BB8418			;$BBA59E	 |
 	LDA #$DC01			;$BBA5A2	 |
 	STA $059B			;$BBA5A5	 |
@@ -4873,7 +4883,7 @@ CODE_BBA817:				;		 |
 	STZ $4367			;$BBA8C7	 |
 	REP #$20			;$BBA8CA	 |
 	JSR CODE_BBABE2			;$BBA8CC	 |
-	LDY #$0FD2			;$BBA8CF	 |
+	LDY #DATA_FF0FD2		;$BBA8CF	 |
 	JSL CODE_BB8418			;$BBA8D2	 |
 	LDA #$6E01			;$BBA8D6	 |
 	STA $059B			;$BBA8D9	 |
@@ -4975,7 +4985,7 @@ CODE_BBA9E0:
 	JSR CODE_BBA8DD			;$BBA9E0	\
 	JSR CODE_BBA9F7			;$BBA9E3	 |
 	JSR CODE_BBABE2			;$BBA9E6	 |
-	LDY #$0FD2			;$BBA9E9	 |
+	LDY #DATA_FF0FD2		;$BBA9E9	 |
 	JSL CODE_BB8418			;$BBA9EC	 |
 	LDA #$FE01			;$BBA9F0	 |
 	STA $059B			;$BBA9F3	 |
@@ -5216,24 +5226,28 @@ DATA_BBAC76:
 	db $D0, $01, $D0, $03, $30, $02, $60, $01
 	db $00, $FD, $B0, $F4
 
+CODE_BBACE2:
 	LDA #$0006			;$BBACE2	 |
 	STA $88				;$BBACE5	 |
 	LDA #$FFFC			;$BBACE7	 |
 	STA $0BA4			;$BBACEA	 |
 	RTS				;$BBACED	/
 
+CODE_BBACEE:
 	LDA #$0005			;$BBACEE	 |
 	STA $88				;$BBACF1	 |
 	LDA #$FFFC			;$BBACF3	 |
 	STA $0BA4			;$BBACF6	 |
 	RTS				;$BBACF9	/
 
+CODE_BBACFA:
 	LDA #$0005			;$BBACFA	 |
 	STA $88				;$BBACFD	 |
 	LDA #$FFFC			;$BBACFF	 |
 	STA $0BA4			;$BBAD02	 |
 	RTS				;$BBAD05	/
 
+CODE_BBAD06:
 	JSR CODE_BBAD34			;$BBAD06	 |
 	LDA $08FC			;$BBAD09	 |
 	AND #$0003			;$BBAD0C	 |
@@ -5243,6 +5257,7 @@ DATA_BBAC76:
 CODE_BBAD18:				;		 |
 	RTS				;$BBAD18	/
 
+CODE_BBAD19:
 	JSR CODE_BBAD34			;$BBAD19	 |
 	LDA #$0004			;$BBAD1C	 |
 	BIT $08C4			;$BBAD1F	 |
@@ -7622,7 +7637,9 @@ CODE_BBBDC4:
 	PHK				;$BBBDC5	 |
 	PLB				;$BBBDC6	 |
 	JSR CODE_BBC0A4			;$BBBDC7	 |
+if !version == 1			;		 |
 	JSR CODE_BBC007			;$BBBDCA	 |
+endif
 	LDA #$0003			;$BBBDCD	 |
 	STA $0006CF			;$BBBDD0	 |
 	LDA #$000A			;$BBBDD4	 |
@@ -7710,13 +7727,15 @@ CODE_BBBE7E:				;		 |
 DATA_BBBE92:
 	dw CODE_BBBEF8
 	dw CODE_BBBFDD
+if !version == 0
+	dw CODE_BBBFE6
+else
 	dw CODE_BBBFE3
+endif
 	dw CODE_BBC019
 	dw CODE_BBC053
 	dw CODE_BBC056
 	dw CODE_BBBEF8
-
-
 
 CODE_BBBEA0:
 	LDA $060D			;$BBBEA0	\
@@ -7784,7 +7803,6 @@ DATA_BBBF22:
 	dw CODE_BBBF30
 	dw CODE_BBBF30
 	dw CODE_BBBFC8
-
 
 
 CODE_BBBF30:
@@ -7858,8 +7876,9 @@ CODE_BBBFC8:
 	LDA #CODE_8087E1		;$BBBFD6	 |
 	JML CODE_808C9E			;$BBBFD9	/
 
-CODE_BBBFDD:
-	JSR CODE_BBC007			;$BBBFDD	\
+CODE_BBBFDD:				;		\
+if !version == 1			;		 |
+	JSR CODE_BBC007			;$BBBFDD	 |
 	JSR CODE_BBC059			;$BBBFE0	 |
 CODE_BBBFE3:				;		 |
 	LDA #$8000			;$BBBFE3	 |
@@ -7873,7 +7892,8 @@ CODE_BBBFE3:				;		 |
 	LDA #$0080			;$BBBFFA	 |
 	TSB $08C2			;$BBBFFD	 |
 	LDA #CODE_8087E1		;$BBC000	 |
-	JML CODE_808C9E			;$BBC003	/
+	JML CODE_808C9E			;$BBC003	 |
+endif					;		/
 
 CODE_BBC007:
 	LDA #$8000			;$BBC007	\
@@ -7883,7 +7903,27 @@ CODE_BBC007:
 	STA $08BC			;$BBC012	 |
 	STA $096B			;$BBC015	 |
 CODE_BBC018:				;		 |
+if !version == 1			;		 |
 	RTS				;$BBC018	/
+endif
+
+if !version == 0
+CODE_BBBFE3:				;		\
+	JSR CODE_BBC059			;$BBC019	 |
+CODE_BBBFE6:				;		 |
+	LDA #$8000			;$BBC019	 |
+	TSB $08C6			;$BBC01C	 |
+	LDA $05A3			;$BBC01F	 |
+	STA $08C8			;$BBC023	 |
+	LDA $05A5			;$BBC026	 |
+	STA $08A6			;$BBC029	 |
+	LDA $08C8			;$BBC02C	 |
+	STA $D3				;$BBC02F	 |
+	LDA #$0080			;$BBC031	 |
+	TSB $08C2			;$BBC034	 |
+	LDA #CODE_8087E1		;$BBC037	 |
+	JML CODE_808C9E			;$BBC03A	 |
+endif					;		/
 
 CODE_BBC019:
 	LDA $08A4			;$BBC019	\
@@ -9941,7 +9981,14 @@ DATA_BBC8FF:
 	db $00, $00, $00, $00, $00, $00, $00, $00
 	db $00
 
-	%mirror(DATA_FBE800)
+if !version == 0
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00
+endif
+
+
+%mirror(DATA_FBE800)
 	dw DATA_FF2A08
 	dw DATA_FF2A38
 	dw DATA_FF2A66
@@ -10182,7 +10229,11 @@ DATA_BBC8FF:
 	dw DATA_FF40F0
 	dw DATA_FF4112
 	dw DATA_FF4134
+if !version == 0
+	dw DATA_FF4154
+else
 	dw DATA_FF4156
+endif
 	dw DATA_FF4156
 	dw DATA_FF4178
 	dw DATA_FF419A
@@ -11297,7 +11348,11 @@ DATA_BBC8FF:
 	dw DATA_FFADF0
 	dw DATA_FFADFE
 	dw DATA_FFAE0C
+if !version == 0
 	dw DATA_FFAE1E
+else
+	dw DATA_FFAE1E
+endif
 	dw DATA_FFAE30
 	dw DATA_FFAE42
 	dw DATA_FFAE54
@@ -11696,7 +11751,9 @@ DATA_BBC8FF:
 	dw DATA_FFDA90
 	dw DATA_FFDAA2
 	dw DATA_FFDAB4
+if !version == 1
 	dw DATA_FFDAC6
+endif
 	dw DATA_FFDAD8
 	dw DATA_FFDADE
 	dw DATA_FFDAE8
@@ -12021,7 +12078,17 @@ DATA_BBC8FF:
 	dw DATA_FFFEE8
 	dw DATA_FFFF06
 	dw DATA_FFFF20
+if !version == 0
+	dw DATA_FFFF2A
+	dw DATA_FFFF4C
+	dw DATA_FFFF4C
+	dw DATA_FFFF6A
+else
 	dw !null_pointer
+	dw !null_pointer
+	dw !null_pointer
+	dw !null_pointer
+endif
 
 DATA_BBF840:
 	db $00, $00, $00, $00, $00, $00, $00, $00
@@ -12270,5 +12337,9 @@ DATA_BBF840:
 	db $00, $00, $00, $00, $00, $00, $00, $00
 	db $00, $00, $00, $00, $00, $00, $00, $00
 	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $3C, $AC, $AA, $00
+	db $00, $00, $00, $00, $00, $00
+if !version == 0
+	db $00, $00, $00, $AA, $AC, $3C
+else
+	db $3C, $AC, $AA, $00
+endif

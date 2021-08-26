@@ -159,12 +159,12 @@ RESET_start:
 	BRL .prepare_anti_piracy	;$808413	/ Anti piracy triggered
 
 .anti_piracy_test			;		\
-	TSX				;$808416	 |\ Check if the reset vector was 
+	TSX				;$808416	 |\ Check if the reset vector was
 	LDA #RESET_start-1		;$808417	 | | the most recent popped value
 	CMP $FFFF,x			;$80841A	 | |
 	BEQ .check_for_false_positive	;$80841D	 |/
 	LDY #$1FFD			;$80841F	 | Load number of RAM bytes to scan
-	SEP #$20			;$808422	 | Use 8 bit to check each byte 
+	SEP #$20			;$808422	 | Use 8 bit to check each byte
 .next_byte				;		 |
 	LDA $0000,y			;$808424	 | Load byte to scan
 	CMP #$4C			;$808427	 |\ Test for JMP $83F7 (reset vector)
@@ -213,7 +213,7 @@ RESET_start:
 	BRA .resume_scanning		;$80847D	/ Continue scanning
 
 .sequential_test
-	TYX				;$80847F	\ X is used so to preserve Y if the test fails
+	TYX				;$80847F	\ X is used to preserve Y if the test fails
 .next_count				;		 |
 	CMP $0000,x			;$808480	 |\ Scan for the sequential string of $60-$7F
 	BNE .resume_scanning		;$808483	 | |
@@ -229,19 +229,19 @@ RESET_start:
 	LDA $0907,x			;$808490	 |\ Avoid false positive by checking if
 	CMP rare_string,x		;$808493	 | | the anti piracy check was prior passed
 	BNE .write_piracy_string	;$808496	 | | Otherwise jump and fail anti piracy check
-	DEX				;$808498	 | | 
+	DEX				;$808498	 | |
 	DEX				;$808499	 | |
 	BPL -				;$80849A	 |/
 	BRA .prepare_logo		;$80849C	/ Boot the game
 
 .write_piracy_string
 	LDX #$0006			;$80849E	\  Load anti piracy string length
-	LDY #$0004			;$8084A1	 | Load target iteration count 
+	LDY #$0004			;$8084A1	 | Load target iteration count
 .write_next_byte			;		 |
 	LDA piracy_string,x		;$8084A4	 |\ Load the current anti piracy byte
 	STA $0907,x			;$8084A7	 | | Write the anti piracy byte in RAM
-	CMP.l $B06000,x			;$8084AA	 | |\ If the byte is already in SRAM decrease the 
-	BNE +				;$8084AE	 | | | iteration count.  If zero, the full string 
+	CMP.l $B06000,x			;$8084AA	 | |\ If the byte is already in SRAM decrease the
+	BNE +				;$8084AE	 | | | iteration count.  If zero, the full string
 	DEY				;$8084B0	 | |/ was already present.
 +					;		 | |
 	STA $B06000,x			;$8084B1	 | | Write the anti piracy byte to SRAM
@@ -252,7 +252,7 @@ RESET_start:
 	BEQ .prepare_anti_piracy	;$8084BA	 |/ Display the anti piracy message
 	LDY #$003B			;$8084BC	 | Otherwise load irregularity detected message
 	BRA .prepare_message		;$8084BF	/ Display the message
-	
+
 .prepare_anti_piracy
 	LDY #$003C			;$8084C1	\ Load anti piracy message
 .prepare_message			;		 |
@@ -265,7 +265,7 @@ RESET_start:
 	BRA init_registers		;$8084D2	/ Initialize MMIO registers
 
 .final_piracy_test			;		\
-	PHK				;$8084D4	 |\ Set current databank 
+	PHK				;$8084D4	 |\ Set current databank
 	PLB				;$8084D5	 |/
 	LDX #$0006			;$8084D6	 | Load anti piracy string length
 -					;		 |
@@ -274,7 +274,7 @@ RESET_start:
 	BNE .prepare_logo		;$8084DF	 | |
 	DEX				;$8084E1	 | |
 	DEX				;$8084E2	 | |
-	BPL -				;$8084E3	 |/ 
+	BPL -				;$8084E3	 |/
 	BRA .prepare_anti_piracy	;$8084E5	/ If the string was matched, display anti piracy message
 
 .prepare_logo				;		\
@@ -292,7 +292,7 @@ init_registers:    			;		 |
 	STZ $2101,x			;$8084FF	 | | Clear twice to handle write twice registers
 	INX				;$808502	 | |
 	CPX #$34			;$808503	 | |
-	BNE .clear_PPU			;$808505	 |/ 
+	BNE .clear_PPU			;$808505	 |/
 	LDX #$00			;$808507	 | Reset index to clear CPU MMIO
 .clear_CPU				;		 |
 	STZ $4202,x			;$808509	 |\ Clear 4202-420C
@@ -309,7 +309,7 @@ init_registers:    			;		 |
 	STZ $2131			;$808523	 | Disable color math
 	STZ $2133			;$808526	 | Reset screen mode
 	STZ $4200			;$808529	 | Disable interrupts and autojoy
-	LDA #$FF			;$80852C	 |\ Initalize outport (unused)  
+	LDA #$FF			;$80852C	 |\ Initalize outport (unused)
 	STA $4201			;$80852E	 |/
 	LDA #$E0			;$808531	 |\ Set fixed color
 	STA $2132			;$808533	 |/
@@ -374,13 +374,13 @@ clear_VRAM_wrapper:
 	JSR clear_VRAM			;$8085B5	\ Wrapper for long calls
 	RTL				;$8085B8	/
 
-start_engine:				;		\ 
+start_engine:				;		\
 	STZ $00				;$8085B9	 |\ Zero the first byte of WRAM
 	LDX #$0000			;$8085BB	 | | Set up MVN
 	LDY #$0001			;$8085BE	 | |
 	LDA #$FFFF			;$8085C1	 | | 64K
 	MVN $7E, $7E			;$8085C4	 |/ Copy first byte of WRAM across bank 7E (zero bank 7E)
-	LDY #$0000			;$8085C7	 |\ Set up another MVN 
+	LDY #$0000			;$8085C7	 |\ Set up another MVN
 	TYX				;$8085CA	 | |
 	LDA #$FFFF			;$8085CB	 | |
 	MVN $7F, $7E			;$8085CE	 |/ Copy 64K from bank 7E to 7F (zero bank 7F)
@@ -952,13 +952,16 @@ CODE_808A76:				;		 |
 	LDA $08C2			;$808A76	 |
 	AND #$0040			;$808A79	 |
 	BNE CODE_808AB4			;$808A7C	 |
+if !version == 1			;		 |
 	LDA #$0010			;$808A7E	 |
 	TRB $08C4			;$808A81	 |
 	BNE CODE_808A8D			;$808A84	 |
+endif					;		 |
 	LDA $08C2			;$808A86	 |
 	AND #$0040			;$808A89	 |
 	RTS				;$808A8C	/
 
+if !version == 1
 CODE_808A8D:
 	LDA #$0040			;$808A8D	\
 	TSB $08C2			;$808A90	 |
@@ -972,6 +975,7 @@ CODE_808A8D:
 	JSL CODE_B58021			;$808AAB	 |
 	LDA $2A				;$808AAF	 |
 	STA $0636			;$808AB1	 |
+endif					;		 |
 CODE_808AB4:				;		 |
 	LDA $0510			;$808AB4	 |
 	AND #$1000			;$808AB7	 |
@@ -1351,7 +1355,7 @@ CODE_808D8A:
 	JSR CODE_808E29			;$808DA1	 |
 	LDA #$16D8			;$808DA4	 |
 	STA $66				;$808DA7	 |
-	LDY #$136E			;$808DA9	 |
+	LDY #DATA_FF136E		;$808DA9	 |
 	JSL CODE_BB8432			;$808DAC	 |
 	LDX $68				;$808DB0	 |
 	STX $64				;$808DB2	 |
@@ -1408,7 +1412,7 @@ CODE_808DFB:
 CODE_808E29:
 	LDA #$16B2			;$808E29	\
 	STA $66				;$808E2C	 |
-	LDY #$1330			;$808E2E	 |
+	LDY.w #DATA_FF1330		;$808E2E	 |
 	JSL CODE_BB8432			;$808E31	 |
 	LDX $68				;$808E35	 |
 	STX $64				;$808E37	 |
@@ -1472,7 +1476,7 @@ CODE_808E6A:
 	PLB				;$808EAC	 |
 	RTL				;$808EAD	/
 
-clear_wram_reset:			;		\ 
+clear_wram_reset:			;		\
 	PLA				;$808EAE	 |\ Store the return address in scratch ram
 	INC A				;$808EAF	 | |
 	STA $32				;$808EB0	 |/
@@ -1592,6 +1596,7 @@ CODE_808FAE:				;		 |
 	LDA $08A4			;$808FBF	 |
 	JSL CODE_808837			;$808FC2	 |
 	JSL CODE_B48000			;$808FC6	 |
+if !version == 1			;		 |
 	LDX #$0000			;$808FCA	 |
 	LDA #$0000			;$808FCD	 |
 CODE_808FD0:				;		 |
@@ -1600,6 +1605,7 @@ CODE_808FD0:				;		 |
 	INX				;$808FD5	 |
 	CPX #$0060			;$808FD6	 |
 	BNE CODE_808FD0			;$808FD9	 |
+endif					;		 |
 	RTS				;$808FDB	/
 
 CODE_808FDC:
@@ -1609,7 +1615,11 @@ CODE_808FDC:
 	LDA #$0080			;$808FE3	 |
 	CMP #$0080			;$808FE6	 |
 	BNE CODE_808FF3			;$808FE9	 |
+if !version == 1
 	LDA #$FBA2			;$808FEB	 |
+else
+	LDA #$FB62			;$808FEB	 |
+endif
 	CMP #$FFB0			;$808FEE	 |
 	BMI CODE_808FFA			;$808FF1	 |
 CODE_808FF3:				;		 |
@@ -1736,7 +1746,7 @@ reset_controller_state:
 
 init_rareware_logo:
 	JSR reset_controller_state	;$8090DA	\
-	LDA #$002C			;$8090DD	 |\ 
+	LDA #$002C			;$8090DD	 |\
 	STA $78				;$8090E0	 |/
 	JSR init_registers		;$8090E2	 | Reset registers to a known state
 	JSR clear_VRAM			;$8090E5	 | Nuke VRAM
@@ -1980,7 +1990,7 @@ CODE_8092D0:				;		 |\ Clear scratch RAM
 	STA $4344			;$80939A	 | |/
 	STZ $4347			;$80939D	 |/ Zero indirect HDMA bank byte
 	LDA $4211			;$8093A0	 | Read IRQ flag to clear
-	LDA #$80			;$8093A3	 |\ Disable sprite 0 priority 
+	LDA #$80			;$8093A3	 |\ Disable sprite 0 priority
 	STA $2103			;$8093A5	 |/
 	LDA #$01			;$8093A8	 |\ Enable fast ROM
 	STA $420D			;$8093AA	 |/
@@ -5059,7 +5069,7 @@ CODE_80AFA3:				;		 |
 upload_mode_7_tilemap:			;		\
 	STA $34				;$80AFBA	 |\ Set pointer to mode 7 tilemap data
 	STX $36				;$80AFBC	 |/
-	STZ $39				;$80AFBE	 | Clear the 
+	STZ $39				;$80AFBE	 | Clear the
 	SEP #$20			;$80AFC0	 |
 	STZ $2115			;$80AFC2	 | Set VRAM increment after $2118 writes
 	REP #$20			;$80AFC5	 |
@@ -8724,7 +8734,11 @@ CODE_80CFDC:
 	CLC				;$80CFEA	 |
 	ADC $32				;$80CFEB	 |
 	CLC				;$80CFED	 |
+if !version == 1			;		 |
 	ADC #$A35F			;$80CFEE	 |
+else					;		 |
+	ADC #$A352			;$80CFEE	 |
+endif					;		 |
 	STA $4312			;$80CFF1	 |
 	LDA $17BB			;$80CFF4	 |
 	AND #$00FF			;$80CFF7	 |
@@ -8769,11 +8783,19 @@ CODE_80D04B:				;		 |
 	STA $7E8333			;$80D04D	 |
 	STA $7E8336			;$80D051	 |
 	REP #$20			;$80D055	 |
+if !version == 1			;		 |
 	LDX #$A40F			;$80D057	 |
+else					;		 |
+	LDX #$A402			;$80D057	 |
+endif					;		 |
 	LDA $2A				;$80D05A	 |
 	BIT #$0001			;$80D05C	 |
 	BEQ CODE_80D064			;$80D05F	 |
+if !version == 0			;		 |
+	LDX #$A3FB			;$80D061	 |
+else					;		 |
 	LDX #$A408			;$80D061	 |
+endif					;		 |
 CODE_80D064:				;		 |
 	STX $4322			;$80D064	 |
 	LDA $17BA			;$80D067	 |
@@ -9908,7 +9930,7 @@ CODE_80DBF2:
 	BEQ CODE_80DC67			;$80DC30	 |
 	LDY #$0000			;$80DC32	 |
 CODE_80DC35:				;		 |
-	LDA $F4D8,y			;$80DC35	 |
+	LDA.w DATA_B3F4D8,y		;$80DC35	 |
 	CMP #$8000			;$80DC38	 |
 	ROR A				;$80DC3B	 |
 	CMP #$8000			;$80DC3C	 |
@@ -9936,7 +9958,7 @@ CODE_80DC35:				;		 |
 CODE_80DC67:
 	LDY #$0000			;$80DC67	\
 CODE_80DC6A:				;		 |
-	LDA $F4D8,y			;$80DC6A	 |
+	LDA.w DATA_B3F4D8,y		;$80DC6A	 |
 	CMP #$8000			;$80DC6D	 |
 	ROR A				;$80DC70	 |
 	CMP #$8000			;$80DC71	 |
@@ -9978,7 +10000,7 @@ CODE_80DC9A:				;		 |
 	BEQ CODE_80DCEF			;$80DCB4	 |
 	LDY #$0000			;$80DCB6	 |
 CODE_80DCB9:				;		 |
-	LDA $F4D8,y			;$80DCB9	 |
+	LDA.w DATA_B3F4D8,y		;$80DCB9	 |
 	CMP #$8000			;$80DCBC	 |
 	ROR A				;$80DCBF	 |
 	CMP #$8000			;$80DCC0	 |
@@ -10009,7 +10031,7 @@ CODE_80DCB9:				;		 |
 CODE_80DCEF:
 	LDY #$0000			;$80DCEF	\
 CODE_80DCF2:				;		 |
-	LDA $F4D8,y			;$80DCF2	 |
+	LDA.w DATA_B3F4D8,y		;$80DCF2	 |
 	CMP #$8000			;$80DCF5	 |
 	ROR A				;$80DCF8	 |
 	CMP #$8000			;$80DCF9	 |
@@ -13378,6 +13400,15 @@ CODE_80FB9E:
 	JML CODE_BBBEA0			;$80FB9E	/
 
 DATA_80FBA2:
+if !version == 0
+	db $0A, $28, $11, $2C, $44, $F2, $18, $FB
+	db $41, $11, $18, $9B, $48, $E7, $1A, $07
+	db $12, $8B, $3D, $4B, $B8, $B7, $7B, $39
+	db $5B, $10, $7B, $20, $53, $11, $5F, $8F
+	db $D7, $1C, $07, $15, $27, $1C, $1A, $08
+	db $71, $A6, $4F, $4F, $48, $F2, $1B, $8B
+	db $39, $FD, $44, $B2, $B6, $FB, $48, $4D
+	db $B1, $0A, $91, $53, $71, $8F, $A2, $81
 	db $1A, $C4, $41, $C2, $71, $7D, $71, $7E
 	db $A2, $0D, $18, $9F, $BB, $66, $7D, $B2
 	db $D2, $5B, $8B, $77, $1A, $CB, $4C, $B5
@@ -13508,6 +13539,138 @@ DATA_80FBA2:
 	db $25, $14, $0B, $11, $A1, $18, $6B, $21
 	db $13, $11, $EF, $B7, $56, $3F, $2C, $01
 	db $05, $E3, $67, $AB, $09, $37
+else
+	db $1A, $C4, $41, $C2, $71, $7D, $71, $7E
+	db $A2, $0D, $18, $9F, $BB, $66, $7D, $B2
+	db $D2, $5B, $8B, $77, $1A, $CB, $4C, $B5
+	db $A3, $E0, $18, $5A, $0A, $71, $C3, $71
+	db $54, $71, $C4, $B1, $05, $34, $F4, $0B
+	db $19, $0F, $1A, $E4, $F4, $01, $A2, $FD
+	db $B3, $9F, $D4, $41, $9C, $B4, $18, $DF
+	db $F1, $1D, $B2, $0A, $91, $55, $B4, $17
+	db $11, $2B, $44, $1C, $57, $17, $F7, $1C
+	db $6A, $0B, $11, $3C, $B1, $15, $BB, $40
+	db $C9, $13, $27, $18, $FB, $20, $4F, $10
+	db $3B, $6B, $77, $B3, $0E, $91, $02, $B6
+	db $5A, $9B, $53, $BF, $B0, $3F, $1B, $85
+	db $57, $B2, $80, $94, $2B, $20, $13, $BA
+	db $81, $11, $BE, $A2, $1D, $1A, $1B, $00
+	db $C9, $10, $DB, $49, $FD, $F2, $1B, $14
+	db $01, $83, $71, $5B, $B1, $20, $DB, $65
+	db $5F, $11, $3B, $51, $71, $44, $1C, $77
+	db $18, $07, $18, $1B, $49, $0D, $B0, $22
+	db $1B, $4E, $3B, $B3, $2B, $71, $82, $A1
+	db $7C, $B4, $28, $DB, $11, $77, $12, $CB
+	db $03, $71, $16, $9A, $24, $51, $B2, $B8
+	db $64, $BB, $55, $57, $B3, $10, $71, $19
+	db $B4, $47, $1A, $0D, $DB, $A8, $11, $11
+	db $FA, $41, $B1, $14, $B2, $30, $D1, $48
+	db $71, $77, $B1, $57, $F4, $0B, $5F, $51
+	db $A0, $7D, $A2, $49, $15, $67, $15, $77
+	db $1C, $8B, $11, $71, $40, $B3, $10, $91
+	db $85, $B5, $2E, $14, $81, $91, $B3, $8C
+	db $9B, $6B, $77, $10, $2B, $21, $77, $12
+	db $DB, $26, $33, $18, $6B, $67, $47, $B1
+	db $38, $51, $14, $B3, $55, $7A, $64, $F1
+	db $07, $71, $23, $B6, $6D, $31, $C9, $B8
+	db $81, $11, $10, $B4, $7C, $51, $97, $F4
+	db $71, $15, $A4, $8D, $10, $64, $01, $9D
+	db $A1, $5C, $B4, $03, $3B, $16, $67, $15
+	db $8C, $21, $1A, $21, $15, $71, $73, $B4
+	db $64, $1F, $F1, $1D, $B2, $00, $F1, $14
+	db $4C, $B3, $61, $31, $CA, $B4, $AE, $91
+	db $2C, $4A, $19, $97, $1C, $B7, $1C, $CA
+	db $04, $B1, $0D, $B2, $01, $7B, $10, $13
+	db $11, $9A, $45, $1B, $17, $13, $10, $3B
+	db $62, $FD, $F1, $15, $3B, $4F, $E3, $A1
+	db $80, $A0, $4D, $C4, $11, $44, $10, $6C
+	db $41, $14, $E1, $3C, $42, $B5, $47, $1C
+	db $21, $15, $2A, $4D, $71, $32, $B6, $55
+	db $7A, $19, $81, $3C, $B1, $8E, $D4, $C1
+	db $9D, $B4, $4F, $FA, $0D, $54, $E1, $9C
+	db $B6, $64, $9C, $31, $21, $01, $8F, $C6
+	db $12, $60, $B1, $05, $F1, $82, $B6, $2F
+	db $DB, $11, $EB, $11, $9A, $10, $A4, $F4
+	db $6B, $7C, $0F, $12, $8F, $AB, $42, $25
+	db $11, $EA, $2B, $DB, $00, $17, $40, $19
+	db $9B, $21, $93, $B0, $8E, $D4, $F4, $F4
+	db $6A, $5E, $C1, $21, $B2, $14, $B1, $59
+	db $71, $5A, $B4, $88, $7B, $21, $6F, $40
+	db $A3, $1A, $A0, $DD, $C2, $13, $6A, $11
+	db $FB, $17, $79, $4F, $42, $B3, $6F, $5B
+	db $01, $DB, $42, $18, $9B, $21, $EF, $18
+	db $8A, $2E, $3B, $00, $17, $40, $B3, $00
+	db $91, $02, $64, $CB, $07, $CD, $B5, $35
+	db $94, $EA, $7E, $A8, $C8, $14, $00, $A0
+	db $4D, $B4, $6A, $51, $8E, $CC, $13, $6A
+	db $11, $0A, $18, $04, $F4, $2B, $36, $F5
+	db $B0, $1D, $B4, $21, $91, $A2, $89, $B0
+	db $0F, $94, $AB, $1E, $BB, $10, $34, $C1
+	db $89, $B8, $35, $91, $CD, $71, $CE, $4A
+	db $C5, $11, $56, $11, $AC, $A1, $40, $0F
+	db $31, $88, $C8, $13, $FC, $11, $FC, $A1
+	db $36, $A1, $28, $FA, $4F, $B2, $37, $D1
+	db $CF, $71, $1F, $40, $18, $D6, $44, $B5
+	db $BA, $31, $AE, $71, $9B, $B4, $71, $B1
+	db $AC, $B4, $3A, $B1, $B3, $48, $19, $27
+	db $18, $5A, $24, $F1, $15, $B8, $29, $9A
+	db $03, $14, $0B, $3F, $FB, $18, $8B, $33
+	db $0D, $CA, $14, $00, $B3, $26, $91, $B4
+	db $CF, $15, $38, $B3, $2E, $D4, $FB, $60
+	db $5B, $B1, $4F, $91, $03, $44, $B7, $BA
+	db $31, $A2, $B6, $4A, $71, $A4, $A2, $47
+	db $11, $EB, $14, $2F, $40, $A1, $B4, $1A
+	db $0B, $20, $EF, $11, $4B, $47, $FF, $B3
+	db $29, $9B, $00, $25, $40, $B3, $FF, $B1
+	db $1E, $B2, $0C, $B1, $15, $CA, $13, $A4
+	db $B3, $26, $91, $CF, $6C, $E1, $53, $81
+	db $BF, $F8, $F4, $B1, $00, $74, $6B, $25
+	db $5D, $B4, $37, $D1, $03, $B2, $76, $71
+	db $02, $42, $19, $2B, $84, $55, $1A, $4B
+	db $64, $A7, $B1, $DC, $B1, $3F, $B3, $42
+	db $F4, $01, $A2, $B4, $69, $DB, $16, $A9
+	db $B0, $0C, $5B, $69, $43, $A0, $CB, $40
+	db $19, $1B, $24, $FB, $10, $3B, $45, $E7
+	db $F1, $15, $3B, $49, $6F, $18, $FB, $43
+	db $53, $12, $67, $11, $FC, $C1, $4F, $AB
+	db $33, $63, $C2, $13, $1E, $40, $B3, $C9
+	db $31, $39, $B1, $23, $9B, $40, $29, $B3
+	db $F7, $91, $2C, $42, $B7, $F3, $D1, $A6
+	db $B4, $E1, $1B, $11, $31, $19, $FF, $7B
+	db $53, $6D, $40, $B5, $60, $FA, $37, $61
+	db $14, $C4, $15, $D4, $B2, $8A, $F4, $2B
+	db $0B, $5D, $B4, $5E, $71, $8F, $B1, $33
+	db $FB, $45, $69, $13, $CB, $63, $53, $11
+	db $0C, $C1, $4F, $AA, $12, $01, $2D, $B3
+	db $E1, $94, $0B, $45, $2D, $B8, $A4, $3C
+	db $31, $70, $21, $03, $42, $B1, $70, $11
+	db $99, $B4, $69, $DB, $0C, $9B, $B4, $43
+	db $B1, $9D, $C4, $12, $5E, $A0, $31, $42
+	db $C3, $12, $86, $A1, $54, $FE, $18, $D7
+	db $1D, $07, $15, $D4, $8B, $2B, $5D, $C6
+	db $14, $86, $A0, $01, $48, $B4, $55, $74
+	db $6B, $95, $67, $A2, $05, $40, $19, $D7
+	db $12, $EC, $61, $60, $8B, $2B, $69, $B4
+	db $C6, $F1, $71, $42, $B1, $F3, $D1, $D1
+	db $B4, $69, $D1, $9C, $FC, $B3, $83, $54
+	db $41, $99, $B1, $63, $14, $0B, $51, $01
+	db $A2, $4D, $B4, $0E, $BB, $03, $BD, $44
+	db $A2, $C7, $B6, $5C, $B1, $C8, $F5, $4A
+	db $B1, $05, $91, $19, $48, $18, $37, $17
+	db $4B, $20, $CB, $10, $7F, $87, $1A, $64
+	db $F4, $01, $91, $B4, $C6, $F1, $4D, $42
+	db $19, $FA, $37, $04, $F4, $0B, $20, $D5
+	db $40, $18, $9A, $2D, $BB, $11, $13, $18
+	db $5F, $4B, $42, $39, $FF, $11, $D4, $8C
+	db $51, $8C, $81, $14, $A1, $00, $48, $B3
+	db $05, $91, $07, $48, $C7, $18, $52, $FF
+	db $11, $D4, $F4, $21, $86, $B2, $04, $31
+	db $13, $42, $B0, $0D, $1A, $27, $9F, $21
+	db $B1, $46, $B0, $32, $FB, $4C, $0D, $B0
+	db $25, $14, $0B, $11, $A1, $18, $6B, $21
+	db $13, $11, $EF, $B7, $56, $3F, $2C, $01
+	db $05, $E3, $67, $AB, $09, $37
+endif
 
 DATA_80FFB0:
 	db $30, $31
@@ -13549,7 +13712,7 @@ DATA_80FFDA:
 	db $33
 
 DATA_80FFDB:
-	db $01
+	db !version
 
 DATA_80FFDC:
 	db $E3, $67
