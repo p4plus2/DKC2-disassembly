@@ -8077,9 +8077,9 @@ CODE_B3BC3C:				;		 |
 	CMP $06,x			;$B3BC40	 |
 	BCS CODE_B3BC49			;$B3BC42	 |
 if !version == 1			;		 |
-	JSR CODE_B3F265+1 ;Todo: ERROR	;$B3BC44	 |
-else					;		 |
-	JSR DATA_B3F31E-5 ;Todo: ERROR	;$B3BC44	 |
+	JSR CODE_B3F265+1		;$B3BC44	 |\ This is a glitch.
+else					;		 | | If this routine is called the game will crash.
+	JSR DATA_B3F31E-5		;$B3BC44	 |/
 endif					;
 	BRA CODE_B3BC3C			;$B3BC47	/
 

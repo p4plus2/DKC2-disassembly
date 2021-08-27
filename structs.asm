@@ -11,7 +11,7 @@ struct sprite $0000
 	.oam_property:		skip 2
 	.unknown_14:		skip 2
 	.unknown_16:		skip 2
-	.priority:		skip 2
+	.unknown_18:		skip 2
 	.unknown_1A:		skip 2
 	.unknown_1C:		skip 2
 	.unknown_1E:		skip 2
@@ -20,16 +20,16 @@ struct sprite $0000
 	.y_speed:		skip 2
 	.max_x_speed:		skip 2
 	.unknown_28:		skip 2
-	.unknown_2A:		skip 2
+	.max_y_speed:		skip 2
 	.x_force:		skip 2
-	.action:		skip 1
-	.unknown_2F:		skip 1
+	.action:		skip 1 ;\ This is a pair in most cases, but a couple sprites use 2F alone
+	.unknown_2F:		skip 1 ;/
 	.unknown_30:		skip 2
 	.unknown_32:		skip 2
 	.unknown_34:		skip 2
 	.animation_id:		skip 2
-	.unknown_38:		skip 2
-	.unknown_3A:		skip 2
+	.animation_timer:	skip 2
+	.animation_control:	skip 2
 	.animation_address:	skip 2
 	.unknown_3E:		skip 2
 	.unknown_40:		skip 2
