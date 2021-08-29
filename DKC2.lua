@@ -16,15 +16,15 @@ local function iterate(array)
     return function() i = i + 1; return array[i] end
 end
 
-local function parse_line(line) 
+local function parse_line(line)
 	local result = {}
 	local pos = string.find(line, '%g') or (string.len(line) + 1)
-	while line[pos] ~= "" do 
+	while line[pos] ~= "" do
 		if (line[pos] == '"') then
 			local start_pos, end_pos = string.find(line, '%b""', pos)
 			table.insert(result, string.sub(line, start_pos + 1, end_pos - 1))
 			pos = end_pos + 2
-		else	
+		else
 			local found_at = string.find(line, ',', pos)
 			table.insert(result, string.sub(line, pos, found_at and (found_at - 1) or -1))
 			pos = (found_at and found_at or string.len(line)) + 1
@@ -35,26 +35,26 @@ local function parse_line(line)
 end
 
 local function load_csv(path)
-	local file = io.open(path, "rb") 
+	local file = io.open(path, "rb")
 	local csv = {}
-	
-	if file then 
+
+	if file then
 		for line in io.lines(path) do
 			table.insert(csv, parse_line(line))
 		end
 		file:close()
 	end
-	
+
 	return csv;
 end
 
 local function list_to_map(list)
 	local map = {}
-	
+
 	for index, entry in ipairs(list) do
 		map[tonumber(entry[1])] = entry[2]
 	end
-	
+
 	return map
 end
 
@@ -126,7 +126,7 @@ local function rom_restore(address)
 end
 
 local function rom_restore_all(address)
-	for address, data in pairs(rom_write_buffer) do 
+	for address, data in pairs(rom_write_buffer) do
 		print(address, data, type(data))
 		memory2.BUS:writeregion(address, data)
 	end
@@ -207,7 +207,7 @@ upper_left:set_anchor(x_padding, 0)
 local bottom_left = text_area:new()
 bottom_left:set_anchor(x_padding, 550)
 
-local context = gui.renderctx.new(256, 224) 
+local context = gui.renderctx.new(256, 224)
 
 --config files
 local sound_effects_path = base .. "sound_effects.txt"
@@ -226,10 +226,10 @@ local function text(x, y, message)
 end
 
 function clamp(value, low, high)
-	if(value < low) then 
-		return low 
-	elseif(value > high) then 
-		return high 
+	if(value < low) then
+		return low
+	elseif(value > high) then
+		return high
 	end
 	return value
 end
@@ -262,7 +262,7 @@ end
 
 local tracked_addresses = {}
 local function store(address, value)
-	if(value == 0x00) then 
+	if(value == 0x00) then
 		return
 	end
 	tracked_addresses[address] = value
@@ -287,7 +287,7 @@ end
 
 local traced_addresses = {}
 local function handle_trace(address, value)
-	if(value == 0x00) then 
+	if(value == 0x00) then
 		return
 	end
 	tracked_addresses[address] = value
@@ -319,7 +319,7 @@ local sprite_routine_list = 0xB38348
 local function display_sprite()
 	local sprite_slot_id = clamp(slot, 0, 23)
 	local slot = sprite_table + sprite_slot_id * 0x5E
-	
+
 	upper_left:append_line("Slot number (0x%04X): %d",	slot, sprite_slot_id)
 	upper_left:append_line("Sprite: %s",			sprites_map[read_word(slot)] or "UNKNOWN")
 	upper_left:append_line("Sprite routine: $B3%04X",	read_rom_word(sprite_routine_list + read_word(slot)))
@@ -344,6 +344,12 @@ local function display_sprite()
 	upper_left:append_line("Status index(0x56):%04X",	read_word(slot+0x56))
 	upper_left:append_line("Spawn code(0x58):%04X",		read_word(slot+0x58))
 	upper_left:append_line("Unknown data(0x5A):\n%s",	byte_table(slot, 0x5A, 0x5E))
+
+	for i=0,count do
+		if sprites_map[read_word(sprite_table + i * 0x5E)] == nil then
+			upper_left:append_line("Unknown sprite %04X detected (Slot: %d):\n", read_word(sprite_table + i * 0x5E), i)
+		end
+	end
 end
 
 local musics_list = load_csv(musics_path)
@@ -369,7 +375,7 @@ track(sound_buffer+0x0C, 2)
 track(sound_buffer+0x0E, 2)
 
 local function display_sound()
-	local sound_effect = clamp(slot, 0, 0x7F)		
+	local sound_effect = clamp(slot, 0, 0x7F)
 	if play_sound_effect == true then
 		write_word(sound_effect, 0x0619 + 10)
 		write_word(sound_effect + 0x0500, 0x0622)
@@ -462,7 +468,7 @@ local level_header = 0x0515
 
 local function display_level()
 	local level_id = read_word(level)
-	
+
 	upper_left:append_line("level number: %04X", level_id)
 	upper_left:append_line("Sprite data pointer: FF%04X\n", read_rom_word(sprite_pointers + level_id*2))
 	upper_left:append_line("LEVEL HEADER")
@@ -503,11 +509,11 @@ local exec_watched_addresses = {}
 local exec_watched_count = {}
 local function display_watch()
 	upper_left:append_line("RAM watches: ")
-	for address, read_callback in pairs(watched_addresses) do 
+	for address, read_callback in pairs(watched_addresses) do
 		upper_left:append_line(read_callback())
 	end
 	upper_left:append_line("Execution counts: ")
-	for address, read_callback in pairs(exec_watched_addresses) do 
+	for address, read_callback in pairs(exec_watched_addresses) do
 		upper_left:append_line(read_callback())
 	end
 end
@@ -517,7 +523,7 @@ local function display_ppu_state()
 	ppu_layer_state = ppu_layer_state .. (layer_state[1] and "Enabled, " or "Disabled, ")
 	ppu_layer_state = ppu_layer_state .. (layer_state[2] and "Enabled, " or "Disabled, ")
 	ppu_layer_state = ppu_layer_state .. (layer_state[3] and "Enabled" or "Disabled") .. "}"
-	
+
 	bottom_left:append_line(dump_mmio_string())
 	bottom_left:append_line(ppu_layer_state)
 end
@@ -570,7 +576,7 @@ function on_paint(not_synth)
 	if show_debug then
 		context:clear()
 		context:set()
-		
+
 		if active_screen == sprite_screen then
 			display_sprite()
 		elseif active_screen == sound_screen then
@@ -584,13 +590,13 @@ function on_paint(not_synth)
 		elseif active_screen == watch_screen then
 			display_watch()
 		end
-		
+
 		display_ppu_state()
 		display_cgram_state()
 
 		upper_left:render()
 		bottom_left:render()
-		
+
 		gui.renderctx.setnull()
 		context:run()
 	end
@@ -598,7 +604,7 @@ end
 
 function on_video()
 	h,v = gui.resolution()
-	gui.set_video_scale((256*2)/h, (224*2)/v)
+	gui.set_video_scale((256*2)//h, (224*2)//v)
 	context:run()
 end
 
@@ -613,14 +619,14 @@ function on_dma(trigger_addr, source_addr, dest_addr, size, mode, dir, fixed)
 			return
 		end
 	end
-	
+
 	name = string.format("(%d)_$%06X:_$%06X_to_$21%02X.bin", counter, trigger_addr, source_addr, dest_addr)
 	zip_file:create_file(name)
-	
+
 	if size == 0 then
 		size = 65536
 	end
-	
+
 	for i=0, size-1 do
 		if fixed == 1 then
 			zip_file:write(string.char(memory2.BUS:read(source_addr)))
@@ -628,37 +634,37 @@ function on_dma(trigger_addr, source_addr, dest_addr, size, mode, dir, fixed)
 			zip_file:write(string.char(memory2.BUS:read(source_addr+i)))
 		end
 	end
-	
+
 	if fixed == true then
 		size = 1
 	end
 	extra_details = ""
-	
+
 	if dest_addr == 0x18 then
 		extra_details = dump_mmio_string()
 	else
 		extra_details = "N/A"
 	end
-	
+
 	dma_table[counter] = string.format("%s: %s\n %s\n\n", name, memory2.BUS:sha256(source_addr, size), extra_details)
-	
+
 	counter = counter + 1
 end
 
 function on_vm_reset()
 	zip_file:create_file("summary.txt")
-	for i=0, #dma_table do 
+	for i=0, #dma_table do
 		zip_file:write(dma_table[i])
 	end
 	zip_file:commit()
 	rom_restore_all()
-end 
+end
 
 
 function dump_mmio_string()
 	local layers_string = ""
 	local layer_string = "Layer: %d, tilemap: 0x%04X, tiledata: 0x%04X, S: %d, X: 0x%04X, Y: 0x%04X\n"
-	
+
 	for i = 0, 3 do
 		layers_string = layers_string .. string.format(layer_string,
 									i+1,
@@ -755,7 +761,7 @@ end
 
 if get_file_type("screens") == "directory" then
 	local screen_plugins = get_directory_contents("screens", "", "*.lua")
-	
+
 	for file in iterate(screen_plugins) do
 		dofile(file)
 	end

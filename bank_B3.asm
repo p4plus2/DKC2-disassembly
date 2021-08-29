@@ -212,7 +212,9 @@ CODE_B38199:				;		 |
 	SEC				;$B38199	 |
 	RTS				;$B3819A	/
 
-CODE_B3819B:
+null_sprite_main:
+unknown_sprite_0004_main:
+unknown_sprite_0090_main:
 	LDA $05BB			;$B3819B	\
 	AND #$0060			;$B3819E	 |
 	BEQ CODE_B381AA			;$B381A1	 |
@@ -223,7 +225,7 @@ CODE_B381AA:
 	JSL CODE_BBBB44			;$B381AA	\
 	JML [$05A9]			;$B381AE	/
 
-CODE_B381B1:
+unknown_sprite_00F4_main:
 	LDA $05BB			;$B381B1	\
 	AND #$0060			;$B381B4	 |
 	BEQ CODE_B381C3			;$B381B7	 |
@@ -258,26 +260,28 @@ CODE_B381E3:
 	STA $1C,x			;$B381E8	 |
 	RTS				;$B381EA	/
 
-CODE_B381EB:
+burst_effect_main:
+map_player_main:
 	JSL CODE_B9D100			;$B381EB	\
 	JML [$05A9]			;$B381EF	/
 
-CODE_B381F2:
+unknown_sprite_00F8_main:
 	LDA $05BB			;$B381F2	\
 	AND #$0060			;$B381F5	 |
-	BNE CODE_B38201			;$B381F8	 |
+	BNE unknown_sprite_008C_main	;$B381F8	 |
 	JSL CODE_BBBC8D			;$B381FA	 |
 	JML [$05A9]			;$B381FE	/
 
-CODE_B38201:
+unknown_sprite_008C_main:
 	JSL CODE_BBBCA3			;$B38201	\
 	JML [$05A9]			;$B38205	/
 
-CODE_B38208:
+unknown_sprite_00FC_main:
+unknown_sprite_010C_main:
 	JSL CODE_B9D100			;$B38208	\
 	JML [$05A9]			;$B3820C	/
 
-CODE_B3820F:
+unknown_sprite_00E0_main:
 	LDA $64				;$B3820F	\
 	STA $19CE			;$B38211	 |
 	INC $19AE			;$B38214	 |
@@ -317,7 +321,7 @@ CODE_B38251:
 	STZ $19CE			;$B38262	 |
 	JML [$05A9]			;$B38265	/
 
-CODE_B38268:
+unknown_sprite_0100_main:
 	JSL CODE_B9D100			;$B38268	\
 	LDX $64				;$B3826C	 |
 	LDA $42,x			;$B3826E	 |
@@ -424,564 +428,565 @@ CODE_B38342:
 
 DATA_B38348:
 	%offset(DATA_B3834A, 2)
-	dw CODE_B3819B : db $00, $00
-	dw CODE_B3819B : db $00, $00
-	dw CODE_B381EB : db $00, $00
-	dw CODE_B392DE : db $00, $00
-	dw CODE_B392E5 : db $00, $00
-	dw CODE_B3B03B : db $01, $00
-	dw CODE_B3919D : db $00, $00
-	dw CODE_B3919D : db $00, $00
-	dw CODE_B3919D : db $00, $00
-	dw CODE_B38702 : db $00, $00
-	dw CODE_B3C4BA : db $00, $00
-	dw CODE_B3873A : db $00, $00
-	dw CODE_B38741 : db $00, $00
-	dw CODE_B38748 : db $00, $00
-	dw CODE_B3874F : db $00, $00
-	dw CODE_B38756 : db $00, $00
-	dw CODE_B3875D : db $00, $00
-	dw CODE_B38764 : db $00, $00
-	dw CODE_B3876B : db $00, $00
-	dw CODE_B386ED : db $00, $00
-	dw CODE_B387F0 : db $00, $00
-	dw CODE_B387BF : db $00, $00
-	dw CODE_B3CB38 : db $00, $00
-	dw CODE_B395F8 : db $00, $00
-	dw CODE_B39739 : db $00, $00
-	dw CODE_B39739 : db $00, $00
-	dw CODE_B387A3 : db $00, $00
-	dw CODE_B3BE52 : db $00, $00
-	dw CODE_B38821 : db $00, $00
-	dw CODE_B386D8 : db $00, $00
-	dw CODE_B38668 : db $01, $00
-	dw CODE_B38891 : db $00, $00
-	dw CODE_B38787 : db $00, $00
-	dw CODE_B388B4 : db $00, $00
-	dw CODE_B388AD : db $00, $00
-	dw CODE_B38201 : db $00, $00
-	dw CODE_B3819B : db $00, $00
-	dw CODE_B3881A : db $01, $00
-	dw CODE_B387CD : db $00, $00
-	dw CODE_B387E2 : db $00, $00
-	dw CODE_B387E9 : db $00, $00
-	dw CODE_B3BBAF : db $00, $00
-	dw CODE_B3BC12 : db $00, $00
-	dw CODE_B3C271 : db $00, $00
-	dw CODE_B3C342 : db $00, $00
-	dw CODE_B39200 : db $00, $00
-	dw CODE_B39200 : db $01, $00
-	dw CODE_B38867 : db $01, $00
-	dw CODE_B38805 : db $01, $00
-	dw CODE_B387FE : db $01, $00
-	dw CODE_B3A331 : db $00, $00
-	dw CODE_B39BB4 : db $00, $00
-	dw CODE_B3889F : db $00, $00
-	dw CODE_B388A6 : db $00, $00
-	dw CODE_B388D1 : db $00, $00
-	dw CODE_B38883 : db $00, $00
-	dw CODE_B3820F : db $01, $00
-	dw CODE_B388CA : db $01, $00
-	dw CODE_B388C6 : db $01, $00
-	dw CODE_B388CE : db $00, $00
-	dw CODE_B388C2 : db $00, $00
-	dw CODE_B381B1 : db $00, $00
-	dw CODE_B381F2 : db $00, $00
-	dw CODE_B38208 : db $01, $00
-	dw CODE_B38268 : db $01, $00
-	dw CODE_B3936F : db $01, $00
-	dw CODE_B38925 : db $00, $00
-	dw CODE_B38208 : db $00, $00
-	dw CODE_B3890E : db $00, $00
-	dw CODE_B39164 : db $00, $00
-	dw CODE_B38959 : db $00, $00
-	dw CODE_B394A0 : db $00, $00
-	dw CODE_B38836 : db $00, $00
-	dw CODE_B38813 : db $00, $00
-	dw CODE_B3D57B : db $00, $00
-	dw CODE_B392AA : db $01, $00
-	dw CODE_B3A693 : db $01, $00
-	dw CODE_B38FC0 : db $01, $00
-	dw CODE_B3880C : db $01, $00
-	dw CODE_B3882F : db $00, $00
-	dw CODE_B3883D : db $00, $00
-	dw CODE_B38709 : db $00, $00
-	dw CODE_B39788 : db $00, $00
-	dw CODE_B39857 : db $00, $00
-	dw CODE_B39A6F : db $00, $00
-	dw CODE_B38828 : db $00, $00
-	dw CODE_B38859 : db $01, $00
-	dw CODE_B38875 : db $00, $00
-	dw CODE_B3A238 : db $01, $00
-	dw CODE_B3A1C1 : db $01, $00
-	dw CODE_B3A1B2 : db $01, $00
-	dw CODE_B3A0C8 : db $01, $00
-	dw CODE_B3C345 : db $00, $00
-	dw CODE_B3887C : db $00, $00
-	dw CODE_B3C403 : db $01, $00
-	dw CODE_B3871E : db $00, $00
-	dw CODE_B3D763 : db $00, $00
-	dw CODE_B387D4 : db $00, $00
-	dw CODE_B39368 : db $00, $00
-	dw CODE_B387DB : db $00, $00
-	dw CODE_B38A38 : db $00, $00
-	dw CODE_B38B08 : db $00, $00
-	dw CODE_B38C06 : db $00, $00
-	dw CODE_B38A38 : db $01, $00
-	dw CODE_B38DA6 : db $00, $00
-	dw CODE_B39DCC : db $00, $00
-	dw CODE_B39376 : db $00, $00
-	dw CODE_B3AA92 : db $00, $00
-	dw CODE_B39AC3 : db $00, $00
-	dw CODE_B38772 : db $00, $00
-	dw CODE_B394CA : db $00, $00
-	dw CODE_B39580 : db $00, $00
-	dw CODE_B39C9A : db $00, $00
-	dw CODE_B387B1 : db $00, $00
-	dw CODE_B39AC0 : db $00, $00
-	dw CODE_B38A2C : db $01, $00
-	dw CODE_B3BF57 : db $00, $00
-	dw CODE_B3B03B : db $00, $00
-	dw CODE_B3B04D : db $01, $00
-	dw CODE_B3A739 : db $00, $00
-	dw CODE_B3C4CE : db $00, $00
-	dw CODE_B3A45A : db $00, $00
-	dw CODE_B3AC15 : db $00, $00
-	dw CODE_B3A45A : db $00, $00
-	dw CODE_B3A411 : db $01, $00
-	dw CODE_B3A45A : db $00, $00
-	dw CODE_B3B8F0 : db $00, $00
-	dw CODE_B3A45A : db $00, $00
-	dw CODE_B3A45A : db $00, $00
-	dw CODE_B3CCDC : db $00, $00
-	dw CODE_B3CA1A : db $00, $00
-	dw CODE_B3B524 : db $00, $00
-	dw CODE_B3B2F0 : db $01, $00
-	dw CODE_B3BC6B : db $00, $00
-	dw CODE_B3A426 : db $00, $00
-	dw CODE_B3BAA1 : db $00, $00
-	dw CODE_B3A435 : db $00, $00
-	dw CODE_B38779 : db $00, $00
-	dw CODE_B38780 : db $00, $00
-	dw CODE_B387AA : db $00, $00
-	dw CODE_B387B8 : db $00, $00
-	dw CODE_B3B94F : db $00, $00
-	dw CODE_B381EB : db $01, $00
-	dw CODE_B391F5 : db $00, $00
-	dw CODE_B39739 : db $00, $00
-	dw CODE_B39739 : db $01, $00
-	dw CODE_B391F5 : db $01, $00
-	dw CODE_B391F5 : db $00, $00
-	dw CODE_B391CE : db $00, $00
-	dw CODE_B39615 : db $00, $00
-	dw CODE_B3A03E : db $00, $00
-	dw CODE_B3C71D : db $00, $00
-	dw CODE_B3C8DD : db $00, $00
-	dw CODE_B386E6 : db $01, $00
-	dw CODE_B38676 : db $01, $00
-	dw CODE_B38699 : db $00, $00
-	dw CODE_B38684 : db $00, $00
-	dw CODE_B38692 : db $00, $00
-	dw CODE_B386DF : db $00, $00
-	dw CODE_B3866F : db $01, $00
-	dw CODE_B386C3 : db $00, $00
-	dw CODE_B386CA : db $00, $00
-	dw CODE_B386B5 : db $00, $00
-	dw CODE_B3867D : db $00, $00
-	dw CODE_B386BC : db $00, $00
-	dw CODE_B386AE : db $00, $00
-	dw CODE_B386D1 : db $00, $00
-	dw CODE_B386A0 : db $00, $00
-	dw CODE_B3868B : db $00, $00
-	dw CODE_B386F4 : db $00, $00
-	dw CODE_B386A7 : db $00, $00
-	dw CODE_B387C6 : db $00, $00
-	dw CODE_B3872C : db $00, $00
-	dw CODE_B38733 : db $00, $00
-	dw CODE_B3879C : db $00, $00
-	dw CODE_B38795 : db $00, $00
-	dw CODE_B3878E : db $00, $00
-	dw CODE_B38725 : db $00, $00
-	dw CODE_B38717 : db $00, $00
-	dw CODE_B386FB : db $00, $00
-	dw CODE_B38710 : db $00, $00
-	dw CODE_B3D6DD : db $00, $00
-	dw CODE_B39615 : db $00, $00
-	dw CODE_B39BB4 : db $00, $00
-	dw CODE_B38EAD : db $00, $00
-	dw CODE_B3D008 : db $00, $00
-	dw CODE_B3D2F9 : db $00, $00
-	dw CODE_B38844 : db $01, $00
-	dw CODE_B38860 : db $00, $00
-	dw CODE_B38852 : db $01, $00
-	dw CODE_B3D7F8 : db $00, $00
-	dw CODE_B3884B : db $00, $00
-	dw CODE_B3886E : db $01, $00
-	dw CODE_B387F7 : db $00, $00
-	dw CODE_B3A037 : db $01, $00
-	dw CODE_B38898 : db $00, $00
-	dw CODE_B3888A : db $00, $00
-	dw CODE_B38906 : db $00, $00
-	dw CODE_B3890A : db $00, $00
-	dw CODE_B388BB : db $00, $00
+	dw null_sprite_main,$0000			;0000
+	dw unknown_sprite_0004_main,$0000		;0004
+	dw map_player_main,$0000			;0008
+	dw unknown_sprite_000C_main,$0000		;000C
+	dw squawks_egg_main,$0000			;0010
+	dw unknown_sprite_0014_main,$0001		;0014
+	dw canball_pieces1_main,$0000			;0018
+	dw canball_pieces2_main,$0000			;001C
+	dw egg_shell_pieces_main,$0000			;0020
+	dw dropping_hooks_main,$0000			;0024
+	dw air_bubble_generator_main,$0000		;0028
+	dw kleever_bone_pieces_main,$0000		;002C
+	dw unknown_sprite_0030_main,$0000		;0030
+	dw kleever_pieces1_main,$0000			;0034
+	dw kleever_pieces2_main,$0000			;0038
+	dw kleever_pieces3_main,$0000			;003C
+	dw unknown_sprite_0040_main,$0000		;0040
+	dw kleever_pieces4_main,$0000			;0044
+	dw kleever_pieces5_main,$0000			;0048
+	dw unknown_sprite_004C_main,$0000		;004C
+	dw unknown_sprite_0050_main,$0000		;0050
+	dw unknown_sprite_0054_main,$0000		;0054
+	dw puftup_spikes_main,$0000			;0058
+	dw krool_water_drips_main,$0000			;005C
+	dw barrel_pieces_main,$0000			;0060
+	dw unknown_sprite_0064_main,$0000		;0064
+	dw king_zing_spikes_main,$0000			;0068
+	dw kannon_main,$0000				;006C
+	dw unknown_sprite_0070_main,$0000		;0070
+	dw klubba_main,$0000				;0074
+	dw kudgel_main,$0001				;0078
+	dw chasing_king_zing_main,$0000			;007C
+	dw king_zing_main,$0000				;0080
+	dw unknown_sprite_0084_main,$0000		;0084
+	dw chest_spawner_main,$0000			;0088
+	dw unknown_sprite_008C_main,$0000		;008C
+	dw unknown_sprite_0090_main,$0000		;0090
+	dw exit_door_main,$0001				;0094
+	dw unknown_sprite_0098_main,$0000		;0098
+	dw sparkle_spawner_main,$0000			;009C
+	dw sparkle_main,$0000				;00A0
+	dw unknown_sprite_00A4_main,$0000		;00A4
+	dw unknown_sprite_00A8_main,$0000		;00A8
+	dw water_level_changer_main,$0000		;00AC
+	dw unknown_sprite_00B0_main,$0000		;00B0
+	dw explosion_main,$0000				;00B4
+	dw unknown_sprite_00B8_main,$0001		;00B8
+	dw kackle_main,$0001				;00BC
+	dw horizontal_wind_changer_main,$0001		;00C0
+	dw vertical_wind_changer_main,$0001		;00C4
+	dw unknown_sprite_00C8_main,$0000		;00C8
+	dw unknown_sprite_00CC_main,$0000		;00CC
+	dw giant_tire_main,$0000			;00D0
+	dw unknown_sprite_00D4_main,$0000		;00D4
+	dw unknown_sprite_00D8_main,$0000		;00D8
+	dw traffic_light_main,$0000			;00DC
+	dw unknown_sprite_00E0_main,$0001		;00E0
+	dw diddy_kong_main,$0001			;00E4
+	dw dixie_kong_main,$0001			;00E8
+	dw unknown_sprite_00EC_main,$0000		;00EC
+	dw unknown_sprite_00F0_main,$0000		;00F0
+	dw unknown_sprite_00F4_main,$0000		;00F4
+	dw unknown_sprite_00F8_main,$0000		;00F8
+	dw unknown_sprite_00FC_main,$0001		;00FC
+	dw unknown_sprite_0100_main,$0001		;0100
+	dw unknown_sprite_0104_main,$0001		;0104
+	dw web_shot_main,$0000				;0108
+	dw unknown_sprite_010C_main,$0000		;010C
+	dw unknown_sprite_0110_main,$0000		;0110
+	dw unknown_sprite_0114_main,$0000		;0114
+	dw web_platform_main,$0000			;0118
+	dw dkbarrel_letters_main,$0000			;011C
+	dw barrel_icons_main,$0000			;0120
+	dw breakable_wall_main,$0000			;0124
+	dw rideable_balloon_main,$0000			;0128
+	dw sun_main,$0001				;012C
+	dw ship_water_splash_main,$0001			;0130
+	dw animal_icon_main,$0001			;0134
+	dw timer_main,$0001				;0138
+	dw cannon_main,$0000				;013C
+	dw barrel_cannon_main,$0000			;0140
+	dw kleever_canball_main,$0000			;0144
+	dw animal_box_main,$0000			;0148
+	dw hook_main,$0000				;014C
+	dw invincibility_barrel_main,$0000		;0150
+	dw checkpoint_barrel_main,$0000			;0154
+	dw skull_cart_main,$0001			;0158
+	dw coins_main,$0000				;015C
+	dw level_goal_main,$0001			;0160
+	dw unknown_sprite_0164_main,$0001		;0164
+	dw unknown_sprite_0168_main,$0001		;0168
+	dw unknown_sprite_016C_main,$0001		;016C
+	dw bananas_main,$0000				;0170
+	dw kong_letter_main,$0000			;0174
+	dw extra_life_balloon_main,$0001		;0178
+	dw kleever_falling_canball_main,$0000		;017C
+	dw krochead_switch_barrel_main,$0000		;0180
+	dw scroll_and_float_barrel_main,$0000		;0184
+	dw npc_hud_coin_main,$0000			;0188
+	dw kong_npc_main,$0000				;018C
+	dw squitter_main,$0000				;0190
+	dw rattly_main,$0000				;0194
+	dw squawks_main,$0000				;0198
+	dw rambi_main,$0001				;019C
+	dw enguarde_main,$0000				;01A0
+	dw barrel_main,$0000				;01A4
+	dw dkbarrel_main,$0000				;01A8
+	dw klobber_main,$0000				;01AC
+	dw canball_main,$0000				;01B0
+	dw krows_egg_main,$0000				;01B4
+	dw tntbarrel_main,$0000				;01B8
+	dw wooden_box_main,$0000			;01BC
+	dw chest_main,$0000				;01C0
+	dw kreepy_krows_eggs_main,$0000			;01C4
+	dw unknown_sprite_01C8_main,$0000		;01C8
+	dw unknown_sprite_01CC_main,$0001		;01CC
+	dw shot_canball_or_barrel_main,$0000		;01D0
+	dw large_smoke_puff_main,$0000			;01D4
+	dw kruncha_main,$0001				;01D8
+	dw click_clack_main,$0000			;01DC
+	dw kutlass_main,$0000				;01E0
+	dw neek_main,$0000				;01E4
+	dw unknown_sprite_01E8_main,$0000		;01E8
+	dw klomp_main,$0000				;01EC
+	dw klampon_main,$0001				;01F0
+	dw unknown_sprite_01F4_main,$0000		;01F4
+	dw flotsam_main,$0000				;01F8
+	dw spiny_main,$0000				;01FC
+	dw klinger_main,$0000				;0200
+	dw cat_o9tails_main,$0000			;0204
+	dw puftup_main,$0000				;0208
+	dw lockjaw_main,$0000				;020C
+	dw snapjaw_main,$0001				;0210
+	dw mini_necky_main,$0000			;0214
+	dw zinger_main,$0000				;0218
+	dw kaboing_main,$0000				;021C
+	dw flitter_main,$0000				;0220
+	dw krows_body_main,$0000			;0224
+	dw krows_head_main,$0000			;0228
+	dw kreepy_krows_body_main,$0000			;022C
+	dw kreepy_krows_head_main,$0000			;0230
+	dw shuri_main,$0000				;0234
+	dw burst_effect_main,$0001			;0238
+	dw unknown_sprite_023C_main,$0000		;023C
+	dw unknown_sprite_0240_main,$0000		;0240
+	dw unknown_sprite_0244_main,$0001		;0244
+	dw unknown_sprite_0248_main,$0001		;0248
+	dw explosion_cloud_main,$0000			;024C
+	dw fireworks_main,$0000				;0250
+	dw ghost_rope_main,$0000			;0254
+	dw no_animal_buddy_sign_main,$0000		;0258
+	dw krook_main,$0000				;025C
+	dw krooks_hook_main,$0000			;0260
+	dw krool_main,$0001				;0264
+	dw krool_gun_main,$0001				;0268
+	dw krool_gun_vacuum_effect_main,$0000		;026C
+	dw krool_canball_main,$0000			;0270
+	dw krool_gun_fire_main,$0000			;0274
+	dw klubbas_club_main,$0000			;0278
+	dw kudgels_club_main,$0001			;027C
+	dw donkey_kongs_rope_main,$0000			;0280
+	dw donkey_kongs_bindings_main,$0000		;0284
+	dw tied_up_donkey_kong_main,$0000		;0288
+	dw shot_donkey_kong_main,$0000			;028C
+	dw unknown_sprite_0290_main,$0000		;0290
+	dw unknown_sprite_0294_main,$0000		;0294
+	dw lava_splash_main,$0000			;0298
+	dw krools_blinking_eyes_main,$0000		;029C
+	dw spiked_canballs_main,$0000			;02A0
+	dw kleever_main,$0000				;02A4
+	dw krool_puddle_main,$0000			;02A8
+	dw krool_fish_main,$0000			;02AC
+	dw broken_kleever_hilt_main,$0000		;02B0
+	dw broken_kleever_fire_main,$0000		;02B4
+	dw king_zing_stiner_main,$0000			;02B8
+	dw unknown_sprite_02BC_main,$0000		;02BC
+	dw king_zing_ring_zinger_main,$0000		;02C0
+	dw kleever_attack_effect_main,$0000		;02C4
+	dw kleever_hand_main,$0000			;02C8
+	dw kleever_fireballs_main,$0000			;02CC
+	dw kleevers_hand_bubbles_main,$0000		;02D0
+	dw krochead_main,$0000				;02D4
+	dw horsetail_main,$0000				;02D8
+	dw unknown_sprite_02DC_main,$0000		;02DC
+	dw glimmer_main,$0000				;02E0
+	dw kloak_main,$0000				;02E4
+	dw unknown_sprite_02E8_main,$0000		;02E8
+	dw haunted_hall_door_main,$0001			;02EC
+	dw klank_main,$0000				;02F0
+	dw skull_cart_sparks_main,$0001			;02F4
+	dw plus_and_minus_barrel_main,$0000		;02F8
+	dw gate_barrel_main,$0000			;02FC
+	dw unknown_sprite_0300_main,$0001		;0300
+	dw clapper_main,$0000				;0304
+	dw unknown_sprite_0308_main,$0001		;0308
+	dw screech_main,$0000				;030C
+	dw racing_flag_main,$0000			;0310
+	dw npc_kong_credits_main,$0000			;0314
+	dw hero_kong_credits_main,$0000			;0318
+	dw double_zingers_main,$0000			;031C
 
-CODE_B38668:
+
+kudgel_main:
 	LDA #$0000			;$B38668	\
 	JML CODE_B68025			;$B3866B	/
 
-CODE_B3866F:
+kudgels_club_main:
 	LDA #$0002			;$B3866F	\
 	JML CODE_B68025			;$B38672	/
 
-CODE_B38676:
+krool_gun_main:
 	LDA #$0004			;$B38676	\
 	JML CODE_B68025			;$B38679	/
 
-CODE_B3867D:
+shot_donkey_kong_main:
 	LDA #$0006			;$B3867D	\
 	JML CODE_B68025			;$B38680	/
 
-CODE_B38684:
+krool_canball_main:
 	LDA #$0008			;$B38684	\
 	JML CODE_B68025			;$B38687	/
 
-CODE_B3868B:
+spiked_canballs_main:
 	LDA #$000A			;$B3868B	\
 	JML CODE_B68025			;$B3868E	/
 
-CODE_B38692:
+krool_gun_fire_main:
 	LDA #$000C			;$B38692	\
 	JML CODE_B68025			;$B38695	/
 
-CODE_B38699:
+krool_gun_vacuum_effect_main:
 	LDA #$000E			;$B38699	\
 	JML CODE_B68025			;$B3869C	/
 
-CODE_B386A0:
+krools_blinking_eyes_main:
 	LDA #$0010			;$B386A0	\
 	JML CODE_B68025			;$B386A3	/
 
-CODE_B386A7:
+krool_puddle_main:
 	LDA #$0012			;$B386A7	\
 	JML CODE_B68025			;$B386AA	/
 
-CODE_B386AE:
+unknown_sprite_0294_main:
 	LDA #$0014			;$B386AE	\
 	JML CODE_B68025			;$B386B1	/
 
-CODE_B386B5:
+tied_up_donkey_kong_main:
 	LDA #$0016			;$B386B5	\
 	JML CODE_B68025			;$B386B8	/
 
-CODE_B386BC:
+unknown_sprite_0290_main:
 	LDA #$0018			;$B386BC	\
 	JML CODE_B68025			;$B386BF	/
 
-CODE_B386C3:
+donkey_kongs_rope_main:
 	LDA #$001A			;$B386C3	\
 	JML CODE_B68025			;$B386C6	/
 
-CODE_B386CA:
+donkey_kongs_bindings_main:
 	LDA #$001C			;$B386CA	\
 	JML CODE_B68025			;$B386CD	/
 
-CODE_B386D1:
+lava_splash_main:
 	LDA #$001E			;$B386D1	\
 	JML CODE_B68025			;$B386D4	/
 
-CODE_B386D8:
+klubba_main:
 	LDA #$0020			;$B386D8	\
 	JML CODE_B68025			;$B386DB	/
 
-CODE_B386DF:
+klubbas_club_main:
 	LDA #$0022			;$B386DF	\
 	JML CODE_B68025			;$B386E2	/
 
-CODE_B386E6:
+krool_main:
 	LDA #$0024			;$B386E6	\
 	JML CODE_B68025			;$B386E9	/
 
-CODE_B386ED:
+unknown_sprite_004C_main:
 	LDA #$0026			;$B386ED	\
 	JML CODE_B68025			;$B386F0	/
 
-CODE_B386F4:
+kleever_main:
 	LDA #$0000			;$B386F4	\
 	JML CODE_B6D171			;$B386F7	/
 
-CODE_B386FB:
+kleever_fireballs_main:
 	LDA #$0002			;$B386FB	\
 	JML CODE_B6D171			;$B386FE	/
 
-CODE_B38702:
+dropping_hooks_main:
 	LDA #$0004			;$B38702	\
 	JML CODE_B6D171			;$B38705	/
 
-CODE_B38709:
+kleever_canball_main:
 	LDA #$0006			;$B38709	\
 	JML CODE_B6D171			;$B3870C	/
 
-CODE_B38710:
+kleevers_hand_bubbles_main:
 	LDA #$0008			;$B38710	\
 	JML CODE_B6D171			;$B38713	/
 
-CODE_B38717:
+kleever_hand_main:
 	LDA #$000A			;$B38717	\
 	JML CODE_B6D171			;$B3871A	/
 
-CODE_B3871E:
+kleever_falling_canball_main:
 	LDA #$000C			;$B3871E	\
 	JML CODE_B6D171			;$B38721	/
 
-CODE_B38725:
+kleever_attack_effect_main:
 	LDA #$000E			;$B38725	\
 	JML CODE_B6D171			;$B38728	/
 
-CODE_B3872C:
+broken_kleever_hilt_main:
 	LDA #$0010			;$B3872C	\
 	JML CODE_B6D171			;$B3872F	/
 
-CODE_B38733:
+broken_kleever_fire_main:
 	LDA #$0012			;$B38733	\
 	JML CODE_B6D171			;$B38736	/
 
-CODE_B3873A:
+kleever_bone_pieces_main:
 	LDA #$0014			;$B3873A	\
 	JML CODE_B6D171			;$B3873D	/
 
-CODE_B38741:
+unknown_sprite_0030_main:
 	LDA #$0016			;$B38741	\
 	JML CODE_B6D171			;$B38744	/
 
-CODE_B38748:
+kleever_pieces1_main:
 	LDA #$0018			;$B38748	\
 	JML CODE_B6D171			;$B3874B	/
 
-CODE_B3874F:
+kleever_pieces2_main:
 	LDA #$001A			;$B3874F	\
 	JML CODE_B6D171			;$B38752	/
 
-CODE_B38756:
+kleever_pieces3_main:
 	LDA #$001C			;$B38756	\
 	JML CODE_B6D171			;$B38759	/
 
-CODE_B3875D:
+unknown_sprite_0040_main:
 	LDA #$001E			;$B3875D	\
 	JML CODE_B6D171			;$B38760	/
 
-CODE_B38764:
+kleever_pieces4_main:
 	LDA #$0020			;$B38764	\
 	JML CODE_B6D171			;$B38767	/
 
-CODE_B3876B:
+kleever_pieces5_main:
 	LDA #$0022			;$B3876B	\
 	JML CODE_B6D171			;$B3876E	/
 
-CODE_B38772:
+krows_egg_main:
 	LDA #$0024			;$B38772	\
 	JML CODE_B6D171			;$B38775	/
 
-CODE_B38779:
+krows_body_main:
 	LDA #$0026			;$B38779	\
 	JML CODE_B6D171			;$B3877C	/
 
-CODE_B38780:
+krows_head_main:
 	LDA #$0028			;$B38780	\
 	JML CODE_B6D171			;$B38783	/
 
-CODE_B38787:
+king_zing_main:
 	LDA #$0000			;$B38787	\
 	JML CODE_BA9000			;$B3878A	/
 
-CODE_B3878E:
+king_zing_ring_zinger_main:
 	LDA #$0002			;$B3878E	\
 	JML CODE_BA9000			;$B38791	/
 
-CODE_B38795:
+unknown_sprite_02BC_main:
 	LDA #$0004			;$B38795	\
 	JML CODE_BA9000			;$B38798	/
 
-CODE_B3879C:
+king_zing_stiner_main:
 	LDA #$0006			;$B3879C	\
 	JML CODE_BA9000			;$B3879F	/
 
-CODE_B387A3:
+king_zing_spikes_main:
 	LDA #$0008			;$B387A3	\
 	JML CODE_BA9000			;$B387A6	/
 
-CODE_B387AA:
+kreepy_krows_body_main:
 	LDA #$000A			;$B387AA	\
 	JML CODE_BA9000			;$B387AD	/
 
-CODE_B387B1:
+kreepy_krows_eggs_main:
 	LDA #$000C			;$B387B1	\
 	JML CODE_BA9000			;$B387B4	/
 
-CODE_B387B8:
+kreepy_krows_head_main:
 	LDA #$000E			;$B387B8	\
 	JML CODE_BA9000			;$B387BB	/
 
-CODE_B387BF:
+unknown_sprite_0054_main:
 	LDA #$0000			;$B387BF	\
 	JML CODE_BAB078			;$B387C2	/
 
-CODE_B387C6:
+krool_fish_main:
 	LDA #$0002			;$B387C6	\
 	JML CODE_BAB078			;$B387C9	/
 
-CODE_B387CD:
+unknown_sprite_0098_main:
 	LDA #$0004			;$B387CD	\
 	JML CODE_BAB078			;$B387D0	/
 
-CODE_B387D4:
+scroll_and_float_barrel_main:
 	LDA #$0006			;$B387D4	\
 	JML CODE_BAB078			;$B387D7	/
 
-CODE_B387DB:
+kong_npc_main:
 	LDA #$0008			;$B387DB	\
 	JML CODE_BAB078			;$B387DE	/
 
-CODE_B387E2:
+sparkle_spawner_main:
 	LDA #$000A			;$B387E2	\
 	JML CODE_BAB078			;$B387E5	/
 
-CODE_B387E9:
+sparkle_main:
 	LDA #$000C			;$B387E9	\
 	JML CODE_BAB078			;$B387EC	/
 
-CODE_B387F0:
+unknown_sprite_0050_main:
 	LDA #$000E			;$B387F0	\
 	JML CODE_BAB078			;$B387F3	/
 
-CODE_B387F7:
+clapper_main:
 	LDA #$0000			;$B387F7	\
 	JML CODE_B3D91D			;$B387FA	/
 
-CODE_B387FE:
+vertical_wind_changer_main:
 	LDA #$0002			;$B387FE	\
 	JML CODE_B3D91D			;$B38801	/
 
-CODE_B38805:
+horizontal_wind_changer_main:
 	LDA #$0004			;$B38805	\
 	JML CODE_B3D91D			;$B38808	/
 
-CODE_B3880C:
+timer_main:
 	LDA #$0006			;$B3880C	\
 	JML CODE_B3D91D			;$B3880F	/
 
-CODE_B38813:
+breakable_wall_main:
 	LDA #$0008			;$B38813	\
 	JML CODE_B3D91D			;$B38816	/
 
-CODE_B3881A:
+exit_door_main:
 	LDA #$000A			;$B3881A	\
 	JML CODE_B3D91D			;$B3881D	/
 
-CODE_B38821:
+unknown_sprite_0070_main:
 	LDA #$000C			;$B38821	\
 	JML CODE_B3D91D			;$B38824	/
 
-CODE_B38828:
+checkpoint_barrel_main:
 	LDA #$000E			;$B38828	\
 	JML CODE_B3D91D			;$B3882B	/
 
-CODE_B3882F:
+cannon_main:
 	LDA #$0010			;$B3882F	\
 	JML CODE_B3D91D			;$B38832	/
 
-CODE_B38836:
+barrel_icons_main:
 	LDA #$0012			;$B38836	\
 	JML CODE_B3D91D			;$B38839	/
 
-CODE_B3883D:
+barrel_cannon_main:
 	LDA #$0014			;$B3883D	\
 	JML CODE_B3D91D			;$B38840	/
 
-CODE_B38844:
+haunted_hall_door_main:
 	LDA #$0000			;$B38844	\
 	JML CODE_BEB800			;$B38847	/
 
-CODE_B3884B:
+gate_barrel_main:
 	LDA #$0002			;$B3884B	\
 	JML CODE_BEB800			;$B3884E	/
 
-CODE_B38852:
+skull_cart_sparks_main:
 	LDA #$0004			;$B38852	\
 	JML CODE_BEB800			;$B38855	/
 
-CODE_B38859:
+skull_cart_main:
 	LDA #$0006			;$B38859	\
 	JML CODE_BEB800			;$B3885C	/
 
-CODE_B38860:
+klank_main:
 	LDA #$0008			;$B38860	\
 	JML CODE_BEB800			;$B38863	/
 
-CODE_B38867:
+kackle_main:
 	LDA #$000A			;$B38867	\
 	JML CODE_BEB800			;$B3886A	/
 
-CODE_B3886E:
+unknown_sprite_0300_main:
 	LDA #$000C			;$B3886E	\
 	JML CODE_BEB800			;$B38871	/
 
-CODE_B38875:
+coins_main:
 	LDA #$000E			;$B38875	\
 	JML CODE_BEB800			;$B38878	/
 
-CODE_B3887C:
+kong_letter_main:
 	LDA #$0010			;$B3887C	\
 	JML CODE_BEB800			;$B3887F	/
 
-CODE_B38883:
+traffic_light_main:
 	LDA #$0012			;$B38883	\
 	JML CODE_BEB800			;$B38886	/
 
-CODE_B3888A:
+racing_flag_main:
 	LDA #$0014			;$B3888A	\
 	JML CODE_BEB800			;$B3888D	/
 
-CODE_B38891:
+chasing_king_zing_main:
 	LDA #$0016			;$B38891	\
 	JML CODE_BEB800			;$B38894	/
 
-CODE_B38898:
+screech_main:
 	LDA #$0018			;$B38898	\
 	JML CODE_BEB800			;$B3889B	/
 
-CODE_B3889F:
+giant_tire_main:
 	LDA #$001A			;$B3889F	\
 	JML CODE_BEB800			;$B388A2	/
 
-CODE_B388A6:
+unknown_sprite_00D4_main:
 	LDA #$001C			;$B388A6	\
 	JML CODE_BEB800			;$B388A9	/
 
-CODE_B388AD:
+chest_spawner_main:
 	LDA #$001E			;$B388AD	\
 	JML CODE_BEB800			;$B388B0	/
 
-CODE_B388B4:
+unknown_sprite_0084_main:
 	LDA #$0020			;$B388B4	\
 	JML CODE_BEB800			;$B388B7	/
 
-CODE_B388BB:
+double_zingers_main:
 	LDA #$0022			;$B388BB	\
 	JML CODE_BEB800			;$B388BE	/
 
-CODE_B388C2:
+unknown_sprite_00F0_main:
 	JML CODE_BBBC59			;$B388C2	/
 
-CODE_B388C6:
+dixie_kong_main:
 	JML CODE_B89670			;$B388C6	/
 
-CODE_B388CA:
+diddy_kong_main:
 	JML CODE_B8967D			;$B388CA	/
 
-CODE_B388CE:
+unknown_sprite_00EC_main:
 	JML [$05A9]			;$B388CE	/
 
-CODE_B388D1:
+unknown_sprite_00D8_main:
 	LDX $64				;$B388D1	\
 	LDY $0593			;$B388D3	 |
 	JSR CODE_B388EA			;$B388D6	 |
@@ -1009,13 +1014,13 @@ CODE_B388F9:				;		 |
 	STA $0012,y			;$B38902	 |
 	RTS				;$B38905	/
 
-CODE_B38906:
+npc_kong_credits_main:
 	JML CODE_80FA11			;$B38906	/
 
-CODE_B3890A:
+hero_kong_credits_main:
 	JML CODE_80FA40			;$B3890A	/
 
-CODE_B3890E:
+unknown_sprite_0110_main:
 	LDY $0593			;$B3890E	\
 	LDX $64				;$B38911	 |
 	LDA $0020,y			;$B38913	 |
@@ -1025,7 +1030,7 @@ CODE_B3890E:
 	JSL CODE_B9D100			;$B3891E	 |
 	JML [$05A9]			;$B38922	/
 
-CODE_B38925:
+web_shot_main:
 	JSL CODE_BCFB58			;$B38925	\
 	LDA #$0020			;$B38929	 |
 	LDY #$0008			;$B3892C	 |
@@ -1047,7 +1052,7 @@ CODE_B3894F:
 	JSL CODE_BB82B8			;$B38952	 |
 	JML [$05A9]			;$B38956	/
 
-CODE_B38959:
+web_platform_main:
 	LDX $64				;$B38959	\
 	LDA $2E,x			;$B3895B	 |
 	ASL A				;$B3895D	 |
@@ -1170,14 +1175,15 @@ CODE_B38A29:				;		 |
 	STA $24,x			;$B38A29	 |
 	RTS				;$B38A2B	/
 
-CODE_B38A2C:
+unknown_sprite_01CC_main:
 	LDA $0D7A			;$B38A2C	\
 	BNE CODE_B38A35			;$B38A2F	 |
 	JSL CODE_BB82B8			;$B38A31	 |
 CODE_B38A35:				;		 |
 	JML [$05A9]			;$B38A35	/
 
-CODE_B38A38:
+rambi_main:
+squitter_main:
 	LDX $64				;$B38A38	\
 	LDA $54,x			;$B38A3A	 |
 	STA $8E				;$B38A3C	 |
@@ -1284,7 +1290,7 @@ CODE_B38AFD:
 	JSL CODE_BB82B8			;$B38B01	 |
 	JML [$05A9]			;$B38B05	/
 
-CODE_B38B08:
+rattly_main:
 	LDX $64				;$B38B08	\
 	LDA $54,x			;$B38B0A	 |
 	STA $8E				;$B38B0C	 |
@@ -1428,7 +1434,7 @@ CODE_B38C04:
 	CLC				;$B38C04	\
 	RTS				;$B38C05	/
 
-CODE_B38C06:
+squawks_main:
 	LDX $64				;$B38C06	\
 	LDA $54,x			;$B38C08	 |
 	STA $8E				;$B38C0A	 |
@@ -1656,7 +1662,7 @@ CODE_B38D95:
 	SEC				;$B38DA4	 |
 	RTS				;$B38DA5	/
 
-CODE_B38DA6:
+enguarde_main:
 	LDX $64				;$B38DA6	\
 	LDA $54,x			;$B38DA8	 |
 	STA $8E				;$B38DAA	 |
@@ -1819,7 +1825,7 @@ CODE_B38E9A:
 CODE_B38EAC:				;		 |
 	RTS				;$B38EAC	/
 
-CODE_B38EAD:
+glimmer_main:
 	LDX $64				;$B38EAD	\
 	LDA $2E,x			;$B38EAF	 |
 	ASL A				;$B38EB1	 |
@@ -1989,7 +1995,7 @@ CODE_B38FBD:				;		 |
 	STA $2A,x			;$B38FBD	 |
 	RTS				;$B38FBF	/
 
-CODE_B38FC0:
+animal_icon_main:
 	LDX $64				;$B38FC0	\
 	LDA $2E,x			;$B38FC2	 |
 	ASL A				;$B38FC4	 |
@@ -2221,7 +2227,7 @@ CODE_B3913F:				;		 |
 CODE_B39163:				;		 |
 	RTL				;$B39163	/
 
-CODE_B39164:
+unknown_sprite_0114_main:
 	LDX $0593			;$B39164	\
 	LDA $12,x			;$B39167	 |
 	EOR $0012,y			;$B39169	 |
@@ -2247,7 +2253,9 @@ CODE_B39180:				;		 |
 	JSL CODE_BB82B8			;$B39196	 |
 	JML [$05A9]			;$B3919A	/
 
-CODE_B3919D:
+canball_pieces1_main:
+canball_pieces2_main:
+egg_shell_pieces_main:
 	LDX $64				;$B3919D	\
 	LDA $54,x			;$B3919F	 |
 	STA $8E				;$B391A1	 |
@@ -2271,7 +2279,7 @@ CODE_B391BA:
 	JSL CODE_BB82B8			;$B391C7	 |
 	JML [$05A9]			;$B391CB	/
 
-CODE_B391CE:
+fireworks_main:
 	LDX $64				;$B391CE	\
 	LDA $24,x			;$B391D0	 |
 	BPL CODE_B391DA			;$B391D2	 |
@@ -2294,12 +2302,15 @@ CODE_B391E8:				;		 |
 	JSL CODE_B9D100			;$B391EE	 |
 	JML [$05A9]			;$B391F2	/
 
-CODE_B391F5:
+explosion_cloud_main:
+unknown_sprite_023C_main:
+unknown_sprite_0248_main:
 	JSL CODE_B8CF7F			;$B391F5	\
 	JSL CODE_B9D100			;$B391F9	 |
 	JML [$05A9]			;$B391FD	/
 
-CODE_B39200:
+explosion_main:
+unknown_sprite_00B8_main:
 	JSL CODE_B8CF7F			;$B39200	\
 	PHK				;$B39204	 |
 	PLB				;$B39205	 |
@@ -2385,7 +2396,7 @@ DATA_B3928B:
 CODE_B392A9:
 	RTS				;$B392A9	/
 
-CODE_B392AA:
+sun_main:
 	LDX $64				;$B392AA	\
 	LDA $0911			;$B392AC	 |
 	LSR A				;$B392AF	 |
@@ -2417,11 +2428,11 @@ CODE_B392AA:
 	STA $06,x			;$B392D9	 |
 	JML [$05A9]			;$B392DB	/
 
-CODE_B392DE:
+unknown_sprite_000C_main:
 	JSL CODE_B9D100			;$B392DE	\
 	JML [$05A9]			;$B392E2	/
 
-CODE_B392E5:
+squawks_egg_main:
 	LDX $64				;$B392E5	\
 	LDA $54,x			;$B392E7	 |
 	STA $8E				;$B392E9	 |
@@ -2495,15 +2506,15 @@ CODE_B3935F:
 	JSL CODE_B8D010			;$B39362	 |
 	BRA CODE_B39305			;$B39366	/
 
-CODE_B39368:
+npc_hud_coin_main:
 	JSL CODE_B9D100			;$B39368	\
 	JML [$05A9]			;$B3936C	/
 
-CODE_B3936F:
+unknown_sprite_0104_main:
 	JSL CODE_B9D100			;$B3936F	\
 	JML [$05A9]			;$B39373	/
 
-CODE_B39376:
+dkbarrel_main:
 	LDX $64				;$B39376	\
 	LDA $54,x			;$B39378	 |
 	STA $8E				;$B3937A	 |
@@ -2640,7 +2651,7 @@ CODE_B3948B:
 	JSL CODE_BBBB8D			;$B39499	 |
 	JML [$05A9]			;$B3949D	/
 
-CODE_B394A0:
+dkbarrel_letters_main:
 	LDX $64				;$B394A0	\
 	LDA $42,x			;$B394A2	 |
 	TAY				;$B394A4	 |
@@ -2660,7 +2671,7 @@ CODE_B394C3:
 	JSL CODE_BB82B8			;$B394C3	\
 	JML [$05A9]			;$B394C7	/
 
-CODE_B394CA:
+tntbarrel_main:
 	LDX $64				;$B394CA	\
 	LDA $54,x			;$B394CC	 |
 	STA $8E				;$B394CE	 |
@@ -2747,7 +2758,7 @@ CODE_B39569:
 CODE_B3957E:
 	BRA CODE_B3953D			;$B3957E	/
 
-CODE_B39580:
+wooden_box_main:
 	LDX $64				;$B39580	\
 	LDA $54,x			;$B39582	 |
 	STA $8E				;$B39584	 |
@@ -2808,7 +2819,7 @@ CODE_B395E6:				;		 |
 	JSL CODE_BB82B8			;$B395F1	 |
 	JML [$05A9]			;$B395F5	/
 
-CODE_B395F8:
+krool_water_drips_main:
 	LDX $64				;$B395F8	\
 	LDY $42,x			;$B395FA	 |
 	LDA $0000,y			;$B395FC	 |
@@ -2823,7 +2834,8 @@ CODE_B3960E:
 	JSL CODE_BB82B8			;$B3960E	\
 	JML [$05A9]			;$B39612	/
 
-CODE_B39615:
+ghost_rope_main:
+horsetail_main:
 	LDX $64				;$B39615	\
 	LDA $2E,x			;$B39617	 |
 	ASL A				;$B39619	 |
@@ -2984,7 +2996,10 @@ CODE_B39737:
 
 	RTS				;$B39738	/
 
-CODE_B39739:
+barrel_pieces_main:
+unknown_sprite_0064_main:
+unknown_sprite_0240_main:
+unknown_sprite_0244_main:
 	LDX $64				;$B39739	\
 	LDA #$0040			;$B3973B	 |
 	CLC				;$B3973E	 |
@@ -3023,7 +3038,7 @@ CODE_B39779:				;		 |
 	JSL CODE_BB8412			;$B39783	 |
 	RTS				;$B39787	/
 
-CODE_B39788:
+animal_box_main:
 	LDX $64				;$B39788	\
 	LDA $2E,x			;$B3978A	 |
 	ASL A				;$B3978C	 |
@@ -3130,7 +3145,7 @@ CODE_B39854:				;		 |
 	LDX $64				;$B39854	 |
 	RTS				;$B39856	/
 
-CODE_B39857:
+hook_main:
 	LDX $64				;$B39857	\
 	LDA $2E,x			;$B39859	 |
 	ASL A				;$B3985B	 |
@@ -3382,7 +3397,7 @@ CODE_B39A5F:
 	AND #$0080			;$B39A6B	 |
 	RTS				;$B39A6E	/
 
-CODE_B39A6F:
+invincibility_barrel_main:
 	JSL CODE_BCFB58			;$B39A6F	\
 	LDA #$0010			;$B39A73	 |
 	PHK				;$B39A76	 |
@@ -3420,10 +3435,10 @@ CODE_B39AAB:				;		 |
 	STZ $00,x			;$B39ABB	 |
 	JML [$05A9]			;$B39ABD	/
 
-CODE_B39AC0:
+unknown_sprite_01C8_main:
 	JMP CODE_B38000			;$B39AC0	/
 
-CODE_B39AC3:
+canball_main:
 	LDX $64				;$B39AC3	\
 	LDA $54,x			;$B39AC5	 |
 	STA $8E				;$B39AC7	 |
@@ -3537,7 +3552,8 @@ CODE_B39BA5:
 	JSL CODE_BEBD8E			;$B39BAF	 |
 	RTS				;$B39BB3	/
 
-CODE_B39BB4:
+unknown_sprite_00CC_main:
+unknown_sprite_02DC_main:
 	LDX $64				;$B39BB4	\
 	LDA $54,x			;$B39BB6	 |
 	STA $8E				;$B39BB8	 |
@@ -3665,7 +3681,7 @@ CODE_B39C79:
 CODE_B39C97:				;		 |
 	JML [$05A9]			;$B39C97	/
 
-CODE_B39C9A:
+chest_main:
 	LDX $64				;$B39C9A	\
 	LDA $54,x			;$B39C9C	 |
 	STA $8E				;$B39C9E	 |
@@ -3821,7 +3837,7 @@ DATA_B39DC8:
 	db $01, $02, $04, $08
 
 
-CODE_B39DCC:
+barrel_main:
 	JSR CODE_B3A369			;$B39DCC	/
 
 DATA_B39DCF:
@@ -4159,11 +4175,11 @@ CODE_B3A024:				;		 |
 	STA $0002,y			;$B3A033	 |
 	RTS				;$B3A036	/
 
-CODE_B3A037:
+unknown_sprite_0308_main:
 	JSL CODE_B9D100			;$B3A037	\
 	JML [$05A9]			;$B3A03B	/
 
-CODE_B3A03E:
+no_animal_buddy_sign_main:
 	LDA $08A8			;$B3A03E	\
 	CMP #$006E			;$B3A041	 |
 	BNE CODE_B3A04C			;$B3A044	 |
@@ -4239,7 +4255,7 @@ if !version == 1
 	RTS				;$B3A0C7	/
 endif
 
-CODE_B3A0C8:
+unknown_sprite_016C_main:
 	JSR CODE_B3A227			;$B3A0C8	\
 	BCS CODE_B3A0DA			;$B3A0CB	 |
 	LDX $64				;$B3A0CD	 |
@@ -4379,7 +4395,7 @@ CODE_B3A1AE:
 	SEC				;$B3A1B0	 |
 	RTS				;$B3A1B1	/
 
-CODE_B3A1B2:
+unknown_sprite_0168_main:
 	JSR CODE_B3A227			;$B3A1B2	\
 	BCS CODE_B3A1BA			;$B3A1B5	 |
 	JML [$05A9]			;$B3A1B7	/
@@ -4388,7 +4404,7 @@ CODE_B3A1BA:
 	JSL CODE_BB82B8			;$B3A1BA	\
 	JML [$05A9]			;$B3A1BE	/
 
-CODE_B3A1C1:
+unknown_sprite_0164_main:
 	JSR CODE_B3A227			;$B3A1C1	\
 	BCS CODE_B3A1CD			;$B3A1C4	 |
 	LDA $2E,x			;$B3A1C6	 |
@@ -4468,7 +4484,7 @@ CODE_B3A236:
 	SEC				;$B3A236	\
 	RTS				;$B3A237	/
 
-CODE_B3A238:
+level_goal_main:
 	LDX $64				;$B3A238	\
 	LDA $54,x			;$B3A23A	 |
 	STA $8E				;$B3A23C	 |
@@ -4598,7 +4614,7 @@ CODE_B3A32C:
 	SEC				;$B3A32F	 |
 	RTS				;$B3A330	/
 
-CODE_B3A331:
+unknown_sprite_00C8_main:
 	JML [$05A9]			;$B3A331	/
 
 CODE_B3A334:
@@ -4747,17 +4763,17 @@ CODE_B3A40E:				;		 |
 	PLY				;$B3A40F	 |
 	RTS				;$B3A410	/
 
-CODE_B3A411:
+klampon_main:
 	LDA $0A36			;$B3A411	\
 	BIT #$0004			;$B3A414	 |
-	BEQ CODE_B3A45A			;$B3A417	 |
+	BEQ neek_main			;$B3A417	 |
 	LDY $64				;$B3A419	 |
 	LDA $0036,y			;$B3A41B	 |
 	CMP #$01A2			;$B3A41E	 |
-	BEQ CODE_B3A45A			;$B3A421	 |
+	BEQ neek_main			;$B3A421	 |
 	JML [$05A9]			;$B3A423	/
 
-CODE_B3A426:
+zinger_main:
 	LDY $64				;$B3A426	\
 	LDA $002E,y			;$B3A428	 |
 	CMP #$0001			;$B3A42B	 |
@@ -4765,7 +4781,7 @@ CODE_B3A426:
 	INC $19AA			;$B3A430	 |
 	BRA CODE_B3A442			;$B3A433	/
 
-CODE_B3A435:
+flitter_main:
 	LDY $64				;$B3A435	\
 	LDA $002E,y			;$B3A437	 |
 	CMP #$0001			;$B3A43A	 |
@@ -4773,17 +4789,21 @@ CODE_B3A435:
 	INC $19AB			;$B3A43F	 |
 CODE_B3A442:				;		 |
 	LDA $0D54			;$B3A442	 |
-	BMI CODE_B3A45A			;$B3A445	 |
+	BMI neek_main			;$B3A445	 |
 	CLC				;$B3A447	 |
 	ADC #$00C0			;$B3A448	 |
 	LDY $64				;$B3A44B	 |
 	CMP $000A,y			;$B3A44D	 |
-	BCS CODE_B3A45A			;$B3A450	 |
+	BCS neek_main			;$B3A450	 |
 	LDA $002E,y			;$B3A452	 |
-	BNE CODE_B3A45A			;$B3A455	 |
+	BNE neek_main			;$B3A455	 |
 	JMP CODE_B3A57A			;$B3A457	/
 
-CODE_B3A45A:
+klinger_main:
+klomp_main:
+neek_main:
+spiny_main:
+unknown_sprite_01F4_main:
 	JSR CODE_B3A369			;$B3A45A	/
 
 DATA_B3A45D:
@@ -4846,7 +4866,7 @@ CODE_B3A4BF:
 	LDA [$8E],y			;$B3A4D6	 |
 	BEQ CODE_B3A4DF			;$B3A4D8	 |
 	STA $2E,x			;$B3A4DA	 |
-	BRL CODE_B3A45A			;$B3A4DC	/
+	BRL neek_main			;$B3A4DC	/
 
 CODE_B3A4DF:
 	JSL CODE_BEF039			;$B3A4DF	\
@@ -4862,7 +4882,7 @@ CODE_B3A4E6:
 	LDA [$8E],y			;$B3A4F5	 |
 	BEQ CODE_B3A4FE			;$B3A4F7	 |
 	STA $2E,x			;$B3A4F9	 |
-	BRL CODE_B3A45A			;$B3A4FB	/
+	BRL neek_main			;$B3A4FB	/
 
 CODE_B3A4FE:
 	JSL CODE_BEF039			;$B3A4FE	\
@@ -4878,7 +4898,7 @@ CODE_B3A505:
 	LDA [$8E],y			;$B3A515	 |
 	BEQ CODE_B3A51E			;$B3A517	 |
 	STA $2E,x			;$B3A519	 |
-	BRL CODE_B3A45A			;$B3A51B	/
+	BRL neek_main			;$B3A51B	/
 
 CODE_B3A51E:
 	JSL CODE_BEF039			;$B3A51E	\
@@ -5093,7 +5113,7 @@ CODE_B3A66E:
 	JSR CODE_B3A6DC			;$B3A68D	 |
 	JML [$05A9]			;$B3A690	/
 
-CODE_B3A693:
+ship_water_splash_main:
 	LDX $64				;$B3A693	\
 	LDA $06,x			;$B3A695	 |
 	SEC				;$B3A697	 |
@@ -5179,7 +5199,7 @@ CODE_B3A734:
 	JSL CODE_B58003			;$B3A734	\
 	RTS				;$B3A738	/
 
-CODE_B3A739:
+click_clack_main:
 	JSR CODE_B3A369			;$B3A739	/
 
 DATA_B3A73C:
@@ -5387,7 +5407,7 @@ CODE_B3A8D9:				;		 |
 	BCC CODE_B3A8F1			;$B3A8E3	 |
 	STZ $0D7A			;$B3A8E5	 |
 	LDA #$0000			;$B3A8E8	 |
-if !version == 1				;		 |
+if !version == 1			;		 |
 	LDA #$FB00			;$B3A8EB	 |
 else					;		 |
 	LDY #$FB00			;$B3A8EB	 |
@@ -5595,7 +5615,7 @@ CODE_B3AA6E:				;		 |
 	JSL CODE_B58003			;$B3AA8B	 |
 	JMP CODE_B38000			;$B3AA8F	/
 
-CODE_B3AA92:
+klobber_main:
 	JSR CODE_B3A369			;$B3AA92	/
 
 DATA_B3AA95:
@@ -5726,10 +5746,10 @@ CODE_B3AB61:
 CODE_B3ABA9:
 	LDA $004E,y			;$B3ABA9	\
 	BEQ CODE_B3ABB2			;$B3ABAC	 |
-	JML CODE_B39DCC			;$B3ABAE	/
+	JML barrel_main			;$B3ABAE	/
 
 CODE_B3ABB2:
-	JML CODE_B394CA			;$B3ABB2	/
+	JML tntbarrel_main		;$B3ABB2	/
 
 CODE_B3ABB6:
 	LDA #$8000			;$B3ABB6	\
@@ -5739,12 +5759,12 @@ CODE_B3ABB6:
 	BEQ CODE_B3ABCE			;$B3ABC2	 |
 	LDA #$01A4			;$B3ABC4	 |
 	STA $0000,y			;$B3ABC7	 |
-	JML CODE_B39DCC			;$B3ABCA	/
+	JML barrel_main			;$B3ABCA	/
 
 CODE_B3ABCE:
 	LDA #$01B8			;$B3ABCE	\
 	STA $0000,y			;$B3ABD1	 |
-	JML CODE_B394CA			;$B3ABD4	/
+	JML tntbarrel_main		;$B3ABD4	/
 
 CODE_B3ABD8:
 	LDX $64				;$B3ABD8	\
@@ -5781,7 +5801,7 @@ CODE_B3AC11:
 	ORA #$FF00			;$B3AC11	\
 	RTS				;$B3AC14	/
 
-CODE_B3AC15:
+unknown_sprite_01E8_main:
 	JSR CODE_B3A369			;$B3AC15	/
 
 DATA_B3AC18:
@@ -6361,7 +6381,8 @@ CODE_B3B039:
 	SEC				;$B3B039	\
 	RTS				;$B3B03A	/
 
-CODE_B3B03B:
+large_smoke_puff_main:
+unknown_sprite_0014_main:
 	LDY $64				;$B3B03B	\
 	LDA $0054,y			;$B3B03D	 |
 	STA $8E				;$B3B040	 |
@@ -6369,7 +6390,7 @@ CODE_B3B03B:
 	JSL CODE_B9D100			;$B3B046	 |
 	JML [$05A9]			;$B3B04A	/
 
-CODE_B3B04D:
+kruncha_main:
 	LDY $64				;$B3B04D	\
 	LDA $0A36			;$B3B04F	 |
 	BIT #$0004			;$B3B052	 |
@@ -6751,7 +6772,7 @@ CODE_B3B2DF:
 	LDA $4216			;$B3B2EC	 |
 	RTS				;$B3B2EF	/
 
-CODE_B3B2F0:
+snapjaw_main:
 	LDA $08C2			;$B3B2F0	\
 	AND #$0100			;$B3B2F3	 |
 	BNE CODE_B3B31E			;$B3B2F6	 |
@@ -7056,7 +7077,7 @@ CODE_B3B50B:
 	JSL CODE_B9D0C6			;$B3B51F	 |
 	RTS				;$B3B523	/
 
-CODE_B3B524:
+lockjaw_main:
 	JSR CODE_B3A369			;$B3B524	/
 
 DATA_B3B527:
@@ -7600,7 +7621,7 @@ CODE_B3B8D5:
 CODE_B3B8EF:				;		 |
 	RTS				;$B3B8EF	/
 
-CODE_B3B8F0:
+flotsam_main:
 	JSR CODE_B3A369			;$B3B8F0	/
 
 DATA_B3B8F3:
@@ -7648,7 +7669,7 @@ CODE_B3B944:
 	JSL CODE_B9D100			;$B3B948	 |
 	JMP CODE_B3A652			;$B3B94C	/
 
-CODE_B3B94F:
+shuri_main:
 	JSR CODE_B3A369			;$B3B94F	/
 
 DATA_B3B952:
@@ -7820,7 +7841,7 @@ CODE_B3BA93:
 	JSR CODE_B3C9CB			;$B3BA9B	 |
 	JMP CODE_B38000			;$B3BA9E	/
 
-CODE_B3BAA1:
+kaboing_main:
 	JSR CODE_B3A369			;$B3BAA1	/
 
 DATA_B3BAA4:
@@ -7981,7 +8002,7 @@ CODE_B3BB91:				;		 |
 	STA $2E,x			;$B3BBAA	 |
 	JMP CODE_B38000			;$B3BBAC	/
 
-CODE_B3BBAF:
+unknown_sprite_00A4_main:
 	JSR CODE_B3A369			;$B3BBAF	/
 
 DATA_B3BBB2:
@@ -8039,7 +8060,7 @@ CODE_B3BC01:
 CODE_B3BC11:				;		 |
 	RTS				;$B3BC11	/
 
-CODE_B3BC12:
+unknown_sprite_00A8_main:
 	JSR CODE_B3A369			;$B3BC12	/
 
 DATA_B3BC16:
@@ -8102,7 +8123,7 @@ CODE_B3BC56:				;		 |
 CODE_B3BC68:
 	JML [$05A9]			;$B3BC68	/
 
-CODE_B3BC6B:
+mini_necky_main:
 	JSR CODE_B3A369			;$B3BC6B	/
 
 DATA_B3BC6E:
@@ -8361,7 +8382,7 @@ CODE_B3BE31:
 	STZ $0A,x			;$B3BE4F	 |
 	RTS				;$B3BE51	/
 
-CODE_B3BE52:
+kannon_main:
 	JSR CODE_B3A369			;$B3BE52	/
 
 DATA_B3BE55:
@@ -8503,7 +8524,7 @@ CODE_B3BF32:				;		 |
 CODE_B3BF56:				;		 |
 	RTS				;$B3BF56	/
 
-CODE_B3BF57:
+shot_canball_or_barrel_main:
 	JSR CODE_B3A369			;$B3BF57	/
 
 DATA_B3BF5A:
@@ -8911,7 +8932,7 @@ CODE_B3C25A:
 	SEC				;$B3C26F	 |
 	RTS				;$B3C270	/
 
-CODE_B3C271:
+water_level_changer_main:
 	LDX $64				;$B3C271	\
 	LDY $0593			;$B3C273	 |
 	LDA $2E,x			;$B3C276	 |
@@ -9021,10 +9042,10 @@ CODE_B3C33B:				;		 |
 	JSL CODE_BB82D2			;$B3C33B	 |
 	JML [$05A9]			;$B3C33F	/
 
-CODE_B3C342:
+unknown_sprite_00B0_main:
 	JMP CODE_B38000			;$B3C342	/
 
-CODE_B3C345:
+bananas_main:
 	JSR CODE_B3A369			;$B3C345	/
 
 DATA_B3C348:
@@ -9117,7 +9138,7 @@ CODE_B3C3FC:
 	JSL CODE_BB82B8			;$B3C3FC	\
 	JML [$05A9]			;$B3C400	/
 
-CODE_B3C403:
+extra_life_balloon_main:
 	JSR CODE_B3A369			;$B3C403	/
 
 DATA_B3C406:
@@ -9204,7 +9225,7 @@ CODE_B3C4B3:				;		 |
 	JSL CODE_B9D100			;$B3C4B3	 |
 	JML [$05A9]			;$B3C4B7	/
 
-CODE_B3C4BA:
+air_bubble_generator_main:
 	LDX $64				;$B3C4BA	\
 	LDA $12,x			;$B3C4BC	 |
 	AND #$CFFF			;$B3C4BE	 |
@@ -9213,7 +9234,7 @@ CODE_B3C4BA:
 	JSL CODE_BB82D2			;$B3C4C7	 |
 	JML [$05A9]			;$B3C4CB	/
 
-CODE_B3C4CE:
+kutlass_main:
 	JSR CODE_B3A369			;$B3C4CE	/
 
 DATA_B3C4D1:
@@ -9528,7 +9549,7 @@ CODE_B3C717:
 CODE_B3C71C:				;		 |
 	RTS				;$B3C71C	/
 
-CODE_B3C71D:
+krook_main:
 	JSR CODE_B3A369			;$B3C71D	/
 
 DATA_B3C720:
@@ -9765,7 +9786,7 @@ CODE_B3C8DB:				;		 |
 	SEC				;$B3C8DB	 |
 	RTS				;$B3C8DC	/
 
-CODE_B3C8DD:
+krooks_hook_main:
 	JSR CODE_B3A369			;$B3C8DD	/
 
 DATA_B3C8E0:
@@ -9937,7 +9958,7 @@ CODE_B3CA07:				;		 |
 	STA $52,x			;$B3CA17	 |
 	RTS				;$B3CA19	/
 
-CODE_B3CA1A:
+puftup_main:
 	JSR CODE_B3A369			;$B3CA1A	/
 
 DATA_B3CA1D:
@@ -10068,7 +10089,7 @@ DATA_B3CB0C:
 	db $08, $00, $08, $00, $03, $80, $F8, $FF
 	db $08, $00, $03, $C0
 
-CODE_B3CB38:
+puftup_spikes_main:
 	LDY $64				;$B3CB38	\
 	LDA $0054,y			;$B3CB3A	 |
 	STA $8E				;$B3CB3D	 |
@@ -10346,7 +10367,7 @@ CODE_B3CCDA:
 CODE_B3CCDB:				;		 |
 	RTS				;$B3CCDB	/
 
-CODE_B3CCDC:
+cat_o9tails_main:
 	JSR CODE_B3A369			;$B3CCDC	/
 
 DATA_B3CCDF:
@@ -10732,7 +10753,7 @@ CODE_B3D006:
 	CLC				;$B3D006	\
 	RTS				;$B3D007	/
 
-CODE_B3D008:
+kloak_main:
 	JSR CODE_B3A369			;$B3D008	/
 
 					;$B3D00B	 |
@@ -11120,7 +11141,7 @@ CODE_B3D2EC:
 	STA $40,x			;$B3D2F6	 |
 	RTL				;$B3D2F8	/
 
-CODE_B3D2F9:
+unknown_sprite_02E8_main:
 	JSR CODE_B3A369			;$B3D2F9	/
 
 DATA_B3D2FC:
@@ -11457,7 +11478,7 @@ CODE_B3D56E:				;		 |
 CODE_B3D57A:				;		 |
 	RTS				;$B3D57A	/
 
-CODE_B3D57B:
+rideable_balloon_main:
 	JSR CODE_B3A369			;$B3D57B	/
 
 DATA_B3D57E:
@@ -11618,7 +11639,7 @@ DATA_B3D693:
 	dw $8000
 
 
-CODE_B3D6DD:
+krochead_main:
 	JSR CODE_B3A369			;$B3D6DD	\
 	dw CODE_B3D6E4
 	dw CODE_B3D709
@@ -11637,10 +11658,10 @@ CODE_B3D6E4:
 	ASL A				;$B3D6F8	 |
 	BEQ CODE_B3D709			;$B3D6F9	 |
 	JSR CODE_B3D741			;$B3D6FB	 |
-	BEQ CODE_B3D6DD			;$B3D6FE	 |
+	BEQ krochead_main		;$B3D6FE	 |
 	LDA #$02C9			;$B3D700	 |
 	JSL CODE_B9D0C6			;$B3D703	 |
-	BRA CODE_B3D6DD			;$B3D707	/
+	BRA krochead_main		;$B3D707	/
 
 CODE_B3D709:
 	TAX				;$B3D709	\
@@ -11697,7 +11718,7 @@ CODE_B3D75B:				;		 |
 CODE_B3D762:				;		 |
 	RTS				;$B3D762	/
 
-CODE_B3D763:
+krochead_switch_barrel_main:
 	LDY $64				;$B3D763	\
 	LDA $002E,y			;$B3D765	 |
 	ASL A				;$B3D768	 |
@@ -11774,7 +11795,7 @@ CODE_B3D7F1:
 CODE_B3D7F5:				;		 |
 	JML [$05A9]			;$B3D7F5	/
 
-CODE_B3D7F8:
+plus_and_minus_barrel_main:
 	JSR CODE_B3A369			;$B3D7F8	/
 
 DATA_B3D7FB:
