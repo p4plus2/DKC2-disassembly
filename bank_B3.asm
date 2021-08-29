@@ -496,7 +496,7 @@ DATA_B38348:
 	dw unknown_sprite_0104_main,$0001		;0104
 	dw web_shot_main,$0000				;0108
 	dw unknown_sprite_010C_main,$0000		;010C
-	dw unknown_sprite_0110_main,$0000		;0110
+	dw rain_cloud_main,$0000			;0110
 	dw unknown_sprite_0114_main,$0000		;0114
 	dw web_platform_main,$0000			;0118
 	dw dkbarrel_letters_main,$0000			;011C
@@ -1020,7 +1020,7 @@ npc_kong_credits_main:
 hero_kong_credits_main:
 	JML CODE_80FA40			;$B3890A	/
 
-unknown_sprite_0110_main:
+rain_cloud_main:
 	LDY $0593			;$B3890E	\
 	LDX $64				;$B38911	 |
 	LDA $0020,y			;$B38913	 |
