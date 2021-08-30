@@ -1,5 +1,7 @@
 hirom
 !version = 1
+!override_pirate_panic = 0
+!pirate_panic_replacement = $0D
 
 
 org $008000			;dummy org so functions work

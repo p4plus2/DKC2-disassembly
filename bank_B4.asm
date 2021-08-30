@@ -9739,12 +9739,21 @@ DATA_B4DD43:
 	db $13, ">STRONGHOLD SHOWDOWN"
 	db $15, ">CONFRONTATION AU FORT"
 
+if !override_pirate_panic == 1
+DATA_B4DD6F:
+	db $1D, $00, $44, $00, $32, $01, $00 : dw DATA_B4DD7E
+	db !pirate_panic_replacement, $00, $42, $00, $05, $00
+DATA_B4DD7E:
+	db $0C, ">PIRATE PANIC"
+	db $0E, ">PANIQUE % BORD"
+else
 DATA_B4DD6F:
 	db $1D, $00, $44, $00, $32, $01, $00 : dw DATA_B4DD7E
 	db $03, $00, $42, $00, $05, $00
 DATA_B4DD7E:
 	db $0C, ">PIRATE PANIC"
 	db $0E, ">PANIQUE % BORD"
+endif
 
 DATA_B4DD9C:
 	db $64, $00, $2D, $00, $32, $0E, $02 : dw DATA_B4DDB3

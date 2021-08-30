@@ -567,264 +567,264 @@ DATA_B684C6:
 	dw DATA_B68502
 
 DATA_B684D4:
-	dw !boss_command_28, $003C
-	dw !boss_command_3A, $01D0, $0032, $0400, $0900, $0006
-	dw !boss_command_0B, $0250, $1000
-	dw !boss_command_28, $001E
-	dw !boss_command_3C
-	dw !boss_command_28, $0014
-	dw !boss_command_3B, $0150, $F800, $FC00, $0003
-	dw !boss_command_28, $001E
+	dw !boss_command_wait, $003C
+	dw !boss_command_fall, $01D0, $0032, $0400, $0900, $0006
+	dw !boss_command_shake_screen, $0250, $1000
+	dw !boss_command_wait, $001E
+	dw !boss_command_swing_club
+	dw !boss_command_wait, $0014
+	dw !boss_command_rise, $0150, $F800, $FC00, $0003
+	dw !boss_command_wait, $001E
 
 DATA_B68502:
-	dw !boss_command_3A, $0000, $0032, $0400, $0680, $0006
-	dw !boss_command_3F
-	dw !boss_command_0B, $0250, $1000
-	dw !boss_command_3E, $0007
-	dw !boss_command_28, $0014
-	dw !boss_command_3B, $0150, $F800, $FC00, $0003
-	dw !boss_command_28, $0023
-	dw !boss_command_3A, $0000, $0032, $0400, $0680, $0006
-	dw !boss_command_0B, $0250, $1000
-	dw !boss_command_3E, $0007
-	dw !boss_command_28, $0014
-	dw !boss_command_3B, $0150, $F800, $FC00, $0003
-	dw !boss_command_28, $0023
-	dw !boss_command_3A, $0000, $0032, $0400, $0680, $0006
-	dw !boss_command_0B, $0250, $1000
-	dw !boss_command_3E, $0007
-	dw !boss_command_28, $002D
-	dw !boss_command_3C
-	dw !boss_command_0D, DATA_B6857A
-	dw !boss_command_02, DATA_B689CA, DATA_B689CA
+	dw !boss_command_fall, $0000, $0032, $0400, $0680, $0006
+	dw !boss_command_destroy_tnt
+	dw !boss_command_shake_screen, $0250, $1000
+	dw !boss_command_stun_player, $0007
+	dw !boss_command_wait, $0014
+	dw !boss_command_rise, $0150, $F800, $FC00, $0003
+	dw !boss_command_wait, $0023
+	dw !boss_command_fall, $0000, $0032, $0400, $0680, $0006
+	dw !boss_command_shake_screen, $0250, $1000
+	dw !boss_command_stun_player, $0007
+	dw !boss_command_wait, $0014
+	dw !boss_command_rise, $0150, $F800, $FC00, $0003
+	dw !boss_command_wait, $0023
+	dw !boss_command_fall, $0000, $0032, $0400, $0680, $0006
+	dw !boss_command_shake_screen, $0250, $1000
+	dw !boss_command_stun_player, $0007
+	dw !boss_command_wait, $002D
+	dw !boss_command_swing_club
+	dw !boss_command_set_pattern, DATA_B6857A
+	dw !boss_command_goto_or_reset, DATA_B689CA, DATA_B689CA
 
 DATA_B6857A:
-	dw !boss_command_28, $0001
-	dw !boss_command_3A, $01C0, $0095, $0400, $0680, $0006
-	dw !boss_command_0B, $0000, $0400
+	dw !boss_command_wait, $0001
+	dw !boss_command_fall, $01C0, $0095, $0400, $0680, $0006
+	dw !boss_command_shake_screen, $0000, $0400
 	dw !boss_command_42
-	dw !boss_command_41, $001E, $012C
+	dw !boss_command_get_hit_or_timeout, $001E, $012C
 	dw !boss_command_43
-	dw !boss_command_3B, $0150, $F800, $FC00, $0003
-	dw !boss_command_28, $0023
-	dw !boss_command_02, DATA_B68502, DATA_B68502
+	dw !boss_command_rise, $0150, $F800, $FC00, $0003
+	dw !boss_command_wait, $0023
+	dw !boss_command_goto_or_reset, DATA_B68502, DATA_B68502
 
 DATA_B685AE:
-	dw !boss_command_3B, $0150, $F800, $FC00, $0003
-	dw !boss_command_28, $000F
+	dw !boss_command_rise, $0150, $F800, $FC00, $0003
+	dw !boss_command_wait, $000F
 
 DATA_B685BC:
-	dw !boss_command_3A, $0000, $0023, $0400, $0780, $0006
-	dw !boss_command_3F
-	dw !boss_command_0B, $0250, $1000
-	dw !boss_command_3E, $0007
-	dw !boss_command_28, $0014
-	dw !boss_command_3B, $0150, $F800, $FC00, $0003
-	dw !boss_command_28, $000F
-	dw !boss_command_3A, $0000, $0023, $0400, $0780, $0006
-	dw !boss_command_0B, $0250, $1000
-	dw !boss_command_3E, $0007
-	dw !boss_command_28, $0014
-	dw !boss_command_3B, $0150, $F800, $FC00, $0003
-	dw !boss_command_28, $000F
-	dw !boss_command_3A, $0000, $0023, $0400, $0780, $0006
-	dw !boss_command_0B, $0250, $1000
-	dw !boss_command_3E, $0007
-	dw !boss_command_28, $0019
-	dw !boss_command_3C
-	dw !boss_command_0D, DATA_B68634
-	dw !boss_command_02, DATA_B689CA, DATA_B689CA
+	dw !boss_command_fall, $0000, $0023, $0400, $0780, $0006
+	dw !boss_command_destroy_tnt
+	dw !boss_command_shake_screen, $0250, $1000
+	dw !boss_command_stun_player, $0007
+	dw !boss_command_wait, $0014
+	dw !boss_command_rise, $0150, $F800, $FC00, $0003
+	dw !boss_command_wait, $000F
+	dw !boss_command_fall, $0000, $0023, $0400, $0780, $0006
+	dw !boss_command_shake_screen, $0250, $1000
+	dw !boss_command_stun_player, $0007
+	dw !boss_command_wait, $0014
+	dw !boss_command_rise, $0150, $F800, $FC00, $0003
+	dw !boss_command_wait, $000F
+	dw !boss_command_fall, $0000, $0023, $0400, $0780, $0006
+	dw !boss_command_shake_screen, $0250, $1000
+	dw !boss_command_stun_player, $0007
+	dw !boss_command_wait, $0019
+	dw !boss_command_swing_club
+	dw !boss_command_set_pattern, DATA_B68634
+	dw !boss_command_goto_or_reset, DATA_B689CA, DATA_B689CA
 
 DATA_B68634:
-	dw !boss_command_28, $0001
-	dw !boss_command_3A, $01C0, $0059, $0400, $0780, $0006
-	dw !boss_command_0B, $0000, $0400
+	dw !boss_command_wait, $0001
+	dw !boss_command_fall, $01C0, $0059, $0400, $0780, $0006
+	dw !boss_command_shake_screen, $0000, $0400
 	dw !boss_command_42
-	dw !boss_command_41, $0014, $00B4
+	dw !boss_command_get_hit_or_timeout, $0014, $00B4
 	dw !boss_command_43
-	dw !boss_command_3B, $0150, $F800, $FC00, $0003
-	dw !boss_command_28, $000F
-	dw !boss_command_02, DATA_B685BC, DATA_B685BC
+	dw !boss_command_rise, $0150, $F800, $FC00, $0003
+	dw !boss_command_wait, $000F
+	dw !boss_command_goto_or_reset, DATA_B685BC, DATA_B685BC
 
 DATA_B68668:
-	dw !boss_command_3B, $0150, $F800, $FC00, $0003
-	dw !boss_command_28, $0002
+	dw !boss_command_rise, $0150, $F800, $FC00, $0003
+	dw !boss_command_wait, $0002
 
 DATA_B68676:
-	dw !boss_command_3A, $0000, $0014, $0400, $0880, $0006
-	dw !boss_command_3F
-	dw !boss_command_0B, $0250, $1000
-	dw !boss_command_3E, $0007
-	dw !boss_command_28, $0014
-	dw !boss_command_3B, $0150, $F800, $FC00, $0003
-	dw !boss_command_28, $0002
-	dw !boss_command_3A, $0000, $0014, $0400, $0880, $0006
-	dw !boss_command_0B, $0250, $1000
-	dw !boss_command_3E, $0007
-	dw !boss_command_28, $0014
-	dw !boss_command_3B, $0150, $F800, $FC00, $0003
-	dw !boss_command_28, $0002
-	dw !boss_command_3A, $0000, $0014, $0400, $0880, $0006
-	dw !boss_command_0B, $0250, $1000
-	dw !boss_command_3E, $0007
-	dw !boss_command_28, $000A
-	dw !boss_command_3C
-	dw !boss_command_0D, DATA_B686EE
-	dw !boss_command_02, DATA_B689CA, DATA_B689CA
+	dw !boss_command_fall, $0000, $0014, $0400, $0880, $0006
+	dw !boss_command_destroy_tnt
+	dw !boss_command_shake_screen, $0250, $1000
+	dw !boss_command_stun_player, $0007
+	dw !boss_command_wait, $0014
+	dw !boss_command_rise, $0150, $F800, $FC00, $0003
+	dw !boss_command_wait, $0002
+	dw !boss_command_fall, $0000, $0014, $0400, $0880, $0006
+	dw !boss_command_shake_screen, $0250, $1000
+	dw !boss_command_stun_player, $0007
+	dw !boss_command_wait, $0014
+	dw !boss_command_rise, $0150, $F800, $FC00, $0003
+	dw !boss_command_wait, $0002
+	dw !boss_command_fall, $0000, $0014, $0400, $0880, $0006
+	dw !boss_command_shake_screen, $0250, $1000
+	dw !boss_command_stun_player, $0007
+	dw !boss_command_wait, $000A
+	dw !boss_command_swing_club
+	dw !boss_command_set_pattern, DATA_B686EE
+	dw !boss_command_goto_or_reset, DATA_B689CA, DATA_B689CA
 
 DATA_B686EE:
-	dw !boss_command_28, $0001
-	dw !boss_command_3A, $01C0, $0031, $0400, $0880, $0006
-	dw !boss_command_0B, $0000, $0400
+	dw !boss_command_wait, $0001
+	dw !boss_command_fall, $01C0, $0031, $0400, $0880, $0006
+	dw !boss_command_shake_screen, $0000, $0400
 	dw !boss_command_42
-	dw !boss_command_41, $0014, $0078
+	dw !boss_command_get_hit_or_timeout, $0014, $0078
 	dw !boss_command_43
-	dw !boss_command_3B, $0150, $F800, $FC00, $0003
-	dw !boss_command_28, $0002
-	dw !boss_command_02, DATA_B68676, DATA_B68676
-	dw !boss_command_3B, $0150, $F800, $FC00, $0003
-	dw !boss_command_28, $0002
+	dw !boss_command_rise, $0150, $F800, $FC00, $0003
+	dw !boss_command_wait, $0002
+	dw !boss_command_goto_or_reset, DATA_B68676, DATA_B68676
+	dw !boss_command_rise, $0150, $F800, $FC00, $0003
+	dw !boss_command_wait, $0002
 
 DATA_B68730:
-	dw !boss_command_3A, $0000, $0014, $0400, $0880, $0006
-	dw !boss_command_3F
-	dw !boss_command_0B, $0250, $1000
-	dw !boss_command_3E, $0007
-	dw !boss_command_28, $0014
-	dw !boss_command_3B, $0150, $F800, $FC00, $0003
-	dw !boss_command_28, $0002
-	dw !boss_command_3A, $0000, $0014, $0400, $0880, $0006
-	dw !boss_command_0B, $0250, $1000
-	dw !boss_command_3E, $0007
-	dw !boss_command_28, $0014
-	dw !boss_command_3B, $0150, $F800, $FC00, $0003
-	dw !boss_command_28, $0002
-	dw !boss_command_3A, $0000, $0014, $0400, $0880, $0006
-	dw !boss_command_0B, $0250, $1000
-	dw !boss_command_3E, $0007
-	dw !boss_command_28, $000A
-	dw !boss_command_3C
-	dw !boss_command_0D, DATA_B687A8
-	dw !boss_command_02, DATA_B689CA, DATA_B689CA
+	dw !boss_command_fall, $0000, $0014, $0400, $0880, $0006
+	dw !boss_command_destroy_tnt
+	dw !boss_command_shake_screen, $0250, $1000
+	dw !boss_command_stun_player, $0007
+	dw !boss_command_wait, $0014
+	dw !boss_command_rise, $0150, $F800, $FC00, $0003
+	dw !boss_command_wait, $0002
+	dw !boss_command_fall, $0000, $0014, $0400, $0880, $0006
+	dw !boss_command_shake_screen, $0250, $1000
+	dw !boss_command_stun_player, $0007
+	dw !boss_command_wait, $0014
+	dw !boss_command_rise, $0150, $F800, $FC00, $0003
+	dw !boss_command_wait, $0002
+	dw !boss_command_fall, $0000, $0014, $0400, $0880, $0006
+	dw !boss_command_shake_screen, $0250, $1000
+	dw !boss_command_stun_player, $0007
+	dw !boss_command_wait, $000A
+	dw !boss_command_swing_club
+	dw !boss_command_set_pattern, DATA_B687A8
+	dw !boss_command_goto_or_reset, DATA_B689CA, DATA_B689CA
 
 DATA_B687A8:
-	dw !boss_command_28, $0001
-	dw !boss_command_3A, $01C0, $002C, $0400, $0880, $0006
-	dw !boss_command_0B, $0000, $0400
+	dw !boss_command_wait, $0001
+	dw !boss_command_fall, $01C0, $002C, $0400, $0880, $0006
+	dw !boss_command_shake_screen, $0000, $0400
 	dw !boss_command_42
-	dw !boss_command_41, $0014, $0078
+	dw !boss_command_get_hit_or_timeout, $0014, $0078
 	dw !boss_command_43
-	dw !boss_command_3B, $0150, $F800, $FC00, $0003
-	dw !boss_command_28, $0002
-	dw !boss_command_02, DATA_B68730, DATA_B68730
+	dw !boss_command_rise, $0150, $F800, $FC00, $0003
+	dw !boss_command_wait, $0002
+	dw !boss_command_goto_or_reset, DATA_B68730, DATA_B68730
 
 DATA_B687DC:
-	dw !boss_command_3B, $0150, $F800, $FC00, $0003
-	dw !boss_command_28, $0012
+	dw !boss_command_rise, $0150, $F800, $FC00, $0003
+	dw !boss_command_wait, $0012
 
 DATA_B687EA:
-	dw !boss_command_3A, $0000, $0014, $0400, $0900, $0006
-	dw !boss_command_28, $0014
-	dw !boss_command_44, $0180, $F900, $0800, $0002
-	dw !boss_command_3F
-	dw !boss_command_0B, $0250, $1000
-	dw !boss_command_3E, $000F
-	dw !boss_command_28, $0012
-	dw !boss_command_44, $0180, $F900, $0800, $0002
-	dw !boss_command_0B, $0250, $1000
-	dw !boss_command_3E, $000F
-	dw !boss_command_28, $0012
-	dw !boss_command_44, $0180, $F900, $0800, $0002
-	dw !boss_command_0B, $0250, $1000
-	dw !boss_command_3E, $000F
-	dw !boss_command_0D, DATA_B6884A
-	dw !boss_command_02, DATA_B689CA, DATA_B689CA
+	dw !boss_command_fall, $0000, $0014, $0400, $0900, $0006
+	dw !boss_command_wait, $0014
+	dw !boss_command_jump, $0180, $F900, $0800, $0002
+	dw !boss_command_destroy_tnt
+	dw !boss_command_shake_screen, $0250, $1000
+	dw !boss_command_stun_player, $000F
+	dw !boss_command_wait, $0012
+	dw !boss_command_jump, $0180, $F900, $0800, $0002
+	dw !boss_command_shake_screen, $0250, $1000
+	dw !boss_command_stun_player, $000F
+	dw !boss_command_wait, $0012
+	dw !boss_command_jump, $0180, $F900, $0800, $0002
+	dw !boss_command_shake_screen, $0250, $1000
+	dw !boss_command_stun_player, $000F
+	dw !boss_command_set_pattern, DATA_B6884A
+	dw !boss_command_goto_or_reset, DATA_B689CA, DATA_B689CA
 
 DATA_B6884A:
-	dw !boss_command_28, $0001
-	dw !boss_command_3A, $01C0, $003B, $0600, $0900, $0006
-	dw !boss_command_0B, $0250, $1000
+	dw !boss_command_wait, $0001
+	dw !boss_command_fall, $01C0, $003B, $0600, $0900, $0006
+	dw !boss_command_shake_screen, $0250, $1000
 	dw !boss_command_42
-	dw !boss_command_41, $0014, $0096
+	dw !boss_command_get_hit_or_timeout, $0014, $0096
 	dw !boss_command_43
-	dw !boss_command_3B, $0150, $F800, $FC00, $0003
-	dw !boss_command_28, $0012
-	dw !boss_command_02, DATA_B687EA, DATA_B687EA
+	dw !boss_command_rise, $0150, $F800, $FC00, $0003
+	dw !boss_command_wait, $0012
+	dw !boss_command_goto_or_reset, DATA_B687EA, DATA_B687EA
 
 DATA_B6887E:
-	dw !boss_command_3B, $0150, $F800, $FC00, $0003
-	dw !boss_command_28, $000A
+	dw !boss_command_rise, $0150, $F800, $FC00, $0003
+	dw !boss_command_wait, $000A
 
 DATA_B6888C:
-	dw !boss_command_3A, $0000, $0014, $0400, $0900, $0006
-	dw !boss_command_28, $0014
-	dw !boss_command_44, $01A0, $F780, $0C00, $0002
-	dw !boss_command_3F
-	dw !boss_command_0B, $0250, $1000
-	dw !boss_command_3E, $000F
-	dw !boss_command_28, $000A
-	dw !boss_command_44, $01A0, $F780, $0C00, $0002
-	dw !boss_command_0B, $0250, $1000
-	dw !boss_command_3E, $000F
-	dw !boss_command_28, $000A
-	dw !boss_command_44, $01A0, $F780, $0C00, $0002
-	dw !boss_command_0B, $0250, $1000
-	dw !boss_command_3E, $000F
-	dw !boss_command_28, $000A
-	dw !boss_command_0D, DATA_B688F0
-	dw !boss_command_02, DATA_B689CA, DATA_B689CA
+	dw !boss_command_fall, $0000, $0014, $0400, $0900, $0006
+	dw !boss_command_wait, $0014
+	dw !boss_command_jump, $01A0, $F780, $0C00, $0002
+	dw !boss_command_destroy_tnt
+	dw !boss_command_shake_screen, $0250, $1000
+	dw !boss_command_stun_player, $000F
+	dw !boss_command_wait, $000A
+	dw !boss_command_jump, $01A0, $F780, $0C00, $0002
+	dw !boss_command_shake_screen, $0250, $1000
+	dw !boss_command_stun_player, $000F
+	dw !boss_command_wait, $000A
+	dw !boss_command_jump, $01A0, $F780, $0C00, $0002
+	dw !boss_command_shake_screen, $0250, $1000
+	dw !boss_command_stun_player, $000F
+	dw !boss_command_wait, $000A
+	dw !boss_command_set_pattern, DATA_B688F0
+	dw !boss_command_goto_or_reset, DATA_B689CA, DATA_B689CA
 
 DATA_B688F0:
-	dw !boss_command_28, $0001
-	dw !boss_command_3A, $01C0, $002C, $0400, $0900, $0006
-	dw !boss_command_0B, $0250, $1000
+	dw !boss_command_wait, $0001
+	dw !boss_command_fall, $01C0, $002C, $0400, $0900, $0006
+	dw !boss_command_shake_screen, $0250, $1000
 	dw !boss_command_42
-	dw !boss_command_41, $0014, $0078
+	dw !boss_command_get_hit_or_timeout, $0014, $0078
 	dw !boss_command_43
-	dw !boss_command_3B, $0150, $F800, $FC00, $0003
-	dw !boss_command_28, $000A
-	dw !boss_command_02, DATA_B6888C, DATA_B6888C
+	dw !boss_command_rise, $0150, $F800, $FC00, $0003
+	dw !boss_command_wait, $000A
+	dw !boss_command_goto_or_reset, DATA_B6888C, DATA_B6888C
 
 DATA_B68924:
-	dw !boss_command_3B, $0150, $F800, $FC00, $0003
-	dw !boss_command_28, $000A
+	dw !boss_command_rise, $0150, $F800, $FC00, $0003
+	dw !boss_command_wait, $000A
 
 DATA_B68932:
-	dw !boss_command_3A, $0000, $0014, $0400, $0900, $0006
-	dw !boss_command_28, $0014
-	dw !boss_command_44, $01C0, $F600, $1100, $0002
-	dw !boss_command_3F
-	dw !boss_command_0B, $0250, $1000
-	dw !boss_command_3E, $000F
-	dw !boss_command_28, $000A
-	dw !boss_command_44, $01C0, $F600, $1100, $0002
-	dw !boss_command_0B, $0250, $1000
-	dw !boss_command_3E, $000F
-	dw !boss_command_28, $000A
-	dw !boss_command_44, $01C0, $F600, $1100, $0002
-	dw !boss_command_0B, $0250, $1000
-	dw !boss_command_3E, $000F
-	dw !boss_command_28, $000A
-	dw !boss_command_0D, DATA_B68996
-	dw !boss_command_02, DATA_B689CA, DATA_B689CA
+	dw !boss_command_fall, $0000, $0014, $0400, $0900, $0006
+	dw !boss_command_wait, $0014
+	dw !boss_command_jump, $01C0, $F600, $1100, $0002
+	dw !boss_command_destroy_tnt
+	dw !boss_command_shake_screen, $0250, $1000
+	dw !boss_command_stun_player, $000F
+	dw !boss_command_wait, $000A
+	dw !boss_command_jump, $01C0, $F600, $1100, $0002
+	dw !boss_command_shake_screen, $0250, $1000
+	dw !boss_command_stun_player, $000F
+	dw !boss_command_wait, $000A
+	dw !boss_command_jump, $01C0, $F600, $1100, $0002
+	dw !boss_command_shake_screen, $0250, $1000
+	dw !boss_command_stun_player, $000F
+	dw !boss_command_wait, $000A
+	dw !boss_command_set_pattern, DATA_B68996
+	dw !boss_command_goto_or_reset, DATA_B689CA, DATA_B689CA
 
 DATA_B68996:
-	dw !boss_command_28, $0001
-	dw !boss_command_3A, $01C0, $001D, $0400, $0900, $0006
-	dw !boss_command_0B, $0250, $1000
+	dw !boss_command_wait, $0001
+	dw !boss_command_fall, $01C0, $001D, $0400, $0900, $0006
+	dw !boss_command_shake_screen, $0250, $1000
 	dw !boss_command_42
-	dw !boss_command_41, $0014, $005A
+	dw !boss_command_get_hit_or_timeout, $0014, $005A
 	dw !boss_command_43
-	dw !boss_command_3B, $0150, $F800, $FC00, $0003
-	dw !boss_command_28, $000A
-	dw !boss_command_02, DATA_B68932, DATA_B68932
+	dw !boss_command_rise, $0150, $F800, $FC00, $0003
+	dw !boss_command_wait, $000A
+	dw !boss_command_goto_or_reset, DATA_B68932, DATA_B68932
 DATA_B689CA:
-	dw !boss_command_40, $F900, $0800, $0005
-	dw !boss_command_0B, $0000, $0400
-	dw !boss_command_2E, DATA_FF1D8E, $01C0, $0180, CODE_B68D37, $0000, $FFEA
-	dw !boss_command_28, $0014
-	dw !boss_command_3B, $0150, $F800, $FC00, $0003
-	dw !boss_command_02, !null_pointer
+	dw !boss_command_hop, $F900, $0800, $0005
+	dw !boss_command_shake_screen, $0000, $0400
+	dw !boss_command_spawn_sprite, DATA_FF1D8E, $01C0, $0180, CODE_B68D37, $0000, $FFEA
+	dw !boss_command_wait, $0014
+	dw !boss_command_rise, $0150, $F800, $FC00, $0003
+	dw !boss_command_goto_or_reset, !null_pointer
 
 CODE_B689F8:
 	LDA.l $000652			;$B689F8	\
@@ -1550,192 +1550,192 @@ DATA_B6906F:
 	db $0A, $00, $D3, $FF, $27, $02
 
 DATA_B6908D:
-	dw !boss_command_28, $0064
-	dw !boss_command_02, DATA_B690DB, DATA_B690DB
+	dw !boss_command_wait, $0064
+	dw !boss_command_goto_or_reset, DATA_B690DB, DATA_B690DB
 
 DATA_B69097:
-	dw !boss_command_45, $0003, $0000, $0000, $0000, $0000, $0000
-	dw !boss_command_28, $003C
-	dw !boss_command_46
-	dw !boss_command_28, $0028
-	dw !boss_command_46
-	dw !boss_command_28, $0028
-	dw !boss_command_46
-	dw !boss_command_28, $005F
-	dw !boss_command_47
-	dw !boss_command_28, $0014
-	dw !boss_command_47
-	dw !boss_command_28, $001E
-	dw !boss_command_47
-	dw !boss_command_28, $0082
-	dw !boss_command_45, $0002, $0000, $0000, $0000, $0000, $0000
+	dw !boss_command_dk_intro, $0003, $0000, $0000, $0000, $0000, $0000
+	dw !boss_command_wait, $003C
+	dw !boss_command_melee_dk
+	dw !boss_command_wait, $0028
+	dw !boss_command_melee_dk
+	dw !boss_command_wait, $0028
+	dw !boss_command_melee_dk
+	dw !boss_command_wait, $005F
+	dw !boss_command_shoot_dk
+	dw !boss_command_wait, $0014
+	dw !boss_command_shoot_dk
+	dw !boss_command_wait, $001E
+	dw !boss_command_shoot_dk
+	dw !boss_command_wait, $0082
+	dw !boss_command_dk_intro, $0002, $0000, $0000, $0000, $0000, $0000
 
 DATA_B690DB:
-	dw !boss_command_2A
-	dw !boss_command_28, $00F0
-	dw !boss_command_29, $0500, $0003
-	dw !boss_command_28, $0032
-	dw !boss_command_2B
+	dw !boss_command_shoot
+	dw !boss_command_wait, $00F0
+	dw !boss_command_dash, $0500, $0003
+	dw !boss_command_wait, $0032
+	dw !boss_command_vacuum
 
 DATA_B690ED:
-	dw !boss_command_28, $0032
-	dw !boss_command_2A
-	dw !boss_command_28, $0050
-	dw !boss_command_29, $0500, $0004
-	dw !boss_command_28, $0032
-	dw !boss_command_2B
-	dw !boss_command_02, DATA_B690ED, DATA_B690ED
-	dw !boss_command_28, $0032
-	dw !boss_command_2A
-	dw !boss_command_28, $0078
-	dw !boss_command_29, $0500, $0006
-	dw !boss_command_28, $000A
-	dw !boss_command_29, $0500, $0006
-	dw !boss_command_2C
-	dw !boss_command_28, $0032
-	dw !boss_command_2B
-	dw !boss_command_02, !null_pointer
-	dw !boss_command_28, $003C
-	dw !boss_command_2A
-	dw !boss_command_28, $0050
-	dw !boss_command_29, $0540, $0006
-	dw !boss_command_28, $000A
-	dw !boss_command_29, $0540, $0006
-	dw !boss_command_28, $000A
-	dw !boss_command_29, $0540, $0006
-	dw !boss_command_28, $0028
-	dw !boss_command_2C
-	dw !boss_command_28, $0050
-	dw !boss_command_2B
-	dw !boss_command_02, !null_pointer
-	dw !boss_command_2E, DATA_FF2216, $01C8, $0170, CODE_B6AD02, $0000, $FFEA
+	dw !boss_command_wait, $0032
+	dw !boss_command_shoot
+	dw !boss_command_wait, $0050
+	dw !boss_command_dash, $0500, $0004
+	dw !boss_command_wait, $0032
+	dw !boss_command_vacuum
+	dw !boss_command_goto_or_reset, DATA_B690ED, DATA_B690ED
+	dw !boss_command_wait, $0032
+	dw !boss_command_shoot
+	dw !boss_command_wait, $0078
+	dw !boss_command_dash, $0500, $0006
+	dw !boss_command_wait, $000A
+	dw !boss_command_dash, $0500, $0006
+	dw !boss_command_retract_spikes
+	dw !boss_command_wait, $0032
+	dw !boss_command_vacuum
+	dw !boss_command_goto_or_reset, !null_pointer
+	dw !boss_command_wait, $003C
+	dw !boss_command_shoot
+	dw !boss_command_wait, $0050
+	dw !boss_command_dash, $0540, $0006
+	dw !boss_command_wait, $000A
+	dw !boss_command_dash, $0540, $0006
+	dw !boss_command_wait, $000A
+	dw !boss_command_dash, $0540, $0006
+	dw !boss_command_wait, $0028
+	dw !boss_command_retract_spikes
+	dw !boss_command_wait, $0050
+	dw !boss_command_vacuum
+	dw !boss_command_goto_or_reset, !null_pointer
+	dw !boss_command_spawn_sprite, DATA_FF2216, $01C8, $0170, CODE_B6AD02, $0000, $FFEA
 
 DATA_B69171:
-	dw !boss_command_28, $0050
-	dw !boss_command_2A
-	dw !boss_command_28, $005A
-	dw !boss_command_2D, DATA_B69171
-	dw !boss_command_2B
-	dw !boss_command_02, DATA_B69171, DATA_B69171
-	dw !boss_command_28, $0050
-	dw !boss_command_29, $0580, $0006
+	dw !boss_command_wait, $0050
+	dw !boss_command_shoot
+	dw !boss_command_wait, $005A
+	dw !boss_command_goto_if, DATA_B69171
+	dw !boss_command_vacuum
+	dw !boss_command_goto_or_reset, DATA_B69171, DATA_B69171
+	dw !boss_command_wait, $0050
+	dw !boss_command_dash, $0580, $0006
 
 DATA_B69191:
-	dw !boss_command_28, $0028
-	dw !boss_command_2A
-	dw !boss_command_28, $008C
-	dw !boss_command_2D, DATA_B69191
-	dw !boss_command_2B
-	dw !boss_command_02, DATA_B69191, DATA_B69191
-	dw !boss_command_28, $0028
-	dw !boss_command_29, $05C0, $0006
+	dw !boss_command_wait, $0028
+	dw !boss_command_shoot
+	dw !boss_command_wait, $008C
+	dw !boss_command_goto_if, DATA_B69191
+	dw !boss_command_vacuum
+	dw !boss_command_goto_or_reset, DATA_B69191, DATA_B69191
+	dw !boss_command_wait, $0028
+	dw !boss_command_dash, $05C0, $0006
 
 DATA_B691B1:
-	dw !boss_command_28, $0028
-	dw !boss_command_2A
-	dw !boss_command_28, $00B4
-	dw !boss_command_2D, DATA_B691B1
-	dw !boss_command_2B
-	dw !boss_command_02, DATA_B691B1, DATA_B691B1
-	dw !boss_command_2E, DATA_FF2216, $01C8, $0170, CODE_B6AD02, $0000, $FFEA
-	dw !boss_command_28, $0032
-	dw !boss_command_29, $0600, $0006
+	dw !boss_command_wait, $0028
+	dw !boss_command_shoot
+	dw !boss_command_wait, $00B4
+	dw !boss_command_goto_if, DATA_B691B1
+	dw !boss_command_vacuum
+	dw !boss_command_goto_or_reset, DATA_B691B1, DATA_B691B1
+	dw !boss_command_spawn_sprite, DATA_FF2216, $01C8, $0170, CODE_B6AD02, $0000, $FFEA
+	dw !boss_command_wait, $0032
+	dw !boss_command_dash, $0600, $0006
 
 DATA_B691DF:
-	dw !boss_command_28, $0028
-	dw !boss_command_2A
-	dw !boss_command_28, $005A
-	dw !boss_command_36, $0078
-	dw !boss_command_29, $0180, $0006
-	dw !boss_command_28, $0022
-	dw !boss_command_33, $1000
-	dw !boss_command_29, $0500, $0006
-	dw !boss_command_28, $0022
-	dw !boss_command_37, DATA_B6ADAA, DATA_B6ADB6, $0007
-	dw !boss_command_33, $0000
-	dw !boss_command_29, $0500, $0006
-	dw !boss_command_2E, DATA_FF1F8A, $01C8, $01C1, CODE_B6ACF3, $0000, $FFF2
-	dw !boss_command_33, $1000
-	dw !boss_command_37, DATA_B6ADB6, DATA_B6ADC6, $0007
-	dw !boss_command_28, $0028
-	dw !boss_command_33, $2000
-	dw !boss_command_2B
-	dw !boss_command_02, DATA_B691DF, DATA_B691DF
-	dw !boss_command_28, $0028
-	dw !boss_command_29, $0640, $0006
-	dw !boss_command_28, $0028
-	dw !boss_command_2F
-	dw !boss_command_28, $0096
-	dw !boss_command_36, $0078
-	dw !boss_command_2A
-	dw !boss_command_28, $0064
-	dw !boss_command_2E, DATA_FF1F8A, $01C8, $01C1, CODE_B6ACF3, $0000, $FFF2
-	dw !boss_command_30
-	dw !boss_command_28, $0032
-	dw !boss_command_2B
-	dw !boss_command_02, !null_pointer
-	dw !boss_command_28, $0028
-	dw !boss_command_29, $0680, $0006
-	dw !boss_command_28, $0028
-	dw !boss_command_2A
-	dw !boss_command_28, $0154
-	dw !boss_command_36, $0078
-	dw !boss_command_33, $1000
-	dw !boss_command_35, $0064
-	dw !boss_command_37, DATA_B6ADAA, DATA_B6ADB6, $0007
-	dw !boss_command_38
-	dw !boss_command_33, $0000
-	dw !boss_command_28, $003C
-	dw !boss_command_34, $0060
-	dw !boss_command_33, $1000
-	dw !boss_command_37, DATA_B6ADB6, DATA_B6ADC6, $0007
-	dw !boss_command_39
-	dw !boss_command_35, $0064
-	dw !boss_command_37, DATA_B6ADAA, DATA_B6ADB6, $0007
-	dw !boss_command_38
-	dw !boss_command_33, $0000
-	dw !boss_command_28, $0050
-	dw !boss_command_34, $0060
-	dw !boss_command_33, $1000
-	dw !boss_command_37, DATA_B6ADB6, DATA_B6ADC6, $0007
-	dw !boss_command_39
-	dw !boss_command_35, $0064
-	dw !boss_command_37, DATA_B6ADAA, DATA_B6ADB6, $0007
-	dw !boss_command_38
-	dw !boss_command_33, $0000
-	dw !boss_command_28, $0050
-	dw !boss_command_34, $0060
-	dw !boss_command_33, $1000
-	dw !boss_command_37, DATA_B6ADB6, DATA_B6ADC6, $0007
-	dw !boss_command_39
-	dw !boss_command_35, $0064
-	dw !boss_command_2E, DATA_FF1F8A, $01C8, $01C1, CODE_B6ACF3, $0000, $FFF2
-	dw !boss_command_30
-	dw !boss_command_37, DATA_B6ADAA, DATA_B6ADB6, $0007
-	dw !boss_command_38
-	dw !boss_command_33, $0000
-	dw !boss_command_28, $0078
-	dw !boss_command_34, $0060
-	dw !boss_command_33, $1000
-	dw !boss_command_37, DATA_B6ADB6, DATA_B6ADC6, $0007
-	dw !boss_command_39
-	dw !boss_command_28, $0007
-	dw !boss_command_33, $2000
-	dw !boss_command_35, $0064
-	dw !boss_command_02, !null_pointer
-	dw !boss_command_28, $01F4
-	dw !boss_command_28, $001E
-	dw !boss_command_49
-	dw !boss_command_28, $0078
+	dw !boss_command_wait, $0028
+	dw !boss_command_shoot
+	dw !boss_command_wait, $005A
+	dw !boss_command_wait_if_gas_hit, $0078
+	dw !boss_command_dash, $0180, $0006
+	dw !boss_command_wait, $0022
+	dw !boss_command_set_visibility, $1000
+	dw !boss_command_dash, $0500, $0006
+	dw !boss_command_wait, $0022
+	dw !boss_command_fade, DATA_B6ADAA, DATA_B6ADB6, $0007
+	dw !boss_command_set_visibility, $0000
+	dw !boss_command_dash, $0500, $0006
+	dw !boss_command_spawn_sprite, DATA_FF1F8A, $01C8, $01C1, CODE_B6ACF3, $0000, $FFF2
+	dw !boss_command_set_visibility, $1000
+	dw !boss_command_fade, DATA_B6ADB6, DATA_B6ADC6, $0007
+	dw !boss_command_wait, $0028
+	dw !boss_command_set_visibility, $2000
+	dw !boss_command_vacuum
+	dw !boss_command_goto_or_reset, DATA_B691DF, DATA_B691DF
+	dw !boss_command_wait, $0028
+	dw !boss_command_dash, $0640, $0006
+	dw !boss_command_wait, $0028
+	dw !boss_command_shoot_red_gas
+	dw !boss_command_wait, $0096
+	dw !boss_command_wait_if_gas_hit, $0078
+	dw !boss_command_shoot
+	dw !boss_command_wait, $0064
+	dw !boss_command_spawn_sprite, DATA_FF1F8A, $01C8, $01C1, CODE_B6ACF3, $0000, $FFF2
+	dw !boss_command_clear_gas_effect
+	dw !boss_command_wait, $0032
+	dw !boss_command_vacuum
+	dw !boss_command_goto_or_reset, !null_pointer
+	dw !boss_command_wait, $0028
+	dw !boss_command_dash, $0680, $0006
+	dw !boss_command_wait, $0028
+	dw !boss_command_shoot
+	dw !boss_command_wait, $0154
+	dw !boss_command_wait_if_gas_hit, $0078
+	dw !boss_command_set_visibility, $1000
+	dw !boss_command_timed_vacuum, $0064
+	dw !boss_command_fade, DATA_B6ADAA, DATA_B6ADB6, $0007
+	dw !boss_command_disable_damage
+	dw !boss_command_set_visibility, $0000
+	dw !boss_command_wait, $003C
+	dw !boss_command_teleport, $0060
+	dw !boss_command_set_visibility, $1000
+	dw !boss_command_fade, DATA_B6ADB6, DATA_B6ADC6, $0007
+	dw !boss_command_enable_damage
+	dw !boss_command_timed_vacuum, $0064
+	dw !boss_command_fade, DATA_B6ADAA, DATA_B6ADB6, $0007
+	dw !boss_command_disable_damage
+	dw !boss_command_set_visibility, $0000
+	dw !boss_command_wait, $0050
+	dw !boss_command_teleport, $0060
+	dw !boss_command_set_visibility, $1000
+	dw !boss_command_fade, DATA_B6ADB6, DATA_B6ADC6, $0007
+	dw !boss_command_enable_damage
+	dw !boss_command_timed_vacuum, $0064
+	dw !boss_command_fade, DATA_B6ADAA, DATA_B6ADB6, $0007
+	dw !boss_command_disable_damage
+	dw !boss_command_set_visibility, $0000
+	dw !boss_command_wait, $0050
+	dw !boss_command_teleport, $0060
+	dw !boss_command_set_visibility, $1000
+	dw !boss_command_fade, DATA_B6ADB6, DATA_B6ADC6, $0007
+	dw !boss_command_enable_damage
+	dw !boss_command_timed_vacuum, $0064
+	dw !boss_command_spawn_sprite, DATA_FF1F8A, $01C8, $01C1, CODE_B6ACF3, $0000, $FFF2
+	dw !boss_command_clear_gas_effect
+	dw !boss_command_fade, DATA_B6ADAA, DATA_B6ADB6, $0007
+	dw !boss_command_disable_damage
+	dw !boss_command_set_visibility, $0000
+	dw !boss_command_wait, $0078
+	dw !boss_command_teleport, $0060
+	dw !boss_command_set_visibility, $1000
+	dw !boss_command_fade, DATA_B6ADB6, DATA_B6ADC6, $0007
+	dw !boss_command_enable_damage
+	dw !boss_command_wait, $0007
+	dw !boss_command_set_visibility, $2000
+	dw !boss_command_timed_vacuum, $0064
+	dw !boss_command_goto_or_reset, !null_pointer
+	dw !boss_command_wait, $01F4
+	dw !boss_command_wait, $001E
+	dw !boss_command_shoot_fish
+	dw !boss_command_wait, $0078
 
 DATA_B69363:
-	dw !boss_command_28, $0078
-	dw !boss_command_48, $003A, DATA_BAC3AC
-	dw !boss_command_28, $0096
-	dw !boss_command_2D, DATA_B69363
-	dw !boss_command_28, $004B
-	dw !boss_command_35, $0168
-	dw !boss_command_02, DATA_B69363, DATA_B69363
+	dw !boss_command_wait, $0078
+	dw !boss_command_set_projectiles, $003A, DATA_BAC3AC
+	dw !boss_command_wait, $0096
+	dw !boss_command_goto_if, DATA_B69363
+	dw !boss_command_wait, $004B
+	dw !boss_command_timed_vacuum, $0168
+	dw !boss_command_goto_or_reset, DATA_B69363, DATA_B69363
 
 DATA_B69383:
 	db $00, $00, $B0, $05, $60, $05, $10, $05
@@ -5063,7 +5063,7 @@ DATA_B6AE87:
 	dw !boss_command_26, $01D0, $01D8, DATA_B6AE73
 	dw !boss_command_26, $02B6, $01D8, DATA_B6AE73
 	dw !boss_command_27, $4000
-	dw !boss_command_02, !null_pointer
+	dw !boss_command_goto_or_reset, !null_pointer
 
 CODE_B6AF2F:
 	LDA $06,x			;$B6AF2F	\
@@ -5165,38 +5165,34 @@ CODE_B6AFDA:				;		 |
 	BRL CODE_B6AF8C			;$B6AFE4	/
 
 DATA_B6AFE7:
-	dw !boss_command_00, $0224, $0BB6, $0002
-	dw !boss_command_0D, DATA_B6AFF9
-	dw !boss_command_02, DATA_B6B631, DATA_B6B631
+	dw !boss_command_fly_to, $0224, $0BB6, $0002
+	dw !boss_command_set_pattern, DATA_B6AFF9
+	dw !boss_command_goto_or_reset, DATA_B6B631, DATA_B6B631
 
 DATA_B6AFF9:
-if !version == 0
-	dw !boss_command_1D, $0003, $B720
-else
-	dw !boss_command_1D, $0003, $B66B
-endif
+	dw !boss_command_1D, $0003, DATA_B6B66B
 	dw !boss_command_13
 	dw !boss_command_1F, $0A44
-	dw !boss_command_02, DATA_B6B021, DATA_B6B00B
+	dw !boss_command_goto_or_reset, DATA_B6B021, DATA_B6B00B
 
 DATA_B6B00B:
 	dw !boss_command_1E, $0107, $013F, $0002
 	dw !boss_command_1E, $0108, $013F, $0002
-	dw !boss_command_02, DATA_B6B031, DATA_B6B031
+	dw !boss_command_goto_or_reset, DATA_B6B031, DATA_B6B031
 
 DATA_B6B021:
 	dw !boss_command_1E, $0259, $013F, $0002
 	dw !boss_command_1E, $0258, $013F, $0001
 
 DATA_B6B031:
-	dw !boss_command_1A, $0258, $0200
-	dw !boss_command_02, DATA_B6B03D, DATA_B6B115
+	dw !boss_command_animated_wait, $0258, $0200
+	dw !boss_command_goto_or_reset, DATA_B6B03D, DATA_B6B115
 
 DATA_B6B03D:
 	dw !boss_command_1E, $0257, $017F, $0002
-	dw !boss_command_05, $0200, $0000
+	dw !boss_command_krow_animation, $0200, $0000
 	dw !boss_command_1E, $0255, $01D2, $0002
-	dw !boss_command_05, $0201, $0000
+	dw !boss_command_krow_animation, $0201, $0000
 	dw !boss_command_1E, $0250, $01D5, $0002
 	dw !boss_command_1E, $0240, $01D6, $0002
 	dw !boss_command_1E, $0230, $01D7, $0002
@@ -5206,10 +5202,10 @@ DATA_B6B03D:
 	dw !boss_command_1E, $0129, $01B9, $0002
 	dw !boss_command_1E, $0119, $018C, $0002
 	dw !boss_command_1E, $0115, $0157, $0002
-	dw !boss_command_05, $0200, $0000
+	dw !boss_command_krow_animation, $0200, $0000
 	dw !boss_command_1E, $0116, $017F, $0002
 	dw !boss_command_1E, $0117, $01D2, $0002
-	dw !boss_command_05, $0201, $0000
+	dw !boss_command_krow_animation, $0201, $0000
 	dw !boss_command_1E, $0118, $01D5, $0002
 	dw !boss_command_1E, $0130, $01D6, $0002
 	dw !boss_command_1E, $0140, $01D7, $0002
@@ -5221,13 +5217,13 @@ DATA_B6B03D:
 	dw !boss_command_1E, $0253, $0157, $0002
 	dw !boss_command_1E, $0252, $0157, $0001
 	dw !boss_command_23
-	dw !boss_command_02, DATA_B6AFE7, DATA_B6AFE7
+	dw !boss_command_goto_or_reset, DATA_B6AFE7, DATA_B6AFE7
 
 DATA_B6B115:
 	dw !boss_command_1E, $0116, $017F, $0002
-	dw !boss_command_05, $0200, $0000
+	dw !boss_command_krow_animation, $0200, $0000
 	dw !boss_command_1E, $0117, $01D2, $0002
-	dw !boss_command_05, $0201, $0000
+	dw !boss_command_krow_animation, $0201, $0000
 	dw !boss_command_1E, $0118, $01D5, $0002
 	dw !boss_command_1E, $0130, $01D6, $0002
 	dw !boss_command_1E, $0140, $01D7, $0002
@@ -5238,10 +5234,10 @@ DATA_B6B115:
 	dw !boss_command_1E, $024F, $018C, $0002
 	dw !boss_command_1E, $0253, $0157, $0002
 	dw !boss_command_1E, $0252, $0157, $0001
-	dw !boss_command_05, $0200, $0000
+	dw !boss_command_krow_animation, $0200, $0000
 	dw !boss_command_1E, $0257, $017F, $0002
 	dw !boss_command_1E, $0255, $01D2, $0002
-	dw !boss_command_05, $0201, $0000
+	dw !boss_command_krow_animation, $0201, $0000
 	dw !boss_command_1E, $0250, $01D5, $0002
 	dw !boss_command_1E, $0240, $01D6, $0002
 	dw !boss_command_1E, $0230, $01D7, $0002
@@ -5252,52 +5248,44 @@ DATA_B6B115:
 	dw !boss_command_1E, $0119, $018C, $0002
 	dw !boss_command_1E, $0115, $0157, $0002
 	dw !boss_command_23
-	dw !boss_command_02, DATA_B6AFE7, DATA_B6AFE7
-	dw !boss_command_05, $0200, $0204
-if !version == 0
-	dw !boss_command_20, $B704
-else
-	dw !boss_command_20, $B64F
-endif
-	dw !boss_command_00, $01B0, $06C0, $0003
+	dw !boss_command_goto_or_reset, DATA_B6AFE7, DATA_B6AFE7
+	dw !boss_command_krow_animation, $0200, $0204
+	dw !boss_command_20, DATA_B6B64F
+	dw !boss_command_fly_to, $01B0, $06C0, $0003
 	dw !boss_command_21, $07BA
 	dw !boss_command_24, $912E
 	dw !boss_command_22
 	dw !boss_command_1C
 
 DATA_B6B20B:
-	dw !boss_command_0D, DATA_B6B215
-	dw !boss_command_02, DATA_B6B631, DATA_B6B631
+	dw !boss_command_set_pattern, DATA_B6B215
+	dw !boss_command_goto_or_reset, DATA_B6B631, DATA_B6B631
 
 DATA_B6B215:
-if !version == 0
-	dw !boss_command_1D, $0004, $B72C
-else
-	dw !boss_command_1D, $0004, $B677
-endif
+	dw !boss_command_1D, $0004, DATA_B6B677
 	dw !boss_command_1F, $056A
-	dw !boss_command_02, DATA_B6B23B, DATA_B6B225
+	dw !boss_command_goto_or_reset, DATA_B6B23B, DATA_B6B225
 DATA_B6B225:
 	dw !boss_command_1E, $0107, $0157, $0002
 	dw !boss_command_1E, $0108, $0157, $0001
-	dw !boss_command_02, DATA_B6B24B, DATA_B6B24B
+	dw !boss_command_goto_or_reset, DATA_B6B24B, DATA_B6B24B
 
 DATA_B6B23B:
 	dw !boss_command_1E, $0259, $0157, $0002
 	dw !boss_command_1E, $0258, $0157, $0001
 
 DATA_B6B24B:
-	dw !boss_command_1A, $0276, $0200
-	dw !boss_command_02, DATA_B6B257, DATA_B6B335
+	dw !boss_command_animated_wait, $0276, $0200
+	dw !boss_command_goto_or_reset, DATA_B6B257, DATA_B6B335
 
 DATA_B6B257:
 	dw !boss_command_13
 	dw !boss_command_10
 	dw !boss_command_1E, $0257, $017F, $0002
-	dw !boss_command_05, $0200, $0000
+	dw !boss_command_krow_animation, $0200, $0000
 	dw !boss_command_1E, $0255, $01D2, $0003
 	dw !boss_command_11
-	dw !boss_command_05, $0201, $0000
+	dw !boss_command_krow_animation, $0201, $0000
 	dw !boss_command_1E, $0250, $01D5, $0003
 	dw !boss_command_1E, $0240, $01D6, $0003
 	dw !boss_command_1E, $0230, $01D7, $0003
@@ -5307,10 +5295,10 @@ DATA_B6B257:
 	dw !boss_command_1E, $0129, $01B9, $0003
 	dw !boss_command_1E, $0119, $018C, $0003
 	dw !boss_command_1E, $0115, $0157, $0002
-	dw !boss_command_05, $0200, $0000
+	dw !boss_command_krow_animation, $0200, $0000
 	dw !boss_command_1E, $0116, $017F, $0002
 	dw !boss_command_1E, $0117, $01D2, $0003
-	dw !boss_command_05, $0201, $0000
+	dw !boss_command_krow_animation, $0201, $0000
 	dw !boss_command_1E, $0118, $01D5, $0003
 	dw !boss_command_1E, $0130, $01D6, $0003
 	dw !boss_command_1E, $0140, $01D7, $0003
@@ -5321,15 +5309,15 @@ DATA_B6B257:
 	dw !boss_command_1E, $024F, $018C, $0003
 	dw !boss_command_1E, $0253, $0157, $0002
 	dw !boss_command_23
-	dw !boss_command_00, $01B0, $06C0, $0002
-	dw !boss_command_02, DATA_B6B20B, DATA_B6B20B
+	dw !boss_command_fly_to, $01B0, $06C0, $0002
+	dw !boss_command_goto_or_reset, DATA_B6B20B, DATA_B6B20B
 
 DATA_B6B335:
 	dw !boss_command_13
 	dw !boss_command_1E, $0116, $017F, $0002
-	dw !boss_command_05, $0200, $0000
+	dw !boss_command_krow_animation, $0200, $0000
 	dw !boss_command_1E, $0117, $01D2, $0003
-	dw !boss_command_05, $0201, $0000
+	dw !boss_command_krow_animation, $0201, $0000
 	dw !boss_command_1E, $0118, $01D5, $0003
 	dw !boss_command_1E, $0130, $01D6, $0003
 	dw !boss_command_1E, $0140, $01D7, $0003
@@ -5339,12 +5327,12 @@ DATA_B6B335:
 	dw !boss_command_1E, $023F, $01B9, $0003
 	dw !boss_command_1E, $024F, $018C, $0003
 	dw !boss_command_1E, $0253, $0157, $0002
-	dw !boss_command_05, $0200, $0000
+	dw !boss_command_krow_animation, $0200, $0000
 	dw !boss_command_10
 	dw !boss_command_1E, $0257, $017F, $0002
 	dw !boss_command_1E, $0255, $01D2, $0003
 	dw !boss_command_11
-	dw !boss_command_05, $0201, $0000
+	dw !boss_command_krow_animation, $0201, $0000
 	dw !boss_command_1E, $0250, $01D5, $0003
 	dw !boss_command_1E, $0240, $01D6, $0003
 	dw !boss_command_1E, $0230, $01D7, $0003
@@ -5355,52 +5343,44 @@ DATA_B6B335:
 	dw !boss_command_1E, $0119, $018C, $0003
 	dw !boss_command_1E, $0115, $0157, $0002
 	dw !boss_command_23
-	dw !boss_command_00, $01B0, $06C0, $0002
-	dw !boss_command_02, DATA_B6B20B, DATA_B6B20B
-	dw !boss_command_05, $0200, $0204
-if !version == 0
-	dw !boss_command_20, $B712
-else
-	dw !boss_command_20, $B65D
-endif
-	dw !boss_command_00, $01B0, $0180, $0003
+	dw !boss_command_fly_to, $01B0, $06C0, $0002
+	dw !boss_command_goto_or_reset, DATA_B6B20B, DATA_B6B20B
+	dw !boss_command_krow_animation, $0200, $0204
+	dw !boss_command_20, DATA_B6B65D
+	dw !boss_command_fly_to, $01B0, $0180, $0003
 	dw !boss_command_21, $024A
 	dw !boss_command_24, $912C
 	dw !boss_command_22
 	dw !boss_command_1C
 
 DATA_B6B431:
-	dw !boss_command_0D, DATA_B6B43B
-	dw !boss_command_02, DATA_B6B631, DATA_B6B631
+	dw !boss_command_set_pattern, DATA_B6B43B
+	dw !boss_command_goto_or_reset, DATA_B6B631, DATA_B6B631
 
 DATA_B6B43B:
-if !version == 0
-	dw !boss_command_1D, $0005, $B738
-else
-	dw !boss_command_1D, $0005, $B683
-endif
+	dw !boss_command_1D, $0005, DATA_B6B683
 	dw !boss_command_1F, $0015
-	dw !boss_command_02, DATA_B6B461, DATA_B6B44B
+	dw !boss_command_goto_or_reset, DATA_B6B461, DATA_B6B44B
 
 DATA_B6B44B:
 	dw !boss_command_1E, $0107, $015F, $0002
 	dw !boss_command_1E, $0108, $015F, $0001
-	dw !boss_command_02, DATA_B6B471, DATA_B6B471
+	dw !boss_command_goto_or_reset, DATA_B6B471, DATA_B6B471
 
 DATA_B6B461:
 	dw !boss_command_1E, $0259, $015F, $0002
 	dw !boss_command_1E, $0258, $015F, $0001
 
 DATA_B6B471:
-	dw !boss_command_1A, $02B2, $0200
-	dw !boss_command_02, DATA_B6B47D, DATA_B6B557
+	dw !boss_command_animated_wait, $02B2, $0200
+	dw !boss_command_goto_or_reset, DATA_B6B47D, DATA_B6B557
 
 DATA_B6B47D:
 	dw !boss_command_13
 	dw !boss_command_1E, $0257, $017F, $0002
-	dw !boss_command_05, $0200, $0000
+	dw !boss_command_krow_animation, $0200, $0000
 	dw !boss_command_1E, $0256, $01D2, $0003
-	dw !boss_command_05, $0201, $0000
+	dw !boss_command_krow_animation, $0201, $0000
 	dw !boss_command_1E, $0250, $01D5, $0004
 	dw !boss_command_1E, $0240, $01D6, $0005
 	dw !boss_command_1E, $0230, $01D7, $0005
@@ -5410,10 +5390,10 @@ DATA_B6B47D:
 	dw !boss_command_1E, $0129, $01D0, $0003
 	dw !boss_command_1E, $0119, $01C0, $0002
 	dw !boss_command_1E, $0115, $017F, $0002
-	dw !boss_command_05, $0200, $0000
+	dw !boss_command_krow_animation, $0200, $0000
 	dw !boss_command_1E, $0116, $017F, $0002
 	dw !boss_command_1E, $0117, $01D2, $0003
-	dw !boss_command_05, $0201, $0000
+	dw !boss_command_krow_animation, $0201, $0000
 	dw !boss_command_1E, $0118, $01D5, $0003
 	dw !boss_command_1E, $0130, $01D6, $0004
 	dw !boss_command_1E, $0140, $01D7, $0005
@@ -5424,15 +5404,15 @@ DATA_B6B47D:
 	dw !boss_command_1E, $024F, $01C0, $0002
 	dw !boss_command_1E, $0253, $0157, $0002
 	dw !boss_command_23
-	dw !boss_command_00, $01B0, $0180, $0003
-	dw !boss_command_02, DATA_B6B431, DATA_B6B431
+	dw !boss_command_fly_to, $01B0, $0180, $0003
+	dw !boss_command_goto_or_reset, DATA_B6B431, DATA_B6B431
 
 DATA_B6B557:
 	dw !boss_command_13
 	dw !boss_command_1E, $0116, $017F, $0002
-	dw !boss_command_05, $0200, $0000
+	dw !boss_command_krow_animation, $0200, $0000
 	dw !boss_command_1E, $0117, $01D2, $0003
-	dw !boss_command_05, $0201, $0000
+	dw !boss_command_krow_animation, $0201, $0000
 	dw !boss_command_1E, $0118, $01D5, $0003
 	dw !boss_command_1E, $0130, $01D6, $0004
 	dw !boss_command_1E, $0140, $01D7, $0005
@@ -5442,10 +5422,10 @@ DATA_B6B557:
 	dw !boss_command_1E, $023F, $01D0, $0003
 	dw !boss_command_1E, $024F, $01C0, $0002
 	dw !boss_command_1E, $0253, $0157, $0002
-	dw !boss_command_05, $0200, $0000
+	dw !boss_command_krow_animation, $0200, $0000
 	dw !boss_command_1E, $0257, $017F, $0002
 	dw !boss_command_1E, $0256, $01D2, $0003
-	dw !boss_command_05, $0201, $0000
+	dw !boss_command_krow_animation, $0201, $0000
 	dw !boss_command_1E, $0250, $01D5, $0004
 	dw !boss_command_1E, $0240, $01D6, $0005
 	dw !boss_command_1E, $0230, $01D7, $0005
@@ -5456,23 +5436,30 @@ DATA_B6B557:
 	dw !boss_command_1E, $0119, $01C0, $0002
 	dw !boss_command_1E, $0115, $017F, $0002
 	dw !boss_command_23
-	dw !boss_command_00, $01B0, $0180, $0003
-	dw !boss_command_02, DATA_B6B431, DATA_B6B431
+	dw !boss_command_fly_to, $01B0, $0180, $0003
+	dw !boss_command_goto_or_reset, DATA_B6B431, DATA_B6B431
 
 DATA_B6B631:
 	dw !boss_command_25
-	dw !boss_command_1A, $0032, $0200
-	dw !boss_command_05, $0201, $01FA
-	dw !boss_command_1A, $003C, $0201
-	dw !boss_command_05, $0200, $0000
-	dw !boss_command_02, !null_pointer
+	dw !boss_command_animated_wait, $0032, $0200
+	dw !boss_command_krow_animation, $0201, $01FA
+	dw !boss_command_animated_wait, $003C, $0201
+	dw !boss_command_krow_animation, $0200, $0000
+	dw !boss_command_goto_or_reset, !null_pointer
+DATA_B6B64F:
 	dw !boss_command_03, $0128, $0BB0, $016C, $0B70, $01B0, $0B30
+DATA_B6B65D:
 	dw !boss_command_03, $0248, $06B0, $0204, $0668, $01C0, $0620
 
-DATA_B6B66A:
+DATA_B6B66B:
 	db $2E, $01, $2D, $0C, $B0, $01, $2D, $0C
-	db $37, $02, $2D, $0C, $1D, $01, $29, $07
-	db $B0, $01, $4D, $07, $41, $02, $29, $07
+	db $37, $02, $2D, $0C
+
+DATA_B6B677:
+	db $1D, $01, $29, $07, $B0, $01, $4D, $07
+	db $41, $02, $29, $07
+
+DATA_B6B683:
 	db $1D, $01, $E9, $01, $B0, $01, $01, $02
 	db $41, $02, $E9, $01
 
@@ -13785,118 +13772,120 @@ CODE_B6F904:
 	RTL				;$B6F931	/
 
 DATA_B6F932:
-	dw !boss_command_1A, $003C, $0200
-	dw !boss_command_05, $0201, $025D
-	dw !boss_command_1A, $003C, $0201
-	dw !boss_command_05, $0200, $0000
+	dw !boss_command_animated_wait, $003C, $0200
+	dw !boss_command_krow_animation, $0201, $025D
+	dw !boss_command_animated_wait, $003C, $0201
+	dw !boss_command_krow_animation, $0200, $0000
 
 DATA_B6F94A:
-	dw !boss_command_0D, DATA_B6FA2C
+	dw !boss_command_set_pattern, DATA_B6FA2C
 	dw !boss_command_13
-	dw !boss_command_00, $01B0, $0130, $0003
-	dw !boss_command_04, $2000
-	dw !boss_command_00, $01B0, $0158, $0002
+	dw !boss_command_fly_to, $01B0, $0130, $0003
+	dw !boss_command_layer_priority, $2000
+	dw !boss_command_fly_to, $01B0, $0158, $0002
 	dw !boss_command_18
-	dw !boss_command_06
-	dw !boss_command_00, $01B0, $0115, $0002
+	dw !boss_command_grab_egg
+	dw !boss_command_fly_to, $01B0, $0115, $0002
 	dw !boss_command_1C
-	dw !boss_command_04, $3000
-	dw !boss_command_1B, $3000
-	dw !boss_command_09
-	dw !boss_command_0C, $0000
+	dw !boss_command_layer_priority, $3000
+	dw !boss_command_egg_layer_priority, $3000
+	dw !boss_command_lock_camera
+	dw !boss_command_fly_to_egg_drop, $0000
 	dw !boss_command_0A
-	dw !boss_command_12, $FFFF, $0001, $0001
-	dw !boss_command_1A, $0014, $0200
-	dw !boss_command_07, $0000
-	dw !boss_command_08, $0200
+	dw !boss_command_face, $FFFF, $0001, $0001
+	dw !boss_command_animated_wait, $0014, $0200
+	dw !boss_command_drop_egg, $0000
+	dw !boss_command_animated_wait_for_egg, $0200
 
 DATA_B6F998:
-	dw !boss_command_1A, $0032, $0200
-	dw !boss_command_00, $025D, $017F, $0002
-	dw !boss_command_00, $025E, $018D, $0002
-	dw !boss_command_05, $0200, $0000
-	dw !boss_command_00, $025E, $0199, $0002
-	dw !boss_command_00, $025E, $01B4, $0003
-	dw !boss_command_00, $025E, $01CD, $0003
-	dw !boss_command_05, $0201, $0000
-	dw !boss_command_00, $0250, $01D2, $0003
-	dw !boss_command_00, $0240, $01D5, $0003
-	dw !boss_command_00, $0230, $01D7, $0003
-	dw !boss_command_00, $0204, $01D8, $0003
-	dw !boss_command_00, $015C, $01D8, $0003
-	dw !boss_command_00, $0147, $01D3, $0003
-	dw !boss_command_00, $0129, $01B9, $0002
-	dw !boss_command_00, $0119, $018C, $0002
-	dw !boss_command_00, $0115, $0157, $0002
-	dw !boss_command_00, $012B, $014B, $0002
-	dw !boss_command_05, $0200, $0000
-	dw !boss_command_02, !null_pointer
+	dw !boss_command_animated_wait, $0032, $0200
+	dw !boss_command_fly_to, $025D, $017F, $0002
+	dw !boss_command_fly_to, $025E, $018D, $0002
+	dw !boss_command_krow_animation, $0200, $0000
+	dw !boss_command_fly_to, $025E, $0199, $0002
+	dw !boss_command_fly_to, $025E, $01B4, $0003
+	dw !boss_command_fly_to, $025E, $01CD, $0003
+	dw !boss_command_krow_animation, $0201, $0000
+	dw !boss_command_fly_to, $0250, $01D2, $0003
+	dw !boss_command_fly_to, $0240, $01D5, $0003
+	dw !boss_command_fly_to, $0230, $01D7, $0003
+	dw !boss_command_fly_to, $0204, $01D8, $0003
+	dw !boss_command_fly_to, $015C, $01D8, $0003
+	dw !boss_command_fly_to, $0147, $01D3, $0003
+	dw !boss_command_fly_to, $0129, $01B9, $0002
+	dw !boss_command_fly_to, $0119, $018C, $0002
+	dw !boss_command_fly_to, $0115, $0157, $0002
+	dw !boss_command_fly_to, $012B, $014B, $0002
+	dw !boss_command_krow_animation, $0200, $0000
+	dw !boss_command_goto_or_reset, !null_pointer
 
 DATA_B6FA2C:
-	dw !boss_command_0D, DATA_B6F94A
+	dw !boss_command_set_pattern, DATA_B6F94A
 	dw !boss_command_13
-	dw !boss_command_00, $01B0, $0130, $0003
+	dw !boss_command_fly_to, $01B0, $0130, $0003
 	dw !boss_command_1C
-	dw !boss_command_04, $2000
-	dw !boss_command_00, $01B0, $0158, $0002
+	dw !boss_command_layer_priority, $2000
+	dw !boss_command_fly_to, $01B0, $0158, $0002
 	dw !boss_command_18
-	dw !boss_command_06
-	dw !boss_command_00, $01B0, $0115, $0002
-	dw !boss_command_04, $3000
-	dw !boss_command_1B, $3000
-	dw !boss_command_09
-	dw !boss_command_0C, $0000
+	dw !boss_command_grab_egg
+	dw !boss_command_fly_to, $01B0, $0115, $0002
+	dw !boss_command_layer_priority, $3000
+	dw !boss_command_egg_layer_priority, $3000
+	dw !boss_command_lock_camera
+	dw !boss_command_fly_to_egg_drop, $0000
 	dw !boss_command_0A
-	dw !boss_command_12, $0001, $0001, $0001
-	dw !boss_command_1A, $0014, $0200
-	dw !boss_command_07, $0001
-	dw !boss_command_08, $0200
+	dw !boss_command_face, $0001, $0001, $0001
+	dw !boss_command_animated_wait, $0014, $0200
+	dw !boss_command_drop_egg, $0001
+	dw !boss_command_animated_wait_for_egg, $0200
 
 DATA_B6FA7A:
-	dw !boss_command_1A, $0032, $0200
-	dw !boss_command_00, $0123, $017F, $0002
-	dw !boss_command_00, $0122, $018D, $0002
-	dw !boss_command_05, $0200, $0000
-	dw !boss_command_00, $0122, $0199, $0002
-	dw !boss_command_00, $0122, $01B4, $0003
-	dw !boss_command_00, $0122, $01CD, $0003
-	dw !boss_command_05, $0201, $0000
-	dw !boss_command_00, $0130, $01D2, $0003
-	dw !boss_command_00, $0140, $01D5, $0003
-	dw !boss_command_00, $0150, $01D7, $0003
-	dw !boss_command_00, $017C, $01D8, $0003
-	dw !boss_command_00, $0224, $01D8, $0003
-	dw !boss_command_00, $0239, $01D3, $0003
-	dw !boss_command_00, $0257, $01B9, $0002
-	dw !boss_command_00, $0267, $018C, $0002
-	dw !boss_command_00, $026B, $0157, $0002
-	dw !boss_command_00, $0255, $014B, $0002
-	dw !boss_command_05, $0200, $0000
-	dw !boss_command_02, !null_pointer
+	dw !boss_command_animated_wait, $0032, $0200
+	dw !boss_command_fly_to, $0123, $017F, $0002
+	dw !boss_command_fly_to, $0122, $018D, $0002
+	dw !boss_command_krow_animation, $0200, $0000
+	dw !boss_command_fly_to, $0122, $0199, $0002
+	dw !boss_command_fly_to, $0122, $01B4, $0003
+	dw !boss_command_fly_to, $0122, $01CD, $0003
+	dw !boss_command_krow_animation, $0201, $0000
+	dw !boss_command_fly_to, $0130, $01D2, $0003
+	dw !boss_command_fly_to, $0140, $01D5, $0003
+	dw !boss_command_fly_to, $0150, $01D7, $0003
+	dw !boss_command_fly_to, $017C, $01D8, $0003
+	dw !boss_command_fly_to, $0224, $01D8, $0003
+	dw !boss_command_fly_to, $0239, $01D3, $0003
+	dw !boss_command_fly_to, $0257, $01B9, $0002
+	dw !boss_command_fly_to, $0267, $018C, $0002
+	dw !boss_command_fly_to, $026B, $0157, $0002
+	dw !boss_command_fly_to, $0255, $014B, $0002
+	dw !boss_command_krow_animation, $0200, $0000
+	dw !boss_command_goto_or_reset, !null_pointer
+
+DATA_B6FB0E:
 	dw !boss_command_13
-	dw !boss_command_00, $01B0, $0162, $0002
+	dw !boss_command_fly_to, $01B0, $0162, $0002
 	dw !boss_command_1C
-	dw !boss_command_00, $0200, $0162, $0001
-	dw !boss_command_00, $0206, $0164, $0001
-	dw !boss_command_00, $0210, $0167, $0002
-	dw !boss_command_00, $0225, $0176, $0002
-	dw !boss_command_00, $022A, $017C, $0002
-	dw !boss_command_00, $022D, $0181, $0002
-	dw !boss_command_00, $022A, $0184, $0002
-	dw !boss_command_00, $0225, $018B, $0002
-	dw !boss_command_00, $0210, $0199, $0003
-	dw !boss_command_00, $0206, $019D, $0003
-	dw !boss_command_00, $0200, $019F, $0003
-	dw !boss_command_00, $01D3, $019F, $0004
-	dw !boss_command_0D, DATA_B6FBB2
-	dw !boss_command_0B, $1000, $0400
+	dw !boss_command_fly_to, $0200, $0162, $0001
+	dw !boss_command_fly_to, $0206, $0164, $0001
+	dw !boss_command_fly_to, $0210, $0167, $0002
+	dw !boss_command_fly_to, $0225, $0176, $0002
+	dw !boss_command_fly_to, $022A, $017C, $0002
+	dw !boss_command_fly_to, $022D, $0181, $0002
+	dw !boss_command_fly_to, $022A, $0184, $0002
+	dw !boss_command_fly_to, $0225, $018B, $0002
+	dw !boss_command_fly_to, $0210, $0199, $0003
+	dw !boss_command_fly_to, $0206, $019D, $0003
+	dw !boss_command_fly_to, $0200, $019F, $0003
+	dw !boss_command_fly_to, $01D3, $019F, $0004
+	dw !boss_command_set_pattern, DATA_B6FBB2
+	dw !boss_command_shake_screen, $1000, $0400
 	dw !boss_command_15, $FFEC, $FFEC
 	dw !boss_command_16
-	dw !boss_command_05, $0200, $0209
-	dw !boss_command_0E
+	dw !boss_command_krow_animation, $0200, $0209
+	dw !boss_command_rain_eggs
 	dw !boss_command_10
-	dw !boss_command_00, $01F0, $019F, $0002
-	dw !boss_command_00, $0200, $019F, $0001
+	dw !boss_command_fly_to, $01F0, $019F, $0002
+	dw !boss_command_fly_to, $0200, $019F, $0001
 	dw !boss_command_11
 	dw !boss_command_0F, $0200
 if !version == 0
@@ -13906,55 +13895,57 @@ else
 endif
 
 DATA_B6FBB2:
-	dw !boss_command_00, $01B0, $019F, $0002
-	dw !boss_command_00, $0160, $019F, $0002
-	dw !boss_command_00, $0157, $019D, $0002
-	dw !boss_command_00, $014D, $0199, $0002
-	dw !boss_command_00, $0138, $018B, $0002
-	dw !boss_command_00, $0133, $0184, $0002
-	dw !boss_command_00, $0130, $0181, $0002
-	dw !boss_command_00, $0133, $017C, $0002
-	dw !boss_command_00, $0138, $0176, $0002
-	dw !boss_command_00, $014D, $0167, $0002
-	dw !boss_command_00, $0157, $0164, $0002
-	dw !boss_command_00, $0160, $0162, $0002
-	dw !boss_command_00, $01B0, $0162, $0002
-	dw !boss_command_00, $0200, $0162, $0002
-	dw !boss_command_00, $0206, $0164, $0002
-	dw !boss_command_00, $0210, $0167, $0002
-	dw !boss_command_00, $0225, $0176, $0002
-	dw !boss_command_00, $022A, $017C, $0002
-	dw !boss_command_00, $022D, $0181, $0002
-	dw !boss_command_00, $022A, $0184, $0002
-	dw !boss_command_00, $0225, $018B, $0002
-	dw !boss_command_00, $0210, $0199, $0002
-	dw !boss_command_00, $0206, $019D, $0002
-	dw !boss_command_00, $0200, $019F, $0002
-	dw !boss_command_02, !null_pointer
+	dw !boss_command_fly_to, $01B0, $019F, $0002
+	dw !boss_command_fly_to, $0160, $019F, $0002
+	dw !boss_command_fly_to, $0157, $019D, $0002
+	dw !boss_command_fly_to, $014D, $0199, $0002
+	dw !boss_command_fly_to, $0138, $018B, $0002
+	dw !boss_command_fly_to, $0133, $0184, $0002
+	dw !boss_command_fly_to, $0130, $0181, $0002
+	dw !boss_command_fly_to, $0133, $017C, $0002
+	dw !boss_command_fly_to, $0138, $0176, $0002
+	dw !boss_command_fly_to, $014D, $0167, $0002
+	dw !boss_command_fly_to, $0157, $0164, $0002
+	dw !boss_command_fly_to, $0160, $0162, $0002
+	dw !boss_command_fly_to, $01B0, $0162, $0002
+	dw !boss_command_fly_to, $0200, $0162, $0002
+	dw !boss_command_fly_to, $0206, $0164, $0002
+	dw !boss_command_fly_to, $0210, $0167, $0002
+	dw !boss_command_fly_to, $0225, $0176, $0002
+	dw !boss_command_fly_to, $022A, $017C, $0002
+	dw !boss_command_fly_to, $022D, $0181, $0002
+	dw !boss_command_fly_to, $022A, $0184, $0002
+	dw !boss_command_fly_to, $0225, $018B, $0002
+	dw !boss_command_fly_to, $0210, $0199, $0002
+	dw !boss_command_fly_to, $0206, $019D, $0002
+	dw !boss_command_fly_to, $0200, $019F, $0002
+	dw !boss_command_goto_or_reset, !null_pointer
+
+DATA_B6FC76:
 	dw !boss_command_13
-	dw !boss_command_00, $01B0, $0162, $0002
+	dw !boss_command_fly_to, $01B0, $0162, $0002
 	dw !boss_command_1C
-	dw !boss_command_00, $0160, $0162, $0001
-	dw !boss_command_00, $0157, $0164, $0001
-	dw !boss_command_00, $014D, $0167, $0002
-	dw !boss_command_00, $0138, $0176, $0002
-	dw !boss_command_00, $0133, $017C, $0002
-	dw !boss_command_00, $0130, $0181, $0002
-	dw !boss_command_00, $0133, $0184, $0002
-	dw !boss_command_00, $0138, $018B, $0002
-	dw !boss_command_00, $014D, $0199, $0003
-	dw !boss_command_00, $0157, $019D, $0003
-	dw !boss_command_00, $0160, $019F, $0003
-	dw !boss_command_00, $018D, $019F, $0004
-	dw !boss_command_0D, DATA_B6FD1A
-	dw !boss_command_0B, $1000, $0400
+	dw !boss_command_fly_to, $0160, $0162, $0001
+	dw !boss_command_fly_to, $0157, $0164, $0001
+	dw !boss_command_fly_to, $014D, $0167, $0002
+	dw !boss_command_fly_to, $0138, $0176, $0002
+	dw !boss_command_fly_to, $0133, $017C, $0002
+	dw !boss_command_fly_to, $0130, $0181, $0002
+	dw !boss_command_fly_to, $0133, $0184, $0002
+	dw !boss_command_fly_to, $0138, $018B, $0002
+	dw !boss_command_fly_to, $014D, $0199, $0003
+	dw !boss_command_fly_to, $0157, $019D, $0003
+	dw !boss_command_fly_to, $0160, $019F, $0003
+	dw !boss_command_fly_to, $018D, $019F, $0004
+	dw !boss_command_set_pattern, DATA_B6FD1A
+	dw !boss_command_shake_screen, $1000, $0400
 	dw !boss_command_15, $0014, $FFEC
 	dw !boss_command_16
-	dw !boss_command_05, $0200, $0209
-	dw !boss_command_0E
+	dw !boss_command_krow_animation, $0200, $0209
+	dw !boss_command_rain_eggs
 	dw !boss_command_10
-	dw !boss_command_00, $0170, $019F, $0002
-	dw !boss_command_00, $0160, $019F, $0001
+	dw !boss_command_fly_to, $0170, $019F, $0002
+	dw !boss_command_fly_to, $0160, $019F, $0001
 	dw !boss_command_11
 	dw !boss_command_0F, $0200
 if !version == 0
@@ -13964,58 +13955,46 @@ else
 endif
 
 DATA_B6FD1A:
-	dw !boss_command_00, $0200, $019F, $0002
-	dw !boss_command_00, $0206, $019D, $0002
-	dw !boss_command_00, $0210, $0199, $0002
-	dw !boss_command_00, $0225, $018B, $0002
-	dw !boss_command_00, $022A, $0184, $0002
-	dw !boss_command_00, $022D, $0181, $0002
-	dw !boss_command_00, $022A, $017C, $0002
-	dw !boss_command_00, $0225, $0176, $0002
-	dw !boss_command_00, $0210, $0167, $0002
-	dw !boss_command_00, $0206, $0164, $0002
-	dw !boss_command_00, $0200, $0162, $0002
-	dw !boss_command_00, $01B0, $0162, $0002
-	dw !boss_command_00, $0160, $0162, $0002
-	dw !boss_command_00, $0157, $0164, $0002
-	dw !boss_command_00, $014D, $0167, $0002
-	dw !boss_command_00, $0138, $0176, $0002
-	dw !boss_command_00, $0133, $017C, $0002
-	dw !boss_command_00, $0130, $0181, $0002
-	dw !boss_command_00, $0133, $0184, $0002
-	dw !boss_command_00, $0138, $018B, $0002
-	dw !boss_command_00, $014D, $0199, $0002
-	dw !boss_command_00, $0157, $019D, $0002
-	dw !boss_command_00, $0160, $019F, $0002
-	dw !boss_command_00, $01B0, $019F, $0002
-	dw !boss_command_02, !null_pointer
+	dw !boss_command_fly_to, $0200, $019F, $0002
+	dw !boss_command_fly_to, $0206, $019D, $0002
+	dw !boss_command_fly_to, $0210, $0199, $0002
+	dw !boss_command_fly_to, $0225, $018B, $0002
+	dw !boss_command_fly_to, $022A, $0184, $0002
+	dw !boss_command_fly_to, $022D, $0181, $0002
+	dw !boss_command_fly_to, $022A, $017C, $0002
+	dw !boss_command_fly_to, $0225, $0176, $0002
+	dw !boss_command_fly_to, $0210, $0167, $0002
+	dw !boss_command_fly_to, $0206, $0164, $0002
+	dw !boss_command_fly_to, $0200, $0162, $0002
+	dw !boss_command_fly_to, $01B0, $0162, $0002
+	dw !boss_command_fly_to, $0160, $0162, $0002
+	dw !boss_command_fly_to, $0157, $0164, $0002
+	dw !boss_command_fly_to, $014D, $0167, $0002
+	dw !boss_command_fly_to, $0138, $0176, $0002
+	dw !boss_command_fly_to, $0133, $017C, $0002
+	dw !boss_command_fly_to, $0130, $0181, $0002
+	dw !boss_command_fly_to, $0133, $0184, $0002
+	dw !boss_command_fly_to, $0138, $018B, $0002
+	dw !boss_command_fly_to, $014D, $0199, $0002
+	dw !boss_command_fly_to, $0157, $019D, $0002
+	dw !boss_command_fly_to, $0160, $019F, $0002
+	dw !boss_command_fly_to, $01B0, $019F, $0002
+	dw !boss_command_goto_or_reset, !null_pointer
 
 DATA_B6FDDE:
-if !version == 0
-	dw !boss_command_14, $FBA9, $FD11
-else
-	dw !boss_command_14, $FB0E, $FC76
-endif
-	dw !boss_command_02, DATA_B6F998, DATA_B6FA7A
+	dw !boss_command_select_goto, DATA_B6FB0E, DATA_B6FC76
+	dw !boss_command_goto_or_reset, DATA_B6F998, DATA_B6FA7A
 
 DATA_B6FDEA:
-	dw !boss_command_05, $0200, $0204
-if !version == 0
-	dw !boss_command_14, $F9E5, $FAC7
-else
-	dw !boss_command_14, $F94A, $FA2C
-endif
-	dw !boss_command_02, !null_pointer
+	dw !boss_command_krow_animation, $0200, $0204
+	dw !boss_command_select_goto, DATA_B6F94A, DATA_B6FA2C
+	dw !boss_command_goto_or_reset, !null_pointer
 
 DATA_B6FDFA:
-	dw !boss_command_05, $0200, $0204
-if !version == 0
-	dw !boss_command_14, $FBA9, $FD11
-else
-	dw !boss_command_14, $FB0E, $FC76
-endif
+	dw !boss_command_krow_animation, $0200, $0204
+	dw !boss_command_select_goto, DATA_B6FB0E, DATA_B6FC76
 	dw !boss_command_18
-	dw !boss_command_02, !null_pointer
+	dw !boss_command_goto_or_reset, !null_pointer
 
 	db $02, $00, $00, $00, $02, $00, $00, $00
 	db $02, $00, $00, $00, $FE, $FF, $00, $00
