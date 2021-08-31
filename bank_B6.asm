@@ -1664,7 +1664,7 @@ DATA_B691DF:
 	dw !boss_command_wait, $0028
 	dw !boss_command_dash, $0640, $0006
 	dw !boss_command_wait, $0028
-	dw !boss_command_shoot_red_gas
+	dw !boss_command_shoot_gas
 	dw !boss_command_wait, $0096
 	dw !boss_command_wait_if_gas_hit, $0078
 	dw !boss_command_shoot

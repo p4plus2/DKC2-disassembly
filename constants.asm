@@ -88,7 +88,7 @@
 !boss_command_retract_spikes = $2C
 !boss_command_goto_if = $2D
 !boss_command_spawn_sprite = $2E
-!boss_command_shoot_red_gas = $2F
+!boss_command_shoot_gas = $2F
 !boss_command_clear_gas_effect = $30
 !boss_command_31 = $31
 !boss_command_32 = $32

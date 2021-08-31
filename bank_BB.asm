@@ -4458,8 +4458,10 @@ DATA_BBA35F:
 	db $00
 
 DATA_BBA408:
-	db $FF, $13, $80, $C9, $11, $81, $00, $FF
-	db $A3, $81, $C9, $A1, $82, $00
+	db $FF, $13, $80, $C9, $11, $81, $00
+
+DATA_BBA40F:
+	db $FF, $A3, $81, $C9, $A1, $82, $00
 
 CODE_BBA416:
 	JSR CODE_BBA8DD			;$BBA416	\
@@ -6458,7 +6460,7 @@ CODE_BBB5B9:				;		 |
 	PLB				;$BBB5C2	 |
 	RTS				;$BBB5C3	/
 
-CODE_BBB5C4:
+sprite_loader:
 	PHB				;$BBB5C4	\
 	LDA $D3				;$BBB5C5	 |
 	ASL A				;$BBB5C7	 |

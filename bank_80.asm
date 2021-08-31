@@ -645,7 +645,7 @@ CODE_8087E1:
 	PLB				;$8087EC	 |
 	LDA #$0200			;$8087ED	 |
 	JSR CODE_808C32			;$8087F0	 |
-	JSR CODE_808CAC			;$8087F3	 |
+	JSR prepare_oam_dma_channel	;$8087F3	 |
 	SEP #$20			;$8087F6	 |
 	LDA $0529			;$8087F8	 |
 	STA $96				;$8087FB	 |
@@ -745,31 +745,31 @@ CODE_8088A8:
 CODE_8088AB:
 	LDA #$0200			;$8088AB	\
 	STA $70				;$8088AE	 |
-	JSR CODE_8088BA			;$8088B0	 |
+	JSR set_unused_oam_offscreen	;$8088B0	 |
 	RTL				;$8088B3	/
 
 CODE_8088B4:
 	PHB				;$8088B4	\
-	JSR CODE_8088BA			;$8088B5	 |
+	JSR set_unused_oam_offscreen	;$8088B5	 |
 	PLB				;$8088B8	 |
 	RTL				;$8088B9	/
 
-CODE_8088BA:
+set_unused_oam_offscreen:
 	PHK				;$8088BA	\
 	PLB				;$8088BB	 |
 	LDX $70				;$8088BC	 |
 	CPX #$0400			;$8088BE	 |
-	BEQ CODE_8088D1			;$8088C1	 |
+	BEQ .oam_full			;$8088C1	 |
 	LDA #$F0FF			;$8088C3	 |
-CODE_8088C6:				;		 |
+.next_slot				;		 |
 	STA $00,x			;$8088C6	 |
 	INX				;$8088C8	 |
 	INX				;$8088C9	 |
 	INX				;$8088CA	 |
 	INX				;$8088CB	 |
 	CPX #$0400			;$8088CC	 |
-	BNE CODE_8088C6			;$8088CF	 |
-CODE_8088D1:				;		 |
+	BNE .next_slot			;$8088CF	 |
+.oam_full				;		 |
 	RTS				;$8088D1	/
 
 CODE_8088D2:
@@ -1221,14 +1221,14 @@ CODE_808C9E:
 	PLB				;$808C9F	 |
 	STA $24				;$808CA0	 |
 CODE_808CA2:				;		 |
-	JSR CODE_808CAC			;$808CA2	 |
+	JSR prepare_oam_dma_channel	;$808CA2	 |
 	JMP CODE_80862A			;$808CA5	/
 
 CODE_808CA8:
-	JSR CODE_808CAC			;$808CA8	\
+	JSR prepare_oam_dma_channel	;$808CA8	\
 	RTL				;$808CAB	/
 
-CODE_808CAC:
+prepare_oam_dma_channel:
 	LDA #$0200			;$808CAC	\
 	STA $4302			;$808CAF	 |
 	STA $4308			;$808CB2	 |
@@ -1615,11 +1615,7 @@ CODE_808FDC:
 	LDA #$0080			;$808FE3	 |
 	CMP #$0080			;$808FE6	 |
 	BNE CODE_808FF3			;$808FE9	 |
-if !version == 1
-	LDA #$FBA2			;$808FEB	 |
-else
-	LDA #$FB62			;$808FEB	 |
-endif
+	LDA #DATA_80FBA2		;$808FEB	 |
 	CMP #$FFB0			;$808FEE	 |
 	BMI CODE_808FFA			;$808FF1	 |
 CODE_808FF3:				;		 |
@@ -2673,7 +2669,7 @@ CODE_8099A7:				;		 |
 	LDA #$01			;$8099B3	 |
 	STA $420D			;$8099B5	 |
 	REP #$20			;$8099B8	 |
-	JSR CODE_808CAC			;$8099BA	 |
+	JSR prepare_oam_dma_channel	;$8099BA	 |
 	LDA #CODE_8099C3		;$8099BD	 |
 	JMP CODE_80B0EE			;$8099C0	/
 
@@ -2697,7 +2693,7 @@ CODE_8099C3:
 	JSR CODE_808C3D			;$8099E9	 |
 	INC $2A				;$8099EC	 |
 	JSR CODE_80B061			;$8099EE	 |
-	JSR CODE_808CAC			;$8099F1	 |
+	JSR prepare_oam_dma_channel	;$8099F1	 |
 	LDA #$4102			;$8099F4	 |
 	STA $7E8013			;$8099F7	 |
 	STA $7E8016			;$8099FB	 |
@@ -3541,7 +3537,7 @@ CODE_80A0E9:				;		 |
 	STZ $2A				;$80A2BE	 |
 	LDA #$0300			;$80A2C0	 |
 	JSR CODE_808C32			;$80A2C3	 |
-	JSR CODE_808CAC			;$80A2C6	 |
+	JSR prepare_oam_dma_channel	;$80A2C6	 |
 	LDA #CODE_80A2CF		;$80A2C9	 |
 	JMP CODE_80B0EE			;$80A2CC	/
 
@@ -3738,7 +3734,7 @@ CODE_80A44D:				;		 |
 	JSL CODE_B59F40			;$80A48B	 |
 	STZ $1730			;$80A48F	 |
 	JSL CODE_8088B4			;$80A492	 |
-	JSR CODE_808CAC			;$80A496	 |
+	JSR prepare_oam_dma_channel	;$80A496	 |
 	LDA #CODE_80A2CF		;$80A499	 |
 	STA $20				;$80A49C	 |
 CODE_80A49E:				;		 |
@@ -4130,7 +4126,7 @@ CODE_80A795:				;		 |
 	LDA #$01			;$80A81B	 |
 	STA $420D			;$80A81D	 |
 	REP #$20			;$80A820	 |
-	JSR CODE_808CAC			;$80A822	 |
+	JSR prepare_oam_dma_channel	;$80A822	 |
 	LDA #CODE_80A86C		;$80A825	 |
 	JMP CODE_80B0EE			;$80A828	/
 
@@ -4521,7 +4517,7 @@ CODE_80AB6D:
 	JMP CODE_8090BB			;$80AB6D	/
 
 CODE_80AB70:
-	JSR CODE_808CAC			;$80AB70	\
+	JSR prepare_oam_dma_channel	;$80AB70	\
 	LDA #CODE_80A86C		;$80AB73	 |
 	STA $20				;$80AB76	 |
 CODE_80AB78:				;		 |
@@ -5503,10 +5499,10 @@ CODE_80B40E:				;		 |
 	REP #$20			;$80B447	 |
 	LDA #$0400			;$80B449	 |
 	JSR CODE_808C32			;$80B44C	 |
-	JSR CODE_808CAC			;$80B44F	 |
+	JSR prepare_oam_dma_channel	;$80B44F	 |
 	LDA #$0001			;$80B452	 |
 	STA $420B			;$80B455	 |
-	JSR CODE_808CAC			;$80B458	 |
+	JSR prepare_oam_dma_channel	;$80B458	 |
 	LDA #CODE_80B461		;$80B45B	 |
 	JMP CODE_80B0EE			;$80B45E	/
 
@@ -5586,8 +5582,8 @@ CODE_80B4C6:				;		 |
 	STA $78				;$80B507	 |
 	JSL CODE_B59F40			;$80B509	 |
 	STZ $1730			;$80B50D	 |
-	JSR CODE_8088BA			;$80B510	 |
-	JSR CODE_808CAC			;$80B513	 |
+	JSR set_unused_oam_offscreen	;$80B510	 |
+	JSR prepare_oam_dma_channel	;$80B513	 |
 	LDA $0512			;$80B516	 |
 	CMP #$000F			;$80B519	 |
 	BNE CODE_80B53F			;$80B51C	 |
@@ -8734,11 +8730,7 @@ CODE_80CFDC:
 	CLC				;$80CFEA	 |
 	ADC $32				;$80CFEB	 |
 	CLC				;$80CFED	 |
-if !version == 1			;		 |
-	ADC #$A35F			;$80CFEE	 |
-else					;		 |
-	ADC #$A352			;$80CFEE	 |
-endif					;		 |
+	ADC #DATA_BBA35F		;$80CFEE	 |
 	STA $4312			;$80CFF1	 |
 	LDA $17BB			;$80CFF4	 |
 	AND #$00FF			;$80CFF7	 |
@@ -8783,19 +8775,11 @@ CODE_80D04B:				;		 |
 	STA $7E8333			;$80D04D	 |
 	STA $7E8336			;$80D051	 |
 	REP #$20			;$80D055	 |
-if !version == 1			;		 |
-	LDX #$A40F			;$80D057	 |
-else					;		 |
-	LDX #$A402			;$80D057	 |
-endif					;		 |
+	LDX #DATA_BBA40F		;$80D057	 |
 	LDA $2A				;$80D05A	 |
 	BIT #$0001			;$80D05C	 |
 	BEQ CODE_80D064			;$80D05F	 |
-if !version == 0			;		 |
-	LDX #$A3FB			;$80D061	 |
-else					;		 |
-	LDX #$A408			;$80D061	 |
-endif					;		 |
+	LDX #DATA_BBA408		;$80D061	 |
 CODE_80D064:				;		 |
 	STX $4322			;$80D064	 |
 	LDA $17BA			;$80D067	 |
@@ -9021,12 +9005,12 @@ CODE_80D45D:
 CODE_80D462:
 	JSR CODE_808988			;$80D462	\
 	BNE CODE_80D483			;$80D465	 |
-	JSL CODE_BBB5C4			;$80D467	 |
+	JSL sprite_loader		;$80D467	 |
 	JSL sprite_handler		;$80D46B	 |
 	JSL CODE_B5E50D			;$80D46F	 |
 	JSL CODE_B5B9B0			;$80D473	 |
 	JSR CODE_80F35B			;$80D477	 |
-	JSR CODE_8088BA			;$80D47A	 |
+	JSR set_unused_oam_offscreen	;$80D47A	 |
 	JSR CODE_808C3D			;$80D47D	 |
 	JMP CODE_808CA2			;$80D480	/
 
@@ -9038,13 +9022,13 @@ CODE_80D486:
 	JSR CODE_808988			;$80D489	 |
 	BNE CODE_80D4B4			;$80D48C	 |
 	JSR CODE_80D4FA			;$80D48E	 |
-	JSL CODE_BBB5C4			;$80D491	 |
+	JSL sprite_loader		;$80D491	 |
 	JSL sprite_handler		;$80D495	 |
 	JSL CODE_B5E50D			;$80D499	 |
 	JSL CODE_B5B54A			;$80D49D	 |
 	JSR CODE_80F35B			;$80D4A1	 |
 	JSL CODE_BEC9C0			;$80D4A4	 |
-	JSR CODE_8088BA			;$80D4A8	 |
+	JSR set_unused_oam_offscreen	;$80D4A8	 |
 	JSR CODE_80D4B7			;$80D4AB	 |
 	JSR CODE_808C3D			;$80D4AE	 |
 	JMP CODE_808CA2			;$80D4B1	/
@@ -9126,7 +9110,7 @@ CODE_80D556:				;		 |
 CODE_80D557:
 	JSR CODE_808988			;$80D557	\
 	BNE CODE_80D589			;$80D55A	 |
-	JSL CODE_BBB5C4			;$80D55C	 |
+	JSL sprite_loader		;$80D55C	 |
 	JSL sprite_handler		;$80D560	 |
 	JSL CODE_B5E50D			;$80D564	 |
 	LDA $0AB4			;$80D568	 |
@@ -9140,7 +9124,7 @@ CODE_80D579:
 	JSL CODE_B5B317			;$80D579	\
 CODE_80D57D:				;		 |
 	JSR CODE_80F35B			;$80D57D	 |
-	JSR CODE_8088BA			;$80D580	 |
+	JSR set_unused_oam_offscreen	;$80D580	 |
 	JSR CODE_808C3D			;$80D583	 |
 	JMP CODE_808CA2			;$80D586	/
 
@@ -9155,14 +9139,14 @@ CODE_80D58C:
 CODE_80D595:
 	JSR CODE_808988			;$80D595	\
 	BNE CODE_80D5C0			;$80D598	 |
-	JSL CODE_BBB5C4			;$80D59A	 |
+	JSL sprite_loader		;$80D59A	 |
 	JSL sprite_handler		;$80D59E	 |
 	JSL CODE_B5E50D			;$80D5A2	 |
 	JSR CODE_80E52B			;$80D5A6	 |
 	JSL CODE_B5B9BB			;$80D5A9	 |
 	JSL CODE_B5B9B0			;$80D5AD	 |
 	JSR CODE_80F35B			;$80D5B1	 |
-	JSR CODE_8088BA			;$80D5B4	 |
+	JSR set_unused_oam_offscreen	;$80D5B4	 |
 	JSR CODE_80E580			;$80D5B7	 |
 	JSR CODE_808C3D			;$80D5BA	 |
 	JMP CODE_808CA2			;$80D5BD	/
@@ -9173,12 +9157,12 @@ CODE_80D5C0:
 CODE_80D5C3:
 	JSR CODE_808988			;$80D5C3	\
 	BNE CODE_80D5E4			;$80D5C6	 |
-	JSL CODE_BBB5C4			;$80D5C8	 |
+	JSL sprite_loader		;$80D5C8	 |
 	JSL sprite_handler		;$80D5CC	 |
 	JSL CODE_B5E50D			;$80D5D0	 |
 	JSL CODE_B5B9B0			;$80D5D4	 |
 	JSR CODE_80F35B			;$80D5D8	 |
-	JSR CODE_8088BA			;$80D5DB	 |
+	JSR set_unused_oam_offscreen	;$80D5DB	 |
 	JSR CODE_808C3D			;$80D5DE	 |
 	JMP CODE_808CA2			;$80D5E1	/
 
@@ -9196,12 +9180,12 @@ CODE_80D5E7:
 	LDX #$001C			;$80D5F7	 |
 CODE_80D5FA:				;		 |
 	STX $78				;$80D5FA	 |
-	JSL CODE_BBB5C4			;$80D5FC	 |
+	JSL sprite_loader		;$80D5FC	 |
 	JSL sprite_handler		;$80D600	 |
 	JSL CODE_B5E50D			;$80D604	 |
 	JSL CODE_B5B9A5			;$80D608	 |
 	JSR CODE_80F35B			;$80D60C	 |
-	JSR CODE_8088BA			;$80D60F	 |
+	JSR set_unused_oam_offscreen	;$80D60F	 |
 	JSR CODE_808C3D			;$80D612	 |
 	JMP CODE_808CA2			;$80D615	/
 
@@ -9211,13 +9195,13 @@ CODE_80D618:
 CODE_80D61B:
 	JSR CODE_808988			;$80D61B	\
 	BNE CODE_80D63F			;$80D61E	 |
-	JSL CODE_BBB5C4			;$80D620	 |
+	JSL sprite_loader		;$80D620	 |
 	JSL sprite_handler		;$80D624	 |
 	JSL CODE_B5E50D			;$80D628	 |
 	JSR CODE_80E472			;$80D62C	 |
 	JSL CODE_B5B9B0			;$80D62F	 |
 	JSR CODE_80F35B			;$80D633	 |
-	JSR CODE_8088BA			;$80D636	 |
+	JSR set_unused_oam_offscreen	;$80D636	 |
 	JSR CODE_808C3D			;$80D639	 |
 	JMP CODE_808CA2			;$80D63C	/
 
@@ -9227,11 +9211,11 @@ CODE_80D63F:
 CODE_80D642:
 	JSR CODE_808988			;$80D642	\
 	BNE CODE_80D662			;$80D645	 |
-	JSL CODE_BBB5C4			;$80D647	 |
+	JSL sprite_loader		;$80D647	 |
 	JSL sprite_handler		;$80D64B	 |
 	JSL CODE_B5E50D			;$80D64F	 |
 	JSR CODE_80F35B			;$80D653	 |
-	JSR CODE_8088BA			;$80D656	 |
+	JSR set_unused_oam_offscreen	;$80D656	 |
 	JSR CODE_80E580			;$80D659	 |
 	JSR CODE_808C3D			;$80D65C	 |
 	JMP CODE_808CA2			;$80D65F	/
@@ -9247,13 +9231,13 @@ CODE_80D665:
 CODE_80D66E:
 	JSR CODE_808988			;$80D66E	\
 	BNE CODE_80D692			;$80D671	 |
-	JSL CODE_BBB5C4			;$80D673	 |
+	JSL sprite_loader		;$80D673	 |
 	JSL sprite_handler		;$80D677	 |
 	JSL CODE_B5E50D			;$80D67B	 |
 	JSR CODE_80D695			;$80D67F	 |
 	JSL CODE_B5B9A5			;$80D682	 |
 	JSR CODE_80F35B			;$80D686	 |
-	JSR CODE_8088BA			;$80D689	 |
+	JSR set_unused_oam_offscreen	;$80D689	 |
 	JSR CODE_808C3D			;$80D68C	 |
 	JMP CODE_808CA2			;$80D68F	/
 
@@ -9388,12 +9372,12 @@ CODE_80D77A:
 CODE_80D784:
 	JSR CODE_808988			;$80D784	\
 	BNE CODE_80D7A8			;$80D787	 |
-	JSL CODE_BBB5C4			;$80D789	 |
+	JSL sprite_loader		;$80D789	 |
 	JSL sprite_handler		;$80D78D	 |
 	JSL CODE_B5E50D			;$80D791	 |
 	JSL CODE_B5B9B0			;$80D795	 |
 	JSR CODE_80F35B			;$80D799	 |
-	JSR CODE_8088BA			;$80D79C	 |
+	JSR set_unused_oam_offscreen	;$80D79C	 |
 	JSR CODE_80F157			;$80D79F	 |
 	JSR CODE_808C3D			;$80D7A2	 |
 	JMP CODE_808CA2			;$80D7A5	/
@@ -9404,13 +9388,13 @@ CODE_80D7A8:
 CODE_80D7AB:
 	JSR CODE_808988			;$80D7AB	\
 	BNE CODE_80D7CF			;$80D7AE	 |
-	JSL CODE_BBB5C4			;$80D7B0	 |
+	JSL sprite_loader		;$80D7B0	 |
 	JSR CODE_80D7E6			;$80D7B4	 |
 	JSL sprite_handler		;$80D7B7	 |
 	JSL CODE_B5E50D			;$80D7BB	 |
 	JSL CODE_B5B9B0			;$80D7BF	 |
 	JSR CODE_80F35B			;$80D7C3	 |
-	JSR CODE_8088BA			;$80D7C6	 |
+	JSR set_unused_oam_offscreen	;$80D7C6	 |
 	JSR CODE_808C3D			;$80D7C9	 |
 	JMP CODE_808CA2			;$80D7CC	/
 
@@ -9477,12 +9461,12 @@ CODE_80D82A:
 CODE_80D830:
 	JSR CODE_808988			;$80D830	\
 	BNE CODE_80D851			;$80D833	 |
-	JSL CODE_BBB5C4			;$80D835	 |
+	JSL sprite_loader		;$80D835	 |
 	JSL sprite_handler		;$80D839	 |
 	JSL CODE_B5E50D			;$80D83D	 |
 	JSL CODE_B5B9B0			;$80D841	 |
 	JSR CODE_80F35B			;$80D845	 |
-	JSR CODE_8088BA			;$80D848	 |
+	JSR set_unused_oam_offscreen	;$80D848	 |
 	JSR CODE_808C3D			;$80D84B	 |
 	JMP CODE_808CA2			;$80D84E	/
 
@@ -9492,7 +9476,7 @@ CODE_80D851:
 CODE_80D854:
 	JSR CODE_808988			;$80D854	\
 	BNE CODE_80D883			;$80D857	 |
-	JSL CODE_BBB5C4			;$80D859	 |
+	JSL sprite_loader		;$80D859	 |
 	JSL sprite_handler		;$80D85D	 |
 	JSL CODE_B5E50D			;$80D861	 |
 	LDA $0AB4			;$80D865	 |
@@ -9505,7 +9489,7 @@ CODE_80D873:
 	JSL CODE_B5B54A			;$80D873	\
 CODE_80D877:				;		 |
 	JSR CODE_80F35B			;$80D877	 |
-	JSR CODE_8088BA			;$80D87A	 |
+	JSR set_unused_oam_offscreen	;$80D87A	 |
 	JSR CODE_808C3D			;$80D87D	 |
 	JMP CODE_808CA2			;$80D880	/
 
@@ -9517,14 +9501,14 @@ CODE_80D886:
 	JSR CODE_808988			;$80D889	 |
 	BNE CODE_80D8B4			;$80D88C	 |
 	JSR CODE_80D4FA			;$80D88E	 |
-	JSL CODE_BBB5C4			;$80D891	 |
+	JSL sprite_loader		;$80D891	 |
 	JSL sprite_handler		;$80D895	 |
 	JSL CODE_B5E50D			;$80D899	 |
 	JSR CODE_80DF94			;$80D89D	 |
 	JSL CODE_B5B54A			;$80D8A0	 |
 	JSR CODE_80F35B			;$80D8A4	 |
 	JSL CODE_BEC9C0			;$80D8A7	 |
-	JSR CODE_8088BA			;$80D8AB	 |
+	JSR set_unused_oam_offscreen	;$80D8AB	 |
 	JSR CODE_808C3D			;$80D8AE	 |
 	JMP CODE_808CA2			;$80D8B1	/
 
@@ -9534,12 +9518,12 @@ CODE_80D8B4:
 CODE_80D8B7:
 	JSR CODE_808988			;$80D8B7	\
 	BNE CODE_80D8DB			;$80D8BA	 |
-	JSL CODE_BBB5C4			;$80D8BC	 |
+	JSL sprite_loader		;$80D8BC	 |
 	JSL sprite_handler		;$80D8C0	 |
 	JSL CODE_B5E50D			;$80D8C4	 |
 	JSL CODE_B5B9B0			;$80D8C8	 |
 	JSR CODE_80F35B			;$80D8CC	 |
-	JSR CODE_8088BA			;$80D8CF	 |
+	JSR set_unused_oam_offscreen	;$80D8CF	 |
 	JSR CODE_80DE01			;$80D8D2	 |
 	JSR CODE_808C3D			;$80D8D5	 |
 	JMP CODE_808CA2			;$80D8D8	/
@@ -9550,12 +9534,12 @@ CODE_80D8DB:
 CODE_80D8DE:
 	JSR CODE_808988			;$80D8DE	\
 	BNE CODE_80D8DB			;$80D8E1	 |
-	JSL CODE_BBB5C4			;$80D8E3	 |
+	JSL sprite_loader		;$80D8E3	 |
 	JSL sprite_handler		;$80D8E7	 |
 	JSL CODE_B5E50D			;$80D8EB	 |
 	JSL CODE_B5B317			;$80D8EF	 |
 	JSR CODE_80F35B			;$80D8F3	 |
-	JSR CODE_8088BA			;$80D8F6	 |
+	JSR set_unused_oam_offscreen	;$80D8F6	 |
 	JSR CODE_808C3D			;$80D8F9	 |
 	JMP CODE_808CA2			;$80D8FC	/
 
@@ -9565,7 +9549,7 @@ CODE_80D902:
 	JSR CODE_80E64E			;$80D902	\
 	JSR CODE_808988			;$80D905	 |
 	BNE CODE_80D93E			;$80D908	 |
-	JSL CODE_BBB5C4			;$80D90A	 |
+	JSL sprite_loader		;$80D90A	 |
 	JSR CODE_80D941			;$80D90E	 |
 	JSL CODE_B5E50D			;$80D911	 |
 	JSL sprite_handler		;$80D915	 |
@@ -9581,7 +9565,7 @@ CODE_80D902:
 CODE_80D92E:				;		 |
 	JSL CODE_B5B317			;$80D92E	 |
 	JSR CODE_80F35B			;$80D932	 |
-	JSR CODE_8088BA			;$80D935	 |
+	JSR set_unused_oam_offscreen	;$80D935	 |
 	JSR CODE_808C3D			;$80D938	 |
 	JMP CODE_808CA2			;$80D93B	/
 
@@ -9705,12 +9689,12 @@ CODE_80DA0B:				;		 |
 CODE_80DA21:
 	JSR CODE_808988			;$80DA21	\
 	BNE CODE_80DA42			;$80DA24	 |
-	JSL CODE_BBB5C4			;$80DA26	 |
+	JSL sprite_loader		;$80DA26	 |
 	JSL sprite_handler		;$80DA2A	 |
 	JSL CODE_B5E50D			;$80DA2E	 |
 	JSL CODE_B5B9B0			;$80DA32	 |
 	JSR CODE_80F35B			;$80DA36	 |
-	JSR CODE_8088BA			;$80DA39	 |
+	JSR set_unused_oam_offscreen	;$80DA39	 |
 	JSR CODE_808C3D			;$80DA3C	 |
 	JMP CODE_808CA2			;$80DA3F	/
 
@@ -9722,13 +9706,13 @@ CODE_80DA45:
 	JSR CODE_808988			;$80DA48	 |
 	BNE CODE_80DA73			;$80DA4B	 |
 	JSR CODE_80D4FA			;$80DA4D	 |
-	JSL CODE_BBB5C4			;$80DA50	 |
+	JSL sprite_loader		;$80DA50	 |
 	JSL sprite_handler		;$80DA54	 |
 	JSL CODE_B5E50D			;$80DA58	 |
 	JSL CODE_B5B9A5			;$80DA5C	 |
 	JSR CODE_80F35B			;$80DA60	 |
 	JSL CODE_BEC9C0			;$80DA63	 |
-	JSR CODE_8088BA			;$80DA67	 |
+	JSR set_unused_oam_offscreen	;$80DA67	 |
 	JSR CODE_80D4B7			;$80DA6A	 |
 	JSR CODE_808C3D			;$80DA6D	 |
 	JMP CODE_808CA2			;$80DA70	/
@@ -9739,12 +9723,12 @@ CODE_80DA73:
 CODE_80DA76:
 	JSR CODE_808988			;$80DA76	\
 	BNE CODE_80DA97			;$80DA79	 |
-	JSL CODE_BBB5C4			;$80DA7B	 |
+	JSL sprite_loader		;$80DA7B	 |
 	JSL sprite_handler		;$80DA7F	 |
 	JSL CODE_B5E50D			;$80DA83	 |
 	JSL CODE_B5B317			;$80DA87	 |
 	JSR CODE_80F35B			;$80DA8B	 |
-	JSR CODE_8088BA			;$80DA8E	 |
+	JSR set_unused_oam_offscreen	;$80DA8E	 |
 	JSR CODE_808C3D			;$80DA91	 |
 	JMP CODE_808CA2			;$80DA94	/
 
@@ -9754,14 +9738,14 @@ CODE_80DA97:
 CODE_80DA9A:
 	JSR CODE_808988			;$80DA9A	\
 	BNE CODE_80DAC8			;$80DA9D	 |
-	JSL CODE_BBB5C4			;$80DA9F	 |
+	JSL sprite_loader		;$80DA9F	 |
 	JSL sprite_handler		;$80DAA3	 |
 	JSL CODE_B5E50D			;$80DAA7	 |
 	JSR CODE_80E52B			;$80DAAB	 |
 	JSL CODE_B5B9BB			;$80DAAE	 |
 	JSL CODE_B5B9B0			;$80DAB2	 |
 	JSR CODE_80F35B			;$80DAB6	 |
-	JSR CODE_8088BA			;$80DAB9	 |
+	JSR set_unused_oam_offscreen	;$80DAB9	 |
 	JSR CODE_80E580			;$80DABC	 |
 	JSR CODE_80DD67			;$80DABF	 |
 	JSR CODE_808C3D			;$80DAC2	 |
@@ -9775,7 +9759,7 @@ CODE_80DACB:
 	JSR CODE_808988			;$80DACE	 |
 	BNE CODE_80DAC8			;$80DAD1	 |
 	JSR CODE_80D4FA			;$80DAD3	 |
-	JSL CODE_BBB5C4			;$80DAD6	 |
+	JSL sprite_loader		;$80DAD6	 |
 	JSL sprite_handler		;$80DADA	 |
 	JSL CODE_B5E50D			;$80DADE	 |
 	LDA $0AB4			;$80DAE2	 |
@@ -9790,7 +9774,7 @@ CODE_80DAF3:
 CODE_80DAF7:				;		 |
 	JSR CODE_80F35B			;$80DAF7	 |
 	JSL CODE_BEC9C0			;$80DAFA	 |
-	JSR CODE_8088BA			;$80DAFE	 |
+	JSR set_unused_oam_offscreen	;$80DAFE	 |
 	LDA $0915			;$80DB01	 |
 	BNE CODE_80DB09			;$80DB04	 |
 	JSR CODE_80D4B7			;$80DB06	 |
@@ -9803,12 +9787,12 @@ CODE_80DB09:				;		 |
 CODE_80DB12:
 	JSR CODE_808988			;$80DB12	\
 	BNE CODE_80DB33			;$80DB15	 |
-	JSL CODE_BBB5C4			;$80DB17	 |
+	JSL sprite_loader		;$80DB17	 |
 	JSL sprite_handler		;$80DB1B	 |
 	JSL CODE_B5E50D			;$80DB1F	 |
 	JSL CODE_B5B9B0			;$80DB23	 |
 	JSR CODE_80F35B			;$80DB27	 |
-	JSR CODE_8088BA			;$80DB2A	 |
+	JSR set_unused_oam_offscreen	;$80DB2A	 |
 	JSR CODE_808C3D			;$80DB2D	 |
 	JMP CODE_808CA2			;$80DB30	/
 
@@ -9818,7 +9802,7 @@ CODE_80DB33:
 CODE_80DB36:
 	JSR CODE_808988			;$80DB36	\
 	BNE CODE_80DAC8			;$80DB39	 |
-	JSL CODE_BBB5C4			;$80DB3B	 |
+	JSL sprite_loader		;$80DB3B	 |
 	JSL sprite_handler		;$80DB3F	 |
 	JSL CODE_B5E50D			;$80DB43	 |
 	LDA $0AB4			;$80DB47	 |
@@ -9832,7 +9816,7 @@ CODE_80DB58:
 	JSL CODE_B5B317			;$80DB58	\
 CODE_80DB5C:				;		 |
 	JSR CODE_80F35B			;$80DB5C	 |
-	JSR CODE_8088BA			;$80DB5F	 |
+	JSR set_unused_oam_offscreen	;$80DB5F	 |
 	JSR CODE_808C3D			;$80DB62	 |
 	JMP CODE_808CA2			;$80DB65	/
 
@@ -9843,13 +9827,13 @@ CODE_80DB6B:
 	JSR CODE_808988			;$80DB6E	 |
 	BNE CODE_80DB96			;$80DB71	 |
 	JSR CODE_80D4FA			;$80DB73	 |
-	JSL CODE_BBB5C4			;$80DB76	 |
+	JSL sprite_loader		;$80DB76	 |
 	JSL sprite_handler		;$80DB7A	 |
 	JSL CODE_B5E50D			;$80DB7E	 |
 	JSL CODE_B5B317			;$80DB82	 |
 	JSR CODE_80F35B			;$80DB86	 |
 	JSL CODE_BEC9C0			;$80DB89	 |
-	JSR CODE_8088BA			;$80DB8D	 |
+	JSR set_unused_oam_offscreen	;$80DB8D	 |
 	JSR CODE_808C3D			;$80DB90	 |
 	JMP CODE_808CA2			;$80DB93	/
 
@@ -9859,7 +9843,7 @@ CODE_80DB96:
 CODE_80DB99:
 	JSR CODE_808988			;$80DB99	\
 	BNE CODE_80DBCB			;$80DB9C	 |
-	JSL CODE_BBB5C4			;$80DB9E	 |
+	JSL sprite_loader		;$80DB9E	 |
 	JSR CODE_80D7E6			;$80DBA2	 |
 	JSL sprite_handler		;$80DBA5	 |
 	JSL CODE_B5E50D			;$80DBA9	 |
@@ -9873,7 +9857,7 @@ CODE_80DBBB:
 	JSL CODE_B5B54A			;$80DBBB	\
 CODE_80DBBF:				;		 |
 	JSR CODE_80F35B			;$80DBBF	 |
-	JSR CODE_8088BA			;$80DBC2	 |
+	JSR set_unused_oam_offscreen	;$80DBC2	 |
 	JSR CODE_808C3D			;$80DBC5	 |
 	JMP CODE_808CA2			;$80DBC8	/
 
@@ -9883,12 +9867,12 @@ CODE_80DBCB:
 CODE_80DBCE:
 	JSR CODE_808988			;$80DBCE	\
 	BNE CODE_80DBEF			;$80DBD1	 |
-	JSL CODE_BBB5C4			;$80DBD3	 |
+	JSL sprite_loader		;$80DBD3	 |
 	JSL sprite_handler		;$80DBD7	 |
 	JSL CODE_B5E50D			;$80DBDB	 |
 	JSL CODE_B5B9A5			;$80DBDF	 |
 	JSR CODE_80F35B			;$80DBE3	 |
-	JSR CODE_8088BA			;$80DBE6	 |
+	JSR set_unused_oam_offscreen	;$80DBE6	 |
 	JSR CODE_808C3D			;$80DBE9	 |
 	JMP CODE_808CA2			;$80DBEC	/
 
@@ -10082,13 +10066,13 @@ CODE_80DD32:
 CODE_80DD3C:
 	JSR CODE_808988			;$80DD3C	\
 	BNE CODE_80DD60			;$80DD3F	 |
-	JSL CODE_BBB5C4			;$80DD41	 |
+	JSL sprite_loader		;$80DD41	 |
 	JSL sprite_handler		;$80DD45	 |
 	JSL CODE_B5E50D			;$80DD49	 |
 	JSR CODE_80DBF2			;$80DD4D	 |
 	JSL CODE_B5B9B0			;$80DD50	 |
 	JSR CODE_80F35B			;$80DD54	 |
-	JSR CODE_8088BA			;$80DD57	 |
+	JSR set_unused_oam_offscreen	;$80DD57	 |
 	JSR CODE_808C3D			;$80DD5A	 |
 	JMP CODE_808CA2			;$80DD5D	/
 
@@ -12842,7 +12826,7 @@ CODE_80F567:
 	JSL sprite_handler		;$80F567	\
 	JSL CODE_B5A8DA			;$80F56B	 |
 	JSR CODE_80F946			;$80F56F	 |
-	JSR CODE_8088BA			;$80F572	 |
+	JSR set_unused_oam_offscreen	;$80F572	 |
 	JSR CODE_808C3D			;$80F575	 |
 	JML CODE_808CA2			;$80F578	/
 
@@ -13671,6 +13655,9 @@ else
 	db $13, $11, $EF, $B7, $56, $3F, $2C, $01
 	db $05, $E3, $67, $AB, $09, $37
 endif
+
+warnpc $80FFB0
+org $80FFB0
 
 DATA_80FFB0:
 	db $30, $31

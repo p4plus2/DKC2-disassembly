@@ -449,6 +449,8 @@ local NMI = 0x0020
 local game_loop = 0x0024
 local game_mode_NMI = 0x0094
 local game_mode = 0x0096
+local game_mode_nmi_table = 0x80B6C1
+local game_mode_table = 0x80D411
 
 local frame_counter = 0x002A
 local active_frame_counter = 0x002C
@@ -457,7 +459,9 @@ local function display_engine()
 	upper_left:append_line("NMI: %04X", read_word(NMI))
 	upper_left:append_line("Game loop: %04X", read_word(game_loop))
 	upper_left:append_line("Game mode NMI: %04X", read_word(game_mode_NMI))
+	upper_left:append_line("Game mode NMI pointer: %04X\n", read_rom_word(game_mode_nmi_table + read_word(game_mode_NMI)*2))
 	upper_left:append_line("Game mode: %04X", read_word(game_mode))
+	upper_left:append_line("Game mode pointer: %04X\n", read_rom_word(game_mode_table + read_word(game_mode)*2))
 	upper_left:append_line("Frame counter: %04X", read_word(frame_counter))
 	upper_left:append_line("Active frame counter: %04X", read_word(active_frame_counter))
 end
