@@ -14,3 +14,5 @@ crashsave*
 DMA_log*
 *.log
 .gradle
+*.avi
+*.sox
