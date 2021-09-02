@@ -12158,15 +12158,15 @@ CODE_B8D979:
 CODE_B8D981:				;		 |
 	AND #$00FF			;$B8D981	 |
 	XBA				;$B8D984	 |
-	STA $4204			;$B8D985	 |
+	STA CPU.dividen			;$B8D985	 |
 	SEP #$20			;$B8D988	 |
 	LDA $3A				;$B8D98A	 |
-	STA $4206			;$B8D98C	 |
+	STA CPU.divisor			;$B8D98C	 |
 	REP #$20			;$B8D98F	 |
-	LDA $4214			;$B8D991	 |
-	LDA $4214			;$B8D994	 |
-	LDA $4214			;$B8D997	 |
-	LDA $4214			;$B8D99A	 |
+	LDA CPU.divide_result		;$B8D991	 |
+	LDA CPU.divide_result		;$B8D994	 |
+	LDA CPU.divide_result		;$B8D997	 |
+	LDA CPU.divide_result		;$B8D99A	 |
 	RTS				;$B8D99D	/
 
 CODE_B8D99E:

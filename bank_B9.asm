@@ -3849,23 +3849,23 @@ CODE_B9E825:
 	EOR #$FFFF			;$B9E830	 |
 	INC A				;$B9E833	 |
 	ASL A				;$B9E834	 |
-	STA $4204			;$B9E835	 |
+	STA CPU.dividen			;$B9E835	 |
 	LDA $22,x			;$B9E838	 |
 	SEP #$20			;$B9E83A	 |
-	STA $4206			;$B9E83C	 |
+	STA CPU.divisor			;$B9E83C	 |
 	REP #$20			;$B9E83F	 |
 	LDA $50,x			;$B9E841	 |
 	STA $26,x			;$B9E843	 |
 	LDA #$3C00			;$B9E845	 |
-	STA $4204			;$B9E848	 |
-	LDA $4214			;$B9E84B	 |
-	STA $4206			;$B9E84E	 |
+	STA CPU.dividen			;$B9E848	 |
+	LDA CPU.divide_result		;$B9E84B	 |
+	STA CPU.divisor			;$B9E84E	 |
 	LDA $2A,x			;$B9E851	 |
 	STA $24,x			;$B9E853	 |
 	NOP				;$B9E855	 |
 	NOP				;$B9E856	 |
 	NOP				;$B9E857	 |
-	LDA $4214			;$B9E858	 |
+	LDA CPU.divide_result		;$B9E858	 |
 	STA $3A,x			;$B9E85B	 |
 	INC $2F,x			;$B9E85D	 |
 	RTS				;$B9E85F	/
@@ -3905,7 +3905,7 @@ CODE_B9E897:				;		 |
 	RTS				;$B9E897	/
 
 CODE_B9E898:
-	STA $4202			;$B9E898	\
+	STA CPU.multiply_A		;$B9E898	\
 	LDA $52,x			;$B9E89B	 |
 	AND #$00FF			;$B9E89D	 |
 	CMP #$000A			;$B9E8A0	 |
@@ -3920,12 +3920,12 @@ CODE_B9E8B2:				;		 |
 	ASL A				;$B9E8B2	 |
 	ASL A				;$B9E8B3	 |
 	XBA				;$B9E8B4	 |
-	STA $4203			;$B9E8B5	 |
+	STA CPU.multiply_B		;$B9E8B5	 |
 	LDA $46,x			;$B9E8B8	 |
 	CLC				;$B9E8BA	 |
 	ADC #$4000			;$B9E8BB	 |
 	STA $5E				;$B9E8BE	 |
-	LDA $4216			;$B9E8C0	 |
+	LDA CPU.multiply_result		;$B9E8C0	 |
 	XBA				;$B9E8C3	 |
 	LSR A				;$B9E8C4	 |
 	LSR A				;$B9E8C5	 |

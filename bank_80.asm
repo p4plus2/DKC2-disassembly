@@ -144,12 +144,12 @@ display_error_message:
 RESET_start:
 	SEI				;$8083F7	\ Disable interrupts
 	LDA #$80			;$8083F8	 |\ Enable F-Blank
-	STA $2100			;$8083FA	 |/
+	STA PPU.screen			;$8083FA	 |/
 	LDA #$01			;$8083FD	 |\ Enable autojoy and fastROM
-	STA $4200			;$8083FF	 | |
-	STA $420D			;$808402	 |/
+	STA CPU.enable_interrupts	;$8083FF	 | |
+	STA CPU.rom_speed		;$808402	 |/
 	DEC A				;$808405	 |\ Disable HDMA
-	STA $420C			;$808406	 |/
+	STA CPU.enable_hdma		;$808406	 |/
 	CLC				;$808409	 |\ Disable emulation mode
 	XCE				;$80840A	 |/
 	REP #$30			;$80840B	 |\ Anti piracy: Ensure dp is zero
@@ -185,7 +185,7 @@ RESET_start:
 	DEC A				;$808447	 |\ Restore byte modified from SRAM test
 	STA $B06000			;$808448	 |/
 	LDY #$003D			;$80844C	 | Load wrong console message
-	LDA $213F			;$80844F	 |\ Verify the console is NTSC
+	LDA PPU.status_ppu2		;$80844F	 |\ Verify the console is NTSC
 	AND #$0010			;$808452	 | |
 	BNE .prepare_message		;$808455	 |/ Display wrong console message
 	BRA .final_piracy_test		;$808457	/ Do the final piracy test
@@ -300,36 +300,36 @@ init_registers:    			;		 |
 	CPX #$0B			;$80850D	 | |
 	BNE .clear_CPU			;$80850F	 |/
 	LDA #$8F			;$808511	 |\ Enable F-Blank with full brightness
-	STA $2100			;$808513	 |/
+	STA PPU.screen			;$808513	 |/
 	LDA #$80			;$808516	 |\
-	STA $2115			;$808518	 | | Increment VRAM after high byte write
-	STA $211A			;$80851B	 |/ Use large mode 7 tilemap bounds
+	STA PPU.vram_control		;$808518	 | | Increment VRAM after high byte write
+	STA PPU.set_mode_7			;$80851B	 |/ Use large mode 7 tilemap bounds
 	LDA #$01			;$80851E	 |\ Enable fastROM
-	STA $420D			;$808520	 |/
-	STZ $2131			;$808523	 | Disable color math
-	STZ $2133			;$808526	 | Reset screen mode
-	STZ $4200			;$808529	 | Disable interrupts and autojoy
+	STA CPU.rom_speed		;$808520	 |/
+	STZ PPU.set_color_math		;$808523	 | Disable color math
+	STZ PPU.video_mode		;$808526	 | Reset screen mode
+	STZ CPU.enable_interrupts	;$808529	 | Disable interrupts and autojoy
 	LDA #$FF			;$80852C	 |\ Initalize outport (unused)
-	STA $4201			;$80852E	 |/
+	STA CPU.output_port		;$80852E	 |/
 	LDA #$E0			;$808531	 |\ Set fixed color
-	STA $2132			;$808533	 |/
+	STA PPU.fixed_color		;$808533	 |/
 	LDA #$30			;$808536	 |\ Clear color math settings
-	STA $2130			;$808538	 |/
+	STA PPU.color_addition_logic	;$808538	 |/
 	LDA #$00			;$80853B	 |\ Disable mosaic
-	STA $2106			;$80853D	 |/
-	STZ $210D			;$808540	 |\ Clear layer 1-3 horizontal scroll (Layer 1)
-	STZ $210D			;$808543	 | |
-	STZ $210F			;$808546	 | | Layer 2
-	STZ $210F			;$808549	 | |
-	STZ $2111			;$80854C	 | | Layer 3
-	STZ $2111			;$80854F	 |/
+	STA PPU.mosaic			;$80853D	 |/
+	STZ PPU.layer_0_scroll_x	;$808540	 |\ Clear layer 1-3 horizontal scroll (Layer 1)
+	STZ PPU.layer_0_scroll_x	;$808543	 | |
+	STZ PPU.layer_1_scroll_x	;$808546	 | | Layer 2
+	STZ PPU.layer_1_scroll_x	;$808549	 | |
+	STZ PPU.layer_2_scroll_x	;$80854C	 | | Layer 3
+	STZ PPU.layer_2_scroll_x	;$80854F	 |/
 	LDA #$FF			;$808552	 |\ Set layer 1-3 vertical scroll to $FFFF
-	STA $210E			;$808554	 | | Layer 1
-	STA $210E			;$808557	 | |
-	STA $2110			;$80855A	 | | Layer 2
-	STA $2110			;$80855D	 | |
-	STA $2112			;$808560	 | | Layer 3
-	STA $2112			;$808563	 |/
+	STA PPU.layer_0_scroll_y	;$808554	 | | Layer 1
+	STA PPU.layer_0_scroll_y	;$808557	 | |
+	STA PPU.layer_1_scroll_y	;$80855A	 | | Layer 2
+	STA PPU.layer_1_scroll_y	;$80855D	 | |
+	STA PPU.layer_2_scroll_y	;$808560	 | | Layer 3
+	STA PPU.layer_2_scroll_y	;$808563	 |/
 	REP #$30			;$808566	 | Restore to 16 bit access...
 	SEP #$20			;$808568	 | ...Just to make A 8 bit again
 	LDX #$000A			;$80856A	 | Load up the number of H/DMA bytes to clear
@@ -355,7 +355,7 @@ VRAM_zero_fill:
 	dw $0000			;$80858F	> Used for VRAM fill byte
 
 clear_VRAM:
-	STZ $2116			;$808591	\ Initialize VRAM to zeros
+	STZ PPU.vram_address		;$808591	\ Initialize VRAM to zeros
 	LDA #VRAM_zero_fill		;$808594	 |\ Set DMA source word
 	STA $4302			;$808597	 |/
 	STA $4308			;$80859A	 | Set HDMA word (not used.)
@@ -366,7 +366,7 @@ clear_VRAM:
 	LDA #VRAM_zero_fill>>16		;$8085A8	 |\ Set DMA source bank
 	STA $4304			;$8085AA	 |/
 	LDA #$01			;$8085AD	 |\
-	STA $420B			;$8085AF	 |/ Enable channel 1 DMA
+	STA CPU.enable_dma		;$8085AF	 |/ Enable channel 1 DMA
 	REP #$20			;$8085B2	 |
 	RTS				;$8085B4	/
 
@@ -405,7 +405,7 @@ CODE_8085EF:
 	JSL disable_screen		;$8085F6	 |
 	LDA #CODE_80B3D7		;$8085FA	 |
 	STA $24				;$8085FD	 |
-	STZ $2102			;$8085FF	 |
+	STZ PPU.oam_address		;$8085FF	 |
 	LDA #CODE_808608		;$808602	 |
 	JMP CODE_808C82			;$808605	/
 
@@ -425,7 +425,7 @@ CODE_808616:
 	STA $0985			;$80861D	 |
 	SEP #$20			;$808620	 |
 	LDA $0512			;$808622	 |
-	STA $2100			;$808625	 |
+	STA PPU.screen			;$808625	 |
 	REP #$20			;$808628	 |
 CODE_80862A:				;		 |
 	PHB				;$80862A	 |
@@ -449,10 +449,10 @@ CODE_808640:				;		 |
 	LDA #CODE_808608		;$808640	 |
 	STA $20				;$808643	 |
 	SEP #$20			;$808645	 |
-	LDA $4210			;$808647	 |
+	LDA CPU.nmi_flag		;$808647	 |
 	LDA #$81			;$80864A	 |
-	STA $4200			;$80864C	 |
-	STZ $4016			;$80864F	 |
+	STA CPU.enable_interrupts	;$80864C	 |
+	STZ joypad.port_0		;$80864F	 |
 CODE_808652:				;		 |
 	WAI				;$808652	 |
 	BRA CODE_808652			;$808653	/
@@ -484,8 +484,8 @@ CODE_808684:
 	JSL disable_screen		;$808684	 |
 	SEP #$20			;$808688	 |
 	LDA #$FF			;$80868A	 |
-	STA $210E			;$80868C	 |
-	STA $210E			;$80868F	 |
+	STA PPU.layer_0_scroll_y	;$80868C	 |
+	STA PPU.layer_0_scroll_y	;$80868F	 |
 	REP #$20			;$808692	 |
 	LDA #DATA_FD0FF0		;$808694	 |
 	LDY #$0000			;$808697	 |
@@ -496,32 +496,32 @@ CODE_808684:
 	LDA #$0007			;$8086A8	 |
 	JSL set_PPU_registers_wrapper	;$8086AB	 |
 	LDA #$7000			;$8086AF	 |
-	STA $2116			;$8086B2	 |
+	STA PPU.vram_address		;$8086B2	 |
 	LDY #$0064			;$8086B5	 |
 	LDX #$0000			;$8086B8	 |
 CODE_8086BB:				;		 |
 	LDA.l DATA_ED57EF,x		;$8086BB	 |
-	STA $2118			;$8086BF	 |
+	STA PPU.vram_write		;$8086BF	 |
 	INX				;$8086C2	 |
 	INX				;$8086C3	 |
 	TXA				;$8086C4	 |
 	AND #$000F			;$8086C5	 |
 	BNE CODE_8086BB			;$8086C8	 |
-	STZ $2118			;$8086CA	 |
-	STZ $2118			;$8086CD	 |
-	STZ $2118			;$8086D0	 |
-	STZ $2118			;$8086D3	 |
-	STZ $2118			;$8086D6	 |
-	STZ $2118			;$8086D9	 |
-	STZ $2118			;$8086DC	 |
-	STZ $2118			;$8086DF	 |
+	STZ PPU.vram_write		;$8086CA	 |
+	STZ PPU.vram_write		;$8086CD	 |
+	STZ PPU.vram_write		;$8086D0	 |
+	STZ PPU.vram_write		;$8086D3	 |
+	STZ PPU.vram_write		;$8086D6	 |
+	STZ PPU.vram_write		;$8086D9	 |
+	STZ PPU.vram_write		;$8086DC	 |
+	STZ PPU.vram_write		;$8086DF	 |
 	DEY				;$8086E2	 |
 	BNE CODE_8086BB			;$8086E3	 |
 	LDA #$0001			;$8086E5	 |
 	STA $059B			;$8086E8	 |
 	SEP #$20			;$8086EB	 |
 	LDA #$0F			;$8086ED	 |
-	STA $2100			;$8086EF	 |
+	STA PPU.screen			;$8086EF	 |
 	REP #$20			;$8086F2	 |
 CODE_8086F4:				;		 |
 	BRA CODE_8086F4			;$8086F4	/
@@ -670,11 +670,11 @@ CODE_808819:
 	TAX				;$80881C	 |
 	JSR (DATA_80B6C1,x)		;$80881D	 |
 	SEP #$20			;$808820	 |
-	LDA $4212			;$808822	 |
+	LDA CPU.ppu_status		;$808822	 |
 	REP #$20			;$808825	 |
 	BMI CODE_808830			;$808827	 |
 	LDA #$0005			;$808829	 |
-	JSL CODE_808C13			;$80882C	 |
+	JSL throw_exception		;$80882C	 |
 CODE_808830:				;		 |
 	LDA $96				;$808830	 |
 	ASL A				;$808832	 |
@@ -828,7 +828,7 @@ DMA_to_VRAM:
 	SEP #$30			;$80896F	 |
 	STX $4304			;$808971	 | Store the DMA source bank
 	LDA #$01			;$808974	 |\ Enable the DMA
-	STA $420B			;$808976	 |/
+	STA CPU.enable_dma		;$808976	 |/
 	REP #$30			;$808979	 |
 	RTS				;$80897B	/
 
@@ -848,7 +848,7 @@ CODE_808988:
 	SEP #$20			;$80898A	 |
 	LDA #$01			;$80898C	 |
 CODE_80898E:				;		 |
-	BIT $4212			;$80898E	 |
+	BIT CPU.ppu_status		;$80898E	 |
 	BNE CODE_80898E			;$808991	 |
 	REP #$20			;$808993	 |
 	LDA $05FB			;$808995	 |
@@ -874,20 +874,20 @@ CODE_8089C2:
 	SBC $0925			;$8089C3	 |
 	STA $0927			;$8089C6	 |
 CODE_8089C9:				;		 |
-	LDA $4218			;$8089C9	 |
+	LDA CPU.port_0_data_1		;$8089C9	 |
 	TAX				;$8089CC	 |
 	EOR $0502			;$8089CD	 |
-	AND $4218			;$8089D0	 |
+	AND CPU.port_0_data_1		;$8089D0	 |
 	STA $0506			;$8089D3	 |
 	TXA				;$8089D6	 |
 	EOR $0502			;$8089D7	 |
 	AND $0502			;$8089DA	 |
 	STA $050A			;$8089DD	 |
 	STX $0502			;$8089E0	 |
-	LDA $421A			;$8089E3	 |
+	LDA CPU.port_1_data_1		;$8089E3	 |
 	TAX				;$8089E6	 |
 	EOR $0504			;$8089E7	 |
-	AND $421A			;$8089EA	 |
+	AND CPU.port_1_data_1		;$8089EA	 |
 	STA $0508			;$8089ED	 |
 	TXA				;$8089F0	 |
 	EOR $0504			;$8089F1	 |
@@ -1088,7 +1088,7 @@ CODE_808BB0:
 	SEP #$20			;$808BBA	 |
 	LDY #$0010			;$808BBC	 |
 CODE_808BBF:				;		 |
-	LDA $4016			;$808BBF	 |
+	LDA joypad.port_0		;$808BBF	 |
 	DEY				;$808BC2	 |
 	BNE CODE_808BBF			;$808BC3	 |
 	REP #$20			;$808BC5	 |
@@ -1098,7 +1098,7 @@ CODE_808BBF:				;		 |
 
 CODE_808BCF:
 	SEP #$20			;$808BCF	\
-	LDA $4016			;$808BD1	 |
+	LDA joypad.port_0		;$808BD1	 |
 	REP #$20			;$808BD4	 |
 	BIT #$0001			;$808BD6	 |
 	BNE CODE_808BE1			;$808BD9	 |
@@ -1111,7 +1111,7 @@ CODE_808BE1:				;		 |
 	SEP #$20			;$808BE9	 |
 	LDY #$0010			;$808BEB	 |
 CODE_808BEE:				;		 |
-	LDA $4017			;$808BEE	 |
+	LDA joypad.port_1		;$808BEE	 |
 	DEY				;$808BF1	 |
 	BNE CODE_808BEE			;$808BF2	 |
 	REP #$20			;$808BF4	 |
@@ -1121,7 +1121,7 @@ CODE_808BEE:				;		 |
 
 CODE_808BFE:
 	SEP #$20			;$808BFE	\
-	LDA $4017			;$808C00	 |
+	LDA joypad.port_1		;$808C00	 |
 	REP #$20			;$808C03	 |
 	BIT #$0001			;$808C05	 |
 	BNE CODE_808C12			;$808C08	 |
@@ -1132,7 +1132,7 @@ CODE_808C10:				;		 |
 CODE_808C12:				;		 |
 	RTS				;$808C12	/
 
-CODE_808C13:
+throw_exception:			;
 	RTL				;$808C13	/
 
 	PHA				;$808C14	 |
@@ -1203,15 +1203,15 @@ CODE_808C82:				;		 |
 	STA $20				;$808C82	 |
 CODE_808C84:				;		 |
 	SEP #$20			;$808C84	 |
-	LDA $4211			;$808C86	 |
-	LDA $4210			;$808C89	 |
+	LDA CPU.irq_flag		;$808C86	 |
+	LDA CPU.nmi_flag		;$808C89	 |
 CODE_808C8C:				;		 |
-	LDA $4210			;$808C8C	 |
+	LDA CPU.nmi_flag		;$808C8C	 |
 	AND #$80			;$808C8F	 |
 	BNE CODE_808C8C			;$808C91	 |
 	LDA #$81			;$808C93	 |
-	STA $4200			;$808C95	 |
-	STZ $4016			;$808C98	 |
+	STA CPU.enable_interrupts	;$808C95	 |
+	STZ joypad.port_0		;$808C98	 |
 CODE_808C9B:				;		 |
 	WAI				;$808C9B	 |
 	BRA CODE_808C9B			;$808C9C	/
@@ -1620,7 +1620,7 @@ CODE_808FDC:
 	BMI CODE_808FFA			;$808FF1	 |
 CODE_808FF3:				;		 |
 	LDA #$000F			;$808FF3	 |
-	JSL CODE_808C13			;$808FF6	 |
+	JSL throw_exception		;$808FF6	 |
 CODE_808FFA:				;		 |
 	RTS				;$808FFA	/
 
@@ -1628,7 +1628,7 @@ CODE_808FFB:
 	RTS				;$808FFB	/
 
 	LDX $05FD			;$808FFC	 |
-	LDA $4218			;$808FFF	 |
+	LDA CPU.port_0_data_1		;$808FFF	 |
 	CMP.l DATA_FE9388,x		;$809002	 |
 	BNE CODE_809012			;$809006	 |
 	LDA.l DATA_FE938A,x		;$809008	 |
@@ -1654,10 +1654,10 @@ CODE_809025:
 	PHA				;$80902A	 |
 	LDA $0506			;$80902B	 |
 	PHA				;$80902E	 |
-	LDA $4218			;$80902F	 |
+	LDA CPU.port_0_data_1		;$80902F	 |
 	TAX				;$809032	 |
 	EOR $0502			;$809033	 |
-	AND $4218			;$809036	 |
+	AND CPU.port_0_data_1		;$809036	 |
 	STA $0506			;$809039	 |
 	TXA				;$80903C	 |
 	EOR $0502			;$80903D	 |
@@ -1755,35 +1755,35 @@ init_rareware_logo:
 	JSL set_song_simple_entry	;$8090F7	 |/
 	SEP #$20			;$8090FB	 |
 	LDA #$01			;$8090FD	 |\ Enable auto polling
-	STA $4200			;$8090FF	 |/
+	STA CPU.enable_interrupts	;$8090FF	 |/
 	LDA #$8F			;$809102	 |\ Enable F-Blank
-	STA $2100			;$809104	 |/
-	STZ $2101			;$809107	 | User 8x8 sprites with sprite tile data at $0000
-	STZ $2133			;$80910A	 | Turn off special video modes
+	STA PPU.screen			;$809104	 |/
+	STZ PPU.sprite_select		;$809107	 | User 8x8 sprites with sprite tile data at $0000
+	STZ PPU.video_mode		;$80910A	 | Turn off special video modes
 	REP #$30			;$80910D	 |
 	LDA #$0003			;$80910F	 |\ Set background mode to 3
-	STA $2105			;$809112	 |/
+	STA PPU.layer_mode		;$809112	 |/
 	LDA #$0102			;$809115	 |\ Set layer 2 on the main screen, layer 1 on the subscreen
-	STA $212C			;$809118	 |/
+	STA PPU.screens			;$809118	 |/
 	LDA #$0202			;$80911B	 |\ Enable color math on layer 2, add subscreen to mainscreen
-	STA $2130			;$80911E	 |/
+	STA PPU.color_addition_logic	;$80911E	 |/
 	LDA #$0364			;$809121	 |\ Set layer 1,2,3,4 tile data address
-	STA $210B			;$809124	 |/ Addresses: $8000, $C000, $6000, $0000
+	STA PPU.layer_all_tiledata_base	;$809124	 |/ Addresses: $8000, $C000, $6000, $0000
 	LDA #$787C			;$809127	 |\ Set layer 1 and 2 tile map address
-	STA $2107			;$80912A	 |/ Addresses: $F800, $F000
+	STA PPU.layer_0_1_tilemap_base	;$80912A	 |/ Addresses: $F800, $F000
 	LDA #$0070			;$80912D	 |\ Set layer 1 and 2 tile map address
-	STA $2109			;$809130	 |/ Addresses: $E000, $0000
-	STZ $2116			;$809133	 | Zero VRAM address
+	STA PPU.layer_2_3_tilemap_base	;$809130	 |/ Addresses: $E000, $0000
+	STZ PPU.vram_address		;$809133	 | Zero VRAM address
 	LDX #$4000			;$809136	 | Load number of VRAM words to clear (minus 1...)
 .clear_VRAM				;		 |
-	STZ $2118			;$809139	 |\ Clear VRAM byte
+	STZ PPU.vram_write		;$809139	 |\ Clear VRAM byte
 	DEX				;$80913C	 | | Decrement counter
 	BNE .clear_VRAM			;$80913D	 |/ Loop until done
 	LDX #DATA_FA4C3E		;$80913F	 |\ Decompress mode 7 tile data to $7F0000
 	LDY.w #DATA_FA4C3E>>16		;$809142	 | |
 	LDA #$0000			;$809145	 | |
 	JSL decompress_data		;$809148	 |/
-	STZ $2116			;$80914C	 |\ Zero VRAM address and reset index for upload.
+	STZ PPU.vram_address		;$80914C	 |\ Zero VRAM address and reset index for upload.
 	SEP #$20			;$80914F	 | |
 	LDX #$0000			;$809151	 |/
 .mode_7_tile_data_upload		;		 |\
@@ -1795,7 +1795,7 @@ init_rareware_logo:
 	LSR A				;$809159	 | | |
 	LSR A				;$80915A	 | |/
 	LDA.l $7F0000,x			;$80915B	 | |\ Copy byte to VRAM
-	STA $2119			;$80915F	 | |/
+	STA PPU.vram_write_high		;$80915F	 | |/
 	INX				;$809162	 | | Increment byte counter
 	CPX #$3400			;$809163	 | | Check if we've uploaded $3400 bytes
 	BNE .mode_7_tile_data_upload	;$809166	 |/ Branch until we have
@@ -1810,14 +1810,14 @@ init_rareware_logo:
 	STA $7A				;$80917D	 |/
 	SEP #$20			;$80917F	 |
 	LDA #$05			;$809181	 |\ Set mode 7 X center to $0105
-	STA $211F			;$809183	 | |
+	STA PPU.mode_7_center_x		;$809183	 | |
 	LDA #$01			;$809186	 | |
-	STA $211F			;$809188	 |/
+	STA PPU.mode_7_center_x		;$809188	 |/
 	LDA #$D7			;$80918B	 |\ Set mode 7 Y center to $00D7
-	STA $2120			;$80918D	 | |
-	STZ $2120			;$809190	 |/
+	STA PPU.mode_7_center_y		;$80918D	 | |
+	STZ PPU.mode_7_center_y		;$809190	 |/
 	LDA #$80			;$809193	 |\ Fill empty mode 7 space with transparency
-	STA $211A			;$809195	 |/
+	STA PPU.set_mode_7			;$809195	 |/
 	REP #$20			;$809198	 |
 	LDA #$7400			;$80919A	 |\ Clear $800 of VRAM at $E800
 	JSR clear_VRAM_block		;$80919D	 |/
@@ -1835,7 +1835,7 @@ init_rareware_logo:
 	STA $7F0100			;$8091C2	 | |
 	STA $7F013E			;$8091C6	 |/
 	LDA #$74A0			;$8091CA	 |\ Set VRAM address to $E940
-	STA $2116			;$8091CD	 |/
+	STA PPU.vram_address		;$8091CD	 |/
 	LDX #$007F			;$8091D0	 |\ Upload $0340 bytes from $7F0000 to VRAM address $E940
 	LDA #$0000			;$8091D3	 | |
 	LDY #$0340			;$8091D6	 | |
@@ -1845,7 +1845,7 @@ init_rareware_logo:
 	LDA #$0000			;$8091E3	 | |
 	JSL decompress_data		;$8091E6	 |/ Decompress the tilemap
 	LDA #$76BA			;$8091EA	 |\ Set VRAM address to $ED74
-	STA $2116			;$8091ED	 |/
+	STA PPU.vram_address		;$8091ED	 |/
 	LDX #$007F			;$8091F0	 |\ Upload $00C8 bytes from $7F0000 to VRAM address $ED74
 	LDA #$0000			;$8091F3	 | |
 	LDY #$00C8			;$8091F6	 | |
@@ -1855,7 +1855,7 @@ init_rareware_logo:
 	LDA #$0000			;$809203	 | |
 	JSL decompress_data		;$809206	 |/
 	LDA #$78E0			;$80920A	 |\ Set VRAM address to $F1C0
-	STA $2116			;$80920D	 |/
+	STA PPU.vram_address		;$80920D	 |/
 	LDX #$007F			;$809210	 |\
 	LDA #$0000			;$809213	 | |
 	LDY #$0380			;$809216	 | |
@@ -1865,7 +1865,7 @@ init_rareware_logo:
 	LDA #$0000			;$809223	 | |
 	JSL decompress_data		;$809226	 |/ DMA the payload
 	LDA #$7CE0			;$80922A	 |\ Set VRAM address to $F9C0
-	STA $2116			;$80922D	 |/
+	STA PPU.vram_address		;$80922D	 |/
 	LDX #$007F			;$809230	 |\ Upload $0380 bytes from $7F0000 to VRAM address $F9C0
 	LDA #$0000			;$809233	 | |
 	LDY #$0380			;$809236	 | |
@@ -1875,7 +1875,7 @@ init_rareware_logo:
 	LDA #$0000			;$809243	 | |
 	JSL decompress_data		;$809246	 |/
 	LDA #$4000			;$80924A	 |\ Set VRAM address to $8000
-	STA $2116			;$80924D	 |/
+	STA PPU.vram_address		;$80924D	 |/
 	LDX #$007F			;$809250	 |\ Upload $2400 bytes from $7F0000 to VRAM address $8000
 	LDA #$0000			;$809253	 | |
 	LDY #$2400			;$809256	 | |
@@ -1885,7 +1885,7 @@ init_rareware_logo:
 	LDA #$0000			;$809263	 | |
 	JSL decompress_data		;$809266	 |/
 	LDA #$6000			;$80926A	 |\ Set VRAM address to $C000
-	STA $2116			;$80926D	 |/
+	STA PPU.vram_address		;$80926D	 |/
 	LDX #$007F			;$809270	 |\ Upload $1000 bytes from $7F0000 to VRAM address $C000
 	LDA #$0000			;$809273	 | |
 	LDY #$1000			;$809276	 | |
@@ -1895,7 +1895,7 @@ init_rareware_logo:
 	LDA #$0000			;$809283	 | |
 	JSL decompress_data		;$809286	 |/ Decompress the tilemap
 	LDA #$7000			;$80928A	 |\ Set VRAM address to $E000
-	STA $2116			;$80928D	 |/
+	STA PPU.vram_address		;$80928D	 |/
 	LDX #$007F			;$809290	 |\ Upload $800 bytes from $7F0000 to VRAM address $E000
 	LDA #$0000			;$809293	 | |
 	LDY #$0800			;$809296	 | |
@@ -1985,11 +1985,11 @@ CODE_8092D0:				;		 |\ Clear scratch RAM
 	LDA #$7E			;$809398	 | | |
 	STA $4344			;$80939A	 | |/
 	STZ $4347			;$80939D	 |/ Zero indirect HDMA bank byte
-	LDA $4211			;$8093A0	 | Read IRQ flag to clear
+	LDA CPU.irq_flag		;$8093A0	 | Read IRQ flag to clear
 	LDA #$80			;$8093A3	 |\ Disable sprite 0 priority
-	STA $2103			;$8093A5	 |/
+	STA PPU.oam_address_high	;$8093A5	 |/
 	LDA #$01			;$8093A8	 |\ Enable fast ROM
-	STA $420D			;$8093AA	 |/
+	STA CPU.rom_speed		;$8093AA	 |/
 	REP #$20			;$8093AD	 |
 	INC $0993			;$8093AF	 |
 	LDA #run_rareware_logo		;$8093B2	 | Load NMI pointer for Rareware logo
@@ -2008,12 +2008,12 @@ run_rareware_logo:			;		\
 	SEP #$20			;$8093D1	 |
 	LDA #$7E			;$8093D3	 |\ DMA source bank to $7E
 	STA $4314			;$8093D5	 |/
-	STZ $2121			;$8093D8	 | Set CGRAM destination address to zero
+	STZ PPU.cgram_address		;$8093D8	 | Set CGRAM destination address to zero
 	LDA #$02			;$8093DB	 |\ Run palette DMA
-	STA $420B			;$8093DD	 |/
+	STA CPU.enable_dma		;$8093DD	 |/
 	REP #$20			;$8093E0	 |
 	LDA #$1C00			;$8093E2	 |\ Enable HDMA on channels 3, 4, 5
-	STA $420B			;$8093E5	 |/
+	STA CPU.enable_dma		;$8093E5	 |/
 	LDA $2A				;$8093E8	 |\ Check if the frame count is less than $E0
 	CMP #$00E0			;$8093EA	 | |
 	BCC .skip_mode_7_update		;$8093ED	 |/ If so, skip mode 7 updates
@@ -2028,16 +2028,16 @@ run_rareware_logo:			;		\
 	STA $7E8015			;$809402	 | |
 	STA $7E8017			;$809406	 |/
 	LDA #$74			;$80940A	 |\ Place layer 1 tilemap at $E800 in VRAM
-	STA $2107			;$80940C	 |/
+	STA PPU.layer_0_1_tilemap_base	;$80940C	 |/
 	LDA #$01			;$80940F	 |\ Put layer 1 on the pain screen
-	STA $212C			;$809411	 |/
+	STA PPU.screens			;$809411	 |/
 	REP #$20			;$809414	 |
 .skip_mode_7_enable			;		 |
 	LDA $2A				;$809416	 |\ If the frame count is not exactly $0110
 	CMP #$0110			;$809418	 | |
 	BNE CODE_809430			;$80941B	 |/ Skip uploading the first half of Nintendo Presents
 	LDA #$4000			;$80941D	 |\ Set VRAM address to $8000
-	STA $2116			;$809420	 |/
+	STA PPU.vram_address		;$809420	 |/
 	LDX #$007F			;$809423	 |\ Upload $1440 bytes from $7F0500 to VRAM address $8000
 	LDA #$0500			;$809426	 | | The first half of tiledata for the Nintendo Presents
 	LDY #$1440			;$809429	 | |
@@ -2047,7 +2047,7 @@ CODE_809430:				;		 |
 	CMP #$0111			;$809432	 | |
 	BNE CODE_809458			;$809435	 |/ Skip uploading the second half of Nintendo Presents
 	LDA #$4A20			;$809437	 |\ Set VRAM address to $9440
-	STA $2116			;$80943A	 |/
+	STA PPU.vram_address		;$80943A	 |/
 	LDX #$007F			;$80943D	 |\ Upload $1440 bytes from $7F1940 to VRAM address $9440
 	LDA #$1940			;$809440	 | | The second half of tiledata for the Nintendo Presents
 	LDY #$1440			;$809443	 | |
@@ -2064,7 +2064,7 @@ CODE_809458:				;		 |
 	CMP #$0112			;$80945A	 | |
 	BNE CODE_8094A0			;$80945D	 |/ Skip uploading the sparkle tilemap
 	LDA #$3000			;$80945F	 |\ Set VRAM address to $6000
-	STA $2116			;$809462	 |/
+	STA PPU.vram_address		;$809462	 |/
 	LDX #$007F			;$809465	 |\ Upload $500 bytes from $7F0000 to VRAM address $6000
 	LDA #$0000			;$809468	 | | The source is the tiledata for the sparkles
 	LDY #$0500			;$80946B	 | |
@@ -2087,13 +2087,13 @@ CODE_809458:				;		 |
 CODE_8094A0:				;		 |
 	SEP #$20			;$8094A0	 |
 	LDA $098F			;$8094A2	 |\ Set Layer 3 X position
-	STA $2111			;$8094A5	 | |
-	STZ $2111			;$8094A8	 |/
+	STA PPU.layer_2_scroll_x	;$8094A5	 | |
+	STZ PPU.layer_2_scroll_x	;$8094A8	 |/
 	LDA $0991			;$8094AB	 |\ Set Layer 3 Y position
-	STA $2112			;$8094AE	 | |
-	STZ $2112			;$8094B1	 |/
+	STA PPU.layer_2_scroll_y	;$8094AE	 | |
+	STZ PPU.layer_2_scroll_y	;$8094B1	 |/
 	LDA $0512			;$8094B4	 |\ Set screen brightness
-	STA $2100			;$8094B7	 |/
+	STA PPU.screen			;$8094B7	 |/
 	REP #$20			;$8094BA	 |
 	LDA $2A				;$8094BC	 |\ Subtract $E0 from the frame counter
 	SEC				;$8094BE	 | | This results in frame counter relative to mode 7 start
@@ -2186,15 +2186,15 @@ CODE_809563:				;		 |
 	LSR A				;$809566	 |
 	CLC				;$809567	 |
 	ADC $32				;$809568	 |
-	STA $211B			;$80956A	 |
-	STZ $211B			;$80956D	 |
+	STA PPU.fixed_point_mul_A	;$80956A	 |
+	STZ PPU.fixed_point_mul_A	;$80956D	 |
 	LDY #$0000			;$809570	 |
 	TYX				;$809573	 |
 CODE_809574:				;		 |
 	SEP #$20			;$809574	 |
 	LDA DATA_80B12E,y		;$809576	 |
-	STA $211C			;$809579	 |
-	LDA $2135			;$80957C	 |
+	STA PPU.fixed_point_mul_B	;$809579	 |
+	LDA PPU.multiply_result_mid	;$80957C	 |
 	REP #$20			;$80957F	 |
 	AND #$001F			;$809581	 |
 	STA $32				;$809584	 |
@@ -2260,9 +2260,9 @@ CODE_8095DF:				;		 |
 	SBC #$0200			;$8095E8	 |
 CODE_8095EB:				;		 |
 	SEP #$20			;$8095EB	 |
-	STA $211B			;$8095ED	 |
+	STA PPU.mode_7_A		;$8095ED	 |
 	XBA				;$8095F0	 |
-	STA $211B			;$8095F1	 |
+	STA PPU.mode_7_A		;$8095F1	 |
 	REP #$20			;$8095F4	 |
 	PEA $8080			;$8095F6	 |
 	PLB				;$8095F9	 |
@@ -2273,8 +2273,8 @@ CODE_809600:				;		 |
 	SEP #$20			;$809602	 |
 	LDA DATA_80B317,x		;$809604	 |
 	AND #$1F			;$809607	 |
-	STA $211C			;$809609	 |
-	LDA $2135			;$80960C	 |
+	STA PPU.fixed_point_mul_B	;$809609	 |
+	LDA PPU.multiply_result_mid	;$80960C	 |
 	CMP #$1F			;$80960F	 |
 	BCC CODE_809615			;$809611	 |
 	LDA #$1F			;$809613	 |
@@ -2289,8 +2289,8 @@ CODE_809615:				;		 |
 	TSB $32				;$809620	 |
 	LDA DATA_80B318,x		;$809622	 |
 	AND #$001F			;$809625	 |
-	STA $211C			;$809628	 |
-	LDA $2135			;$80962B	 |
+	STA PPU.fixed_point_mul_B	;$809628	 |
+	LDA PPU.multiply_result_mid	;$80962B	 |
 	CMP #$001F			;$80962E	 |
 	BCC CODE_809636			;$809631	 |
 	LDA #$001F			;$809633	 |
@@ -2342,9 +2342,9 @@ CODE_80967D:				;		 |
 	SBC #$0200			;$809686	 |
 CODE_809689:				;		 |
 	SEP #$20			;$809689	 |
-	STA $211B			;$80968B	 |
+	STA PPU.mode_7_A		;$80968B	 |
 	XBA				;$80968E	 |
-	STA $211B			;$80968F	 |
+	STA PPU.mode_7_A		;$80968F	 |
 	REP #$20			;$809692	 |
 	PEA $8080			;$809694	 |
 	PLB				;$809697	 |
@@ -2354,8 +2354,8 @@ CODE_80969B:				;		 |
 	SEP #$20			;$80969D	 |
 	LDA DATA_80B377,y		;$80969F	 |
 	AND #$1F			;$8096A2	 |
-	STA $211C			;$8096A4	 |
-	LDA $2135			;$8096A7	 |
+	STA PPU.fixed_point_mul_B	;$8096A4	 |
+	LDA PPU.multiply_result_mid	;$8096A7	 |
 	CMP #$1F			;$8096AA	 |
 	BCC CODE_8096B0			;$8096AC	 |
 	LDA #$1F			;$8096AE	 |
@@ -2363,8 +2363,8 @@ CODE_8096B0:				;		 |
 	STA $32				;$8096B0	 |
 	LDA DATA_80B378,y		;$8096B2	 |
 	AND #$1F			;$8096B5	 |
-	STA $211C			;$8096B7	 |
-	LDA $2135			;$8096BA	 |
+	STA PPU.fixed_point_mul_B	;$8096B7	 |
+	LDA PPU.multiply_result_mid	;$8096BA	 |
 	CMP #$1F			;$8096BD	 |
 	BCC CODE_8096C3			;$8096BF	 |
 	LDA #$1F			;$8096C1	 |
@@ -2380,8 +2380,8 @@ CODE_8096C3:				;		 |
 	SEP #$20			;$8096CF	 |
 	LDA DATA_80B379,y		;$8096D1	 |
 	AND #$1F			;$8096D4	 |
-	STA $211C			;$8096D6	 |
-	LDA $2135			;$8096D9	 |
+	STA PPU.fixed_point_mul_B	;$8096D6	 |
+	LDA PPU.multiply_result_mid	;$8096D9	 |
 	CMP #$1F			;$8096DC	 |
 	BCC CODE_8096E2			;$8096DE	 |
 	LDA #$1F			;$8096E0	 |
@@ -2520,33 +2520,33 @@ CODE_8097EB:				;		 |
 	DEX				;$8097EE	 |
 	BPL CODE_8097EB			;$8097EF	 |
 	LDA #$0001			;$8097F1	 |
-	STA $2105			;$8097F4	 |
+	STA PPU.layer_mode		;$8097F4	 |
 	LDA #$0213			;$8097F7	 |
-	STA $212C			;$8097FA	 |
+	STA PPU.screens			;$8097FA	 |
 	LDA #$0014			;$8097FD	 |
-	STA $210B			;$809800	 |
+	STA PPU.layer_all_tiledata_base	;$809800	 |
 	LDA #$FF68			;$809803	 |
-	STA $2126			;$809806	 |
+	STA PPU.window_1		;$809806	 |
 	SEP #$20			;$809809	 |
 	LDA #$30			;$80980B	 |
-	STA $2125			;$80980D	 |
+	STA PPU.set_window_sprite_color	;$80980D	 |
 	LDA #$E8			;$809810	 |
-	STA $2132			;$809812	 |
+	STA PPU.fixed_color		;$809812	 |
 	REP #$20			;$809815	 |
 	LDA #$4100			;$809817	 |
-	STA $2130			;$80981A	 |
+	STA PPU.color_addition_logic	;$80981A	 |
 	LDA #$7C76			;$80981D	 |
-	STA $2107			;$809820	 |
-	STZ $210D			;$809823	 |
-	STZ $210D			;$809826	 |
+	STA PPU.layer_0_1_tilemap_base	;$809820	 |
+	STZ PPU.layer_0_scroll_x	;$809823	 |
+	STZ PPU.layer_0_scroll_x	;$809826	 |
 	SEP #$20			;$809829	 |
 	LDA #$FF			;$80982B	 |
-	STA $210E			;$80982D	 |
-	STA $210E			;$809830	 |
-	STA $2110			;$809833	 |
-	STA $2110			;$809836	 |
-	STZ $210F			;$809839	 |
-	STZ $210F			;$80983C	 |
+	STA PPU.layer_0_scroll_y	;$80982D	 |
+	STA PPU.layer_0_scroll_y	;$809830	 |
+	STA PPU.layer_1_scroll_y	;$809833	 |
+	STA PPU.layer_1_scroll_y	;$809836	 |
+	STZ PPU.layer_1_scroll_x	;$809839	 |
+	STZ PPU.layer_1_scroll_x	;$80983C	 |
 	REP #$20			;$80983F	 |
 	LDA #$004F			;$809841	 |
 	STA $7E8012			;$809844	 |
@@ -2584,7 +2584,7 @@ CODE_8097EB:				;		 |
 	LDA #$0000			;$8098AC	 |
 	JSL decompress_data		;$8098AF	 |
 	LDA #$1000			;$8098B3	 |
-	STA $2116			;$8098B6	 |
+	STA PPU.vram_address		;$8098B6	 |
 	LDX #$007F			;$8098B9	 |
 	LDA #$0000			;$8098BC	 |
 	LDY #$6000			;$8098BF	 |
@@ -2594,13 +2594,13 @@ CODE_8097EB:				;		 |
 	LDA #$0000			;$8098CC	 |
 	JSL decompress_data		;$8098CF	 |
 	LDA #$4000			;$8098D3	 |
-	STA $2116			;$8098D6	 |
+	STA PPU.vram_address		;$8098D6	 |
 	LDX #$007F			;$8098D9	 |
 	LDA #$0000			;$8098DC	 |
 	LDY #$8000			;$8098DF	 |
 	JSL DMA_to_VRAM			;$8098E2	 |
 	LDA #$0020			;$8098E6	 |
-	STA $2116			;$8098E9	 |
+	STA PPU.vram_address		;$8098E9	 |
 	LDX.w #DATA_FC0660>>16		;$8098EC	 |
 	LDA #DATA_FC0660		;$8098EF	 |
 	LDY #$1E00			;$8098F2	 |
@@ -2610,7 +2610,7 @@ CODE_8097EB:				;		 |
 	LDA #$0000			;$8098FF	 |
 	JSL decompress_data		;$809902	 |
 	LDA #$7C00			;$809906	 |
-	STA $2116			;$809909	 |
+	STA PPU.vram_address		;$809909	 |
 	LDX #$007F			;$80990C	 |
 	LDA #$0000			;$80990F	 |
 	LDY #$0800			;$809912	 |
@@ -2624,7 +2624,7 @@ CODE_8097EB:				;		 |
 	LDA #$0000			;$80992B	 |
 	JSL decompress_data		;$80992E	 |
 	LDA #$7420			;$809932	 |
-	STA $2116			;$809935	 |
+	STA PPU.vram_address		;$809935	 |
 	LDX #$007F			;$809938	 |
 	LDA #$0000			;$80993B	 |
 	LDY #$0680			;$80993E	 |
@@ -2634,7 +2634,7 @@ CODE_8097EB:				;		 |
 	LDA #$0000			;$80994B	 |
 	JSL decompress_data		;$80994E	 |
 	LDA #$7780			;$809952	 |
-	STA $2116			;$809955	 |
+	STA PPU.vram_address		;$809955	 |
 	LDX #$007F			;$809958	 |
 	LDA #$0000			;$80995B	 |
 	LDY #$0240			;$80995E	 |
@@ -2644,7 +2644,7 @@ CODE_8097EB:				;		 |
 	LDA #$0000			;$80996B	 |
 	JSL decompress_data		;$80996E	 |
 	LDA #$78C0			;$809972	 |
-	STA $2116			;$809975	 |
+	STA PPU.vram_address		;$809975	 |
 	LDX #$007F			;$809978	 |
 	LDA #$0000			;$80997B	 |
 	LDY #$01C0			;$80997E	 |
@@ -2663,11 +2663,11 @@ CODE_8097EB:				;		 |
 CODE_8099A7:				;		 |
 	STZ $36				;$8099A7	 |
 	SEP #$20			;$8099A9	 |
-	LDA $4211			;$8099AB	 |
+	LDA CPU.irq_flag		;$8099AB	 |
 	LDA #$80			;$8099AE	 |
-	STA $2103			;$8099B0	 |
+	STA PPU.oam_address_high	;$8099B0	 |
 	LDA #$01			;$8099B3	 |
-	STA $420D			;$8099B5	 |
+	STA CPU.rom_speed		;$8099B5	 |
 	REP #$20			;$8099B8	 |
 	JSR prepare_oam_dma_channel	;$8099BA	 |
 	LDA #CODE_8099C3		;$8099BD	 |
@@ -2676,19 +2676,19 @@ CODE_8099A7:				;		 |
 CODE_8099C3:
 	LDX #$01FF			;$8099C3	\
 	TXS				;$8099C6	 |
-	STZ $2102			;$8099C7	 |
+	STZ PPU.oam_address		;$8099C7	 |
 	LDA #$0401			;$8099CA	 |
-	STA $420B			;$8099CD	 |
+	STA CPU.enable_dma		;$8099CD	 |
 	LDA $17C0			;$8099D0	 |
 	DEC A				;$8099D3	 |
 	SEP #$20			;$8099D4	 |
-	STA $210E			;$8099D6	 |
+	STA PPU.layer_0_scroll_y	;$8099D6	 |
 	XBA				;$8099D9	 |
-	STA $210E			;$8099DA	 |
+	STA PPU.layer_0_scroll_y	;$8099DA	 |
 	REP #$20			;$8099DD	 |
 	SEP #$20			;$8099DF	 |
 	LDA $0512			;$8099E1	 |
-	STA $2100			;$8099E4	 |
+	STA PPU.screen			;$8099E4	 |
 	REP #$20			;$8099E7	 |
 	JSR CODE_808C3D			;$8099E9	 |
 	INC $2A				;$8099EC	 |
@@ -2888,7 +2888,7 @@ CODE_809B82:				;		 |
 	LDA #$0001			;$809BB1	 |
 	TSB $060B			;$809BB4	 |
 	SEP #$20			;$809BB7	 |
-	STZ $2100			;$809BB9	 |
+	STZ PPU.screen			;$809BB9	 |
 	REP #$20			;$809BBC	 |
 	BRA CODE_809BC2			;$809BBE	/
 
@@ -2916,7 +2916,7 @@ CODE_809BC2:				;		 |
 	LDA #$0002			;$809BF1	 |
 	TSB $060B			;$809BF4	 |
 	SEP #$20			;$809BF7	 |
-	STZ $2100			;$809BF9	 |
+	STZ PPU.screen			;$809BF9	 |
 	REP #$20			;$809BFC	 |
 	BRA CODE_809C02			;$809BFE	/
 
@@ -3278,35 +3278,35 @@ CODE_809FC1:				;		 |
 	DEX				;$809FC4	 |
 	BPL CODE_809FC1			;$809FC5	 |
 	LDA #$0009			;$809FC7	 |
-	STA $2105			;$809FCA	 |
+	STA PPU.layer_mode		;$809FCA	 |
 	LDA #$1013			;$809FCD	 |
-	STA $212C			;$809FD0	 |
+	STA PPU.screens			;$809FD0	 |
 	LDA #$0010			;$809FD3	 |
-	STA $212E			;$809FD6	 |
+	STA PPU.window_masks		;$809FD6	 |
 	LDA #$4030			;$809FD9	 |
-	STA $2126			;$809FDC	 |
+	STA PPU.window_1		;$809FDC	 |
 	LDA #$FF80			;$809FDF	 |
-	STA $2128			;$809FE2	 |
+	STA PPU.window_2		;$809FE2	 |
 	LDA #$0100			;$809FE5	 |
-	STA $212A			;$809FE8	 |
+	STA PPU.window_logic		;$809FE8	 |
 	LDA #$0F00			;$809FEB	 |
-	STA $2124			;$809FEE	 |
+	STA PPU.set_window_layer_2_3	;$809FEE	 |
 	LDA #$2202			;$809FF1	 |
-	STA $2130			;$809FF4	 |
+	STA PPU.color_addition_logic	;$809FF4	 |
 	LDA #$0626			;$809FF7	 |
-	STA $210B			;$809FFA	 |
+	STA PPU.layer_all_tiledata_base	;$809FFA	 |
 	LDA #$7C78			;$809FFD	 |
-	STA $2107			;$80A000	 |
-	STZ $210D			;$80A003	 |
-	STZ $210D			;$80A006	 |
-	STZ $210F			;$80A009	 |
-	STZ $210F			;$80A00C	 |
+	STA PPU.layer_0_1_tilemap_base	;$80A000	 |
+	STZ PPU.layer_0_scroll_x	;$80A003	 |
+	STZ PPU.layer_0_scroll_x	;$80A006	 |
+	STZ PPU.layer_1_scroll_x	;$80A009	 |
+	STZ PPU.layer_1_scroll_x	;$80A00C	 |
 	SEP #$20			;$80A00F	 |
 	LDA #$FF			;$80A011	 |
-	STA $210E			;$80A013	 |
-	STA $210E			;$80A016	 |
-	STA $2110			;$80A019	 |
-	STA $2110			;$80A01C	 |
+	STA PPU.layer_0_scroll_y	;$80A013	 |
+	STA PPU.layer_0_scroll_y	;$80A016	 |
+	STA PPU.layer_1_scroll_y	;$80A019	 |
+	STA PPU.layer_1_scroll_y	;$80A01C	 |
 	REP #$20			;$80A01F	 |
 	SEP #$20			;$80A021	 |
 	LDX #$0F02			;$80A023	 |
@@ -3409,7 +3409,7 @@ CODE_80A0E9:				;		 |
 	LDA #$0000			;$80A139	 |
 	JSL decompress_data		;$80A13C	 |
 	LDA #$2000			;$80A140	 |
-	STA $2116			;$80A143	 |
+	STA PPU.vram_address		;$80A143	 |
 	LDX #$007F			;$80A146	 |
 	LDA #$0000			;$80A149	 |
 	LDY #$8000			;$80A14C	 |
@@ -3419,7 +3419,7 @@ CODE_80A0E9:				;		 |
 	LDA #$0000			;$80A159	 |
 	JSL decompress_data		;$80A15C	 |
 	LDA #$6000			;$80A160	 |
-	STA $2116			;$80A163	 |
+	STA PPU.vram_address		;$80A163	 |
 	LDX #$007F			;$80A166	 |
 	LDA #$0000			;$80A169	 |
 	LDY #$4000			;$80A16C	 |
@@ -3429,13 +3429,13 @@ CODE_80A0E9:				;		 |
 	LDA #$0000			;$80A179	 |
 	JSL decompress_data		;$80A17C	 |
 	LDA #$7C20			;$80A180	 |
-	STA $2116			;$80A183	 |
+	STA PPU.vram_address		;$80A183	 |
 	LDX #$007F			;$80A186	 |
 	LDA #$0000			;$80A189	 |
 	LDY #$0700			;$80A18C	 |
 	JSL DMA_to_VRAM			;$80A18F	 |
 	LDA #$7C00			;$80A193	 |
-	STA $2116			;$80A196	 |
+	STA PPU.vram_address		;$80A196	 |
 	LDX #$007F			;$80A199	 |
 	LDA #$0000			;$80A19C	 |
 	LDY #$0700			;$80A19F	 |
@@ -3445,7 +3445,7 @@ CODE_80A0E9:				;		 |
 	LDA #$0000			;$80A1AC	 |
 	JSL decompress_data		;$80A1AF	 |
 	LDA #$7800			;$80A1B3	 |
-	STA $2116			;$80A1B6	 |
+	STA PPU.vram_address		;$80A1B6	 |
 	LDX #$007F			;$80A1B9	 |
 	LDA #$0000			;$80A1BC	 |
 	LDY #$0800			;$80A1BF	 |
@@ -3528,11 +3528,11 @@ CODE_80A0E9:				;		 |
 	DEC A				;$80A2A8	 |
 	JSL DMA_palette			;$80A2A9	 |
 	SEP #$20			;$80A2AD	 |
-	LDA $4211			;$80A2AF	 |
+	LDA CPU.irq_flag		;$80A2AF	 |
 	LDA #$80			;$80A2B2	 |
-	STA $2103			;$80A2B4	 |
+	STA PPU.oam_address_high	;$80A2B4	 |
 	LDA #$01			;$80A2B7	 |
-	STA $420D			;$80A2B9	 |
+	STA CPU.rom_speed		;$80A2B9	 |
 	REP #$20			;$80A2BC	 |
 	STZ $2A				;$80A2BE	 |
 	LDA #$0300			;$80A2C0	 |
@@ -3544,9 +3544,9 @@ CODE_80A0E9:				;		 |
 CODE_80A2CF:
 	LDX #$01FF			;$80A2CF	\
 	TXS				;$80A2D2	 |
-	STZ $2102			;$80A2D3	 |
+	STZ PPU.oam_address		;$80A2D3	 |
 	LDA #$FE01			;$80A2D6	 |
-	STA $420B			;$80A2D9	 |
+	STA CPU.enable_dma		;$80A2D9	 |
 	LDA $2A				;$80A2DC	 |
 	LSR A				;$80A2DE	 |
 	LSR A				;$80A2DF	 |
@@ -3561,12 +3561,12 @@ CODE_80A2CF:
 	JSL CODE_B5A919			;$80A2F8	 |
 	LDA $17C0			;$80A2FC	 |
 	SEP #$20			;$80A2FF	 |
-	STA $2110			;$80A301	 |
-	STZ $2110			;$80A304	 |
+	STA PPU.layer_1_scroll_y	;$80A301	 |
+	STZ PPU.layer_1_scroll_y	;$80A304	 |
 	REP #$20			;$80A307	 |
 	SEP #$20			;$80A309	 |
 	LDA $0512			;$80A30B	 |
-	STA $2100			;$80A30E	 |
+	STA PPU.screen			;$80A30E	 |
 	REP #$20			;$80A311	 |
 	LDA #CODE_80F3E6		;$80A313	 |
 	STA $20				;$80A316	 |
@@ -3975,33 +3975,33 @@ CODE_80A653:				;		 |
 	PLB				;$80A65C	 |
 CODE_80A65D:				;		 |
 	LDA #$0001			;$80A65D	 |
-	STA $2105			;$80A660	 |
+	STA PPU.layer_mode		;$80A660	 |
 	LDA #$0213			;$80A663	 |
-	STA $212C			;$80A666	 |
+	STA PPU.screens			;$80A666	 |
 	LDA #$0015			;$80A669	 |
-	STA $210B			;$80A66C	 |
+	STA PPU.layer_all_tiledata_base	;$80A66C	 |
 	LDA #$8020			;$80A66F	 |
-	STA $2126			;$80A672	 |
+	STA PPU.window_1		;$80A672	 |
 	SEP #$20			;$80A675	 |
 	LDA #$30			;$80A677	 |
-	STA $2125			;$80A679	 |
+	STA PPU.set_window_sprite_color	;$80A679	 |
 	LDA #$E8			;$80A67C	 |
-	STA $2132			;$80A67E	 |
+	STA PPU.fixed_color		;$80A67E	 |
 	REP #$20			;$80A681	 |
 	LDA #$4122			;$80A683	 |
-	STA $2130			;$80A686	 |
+	STA PPU.color_addition_logic	;$80A686	 |
 	LDA #$7C74			;$80A689	 |
-	STA $2107			;$80A68C	 |
-	STZ $210D			;$80A68F	 |
-	STZ $210D			;$80A692	 |
+	STA PPU.layer_0_1_tilemap_base	;$80A68C	 |
+	STZ PPU.layer_0_scroll_x	;$80A68F	 |
+	STZ PPU.layer_0_scroll_x	;$80A692	 |
 	SEP #$20			;$80A695	 |
 	LDA #$FF			;$80A697	 |
-	STA $210E			;$80A699	 |
-	STA $210E			;$80A69C	 |
-	STA $2110			;$80A69F	 |
-	STA $2110			;$80A6A2	 |
-	STZ $210F			;$80A6A5	 |
-	STZ $210F			;$80A6A8	 |
+	STA PPU.layer_0_scroll_y	;$80A699	 |
+	STA PPU.layer_0_scroll_y	;$80A69C	 |
+	STA PPU.layer_1_scroll_y	;$80A69F	 |
+	STA PPU.layer_1_scroll_y	;$80A6A2	 |
+	STZ PPU.layer_1_scroll_x	;$80A6A5	 |
+	STZ PPU.layer_1_scroll_x	;$80A6A8	 |
 	REP #$20			;$80A6AB	 |
 	LDA #$0028			;$80A6AD	 |
 	STA $7E8012			;$80A6B0	 |
@@ -4043,7 +4043,7 @@ CODE_80A65D:				;		 |
 	LDA #$0000			;$80A726	 |
 	JSL decompress_data		;$80A729	 |
 	LDA #$5000			;$80A72D	 |
-	STA $2116			;$80A730	 |
+	STA PPU.vram_address		;$80A730	 |
 	LDX #$007F			;$80A733	 |
 	LDA #$0000			;$80A736	 |
 	LDY #$6000			;$80A739	 |
@@ -4085,7 +4085,7 @@ CODE_80A795:				;		 |
 	LDA #$0000			;$80A79B	 |
 	JSL decompress_data		;$80A79E	 |
 	LDA #$1000			;$80A7A2	 |
-	STA $2116			;$80A7A5	 |
+	STA PPU.vram_address		;$80A7A5	 |
 	LDX #$007F			;$80A7A8	 |
 	LDA #$0000			;$80A7AB	 |
 	LDY #$8000			;$80A7AE	 |
@@ -4095,7 +4095,7 @@ CODE_80A795:				;		 |
 	LDA #$0000			;$80A7BB	 |
 	JSL decompress_data		;$80A7BE	 |
 	LDA #$7C00			;$80A7C2	 |
-	STA $2116			;$80A7C5	 |
+	STA PPU.vram_address		;$80A7C5	 |
 	LDX #$007F			;$80A7C8	 |
 	LDA #$0000			;$80A7CB	 |
 	LDY #$0800			;$80A7CE	 |
@@ -4105,7 +4105,7 @@ CODE_80A795:				;		 |
 	LDX #$0040			;$80A7DB	 |
 	LDA #DATA_FD3C6E		;$80A7DE	 |
 	JSL DMA_palette			;$80A7E1	 |
-	STZ $2116			;$80A7E5	 |
+	STZ PPU.vram_address		;$80A7E5	 |
 	LDX.w #DATA_FB0180>>16		;$80A7E8	 |
 	LDA #DATA_FB0180		;$80A7EB	 |
 	LDY #$0080			;$80A7EE	 |
@@ -4120,11 +4120,11 @@ CODE_80A795:				;		 |
 	LDA #$0300			;$80A80B	 |
 	JSR CODE_808C32			;$80A80E	 |
 	SEP #$20			;$80A811	 |
-	LDA $4211			;$80A813	 |
+	LDA CPU.irq_flag		;$80A813	 |
 	LDA #$80			;$80A816	 |
-	STA $2103			;$80A818	 |
+	STA PPU.oam_address_high	;$80A818	 |
 	LDA #$01			;$80A81B	 |
-	STA $420D			;$80A81D	 |
+	STA CPU.rom_speed		;$80A81D	 |
 	REP #$20			;$80A820	 |
 	JSR prepare_oam_dma_channel	;$80A822	 |
 	LDA #CODE_80A86C		;$80A825	 |
@@ -4167,9 +4167,9 @@ DATA_80A866:
 CODE_80A86C:
 	LDX #$01FF			;$80A86C	\
 	TXS				;$80A86F	 |
-	STZ $2102			;$80A870	 |
+	STZ PPU.oam_address		;$80A870	 |
 	LDA #$0401			;$80A873	 |
-	STA $420B			;$80A876	 |
+	STA CPU.enable_dma		;$80A876	 |
 	LDA $0613			;$80A879	 |
 	BIT #$00E4			;$80A87C	 |
 	BNE CODE_80A8F4			;$80A87F	 |
@@ -4186,7 +4186,7 @@ CODE_80A86C:
 	ADC #$0000			;$80A891	 |
 	STA $4312			;$80A894	 |
 	STA $4318			;$80A897	 |
-	STZ $2116			;$80A89A	 |
+	STZ PPU.vram_address		;$80A89A	 |
 	LDA #$0080			;$80A89D	 |
 	STA $4315			;$80A8A0	 |
 	LDA #$1801			;$80A8A3	 |
@@ -4195,7 +4195,7 @@ CODE_80A86C:
 	LDA #$FB			;$80A8AB	 |
 	STA $4314			;$80A8AD	 |
 	LDA #$02			;$80A8B0	 |
-	STA $420B			;$80A8B2	 |
+	STA CPU.enable_dma		;$80A8B2	 |
 	REP #$20			;$80A8B5	 |
 CODE_80A8B7:				;		 |
 	LDA $2A				;$80A8B7	 |
@@ -4214,7 +4214,7 @@ CODE_80A8B7:				;		 |
 	STA $4312			;$80A8CE	 |
 	STA $4318			;$80A8D1	 |
 	LDA #$0040			;$80A8D4	 |
-	STA $2116			;$80A8D7	 |
+	STA PPU.vram_address		;$80A8D7	 |
 	LDA #$0080			;$80A8DA	 |
 	STA $4315			;$80A8DD	 |
 	LDA #$1801			;$80A8E0	 |
@@ -4223,7 +4223,7 @@ CODE_80A8B7:				;		 |
 	LDA #$FB			;$80A8E8	 |
 	STA $4314			;$80A8EA	 |
 	LDA #$02			;$80A8ED	 |
-	STA $420B			;$80A8EF	 |
+	STA CPU.enable_dma		;$80A8EF	 |
 	REP #$20			;$80A8F2	 |
 CODE_80A8F4:				;		 |
 	LDA $0613			;$80A8F4	 |
@@ -4280,7 +4280,7 @@ CODE_80A94E:				;		 |
 CODE_80A96E:				;		 |
 	SEP #$20			;$80A96E	 |
 	LDA $0512			;$80A970	 |
-	STA $2100			;$80A973	 |
+	STA PPU.screen			;$80A973	 |
 	REP #$20			;$80A976	 |
 	LDA #CODE_80F3E6		;$80A978	 |
 	STA $20				;$80A97B	 |
@@ -4866,15 +4866,15 @@ CODE_80ADBF:				;		 |
 	PHA				;$80AE1A	 |
 	LDA $38				;$80AE1B	 |
 	SEP #$20			;$80AE1D	 |
-	STA $211C			;$80AE1F	 |
+	STA PPU.mode_7_B		;$80AE1F	 |
 	LDA #$78			;$80AE22	 |
-	STA $211B			;$80AE24	 |
+	STA PPU.mode_7_A		;$80AE24	 |
 	LDA #$69			;$80AE27	 |
-	STA $211B			;$80AE29	 |
+	STA PPU.mode_7_A		;$80AE29	 |
 	REP #$20			;$80AE2C	 |
-	LDA $2134			;$80AE2E	 |
+	LDA PPU.multiply_result_low	;$80AE2E	 |
 	STA $32				;$80AE31	 |
-	LDA $2136			;$80AE33	 |
+	LDA PPU.multiply_result_high	;$80AE33	 |
 	AND #$00FF			;$80AE36	 |
 	ASL $32				;$80AE39	 |
 	ROL A				;$80AE3B	 |
@@ -5016,17 +5016,17 @@ CODE_80AF53:
 	STA $36				;$80AF61	 |
 	LDY #$0000			;$80AF63	 |
 	LDA $32				;$80AF66	 |
-	STA $2116			;$80AF68	 |
+	STA PPU.vram_address		;$80AF68	 |
 	LDA [$34],y			;$80AF6B	 |
-	STA $2118			;$80AF6D	 |
+	STA PPU.vram_write		;$80AF6D	 |
 	LDA $32				;$80AF70	 |
 	CLC				;$80AF72	 |
 	ADC #$0020			;$80AF73	 |
-	STA $2116			;$80AF76	 |
+	STA PPU.vram_address		;$80AF76	 |
 	INY				;$80AF79	 |
 	INY				;$80AF7A	 |
 	LDA [$34],y			;$80AF7B	 |
-	STA $2118			;$80AF7D	 |
+	STA PPU.vram_write		;$80AF7D	 |
 	INC $32				;$80AF80	 |
 	RTS				;$80AF82	/
 
@@ -5045,11 +5045,11 @@ CODE_80AF83:
 	INY				;$80AF9B	 |
 	LDA $32				;$80AF9C	 |
 CODE_80AF9E:				;		 |
-	STA $2116			;$80AF9E	 |
+	STA PPU.vram_address		;$80AF9E	 |
 	LDX $38				;$80AFA1	 |
 CODE_80AFA3:				;		 |
 	LDA [$34],y			;$80AFA3	 |
-	STA $2118			;$80AFA5	 |
+	STA PPU.vram_write		;$80AFA5	 |
 	INY				;$80AFA8	 |
 	INY				;$80AFA9	 |
 	DEX				;$80AFAA	 |
@@ -5067,7 +5067,7 @@ upload_mode_7_tilemap:			;		\
 	STX $36				;$80AFBC	 |/
 	STZ $39				;$80AFBE	 | Clear the
 	SEP #$20			;$80AFC0	 |
-	STZ $2115			;$80AFC2	 | Set VRAM increment after $2118 writes
+	STZ PPU.vram_control		;$80AFC2	 | Set VRAM increment after $2118 writes
 	REP #$20			;$80AFC5	 |
 	LDY #$0000			;$80AFC7	 | Clear the index that will be used for mode 7 tilemap data
 	LDA [$34],y			;$80AFCA	 |\ Load the column and row lengths
@@ -5076,14 +5076,14 @@ upload_mode_7_tilemap:			;		\
 	INY				;$80AFCF	 |/
 .next_row				;		 |
 	LDA $32				;$80AFD0	 |\ Set VRAM address
-	STA $2116			;$80AFD2	 |/
+	STA PPU.vram_address		;$80AFD2	 |/
 	LDA $38				;$80AFD5	 |\ Load the number of columns per row
 	AND #$00FF			;$80AFD7	 | |
 	TAX				;$80AFDA	 |/
 .next_column				;		 |
 	SEP #$20			;$80AFDB	 |
 	LDA [$34],y			;$80AFDD	 |\ Copy one byte of mode 7 tilemap data to VRAM
-	STA $2118			;$80AFDF	 |/
+	STA PPU.vram_write		;$80AFDF	 |/
 	REP #$20			;$80AFE2	 |
 	INY				;$80AFE4	 | Advance index to mode 7 tilemap data
 	DEX				;$80AFE5	 |\ Decrement the column counter
@@ -5096,7 +5096,7 @@ upload_mode_7_tilemap:			;		\
 	BNE .next_row			;$80AFF2	 |/ Branch until all rows are uploaded
 	SEP #$20			;$80AFF4	 |
 	LDA #$80			;$80AFF6	 |\ Set VRAM increment after $2119 writes
-	STA $2115			;$80AFF8	 |/
+	STA PPU.vram_control		;$80AFF8	 |/
 	REP #$20			;$80AFFB	 |
 	RTS				;$80AFFD	/
 
@@ -5108,7 +5108,7 @@ CODE_80AFFE:
 	SEP #$20			;$80B008	 |
 	LDY #$0010			;$80B00A	 |
 CODE_80B00D:				;		 |
-	LDA $4016			;$80B00D	 |
+	LDA joypad.port_0		;$80B00D	 |
 	DEY				;$80B010	 |
 	BNE CODE_80B00D			;$80B011	 |
 	REP #$20			;$80B013	 |
@@ -5118,7 +5118,7 @@ CODE_80B00D:				;		 |
 
 CODE_80B01D:
 	SEP #$20			;$80B01D	\
-	LDA $4016			;$80B01F	 |
+	LDA joypad.port_0		;$80B01F	 |
 	REP #$20			;$80B022	 |
 	BIT #$0001			;$80B024	 |
 	BNE CODE_80B02F			;$80B027	 |
@@ -5131,7 +5131,7 @@ CODE_80B02F:				;		 |
 	SEP #$20			;$80B037	 |
 	LDY #$0010			;$80B039	 |
 CODE_80B03C:				;		 |
-	LDA $4017			;$80B03C	 |
+	LDA joypad.port_1		;$80B03C	 |
 	DEY				;$80B03F	 |
 	BNE CODE_80B03C			;$80B040	 |
 	REP #$20			;$80B042	 |
@@ -5141,7 +5141,7 @@ CODE_80B03C:				;		 |
 
 CODE_80B04C:
 	SEP #$20			;$80B04C	\
-	LDA $4017			;$80B04E	 |
+	LDA joypad.port_1		;$80B04E	 |
 	REP #$20			;$80B051	 |
 	BIT #$0001			;$80B053	 |
 	BNE CODE_80B060			;$80B056	 |
@@ -5156,20 +5156,20 @@ CODE_80B061:
 	SEP #$20			;$80B061	\
 	LDA #$01			;$80B063	 |
 CODE_80B065:				;		 |
-	BIT $4212			;$80B065	 |
+	BIT CPU.ppu_status		;$80B065	 |
 	BNE CODE_80B065			;$80B068	 |
 	REP #$20			;$80B06A	 |
-	LDA $4218			;$80B06C	 |
+	LDA CPU.port_0_data_1		;$80B06C	 |
 	EOR $0502			;$80B06F	 |
-	AND $4218			;$80B072	 |
+	AND CPU.port_0_data_1		;$80B072	 |
 	STA $0506			;$80B075	 |
-	LDA $4218			;$80B078	 |
+	LDA CPU.port_0_data_1		;$80B078	 |
 	STA $0502			;$80B07B	 |
-	LDA $421A			;$80B07E	 |
+	LDA CPU.port_1_data_1		;$80B07E	 |
 	EOR $0504			;$80B081	 |
-	AND $421A			;$80B084	 |
+	AND CPU.port_1_data_1		;$80B084	 |
 	STA $0508			;$80B087	 |
-	LDA $421A			;$80B08A	 |
+	LDA CPU.port_1_data_1		;$80B08A	 |
 	STA $0504			;$80B08D	 |
 	JSR CODE_80AFFE			;$80B090	 |
 	LDA $060D			;$80B093	 |
@@ -5218,21 +5218,21 @@ CODE_80B0DB:
 CODE_80B0EE:
 	STA $20				;$80B0EE	\
 	SEP #$20			;$80B0F0	 |
-	LDA $4210			;$80B0F2	 |
+	LDA CPU.nmi_flag		;$80B0F2	 |
 CODE_80B0F5:				;		 |
-	LDA $4210			;$80B0F5	 |
+	LDA CPU.nmi_flag		;$80B0F5	 |
 	AND #$80			;$80B0F8	 |
 	BNE CODE_80B0F5			;$80B0FA	 |
 	SEP #$20			;$80B0FC	 |
 	LDA #$B1			;$80B0FE	 |
-	STA $4200			;$80B100	 |
-	STZ $4016			;$80B103	 |
+	STA CPU.enable_interrupts	;$80B100	 |
+	STZ joypad.port_0		;$80B103	 |
 CODE_80B106:				;		 |
 	WAI				;$80B106	 |
 	BRA CODE_80B106			;$80B107	/
 
 clear_VRAM_block:
-	STA $2116			;$80B109	\ Store address to VRAM block to clear
+	STA PPU.vram_address		;$80B109	\ Store address to VRAM block to clear
 	LDA #.VRAM_zero_fill		;$80B10C	 |\ Set DMA source word (uses low byte of size as fixed data)
 	STA $4302			;$80B10F	 | |
 	STA $4308			;$80B112	 |/
@@ -5244,7 +5244,7 @@ clear_VRAM_block:
 	SEP #$20			;$80B121	 |
 	STZ $4304			;$80B123	 | Set DMA source bank to 00.
 	LDA #$01			;$80B126	 |\ Enable channel 1 DMA
-	STA $420B			;$80B128	 |/
+	STA CPU.enable_dma		;$80B128	 |/
 	REP #$20			;$80B12B	 |
 	RTS				;$80B12D	/ VRAM block is clear, return
 
@@ -5277,21 +5277,21 @@ update_mode_7:
 	SEP #$30			;$80B15E	\
 	JSR .scale_and_rotate		;$80B160	 | Apply scale and rotation transformations
 	LDA $86				;$80B163	 |\ Write mode 7 matrix A parameter
-	STA $211B			;$80B165	 | |
+	STA PPU.mode_7_A		;$80B165	 | |
 	LDA $87				;$80B168	 | |
-	STA $211B			;$80B16A	 |/
+	STA PPU.mode_7_A		;$80B16A	 |/
 	LDA $82				;$80B16D	 |\ Write mode 7 matrix B parameter
-	STA $211C			;$80B16F	 | |
+	STA PPU.mode_7_B		;$80B16F	 | |
 	LDA $83				;$80B172	 | |
-	STA $211C			;$80B174	 |/
+	STA PPU.mode_7_B		;$80B174	 |/
 	LDA $80				;$80B177	 |\ Write mode 7 matrix C parameter
-	STA $211D			;$80B179	 | |
+	STA PPU.mode_7_C		;$80B179	 | |
 	LDA $81				;$80B17C	 | |
-	STA $211D			;$80B17E	 |/
+	STA PPU.mode_7_C		;$80B17E	 |/
 	LDA $7E				;$80B181	 |\ Write mode 7 matrix D parameter
-	STA $211E			;$80B183	 | |
+	STA PPU.mode_7_D		;$80B183	 | |
 	LDA $7F				;$80B186	 | |
-	STA $211E			;$80B188	 |/
+	STA PPU.mode_7_D		;$80B188	 |/
 	REP #$30			;$80B18B	 |
 	RTL				;$80B18D	/
 
@@ -5331,34 +5331,34 @@ update_mode_7:
 	RTS				;$80B1CE	/
 
 .multiply_sin				;		\
-	STY $211B			;$80B1CF	 |\ Store scale as muliplication operand
-	STX $211B			;$80B1D2	 |/
+	STY PPU.fixed_point_mul_A	;$80B1CF	 |\ Store scale as muliplication operand
+	STX PPU.fixed_point_mul_A	;$80B1D2	 |/
 	JSR .get_sin			;$80B1D5	 | Lookup sin from rotation amount
 	BCS ..optimize_90_degrees	;$80B1D8	 | If carry is set, rotation by 90 degrees (1), skip multiply
-	STA $211C			;$80B1DA	 | Store sin of the rotation amount as muliplication operand
-	LDA $2134			;$80B1DD	 |\ Bit shift the long returned left by 1.
+	STA PPU.fixed_point_mul_B	;$80B1DA	 | Store sin of the rotation amount as muliplication operand
+	LDA PPU.multiply_result_low	;$80B1DD	 |\ Bit shift the long returned left by 1.
 	ASL A				;$80B1E0	 | | This shift improves accuracy when scale isn't very large
-	LDA $2135			;$80B1E1	 | |
+	LDA PPU.multiply_result_mid	;$80B1E1	 | |
 	ROL A				;$80B1E4	 | |
 	TAY				;$80B1E5	 | | Move the low byte to Y
-	LDA $2136			;$80B1E6	 | |
+	LDA PPU.multiply_result_high	;$80B1E6	 | |
 	ROL A				;$80B1E9	 | |
 	TAX				;$80B1EA	 | | Move the high byte to X
 ..optimize_90_degrees			;		 |/
 	RTS				;$80B1EB	/ return scaled sin
 
 .multiply_cos				;		\
-	STY $211B			;$80B1EC	 |\ Store scale as muliplication operand
-	STX $211B			;$80B1EF	 |/
+	STY PPU.fixed_point_mul_A	;$80B1EC	 |\ Store scale as muliplication operand
+	STX PPU.fixed_point_mul_A	;$80B1EF	 |/
 	JSR .get_cos			;$80B1F2	 | Lookup cos from rotation amount
 	BCS ..optimize_90_degress	;$80B1F5	 | If carry is set, rotation by 90 degrees (1), skip multiply
-	STA $211C			;$80B1F7	 | Store cos of the rotation amount as muliplication operand
-	LDA $2134			;$80B1FA	 |\ Bit shift the long returned left by 1.
+	STA PPU.fixed_point_mul_B	;$80B1F7	 | Store cos of the rotation amount as muliplication operand
+	LDA PPU.multiply_result_low	;$80B1FA	 |\ Bit shift the long returned left by 1.
 	ASL A				;$80B1FD	 | | This shift improves accuracy when scale isn't very large
-	LDA $2135			;$80B1FE	 | |
+	LDA PPU.multiply_result_mid	;$80B1FE	 | |
 	ROL A				;$80B201	 | |
 	TAY				;$80B202	 | | Move the low byte to Y
-	LDA $2136			;$80B203	 | |
+	LDA PPU.multiply_result_high	;$80B203	 | |
 	ROL A				;$80B206	 | |
 	TAX				;$80B207	 | | Move the high byte to X
 ..optimize_90_degress			;		 |/
@@ -5491,17 +5491,17 @@ CODE_80B40E:				;		 |
 	CMP #$0F5A			;$80B433	 |
 	BNE CODE_80B40E			;$80B436	 |
 	SEP #$20			;$80B438	 |
-	LDA $4211			;$80B43A	 |
+	LDA CPU.irq_flag		;$80B43A	 |
 	LDA #$80			;$80B43D	 |
-	STA $2103			;$80B43F	 |
+	STA PPU.oam_address_high	;$80B43F	 |
 	LDA #$01			;$80B442	 |
-	STA $420D			;$80B444	 |
+	STA CPU.rom_speed		;$80B444	 |
 	REP #$20			;$80B447	 |
 	LDA #$0400			;$80B449	 |
 	JSR CODE_808C32			;$80B44C	 |
 	JSR prepare_oam_dma_channel	;$80B44F	 |
 	LDA #$0001			;$80B452	 |
-	STA $420B			;$80B455	 |
+	STA CPU.enable_dma		;$80B455	 |
 	JSR prepare_oam_dma_channel	;$80B458	 |
 	LDA #CODE_80B461		;$80B45B	 |
 	JMP CODE_80B0EE			;$80B45E	/
@@ -5509,12 +5509,12 @@ CODE_80B40E:				;		 |
 CODE_80B461:
 	LDX #$01FF			;$80B461	\
 	TXS				;$80B464	 |
-	STZ $2102			;$80B465	 |
+	STZ PPU.oam_address		;$80B465	 |
 	SEP #$20			;$80B468	 |
 	LDA #$01			;$80B46A	 |
-	STA $420B			;$80B46C	 |
+	STA CPU.enable_dma		;$80B46C	 |
 	LDA $0512			;$80B46F	 |
-	STA $2100			;$80B472	 |
+	STA PPU.screen			;$80B472	 |
 	REP #$20			;$80B475	 |
 	JSR CODE_80B061			;$80B477	 |
 	INC $2A				;$80B47A	 |
@@ -5623,32 +5623,32 @@ CODE_80B559:
 
 CODE_80B560:
 	LDA #$0001			;$80B560	\
-	STA $2105			;$80B563	 |
+	STA PPU.layer_mode		;$80B563	 |
 	LDA #$1001			;$80B566	 |
-	STA $212C			;$80B569	 |
+	STA PPU.screens			;$80B569	 |
 	LDA #$0024			;$80B56C	 |
-	STA $210B			;$80B56F	 |
+	STA PPU.layer_all_tiledata_base	;$80B56F	 |
 	LDA #$0102			;$80B572	 |
-	STA $2130			;$80B575	 |
+	STA PPU.color_addition_logic	;$80B575	 |
 	LDA #$4C1C			;$80B578	 |
-	STA $2107			;$80B57B	 |
+	STA PPU.layer_0_1_tilemap_base	;$80B57B	 |
 	SEP #$20			;$80B57E	 |
-	STZ $210D			;$80B580	 |
-	STZ $210D			;$80B583	 |
-	STZ $210F			;$80B586	 |
-	STZ $210F			;$80B589	 |
+	STZ PPU.layer_0_scroll_x	;$80B580	 |
+	STZ PPU.layer_0_scroll_x	;$80B583	 |
+	STZ PPU.layer_1_scroll_x	;$80B586	 |
+	STZ PPU.layer_1_scroll_x	;$80B589	 |
 	LDA #$FF			;$80B58C	 |
-	STA $210E			;$80B58E	 |
-	STA $210E			;$80B591	 |
-	STA $2110			;$80B594	 |
-	STA $2110			;$80B597	 |
+	STA PPU.layer_0_scroll_y	;$80B58E	 |
+	STA PPU.layer_0_scroll_y	;$80B591	 |
+	STA PPU.layer_1_scroll_y	;$80B594	 |
+	STA PPU.layer_1_scroll_y	;$80B597	 |
 	REP #$20			;$80B59A	 |
 	LDX #DATA_ED0997		;$80B59C	 |
 	LDY.w #DATA_ED0997>>16		;$80B59F	 |
 	LDA #$0000			;$80B5A2	 |
 	JSL decompress_data		;$80B5A5	 |
 	LDA #$4000			;$80B5A9	 |
-	STA $2116			;$80B5AC	 |
+	STA PPU.vram_address		;$80B5AC	 |
 	LDX #$007F			;$80B5AF	 |
 	LDA #$0000			;$80B5B2	 |
 	LDY #$6400			;$80B5B5	 |
@@ -5658,12 +5658,12 @@ CODE_80B560:
 	LDA #$0000			;$80B5C2	 |
 	JSL decompress_data		;$80B5C5	 |
 	LDA #$1C00			;$80B5C9	 |
-	STA $2116			;$80B5CC	 |
+	STA PPU.vram_address		;$80B5CC	 |
 	LDX #$007F			;$80B5CF	 |
 	LDA #$0000			;$80B5D2	 |
 	LDY #$0700			;$80B5D5	 |
 	JSL DMA_to_VRAM			;$80B5D8	 |
-	STZ $2116			;$80B5DC	 |
+	STZ PPU.vram_address		;$80B5DC	 |
 	LDX.w #DATA_C00C01>>16		;$80B5DF	 |
 	LDA #DATA_C00C01		;$80B5E2	 |
 	LDY #$01A0			;$80B5E5	 |
@@ -5680,13 +5680,13 @@ CODE_80B5FA:
 	JSL init_registers_wrapper	;$80B602	 |
 	JSL CODE_BB91F7			;$80B606	 |
 	LDA #$0001			;$80B60A	 |
-	STA $2105			;$80B60D	 |
-	STA $212C			;$80B610	 |
+	STA PPU.layer_mode		;$80B60D	 |
+	STA PPU.screens			;$80B610	 |
 	LDA #$0000			;$80B613	 |
-	STA $210B			;$80B616	 |
+	STA PPU.layer_all_tiledata_base	;$80B616	 |
 	LDA #$787C			;$80B619	 |
-	STA $2107			;$80B61C	 |
-	STZ $2116			;$80B61F	 |
+	STA PPU.layer_0_1_tilemap_base	;$80B61C	 |
+	STZ PPU.vram_address		;$80B61F	 |
 	LDX.w #DATA_F80FA6>>16		;$80B622	 |
 	LDA #DATA_F80FA6		;$80B625	 |
 	LDY #$2000			;$80B628	 |
@@ -5694,7 +5694,7 @@ CODE_80B5FA:
 	LDA #$7C00			;$80B62F	 |
 	JSR clear_VRAM_block		;$80B632	 |
 	LDA #$7D00			;$80B635	 |
-	STA $2116			;$80B638	 |
+	STA PPU.vram_address		;$80B638	 |
 	LDX.w #DATA_F80D66>>16		;$80B63B	 |
 	LDA #DATA_F80D66		;$80B63E	 |
 	LDY #$0240			;$80B641	 |
@@ -5710,11 +5710,11 @@ CODE_80B5FA:
 	LDA #$0200			;$80B662	 |
 	STA $0512			;$80B665	 |
 	SEP #$20			;$80B668	 |
-	LDA $4211			;$80B66A	 |
+	LDA CPU.irq_flag		;$80B66A	 |
 	LDA #$80			;$80B66D	 |
-	STA $2103			;$80B66F	 |
+	STA PPU.oam_address_high	;$80B66F	 |
 	LDA #$01			;$80B672	 |
-	STA $420D			;$80B674	 |
+	STA CPU.rom_speed		;$80B674	 |
 	REP #$20			;$80B677	 |
 	STZ $2A				;$80B679	 |
 	LDA #CODE_80B681		;$80B67B	 |
@@ -5723,15 +5723,15 @@ CODE_80B5FA:
 CODE_80B681:
 	LDX #$01FF			;$80B681	\
 	TXS				;$80B684	 |
-	STZ $2102			;$80B685	 |
+	STZ PPU.oam_address		;$80B685	 |
 	SEP #$20			;$80B688	 |
-	STZ $210D			;$80B68A	 |
-	STZ $210D			;$80B68D	 |
+	STZ PPU.layer_0_scroll_x	;$80B68A	 |
+	STZ PPU.layer_0_scroll_x	;$80B68D	 |
 	LDA #$FF			;$80B690	 |
-	STA $210E			;$80B692	 |
-	STZ $210E			;$80B695	 |
+	STA PPU.layer_0_scroll_y	;$80B692	 |
+	STZ PPU.layer_0_scroll_y	;$80B695	 |
 	LDA $0512			;$80B698	 |
-	STA $2100			;$80B69B	 |
+	STA PPU.screen			;$80B69B	 |
 	REP #$20			;$80B69E	 |
 	INC $2A				;$80B6A0	 |
 	JSR CODE_80B061			;$80B6A2	 |
@@ -5788,28 +5788,28 @@ DATA_80B6C1:
 
 CODE_80B705:
 	LDA $059B			;$80B705	\
-	STA $420B			;$80B708	 |
+	STA CPU.enable_dma		;$80B708	 |
 	JSL CODE_B5A919			;$80B70B	 |
 	JSR CODE_80F324			;$80B70F	 |
 	SEP #$20			;$80B712	 |
 	LDA $0512			;$80B714	 |
-	STA $2100			;$80B717	 |
+	STA PPU.screen			;$80B717	 |
 	REP #$20			;$80B71A	 |
 	JSR CODE_808988			;$80B71C	 |
 	RTS				;$80B71F	/
 
 CODE_80B720:
 	LDA $059B			;$80B720	\
-	STA $420B			;$80B723	 |
+	STA CPU.enable_dma		;$80B723	 |
 	SEP #$20			;$80B726	 |
 	LDA $0512			;$80B728	 |
-	STA $2100			;$80B72B	 |
+	STA PPU.screen			;$80B72B	 |
 	REP #$20			;$80B72E	 |
 	RTS				;$80B730	/
 
 CODE_80B731:
 	LDA $059B			;$80B731	\
-	STA $420B			;$80B734	 |
+	STA CPU.enable_dma		;$80B734	 |
 	JSL CODE_B5A919			;$80B737	 |
 	JSL CODE_B5ADD8			;$80B73B	 |
 	JSL CODE_B5B00B			;$80B73F	 |
@@ -5820,25 +5820,25 @@ CODE_80B746:
 	LDA $17BA			;$80B749	 |
 	LSR A				;$80B74C	 |
 	SEP #$20			;$80B74D	 |
-	STA $2111			;$80B74F	 |
-	STZ $2111			;$80B752	 |
+	STA PPU.layer_2_scroll_x	;$80B74F	 |
+	STZ PPU.layer_2_scroll_x	;$80B752	 |
 	LDA $17BA			;$80B755	 |
-	STA $210F			;$80B758	 |
+	STA PPU.layer_1_scroll_x	;$80B758	 |
 	LDA $17BB			;$80B75B	 |
-	STA $210F			;$80B75E	 |
+	STA PPU.layer_1_scroll_x	;$80B75E	 |
 	LDA $17C2			;$80B761	 |
-	STA $2110			;$80B764	 |
-	STZ $2110			;$80B767	 |
-	STZ $2112			;$80B76A	 |
-	STZ $2112			;$80B76D	 |
+	STA PPU.layer_1_scroll_y	;$80B764	 |
+	STZ PPU.layer_1_scroll_y	;$80B767	 |
+	STZ PPU.layer_2_scroll_y	;$80B76A	 |
+	STZ PPU.layer_2_scroll_y	;$80B76D	 |
 	LDA $0512			;$80B770	 |
-	STA $2100			;$80B773	 |
+	STA PPU.screen			;$80B773	 |
 	REP #$20			;$80B776	 |
 	RTS				;$80B778	/
 
 CODE_80B779:
 	LDA $059B			;$80B779	\
-	STA $420B			;$80B77C	 |
+	STA CPU.enable_dma		;$80B77C	 |
 	JSR CODE_80B89C			;$80B77F	 |
 	JSL CODE_B5A919			;$80B782	 |
 	JSL CODE_B5ADD8			;$80B786	 |
@@ -5846,7 +5846,7 @@ CODE_80B779:
 	JSR CODE_80F324			;$80B78E	 |
 	SEP #$20			;$80B791	 |
 	LDA $0512			;$80B793	 |
-	STA $2100			;$80B796	 |
+	STA PPU.screen			;$80B796	 |
 	REP #$20			;$80B799	 |
 	RTS				;$80B79B	/
 
@@ -5901,30 +5901,30 @@ CODE_80B7E6:				;		 |
 	CLC				;$80B7F6	 |
 	ADC $17BA			;$80B7F7	 |
 	SEP #$20			;$80B7FA	 |
-	STA $210D			;$80B7FC	 |
+	STA PPU.layer_0_scroll_x	;$80B7FC	 |
 	XBA				;$80B7FF	 |
-	STA $210D			;$80B800	 |
+	STA PPU.layer_0_scroll_x	;$80B800	 |
 	LDA $17BA			;$80B803	 |
-	STA $210F			;$80B806	 |
+	STA PPU.layer_1_scroll_x	;$80B806	 |
 	LDA $17BB			;$80B809	 |
-	STA $210F			;$80B80C	 |
+	STA PPU.layer_1_scroll_x	;$80B80C	 |
 	REP #$20			;$80B80F	 |
 	LDA $17C0			;$80B811	 |
 	LSR A				;$80B814	 |
 	SEP #$20			;$80B815	 |
-	STA $2112			;$80B817	 |
-	STZ $2112			;$80B81A	 |
+	STA PPU.layer_2_scroll_y	;$80B817	 |
+	STZ PPU.layer_2_scroll_y	;$80B81A	 |
 	REP #$20			;$80B81D	 |
 	LDA $17BA			;$80B81F	 |
 	LSR A				;$80B822	 |
 	SEP #$20			;$80B823	 |
-	STA $2111			;$80B825	 |
-	STZ $2111			;$80B828	 |
+	STA PPU.layer_2_scroll_x	;$80B825	 |
+	STZ PPU.layer_2_scroll_x	;$80B828	 |
 	LDA $17C2			;$80B82B	 |
-	STA $2110			;$80B82E	 |
-	STZ $2110			;$80B831	 |
+	STA PPU.layer_1_scroll_y	;$80B82E	 |
+	STZ PPU.layer_1_scroll_y	;$80B831	 |
 	LDA $0512			;$80B834	 |
-	STA $2100			;$80B837	 |
+	STA PPU.screen			;$80B837	 |
 	REP #$20			;$80B83A	 |
 	RTS				;$80B83C	/
 
@@ -6067,18 +6067,18 @@ CODE_80B938:				;		 |
 
 CODE_80B95F:
 	LDA $059B			;$80B95F	\
-	STA $420B			;$80B962	 |
+	STA CPU.enable_dma		;$80B962	 |
 	JSL CODE_B5A919			;$80B965	 |
-	STA $210E			;$80B969	 |
+	STA PPU.layer_0_scroll_y	;$80B969	 |
 	SEP #$20			;$80B96C	 |
 	LDA $0512			;$80B96E	 |
-	STA $2100			;$80B971	 |
+	STA PPU.screen			;$80B971	 |
 	REP #$20			;$80B974	 |
 	RTS				;$80B976	/
 
 CODE_80B977:
 	LDA $059B			;$80B977	\
-	STA $420B			;$80B97A	 |
+	STA CPU.enable_dma		;$80B97A	 |
 	JSL CODE_B5A919			;$80B97D	 |
 	JSL CODE_B5AA88			;$80B981	 |
 	JSL CODE_B5AC25			;$80B985	 |
@@ -6087,22 +6087,22 @@ CODE_80B977:
 	JSR CODE_80F324			;$80B991	 |
 	LDA $17BA			;$80B994	 |
 	SEP #$20			;$80B997	 |
-	STA $210D			;$80B999	 |
+	STA PPU.layer_0_scroll_x	;$80B999	 |
 	XBA				;$80B99C	 |
-	STA $210D			;$80B99D	 |
+	STA PPU.layer_0_scroll_x	;$80B99D	 |
 	LDA $B8				;$80B9A0	 |
-	STA $2111			;$80B9A2	 |
+	STA PPU.layer_2_scroll_x	;$80B9A2	 |
 	LDA $B9				;$80B9A5	 |
-	STA $2111			;$80B9A7	 |
+	STA PPU.layer_2_scroll_x	;$80B9A7	 |
 	REP #$20			;$80B9AA	 |
 	LDA $17C2			;$80B9AC	 |
 	SEP #$20			;$80B9AF	 |
-	STA $210E			;$80B9B1	 |
-	STZ $210E			;$80B9B4	 |
-	STA $2112			;$80B9B7	 |
-	STZ $2112			;$80B9BA	 |
+	STA PPU.layer_0_scroll_y	;$80B9B1	 |
+	STZ PPU.layer_0_scroll_y	;$80B9B4	 |
+	STA PPU.layer_2_scroll_y	;$80B9B7	 |
+	STZ PPU.layer_2_scroll_y	;$80B9BA	 |
 	LDA $0512			;$80B9BD	 |
-	STA $2100			;$80B9C0	 |
+	STA PPU.screen			;$80B9C0	 |
 	REP #$20			;$80B9C3	 |
 	RTS				;$80B9C5	/
 
@@ -6116,8 +6116,8 @@ CODE_80B9C6:
 	LSR A				;$80B9D8	 |
 	LSR A				;$80B9D9	 |
 	SEP #$20			;$80B9DA	 |
-	STA $2111			;$80B9DC	 |
-	STZ $2111			;$80B9DF	 |
+	STA PPU.layer_2_scroll_x	;$80B9DC	 |
+	STZ PPU.layer_2_scroll_x	;$80B9DF	 |
 	REP #$20			;$80B9E2	 |
 	LDA $17C2			;$80B9E4	 |
 	LDY $D3				;$80B9E7	 |
@@ -6129,8 +6129,8 @@ CODE_80B9F2:				;		 |
 	LSR A				;$80B9F2	 |
 	LSR A				;$80B9F3	 |
 	SEP #$20			;$80B9F4	 |
-	STA $2112			;$80B9F6	 |
-	STZ $2112			;$80B9F9	 |
+	STA PPU.layer_2_scroll_y	;$80B9F6	 |
+	STZ PPU.layer_2_scroll_y	;$80B9F9	 |
 	REP #$20			;$80B9FC	 |
 	RTS				;$80B9FE	/
 
@@ -6165,19 +6165,19 @@ CODE_80BA28:				;		 |
 	STA $32				;$80BA2B	 |
 	ORA #$00C0			;$80BA2D	 |
 	SEP #$20			;$80BA30	 |
-	STA $2132			;$80BA32	 |
+	STA PPU.fixed_color		;$80BA32	 |
 	REP #$20			;$80BA35	 |
 	LDA $32				;$80BA37	 |
 	ORA #$0020			;$80BA39	 |
 	SEP #$20			;$80BA3C	 |
-	STA $2132			;$80BA3E	 |
+	STA PPU.fixed_color		;$80BA3E	 |
 	REP #$20			;$80BA41	 |
 	RTS				;$80BA43	/
 
 CODE_80BA44:
 	SEP #$30			;$80BA44	\
 	LDA #$05			;$80BA46	 |
-	STA $2121			;$80BA48	 |
+	STA PPU.cgram_address		;$80BA48	 |
 	LDA $2A				;$80BA4B	 |
 	BIT #$03			;$80BA4D	 |
 	BNE CODE_80BA8E			;$80BA4F	 |
@@ -6185,25 +6185,25 @@ CODE_80BA44:
 	AND #$0E			;$80BA52	 |
 	TAX				;$80BA54	 |
 	LDA.l DATA_80BA91,x		;$80BA55	 |
-	STA $2122			;$80BA59	 |
+	STA PPU.cgram_write		;$80BA59	 |
 	LDA.l DATA_80BA92,x		;$80BA5C	 |
-	STA $2122			;$80BA60	 |
+	STA PPU.cgram_write		;$80BA60	 |
 	TXA				;$80BA63	 |
 	CLC				;$80BA64	 |
 	ADC #$06			;$80BA65	 |
 	TAX				;$80BA67	 |
 	LDA.l DATA_80BA91,x		;$80BA68	 |
-	STA $2122			;$80BA6C	 |
+	STA PPU.cgram_write		;$80BA6C	 |
 	LDA.l DATA_80BA92,x		;$80BA6F	 |
-	STA $2122			;$80BA73	 |
+	STA PPU.cgram_write		;$80BA73	 |
 	TXA				;$80BA76	 |
 	CLC				;$80BA77	 |
 	ADC #$06			;$80BA78	 |
 	TAX				;$80BA7A	 |
 	LDA.l DATA_80BA91,x		;$80BA7B	 |
-	STA $2122			;$80BA7F	 |
+	STA PPU.cgram_write		;$80BA7F	 |
 	LDA.l DATA_80BA92,x		;$80BA82	 |
-	STA $2122			;$80BA86	 |
+	STA PPU.cgram_write		;$80BA86	 |
 	TXA				;$80BA89	 |
 	CLC				;$80BA8A	 |
 	ADC #$06			;$80BA8B	 |
@@ -6301,7 +6301,7 @@ CODE_80BB49:				;		 |
 	STA $7E8035			;$80BB66	 |
 	STA $7E803E			;$80BB6A	 |
 	LDA $0512			;$80BB6E	 |
-	STA $2100			;$80BB71	 |
+	STA PPU.screen			;$80BB71	 |
 	REP #$20			;$80BB74	 |
 	RTS				;$80BB76	/
 
@@ -6314,14 +6314,14 @@ CODE_80BB77:
 	ADC $17BA			;$80BB81	 |
 	LSR A				;$80BB84	 |
 	SEP #$20			;$80BB85	 |
-	STA $210F			;$80BB87	 |
-	STZ $210F			;$80BB8A	 |
+	STA PPU.layer_1_scroll_x	;$80BB87	 |
+	STZ PPU.layer_1_scroll_x	;$80BB8A	 |
 	REP #$20			;$80BB8D	 |
 	LDA $17C2			;$80BB8F	 |
 	LSR A				;$80BB92	 |
 	SEP #$20			;$80BB93	 |
-	STA $2110			;$80BB95	 |
-	STZ $2110			;$80BB98	 |
+	STA PPU.layer_1_scroll_y	;$80BB95	 |
+	STZ PPU.layer_1_scroll_y	;$80BB98	 |
 	REP #$20			;$80BB9B	 |
 	LDA $2A				;$80BB9D	 |
 	CLC				;$80BB9F	 |
@@ -6331,19 +6331,19 @@ CODE_80BB77:
 	CLC				;$80BBA5	 |
 	ADC $17BA			;$80BBA6	 |
 	SEP #$20			;$80BBA9	 |
-	STA $2111			;$80BBAB	 |
-	STZ $2111			;$80BBAE	 |
+	STA PPU.layer_2_scroll_x	;$80BBAB	 |
+	STZ PPU.layer_2_scroll_x	;$80BBAE	 |
 	LDA $17BA			;$80BBB1	 |
-	STA $210D			;$80BBB4	 |
+	STA PPU.layer_0_scroll_x	;$80BBB4	 |
 	LDA $17BB			;$80BBB7	 |
-	STA $210D			;$80BBBA	 |
+	STA PPU.layer_0_scroll_x	;$80BBBA	 |
 	LDA $17C2			;$80BBBD	 |
-	STA $210E			;$80BBC0	 |
-	STZ $210E			;$80BBC3	 |
-	STA $2112			;$80BBC6	 |
-	STZ $2112			;$80BBC9	 |
+	STA PPU.layer_0_scroll_y	;$80BBC0	 |
+	STZ PPU.layer_0_scroll_y	;$80BBC3	 |
+	STA PPU.layer_2_scroll_y	;$80BBC6	 |
+	STZ PPU.layer_2_scroll_y	;$80BBC9	 |
 	LDA $0512			;$80BBCC	 |
-	STA $2100			;$80BBCF	 |
+	STA PPU.screen			;$80BBCF	 |
 	REP #$20			;$80BBD2	 |
 	RTS				;$80BBD4	/
 
@@ -6366,12 +6366,12 @@ CODE_80BBD5:
 CODE_80BBF7:				;		 |
 	SEP #$20			;$80BBF7	 |
 	LDA #$E0			;$80BBF9	 |
-	STA $2132			;$80BBFB	 |
+	STA PPU.fixed_color		;$80BBFB	 |
 	LDA #$01			;$80BBFE	 |
 	TRB $0500			;$80BC00	 |
 	BEQ CODE_80BC0A			;$80BC03	 |
 	LDA #$E2			;$80BC05	 |
-	STA $2132			;$80BC07	 |
+	STA PPU.fixed_color		;$80BC07	 |
 CODE_80BC0A:				;		 |
 	REP #$20			;$80BC0A	 |
 	LDA $17BA			;$80BC0C	 |
@@ -6379,52 +6379,52 @@ CODE_80BC0A:				;		 |
 	LSR A				;$80BC10	 |
 	LSR A				;$80BC11	 |
 	SEP #$20			;$80BC12	 |
-	STA $210F			;$80BC14	 |
-	STZ $210F			;$80BC17	 |
+	STA PPU.layer_1_scroll_x	;$80BC14	 |
+	STZ PPU.layer_1_scroll_x	;$80BC17	 |
 	LDA $17BA			;$80BC1A	 |
-	STA $210D			;$80BC1D	 |
+	STA PPU.layer_0_scroll_x	;$80BC1D	 |
 	LDA $17BB			;$80BC20	 |
-	STA $210D			;$80BC23	 |
+	STA PPU.layer_0_scroll_x	;$80BC23	 |
 	REP #$20			;$80BC26	 |
 	LDA $17C2			;$80BC28	 |
 	SEP #$20			;$80BC2B	 |
-	STA $210E			;$80BC2D	 |
+	STA PPU.layer_0_scroll_y	;$80BC2D	 |
 	XBA				;$80BC30	 |
-	STA $210E			;$80BC31	 |
+	STA PPU.layer_0_scroll_y	;$80BC31	 |
 	LDA $0512			;$80BC34	 |
-	STA $2100			;$80BC37	 |
+	STA PPU.screen			;$80BC37	 |
 	REP #$20			;$80BC3A	 |
 	RTS				;$80BC3C	/
 
 CODE_80BC3D:
 	LDA $059B			;$80BC3D	\
-	STA $420B			;$80BC40	 |
+	STA CPU.enable_dma		;$80BC40	 |
 	JSL CODE_B5A919			;$80BC43	 |
 	JSR CODE_80F324			;$80BC47	 |
 	LDA $17BA			;$80BC4A	 |
 	SEP #$20			;$80BC4D	 |
-	STA $210D			;$80BC4F	 |
+	STA PPU.layer_0_scroll_x	;$80BC4F	 |
 	XBA				;$80BC52	 |
-	STA $210D			;$80BC53	 |
+	STA PPU.layer_0_scroll_x	;$80BC53	 |
 	REP #$20			;$80BC56	 |
 	LDA $17C2			;$80BC58	 |
 	SEP #$20			;$80BC5B	 |
-	STA $210E			;$80BC5D	 |
+	STA PPU.layer_0_scroll_y	;$80BC5D	 |
 	XBA				;$80BC60	 |
-	STA $210E			;$80BC61	 |
+	STA PPU.layer_0_scroll_y	;$80BC61	 |
 	LDA $0512			;$80BC64	 |
-	STA $2100			;$80BC67	 |
+	STA PPU.screen			;$80BC67	 |
 	REP #$20			;$80BC6A	 |
 	RTS				;$80BC6C	/
 
 CODE_80BC6D:
 	LDA $059B			;$80BC6D	\
-	STA $420B			;$80BC70	 |
+	STA CPU.enable_dma		;$80BC70	 |
 	JSL CODE_B5A919			;$80BC73	 |
-	STA $210E			;$80BC77	 |
+	STA PPU.layer_0_scroll_y	;$80BC77	 |
 	SEP #$20			;$80BC7A	 |
 	LDA $0512			;$80BC7C	 |
-	STA $2100			;$80BC7F	 |
+	STA PPU.screen			;$80BC7F	 |
 	REP #$20			;$80BC82	 |
 	RTS				;$80BC84	/
 
@@ -6434,26 +6434,26 @@ CODE_80BC85:
 	LSR A				;$80BC8B	 |
 	LSR A				;$80BC8C	 |
 	SEP #$20			;$80BC8D	 |
-	STA $210F			;$80BC8F	 |
-	STZ $210F			;$80BC92	 |
+	STA PPU.layer_1_scroll_x	;$80BC8F	 |
+	STZ PPU.layer_1_scroll_x	;$80BC92	 |
 	LDA $17BA			;$80BC95	 |
-	STA $210D			;$80BC98	 |
+	STA PPU.layer_0_scroll_x	;$80BC98	 |
 	LDA $17BB			;$80BC9B	 |
-	STA $210D			;$80BC9E	 |
+	STA PPU.layer_0_scroll_x	;$80BC9E	 |
 	LDA $17C2			;$80BCA1	 |
-	STA $210E			;$80BCA4	 |
+	STA PPU.layer_0_scroll_y	;$80BCA4	 |
 	LDA $17C3			;$80BCA7	 |
-	STA $210E			;$80BCAA	 |
+	STA PPU.layer_0_scroll_y	;$80BCAA	 |
 	REP #$20			;$80BCAD	 |
 	JSR CODE_80BD08			;$80BCAF	 |
 	LDA $17C2			;$80BCB2	 |
 	LSR A				;$80BCB5	 |
 	LSR A				;$80BCB6	 |
 	SEP #$20			;$80BCB7	 |
-	STA $2110			;$80BCB9	 |
-	STZ $2110			;$80BCBC	 |
+	STA PPU.layer_1_scroll_y	;$80BCB9	 |
+	STZ PPU.layer_1_scroll_y	;$80BCBC	 |
 	LDA $0512			;$80BCBF	 |
-	STA $2100			;$80BCC2	 |
+	STA PPU.screen			;$80BCC2	 |
 	REP #$20			;$80BCC5	 |
 	RTS				;$80BCC7	/
 
@@ -6493,8 +6493,8 @@ CODE_80BD2F:				;		 |
 	CLC				;$80BD34	 |
 	ADC $17BC			;$80BD35	 |
 	SEP #$20			;$80BD38	 |
-	STA $2111			;$80BD3A	 |
-	STZ $2111			;$80BD3D	 |
+	STA PPU.layer_2_scroll_x	;$80BD3A	 |
+	STZ PPU.layer_2_scroll_x	;$80BD3D	 |
 	REP #$20			;$80BD40	 |
 	LDA $17C2			;$80BD42	 |
 	LSR A				;$80BD45	 |
@@ -6502,10 +6502,10 @@ CODE_80BD2F:				;		 |
 	CLC				;$80BD47	 |
 	ADC $17C4			;$80BD48	 |
 	SEP #$20			;$80BD4B	 |
-	STA $2112			;$80BD4D	 |
-	STZ $2112			;$80BD50	 |
+	STA PPU.layer_2_scroll_y	;$80BD4D	 |
+	STZ PPU.layer_2_scroll_y	;$80BD50	 |
 	LDA #$01			;$80BD53	 |
-	STA $2121			;$80BD55	 |
+	STA PPU.cgram_address		;$80BD55	 |
 	REP #$20			;$80BD58	 |
 	LDA #$8014			;$80BD5A	 |
 	STA $4302			;$80BD5D	 |
@@ -6518,11 +6518,11 @@ CODE_80BD2F:				;		 |
 	LDA #$7E			;$80BD71	 |
 	STA $4304			;$80BD73	 |
 	LDA #$01			;$80BD76	 |
-	STA $420B			;$80BD78	 |
+	STA CPU.enable_dma		;$80BD78	 |
 	REP #$20			;$80BD7B	 |
 	SEP #$20			;$80BD7D	 |
 	LDA #$21			;$80BD7F	 |
-	STA $2121			;$80BD81	 |
+	STA PPU.cgram_address		;$80BD81	 |
 	REP #$20			;$80BD84	 |
 	LDA #$8032			;$80BD86	 |
 	STA $4302			;$80BD89	 |
@@ -6535,7 +6535,7 @@ CODE_80BD2F:				;		 |
 	LDA #$7E			;$80BD9D	 |
 	STA $4304			;$80BD9F	 |
 	LDA #$01			;$80BDA2	 |
-	STA $420B			;$80BDA4	 |
+	STA CPU.enable_dma		;$80BDA4	 |
 	REP #$20			;$80BDA7	 |
 	RTS				;$80BDA9	/
 
@@ -6557,8 +6557,8 @@ CODE_80BDC2:
 	ADC $0006DB			;$80BDC7	 |
 	STA $0006DD			;$80BDCB	 |
 	SEP #$20			;$80BDCF	 |
-	STA $2112			;$80BDD1	 |
-	STZ $2112			;$80BDD4	 |
+	STA PPU.layer_2_scroll_y	;$80BDD1	 |
+	STZ PPU.layer_2_scroll_y	;$80BDD4	 |
 	REP #$20			;$80BDD7	 |
 	LDA.l $0006D7			;$80BDD9	 |
 	CLC				;$80BDDD	 |
@@ -6610,11 +6610,11 @@ CODE_80BE56:				;		 |
 	CLC				;$80BE58	 |
 	ADC $17BA			;$80BE59	 |
 	SEP #$20			;$80BE5C	 |
-	STA $210F			;$80BE5E	 |
-	STZ $210F			;$80BE61	 |
+	STA PPU.layer_1_scroll_x	;$80BE5E	 |
+	STZ PPU.layer_1_scroll_x	;$80BE61	 |
 	LDA #$6F			;$80BE64	 |
-	STA $2110			;$80BE66	 |
-	STZ $2110			;$80BE69	 |
+	STA PPU.layer_1_scroll_y	;$80BE66	 |
+	STZ PPU.layer_1_scroll_y	;$80BE69	 |
 	REP #$20			;$80BE6C	 |
 	LDA $2A				;$80BE6E	 |
 	ASL A				;$80BE70	 |
@@ -6622,18 +6622,18 @@ CODE_80BE56:				;		 |
 	CLC				;$80BE72	 |
 	ADC $17BA			;$80BE73	 |
 	SEP #$20			;$80BE76	 |
-	STA $2111			;$80BE78	 |
-	STZ $2111			;$80BE7B	 |
+	STA PPU.layer_2_scroll_x	;$80BE78	 |
+	STZ PPU.layer_2_scroll_x	;$80BE7B	 |
 	LDA $17BA			;$80BE7E	 |
-	STA $210D			;$80BE81	 |
+	STA PPU.layer_0_scroll_x	;$80BE81	 |
 	LDA $17BB			;$80BE84	 |
-	STA $210D			;$80BE87	 |
+	STA PPU.layer_0_scroll_x	;$80BE87	 |
 	LDA $17C2			;$80BE8A	 |
-	STA $210E			;$80BE8D	 |
-	STZ $210E			;$80BE90	 |
+	STA PPU.layer_0_scroll_y	;$80BE8D	 |
+	STZ PPU.layer_0_scroll_y	;$80BE90	 |
 CODE_80BE93:				;		 |
 	LDA $0512			;$80BE93	 |
-	STA $2100			;$80BE96	 |
+	STA PPU.screen			;$80BE96	 |
 	REP #$20			;$80BE99	 |
 	RTS				;$80BE9B	/
 
@@ -6643,19 +6643,19 @@ CODE_80BE9C:
 	LDA $17BA			;$80BEA2	 |
 	LSR A				;$80BEA5	 |
 	SEP #$20			;$80BEA6	 |
-	STA $2111			;$80BEA8	 |
-	STZ $2111			;$80BEAB	 |
+	STA PPU.layer_2_scroll_x	;$80BEA8	 |
+	STZ PPU.layer_2_scroll_x	;$80BEAB	 |
 	LDA $17BA			;$80BEAE	 |
-	STA $210F			;$80BEB1	 |
+	STA PPU.layer_1_scroll_x	;$80BEB1	 |
 	LDA $17BB			;$80BEB4	 |
-	STA $210F			;$80BEB7	 |
+	STA PPU.layer_1_scroll_x	;$80BEB7	 |
 	LDA $17C2			;$80BEBA	 |
-	STA $2110			;$80BEBD	 |
-	STZ $2110			;$80BEC0	 |
-	STZ $2112			;$80BEC3	 |
-	STZ $2112			;$80BEC6	 |
+	STA PPU.layer_1_scroll_y	;$80BEBD	 |
+	STZ PPU.layer_1_scroll_y	;$80BEC0	 |
+	STZ PPU.layer_2_scroll_y	;$80BEC3	 |
+	STZ PPU.layer_2_scroll_y	;$80BEC6	 |
 	LDA $0512			;$80BEC9	 |
-	STA $2100			;$80BECC	 |
+	STA PPU.screen			;$80BECC	 |
 	REP #$20			;$80BECF	 |
 	RTS				;$80BED1	/
 
@@ -6665,19 +6665,19 @@ CODE_80BED2:
 	LDA $17BA			;$80BED8	 |
 	LSR A				;$80BEDB	 |
 	SEP #$20			;$80BEDC	 |
-	STA $2111			;$80BEDE	 |
-	STZ $2111			;$80BEE1	 |
+	STA PPU.layer_2_scroll_x	;$80BEDE	 |
+	STZ PPU.layer_2_scroll_x	;$80BEE1	 |
 	LDA $17BA			;$80BEE4	 |
-	STA $210F			;$80BEE7	 |
+	STA PPU.layer_1_scroll_x	;$80BEE7	 |
 	LDA $17BB			;$80BEEA	 |
-	STA $210F			;$80BEED	 |
+	STA PPU.layer_1_scroll_x	;$80BEED	 |
 	LDA $17C2			;$80BEF0	 |
-	STA $2110			;$80BEF3	 |
-	STZ $2110			;$80BEF6	 |
-	STZ $2112			;$80BEF9	 |
-	STZ $2112			;$80BEFC	 |
+	STA PPU.layer_1_scroll_y	;$80BEF3	 |
+	STZ PPU.layer_1_scroll_y	;$80BEF6	 |
+	STZ PPU.layer_2_scroll_y	;$80BEF9	 |
+	STZ PPU.layer_2_scroll_y	;$80BEFC	 |
 	LDA $0512			;$80BEFF	 |
-	STA $2100			;$80BF02	 |
+	STA PPU.screen			;$80BF02	 |
 	REP #$20			;$80BF05	 |
 	RTS				;$80BF07	/
 
@@ -6703,24 +6703,24 @@ CODE_80BF2E:				;		 |
 	LDA $17BA			;$80BF32	 |
 	LSR A				;$80BF35	 |
 	SEP #$20			;$80BF36	 |
-	STA $2111			;$80BF38	 |
-	STZ $2111			;$80BF3B	 |
+	STA PPU.layer_2_scroll_x	;$80BF38	 |
+	STZ PPU.layer_2_scroll_x	;$80BF3B	 |
 	REP #$20			;$80BF3E	 |
 	LDA $17B8			;$80BF40	 |
 	ASL A				;$80BF43	 |
 	LDA $17BA			;$80BF44	 |
 	ROL A				;$80BF47	 |
 	SEP #$20			;$80BF48	 |
-	STA $210D			;$80BF4A	 |
+	STA PPU.layer_0_scroll_x	;$80BF4A	 |
 	XBA				;$80BF4D	 |
-	STA $210D			;$80BF4E	 |
+	STA PPU.layer_0_scroll_x	;$80BF4E	 |
 	LDA $17BA			;$80BF51	 |
-	STA $210F			;$80BF54	 |
+	STA PPU.layer_1_scroll_x	;$80BF54	 |
 	LDA $17BB			;$80BF57	 |
-	STA $210F			;$80BF5A	 |
+	STA PPU.layer_1_scroll_x	;$80BF5A	 |
 	LDA $17C2			;$80BF5D	 |
-	STA $2110			;$80BF60	 |
-	STZ $2110			;$80BF63	 |
+	STA PPU.layer_1_scroll_y	;$80BF60	 |
+	STZ PPU.layer_1_scroll_y	;$80BF63	 |
 	REP #$20			;$80BF66	 |
 	LDA $17C2			;$80BF68	 |
 	SEC				;$80BF6B	 |
@@ -6728,10 +6728,10 @@ CODE_80BF2E:				;		 |
 	LSR A				;$80BF6F	 |
 	LSR A				;$80BF70	 |
 	SEP #$20			;$80BF71	 |
-	STA $2112			;$80BF73	 |
-	STZ $2112			;$80BF76	 |
+	STA PPU.layer_2_scroll_y	;$80BF73	 |
+	STZ PPU.layer_2_scroll_y	;$80BF76	 |
 	LDA $0512			;$80BF79	 |
-	STA $2100			;$80BF7C	 |
+	STA PPU.screen			;$80BF7C	 |
 	REP #$20			;$80BF7F	 |
 	RTS				;$80BF81	/
 
@@ -6743,62 +6743,62 @@ CODE_80BF82:
 	LSR A				;$80BF8B	 |
 	LSR A				;$80BF8C	 |
 	SEP #$20			;$80BF8D	 |
-	STA $2111			;$80BF8F	 |
-	STZ $2111			;$80BF92	 |
+	STA PPU.layer_2_scroll_x	;$80BF8F	 |
+	STZ PPU.layer_2_scroll_x	;$80BF92	 |
 	LDA $17BA			;$80BF95	 |
-	STA $210D			;$80BF98	 |
+	STA PPU.layer_0_scroll_x	;$80BF98	 |
 	LDA $17BB			;$80BF9B	 |
-	STA $210D			;$80BF9E	 |
+	STA PPU.layer_0_scroll_x	;$80BF9E	 |
 	REP #$20			;$80BFA1	 |
 	LDA $17BA			;$80BFA3	 |
 	LSR A				;$80BFA6	 |
 	SEP #$20			;$80BFA7	 |
-	STA $210F			;$80BFA9	 |
-	STZ $210F			;$80BFAC	 |
+	STA PPU.layer_1_scroll_x	;$80BFA9	 |
+	STZ PPU.layer_1_scroll_x	;$80BFAC	 |
 	REP #$20			;$80BFAF	 |
 	LDA $17C2			;$80BFB1	 |
 	LSR A				;$80BFB4	 |
 	LSR A				;$80BFB5	 |
 	SEP #$20			;$80BFB6	 |
-	STA $2112			;$80BFB8	 |
-	STZ $2112			;$80BFBB	 |
+	STA PPU.layer_2_scroll_y	;$80BFB8	 |
+	STZ PPU.layer_2_scroll_y	;$80BFBB	 |
 	LDA $17C2			;$80BFBE	 |
-	STA $210E			;$80BFC1	 |
-	STZ $210E			;$80BFC4	 |
+	STA PPU.layer_0_scroll_y	;$80BFC1	 |
+	STZ PPU.layer_0_scroll_y	;$80BFC4	 |
 	REP #$20			;$80BFC7	 |
 	LDA $17C2			;$80BFC9	 |
 	LSR A				;$80BFCC	 |
 	SEP #$20			;$80BFCD	 |
-	STA $2110			;$80BFCF	 |
-	STZ $2110			;$80BFD2	 |
+	STA PPU.layer_1_scroll_y	;$80BFCF	 |
+	STZ PPU.layer_1_scroll_y	;$80BFD2	 |
 	LDA $0512			;$80BFD5	 |
-	STA $2100			;$80BFD8	 |
+	STA PPU.screen			;$80BFD8	 |
 	REP #$20			;$80BFDB	 |
 	RTS				;$80BFDD	/
 
 CODE_80BFDE:
 	LDA $059B			;$80BFDE	\
-	STA $420B			;$80BFE1	 |
+	STA CPU.enable_dma		;$80BFE1	 |
 	LDA #$FE01			;$80BFE4	 |
-	STA $2126			;$80BFE7	 |
+	STA PPU.window_1		;$80BFE7	 |
 	LDY #$2640			;$80BFEA	 |
 	LDX $0989			;$80BFED	 |
 	BNE CODE_80BFFA			;$80BFF0	 |
 	LDA #$0001			;$80BFF2	 |
-	STA $2126			;$80BFF5	 |
+	STA PPU.window_1		;$80BFF5	 |
 	BRA CODE_80C03D			;$80BFF8	/
 
 CODE_80BFFA:
 	SEP #$20			;$80BFFA	\
 	LDA #$13			;$80BFFC	 |
-	STA $212D			;$80BFFE	 |
+	STA PPU.sub_screen		;$80BFFE	 |
 	REP #$20			;$80C001	 |
 	LDA $1A,x			;$80C003	 |
 	CMP #$1C1C			;$80C005	 |
 	BNE CODE_80C015			;$80C008	 |
 	SEP #$20			;$80C00A	 |
 	LDA #$00			;$80C00C	 |
-	STA $212D			;$80C00E	 |
+	STA PPU.sub_screen		;$80C00E	 |
 	REP #$20			;$80C011	 |
 	BRA CODE_80C02A			;$80C013	/
 
@@ -6832,7 +6832,7 @@ CODE_80C03D:				;		 |
 	JSR CODE_80F324			;$80C04C	 |
 	SEP #$20			;$80C04F	 |
 	LDA $0512			;$80C051	 |
-	STA $2100			;$80C054	 |
+	STA PPU.screen			;$80C054	 |
 	REP #$20			;$80C057	 |
 	RTS				;$80C059	/
 
@@ -6841,8 +6841,8 @@ CODE_80C05A:
 	JSR CODE_80CDAE			;$80C05D	 |
 	SEP #$20			;$80C060	 |
 	LDA $17C2			;$80C062	 |
-	STA $2112			;$80C065	 |
-	STZ $2112			;$80C068	 |
+	STA PPU.layer_2_scroll_y	;$80C065	 |
+	STZ PPU.layer_2_scroll_y	;$80C068	 |
 	REP #$20			;$80C06B	 |
 	JSR CODE_80CAFD			;$80C06D	 |
 	JSR CODE_80BAB1			;$80C070	 |
@@ -6858,7 +6858,7 @@ CODE_80C074:
 CODE_80C083:
 	SEP #$20			;$80C083	\
 	LDA #$01			;$80C085	 |
-	STA $2121			;$80C087	 |
+	STA PPU.cgram_address		;$80C087	 |
 	REP #$20			;$80C08A	 |
 	LDA $2A				;$80C08C	 |
 	LSR A				;$80C08E	 |
@@ -6908,9 +6908,9 @@ CODE_80C0BC:				;		 |
 	JSR CODE_80C17A			;$80C0E4	 |
 	ORA $38				;$80C0E7	 |
 	SEP #$20			;$80C0E9	 |
-	STA $2122			;$80C0EB	 |
+	STA PPU.cgram_write		;$80C0EB	 |
 	XBA				;$80C0EE	 |
-	STA $2122			;$80C0EF	 |
+	STA PPU.cgram_write		;$80C0EF	 |
 	REP #$20			;$80C0F2	 |
 	INX				;$80C0F4	 |
 	INX				;$80C0F5	 |
@@ -6918,7 +6918,7 @@ CODE_80C0BC:				;		 |
 	BNE CODE_80C0BC			;$80C0F9	 |
 CODE_80C0FB:				;		 |
 	LDA #$7010			;$80C0FB	 |
-	STA $2116			;$80C0FE	 |
+	STA PPU.vram_address		;$80C0FE	 |
 	LDA $2A				;$80C101	 |
 	BIT #$0007			;$80C103	 |
 	BNE CODE_80C134			;$80C106	 |
@@ -6938,7 +6938,7 @@ CODE_80C0FB:				;		 |
 	LDA #$F3			;$80C128	 |
 	STA $4314			;$80C12A	 |
 	LDA #$02			;$80C12D	 |
-	STA $420B			;$80C12F	 |
+	STA CPU.enable_dma		;$80C12F	 |
 	REP #$20			;$80C132	 |
 CODE_80C134:				;		 |
 	INC A				;$80C134	 |
@@ -6954,24 +6954,24 @@ CODE_80C141:
 CODE_80C146:				;		 |
 	LDA $17BA			;$80C146	 |
 	SEP #$20			;$80C149	 |
-	STA $210D			;$80C14B	 |
+	STA PPU.layer_0_scroll_x	;$80C14B	 |
 	XBA				;$80C14E	 |
-	STA $210D			;$80C14F	 |
+	STA PPU.layer_0_scroll_x	;$80C14F	 |
 	XBA				;$80C152	 |
 	REP #$20			;$80C153	 |
 	CLC				;$80C155	 |
 	ADC #$0080			;$80C156	 |
 	SEP #$20			;$80C159	 |
-	STA $210F			;$80C15B	 |
+	STA PPU.layer_1_scroll_x	;$80C15B	 |
 	XBA				;$80C15E	 |
-	STA $210F			;$80C15F	 |
+	STA PPU.layer_1_scroll_x	;$80C15F	 |
 	LDA $17C2			;$80C162	 |
-	STA $210E			;$80C165	 |
-	STZ $210E			;$80C168	 |
-	STA $2110			;$80C16B	 |
-	STZ $2110			;$80C16E	 |
+	STA PPU.layer_0_scroll_y	;$80C165	 |
+	STZ PPU.layer_0_scroll_y	;$80C168	 |
+	STA PPU.layer_1_scroll_y	;$80C16B	 |
+	STZ PPU.layer_1_scroll_y	;$80C16E	 |
 	LDA $0512			;$80C171	 |
-	STA $2100			;$80C174	 |
+	STA PPU.screen			;$80C174	 |
 	REP #$20			;$80C177	 |
 	RTS				;$80C179	/
 
@@ -6983,7 +6983,7 @@ CODE_80C17F:				;		 |
 
 CODE_80C180:
 	LDA $059B			;$80C180	\
-	STA $420B			;$80C183	 |
+	STA CPU.enable_dma		;$80C183	 |
 	JSR CODE_80B89C			;$80C186	 |
 	JSL CODE_B5A919			;$80C189	 |
 	JSL CODE_B5ADD8			;$80C18D	 |
@@ -6993,7 +6993,7 @@ CODE_80C180:
 	JSR CODE_80C1A9			;$80C19B	 |
 	SEP #$20			;$80C19E	 |
 	LDA $0512			;$80C1A0	 |
-	STA $2100			;$80C1A3	 |
+	STA PPU.screen			;$80C1A3	 |
 	REP #$20			;$80C1A6	 |
 	RTS				;$80C1A8	/
 
@@ -7015,7 +7015,7 @@ CODE_80C1B2:
 CODE_80C1C5:				;		 |
 	STA $091D			;$80C1C5	 |
 	LDX #$2010			;$80C1C8	 |
-	STX $2116			;$80C1CB	 |
+	STX PPU.vram_address		;$80C1CB	 |
 	ASL A				;$80C1CE	 |
 	TAX				;$80C1CF	 |
 	LDA.l DATA_80C25F,x		;$80C1D0	 |
@@ -7054,7 +7054,7 @@ CODE_80C200:				;		 |
 	STA $34				;$80C20B	 |
 	SEP #$20			;$80C20D	 |
 	LDA #$68			;$80C20F	 |
-	STA $2121			;$80C211	 |
+	STA PPU.cgram_address		;$80C211	 |
 	REP #$20			;$80C214	 |
 	LDX #$0000			;$80C216	 |
 CODE_80C219:				;		 |
@@ -7083,9 +7083,9 @@ CODE_80C239:				;		 |
 CODE_80C24A:				;		 |
 	ORA $38				;$80C24A	 |
 	SEP #$20			;$80C24C	 |
-	STA $2122			;$80C24E	 |
+	STA PPU.cgram_write		;$80C24E	 |
 	XBA				;$80C251	 |
-	STA $2122			;$80C252	 |
+	STA PPU.cgram_write		;$80C252	 |
 	REP #$20			;$80C255	 |
 	INX				;$80C257	 |
 	INX				;$80C258	 |
@@ -7108,7 +7108,7 @@ CODE_80C26B:
 	LDX $0D5A			;$80C274	 |
 	BEQ CODE_80C288			;$80C277	 |
 	LDY $12,x			;$80C279	 |
-	STY $212C			;$80C27B	 |
+	STY PPU.screens			;$80C27B	 |
 	SEC				;$80C27E	 |
 	LDA $17BA			;$80C27F	 |
 	SBC $06,x			;$80C282	 |
@@ -7116,9 +7116,9 @@ CODE_80C26B:
 	ADC #$0080			;$80C285	 |
 CODE_80C288:				;		 |
 	SEP #$20			;$80C288	 |
-	STA $210F			;$80C28A	 |
+	STA PPU.layer_1_scroll_x	;$80C28A	 |
 	XBA				;$80C28D	 |
-	STA $210F			;$80C28E	 |
+	STA PPU.layer_1_scroll_x	;$80C28E	 |
 	REP #$20			;$80C291	 |
 	SEC				;$80C293	 |
 	LDA $17C2			;$80C294	 |
@@ -7126,8 +7126,8 @@ CODE_80C288:				;		 |
 	CLC				;$80C299	 |
 	ADC #$0040			;$80C29A	 |
 	SEP #$20			;$80C29D	 |
-	STA $2110			;$80C29F	 |
-	STZ $2110			;$80C2A2	 |
+	STA PPU.layer_1_scroll_y	;$80C29F	 |
+	STZ PPU.layer_1_scroll_y	;$80C2A2	 |
 	REP #$20			;$80C2A5	 |
 	CMP #$00A0			;$80C2A7	 |
 	BMI CODE_80C2B4			;$80C2AA	 |
@@ -7160,13 +7160,13 @@ CODE_80C2D4:				;		 |
 	LDA $17BA			;$80C2DE	 |
 	LSR A				;$80C2E1	 |
 	SEP #$20			;$80C2E2	 |
-	STA $2111			;$80C2E4	 |
+	STA PPU.layer_2_scroll_x	;$80C2E4	 |
 	XBA				;$80C2E7	 |
-	STA $2111			;$80C2E8	 |
+	STA PPU.layer_2_scroll_x	;$80C2E8	 |
 	LDA $17BA			;$80C2EB	 |
-	STA $210D			;$80C2EE	 |
+	STA PPU.layer_0_scroll_x	;$80C2EE	 |
 	LDA $17BB			;$80C2F1	 |
-	STA $210D			;$80C2F4	 |
+	STA PPU.layer_0_scroll_x	;$80C2F4	 |
 	REP #$20			;$80C2F7	 |
 	LDA $17C2			;$80C2F9	 |
 	SEC				;$80C2FC	 |
@@ -7175,13 +7175,13 @@ CODE_80C2D4:				;		 |
 	LSR A				;$80C301	 |
 	LSR A				;$80C302	 |
 	SEP #$20			;$80C303	 |
-	STA $2112			;$80C305	 |
-	STZ $2112			;$80C308	 |
+	STA PPU.layer_2_scroll_y	;$80C305	 |
+	STZ PPU.layer_2_scroll_y	;$80C308	 |
 	LDA $17C2			;$80C30B	 |
-	STA $210E			;$80C30E	 |
-	STZ $210E			;$80C311	 |
+	STA PPU.layer_0_scroll_y	;$80C30E	 |
+	STZ PPU.layer_0_scroll_y	;$80C311	 |
 	LDA $0512			;$80C314	 |
-	STA $2100			;$80C317	 |
+	STA PPU.screen			;$80C317	 |
 	REP #$20			;$80C31A	 |
 	RTS				;$80C31C	/
 
@@ -7205,7 +7205,7 @@ CODE_80C329:
 	LDX #$0300			;$80C337	 |
 	STA $4312			;$80C33A	 |
 	STA $4318			;$80C33D	 |
-	STY $2116			;$80C340	 |
+	STY PPU.vram_address		;$80C340	 |
 	STX $4315			;$80C343	 |
 	LDA #$1801			;$80C346	 |
 	STA $4310			;$80C349	 |
@@ -7213,7 +7213,7 @@ CODE_80C329:
 	LDA #$F4			;$80C34E	 |
 	STA $4314			;$80C350	 |
 	LDA #$02			;$80C353	 |
-	STA $420B			;$80C355	 |
+	STA CPU.enable_dma		;$80C355	 |
 	REP #$20			;$80C358	 |
 	LDY #$7190			;$80C35A	 |
 	LDA $2A				;$80C35D	 |
@@ -7224,7 +7224,7 @@ CODE_80C329:
 	LDX #$0380			;$80C368	 |
 	STA $4312			;$80C36B	 |
 	STA $4318			;$80C36E	 |
-	STY $2116			;$80C371	 |
+	STY PPU.vram_address		;$80C371	 |
 	STX $4315			;$80C374	 |
 	LDA #$1801			;$80C377	 |
 	STA $4310			;$80C37A	 |
@@ -7232,7 +7232,7 @@ CODE_80C329:
 	LDA #$F4			;$80C37F	 |
 	STA $4314			;$80C381	 |
 	LDA #$02			;$80C384	 |
-	STA $420B			;$80C386	 |
+	STA CPU.enable_dma		;$80C386	 |
 	REP #$20			;$80C389	 |
 	RTS				;$80C38B	/
 
@@ -7352,7 +7352,7 @@ DATA_80C446:
 
 CODE_80C466:
 	LDA $059B			;$80C466	\
-	STA $420B			;$80C469	 |
+	STA CPU.enable_dma		;$80C469	 |
 	JSR CODE_80B83D			;$80C46C	 |
 	JSL CODE_B5A919			;$80C46F	 |
 	JSL CODE_B5ADD8			;$80C473	 |
@@ -7362,21 +7362,21 @@ CODE_80C466:
 	LDA $17C2			;$80C481	 |
 	LSR A				;$80C484	 |
 	SEP #$20			;$80C485	 |
-	STA $2110			;$80C487	 |
-	STZ $2110			;$80C48A	 |
+	STA PPU.layer_1_scroll_y	;$80C487	 |
+	STZ PPU.layer_1_scroll_y	;$80C48A	 |
 	LDA $17BA			;$80C48D	 |
 	LDA $17BB			;$80C490	 |
 	LDA $17C2			;$80C493	 |
-	STA $210E			;$80C496	 |
-	STZ $210E			;$80C499	 |
+	STA PPU.layer_0_scroll_y	;$80C496	 |
+	STZ PPU.layer_0_scroll_y	;$80C499	 |
 	LDA $0512			;$80C49C	 |
-	STA $2100			;$80C49F	 |
+	STA PPU.screen			;$80C49F	 |
 	REP #$20			;$80C4A2	 |
 	RTS				;$80C4A4	/
 
 CODE_80C4A5:
 	LDA $059B			;$80C4A5	\
-	STA $420B			;$80C4A8	 |
+	STA CPU.enable_dma		;$80C4A8	 |
 	JSR CODE_80B89C			;$80C4AB	 |
 	JSL CODE_B5A919			;$80C4AE	 |
 	JSL CODE_B5ADD8			;$80C4B2	 |
@@ -7468,13 +7468,13 @@ CODE_80C55C:
 	LDX #$0004			;$80C55D	 |
 	JSL DMA_palette			;$80C560	 |
 	SEP #$20			;$80C564	 |
-	STZ $2121			;$80C566	 |
+	STZ PPU.cgram_address		;$80C566	 |
 	LDA $0913			;$80C569	 |
-	STA $2122			;$80C56C	 |
+	STA PPU.cgram_write		;$80C56C	 |
 	LDA $0914			;$80C56F	 |
-	STA $2122			;$80C572	 |
+	STA PPU.cgram_write		;$80C572	 |
 	LDA $0512			;$80C575	 |
-	STA $2100			;$80C578	 |
+	STA PPU.screen			;$80C578	 |
 	REP #$20			;$80C57B	 |
 	RTS				;$80C57D	/
 
@@ -7486,45 +7486,45 @@ CODE_80C583:				;		 |
 
 CODE_80C584:
 	LDA $059B			;$80C584	\
-	STA $420B			;$80C587	 |
+	STA CPU.enable_dma		;$80C587	 |
 	JSL CODE_B5A919			;$80C58A	 |
 	JSL CODE_B5ADD8			;$80C58E	 |
 	JSL CODE_B5B00B			;$80C592	 |
 	JSR CODE_80F324			;$80C596	 |
 	LDA $17BA			;$80C599	 |
 	SEP #$20			;$80C59C	 |
-	STA $210D			;$80C59E	 |
+	STA PPU.layer_0_scroll_x	;$80C59E	 |
 	XBA				;$80C5A1	 |
-	STA $210D			;$80C5A2	 |
+	STA PPU.layer_0_scroll_x	;$80C5A2	 |
 	XBA				;$80C5A5	 |
 	REP #$20			;$80C5A6	 |
 	CLC				;$80C5A8	 |
 	ADC #$0080			;$80C5A9	 |
 	SEP #$20			;$80C5AC	 |
-	STA $210F			;$80C5AE	 |
+	STA PPU.layer_1_scroll_x	;$80C5AE	 |
 	XBA				;$80C5B1	 |
-	STA $210F			;$80C5B2	 |
+	STA PPU.layer_1_scroll_x	;$80C5B2	 |
 	LDA $17C2			;$80C5B5	 |
-	STA $210E			;$80C5B8	 |
-	STZ $210E			;$80C5BB	 |
-	STA $2110			;$80C5BE	 |
-	STZ $2110			;$80C5C1	 |
+	STA PPU.layer_0_scroll_y	;$80C5B8	 |
+	STZ PPU.layer_0_scroll_y	;$80C5BB	 |
+	STA PPU.layer_1_scroll_y	;$80C5BE	 |
+	STZ PPU.layer_1_scroll_y	;$80C5C1	 |
 	LDA $0512			;$80C5C4	 |
-	STA $2100			;$80C5C7	 |
+	STA PPU.screen			;$80C5C7	 |
 	REP #$20			;$80C5CA	 |
 	LDA $2A				;$80C5CC	 |
 	CLC				;$80C5CE	 |
 	ADC $17BA			;$80C5CF	 |
 	SEP #$20			;$80C5D2	 |
-	STA $2111			;$80C5D4	 |
+	STA PPU.layer_2_scroll_x	;$80C5D4	 |
 	XBA				;$80C5D7	 |
-	STA $2111			;$80C5D8	 |
+	STA PPU.layer_2_scroll_x	;$80C5D8	 |
 	REP #$20			;$80C5DB	 |
 	RTS				;$80C5DD	/
 
 CODE_80C5DE:
 	LDA $059B			;$80C5DE	\
-	STA $420B			;$80C5E1	 |
+	STA CPU.enable_dma		;$80C5E1	 |
 	JSL CODE_B5A919			;$80C5E4	 |
 	JSL CODE_B5AA88			;$80C5E8	 |
 	JSL CODE_B5AC25			;$80C5EC	 |
@@ -7543,36 +7543,36 @@ CODE_80C5DE:
 	SEP #$20			;$80C615	 |
 	LDA #$7E			;$80C617	 |
 	STA $4304			;$80C619	 |
-	STZ $2121			;$80C61C	 |
+	STZ PPU.cgram_address		;$80C61C	 |
 	LDA #$01			;$80C61F	 |
-	STA $420B			;$80C621	 |
+	STA CPU.enable_dma		;$80C621	 |
 	REP #$20			;$80C624	 |
 	STZ $0913			;$80C626	 |
 CODE_80C629:				;		 |
 	LDA $17BA			;$80C629	 |
 	SEP #$20			;$80C62C	 |
-	STA $210D			;$80C62E	 |
+	STA PPU.layer_0_scroll_x	;$80C62E	 |
 	XBA				;$80C631	 |
-	STA $210D			;$80C632	 |
+	STA PPU.layer_0_scroll_x	;$80C632	 |
 	LDA $B8				;$80C635	 |
-	STA $2111			;$80C637	 |
+	STA PPU.layer_2_scroll_x	;$80C637	 |
 	LDA $B9				;$80C63A	 |
-	STA $2111			;$80C63C	 |
+	STA PPU.layer_2_scroll_x	;$80C63C	 |
 	REP #$20			;$80C63F	 |
 	LDA $17C2			;$80C641	 |
 	SEP #$20			;$80C644	 |
-	STA $210E			;$80C646	 |
-	STZ $210E			;$80C649	 |
-	STA $2112			;$80C64C	 |
-	STZ $2112			;$80C64F	 |
+	STA PPU.layer_0_scroll_y	;$80C646	 |
+	STZ PPU.layer_0_scroll_y	;$80C649	 |
+	STA PPU.layer_2_scroll_y	;$80C64C	 |
+	STZ PPU.layer_2_scroll_y	;$80C64F	 |
 	LDA $0512			;$80C652	 |
-	STA $2100			;$80C655	 |
+	STA PPU.screen			;$80C655	 |
 	REP #$20			;$80C658	 |
 	RTS				;$80C65A	/
 
 CODE_80C65B:
 	LDA $059B			;$80C65B	\
-	STA $420B			;$80C65E	 |
+	STA CPU.enable_dma		;$80C65E	 |
 	JSR CODE_80B86E			;$80C661	 |
 	JSL CODE_B5A919			;$80C664	 |
 	JSL CODE_B5ADD8			;$80C668	 |
@@ -7581,14 +7581,14 @@ CODE_80C65B:
 	LDA $17BA			;$80C673	 |
 	LSR A				;$80C676	 |
 	SEP #$20			;$80C677	 |
-	STA $210F			;$80C679	 |
-	STZ $210F			;$80C67C	 |
+	STA PPU.layer_1_scroll_x	;$80C679	 |
+	STZ PPU.layer_1_scroll_x	;$80C67C	 |
 	REP #$20			;$80C67F	 |
 	LDA $17C2			;$80C681	 |
 	LSR A				;$80C684	 |
 	SEP #$20			;$80C685	 |
-	STA $2110			;$80C687	 |
-	STZ $2110			;$80C68A	 |
+	STA PPU.layer_1_scroll_y	;$80C687	 |
+	STZ PPU.layer_1_scroll_y	;$80C68A	 |
 	REP #$20			;$80C68D	 |
 	LDA $08C2			;$80C68F	 |
 	BIT #$0140			;$80C692	 |
@@ -7676,53 +7676,53 @@ CODE_80C72E:
 	LDX #$0004			;$80C72F	 |
 	JSL DMA_palette			;$80C732	 |
 	SEP #$20			;$80C736	 |
-	STZ $2121			;$80C738	 |
+	STZ PPU.cgram_address		;$80C738	 |
 	LDA $0913			;$80C73B	 |
-	STA $2122			;$80C73E	 |
+	STA PPU.cgram_write		;$80C73E	 |
 	LDA $0914			;$80C741	 |
-	STA $2122			;$80C744	 |
+	STA PPU.cgram_write		;$80C744	 |
 	LDA $0512			;$80C747	 |
-	STA $2100			;$80C74A	 |
+	STA PPU.screen			;$80C74A	 |
 	REP #$20			;$80C74D	 |
 	RTS				;$80C74F	/
 
 CODE_80C750:
 	LDA $059B			;$80C750	\
-	STA $420B			;$80C753	 |
+	STA CPU.enable_dma		;$80C753	 |
 	JSL CODE_B5A919			;$80C756	 |
 	JSL CODE_B5ADD8			;$80C75A	 |
 	JSL CODE_B5B00B			;$80C75E	 |
 	JSR CODE_80F324			;$80C762	 |
 	LDA $17BA			;$80C765	 |
 	SEP #$20			;$80C768	 |
-	STA $210D			;$80C76A	 |
+	STA PPU.layer_0_scroll_x	;$80C76A	 |
 	XBA				;$80C76D	 |
-	STA $210D			;$80C76E	 |
+	STA PPU.layer_0_scroll_x	;$80C76E	 |
 	LDA $17C2			;$80C771	 |
-	STA $210E			;$80C774	 |
-	STZ $210E			;$80C777	 |
+	STA PPU.layer_0_scroll_y	;$80C774	 |
+	STZ PPU.layer_0_scroll_y	;$80C777	 |
 	REP #$20			;$80C77A	 |
 	LDA $17BA			;$80C77C	 |
 	LSR A				;$80C77F	 |
 	SEP #$20			;$80C780	 |
-	STA $210F			;$80C782	 |
-	STZ $210F			;$80C785	 |
+	STA PPU.layer_1_scroll_x	;$80C782	 |
+	STZ PPU.layer_1_scroll_x	;$80C785	 |
 	REP #$20			;$80C788	 |
 	LDA $17BA			;$80C78A	 |
 	LSR A				;$80C78D	 |
 	LSR A				;$80C78E	 |
 	SEP #$20			;$80C78F	 |
-	STA $2111			;$80C791	 |
-	STZ $2111			;$80C794	 |
+	STA PPU.layer_2_scroll_x	;$80C791	 |
+	STZ PPU.layer_2_scroll_x	;$80C794	 |
 	REP #$20			;$80C797	 |
 	LDA $17C0			;$80C799	 |
 	LSR A				;$80C79C	 |
 	SEC				;$80C79D	 |
 	SBC #$0040			;$80C79E	 |
 	SEP #$20			;$80C7A1	 |
-	STA $2110			;$80C7A3	 |
+	STA PPU.layer_1_scroll_y	;$80C7A3	 |
 	XBA				;$80C7A6	 |
-	STA $2110			;$80C7A7	 |
+	STA PPU.layer_1_scroll_y	;$80C7A7	 |
 	REP #$20			;$80C7AA	 |
 	LDA $17C0			;$80C7AC	 |
 	SEC				;$80C7AF	 |
@@ -7730,16 +7730,16 @@ CODE_80C750:
 	LSR A				;$80C7B3	 |
 	LSR A				;$80C7B4	 |
 	SEP #$20			;$80C7B5	 |
-	STA $2112			;$80C7B7	 |
-	STZ $2112			;$80C7BA	 |
+	STA PPU.layer_2_scroll_y	;$80C7B7	 |
+	STZ PPU.layer_2_scroll_y	;$80C7BA	 |
 	LDA $0512			;$80C7BD	 |
-	STA $2100			;$80C7C0	 |
+	STA PPU.screen			;$80C7C0	 |
 	REP #$20			;$80C7C3	 |
 	RTS				;$80C7C5	/
 
 CODE_80C7C6:
 	LDA $059B			;$80C7C6	\
-	STA $420B			;$80C7C9	 |
+	STA CPU.enable_dma		;$80C7C9	 |
 	JSL CODE_B5A919			;$80C7CC	 |
 	JSL CODE_B5ADD8			;$80C7D0	 |
 	JSL CODE_B5B00B			;$80C7D4	 |
@@ -7747,36 +7747,36 @@ CODE_80C7C6:
 	JSR CODE_80CA7E			;$80C7DB	 |
 	LDA $17BA			;$80C7DE	 |
 	SEP #$20			;$80C7E1	 |
-	STA $210D			;$80C7E3	 |
+	STA PPU.layer_0_scroll_x	;$80C7E3	 |
 	XBA				;$80C7E6	 |
-	STA $210D			;$80C7E7	 |
+	STA PPU.layer_0_scroll_x	;$80C7E7	 |
 	LDA $17C2			;$80C7EA	 |
-	STA $210E			;$80C7ED	 |
-	STZ $210E			;$80C7F0	 |
+	STA PPU.layer_0_scroll_y	;$80C7ED	 |
+	STZ PPU.layer_0_scroll_y	;$80C7F0	 |
 	REP #$20			;$80C7F3	 |
 	LDA $17BA			;$80C7F5	 |
 	LSR A				;$80C7F8	 |
 	SEP #$20			;$80C7F9	 |
-	STA $210F			;$80C7FB	 |
-	STZ $210F			;$80C7FE	 |
+	STA PPU.layer_1_scroll_x	;$80C7FB	 |
+	STZ PPU.layer_1_scroll_x	;$80C7FE	 |
 	REP #$20			;$80C801	 |
 	LDA $17C2			;$80C803	 |
 	LSR A				;$80C806	 |
 	SEP #$20			;$80C807	 |
-	STA $2110			;$80C809	 |
-	STZ $2110			;$80C80C	 |
+	STA PPU.layer_1_scroll_y	;$80C809	 |
+	STZ PPU.layer_1_scroll_y	;$80C80C	 |
 	CLC				;$80C80F	 |
 	ADC #$04			;$80C810	 |
-	STA $2112			;$80C812	 |
-	STZ $2112			;$80C815	 |
+	STA PPU.layer_2_scroll_y	;$80C812	 |
+	STZ PPU.layer_2_scroll_y	;$80C815	 |
 	LDA $0512			;$80C818	 |
-	STA $2100			;$80C81B	 |
+	STA PPU.screen			;$80C81B	 |
 	REP #$20			;$80C81E	 |
 	RTS				;$80C820	/
 
 CODE_80C821:
 	LDA $059B			;$80C821	\
-	STA $420B			;$80C824	 |
+	STA CPU.enable_dma		;$80C824	 |
 	JSR CODE_80B89C			;$80C827	 |
 	JSL CODE_B5A919			;$80C82A	 |
 	JSL CODE_B5ADD8			;$80C82E	 |
@@ -7785,13 +7785,13 @@ CODE_80C821:
 	JSR CODE_80C1A9			;$80C839	 |
 	SEP #$20			;$80C83C	 |
 	LDA $0512			;$80C83E	 |
-	STA $2100			;$80C841	 |
+	STA PPU.screen			;$80C841	 |
 	REP #$20			;$80C844	 |
 	RTS				;$80C846	/
 
 CODE_80C847:
 	LDA $059B			;$80C847	\
-	STA $420B			;$80C84A	 |
+	STA CPU.enable_dma		;$80C84A	 |
 	JSL CODE_B5A919			;$80C84D	 |
 	JSL CODE_B5ADD8			;$80C851	 |
 	JSL CODE_B5B00B			;$80C855	 |
@@ -7803,36 +7803,36 @@ CODE_80C847:
 	LSR A				;$80C865	 |
 	LSR A				;$80C866	 |
 	SEP #$20			;$80C867	 |
-	STA $2111			;$80C869	 |
-	STZ $2111			;$80C86C	 |
+	STA PPU.layer_2_scroll_x	;$80C869	 |
+	STZ PPU.layer_2_scroll_x	;$80C86C	 |
 	LDA $17BA			;$80C86F	 |
-	STA $210D			;$80C872	 |
+	STA PPU.layer_0_scroll_x	;$80C872	 |
 	LDA $17BB			;$80C875	 |
-	STA $210D			;$80C878	 |
+	STA PPU.layer_0_scroll_x	;$80C878	 |
 	REP #$20			;$80C87B	 |
 	LDA $17BA			;$80C87D	 |
 	LSR A				;$80C880	 |
 	SEP #$20			;$80C881	 |
-	STA $210F			;$80C883	 |
-	STZ $210F			;$80C886	 |
+	STA PPU.layer_1_scroll_x	;$80C883	 |
+	STZ PPU.layer_1_scroll_x	;$80C886	 |
 	REP #$20			;$80C889	 |
 	LDA $17C2			;$80C88B	 |
 	LSR A				;$80C88E	 |
 	LSR A				;$80C88F	 |
 	SEP #$20			;$80C890	 |
-	STA $2112			;$80C892	 |
-	STZ $2112			;$80C895	 |
+	STA PPU.layer_2_scroll_y	;$80C892	 |
+	STZ PPU.layer_2_scroll_y	;$80C895	 |
 	LDA $17C2			;$80C898	 |
-	STA $210E			;$80C89B	 |
-	STZ $210E			;$80C89E	 |
+	STA PPU.layer_0_scroll_y	;$80C89B	 |
+	STZ PPU.layer_0_scroll_y	;$80C89E	 |
 	LDA $0512			;$80C8A1	 |
-	STA $2100			;$80C8A4	 |
+	STA PPU.screen			;$80C8A4	 |
 	REP #$20			;$80C8A7	 |
 	RTS				;$80C8A9	/
 
 CODE_80C8AA:
 	LDA $059B			;$80C8AA	\
-	STA $420B			;$80C8AD	 |
+	STA CPU.enable_dma		;$80C8AD	 |
 	JSL CODE_B5A919			;$80C8B0	 |
 	JSL CODE_B5ADD8			;$80C8B4	 |
 	JSL CODE_B5B00B			;$80C8B8	 |
@@ -7842,31 +7842,31 @@ CODE_80C8AA:
 	LSR A				;$80C8C5	 |
 	LSR A				;$80C8C6	 |
 	SEP #$20			;$80C8C7	 |
-	STA $210F			;$80C8C9	 |
-	STZ $210F			;$80C8CC	 |
+	STA PPU.layer_1_scroll_x	;$80C8C9	 |
+	STZ PPU.layer_1_scroll_x	;$80C8CC	 |
 	LDA $17BA			;$80C8CF	 |
-	STA $210D			;$80C8D2	 |
+	STA PPU.layer_0_scroll_x	;$80C8D2	 |
 	LDA $17BB			;$80C8D5	 |
-	STA $210D			;$80C8D8	 |
+	STA PPU.layer_0_scroll_x	;$80C8D8	 |
 	LDA $17C2			;$80C8DB	 |
-	STA $210E			;$80C8DE	 |
+	STA PPU.layer_0_scroll_y	;$80C8DE	 |
 	LDA $17C3			;$80C8E1	 |
-	STA $210E			;$80C8E4	 |
+	STA PPU.layer_0_scroll_y	;$80C8E4	 |
 	REP #$20			;$80C8E7	 |
 	LDA $17C2			;$80C8E9	 |
 	LSR A				;$80C8EC	 |
 	LSR A				;$80C8ED	 |
 	SEP #$20			;$80C8EE	 |
-	STA $2110			;$80C8F0	 |
-	STZ $2110			;$80C8F3	 |
+	STA PPU.layer_1_scroll_y	;$80C8F0	 |
+	STZ PPU.layer_1_scroll_y	;$80C8F3	 |
 	LDA $0512			;$80C8F6	 |
-	STA $2100			;$80C8F9	 |
+	STA PPU.screen			;$80C8F9	 |
 	REP #$20			;$80C8FC	 |
 	RTS				;$80C8FE	/
 
 CODE_80C8FF:
 	LDA $059B			;$80C8FF	\
-	STA $420B			;$80C902	 |
+	STA CPU.enable_dma		;$80C902	 |
 	JSL CODE_B5A919			;$80C905	 |
 	JSL CODE_B5ADD8			;$80C909	 |
 	JSL CODE_B5B00B			;$80C90D	 |
@@ -7886,19 +7886,19 @@ CODE_80C933:				;		 |
 	LDA $17BA			;$80C933	 |
 	LSR A				;$80C936	 |
 	SEP #$20			;$80C937	 |
-	STA $2111			;$80C939	 |
-	STZ $2111			;$80C93C	 |
+	STA PPU.layer_2_scroll_x	;$80C939	 |
+	STZ PPU.layer_2_scroll_x	;$80C93C	 |
 	LDA $17BA			;$80C93F	 |
-	STA $210F			;$80C942	 |
+	STA PPU.layer_1_scroll_x	;$80C942	 |
 	LDA $17BB			;$80C945	 |
-	STA $210F			;$80C948	 |
+	STA PPU.layer_1_scroll_x	;$80C948	 |
 	LDA $17C2			;$80C94B	 |
-	STA $2110			;$80C94E	 |
-	STZ $2110			;$80C951	 |
-	STZ $2112			;$80C954	 |
-	STZ $2112			;$80C957	 |
+	STA PPU.layer_1_scroll_y	;$80C94E	 |
+	STZ PPU.layer_1_scroll_y	;$80C951	 |
+	STZ PPU.layer_2_scroll_y	;$80C954	 |
+	STZ PPU.layer_2_scroll_y	;$80C957	 |
 	LDA $0512			;$80C95A	 |
-	STA $2100			;$80C95D	 |
+	STA PPU.screen			;$80C95D	 |
 	REP #$20			;$80C960	 |
 	RTS				;$80C962	/
 
@@ -7967,8 +7967,8 @@ CODE_80C9B3:				;		 |
 	PLB				;$80C9D1	 |
 	SEP #$20			;$80C9D2	 |
 	LDA $17C4			;$80C9D4	 |
-	STA $2112			;$80C9D7	 |
-	STZ $2112			;$80C9DA	 |
+	STA PPU.layer_2_scroll_y	;$80C9D7	 |
+	STZ PPU.layer_2_scroll_y	;$80C9DA	 |
 	EOR #$0F			;$80C9DD	 |
 	AND #$0F			;$80C9DF	 |
 	INC A				;$80C9E1	 |
@@ -7986,12 +7986,12 @@ CODE_80C9B3:				;		 |
 	LDA #$1801			;$80CA00	 |
 	STA $4300			;$80CA03	 |
 	LDA #$5008			;$80CA06	 |
-	STA $2116			;$80CA09	 |
+	STA PPU.vram_address		;$80CA09	 |
 	SEP #$30			;$80CA0C	 |
 	LDA #$F3			;$80CA0E	 |
 	STA $4304			;$80CA10	 |
 	LDA #$01			;$80CA13	 |
-	STA $420B			;$80CA15	 |
+	STA CPU.enable_dma		;$80CA15	 |
 	REP #$30			;$80CA18	 |
 CODE_80CA1A:				;		 |
 	RTS				;$80CA1A	/
@@ -8007,8 +8007,8 @@ CODE_80CA2A:				;		 |
 	STA $32				;$80CA2A	 |
 	EOR #$00FF			;$80CA2C	 |
 	SEP #$20			;$80CA2F	 |
-	STA $2112			;$80CA31	 |
-	STZ $2112			;$80CA34	 |
+	STA PPU.layer_2_scroll_y	;$80CA31	 |
+	STZ PPU.layer_2_scroll_y	;$80CA34	 |
 	LDA $32				;$80CA37	 |
 	CLC				;$80CA39	 |
 	ADC #$44			;$80CA3A	 |
@@ -8163,10 +8163,10 @@ CODE_80CB13:				;		 |
 	DEC A				;$80CB73	 |
 	STA $7E8048,x			;$80CB74	 |
 	LDA $84				;$80CB78	 |
-	STA $2126			;$80CB7A	 |
+	STA PPU.window_1		;$80CB7A	 |
 	SEP #$20			;$80CB7D	 |
 	LDA #$81			;$80CB7F	 |
-	STA $2115			;$80CB81	 |
+	STA PPU.vram_control		;$80CB81	 |
 	REP #$20			;$80CB84	 |
 	LDX #$0000			;$80CB86	 |
 CODE_80CB89:				;		 |
@@ -8187,7 +8187,7 @@ CODE_80CBA0:				;		 |
 	BNE CODE_80CB89			;$80CBA5	 |
 	SEP #$20			;$80CBA7	 |
 	LDA #$80			;$80CBA9	 |
-	STA $2115			;$80CBAB	 |
+	STA PPU.vram_control		;$80CBAB	 |
 	REP #$20			;$80CBAE	 |
 	RTS				;$80CBB0	/
 
@@ -8216,7 +8216,7 @@ CODE_80CBD7:				;		 |
 	AND #$03FF			;$80CBD9	 |
 	ORA #$7400			;$80CBDC	 |
 	STA $32				;$80CBDF	 |
-	STA $2116			;$80CBE1	 |
+	STA PPU.vram_address		;$80CBE1	 |
 	LDA.l DATA_80D3ED,x		;$80CBE4	 |
 	STA $4302			;$80CBE8	 |
 	LDA $38				;$80CBEB	 |
@@ -8227,7 +8227,7 @@ CODE_80CBD7:				;		 |
 	LDA.l DATA_80D3EF,x		;$80CBF8	 |
 	STA $4304			;$80CBFC	 |
 	LDY #$01			;$80CBFF	 |
-	STY $420B			;$80CC01	 |
+	STY CPU.enable_dma		;$80CC01	 |
 	REP #$20			;$80CC04	 |
 	LDA $32				;$80CC06	 |
 	INC A				;$80CC08	 |
@@ -8235,19 +8235,19 @@ CODE_80CBD7:				;		 |
 	AND #$001F			;$80CC0B	 |
 	EOR $32				;$80CC0E	 |
 	STA $32				;$80CC10	 |
-	STA $2116			;$80CC12	 |
+	STA PPU.vram_address		;$80CC12	 |
 	LDA $38				;$80CC15	 |
 	STA $4305			;$80CC17	 |
-	STY $420B			;$80CC1A	 |
+	STY CPU.enable_dma		;$80CC1A	 |
 	LDA $32				;$80CC1D	 |
 	INC A				;$80CC1F	 |
 	EOR $32				;$80CC20	 |
 	AND #$001F			;$80CC22	 |
 	EOR $32				;$80CC25	 |
-	STA $2116			;$80CC27	 |
+	STA PPU.vram_address		;$80CC27	 |
 	LDA $38				;$80CC2A	 |
 	STA $4305			;$80CC2C	 |
-	STY $420B			;$80CC2F	 |
+	STY CPU.enable_dma		;$80CC2F	 |
 	REP #$10			;$80CC32	 |
 	PLX				;$80CC34	 |
 	RTS				;$80CC35	/
@@ -8272,12 +8272,12 @@ CODE_80CC3F:
 	LDA #$1801			;$80CC58	 |
 	STA $4300			;$80CC5B	 |
 	LDA #$7010			;$80CC5E	 |
-	STA $2116			;$80CC61	 |
+	STA PPU.vram_address		;$80CC61	 |
 	SEP #$30			;$80CC64	 |
 	LDA #$F5			;$80CC66	 |
 	STA $4304			;$80CC68	 |
 	LDA #$01			;$80CC6B	 |
-	STA $420B			;$80CC6D	 |
+	STA CPU.enable_dma		;$80CC6D	 |
 	REP #$30			;$80CC70	 |
 CODE_80CC72:				;		 |
 	LDA $17C6			;$80CC72	 |
@@ -8330,10 +8330,10 @@ CODE_80CCA8:				;		 |
 	PLB				;$80CCCA	 |
 	SEP #$20			;$80CCCB	 |
 	LDA $17C4			;$80CCCD	 |
-	STA $210E			;$80CCD0	 |
-	STZ $210E			;$80CCD3	 |
-	STA $2110			;$80CCD6	 |
-	STZ $2110			;$80CCD9	 |
+	STA PPU.layer_0_scroll_y	;$80CCD0	 |
+	STZ PPU.layer_0_scroll_y	;$80CCD3	 |
+	STA PPU.layer_1_scroll_y	;$80CCD6	 |
+	STZ PPU.layer_1_scroll_y	;$80CCD9	 |
 	EOR #$0F			;$80CCDC	 |
 	AND #$0F			;$80CCDE	 |
 	INC A				;$80CCE0	 |
@@ -8392,7 +8392,7 @@ CODE_80CD28:
 CODE_80CD3D:				;		 |
 	STA $4302			;$80CD3D	 |
 	STA $4308			;$80CD40	 |
-	STY $2116			;$80CD43	 |
+	STY PPU.vram_address		;$80CD43	 |
 	STX $4305			;$80CD46	 |
 	LDA #$1801			;$80CD49	 |
 	STA $4300			;$80CD4C	 |
@@ -8400,7 +8400,7 @@ CODE_80CD3D:				;		 |
 	LDA #$F5			;$80CD51	 |
 	STA $4304			;$80CD53	 |
 	LDA #$01			;$80CD56	 |
-	STA $420B			;$80CD58	 |
+	STA CPU.enable_dma		;$80CD58	 |
 	REP #$20			;$80CD5B	 |
 	RTS				;$80CD5D	/
 
@@ -8472,7 +8472,7 @@ CODE_80CDC7:				;		 |
 
 CODE_80CDDB:
 	LDA #$2010			;$80CDDB	\
-	STA $2116			;$80CDDE	 |
+	STA PPU.vram_address		;$80CDDE	 |
 	LDA $0957			;$80CDE1	 |
 	TAX				;$80CDE4	 |
 	LDA DATA_80CED3,x		;$80CDE5	 |
@@ -8486,13 +8486,13 @@ CODE_80CDDB:
 	LDA #$F5			;$80CDFC	 |
 	STA $4304			;$80CDFE	 |
 	LDA #$01			;$80CE01	 |
-	STA $420B			;$80CE03	 |
+	STA CPU.enable_dma		;$80CE03	 |
 	REP #$20			;$80CE06	 |
 	RTS				;$80CE08	/
 
 CODE_80CE09:
 	LDA #$2270			;$80CE09	\
-	STA $2116			;$80CE0C	 |
+	STA PPU.vram_address		;$80CE0C	 |
 	LDA $0957			;$80CE0F	 |
 	TAX				;$80CE12	 |
 	LDA DATA_80CE97,x		;$80CE13	 |
@@ -8506,13 +8506,13 @@ CODE_80CE09:
 	LDA #$FB			;$80CE2A	 |
 	STA $4304			;$80CE2C	 |
 	LDA #$01			;$80CE2F	 |
-	STA $420B			;$80CE31	 |
+	STA CPU.enable_dma		;$80CE31	 |
 	REP #$20			;$80CE34	 |
 	RTS				;$80CE36	/
 
 CODE_80CE37:
 	LDA #$20D0			;$80CE37	\
-	STA $2116			;$80CE3A	 |
+	STA PPU.vram_address		;$80CE3A	 |
 	LDA $0957			;$80CE3D	 |
 	TAX				;$80CE40	 |
 	LDA DATA_80CEB5,x		;$80CE41	 |
@@ -8526,13 +8526,13 @@ CODE_80CE37:
 	LDA #$FB			;$80CE58	 |
 	STA $4304			;$80CE5A	 |
 	LDA #$01			;$80CE5D	 |
-	STA $420B			;$80CE5F	 |
+	STA CPU.enable_dma		;$80CE5F	 |
 	REP #$20			;$80CE62	 |
 	RTS				;$80CE64	/
 
 CODE_80CE65:
 	LDA #$21A0			;$80CE65	\
-	STA $2116			;$80CE68	 |
+	STA PPU.vram_address		;$80CE68	 |
 	LDA $0957			;$80CE6B	 |
 	TAX				;$80CE6E	 |
 	LDA DATA_80CEB5,x		;$80CE6F	 |
@@ -8548,7 +8548,7 @@ CODE_80CE65:
 	LDA #$FB			;$80CE8A	 |
 	STA $4304			;$80CE8C	 |
 	LDA #$01			;$80CE8F	 |
-	STA $420B			;$80CE91	 |
+	STA CPU.enable_dma		;$80CE91	 |
 	REP #$20			;$80CE94	 |
 	RTS				;$80CE96	/
 
@@ -8643,7 +8643,7 @@ CODE_80CF21:
 	AND #$000E			;$80CF2A	 |
 	TAX				;$80CF2D	 |
 	LDA #$2010			;$80CF2E	 |
-	STA $2116			;$80CF31	 |
+	STA PPU.vram_address		;$80CF31	 |
 	LDA DATA_80CF11,x		;$80CF34	 |
 	STA $4312			;$80CF37	 |
 	STA $4318			;$80CF3A	 |
@@ -8655,7 +8655,7 @@ CODE_80CF21:
 	LDA #$FA			;$80CF4B	 |
 	STA $4314			;$80CF4D	 |
 	LDA #$02			;$80CF50	 |
-	STA $420B			;$80CF52	 |
+	STA CPU.enable_dma		;$80CF52	 |
 	REP #$20			;$80CF55	 |
 CODE_80CF57:				;		 |
 	RTS				;$80CF57	/
@@ -8675,7 +8675,7 @@ CODE_80CF62:				;		 |
 	AND #$000E			;$80CF71	 |
 	TAX				;$80CF74	 |
 	LDA #$4F00			;$80CF75	 |
-	STA $2116			;$80CF78	 |
+	STA PPU.vram_address		;$80CF78	 |
 	LDA DATA_80CEF1,x		;$80CF7B	 |
 	STA $4312			;$80CF7E	 |
 	STA $4318			;$80CF81	 |
@@ -8687,7 +8687,7 @@ CODE_80CF62:				;		 |
 	LDA #$F3			;$80CF92	 |
 	STA $4314			;$80CF94	 |
 	LDA #$02			;$80CF97	 |
-	STA $420B			;$80CF99	 |
+	STA CPU.enable_dma		;$80CF99	 |
 	REP #$20			;$80CF9C	 |
 	RTS				;$80CF9E	/
 
@@ -8701,7 +8701,7 @@ CODE_80CF9F:
 	AND #$000E			;$80CFAE	 |
 	TAX				;$80CFB1	 |
 	LDA #$6000			;$80CFB2	 |
-	STA $2116			;$80CFB5	 |
+	STA PPU.vram_address		;$80CFB5	 |
 	LDA DATA_80CF01,x		;$80CFB8	 |
 	STA $4312			;$80CFBB	 |
 	STA $4318			;$80CFBE	 |
@@ -8713,7 +8713,7 @@ CODE_80CF9F:
 	LDA #$F6			;$80CFCF	 |
 	STA $4314			;$80CFD1	 |
 	LDA #$02			;$80CFD4	 |
-	STA $420B			;$80CFD6	 |
+	STA CPU.enable_dma		;$80CFD6	 |
 	REP #$20			;$80CFD9	 |
 CODE_80CFDB:				;		 |
 	RTS				;$80CFDB	/
@@ -8799,7 +8799,7 @@ CODE_80D083:				;		 |
 	STA $7E8334			;$80D085	 |
 	STA $7E8337			;$80D089	 |
 	LDA #$71			;$80D08D	 |
-	STA $2121			;$80D08F	 |
+	STA PPU.cgram_address		;$80D08F	 |
 	REP #$20			;$80D092	 |
 	LDA #$8C28			;$80D094	 |
 	STA $4302			;$80D097	 |
@@ -8812,7 +8812,7 @@ CODE_80D083:				;		 |
 	LDA #$7E			;$80D0AB	 |
 	STA $4304			;$80D0AD	 |
 	LDA #$01			;$80D0B0	 |
-	STA $420B			;$80D0B2	 |
+	STA CPU.enable_dma		;$80D0B2	 |
 	REP #$20			;$80D0B5	 |
 	RTS				;$80D0B7	/
 
@@ -9009,7 +9009,7 @@ CODE_80D462:
 	JSL sprite_handler		;$80D46B	 |
 	JSL CODE_B5E50D			;$80D46F	 |
 	JSL CODE_B5B9B0			;$80D473	 |
-	JSR CODE_80F35B			;$80D477	 |
+	JSR render_sprites		;$80D477	 |
 	JSR set_unused_oam_offscreen	;$80D47A	 |
 	JSR CODE_808C3D			;$80D47D	 |
 	JMP CODE_808CA2			;$80D480	/
@@ -9026,7 +9026,7 @@ CODE_80D486:
 	JSL sprite_handler		;$80D495	 |
 	JSL CODE_B5E50D			;$80D499	 |
 	JSL CODE_B5B54A			;$80D49D	 |
-	JSR CODE_80F35B			;$80D4A1	 |
+	JSR render_sprites		;$80D4A1	 |
 	JSL CODE_BEC9C0			;$80D4A4	 |
 	JSR set_unused_oam_offscreen	;$80D4A8	 |
 	JSR CODE_80D4B7			;$80D4AB	 |
@@ -9123,7 +9123,7 @@ CODE_80D557:
 CODE_80D579:
 	JSL CODE_B5B317			;$80D579	\
 CODE_80D57D:				;		 |
-	JSR CODE_80F35B			;$80D57D	 |
+	JSR render_sprites		;$80D57D	 |
 	JSR set_unused_oam_offscreen	;$80D580	 |
 	JSR CODE_808C3D			;$80D583	 |
 	JMP CODE_808CA2			;$80D586	/
@@ -9145,7 +9145,7 @@ CODE_80D595:
 	JSR CODE_80E52B			;$80D5A6	 |
 	JSL CODE_B5B9BB			;$80D5A9	 |
 	JSL CODE_B5B9B0			;$80D5AD	 |
-	JSR CODE_80F35B			;$80D5B1	 |
+	JSR render_sprites		;$80D5B1	 |
 	JSR set_unused_oam_offscreen	;$80D5B4	 |
 	JSR CODE_80E580			;$80D5B7	 |
 	JSR CODE_808C3D			;$80D5BA	 |
@@ -9161,7 +9161,7 @@ CODE_80D5C3:
 	JSL sprite_handler		;$80D5CC	 |
 	JSL CODE_B5E50D			;$80D5D0	 |
 	JSL CODE_B5B9B0			;$80D5D4	 |
-	JSR CODE_80F35B			;$80D5D8	 |
+	JSR render_sprites		;$80D5D8	 |
 	JSR set_unused_oam_offscreen	;$80D5DB	 |
 	JSR CODE_808C3D			;$80D5DE	 |
 	JMP CODE_808CA2			;$80D5E1	/
@@ -9184,7 +9184,7 @@ CODE_80D5FA:				;		 |
 	JSL sprite_handler		;$80D600	 |
 	JSL CODE_B5E50D			;$80D604	 |
 	JSL CODE_B5B9A5			;$80D608	 |
-	JSR CODE_80F35B			;$80D60C	 |
+	JSR render_sprites		;$80D60C	 |
 	JSR set_unused_oam_offscreen	;$80D60F	 |
 	JSR CODE_808C3D			;$80D612	 |
 	JMP CODE_808CA2			;$80D615	/
@@ -9200,7 +9200,7 @@ CODE_80D61B:
 	JSL CODE_B5E50D			;$80D628	 |
 	JSR CODE_80E472			;$80D62C	 |
 	JSL CODE_B5B9B0			;$80D62F	 |
-	JSR CODE_80F35B			;$80D633	 |
+	JSR render_sprites		;$80D633	 |
 	JSR set_unused_oam_offscreen	;$80D636	 |
 	JSR CODE_808C3D			;$80D639	 |
 	JMP CODE_808CA2			;$80D63C	/
@@ -9214,7 +9214,7 @@ CODE_80D642:
 	JSL sprite_loader		;$80D647	 |
 	JSL sprite_handler		;$80D64B	 |
 	JSL CODE_B5E50D			;$80D64F	 |
-	JSR CODE_80F35B			;$80D653	 |
+	JSR render_sprites		;$80D653	 |
 	JSR set_unused_oam_offscreen	;$80D656	 |
 	JSR CODE_80E580			;$80D659	 |
 	JSR CODE_808C3D			;$80D65C	 |
@@ -9236,7 +9236,7 @@ CODE_80D66E:
 	JSL CODE_B5E50D			;$80D67B	 |
 	JSR CODE_80D695			;$80D67F	 |
 	JSL CODE_B5B9A5			;$80D682	 |
-	JSR CODE_80F35B			;$80D686	 |
+	JSR render_sprites		;$80D686	 |
 	JSR set_unused_oam_offscreen	;$80D689	 |
 	JSR CODE_808C3D			;$80D68C	 |
 	JMP CODE_808CA2			;$80D68F	/
@@ -9376,7 +9376,7 @@ CODE_80D784:
 	JSL sprite_handler		;$80D78D	 |
 	JSL CODE_B5E50D			;$80D791	 |
 	JSL CODE_B5B9B0			;$80D795	 |
-	JSR CODE_80F35B			;$80D799	 |
+	JSR render_sprites		;$80D799	 |
 	JSR set_unused_oam_offscreen	;$80D79C	 |
 	JSR CODE_80F157			;$80D79F	 |
 	JSR CODE_808C3D			;$80D7A2	 |
@@ -9393,7 +9393,7 @@ CODE_80D7AB:
 	JSL sprite_handler		;$80D7B7	 |
 	JSL CODE_B5E50D			;$80D7BB	 |
 	JSL CODE_B5B9B0			;$80D7BF	 |
-	JSR CODE_80F35B			;$80D7C3	 |
+	JSR render_sprites		;$80D7C3	 |
 	JSR set_unused_oam_offscreen	;$80D7C6	 |
 	JSR CODE_808C3D			;$80D7C9	 |
 	JMP CODE_808CA2			;$80D7CC	/
@@ -9465,7 +9465,7 @@ CODE_80D830:
 	JSL sprite_handler		;$80D839	 |
 	JSL CODE_B5E50D			;$80D83D	 |
 	JSL CODE_B5B9B0			;$80D841	 |
-	JSR CODE_80F35B			;$80D845	 |
+	JSR render_sprites		;$80D845	 |
 	JSR set_unused_oam_offscreen	;$80D848	 |
 	JSR CODE_808C3D			;$80D84B	 |
 	JMP CODE_808CA2			;$80D84E	/
@@ -9488,7 +9488,7 @@ CODE_80D854:
 CODE_80D873:
 	JSL CODE_B5B54A			;$80D873	\
 CODE_80D877:				;		 |
-	JSR CODE_80F35B			;$80D877	 |
+	JSR render_sprites		;$80D877	 |
 	JSR set_unused_oam_offscreen	;$80D87A	 |
 	JSR CODE_808C3D			;$80D87D	 |
 	JMP CODE_808CA2			;$80D880	/
@@ -9506,7 +9506,7 @@ CODE_80D886:
 	JSL CODE_B5E50D			;$80D899	 |
 	JSR CODE_80DF94			;$80D89D	 |
 	JSL CODE_B5B54A			;$80D8A0	 |
-	JSR CODE_80F35B			;$80D8A4	 |
+	JSR render_sprites		;$80D8A4	 |
 	JSL CODE_BEC9C0			;$80D8A7	 |
 	JSR set_unused_oam_offscreen	;$80D8AB	 |
 	JSR CODE_808C3D			;$80D8AE	 |
@@ -9522,7 +9522,7 @@ CODE_80D8B7:
 	JSL sprite_handler		;$80D8C0	 |
 	JSL CODE_B5E50D			;$80D8C4	 |
 	JSL CODE_B5B9B0			;$80D8C8	 |
-	JSR CODE_80F35B			;$80D8CC	 |
+	JSR render_sprites		;$80D8CC	 |
 	JSR set_unused_oam_offscreen	;$80D8CF	 |
 	JSR CODE_80DE01			;$80D8D2	 |
 	JSR CODE_808C3D			;$80D8D5	 |
@@ -9538,7 +9538,7 @@ CODE_80D8DE:
 	JSL sprite_handler		;$80D8E7	 |
 	JSL CODE_B5E50D			;$80D8EB	 |
 	JSL CODE_B5B317			;$80D8EF	 |
-	JSR CODE_80F35B			;$80D8F3	 |
+	JSR render_sprites		;$80D8F3	 |
 	JSR set_unused_oam_offscreen	;$80D8F6	 |
 	JSR CODE_808C3D			;$80D8F9	 |
 	JMP CODE_808CA2			;$80D8FC	/
@@ -9564,7 +9564,7 @@ CODE_80D902:
 	STA $0A,x			;$80D92C	 |
 CODE_80D92E:				;		 |
 	JSL CODE_B5B317			;$80D92E	 |
-	JSR CODE_80F35B			;$80D932	 |
+	JSR render_sprites		;$80D932	 |
 	JSR set_unused_oam_offscreen	;$80D935	 |
 	JSR CODE_808C3D			;$80D938	 |
 	JMP CODE_808CA2			;$80D93B	/
@@ -9693,7 +9693,7 @@ CODE_80DA21:
 	JSL sprite_handler		;$80DA2A	 |
 	JSL CODE_B5E50D			;$80DA2E	 |
 	JSL CODE_B5B9B0			;$80DA32	 |
-	JSR CODE_80F35B			;$80DA36	 |
+	JSR render_sprites		;$80DA36	 |
 	JSR set_unused_oam_offscreen	;$80DA39	 |
 	JSR CODE_808C3D			;$80DA3C	 |
 	JMP CODE_808CA2			;$80DA3F	/
@@ -9710,7 +9710,7 @@ CODE_80DA45:
 	JSL sprite_handler		;$80DA54	 |
 	JSL CODE_B5E50D			;$80DA58	 |
 	JSL CODE_B5B9A5			;$80DA5C	 |
-	JSR CODE_80F35B			;$80DA60	 |
+	JSR render_sprites		;$80DA60	 |
 	JSL CODE_BEC9C0			;$80DA63	 |
 	JSR set_unused_oam_offscreen	;$80DA67	 |
 	JSR CODE_80D4B7			;$80DA6A	 |
@@ -9727,7 +9727,7 @@ CODE_80DA76:
 	JSL sprite_handler		;$80DA7F	 |
 	JSL CODE_B5E50D			;$80DA83	 |
 	JSL CODE_B5B317			;$80DA87	 |
-	JSR CODE_80F35B			;$80DA8B	 |
+	JSR render_sprites		;$80DA8B	 |
 	JSR set_unused_oam_offscreen	;$80DA8E	 |
 	JSR CODE_808C3D			;$80DA91	 |
 	JMP CODE_808CA2			;$80DA94	/
@@ -9744,7 +9744,7 @@ CODE_80DA9A:
 	JSR CODE_80E52B			;$80DAAB	 |
 	JSL CODE_B5B9BB			;$80DAAE	 |
 	JSL CODE_B5B9B0			;$80DAB2	 |
-	JSR CODE_80F35B			;$80DAB6	 |
+	JSR render_sprites		;$80DAB6	 |
 	JSR set_unused_oam_offscreen	;$80DAB9	 |
 	JSR CODE_80E580			;$80DABC	 |
 	JSR CODE_80DD67			;$80DABF	 |
@@ -9772,7 +9772,7 @@ CODE_80DACB:
 CODE_80DAF3:
 	JSL CODE_B5B317			;$80DAF3	\
 CODE_80DAF7:				;		 |
-	JSR CODE_80F35B			;$80DAF7	 |
+	JSR render_sprites		;$80DAF7	 |
 	JSL CODE_BEC9C0			;$80DAFA	 |
 	JSR set_unused_oam_offscreen	;$80DAFE	 |
 	LDA $0915			;$80DB01	 |
@@ -9791,7 +9791,7 @@ CODE_80DB12:
 	JSL sprite_handler		;$80DB1B	 |
 	JSL CODE_B5E50D			;$80DB1F	 |
 	JSL CODE_B5B9B0			;$80DB23	 |
-	JSR CODE_80F35B			;$80DB27	 |
+	JSR render_sprites		;$80DB27	 |
 	JSR set_unused_oam_offscreen	;$80DB2A	 |
 	JSR CODE_808C3D			;$80DB2D	 |
 	JMP CODE_808CA2			;$80DB30	/
@@ -9815,7 +9815,7 @@ CODE_80DB36:
 CODE_80DB58:
 	JSL CODE_B5B317			;$80DB58	\
 CODE_80DB5C:				;		 |
-	JSR CODE_80F35B			;$80DB5C	 |
+	JSR render_sprites		;$80DB5C	 |
 	JSR set_unused_oam_offscreen	;$80DB5F	 |
 	JSR CODE_808C3D			;$80DB62	 |
 	JMP CODE_808CA2			;$80DB65	/
@@ -9831,7 +9831,7 @@ CODE_80DB6B:
 	JSL sprite_handler		;$80DB7A	 |
 	JSL CODE_B5E50D			;$80DB7E	 |
 	JSL CODE_B5B317			;$80DB82	 |
-	JSR CODE_80F35B			;$80DB86	 |
+	JSR render_sprites		;$80DB86	 |
 	JSL CODE_BEC9C0			;$80DB89	 |
 	JSR set_unused_oam_offscreen	;$80DB8D	 |
 	JSR CODE_808C3D			;$80DB90	 |
@@ -9856,7 +9856,7 @@ CODE_80DB99:
 CODE_80DBBB:
 	JSL CODE_B5B54A			;$80DBBB	\
 CODE_80DBBF:				;		 |
-	JSR CODE_80F35B			;$80DBBF	 |
+	JSR render_sprites		;$80DBBF	 |
 	JSR set_unused_oam_offscreen	;$80DBC2	 |
 	JSR CODE_808C3D			;$80DBC5	 |
 	JMP CODE_808CA2			;$80DBC8	/
@@ -9871,7 +9871,7 @@ CODE_80DBCE:
 	JSL sprite_handler		;$80DBD7	 |
 	JSL CODE_B5E50D			;$80DBDB	 |
 	JSL CODE_B5B9A5			;$80DBDF	 |
-	JSR CODE_80F35B			;$80DBE3	 |
+	JSR render_sprites		;$80DBE3	 |
 	JSR set_unused_oam_offscreen	;$80DBE6	 |
 	JSR CODE_808C3D			;$80DBE9	 |
 	JMP CODE_808CA2			;$80DBEC	/
@@ -10071,7 +10071,7 @@ CODE_80DD3C:
 	JSL CODE_B5E50D			;$80DD49	 |
 	JSR CODE_80DBF2			;$80DD4D	 |
 	JSL CODE_B5B9B0			;$80DD50	 |
-	JSR CODE_80F35B			;$80DD54	 |
+	JSR render_sprites		;$80DD54	 |
 	JSR set_unused_oam_offscreen	;$80DD57	 |
 	JSR CODE_808C3D			;$80DD5A	 |
 	JMP CODE_808CA2			;$80DD5D	/
@@ -10818,10 +10818,10 @@ CODE_80E55A:				;		 |
 	STY $17BC			;$80E55E	 |
 	LDA $B7				;$80E561	 |
 	AND #$00FF			;$80E563	 |
-	STA $4204			;$80E566	 |
+	STA CPU.dividen			;$80E566	 |
 	SEP #$20			;$80E569	 |
 	LDA #$05			;$80E56B	 |
-	STA $4206			;$80E56D	 |
+	STA CPU.divisor			;$80E56D	 |
 	NOP				;$80E570	 |
 	NOP				;$80E571	 |
 	NOP				;$80E572	 |
@@ -10830,7 +10830,7 @@ CODE_80E55A:				;		 |
 	NOP				;$80E575	 |
 	NOP				;$80E576	 |
 	NOP				;$80E577	 |
-	LDA $4216			;$80E578	 |
+	LDA CPU.multiply_result		;$80E578	 |
 	STA $B7				;$80E57B	 |
 	REP #$20			;$80E57D	 |
 	RTS				;$80E57F	/
@@ -11308,7 +11308,7 @@ CODE_80E913:				;		 |
 	EOR #$FFFF			;$80E933	 |
 	INC A				;$80E936	 |
 	XBA				;$80E937	 |
-	STA $4204			;$80E938	 |
+	STA CPU.dividen			;$80E938	 |
 	SEP #$20			;$80E93B	 |
 	LDA $7A				;$80E93D	 |
 	STA $004206			;$80E93F	 |
@@ -12582,14 +12582,14 @@ CODE_80F324:
 	SEP #$20			;$80F34A	 |
 	STA $4304			;$80F34C	 |
 	XBA				;$80F34F	 |
-	STA $2121			;$80F350	 |
+	STA PPU.cgram_address		;$80F350	 |
 	LDA #$01			;$80F353	 |
-	STA $420B			;$80F355	 |
+	STA CPU.enable_dma		;$80F355	 |
 	REP #$20			;$80F358	 |
 CODE_80F35A:				;		 |
 	RTS				;$80F35A	/
 
-CODE_80F35B:
+render_sprites:
 	PHK				;$80F35B	\
 	PLB				;$80F35C	 |
 	JSL CODE_B5A8DA			;$80F35D	 |
@@ -12625,7 +12625,7 @@ CODE_80F3B0:				;		 |
 
 CODE_80F3B4:
 	LDA #$0001			;$80F3B4	 |
-	STA $420B			;$80F3B7	 |
+	STA CPU.enable_dma		;$80F3B7	 |
 	JMP CODE_80F3F2			;$80F3BA	/
 
 NMI_start:
@@ -12714,21 +12714,21 @@ CODE_80F3FB:
 
 CODE_80F482:
 	LDA $059B			;$80F482	\
-	STA $420B			;$80F485	 |
+	STA CPU.enable_dma		;$80F485	 |
 	JSL CODE_B5A919			;$80F488	 |
 	JSR CODE_80F324			;$80F48C	 |
 	JSL CODE_80C31D			;$80F48F	 |
 	LDA $17B8			;$80F493	 |
 	SEP #$20			;$80F496	 |
-	STZ $2101			;$80F498	 |
-	STA $210F			;$80F49B	 |
+	STZ PPU.sprite_select		;$80F498	 |
+	STA PPU.layer_1_scroll_x	;$80F49B	 |
 	XBA				;$80F49E	 |
-	STA $210F			;$80F49F	 |
+	STA PPU.layer_1_scroll_x	;$80F49F	 |
 	LDA #$C0			;$80F4A2	 |
-	STA $2110			;$80F4A4	 |
-	STA $2110			;$80F4A7	 |
+	STA PPU.layer_1_scroll_y	;$80F4A4	 |
+	STA PPU.layer_1_scroll_y	;$80F4A7	 |
 	LDA $0512			;$80F4AA	 |
-	STA $2100			;$80F4AD	 |
+	STA PPU.screen			;$80F4AD	 |
 	REP #$20			;$80F4B0	 |
 	JSR CODE_808988			;$80F4B2	 |
 	LDA $7E				;$80F4B5	 |
@@ -13275,7 +13275,7 @@ CODE_80FA7C:
 
 CODE_80FAC0:
 	LDA $059B			;$80FAC0	\
-	STA $420B			;$80FAC3	 |
+	STA CPU.enable_dma		;$80FAC3	 |
 	LDA $2A				;$80FAC6	 |
 	SEC				;$80FAC8	 |
 	SBC #$0300			;$80FAC9	 |
@@ -13285,7 +13285,7 @@ CODE_80FAC0:
 	BCS CODE_80FADC			;$80FAD1	 |
 	SEP #$20			;$80FAD3	 |
 	ORA #$C0			;$80FAD5	 |
-	STA $2132			;$80FAD7	 |
+	STA PPU.fixed_color		;$80FAD7	 |
 	REP #$20			;$80FADA	 |
 CODE_80FADC:				;		 |
 	LDA #$0200			;$80FADC	 |
@@ -13315,9 +13315,9 @@ CODE_80FADC:				;		 |
 	CMP #$8000			;$80FB0C	 |
 	LSR A				;$80FB0F	 |
 	SEP #$20			;$80FB10	 |
-	STA $210E			;$80FB12	 |
+	STA PPU.layer_0_scroll_y	;$80FB12	 |
 	XBA				;$80FB15	 |
-	STA $210E			;$80FB16	 |
+	STA PPU.layer_0_scroll_y	;$80FB16	 |
 	REP #$20			;$80FB19	 |
 	LDA $2A				;$80FB1B	 |
 	AND #$00FF			;$80FB1D	 |
@@ -13331,9 +13331,9 @@ CODE_80FADC:				;		 |
 	CMP #$8000			;$80FB2E	 |
 	ROR A				;$80FB31	 |
 	SEP #$20			;$80FB32	 |
-	STA $210D			;$80FB34	 |
+	STA PPU.layer_0_scroll_x	;$80FB34	 |
 	XBA				;$80FB37	 |
-	STA $210D			;$80FB38	 |
+	STA PPU.layer_0_scroll_x	;$80FB38	 |
 	REP #$20			;$80FB3B	 |
 CODE_80FB3D:				;		 |
 	LDA $2A				;$80FB3D	 |
@@ -13342,8 +13342,8 @@ CODE_80FB3D:				;		 |
 	CMP #$0100			;$80FB43	 |
 	BCS CODE_80FB62			;$80FB46	 |
 	SEP #$20			;$80FB48	 |
-	STA $2110			;$80FB4A	 |
-	STZ $2110			;$80FB4D	 |
+	STA PPU.layer_1_scroll_y	;$80FB4A	 |
+	STZ PPU.layer_1_scroll_y	;$80FB4D	 |
 	REP #$20			;$80FB50	 |
 	EOR #$00FF			;$80FB52	 |
 	LSR A				;$80FB55	 |
@@ -13351,13 +13351,13 @@ CODE_80FB3D:				;		 |
 	LSR A				;$80FB57	 |
 	ORA #$00E0			;$80FB58	 |
 	SEP #$20			;$80FB5B	 |
-	STA $2132			;$80FB5D	 |
+	STA PPU.fixed_color		;$80FB5D	 |
 	REP #$20			;$80FB60	 |
 CODE_80FB62:				;		 |
 	JSR CODE_808988			;$80FB62	 |
 	SEP #$20			;$80FB65	 |
 	LDA $0512			;$80FB67	 |
-	STA $2100			;$80FB6A	 |
+	STA PPU.screen			;$80FB6A	 |
 	REP #$20			;$80FB6D	 |
 	LDA $2A				;$80FB6F	 |
 	CMP #$00F0			;$80FB71	 |

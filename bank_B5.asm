@@ -323,11 +323,11 @@ write_spc_command:
 	SEP #$10			;$B581FE	 |/
 	LDX $00				;$B58200	 | Load the previous SPC transaction id
 -					;		 |
-	CPX $2140			;$B58202	 |\ Wait for the SPC engine to echo the previous transaction id
+	CPX APU.IO1			;$B58202	 |\ Wait for the SPC engine to echo the previous transaction id
 	BNE -				;$B58205	 |/
-	STA $2141			;$B58207	 | Write the command to the SPC engine
+	STA APU.IO2			;$B58207	 | Write the command to the SPC engine
 	INX				;$B5820A	 |\ Increment and send the SPC transaction id
-	STX $2140			;$B5820B	 |/
+	STX APU.IO1			;$B5820B	 |/
 	STX $00				;$B5820E	 | Store the SPC transaction id
 	REP #$30			;$B58210	 |
 	RTS				;$B58212	/ Command upload finished
@@ -337,33 +337,33 @@ upload_spc_base_engine:			;		\
 	SEP #$10			;$B58215	 |/
 	LDA #$BBAA			;$B58217	 | The IPL uses BBAA to indicate ready state
 -					;		 |\ Wait for the SPC 700 to be ready
-	CMP $2140			;$B5821A	 | |
+	CMP APU.IO1			;$B5821A	 | |
 	BNE -				;$B5821D	 |/
 	LDA #$04D8			;$B5821F	 |\ Set ARAM address for data transfer
-	STA $2142			;$B58222	 |/
+	STA APU.IO3			;$B58222	 |/
 	LDA #$01CC			;$B58225	 |\ Acknowledge the SPC-700 IPL and initiate a data transfer
-	STA $2140			;$B58228	 |/
+	STA APU.IO1			;$B58228	 |/
 	TAX				;$B5822B	 | SPC echo is only a single byte, so use index registers
 -					;		 |\ Wait for the SPC-700 to acknowledge the SNES CPU
-	CPX $2140			;$B5822C	 | |
+	CPX APU.IO1			;$B5822C	 | |
 	BNE -				;$B5822F	 |/
 	LDX #$00			;$B58231	 | Initialize the transfer counter
 .next_byte				;		 |\
 	LDA.l spc_base_engine,x		;$B58233	 | |\ Load and store the current engine byte
 	TAY				;$B58237	 | | |
-	STY $2141			;$B58238	 | |/
-	STX $2140			;$B5823B	 | | Store the transaction counter
+	STY APU.IO2			;$B58238	 | |/
+	STX APU.IO1			;$B5823B	 | | Store the transaction counter
 -					;		 | |\ Wait for the SPC to echo the counter
-	CPX $2140			;$B5823E	 | | |
+	CPX APU.IO1			;$B5823E	 | | |
 	BNE -				;$B58241	 | |/
 	INX				;$B58243	 | | Increment the counter
 	CPX #$88			;$B58244	 | | Compare against the engine size
 	BNE .next_byte			;$B58246	 |/ If we haven't hit the engine size, load the next byte
 	INX				;$B58248	 |\ Increment counter by two to end transfer
 	TXA				;$B58249	 | | Use A to write the counter for 16 bit (high byte = 00)
-	STA $2140			;$B5824A	 |/ Since the high byte is 00, It will execute the uploaded code
+	STA APU.IO1			;$B5824A	 |/ Since the high byte is 00, It will execute the uploaded code
 -					;		 |\ Wait for the SPC echo
-	CPX $2140			;$B5824D	 | |
+	CPX APU.IO1			;$B5824D	 | |
 	BNE -				;$B58250	 |/
 	STZ $00				;$B58252	 | Reset the SPC transaction id
 	LDA #$0001			;$B58254	 |\ Default to mono audio
@@ -606,20 +606,20 @@ upload_spc_block:
 	SEP #$10			;$B5840D	\ 16 bit A, with 8 bit index
 	LDX $00				;$B5840F	 | Load the last SPC transaction id
 -					;		 |\ Wait for the previous transaction id to be echoed
-	CPX $2140			;$B58411	 | | Which will signify the SPC engine is ready.
+	CPX APU.IO1			;$B58411	 | | Which will signify the SPC engine is ready.
 	BNE -				;$B58414	 |/
 	LDA $35				;$B58416	 |\ Write the ARAM target address
-	STA $2141			;$B58418	 |/
+	STA APU.IO2			;$B58418	 |/
 	INX				;$B5841B	 |\ Increment and set the transaction id
-	STX $2140			;$B5841C	 |/
+	STX APU.IO1			;$B5841C	 |/
 	LDA $37				;$B5841F	 |\ Copy the byte count
 	STA $39				;$B58421	 |/
 -					;		 |\ Wait for the transaction id to echo for completion
-	CPX $2140			;$B58423	 | |
+	CPX APU.IO1			;$B58423	 | |
 	BNE -				;$B58426	 |/
-	STA $2141			;$B58428	 | Write the length of the transfer
+	STA APU.IO2			;$B58428	 | Write the length of the transfer
 	INX				;$B5842B	 |\ Increment and set the transaction id
-	STX $2140			;$B5842C	 |/
+	STX APU.IO1			;$B5842C	 |/
 	LDA $37				;$B5842F	 |\ If there are no bytes to transfer simply exit
 	BEQ .return			;$B58431	 |/ This means we were only executing a jump
 	LDY #$00			;$B58433	 |
@@ -629,11 +629,11 @@ upload_spc_block:
 	INY				;$B58438	 |/
 	BEQ .advance_pointer		;$B58439	 | If the index has wrapped, advance the pointer
 .wait_for_echo				;		 |\ Wait for the transaction id to echo for completion
-	CPX $2140			;$B5843B	 | |
+	CPX APU.IO1			;$B5843B	 | |
 	BNE .wait_for_echo		;$B5843E	 |/
 	INX				;$B58440	 | Increment the transaction id
-	STA $2141			;$B58441	 | Write the data (two bytes)
-	STX $2140			;$B58444	 | Write the transaction id
+	STA APU.IO2			;$B58441	 | Write the data (two bytes)
+	STX APU.IO1			;$B58444	 | Write the transaction id
 	DEC $37				;$B58447	 |\ Continue if there are more bytes to upload
 	BNE .next_byte			;$B58449	 |/
 .return					;		 |
@@ -1936,7 +1936,7 @@ CODE_B59F53:				;		 |
 	BNE CODE_B59F69			;$B59F58	 |
 	SEP #$20			;$B59F5A	 |
 	LDA #$07			;$B59F5C	 |
-	STA $2100			;$B59F5E	 |
+	STA PPU.screen			;$B59F5E	 |
 	REP #$20			;$B59F61	 |
 	PEA $8080			;$B59F63	 |
 	PLB				;$B59F66	 |
@@ -3353,11 +3353,11 @@ CODE_B5A925:				;		 |
 	LDA $1732,x			;$B5A92D	 |
 	STA $4305			;$B5A930	 |
 	LDA $1734,x			;$B5A933	 |
-	STA $2116			;$B5A936	 |
+	STA PPU.vram_address		;$B5A936	 |
 	LDA $1736,x			;$B5A939	 |
 	STA $4302			;$B5A93C	 |
 	STZ $1738,x			;$B5A93F	 |
-	STY $420B			;$B5A942	 |
+	STY CPU.enable_dma		;$B5A942	 |
 	TXA				;$B5A945	 |
 	CLC				;$B5A946	 |
 	ADC #$0008			;$B5A947	 |
@@ -3553,7 +3553,7 @@ CODE_B5AA94:
 	STY $C6				;$B5AA94	\
 	SEP #$20			;$B5AA96	 |
 	LDA #$81			;$B5AA98	 |
-	STA $2115			;$B5AA9A	 |
+	STA PPU.vram_control		;$B5AA9A	 |
 	REP #$20			;$B5AA9D	 |
 	LDA $B8				;$B5AA9F	 |
 	BCC CODE_B5AAA6			;$B5AAA1	 |
@@ -3569,7 +3569,7 @@ CODE_B5AAA6:				;		 |
 	ADC #$03E0			;$B5AAB2	 |
 CODE_B5AAB5:				;		 |
 	ADC #$7800			;$B5AAB5	 |
-	STA $2116			;$B5AAB8	 |
+	STA PPU.vram_address		;$B5AAB8	 |
 	LDA #$189A			;$B5AABB	 |
 	STA $4302			;$B5AABE	 |
 	STA $4308			;$B5AAC1	 |
@@ -3580,11 +3580,11 @@ CODE_B5AAB5:				;		 |
 	SEP #$20			;$B5AAD0	 |
 	STZ $4304			;$B5AAD2	 |
 	LDA #$01			;$B5AAD5	 |
-	STA $420B			;$B5AAD7	 |
+	STA CPU.enable_dma		;$B5AAD7	 |
 	REP #$20			;$B5AADA	 |
 	SEP #$20			;$B5AADC	 |
 	LDA #$80			;$B5AADE	 |
-	STA $2115			;$B5AAE0	 |
+	STA PPU.vram_control		;$B5AAE0	 |
 	REP #$20			;$B5AAE3	 |
 	RTL				;$B5AAE5	/
 
@@ -3786,7 +3786,7 @@ CODE_B5AC42:				;		 |
 	CLC				;$B5AC47	 |
 	ADC #$7800			;$B5AC48	 |
 	STA $32				;$B5AC4B	 |
-	STA $2116			;$B5AC4D	 |
+	STA PPU.vram_address		;$B5AC4D	 |
 	LDA #$18DA			;$B5AC50	 |
 	STA $4302			;$B5AC53	 |
 	STA $4308			;$B5AC56	 |
@@ -3797,12 +3797,12 @@ CODE_B5AC42:				;		 |
 	SEP #$20			;$B5AC65	 |
 	STZ $4304			;$B5AC67	 |
 	LDA #$01			;$B5AC6A	 |
-	STA $420B			;$B5AC6C	 |
+	STA CPU.enable_dma		;$B5AC6C	 |
 	REP #$20			;$B5AC6F	 |
 	LDA $32				;$B5AC71	 |
 	CLC				;$B5AC73	 |
 	ADC #$0400			;$B5AC74	 |
-	STA $2116			;$B5AC77	 |
+	STA PPU.vram_address		;$B5AC77	 |
 	LDA #$191A			;$B5AC7A	 |
 	STA $4302			;$B5AC7D	 |
 	STA $4308			;$B5AC80	 |
@@ -3813,7 +3813,7 @@ CODE_B5AC42:				;		 |
 	SEP #$20			;$B5AC8F	 |
 	STZ $4304			;$B5AC91	 |
 	LDA #$01			;$B5AC94	 |
-	STA $420B			;$B5AC96	 |
+	STA CPU.enable_dma		;$B5AC96	 |
 	REP #$20			;$B5AC99	 |
 	RTL				;$B5AC9B	/
 
@@ -4000,7 +4000,7 @@ CODE_B5ADE4:
 	STA $17CA			;$B5ADE4	\
 	SEP #$20			;$B5ADE7	 |
 	LDA #$81			;$B5ADE9	 |
-	STA $2115			;$B5ADEB	 |
+	STA PPU.vram_control		;$B5ADEB	 |
 	REP #$20			;$B5ADEE	 |
 	LDA $17D6			;$B5ADF0	 |
 	BPL CODE_B5ADFA			;$B5ADF3	 |
@@ -4022,7 +4022,7 @@ CODE_B5AE01:				;		 |
 	ADC #$03E0			;$B5AE0D	 |
 CODE_B5AE10:				;		 |
 	ADC $17B6			;$B5AE10	 |
-	STA $2116			;$B5AE13	 |
+	STA PPU.vram_address		;$B5AE13	 |
 	LDA #$185A			;$B5AE16	 |
 	STA $4302			;$B5AE19	 |
 	STA $4308			;$B5AE1C	 |
@@ -4033,11 +4033,11 @@ CODE_B5AE10:				;		 |
 	SEP #$20			;$B5AE2B	 |
 	STZ $4304			;$B5AE2D	 |
 	LDA #$01			;$B5AE30	 |
-	STA $420B			;$B5AE32	 |
+	STA CPU.enable_dma		;$B5AE32	 |
 	REP #$20			;$B5AE35	 |
 	SEP #$20			;$B5AE37	 |
 	LDA #$80			;$B5AE39	 |
-	STA $2115			;$B5AE3B	 |
+	STA PPU.vram_control		;$B5AE3B	 |
 	REP #$20			;$B5AE3E	 |
 	RTL				;$B5AE40	/
 
@@ -4050,7 +4050,7 @@ CODE_B5AE10:				;		 |
 CODE_B5AE4D:
 	SEP #$20			;$B5AE4D	\
 	LDA #$81			;$B5AE4F	 |
-	STA $2115			;$B5AE51	 |
+	STA PPU.vram_control		;$B5AE51	 |
 	REP #$20			;$B5AE54	 |
 	LDA $17D6			;$B5AE56	 |
 	BPL CODE_B5AE60			;$B5AE59	 |
@@ -4072,7 +4072,7 @@ CODE_B5AE67:				;		 |
 	ADC #$03E0			;$B5AE73	 |
 CODE_B5AE76:				;		 |
 	ADC #$7800			;$B5AE76	 |
-	STA $2116			;$B5AE79	 |
+	STA PPU.vram_address		;$B5AE79	 |
 	LDA #$191A			;$B5AE7C	 |
 	STA $4302			;$B5AE7F	 |
 	STA $4308			;$B5AE82	 |
@@ -4083,11 +4083,11 @@ CODE_B5AE76:				;		 |
 	SEP #$20			;$B5AE91	 |
 	STZ $4304			;$B5AE93	 |
 	LDA #$01			;$B5AE96	 |
-	STA $420B			;$B5AE98	 |
+	STA CPU.enable_dma		;$B5AE98	 |
 	REP #$20			;$B5AE9B	 |
 	SEP #$20			;$B5AE9D	 |
 	LDA #$80			;$B5AE9F	 |
-	STA $2115			;$B5AEA1	 |
+	STA PPU.vram_control		;$B5AEA1	 |
 	REP #$20			;$B5AEA4	 |
 	RTL				;$B5AEA6	/
 
@@ -4311,7 +4311,7 @@ CODE_B5B02B:				;		 |
 	CLC				;$B5B030	 |
 	ADC $17B6			;$B5B031	 |
 	STA $32				;$B5B034	 |
-	STA $2116			;$B5B036	 |
+	STA PPU.vram_address		;$B5B036	 |
 	LDA #$17DA			;$B5B039	 |
 	STA $4302			;$B5B03C	 |
 	STA $4308			;$B5B03F	 |
@@ -4322,12 +4322,12 @@ CODE_B5B02B:				;		 |
 	SEP #$20			;$B5B04E	 |
 	STZ $4304			;$B5B050	 |
 	LDA #$01			;$B5B053	 |
-	STA $420B			;$B5B055	 |
+	STA CPU.enable_dma		;$B5B055	 |
 	REP #$20			;$B5B058	 |
 	LDA $32				;$B5B05A	 |
 	CLC				;$B5B05C	 |
 	ADC #$0400			;$B5B05D	 |
-	STA $2116			;$B5B060	 |
+	STA PPU.vram_address		;$B5B060	 |
 	LDA #$181A			;$B5B063	 |
 	STA $4302			;$B5B066	 |
 	STA $4308			;$B5B069	 |
@@ -4338,7 +4338,7 @@ CODE_B5B02B:				;		 |
 	SEP #$20			;$B5B078	 |
 	STZ $4304			;$B5B07A	 |
 	LDA #$01			;$B5B07D	 |
-	STA $420B			;$B5B07F	 |
+	STA CPU.enable_dma		;$B5B07F	 |
 	REP #$20			;$B5B082	 |
 	RTL				;$B5B084	/
 
@@ -4365,7 +4365,7 @@ CODE_B5B0A2:				;		 |
 	CLC				;$B5B0A7	 |
 	ADC #$7800			;$B5B0A8	 |
 	STA $32				;$B5B0AB	 |
-	STA $2116			;$B5B0AD	 |
+	STA PPU.vram_address		;$B5B0AD	 |
 	LDA #$189A			;$B5B0B0	 |
 	STA $4302			;$B5B0B3	 |
 	STA $4308			;$B5B0B6	 |
@@ -4376,12 +4376,12 @@ CODE_B5B0A2:				;		 |
 	SEP #$20			;$B5B0C5	 |
 	STZ $4304			;$B5B0C7	 |
 	LDA #$01			;$B5B0CA	 |
-	STA $420B			;$B5B0CC	 |
+	STA CPU.enable_dma		;$B5B0CC	 |
 	REP #$20			;$B5B0CF	 |
 	LDA $32				;$B5B0D1	 |
 	CLC				;$B5B0D3	 |
 	ADC #$0400			;$B5B0D4	 |
-	STA $2116			;$B5B0D7	 |
+	STA PPU.vram_address		;$B5B0D7	 |
 	LDA #$18DA			;$B5B0DA	 |
 	STA $4302			;$B5B0DD	 |
 	STA $4308			;$B5B0E0	 |
@@ -4392,7 +4392,7 @@ CODE_B5B0A2:				;		 |
 	SEP #$20			;$B5B0EF	 |
 	STZ $4304			;$B5B0F1	 |
 	LDA #$01			;$B5B0F4	 |
-	STA $420B			;$B5B0F6	 |
+	STA CPU.enable_dma		;$B5B0F6	 |
 	REP #$20			;$B5B0F9	 |
 	RTL				;$B5B0FB	/
 
@@ -8038,7 +8038,7 @@ DATA_B5CED9:
 CODE_B5CEDF:
 	SEP #$20			;$B5CEDF	\
 	LDA #$0F			;$B5CEE1	 |
-	STA $2100			;$B5CEE3	 |
+	STA PPU.screen			;$B5CEE3	 |
 CODE_B5CEE6:				;		 |
 	BRA CODE_B5CEE6			;$B5CEE6	/
 
@@ -8075,11 +8075,11 @@ CODE_B5CF20:				;		 |
 	LDA.l $000790			;$B5CF23	 |
 	STA $12,x			;$B5CF27	 |
 	SEP #$20			;$B5CF29	 |
-	LDA $4211			;$B5CF2B	 |
+	LDA CPU.irq_flag		;$B5CF2B	 |
 	LDA #$80			;$B5CF2E	 |
-	STA $2103			;$B5CF30	 |
+	STA PPU.oam_address_high	;$B5CF30	 |
 	LDA #$01			;$B5CF33	 |
-	STA $420D			;$B5CF35	 |
+	STA CPU.rom_speed		;$B5CF35	 |
 	REP #$20			;$B5CF38	 |
 	LDA #$0100			;$B5CF3A	 |
 	JSL CODE_808C2E			;$B5CF3D	 |
@@ -8120,11 +8120,11 @@ CODE_B5CF63:
 	JSR CODE_B5D23F			;$B5CF96	 |
 CODE_B5CF99:				;		 |
 	SEP #$20			;$B5CF99	 |
-	LDA $4211			;$B5CF9B	 |
+	LDA CPU.irq_flag		;$B5CF9B	 |
 	LDA #$80			;$B5CF9E	 |
-	STA $2103			;$B5CFA0	 |
+	STA PPU.oam_address_high	;$B5CFA0	 |
 	LDA #$01			;$B5CFA3	 |
-	STA $420D			;$B5CFA5	 |
+	STA CPU.rom_speed		;$B5CFA5	 |
 	REP #$20			;$B5CFA8	 |
 	LDA #$0100			;$B5CFAA	 |
 	JSL CODE_808C2E			;$B5CFAD	 |
@@ -8142,11 +8142,11 @@ CODE_B5CFCF:				;		 |
 	JMP CODE_B5CFF6			;$B5CFD0	/
 
 CODE_B5CFD3:
-	LDA $4211			;$B5CFD3	\
+	LDA CPU.irq_flag		;$B5CFD3	\
 	LDA #$0080			;$B5CFD6	 |
-	STA $2103			;$B5CFD9	 |
+	STA PPU.oam_address_high	;$B5CFD9	 |
 	LDA #$0001			;$B5CFDC	 |
-	STA $420D			;$B5CFDF	 |
+	STA CPU.rom_speed		;$B5CFDF	 |
 	REP #$20			;$B5CFE2	 |
 	LDA #$000F			;$B5CFE4	 |
 	STA $0512			;$B5CFE7	 |
@@ -8158,15 +8158,15 @@ CODE_B5CFD3:
 CODE_B5CFF6:
 	STA $20				;$B5CFF6	\
 	SEP #$20			;$B5CFF8	 |
-	LDA $4210			;$B5CFFA	 |
+	LDA CPU.nmi_flag		;$B5CFFA	 |
 CODE_B5CFFD:				;		 |
-	LDA $4210			;$B5CFFD	 |
+	LDA CPU.nmi_flag		;$B5CFFD	 |
 	AND #$80			;$B5D000	 |
 	BNE CODE_B5CFFD			;$B5D002	 |
 	SEP #$20			;$B5D004	 |
 	LDA #$81			;$B5D006	 |
-	STA $4200			;$B5D008	 |
-	STZ $4016			;$B5D00B	 |
+	STA CPU.enable_interrupts	;$B5D008	 |
+	STZ joypad.port_0		;$B5D00B	 |
 CODE_B5D00E:				;		 |
 	WAI				;$B5D00E	 |
 	BRA CODE_B5D00E			;$B5D00F	/
@@ -8217,9 +8217,9 @@ CODE_B5D13B:
 	PLB				;$B5D13C	 |
 	LDX #$01FF			;$B5D13D	 |
 	TXS				;$B5D140	 |
-	STZ $2102			;$B5D141	 |
+	STZ PPU.oam_address		;$B5D141	 |
 	LDA #$1E01			;$B5D144	 |
-	STA $420B			;$B5D147	 |
+	STA CPU.enable_dma		;$B5D147	 |
 	JSL CODE_B5A919			;$B5D14A	 |
 	LDA $17C0			;$B5D14E	 |
 	STA $7E8051			;$B5D151	 |
@@ -8446,7 +8446,7 @@ CODE_B5D334:
 	PLB				;$B5D335	 |
 	LDX #$01FF			;$B5D336	 |
 	TXS				;$B5D339	 |
-	STZ $2102			;$B5D33A	 |
+	STZ PPU.oam_address		;$B5D33A	 |
 	LDA.l $0006B1			;$B5D33D	 |
 	CMP #$000A			;$B5D341	 |
 	BCS CODE_B5D349			;$B5D344	 |
@@ -8454,7 +8454,7 @@ CODE_B5D334:
 
 CODE_B5D349:
 	LDA #$6390			;$B5D349	\
-	STA $2116			;$B5D34C	 |
+	STA PPU.vram_address		;$B5D34C	 |
 	LDA $2A				;$B5D34F	 |
 	BIT #$0007			;$B5D351	 |
 	BNE CODE_B5D37F			;$B5D354	 |
@@ -8473,7 +8473,7 @@ CODE_B5D349:
 	LDA #$FA			;$B5D373	 |
 	STA $4314			;$B5D375	 |
 	LDA #$02			;$B5D378	 |
-	STA $420B			;$B5D37A	 |
+	STA CPU.enable_dma		;$B5D37A	 |
 	REP #$20			;$B5D37D	 |
 CODE_B5D37F:				;		 |
 	LDA $08FC			;$B5D37F	 |
@@ -8495,7 +8495,7 @@ CODE_B5D3A5:
 	INC $08FE			;$B5D3A5	\
 	INC $08FE			;$B5D3A8	 |
 	LDA #$6010			;$B5D3AB	 |
-	STA $2116			;$B5D3AE	 |
+	STA PPU.vram_address		;$B5D3AE	 |
 	LDA DATA_B5D32C,x		;$B5D3B1	 |
 	STA $4312			;$B5D3B4	 |
 	STA $4318			;$B5D3B7	 |
@@ -8507,7 +8507,7 @@ CODE_B5D3A5:
 	LDA #$FA			;$B5D3C8	 |
 	STA $4314			;$B5D3CA	 |
 	LDA #$02			;$B5D3CD	 |
-	STA $420B			;$B5D3CF	 |
+	STA CPU.enable_dma		;$B5D3CF	 |
 	REP #$20			;$B5D3D2	 |
 CODE_B5D3D4:				;		 |
 	LDA #$0401			;$B5D3D4	 |
@@ -8516,7 +8516,7 @@ CODE_B5D3D4:				;		 |
 CODE_B5D3D9:
 	LDA #$0001			;$B5D3D9	\
 CODE_B5D3DC:				;		 |
-	STA $420B			;$B5D3DC	 |
+	STA CPU.enable_dma		;$B5D3DC	 |
 	JSL CODE_B5A919			;$B5D3DF	 |
 	JSL CODE_B48368			;$B5D3E3	 |
 	LDA.l $0006A3			;$B5D3E7	 |
@@ -8550,7 +8550,7 @@ CODE_B5D411:
 CODE_B5D424:				;		 |
 	SEP #$20			;$B5D424	 |
 	LDA $0512			;$B5D426	 |
-	STA $2100			;$B5D429	 |
+	STA PPU.screen			;$B5D429	 |
 	REP #$20			;$B5D42C	 |
 	JSL CODE_80897C			;$B5D42E	 |
 	INC $2A				;$B5D432	 |
@@ -8605,9 +8605,9 @@ CODE_B5D4A7:
 	TXS				;$B5D4AA	 |
 	PHK				;$B5D4AB	 |
 	PLB				;$B5D4AC	 |
-	STZ $2102			;$B5D4AD	 |
+	STZ PPU.oam_address		;$B5D4AD	 |
 	LDA #$1E01			;$B5D4B0	 |
-	STA $420B			;$B5D4B3	 |
+	STA CPU.enable_dma		;$B5D4B3	 |
 	JSL CODE_B5A919			;$B5D4B6	 |
 	LDA $17C0			;$B5D4BA	 |
 	STA $7E8051			;$B5D4BD	 |
@@ -8642,7 +8642,7 @@ CODE_B5D4E3:				;		 |
 	JSR CODE_B5DF4F			;$B5D500	 |
 	SEP #$20			;$B5D503	 |
 	LDA $0512			;$B5D505	 |
-	STA $2100			;$B5D508	 |
+	STA PPU.screen			;$B5D508	 |
 	REP #$20			;$B5D50B	 |
 	INC $2A				;$B5D50D	 |
 	JSL CODE_BAC7C0			;$B5D50F	 |
@@ -9851,11 +9851,11 @@ CODE_B5DF92:				;		 |
 	TXA				;$B5DF92	 |
 	SEP #$20			;$B5DF93	 |
 	LDA #$4C			;$B5DF95	 |
-	STA $2121			;$B5DF97	 |
+	STA PPU.cgram_address		;$B5DF97	 |
 	TXA				;$B5DF9A	 |
-	STA $2122			;$B5DF9B	 |
+	STA PPU.cgram_write		;$B5DF9B	 |
 	XBA				;$B5DF9E	 |
-	STA $2122			;$B5DF9F	 |
+	STA PPU.cgram_write		;$B5DF9F	 |
 	REP #$20			;$B5DFA2	 |
 	LDA $2A				;$B5DFA4	 |
 	JSR CODE_B5E054			;$B5DFA6	 |
@@ -9869,19 +9869,19 @@ CODE_B5DF92:				;		 |
 	JSR CODE_B5E054			;$B5DFB8	 |
 	SEP #$20			;$B5DFBB	 |
 	LDA #$31			;$B5DFBD	 |
-	STA $2121			;$B5DFBF	 |
+	STA PPU.cgram_address		;$B5DFBF	 |
 	LDX #$0000			;$B5DFC2	 |
 CODE_B5DFC5:				;		 |
 	LDA.l DATA_FD0B72,x		;$B5DFC5	 |
-	STA $2122			;$B5DFC9	 |
+	STA PPU.cgram_write		;$B5DFC9	 |
 	INX				;$B5DFCC	 |
 	CPX #$0010			;$B5DFCD	 |
 	BNE CODE_B5DFC5			;$B5DFD0	 |
 	LDA $17C0			;$B5DFD2	 |
-	STA $210E			;$B5DFD5	 |
-	STZ $210E			;$B5DFD8	 |
-	STA $2112			;$B5DFDB	 |
-	STZ $2112			;$B5DFDE	 |
+	STA PPU.layer_0_scroll_y	;$B5DFD5	 |
+	STZ PPU.layer_0_scroll_y	;$B5DFD8	 |
+	STA PPU.layer_2_scroll_y	;$B5DFDB	 |
+	STZ PPU.layer_2_scroll_y	;$B5DFDE	 |
 	LDA $2A				;$B5DFE1	 |
 	LSR A				;$B5DFE3	 |
 	LSR A				;$B5DFE4	 |
@@ -9958,9 +9958,9 @@ CODE_B5E054:
 	XBA				;$B5E076	 |
 	ORA $34				;$B5E077	 |
 	SEP #$20			;$B5E079	 |
-	STA $2122			;$B5E07B	 |
+	STA PPU.cgram_write		;$B5E07B	 |
 	XBA				;$B5E07E	 |
-	STA $2122			;$B5E07F	 |
+	STA PPU.cgram_write		;$B5E07F	 |
 	REP #$20			;$B5E082	 |
 	RTS				;$B5E084	/
 
@@ -10030,16 +10030,16 @@ CODE_B5E0E2:
 	LDA #$0800			;$B5E0EF	 |
 	STA $4305			;$B5E0F2	 |
 	LDA #$8D28			;$B5E0F5	 |
-	STA $2181			;$B5E0F8	 |
+	STA WRAM.address		;$B5E0F8	 |
 	SEP #$20			;$B5E0FB	 |
 	LDA #$7E			;$B5E0FD	 |
-	STA $2183			;$B5E0FF	 |
+	STA WRAM.bank			;$B5E0FF	 |
 	LDA #$80			;$B5E102	 |
 	STA $4301			;$B5E104	 |
 	LDA #$08			;$B5E107	 |
 	STA $4300			;$B5E109	 |
 	LDA #$01			;$B5E10C	 |
-	STA $420B			;$B5E10E	 |
+	STA CPU.enable_dma		;$B5E10E	 |
 	REP #$20			;$B5E111	 |
 	STZ $0AFC			;$B5E113	 |
 	STZ $0AFE			;$B5E116	 |
@@ -12996,8 +12996,8 @@ CODE_B5F4C4:
 	LDA $70				;$B5F4C7	 |
 	CMP #$0400			;$B5F4C9	 |
 	BCS CODE_B5F536			;$B5F4CC	 |
-	STA $2181			;$B5F4CE	 |
-	STZ $2183			;$B5F4D1	 |
+	STA WRAM.address		;$B5F4CE	 |
+	STZ WRAM.bank			;$B5F4D1	 |
 	SEC				;$B5F4D4	 |
 	SBC #$0200			;$B5F4D5	 |
 	LSR A				;$B5F4D8	 |
@@ -13262,10 +13262,10 @@ CODE_B5F696:				;		 |
 	CLC				;$B5F698	 |
 	ADC DATA_B5FB66,y		;$B5F699	 |
 	SEP #$21			;$B5F69C	 |
-	STA $2180			;$B5F69E	 |
+	STA WRAM.data			;$B5F69E	 |
 	LDA $3E				;$B5F6A1	 |
 	ADC DATA_B5FCA8,x		;$B5F6A3	 |
-	STA $2180			;$B5F6A6	 |
+	STA WRAM.data			;$B5F6A6	 |
 	LDA DATA_B5FCA8,x		;$B5F6A9	 |
 	LSR A				;$B5F6AC	 |
 	LSR A				;$B5F6AD	 |
@@ -13273,9 +13273,9 @@ CODE_B5F696:				;		 |
 	AND #$0E			;$B5F6B1	 |
 	ADC $42				;$B5F6B3	 |
 	AND #$EE			;$B5F6B5	 |
-	STA $2180			;$B5F6B7	 |
+	STA WRAM.data			;$B5F6B7	 |
 	LDA $43				;$B5F6BA	 |
-	STA $2180			;$B5F6BC	 |
+	STA WRAM.data			;$B5F6BC	 |
 	XBA				;$B5F6BF	 |
 	ASL A				;$B5F6C0	 |
 	LDA $4A				;$B5F6C1	 |
@@ -13318,10 +13318,10 @@ CODE_B5F6F9:				;		 |
 	CLC				;$B5F6FB	 |
 	ADC DATA_B5FB66,y		;$B5F6FC	 |
 	SEP #$21			;$B5F6FF	 |
-	STA $2180			;$B5F701	 |
+	STA WRAM.data			;$B5F701	 |
 	LDA $3E				;$B5F704	 |
 	ADC DATA_B5FDA8,x		;$B5F706	 |
-	STA $2180			;$B5F709	 |
+	STA WRAM.data			;$B5F709	 |
 	LDA DATA_B5FDA8,x		;$B5F70C	 |
 	LSR A				;$B5F70F	 |
 	LSR A				;$B5F710	 |
@@ -13329,9 +13329,9 @@ CODE_B5F6F9:				;		 |
 	AND #$0E			;$B5F714	 |
 	ADC $42				;$B5F716	 |
 	AND #$EE			;$B5F718	 |
-	STA $2180			;$B5F71A	 |
+	STA WRAM.data			;$B5F71A	 |
 	LDA $43				;$B5F71D	 |
-	STA $2180			;$B5F71F	 |
+	STA WRAM.data			;$B5F71F	 |
 	XBA				;$B5F722	 |
 	ASL A				;$B5F723	 |
 	LDA $4A				;$B5F724	 |

@@ -6764,12 +6764,12 @@ CODE_B3B2DE:				;		 |
 CODE_B3B2DF:
 	PHX				;$B3B2DF	\
 	SEP #$30			;$B3B2E0	 |
-	STA $4202			;$B3B2E2	 |
-	STY $4203			;$B3B2E5	 |
+	STA CPU.multiply_A		;$B3B2E2	 |
+	STY CPU.multiply_B		;$B3B2E5	 |
 	REP #$30			;$B3B2E8	 |
 	PLX				;$B3B2EA	 |
 	NOP				;$B3B2EB	 |
-	LDA $4216			;$B3B2EC	 |
+	LDA CPU.multiply_result		;$B3B2EC	 |
 	RTS				;$B3B2EF	/
 
 snapjaw_main:
@@ -7412,7 +7412,7 @@ CODE_B3B795:				;		 |
 	LSR A				;$B3B7A0	 |
 	LSR A				;$B3B7A1	 |
 	SEP #$20			;$B3B7A2	 |
-	STA $4202			;$B3B7A4	 |
+	STA CPU.multiply_A		;$B3B7A4	 |
 	LDA $34				;$B3B7A7	 |
 	LDY $38				;$B3B7A9	 |
 	CMP $38				;$B3B7AB	 |
@@ -7420,16 +7420,16 @@ CODE_B3B795:				;		 |
 	TAY				;$B3B7AF	 |
 	LDA $38				;$B3B7B0	 |
 CODE_B3B7B2:				;		 |
-	STA $4203			;$B3B7B2	 |
+	STA CPU.multiply_B		;$B3B7B2	 |
 	REP #$20			;$B3B7B5	 |
 	NOP				;$B3B7B7	 |
 	NOP				;$B3B7B8	 |
 	NOP				;$B3B7B9	 |
-	LDA $4216			;$B3B7BA	 |
-	STA $4204			;$B3B7BD	 |
+	LDA CPU.multiply_result		;$B3B7BA	 |
+	STA CPU.dividen			;$B3B7BD	 |
 	TYA				;$B3B7C0	 |
 	SEP #$20			;$B3B7C1	 |
-	STA $4206			;$B3B7C3	 |
+	STA CPU.divisor			;$B3B7C3	 |
 	REP #$20			;$B3B7C6	 |
 	NOP				;$B3B7C8	 |
 	NOP				;$B3B7C9	 |
@@ -7438,7 +7438,7 @@ CODE_B3B7B2:				;		 |
 	NOP				;$B3B7CC	 |
 	NOP				;$B3B7CD	 |
 	NOP				;$B3B7CE	 |
-	LDA $4214			;$B3B7CF	 |
+	LDA CPU.divide_result		;$B3B7CF	 |
 	ASL A				;$B3B7D2	 |
 	ASL A				;$B3B7D3	 |
 	ASL A				;$B3B7D4	 |
@@ -15314,9 +15314,9 @@ CODE_B3F1C9:
 	EOR #$FFFF			;$B3F1CB	 |
 	INC A				;$B3F1CE	 |
 	ORA $5E				;$B3F1CF	 |
-	STA $4202			;$B3F1D1	 |
-	LDA $4216			;$B3F1D4	 |
-	LDA $4216			;$B3F1D7	 |
+	STA CPU.multiply_A		;$B3F1D1	 |
+	LDA CPU.multiply_result		;$B3F1D4	 |
+	LDA CPU.multiply_result		;$B3F1D7	 |
 	LSR A				;$B3F1DA	 |
 	LSR A				;$B3F1DB	 |
 	EOR #$FFFF			;$B3F1DC	 |
@@ -15325,9 +15325,9 @@ CODE_B3F1C9:
 
 CODE_B3F1E1:
 	ORA $5E				;$B3F1E1	\
-	STA $4202			;$B3F1E3	 |
-	LDA $4216			;$B3F1E6	 |
-	LDA $4216			;$B3F1E9	 |
+	STA CPU.multiply_A		;$B3F1E3	 |
+	LDA CPU.multiply_result		;$B3F1E6	 |
+	LDA CPU.multiply_result		;$B3F1E9	 |
 	LSR A				;$B3F1EC	 |
 	LSR A				;$B3F1ED	 |
 	RTS				;$B3F1EE	/
@@ -15639,50 +15639,50 @@ CODE_B3F437:				;		 |
 	STZ $39				;$B3F439	 |
 	STZ $3B				;$B3F43B	 |
 	LDA $34				;$B3F43D	 |
-	STA $4204			;$B3F43F	 |
+	STA CPU.dividen			;$B3F43F	 |
 	SEP #$20			;$B3F442	 |
 	LDA $36				;$B3F444	 |
-	STA $4206			;$B3F446	 |
+	STA CPU.divisor			;$B3F446	 |
 	REP #$20			;$B3F449	 |
-	LDA $4214			;$B3F44B	 |
-	LDA $4214			;$B3F44E	 |
-	LDA $4214			;$B3F451	 |
-	LDA $4214			;$B3F454	 |
+	LDA CPU.divide_result		;$B3F44B	 |
+	LDA CPU.divide_result		;$B3F44E	 |
+	LDA CPU.divide_result		;$B3F451	 |
+	LDA CPU.divide_result		;$B3F454	 |
 	STA $3A				;$B3F457	 |
-	LDA $4216			;$B3F459	 |
+	LDA CPU.divide_remainder	;$B3F459	 |
 	XBA				;$B3F45C	 |
 	EOR $33				;$B3F45D	 |
 	AND #$FF00			;$B3F45F	 |
 	EOR $33				;$B3F462	 |
-	STA $4204			;$B3F464	 |
+	STA CPU.dividen			;$B3F464	 |
 	SEP #$20			;$B3F467	 |
 	LDA $36				;$B3F469	 |
-	STA $4206			;$B3F46B	 |
+	STA CPU.divisor			;$B3F46B	 |
 	REP #$20			;$B3F46E	 |
-	LDA $4214			;$B3F470	 |
-	LDA $4214			;$B3F473	 |
-	LDA $4214			;$B3F476	 |
-	LDA $4214			;$B3F479	 |
+	LDA CPU.divide_result		;$B3F470	 |
+	LDA CPU.divide_result		;$B3F473	 |
+	LDA CPU.divide_result		;$B3F476	 |
+	LDA CPU.divide_result		;$B3F479	 |
 	CLC				;$B3F47C	 |
 	ADC $39				;$B3F47D	 |
 	STA $39				;$B3F47F	 |
 	LDA #$0000			;$B3F481	 |
 	ADC $3B				;$B3F484	 |
 	STA $3B				;$B3F486	 |
-	LDA $4216			;$B3F488	 |
+	LDA CPU.divide_remainder	;$B3F488	 |
 	XBA				;$B3F48B	 |
 	EOR $32				;$B3F48C	 |
 	AND #$FF00			;$B3F48E	 |
 	EOR $32				;$B3F491	 |
-	STA $4204			;$B3F493	 |
+	STA CPU.dividen			;$B3F493	 |
 	SEP #$20			;$B3F496	 |
 	LDA $36				;$B3F498	 |
-	STA $4206			;$B3F49A	 |
+	STA CPU.divisor			;$B3F49A	 |
 	REP #$20			;$B3F49D	 |
-	LDA $4214			;$B3F49F	 |
-	LDA $4214			;$B3F4A2	 |
-	LDA $4214			;$B3F4A5	 |
-	LDA $4214			;$B3F4A8	 |
+	LDA CPU.divide_result		;$B3F49F	 |
+	LDA CPU.divide_result		;$B3F4A2	 |
+	LDA CPU.divide_result		;$B3F4A5	 |
+	LDA CPU.divide_result		;$B3F4A8	 |
 	CLC				;$B3F4AB	 |
 	ADC $38				;$B3F4AC	 |
 	STA $38				;$B3F4AE	 |

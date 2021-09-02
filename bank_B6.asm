@@ -2919,7 +2919,7 @@ CODE_B69DC2:
 	STA $06,x			;$B69DDC	 |
 	SEP #$20			;$B69DDE	 |
 	LDA #$02			;$B69DE0	 |
-	STA $212D			;$B69DE2	 |
+	STA PPU.sub_screen		;$B69DE2	 |
 	REP #$20			;$B69DE5	 |
 	LDA #$0028			;$B69DE7	 |
 	STA $000751			;$B69DEA	 |
@@ -5863,11 +5863,11 @@ CODE_B6B9BB:				;		 |
 	TAY				;$B6B9C5	 |
 	PLA				;$B6B9C6	 |
 	JSL CODE_B4BD7C			;$B6B9C7	 |
-	LDA $4214			;$B6B9CB	 |
+	LDA CPU.divide_result		;$B6B9CB	 |
 	XBA				;$B6B9CE	 |
 	AND #$FF00			;$B6B9CF	 |
 	STA $000650			;$B6B9D2	 |
-	LDA $4216			;$B6B9D6	 |
+	LDA CPU.divide_remainder	;$B6B9D6	 |
 	AND #$00FF			;$B6B9D9	 |
 	ORA $000650			;$B6B9DC	 |
 	STA $000650			;$B6B9E0	 |
@@ -6684,7 +6684,7 @@ CODE_B6C082:
 	BNE CODE_B6C095			;$B6C088	 |
 	LDA #$0008			;$B6C08A	 |
 	SEP #$20			;$B6C08D	 |
-	STA $2100			;$B6C08F	 |
+	STA PPU.screen			;$B6C08F	 |
 	REP #$20			;$B6C092	 |
 	STP				;$B6C094	 |
 CODE_B6C095:				;		 |
@@ -7764,7 +7764,7 @@ CODE_B6C8B3:
 	STA $0022,y			;$B6C8BE	 |
 CODE_B6C8C1:				;		 |
 	LDA $0010,y			;$B6C8C1	 |
-	STA $4204			;$B6C8C4	 |
+	STA CPU.dividen			;$B6C8C4	 |
 	LDA [$CE]			;$B6C8C7	 |
 	INC A				;$B6C8C9	 |
 	ASL A				;$B6C8CA	 |
@@ -7772,13 +7772,13 @@ CODE_B6C8C1:				;		 |
 	ASL A				;$B6C8CC	 |
 	ASL A				;$B6C8CD	 |
 	SEP #$20			;$B6C8CE	 |
-	STA $4206			;$B6C8D0	 |
+	STA CPU.divisor			;$B6C8D0	 |
 	REP #$20			;$B6C8D3	 |
 	LDA #$0008			;$B6C8D5	 |
 CODE_B6C8D8:				;		 |
 	DEC A				;$B6C8D8	 |
 	BNE CODE_B6C8D8			;$B6C8D9	 |
-	LDA $4214			;$B6C8DB	 |
+	LDA CPU.divide_result		;$B6C8DB	 |
 	SEP #$20			;$B6C8DE	 |
 	STA $0024,y			;$B6C8E0	 |
 	STA $0026,y			;$B6C8E3	 |
@@ -9202,18 +9202,18 @@ CODE_B6D410:				;		 |
 CODE_B6D424:
 	JSL CODE_B4C175			;$B6D424	\
 	STA $000650			;$B6D428	 |
-	STA $4204			;$B6D42C	 |
+	STA CPU.dividen			;$B6D42C	 |
 	LDA $0000,y			;$B6D42F	 |
 	CMP $000650			;$B6D432	 |
 	BCS CODE_B6D44A			;$B6D436	 |
 	SEP #$20			;$B6D438	 |
-	STA $4206			;$B6D43A	 |
+	STA CPU.divisor			;$B6D43A	 |
 	REP #$20			;$B6D43D	 |
 	LDA #$0008			;$B6D43F	 |
 CODE_B6D442:				;		 |
 	DEC A				;$B6D442	 |
 	BNE CODE_B6D442			;$B6D443	 |
-	LDA $4216			;$B6D445	 |
+	LDA CPU.multiply_result		;$B6D445	 |
 	BRA CODE_B6D44E			;$B6D448	/
 
 CODE_B6D44A:
@@ -13060,18 +13060,18 @@ CODE_B6F34A:
 	JSL CODE_B58003			;$B6F36B	 |
 	JSL CODE_B4C175			;$B6F36F	 |
 	STA $000650			;$B6F373	 |
-	STA $4204			;$B6F377	 |
+	STA CPU.dividen			;$B6F377	 |
 	LDA.l DATA_BAAD2E		;$B6F37A	 |
 	CMP $000650			;$B6F37E	 |
 	BCS CODE_B6F396			;$B6F382	 |
 	SEP #$20			;$B6F384	 |
-	STA $4206			;$B6F386	 |
+	STA CPU.divisor			;$B6F386	 |
 	REP #$20			;$B6F389	 |
 	LDA #$0008			;$B6F38B	 |
 CODE_B6F38E:				;		 |
 	DEC A				;$B6F38E	 |
 	BNE CODE_B6F38E			;$B6F38F	 |
-	LDA $4216			;$B6F391	 |
+	LDA CPU.multiply_result		;$B6F391	 |
 	BRA CODE_B6F39A			;$B6F394	/
 
 CODE_B6F396:
@@ -13135,7 +13135,7 @@ CODE_B6F40D:
 	STA $0022,y			;$B6F418	 |
 CODE_B6F41B:				;		 |
 	LDA $0010,y			;$B6F41B	 |
-	STA $4204			;$B6F41E	 |
+	STA CPU.dividen			;$B6F41E	 |
 	LDA [$CE]			;$B6F421	 |
 	INC A				;$B6F423	 |
 	ASL A				;$B6F424	 |
@@ -13143,13 +13143,13 @@ CODE_B6F41B:				;		 |
 	ASL A				;$B6F426	 |
 	ASL A				;$B6F427	 |
 	SEP #$20			;$B6F428	 |
-	STA $4206			;$B6F42A	 |
+	STA CPU.divisor			;$B6F42A	 |
 	REP #$20			;$B6F42D	 |
 	LDA #$0008			;$B6F42F	 |
 CODE_B6F432:				;		 |
 	DEC A				;$B6F432	 |
 	BNE CODE_B6F432			;$B6F433	 |
-	LDA $4214			;$B6F435	 |
+	LDA CPU.divide_result		;$B6F435	 |
 	BNE CODE_B6F43B			;$B6F438	 |
 	INC A				;$B6F43A	 |
 CODE_B6F43B:				;		 |
@@ -13228,19 +13228,19 @@ CODE_B6F4BB:
 	EOR #$FFFF			;$B6F4D8	 |
 	INC A				;$B6F4DB	 |
 CODE_B6F4DC:				;		 |
-	STA $4204			;$B6F4DC	 |
+	STA CPU.dividen			;$B6F4DC	 |
 	LDA #$0083			;$B6F4DF	 |
 	SEP #$20			;$B6F4E2	 |
-	STA $4206			;$B6F4E4	 |
+	STA CPU.divisor			;$B6F4E4	 |
 	REP #$20			;$B6F4E7	 |
 	LDA #$0008			;$B6F4E9	 |
 CODE_B6F4EC:				;		 |
 	DEC A				;$B6F4EC	 |
 	BNE CODE_B6F4EC			;$B6F4ED	 |
-	LDA $4214			;$B6F4EF	 |
+	LDA CPU.divide_result		;$B6F4EF	 |
 	STA $0022,y			;$B6F4F2	 |
 	LDA #$0010			;$B6F4F5	 |
-	STA $4204			;$B6F4F8	 |
+	STA CPU.dividen			;$B6F4F8	 |
 	LDA $06,x			;$B6F4FB	 |
 	CMP #$018B			;$B6F4FD	 |
 	BCC CODE_B6F50C			;$B6F500	 |
@@ -13251,13 +13251,13 @@ CODE_B6F4EC:				;		 |
 
 CODE_B6F50C:
 	SEP #$20			;$B6F50C	\
-	STA $4206			;$B6F50E	 |
+	STA CPU.divisor			;$B6F50E	 |
 	REP #$20			;$B6F511	 |
 	LDA #$0008			;$B6F513	 |
 CODE_B6F516:				;		 |
 	DEC A				;$B6F516	 |
 	BNE CODE_B6F516			;$B6F517	 |
-	LDA $4216			;$B6F519	 |
+	LDA CPU.divide_remainder	;$B6F519	 |
 CODE_B6F51C:				;		 |
 	STA $002A,y			;$B6F51C	 |
 	LDA #$01B0			;$B6F51F	 |
@@ -13279,16 +13279,16 @@ CODE_B6F53B:
 CODE_B6F544:				;		 |
 	STA $000C,y			;$B6F544	 |
 	JSL CODE_B4C175			;$B6F547	 |
-	STA $4204			;$B6F54B	 |
+	STA CPU.dividen			;$B6F54B	 |
 	LDA #$000E			;$B6F54E	 |
 	SEP #$20			;$B6F551	 |
-	STA $4206			;$B6F553	 |
+	STA CPU.divisor			;$B6F553	 |
 	REP #$20			;$B6F556	 |
 	LDA #$0008			;$B6F558	 |
 CODE_B6F55B:				;		 |
 	DEC A				;$B6F55B	 |
 	BNE CODE_B6F55B			;$B6F55C	 |
-	LDA $4216			;$B6F55E	 |
+	LDA CPU.divide_remainder	;$B6F55E	 |
 	INC A				;$B6F561	 |
 	CMP #$0003			;$B6F562	 |
 	BCS CODE_B6F56A			;$B6F565	 |

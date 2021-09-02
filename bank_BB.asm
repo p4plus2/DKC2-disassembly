@@ -146,9 +146,9 @@ DMA_palette:				;		 |
 	LDA #$FD			;$BB809B	 |\ Set DMA source bank to FD
 	STA $4304			;$BB809D	 |/
 	TYA				;$BB80A0	 |\ Set CGRAM destination
-	STA $2121			;$BB80A1	 |/
+	STA PPU.cgram_address		;$BB80A1	 |/
 	LDA #$01			;$BB80A4	 |\ Do the DMA! (https://www.youtube.com/watch?v=j9Zj4chxeCM)
-	STA $420B			;$BB80A6	 |/
+	STA CPU.enable_dma		;$BB80A6	 |/
 	REP #$20			;$BB80A9	 |
 	RTL				;$BB80AB	/
 
@@ -433,7 +433,7 @@ CODE_BB829A:				;		 |
 	BNE CODE_BB829A			;$BB82A7	 |
 	STZ $68				;$BB82A9	 |
 	LDA #$0007			;$BB82AB	 |
-	JSL CODE_808C13			;$BB82AE	 |
+	JSL throw_exception		;$BB82AE	 |
 	SEC				;$BB82B2	 |
 	RTS				;$BB82B3	/
 
@@ -512,7 +512,7 @@ CODE_BB831B:				;		 |
 	DEY				;$BB8321	 |
 	BPL CODE_BB831B			;$BB8322	 |
 	LDA #$0006			;$BB8324	 |
-	JSL CODE_808C13			;$BB8327	 |
+	JSL throw_exception		;$BB8327	 |
 	SEC				;$BB832B	 |
 	RTS				;$BB832C	/
 
@@ -552,7 +552,7 @@ CODE_BB8358:				;		 |
 	CPY $36				;$BB835A	 |
 	BPL CODE_BB8353			;$BB835C	 |
 	LDA #$0003			;$BB835E	 |
-	JSL CODE_808C13			;$BB8361	 |
+	JSL throw_exception		;$BB8361	 |
 	SEC				;$BB8365	 |
 	RTS				;$BB8366	/
 
@@ -649,7 +649,7 @@ CODE_BB83E1:
 	LDA #$0000			;$BB83E1	\
 	STA $0B04,y			;$BB83E4	 |
 	LDA #$0004			;$BB83E7	 |
-	JSL CODE_808C13			;$BB83EA	 |
+	JSL throw_exception		;$BB83EA	 |
 	RTS				;$BB83EE	/
 
 CODE_BB83EF:
@@ -1608,7 +1608,7 @@ CODE_BB8A7F:				;		 |
 	CPX #$0010			;$BB8A81	 |
 	BNE CODE_BB8A75			;$BB8A84	 |
 	LDA #$0002			;$BB8A86	 |
-	JSL CODE_808C13			;$BB8A89	 |
+	JSL throw_exception		;$BB8A89	 |
 	LDA $05A7			;$BB8A8D	 |
 	STA $05F7			;$BB8A90	 |
 	LDX #$0000			;$BB8A93	 |
@@ -2199,7 +2199,7 @@ finalize_decompression:			;		\
 	LDA $32				;$BB8E49	 |\ Check if DMA should run
 	BMI .skip_DMA			;$BB8E4B	 |/
 	LDA $58				;$BB8E4D	 |\ This would be a be a DMA to VRAM
-	STA $2116			;$BB8E4F	 | | However $32 is a constant and will always be skipped (0xFFFF)
+	STA PPU.vram_address		;$BB8E4F	 | | However $32 is a constant and will always be skipped (0xFFFF)
 	LDA $38				;$BB8E52	 | |
 	STA $4302			;$BB8E54	 | |
 	LDA $3A				;$BB8E57	 | |
@@ -2209,7 +2209,7 @@ finalize_decompression:			;		\
 	STA $4300			;$BB8E62	 | |
 	SEP #$20			;$BB8E65	 | |
 	LDA #$01			;$BB8E67	 | |
-	STA $420B			;$BB8E69	 | |
+	STA CPU.enable_dma		;$BB8E69	 | |
 	REP #$20			;$BB8E6C	 |/
 .skip_DMA				;		 |
 	RTL				;$BB8E6E	/ Done with decompression
@@ -2956,8 +2956,8 @@ CODE_BB9379:				;		 |
 	JSL clear_VRAM_wrapper		;$BB937A	 |
 	SEP #$20			;$BB937E	 |
 	LDA #$03			;$BB9380	 |
-	STA $212C			;$BB9382	 |
-	STA $212D			;$BB9385	 |
+	STA PPU.main_screen		;$BB9382	 |
+	STA PPU.sub_screen		;$BB9385	 |
 	REP #$20			;$BB9388	 |
 	RTL				;$BB938A	/
 
@@ -3276,12 +3276,12 @@ CODE_BB966F:
 	LDA #$F800			;$BB969A	 |
 	JSL decompress_data		;$BB969D	 |
 	LDA #$6000			;$BB96A1	 |
-	STA $2116			;$BB96A4	 |
+	STA PPU.vram_address		;$BB96A4	 |
 	LDX #$0000			;$BB96A7	 |
 CODE_BB96AA:				;		 |
 	LDA.l $7FF800,x			;$BB96AA	 |
 	AND #$E7FF			;$BB96AE	 |
-	STA $2118			;$BB96B1	 |
+	STA PPU.vram_write		;$BB96B1	 |
 	INX				;$BB96B4	 |
 	INX				;$BB96B5	 |
 	CPX #$0800			;$BB96B6	 |
@@ -3434,7 +3434,7 @@ CODE_BB9828:
 	JSL CODE_B4AC65			;$BB982C	 |
 	PLB				;$BB9830	 |
 	LDA #$7400			;$BB9831	 |
-	STA $2116			;$BB9834	 |
+	STA PPU.vram_address		;$BB9834	 |
 	SEP #$20			;$BB9837	 |
 	LDA #$01			;$BB9839	 |
 	STA $4300			;$BB983B	 |
@@ -3448,7 +3448,7 @@ CODE_BB9828:
 	STX $4305			;$BB9851	 |
 	STZ $4307			;$BB9854	 |
 	LDA #$01			;$BB9857	 |
-	STA $420B			;$BB9859	 |
+	STA CPU.enable_dma		;$BB9859	 |
 	REP #$20			;$BB985C	 |
 	LDA $D3				;$BB985E	 |
 	CMP #$0022			;$BB9860	 |
@@ -3473,12 +3473,12 @@ CODE_BB9874:
 CODE_BB9885:
 	JSR CODE_BB95F2			;$BB9885	\
 	LDA #$6700			;$BB9888	 |
-	STA $2116			;$BB988B	 |
+	STA PPU.vram_address		;$BB988B	 |
 	LDX #$0000			;$BB988E	 |
 CODE_BB9891:				;		 |
 	LDA.l DATA_E9A805,x		;$BB9891	 |
 	ORA #$2000			;$BB9895	 |
-	STA $2118			;$BB9898	 |
+	STA PPU.vram_write		;$BB9898	 |
 	INX				;$BB989B	 |
 	INX				;$BB989C	 |
 	CPX #$0100			;$BB989D	 |
@@ -3533,7 +3533,7 @@ CODE_BB98E8:
 	LDA #$F800			;$BB9916	 |
 	JSL decompress_data		;$BB9919	 |
 	LDA #$7000			;$BB991D	 |
-	STA $2116			;$BB9920	 |
+	STA PPU.vram_address		;$BB9920	 |
 	LDY #$02FE			;$BB9923	 |
 CODE_BB9926:				;		 |
 	TYA				;$BB9926	 |
@@ -3541,12 +3541,12 @@ CODE_BB9926:				;		 |
 	TAX				;$BB992A	 |
 	LDA.l $7FFB00,x			;$BB992B	 |
 	EOR #$8000			;$BB992F	 |
-	STA $2118			;$BB9932	 |
+	STA PPU.vram_write		;$BB9932	 |
 	DEY				;$BB9935	 |
 	DEY				;$BB9936	 |
 	BPL CODE_BB9926			;$BB9937	 |
 	LDA #$7180			;$BB9939	 |
-	STA $2116			;$BB993C	 |
+	STA PPU.vram_address		;$BB993C	 |
 	LDA #$FB00			;$BB993F	 |
 	LDX #$007F			;$BB9942	 |
 	LDY #$0300			;$BB9945	 |
@@ -3556,7 +3556,7 @@ CODE_BB9926:				;		 |
 	LDA #$F800			;$BB9952	 |
 	JSL decompress_data		;$BB9955	 |
 	LDA #$7400			;$BB9959	 |
-	STA $2116			;$BB995C	 |
+	STA PPU.vram_address		;$BB995C	 |
 	LDY #$02FE			;$BB995F	 |
 CODE_BB9962:				;		 |
 	TYA				;$BB9962	 |
@@ -3564,12 +3564,12 @@ CODE_BB9962:				;		 |
 	TAX				;$BB9966	 |
 	LDA.l $7FFB00,x			;$BB9967	 |
 	EOR #$8000			;$BB996B	 |
-	STA $2118			;$BB996E	 |
+	STA PPU.vram_write		;$BB996E	 |
 	DEY				;$BB9971	 |
 	DEY				;$BB9972	 |
 	BPL CODE_BB9962			;$BB9973	 |
 	LDA #$7580			;$BB9975	 |
-	STA $2116			;$BB9978	 |
+	STA PPU.vram_address		;$BB9978	 |
 	LDA #$FB00			;$BB997B	 |
 	LDX #$007F			;$BB997E	 |
 	LDY #$0300			;$BB9981	 |
@@ -5396,7 +5396,7 @@ CODE_BBAE28:
 	JSL CODE_BB8432			;$BBAE3C	 |
 	BCC CODE_BBAE4A			;$BBAE40	 |
 	LDA #$0010			;$BBAE42	 |
-	JSL CODE_808C13			;$BBAE45	 |
+	JSL throw_exception		;$BBAE45	 |
 	RTS				;$BBAE49	/
 
 CODE_BBAE4A:
@@ -6077,22 +6077,22 @@ CODE_BBB2D5:
 	STA $60				;$BBB2D7	 |
 	SEP #$20			;$BBB2D9	 |
 	LDA $5E				;$BBB2DB	 |
-	STA $4202			;$BBB2DD	 |
+	STA CPU.multiply_A		;$BBB2DD	 |
 	LDA $60				;$BBB2E0	 |
-	STA $4203			;$BBB2E2	 |
+	STA CPU.multiply_B		;$BBB2E2	 |
 	REP #$20			;$BBB2E5	 |
-	LDA $4216			;$BBB2E7	 |
-	LDA $4216			;$BBB2EA	 |
+	LDA CPU.multiply_result		;$BBB2E7	 |
+	LDA CPU.multiply_result		;$BBB2EA	 |
 	STA $32				;$BBB2ED	 |
 	STZ $34				;$BBB2EF	 |
 	SEP #$20			;$BBB2F1	 |
 	LDA $5F				;$BBB2F3	 |
-	STA $4202			;$BBB2F5	 |
+	STA CPU.multiply_A		;$BBB2F5	 |
 	LDA $60				;$BBB2F8	 |
-	STA $4203			;$BBB2FA	 |
+	STA CPU.multiply_B		;$BBB2FA	 |
 	REP #$20			;$BBB2FD	 |
-	LDA $4216			;$BBB2FF	 |
-	LDA $4216			;$BBB302	 |
+	LDA CPU.multiply_result		;$BBB2FF	 |
+	LDA CPU.multiply_result		;$BBB302	 |
 	CLC				;$BBB305	 |
 	ADC $33				;$BBB306	 |
 	STA $33				;$BBB308	 |
@@ -6101,12 +6101,12 @@ CODE_BBB2D5:
 	STA $35				;$BBB310	 |
 	SEP #$20			;$BBB312	 |
 	LDA $5E				;$BBB314	 |
-	STA $4202			;$BBB316	 |
+	STA CPU.multiply_A		;$BBB316	 |
 	LDA $61				;$BBB319	 |
-	STA $4203			;$BBB31B	 |
+	STA CPU.multiply_B		;$BBB31B	 |
 	REP #$20			;$BBB31E	 |
-	LDA $4216			;$BBB320	 |
-	LDA $4216			;$BBB323	 |
+	LDA CPU.multiply_result		;$BBB320	 |
+	LDA CPU.multiply_result		;$BBB323	 |
 	CLC				;$BBB326	 |
 	ADC $33				;$BBB327	 |
 	STA $33				;$BBB329	 |
@@ -6115,12 +6115,12 @@ CODE_BBB2D5:
 	STA $35				;$BBB331	 |
 	SEP #$20			;$BBB333	 |
 	LDA $5F				;$BBB335	 |
-	STA $4202			;$BBB337	 |
+	STA CPU.multiply_A		;$BBB337	 |
 	LDA $61				;$BBB33A	 |
-	STA $4203			;$BBB33C	 |
+	STA CPU.multiply_B		;$BBB33C	 |
 	REP #$20			;$BBB33F	 |
-	LDA $4216			;$BBB341	 |
-	LDA $4216			;$BBB344	 |
+	LDA CPU.multiply_result		;$BBB341	 |
+	LDA CPU.multiply_result		;$BBB344	 |
 	CLC				;$BBB347	 |
 	ADC $34				;$BBB348	 |
 	STA $34				;$BBB34A	 |
@@ -6209,7 +6209,7 @@ CODE_BBB3DD:				;		 |
 
 CODE_BBB3ED:
 	LDA #$0001			;$BBB3ED	\
-	JSL CODE_808C13			;$BBB3F0	 |
+	JSL throw_exception		;$BBB3F0	 |
 	PLB				;$BBB3F4	 |
 	RTS				;$BBB3F5	/
 
@@ -6301,10 +6301,10 @@ CODE_BBB4A0:
 	LDA $0B92			;$BBB4A0	\
 	XBA				;$BBB4A3	 |
 	ORA $0B88			;$BBB4A4	 |
-	STA $4202			;$BBB4A7	 |
-	LDA $4216			;$BBB4AA	 |
-	LDA $4216			;$BBB4AD	 |
-	LDA $4216			;$BBB4B0	 |
+	STA CPU.multiply_A		;$BBB4A7	 |
+	LDA CPU.multiply_result		;$BBB4AA	 |
+	LDA CPU.multiply_result		;$BBB4AD	 |
+	LDA CPU.multiply_result		;$BBB4B0	 |
 	CLC				;$BBB4B3	 |
 	ADC $0B8C			;$BBB4B4	 |
 	ASL A				;$BBB4B7	 |
@@ -6494,9 +6494,9 @@ CODE_BBB5F0:				;		 |
 	ADC #$0100			;$BBB5FF	 |
 CODE_BBB602:				;		 |
 	ORA $0B88			;$BBB602	 |
-	STA $4202			;$BBB605	 |
-	LDA $4216			;$BBB608	 |
-	LDA $4216			;$BBB60B	 |
+	STA CPU.multiply_A		;$BBB605	 |
+	LDA CPU.multiply_result		;$BBB608	 |
+	LDA CPU.multiply_result		;$BBB60B	 |
 	CLC				;$BBB60E	 |
 	ADC $32				;$BBB60F	 |
 	ASL A				;$BBB611	 |
@@ -6646,7 +6646,7 @@ CODE_BBB6FB:				;		 |
 	RTS				;$BBB701	/
 
 	LDA #$000D			;$BBB702	 |
-	JSL CODE_808C13			;$BBB705	 |
+	JSL throw_exception		;$BBB705	 |
 	RTS				;$BBB709	/
 
 CODE_BBB70A:
@@ -8047,7 +8047,7 @@ CODE_BBC0EC:				;		 |
 	CPX #$0030			;$BBC0F6	 |
 	BNE CODE_BBC0EC			;$BBC0F9	 |
 	LDA #$000B			;$BBC0FB	 |
-	JSL CODE_808C13			;$BBC0FE	 |
+	JSL throw_exception		;$BBC0FE	 |
 	RTS				;$BBC102	/
 
 CODE_BBC103:
@@ -8064,7 +8064,7 @@ CODE_BBC116:
 	CMP #$0008			;$BBC119	 |
 	BMI CODE_BBC128			;$BBC11C	 |
 	LDA #$0009			;$BBC11E	 |
-	JSL CODE_808C13			;$BBC121	 |
+	JSL throw_exception		;$BBC121	 |
 	STZ $059D			;$BBC125	 |
 CODE_BBC128:				;		 |
 	LDA $059D			;$BBC128	 |
@@ -8074,7 +8074,7 @@ CODE_BBC128:				;		 |
 	AND #$01FF			;$BBC130	 |
 	BNE CODE_BBC13F			;$BBC133	 |
 	LDA #$000A			;$BBC135	 |
-	JSL CODE_808C13			;$BBC138	 |
+	JSL throw_exception		;$BBC138	 |
 	STZ $059D			;$BBC13C	 |
 CODE_BBC13F:				;		 |
 	RTS				;$BBC13F	/

@@ -89,7 +89,7 @@ CODE_BEB88F:
 CODE_BEB898:				;		 |
 	STA $32				;$BEB898	 |
 	LDA $0000,y			;$BEB89A	 |
-	STA $4204			;$BEB89D	 |
+	STA CPU.dividen			;$BEB89D	 |
 	CLC				;$BEB8A0	 |
 	ADC $42,x			;$BEB8A1	 |
 	CMP $32				;$BEB8A3	 |
@@ -104,7 +104,7 @@ CODE_BEB8B2:				;		 |
 	STA $0000,y			;$BEB8B2	 |
 	SEP #$20			;$BEB8B5	 |
 	LDA #$0A			;$BEB8B7	 |
-	STA $4206			;$BEB8B9	 |
+	STA CPU.divisor			;$BEB8B9	 |
 	REP #$20			;$BEB8BC	 |
 	LDA $4A,x			;$BEB8BE	 |
 	EOR $4F,x			;$BEB8C0	 |
@@ -112,9 +112,9 @@ CODE_BEB8B2:				;		 |
 	EOR $4F,x			;$BEB8C5	 |
 	JSL CODE_BEC5BC			;$BEB8C7	 |
 	SEP #$20			;$BEB8CB	 |
-	LDA $4214			;$BEB8CD	 |
+	LDA CPU.divide_result		;$BEB8CD	 |
 	XBA				;$BEB8D0	 |
-	LDA $4216			;$BEB8D1	 |
+	LDA CPU.divide_remainder	;$BEB8D1	 |
 	REP #$20			;$BEB8D4	 |
 	LDX $64				;$BEB8D6	 |
 	STA $46,x			;$BEB8D8	 |
@@ -2174,10 +2174,10 @@ CODE_BEC7B9:				;		 |
 	BCC CODE_BEC7C6			;$BEC7C1	 |
 	LDA #$0063			;$BEC7C3	 |
 CODE_BEC7C6:				;		 |
-	STA $4204			;$BEC7C6	 |
+	STA CPU.dividen			;$BEC7C6	 |
 	SEP #$20			;$BEC7C9	 |
 	LDA #$0A			;$BEC7CB	 |
-	STA $4206			;$BEC7CD	 |
+	STA CPU.divisor			;$BEC7CD	 |
 	REP #$20			;$BEC7D0	 |
 	LDA $0979			;$BEC7D2	 |
 	ASL A				;$BEC7D5	 |
@@ -2187,15 +2187,15 @@ CODE_BEC7C6:				;		 |
 	ADC #$F000			;$BEC7D9	 |
 	AND #$FF00			;$BEC7DC	 |
 	STA $32				;$BEC7DF	 |
-	LDA $4214			;$BEC7E1	 |
+	LDA CPU.divide_result		;$BEC7E1	 |
 	BEQ CODE_BEC7F2			;$BEC7E4	 |
 	LDX #$00DF			;$BEC7E6	 |
 	JSR CODE_BEC81F			;$BEC7E9	 |
-	LDA $4216			;$BEC7EC	 |
+	LDA CPU.divide_remainder	;$BEC7EC	 |
 	JMP CODE_BEC81F			;$BEC7EF	/
 
 CODE_BEC7F2:
-	LDA $4216			;$BEC7F2	\
+	LDA CPU.divide_remainder	;$BEC7F2	\
 	LDX #$00E4			;$BEC7F5	 |
 	JMP CODE_BEC81F			;$BEC7F8	/
 
@@ -5262,13 +5262,13 @@ CODE_BEDED4:				;		 |
 	SEP #$20			;$BEDED6	 |
 	TAY				;$BEDED8	 |
 	LDA DATA_BEDF6B,y		;$BEDED9	 |
-	STA $4202			;$BEDEDC	 |
+	STA CPU.multiply_A		;$BEDEDC	 |
 	LDA $5E				;$BEDEDF	 |
-	STA $4203			;$BEDEE1	 |
+	STA CPU.multiply_B		;$BEDEE1	 |
 	LDA $60				;$BEDEE4	 |
 	ASL A				;$BEDEE6	 |
 	REP #$20			;$BEDEE7	 |
-	LDA $4216			;$BEDEE9	 |
+	LDA CPU.multiply_result		;$BEDEE9	 |
 	BCC CODE_BEDEFC			;$BEDEEC	 |
 	EOR #$FFFF			;$BEDEEE	 |
 	BRA CODE_BEDEFC			;$BEDEF1	/
@@ -5766,24 +5766,24 @@ CODE_BEE284:
 	CMP #$0A			;$BEE28D	 |
 	BCC CODE_BEE2A1			;$BEE28F	 |
 	ADC #$09			;$BEE291	 |
-	STA $4202			;$BEE293	 |
+	STA CPU.multiply_A		;$BEE293	 |
 	LDA $0048,y			;$BEE296	 |
-	STA $4203			;$BEE299	 |
+	STA CPU.multiply_B		;$BEE299	 |
 	LDA $0049,y			;$BEE29C	 |
 	BRA CODE_BEE2AF			;$BEE29F	/
 
 CODE_BEE2A1:
-	STA $4202			;$BEE2A1	\
+	STA CPU.multiply_A		;$BEE2A1	\
 	LDA $0048,y			;$BEE2A4	 |
 	ASL A				;$BEE2A7	 |
-	STA $4203			;$BEE2A8	 |
+	STA CPU.multiply_B		;$BEE2A8	 |
 	LDA $0049,y			;$BEE2AB	 |
 	ASL A				;$BEE2AE	 |
 CODE_BEE2AF:				;		 |
 	REP #$20			;$BEE2AF	 |
 	AND #$00FF			;$BEE2B1	 |
 	CLC				;$BEE2B4	 |
-	ADC $4216			;$BEE2B5	 |
+	ADC CPU.multiply_result		;$BEE2B5	 |
 	LSR A				;$BEE2B8	 |
 	LSR A				;$BEE2B9	 |
 	LSR A				;$BEE2BA	 |
@@ -7519,18 +7519,18 @@ CODE_BEEF1F:
 	LDA $2E,x			;$BEEF25	 |
 	BNE CODE_BEEF47			;$BEEF27	 |
 	JSL CODE_808E4F			;$BEEF29	 |
-	STA $4204			;$BEEF2D	 |
+	STA CPU.dividen			;$BEEF2D	 |
 	LDX $64				;$BEEF30	 |
 	SEP #$20			;$BEEF32	 |
 	LDA $44,x			;$BEEF34	 |
-	STA $4206			;$BEEF36	 |
+	STA CPU.divisor			;$BEEF36	 |
 	REP #$20			;$BEEF39	 |
 	INC $2E,x			;$BEEF3B	 |
 	NOP				;$BEEF3D	 |
 	NOP				;$BEEF3E	 |
 	NOP				;$BEEF3F	 |
 	NOP				;$BEEF40	 |
-	LDA $4216			;$BEEF41	 |
+	LDA CPU.multiply_result		;$BEEF41	 |
 	INC A				;$BEEF44	 |
 	STA $4A,x			;$BEEF45	 |
 CODE_BEEF47:				;		 |
@@ -8176,7 +8176,7 @@ CODE_BEF365:				;		 |
 
 CODE_BEF36E:
 	SEP #$20			;$BEF36E	\
-	STA $4202			;$BEF370	 |
+	STA CPU.multiply_A		;$BEF370	 |
 	REP #$20			;$BEF373	 |
 	LDA $44,x			;$BEF375	 |
 	AND #$7FFF			;$BEF377	 |
@@ -8189,13 +8189,13 @@ CODE_BEF37A:				;		 |
 
 CODE_BEF383:
 	SEP #$20			;$BEF383	\
-	STA $4203			;$BEF385	 |
+	STA CPU.multiply_B		;$BEF385	 |
 	REP #$20			;$BEF388	 |
 	NOP				;$BEF38A	 |
 	NOP				;$BEF38B	 |
 	NOP				;$BEF38C	 |
-	LDA $4216			;$BEF38D	 |
-	STA $4204			;$BEF390	 |
+	LDA CPU.multiply_result		;$BEF38D	 |
+	STA CPU.dividen			;$BEF390	 |
 	PLA				;$BEF393	 |
 	BEQ CODE_BEF3C2			;$BEF394	 |
 CODE_BEF396:				;		 |
@@ -8207,7 +8207,7 @@ CODE_BEF396:				;		 |
 
 CODE_BEF39F:
 	SEP #$20			;$BEF39F	\
-	STA $4206			;$BEF3A1	 |
+	STA CPU.divisor			;$BEF3A1	 |
 	REP #$20			;$BEF3A4	 |
 	NOP				;$BEF3A6	 |
 	NOP				;$BEF3A7	 |
@@ -8216,7 +8216,7 @@ CODE_BEF39F:
 	TYA				;$BEF3AA	 |
 	BEQ CODE_BEF3B7			;$BEF3AB	 |
 	BPL CODE_BEF3BB			;$BEF3AD	 |
-	LDA $4214			;$BEF3AF	 |
+	LDA CPU.divide_result		;$BEF3AF	 |
 CODE_BEF3B2:				;		 |
 	LSR A				;$BEF3B2	 |
 	INY				;$BEF3B3	 |
@@ -8224,11 +8224,11 @@ CODE_BEF3B2:				;		 |
 	RTS				;$BEF3B6	/
 
 CODE_BEF3B7:
-	LDA $4214			;$BEF3B7	\
+	LDA CPU.divide_result		;$BEF3B7	\
 	RTS				;$BEF3BA	/
 
 CODE_BEF3BB:
-	LDA $4214			;$BEF3BB	\
+	LDA CPU.divide_result		;$BEF3BB	\
 CODE_BEF3BE:				;		 |
 	ASL A				;$BEF3BE	 |
 	DEY				;$BEF3BF	 |
@@ -8356,18 +8356,18 @@ CODE_BEF47B:
 	EOR #$FFFF			;$BEF47D	 |
 	INC A				;$BEF480	 |
 	ORA $5E				;$BEF481	 |
-	STA $4202			;$BEF483	 |
-	LDA $4216			;$BEF486	 |
-	LDA $4216			;$BEF489	 |
+	STA CPU.multiply_A		;$BEF483	 |
+	LDA CPU.multiply_result		;$BEF486	 |
+	LDA CPU.multiply_result		;$BEF489	 |
 	XBA				;$BEF48C	 |
 	AND #$00FF			;$BEF48D	 |
 	RTS				;$BEF490	/
 
 CODE_BEF491:
 	ORA $5E				;$BEF491	\
-	STA $4202			;$BEF493	 |
-	LDA $4216			;$BEF496	 |
-	LDA $4216			;$BEF499	 |
+	STA CPU.multiply_A		;$BEF493	 |
+	LDA CPU.multiply_result		;$BEF496	 |
+	LDA CPU.multiply_result		;$BEF499	 |
 	XBA				;$BEF49C	 |
 	AND #$00FF			;$BEF49D	 |
 	EOR #$FFFF			;$BEF4A0	 |
@@ -8733,15 +8733,15 @@ CODE_BEF6C3:
 	DEC $32				;$BEF6D7	 |
 CODE_BEF6D9:				;		 |
 	XBA				;$BEF6D9	 |
-	STA $4204			;$BEF6DA	 |
+	STA CPU.dividen			;$BEF6DA	 |
 	SEP #$20			;$BEF6DD	 |
 	LDA $0048,y			;$BEF6DF	 |
-	STA $4206			;$BEF6E2	 |
+	STA CPU.divisor			;$BEF6E2	 |
 	REP #$20			;$BEF6E5	 |
 	LDA $0A,x			;$BEF6E7	 |
 	STA $004A,y			;$BEF6E9	 |
 	STZ $34				;$BEF6EC	 |
-	LDA $4214			;$BEF6EE	 |
+	LDA CPU.divide_result		;$BEF6EE	 |
 	BIT $32				;$BEF6F1	 |
 	BPL CODE_BEF6F9			;$BEF6F3	 |
 	EOR #$FFFF			;$BEF6F5	 |
@@ -8759,16 +8759,16 @@ CODE_BEF6F9:				;		 |
 	DEC $34				;$BEF70C	 |
 CODE_BEF70E:				;		 |
 	XBA				;$BEF70E	 |
-	STA $4204			;$BEF70F	 |
+	STA CPU.dividen			;$BEF70F	 |
 	SEP #$20			;$BEF712	 |
 	LDA $0048,y			;$BEF714	 |
-	STA $4206			;$BEF717	 |
+	STA CPU.divisor			;$BEF717	 |
 	REP #$20			;$BEF71A	 |
 	LDA $06,x			;$BEF71C	 |
 	STA $0048,y			;$BEF71E	 |
 	TYX				;$BEF721	 |
 	INC $53,x			;$BEF722	 |
-	LDA $4214			;$BEF724	 |
+	LDA CPU.divide_result		;$BEF724	 |
 	BIT $34				;$BEF727	 |
 	BPL CODE_BEF72F			;$BEF729	 |
 	EOR #$FFFF			;$BEF72B	 |

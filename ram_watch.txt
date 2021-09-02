@@ -1,0 +1,2 @@
+"Kong action", 0x92, 2
+"Kong action modifier", 0x0981, 2

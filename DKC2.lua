@@ -509,9 +509,14 @@ local function display_level()
 end
 
 local watched_addresses = {}
+local watched_addresses_list = load_csv(ram_watch_path)
 local exec_watched_addresses = {}
 local exec_watched_count = {}
 local function display_watch()
+	for index, entry in ipairs(watched_addresses_list) do
+		add_watch(entry[1], tonumber(entry[2]), tonumber(entry[3]))
+	end
+	watched_addresses_list = {}
 	upper_left:append_line("RAM watches: ")
 	for address, read_callback in pairs(watched_addresses) do
 		upper_left:append_line(read_callback())

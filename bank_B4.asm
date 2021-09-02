@@ -253,7 +253,7 @@ CODE_B4821B:				;		 |
 	PLB				;$B4821D	 |
 	STZ $065E			;$B4821E	 |
 	LDA #$0200			;$B48221	 |
-	STA $2116			;$B48224	 |
+	STA PPU.vram_address		;$B48224	 |
 	SEP #$20			;$B48227	 |
 	LDA #$01			;$B48229	 |
 	STA $4300			;$B4822B	 |
@@ -267,7 +267,7 @@ CODE_B4821B:				;		 |
 	STX $4305			;$B48241	 |
 	STZ $4307			;$B48244	 |
 	LDA #$01			;$B48247	 |
-	STA $420B			;$B48249	 |
+	STA CPU.enable_dma		;$B48249	 |
 	REP #$20			;$B4824C	 |
 	STZ $0681			;$B4824E	 |
 	LDA #$0001			;$B48251	 |
@@ -421,11 +421,11 @@ CODE_B4839C:				;		 |
 	ASL A				;$B4839C	 |
 	TAX				;$B4839D	 |
 	LDA #$5D			;$B4839E	 |
-	STA $2121			;$B483A0	 |
+	STA PPU.cgram_address		;$B483A0	 |
 	LDY #$0006			;$B483A3	 |
 CODE_B483A6:				;		 |
 	LDA.l DATA_FD1C2A,x		;$B483A6	 |
-	STA $2122			;$B483AA	 |
+	STA PPU.cgram_write		;$B483AA	 |
 	INX				;$B483AD	 |
 	CPX #$0006			;$B483AE	 |
 	BNE CODE_B483B6			;$B483B1	 |
@@ -449,11 +449,11 @@ CODE_B483BB:				;		 |
 	AND #$02			;$B483D3	 |
 	TAX				;$B483D5	 |
 	LDA #$78			;$B483D6	 |
-	STA $2121			;$B483D8	 |
+	STA PPU.cgram_address		;$B483D8	 |
 	LDY #$0004			;$B483DB	 |
 CODE_B483DE:				;		 |
 	LDA.l DATA_FD2160,x		;$B483DE	 |
-	STA $2122			;$B483E2	 |
+	STA PPU.cgram_write		;$B483E2	 |
 	TXA				;$B483E5	 |
 	INC A				;$B483E6	 |
 	AND #$03			;$B483E7	 |
@@ -463,7 +463,7 @@ CODE_B483DE:				;		 |
 	LDY #$0004			;$B483ED	 |
 CODE_B483F0:				;		 |
 	LDA.l DATA_FD2164,x		;$B483F0	 |
-	STA $2122			;$B483F4	 |
+	STA PPU.cgram_write		;$B483F4	 |
 	TXA				;$B483F7	 |
 	INC A				;$B483F8	 |
 	AND #$03			;$B483F9	 |
@@ -476,7 +476,7 @@ CODE_B483F0:				;		 |
 	LDY #$0008			;$B48404	 |
 CODE_B48407:				;		 |
 	LDA.l DATA_FD2168,x		;$B48407	 |
-	STA $2122			;$B4840B	 |
+	STA PPU.cgram_write		;$B4840B	 |
 	TXA				;$B4840E	 |
 	INC A				;$B4840F	 |
 	AND #$07			;$B48410	 |
@@ -491,7 +491,7 @@ CODE_B48418:				;		 |
 	BRL CODE_B484BC			;$B48420	/
 
 CODE_B48423:
-	STZ $2116			;$B48423	\
+	STZ PPU.vram_address		;$B48423	\
 	LDA $0699			;$B48426	 |
 	CLC				;$B48429	 |
 	ADC #$0400			;$B4842A	 |
@@ -513,12 +513,12 @@ CODE_B48435:				;		 |
 	STX $4305			;$B48450	 |
 	STZ $4307			;$B48453	 |
 	LDA #$01			;$B48456	 |
-	STA $420B			;$B48458	 |
+	STA CPU.enable_dma		;$B48458	 |
 	REP #$20			;$B4845B	 |
 	LDA $06B1			;$B4845D	 |
 	BEQ CODE_B484BC			;$B48460	 |
 	LDA #$0800			;$B48462	 |
-	STA $2116			;$B48465	 |
+	STA PPU.vram_address		;$B48465	 |
 	LDA $0699			;$B48468	 |
 	SEC				;$B4846B	 |
 	SBC #DATA_FC14E0		;$B4846C	 |
@@ -539,10 +539,10 @@ CODE_B48435:				;		 |
 	STX $4305			;$B4848D	 |
 	STZ $4307			;$B48490	 |
 	LDA #$01			;$B48493	 |
-	STA $420B			;$B48495	 |
+	STA CPU.enable_dma		;$B48495	 |
 	REP #$20			;$B48498	 |
 	LDA #$0900			;$B4849A	 |
-	STA $2116			;$B4849D	 |
+	STA PPU.vram_address		;$B4849D	 |
 	SEP #$20			;$B484A0	 |
 	LDA #$01			;$B484A2	 |
 	STA $4300			;$B484A4	 |
@@ -552,7 +552,7 @@ CODE_B48435:				;		 |
 	STX $4305			;$B484AF	 |
 	STZ $4307			;$B484B2	 |
 	LDA #$01			;$B484B5	 |
-	STA $420B			;$B484B7	 |
+	STA CPU.enable_dma		;$B484B7	 |
 	REP #$20			;$B484BA	 |
 CODE_B484BC:				;		 |
 	LDA $0681			;$B484BC	 |
@@ -566,7 +566,7 @@ CODE_B484BC:				;		 |
 	LSR A				;$B484CD	 |
 	STA $4305			;$B484CE	 |
 	LDA #$02B0			;$B484D1	 |
-	STA $2116			;$B484D4	 |
+	STA PPU.vram_address		;$B484D4	 |
 	SEP #$20			;$B484D7	 |
 	LDA #$01			;$B484D9	 |
 	STA $4300			;$B484DB	 |
@@ -578,23 +578,23 @@ CODE_B484BC:				;		 |
 	STA $4304			;$B484EB	 |
 	STZ $4307			;$B484EE	 |
 	LDA #$01			;$B484F1	 |
-	STA $420B			;$B484F3	 |
+	STA CPU.enable_dma		;$B484F3	 |
 	STZ $0681			;$B484F6	 |
 	REP #$20			;$B484F9	 |
 CODE_B484FB:				;		 |
 	LDA $17BA			;$B484FB	 |
 	SEP #$20			;$B484FE	 |
-	STA $210D			;$B48500	 |
+	STA PPU.layer_0_scroll_x	;$B48500	 |
 	XBA				;$B48503	 |
-	STA $210D			;$B48504	 |
+	STA PPU.layer_0_scroll_x	;$B48504	 |
 	REP #$20			;$B48507	 |
 	LDA $069B			;$B48509	 |
 	STA $17BA			;$B4850C	 |
 	LDA $17C0			;$B4850F	 |
 	SEP #$20			;$B48512	 |
-	STA $210E			;$B48514	 |
+	STA PPU.layer_0_scroll_y	;$B48514	 |
 	XBA				;$B48517	 |
-	STA $210E			;$B48518	 |
+	STA PPU.layer_0_scroll_y	;$B48518	 |
 	REP #$20			;$B4851B	 |
 	LDA $069D			;$B4851D	 |
 	STA $17C0			;$B48520	 |
@@ -604,7 +604,7 @@ CODE_B484FB:				;		 |
 	STA $06A1			;$B4852B	 |
 	SEP #$20			;$B4852E	 |
 	LDA $0512			;$B48530	 |
-	STA $2100			;$B48533	 |
+	STA PPU.screen			;$B48533	 |
 	REP #$20			;$B48536	 |
 	LDA $06A3			;$B48538	 |
 	BIT #$0020			;$B4853B	 |
@@ -1349,7 +1349,7 @@ CODE_B48B15:
 	LDA #$3E00			;$B48B15	\
 	STA $0D2C			;$B48B18	 |
 	SEP #$20			;$B48B1B	 |
-	STZ $4200			;$B48B1D	 |
+	STZ CPU.enable_interrupts	;$B48B1D	 |
 	REP #$20			;$B48B20	 |
 	JSL CODE_BB91F7			;$B48B22	 |
 	LDA $06A3			;$B48B26	 |
@@ -1528,7 +1528,7 @@ CODE_B48C9D:
 	SEP #$20			;$B48CCE	 |
 	STZ $4304			;$B48CD0	 |
 	LDA #$01			;$B48CD3	 |
-	STA $420B			;$B48CD5	 |
+	STA CPU.enable_dma		;$B48CD5	 |
 	REP #$20			;$B48CD8	 |
 	JSR CODE_B4BDD6			;$B48CDA	 |
 	JSL CODE_B4BE2F			;$B48CDD	 |
@@ -1730,7 +1730,7 @@ CODE_B48EBF:
 
 CODE_B48EC2:
 	LDA $0662			;$B48EC2	\
-	STA $2116			;$B48EC5	 |
+	STA PPU.vram_address		;$B48EC5	 |
 	SEP #$20			;$B48EC8	 |
 	LDA #$01			;$B48ECA	 |
 	STA $4300			;$B48ECC	 |
@@ -1744,7 +1744,7 @@ CODE_B48EC2:
 	STX $4305			;$B48EE2	 |
 	STZ $4307			;$B48EE5	 |
 	LDA #$01			;$B48EE8	 |
-	STA $420B			;$B48EEA	 |
+	STA CPU.enable_dma		;$B48EEA	 |
 	REP #$20			;$B48EED	 |
 	LDA $06A1			;$B48EEF	 |
 	ORA #$0200			;$B48EF2	 |
@@ -1783,16 +1783,16 @@ CODE_B48F28:				;		 |
 	BIT #$0008			;$B48F4B	 |
 	BNE CODE_B48F5C			;$B48F4E	 |
 	SEP #$20			;$B48F50	 |
-	STZ $210E			;$B48F52	 |
-	STZ $210E			;$B48F55	 |
+	STZ PPU.layer_0_scroll_y	;$B48F52	 |
+	STZ PPU.layer_0_scroll_y	;$B48F55	 |
 	REP #$20			;$B48F58	 |
 	BRA CODE_B48F68			;$B48F5A	/
 
 CODE_B48F5C:
 	SEP #$20			;$B48F5C	\
 	LDA #$03			;$B48F5E	 |
-	STA $210E			;$B48F60	 |
-	STZ $210E			;$B48F63	 |
+	STA PPU.layer_0_scroll_y	;$B48F60	 |
+	STZ PPU.layer_0_scroll_y	;$B48F63	 |
 	REP #$20			;$B48F66	 |
 CODE_B48F68:				;		 |
 	LDA $0512			;$B48F68	 |
@@ -1874,7 +1874,7 @@ CODE_B4901B:
 	BIT #$D0C0			;$B49026	 |
 	BNE CODE_B49033			;$B49029	 |
 	LDA #$0011			;$B4902B	 |
-	STA $212C			;$B4902E	 |
+	STA PPU.screens			;$B4902E	 |
 	BRA CODE_B49042			;$B49031	/
 
 CODE_B49033:
@@ -2107,11 +2107,11 @@ CODE_B49224:				;		 |
 	SEP #$20			;$B49239	 |
 	STZ $4304			;$B4923B	 |
 	LDA #$01			;$B4923E	 |
-	STA $420B			;$B49240	 |
+	STA CPU.enable_dma		;$B49240	 |
 	REP #$20			;$B49243	 |
 	SEP #$20			;$B49245	 |
 	LDA $0512			;$B49247	 |
-	STA $2100			;$B4924A	 |
+	STA PPU.screen			;$B4924A	 |
 	REP #$20			;$B4924D	 |
 	JSL CODE_BAC7C0			;$B4924F	 |
 	LDA #$03FC			;$B49253	 |
@@ -2211,7 +2211,7 @@ CODE_B49315:
 	STZ $0660			;$B49315	\
 	JSL CODE_B4C175			;$B49318	 |
 	STA $0654			;$B4931C	 |
-	STA $4204			;$B4931F	 |
+	STA CPU.dividen			;$B4931F	 |
 	LDX $065C			;$B49322	 |
 	JSR CODE_B4ADDF			;$B49325	 |
 	LDA $0000,x			;$B49328	 |
@@ -2220,13 +2220,13 @@ CODE_B49315:
 	CMP $0654			;$B4932D	 |
 	BCS CODE_B49343			;$B49330	 |
 	SEP #$20			;$B49332	 |
-	STA $4206			;$B49334	 |
+	STA CPU.divisor			;$B49334	 |
 	LDA #$08			;$B49337	 |
 CODE_B49339:				;		 |
 	DEC A				;$B49339	 |
 	BNE CODE_B49339			;$B4933A	 |
 	REP #$20			;$B4933C	 |
-	LDA $4216			;$B4933E	 |
+	LDA CPU.multiply_result		;$B4933E	 |
 	BRA CODE_B49346			;$B49341	/
 
 CODE_B49343:
@@ -2288,7 +2288,7 @@ CODE_B493B4:
 
 CODE_B493B7:
 	LDA $0662			;$B493B7	\
-	STA $2116			;$B493BA	 |
+	STA PPU.vram_address		;$B493BA	 |
 	SEP #$20			;$B493BD	 |
 	LDA #$01			;$B493BF	 |
 	STA $4300			;$B493C1	 |
@@ -2302,7 +2302,7 @@ CODE_B493B7:
 	STX $4305			;$B493D7	 |
 	STZ $4307			;$B493DA	 |
 	LDA #$01			;$B493DD	 |
-	STA $420B			;$B493DF	 |
+	STA CPU.enable_dma		;$B493DF	 |
 	REP #$20			;$B493E2	 |
 	LDA $06A1			;$B493E4	 |
 	ORA #$0200			;$B493E7	 |
@@ -2847,7 +2847,7 @@ CODE_B49886:
 
 CODE_B4989F:
 	LDA $0662			;$B4989F	\
-	STA $2116			;$B498A2	 |
+	STA PPU.vram_address		;$B498A2	 |
 	SEP #$20			;$B498A5	 |
 	LDA #$01			;$B498A7	 |
 	STA $4300			;$B498A9	 |
@@ -2861,7 +2861,7 @@ CODE_B4989F:
 	STX $4305			;$B498BF	 |
 	STZ $4307			;$B498C2	 |
 	LDA #$01			;$B498C5	 |
-	STA $420B			;$B498C7	 |
+	STA CPU.enable_dma		;$B498C7	 |
 	REP #$20			;$B498CA	 |
 	LDA $06A1			;$B498CC	 |
 	AND #$FBFF			;$B498CF	 |
@@ -2952,7 +2952,7 @@ CODE_B4998D:
 	ORA #$0400			;$B49995	 |
 	STA $06A3			;$B49998	 |
 	LDA #$0000			;$B4999B	 |
-	STA $2116			;$B4999E	 |
+	STA PPU.vram_address		;$B4999E	 |
 	SEP #$20			;$B499A1	 |
 	LDA #$01			;$B499A3	 |
 	STA $4300			;$B499A5	 |
@@ -2966,7 +2966,7 @@ CODE_B4998D:
 	STY $4305			;$B499BB	 |
 	STZ $4307			;$B499BE	 |
 	LDA #$01			;$B499C1	 |
-	STA $420B			;$B499C3	 |
+	STA CPU.enable_dma		;$B499C3	 |
 	REP #$20			;$B499C6	 |
 CODE_B499C8:				;		 |
 	LDA #$0200			;$B499C8	 |
@@ -2979,11 +2979,11 @@ CODE_B499C8:				;		 |
 	SEP #$20			;$B499DD	 |
 	STZ $4304			;$B499DF	 |
 	LDA #$01			;$B499E2	 |
-	STA $420B			;$B499E4	 |
+	STA CPU.enable_dma		;$B499E4	 |
 	REP #$20			;$B499E7	 |
 	SEP #$20			;$B499E9	 |
 	LDA #$0F			;$B499EB	 |
-	STA $2100			;$B499ED	 |
+	STA PPU.screen			;$B499ED	 |
 	REP #$20			;$B499F0	 |
 	LDA $06A1			;$B499F2	 |
 	BIT #$0800			;$B499F5	 |
@@ -3107,7 +3107,7 @@ CODE_B49AFC:
 	PLB				;$B49AFD	 |
 	JSL CODE_B4C175			;$B49AFE	 |
 	STA $0656			;$B49B02	 |
-	STA $4204			;$B49B05	 |
+	STA CPU.dividen			;$B49B05	 |
 	LDX $065C			;$B49B08	 |
 	JSR CODE_B4ADDF			;$B49B0B	 |
 	LDA $0000,x			;$B49B0E	 |
@@ -3116,13 +3116,13 @@ CODE_B49AFC:
 	CMP $0656			;$B49B13	 |
 	BCS CODE_B49B29			;$B49B16	 |
 	SEP #$20			;$B49B18	 |
-	STA $4206			;$B49B1A	 |
+	STA CPU.divisor			;$B49B1A	 |
 	LDA #$08			;$B49B1D	 |
 CODE_B49B1F:				;		 |
 	DEC A				;$B49B1F	 |
 	BNE CODE_B49B1F			;$B49B20	 |
 	REP #$20			;$B49B22	 |
-	LDA $4216			;$B49B24	 |
+	LDA CPU.multiply_result		;$B49B24	 |
 	BRA CODE_B49B2C			;$B49B27	/
 
 CODE_B49B29:
@@ -3177,11 +3177,11 @@ CODE_B49B63:
 	SEP #$20			;$B49B8E	 |
 	STZ $4304			;$B49B90	 |
 	LDA #$01			;$B49B93	 |
-	STA $420B			;$B49B95	 |
+	STA CPU.enable_dma		;$B49B95	 |
 	REP #$20			;$B49B98	 |
 	SEP #$20			;$B49B9A	 |
 	LDA $0512			;$B49B9C	 |
-	STA $2100			;$B49B9F	 |
+	STA PPU.screen			;$B49B9F	 |
 	REP #$20			;$B49BA2	 |
 	JSL CODE_BAC7C0			;$B49BA4	 |
 	LDA #$03FC			;$B49BA8	 |
@@ -3215,7 +3215,7 @@ CODE_B49BE0:
 	PHY				;$B49BE2	 |
 	JSL CODE_B4C175			;$B49BE3	 |
 	STA $0666			;$B49BE7	 |
-	STA $4204			;$B49BEA	 |
+	STA CPU.dividen			;$B49BEA	 |
 	LDX $065C			;$B49BED	 |
 	JSR CODE_B4ADDF			;$B49BF0	 |
 	LDA $0000,x			;$B49BF3	 |
@@ -3224,13 +3224,13 @@ CODE_B49BE0:
 	CMP $0666			;$B49BF8	 |
 	BCS CODE_B49C0E			;$B49BFB	 |
 	SEP #$20			;$B49BFD	 |
-	STA $4206			;$B49BFF	 |
+	STA CPU.divisor			;$B49BFF	 |
 	LDA #$08			;$B49C02	 |
 CODE_B49C04:				;		 |
 	DEC A				;$B49C04	 |
 	BNE CODE_B49C04			;$B49C05	 |
 	REP #$20			;$B49C07	 |
-	LDA $4216			;$B49C09	 |
+	LDA CPU.multiply_result		;$B49C09	 |
 	BRA CODE_B49C11			;$B49C0C	/
 
 CODE_B49C0E:
@@ -3555,7 +3555,7 @@ CODE_B49E48:
 	LDA #$0002			;$B49E4D	 |
 	STA $0650			;$B49E50	 |
 	LDA #$0000			;$B49E53	 |
-	STA $2116			;$B49E56	 |
+	STA PPU.vram_address		;$B49E56	 |
 	SEP #$20			;$B49E59	 |
 	LDA #$01			;$B49E5B	 |
 	STA $4300			;$B49E5D	 |
@@ -3569,7 +3569,7 @@ CODE_B49E48:
 	STY $4305			;$B49E73	 |
 	STZ $4307			;$B49E76	 |
 	LDA #$01			;$B49E79	 |
-	STA $420B			;$B49E7B	 |
+	STA CPU.enable_dma		;$B49E7B	 |
 	REP #$20			;$B49E7E	 |
 	TXA				;$B49E80	 |
 	CLC				;$B49E81	 |
@@ -3596,12 +3596,12 @@ CODE_B49E9E:				;		 |
 	SEP #$20			;$B49EB3	 |
 	STZ $4304			;$B49EB5	 |
 	LDA #$01			;$B49EB8	 |
-	STA $420B			;$B49EBA	 |
+	STA CPU.enable_dma		;$B49EBA	 |
 	REP #$20			;$B49EBD	 |
 CODE_B49EBF:				;		 |
 	SEP #$20			;$B49EBF	 |
 	LDA #$0F			;$B49EC1	 |
-	STA $2100			;$B49EC3	 |
+	STA PPU.screen			;$B49EC3	 |
 	REP #$20			;$B49EC6	 |
 	JSL CODE_BAC7C0			;$B49EC8	 |
 	LDA #$03FC			;$B49ECC	 |
@@ -3632,11 +3632,11 @@ CODE_B49EF1:
 	SEP #$20			;$B49F06	 |
 	STZ $4304			;$B49F08	 |
 	LDA #$01			;$B49F0B	 |
-	STA $420B			;$B49F0D	 |
+	STA CPU.enable_dma		;$B49F0D	 |
 	REP #$20			;$B49F10	 |
 	SEP #$20			;$B49F12	 |
 	LDA $0512			;$B49F14	 |
-	STA $2100			;$B49F17	 |
+	STA PPU.screen			;$B49F17	 |
 	REP #$20			;$B49F1A	 |
 	RTS				;$B49F1C	/
 
@@ -3875,13 +3875,13 @@ CODE_B4A0FD:
 	BNE CODE_B4A10C			;$B4A108	 |
 	LDA #$00			;$B4A10A	 |
 CODE_B4A10C:				;		 |
-	STA $420C			;$B4A10C	 |
+	STA CPU.enable_hdma		;$B4A10C	 |
 	REP #$20			;$B4A10F	 |
 	PLX				;$B4A111	 |
 	SEP #$20			;$B4A112	 |
 	LDA #$FF			;$B4A114	 |
-	STA $2112			;$B4A116	 |
-	STA $2112			;$B4A119	 |
+	STA PPU.layer_2_scroll_y	;$B4A116	 |
+	STA PPU.layer_2_scroll_y	;$B4A119	 |
 	REP #$20			;$B4A11C	 |
 	RTS				;$B4A11E	/
 
@@ -3894,7 +3894,7 @@ CODE_B4A11F:
 	BNE CODE_B4A12E			;$B4A12A	 |
 	LDA #$02			;$B4A12C	 |
 CODE_B4A12E:				;		 |
-	STA $420C			;$B4A12E	 |
+	STA CPU.enable_hdma		;$B4A12E	 |
 	REP #$20			;$B4A131	 |
 	PLX				;$B4A133	 |
 	RTS				;$B4A134	/
@@ -4004,7 +4004,7 @@ CODE_B4A1F3:
 
 CODE_B4A21B:
 	LDA $0664			;$B4A21B	\
-	STA $2116			;$B4A21E	 |
+	STA PPU.vram_address		;$B4A21E	 |
 	SEP #$20			;$B4A221	 |
 	LDA #$01			;$B4A223	 |
 	STA $4300			;$B4A225	 |
@@ -4018,7 +4018,7 @@ CODE_B4A21B:
 	STX $4305			;$B4A23B	 |
 	STZ $4307			;$B4A23E	 |
 	LDA #$01			;$B4A241	 |
-	STA $420B			;$B4A243	 |
+	STA CPU.enable_dma		;$B4A243	 |
 	REP #$20			;$B4A246	 |
 	JSR CODE_B4A0FD			;$B4A248	 |
 	PHK				;$B4A24B	 |
@@ -4319,7 +4319,7 @@ CODE_B4A4D9:
 	ORA #$0400			;$B4A4E4	 |
 	STA $06A3			;$B4A4E7	 |
 	LDA #$0000			;$B4A4EA	 |
-	STA $2116			;$B4A4ED	 |
+	STA PPU.vram_address		;$B4A4ED	 |
 	SEP #$20			;$B4A4F0	 |
 	LDA #$01			;$B4A4F2	 |
 	STA $4300			;$B4A4F4	 |
@@ -4333,7 +4333,7 @@ CODE_B4A4D9:
 	STY $4305			;$B4A50A	 |
 	STZ $4307			;$B4A50D	 |
 	LDA #$01			;$B4A510	 |
-	STA $420B			;$B4A512	 |
+	STA CPU.enable_dma		;$B4A512	 |
 	REP #$20			;$B4A515	 |
 	LDA #$0003			;$B4A517	 |
 	STA $066A			;$B4A51A	 |
@@ -4659,7 +4659,7 @@ CODE_B4A7E6:				;		 |
 
 CODE_B4A7E7:
 	LDA $0664			;$B4A7E7	\
-	STA $2116			;$B4A7EA	 |
+	STA PPU.vram_address		;$B4A7EA	 |
 	SEP #$20			;$B4A7ED	 |
 	LDA #$01			;$B4A7EF	 |
 	STA $4300			;$B4A7F1	 |
@@ -4673,7 +4673,7 @@ CODE_B4A7E7:
 	STX $4305			;$B4A807	 |
 	STZ $4307			;$B4A80A	 |
 	LDA #$01			;$B4A80D	 |
-	STA $420B			;$B4A80F	 |
+	STA CPU.enable_dma		;$B4A80F	 |
 	REP #$20			;$B4A812	 |
 	RTS				;$B4A814	/
 
@@ -4789,7 +4789,7 @@ CODE_B4A90B:
 
 CODE_B4A90E:
 	LDA $0662			;$B4A90E	\
-	STA $2116			;$B4A911	 |
+	STA PPU.vram_address		;$B4A911	 |
 	SEP #$20			;$B4A914	 |
 	LDA #$01			;$B4A916	 |
 	STA $4300			;$B4A918	 |
@@ -4803,7 +4803,7 @@ CODE_B4A90E:
 	STX $4305			;$B4A92E	 |
 	STZ $4307			;$B4A931	 |
 	LDA #$01			;$B4A934	 |
-	STA $420B			;$B4A936	 |
+	STA CPU.enable_dma		;$B4A936	 |
 	REP #$20			;$B4A939	 |
 	LDA #$0041			;$B4A93B	 |
 	STA $06D6			;$B4A93E	 |
@@ -5009,7 +5009,7 @@ CODE_B4AAFD:
 
 CODE_B4AB00:
 	LDA $0662			;$B4AB00	\
-	STA $2116			;$B4AB03	 |
+	STA PPU.vram_address		;$B4AB03	 |
 	SEP #$20			;$B4AB06	 |
 	LDA #$01			;$B4AB08	 |
 	STA $4300			;$B4AB0A	 |
@@ -5023,7 +5023,7 @@ CODE_B4AB00:
 	STX $4305			;$B4AB20	 |
 	STZ $4307			;$B4AB23	 |
 	LDA #$01			;$B4AB26	 |
-	STA $420B			;$B4AB28	 |
+	STA CPU.enable_dma		;$B4AB28	 |
 	REP #$20			;$B4AB2B	 |
 	LDA #$0041			;$B4AB2D	 |
 	STA $06D6			;$B4AB30	 |
@@ -5105,7 +5105,7 @@ CODE_B4ABE7:
 
 CODE_B4ABEA:
 	LDA $0664			;$B4ABEA	\
-	STA $2116			;$B4ABED	 |
+	STA PPU.vram_address		;$B4ABED	 |
 	SEP #$20			;$B4ABF0	 |
 	LDA #$01			;$B4ABF2	 |
 	STA $4300			;$B4ABF4	 |
@@ -5119,7 +5119,7 @@ CODE_B4ABEA:
 	STX $4305			;$B4AC0A	 |
 	STZ $4307			;$B4AC0D	 |
 	LDA #$01			;$B4AC10	 |
-	STA $420B			;$B4AC12	 |
+	STA CPU.enable_dma		;$B4AC12	 |
 	REP #$20			;$B4AC15	 |
 	PHK				;$B4AC17	 |
 	PLB				;$B4AC18	 |
@@ -6542,11 +6542,11 @@ CODE_B4B7DD:				;		 |
 	TAX				;$B4B7E1	 |
 	SEP #$20			;$B4B7E2	 |
 	LDA #$46			;$B4B7E4	 |
-	STA $2121			;$B4B7E6	 |
+	STA PPU.cgram_address		;$B4B7E6	 |
 	LDY #$0006			;$B4B7E9	 |
 CODE_B4B7EC:				;		 |
 	LDA.l DATA_B4B816,x		;$B4B7EC	 |
-	STA $2122			;$B4B7F0	 |
+	STA PPU.cgram_write		;$B4B7F0	 |
 	INX				;$B4B7F3	 |
 	DEY				;$B4B7F4	 |
 	BNE CODE_B4B7EC			;$B4B7F5	 |
@@ -6556,11 +6556,11 @@ CODE_B4B7EC:				;		 |
 	TAX				;$B4B7FD	 |
 	SEP #$20			;$B4B7FE	 |
 	LDA #$11			;$B4B800	 |
-	STA $2121			;$B4B802	 |
+	STA PPU.cgram_address		;$B4B802	 |
 	LDY #$0006			;$B4B805	 |
 CODE_B4B808:				;		 |
 	LDA.l DATA_B4B820,x		;$B4B808	 |
-	STA $2122			;$B4B80C	 |
+	STA PPU.cgram_write		;$B4B80C	 |
 	INX				;$B4B80F	 |
 	DEY				;$B4B810	 |
 	BNE CODE_B4B808			;$B4B811	 |
@@ -6583,8 +6583,8 @@ CODE_B4B82A:
 CODE_B4B82B:
 	LDA $2A				;$B4B82B	\
 	SEP #$20			;$B4B82D	 |
-	STA $210F			;$B4B82F	 |
-	STZ $210F			;$B4B832	 |
+	STA PPU.layer_1_scroll_x	;$B4B82F	 |
+	STZ PPU.layer_1_scroll_x	;$B4B832	 |
 	REP #$20			;$B4B835	 |
 	LDA $64				;$B4B837	 |
 	PHA				;$B4B839	 |
@@ -6645,9 +6645,9 @@ CODE_B4B879:				;		 |
 	ADC $079A			;$B4B8B2	 |
 	LDA $0A,x			;$B4B8B5	 |
 	SEP #$20			;$B4B8B7	 |
-	STA $210E			;$B4B8B9	 |
+	STA PPU.layer_0_scroll_y	;$B4B8B9	 |
 	XBA				;$B4B8BC	 |
-	STA $210E			;$B4B8BD	 |
+	STA PPU.layer_0_scroll_y	;$B4B8BD	 |
 	REP #$20			;$B4B8C0	 |
 	PLA				;$B4B8C2	 |
 	STA $64				;$B4B8C3	 |
@@ -7253,21 +7253,21 @@ CODE_B4BD16:				;		 |
 CODE_B4BD57:
 	LDY #$000A			;$B4BD57	\
 	JSL CODE_B4BD7C			;$B4BD5A	 |
-	LDA $4216			;$B4BD5E	 |
+	LDA CPU.divide_remainder	;$B4BD5E	 |
 	STA $0000,x			;$B4BD61	 |
-	LDA $4214			;$B4BD64	 |
+	LDA CPU.divide_result		;$B4BD64	 |
 	JSL CODE_B4BD7C			;$B4BD67	 |
 	SEP #$20			;$B4BD6B	 |
-	LDA $4216			;$B4BD6D	 |
+	LDA CPU.divide_remainder	;$B4BD6D	 |
 	STA $0001,x			;$B4BD70	 |
-	LDA $4214			;$B4BD73	 |
+	LDA CPU.divide_result		;$B4BD73	 |
 	STA $0002,x			;$B4BD76	 |
 	REP #$20			;$B4BD79	 |
 	RTS				;$B4BD7B	/
 
 CODE_B4BD7C:
-	STA $4204			;$B4BD7C	\
-	STY $4206			;$B4BD7F	 |
+	STA CPU.dividen			;$B4BD7C	\
+	STY CPU.divisor			;$B4BD7F	 |
 	NOP				;$B4BD82	 |
 	NOP				;$B4BD83	 |
 	NOP				;$B4BD84	 |
@@ -7365,19 +7365,19 @@ CODE_B4BE23:
 
 CODE_B4BE2F:
 	SEP #$20			;$B4BE2F	\
-	STZ $2111			;$B4BE31	 |
-	STZ $2111			;$B4BE34	 |
+	STZ PPU.layer_2_scroll_x	;$B4BE31	 |
+	STZ PPU.layer_2_scroll_x	;$B4BE34	 |
 	LDA #$FF			;$B4BE37	 |
-	STA $2112			;$B4BE39	 |
-	STA $2112			;$B4BE3C	 |
-	STZ $210F			;$B4BE3F	 |
-	STZ $210F			;$B4BE42	 |
-	STA $2110			;$B4BE45	 |
-	STA $2110			;$B4BE48	 |
-	STZ $210D			;$B4BE4B	 |
-	STZ $210D			;$B4BE4E	 |
-	STA $210E			;$B4BE51	 |
-	STA $210E			;$B4BE54	 |
+	STA PPU.layer_2_scroll_y	;$B4BE39	 |
+	STA PPU.layer_2_scroll_y	;$B4BE3C	 |
+	STZ PPU.layer_1_scroll_x	;$B4BE3F	 |
+	STZ PPU.layer_1_scroll_x	;$B4BE42	 |
+	STA PPU.layer_1_scroll_y	;$B4BE45	 |
+	STA PPU.layer_1_scroll_y	;$B4BE48	 |
+	STZ PPU.layer_0_scroll_x	;$B4BE4B	 |
+	STZ PPU.layer_0_scroll_x	;$B4BE4E	 |
+	STA PPU.layer_0_scroll_y	;$B4BE51	 |
+	STA PPU.layer_0_scroll_y	;$B4BE54	 |
 	REP #$20			;$B4BE57	 |
 	STZ $17BA			;$B4BE59	 |
 	STZ $17C0			;$B4BE5C	 |
@@ -7453,7 +7453,7 @@ DATA_B4BEE7:
 
 CODE_B4BEEF:
 	SEP #$20			;$B4BEEF	\
-	STZ $4200			;$B4BEF1	 |
+	STZ CPU.enable_interrupts	;$B4BEF1	 |
 	REP #$20			;$B4BEF4	 |
 	JSL CODE_BB91F7			;$B4BEF6	 |
 	LDA #$8000			;$B4BEFA	 |
@@ -7501,9 +7501,9 @@ CODE_B4BF3A:				;		 |
 	STA $0662			;$B4BF74	 |
 	LDA $0012,x			;$B4BF77	 |
 	STA $0664			;$B4BF7A	 |
-	STZ $2102			;$B4BF7D	 |
+	STZ PPU.oam_address		;$B4BF7D	 |
 	LDA #$0080			;$B4BF80	 |
-	STA $2100			;$B4BF83	 |
+	STA PPU.screen			;$B4BF83	 |
 	PHK				;$B4BF86	 |
 	PHK				;$B4BF87	 |
 	PLA				;$B4BF88	 |
