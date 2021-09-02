@@ -134,17 +134,17 @@ DMA_global_palette:
 	LDA.l DATA_FD5FEE,x		;$BB8083	 | Load DMA source
 	LDX $32				;$BB8087	 | Reload palette id
 DMA_palette:				;		 |
-	STA $4302			;$BB8089	 | Set DMA source word
+	STA DMA[0].source		;$BB8089	 | Set DMA source word
 	TXA				;$BB808C	 |\ Set DMA size to 8 times the input
 	ASL A				;$BB808D	 | | Double for number of bytes
 	ASL A				;$BB808E	 | | Quadruple further for four times the number of colors
 	ASL A				;$BB808F	 | |
-	STA $4305			;$BB8090	 |/
+	STA DMA[0].size			;$BB8090	 |/
 	LDA #$2200			;$BB8093	 |\ DMA to CGRAM, write once to one register
-	STA $4300			;$BB8096	 |/
+	STA DMA[0].settings		;$BB8096	 |/
 	SEP #$20			;$BB8099	 |
 	LDA #$FD			;$BB809B	 |\ Set DMA source bank to FD
-	STA $4304			;$BB809D	 |/
+	STA DMA[0].source_bank		;$BB809D	 |/
 	TYA				;$BB80A0	 |\ Set CGRAM destination
 	STA PPU.cgram_address		;$BB80A1	 |/
 	LDA #$01			;$BB80A4	 |\ Do the DMA! (https://www.youtube.com/watch?v=j9Zj4chxeCM)
@@ -2201,12 +2201,12 @@ finalize_decompression:			;		\
 	LDA $58				;$BB8E4D	 |\ This would be a be a DMA to VRAM
 	STA PPU.vram_address		;$BB8E4F	 | | However $32 is a constant and will always be skipped (0xFFFF)
 	LDA $38				;$BB8E52	 | |
-	STA $4302			;$BB8E54	 | |
+	STA DMA[0].source		;$BB8E54	 | |
 	LDA $3A				;$BB8E57	 | |
-	STA $4304			;$BB8E59	 | |
-	STX $4305			;$BB8E5C	 | |
+	STA DMA[0].source_bank		;$BB8E59	 | |
+	STX DMA[0].size			;$BB8E5C	 | |
 	LDA #$1801			;$BB8E5F	 | |
-	STA $4300			;$BB8E62	 | |
+	STA DMA[0].settings		;$BB8E62	 | |
 	SEP #$20			;$BB8E65	 | |
 	LDA #$01			;$BB8E67	 | |
 	STA CPU.enable_dma		;$BB8E69	 | |
@@ -3437,16 +3437,16 @@ CODE_BB9828:
 	STA PPU.vram_address		;$BB9834	 |
 	SEP #$20			;$BB9837	 |
 	LDA #$01			;$BB9839	 |
-	STA $4300			;$BB983B	 |
+	STA DMA[0].settings		;$BB983B	 |
 	LDA #$18			;$BB983E	 |
-	STA $4301			;$BB9840	 |
+	STA DMA[0].destination		;$BB9840	 |
 	LDX #$3E00			;$BB9843	 |
-	STX $4302			;$BB9846	 |
+	STX DMA[0].source		;$BB9846	 |
 	LDA #$7E			;$BB9849	 |
-	STA $4304			;$BB984B	 |
+	STA DMA[0].source_bank		;$BB984B	 |
 	LDX #$0600			;$BB984E	 |
-	STX $4305			;$BB9851	 |
-	STZ $4307			;$BB9854	 |
+	STX DMA[0].size			;$BB9851	 |
+	STZ DMA[0].unused_1		;$BB9854	 |
 	LDA #$01			;$BB9857	 |
 	STA CPU.enable_dma		;$BB9859	 |
 	REP #$20			;$BB985C	 |
@@ -3719,12 +3719,12 @@ CODE_BB9A93:
 	STA $7E8016			;$BB9AA7	 |
 	SEP #$20			;$BB9AAB	 |
 	LDX #$2600			;$BB9AAD	 |
-	STX $4320			;$BB9AB0	 |
+	STX HDMA[2].settings		;$BB9AB0	 |
 	LDX #$8012			;$BB9AB3	 |
-	STX $4322			;$BB9AB6	 |
+	STX HDMA[2].source		;$BB9AB6	 |
 	LDA #$7E			;$BB9AB9	 |
-	STA $4324			;$BB9ABB	 |
-	STZ $4327			;$BB9ABE	 |
+	STA HDMA[2].source_bank		;$BB9ABB	 |
+	STZ HDMA[2].indirect_source_bank;$BB9ABE	 |
 	REP #$20			;$BB9AC1	 |
 	LDA #$0401			;$BB9AC3	 |
 	STA $059B			;$BB9AC6	 |
@@ -3749,12 +3749,12 @@ CODE_BB9AD9:				;		 |
 	STA $7E801B			;$BB9AF5	 |
 	SEP #$20			;$BB9AF9	 |
 	LDX #$0E02			;$BB9AFB	 |
-	STX $4310			;$BB9AFE	 |
+	STX HDMA[1].settings		;$BB9AFE	 |
 	LDX #$8012			;$BB9B01	 |
-	STX $4312			;$BB9B04	 |
+	STX HDMA[1].source		;$BB9B04	 |
 	LDA #$7E			;$BB9B07	 |
-	STA $4314			;$BB9B09	 |
-	STZ $4317			;$BB9B0C	 |
+	STA HDMA[1].source_bank		;$BB9B09	 |
+	STZ HDMA[1].indirect_source_bank;$BB9B0C	 |
 	REP #$20			;$BB9B0F	 |
 	LDA #$0201			;$BB9B11	 |
 	STA $059B			;$BB9B14	 |
@@ -3775,12 +3775,12 @@ CODE_BB9B1E:				;		 |
 	BNE CODE_BB9B1E			;$BB9B32	 |
 	SEP #$20			;$BB9B34	 |
 	LDX #$0D02			;$BB9B36	 |
-	STX $4310			;$BB9B39	 |
+	STX HDMA[1].settings		;$BB9B39	 |
 	LDX #$8012			;$BB9B3C	 |
-	STX $4312			;$BB9B3F	 |
+	STX HDMA[1].source		;$BB9B3F	 |
 	LDA #$7E			;$BB9B42	 |
-	STA $4314			;$BB9B44	 |
-	STZ $4317			;$BB9B47	 |
+	STA HDMA[1].source_bank		;$BB9B44	 |
+	STZ HDMA[1].indirect_source_bank;$BB9B47	 |
 	REP #$20			;$BB9B4A	 |
 	LDA #$0201			;$BB9B4C	 |
 	STA $059B			;$BB9B4F	 |
@@ -3861,48 +3861,48 @@ CODE_BB9B86:				;		 |
 	STA $7E8047			;$BB9C33	 |
 	SEP #$20			;$BB9C37	 |
 	LDX #$0D03			;$BB9C39	 |
-	STX $4310			;$BB9C3C	 |
+	STX HDMA[1].settings		;$BB9C3C	 |
 	LDX #$8012			;$BB9C3F	 |
-	STX $4312			;$BB9C42	 |
+	STX HDMA[1].source		;$BB9C42	 |
 	LDA #$7E			;$BB9C45	 |
-	STA $4314			;$BB9C47	 |
-	STZ $4317			;$BB9C4A	 |
+	STA HDMA[1].source_bank		;$BB9C47	 |
+	STZ HDMA[1].indirect_source_bank;$BB9C4A	 |
 	LDX #$0F03			;$BB9C4D	 |
-	STX $4320			;$BB9C50	 |
+	STX HDMA[2].settings		;$BB9C50	 |
 	LDX #$8022			;$BB9C53	 |
-	STX $4322			;$BB9C56	 |
+	STX HDMA[2].source		;$BB9C56	 |
 	LDA #$7E			;$BB9C59	 |
-	STA $4324			;$BB9C5B	 |
-	STZ $4327			;$BB9C5E	 |
+	STA HDMA[2].source_bank		;$BB9C5B	 |
+	STZ HDMA[2].indirect_source_bank;$BB9C5E	 |
 	LDX #$0701			;$BB9C61	 |
-	STX $4330			;$BB9C64	 |
+	STX HDMA[3].settings		;$BB9C64	 |
 	LDX #$8032			;$BB9C67	 |
-	STX $4332			;$BB9C6A	 |
+	STX HDMA[3].source		;$BB9C6A	 |
 	LDA #$7E			;$BB9C6D	 |
-	STA $4334			;$BB9C6F	 |
-	STZ $4337			;$BB9C72	 |
+	STA HDMA[3].source_bank		;$BB9C6F	 |
+	STZ HDMA[3].indirect_source_bank;$BB9C72	 |
 	LDX #$3100			;$BB9C75	 |
-	STX $4340			;$BB9C78	 |
+	STX HDMA[4].settings		;$BB9C78	 |
 	LDX #$803C			;$BB9C7B	 |
-	STX $4342			;$BB9C7E	 |
+	STX HDMA[4].source		;$BB9C7E	 |
 	LDA #$7E			;$BB9C81	 |
-	STA $4344			;$BB9C83	 |
-	STZ $4347			;$BB9C86	 |
+	STA HDMA[4].source_bank		;$BB9C83	 |
+	STZ HDMA[4].indirect_source_bank;$BB9C86	 |
 	LDX #$2D00			;$BB9C89	 |
-	STX $4350			;$BB9C8C	 |
+	STX HDMA[5].settings		;$BB9C8C	 |
 	LDX #$8043			;$BB9C8F	 |
-	STX $4352			;$BB9C92	 |
+	STX HDMA[5].source		;$BB9C92	 |
 	LDA #$7E			;$BB9C95	 |
-	STA $4354			;$BB9C97	 |
-	STZ $4357			;$BB9C9A	 |
+	STA HDMA[5].source_bank		;$BB9C97	 |
+	STZ HDMA[5].indirect_source_bank;$BB9C9A	 |
 	LDX #$1142			;$BB9C9D	 |
-	STX $4360			;$BB9CA0	 |
+	STX HDMA[6].settings		;$BB9CA0	 |
 	LDX #DATA_BB9CBC		;$BB9CA3	 |
-	STX $4362			;$BB9CA6	 |
+	STX HDMA[6].source		;$BB9CA6	 |
 	LDA #DATA_BB9CBC>>16		;$BB9CA9	 |
-	STA $4364			;$BB9CAB	 |
+	STA HDMA[6].source_bank		;$BB9CAB	 |
 	LDA #$7E			;$BB9CAE	 |
-	STA $4367			;$BB9CB0	 |
+	STA HDMA[6].indirect_source_bank;$BB9CB0	 |
 	REP #$20			;$BB9CB3	 |
 	LDA #$7E01			;$BB9CB5	 |
 	STA $059B			;$BB9CB8	 |
@@ -3967,33 +3967,33 @@ CODE_BB9D1D:
 	STA $7E8042			;$BB9DB0	 |
 	SEP #$20			;$BB9DB4	 |
 	LDX #$0D03			;$BB9DB6	 |
-	STX $4310			;$BB9DB9	 |
+	STX HDMA[1].settings		;$BB9DB9	 |
 	LDX #$8012			;$BB9DBC	 |
-	STX $4312			;$BB9DBF	 |
+	STX HDMA[1].source		;$BB9DBF	 |
 	LDA #$7E			;$BB9DC2	 |
-	STA $4314			;$BB9DC4	 |
-	STZ $4317			;$BB9DC7	 |
+	STA HDMA[1].source_bank		;$BB9DC4	 |
+	STZ HDMA[1].indirect_source_bank;$BB9DC7	 |
 	LDX #$0F03			;$BB9DCA	 |
-	STX $4320			;$BB9DCD	 |
+	STX HDMA[2].settings		;$BB9DCD	 |
 	LDX #$8022			;$BB9DD0	 |
-	STX $4322			;$BB9DD3	 |
+	STX HDMA[2].source		;$BB9DD3	 |
 	LDA #$7E			;$BB9DD6	 |
-	STA $4324			;$BB9DD8	 |
-	STZ $4327			;$BB9DDB	 |
+	STA HDMA[2].source_bank		;$BB9DD8	 |
+	STZ HDMA[2].indirect_source_bank;$BB9DDB	 |
 	LDX #$0701			;$BB9DDE	 |
-	STX $4330			;$BB9DE1	 |
+	STX HDMA[3].settings		;$BB9DE1	 |
 	LDX #$8032			;$BB9DE4	 |
-	STX $4332			;$BB9DE7	 |
+	STX HDMA[3].source		;$BB9DE7	 |
 	LDA #$7E			;$BB9DEA	 |
-	STA $4334			;$BB9DEC	 |
-	STZ $4337			;$BB9DEF	 |
+	STA HDMA[3].source_bank		;$BB9DEC	 |
+	STZ HDMA[3].indirect_source_bank;$BB9DEF	 |
 	LDX #$3100			;$BB9DF2	 |
-	STX $4340			;$BB9DF5	 |
+	STX HDMA[4].settings		;$BB9DF5	 |
 	LDX #$803C			;$BB9DF8	 |
-	STX $4342			;$BB9DFB	 |
+	STX HDMA[4].source		;$BB9DFB	 |
 	LDA #$7E			;$BB9DFE	 |
-	STA $4344			;$BB9E00	 |
-	STZ $4347			;$BB9E03	 |
+	STA HDMA[4].source_bank		;$BB9E00	 |
+	STZ HDMA[4].indirect_source_bank;$BB9E03	 |
 	REP #$20			;$BB9E06	 |
 	LDA #$1E01			;$BB9E08	 |
 	STA $059B			;$BB9E0B	 |
@@ -4012,12 +4012,12 @@ CODE_BB9E18:				;		 |
 	BNE CODE_BB9E18			;$BB9E22	 |
 	SEP #$20			;$BB9E24	 |
 	LDX #$1102			;$BB9E26	 |
-	STX $4310			;$BB9E29	 |
+	STX HDMA[1].settings		;$BB9E29	 |
 	LDX #$8012			;$BB9E2C	 |
-	STX $4312			;$BB9E2F	 |
+	STX HDMA[1].source		;$BB9E2F	 |
 	LDA #$7E			;$BB9E32	 |
-	STA $4314			;$BB9E34	 |
-	STZ $4317			;$BB9E37	 |
+	STA HDMA[1].source_bank		;$BB9E34	 |
+	STZ HDMA[1].indirect_source_bank;$BB9E37	 |
 	REP #$20			;$BB9E3A	 |
 	LDA #$0201			;$BB9E3C	 |
 	STA $059B			;$BB9E3F	 |
@@ -4144,40 +4144,40 @@ CODE_BB9F4A:				;		 |
 	STA $7E8018,x			;$BB9F90	 |
 	SEP #$20			;$BB9F94	 |
 	LDX #$2C00			;$BB9F96	 |
-	STX $4360			;$BB9F99	 |
+	STX HDMA[6].settings		;$BB9F99	 |
 	LDX #$80E2			;$BB9F9C	 |
-	STX $4362			;$BB9F9F	 |
+	STX HDMA[6].source		;$BB9F9F	 |
 	LDA #$7E			;$BB9FA2	 |
-	STA $4364			;$BB9FA4	 |
-	STA $4367			;$BB9FA7	 |
+	STA HDMA[6].source_bank		;$BB9FA4	 |
+	STA HDMA[6].indirect_source_bank;$BB9FA7	 |
 	LDX #$0D43			;$BB9FAA	 |
-	STX $4320			;$BB9FAD	 |
+	STX HDMA[2].settings		;$BB9FAD	 |
 	LDX #$886C			;$BB9FB0	 |
-	STX $4322			;$BB9FB3	 |
+	STX HDMA[2].source		;$BB9FB3	 |
 	LDA #$7E			;$BB9FB6	 |
-	STA $4324			;$BB9FB8	 |
-	STA $4327			;$BB9FBB	 |
+	STA HDMA[2].source_bank		;$BB9FB8	 |
+	STA HDMA[2].indirect_source_bank;$BB9FBB	 |
 	LDX #$0F43			;$BB9FBE	 |
-	STX $4330			;$BB9FC1	 |
+	STX HDMA[3].settings		;$BB9FC1	 |
 	LDX #$8012			;$BB9FC4	 |
-	STX $4332			;$BB9FC7	 |
+	STX HDMA[3].source		;$BB9FC7	 |
 	LDA #$7E			;$BB9FCA	 |
-	STA $4334			;$BB9FCC	 |
-	STA $4337			;$BB9FCF	 |
+	STA HDMA[3].source_bank		;$BB9FCC	 |
+	STA HDMA[3].indirect_source_bank;$BB9FCF	 |
 	LDX #$1142			;$BB9FD2	 |
-	STX $4340			;$BB9FD5	 |
+	STX HDMA[4].settings		;$BB9FD5	 |
 	LDX #$884B			;$BB9FD8	 |
-	STX $4342			;$BB9FDB	 |
+	STX HDMA[4].source		;$BB9FDB	 |
 	LDA #$7E			;$BB9FDE	 |
-	STA $4344			;$BB9FE0	 |
-	STA $4347			;$BB9FE3	 |
+	STA HDMA[4].source_bank		;$BB9FE0	 |
+	STA HDMA[4].indirect_source_bank;$BB9FE3	 |
 	LDX #$1202			;$BB9FE6	 |
-	STX $4370			;$BB9FE9	 |
+	STX HDMA[7].settings		;$BB9FE9	 |
 	LDX #$8832			;$BB9FEC	 |
-	STX $4372			;$BB9FEF	 |
+	STX HDMA[7].source		;$BB9FEF	 |
 	LDA #$7E			;$BB9FF2	 |
-	STA $4374			;$BB9FF4	 |
-	STZ $4377			;$BB9FF7	 |
+	STA HDMA[7].source_bank		;$BB9FF4	 |
+	STZ HDMA[7].indirect_source_bank;$BB9FF7	 |
 	REP #$20			;$BB9FFA	 |
 	LDY #DATA_FF0FD2		;$BB9FFC	 |
 	JSL CODE_BB8418			;$BB9FFF	 |
@@ -4190,13 +4190,13 @@ CODE_BBA00D:
 	JSR CODE_BBA8DD			;$BBA00D	\
 	SEP #$20			;$BBA010	 |
 	LDX #$1142			;$BBA012	 |
-	STX $4310			;$BBA015	 |
+	STX HDMA[1].settings		;$BBA015	 |
 	LDX #DATA_BBA07E		;$BBA018	 |
-	STX $4312			;$BBA01B	 |
+	STX HDMA[1].source		;$BBA01B	 |
 	LDA #DATA_BBA07E>>16		;$BBA01E	 |
-	STA $4314			;$BBA020	 |
+	STA HDMA[1].source_bank		;$BBA020	 |
 	LDA #$7E			;$BBA023	 |
-	STA $4317			;$BBA025	 |
+	STA HDMA[1].indirect_source_bank;$BBA025	 |
 	REP #$20			;$BBA028	 |
 	LDA #$0201			;$BBA02A	 |
 	STA $059B			;$BBA02D	 |
@@ -4226,13 +4226,13 @@ CODE_BBA03D:				;		 |
 	BNE CODE_BBA03D			;$BBA05B	 |
 	SEP #$20			;$BBA05D	 |
 	LDX #$0E42			;$BBA05F	 |
-	STX $4310			;$BBA062	 |
+	STX HDMA[1].settings		;$BBA062	 |
 	LDX #$80F2			;$BBA065	 |
-	STX $4312			;$BBA068	 |
+	STX HDMA[1].source		;$BBA068	 |
 	LDA #$7E			;$BBA06B	 |
-	STA $4314			;$BBA06D	 |
+	STA HDMA[1].source_bank		;$BBA06D	 |
 	LDA #$7E			;$BBA070	 |
-	STA $4317			;$BBA072	 |
+	STA HDMA[1].indirect_source_bank;$BBA072	 |
 	REP #$20			;$BBA075	 |
 	LDA #$0201			;$BBA077	 |
 	STA $059B			;$BBA07A	 |
@@ -4313,12 +4313,12 @@ CODE_BBA213:				;		 |
 	BNE CODE_BBA213			;$BBA227	 |
 	SEP #$20			;$BBA229	 |
 	LDX #$0F02			;$BBA22B	 |
-	STX $4310			;$BBA22E	 |
+	STX HDMA[1].settings		;$BBA22E	 |
 	LDX #$8012			;$BBA231	 |
-	STX $4312			;$BBA234	 |
+	STX HDMA[1].source		;$BBA234	 |
 	LDA #$7E			;$BBA237	 |
-	STA $4314			;$BBA239	 |
-	STZ $4317			;$BBA23C	 |
+	STA HDMA[1].source_bank		;$BBA239	 |
+	STZ HDMA[1].indirect_source_bank;$BBA23C	 |
 	REP #$20			;$BBA23F	 |
 	LDA #$0201			;$BBA241	 |
 	STA $059B			;$BBA244	 |
@@ -4369,21 +4369,21 @@ CODE_BBA289:				;		 |
 	BNE CODE_BBA289			;$BBA2A9	 |
 	SEP #$20			;$BBA2AB	 |
 	LDX #$0E42			;$BBA2AD	 |
-	STX $4310			;$BBA2B0	 |
+	STX HDMA[1].settings		;$BBA2B0	 |
 	LDX #$80F2			;$BBA2B3	 |
-	STX $4312			;$BBA2B6	 |
+	STX HDMA[1].source		;$BBA2B6	 |
 	LDA #$7E			;$BBA2B9	 |
-	STA $4314			;$BBA2BB	 |
-	STA $4317			;$BBA2BE	 |
+	STA HDMA[1].source_bank		;$BBA2BB	 |
+	STA HDMA[1].indirect_source_bank;$BBA2BE	 |
 	REP #$20			;$BBA2C1	 |
 	SEP #$20			;$BBA2C3	 |
 	LDX #$0D42			;$BBA2C5	 |
-	STX $4320			;$BBA2C8	 |
+	STX HDMA[2].settings		;$BBA2C8	 |
 	LDX #$8012			;$BBA2CB	 |
-	STX $4322			;$BBA2CE	 |
+	STX HDMA[2].source		;$BBA2CE	 |
 	LDA #$7E			;$BBA2D1	 |
-	STA $4324			;$BBA2D3	 |
-	STA $4327			;$BBA2D6	 |
+	STA HDMA[2].source_bank		;$BBA2D3	 |
+	STA HDMA[2].indirect_source_bank;$BBA2D6	 |
 	REP #$20			;$BBA2D9	 |
 	LDA #$0601			;$BBA2DB	 |
 	STA $059B			;$BBA2DE	 |
@@ -4407,27 +4407,27 @@ CODE_BBA2E2:
 	STA $7E833B			;$BBA312	 |
 	SEP #$20			;$BBA316	 |
 	LDX #$0E42			;$BBA318	 |
-	STX $4310			;$BBA31B	 |
+	STX HDMA[1].settings		;$BBA31B	 |
 	LDX #DATA_BBA35F		;$BBA31E	 |
-	STX $4312			;$BBA321	 |
+	STX HDMA[1].source		;$BBA321	 |
 	LDA #DATA_BBA35F>>16		;$BBA324	 |
-	STA $4314			;$BBA326	 |
-	STZ $4317			;$BBA329	 |
+	STA HDMA[1].source_bank		;$BBA326	 |
+	STZ HDMA[1].indirect_source_bank;$BBA329	 |
 	LDX #$0D42			;$BBA32C	 |
-	STX $4320			;$BBA32F	 |
+	STX HDMA[2].settings		;$BBA32F	 |
 	LDX #DATA_BBA408		;$BBA332	 |
-	STX $4322			;$BBA335	 |
+	STX HDMA[2].source		;$BBA335	 |
 	LDA #DATA_BBA408>>16		;$BBA338	 |
-	STA $4324			;$BBA33A	 |
+	STA HDMA[2].source_bank		;$BBA33A	 |
 	LDA #$7E			;$BBA33D	 |
-	STA $4327			;$BBA33F	 |
+	STA HDMA[2].indirect_source_bank;$BBA33F	 |
 	LDX #$2601			;$BBA342	 |
-	STX $4330			;$BBA345	 |
+	STX HDMA[3].settings		;$BBA345	 |
 	LDX #$8332			;$BBA348	 |
-	STX $4332			;$BBA34B	 |
+	STX HDMA[3].source		;$BBA34B	 |
 	LDA #$7E			;$BBA34E	 |
-	STA $4334			;$BBA350	 |
-	STZ $4337			;$BBA353	 |
+	STA HDMA[3].source_bank		;$BBA350	 |
+	STZ HDMA[3].indirect_source_bank;$BBA353	 |
 	REP #$20			;$BBA356	 |
 	LDA #$0E01			;$BBA358	 |
 	STA $059B			;$BBA35B	 |
@@ -4553,40 +4553,40 @@ CODE_BBA4E0:				;		 |
 	STA $7E8018,x			;$BBA526	 |
 	SEP #$20			;$BBA52A	 |
 	LDX #$2C00			;$BBA52C	 |
-	STX $4360			;$BBA52F	 |
+	STX HDMA[6].settings		;$BBA52F	 |
 	LDX #$80E2			;$BBA532	 |
-	STX $4362			;$BBA535	 |
+	STX HDMA[6].source		;$BBA535	 |
 	LDA #$7E			;$BBA538	 |
-	STA $4364			;$BBA53A	 |
-	STA $4367			;$BBA53D	 |
+	STA HDMA[6].source_bank		;$BBA53A	 |
+	STA HDMA[6].indirect_source_bank;$BBA53D	 |
 	LDX #$0D43			;$BBA540	 |
-	STX $4320			;$BBA543	 |
+	STX HDMA[2].settings		;$BBA543	 |
 	LDX #$886C			;$BBA546	 |
-	STX $4322			;$BBA549	 |
+	STX HDMA[2].source		;$BBA549	 |
 	LDA #$7E			;$BBA54C	 |
-	STA $4324			;$BBA54E	 |
-	STA $4327			;$BBA551	 |
+	STA HDMA[2].source_bank		;$BBA54E	 |
+	STA HDMA[2].indirect_source_bank;$BBA551	 |
 	LDX #$0F43			;$BBA554	 |
-	STX $4330			;$BBA557	 |
+	STX HDMA[3].settings		;$BBA557	 |
 	LDX #$8012			;$BBA55A	 |
-	STX $4332			;$BBA55D	 |
+	STX HDMA[3].source		;$BBA55D	 |
 	LDA #$7E			;$BBA560	 |
-	STA $4334			;$BBA562	 |
-	STA $4337			;$BBA565	 |
+	STA HDMA[3].source_bank		;$BBA562	 |
+	STA HDMA[3].indirect_source_bank;$BBA565	 |
 	LDX #$1142			;$BBA568	 |
-	STX $4340			;$BBA56B	 |
+	STX HDMA[4].settings		;$BBA56B	 |
 	LDX #$884B			;$BBA56E	 |
-	STX $4342			;$BBA571	 |
+	STX HDMA[4].source		;$BBA571	 |
 	LDA #$7E			;$BBA574	 |
-	STA $4344			;$BBA576	 |
-	STA $4347			;$BBA579	 |
+	STA HDMA[4].source_bank		;$BBA576	 |
+	STA HDMA[4].indirect_source_bank;$BBA579	 |
 	LDX #$1202			;$BBA57C	 |
-	STX $4370			;$BBA57F	 |
+	STX HDMA[7].settings		;$BBA57F	 |
 	LDX #$8832			;$BBA582	 |
-	STX $4372			;$BBA585	 |
+	STX HDMA[7].source		;$BBA585	 |
 	LDA #$7E			;$BBA588	 |
-	STA $4374			;$BBA58A	 |
-	STZ $4377			;$BBA58D	 |
+	STA HDMA[7].source_bank		;$BBA58A	 |
+	STZ HDMA[7].indirect_source_bank;$BBA58D	 |
 	REP #$20			;$BBA590	 |
 	LDA #$1680			;$BBA592	 |
 	STA $0D4E			;$BBA595	 |
@@ -4711,19 +4711,19 @@ CODE_BBA662:
 	STA $7E8013,x			;$BBA69C	 |
 	SEP #$20			;$BBA6A0	 |
 	LDX #$0F02			;$BBA6A2	 |
-	STX $4310			;$BBA6A5	 |
+	STX HDMA[1].settings		;$BBA6A5	 |
 	LDX #$8012			;$BBA6A8	 |
-	STX $4312			;$BBA6AB	 |
+	STX HDMA[1].source		;$BBA6AB	 |
 	LDA #$7E			;$BBA6AE	 |
-	STA $4314			;$BBA6B0	 |
-	STZ $4317			;$BBA6B3	 |
+	STA HDMA[1].source_bank		;$BBA6B0	 |
+	STZ HDMA[1].indirect_source_bank;$BBA6B3	 |
 	LDX #$3200			;$BBA6B6	 |
-	STX $4320			;$BBA6B9	 |
+	STX HDMA[2].settings		;$BBA6B9	 |
 	LDX #DATA_BBA6D3		;$BBA6BC	 |
-	STX $4322			;$BBA6BF	 |
+	STX HDMA[2].source		;$BBA6BF	 |
 	LDA #DATA_BBA6D3>>16		;$BBA6C2	 |
-	STA $4324			;$BBA6C4	 |
-	STZ $4327			;$BBA6C7	 |
+	STA HDMA[2].source_bank		;$BBA6C4	 |
+	STZ HDMA[2].indirect_source_bank;$BBA6C7	 |
 	REP #$20			;$BBA6CA	 |
 	LDA #$0601			;$BBA6CC	 |
 	STA $059B			;$BBA6CF	 |
@@ -4848,41 +4848,41 @@ CODE_BBA817:				;		 |
 	STA $7E883F			;$BBA85E	 |
 	SEP #$20			;$BBA862	 |
 	LDX #$0D43			;$BBA864	 |
-	STX $4310			;$BBA867	 |
+	STX HDMA[1].settings		;$BBA867	 |
 	LDX #$886C			;$BBA86A	 |
-	STX $4312			;$BBA86D	 |
+	STX HDMA[1].source		;$BBA86D	 |
 	LDA #$7E			;$BBA870	 |
-	STA $4314			;$BBA872	 |
-	STZ $4317			;$BBA875	 |
+	STA HDMA[1].source_bank		;$BBA872	 |
+	STZ HDMA[1].indirect_source_bank;$BBA875	 |
 	LDX #$2640			;$BBA878	 |
-	STX $4320			;$BBA87B	 |
+	STX HDMA[2].settings		;$BBA87B	 |
 	LDX #$80F2			;$BBA87E	 |
-	STX $4322			;$BBA881	 |
+	STX HDMA[2].source		;$BBA881	 |
 	LDA #$7E			;$BBA884	 |
-	STA $4324			;$BBA886	 |
+	STA HDMA[2].source_bank		;$BBA886	 |
 	LDA #$80			;$BBA889	 |
-	STA $4327			;$BBA88B	 |
+	STA HDMA[2].indirect_source_bank;$BBA88B	 |
 	LDX #$2103			;$BBA88E	 |
-	STX $4330			;$BBA891	 |
+	STX HDMA[3].settings		;$BBA891	 |
 	LDX #$8832			;$BBA894	 |
-	STX $4332			;$BBA897	 |
+	STX HDMA[3].source		;$BBA897	 |
 	LDA #$7E			;$BBA89A	 |
-	STA $4334			;$BBA89C	 |
-	STA $4337			;$BBA89F	 |
+	STA HDMA[3].source_bank		;$BBA89C	 |
+	STA HDMA[3].indirect_source_bank;$BBA89F	 |
 	LDX #$0F03			;$BBA8A2	 |
-	STX $4350			;$BBA8A5	 |
+	STX HDMA[5].settings		;$BBA8A5	 |
 	LDX #$8552			;$BBA8A8	 |
-	STX $4352			;$BBA8AB	 |
+	STX HDMA[5].source		;$BBA8AB	 |
 	LDA #$7E			;$BBA8AE	 |
-	STA $4354			;$BBA8B0	 |
-	STZ $4357			;$BBA8B3	 |
+	STA HDMA[5].source_bank		;$BBA8B0	 |
+	STZ HDMA[5].indirect_source_bank;$BBA8B3	 |
 	LDX #$0800			;$BBA8B6	 |
-	STX $4360			;$BBA8B9	 |
+	STX HDMA[6].settings		;$BBA8B9	 |
 	LDX #$8812			;$BBA8BC	 |
-	STX $4362			;$BBA8BF	 |
+	STX HDMA[6].source		;$BBA8BF	 |
 	LDA #$7E			;$BBA8C2	 |
-	STA $4364			;$BBA8C4	 |
-	STZ $4367			;$BBA8C7	 |
+	STA HDMA[6].source_bank		;$BBA8C4	 |
+	STZ HDMA[6].indirect_source_bank;$BBA8C7	 |
 	REP #$20			;$BBA8CA	 |
 	JSR CODE_BBABE2			;$BBA8CC	 |
 	LDY #DATA_FF0FD2		;$BBA8CF	 |
@@ -4953,26 +4953,26 @@ CODE_BBA8F3:
 	STA $7E8854			;$BBA98D	 |
 	SEP #$20			;$BBA991	 |
 	LDX #$3100			;$BBA993	 |
-	STX $4320			;$BBA996	 |
+	STX HDMA[2].settings		;$BBA996	 |
 	LDX #$8832			;$BBA999	 |
-	STX $4322			;$BBA99C	 |
+	STX HDMA[2].source		;$BBA99C	 |
 	LDA #$7E			;$BBA99F	 |
-	STA $4324			;$BBA9A1	 |
-	STZ $4327			;$BBA9A4	 |
+	STA HDMA[2].source_bank		;$BBA9A1	 |
+	STZ HDMA[2].indirect_source_bank;$BBA9A4	 |
 	LDX #$2C01			;$BBA9A7	 |
-	STX $4330			;$BBA9AA	 |
+	STX HDMA[3].settings		;$BBA9AA	 |
 	LDX #$80E2			;$BBA9AD	 |
-	STX $4332			;$BBA9B0	 |
+	STX HDMA[3].source		;$BBA9B0	 |
 	LDA #$7E			;$BBA9B3	 |
-	STA $4334			;$BBA9B5	 |
-	STZ $4337			;$BBA9B8	 |
+	STA HDMA[3].source_bank		;$BBA9B5	 |
+	STZ HDMA[3].indirect_source_bank;$BBA9B8	 |
 	LDX #$1102			;$BBA9BB	 |
-	STX $4340			;$BBA9BE	 |
+	STX HDMA[4].settings		;$BBA9BE	 |
 	LDX #$884B			;$BBA9C1	 |
-	STX $4342			;$BBA9C4	 |
+	STX HDMA[4].source		;$BBA9C4	 |
 	LDA #$7E			;$BBA9C7	 |
-	STA $4344			;$BBA9C9	 |
-	STZ $4347			;$BBA9CC	 |
+	STA HDMA[4].source_bank		;$BBA9C9	 |
+	STZ HDMA[4].indirect_source_bank;$BBA9CC	 |
 	REP #$20			;$BBA9CF	 |
 	RTS				;$BBA9D1	/
 
@@ -5099,55 +5099,55 @@ CODE_BBAB05:				;		 |
 	STA $7E8872,x			;$BBAB4B	 |
 	SEP #$20			;$BBAB4F	 |
 	LDX #$0D43			;$BBAB51	 |
-	STX $4310			;$BBAB54	 |
+	STX HDMA[1].settings		;$BBAB54	 |
 	LDX #$886C			;$BBAB57	 |
-	STX $4312			;$BBAB5A	 |
+	STX HDMA[1].source		;$BBAB5A	 |
 	LDA #$7E			;$BBAB5D	 |
-	STA $4314			;$BBAB5F	 |
-	STA $4317			;$BBAB62	 |
+	STA HDMA[1].source_bank		;$BBAB5F	 |
+	STA HDMA[1].indirect_source_bank;$BBAB62	 |
 	LDX #$2143			;$BBAB65	 |
-	STX $4320			;$BBAB68	 |
+	STX HDMA[2].settings		;$BBAB68	 |
 	LDX #$8864			;$BBAB6B	 |
-	STX $4322			;$BBAB6E	 |
+	STX HDMA[2].source		;$BBAB6E	 |
 	LDA #$7E			;$BBAB71	 |
-	STA $4324			;$BBAB73	 |
+	STA HDMA[2].source_bank		;$BBAB73	 |
 	LDA #$80			;$BBAB76	 |
-	STA $4327			;$BBAB78	 |
+	STA HDMA[2].indirect_source_bank;$BBAB78	 |
 	LDX #$2C00			;$BBAB7B	 |
-	STX $4330			;$BBAB7E	 |
+	STX HDMA[3].settings		;$BBAB7E	 |
 	LDX #$80E2			;$BBAB81	 |
-	STX $4332			;$BBAB84	 |
+	STX HDMA[3].source		;$BBAB84	 |
 	LDA #$7E			;$BBAB87	 |
-	STA $4334			;$BBAB89	 |
-	STZ $4337			;$BBAB8C	 |
+	STA HDMA[3].source_bank		;$BBAB89	 |
+	STZ HDMA[3].indirect_source_bank;$BBAB8C	 |
 	LDX #$1142			;$BBAB8F	 |
-	STX $4340			;$BBAB92	 |
+	STX HDMA[4].settings		;$BBAB92	 |
 	LDX #$884B			;$BBAB95	 |
-	STX $4342			;$BBAB98	 |
+	STX HDMA[4].source		;$BBAB98	 |
 	LDA #$7E			;$BBAB9B	 |
-	STA $4344			;$BBAB9D	 |
-	STA $4347			;$BBABA0	 |
+	STA HDMA[4].source_bank		;$BBAB9D	 |
+	STA HDMA[4].indirect_source_bank;$BBABA0	 |
 	LDX #$0F03			;$BBABA3	 |
-	STX $4350			;$BBABA6	 |
+	STX HDMA[5].settings		;$BBABA6	 |
 	LDX #$8552			;$BBABA9	 |
-	STX $4352			;$BBABAC	 |
+	STX HDMA[5].source		;$BBABAC	 |
 	LDA #$7E			;$BBABAF	 |
-	STA $4354			;$BBABB1	 |
-	STZ $4357			;$BBABB4	 |
+	STA HDMA[5].source_bank		;$BBABB1	 |
+	STZ HDMA[5].indirect_source_bank;$BBABB4	 |
 	LDX #$0800			;$BBABB7	 |
-	STX $4360			;$BBABBA	 |
+	STX HDMA[6].settings		;$BBABBA	 |
 	LDX #$8812			;$BBABBD	 |
-	STX $4362			;$BBABC0	 |
+	STX HDMA[6].source		;$BBABC0	 |
 	LDA #$7E			;$BBABC3	 |
-	STA $4364			;$BBABC5	 |
-	STZ $4367			;$BBABC8	 |
+	STA HDMA[6].source_bank		;$BBABC5	 |
+	STZ HDMA[6].indirect_source_bank;$BBABC8	 |
 	LDX #$1202			;$BBABCB	 |
-	STX $4370			;$BBABCE	 |
+	STX HDMA[7].settings		;$BBABCE	 |
 	LDX #$8832			;$BBABD1	 |
-	STX $4372			;$BBABD4	 |
+	STX HDMA[7].source		;$BBABD4	 |
 	LDA #$7E			;$BBABD7	 |
-	STA $4374			;$BBABD9	 |
-	STZ $4377			;$BBABDC	 |
+	STA HDMA[7].source_bank		;$BBABD9	 |
+	STZ HDMA[7].indirect_source_bank;$BBABDC	 |
 	REP #$20			;$BBABDF	 |
 	RTS				;$BBABE1	/
 

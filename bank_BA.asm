@@ -3582,18 +3582,18 @@ CODE_BAB1B9:
 	LSR A				;$BAB270	 |
 	LSR A				;$BAB271	 |
 	LSR A				;$BAB272	 |
-	STA $4305			;$BAB273	 |
+	STA DMA[0].size			;$BAB273	 |
 	STZ PPU.vram_address		;$BAB276	 |
 	SEP #$20			;$BAB279	 |
 	LDA #$01			;$BAB27B	 |
-	STA $4300			;$BAB27D	 |
+	STA DMA[0].settings		;$BAB27D	 |
 	LDA #$18			;$BAB280	 |
-	STA $4301			;$BAB282	 |
+	STA DMA[0].destination		;$BAB282	 |
 	LDX #$3E00			;$BAB285	 |
-	STX $4302			;$BAB288	 |
+	STX DMA[0].source		;$BAB288	 |
 	LDA #$7E			;$BAB28B	 |
-	STA $4304			;$BAB28D	 |
-	STZ $4307			;$BAB290	 |
+	STA DMA[0].source_bank		;$BAB28D	 |
+	STZ DMA[0].unused_1		;$BAB290	 |
 	LDA #$01			;$BAB293	 |
 	STA CPU.enable_dma		;$BAB295	 |
 	STZ $065A			;$BAB298	 |
@@ -3655,14 +3655,14 @@ CODE_BAB31B:
 
 CODE_BAB31E:
 	LDA #$0200			;$BAB31E	\
-	STA $4302			;$BAB321	 |
-	STA $4308			;$BAB324	 |
+	STA DMA[0].source		;$BAB321	 |
+	STA DMA[0].unused_2		;$BAB324	 |
 	LDA #$0220			;$BAB327	 |
-	STA $4305			;$BAB32A	 |
+	STA DMA[0].size			;$BAB32A	 |
 	LDA #$0400			;$BAB32D	 |
-	STA $4300			;$BAB330	 |
+	STA DMA[0].settings		;$BAB330	 |
 	SEP #$20			;$BAB333	 |
-	STZ $4304			;$BAB335	 |
+	STZ DMA[0].source_bank		;$BAB335	 |
 	LDA #$01			;$BAB338	 |
 	STA CPU.enable_dma		;$BAB33A	 |
 	REP #$20			;$BAB33D	 |
@@ -4064,36 +4064,36 @@ CODE_BAB6F6:
 	AND #$FFFD			;$BAB6FF	 |
 	STA $0006A5			;$BAB702	 |
 	LDA #$0660			;$BAB706	 |
-	STA $4305			;$BAB709	 |
+	STA DMA[0].size			;$BAB709	 |
 	LDA #$5800			;$BAB70C	 |
 	STA PPU.vram_address		;$BAB70F	 |
 	SEP #$20			;$BAB712	 |
 	LDA #$01			;$BAB714	 |
-	STA $4300			;$BAB716	 |
+	STA DMA[0].settings		;$BAB716	 |
 	LDA #$18			;$BAB719	 |
-	STA $4301			;$BAB71B	 |
+	STA DMA[0].destination		;$BAB71B	 |
 	LDX #DATA_FC0000		;$BAB71E	 |
-	STX $4302			;$BAB721	 |
+	STX DMA[0].source		;$BAB721	 |
 	LDA #DATA_FC0000>>16		;$BAB724	 |
-	STA $4304			;$BAB726	 |
-	STZ $4307			;$BAB729	 |
+	STA DMA[0].source_bank		;$BAB726	 |
+	STZ DMA[0].unused_1		;$BAB729	 |
 	LDA #$01			;$BAB72C	 |
 	STA CPU.enable_dma		;$BAB72E	 |
 	REP #$20			;$BAB731	 |
 	LDA #$0240			;$BAB733	 |
-	STA $4305			;$BAB736	 |
+	STA DMA[0].size			;$BAB736	 |
 	LDA.l $000652			;$BAB739	 |
 	STA PPU.vram_address		;$BAB73D	 |
 	SEP #$20			;$BAB740	 |
 	LDA #$01			;$BAB742	 |
-	STA $4300			;$BAB744	 |
+	STA DMA[0].settings		;$BAB744	 |
 	LDA #$18			;$BAB747	 |
-	STA $4301			;$BAB749	 |
+	STA DMA[0].destination		;$BAB749	 |
 	LDX #DATA_F57D13		;$BAB74C	 |
-	STX $4302			;$BAB74F	 |
+	STX DMA[0].source		;$BAB74F	 |
 	LDA #DATA_F57D13>>16		;$BAB752	 |
-	STA $4304			;$BAB754	 |
-	STZ $4307			;$BAB757	 |
+	STA DMA[0].source_bank		;$BAB754	 |
+	STZ DMA[0].unused_1		;$BAB757	 |
 	LDA #$01			;$BAB75A	 |
 	STA CPU.enable_dma		;$BAB75C	 |
 	REP #$20			;$BAB75F	 |
@@ -4106,19 +4106,19 @@ CODE_BAB768:				;		 |
 	AND #$FFBF			;$BAB771	 |
 	STA $0006A5			;$BAB774	 |
 	LDA #$0080			;$BAB778	 |
-	STA $4305			;$BAB77B	 |
+	STA DMA[0].size			;$BAB77B	 |
 	LDA.l $000652			;$BAB77E	 |
 	STA PPU.vram_address		;$BAB782	 |
 	SEP #$20			;$BAB785	 |
 	LDA #$01			;$BAB787	 |
-	STA $4300			;$BAB789	 |
+	STA DMA[0].settings		;$BAB789	 |
 	LDA #$18			;$BAB78C	 |
-	STA $4301			;$BAB78E	 |
+	STA DMA[0].destination		;$BAB78E	 |
 	LDX #$3E00			;$BAB791	 |
-	STX $4302			;$BAB794	 |
+	STX DMA[0].source		;$BAB794	 |
 	LDA #$7E			;$BAB797	 |
-	STA $4304			;$BAB799	 |
-	STZ $4307			;$BAB79C	 |
+	STA DMA[0].source_bank		;$BAB799	 |
+	STZ DMA[0].unused_1		;$BAB79C	 |
 	LDA #$01			;$BAB79F	 |
 	STA CPU.enable_dma		;$BAB7A1	 |
 	REP #$20			;$BAB7A4	 |

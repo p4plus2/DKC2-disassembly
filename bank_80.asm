@@ -334,14 +334,14 @@ init_registers:    			;		 |
 	SEP #$20			;$808568	 | ...Just to make A 8 bit again
 	LDX #$000A			;$80856A	 | Load up the number of H/DMA bytes to clear
 .clear_DMA				;		 |
-	STZ $4300,x			;$80856D	 |\ Zero out channels 0-7
-	STZ $4310,x			;$808570	 | |
-	STZ $4320,x			;$808573	 | |
-	STZ $4330,x			;$808576	 | |
-	STZ $4340,x			;$808579	 | |
-	STZ $4350,x			;$80857C	 | |
-	STZ $4360,x			;$80857F	 | |
-	STZ $4370,x			;$808582	 | |
+	STZ DMA[0].settings,x		;$80856D	 |\ Zero out channels 0-7
+	STZ DMA[1].settings,x		;$808570	 | |
+	STZ DMA[2].settings,x		;$808573	 | |
+	STZ DMA[3].settings,x		;$808576	 | |
+	STZ DMA[4].settings,x		;$808579	 | |
+	STZ DMA[5].settings,x		;$80857C	 | |
+	STZ DMA[6].settings,x		;$80857F	 | |
+	STZ DMA[7].settings,x		;$808582	 | |
 	DEX				;$808585	 | | Next byte
 	BPL .clear_DMA			;$808586	 |/ Continue until addresses from all channel are clear
 	REP #$20			;$808588	 | Back to a full 16 bit
@@ -357,14 +357,14 @@ VRAM_zero_fill:
 clear_VRAM:
 	STZ PPU.vram_address		;$808591	\ Initialize VRAM to zeros
 	LDA #VRAM_zero_fill		;$808594	 |\ Set DMA source word
-	STA $4302			;$808597	 |/
-	STA $4308			;$80859A	 | Set HDMA word (not used.)
-	STZ $4305			;$80859D	 | Set size to zero, (full 64K)
+	STA DMA[0].source		;$808597	 |/
+	STA DMA[0].unused_2		;$80859A	 | Set HDMA word (not used.)
+	STZ DMA[0].size			;$80859D	 | Set size to zero, (full 64K)
 	LDA #$1809			;$8085A0	 |\ Set DMA destination 2118, fixed transfer,
-	STA $4300			;$8085A3	 |/ with two register write once
+	STA DMA[0].settings		;$8085A3	 |/ with two register write once
 	SEP #$20			;$8085A6	 |
 	LDA #VRAM_zero_fill>>16		;$8085A8	 |\ Set DMA source bank
-	STA $4304			;$8085AA	 |/
+	STA DMA[0].source_bank		;$8085AA	 |/
 	LDA #$01			;$8085AD	 |\
 	STA CPU.enable_dma		;$8085AF	 |/ Enable channel 1 DMA
 	REP #$20			;$8085B2	 |
@@ -821,12 +821,12 @@ DMA_to_VRAM:
 	RTL				;$808962	/
 
 .DMA_to_VRAM
-	STA $4302			;$808963	\ Store the DMA source word
-	STY $4305			;$808966	 | Store the DMA size
+	STA DMA[0].source		;$808963	\ Store the DMA source word
+	STY DMA[0].size			;$808966	 | Store the DMA size
 	LDA #$1801			;$808969	 |\ Set DMA destination to $2118, write once, two registers
-	STA $4300			;$80896C	 |/
+	STA DMA[0].settings		;$80896C	 |/
 	SEP #$30			;$80896F	 |
-	STX $4304			;$808971	 | Store the DMA source bank
+	STX DMA[0].source_bank		;$808971	 | Store the DMA source bank
 	LDA #$01			;$808974	 |\ Enable the DMA
 	STA CPU.enable_dma		;$808976	 |/
 	REP #$30			;$808979	 |
@@ -1230,14 +1230,14 @@ CODE_808CA8:
 
 prepare_oam_dma_channel:
 	LDA #$0200			;$808CAC	\
-	STA $4302			;$808CAF	 |
-	STA $4308			;$808CB2	 |
+	STA DMA[0].source		;$808CAF	 |
+	STA DMA[0].unused_2		;$808CB2	 |
 	LDA #$0220			;$808CB5	 |
-	STA $4305			;$808CB8	 |
+	STA DMA[0].size			;$808CB8	 |
 	LDA #$0400			;$808CBB	 |
-	STA $4300			;$808CBE	 |
+	STA DMA[0].settings		;$808CBE	 |
 	SEP #$20			;$808CC1	 |
-	STZ $4304			;$808CC3	 |
+	STZ DMA[0].source_bank		;$808CC3	 |
 	REP #$20			;$808CC6	 |
 	RTS				;$808CC8	/
 
@@ -1965,26 +1965,26 @@ CODE_8092D0:				;		 |\ Clear scratch RAM
 	STA $7E8038			;$80935E	 |/
 	SEP #$20			;$809362	 |\
 	LDX #$0500			;$809364	 | |\ Set up write once HDMA with $2105 destination
-	STX $4320			;$809367	 | |/
+	STX HDMA[2].settings		;$809367	 | |/
 	LDX #$8012			;$80936A	 | |\ Set HDMA source to $7E8012
-	STX $4322			;$80936D	 | | |
+	STX HDMA[2].source		;$80936D	 | | |
 	LDA #$7E			;$809370	 | | |
-	STA $4324			;$809372	 | |/
-	STZ $4327			;$809375	 |_| Zero indirect HDMA bank byte
+	STA HDMA[2].source_bank		;$809372	 | |/
+	STZ HDMA[2].indirect_source_bank;$809375	 |_| Zero indirect HDMA bank byte
 	LDX #$3100			;$809378	 | |\Set up write once HDMA with $2131 destination
-	STX $4330			;$80937B	 | |/
+	STX HDMA[3].settings		;$80937B	 | |/
 	LDX #$8022			;$80937E	 | |\ Set HDMA source to $7E8022
-	STX $4332			;$809381	 | | |
+	STX HDMA[3].source		;$809381	 | | |
 	LDA #$7E			;$809384	 | | |
-	STA $4334			;$809386	 | |/
-	STZ $4337			;$809389	 |_| Zero indirect HDMA bank byte
+	STA HDMA[3].source_bank		;$809386	 | |/
+	STZ HDMA[3].indirect_source_bank;$809389	 |_| Zero indirect HDMA bank byte
 	LDX #$2D00			;$80938C	 | |\ Set up write once HDMA with $212D destination
-	STX $4340			;$80938F	 | |/
+	STX HDMA[4].settings		;$80938F	 | |/
 	LDX #$8032			;$809392	 | |\ Set HDMA source to $7E8032
-	STX $4342			;$809395	 | | |
+	STX HDMA[4].source		;$809395	 | | |
 	LDA #$7E			;$809398	 | | |
-	STA $4344			;$80939A	 | |/
-	STZ $4347			;$80939D	 |/ Zero indirect HDMA bank byte
+	STA HDMA[4].source_bank		;$80939A	 | |/
+	STZ HDMA[4].indirect_source_bank;$80939D	 |/ Zero indirect HDMA bank byte
 	LDA CPU.irq_flag		;$8093A0	 | Read IRQ flag to clear
 	LDA #$80			;$8093A3	 |\ Disable sprite 0 priority
 	STA PPU.oam_address_high	;$8093A5	 |/
@@ -1999,15 +1999,15 @@ run_rareware_logo:			;		\
 	LDX #$01FF			;$8093B8	 |\ Reset the stack
 	TXS				;$8093BB	 |/
 	LDA #$8928			;$8093BC	 |\ Set DMA source word $8928
-	STA $4312			;$8093BF	 | |
-	STA $4318			;$8093C2	 |/
+	STA DMA[1].source		;$8093BF	 | |
+	STA DMA[1].unused_2		;$8093C2	 |/
 	LDA #$0200			;$8093C5	 |\ Set DMA size to 512 bytes
-	STA $4315			;$8093C8	 |/
+	STA DMA[1].size			;$8093C8	 |/
 	LDA #$2200			;$8093CB	 |\ Set DMA destination to $2122 with write once, one register
-	STA $4310			;$8093CE	 |/
+	STA DMA[1].settings		;$8093CE	 |/
 	SEP #$20			;$8093D1	 |
 	LDA #$7E			;$8093D3	 |\ DMA source bank to $7E
-	STA $4314			;$8093D5	 |/
+	STA DMA[1].source_bank		;$8093D5	 |/
 	STZ PPU.cgram_address		;$8093D8	 | Set CGRAM destination address to zero
 	LDA #$02			;$8093DB	 |\ Run palette DMA
 	STA CPU.enable_dma		;$8093DD	 |/
@@ -2572,12 +2572,12 @@ CODE_8097EB:				;		 |
 	STA $7E8021			;$80988A	 |
 	SEP #$20			;$80988E	 |
 	LDX #$3001			;$809890	 |
-	STX $4320			;$809893	 |
+	STX DMA[2].settings		;$809893	 |
 	LDX #$8012			;$809896	 |
-	STX $4322			;$809899	 |
+	STX DMA[2].source		;$809899	 |
 	LDA #$7E			;$80989C	 |
-	STA $4324			;$80989E	 |
-	STZ $4327			;$8098A1	 |
+	STA DMA[2].source_bank		;$80989E	 |
+	STZ DMA[2].unused_1		;$8098A1	 |
 	REP #$20			;$8098A4	 |
 	LDX #DATA_EC83A0		;$8098A6	 |
 	LDY.w #DATA_EC83A0>>16		;$8098A9	 |
@@ -2835,7 +2835,7 @@ CODE_809AF1:				;		 |
 	LDA #$50			;$809B36	 |
 	STA $7E8018			;$809B38	 |
 	LDX #$8012			;$809B3C	 |
-	STX $4322			;$809B3F	 |
+	STX HDMA[2].source		;$809B3F	 |
 	REP #$20			;$809B42	 |
 	BRA CODE_809B82			;$809B44	/
 
@@ -2851,7 +2851,7 @@ CODE_809B46:
 	LDA #$50			;$809B59	 |
 	STA $7E8018			;$809B5B	 |
 	LDX #$8015			;$809B5F	 |
-	STX $4322			;$809B62	 |
+	STX HDMA[2].source		;$809B62	 |
 	REP #$20			;$809B65	 |
 	BRA CODE_809B82			;$809B67	/
 
@@ -2864,7 +2864,7 @@ CODE_809B69:
 	SEP #$20			;$809B74	 |
 	STA $7E8018			;$809B76	 |
 	LDX #$8018			;$809B7A	 |
-	STX $4322			;$809B7D	 |
+	STX HDMA[2].source		;$809B7D	 |
 	REP #$20			;$809B80	 |
 CODE_809B82:				;		 |
 	LDA $060D			;$809B82	 |
@@ -3310,54 +3310,54 @@ CODE_809FC1:				;		 |
 	REP #$20			;$80A01F	 |
 	SEP #$20			;$80A021	 |
 	LDX #$0F02			;$80A023	 |
-	STX $4310			;$80A026	 |
+	STX HDMA[1].settings		;$80A026	 |
 	LDX #$8012			;$80A029	 |
-	STX $4312			;$80A02C	 |
+	STX HDMA[1].source		;$80A02C	 |
 	LDA #$7E			;$80A02F	 |
-	STA $4314			;$80A031	 |
-	STZ $4317			;$80A034	 |
+	STA HDMA[1].source_bank		;$80A031	 |
+	STZ HDMA[1].indirect_source_bank;$80A034	 |
 	LDX #$2601			;$80A037	 |
-	STX $4320			;$80A03A	 |
+	STX HDMA[2].settings		;$80A03A	 |
 	LDX #DATA_809F6C		;$80A03D	 |
-	STX $4322			;$80A040	 |
+	STX HDMA[2].source		;$80A040	 |
 	LDA #DATA_809F6C>>16		;$80A043	 |
-	STA $4324			;$80A045	 |
-	STZ $4327			;$80A048	 |
+	STA HDMA[2].source_bank		;$80A045	 |
+	STZ HDMA[2].indirect_source_bank;$80A048	 |
 	LDX #$2103			;$80A04B	 |
-	STX $4330			;$80A04E	 |
+	STX HDMA[3].settings		;$80A04E	 |
 	LDX #DATA_809E95		;$80A051	 |
-	STX $4332			;$80A054	 |
+	STX HDMA[3].source		;$80A054	 |
 	LDA #DATA_809E95>>16		;$80A057	 |
-	STA $4334			;$80A059	 |
-	STZ $4337			;$80A05C	 |
+	STA HDMA[3].source_bank		;$80A059	 |
+	STZ HDMA[3].indirect_source_bank;$80A05C	 |
 	LDX #$2103			;$80A05F	 |
-	STX $4340			;$80A062	 |
+	STX HDMA[4].settings		;$80A062	 |
 	LDX #DATA_809EC0		;$80A065	 |
-	STX $4342			;$80A068	 |
+	STX HDMA[4].source		;$80A068	 |
 	LDA #DATA_809EC0>>16		;$80A06B	 |
-	STA $4344			;$80A06D	 |
-	STZ $4347			;$80A070	 |
+	STA HDMA[4].source_bank		;$80A06D	 |
+	STZ HDMA[4].indirect_source_bank;$80A070	 |
 	LDX #$2103			;$80A073	 |
-	STX $4350			;$80A076	 |
+	STX HDMA[5].settings		;$80A076	 |
 	LDX #DATA_809EEB		;$80A079	 |
-	STX $4352			;$80A07C	 |
+	STX HDMA[5].source		;$80A07C	 |
 	LDA #DATA_809EEB>>16		;$80A07F	 |
-	STA $4354			;$80A081	 |
-	STZ $4357			;$80A084	 |
+	STA HDMA[5].source_bank		;$80A081	 |
+	STZ HDMA[5].indirect_source_bank;$80A084	 |
 	LDX #$2103			;$80A087	 |
-	STX $4360			;$80A08A	 |
+	STX HDMA[6].settings		;$80A08A	 |
 	LDX #DATA_809F16		;$80A08D	 |
-	STX $4362			;$80A090	 |
+	STX HDMA[6].source		;$80A090	 |
 	LDA #DATA_809F16>>16		;$80A093	 |
-	STA $4364			;$80A095	 |
-	STZ $4367			;$80A098	 |
+	STA HDMA[6].source_bank		;$80A095	 |
+	STZ HDMA[6].indirect_source_bank;$80A098	 |
 	LDX #$2103			;$80A09B	 |
-	STX $4370			;$80A09E	 |
+	STX HDMA[7].settings		;$80A09E	 |
 	LDX #DATA_809F41		;$80A0A1	 |
-	STX $4372			;$80A0A4	 |
+	STX HDMA[7].source		;$80A0A4	 |
 	LDA #DATA_809F41>>16		;$80A0A7	 |
-	STA $4374			;$80A0A9	 |
-	STZ $4377			;$80A0AC	 |
+	STA HDMA[7].source_bank		;$80A0A9	 |
+	STZ HDMA[7].indirect_source_bank;$80A0AC	 |
 	REP #$20			;$80A0AF	 |
 	LDA #$0060			;$80A0B1	 |
 	STA $7E8012			;$80A0B4	 |
@@ -4031,12 +4031,12 @@ CODE_80A65D:				;		 |
 	STA $7E8024			;$80A704	 |
 	SEP #$20			;$80A708	 |
 	LDX #$2601			;$80A70A	 |
-	STX $4320			;$80A70D	 |
+	STX DMA[2].settings		;$80A70D	 |
 	LDX #$8012			;$80A710	 |
-	STX $4322			;$80A713	 |
+	STX DMA[2].source		;$80A713	 |
 	LDA #$7E			;$80A716	 |
-	STA $4324			;$80A718	 |
-	STZ $4327			;$80A71B	 |
+	STA DMA[2].source_bank		;$80A718	 |
+	STZ DMA[2].unused_1		;$80A71B	 |
 	REP #$20			;$80A71E	 |
 	LDX #DATA_ED5E3F		;$80A720	 |
 	LDY.w #DATA_ED5E3F>>16		;$80A723	 |
@@ -4184,16 +4184,16 @@ CODE_80A86C:
 	ASL A				;$80A88F	 |
 	CLC				;$80A890	 |
 	ADC #$0000			;$80A891	 |
-	STA $4312			;$80A894	 |
-	STA $4318			;$80A897	 |
+	STA DMA[1].source		;$80A894	 |
+	STA DMA[1].unused_2		;$80A897	 |
 	STZ PPU.vram_address		;$80A89A	 |
 	LDA #$0080			;$80A89D	 |
-	STA $4315			;$80A8A0	 |
+	STA DMA[1].size			;$80A8A0	 |
 	LDA #$1801			;$80A8A3	 |
-	STA $4310			;$80A8A6	 |
+	STA DMA[1].settings		;$80A8A6	 |
 	SEP #$20			;$80A8A9	 |
 	LDA #$FB			;$80A8AB	 |
-	STA $4314			;$80A8AD	 |
+	STA DMA[1].source_bank		;$80A8AD	 |
 	LDA #$02			;$80A8B0	 |
 	STA CPU.enable_dma		;$80A8B2	 |
 	REP #$20			;$80A8B5	 |
@@ -4211,17 +4211,17 @@ CODE_80A8B7:				;		 |
 	ASL A				;$80A8C9	 |
 	CLC				;$80A8CA	 |
 	ADC #$0400			;$80A8CB	 |
-	STA $4312			;$80A8CE	 |
-	STA $4318			;$80A8D1	 |
+	STA DMA[1].source		;$80A8CE	 |
+	STA DMA[1].unused_2		;$80A8D1	 |
 	LDA #$0040			;$80A8D4	 |
 	STA PPU.vram_address		;$80A8D7	 |
 	LDA #$0080			;$80A8DA	 |
-	STA $4315			;$80A8DD	 |
+	STA DMA[1].size			;$80A8DD	 |
 	LDA #$1801			;$80A8E0	 |
-	STA $4310			;$80A8E3	 |
+	STA DMA[1].settings		;$80A8E3	 |
 	SEP #$20			;$80A8E6	 |
 	LDA #$FB			;$80A8E8	 |
-	STA $4314			;$80A8EA	 |
+	STA DMA[1].source_bank		;$80A8EA	 |
 	LDA #$02			;$80A8ED	 |
 	STA CPU.enable_dma		;$80A8EF	 |
 	REP #$20			;$80A8F2	 |
@@ -5234,15 +5234,15 @@ CODE_80B106:				;		 |
 clear_VRAM_block:
 	STA PPU.vram_address		;$80B109	\ Store address to VRAM block to clear
 	LDA #.VRAM_zero_fill		;$80B10C	 |\ Set DMA source word (uses low byte of size as fixed data)
-	STA $4302			;$80B10F	 | |
-	STA $4308			;$80B112	 |/
+	STA DMA[0].source		;$80B10F	 | |
+	STA DMA[0].unused_2		;$80B112	 |/
 	%offset(.VRAM_zero_fill, 1)	;		 | Generate a label for fixed VRAM data
 	LDA #$0800			;$80B115	 |\ Set DMA size to $0800
-	STA $4305			;$80B118	 |/
+	STA DMA[0].size			;$80B118	 |/
 	LDA #$1809			;$80B11B	 |\ Set DMA destination to $2118, two register write once, fixed
-	STA $4300			;$80B11E	 |/
+	STA DMA[0].settings		;$80B11E	 |/
 	SEP #$20			;$80B121	 |
-	STZ $4304			;$80B123	 | Set DMA source bank to 00.
+	STZ DMA[0].source_bank		;$80B123	 | Set DMA source bank to 00.
 	LDA #$01			;$80B126	 |\ Enable channel 1 DMA
 	STA CPU.enable_dma		;$80B128	 |/
 	REP #$20			;$80B12B	 |
@@ -5971,16 +5971,16 @@ CODE_80B89C:
 	BIT #$0001			;$80B89E	 |
 	BEQ CODE_80B8B1			;$80B8A1	 |
 	LDX #$8552			;$80B8A3	 |
-	STX $4352			;$80B8A6	 |
+	STX HDMA[5].source		;$80B8A6	 |
 	LDX #$8812			;$80B8A9	 |
-	STX $4362			;$80B8AC	 |
+	STX HDMA[6].source		;$80B8AC	 |
 	BRA CODE_80B8BD			;$80B8AF	/
 
 CODE_80B8B1:
 	LDX #$86B2			;$80B8B1	\
-	STX $4352			;$80B8B4	 |
+	STX HDMA[5].source		;$80B8B4	 |
 	LDX #$8822			;$80B8B7	 |
-	STX $4362			;$80B8BA	 |
+	STX HDMA[6].source		;$80B8BA	 |
 CODE_80B8BD:				;		 |
 	LDA $0523			;$80B8BD	 |
 	CMP #$000E			;$80B8C0	 |
@@ -6508,15 +6508,15 @@ CODE_80BD2F:				;		 |
 	STA PPU.cgram_address		;$80BD55	 |
 	REP #$20			;$80BD58	 |
 	LDA #$8014			;$80BD5A	 |
-	STA $4302			;$80BD5D	 |
-	STA $4308			;$80BD60	 |
+	STA DMA[0].source		;$80BD5D	 |
+	STA DMA[0].unused_2		;$80BD60	 |
 	LDA #$001E			;$80BD63	 |
-	STA $4305			;$80BD66	 |
+	STA DMA[0].size			;$80BD66	 |
 	LDA #$2200			;$80BD69	 |
-	STA $4300			;$80BD6C	 |
+	STA DMA[0].settings		;$80BD6C	 |
 	SEP #$20			;$80BD6F	 |
 	LDA #$7E			;$80BD71	 |
-	STA $4304			;$80BD73	 |
+	STA DMA[0].source_bank		;$80BD73	 |
 	LDA #$01			;$80BD76	 |
 	STA CPU.enable_dma		;$80BD78	 |
 	REP #$20			;$80BD7B	 |
@@ -6525,15 +6525,15 @@ CODE_80BD2F:				;		 |
 	STA PPU.cgram_address		;$80BD81	 |
 	REP #$20			;$80BD84	 |
 	LDA #$8032			;$80BD86	 |
-	STA $4302			;$80BD89	 |
-	STA $4308			;$80BD8C	 |
+	STA DMA[0].source		;$80BD89	 |
+	STA DMA[0].unused_2		;$80BD8C	 |
 	LDA #$000C			;$80BD8F	 |
-	STA $4305			;$80BD92	 |
+	STA DMA[0].size			;$80BD92	 |
 	LDA #$2200			;$80BD95	 |
-	STA $4300			;$80BD98	 |
+	STA DMA[0].settings		;$80BD98	 |
 	SEP #$20			;$80BD9B	 |
 	LDA #$7E			;$80BD9D	 |
-	STA $4304			;$80BD9F	 |
+	STA DMA[0].source_bank		;$80BD9F	 |
 	LDA #$01			;$80BDA2	 |
 	STA CPU.enable_dma		;$80BDA4	 |
 	REP #$20			;$80BDA7	 |
@@ -6816,14 +6816,14 @@ CODE_80C020:
 CODE_80C027:				;		 |
 	LDY #$2740			;$80C027	 |
 CODE_80C02A:				;		 |
-	STY $4320			;$80C02A	 |
+	STY HDMA[2].settings		;$80C02A	 |
 	LDA $2A				;$80C02D	 |
 	AND #$0001			;$80C02F	 |
 	EOR #$0001			;$80C032	 |
 	XBA				;$80C035	 |
 	CLC				;$80C036	 |
 	ADC #$80F2			;$80C037	 |
-	STA $4322			;$80C03A	 |
+	STA HDMA[2].source		;$80C03A	 |
 CODE_80C03D:				;		 |
 	JSR CODE_80B89C			;$80C03D	 |
 	JSL CODE_B5A919			;$80C040	 |
@@ -6928,15 +6928,15 @@ CODE_80C0FB:				;		 |
 	EOR #$000E			;$80C10D	 |
 	TAX				;$80C110	 |
 	LDA DATA_80CAE5,x		;$80C111	 |
-	STA $4312			;$80C114	 |
-	STA $4318			;$80C117	 |
+	STA DMA[1].source		;$80C114	 |
+	STA DMA[1].unused_2		;$80C117	 |
 	LDA #$09A0			;$80C11A	 |
-	STA $4315			;$80C11D	 |
+	STA DMA[1].size			;$80C11D	 |
 	LDA #$1801			;$80C120	 |
-	STA $4310			;$80C123	 |
+	STA DMA[1].settings		;$80C123	 |
 	SEP #$20			;$80C126	 |
 	LDA #$F3			;$80C128	 |
-	STA $4314			;$80C12A	 |
+	STA DMA[1].source_bank		;$80C12A	 |
 	LDA #$02			;$80C12D	 |
 	STA CPU.enable_dma		;$80C12F	 |
 	REP #$20			;$80C132	 |
@@ -7203,15 +7203,15 @@ CODE_80C329:
 	TAX				;$80C332	 |
 	LDA.l DATA_80C38C,x		;$80C333	 |
 	LDX #$0300			;$80C337	 |
-	STA $4312			;$80C33A	 |
-	STA $4318			;$80C33D	 |
+	STA DMA[1].source		;$80C33A	 |
+	STA DMA[1].unused_2		;$80C33D	 |
 	STY PPU.vram_address		;$80C340	 |
-	STX $4315			;$80C343	 |
+	STX DMA[1].size			;$80C343	 |
 	LDA #$1801			;$80C346	 |
-	STA $4310			;$80C349	 |
+	STA DMA[1].settings		;$80C349	 |
 	SEP #$20			;$80C34C	 |
 	LDA #$F4			;$80C34E	 |
-	STA $4314			;$80C350	 |
+	STA DMA[1].source_bank		;$80C350	 |
 	LDA #$02			;$80C353	 |
 	STA CPU.enable_dma		;$80C355	 |
 	REP #$20			;$80C358	 |
@@ -7222,15 +7222,15 @@ CODE_80C329:
 	TAX				;$80C363	 |
 	LDA.l DATA_80C446,x		;$80C364	 |
 	LDX #$0380			;$80C368	 |
-	STA $4312			;$80C36B	 |
-	STA $4318			;$80C36E	 |
+	STA DMA[1].source		;$80C36B	 |
+	STA DMA[1].unused_2		;$80C36E	 |
 	STY PPU.vram_address		;$80C371	 |
-	STX $4315			;$80C374	 |
+	STX DMA[1].size			;$80C374	 |
 	LDA #$1801			;$80C377	 |
-	STA $4310			;$80C37A	 |
+	STA DMA[1].settings		;$80C37A	 |
 	SEP #$20			;$80C37D	 |
 	LDA #$F4			;$80C37F	 |
-	STA $4314			;$80C381	 |
+	STA DMA[1].source_bank		;$80C381	 |
 	LDA #$02			;$80C384	 |
 	STA CPU.enable_dma		;$80C386	 |
 	REP #$20			;$80C389	 |
@@ -7534,15 +7534,15 @@ CODE_80C5DE:
 	LDA $0913			;$80C5FB	 |
 	BEQ CODE_80C629			;$80C5FE	 |
 	LDA #$8C28			;$80C600	 |
-	STA $4302			;$80C603	 |
-	STA $4308			;$80C606	 |
+	STA DMA[0].source		;$80C603	 |
+	STA DMA[0].unused_2		;$80C606	 |
 	LDA #$0100			;$80C609	 |
-	STA $4305			;$80C60C	 |
+	STA DMA[0].size			;$80C60C	 |
 	LDA #$2200			;$80C60F	 |
-	STA $4300			;$80C612	 |
+	STA DMA[0].settings		;$80C612	 |
 	SEP #$20			;$80C615	 |
 	LDA #$7E			;$80C617	 |
-	STA $4304			;$80C619	 |
+	STA DMA[0].source_bank		;$80C619	 |
 	STZ PPU.cgram_address		;$80C61C	 |
 	LDA #$01			;$80C61F	 |
 	STA CPU.enable_dma		;$80C621	 |
@@ -7872,16 +7872,16 @@ CODE_80C8FF:
 	JSL CODE_B5B00B			;$80C90D	 |
 	JSR CODE_80F324			;$80C911	 |
 	LDX #$80F2			;$80C914	 |
-	STX $4312			;$80C917	 |
+	STX HDMA[1].source		;$80C917	 |
 	LDX #$8012			;$80C91A	 |
-	STX $4322			;$80C91D	 |
+	STX HDMA[2].source		;$80C91D	 |
 	LDA $2A				;$80C920	 |
 	BIT #$0001			;$80C922	 |
 	BNE CODE_80C933			;$80C925	 |
 	LDX #$810A			;$80C927	 |
-	STX $4312			;$80C92A	 |
+	STX HDMA[1].source		;$80C92A	 |
 	LDX #$85D2			;$80C92D	 |
-	STX $4322			;$80C930	 |
+	STX HDMA[2].source		;$80C930	 |
 CODE_80C933:				;		 |
 	LDA $17BA			;$80C933	 |
 	LSR A				;$80C936	 |
@@ -7980,16 +7980,16 @@ CODE_80C9B3:				;		 |
 	AND #$000E			;$80C9EF	 |
 	TAX				;$80C9F2	 |
 	LDA.l DATA_80C963,x		;$80C9F3	 |
-	STA $4302			;$80C9F7	 |
+	STA DMA[0].source		;$80C9F7	 |
 	LDA #$0120			;$80C9FA	 |
-	STA $4305			;$80C9FD	 |
+	STA DMA[0].size			;$80C9FD	 |
 	LDA #$1801			;$80CA00	 |
-	STA $4300			;$80CA03	 |
+	STA DMA[0].settings		;$80CA03	 |
 	LDA #$5008			;$80CA06	 |
 	STA PPU.vram_address		;$80CA09	 |
 	SEP #$30			;$80CA0C	 |
 	LDA #$F3			;$80CA0E	 |
-	STA $4304			;$80CA10	 |
+	STA DMA[0].source_bank		;$80CA10	 |
 	LDA #$01			;$80CA13	 |
 	STA CPU.enable_dma		;$80CA15	 |
 	REP #$30			;$80CA18	 |
@@ -8218,14 +8218,14 @@ CODE_80CBD7:				;		 |
 	STA $32				;$80CBDF	 |
 	STA PPU.vram_address		;$80CBE1	 |
 	LDA.l DATA_80D3ED,x		;$80CBE4	 |
-	STA $4302			;$80CBE8	 |
+	STA DMA[0].source		;$80CBE8	 |
 	LDA $38				;$80CBEB	 |
-	STA $4305			;$80CBED	 |
+	STA DMA[0].size			;$80CBED	 |
 	LDA #$1801			;$80CBF0	 |
-	STA $4300			;$80CBF3	 |
+	STA DMA[0].settings		;$80CBF3	 |
 	SEP #$30			;$80CBF6	 |
 	LDA.l DATA_80D3EF,x		;$80CBF8	 |
-	STA $4304			;$80CBFC	 |
+	STA DMA[0].source_bank		;$80CBFC	 |
 	LDY #$01			;$80CBFF	 |
 	STY CPU.enable_dma		;$80CC01	 |
 	REP #$20			;$80CC04	 |
@@ -8237,7 +8237,7 @@ CODE_80CBD7:				;		 |
 	STA $32				;$80CC10	 |
 	STA PPU.vram_address		;$80CC12	 |
 	LDA $38				;$80CC15	 |
-	STA $4305			;$80CC17	 |
+	STA DMA[0].size			;$80CC17	 |
 	STY CPU.enable_dma		;$80CC1A	 |
 	LDA $32				;$80CC1D	 |
 	INC A				;$80CC1F	 |
@@ -8246,7 +8246,7 @@ CODE_80CBD7:				;		 |
 	EOR $32				;$80CC25	 |
 	STA PPU.vram_address		;$80CC27	 |
 	LDA $38				;$80CC2A	 |
-	STA $4305			;$80CC2C	 |
+	STA DMA[0].size			;$80CC2C	 |
 	STY CPU.enable_dma		;$80CC2F	 |
 	REP #$10			;$80CC32	 |
 	PLX				;$80CC34	 |
@@ -8266,16 +8266,16 @@ CODE_80CC3F:
 	AND #$000E			;$80CC47	 |
 	TAX				;$80CC4A	 |
 	LDA.l DATA_80CCE8,x		;$80CC4B	 |
-	STA $4302			;$80CC4F	 |
+	STA DMA[0].source		;$80CC4F	 |
 	LDA #$0220			;$80CC52	 |
-	STA $4305			;$80CC55	 |
+	STA DMA[0].size			;$80CC55	 |
 	LDA #$1801			;$80CC58	 |
-	STA $4300			;$80CC5B	 |
+	STA DMA[0].settings		;$80CC5B	 |
 	LDA #$7010			;$80CC5E	 |
 	STA PPU.vram_address		;$80CC61	 |
 	SEP #$30			;$80CC64	 |
 	LDA #$F5			;$80CC66	 |
-	STA $4304			;$80CC68	 |
+	STA DMA[0].source_bank		;$80CC68	 |
 	LDA #$01			;$80CC6B	 |
 	STA CPU.enable_dma		;$80CC6D	 |
 	REP #$30			;$80CC70	 |
@@ -8390,15 +8390,15 @@ CODE_80CD28:
 	LDA.l DATA_80CD5E,x		;$80CD36	 |
 	LDX #$0140			;$80CD3A	 |
 CODE_80CD3D:				;		 |
-	STA $4302			;$80CD3D	 |
-	STA $4308			;$80CD40	 |
+	STA DMA[0].source		;$80CD3D	 |
+	STA DMA[0].unused_2		;$80CD40	 |
 	STY PPU.vram_address		;$80CD43	 |
-	STX $4305			;$80CD46	 |
+	STX DMA[0].size			;$80CD46	 |
 	LDA #$1801			;$80CD49	 |
-	STA $4300			;$80CD4C	 |
+	STA DMA[0].settings		;$80CD4C	 |
 	SEP #$20			;$80CD4F	 |
 	LDA #$F5			;$80CD51	 |
-	STA $4304			;$80CD53	 |
+	STA DMA[0].source_bank		;$80CD53	 |
 	LDA #$01			;$80CD56	 |
 	STA CPU.enable_dma		;$80CD58	 |
 	REP #$20			;$80CD5B	 |
@@ -8476,15 +8476,15 @@ CODE_80CDDB:
 	LDA $0957			;$80CDE1	 |
 	TAX				;$80CDE4	 |
 	LDA DATA_80CED3,x		;$80CDE5	 |
-	STA $4302			;$80CDE8	 |
-	STA $4308			;$80CDEB	 |
+	STA DMA[0].source		;$80CDE8	 |
+	STA DMA[0].unused_2		;$80CDEB	 |
 	LDA #$0180			;$80CDEE	 |
-	STA $4305			;$80CDF1	 |
+	STA DMA[0].size			;$80CDF1	 |
 	LDA #$1801			;$80CDF4	 |
-	STA $4300			;$80CDF7	 |
+	STA DMA[0].settings		;$80CDF7	 |
 	SEP #$20			;$80CDFA	 |
 	LDA #$F5			;$80CDFC	 |
-	STA $4304			;$80CDFE	 |
+	STA DMA[0].source_bank		;$80CDFE	 |
 	LDA #$01			;$80CE01	 |
 	STA CPU.enable_dma		;$80CE03	 |
 	REP #$20			;$80CE06	 |
@@ -8496,15 +8496,15 @@ CODE_80CE09:
 	LDA $0957			;$80CE0F	 |
 	TAX				;$80CE12	 |
 	LDA DATA_80CE97,x		;$80CE13	 |
-	STA $4302			;$80CE16	 |
-	STA $4308			;$80CE19	 |
+	STA DMA[0].source		;$80CE16	 |
+	STA DMA[0].unused_2		;$80CE19	 |
 	LDA #$02C0			;$80CE1C	 |
-	STA $4305			;$80CE1F	 |
+	STA DMA[0].size			;$80CE1F	 |
 	LDA #$1801			;$80CE22	 |
-	STA $4300			;$80CE25	 |
+	STA DMA[0].settings		;$80CE25	 |
 	SEP #$20			;$80CE28	 |
 	LDA #$FB			;$80CE2A	 |
-	STA $4304			;$80CE2C	 |
+	STA DMA[0].source_bank		;$80CE2C	 |
 	LDA #$01			;$80CE2F	 |
 	STA CPU.enable_dma		;$80CE31	 |
 	REP #$20			;$80CE34	 |
@@ -8516,15 +8516,15 @@ CODE_80CE37:
 	LDA $0957			;$80CE3D	 |
 	TAX				;$80CE40	 |
 	LDA DATA_80CEB5,x		;$80CE41	 |
-	STA $4302			;$80CE44	 |
-	STA $4308			;$80CE47	 |
+	STA DMA[0].source		;$80CE44	 |
+	STA DMA[0].unused_2		;$80CE47	 |
 	LDA #$01A0			;$80CE4A	 |
-	STA $4305			;$80CE4D	 |
+	STA DMA[0].size			;$80CE4D	 |
 	LDA #$1801			;$80CE50	 |
-	STA $4300			;$80CE53	 |
+	STA DMA[0].settings		;$80CE53	 |
 	SEP #$20			;$80CE56	 |
 	LDA #$FB			;$80CE58	 |
-	STA $4304			;$80CE5A	 |
+	STA DMA[0].source_bank		;$80CE5A	 |
 	LDA #$01			;$80CE5D	 |
 	STA CPU.enable_dma		;$80CE5F	 |
 	REP #$20			;$80CE62	 |
@@ -8538,15 +8538,15 @@ CODE_80CE65:
 	LDA DATA_80CEB5,x		;$80CE6F	 |
 	CLC				;$80CE72	 |
 	ADC #$1860			;$80CE73	 |
-	STA $4302			;$80CE76	 |
-	STA $4308			;$80CE79	 |
+	STA DMA[0].source		;$80CE76	 |
+	STA DMA[0].unused_2		;$80CE79	 |
 	LDA #$01A0			;$80CE7C	 |
-	STA $4305			;$80CE7F	 |
+	STA DMA[0].size			;$80CE7F	 |
 	LDA #$1801			;$80CE82	 |
-	STA $4300			;$80CE85	 |
+	STA DMA[0].settings		;$80CE85	 |
 	SEP #$20			;$80CE88	 |
 	LDA #$FB			;$80CE8A	 |
-	STA $4304			;$80CE8C	 |
+	STA DMA[0].source_bank		;$80CE8C	 |
 	LDA #$01			;$80CE8F	 |
 	STA CPU.enable_dma		;$80CE91	 |
 	REP #$20			;$80CE94	 |
@@ -8645,15 +8645,15 @@ CODE_80CF21:
 	LDA #$2010			;$80CF2E	 |
 	STA PPU.vram_address		;$80CF31	 |
 	LDA DATA_80CF11,x		;$80CF34	 |
-	STA $4312			;$80CF37	 |
-	STA $4318			;$80CF3A	 |
+	STA DMA[1].source		;$80CF37	 |
+	STA DMA[1].unused_2		;$80CF3A	 |
 	LDA #$03C0			;$80CF3D	 |
-	STA $4315			;$80CF40	 |
+	STA DMA[1].size			;$80CF40	 |
 	LDA #$1801			;$80CF43	 |
-	STA $4310			;$80CF46	 |
+	STA DMA[1].settings		;$80CF46	 |
 	SEP #$20			;$80CF49	 |
 	LDA #$FA			;$80CF4B	 |
-	STA $4314			;$80CF4D	 |
+	STA DMA[1].source_bank		;$80CF4D	 |
 	LDA #$02			;$80CF50	 |
 	STA CPU.enable_dma		;$80CF52	 |
 	REP #$20			;$80CF55	 |
@@ -8677,15 +8677,15 @@ CODE_80CF62:				;		 |
 	LDA #$4F00			;$80CF75	 |
 	STA PPU.vram_address		;$80CF78	 |
 	LDA DATA_80CEF1,x		;$80CF7B	 |
-	STA $4312			;$80CF7E	 |
-	STA $4318			;$80CF81	 |
+	STA DMA[1].source		;$80CF7E	 |
+	STA DMA[1].unused_2		;$80CF81	 |
 	LDA #$0200			;$80CF84	 |
-	STA $4315			;$80CF87	 |
+	STA DMA[1].size			;$80CF87	 |
 	LDA #$1801			;$80CF8A	 |
-	STA $4310			;$80CF8D	 |
+	STA DMA[1].settings		;$80CF8D	 |
 	SEP #$20			;$80CF90	 |
 	LDA #$F3			;$80CF92	 |
-	STA $4314			;$80CF94	 |
+	STA DMA[1].source_bank		;$80CF94	 |
 	LDA #$02			;$80CF97	 |
 	STA CPU.enable_dma		;$80CF99	 |
 	REP #$20			;$80CF9C	 |
@@ -8703,15 +8703,15 @@ CODE_80CF9F:
 	LDA #$6000			;$80CFB2	 |
 	STA PPU.vram_address		;$80CFB5	 |
 	LDA DATA_80CF01,x		;$80CFB8	 |
-	STA $4312			;$80CFBB	 |
-	STA $4318			;$80CFBE	 |
+	STA DMA[1].source		;$80CFBB	 |
+	STA DMA[1].unused_2		;$80CFBE	 |
 	LDA #$0400			;$80CFC1	 |
-	STA $4315			;$80CFC4	 |
+	STA DMA[1].size			;$80CFC4	 |
 	LDA #$1801			;$80CFC7	 |
-	STA $4310			;$80CFCA	 |
+	STA DMA[1].settings		;$80CFCA	 |
 	SEP #$20			;$80CFCD	 |
 	LDA #$F6			;$80CFCF	 |
-	STA $4314			;$80CFD1	 |
+	STA DMA[1].source_bank		;$80CFD1	 |
 	LDA #$02			;$80CFD4	 |
 	STA CPU.enable_dma		;$80CFD6	 |
 	REP #$20			;$80CFD9	 |
@@ -8731,7 +8731,7 @@ CODE_80CFDC:
 	ADC $32				;$80CFEB	 |
 	CLC				;$80CFED	 |
 	ADC #DATA_BBA35F		;$80CFEE	 |
-	STA $4312			;$80CFF1	 |
+	STA HDMA[1].source		;$80CFF1	 |
 	LDA $17BB			;$80CFF4	 |
 	AND #$00FF			;$80CFF7	 |
 	DEC A				;$80CFFA	 |
@@ -8781,7 +8781,7 @@ CODE_80D04B:				;		 |
 	BEQ CODE_80D064			;$80D05F	 |
 	LDX #DATA_BBA408		;$80D061	 |
 CODE_80D064:				;		 |
-	STX $4322			;$80D064	 |
+	STX HDMA[2].source		;$80D064	 |
 	LDA $17BA			;$80D067	 |
 	AND #$00FF			;$80D06A	 |
 	EOR #$00FF			;$80D06D	 |
@@ -8802,15 +8802,15 @@ CODE_80D083:				;		 |
 	STA PPU.cgram_address		;$80D08F	 |
 	REP #$20			;$80D092	 |
 	LDA #$8C28			;$80D094	 |
-	STA $4302			;$80D097	 |
-	STA $4308			;$80D09A	 |
+	STA DMA[0].source		;$80D097	 |
+	STA DMA[0].unused_2		;$80D09A	 |
 	LDA #$001E			;$80D09D	 |
-	STA $4305			;$80D0A0	 |
+	STA DMA[0].size			;$80D0A0	 |
 	LDA #$2200			;$80D0A3	 |
-	STA $4300			;$80D0A6	 |
+	STA DMA[0].settings		;$80D0A6	 |
 	SEP #$20			;$80D0A9	 |
 	LDA #$7E			;$80D0AB	 |
-	STA $4304			;$80D0AD	 |
+	STA DMA[0].source_bank		;$80D0AD	 |
 	LDA #$01			;$80D0B0	 |
 	STA CPU.enable_dma		;$80D0B2	 |
 	REP #$20			;$80D0B5	 |
@@ -12573,14 +12573,14 @@ CODE_80F324:
 	AND #$000F			;$80F330	 |
 	STA $EF				;$80F333	 |
 	LDA #$2200			;$80F335	 |
-	STA $4300			;$80F338	 |
+	STA DMA[0].settings		;$80F338	 |
 	LDA #$001E			;$80F33B	 |
-	STA $4305			;$80F33E	 |
+	STA DMA[0].size			;$80F33E	 |
 	LDA $0B24,x			;$80F341	 |
-	STA $4302			;$80F344	 |
+	STA DMA[0].source		;$80F344	 |
 	LDA $0B26,x			;$80F347	 |
 	SEP #$20			;$80F34A	 |
-	STA $4304			;$80F34C	 |
+	STA DMA[0].source_bank		;$80F34C	 |
 	XBA				;$80F34F	 |
 	STA PPU.cgram_address		;$80F350	 |
 	LDA #$01			;$80F353	 |

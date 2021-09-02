@@ -3342,20 +3342,20 @@ CODE_B5A911:				;		 |
 
 CODE_B5A919:
 	LDA #$1801			;$B5A919	\
-	STA $4300			;$B5A91C	 |
+	STA DMA[0].settings		;$B5A91C	 |
 	SEP #$10			;$B5A91F	 |
 	LDY #$01			;$B5A921	 |
 	LDX #$00			;$B5A923	 |
 CODE_B5A925:				;		 |
 	LDA $1738,x			;$B5A925	 |
 	BPL CODE_B5A94D			;$B5A928	 |
-	STA $4304			;$B5A92A	 |
+	STA DMA[0].source_bank		;$B5A92A	 |
 	LDA $1732,x			;$B5A92D	 |
-	STA $4305			;$B5A930	 |
+	STA DMA[0].size			;$B5A930	 |
 	LDA $1734,x			;$B5A933	 |
 	STA PPU.vram_address		;$B5A936	 |
 	LDA $1736,x			;$B5A939	 |
-	STA $4302			;$B5A93C	 |
+	STA DMA[0].source		;$B5A93C	 |
 	STZ $1738,x			;$B5A93F	 |
 	STY CPU.enable_dma		;$B5A942	 |
 	TXA				;$B5A945	 |
@@ -3571,14 +3571,14 @@ CODE_B5AAB5:				;		 |
 	ADC #$7800			;$B5AAB5	 |
 	STA PPU.vram_address		;$B5AAB8	 |
 	LDA #$189A			;$B5AABB	 |
-	STA $4302			;$B5AABE	 |
-	STA $4308			;$B5AAC1	 |
+	STA DMA[0].source		;$B5AABE	 |
+	STA DMA[0].unused_2		;$B5AAC1	 |
 	LDA #$0040			;$B5AAC4	 |
-	STA $4305			;$B5AAC7	 |
+	STA DMA[0].size			;$B5AAC7	 |
 	LDA #$1801			;$B5AACA	 |
-	STA $4300			;$B5AACD	 |
+	STA DMA[0].settings		;$B5AACD	 |
 	SEP #$20			;$B5AAD0	 |
-	STZ $4304			;$B5AAD2	 |
+	STZ DMA[0].source_bank		;$B5AAD2	 |
 	LDA #$01			;$B5AAD5	 |
 	STA CPU.enable_dma		;$B5AAD7	 |
 	REP #$20			;$B5AADA	 |
@@ -3788,14 +3788,14 @@ CODE_B5AC42:				;		 |
 	STA $32				;$B5AC4B	 |
 	STA PPU.vram_address		;$B5AC4D	 |
 	LDA #$18DA			;$B5AC50	 |
-	STA $4302			;$B5AC53	 |
-	STA $4308			;$B5AC56	 |
+	STA DMA[0].source		;$B5AC53	 |
+	STA DMA[0].unused_2		;$B5AC56	 |
 	LDA #$0040			;$B5AC59	 |
-	STA $4305			;$B5AC5C	 |
+	STA DMA[0].size			;$B5AC5C	 |
 	LDA #$1801			;$B5AC5F	 |
-	STA $4300			;$B5AC62	 |
+	STA DMA[0].settings		;$B5AC62	 |
 	SEP #$20			;$B5AC65	 |
-	STZ $4304			;$B5AC67	 |
+	STZ DMA[0].source_bank		;$B5AC67	 |
 	LDA #$01			;$B5AC6A	 |
 	STA CPU.enable_dma		;$B5AC6C	 |
 	REP #$20			;$B5AC6F	 |
@@ -3804,14 +3804,14 @@ CODE_B5AC42:				;		 |
 	ADC #$0400			;$B5AC74	 |
 	STA PPU.vram_address		;$B5AC77	 |
 	LDA #$191A			;$B5AC7A	 |
-	STA $4302			;$B5AC7D	 |
-	STA $4308			;$B5AC80	 |
+	STA DMA[0].source		;$B5AC7D	 |
+	STA DMA[0].unused_2		;$B5AC80	 |
 	LDA #$0040			;$B5AC83	 |
-	STA $4305			;$B5AC86	 |
+	STA DMA[0].size			;$B5AC86	 |
 	LDA #$1801			;$B5AC89	 |
-	STA $4300			;$B5AC8C	 |
+	STA DMA[0].settings		;$B5AC8C	 |
 	SEP #$20			;$B5AC8F	 |
-	STZ $4304			;$B5AC91	 |
+	STZ DMA[0].source_bank		;$B5AC91	 |
 	LDA #$01			;$B5AC94	 |
 	STA CPU.enable_dma		;$B5AC96	 |
 	REP #$20			;$B5AC99	 |
@@ -4024,14 +4024,14 @@ CODE_B5AE10:				;		 |
 	ADC $17B6			;$B5AE10	 |
 	STA PPU.vram_address		;$B5AE13	 |
 	LDA #$185A			;$B5AE16	 |
-	STA $4302			;$B5AE19	 |
-	STA $4308			;$B5AE1C	 |
+	STA DMA[0].source		;$B5AE19	 |
+	STA DMA[0].unused_2		;$B5AE1C	 |
 	LDA #$0040			;$B5AE1F	 |
-	STA $4305			;$B5AE22	 |
+	STA DMA[0].size			;$B5AE22	 |
 	LDA #$1801			;$B5AE25	 |
-	STA $4300			;$B5AE28	 |
+	STA DMA[0].settings		;$B5AE28	 |
 	SEP #$20			;$B5AE2B	 |
-	STZ $4304			;$B5AE2D	 |
+	STZ DMA[0].source_bank		;$B5AE2D	 |
 	LDA #$01			;$B5AE30	 |
 	STA CPU.enable_dma		;$B5AE32	 |
 	REP #$20			;$B5AE35	 |
@@ -4074,14 +4074,14 @@ CODE_B5AE76:				;		 |
 	ADC #$7800			;$B5AE76	 |
 	STA PPU.vram_address		;$B5AE79	 |
 	LDA #$191A			;$B5AE7C	 |
-	STA $4302			;$B5AE7F	 |
-	STA $4308			;$B5AE82	 |
+	STA DMA[0].source		;$B5AE7F	 |
+	STA DMA[0].unused_2		;$B5AE82	 |
 	LDA #$0040			;$B5AE85	 |
-	STA $4305			;$B5AE88	 |
+	STA DMA[0].size			;$B5AE88	 |
 	LDA #$1801			;$B5AE8B	 |
-	STA $4300			;$B5AE8E	 |
+	STA DMA[0].settings		;$B5AE8E	 |
 	SEP #$20			;$B5AE91	 |
-	STZ $4304			;$B5AE93	 |
+	STZ DMA[0].source_bank		;$B5AE93	 |
 	LDA #$01			;$B5AE96	 |
 	STA CPU.enable_dma		;$B5AE98	 |
 	REP #$20			;$B5AE9B	 |
@@ -4313,14 +4313,14 @@ CODE_B5B02B:				;		 |
 	STA $32				;$B5B034	 |
 	STA PPU.vram_address		;$B5B036	 |
 	LDA #$17DA			;$B5B039	 |
-	STA $4302			;$B5B03C	 |
-	STA $4308			;$B5B03F	 |
+	STA DMA[0].source		;$B5B03C	 |
+	STA DMA[0].unused_2		;$B5B03F	 |
 	LDA #$0040			;$B5B042	 |
-	STA $4305			;$B5B045	 |
+	STA DMA[0].size			;$B5B045	 |
 	LDA #$1801			;$B5B048	 |
-	STA $4300			;$B5B04B	 |
+	STA DMA[0].settings		;$B5B04B	 |
 	SEP #$20			;$B5B04E	 |
-	STZ $4304			;$B5B050	 |
+	STZ DMA[0].source_bank		;$B5B050	 |
 	LDA #$01			;$B5B053	 |
 	STA CPU.enable_dma		;$B5B055	 |
 	REP #$20			;$B5B058	 |
@@ -4329,14 +4329,14 @@ CODE_B5B02B:				;		 |
 	ADC #$0400			;$B5B05D	 |
 	STA PPU.vram_address		;$B5B060	 |
 	LDA #$181A			;$B5B063	 |
-	STA $4302			;$B5B066	 |
-	STA $4308			;$B5B069	 |
+	STA DMA[0].source		;$B5B066	 |
+	STA DMA[0].unused_2		;$B5B069	 |
 	LDA #$0040			;$B5B06C	 |
-	STA $4305			;$B5B06F	 |
+	STA DMA[0].size			;$B5B06F	 |
 	LDA #$1801			;$B5B072	 |
-	STA $4300			;$B5B075	 |
+	STA DMA[0].settings		;$B5B075	 |
 	SEP #$20			;$B5B078	 |
-	STZ $4304			;$B5B07A	 |
+	STZ DMA[0].source_bank		;$B5B07A	 |
 	LDA #$01			;$B5B07D	 |
 	STA CPU.enable_dma		;$B5B07F	 |
 	REP #$20			;$B5B082	 |
@@ -4367,14 +4367,14 @@ CODE_B5B0A2:				;		 |
 	STA $32				;$B5B0AB	 |
 	STA PPU.vram_address		;$B5B0AD	 |
 	LDA #$189A			;$B5B0B0	 |
-	STA $4302			;$B5B0B3	 |
-	STA $4308			;$B5B0B6	 |
+	STA DMA[0].source		;$B5B0B3	 |
+	STA DMA[0].unused_2		;$B5B0B6	 |
 	LDA #$0040			;$B5B0B9	 |
-	STA $4305			;$B5B0BC	 |
+	STA DMA[0].size			;$B5B0BC	 |
 	LDA #$1801			;$B5B0BF	 |
-	STA $4300			;$B5B0C2	 |
+	STA DMA[0].settings		;$B5B0C2	 |
 	SEP #$20			;$B5B0C5	 |
-	STZ $4304			;$B5B0C7	 |
+	STZ DMA[0].source_bank		;$B5B0C7	 |
 	LDA #$01			;$B5B0CA	 |
 	STA CPU.enable_dma		;$B5B0CC	 |
 	REP #$20			;$B5B0CF	 |
@@ -4383,14 +4383,14 @@ CODE_B5B0A2:				;		 |
 	ADC #$0400			;$B5B0D4	 |
 	STA PPU.vram_address		;$B5B0D7	 |
 	LDA #$18DA			;$B5B0DA	 |
-	STA $4302			;$B5B0DD	 |
-	STA $4308			;$B5B0E0	 |
+	STA DMA[0].source		;$B5B0DD	 |
+	STA DMA[0].unused_2		;$B5B0E0	 |
 	LDA #$0040			;$B5B0E3	 |
-	STA $4305			;$B5B0E6	 |
+	STA DMA[0].size			;$B5B0E6	 |
 	LDA #$1801			;$B5B0E9	 |
-	STA $4300			;$B5B0EC	 |
+	STA DMA[0].settings		;$B5B0EC	 |
 	SEP #$20			;$B5B0EF	 |
-	STZ $4304			;$B5B0F1	 |
+	STZ DMA[0].source_bank		;$B5B0F1	 |
 	LDA #$01			;$B5B0F4	 |
 	STA CPU.enable_dma		;$B5B0F6	 |
 	REP #$20			;$B5B0F9	 |
@@ -8463,15 +8463,15 @@ CODE_B5D349:
 	AND #$000E			;$B5D358	 |
 	TAX				;$B5D35B	 |
 	LDA DATA_B5D31C,x		;$B5D35C	 |
-	STA $4312			;$B5D35F	 |
-	STA $4318			;$B5D362	 |
+	STA DMA[1].source		;$B5D35F	 |
+	STA DMA[1].unused_2		;$B5D362	 |
 	LDA #$0380			;$B5D365	 |
-	STA $4315			;$B5D368	 |
+	STA DMA[1].size			;$B5D368	 |
 	LDA #$1801			;$B5D36B	 |
-	STA $4310			;$B5D36E	 |
+	STA DMA[1].settings		;$B5D36E	 |
 	SEP #$20			;$B5D371	 |
 	LDA #$FA			;$B5D373	 |
-	STA $4314			;$B5D375	 |
+	STA DMA[1].source_bank		;$B5D375	 |
 	LDA #$02			;$B5D378	 |
 	STA CPU.enable_dma		;$B5D37A	 |
 	REP #$20			;$B5D37D	 |
@@ -8497,15 +8497,15 @@ CODE_B5D3A5:
 	LDA #$6010			;$B5D3AB	 |
 	STA PPU.vram_address		;$B5D3AE	 |
 	LDA DATA_B5D32C,x		;$B5D3B1	 |
-	STA $4312			;$B5D3B4	 |
-	STA $4318			;$B5D3B7	 |
+	STA DMA[1].source		;$B5D3B4	 |
+	STA DMA[1].unused_2		;$B5D3B7	 |
 	LDA #$0700			;$B5D3BA	 |
-	STA $4315			;$B5D3BD	 |
+	STA DMA[1].size			;$B5D3BD	 |
 	LDA #$1801			;$B5D3C0	 |
-	STA $4310			;$B5D3C3	 |
+	STA DMA[1].settings		;$B5D3C3	 |
 	SEP #$20			;$B5D3C6	 |
 	LDA #$FA			;$B5D3C8	 |
-	STA $4314			;$B5D3CA	 |
+	STA DMA[1].source_bank		;$B5D3CA	 |
 	LDA #$02			;$B5D3CD	 |
 	STA CPU.enable_dma		;$B5D3CF	 |
 	REP #$20			;$B5D3D2	 |
@@ -9032,33 +9032,33 @@ CODE_B5D90A:				;		 |
 	BCC CODE_B5D90A			;$B5D917	 |
 	SEP #$20			;$B5D919	 |
 	LDX #$2C01			;$B5D91B	 |
-	STX $4310			;$B5D91E	 |
+	STX HDMA[1].settings		;$B5D91E	 |
 	LDX #$8012			;$B5D921	 |
-	STX $4312			;$B5D924	 |
+	STX HDMA[1].source		;$B5D924	 |
 	LDA #$7E			;$B5D927	 |
-	STA $4314			;$B5D929	 |
-	STZ $4317			;$B5D92C	 |
+	STA HDMA[1].source_bank		;$B5D929	 |
+	STZ HDMA[1].indirect_source_bank;$B5D92C	 |
 	LDX #$2103			;$B5D92F	 |
-	STX $4320			;$B5D932	 |
+	STX HDMA[2].settings		;$B5D932	 |
 	LDX #$801C			;$B5D935	 |
-	STX $4322			;$B5D938	 |
+	STX HDMA[2].source		;$B5D938	 |
 	LDA #$7E			;$B5D93B	 |
-	STA $4324			;$B5D93D	 |
-	STZ $4327			;$B5D940	 |
+	STA HDMA[2].source_bank		;$B5D93D	 |
+	STZ HDMA[2].indirect_source_bank;$B5D940	 |
 	LDX #$0F03			;$B5D943	 |
-	STX $4330			;$B5D946	 |
+	STX HDMA[3].settings		;$B5D946	 |
 	LDX #$804E			;$B5D949	 |
-	STX $4332			;$B5D94C	 |
+	STX HDMA[3].source		;$B5D94C	 |
 	LDA #$7E			;$B5D94F	 |
-	STA $4334			;$B5D951	 |
-	STZ $4337			;$B5D954	 |
+	STA HDMA[3].source_bank		;$B5D951	 |
+	STZ HDMA[3].indirect_source_bank;$B5D954	 |
 	LDX #$1102			;$B5D957	 |
-	STX $4340			;$B5D95A	 |
+	STX HDMA[4].settings		;$B5D95A	 |
 	LDX #$8135			;$B5D95D	 |
-	STX $4342			;$B5D960	 |
+	STX HDMA[4].source		;$B5D960	 |
 	LDA #$7E			;$B5D963	 |
-	STA $4344			;$B5D965	 |
-	STZ $4347			;$B5D968	 |
+	STA HDMA[4].source_bank		;$B5D965	 |
+	STZ HDMA[4].indirect_source_bank;$B5D968	 |
 	REP #$20			;$B5D96B	 |
 	RTS				;$B5D96D	/
 
@@ -10024,20 +10024,20 @@ DATA_B5E0E1:
 CODE_B5E0E2:
 	PHB				;$B5E0E2	\
 	LDA #DATA_B5E0E1		;$B5E0E3	 |
-	STA $4302			;$B5E0E6	 |
+	STA DMA[0].source		;$B5E0E6	 |
 	LDA.w #DATA_B5E0E1>>16		;$B5E0E9	 |
-	STA $4304			;$B5E0EC	 |
+	STA DMA[0].source_bank		;$B5E0EC	 |
 	LDA #$0800			;$B5E0EF	 |
-	STA $4305			;$B5E0F2	 |
+	STA DMA[0].size			;$B5E0F2	 |
 	LDA #$8D28			;$B5E0F5	 |
 	STA WRAM.address		;$B5E0F8	 |
 	SEP #$20			;$B5E0FB	 |
 	LDA #$7E			;$B5E0FD	 |
 	STA WRAM.bank			;$B5E0FF	 |
 	LDA #$80			;$B5E102	 |
-	STA $4301			;$B5E104	 |
+	STA DMA[0].destination		;$B5E104	 |
 	LDA #$08			;$B5E107	 |
-	STA $4300			;$B5E109	 |
+	STA DMA[0].settings		;$B5E109	 |
 	LDA #$01			;$B5E10C	 |
 	STA CPU.enable_dma		;$B5E10E	 |
 	REP #$20			;$B5E111	 |
