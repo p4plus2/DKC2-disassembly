@@ -2814,7 +2814,7 @@ endif					;		 |
 	TRB $08C4			;$BB9221	 |
 	LDA $08A4			;$BB9224	 |
 	JSL CODE_808837			;$BB9227	 |
-	LDA $2A				;$BB922B	 |
+	LDA global_frame_counter	;$BB922B	 |
 	EOR $2F				;$BB922D	 |
 	STA $2F				;$BB922F	 |
 	JSR CODE_BB938B			;$BB9231	 |
@@ -3087,7 +3087,7 @@ CODE_BB946B:
 CODE_BB9473:
 	LDA $051B			;$BB9473	\
 	AND #$00FF			;$BB9476	 |
-	CMP $1C				;$BB9479	 |
+	CMP current_song		;$BB9479	 |
 	BEQ CODE_BB9445			;$BB947B	 |
 	BRA CODE_BB943B			;$BB947D	/
 
@@ -7860,7 +7860,7 @@ CODE_BBBF81:
 	DEC A				;$BBBFB4	 |
 	STA $000650			;$BBBFB5	 |
 	LDA #CODE_808CC9		;$BBBFB9	 |
-	STA $20				;$BBBFBC	 |
+	STA NMI_pointer			;$BBBFBC	 |
 CODE_BBBFBE:				;		 |
 	WAI				;$BBBFBE	 |
 	BRA CODE_BBBFBE			;$BBBFBF	/

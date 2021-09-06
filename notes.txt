@@ -149,7 +149,20 @@ CODE_BBB70C	;Looks like sprite level load code
 
 DATA_FD819A	;has pointers in some interlaced format (possibly RLE tilemap decoding)
 
-
+CODE_80D595:
+	JSR CODE_808988			;$80D595	\
+	BNE CODE_80D5C0			;$80D598	 |
+	JSL CODE_BBB5C4			;$80D59A	 | load sprites
+	JSL sprite_handler		;$80D59E	 |
+	JSL CODE_B5E50D			;$80D5A2	 | horizontal scroll?
+	JSR CODE_80E52B			;$80D5A6	 | layer 3 scroll?
+	JSL CODE_B5B9BB			;$80D5A9	 |
+	JSL CODE_B5B9B0			;$80D5AD	 |\ update layer 1 vram?
+	JSR CODE_80F35B			;$80D5B1	 | update sprite vram
+	JSR CODE_8088BA			;$80D5B4	 | set all sprites offscreen
+	JSR CODE_80E580			;$80D5B7	 | layer 2 parallax
+	JSR CODE_808C3D			;$80D5BA	 |
+	JMP CODE_808CA2			;$80D5BD	/
 
 
 
@@ -533,3 +546,47 @@ OW music, Swanky, Cranky, Wrinkly, Fanfare, Gameover, and Credits have no prefix
 2 byte offset in $A2-B0 between v0/v1
 
 LDY $0617 <-- text message pointers
+
+	dw CODE_B9D160 command 80
+	dw CODE_B9D172 command 81
+	dw CODE_B9D19B command 82
+	dw CODE_B9D1A5 command 83
+	dw CODE_B9D1B5 command 84
+	dw CODE_B9D26B command 85
+	dw CODE_B9D2AA command 86
+	dw CODE_B9D305 command 87
+	dw CODE_B9D356 command 88
+	dw CODE_B9D387 command 89
+	dw CODE_B9D3CA command 8A
+	dw CODE_B9D41D command 8B
+	dw CODE_B9D464 command 8C
+	dw CODE_B9D48B command 8D
+	dw CODE_B9D1C2 command 8E
+	dw CODE_B9D1F5 command 8F
+	dw CODE_B9D21E command 90
+	dw CODE_B9D240 command 91
+	dw CODE_B9D259 command 92
+	dw CODE_B9D1D5 command 93
+	dw CODE_B9D160 command 94
+
+1  80											end animation script
+3  81	<dw address>									run code in B9
+3  82	<dw address>									play animation script in F9 at specified address
+3  83	<dw address>									run code in B9
+3  84	<dw address>									run code in B9 (address is stored at $3E,x)
+6  85	<db frames> <dw sprite_gfx_id> <dw sprite_gfx_id>				display 2 sprite graphics for a certain amount of frames
+10 86	<db frames> <dw sprite_gfx_id> <dw sprite_gfx_id> <dw x_offset> <dw y_offset>	display 2 sprite graphics with the position offset for a certain amount of frames
+8  87	<db frames> <dw sprite_gfx_id> <dw x_offset> <dw y_offset>			display sprite graphic with the position offset for a certain amount of frames
+5  88	<dw x_pos> <dw y_pos>								move current sprite graphic to position
+6  89	<db frames> <dw sprite_gfx_id> <dw sprite_gfx_id>				display 2 sprite graphics for a certain amount of frames
+10 8A	<db frames> <dw sprite_gfx_id> <dw sprite_gfx_id> <dw x_offset> <dw y_offset>	display 2 sprite graphics with the position offset for a certain amount of frames
+8  8B	<db frames> <dw sprite_gfx_id> <dw x_offset> <dw y_offset>			display sprite graphic with the position offset for a certain amount of frames
+7  8C	<dw x_pos> <dw y_pos>								move current sprite graphic to position
+6  8D	<db frames> <dw sprite_gfx_id> <dw sprite_gfx_id>				display 2 sprite graphics for a certain amount of frames with a control parameter stored at $44,x
+3  8E	<db sound_effect_id> <db channel>						plays sound effect on the specified channel (0-7)
+5  8F	<dw address> <dw animation_address>						executes code at given address and updates current animation command address
+5  90	<dw address> <dw animation_id>							executes code at given address and plays specified animation id
+4  91	<db sprite_variable_offset> <dw address>					executes sub-routine in B9 using specified offset as call stack
+4  92	<db sprite_variable_offset> <dw unused?>					returns from sub-routine?
+3  93	<db sound_effect_id> <db channel>						plays sound effect on the specified channel (0-7)
+1  94

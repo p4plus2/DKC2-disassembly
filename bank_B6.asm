@@ -1973,7 +1973,7 @@ CODE_B69572:
 	STA $0046,y			;$B69598	 |
 	LDA #$002D			;$B6959B	 |
 	STA $000729			;$B6959E	 |
-	LDA $2A				;$B695A2	 |
+	LDA global_frame_counter	;$B695A2	 |
 	BIT #$0001			;$B695A4	 |
 	BEQ CODE_B695AC			;$B695A7	 |
 	STY $0735			;$B695A9	 |

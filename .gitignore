@@ -16,3 +16,4 @@ DMA_log*
 .gradle
 *.avi
 *.sox
+*.trace

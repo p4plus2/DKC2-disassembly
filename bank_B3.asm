@@ -246,7 +246,7 @@ CODE_B381CE:
 
 	CPX $05C3			;$B381CF	 |
 	BNE CODE_B381E3			;$B381D2	 |
-	LDA $2A				;$B381D4	 |
+	LDA global_frame_counter	;$B381D4	 |
 	AND #$0003			;$B381D6	 |
 	BNE CODE_B381E3			;$B381D9	 |
 	LDA $1C,x			;$B381DB	 |
@@ -289,14 +289,14 @@ unknown_sprite_00E0_main:
 	LDA $0016,y			;$B3821A	 |
 	CMP #$0010			;$B3821D	 |
 	BMI CODE_B38251			;$B38220	 |
-	LDA $2A				;$B38222	 |
+	LDA global_frame_counter	;$B38222	 |
 	AND #$0001			;$B38224	 |
 	BEQ CODE_B3822C			;$B38227	 |
 CODE_B38229:				;		 |
 	JML [$05A9]			;$B38229	/
 
 CODE_B3822C:
-	LDA $2A				;$B3822C	\
+	LDA global_frame_counter	;$B3822C	\
 	AND #$0002			;$B3822E	 |
 	BEQ CODE_B38242			;$B38231	 |
 	LDA $091B			;$B38233	 |
@@ -1089,7 +1089,7 @@ CODE_B38986:
 	STZ $4E,x			;$B38994	 |
 	LDA #$00C4			;$B38996	 |
 	STA $02,x			;$B38999	 |
-	LDA $2A				;$B3899B	 |
+	LDA global_frame_counter	;$B3899B	 |
 	STA $46,x			;$B3899D	 |
 	INC $2E,x			;$B3899F	 |
 CODE_B389A1:				;		 |
@@ -1102,7 +1102,7 @@ CODE_B389A6:
 	LDX $64				;$B389A6	\
 	LDA $44,x			;$B389A8	 |
 	BNE CODE_B389B8			;$B389AA	 |
-	LDA $2A				;$B389AC	 |
+	LDA global_frame_counter	;$B389AC	 |
 	SEC				;$B389AE	 |
 	SBC $46,x			;$B389AF	 |
 	CMP #$01A4			;$B389B1	 |
@@ -2090,13 +2090,13 @@ CODE_B3905B:
 	BMI CODE_B3907F			;$B39066	 |
 	CMP #$0020			;$B39068	 |
 	BMI CODE_B39076			;$B3906B	 |
-	LDA $2A				;$B3906D	 |
+	LDA global_frame_counter	;$B3906D	 |
 	AND #$0003			;$B3906F	 |
 	BEQ CODE_B3907F			;$B39072	 |
 	BRA CODE_B39086			;$B39074	/
 
 CODE_B39076:
-	LDA $2A				;$B39076	\
+	LDA global_frame_counter	;$B39076	\
 	AND #$0001			;$B39078	 |
 	BEQ CODE_B3907F			;$B3907B	 |
 	BRA CODE_B39086			;$B3907D	/
@@ -2414,7 +2414,7 @@ sun_main:
 	CLC				;$B392BD	 |
 	ADC #$0010			;$B392BE	 |
 	STA $0A,x			;$B392C1	 |
-	LDA $2A				;$B392C3	 |
+	LDA global_frame_counter	;$B392C3	 |
 	AND #$0001			;$B392C5	 |
 	STA $32				;$B392C8	 |
 	LDA $0911			;$B392CA	 |
@@ -5161,7 +5161,7 @@ CODE_B3A6DC:
 	CMP #$0140			;$B3A6E7	 |
 	LDA #$0560			;$B3A6EA	 |
 	BCS CODE_B3A734			;$B3A6ED	 |
-	LDY $1C				;$B3A6EF	 |
+	LDY current_song		;$B3A6EF	 |
 	LDA #$0766			;$B3A6F1	 |
 	CPY #$0003			;$B3A6F4	 |
 	BEQ CODE_B3A734			;$B3A6F7	 |
@@ -9063,7 +9063,7 @@ CODE_B3C350:
 	JMP CODE_B38000			;$B3C361	/
 
 CODE_B3C364:
-	LDA $2A				;$B3C364	\
+	LDA global_frame_counter	;$B3C364	\
 	AND #$0003			;$B3C366	 |
 	BNE CODE_B3C391			;$B3C369	 |
 	LDX #$F8F8			;$B3C36B	 |
@@ -9887,7 +9887,7 @@ CODE_B3C98C:
 	LDX $64				;$B3C98C	\
 	LDA $48,x			;$B3C98E	 |
 	BEQ CODE_B3C9A1			;$B3C990	 |
-	LDA $2A				;$B3C992	 |
+	LDA global_frame_counter	;$B3C992	 |
 	AND #$0004			;$B3C994	 |
 	BEQ CODE_B3C99C			;$B3C997	 |
 	LDA #$C000			;$B3C999	 |
@@ -12646,14 +12646,14 @@ CODE_B3DDED:
 	BRA CODE_B3DDBD			;$B3DDF0	/
 
 CODE_B3DDF2:
-	LDA $2A				;$B3DDF2	\
+	LDA global_frame_counter	;$B3DDF2	\
 	AND #$0003			;$B3DDF4	 |
 	BNE CODE_B3DDBD			;$B3DDF7	 |
 	JSR CODE_B3DE0A			;$B3DDF9	 |
 	BRA CODE_B3DDBD			;$B3DDFC	/
 
 CODE_B3DDFE:
-	LDA $2A				;$B3DDFE	\
+	LDA global_frame_counter	;$B3DDFE	\
 	AND #$0007			;$B3DE00	 |
 	BNE CODE_B3DDBD			;$B3DE03	 |
 	JSR CODE_B3DE0A			;$B3DE05	 |
@@ -13496,7 +13496,7 @@ CODE_B3E489:
 	RTS				;$B3E491	/
 
 CODE_B3E492:
-	LDA $2A				;$B3E492	\
+	LDA global_frame_counter	;$B3E492	\
 	AND #$0003			;$B3E494	 |
 	BEQ CODE_B3E49A			;$B3E497	 |
 	RTS				;$B3E499	/
@@ -13704,7 +13704,7 @@ CODE_B3E61D:
 
 CODE_B3E634:
 	TAY				;$B3E634	\
-	LDA $2A				;$B3E635	 |
+	LDA global_frame_counter	;$B3E635	 |
 	LSR A				;$B3E637	 |
 	BCS CODE_B3E649			;$B3E638	 |
 	CPY #$0006			;$B3E63A	 |
@@ -13736,10 +13736,10 @@ CODE_B3E65C:
 	LDA $2A,x			;$B3E65E	 |
 	AND #$0800			;$B3E660	 |
 	BEQ CODE_B3E67F			;$B3E663	 |
-	LDA $2A				;$B3E665	 |
+	LDA global_frame_counter	;$B3E665	 |
 	AND #$000F			;$B3E667	 |
 	BNE CODE_B3E67F			;$B3E66A	 |
-	LDA $2A				;$B3E66C	 |
+	LDA global_frame_counter	;$B3E66C	 |
 	AND #$0010			;$B3E66E	 |
 	BNE CODE_B3E678			;$B3E671	 |
 	LDA #$000A			;$B3E673	 |
@@ -14547,7 +14547,7 @@ CODE_B3EC34:
 CODE_B3EC3C:
 	JSR CODE_B3F05F			;$B3EC3C	\
 	LDX $64				;$B3EC3F	 |
-	LDA $2A				;$B3EC41	 |
+	LDA global_frame_counter	;$B3EC41	 |
 	LSR A				;$B3EC43	 |
 	BCS CODE_B3EC4A			;$B3EC44	 |
 	DEC $3A,x			;$B3EC46	 |

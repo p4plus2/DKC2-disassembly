@@ -3,7 +3,7 @@ optimize dp always
 optimize address mirrors
 !version = 1
 !override_pirate_panic = 0
-!pirate_panic_replacement = $07
+!pirate_panic_replacement = $2F
 
 
 org $008000			;dummy org so functions work
@@ -11,6 +11,7 @@ org $008000			;dummy org so functions work
 	incsrc constants.asm
 	incsrc structs.asm
 	incsrc mmio.asm
+	incsrc ram.asm
 
 org $C00000
 	incsrc bank_C0.asm

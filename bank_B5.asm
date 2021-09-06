@@ -5,10 +5,10 @@ CODE_B58003:
 	JMP CODE_B58030			;$B58003	 |
 
 set_song_simple_entry:
-	JMP CODE_B580D5			;$B58006	 |
+	JMP set_song_simple		;$B58006	 |
 
-CODE_B58009:
-	JMP CODE_B580EE			;$B58009	 |
+play_queued_song_entry:
+	JMP play_queued_song		;$B58009	 |
 
 CODE_B5800C:
 	JMP CODE_B58106			;$B5800C	 |
@@ -72,7 +72,7 @@ CODE_B58053:
 	PHB				;$B58053	\
 	PHK				;$B58054	 |
 	PLB				;$B58055	 |
-	LDA $2A				;$B58056	 |
+	LDA global_frame_counter	;$B58056	 |
 	CMP $0636			;$B58058	 |
 	BEQ CODE_B58086			;$B5805B	 |
 	LDX $0632			;$B5805D	 |
@@ -92,7 +92,7 @@ CODE_B58076:				;		 |
 	INC A				;$B5807A	 |
 	AND #$000E			;$B5807B	 |
 	STA $0632			;$B5807E	 |
-	LDA $2A				;$B58081	 |
+	LDA global_frame_counter	;$B58081	 |
 	STA $0636			;$B58083	 |
 CODE_B58086:				;		 |
 	PLB				;$B58086	 |
@@ -145,11 +145,11 @@ CODE_B580C3:				;		 |
 DATA_B580CD:
 	db $01, $02, $04, $08, $10, $20, $40, $80
 
-CODE_B580D5:
+set_song_simple:
 	PHB				;$B580D5	\
 	PHK				;$B580D6	 |
 	PLB				;$B580D7	 |
-	STA $1C				;$B580D8	 |
+	STA current_song		;$B580D8	 |
 	LDX #$00FF			;$B580DA	 |
 	JSR write_spc_command		;$B580DD	 |
 	JSR upload_song_sample_set	;$B580E0	 |
@@ -159,14 +159,14 @@ CODE_B580D5:
 	PLB				;$B580EC	 |
 	RTL				;$B580ED	/
 
-CODE_B580EE:				;		\
+play_queued_song:			;		\
 	PHB				;$B580EE	 |\ Change to current databank
 	PHK				;$B580EF	 | |
 	PLB				;$B580F0	 |/
 	JSR clear_sound_buffers		;$B580F1	 |
 	LDX #$00FE			;$B580F4	 |\ Tell the SPC engine to start playing music
 	JSR write_spc_command		;$B580F7	 |/
-	LDA $1E				;$B580FA	 |\ Write mono or stereo setting to SPC engine
+	LDA stereo_select		;$B580FA	 |\ Write mono or stereo setting to SPC engine
 	XBA				;$B580FC	 | |
 	ORA #$00FA			;$B580FD	 | |
 	TAX				;$B58100	 | |
@@ -178,7 +178,7 @@ CODE_B58106:
 	PHB				;$B58106	\
 	PHK				;$B58107	 |
 	PLB				;$B58108	 |
-	STA $1C				;$B58109	 |
+	STA current_song		;$B58109	 |
 	LDX #$00FF			;$B5810B	 |
 	JSR write_spc_command		;$B5810E	 |
 	JSR upload_song_sample_set	;$B58111	 |
@@ -188,7 +188,7 @@ CODE_B58106:
 	JSR execute_spc_sound_engine	;$B5811D	 |
 	LDX #$00FE			;$B58120	 |\ Tell the SPC engine to start playing music
 	JSR write_spc_command		;$B58123	 |/
-	LDA $1E				;$B58126	 |\ Write mono or stereo setting to SPC engine
+	LDA stereo_select		;$B58126	 |\ Write mono or stereo setting to SPC engine
 	XBA				;$B58128	 | |
 	ORA #$00FA			;$B58129	 | |
 	TAX				;$B5812C	 | |
@@ -202,7 +202,7 @@ CODE_B58132:
 	PLB				;$B58134	 |
 	PHA				;$B58135	 |
 	AND #$00FF			;$B58136	 |
-	STA $1C				;$B58139	 |
+	STA current_song		;$B58139	 |
 	LDX #$00FF			;$B5813B	 |
 	JSR write_spc_command		;$B5813E	 |
 	JSR upload_song_sample_set	;$B58141	 |
@@ -217,7 +217,7 @@ CODE_B58132:
 	JSR write_spc_command		;$B58158	 |
 	LDX #$00FE			;$B5815B	 |\ Tell the SPC engine to start playing music
 	JSR write_spc_command		;$B5815E	 |/
-	LDA $1E				;$B58161	 |\ Write mono or stereo setting to SPC engine
+	LDA stereo_select		;$B58161	 |\ Write mono or stereo setting to SPC engine
 	XBA				;$B58163	 | |
 	ORA #$00FA			;$B58164	 | |
 	TAX				;$B58167	 | |
@@ -309,7 +309,7 @@ CODE_B581DB:
 	JSR write_spc_command		;$B581E6	 |
 	LDX #$00FE			;$B581E9	 |\ Tell the SPC engine to start playing music
 	JSR write_spc_command		;$B581EC	 |/
-	LDA $1E				;$B581EF	 |\ Write mono or stereo setting to SPC engine
+	LDA stereo_select		;$B581EF	 |\ Write mono or stereo setting to SPC engine
 	XBA				;$B581F1	 | |
 	ORA #$00FA			;$B581F2	 | |
 	TAX				;$B581F5	 | |
@@ -321,14 +321,14 @@ write_spc_command:
 	TXA				;$B581FB	\ Move the command into A
 	REP #$20			;$B581FC	 |\ Use index as 8 bit, with 16 bit accumulator
 	SEP #$10			;$B581FE	 |/
-	LDX $00				;$B58200	 | Load the previous SPC transaction id
+	LDX spc_transaction		;$B58200	 | Load the previous SPC transaction id
 -					;		 |
 	CPX APU.IO1			;$B58202	 |\ Wait for the SPC engine to echo the previous transaction id
 	BNE -				;$B58205	 |/
 	STA APU.IO2			;$B58207	 | Write the command to the SPC engine
 	INX				;$B5820A	 |\ Increment and send the SPC transaction id
 	STX APU.IO1			;$B5820B	 |/
-	STX $00				;$B5820E	 | Store the SPC transaction id
+	STX spc_transaction		;$B5820E	 | Store the SPC transaction id
 	REP #$30			;$B58210	 |
 	RTS				;$B58212	/ Command upload finished
 
@@ -365,14 +365,14 @@ upload_spc_base_engine:			;		\
 -					;		 |\ Wait for the SPC echo
 	CPX APU.IO1			;$B5824D	 | |
 	BNE -				;$B58250	 |/
-	STZ $00				;$B58252	 | Reset the SPC transaction id
+	STZ spc_transaction		;$B58252	 | Reset the SPC transaction id
 	LDA #$0001			;$B58254	 |\ Default to mono audio
-	STA $1E				;$B58257	 |/
+	STA stereo_select		;$B58257	 |/
 	REP #$30			;$B58259	 |
 	RTS				;$B5825B	/ All done, new SPC base engine set up.
 
 upload_song_data:
-	LDA $1C				;$B5825C	\ Load currently set song
+	LDA current_song		;$B5825C	\ Load currently set song
 	CLC				;$B5825E	 |\ Multiply song number by 6 to get an offset to song data
 	ROL A				;$B5825F	 | | Effectively (X << 1) + (X << 2)
 	STA $32				;$B58260	 | |
@@ -388,10 +388,10 @@ upload_song_data:
 	RTS				;$B58276	/
 
 upload_song_sound_effects:		;		\
-	LDA $1C				;$B58277	 |\ Triple song id
+	LDA current_song		;$B58277	 |\ Triple song id
 	CLC				;$B58279	 | |
-	ADC $1C				;$B5827A	 | |
-	ADC $1C				;$B5827C	 |/
+	ADC current_song		;$B5827A	 | |
+	ADC current_song		;$B5827C	 |/
 	TAX				;$B5827E	 | Move offset to an index register
 	LDA.l DATA_EE117B,x		;$B5827F	 |\ Load pointer to song specific sound effects
 	STA $32				;$B58283	 | |
@@ -604,7 +604,7 @@ upload_inline_spc_block:		;		\
 
 upload_spc_block:
 	SEP #$10			;$B5840D	\ 16 bit A, with 8 bit index
-	LDX $00				;$B5840F	 | Load the last SPC transaction id
+	LDX spc_transaction		;$B5840F	 | Load the last SPC transaction id
 -					;		 |\ Wait for the previous transaction id to be echoed
 	CPX APU.IO1			;$B58411	 | | Which will signify the SPC engine is ready.
 	BNE -				;$B58414	 |/
@@ -637,7 +637,7 @@ upload_spc_block:
 	DEC $37				;$B58447	 |\ Continue if there are more bytes to upload
 	BNE .next_byte			;$B58449	 |/
 .return					;		 |
-	STX $00				;$B5844B	 | Store the final SPC transaction id
+	STX spc_transaction		;$B5844B	 | Store the final SPC transaction id
 	REP #$30			;$B5844D	 | Return to full 16 bit
 	LDA $39				;$B5844F	 |\ Store double the transfer count in A
 	ASL A				;$B58451	 |/
@@ -660,7 +660,7 @@ upload_spc_block:
 	BRA .wait_for_echo		;$B58467	/
 
 upload_song_sample_set:
-	LDA $1C				;$B58469	\ Load currently set song
+	LDA current_song		;$B58469	\ Load currently set song
 	CLC				;$B5846B	 |\ Multiply song number by 6 to song sample set offset
 	ROL A				;$B5846C	 | | Effectively (X << 1) + (X << 2)
 	STA $32				;$B5846D	 | |
@@ -8151,12 +8151,12 @@ CODE_B5CFD3:
 	LDA #$000F			;$B5CFE4	 |
 	STA $0512			;$B5CFE7	 |
 	JSL CODE_808CA8			;$B5CFEA	 |
-	STZ $2A				;$B5CFEE	 |
+	STZ global_frame_counter	;$B5CFEE	 |
 	LDA #CODE_808CED		;$B5CFF0	 |
 	JMP CODE_B5CFF6			;$B5CFF3	/
 
 CODE_B5CFF6:
-	STA $20				;$B5CFF6	\
+	STA NMI_pointer			;$B5CFF6	\
 	SEP #$20			;$B5CFF8	 |
 	LDA CPU.nmi_flag		;$B5CFFA	 |
 CODE_B5CFFD:				;		 |
@@ -8276,7 +8276,7 @@ CODE_B5D1BD:
 	LDA $0512			;$B5D1C6	 |
 	BNE CODE_B5D1D0			;$B5D1C9	 |
 	LDA #CODE_808CD9		;$B5D1CB	 |
-	STA $20				;$B5D1CE	 |
+	STA NMI_pointer			;$B5D1CE	 |
 CODE_B5D1D0:				;		 |
 	LDA.l $0006A5			;$B5D1D0	 |
 	BIT #$2000			;$B5D1D4	 |
@@ -8287,13 +8287,13 @@ CODE_B5D1D0:				;		 |
 	AND #$DFFF			;$B5D1E2	 |
 	STA $0006A5			;$B5D1E5	 |
 	LDA #CODE_8087D9		;$B5D1E9	 |
-	STA $24				;$B5D1EC	 |
+	STA gameloop_pointer		;$B5D1EC	 |
 	LDA #CODE_808608		;$B5D1EE	 |
 	JML CODE_808C80			;$B5D1F1	/
 
 CODE_B5D1F5:
 	JSL CODE_80897C			;$B5D1F5	\
-	INC $2A				;$B5D1F9	 |
+	INC global_frame_counter	;$B5D1F9	 |
 	LDA.l $0006AB			;$B5D1FB	 |
 	CMP #$0072			;$B5D1FF	 |
 	BEQ CODE_B5D229			;$B5D202	 |
@@ -8455,7 +8455,7 @@ CODE_B5D334:
 CODE_B5D349:
 	LDA #$6390			;$B5D349	\
 	STA PPU.vram_address		;$B5D34C	 |
-	LDA $2A				;$B5D34F	 |
+	LDA global_frame_counter	;$B5D34F	 |
 	BIT #$0007			;$B5D351	 |
 	BNE CODE_B5D37F			;$B5D354	 |
 	LSR A				;$B5D356	 |
@@ -8479,7 +8479,7 @@ CODE_B5D37F:				;		 |
 	LDA $08FC			;$B5D37F	 |
 	AND #$0004			;$B5D382	 |
 	BEQ CODE_B5D3D4			;$B5D385	 |
-	LDA $2A				;$B5D387	 |
+	LDA global_frame_counter	;$B5D387	 |
 	BIT #$0007			;$B5D389	 |
 	BNE CODE_B5D3D4			;$B5D38C	 |
 	LDA #$0013			;$B5D38E	 |
@@ -8546,14 +8546,14 @@ CODE_B5D411:
 	LDA $0512			;$B5D41A	 |
 	BNE CODE_B5D424			;$B5D41D	 |
 	LDA #CODE_808CD9		;$B5D41F	 |
-	STA $20				;$B5D422	 |
+	STA NMI_pointer			;$B5D422	 |
 CODE_B5D424:				;		 |
 	SEP #$20			;$B5D424	 |
 	LDA $0512			;$B5D426	 |
 	STA PPU.screen			;$B5D429	 |
 	REP #$20			;$B5D42C	 |
 	JSL CODE_80897C			;$B5D42E	 |
-	INC $2A				;$B5D432	 |
+	INC global_frame_counter	;$B5D432	 |
 	JSL sprite_handler		;$B5D434	 |
 	JSL CODE_B5A8DA			;$B5D438	 |
 	JSR CODE_B5D48E			;$B5D43C	 |
@@ -8575,7 +8575,7 @@ CODE_B5D44A:
 	STA $0006A3			;$B5D467	 |
 	STZ $06AF			;$B5D46B	 |
 	LDA #CODE_8087D9		;$B5D46E	 |
-	STA $24				;$B5D471	 |
+	STA gameloop_pointer		;$B5D471	 |
 	LDA #CODE_808608		;$B5D473	 |
 	JML CODE_808C80			;$B5D476	/
 
@@ -8644,7 +8644,7 @@ CODE_B5D4E3:				;		 |
 	LDA $0512			;$B5D505	 |
 	STA PPU.screen			;$B5D508	 |
 	REP #$20			;$B5D50B	 |
-	INC $2A				;$B5D50D	 |
+	INC global_frame_counter	;$B5D50D	 |
 	JSL CODE_BAC7C0			;$B5D50F	 |
 	JSR CODE_B5DA3D			;$B5D513	 |
 	LDX #$1364			;$B5D516	 |
@@ -9150,7 +9150,7 @@ CODE_B5DA3D:
 	BEQ CODE_B5DA48			;$B5DA43	 |
 	JSR CODE_B5DCBB			;$B5DA45	 |
 CODE_B5DA48:				;		 |
-	LDA $2A				;$B5DA48	 |
+	LDA global_frame_counter	;$B5DA48	 |
 	AND #$001C			;$B5DA4A	 |
 	CLC				;$B5DA4D	 |
 	ADC #$0B98			;$B5DA4E	 |
@@ -9168,26 +9168,26 @@ CODE_B5DA6B:				;		 |
 	BEQ CODE_B5DA8C			;$B5DA6E	 |
 	CPY #$0FB8			;$B5DA70	 |
 	BEQ CODE_B5DA7F			;$B5DA73	 |
-	LDA $2A				;$B5DA75	 |
+	LDA global_frame_counter	;$B5DA75	 |
 	LSR A				;$B5DA77	 |
 	LSR A				;$B5DA78	 |
 	LSR A				;$B5DA79	 |
 	CLC				;$B5DA7A	 |
-	ADC $2A				;$B5DA7B	 |
+	ADC global_frame_counter	;$B5DA7B	 |
 	BRA CODE_B5DA8E			;$B5DA7D	/
 
 CODE_B5DA7F:
-	LDA $2A				;$B5DA7F	\
+	LDA global_frame_counter	;$B5DA7F	\
 	LSR A				;$B5DA81	 |
 	LSR A				;$B5DA82	 |
 	SEC				;$B5DA83	 |
-	SBC $2A				;$B5DA84	 |
+	SBC global_frame_counter	;$B5DA84	 |
 	CLC				;$B5DA86	 |
 	ADC #$0020			;$B5DA87	 |
 	BRA CODE_B5DA8E			;$B5DA8A	/
 
 CODE_B5DA8C:
-	LDA $2A				;$B5DA8C	\
+	LDA global_frame_counter	;$B5DA8C	\
 CODE_B5DA8E:				;		 |
 	STA $54				;$B5DA8E	 |
 	LDA $54				;$B5DA90	 |
@@ -9245,7 +9245,7 @@ CODE_B5DAEB:				;		 |
 	LSR A				;$B5DB00	 |
 	LSR A				;$B5DB01	 |
 	CLC				;$B5DB02	 |
-	ADC $2A				;$B5DB03	 |
+	ADC global_frame_counter	;$B5DB03	 |
 	CLC				;$B5DB05	 |
 	ADC #$0020			;$B5DB06	 |
 	ASL A				;$B5DB09	 |
@@ -9280,7 +9280,7 @@ CODE_B5DAEB:				;		 |
 	JMP CODE_B5DA6B			;$B5DB40	/
 
 CODE_B5DB43:
-	LDA $2A				;$B5DB43	\
+	LDA global_frame_counter	;$B5DB43	\
 	BIT #$0001			;$B5DB45	 |
 	BEQ CODE_B5DB5C			;$B5DB48	 |
 	LDA $11A8			;$B5DB4A	 |
@@ -9304,7 +9304,7 @@ CODE_B5DB64:				;		 |
 	CLC				;$B5DB6B	 |
 	ADC $32				;$B5DB6C	 |
 	CLC				;$B5DB6E	 |
-	ADC $2A				;$B5DB6F	 |
+	ADC global_frame_counter	;$B5DB6F	 |
 	STA $32				;$B5DB71	 |
 	ASL A				;$B5DB73	 |
 	AND #$001C			;$B5DB74	 |
@@ -9387,7 +9387,7 @@ CODE_B5DBD5:				;		 |
 CODE_B5DC0B:
 	LDX #$0000			;$B5DC0B	\
 CODE_B5DC0E:				;		 |
-	LDA $2A				;$B5DC0E	 |
+	LDA global_frame_counter	;$B5DC0E	 |
 	AND #$0007			;$B5DC10	 |
 	BNE CODE_B5DC3D			;$B5DC13	 |
 	LDA $0D9E,x			;$B5DC15	 |
@@ -9431,10 +9431,10 @@ CODE_B5DC3D:				;		 |
 	TAX				;$B5DC63	 |
 	CPX #$0178			;$B5DC64	 |
 	BNE CODE_B5DC0E			;$B5DC67	 |
-	LDA $2A				;$B5DC69	 |
+	LDA global_frame_counter	;$B5DC69	 |
 	LSR A				;$B5DC6B	 |
 	CLC				;$B5DC6C	 |
-	ADC $2A				;$B5DC6D	 |
+	ADC global_frame_counter	;$B5DC6D	 |
 	LSR A				;$B5DC6F	 |
 	LSR A				;$B5DC70	 |
 	LSR A				;$B5DC71	 |
@@ -9444,7 +9444,7 @@ CODE_B5DC3D:				;		 |
 	EOR #$0007			;$B5DC7A	 |
 CODE_B5DC7D:				;		 |
 	STA $32				;$B5DC7D	 |
-	LDA $2A				;$B5DC7F	 |
+	LDA global_frame_counter	;$B5DC7F	 |
 	LSR A				;$B5DC81	 |
 	LSR A				;$B5DC82	 |
 	LSR A				;$B5DC83	 |
@@ -9489,7 +9489,7 @@ CODE_B5DCBB:
 	LDA $44,x			;$B5DCC9	 |
 	BEQ CODE_B5DCF4			;$B5DCCB	 |
 	LDX #$1364			;$B5DCCD	 |
-	LDA $2A				;$B5DCD0	 |
+	LDA global_frame_counter	;$B5DCD0	 |
 	AND #$001C			;$B5DCD2	 |
 	BIT #$0010			;$B5DCD5	 |
 	BEQ CODE_B5DCDD			;$B5DCD8	 |
@@ -9498,7 +9498,7 @@ CODE_B5DCDD:				;		 |
 	CLC				;$B5DCDD	 |
 	ADC #$3154			;$B5DCDE	 |
 	STA $1A,x			;$B5DCE1	 |
-	LDA $2A				;$B5DCE3	 |
+	LDA global_frame_counter	;$B5DCE3	 |
 	BIT #$0001			;$B5DCE5	 |
 	BNE CODE_B5DCF4			;$B5DCE8	 |
 	DEC $0A,x			;$B5DCEA	 |
@@ -9512,37 +9512,37 @@ CODE_B5DCF4:				;		 |
 	JMP CODE_B5DE9D			;$B5DCFC	/
 
 CODE_B5DCFF:
-	LDA $2A				;$B5DCFF	\
+	LDA global_frame_counter	;$B5DCFF	\
 	CMP #$00F0			;$B5DD01	 |
 	BNE CODE_B5DD0D			;$B5DD04	 |
 	LDA #$0716			;$B5DD06	 |
 	JSL CODE_B58003			;$B5DD09	 |
 CODE_B5DD0D:				;		 |
-	LDA $2A				;$B5DD0D	 |
+	LDA global_frame_counter	;$B5DD0D	 |
 	CMP #$0100			;$B5DD0F	 |
 	BNE CODE_B5DD1B			;$B5DD12	 |
 	LDA #$0716			;$B5DD14	 |
 	JSL CODE_B58003			;$B5DD17	 |
 CODE_B5DD1B:				;		 |
-	LDA $2A				;$B5DD1B	 |
+	LDA global_frame_counter	;$B5DD1B	 |
 	CMP #$0125			;$B5DD1D	 |
 	BNE CODE_B5DD29			;$B5DD20	 |
 	LDA #$0716			;$B5DD22	 |
 	JSL CODE_B58003			;$B5DD25	 |
 CODE_B5DD29:				;		 |
-	LDA $2A				;$B5DD29	 |
+	LDA global_frame_counter	;$B5DD29	 |
 	CMP #$0130			;$B5DD2B	 |
 	BNE CODE_B5DD37			;$B5DD2E	 |
 	LDA #$0716			;$B5DD30	 |
 	JSL CODE_B58003			;$B5DD33	 |
 CODE_B5DD37:				;		 |
-	LDA $2A				;$B5DD37	 |
+	LDA global_frame_counter	;$B5DD37	 |
 	CMP #$0160			;$B5DD39	 |
 	BNE CODE_B5DD45			;$B5DD3C	 |
 	LDA #$0716			;$B5DD3E	 |
 	JSL CODE_B58003			;$B5DD41	 |
 CODE_B5DD45:				;		 |
-	LDA $2A				;$B5DD45	 |
+	LDA global_frame_counter	;$B5DD45	 |
 	CMP #$01A0			;$B5DD47	 |
 	BNE CODE_B5DD53			;$B5DD4A	 |
 	LDA #$810F			;$B5DD4C	 |
@@ -9576,7 +9576,7 @@ CODE_B5DD7D:
 	TYA				;$B5DD7D	\
 	ASL A				;$B5DD7E	 |
 	CLC				;$B5DD7F	 |
-	ADC $2A				;$B5DD80	 |
+	ADC global_frame_counter	;$B5DD80	 |
 	BIT #$0001			;$B5DD82	 |
 	BNE CODE_B5DD99			;$B5DD85	 |
 	LSR A				;$B5DD87	 |
@@ -9612,7 +9612,7 @@ CODE_B5DD99:				;		 |
 
 CODE_B5DDC7:
 	LDX #$1364			;$B5DDC7	\
-	LDA $2A				;$B5DDCA	 |
+	LDA global_frame_counter	;$B5DDCA	 |
 	AND #$001C			;$B5DDCC	 |
 	BIT #$0010			;$B5DDCF	 |
 	BEQ CODE_B5DDD7			;$B5DDD2	 |
@@ -9635,7 +9635,7 @@ CODE_B5DDE5:
 	JMP CODE_B5DE9D			;$B5DDF4	/
 
 CODE_B5DDF7:
-	LDA $2A				;$B5DDF7	\
+	LDA global_frame_counter	;$B5DDF7	\
 	BIT #$0003			;$B5DDF9	 |
 	BNE CODE_B5DE12			;$B5DDFC	 |
 	LDA $15B2			;$B5DDFE	 |
@@ -9648,7 +9648,7 @@ CODE_B5DDF7:
 CODE_B5DE0F:				;		 |
 	STA $15B2			;$B5DE0F	 |
 CODE_B5DE12:				;		 |
-	LDA $2A				;$B5DE12	 |
+	LDA global_frame_counter	;$B5DE12	 |
 	ASL A				;$B5DE14	 |
 	AND #$001C			;$B5DE15	 |
 	BIT #$0010			;$B5DE18	 |
@@ -9718,7 +9718,7 @@ CODE_B5DE9D:				;		 |
 	LDX #$13C2			;$B5DE9D	 |
 	LDA $44,x			;$B5DEA0	 |
 	BEQ CODE_B5DEBC			;$B5DEA2	 |
-	LDA $2A				;$B5DEA4	 |
+	LDA global_frame_counter	;$B5DEA4	 |
 	LSR A				;$B5DEA6	 |
 	LSR A				;$B5DEA7	 |
 	LSR A				;$B5DEA8	 |
@@ -9819,7 +9819,7 @@ CODE_B5DF22:				;		 |
 	RTS				;$B5DF4E	/
 
 CODE_B5DF4F:
-	LDA $2A				;$B5DF4F	\
+	LDA global_frame_counter	;$B5DF4F	\
 	LSR A				;$B5DF51	 |
 	LSR A				;$B5DF52	 |
 	STA $7E8136			;$B5DF53	 |
@@ -9835,7 +9835,7 @@ CODE_B5DF6C:				;		 |
 	LDY #$00A0			;$B5DF6F	 |
 	JSL DMA_palette			;$B5DF72	 |
 	LDX #$0000			;$B5DF76	 |
-	LDA $2A				;$B5DF79	 |
+	LDA global_frame_counter	;$B5DF79	 |
 	BIT #$0080			;$B5DF7B	 |
 	BEQ CODE_B5DF8A			;$B5DF7E	 |
 	AND #$004A			;$B5DF80	 |
@@ -9857,13 +9857,13 @@ CODE_B5DF92:				;		 |
 	XBA				;$B5DF9E	 |
 	STA PPU.cgram_write		;$B5DF9F	 |
 	REP #$20			;$B5DFA2	 |
-	LDA $2A				;$B5DFA4	 |
+	LDA global_frame_counter	;$B5DFA4	 |
 	JSR CODE_B5E054			;$B5DFA6	 |
-	LDA $2A				;$B5DFA9	 |
+	LDA global_frame_counter	;$B5DFA9	 |
 	CLC				;$B5DFAB	 |
 	ADC #$0015			;$B5DFAC	 |
 	JSR CODE_B5E054			;$B5DFAF	 |
-	LDA $2A				;$B5DFB2	 |
+	LDA global_frame_counter	;$B5DFB2	 |
 	CLC				;$B5DFB4	 |
 	ADC #$002B			;$B5DFB5	 |
 	JSR CODE_B5E054			;$B5DFB8	 |
@@ -9882,7 +9882,7 @@ CODE_B5DFC5:				;		 |
 	STZ PPU.layer_0_scroll_y	;$B5DFD8	 |
 	STA PPU.layer_2_scroll_y	;$B5DFDB	 |
 	STZ PPU.layer_2_scroll_y	;$B5DFDE	 |
-	LDA $2A				;$B5DFE1	 |
+	LDA global_frame_counter	;$B5DFE1	 |
 	LSR A				;$B5DFE3	 |
 	LSR A				;$B5DFE4	 |
 	AND #$07			;$B5DFE5	 |
@@ -9920,7 +9920,7 @@ CODE_B5E02B:				;		 |
 	SEC				;$B5E033	 |
 	SBC #$0018			;$B5E034	 |
 	STA $32				;$B5E037	 |
-	LDA $2A				;$B5E039	 |
+	LDA global_frame_counter	;$B5E039	 |
 	LSR A				;$B5E03B	 |
 	LSR A				;$B5E03C	 |
 	AND #$0007			;$B5E03D	 |
@@ -13219,7 +13219,7 @@ CODE_B5F653:				;		 |
 	LDA.l $7FA63C,x			;$B5F655	 |
 	STA $39				;$B5F659	 |
 CODE_B5F65B:				;		 |
-	LDA $2A				;$B5F65B	 |
+	LDA global_frame_counter	;$B5F65B	 |
 	LSR A				;$B5F65D	 |
 	ASL A				;$B5F65E	 |
 	ASL A				;$B5F65F	 |
@@ -13781,7 +13781,7 @@ CODE_B5FA00:				;		 |
 	STA $002180			;$B5FA22	 |
 	LDA $D6B5,x			;$B5FA26	 |
 	STA $002180			;$B5FA29	 |
-	LDA $2A				;$B5FA2D	 |
+	LDA global_frame_counter	;$B5FA2D	 |
 	AND #$0E			;$B5FA2F	 |
 	CLC				;$B5FA31	 |
 	ADC $000D2C			;$B5FA32	 |

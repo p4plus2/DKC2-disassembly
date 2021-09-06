@@ -455,13 +455,13 @@ endif					;		 |
 CODE_B88379:
 	JSR CODE_B880BC			;$B88379	\
 	JSR CODE_B88092			;$B8837C	 |
-	LDA $1C				;$B8837F	 |
+	LDA current_song		;$B8837F	 |
 	CMP #$000D			;$B88381	 |
 	BNE CODE_B8838D			;$B88384	 |
 	LDA #$077E			;$B88386	 |
 	JSL CODE_B58003			;$B88389	 |
 CODE_B8838D:				;		 |
-	LDA $1C				;$B8838D	 |
+	LDA current_song		;$B8838D	 |
 	CMP #$0003			;$B8838F	 |
 	BNE CODE_B883AA			;$B88392	 |
 	LDY #$0018			;$B88394	 |
@@ -498,7 +498,7 @@ CODE_B883D5:
 	AND #$2000			;$B883D8	 |
 	BNE CODE_B8841B			;$B883DB	 |
 	JSL CODE_BEC66F			;$B883DD	 |
-	LDA $1C				;$B883E1	 |
+	LDA current_song		;$B883E1	 |
 	CMP #$001F			;$B883E3	 |
 	BEQ CODE_B8841B			;$B883E6	 |
 	BRA CODE_B88414			;$B883E8	/
@@ -3206,7 +3206,7 @@ CODE_B89A17:
 	JSR CODE_B8B9C7			;$B89A1A	 |
 	JSR CODE_B8CF4B			;$B89A1D	 |
 	LDX $66				;$B89A20	 |
-	LDA $2A				;$B89A22	 |
+	LDA global_frame_counter	;$B89A22	 |
 	SEC				;$B89A24	 |
 	SBC $10,x			;$B89A25	 |
 	CMP $24,x			;$B89A27	 |
@@ -5994,7 +5994,7 @@ CODE_B8AF85:
 	LDA #$0008			;$B8AF8F	 |
 	TSB $0B02			;$B8AF92	 |
 CODE_B8AF95:				;		 |
-	LDA $2A				;$B8AF95	 |
+	LDA global_frame_counter	;$B8AF95	 |
 	AND #$0003			;$B8AF97	 |
 	BNE CODE_B8AFA9			;$B8AF9A	 |
 	LDA #$0008			;$B8AF9C	 |
@@ -6091,7 +6091,7 @@ CODE_B8B051:
 	JSR CODE_B8B9C7			;$B8B054	 |
 	JSR CODE_B8D1B5			;$B8B057	 |
 	JSR CODE_B8AF85			;$B8B05A	 |
-	LDA $2A				;$B8B05D	 |
+	LDA global_frame_counter	;$B8B05D	 |
 	AND #$0003			;$B8B05F	 |
 	BNE CODE_B8B072			;$B8B062	 |
 	LDX $64				;$B8B064	 |
@@ -6101,7 +6101,7 @@ CODE_B8B051:
 	EOR #$0400			;$B8B06D	 |
 	STA $50,x			;$B8B070	 |
 CODE_B8B072:				;		 |
-	LDA $2A				;$B8B072	 |
+	LDA global_frame_counter	;$B8B072	 |
 	AND #$0003			;$B8B074	 |
 	BNE CODE_B8B07C			;$B8B077	 |
 	DEC $091F			;$B8B079	 |
@@ -6316,7 +6316,7 @@ CODE_B8B211:
 CODE_B8B219:				;		 |
 	LDA #$0100			;$B8B219	 |
 	TSB $08C2			;$B8B21C	 |
-	DEC $2A				;$B8B21F	 |
+	DEC global_frame_counter	;$B8B21F	 |
 	LDX $64				;$B8B221	 |
 	LDA $4A,x			;$B8B223	 |
 	STA $32				;$B8B225	 |
@@ -7527,14 +7527,14 @@ CODE_B8BAB4:
 	BEQ CODE_B8BAC6			;$B8BABB	 |
 	LDA $1A,x			;$B8BABD	 |
 	STA $1C,x			;$B8BABF	 |
-	LDA $2A				;$B8BAC1	 |
+	LDA global_frame_counter	;$B8BAC1	 |
 	STA $1A,x			;$B8BAC3	 |
 	RTS				;$B8BAC5	/
 
 CODE_B8BAC6:
 	LDA $1E,x			;$B8BAC6	\
 	STA $20,x			;$B8BAC8	 |
-	LDA $2A				;$B8BACA	 |
+	LDA global_frame_counter	;$B8BACA	 |
 	STA $1E,x			;$B8BACC	 |
 	RTS				;$B8BACE	/
 
@@ -8450,7 +8450,7 @@ CODE_B8C10E:
 	AND #$1000			;$B8C116	 |
 	BNE CODE_B8C13C			;$B8C119	 |
 	LDY #$0004			;$B8C11B	 |
-	LDA $2A				;$B8C11E	 |
+	LDA global_frame_counter	;$B8C11E	 |
 	LSR A				;$B8C120	 |
 	BCS CODE_B8C129			;$B8C121	 |
 	TYA				;$B8C123	 |
@@ -9134,13 +9134,13 @@ CODE_B8C55F:
 	AND #$8000			;$B8C564	 |
 	BEQ CODE_B8C572			;$B8C567	 |
 	LDY $66				;$B8C569	 |
-	LDA $2A				;$B8C56B	 |
+	LDA global_frame_counter	;$B8C56B	 |
 	STA $0022,y			;$B8C56D	 |
 	BRA CODE_B8C57F			;$B8C570	/
 
 CODE_B8C572:
 	LDY $66				;$B8C572	\
-	LDA $2A				;$B8C574	 |
+	LDA global_frame_counter	;$B8C574	 |
 	SEC				;$B8C576	 |
 	SBC $0022,y			;$B8C577	 |
 	CMP #$0010			;$B8C57A	 |
@@ -9167,7 +9167,7 @@ CODE_B8C59A:				;		 |
 CODE_B8C59B:
 	JSR CODE_B8CE78			;$B8C59B	\
 	LDY $66				;$B8C59E	 |
-	LDA $2A				;$B8C5A0	 |
+	LDA global_frame_counter	;$B8C5A0	 |
 	STA $0012,y			;$B8C5A2	 |
 	LDA $0D7A			;$B8C5A5	 |
 	BNE CODE_B8C5D8			;$B8C5A8	 |
@@ -9217,7 +9217,7 @@ CODE_B8C5FA:
 	AND #$8000			;$B8C5FD	 |
 	BEQ CODE_B8C609			;$B8C600	 |
 	LDY $66				;$B8C602	 |
-	LDA $2A				;$B8C604	 |
+	LDA global_frame_counter	;$B8C604	 |
 	STA $0022,y			;$B8C606	 |
 CODE_B8C609:				;		 |
 	RTS				;$B8C609	/
@@ -9641,14 +9641,14 @@ CODE_B8C91C:
 	AND #$0080			;$B8C91F	 |
 	BNE CODE_B8C969			;$B8C922	 |
 	LDY $66				;$B8C924	 |
-	LDA $2A				;$B8C926	 |
+	LDA global_frame_counter	;$B8C926	 |
 	SEC				;$B8C928	 |
 	SBC $19A4			;$B8C929	 |
 	STA $32				;$B8C92C	 |
 	LDA #$000C			;$B8C92E	 |
 	CMP $32				;$B8C931	 |
 	BCS CODE_B8C969			;$B8C933	 |
-	LDA $2A				;$B8C935	 |
+	LDA global_frame_counter	;$B8C935	 |
 	STA $19A4			;$B8C937	 |
 	JSR CODE_B8C99A			;$B8C93A	 |
 	CMP #$0002			;$B8C93D	 |
@@ -9741,7 +9741,7 @@ CODE_B8C9C8:
 	AND #$4000			;$B8C9E3	 |
 	BNE CODE_B8C9F8			;$B8C9E6	 |
 	LDY $66				;$B8C9E8	 |
-	LDA $2A				;$B8C9EA	 |
+	LDA global_frame_counter	;$B8C9EA	 |
 	SEC				;$B8C9EC	 |
 	SBC $001A,y			;$B8C9ED	 |
 	CMP #$000C			;$B8C9F0	 |
@@ -9802,7 +9802,7 @@ CODE_B8CA3D:
 	RTS				;$B8CA44	/
 
 CODE_B8CA45:
-	LDA $2A				;$B8CA45	\
+	LDA global_frame_counter	;$B8CA45	\
 	SEC				;$B8CA47	 |
 	SBC $1A,x			;$B8CA48	 |
 	CMP #$0010			;$B8CA4A	 |
@@ -9853,7 +9853,7 @@ CODE_B8CA93:
 	CMP #$0190			;$B8CA9A	 |
 	BNE CODE_B8CA92			;$B8CA9D	 |
 	LDY $66				;$B8CA9F	 |
-	LDA $2A				;$B8CAA1	 |
+	LDA global_frame_counter	;$B8CAA1	 |
 	SEC				;$B8CAA3	 |
 	SBC $19A2			;$B8CAA4	 |
 	STA $32				;$B8CAA7	 |
@@ -9861,7 +9861,7 @@ CODE_B8CA93:
 	LDA [$8E],y			;$B8CAAC	 |
 	CMP $32				;$B8CAAE	 |
 	BCS CODE_B8CA92			;$B8CAB0	 |
-	LDA $2A				;$B8CAB2	 |
+	LDA global_frame_counter	;$B8CAB2	 |
 	STA $19A2			;$B8CAB4	 |
 	LDY #$008A			;$B8CAB7	 |
 	LDA [$8E],y			;$B8CABA	 |
@@ -10066,7 +10066,7 @@ CODE_B8CC32:
 	AND #$0300			;$B8CC42	 |
 	BEQ CODE_B8CC6B			;$B8CC45	 |
 	LDY #$0020			;$B8CC47	 |
-	LDA $2A				;$B8CC4A	 |
+	LDA global_frame_counter	;$B8CC4A	 |
 	SEC				;$B8CC4C	 |
 	SBC $1E,x			;$B8CC4D	 |
 	BMI CODE_B8CC6B			;$B8CC4F	 |
@@ -10190,7 +10190,7 @@ if !version == 0			;		 |
 	JSL $B58021			;$B8CD17	 |
 	LDA #$045E			;$B8CD1B	 |
 	JSL $B58021			;$B8CD1E	 |
-	LDA $2A				;$B8CD22	 |
+	LDA global_frame_counter	;$B8CD22	 |
 	STA $0636			;$B8CD24	 |
 else					;		 |
 	LDA #$0010			;$B8CD00	 |
@@ -11070,7 +11070,7 @@ CODE_B8D1B5:
 	DEC A				;$B8D1BD	 |
 	STA $0014,y			;$B8D1BE	 |
 	BEQ CODE_B8D1DC			;$B8D1C1	 |
-	LDA $2A				;$B8D1C3	 |
+	LDA global_frame_counter	;$B8D1C3	 |
 	AND #$0002			;$B8D1C5	 |
 	BNE CODE_B8D1D3			;$B8D1C8	 |
 	LDA $1C,x			;$B8D1CA	 |

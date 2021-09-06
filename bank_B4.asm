@@ -218,25 +218,25 @@ CODE_B481D6:				;		 |
 	BIT $06A5			;$B481D9	 |
 	BEQ CODE_B481E3			;$B481DC	 |
 	TRB $06A5			;$B481DE	 |
-	STZ $1C				;$B481E1	 |
+	STZ current_song		;$B481E1	 |
 CODE_B481E3:				;		 |
 	LDA $06A3			;$B481E3	 |
 	BIT #$1000			;$B481E6	 |
 	BNE CODE_B48210			;$B481E9	 |
 	LDA #$0013			;$B481EB	 |
-	CMP $1C				;$B481EE	 |
+	CMP current_song		;$B481EE	 |
 	BEQ CODE_B4821B			;$B481F0	 |
 	LDA $06B1			;$B481F2	 |
 	CMP #$000A			;$B481F5	 |
 	BCC CODE_B48203			;$B481F8	 |
 	LDA #$001C			;$B481FA	 |
-	CMP $1C				;$B481FD	 |
+	CMP current_song		;$B481FD	 |
 	BEQ CODE_B4821B			;$B481FF	 |
 	BRA CODE_B4820A			;$B48201	/
 
 CODE_B48203:
 	LDA #$0001			;$B48203	\
-	CMP $1C				;$B48206	 |
+	CMP current_song		;$B48206	 |
 	BEQ CODE_B4821B			;$B48208	 |
 CODE_B4820A:				;		 |
 	JSL CODE_B5800C			;$B4820A	 |
@@ -244,7 +244,7 @@ CODE_B4820A:				;		 |
 
 CODE_B48210:
 	LDA #$0008			;$B48210	\
-	CMP $1C				;$B48213	 |
+	CMP current_song		;$B48213	 |
 	BEQ CODE_B4821B			;$B48215	 |
 	JSL CODE_B5800C			;$B48217	 |
 CODE_B4821B:				;		 |
@@ -406,7 +406,7 @@ CODE_B48374:				;		 |
 	LDA $0512			;$B4837C	 |
 	BIT #$8000			;$B4837F	 |
 	BNE CODE_B483BB			;$B48382	 |
-	LDA $2A				;$B48384	 |
+	LDA global_frame_counter	;$B48384	 |
 	BIT #$0007			;$B48386	 |
 	BNE CODE_B483BB			;$B48389	 |
 	LDA #$0000			;$B4838B	 |
@@ -442,7 +442,7 @@ CODE_B483BB:				;		 |
 	BIT #$8000			;$B483C6	 |
 	BNE CODE_B48418			;$B483C9	 |
 	SEP #$20			;$B483CB	 |
-	LDA $2A				;$B483CD	 |
+	LDA global_frame_counter	;$B483CD	 |
 	LSR A				;$B483CF	 |
 	LSR A				;$B483D0	 |
 	STA $32				;$B483D1	 |
@@ -1152,7 +1152,7 @@ CODE_B4896A:				;		 |
 	LDA $0512			;$B48972	 |
 	BNE CODE_B48985			;$B48975	 |
 	LDA #CODE_808D02		;$B48977	 |
-	STA $20				;$B4897A	 |
+	STA NMI_pointer			;$B4897A	 |
 	LDA $06A3			;$B4897C	 |
 	AND #$FFFD			;$B4897F	 |
 	STA $06A3			;$B48982	 |
@@ -1438,7 +1438,7 @@ CODE_B48BDF:				;		 |
 CODE_B48BEE:				;		 |
 	JSR CODE_B48C76			;$B48BEE	 |
 	LDA #CODE_808CF5		;$B48BF1	 |
-	STA $20				;$B48BF4	 |
+	STA NMI_pointer			;$B48BF4	 |
 	LDA #$0100			;$B48BF6	 |
 	JSL CODE_808C2E			;$B48BF9	 |
 	LDA #$0005			;$B48BFD	 |
@@ -1475,7 +1475,7 @@ CODE_B48C07:
 	LDA #CODE_B4A2A4		;$B48C55	 |
 	STA $079C			;$B48C58	 |
 	LDA #CODE_808D4E		;$B48C5B	 |
-	STA $20				;$B48C5E	 |
+	STA NMI_pointer			;$B48C5E	 |
 	LDA #$0100			;$B48C60	 |
 	JSL CODE_808C2E			;$B48C63	 |
 	JML CODE_808C84			;$B48C67	/
@@ -1892,7 +1892,7 @@ CODE_B49043:
 	LDA $0660			;$B49049	 |
 	STA $08A4			;$B4904C	 |
 	LDA #CODE_808CD9		;$B4904F	 |
-	STA $20				;$B49052	 |
+	STA NMI_pointer			;$B49052	 |
 	LDA #CODE_B4BEEF		;$B49054	 |
 	STA $067D			;$B49057	 |
 	LDA #CODE_B4C139		;$B4905A	 |
@@ -2030,7 +2030,7 @@ CODE_B49188:
 	LDA $0660			;$B4918E	 |
 	STA $08A4			;$B49191	 |
 	LDA #CODE_808CD9		;$B49194	 |
-	STA $20				;$B49197	 |
+	STA NMI_pointer			;$B49197	 |
 	LDA #CODE_B4BEEF		;$B49199	 |
 	STA $067D			;$B4919C	 |
 	LDA #CODE_B491C5		;$B4919F	 |
@@ -2088,14 +2088,14 @@ CODE_B491FF:
 	BIT $0666			;$B4920D	 |
 	BEQ CODE_B4921F			;$B49210	 |
 	LDA #CODE_808D3D		;$B49212	 |
-	STA $20				;$B49215	 |
+	STA NMI_pointer			;$B49215	 |
 	LDA #$0001			;$B49217	 |
 	STA $0654			;$B4921A	 |
 	BRA CODE_B49224			;$B4921D	/
 
 CODE_B4921F:
 	LDA #CODE_808D0E		;$B4921F	\
-	STA $20				;$B49222	 |
+	STA NMI_pointer			;$B49222	 |
 CODE_B49224:				;		 |
 	LDA #$0200			;$B49224	 |
 	STA DMA[0].source		;$B49227	 |
@@ -2337,7 +2337,7 @@ CODE_B49425:				;		 |
 	CMP #$000F			;$B49430	 |
 	BNE CODE_B49441			;$B49433	 |
 	LDA #CODE_808D7D		;$B49435	 |
-	STA $20				;$B49438	 |
+	STA NMI_pointer			;$B49438	 |
 	LDA #$810F			;$B4943A	 |
 	JSL CODE_808C2E			;$B4943D	 |
 CODE_B49441:				;		 |
@@ -2435,7 +2435,7 @@ CODE_B4951B:
 	STA $0654			;$B4951E	 |
 	JSR CODE_B4974F			;$B49521	 |
 	LDA #CODE_808D30		;$B49524	 |
-	STA $20				;$B49527	 |
+	STA NMI_pointer			;$B49527	 |
 	LDA #CODE_808D1F		;$B49529	 |
 	STA $065E			;$B4952C	 |
 	LDA $06A1			;$B4952F	 |
@@ -2877,7 +2877,7 @@ CODE_B498DB:				;		 |
 	AND #$EFFF			;$B498E9	 |
 	STA $06A1			;$B498EC	 |
 	LDA $065E			;$B498EF	 |
-	STA $20				;$B498F2	 |
+	STA NMI_pointer			;$B498F2	 |
 CODE_B498F4:				;		 |
 	JSR CODE_B49EF1			;$B498F4	 |
 	JSL CODE_BAC7C0			;$B498F7	 |
@@ -2916,7 +2916,7 @@ CODE_B49934:				;		 |
 	LDA #$0001			;$B49948	 |
 	STA $064E			;$B4994B	 |
 	LDA $065E			;$B4994E	 |
-	STA $20				;$B49951	 |
+	STA NMI_pointer			;$B49951	 |
 CODE_B49953:				;		 |
 	JSR CODE_B49EF1			;$B49953	 |
 	JSL CODE_BAC7C0			;$B49956	 |
@@ -3201,7 +3201,7 @@ CODE_B49BBB:
 	LDA #$0001			;$B49BCA	 |
 	TRB $0613			;$B49BCD	 |
 	LDA #CODE_8087D9		;$B49BD0	 |
-	STA $24				;$B49BD3	 |
+	STA gameloop_pointer		;$B49BD3	 |
 	LDA #CODE_808608		;$B49BD5	 |
 	JML CODE_808C80			;$B49BD8	/
 
@@ -3372,7 +3372,7 @@ endif					;		 |
 	CMP #$0000			;$B49CFD	 |
 	BNE CODE_B49D3D			;$B49D00	 |
 	LDA #CODE_808D70		;$B49D02	 |
-	STA $20				;$B49D05	 |
+	STA NMI_pointer			;$B49D05	 |
 	LDA #CODE_808D5F		;$B49D07	 |
 	STA $065E			;$B49D0A	 |
 	LDA $0689			;$B49D0D	 |
@@ -3578,7 +3578,7 @@ CODE_B49E48:
 	BNE CODE_B49E9B			;$B49E88	 |
 	STZ $0699			;$B49E8A	 |
 	LDA #CODE_808D70		;$B49E8D	 |
-	STA $20				;$B49E90	 |
+	STA NMI_pointer			;$B49E90	 |
 	LDA #CODE_808D3D		;$B49E92	 |
 	STA $065E			;$B49E95	 |
 	BRL CODE_B49EBF			;$B49E98	/
@@ -3683,7 +3683,7 @@ CODE_B49F61:
 	LDA #CODE_B4A00D		;$B49F6D	 |
 	STA $079C			;$B49F70	 |
 	LDA #CODE_808D4E		;$B49F73	 |
-	STA $20				;$B49F76	 |
+	STA NMI_pointer			;$B49F76	 |
 	JSR CODE_B49FFD			;$B49F78	 |
 	LDA $08FA			;$B49F7B	 |
 	ORA $0666			;$B49F7E	 |
@@ -3792,7 +3792,7 @@ CODE_B4A051:
 	CMP #$000F			;$B4A05C	 |
 	BNE CODE_B4A06D			;$B4A05F	 |
 	LDA #CODE_808D7D		;$B4A061	 |
-	STA $20				;$B4A064	 |
+	STA NMI_pointer			;$B4A064	 |
 	LDA #$810F			;$B4A066	 |
 	JSL CODE_808C2E			;$B4A069	 |
 CODE_B4A06D:				;		 |
@@ -3822,7 +3822,7 @@ CODE_B4A088:
 	LDA #$810F			;$B4A09B	 |
 	JSL CODE_808C2E			;$B4A09E	 |
 	LDA #CODE_808D7D		;$B4A0A2	 |
-	STA $20				;$B4A0A5	 |
+	STA NMI_pointer			;$B4A0A5	 |
 CODE_B4A0A7:				;		 |
 	RTS				;$B4A0A7	/
 
@@ -3860,7 +3860,7 @@ CODE_B4A0C0:				;		 |
 	LDA #CODE_B4A135		;$B4A0E8	 |
 	STA $079C			;$B4A0EB	 |
 	LDA #CODE_808D4E		;$B4A0EE	 |
-	STA $20				;$B4A0F1	 |
+	STA NMI_pointer			;$B4A0F1	 |
 	LDA #$0001			;$B4A0F3	 |
 	STA $064E			;$B4A0F6	 |
 	JSR CODE_B4974F			;$B4A0F9	 |
@@ -3935,7 +3935,7 @@ CODE_B4A170:
 	STA $06A1			;$B4A184	 |
 	JSR CODE_B4A11F			;$B4A187	 |
 	LDA #CODE_808D30		;$B4A18A	 |
-	STA $20				;$B4A18D	 |
+	STA NMI_pointer			;$B4A18D	 |
 	LDA #CODE_808D1F		;$B4A18F	 |
 	STA $065E			;$B4A192	 |
 	STZ $067A			;$B4A195	 |
@@ -4044,7 +4044,7 @@ CODE_B4A26F:
 	LDA #CODE_B4A288		;$B4A275	 |
 	STA $079C			;$B4A278	 |
 	LDA #CODE_808D4E		;$B4A27B	 |
-	STA $20				;$B4A27E	 |
+	STA NMI_pointer			;$B4A27E	 |
 	LDA #$810F			;$B4A280	 |
 	JSL CODE_808C2E			;$B4A283	 |
 	RTS				;$B4A287	/
@@ -4068,7 +4068,7 @@ CODE_B4A2A4:
 	CMP #$000F			;$B4A2AB	 |
 	BNE CODE_B4A2BB			;$B4A2AE	 |
 	LDA #CODE_808D30		;$B4A2B0	 |
-	STA $20				;$B4A2B3	 |
+	STA NMI_pointer			;$B4A2B3	 |
 	LDA #CODE_808D1F		;$B4A2B5	 |
 	STA $065E			;$B4A2B8	 |
 CODE_B4A2BB:				;		 |
@@ -4080,7 +4080,7 @@ CODE_B4A2BC:
 	LDX $0597			;$B4A2C2	 |
 	JSR CODE_B4A303			;$B4A2C5	 |
 	LDA #CODE_808D4E		;$B4A2C8	 |
-	STA $20				;$B4A2CB	 |
+	STA NMI_pointer			;$B4A2CB	 |
 	LDA #CODE_B4A313		;$B4A2CD	 |
 	STA $079C			;$B4A2D0	 |
 	LDA $06A3			;$B4A2D3	 |
@@ -4165,13 +4165,13 @@ CODE_B4A371:
 	LDA #$810F			;$B4A384	 |
 	JSL CODE_808C2E			;$B4A387	 |
 	LDA #CODE_808D7D		;$B4A38B	 |
-	STA $20				;$B4A38E	 |
+	STA NMI_pointer			;$B4A38E	 |
 CODE_B4A390:				;		 |
 	RTS				;$B4A390	/
 
 CODE_B4A391:
 	LDA #CODE_808D4E		;$B4A391	\
-	STA $20				;$B4A394	 |
+	STA NMI_pointer			;$B4A394	 |
 	LDA #CODE_B4A3EE		;$B4A396	 |
 	STA $079C			;$B4A399	 |
 	LDA $06A1			;$B4A39C	 |
@@ -4519,7 +4519,7 @@ CODE_B4A69A:
 	BNE CODE_B4A6CE			;$B4A6A9	 |
 	JSR CODE_B4A11F			;$B4A6AB	 |
 	LDA #CODE_808D30		;$B4A6AE	 |
-	STA $20				;$B4A6B1	 |
+	STA NMI_pointer			;$B4A6B1	 |
 	LDA #CODE_808D1F		;$B4A6B3	 |
 	STA $065E			;$B4A6B6	 |
 	STZ $067A			;$B4A6B9	 |
@@ -4545,7 +4545,7 @@ CODE_B4A6CE:
 	LDA $0670			;$B4A6EA	 |
 	STA $06B5			;$B4A6ED	 |
 	LDA #CODE_808D30		;$B4A6F0	 |
-	STA $20				;$B4A6F3	 |
+	STA NMI_pointer			;$B4A6F3	 |
 	LDA #CODE_808D1F		;$B4A6F5	 |
 	STA $065E			;$B4A6F8	 |
 	STZ $067A			;$B4A6FB	 |
@@ -4704,7 +4704,7 @@ CODE_B4A830:
 	LDA #CODE_B4A87F		;$B4A84C	 |
 	STA $079C			;$B4A84F	 |
 	LDA #CODE_808D4E		;$B4A852	 |
-	STA $20				;$B4A855	 |
+	STA NMI_pointer			;$B4A855	 |
 	LDA #$0001			;$B4A857	 |
 	STA $064E			;$B4A85A	 |
 	LDA $06A1			;$B4A85D	 |
@@ -4727,7 +4727,7 @@ CODE_B4A87F:
 	LDA $42,x			;$B4A882	 |
 	BNE CODE_B4A89B			;$B4A884	 |
 	LDA #CODE_808D7D		;$B4A886	 |
-	STA $20				;$B4A889	 |
+	STA NMI_pointer			;$B4A889	 |
 	LDA $0512			;$B4A88B	 |
 	CMP #$000F			;$B4A88E	 |
 	BNE CODE_B4A89B			;$B4A891	 |
@@ -4771,11 +4771,11 @@ CODE_B4A8D6:
 	LDA $06A1			;$B4A8E4	 |
 	AND #$FDFF			;$B4A8E7	 |
 	STA $06A1			;$B4A8EA	 |
-	LDA $20				;$B4A8ED	 |
+	LDA NMI_pointer			;$B4A8ED	 |
 	CMP #CODE_808D7D		;$B4A8EF	 |
 	BEQ CODE_B4A908			;$B4A8F2	 |
 	LDA #CODE_808D7D		;$B4A8F4	 |
-	STA $20				;$B4A8F7	 |
+	STA NMI_pointer			;$B4A8F7	 |
 	LDA $0512			;$B4A8F9	 |
 	CMP #$000F			;$B4A8FC	 |
 	BNE CODE_B4A908			;$B4A8FF	 |
@@ -4825,7 +4825,7 @@ CODE_B4A959:				;		 |
 	LDA #$0001			;$B4A969	 |
 	STA $064E			;$B4A96C	 |
 	LDA #CODE_808D7D		;$B4A96F	 |
-	STA $20				;$B4A972	 |
+	STA NMI_pointer			;$B4A972	 |
 	LDA #$810F			;$B4A974	 |
 	JSL CODE_808C2E			;$B4A977	 |
 CODE_B4A97B:				;		 |
@@ -4848,7 +4848,7 @@ CODE_B4A98C:
 	LDA #CODE_B4A87F		;$B4A998	 |
 	STA $079C			;$B4A99B	 |
 	LDA #CODE_808D4E		;$B4A99E	 |
-	STA $20				;$B4A9A1	 |
+	STA NMI_pointer			;$B4A9A1	 |
 	LDA #$0001			;$B4A9A3	 |
 	STA $064E			;$B4A9A6	 |
 	LDA $06A1			;$B4A9A9	 |
@@ -4883,7 +4883,7 @@ CODE_B4A9DB:
 	LDA #CODE_B4A87F		;$B4A9E7	 |
 	STA $079C			;$B4A9EA	 |
 	LDA #CODE_808D4E		;$B4A9ED	 |
-	STA $20				;$B4A9F0	 |
+	STA NMI_pointer			;$B4A9F0	 |
 	LDA #$0001			;$B4A9F2	 |
 	STA $064E			;$B4A9F5	 |
 	LDA $06A1			;$B4A9F8	 |
@@ -4918,7 +4918,7 @@ CODE_B4AA2A:
 	LDA #CODE_B4AA79		;$B4AA36	 |
 	STA $079C			;$B4AA39	 |
 	LDA #CODE_808D4E		;$B4AA3C	 |
-	STA $20				;$B4AA3F	 |
+	STA NMI_pointer			;$B4AA3F	 |
 	LDA #$0001			;$B4AA41	 |
 	STA $064E			;$B4AA44	 |
 	LDA $0689			;$B4AA47	 |
@@ -4950,7 +4950,7 @@ CODE_B4AA79:
 	LDA $42,x			;$B4AA7C	 |
 	BNE CODE_B4AA95			;$B4AA7E	 |
 	LDA #CODE_808D7D		;$B4AA80	 |
-	STA $20				;$B4AA83	 |
+	STA NMI_pointer			;$B4AA83	 |
 	LDA $0512			;$B4AA85	 |
 	CMP #$000F			;$B4AA88	 |
 	BNE CODE_B4AA95			;$B4AA8B	 |
@@ -4994,11 +4994,11 @@ CODE_B4AAD0:
 	LDA $06A1			;$B4AADE	 |
 	AND #$FDFF			;$B4AAE1	 |
 	STA $06A1			;$B4AAE4	 |
-	LDA $20				;$B4AAE7	 |
+	LDA NMI_pointer			;$B4AAE7	 |
 	CMP #CODE_808D7D		;$B4AAE9	 |
 	BEQ CODE_B4AAFA			;$B4AAEC	 |
 	LDA #CODE_808D7D		;$B4AAEE	 |
-	STA $20				;$B4AAF1	 |
+	STA NMI_pointer			;$B4AAF1	 |
 	LDA #$810F			;$B4AAF3	 |
 	JSL CODE_808C2E			;$B4AAF6	 |
 CODE_B4AAFA:				;		 |
@@ -5045,7 +5045,7 @@ CODE_B4AB4B:				;		 |
 	LDA #$0001			;$B4AB5B	 |
 	STA $064E			;$B4AB5E	 |
 	LDA #CODE_808D7D		;$B4AB61	 |
-	STA $20				;$B4AB64	 |
+	STA NMI_pointer			;$B4AB64	 |
 	LDA #$810F			;$B4AB66	 |
 	JSL CODE_808C2E			;$B4AB69	 |
 CODE_B4AB6D:				;		 |
@@ -5091,7 +5091,7 @@ CODE_B4ABB3:
 	STA $06A1			;$B4ABC7	 |
 	JSR CODE_B4A11F			;$B4ABCA	 |
 	LDA #CODE_808D30		;$B4ABCD	 |
-	STA $20				;$B4ABD0	 |
+	STA NMI_pointer			;$B4ABD0	 |
 	LDA #CODE_808D1F		;$B4ABD2	 |
 	STA $065E			;$B4ABD5	 |
 	STZ $067A			;$B4ABD8	 |
@@ -6088,7 +6088,7 @@ CODE_B4B46D:				;		 |
 	JSL CODE_80897C			;$B4B479	 |
 	JSL CODE_B4AEAF			;$B4B47D	 |
 	LDA #CODE_8087D9		;$B4B481	 |
-	STA $24				;$B4B484	 |
+	STA gameloop_pointer		;$B4B484	 |
 	LDA #CODE_808608		;$B4B486	 |
 	JML CODE_808C80			;$B4B489	/
 
@@ -6099,7 +6099,7 @@ CODE_B4B48D:
 	LDA #$0063			;$B4B496	 |
 	STA $08CA			;$B4B499	 |
 	LDA #CODE_8087D9		;$B4B49C	 |
-	STA $24				;$B4B49F	 |
+	STA gameloop_pointer		;$B4B49F	 |
 	JSR CODE_B4B42D			;$B4B4A1	 |
 	JSL CODE_80897C			;$B4B4A4	 |
 	JSL CODE_B4AEAF			;$B4B4A8	 |
@@ -6114,7 +6114,7 @@ CODE_B4B4B3:				;		\
 	JSR CODE_B4B42D			;$B4B4C0	 |
 	JSL CODE_B4AEAF			;$B4B4C3	 |
 	LDA #CODE_8087D9		;$B4B4C7	 |
-	STA $24				;$B4B4CA	 |
+	STA gameloop_pointer		;$B4B4CA	 |
 	LDA #CODE_808608		;$B4B4CC	 |
 	JML CODE_808C80			;$B4B4CF	/
 
@@ -6528,7 +6528,7 @@ CODE_B4B7C5:				;		 |
 	BRA CODE_B4B75B			;$B4B7C8	/
 
 CODE_B4B7CA:
-	LDA $2A				;$B4B7CA	\
+	LDA global_frame_counter	;$B4B7CA	\
 	BIT #$0007			;$B4B7CC	 |
 	BNE CODE_B4B815			;$B4B7CF	 |
 	LDA $091D			;$B4B7D1	 |
@@ -6581,7 +6581,7 @@ CODE_B4B82A:
 	RTS				;$B4B82A	/
 
 CODE_B4B82B:
-	LDA $2A				;$B4B82B	\
+	LDA global_frame_counter	;$B4B82B	\
 	SEP #$20			;$B4B82D	 |
 	STA PPU.layer_1_scroll_x	;$B4B82F	 |
 	STZ PPU.layer_1_scroll_x	;$B4B832	 |
@@ -7708,24 +7708,24 @@ CODE_B4C14E:
 CODE_B4C165:				;		 |
 	JSL CODE_B4AEAF			;$B4C165	 |
 	LDA #CODE_8087D9		;$B4C169	 |
-	STA $24				;$B4C16C	 |
+	STA gameloop_pointer		;$B4C16C	 |
 	LDA #CODE_808608		;$B4C16E	 |
 	JML CODE_808C80			;$B4C171	/
 
 CODE_B4C175:
-	LDA $2E				;$B4C175	\
+	LDA rng_result			;$B4C175	\
 	PHA				;$B4C177	 |
-	LDA $30				;$B4C178	 |
+	LDA rng_seed_2			;$B4C178	 |
 	ROL A				;$B4C17A	 |
 	PHA				;$B4C17B	 |
-	LDA $2F				;$B4C17C	 |
+	LDA rng_seed_1			;$B4C17C	 |
 	EOR $01,s			;$B4C17E	 |
-	STA $2E				;$B4C180	 |
+	STA rng_result			;$B4C180	 |
 	PLA				;$B4C182	 |
 	PLA				;$B4C183	 |
-	STA $30				;$B4C184	 |
-	LDA $2E				;$B4C186	 |
-	INC $2E				;$B4C188	 |
+	STA rng_seed_2			;$B4C184	 |
+	LDA rng_result			;$B4C186	 |
+	INC rng_result			;$B4C188	 |
 	RTL				;$B4C18A	/
 
 DATA_B4C18B:

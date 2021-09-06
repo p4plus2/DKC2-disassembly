@@ -56,3 +56,40 @@ DATA_FD6170
 DATA_FD616E
 
 DATA_FD470D  consider offset macro?
+
+
+if !version == 0
+	dw !boss_command_19, $AF04, $AF34
+else
+	dw !boss_command_19, $AEE0, $AF10
+endif
+
+
+if !version == 0			;		 |
+	LDA #$B4C8			;$BA9CAD	 |
+else					;		 |
+	LDA #$B413			;$BA9CAD	 |
+endif					;		 |
+	BRA CODE_BA9CB5			;$BA9CB0	/
+
+CODE_BA9CB2:
+if !version == 0			;		\
+	LDA #$B2A2			;$BA9CB2	 |
+else					;		 |
+	LDA #$B1ED			;$BA9CB2	 |
+endif					;		 |
+
+
+if !version == 1			;		 |
+	LDX #$A40F			;$80D057	 |
+else					;		 |
+	LDX #$A402			;$80D057	 |
+endif					;		 |
+	LDA $2A				;$80D05A	 |
+	BIT #$0001			;$80D05C	 |
+	BEQ CODE_80D064			;$80D05F	 |
+if !version == 0			;		 |
+	LDX #$A3FB			;$80D061	 |
+else					;		 |
+	LDX #$A408			;$80D061	 |
+endif

@@ -87,7 +87,7 @@ local function read_byte(offset)
 end
 
 local function read_fixed_word(offset)
-	return string.format("%04X.%04X", memory2.WRAM:read(offset+2), (memory2.WRAM:read(offset)))
+	return string.format("%04X.%04X", read_word(offset+2), read_word(offset))
 end
 
 local function read_fixed_byte(offset)
@@ -511,12 +511,18 @@ end
 local watched_addresses = {}
 local watched_addresses_list = load_csv(ram_watch_path)
 local exec_watched_addresses = {}
+local exec_watch_list = load_csv(exec_watch_path)
 local exec_watched_count = {}
 local function display_watch()
 	for index, entry in ipairs(watched_addresses_list) do
 		add_watch(entry[1], tonumber(entry[2]), tonumber(entry[3]))
 	end
 	watched_addresses_list = {}
+	for index, entry in ipairs(exec_watch_list) do
+		add_exec_watch(entry[1], tonumber(entry[2]))
+	end
+	exec_watch_list = {}
+
 	upper_left:append_line("RAM watches: ")
 	for address, read_callback in pairs(watched_addresses) do
 		upper_left:append_line(read_callback())

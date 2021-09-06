@@ -1,0 +1,3 @@
+"Joypad routine 1", 0x80B061
+"Joypad routine 2", 0x8089C9
+"Joypad routine 3", 0x809025
