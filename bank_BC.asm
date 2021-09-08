@@ -9798,7 +9798,7 @@ CODE_BCFA78:
 CODE_BCFA9A:
 	PHD				;$BCFA9A	\
 	LDY #$09AB			;$BCFA9B	 |
-	LDX $64				;$BCFA9E	 |
+	LDX current_sprite		;$BCFA9E	 |
 	CPX $0593			;$BCFAA0	 |
 	BEQ CODE_BCFABA			;$BCFAA3	 |
 	LDY #CODE_BCFCA5>>8		;$BCFAA5	 |
@@ -9816,7 +9816,7 @@ CODE_BCFABA:				;		 |
 
 	PHD				;$BCFAC2	 |
 	LDY #$09A3			;$BCFAC3	 |
-	LDX $64				;$BCFAC6	 |
+	LDX current_sprite		;$BCFAC6	 |
 	CPX $0593			;$BCFAC8	 |
 	BEQ CODE_BCFAE2			;$BCFACB	 |
 	LDY #CODE_BCFCA5>>8		;$BCFACD	 |
@@ -9833,7 +9833,7 @@ CODE_BCFAE2:				;		 |
 	RTL				;$BCFAE9	/
 
 CODE_BCFAEA:
-	LDX $64				;$BCFAEA	\
+	LDX current_sprite		;$BCFAEA	\
 	CPX $0593			;$BCFAEC	 |
 	BNE CODE_BCFB1C			;$BCFAEF	 |
 	PHD				;$BCFAF1	 |
@@ -9850,7 +9850,7 @@ CODE_BCFAFD:				;		 |
 	BNE CODE_BCFB1D			;$BCFB0A	 |
 	LDA $6E				;$BCFB0C	 |
 	BEQ CODE_BCFB1C			;$BCFB0E	 |
-	LDX $6C				;$BCFB10	 |
+	LDX current_player_mount	;$BCFB10	 |
 	BEQ CODE_BCFB1C			;$BCFB12	 |
 	PHD				;$BCFB14	 |
 	LDY #$09EB			;$BCFB15	 |
@@ -9890,7 +9890,7 @@ CODE_BCFB41:				;		 |
 
 CODE_BCFB58:
 	PHD				;$BCFB58	\
-	LDX $64				;$BCFB59	 |
+	LDX current_sprite		;$BCFB59	 |
 	LDY #$09D3			;$BCFB5B	 |
 	JSR get_sprite_clipping		;$BCFB5E	 |
 	JSR CODE_BCFBCC			;$BCFB61	 |
@@ -9900,7 +9900,7 @@ CODE_BCFB58:
 
 CODE_BCFB69:
 	PHD				;$BCFB69	\
-	LDX $64				;$BCFB6A	 |
+	LDX current_sprite		;$BCFB6A	 |
 	LDY #$09D3			;$BCFB6C	 |
 	JSR CODE_BCFC40			;$BCFB6F	 |
 	JSR CODE_BCFBCC			;$BCFB72	 |
@@ -9910,7 +9910,7 @@ CODE_BCFB69:
 
 CODE_BCFB7A:
 	PHD				;$BCFB7A	\
-	LDX $64				;$BCFB7B	 |
+	LDX current_sprite		;$BCFB7B	 |
 	LDY #$09DB			;$BCFB7D	 |
 	JSR CODE_BCFC40			;$BCFB80	 |
 	LDA #$09D3			;$BCFB83	 |
@@ -9920,7 +9920,7 @@ CODE_BCFB7A:
 
 CODE_BCFB8B:
 	PHD				;$BCFB8B	\
-	LDX $64				;$BCFB8C	 |
+	LDX current_sprite		;$BCFB8C	 |
 	LDY #$09D3			;$BCFB8E	 |
 	JSR CODE_BCFC40			;$BCFB91	 |
 	LDA #$09D3			;$BCFB94	 |
@@ -10288,7 +10288,7 @@ CODE_BCFE28:				;		 |
 	STA $6A				;$BCFE2E	 |
 	CMP #$0E40			;$BCFE30	 |
 	BEQ CODE_BCFE07			;$BCFE33	 |
-	CMP $64				;$BCFE35	 |
+	CMP current_sprite		;$BCFE35	 |
 	BEQ CODE_BCFE28			;$BCFE37	 |
 	TAX				;$BCFE39	 |
 	LDA $00,x			;$BCFE3A	 |
@@ -10409,7 +10409,7 @@ CODE_BCFEE8:
 	BRA CODE_BCFF03			;$BCFEFA	/
 
 CODE_BCFEFC:
-	CMP $6C				;$BCFEFC	\
+	CMP current_player_mount	;$BCFEFC	\
 	BNE CODE_BCFF1B			;$BCFEFE	 |
 	LDY #$09EB			;$BCFF00	 |
 CODE_BCFF03:				;		 |
@@ -10451,7 +10451,7 @@ CODE_BCFF3B:				;		 |
 	BCC CODE_BCFF6E			;$BCFF40	 |
 	SBC #$005E			;$BCFF42	 |
 	STA $6A				;$BCFF45	 |
-	CMP $64				;$BCFF47	 |
+	CMP current_sprite		;$BCFF47	 |
 	BEQ CODE_BCFF3B			;$BCFF49	 |
 	TAX				;$BCFF4B	 |
 	LDA $00,x			;$BCFF4C	 |

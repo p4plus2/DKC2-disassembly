@@ -3,7 +3,7 @@ optimize dp always
 optimize address mirrors
 !version = 1
 !override_pirate_panic = 0
-!pirate_panic_replacement = $2F
+!pirate_panic_replacement = $6B
 
 
 org $008000			;dummy org so functions work

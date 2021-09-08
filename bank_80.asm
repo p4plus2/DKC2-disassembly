@@ -1357,8 +1357,8 @@ CODE_808D8A:
 	STA $66				;$808DA7	 |
 	LDY #DATA_FF136E		;$808DA9	 |
 	JSL CODE_BB8432			;$808DAC	 |
-	LDX $68				;$808DB0	 |
-	STX $64				;$808DB2	 |
+	LDX alternate_sprite		;$808DB0	 |
+	STX current_sprite		;$808DB2	 |
 	LDA #$0004			;$808DB4	 |
 	JSL CODE_B9D0B8			;$808DB7	 |
 	LDA.l DATA_FF012A		;$808DBB	 |
@@ -1414,8 +1414,8 @@ CODE_808E29:
 	STA $66				;$808E2C	 |
 	LDY.w #DATA_FF1330		;$808E2E	 |
 	JSL CODE_BB8432			;$808E31	 |
-	LDX $68				;$808E35	 |
-	STX $64				;$808E37	 |
+	LDX alternate_sprite		;$808E35	 |
+	STX current_sprite		;$808E37	 |
 	LDA #$0001			;$808E39	 |
 	JSL CODE_B9D0B8			;$808E3C	 |
 	LDA.l DATA_FF0040		;$808E40	 |
@@ -1573,7 +1573,7 @@ CODE_808F6C:
 	STZ $08C2			;$808F83	 |
 	STZ $D5				;$808F86	 |
 	STZ $D7				;$808F88	 |
-	STZ $6C				;$808F8A	 |
+	STZ current_player_mount	;$808F8A	 |
 	STZ $6E				;$808F8C	 |
 	STZ $08A6			;$808F8E	 |
 	STZ $08AA			;$808F91	 |
@@ -9045,7 +9045,7 @@ CODE_80D4B7:
 	TSB $08C2			;$80D4C4	 |
 	BNE CODE_80D4F9			;$80D4C7	 |
 	LDX $0593			;$80D4C9	 |
-	STX $64				;$80D4CC	 |
+	STX current_sprite		;$80D4CC	 |
 	LDY #$0018			;$80D4CE	 |
 	JSL CODE_BB842C			;$80D4D1	 |
 	LDA #$0662			;$80D4D5	 |
@@ -9057,7 +9057,7 @@ CODE_80D4DE:
 	TRB $08C2			;$80D4E1	 |
 	BEQ CODE_80D4F9			;$80D4E4	 |
 	LDX $0593			;$80D4E6	 |
-	STX $64				;$80D4E9	 |
+	STX current_sprite		;$80D4E9	 |
 	LDY #$001A			;$80D4EB	 |
 	JSL CODE_BB842C			;$80D4EE	 |
 	LDA #$0662			;$80D4F2	 |
@@ -9076,7 +9076,7 @@ CODE_80D4FA:
 	CMP #$8000			;$80D50D	 |
 	BEQ CODE_80D547			;$80D510	 |
 	LDA #$0D26			;$80D512	 |
-	STA $64				;$80D515	 |
+	STA current_sprite		;$80D515	 |
 	LDA #$0007			;$80D517	 |
 	JSL CODE_B8CFD4			;$80D51A	 |
 	LDX #$0000			;$80D51E	 |
@@ -9610,7 +9610,7 @@ CODE_80D980:				;		 |
 	BCC CODE_80D9D4			;$80D990	 |
 CODE_80D992:				;		 |
 	LDA #$0D26			;$80D992	 |
-	STA $64				;$80D995	 |
+	STA current_sprite		;$80D995	 |
 	LDA #$0007			;$80D997	 |
 	JSL CODE_B8CFD4			;$80D99A	 |
 	LDA $0D4A			;$80D99E	 |
@@ -10734,7 +10734,7 @@ CODE_80E4B0:				;		 |
 	INC $092E			;$80E4B9	 |
 	PHK				;$80E4BC	 |
 	PLB				;$80E4BD	 |
-	LDX $68				;$80E4BE	 |
+	LDX alternate_sprite		;$80E4BE	 |
 	LDA $092B			;$80E4C0	 |
 	STA $42,x			;$80E4C3	 |
 	TAY				;$80E4C5	 |
@@ -12798,12 +12798,12 @@ CODE_80F526:				;		 |
 	PLY				;$80F532	 |
 CODE_80F533:				;		 |
 	JSL CODE_BB842C			;$80F533	 |
-	LDA $68				;$80F537	 |
+	LDA alternate_sprite		;$80F537	 |
 	BRA CODE_80F541			;$80F539	/
 
 CODE_80F53B:
 	JSL CODE_BB8443			;$80F53B	\
-	LDA $68				;$80F53F	 |
+	LDA alternate_sprite		;$80F53F	 |
 CODE_80F541:				;		 |
 	INC $7A				;$80F541	 |
 	INC $7A				;$80F543	 |
@@ -13194,7 +13194,7 @@ CODE_80F9C7:
 	RTS				;$80FA10	/
 
 CODE_80FA11:
-	LDX $64				;$80FA11	\
+	LDX current_sprite		;$80FA11	\
 	LDA $06,x			;$80FA13	 |
 	INC A				;$80FA15	 |
 	STA $06,x			;$80FA16	 |
@@ -13220,7 +13220,7 @@ CODE_80FA40:
 	PHB				;$80FA40	\
 	PHK				;$80FA41	 |
 	PLB				;$80FA42	 |
-	LDX $64				;$80FA43	 |
+	LDX current_sprite		;$80FA43	 |
 	LDA $06,x			;$80FA45	 |
 	INC A				;$80FA47	 |
 	STA $06,x			;$80FA48	 |

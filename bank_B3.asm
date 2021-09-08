@@ -29,12 +29,12 @@ sprite_handler:
 .next_slot				;		 |
 	LDA $00,x			;$B38048	 |\ If the sprite doesn't exist
 	BEQ .get_next_slot		;$B3804A	 |/ Get the next sprite
-	STX $64				;$B3804C	 |\ If the sprite was found, preserve the index
+	STX current_sprite		;$B3804C	 |\ If the sprite was found, preserve the index
 	TAX				;$B3804E	 | |
 	JMP (DATA_B38348,x)		;$B3804F	/ / Then jump to the sprite code
 
 .sprite_return
-	LDX $64				;$B38052	\ Reload current sprite pointer
+	LDX current_sprite		;$B38052	\ Reload current sprite pointer
 .get_next_slot				;		 |
 	TXA				;$B38054	 |\ Load next sprite slot
 	CLC				;$B38055	 | |
@@ -73,7 +73,7 @@ CODE_B38087:
 CODE_B38090:				;		 |
 	LDA $00,x			;$B38090	 |
 	BEQ CODE_B380D7			;$B38092	 |
-	STX $64				;$B38094	 |
+	STX current_sprite		;$B38094	 |
 	TAX				;$B38096	 |
 	LDA $0A36			;$B38097	 |
 	AND #$001C			;$B3809A	 |
@@ -81,7 +81,7 @@ CODE_B38090:				;		 |
 	BRA CODE_B380D2			;$B3809F	/
 
 CODE_B380A1:
-	LDA $64				;$B380A1	\
+	LDA current_sprite		;$B380A1	\
 	CMP #$0E9E			;$B380A3	 |
 	BPL CODE_B380C1			;$B380A6	 |
 	CMP $0597			;$B380A8	 |
@@ -108,7 +108,7 @@ CODE_B380D2:				;		 |
 	JMP (DATA_B38348,x)		;$B380D2	/
 
 CODE_B380D5:
-	LDX $64				;$B380D5	\
+	LDX current_sprite		;$B380D5	\
 CODE_B380D7:				;		 |
 	TXA				;$B380D7	 |
 	CLC				;$B380D8	 |
@@ -282,7 +282,7 @@ unknown_sprite_010C_main:
 	JML [$05A9]			;$B3820C	/
 
 unknown_sprite_00E0_main:
-	LDA $64				;$B3820F	\
+	LDA current_sprite		;$B3820F	\
 	STA $19CE			;$B38211	 |
 	INC $19AE			;$B38214	 |
 	LDY $0595			;$B38217	 |
@@ -323,7 +323,7 @@ CODE_B38251:
 
 unknown_sprite_0100_main:
 	JSL CODE_B9D100			;$B38268	\
-	LDX $64				;$B3826C	 |
+	LDX current_sprite		;$B3826C	 |
 	LDA $42,x			;$B3826E	 |
 	BEQ CODE_B38276			;$B38270	 |
 	DEC $42,x			;$B38272	 |
@@ -344,7 +344,7 @@ CODE_B38280:
 	LDA $0000,y			;$B3828D	 |
 	STA $0A2E			;$B38290	 |
 	LDX $0593			;$B38293	 |
-	STX $64				;$B38296	 |
+	STX current_sprite		;$B38296	 |
 	LDA $36,x			;$B38298	 |
 	LDA $20,x			;$B3829A	 |
 	STA $0A30			;$B3829C	 |
@@ -416,7 +416,7 @@ CODE_B38324:
 	LDA $0A00,y			;$B38331	 |
 	STA $34				;$B38334	 |
 	LDX $0A01,y			;$B38336	 |
-	STX $64				;$B38339	 |
+	STX current_sprite		;$B38339	 |
 	PHK				;$B3833B	 |
 	%return(CODE_B38342)		;$B3833C	 |
 	JML [$0032]			;$B3833F	/
@@ -987,12 +987,12 @@ unknown_sprite_00EC_main:
 	JML [$05A9]			;$B388CE	/
 
 unknown_sprite_00D8_main:
-	LDX $64				;$B388D1	\
+	LDX current_sprite		;$B388D1	\
 	LDY $0593			;$B388D3	 |
 	JSR CODE_B388EA			;$B388D6	 |
 	LDY $0597			;$B388D9	 |
 	JSR CODE_B388EA			;$B388DC	 |
-	LDY $6C				;$B388DF	 |
+	LDY current_player_mount	;$B388DF	 |
 	BEQ CODE_B388E6			;$B388E1	 |
 	JSR CODE_B388EA			;$B388E3	 |
 CODE_B388E6:				;		 |
@@ -1022,7 +1022,7 @@ hero_kong_credits_main:
 
 rain_cloud_main:
 	LDY $0593			;$B3890E	\
-	LDX $64				;$B38911	 |
+	LDX current_sprite		;$B38911	 |
 	LDA $0020,y			;$B38913	 |
 	STA $20,x			;$B38916	 |
 	STZ $24,x			;$B38918	 |
@@ -1053,7 +1053,7 @@ CODE_B3894F:
 	JML [$05A9]			;$B38956	/
 
 web_platform_main:
-	LDX $64				;$B38959	\
+	LDX current_sprite		;$B38959	\
 	LDA $2E,x			;$B3895B	 |
 	ASL A				;$B3895D	 |
 	TAX				;$B3895E	 |
@@ -1079,8 +1079,8 @@ CODE_B3897D:
 	JML [$05A9]			;$B38983	/
 
 CODE_B38986:
-	LDX $64				;$B38986	\
-	LDX $64				;$B38988	 |
+	LDX current_sprite		;$B38986	\
+	LDX current_sprite		;$B38988	 |
 	LDA $06,x			;$B3898A	 |
 	STA $22,x			;$B3898C	 |
 	LDA $0A,x			;$B3898E	 |
@@ -1099,7 +1099,7 @@ CODE_B389A4:
 	BRA CODE_B3897D			;$B389A4	/
 
 CODE_B389A6:
-	LDX $64				;$B389A6	\
+	LDX current_sprite		;$B389A6	\
 	LDA $44,x			;$B389A8	 |
 	BNE CODE_B389B8			;$B389AA	 |
 	LDA global_frame_counter	;$B389AC	 |
@@ -1124,14 +1124,14 @@ CODE_B389CC:				;		 |
 	BRA CODE_B389A1			;$B389D7	/
 
 CODE_B389D9:
-	LDX $64				;$B389D9	\
+	LDX current_sprite		;$B389D9	\
 	LDA $54,x			;$B389DB	 |
 	STA $8E				;$B389DD	 |
 	STZ $52,x			;$B389DF	 |
 	JSL CODE_B3D485			;$B389E1	 |
 	JSL CODE_B3D4AE			;$B389E5	 |
 	PHP				;$B389E9	 |
-	LDX $64				;$B389EA	 |
+	LDX current_sprite		;$B389EA	 |
 	ROL A				;$B389EC	 |
 	STA $4E,x			;$B389ED	 |
 	PLP				;$B389EF	 |
@@ -1153,7 +1153,7 @@ CODE_B389FD:
 	BRL CODE_B389A1			;$B38A07	/
 
 CODE_B38A0A:
-	LDX $64				;$B38A0A	\
+	LDX current_sprite		;$B38A0A	\
 	LDA $48,x			;$B38A0C	 |
 	BPL CODE_B38A1E			;$B38A0E	 |
 	CLC				;$B38A10	 |
@@ -1184,7 +1184,7 @@ CODE_B38A35:				;		 |
 
 rambi_main:
 squitter_main:
-	LDX $64				;$B38A38	\
+	LDX current_sprite		;$B38A38	\
 	LDA $54,x			;$B38A3A	 |
 	STA $8E				;$B38A3C	 |
 	TXY				;$B38A3E	 |
@@ -1248,7 +1248,7 @@ CODE_B38A97:
 	JML [$05A9]			;$B38ABF	/
 
 CODE_B38AC2:
-	LDX $64				;$B38AC2	\
+	LDX current_sprite		;$B38AC2	\
 	LDA $1E,x			;$B38AC4	 |
 	AND #$0002			;$B38AC6	 |
 	BNE CODE_B38ACC			;$B38AC9	 |
@@ -1280,7 +1280,7 @@ CODE_B38AE4:
 	CMP #$0001			;$B38AF1	 |
 	BEQ CODE_B38AFD			;$B38AF4	 |
 CODE_B38AF6:				;		 |
-	LDX $64				;$B38AF6	 |
+	LDX current_sprite		;$B38AF6	 |
 	STZ $2E,x			;$B38AF8	 |
 	BRL CODE_B38A6C			;$B38AFA	/
 
@@ -1291,7 +1291,7 @@ CODE_B38AFD:
 	JML [$05A9]			;$B38B05	/
 
 rattly_main:
-	LDX $64				;$B38B08	\
+	LDX current_sprite		;$B38B08	\
 	LDA $54,x			;$B38B0A	 |
 	STA $8E				;$B38B0C	 |
 	TXY				;$B38B0E	 |
@@ -1345,7 +1345,7 @@ CODE_B38B4C:
 	JML [$05A9]			;$B38B6F	/
 
 CODE_B38B72:
-	LDX $64				;$B38B72	\
+	LDX current_sprite		;$B38B72	\
 	LDA $1E,x			;$B38B74	 |
 	AND #$0002			;$B38B76	 |
 	BNE CODE_B38B7C			;$B38B79	 |
@@ -1380,7 +1380,7 @@ CODE_B38B9B:
 	CMP #$0001			;$B38B9E	 |
 	BEQ CODE_B38BA9			;$B38BA1	 |
 CODE_B38BA3:				;		 |
-	LDX $64				;$B38BA3	 |
+	LDX current_sprite		;$B38BA3	 |
 	STZ $2E,x			;$B38BA5	 |
 	BRA CODE_B38B2A			;$B38BA7	/
 
@@ -1391,7 +1391,7 @@ CODE_B38BA9:
 	JML [$05A9]			;$B38BB1	/
 
 CODE_B38BB4:
-	LDX $64				;$B38BB4	\
+	LDX current_sprite		;$B38BB4	\
 	LDA $32,x			;$B38BB6	 |
 	CMP #$0002			;$B38BB8	 |
 	BEQ CODE_B38BBF			;$B38BBB	 |
@@ -1400,7 +1400,7 @@ CODE_B38BB4:
 
 CODE_B38BBF:
 	JSL CODE_BB82B8			;$B38BBF	\
-	LDX $64				;$B38BC3	 |
+	LDX current_sprite		;$B38BC3	 |
 	LDA $0A,x			;$B38BC5	 |
 	SEC				;$B38BC7	 |
 	SBC #$0018			;$B38BC8	 |
@@ -1412,7 +1412,7 @@ CODE_B38BBF:
 	JSL CODE_BB842C			;$B38BD9	 |
 	LDY #$0126			;$B38BDD	 |
 	JSL CODE_BB842C			;$B38BE0	 |
-	LDX $64				;$B38BE4	 |
+	LDX current_sprite		;$B38BE4	 |
 	STZ $00,x			;$B38BE6	 |
 	SEC				;$B38BE8	 |
 	RTS				;$B38BE9	/
@@ -1435,7 +1435,7 @@ CODE_B38C04:
 	RTS				;$B38C05	/
 
 squawks_main:
-	LDX $64				;$B38C06	\
+	LDX current_sprite		;$B38C06	\
 	LDA $54,x			;$B38C08	 |
 	STA $8E				;$B38C0A	 |
 	TXY				;$B38C0C	 |
@@ -1460,7 +1460,7 @@ DATA_B38C14:
 
 
 CODE_B38C2A:
-	LDX $64				;$B38C2A	\
+	LDX current_sprite		;$B38C2A	\
 	LDA #$FE70			;$B38C2C	 |
 	STA $24,x			;$B38C2F	 |
 	STZ $20,x			;$B38C31	 |
@@ -1501,7 +1501,7 @@ CODE_B38C77:
 CODE_B38C83:
 	JSR CODE_B38BB4			;$B38C83	\
 	BCS CODE_B38C51			;$B38C86	 |
-	LDX $64				;$B38C88	 |
+	LDX current_sprite		;$B38C88	 |
 	STZ $2E,x			;$B38C8A	 |
 	BRA CODE_B38C51			;$B38C8C	/
 
@@ -1516,7 +1516,7 @@ CODE_B38C92:
 	CMP #$0001			;$B38C95	 |
 	BEQ CODE_B38CA0			;$B38C98	 |
 CODE_B38C9A:				;		 |
-	LDX $64				;$B38C9A	 |
+	LDX current_sprite		;$B38C9A	 |
 	STZ $2E,x			;$B38C9C	 |
 	BRA CODE_B38C51			;$B38C9E	/
 
@@ -1531,7 +1531,7 @@ CODE_B38CAB:
 	AND #$4000			;$B38CAE	 |
 	BEQ CODE_B38CC4			;$B38CB1	 |
 	LDY $0597			;$B38CB3	 |
-	LDX $6C				;$B38CB6	 |
+	LDX current_player_mount	;$B38CB6	 |
 	BEQ CODE_B38CC4			;$B38CB8	 |
 	LDA $06,x			;$B38CBA	 |
 	STA $0006,y			;$B38CBC	 |
@@ -1541,7 +1541,7 @@ CODE_B38CC4:				;		 |
 	RTS				;$B38CC4	/
 
 CODE_B38CC5:
-	LDX $64				;$B38CC5	\
+	LDX current_sprite		;$B38CC5	\
 	LDY $0593			;$B38CC7	 |
 	BIT $12,x			;$B38CCA	 |
 	BVS CODE_B38CD9			;$B38CCC	 |
@@ -1569,7 +1569,7 @@ CODE_B38CE2:				;		 |
 	RTS				;$B38CF7	/
 
 CODE_B38CF8:
-	LDX $64				;$B38CF8	\
+	LDX current_sprite		;$B38CF8	\
 	LDY #$0000			;$B38CFA	 |
 	LDA [$8E],y			;$B38CFD	 |
 	LDY #$0002			;$B38CFF	 |
@@ -1593,7 +1593,7 @@ CODE_B38D10:
 	RTS				;$B38D1C	/
 
 CODE_B38D1D:
-	LDX $64				;$B38D1D	\
+	LDX current_sprite		;$B38D1D	\
 	LDA $42,x			;$B38D1F	 |
 	BEQ CODE_B38D27			;$B38D21	 |
 	DEC $42,x			;$B38D23	 |
@@ -1632,7 +1632,7 @@ CODE_B38D51:
 	JSR CODE_B38D10			;$B38D61	 |
 	AND #$0009			;$B38D64	 |
 	BNE CODE_B38D4F			;$B38D67	 |
-	LDX $64				;$B38D69	 |
+	LDX current_sprite		;$B38D69	 |
 	LDA $00,x			;$B38D6B	 |
 	CMP #$0198			;$B38D6D	 |
 	BEQ CODE_B38D95			;$B38D70	 |
@@ -1663,7 +1663,7 @@ CODE_B38D95:
 	RTS				;$B38DA5	/
 
 enguarde_main:
-	LDX $64				;$B38DA6	\
+	LDX current_sprite		;$B38DA6	\
 	LDA $54,x			;$B38DA8	 |
 	STA $8E				;$B38DAA	 |
 	LDA $2E,x			;$B38DAC	 |
@@ -1743,7 +1743,7 @@ CODE_B38E27:				;		 |
 	JML [$05A9]			;$B38E30	/
 
 CODE_B38E33:
-	LDX $64				;$B38E33	\
+	LDX current_sprite		;$B38E33	\
 	LDA $1E,x			;$B38E35	 |
 	AND #$0002			;$B38E37	 |
 	BNE CODE_B38E3E			;$B38E3A	 |
@@ -1779,7 +1779,7 @@ CODE_B38E64:
 	CMP #$0001			;$B38E67	 |
 	BEQ CODE_B38E76			;$B38E6A	 |
 CODE_B38E6C:				;		 |
-	LDX $64				;$B38E6C	 |
+	LDX current_sprite		;$B38E6C	 |
 	LDA #$0004			;$B38E6E	 |
 	STA $2E,x			;$B38E71	 |
 if !version == 0			;		 |
@@ -1797,7 +1797,7 @@ CODE_B38E76:
 CODE_B38E81:
 	JSL CODE_BBBB69			;$B38E81	\
 	BCC CODE_B38E91			;$B38E85	 |
-	LDX $64				;$B38E87	 |
+	LDX current_sprite		;$B38E87	 |
 	DEC $4A,x			;$B38E89	 |
 	BMI CODE_B38E8F			;$B38E8B	 |
 	CLC				;$B38E8D	 |
@@ -1808,14 +1808,14 @@ CODE_B38E8F:
 	RTS				;$B38E90	/
 
 CODE_B38E91:
-	LDX $64				;$B38E91	\
+	LDX current_sprite		;$B38E91	\
 	LDA #$012C			;$B38E93	 |
 	STA $4A,x			;$B38E96	 |
 	CLC				;$B38E98	 |
 	RTS				;$B38E99	/
 
 CODE_B38E9A:
-	LDX $64				;$B38E9A	\
+	LDX current_sprite		;$B38E9A	\
 	STZ $24,x			;$B38E9C	 |
 	JSL CODE_B8B6A3			;$B38E9E	 |
 	CMP #$0001			;$B38EA2	 |
@@ -1826,7 +1826,7 @@ CODE_B38EAC:				;		 |
 	RTS				;$B38EAC	/
 
 glimmer_main:
-	LDX $64				;$B38EAD	\
+	LDX current_sprite		;$B38EAD	\
 	LDA $2E,x			;$B38EAF	 |
 	ASL A				;$B38EB1	 |
 	TAX				;$B38EB2	 |
@@ -1839,7 +1839,7 @@ DATA_B38EB6:
 	dw CODE_B38F04
 
 CODE_B38EBE:
-	LDA $64				;$B38EBE	\
+	LDA current_sprite		;$B38EBE	\
 	STA $0989			;$B38EC0	 |
 	JSR CODE_B38F40			;$B38EC3	 |
 	LDA #$0007			;$B38EC6	 |
@@ -1847,7 +1847,7 @@ CODE_B38EBE:
 	LDA #$0007			;$B38ECD	 |
 	JSL CODE_B8CFD4			;$B38ED0	 |
 	JSL CODE_B8CF7F			;$B38ED4	 |
-	LDX $64				;$B38ED8	 |
+	LDX current_sprite		;$B38ED8	 |
 	LDA $17BA			;$B38EDA	 |
 	CLC				;$B38EDD	 |
 	ADC #$0014			;$B38EDE	 |
@@ -1863,7 +1863,7 @@ CODE_B38EF1:
 	JML [$05A9]			;$B38EF1	/
 
 CODE_B38EF4:
-	LDX $64				;$B38EF4	\
+	LDX current_sprite		;$B38EF4	\
 	LDA $17BA			;$B38EF6	 |
 	CLC				;$B38EF9	 |
 	ADC #$0080			;$B38EFA	 |
@@ -1874,7 +1874,7 @@ CODE_B38EF4:
 CODE_B38F04:
 	LDA $0989			;$B38F04	\
 	BNE CODE_B38F0F			;$B38F07	 |
-	LDX $64				;$B38F09	 |
+	LDX current_sprite		;$B38F09	 |
 	STZ $2E,x			;$B38F0B	 |
 	BRA CODE_B38EBE			;$B38F0D	/
 
@@ -1930,7 +1930,7 @@ CODE_B38F4E:				;		 |
 	RTS				;$B38F61	/
 
 CODE_B38F62:
-	LDX $64				;$B38F62	\
+	LDX current_sprite		;$B38F62	\
 	LDA $5E				;$B38F64	 |
 	SEC				;$B38F66	 |
 	SBC $06,x			;$B38F67	 |
@@ -1963,7 +1963,7 @@ CODE_B38F8E:				;		 |
 	RTS				;$B38F90	/
 
 CODE_B38F91:
-	LDX $64				;$B38F91	\
+	LDX current_sprite		;$B38F91	\
 	LDA $60				;$B38F93	 |
 	SEC				;$B38F95	 |
 	SBC $0A,x			;$B38F96	 |
@@ -1996,7 +1996,7 @@ CODE_B38FBD:				;		 |
 	RTS				;$B38FBF	/
 
 animal_icon_main:
-	LDX $64				;$B38FC0	\
+	LDX current_sprite		;$B38FC0	\
 	LDA $2E,x			;$B38FC2	 |
 	ASL A				;$B38FC4	 |
 	TAX				;$B38FC5	 |
@@ -2012,7 +2012,7 @@ DATA_B38FC9:
 
 
 CODE_B38FD5:
-	LDX $64				;$B38FD5	\
+	LDX current_sprite		;$B38FD5	\
 	LDA #$0004			;$B38FD7	 |
 	STA $2E,x			;$B38FDA	 |
 	LDA $6E				;$B38FDC	 |
@@ -2022,7 +2022,7 @@ CODE_B38FD5:
 	JML [$05A9]			;$B38FE5	/
 
 CODE_B38FE8:
-	LDX $64				;$B38FE8	\
+	LDX current_sprite		;$B38FE8	\
 	LDA $04,x			;$B38FEA	 |
 	STA $32				;$B38FEC	 |
 	LDA $06,x			;$B38FEE	 |
@@ -2068,21 +2068,21 @@ CODE_B3903C:
 	LDA $08C2			;$B3903C	\
 	AND #$4000			;$B3903F	 |
 	BEQ CODE_B3904F			;$B39042	 |
-	LDX $64				;$B39044	 |
+	LDX current_sprite		;$B39044	 |
 	LDA $46,x			;$B39046	 |
 	CMP $6E				;$B39048	 |
 	BNE CODE_B39089			;$B3904A	 |
 	JML [$05A9]			;$B3904C	/
 
 CODE_B3904F:
-	LDX $64				;$B3904F	\
+	LDX current_sprite		;$B3904F	\
 	INC $2E,x			;$B39051	 |
 	LDA #$0040			;$B39053	 |
 	STA $42,x			;$B39056	 |
 	JML [$05A9]			;$B39058	/
 
 CODE_B3905B:
-	LDX $64				;$B3905B	\
+	LDX current_sprite		;$B3905B	\
 	DEC $42,x			;$B3905D	 |
 	BMI CODE_B39089			;$B3905F	 |
 	LDA $42,x			;$B39061	 |
@@ -2113,7 +2113,7 @@ CODE_B39089:
 	JML [$05A9]			;$B3908D	/
 
 CODE_B39090:
-	LDX $64				;$B39090	\
+	LDX current_sprite		;$B39090	\
 	DEC $48,x			;$B39092	 |
 	BPL CODE_B3909B			;$B39094	 |
 	LDA #$0001			;$B39096	 |
@@ -2122,7 +2122,7 @@ CODE_B3909B:				;		 |
 	JML [$05A9]			;$B3909B	/
 
 CODE_B3909E:
-	LDX $64				;$B3909E	\
+	LDX current_sprite		;$B3909E	\
 	LDA $42,x			;$B390A0	 |
 	STA $06,x			;$B390A2	 |
 	LDA $44,x			;$B390A4	 |
@@ -2201,8 +2201,8 @@ CODE_B39118:
 	TAY				;$B39126	 |
 	JSL CODE_BB8432			;$B39127	 |
 	BCS CODE_B39163			;$B3912B	 |
-	LDX $64				;$B3912D	 |
-	LDY $68				;$B3912F	 |
+	LDX current_sprite		;$B3912D	 |
+	LDY alternate_sprite		;$B3912F	 |
 	LDA $08A8			;$B39131	 |
 	CMP #$0062			;$B39134	 |
 	BNE CODE_B3913F			;$B39137	 |
@@ -2256,14 +2256,14 @@ CODE_B39180:				;		 |
 canball_pieces1_main:
 canball_pieces2_main:
 egg_shell_pieces_main:
-	LDX $64				;$B3919D	\
+	LDX current_sprite		;$B3919D	\
 	LDA $54,x			;$B3919F	 |
 	STA $8E				;$B391A1	 |
 	JSR CODE_B39EEE			;$B391A3	 |
 	JSR CODE_B39EF8			;$B391A6	 |
 	JSL CODE_B8CF7F			;$B391A9	 |
 	JSL CODE_B9D100			;$B391AD	 |
-	LDX $64				;$B391B1	 |
+	LDX current_sprite		;$B391B1	 |
 	LDA $24,x			;$B391B3	 |
 	BPL CODE_B391BA			;$B391B5	 |
 CODE_B391B7:				;		 |
@@ -2280,7 +2280,7 @@ CODE_B391BA:
 	JML [$05A9]			;$B391CB	/
 
 fireworks_main:
-	LDX $64				;$B391CE	\
+	LDX current_sprite		;$B391CE	\
 	LDA $24,x			;$B391D0	 |
 	BPL CODE_B391DA			;$B391D2	 |
 	LDA $0A,x			;$B391D4	 |
@@ -2314,14 +2314,14 @@ unknown_sprite_00B8_main:
 	JSL CODE_B8CF7F			;$B39200	\
 	PHK				;$B39204	 |
 	PLB				;$B39205	 |
-	LDX $64				;$B39206	 |
+	LDX current_sprite		;$B39206	 |
 	DEC $48,x			;$B39208	 |
 	BPL CODE_B39213			;$B3920A	 |
 	LDA $46,x			;$B3920C	 |
 	BEQ CODE_B39213			;$B3920E	 |
 	JSR CODE_B392A9			;$B39210	 |
 CODE_B39213:				;		 |
-	LDX $64				;$B39213	 |
+	LDX current_sprite		;$B39213	 |
 	DEC $42,x			;$B39215	 |
 	BMI CODE_B39223			;$B39217	 |
 CODE_B39219:				;		 |
@@ -2341,7 +2341,7 @@ CODE_B39223:
 	BCS CODE_B39219			;$B39231	 |
 	PHK				;$B39233	 |
 	PLB				;$B39234	 |
-	LDX $64				;$B39235	 |
+	LDX current_sprite		;$B39235	 |
 	LDA $44,x			;$B39237	 |
 	INC A				;$B39239	 |
 	AND #$0007			;$B3923A	 |
@@ -2350,7 +2350,7 @@ CODE_B39223:
 	ASL A				;$B39240	 |
 	TAY				;$B39241	 |
 	LDA DATA_B39289,y		;$B39242	 |
-	LDX $68				;$B39245	 |
+	LDX alternate_sprite		;$B39245	 |
 	CLC				;$B39247	 |
 	ADC $06,x			;$B39248	 |
 	STA $06,x			;$B3924A	 |
@@ -2369,7 +2369,7 @@ CODE_B39223:
 	AND #$8000			;$B39266	 |
 	EOR $12,x			;$B39269	 |
 	STA $12,x			;$B3926B	 |
-	LDY $64				;$B3926D	 |
+	LDY current_sprite		;$B3926D	 |
 	LDA $0046,y			;$B3926F	 |
 	LSR A				;$B39272	 |
 	BCC CODE_B3927D			;$B39273	 |
@@ -2397,7 +2397,7 @@ CODE_B392A9:
 	RTS				;$B392A9	/
 
 sun_main:
-	LDX $64				;$B392AA	\
+	LDX current_sprite		;$B392AA	\
 	LDA $0911			;$B392AC	 |
 	LSR A				;$B392AF	 |
 	LSR A				;$B392B0	 |
@@ -2433,7 +2433,7 @@ unknown_sprite_000C_main:
 	JML [$05A9]			;$B392E2	/
 
 squawks_egg_main:
-	LDX $64				;$B392E5	\
+	LDX current_sprite		;$B392E5	\
 	LDA $54,x			;$B392E7	 |
 	STA $8E				;$B392E9	 |
 	LDA $2E,x			;$B392EB	 |
@@ -2467,7 +2467,7 @@ CODE_B39314:
 	LDA $D3				;$B39314	\
 	CMP #$0060			;$B39316	 |
 	BNE CODE_B39324			;$B39319	 |
-	LDX $64				;$B3931B	 |
+	LDX current_sprite		;$B3931B	 |
 	LDA $30,x			;$B3931D	 |
 	ORA #$0200			;$B3931F	 |
 	STA $30,x			;$B39322	 |
@@ -2486,7 +2486,7 @@ CODE_B39336:
 	LDA #$067D			;$B3933D	 |
 	JSL CODE_B58003			;$B39340	 |
 CODE_B39344:				;		 |
-	LDX $64				;$B39344	 |
+	LDX current_sprite		;$B39344	 |
 	INC $2E,x			;$B39346	 |
 	LDA #$FC00			;$B39348	 |
 	STA $24,x			;$B3934B	 |
@@ -2515,7 +2515,7 @@ unknown_sprite_0104_main:
 	JML [$05A9]			;$B39373	/
 
 dkbarrel_main:
-	LDX $64				;$B39376	\
+	LDX current_sprite		;$B39376	\
 	LDA $54,x			;$B39378	 |
 	STA $8E				;$B3937A	 |
 	LDA $2E,x			;$B3937C	 |
@@ -2545,7 +2545,7 @@ CODE_B393A1:
 	LDA $D3				;$B393A1	\
 	CMP #$0062			;$B393A3	 |
 	BNE CODE_B393B1			;$B393A6	 |
-	LDX $64				;$B393A8	 |
+	LDX current_sprite		;$B393A8	 |
 	LDA $10,x			;$B393AA	 |
 	AND #$0100			;$B393AC	 |
 	BNE CODE_B393C7			;$B393AF	 |
@@ -2587,7 +2587,7 @@ CODE_B39401:
 	JSR CODE_B39ECC			;$B39401	\
 	JSR CODE_B39EBE			;$B39404	 |
 	JSL CODE_B8D5E0			;$B39407	 |
-	LDX $64				;$B3940B	 |
+	LDX current_sprite		;$B3940B	 |
 	LDA $1E,x			;$B3940D	 |
 	AND #$0101			;$B3940F	 |
 	CMP #$0101			;$B39412	 |
@@ -2634,7 +2634,7 @@ CODE_B39473:
 	LDA $08C2			;$B39473	\
 	BIT #$4000			;$B39476	 |
 	BNE CODE_B39484			;$B39479	 |
-	LDX $64				;$B3947B	 |
+	LDX current_sprite		;$B3947B	 |
 	LDA #$0004			;$B3947D	 |
 	STA $2E,x			;$B39480	 |
 	BRA CODE_B3944D			;$B39482	/
@@ -2652,7 +2652,7 @@ CODE_B3948B:
 	JML [$05A9]			;$B3949D	/
 
 dkbarrel_letters_main:
-	LDX $64				;$B394A0	\
+	LDX current_sprite		;$B394A0	\
 	LDA $42,x			;$B394A2	 |
 	TAY				;$B394A4	 |
 	LDA $0000,y			;$B394A5	 |
@@ -2672,7 +2672,7 @@ CODE_B394C3:
 	JML [$05A9]			;$B394C7	/
 
 tntbarrel_main:
-	LDX $64				;$B394CA	\
+	LDX current_sprite		;$B394CA	\
 	LDA $54,x			;$B394CC	 |
 	STA $8E				;$B394CE	 |
 	LDA $2E,x			;$B394D0	 |
@@ -2698,7 +2698,7 @@ CODE_B394E6:				;		 |
 	JSR CODE_B39EBE			;$B394EE	 |
 	JSL CODE_B8D5E0			;$B394F1	 |
 	JSL CODE_B9D100			;$B394F5	 |
-	LDX $64				;$B394F9	 |
+	LDX current_sprite		;$B394F9	 |
 	LDA $4A,x			;$B394FB	 |
 	CMP #$3EAC			;$B394FD	 |
 	BEQ CODE_B394E3			;$B39500	 |
@@ -2720,7 +2720,7 @@ CODE_B3951B:
 	JSR CODE_B39ECC			;$B3951B	\
 	JSR CODE_B39EBE			;$B3951E	 |
 	JSL CODE_B8D5E0			;$B39521	 |
-	LDX $64				;$B39525	 |
+	LDX current_sprite		;$B39525	 |
 	LDA $1E,x			;$B39527	 |
 	AND #$0003			;$B39529	 |
 	BNE CODE_B3953D			;$B3952C	 |
@@ -2736,7 +2736,7 @@ CODE_B3953D:				;		 |
 	JSL CODE_B58003			;$B39540	 |
 	LDA #$0615			;$B39544	 |
 	JSL CODE_B58003			;$B39547	 |
-	LDX $64				;$B3954B	 |
+	LDX current_sprite		;$B3954B	 |
 	LDA $4A,x			;$B3954D	 |
 	CMP #$3EAC			;$B3954F	 |
 	BEQ CODE_B39569			;$B39552	 |
@@ -2759,7 +2759,7 @@ CODE_B3957E:
 	BRA CODE_B3953D			;$B3957E	/
 
 wooden_box_main:
-	LDX $64				;$B39580	\
+	LDX current_sprite		;$B39580	\
 	LDA $54,x			;$B39582	 |
 	STA $8E				;$B39584	 |
 	LDA $2E,x			;$B39586	 |
@@ -2801,7 +2801,7 @@ CODE_B395C4:
 	JSR CODE_B39ECC			;$B395C4	\
 	JSR CODE_B39EBE			;$B395C7	 |
 	JSL CODE_B8D5E0			;$B395CA	 |
-	LDX $64				;$B395CE	 |
+	LDX current_sprite		;$B395CE	 |
 	LDA $1E,x			;$B395D0	 |
 	AND #$0003			;$B395D2	 |
 	BNE CODE_B395E6			;$B395D5	 |
@@ -2820,13 +2820,13 @@ CODE_B395E6:				;		 |
 	JML [$05A9]			;$B395F5	/
 
 krool_water_drips_main:
-	LDX $64				;$B395F8	\
+	LDX current_sprite		;$B395F8	\
 	LDY $42,x			;$B395FA	 |
 	LDA $0000,y			;$B395FC	 |
 	CMP #$02D8			;$B395FF	 |
 	BNE CODE_B3960E			;$B39602	 |
 	LDA $004C,y			;$B39604	 |
-	CMP $64				;$B39607	 |
+	CMP current_sprite		;$B39607	 |
 	BNE CODE_B3960E			;$B39609	 |
 	JML [$05A9]			;$B3960B	/
 
@@ -2836,7 +2836,7 @@ CODE_B3960E:
 
 ghost_rope_main:
 horsetail_main:
-	LDX $64				;$B39615	\
+	LDX current_sprite		;$B39615	\
 	LDA $2E,x			;$B39617	 |
 	ASL A				;$B39619	 |
 	TAX				;$B3961A	 |
@@ -2853,7 +2853,7 @@ DATA_B3961E:
 
 
 CODE_B3962C:
-	LDX $64				;$B3962C	\
+	LDX current_sprite		;$B3962C	\
 	LDA #$0002			;$B3962E	 |
 	STA $2E,x			;$B39631	 |
 	LDA #$02A6			;$B39633	 |
@@ -2861,7 +2861,7 @@ CODE_B3962C:
 	JML [$05A9]			;$B3963A	/
 
 CODE_B3963D:
-	LDX $64				;$B3963D	\
+	LDX current_sprite		;$B3963D	\
 	LDA #$0003			;$B3963F	 |
 	STA $2E,x			;$B39642	 |
 	LDA #$02A7			;$B39644	 |
@@ -2869,7 +2869,7 @@ CODE_B3963D:
 	JML [$05A9]			;$B3964B	/
 
 CODE_B3964E:
-	LDA $64				;$B3964E	\
+	LDA current_sprite		;$B3964E	\
 	CMP $0BA0			;$B39650	 |
 	BNE CODE_B39658			;$B39653	 |
 	STZ $0BA0			;$B39655	 |
@@ -2883,13 +2883,13 @@ CODE_B3965F:
 	JMP CODE_B38000			;$B39666	/
 
 CODE_B39669:
-	LDX $64				;$B39669	\
+	LDX current_sprite		;$B39669	\
 	INC $2E,x			;$B3966B	 |
 	LDY #$0084			;$B3966D	 |
 	JSL CODE_BB8412			;$B39670	 |
 	BCS CODE_B39686			;$B39674	 |
-	LDX $64				;$B39676	 |
-	LDY $68				;$B39678	 |
+	LDX current_sprite		;$B39676	 |
+	LDY alternate_sprite		;$B39678	 |
 	LDA $4A,x			;$B3967A	 |
 	STA $000A,y			;$B3967C	 |
 	TXA				;$B3967F	 |
@@ -2900,14 +2900,14 @@ CODE_B39686:				;		 |
 	JMP CODE_B38000			;$B39686	/
 
 CODE_B39689:
-	LDX $64				;$B39689	\
+	LDX current_sprite		;$B39689	\
 	LDA $44,x			;$B3968B	 |
 	BEQ CODE_B39693			;$B3968D	 |
 	DEC $44,x			;$B3968F	 |
 	BRA CODE_B396A1			;$B39691	/
 
 CODE_B39693:
-	LDA $64				;$B39693	\
+	LDA current_sprite		;$B39693	\
 	CMP $0BA0			;$B39695	 |
 	BEQ CODE_B396A4			;$B39698	 |
 	JSR CODE_B396CE			;$B3969A	 |
@@ -2916,14 +2916,14 @@ CODE_B396A1:				;		 |
 	JMP CODE_B38000			;$B396A1	/
 
 CODE_B396A4:
-	LDX $64				;$B396A4	\
+	LDX current_sprite		;$B396A4	\
 	INC $2E,x			;$B396A6	 |
 	LDA #$02C5			;$B396A8	 |
 	JSL CODE_B9D0C6			;$B396AB	 |
 	JML [$05A9]			;$B396AF	/
 
 CODE_B396B2:
-	LDA $64				;$B396B2	\
+	LDA current_sprite		;$B396B2	\
 	CMP $0BA0			;$B396B4	 |
 	BNE CODE_B396BC			;$B396B7	 |
 	JML [$05A9]			;$B396B9	/
@@ -2938,7 +2938,7 @@ CODE_B396BC:
 	JML [$05A9]			;$B396CB	/
 
 CODE_B396CE:
-	LDX $64				;$B396CE	\
+	LDX current_sprite		;$B396CE	\
 	LDA $54,x			;$B396D0	 |
 	STA $5E				;$B396D2	 |
 	LDA $90				;$B396D4	 |
@@ -3000,7 +3000,7 @@ barrel_pieces_main:
 unknown_sprite_0064_main:
 unknown_sprite_0240_main:
 unknown_sprite_0244_main:
-	LDX $64				;$B39739	\
+	LDX current_sprite		;$B39739	\
 	LDA #$0040			;$B3973B	 |
 	CLC				;$B3973E	 |
 	ADC $24,x			;$B3973F	 |
@@ -3039,7 +3039,7 @@ CODE_B39779:				;		 |
 	RTS				;$B39787	/
 
 animal_box_main:
-	LDX $64				;$B39788	\
+	LDX current_sprite		;$B39788	\
 	LDA $2E,x			;$B3978A	 |
 	ASL A				;$B3978C	 |
 	TAX				;$B3978D	 |
@@ -3054,7 +3054,7 @@ DATA_B39791:
 
 
 CODE_B3979B:
-	LDX $64				;$B3979B	\
+	LDX current_sprite		;$B3979B	\
 	LDA $10,x			;$B3979D	 |
 	AND #$0100			;$B3979F	 |
 	BNE CODE_B397BB			;$B397A2	 |
@@ -3090,7 +3090,7 @@ CODE_B397C3:				;		 |
 	JSL CODE_B58003			;$B397E5	 |
 	LDA #$073A			;$B397E9	 |
 	JSL CODE_B58003			;$B397EC	 |
-	LDX $64				;$B397F0	 |
+	LDX current_sprite		;$B397F0	 |
 	LDA $5C,x			;$B397F2	 |
 	JSR CODE_B39845			;$B397F4	 |
 	CLC				;$B397F7	 |
@@ -3123,7 +3123,7 @@ CODE_B39823:
 	JMP CODE_B38000			;$B39829	/
 
 CODE_B3982C:
-	LDX $64				;$B3982C	\
+	LDX current_sprite		;$B3982C	\
 	STZ $30,x			;$B3982E	 |
 	STZ $32,x			;$B39830	 |
 	LDA #$0001			;$B39832	 |
@@ -3142,11 +3142,11 @@ CODE_B39845:
 	ORA #$0080			;$B3984D	 |
 	STA $7E9128,x			;$B39850	 |
 CODE_B39854:				;		 |
-	LDX $64				;$B39854	 |
+	LDX current_sprite		;$B39854	 |
 	RTS				;$B39856	/
 
 hook_main:
-	LDX $64				;$B39857	\
+	LDX current_sprite		;$B39857	\
 	LDA $2E,x			;$B39859	 |
 	ASL A				;$B3985B	 |
 	TAX				;$B3985C	 |
@@ -3163,9 +3163,9 @@ CODE_B39866:
 
 CODE_B3986C:
 	LDA $0D82			;$B3986C	\
-	CMP $64				;$B3986F	 |
+	CMP current_sprite		;$B3986F	 |
 	BNE CODE_B39888			;$B39871	 |
-	LDX $64				;$B39873	 |
+	LDX current_sprite		;$B39873	 |
 	LDA $4E,x			;$B39875	 |
 	BEQ CODE_B39885			;$B39877	 |
 	LDA #$C000			;$B39879	 |
@@ -3178,14 +3178,14 @@ CODE_B39885:				;		 |
 CODE_B39888:
 	STZ $0AEE			;$B39888	\
 	STZ $0AF2			;$B3988B	 |
-	LDX $64				;$B3988E	 |
+	LDX current_sprite		;$B3988E	 |
 	LDA #$001E			;$B39890	 |
 	STA $42,x			;$B39893	 |
 	INC $2E,x			;$B39895	 |
 	JML [$05A9]			;$B39897	/
 
 CODE_B3989A:
-	LDX $64				;$B3989A	\
+	LDX current_sprite		;$B3989A	\
 	DEC $42,x			;$B3989C	 |
 	BEQ CODE_B398A3			;$B3989E	 |
 CODE_B398A0:				;		 |
@@ -3230,7 +3230,7 @@ CODE_B398D7:
 	STA $0A40			;$B398E0	 |
 	LDY #$0034			;$B398E3	 |
 	JSL CODE_BB842C			;$B398E6	 |
-	LDX $64				;$B398EA	 |
+	LDX current_sprite		;$B398EA	 |
 	STX $0D82			;$B398EC	 |
 	LDA $12,x			;$B398EF	 |
 	AND #$BFFF			;$B398F1	 |
@@ -3257,7 +3257,7 @@ CODE_B398D7:
 	RTL				;$B3992D	/
 
 CODE_B3992E:
-	LDX $64				;$B3992E	\
+	LDX current_sprite		;$B3992E	\
 	STX $0D82			;$B39930	 |
 	LDA #$0001			;$B39933	 |
 	STA $2E,x			;$B39936	 |
@@ -3410,7 +3410,7 @@ CODE_B39A7D:
 	JMP CODE_B38000			;$B39A83	/
 
 CODE_B39A86:
-	LDA $64				;$B39A86	\
+	LDA current_sprite		;$B39A86	\
 	STA $19A8			;$B39A88	 |
 	PHA				;$B39A8B	 |
 	TAX				;$B39A8C	 |
@@ -3422,16 +3422,16 @@ CODE_B39A86:
 	BNE CODE_B39AAB			;$B39A9D	 |
 	LDY #$0000			;$B39A9F	 |
 	JSL CODE_BB83EF			;$B39AA2	 |
-	LDA $68				;$B39AA6	 |
+	LDA alternate_sprite		;$B39AA6	 |
 	STA $19CE			;$B39AA8	 |
 CODE_B39AAB:				;		 |
 	PLA				;$B39AAB	 |
-	STA $64				;$B39AAC	 |
+	STA current_sprite		;$B39AAC	 |
 	JSL CODE_BB82B8			;$B39AAE	 |
-	LDX $64				;$B39AB2	 |
+	LDX current_sprite		;$B39AB2	 |
 	INC $00,x			;$B39AB4	 |
 	JSR CODE_B39764			;$B39AB6	 |
-	LDX $64				;$B39AB9	 |
+	LDX current_sprite		;$B39AB9	 |
 	STZ $00,x			;$B39ABB	 |
 	JML [$05A9]			;$B39ABD	/
 
@@ -3439,7 +3439,7 @@ unknown_sprite_01C8_main:
 	JMP CODE_B38000			;$B39AC0	/
 
 canball_main:
-	LDX $64				;$B39AC3	\
+	LDX current_sprite		;$B39AC3	\
 	LDA $54,x			;$B39AC5	 |
 	STA $8E				;$B39AC7	 |
 	LDA $2E,x			;$B39AC9	 |
@@ -3481,7 +3481,7 @@ CODE_B39B0F:
 	BRA CODE_B39AFC			;$B39B0F	/
 
 CODE_B39B11:
-	LDX $64				;$B39B11	\
+	LDX current_sprite		;$B39B11	\
 	STZ $26,x			;$B39B13	 |
 	JSR CODE_B39ECC			;$B39B15	 |
 	JSR CODE_B39EBE			;$B39B18	 |
@@ -3504,7 +3504,7 @@ CODE_B39B37:				;		 |
 CODE_B39B43:
 	LDA #$064C			;$B39B43	\
 	JSL CODE_B58003			;$B39B46	 |
-	LDX $64				;$B39B4A	 |
+	LDX current_sprite		;$B39B4A	 |
 	STZ $2E,x			;$B39B4C	 |
 	LDA #$0001			;$B39B4E	 |
 	ORA $30,x			;$B39B51	 |
@@ -3523,7 +3523,7 @@ CODE_B39B66:				;		 |
 	BEQ CODE_B39B9E			;$B39B6D	 |
 	LDA #$061A			;$B39B6F	 |
 	JSL CODE_B58003			;$B39B72	 |
-	LDX $64				;$B39B76	 |
+	LDX current_sprite		;$B39B76	 |
 	LDA $20,x			;$B39B78	 |
 	CMP #$8000			;$B39B7A	 |
 	ROR A				;$B39B7D	 |
@@ -3554,7 +3554,7 @@ CODE_B39BA5:
 
 unknown_sprite_00CC_main:
 unknown_sprite_02DC_main:
-	LDX $64				;$B39BB4	\
+	LDX current_sprite		;$B39BB4	\
 	LDA $54,x			;$B39BB6	 |
 	STA $8E				;$B39BB8	 |
 	LDA $2E,x			;$B39BBA	 |
@@ -3571,7 +3571,7 @@ DATA_B39BC1:
 
 
 CODE_B39BCB:
-	LDX $64				;$B39BCB	\
+	LDX current_sprite		;$B39BCB	\
 	LDA $42,x			;$B39BCD	 |
 	CMP #$001B			;$B39BCF	 |
 	BEQ CODE_B39BF0			;$B39BD2	 |
@@ -3591,7 +3591,7 @@ CODE_B39BEB:				;		 |
 
 CODE_B39BF0:
 	JSL CODE_B8CF7F			;$B39BF0	\
-	LDX $64				;$B39BF4	 |
+	LDX current_sprite		;$B39BF4	 |
 	LDY $0593			;$B39BF6	 |
 	LDA $0A,x			;$B39BF9	 |
 	SEC				;$B39BFB	 |
@@ -3606,12 +3606,12 @@ CODE_B39C02:
 	RTS				;$B39C09	/
 
 CODE_B39C0A:
-	LDX $64				;$B39C0A	\
+	LDX current_sprite		;$B39C0A	\
 	INC $2E,x			;$B39C0C	 |
 CODE_B39C0E:				;		 |
 	JSR CODE_B39ECC			;$B39C0E	 |
 	JSR CODE_B39BCB			;$B39C11	 |
-	LDX $64				;$B39C14	 |
+	LDX current_sprite		;$B39C14	 |
 	LDA $1E,x			;$B39C16	 |
 	AND #$0101			;$B39C18	 |
 	CMP #$0101			;$B39C1B	 |
@@ -3632,29 +3632,29 @@ CODE_B39C33:
 	JML [$05A9]			;$B39C36	/
 
 CODE_B39C39:
-	LDX $64				;$B39C39	\
-	STX $68				;$B39C3B	 |
+	LDX current_sprite		;$B39C39	\
+	STX alternate_sprite		;$B39C3B	 |
 	LDA $12,x			;$B39C3D	 |
 	JSL CODE_BB8C02			;$B39C3F	 |
-	LDX $64				;$B39C43	 |
+	LDX current_sprite		;$B39C43	 |
 	LDA $42,x			;$B39C45	 |
 	PHA				;$B39C47	 |
 	ASL A				;$B39C48	 |
 	TAX				;$B39C49	 |
 	LDA.l DATA_FF1A8E,x		;$B39C4A	 |
 	TAY				;$B39C4E	 |
-	LDX $64				;$B39C4F	 |
+	LDX current_sprite		;$B39C4F	 |
 	JSL CODE_BB845D			;$B39C51	 |
 	PLA				;$B39C55	 |
 	CMP #$0013			;$B39C56	 |
 	BNE CODE_B39C65			;$B39C59	 |
-	LDX $68				;$B39C5B	 |
+	LDX alternate_sprite		;$B39C5B	 |
 	DEC $44,x			;$B39C5D	 |
 	BNE CODE_B39C65			;$B39C5F	 |
 	LDA $46,x			;$B39C61	 |
 	STA $42,x			;$B39C63	 |
 CODE_B39C65:				;		 |
-	LDX $68				;$B39C65	 |
+	LDX alternate_sprite		;$B39C65	 |
 	STZ $2C,x			;$B39C67	 |
 	STZ $56,x			;$B39C69	 |
 	RTS				;$B39C6B	/
@@ -3677,12 +3677,12 @@ CODE_B39C79:
 	TXA				;$B39C90	 |
 	SEC				;$B39C91	 |
 	SBC #$005E			;$B39C92	 |
-	STA $64				;$B39C95	 |
+	STA current_sprite		;$B39C95	 |
 CODE_B39C97:				;		 |
 	JML [$05A9]			;$B39C97	/
 
 chest_main:
-	LDX $64				;$B39C9A	\
+	LDX current_sprite		;$B39C9A	\
 	LDA $54,x			;$B39C9C	 |
 	STA $8E				;$B39C9E	 |
 	LDA $2E,x			;$B39CA0	 |
@@ -3714,7 +3714,7 @@ CODE_B39CD0:				;		 |
 	LDA $0515			;$B39CD3	 |
 	CMP #$0001			;$B39CD6	 |
 	BNE CODE_B39CE7			;$B39CD9	 |
-	LDX $64				;$B39CDB	 |
+	LDX current_sprite		;$B39CDB	 |
 	LDA $42,x			;$B39CDD	 |
 	CMP #$0019			;$B39CDF	 |
 	BNE CODE_B39CE7			;$B39CE2	 |
@@ -3736,14 +3736,14 @@ CODE_B39CFD:
 	BRA CODE_B39CEA			;$B39CFD	/
 
 CODE_B39CFF:
-	LDX $64				;$B39CFF	\
+	LDX current_sprite		;$B39CFF	\
 	STZ $26,x			;$B39D01	 |
 	JSR CODE_B39ECC			;$B39D03	 |
 	JSR CODE_B39EBE			;$B39D06	 |
 	JSL CODE_B8D5E0			;$B39D09	 |
 	LDA #$001D			;$B39D0D	 |
 	JSL CODE_BEF03D			;$B39D10	 |
-	LDX $64				;$B39D14	 |
+	LDX current_sprite		;$B39D14	 |
 	LDA $20,x			;$B39D16	 |
 	AND #$FFF0			;$B39D18	 |
 	BNE CODE_B39D27			;$B39D1B	 |
@@ -3770,11 +3770,11 @@ CODE_B39D42:				;		 |
 	LDA #$061A			;$B39D42	 |
 	JSL CODE_B58003			;$B39D45	 |
 if !version == 1			;		 |
-	LDX $64				;$B39D49	 |
+	LDX current_sprite		;$B39D49	 |
 	JSL CODE_B8D4AE			;$B39D4B	 |
 endif					;		 |
 	JSL CODE_BB82B8			;$B39D4F	 |
-	LDX $64				;$B39D53	 |
+	LDX current_sprite		;$B39D53	 |
 	LDA #$0001			;$B39D55	 |
 	STA $00,x			;$B39D58	 |
 	LDA $42,x			;$B39D5A	 |
@@ -3786,8 +3786,8 @@ endif					;		 |
 	TAY				;$B39D68	 |
 	JSL CODE_BB8432			;$B39D69	 |
 	BCS CODE_B39DAD			;$B39D6D	 |
-	LDX $68				;$B39D6F	 |
-	LDY $64				;$B39D71	 |
+	LDX alternate_sprite		;$B39D6F	 |
+	LDY current_sprite		;$B39D71	 |
 	LDA $0042,y			;$B39D73	 |
 	STA $42,x			;$B39D76	 |
 	LDA $0044,y			;$B39D78	 |
@@ -3801,7 +3801,7 @@ endif					;		 |
 	CLC				;$B39D8D	 |
 	ADC $0A,x			;$B39D8E	 |
 	LSR A				;$B39D90	 |
-	LDY $68				;$B39D91	 |
+	LDY alternate_sprite		;$B39D91	 |
 	STA $004E,y			;$B39D93	 |
 	LDA $17C0			;$B39D96	 |
 	CLC				;$B39D99	 |
@@ -3811,7 +3811,7 @@ endif					;		 |
 	STA $004E,y			;$B39DA2	 |
 CODE_B39DA5:				;		 |
 	JSL CODE_B3975C			;$B39DA5	 |
-	LDX $64				;$B39DA9	 |
+	LDX current_sprite		;$B39DA9	 |
 	STZ $00,x			;$B39DAB	 |
 CODE_B39DAD:				;		 |
 	JML [$05A9]			;$B39DAD	/
@@ -3851,7 +3851,7 @@ CODE_B39DD7:
 	JML [$05A9]			;$B39DD7	/
 
 CODE_B39DDA:
-	LDX $64				;$B39DDA	\
+	LDX current_sprite		;$B39DDA	\
 	LDA $10,x			;$B39DDC	 |
 	AND #$0100			;$B39DDE	 |
 	BNE CODE_B39DF9			;$B39DE1	 |
@@ -3888,7 +3888,7 @@ CODE_B39E24:
 	JSR CODE_B39ECC			;$B39E24	\
 	JSR CODE_B39EBE			;$B39E27	 |
 	JSL CODE_B8D5E0			;$B39E2A	 |
-	LDX $64				;$B39E2E	 |
+	LDX current_sprite		;$B39E2E	 |
 	LDA $1E,x			;$B39E30	 |
 	AND #$0202			;$B39E32	 |
 	BEQ CODE_B39E4D			;$B39E35	 |
@@ -3914,7 +3914,7 @@ CODE_B39E4D:				;		 |
 	BEQ CODE_B39E74			;$B39E5F	 |
 CODE_B39E61:				;		 |
 	JSL CODE_B9D100			;$B39E61	 |
-	LDX $64				;$B39E65	 |
+	LDX current_sprite		;$B39E65	 |
 	LDA $2E,x			;$B39E67	 |
 	AND #$FF00			;$B39E69	 |
 	BNE CODE_B39E86			;$B39E6C	 |
@@ -3969,7 +3969,7 @@ CODE_B39EC8:
 	RTL				;$B39ECB	/
 
 CODE_B39ECC:
-	LDX $64				;$B39ECC	\
+	LDX current_sprite		;$B39ECC	\
 	LDY #$0000			;$B39ECE	 |
 	LDA [$8E],y			;$B39ED1	 |
 	LDY #$0002			;$B39ED3	 |
@@ -3995,7 +3995,7 @@ CODE_B39EEE:
 	RTS				;$B39EF7	/
 
 CODE_B39EF8:
-	LDX $64				;$B39EF8	\
+	LDX current_sprite		;$B39EF8	\
 	LDY #$0000			;$B39EFA	 |
 	LDA [$8E],y			;$B39EFD	 |
 	LDY #$0002			;$B39EFF	 |
@@ -4010,7 +4010,7 @@ CODE_B39F0D:				;		 |
 	RTS				;$B39F0F	/
 
 CODE_B39F10:
-	LDX $64				;$B39F10	\
+	LDX current_sprite		;$B39F10	\
 	LDA $32,x			;$B39F12	 |
 	BNE CODE_B39F18			;$B39F14	 |
 CODE_B39F16:				;		 |
@@ -4049,7 +4049,7 @@ CODE_B39F42:
 	RTS				;$B39F55	/
 
 CODE_B39F56:
-	LDX $64				;$B39F56	\
+	LDX current_sprite		;$B39F56	\
 	LDA $32,x			;$B39F58	 |
 	BNE CODE_B39F63			;$B39F5A	 |
 	LDA $0D7A			;$B39F5C	 |
@@ -4150,7 +4150,7 @@ CODE_B3A003:
 
 CODE_B3A007:
 	LDX $0593			;$B3A007	\
-	LDY $64				;$B3A00A	 |
+	LDY current_sprite		;$B3A00A	 |
 	BIT $12,x			;$B3A00C	 |
 	BVS CODE_B3A01B			;$B3A00E	 |
 	LDA $06,x			;$B3A010	 |
@@ -4211,7 +4211,7 @@ CODE_B3A06C:
 	CMP #$01A1			;$B3A071	 |
 	BCS CODE_B3A05D			;$B3A074	 |
 	STA $32				;$B3A076	 |
-	LDY $64				;$B3A078	 |
+	LDY current_sprite		;$B3A078	 |
 	LDA $000A,y			;$B3A07A	 |
 	CLC				;$B3A07D	 |
 	ADC #$0008			;$B3A07E	 |
@@ -4231,7 +4231,7 @@ CODE_B3A091:				;		 |
 	LDA #$0019			;$B3A09A	 |
 	JSL CODE_B8D8BA			;$B3A09D	 |
 	BCS CODE_B3A0BC			;$B3A0A1	 |
-	LDX $64				;$B3A0A3	 |
+	LDX current_sprite		;$B3A0A3	 |
 	LDA $42,x			;$B3A0A5	 |
 	STA $0A86			;$B3A0A7	 |
 	LDA $0A,x			;$B3A0AA	 |
@@ -4258,7 +4258,7 @@ endif
 unknown_sprite_016C_main:
 	JSR CODE_B3A227			;$B3A0C8	\
 	BCS CODE_B3A0DA			;$B3A0CB	 |
-	LDX $64				;$B3A0CD	 |
+	LDX current_sprite		;$B3A0CD	 |
 	LDA $54,x			;$B3A0CF	 |
 	STA $8E				;$B3A0D1	 |
 	LDA $2E,x			;$B3A0D3	 |
@@ -4283,7 +4283,7 @@ CODE_B3A0ED:
 	JML [$05A9]			;$B3A0ED	/
 
 CODE_B3A0F0:
-	LDX $64				;$B3A0F0	\
+	LDX current_sprite		;$B3A0F0	\
 	INC $2E,x			;$B3A0F2	 |
 	STZ $44,x			;$B3A0F4	 |
 	LDA #$0001			;$B3A0F6	 |
@@ -4294,37 +4294,37 @@ CODE_B3A0F0:
 CODE_B3A0FF:
 	JSR CODE_B3A187			;$B3A0FF	\
 	BCC CODE_B3A0ED			;$B3A102	 |
-	LDX $64				;$B3A104	 |
+	LDX current_sprite		;$B3A104	 |
 	LDA $48,x			;$B3A106	 |
 	ASL A				;$B3A108	 |
 	TAX				;$B3A109	 |
 	LDA.l DATA_B9F0C5,x		;$B3A10A	 |
-	LDX $64				;$B3A10E	 |
+	LDX current_sprite		;$B3A10E	 |
 	STA $1A,x			;$B3A110	 |
 	STZ $16,x			;$B3A112	 |
 	LDA $48,x			;$B3A114	 |
 	ASL A				;$B3A116	 |
 	TAX				;$B3A117	 |
 	LDA.l DATA_FD618E,x		;$B3A118	 |
-	LDX $64				;$B3A11C	 |
+	LDX current_sprite		;$B3A11C	 |
 	JSL CODE_BB8C40			;$B3A11E	 |
 	BRA CODE_B3A0ED			;$B3A122	/
 
 CODE_B3A124:
-	LDX $64				;$B3A124	\
+	LDX current_sprite		;$B3A124	\
 	INC $2E,x			;$B3A126	 |
 	LDA #$000F			;$B3A128	 |
 	STA $4A,x			;$B3A12B	 |
 	BRA CODE_B3A0ED			;$B3A12D	/
 
 CODE_B3A12F:
-	LDX $64				;$B3A12F	\
+	LDX current_sprite		;$B3A12F	\
 	DEC $4A,x			;$B3A131	 |
 	BMI CODE_B3A137			;$B3A133	 |
 	BRA CODE_B3A0ED			;$B3A135	/
 
 CODE_B3A137:
-	LDX $64				;$B3A137	\
+	LDX current_sprite		;$B3A137	\
 	INC $2E,x			;$B3A139	 |
 	STZ $20,x			;$B3A13B	 |
 	LDA #DATA_FF0214		;$B3A13D	 |
@@ -4334,7 +4334,7 @@ CODE_B3A137:
 CODE_B3A144:
 	JSR CODE_B39ECC			;$B3A144	\
 	JSL CODE_B8D5E0			;$B3A147	 |
-	LDX $64				;$B3A14B	 |
+	LDX current_sprite		;$B3A14B	 |
 	LDA $1E,x			;$B3A14D	 |
 	AND #$0101			;$B3A14F	 |
 	CMP #$0101			;$B3A152	 |
@@ -4347,25 +4347,25 @@ CODE_B3A15E:
 	JML [$05A9]			;$B3A160	/
 
 CODE_B3A163:
-	LDX $64				;$B3A163	\
-	STX $68				;$B3A165	 |
+	LDX current_sprite		;$B3A163	\
+	STX alternate_sprite		;$B3A165	 |
 	LDA $12,x			;$B3A167	 |
 	JSL CODE_BB8C02			;$B3A169	 |
-	LDX $64				;$B3A16D	 |
+	LDX current_sprite		;$B3A16D	 |
 	LDA $48,x			;$B3A16F	 |
 	ASL A				;$B3A171	 |
 	TAX				;$B3A172	 |
 	LDA.l DATA_FF1A8E,x		;$B3A173	 |
 	TAY				;$B3A177	 |
-	LDX $64				;$B3A178	 |
+	LDX current_sprite		;$B3A178	 |
 	JSL CODE_BB845D			;$B3A17A	 |
-	LDX $68				;$B3A17E	 |
+	LDX alternate_sprite		;$B3A17E	 |
 	STZ $2C,x			;$B3A180	 |
 	STZ $56,x			;$B3A182	 |
 	JML [$05A9]			;$B3A184	/
 
 CODE_B3A187:
-	LDX $64				;$B3A187	\
+	LDX current_sprite		;$B3A187	\
 	DEC $46,x			;$B3A189	 |
 	BEQ CODE_B3A18F			;$B3A18B	 |
 	CLC				;$B3A18D	 |
@@ -4427,7 +4427,7 @@ CODE_B3A1DC:
 	JML [$05A9]			;$B3A1DC	/
 
 CODE_B3A1DF:
-	LDX $64				;$B3A1DF	\
+	LDX current_sprite		;$B3A1DF	\
 	LDA $0A,x			;$B3A1E1	 |
 	STA $44,x			;$B3A1E3	 |
 	INC $2E,x			;$B3A1E5	 |
@@ -4437,12 +4437,12 @@ CODE_B3A1E9:
 	BRA CODE_B3A1DC			;$B3A1E9	/
 
 CODE_B3A1EB:
-	LDX $64				;$B3A1EB	\
+	LDX current_sprite		;$B3A1EB	\
 	INC $2E,x			;$B3A1ED	 |
 	BRA CODE_B3A1DC			;$B3A1EF	/
 
 CODE_B3A1F1:
-	LDX $64				;$B3A1F1	\
+	LDX current_sprite		;$B3A1F1	\
 	LDA #$0050			;$B3A1F3	 |
 	CLC				;$B3A1F6	 |
 	ADC $24,x			;$B3A1F7	 |
@@ -4471,7 +4471,7 @@ CODE_B3A21D:
 	BRA CODE_B3A1DC			;$B3A225	/
 
 CODE_B3A227:
-	LDX $64				;$B3A227	\
+	LDX current_sprite		;$B3A227	\
 	LDA $42,x			;$B3A229	 |
 	TAY				;$B3A22B	 |
 	LDA $0000,y			;$B3A22C	 |
@@ -4485,7 +4485,7 @@ CODE_B3A236:
 	RTS				;$B3A237	/
 
 level_goal_main:
-	LDX $64				;$B3A238	\
+	LDX current_sprite		;$B3A238	\
 	LDA $54,x			;$B3A23A	 |
 	STA $8E				;$B3A23C	 |
 	LDA $2E,x			;$B3A23E	 |
@@ -4503,24 +4503,24 @@ CODE_B3A24B:
 	JML [$05A9]			;$B3A24B	/
 
 CODE_B3A24E:
-	LDX $64				;$B3A24E	\
+	LDX current_sprite		;$B3A24E	\
 	JSL CODE_B8D47C			;$B3A250	 |
-	LDX $64				;$B3A254	 |
+	LDX current_sprite		;$B3A254	 |
 	STA $4A,x			;$B3A256	 |
 	INC $2E,x			;$B3A258	 |
 	STZ $48,x			;$B3A25A	 |
 	LDY #$0080			;$B3A25C	 |
 	JSL CODE_BB842C			;$B3A25F	 |
-	LDY $68				;$B3A263	 |
-	LDA $64				;$B3A265	 |
+	LDY alternate_sprite		;$B3A263	 |
+	LDA current_sprite		;$B3A265	 |
 	TAX				;$B3A267	 |
 	STA $0042,y			;$B3A268	 |
 	TYA				;$B3A26B	 |
 	STA $42,x			;$B3A26C	 |
 	LDY #$0082			;$B3A26E	 |
 	JSL CODE_BB842C			;$B3A271	 |
-	LDY $68				;$B3A275	 |
-	LDA $64				;$B3A277	 |
+	LDY alternate_sprite		;$B3A275	 |
+	LDA current_sprite		;$B3A277	 |
 	TAX				;$B3A279	 |
 	STA $0042,y			;$B3A27A	 |
 	LDA $54,x			;$B3A27D	 |
@@ -4529,8 +4529,8 @@ CODE_B3A24E:
 	STA $46,x			;$B3A283	 |
 	LDY #$007E			;$B3A285	 |
 	JSL CODE_BB842C			;$B3A288	 |
-	LDY $68				;$B3A28C	 |
-	LDA $64				;$B3A28E	 |
+	LDY alternate_sprite		;$B3A28C	 |
+	LDA current_sprite		;$B3A28E	 |
 	TAX				;$B3A290	 |
 	STA $0042,y			;$B3A291	 |
 	TYA				;$B3A294	 |
@@ -4544,7 +4544,7 @@ CODE_B3A299:
 	BNE CODE_B3A2BC			;$B3A2A1	 |
 	LDA $24,x			;$B3A2A3	 |
 	BMI CODE_B3A2BC			;$B3A2A5	 |
-	LDA $6C				;$B3A2A7	 |
+	LDA current_player_mount	;$B3A2A7	 |
 	BNE CODE_B3A2AF			;$B3A2A9	 |
 	LDA $6E				;$B3A2AB	 |
 	BNE CODE_B3A2BC			;$B3A2AD	 |
@@ -4557,7 +4557,7 @@ CODE_B3A2BC:				;		 |
 	JMP CODE_B38000			;$B3A2BC	/
 
 CODE_B3A2BF:
-	LDX $64				;$B3A2BF	\
+	LDX current_sprite		;$B3A2BF	\
 	INC $2E,x			;$B3A2C1	 |
 	LDY $42,x			;$B3A2C3	 |
 	LDA #$0002			;$B3A2C5	 |
@@ -4582,7 +4582,7 @@ CODE_B3A2EB:				;		 |
 	LDA #$002A			;$B3A2F2	 |
 	JSL CODE_B8D8BA			;$B3A2F5	 |
 	BCS CODE_B3A310			;$B3A2F9	 |
-	LDX $64				;$B3A2FB	 |
+	LDX current_sprite		;$B3A2FB	 |
 	LDA $06,x			;$B3A2FD	 |
 	CLC				;$B3A2FF	 |
 	ADC #$0012			;$B3A300	 |
@@ -4599,7 +4599,7 @@ CODE_B3A313:
 	BRL CODE_B3A24B			;$B3A317	/
 
 CODE_B3A31A:
-	LDX $64				;$B3A31A	\
+	LDX current_sprite		;$B3A31A	\
 	LDA $0A,x			;$B3A31C	 |
 	SEC				;$B3A31E	 |
 	SBC $0935			;$B3A31F	 |
@@ -4660,7 +4660,7 @@ CODE_B3A364:
 CODE_B3A369:
 	PHK				;$B3A369	\
 	PLB				;$B3A36A	 |
-	LDY $64				;$B3A36B	 |
+	LDY current_sprite		;$B3A36B	 |
 	LDA $0054,y			;$B3A36D	 |
 	STA $8E				;$B3A370	 |
 	LDA $002D,y			;$B3A372	 |
@@ -4685,14 +4685,14 @@ CODE_B3A38B:
 	JSR CODE_B3A338			;$B3A396	 |
 	LDY #$0034			;$B3A399	 |
 	JSL CODE_BB842C			;$B3A39C	 |
-	LDX $64				;$B3A3A0	 |
+	LDX current_sprite		;$B3A3A0	 |
 	RTS				;$B3A3A2	/
 
 CODE_B3A3A3:
 	SEC				;$B3A3A3	\
 	LDA $0D54			;$B3A3A4	 |
 	BMI CODE_B3A3B3			;$B3A3A7	 |
-	LDX $64				;$B3A3A9	 |
+	LDX current_sprite		;$B3A3A9	 |
 	LDA $10,x			;$B3A3AB	 |
 	BIT #$0100			;$B3A3AD	 |
 	BEQ CODE_B3A3B3			;$B3A3B0	 |
@@ -4767,14 +4767,14 @@ klampon_main:
 	LDA $0A36			;$B3A411	\
 	BIT #$0004			;$B3A414	 |
 	BEQ neek_main			;$B3A417	 |
-	LDY $64				;$B3A419	 |
+	LDY current_sprite		;$B3A419	 |
 	LDA $0036,y			;$B3A41B	 |
 	CMP #$01A2			;$B3A41E	 |
 	BEQ neek_main			;$B3A421	 |
 	JML [$05A9]			;$B3A423	/
 
 zinger_main:
-	LDY $64				;$B3A426	\
+	LDY current_sprite		;$B3A426	\
 	LDA $002E,y			;$B3A428	 |
 	CMP #$0001			;$B3A42B	 |
 	BEQ CODE_B3A442			;$B3A42E	 |
@@ -4782,7 +4782,7 @@ zinger_main:
 	BRA CODE_B3A442			;$B3A433	/
 
 flitter_main:
-	LDY $64				;$B3A435	\
+	LDY current_sprite		;$B3A435	\
 	LDA $002E,y			;$B3A437	 |
 	CMP #$0001			;$B3A43A	 |
 	BEQ CODE_B3A442			;$B3A43D	 |
@@ -4792,7 +4792,7 @@ CODE_B3A442:				;		 |
 	BMI neek_main			;$B3A445	 |
 	CLC				;$B3A447	 |
 	ADC #$00C0			;$B3A448	 |
-	LDY $64				;$B3A44B	 |
+	LDY current_sprite		;$B3A44B	 |
 	CMP $000A,y			;$B3A44D	 |
 	BCS neek_main			;$B3A450	 |
 	LDA $002E,y			;$B3A452	 |
@@ -4861,7 +4861,7 @@ CODE_B3A4BF:
 	LDA [$8E],y			;$B3A4C9	 |
 	BEQ CODE_B3A4A0			;$B3A4CB	 |
 	JSL CODE_B9D0C6			;$B3A4CD	 |
-	LDX $64				;$B3A4D1	 |
+	LDX current_sprite		;$B3A4D1	 |
 	LDY #$0014			;$B3A4D3	 |
 	LDA [$8E],y			;$B3A4D6	 |
 	BEQ CODE_B3A4DF			;$B3A4D8	 |
@@ -4877,7 +4877,7 @@ CODE_B3A4E6:
 	LDA [$8E],y			;$B3A4E9	 |
 	BEQ CODE_B3A4A0			;$B3A4EB	 |
 	JSR CODE_B3A627			;$B3A4ED	 |
-	LDX $64				;$B3A4F0	 |
+	LDX current_sprite		;$B3A4F0	 |
 	LDY #$000C			;$B3A4F2	 |
 	LDA [$8E],y			;$B3A4F5	 |
 	BEQ CODE_B3A4FE			;$B3A4F7	 |
@@ -4893,7 +4893,7 @@ CODE_B3A505:
 	LDA [$8E],y			;$B3A508	 |
 	BEQ CODE_B3A4A0			;$B3A50A	 |
 	JSL CODE_B9D0C6			;$B3A50C	 |
-	LDX $64				;$B3A510	 |
+	LDX current_sprite		;$B3A510	 |
 	LDY #$0010			;$B3A512	 |
 	LDA [$8E],y			;$B3A515	 |
 	BEQ CODE_B3A51E			;$B3A517	 |
@@ -4926,7 +4926,7 @@ CODE_B3A539:
 	BVC CODE_B3A545			;$B3A540	 |
 	LDA #$FF00			;$B3A542	 |
 CODE_B3A545:				;		 |
-	LDX $64				;$B3A545	 |
+	LDX current_sprite		;$B3A545	 |
 	STA $26,x			;$B3A547	 |
 	STA $20,x			;$B3A549	 |
 	LDA #$F800			;$B3A54B	 |
@@ -4941,7 +4941,7 @@ CODE_B3A55D:
 	LDX $6A				;$B3A55D	\
 	LDA $12,x			;$B3A55F	 |
 	AND #$4000			;$B3A561	 |
-	LDX $64				;$B3A564	 |
+	LDX current_sprite		;$B3A564	 |
 	EOR $12,x			;$B3A566	 |
 	AND #$4000			;$B3A568	 |
 	EOR $12,x			;$B3A56B	 |
@@ -4961,7 +4961,7 @@ CODE_B3A582:				;		 |
 	EOR #$FFFF			;$B3A586	 |
 	INC A				;$B3A589	 |
 CODE_B3A58A:				;		 |
-	LDX $64				;$B3A58A	 |
+	LDX current_sprite		;$B3A58A	 |
 	STA $26,x			;$B3A58C	 |
 	STA $20,x			;$B3A58E	 |
 	STY $24,x			;$B3A590	 |
@@ -4993,7 +4993,7 @@ CODE_B3A5B9:
 	JMP CODE_B3A5F5			;$B3A5BC	/
 
 CODE_B3A5BF:
-	LDY $64				;$B3A5BF	\
+	LDY current_sprite		;$B3A5BF	\
 	CPY $0D7A			;$B3A5C1	 |
 	BNE CODE_B3A5D9			;$B3A5C4	 |
 	LDX $0593			;$B3A5C6	 |
@@ -5017,7 +5017,7 @@ CODE_B3A5E1:
 	RTS				;$B3A5E7	/
 
 CODE_B3A5E8:
-	LDX $64				;$B3A5E8	\
+	LDX current_sprite		;$B3A5E8	\
 	BIT $26,x			;$B3A5EA	 |
 	BPL CODE_B3A5F2			;$B3A5EC	 |
 	EOR #$FFFF			;$B3A5EE	 |
@@ -5027,7 +5027,7 @@ CODE_B3A5F2:				;		 |
 	RTS				;$B3A5F4	/
 
 CODE_B3A5F5:
-	LDX $64				;$B3A5F5	\
+	LDX current_sprite		;$B3A5F5	\
 	CPX $0D7A			;$B3A5F7	 |
 	BNE CODE_B3A5FF			;$B3A5FA	 |
 	JSR CODE_B3A007			;$B3A5FC	 |
@@ -5068,7 +5068,7 @@ CODE_B3A627:
 	JSL CODE_B9D0C6			;$B3A627	\
 	INC $19BA			;$B3A62B	 |
 	JSL CODE_BBBD6B			;$B3A62E	 |
-	LDX $64				;$B3A632	 |
+	LDX current_sprite		;$B3A632	 |
 	STZ $56,x			;$B3A634	 |
 	LDA #$000F			;$B3A636	 |
 	STA $58,x			;$B3A639	 |
@@ -5085,7 +5085,7 @@ CODE_B3A64A:				;		 |
 	RTS				;$B3A651	/
 
 CODE_B3A652:
-	LDX $64				;$B3A652	\
+	LDX current_sprite		;$B3A652	\
 	LDA #DATA_FF0224		;$B3A654	 |
 	STA $54,x			;$B3A657	 |
 	JSL CODE_BBBB69			;$B3A659	 |
@@ -5106,7 +5106,7 @@ CODE_B3A66E:
 	CMP #$0020			;$B3A67B	 |
 	ROL A				;$B3A67E	 |
 	STA $0A40			;$B3A67F	 |
-	LDX $64				;$B3A682	 |
+	LDX current_sprite		;$B3A682	 |
 	LDA $06,x			;$B3A684	 |
 	STA $0A3E			;$B3A686	 |
 	JSL CODE_BB82B8			;$B3A689	 |
@@ -5114,7 +5114,7 @@ CODE_B3A66E:
 	JML [$05A9]			;$B3A690	/
 
 ship_water_splash_main:
-	LDX $64				;$B3A693	\
+	LDX current_sprite		;$B3A693	\
 	LDA $06,x			;$B3A695	 |
 	SEC				;$B3A697	 |
 	SBC $17BA			;$B3A698	 |
@@ -5172,7 +5172,7 @@ CODE_B3A6DC:
 	LDY #$000C			;$B3A704	 |
 CODE_B3A707:				;		 |
 	JSL CODE_BB842C			;$B3A707	 |
-	LDX $68				;$B3A70B	 |
+	LDX alternate_sprite		;$B3A70B	 |
 	LDA #$0220			;$B3A70D	 |
 	SEC				;$B3A710	 |
 	SBC $17C0			;$B3A711	 |
@@ -5244,7 +5244,7 @@ CODE_B3A776:
 	BVC CODE_B3A790			;$B3A78B	 |
 	LDA #$FF00			;$B3A78D	 |
 CODE_B3A790:				;		 |
-	LDX $64				;$B3A790	 |
+	LDX current_sprite		;$B3A790	 |
 	STZ $26,x			;$B3A792	 |
 	STA $20,x			;$B3A794	 |
 	LDA #$FA00			;$B3A796	 |
@@ -5269,7 +5269,7 @@ CODE_B3A7B6:
 	LDA #$0022			;$B3A7B6	\
 	JSL CODE_BEF03D			;$B3A7B9	 |
 	JSL CODE_B9D100			;$B3A7BD	 |
-	LDX $64				;$B3A7C1	 |
+	LDX current_sprite		;$B3A7C1	 |
 	LDA $36,x			;$B3A7C3	 |
 	CMP #$0164			;$B3A7C5	 |
 	BEQ CODE_B3A7DA			;$B3A7C8	 |
@@ -5314,7 +5314,7 @@ CODE_B3A7FC:				;		 |
 	JMP CODE_B38000			;$B3A821	/
 
 CODE_B3A824:
-	LDX $64				;$B3A824	\
+	LDX current_sprite		;$B3A824	\
 	LDA $30,x			;$B3A826	 |
 	AND #$FFFE			;$B3A828	 |
 	ORA #$0002			;$B3A82B	 |
@@ -5362,7 +5362,7 @@ endif					;		 |
 	JMP CODE_B38000			;$B3A87E	/
 
 CODE_B3A881:
-	LDX $64				;$B3A881	\
+	LDX current_sprite		;$B3A881	\
 	LDA $32,x			;$B3A883	 |
 	STZ $32,x			;$B3A885	 |
 	CMP #$0001			;$B3A887	 |
@@ -5420,7 +5420,7 @@ CODE_B3A8F1:
 
 CODE_B3A8F8:
 	JSL CODE_B9D100			;$B3A8F8	\
-	LDX $64				;$B3A8FC	 |
+	LDX current_sprite		;$B3A8FC	 |
 	LDA $32,x			;$B3A8FE	 |
 	STZ $32,x			;$B3A900	 |
 	CMP #$0005			;$B3A902	 |
@@ -5481,7 +5481,7 @@ CODE_B3A95C:
 	JML [$05A9]			;$B3A98A	/
 
 CODE_B3A98D:
-	LDX $64				;$B3A98D	\
+	LDX current_sprite		;$B3A98D	\
 	LDA $20,x			;$B3A98F	 |
 	CMP #$8000			;$B3A991	 |
 	ROR A				;$B3A994	 |
@@ -5498,7 +5498,7 @@ CODE_B3A99F:
 	STA $0A40			;$B3A9A9	 |
 	LDY #$0034			;$B3A9AC	 |
 	JSL CODE_BB842C			;$B3A9AF	 |
-	LDX $64				;$B3A9B3	 |
+	LDX current_sprite		;$B3A9B3	 |
 	STZ $20,x			;$B3A9B5	 |
 	STZ $26,x			;$B3A9B7	 |
 	STZ $4E,x			;$B3A9B9	 |
@@ -5527,7 +5527,7 @@ CODE_B3A9D8:
 	BCC CODE_B3AA0B			;$B3A9EC	 |
 CODE_B3A9EE:				;		 |
 	BEQ CODE_B3AA02			;$B3A9EE	 |
-	LDX $64				;$B3A9F0	 |
+	LDX current_sprite		;$B3A9F0	 |
 	LDA #$003C			;$B3A9F2	 |
 	STA $4E,x			;$B3A9F5	 |
 	LDA #$001E			;$B3A9F7	 |
@@ -5548,7 +5548,7 @@ CODE_B3AA0B:
 	LDA #$0022			;$B3AA0B	\
 	JSL CODE_BEF03D			;$B3AA0E	 |
 	JSL CODE_B9D100			;$B3AA12	 |
-	LDX $64				;$B3AA16	 |
+	LDX current_sprite		;$B3AA16	 |
 	LDA $36,x			;$B3AA18	 |
 	CMP #$0163			;$B3AA1A	 |
 	BNE CODE_B3AA30			;$B3AA1D	 |
@@ -5570,7 +5570,7 @@ CODE_B3AA33:
 	JMP CODE_B3A652			;$B3AA3B	/
 
 CODE_B3AA3E:
-	LDX $64				;$B3AA3E	\
+	LDX current_sprite		;$B3AA3E	\
 	LDA $48,x			;$B3AA40	 |
 	BPL CODE_B3AA4A			;$B3AA42	 |
 	EOR #$FFFF			;$B3AA44	 |
@@ -5587,7 +5587,7 @@ CODE_B3AA55:				;		 |
 	RTS				;$B3AA57	/
 
 CODE_B3AA58:
-	LDX $64				;$B3AA58	\
+	LDX current_sprite		;$B3AA58	\
 	STA $2E,x			;$B3AA5A	 |
 	TYA				;$B3AA5C	 |
 	JSL CODE_B9D0C6			;$B3AA5D	 |
@@ -5600,7 +5600,7 @@ CODE_B3AA64:
 	EOR #$FFFF			;$B3AA6A	 |
 	INC A				;$B3AA6D	 |
 CODE_B3AA6E:				;		 |
-	LDX $64				;$B3AA6E	 |
+	LDX current_sprite		;$B3AA6E	 |
 	STA $26,x			;$B3AA70	 |
 	STZ $20,x			;$B3AA72	 |
 	STY $24,x			;$B3AA74	 |
@@ -5636,13 +5636,13 @@ DATA_B3AAA3:
 
 
 CODE_B3AAA9:
-	LDX $64				;$B3AAA9	\
+	LDX current_sprite		;$B3AAA9	\
 	LDA $22,x			;$B3AAAB	 |
 	STA $04,x			;$B3AAAD	 |
 	LDA #$000C			;$B3AAAF	 |
 	STA $52,x			;$B3AAB2	 |
 CODE_B3AAB4:				;		 |
-	LDX $64				;$B3AAB4	 |
+	LDX current_sprite		;$B3AAB4	 |
 	STZ $20,x			;$B3AAB6	 |
 	STZ $26,x			;$B3AAB8	 |
 	STZ $2C,x			;$B3AABA	 |
@@ -5717,8 +5717,8 @@ CODE_B3AB61:
 	LDY $46,x			;$B3AB61	\
 	JSL CODE_BB842C			;$B3AB63	 |
 	BCS CODE_B3AB5E			;$B3AB67	 |
-	LDX $64				;$B3AB69	 |
-	LDY $68				;$B3AB6B	 |
+	LDX current_sprite		;$B3AB69	 |
+	LDY alternate_sprite		;$B3AB6B	 |
 	STY $42,x			;$B3AB6D	 |
 	STX $42,y			;$B3AB6F	 |
 	STZ $44,x			;$B3AB71	 |
@@ -5767,7 +5767,7 @@ CODE_B3ABCE:
 	JML tntbarrel_main		;$B3ABD4	/
 
 CODE_B3ABD8:
-	LDX $64				;$B3ABD8	\
+	LDX current_sprite		;$B3ABD8	\
 	LDY $42,x			;$B3ABDA	 |
 	JSR CODE_B3ABE2			;$B3ABDC	 |
 	JML [$05A9]			;$B3ABDF	/
@@ -5833,7 +5833,7 @@ CODE_B3AC41:				;		 |
 	JSR CODE_B39EF8			;$B3AC41	 |
 	JSL CODE_B8D5E0			;$B3AC44	 |
 	JSL CODE_B9D100			;$B3AC48	 |
-	LDX $64				;$B3AC4C	 |
+	LDX current_sprite		;$B3AC4C	 |
 	LDA $36,x			;$B3AC4E	 |
 	CMP #$01F5			;$B3AC50	 |
 	BNE CODE_B3AC74			;$B3AC53	 |
@@ -5974,7 +5974,7 @@ CODE_B3AD49:
 	JSR CODE_B39EF8			;$B3AD49	\
 	JSL CODE_B8D5E0			;$B3AD4C	 |
 	JSL CODE_B9D100			;$B3AD50	 |
-	LDY $64				;$B3AD54	 |
+	LDY current_sprite		;$B3AD54	 |
 	LDX $42,y			;$B3AD56	 |
 	JSR CODE_B3ABE2			;$B3AD58	 |
 	LDA $001A,y			;$B3AD5B	 |
@@ -6015,7 +6015,7 @@ CODE_B3AD95:
 CODE_B3AD9E:				;		 |
 	JSL CODE_B9D100			;$B3AD9E	 |
 CODE_B3ADA2:				;		 |
-	LDY $64				;$B3ADA2	 |
+	LDY current_sprite		;$B3ADA2	 |
 	LDX $42,y			;$B3ADA4	 |
 	JSR CODE_B3ABE2			;$B3ADA6	 |
 	JSR CODE_B3ADD9			;$B3ADA9	 |
@@ -6024,18 +6024,18 @@ CODE_B3ADA2:				;		 |
 CODE_B3ADAF:
 	JSL CODE_BEF039			;$B3ADAF	\
 	JSL CODE_B9D100			;$B3ADB3	 |
-	LDY $64				;$B3ADB7	 |
+	LDY current_sprite		;$B3ADB7	 |
 	LDX $42,y			;$B3ADB9	 |
 	JSR CODE_B3ABE2			;$B3ADBB	 |
 	JSL CODE_BBBB69			;$B3ADBE	 |
 	BCC CODE_B3ADD6			;$B3ADC2	 |
-	LDX $64				;$B3ADC4	 |
+	LDX current_sprite		;$B3ADC4	 |
 	PHX				;$B3ADC6	 |
 	LDA $42,x			;$B3ADC7	 |
-	STA $64				;$B3ADC9	 |
+	STA current_sprite		;$B3ADC9	 |
 	JSL CODE_BB82B8			;$B3ADCB	 |
 	PLX				;$B3ADCF	 |
-	STX $64				;$B3ADD0	 |
+	STX current_sprite		;$B3ADD0	 |
 	JSL CODE_BB82B8			;$B3ADD2	 |
 CODE_B3ADD6:				;		 |
 	JML [$05A9]			;$B3ADD6	/
@@ -6045,22 +6045,22 @@ CODE_B3ADD9:
 	LDY #$0100			;$B3ADDC	 |
 	JSR CODE_B3AFD7			;$B3ADDF	 |
 	BCC CODE_B3AE02			;$B3ADE2	 |
-	LDX $64				;$B3ADE4	 |
+	LDX current_sprite		;$B3ADE4	 |
 	PHX				;$B3ADE6	 |
 	LDA $42,x			;$B3ADE7	 |
-	STA $64				;$B3ADE9	 |
+	STA current_sprite		;$B3ADE9	 |
 	JSL CODE_BBBB7B			;$B3ADEB	 |
 	BCC CODE_B3ADFF			;$B3ADEF	 |
 	JSL CODE_BBBB44			;$B3ADF1	 |
 	BCC CODE_B3ADFF			;$B3ADF5	 |
 	PLX				;$B3ADF7	 |
-	STX $64				;$B3ADF8	 |
+	STX current_sprite		;$B3ADF8	 |
 	JSL CODE_BB82B8			;$B3ADFA	 |
 	RTS				;$B3ADFE	/
 
 CODE_B3ADFF:
 	PLX				;$B3ADFF	\
-	STX $64				;$B3AE00	 |
+	STX current_sprite		;$B3AE00	 |
 CODE_B3AE02:				;		 |
 	RTS				;$B3AE02	/
 
@@ -6077,7 +6077,7 @@ CODE_B3AE12:				;		 |
 
 CODE_B3AE16:
 	JSL CODE_BCFB58			;$B3AE16	\
-	LDX $64				;$B3AE1A	 |
+	LDX current_sprite		;$B3AE1A	 |
 	LDA $19CE			;$B3AE1C	 |
 	BEQ CODE_B3AE2B			;$B3AE1F	 |
 	JSL CODE_BEBE6D			;$B3AE21	 |
@@ -6130,7 +6130,7 @@ CODE_B3AE72:
 	ASL A				;$B3AE79	 |
 	TAX				;$B3AE7A	 |
 	LDA.l DATA_B896B7,x		;$B3AE7B	 |
-	LDX $64				;$B3AE7F	 |
+	LDX current_sprite		;$B3AE7F	 |
 	AND #$0040			;$B3AE81	 |
 	RTS				;$B3AE84	/
 
@@ -6142,7 +6142,7 @@ CODE_B3AE85:
 	RTS				;$B3AE8E	/
 
 CODE_B3AE8F:
-	LDX $64				;$B3AE8F	\
+	LDX current_sprite		;$B3AE8F	\
 	LDA $2E,x			;$B3AE91	 |
 	BEQ CODE_B3AEF7			;$B3AE93	 |
 	LDA $4E,x			;$B3AE95	 |
@@ -6160,7 +6160,7 @@ CODE_B3AE8F:
 	LDY #$0040			;$B3AEB2	 |
 	JSR CODE_B3AFC2			;$B3AEB5	 |
 	JSL CODE_BEC678			;$B3AEB8	 |
-	LDX $64				;$B3AEBC	 |
+	LDX current_sprite		;$B3AEBC	 |
 	LDA #$0003			;$B3AEBE	 |
 	STA $46,x			;$B3AEC1	 |
 	BRL CODE_B3AF28			;$B3AEC3	/
@@ -6193,10 +6193,10 @@ CODE_B3AEF7:				;		 |
 CODE_B3AEFA:
 	PHX				;$B3AEFA	\
 	LDA $42,x			;$B3AEFB	 |
-	STA $64				;$B3AEFD	 |
+	STA current_sprite		;$B3AEFD	 |
 	JSL CODE_BB82B8			;$B3AEFF	 |
 	PLX				;$B3AF03	 |
-	STX $64				;$B3AF04	 |
+	STX current_sprite		;$B3AF04	 |
 	LDA #$0414			;$B3AF06	 |
 	JSL CODE_B58003			;$B3AF09	 |
 	LDA #$0615			;$B3AF0D	 |
@@ -6210,7 +6210,7 @@ CODE_B3AEFA:
 	RTS				;$B3AF27	/
 
 CODE_B3AF28:
-	LDX $64				;$B3AF28	\
+	LDX current_sprite		;$B3AF28	\
 	BIT $12,x			;$B3AF2A	 |
 	BVS CODE_B3AF37			;$B3AF2C	 |
 	LDA #$0200			;$B3AF2E	 |
@@ -6255,7 +6255,7 @@ CODE_B3AF6A:				;		 |
 CODE_B3AF78:
 	JSR CODE_B3A3A3			;$B3AF78	\
 	BCC CODE_B3AF8E			;$B3AF7B	 |
-	LDX $64				;$B3AF7D	 |
+	LDX current_sprite		;$B3AF7D	 |
 	LDA $1E,x			;$B3AF7F	 |
 	AND #$0001			;$B3AF81	 |
 	BEQ CODE_B3AF8E			;$B3AF84	 |
@@ -6270,7 +6270,7 @@ CODE_B3AF8F:
 	LDX $6A				;$B3AF8F	\
 	LDA $12,x			;$B3AF91	 |
 	AND #$4000			;$B3AF93	 |
-	LDX $64				;$B3AF96	 |
+	LDX current_sprite		;$B3AF96	 |
 	EOR $12,x			;$B3AF98	 |
 	AND #$4000			;$B3AF9A	 |
 	EOR $12,x			;$B3AF9D	 |
@@ -6294,20 +6294,20 @@ CODE_B3AFAE:				;		 |
 CODE_B3AFC2:
 	PHX				;$B3AFC2	\
 	PHY				;$B3AFC3	 |
-	LDX $68				;$B3AFC4	 |
-	STX $64				;$B3AFC6	 |
+	LDX alternate_sprite		;$B3AFC4	 |
+	STX current_sprite		;$B3AFC6	 |
 	JSL CODE_BB82B8			;$B3AFC8	 |
 	PLY				;$B3AFCC	 |
 	PLX				;$B3AFCD	 |
-	STX $64				;$B3AFCE	 |
+	STX current_sprite		;$B3AFCE	 |
 	JSL CODE_BB842C			;$B3AFD0	 |
-	LDY $68				;$B3AFD4	 |
+	LDY alternate_sprite		;$B3AFD4	 |
 	RTS				;$B3AFD6	/
 
 CODE_B3AFD7:
 	STX $5E				;$B3AFD7	\
 	STY $60				;$B3AFD9	 |
-	LDX $64				;$B3AFDB	 |
+	LDX current_sprite		;$B3AFDB	 |
 	LDY $0593			;$B3AFDD	 |
 	LDA $06,x			;$B3AFE0	 |
 	SEC				;$B3AFE2	 |
@@ -6340,7 +6340,7 @@ CODE_B3B005:
 	RTS				;$B3B006	/
 
 CODE_B3B007:
-	LDX $64				;$B3B007	\
+	LDX current_sprite		;$B3B007	\
 	LDY $0593			;$B3B009	 |
 	STA $5E				;$B3B00C	 |
 	LDA $06,x			;$B3B00E	 |
@@ -6361,7 +6361,7 @@ CODE_B3B01F:
 	RTS				;$B3B020	/
 
 CODE_B3B021:
-	LDX $64				;$B3B021	\
+	LDX current_sprite		;$B3B021	\
 	LDY $0593			;$B3B023	 |
 	STA $5E				;$B3B026	 |
 	LDA $0A,x			;$B3B028	 |
@@ -6383,7 +6383,7 @@ CODE_B3B039:
 
 large_smoke_puff_main:
 unknown_sprite_0014_main:
-	LDY $64				;$B3B03B	\
+	LDY current_sprite		;$B3B03B	\
 	LDA $0054,y			;$B3B03D	 |
 	STA $8E				;$B3B040	 |
 	JSL CODE_BEF039			;$B3B042	 |
@@ -6391,7 +6391,7 @@ unknown_sprite_0014_main:
 	JML [$05A9]			;$B3B04A	/
 
 kruncha_main:
-	LDY $64				;$B3B04D	\
+	LDY current_sprite		;$B3B04D	\
 	LDA $0A36			;$B3B04F	 |
 	BIT #$0004			;$B3B052	 |
 	BEQ CODE_B3B062			;$B3B055	 |
@@ -6466,7 +6466,7 @@ CODE_B3B0B5:				;		 |
 	BRL CODE_B3B082			;$B3B0CC	/
 
 CODE_B3B0CF:
-	LDX $64				;$B3B0CF	\
+	LDX current_sprite		;$B3B0CF	\
 	LDA $36,x			;$B3B0D1	 |
 	CMP #$0172			;$B3B0D3	 |
 	BNE CODE_B3B0DC			;$B3B0D6	 |
@@ -6511,7 +6511,7 @@ CODE_B3B116:
 	LDA #$0001			;$B3B11B	 |
 	STA $1C,x			;$B3B11E	 |
 	JSR CODE_B3B179			;$B3B120	 |
-	LDY $64				;$B3B123	 |
+	LDY current_sprite		;$B3B123	 |
 	LDA #$0001			;$B3B125	 |
 	STA $002E,y			;$B3B128	 |
 	BRL CODE_B3B082			;$B3B12B	/
@@ -6519,7 +6519,7 @@ CODE_B3B116:
 CODE_B3B12E:
 	JSR CODE_B3B194			;$B3B12E	\
 	BCS CODE_B3B14A			;$B3B131	 |
-	LDX $64				;$B3B133	 |
+	LDX current_sprite		;$B3B133	 |
 	LDA $52,x			;$B3B135	 |
 	CMP #$0022			;$B3B137	 |
 	BNE CODE_B3B142			;$B3B13A	 |
@@ -6574,7 +6574,7 @@ CODE_B3B193:				;		 |
 CODE_B3B194:
 	JSR CODE_B3A3A3			;$B3B194	\
 	BCC CODE_B3B1E2			;$B3B197	 |
-	LDX $64				;$B3B199	 |
+	LDX current_sprite		;$B3B199	 |
 	LDA #$0118			;$B3B19B	 |
 	JSL CODE_BEBE14			;$B3B19E	 |
 	BCS CODE_B3B1C2			;$B3B1A2	 |
@@ -6655,7 +6655,7 @@ CODE_B3B22D:				;		 |
 	STA $0A86			;$B3B22D	 |
 	SEC				;$B3B230	 |
 CODE_B3B231:				;		 |
-	LDX $64				;$B3B231	 |
+	LDX current_sprite		;$B3B231	 |
 	LDY #$0006			;$B3B233	 |
 	LDA [$8E],y			;$B3B236	 |
 	BPL CODE_B3B248			;$B3B238	 |
@@ -6817,7 +6817,7 @@ CODE_B3B328:
 	LDY #$0016			;$B3B33B	 |
 CODE_B3B33E:				;		 |
 	LDA [$8E],y			;$B3B33E	 |
-	LDX $64				;$B3B340	 |
+	LDX current_sprite		;$B3B340	 |
 	STA $46,x			;$B3B342	 |
 	INY				;$B3B344	 |
 	INY				;$B3B345	 |
@@ -6939,7 +6939,7 @@ CODE_B3B3FF:				;		 |
 	LDA $36				;$B3B40A	 |
 	STA $44,x			;$B3B40C	 |
 	JSR CODE_B3B557			;$B3B40E	 |
-	LDX $64				;$B3B411	 |
+	LDX current_sprite		;$B3B411	 |
 	LDA $5C,x			;$B3B413	 |
 	BNE CODE_B3B41A			;$B3B415	 |
 	JML [$05A9]			;$B3B417	/
@@ -6948,7 +6948,7 @@ CODE_B3B41A:
 	JMP CODE_B38000			;$B3B41A	/
 
 CODE_B3B41D:
-	LDY $64				;$B3B41D	\
+	LDY current_sprite		;$B3B41D	\
 	LDA $002F,y			;$B3B41F	 |
 	AND #$00FF			;$B3B422	 |
 	ASL A				;$B3B425	 |
@@ -6968,7 +6968,7 @@ CODE_B3B41D:
 	LDA #$0000			;$B3B445	 |
 	JSL CODE_BEBE8B			;$B3B448	 |
 	BCC CODE_B3B452			;$B3B44C	 |
-	LDX $64				;$B3B44E	 |
+	LDX current_sprite		;$B3B44E	 |
 	INC $1C,x			;$B3B450	 |
 CODE_B3B452:				;		 |
 	JML [$05A9]			;$B3B452	/
@@ -6981,7 +6981,7 @@ DATA_B3B455:
 
 CODE_B3B45D:
 	JSR CODE_B3B887			;$B3B45D	\
-	LDX $64				;$B3B460	 |
+	LDX current_sprite		;$B3B460	 |
 	LDA $36,x			;$B3B462	 |
 	CMP #$0177			;$B3B464	 |
 	BEQ CODE_B3B46E			;$B3B467	 |
@@ -7158,7 +7158,7 @@ CODE_B3B5CA:				;		 |
 	JMP CODE_B3B745			;$B3B5CC	/
 
 CODE_B3B5CF:
-	LDY $64				;$B3B5CF	\
+	LDY current_sprite		;$B3B5CF	\
 	LDA $002F,y			;$B3B5D1	 |
 	AND #$00FF			;$B3B5D4	 |
 	ASL A				;$B3B5D7	 |
@@ -7176,7 +7176,7 @@ DATA_B3B5DC:
 
 CODE_B3B5E8:
 	JSR CODE_B3B887			;$B3B5E8	\
-	LDY $64				;$B3B5EB	 |
+	LDY current_sprite		;$B3B5EB	 |
 	LDA $0036,y			;$B3B5ED	 |
 	CMP #$0177			;$B3B5F0	 |
 	BEQ CODE_B3B5FC			;$B3B5F3	 |
@@ -7252,7 +7252,7 @@ CODE_B3B681:
 	JSL CODE_BEF03D			;$B3B684	 |
 	JSR CODE_B3B887			;$B3B688	 |
 	JSL CODE_B9D100			;$B3B68B	 |
-	LDX $64				;$B3B68F	 |
+	LDX current_sprite		;$B3B68F	 |
 	LDA $2A,x			;$B3B691	 |
 	BPL CODE_B3B699			;$B3B693	 |
 	EOR #$FFFF			;$B3B695	 |
@@ -7300,7 +7300,7 @@ CODE_B3B6D5:
 	JSL CODE_BEF03D			;$B3B6D8	 |
 	JSR CODE_B3B887			;$B3B6DC	 |
 	JSL CODE_B9D100			;$B3B6DF	 |
-	LDX $64				;$B3B6E3	 |
+	LDX current_sprite		;$B3B6E3	 |
 	DEC $4E,x			;$B3B6E5	 |
 	BPL CODE_B3B706			;$B3B6E7	 |
 	STZ $26,x			;$B3B6E9	 |
@@ -7495,7 +7495,7 @@ CODE_B3B81E:
 	RTS				;$B3B821	/
 
 CODE_B3B822:
-	LDX $64				;$B3B822	\
+	LDX current_sprite		;$B3B822	\
 	LDA $26,x			;$B3B824	 |
 	BNE CODE_B3B82B			;$B3B826	 |
 	LDA $12,x			;$B3B828	 |
@@ -7558,7 +7558,7 @@ CODE_B3B882:				;		 |
 	RTS				;$B3B886	/
 
 CODE_B3B887:
-	LDX $64				;$B3B887	\
+	LDX current_sprite		;$B3B887	\
 	LDA $0D4E			;$B3B889	 |
 	CLC				;$B3B88C	 |
 	ADC #$0018			;$B3B88D	 |
@@ -7605,7 +7605,7 @@ CODE_B3B8D0:				;		 |
 	RTS				;$B3B8D4	/
 
 CODE_B3B8D5:
-	LDX $64				;$B3B8D5	\
+	LDX current_sprite		;$B3B8D5	\
 	CLC				;$B3B8D7	 |
 	ADC #$0010			;$B3B8D8	 |
 	CMP $0A,x			;$B3B8DB	 |
@@ -7704,7 +7704,7 @@ CODE_B3B97D:
 	JMP CODE_B38000			;$B3B988	/
 
 CODE_B3B98B:
-	LDX $64				;$B3B98B	\
+	LDX current_sprite		;$B3B98B	\
 	LDA $5C,x			;$B3B98D	 |
 	BNE CODE_B3B9A6			;$B3B98F	 |
 	LDA $0D4E			;$B3B991	 |
@@ -7759,7 +7759,7 @@ CODE_B3B9D9:
 	JSR CODE_B3BA6E			;$B3B9E5	 |
 	LDA #$0181			;$B3B9E8	 |
 	JSL CODE_B9D0C6			;$B3B9EB	 |
-	LDX $64				;$B3B9EF	 |
+	LDX current_sprite		;$B3B9EF	 |
 	LDA #$0200			;$B3B9F1	 |
 	STA $3A,x			;$B3B9F4	 |
 CODE_B3B9F6:				;		 |
@@ -7989,7 +7989,7 @@ CODE_B3BB85:
 	BVS CODE_B3BB91			;$B3BB8C	 |
 	LDA #$FF00			;$B3BB8E	 |
 CODE_B3BB91:				;		 |
-	LDX $64				;$B3BB91	 |
+	LDX current_sprite		;$B3BB91	 |
 	STA $26,x			;$B3BB93	 |
 	STA $20,x			;$B3BB95	 |
 	LDA #$FC00			;$B3BB97	 |
@@ -8036,7 +8036,7 @@ CODE_B3BBE0:				;		 |
 
 CODE_B3BBE3:
 	JSL CODE_BBBB99			;$B3BBE3	\
-	LDY $64				;$B3BBE7	 |
+	LDY current_sprite		;$B3BBE7	 |
 	BCS CODE_B3BBF4			;$B3BBE9	 |
 	LDA $0042,y			;$B3BBEB	 |
 	JSR CODE_B3BC01			;$B3BBEE	 |
@@ -8093,7 +8093,7 @@ CODE_B3BC31:
 	STZ $0A,x			;$B3BC36	 |
 	JSL CODE_BEF039			;$B3BC38	 |
 CODE_B3BC3C:				;		 |
-	LDX $64				;$B3BC3C	 |
+	LDX current_sprite		;$B3BC3C	 |
 	LDA $46,x			;$B3BC3E	 |
 	CMP $06,x			;$B3BC40	 |
 	BCS CODE_B3BC49			;$B3BC42	 |
@@ -8107,12 +8107,12 @@ endif					;
 CODE_B3BC49:
 	INC $2F,x			;$B3BC49	\
 CODE_B3BC4B:				;		 |
-	LDX $64				;$B3BC4B	 |
+	LDX current_sprite		;$B3BC4B	 |
 	STZ $0A,x			;$B3BC4D	 |
 	STX $0AE8			;$B3BC4F	 |
 	JSL CODE_BEF039			;$B3BC52	 |
 CODE_B3BC56:				;		 |
-	LDX $64				;$B3BC56	 |
+	LDX current_sprite		;$B3BC56	 |
 	LDY $0593			;$B3BC58	 |
 	LDA $000A,y			;$B3BC5B	 |
 	STA $0A,x			;$B3BC5E	 |
@@ -8159,7 +8159,7 @@ CODE_B3BCA0:				;		 |
 CODE_B3BCA3:
 	JSR CODE_B3BDC7			;$B3BCA3	\
 	BCS CODE_B3BCBD			;$B3BCA6	 |
-	LDX $64				;$B3BCA8	 |
+	LDX current_sprite		;$B3BCA8	 |
 	LDA $10,x			;$B3BCAA	 |
 	LDY $1E,x			;$B3BCAC	 |
 	JSR CODE_B3C6C0			;$B3BCAE	 |
@@ -8196,7 +8196,7 @@ CODE_B3BCE3:				;		 |
 	JSL CODE_BEF039			;$B3BCE8	 |
 	JSL CODE_B9D100			;$B3BCEC	 |
 CODE_B3BCF0:				;		 |
-	LDX $64				;$B3BCF0	 |
+	LDX current_sprite		;$B3BCF0	 |
 	LDA $2A,x			;$B3BCF2	 |
 	CMP $24,x			;$B3BCF4	 |
 	BNE CODE_B3BCFE			;$B3BCF6	 |
@@ -8212,7 +8212,7 @@ CODE_B3BD01:
 
 CODE_B3BD0C:
 	JSR CODE_B3BDC7			;$B3BD0C	\
-	LDX $64				;$B3BD0F	 |
+	LDX current_sprite		;$B3BD0F	 |
 	BCS CODE_B3BD36			;$B3BD11	 |
 	DEC $50,x			;$B3BD13	 |
 	BPL CODE_B3BD24			;$B3BD15	 |
@@ -8267,7 +8267,7 @@ CODE_B3BD6B:				;		 |
 	JSL CODE_BEF039			;$B3BD70	 |
 	JSL CODE_B9D100			;$B3BD74	 |
 CODE_B3BD78:				;		 |
-	LDX $64				;$B3BD78	 |
+	LDX current_sprite		;$B3BD78	 |
 	LDA $2A,x			;$B3BD7A	 |
 	CMP $24,x			;$B3BD7C	 |
 	BEQ CODE_B3BD83			;$B3BD7E	 |
@@ -8327,7 +8327,7 @@ CODE_B3BDDE:
 	LDX $6A				;$B3BDE0	 |
 	LDA $12,x			;$B3BDE2	 |
 	AND #$4000			;$B3BDE4	 |
-	LDX $64				;$B3BDE7	 |
+	LDX current_sprite		;$B3BDE7	 |
 	EOR $12,x			;$B3BDE9	 |
 	AND #$4000			;$B3BDEB	 |
 	EOR $12,x			;$B3BDEE	 |
@@ -8367,7 +8367,7 @@ CODE_B3BE28:
 
 CODE_B3BE31:
 	JSL CODE_BB82B8			;$B3BE31	\
-	LDX $64				;$B3BE35	 |
+	LDX current_sprite		;$B3BE35	 |
 	LDA #$00F0			;$B3BE37	 |
 	STA $00,x			;$B3BE3A	 |
 	LDA #$0001			;$B3BE3C	 |
@@ -8417,7 +8417,7 @@ CODE_B3BE79:				;		 |
 CODE_B3BE7C:
 	JSR CODE_B3BEE6			;$B3BE7C	\
 	BCS CODE_B3BE6C			;$B3BE7F	 |
-	LDX $64				;$B3BE81	 |
+	LDX current_sprite		;$B3BE81	 |
 	DEC $2F,x			;$B3BE83	 |
 	BRA CODE_B3BE6C			;$B3BE85	/
 
@@ -8443,7 +8443,7 @@ CODE_B3BEAA:
 	LDX $6A				;$B3BEAC	 |
 	LDA $12,x			;$B3BEAE	 |
 	AND #$4000			;$B3BEB0	 |
-	LDX $64				;$B3BEB3	 |
+	LDX current_sprite		;$B3BEB3	 |
 	EOR $12,x			;$B3BEB5	 |
 	AND #$4000			;$B3BEB7	 |
 	EOR $12,x			;$B3BEBA	 |
@@ -8473,7 +8473,7 @@ CODE_B3BEE6:
 	AND #$E000			;$B3BEEC	 |
 	CMP #$E000			;$B3BEEF	 |
 	BEQ CODE_B3BF56			;$B3BEF2	 |
-	LDX $64				;$B3BEF4	 |
+	LDX current_sprite		;$B3BEF4	 |
 	LDA $22,x			;$B3BEF6	 |
 	STA $32				;$B3BEF8	 |
 	LDA #$00FF			;$B3BEFA	 |
@@ -8485,18 +8485,18 @@ CODE_B3BEE6:
 	JSL CODE_BB8432			;$B3BF05	 |
 	PLY				;$B3BF09	 |
 	BCS CODE_B3BF56			;$B3BF0A	 |
-	LDX $64				;$B3BF0C	 |
+	LDX current_sprite		;$B3BF0C	 |
 	LDA $22,x			;$B3BF0E	 |
 	STA $32				;$B3BF10	 |
 	LDA #$00FF			;$B3BF12	 |
 	STA $34				;$B3BF15	 |
-	LDX $68				;$B3BF17	 |
+	LDX alternate_sprite		;$B3BF17	 |
 	INY				;$B3BF19	 |
 	INY				;$B3BF1A	 |
 	LDA [$32],y			;$B3BF1B	 |
 	AND #$00FF			;$B3BF1D	 |
 	STA $50,x			;$B3BF20	 |
-	LDX $64				;$B3BF22	 |
+	LDX current_sprite		;$B3BF22	 |
 	INY				;$B3BF24	 |
 	LDA [$32],y			;$B3BF25	 |
 	AND #$00FF			;$B3BF27	 |
@@ -8507,7 +8507,7 @@ CODE_B3BEE6:
 	TYA				;$B3BF31	 |
 CODE_B3BF32:				;		 |
 	STA $28,x			;$B3BF32	 |
-	LDY $68				;$B3BF34	 |
+	LDY alternate_sprite		;$B3BF34	 |
 	LDA $0A,x			;$B3BF36	 |
 	CLC				;$B3BF38	 |
 	ADC #$0010			;$B3BF39	 |
@@ -8678,7 +8678,7 @@ CODE_B3C074:
 	RTS				;$B3C07C	/
 
 CODE_B3C07D:
-	LDX $64				;$B3C07D	\
+	LDX current_sprite		;$B3C07D	\
 	LDA $5A,x			;$B3C07F	 |
 	BEQ CODE_B3C091			;$B3C081	 |
 	LDA $0A,x			;$B3C083	 |
@@ -8702,7 +8702,7 @@ CODE_B3C094:
 	JML [$05A9]			;$B3C0A6	/
 
 CODE_B3C0A9:
-	LDY $64				;$B3C0A9	\
+	LDY current_sprite		;$B3C0A9	\
 	JMP (DATA_B3C0AE,x)		;$B3C0AB	/
 
 DATA_B3C0AE:
@@ -8757,11 +8757,11 @@ CODE_B3C118:				;		 |
 	BCS CODE_B3C126			;$B3C11B	 |
 	JSR CODE_B3C16C			;$B3C11D	 |
 	BCC CODE_B3C126			;$B3C120	 |
-	LDX $64				;$B3C122	 |
+	LDX current_sprite		;$B3C122	 |
 	INC $2F,x			;$B3C124	 |
 CODE_B3C126:				;		 |
 	JSL CODE_B9D100			;$B3C126	 |
-	LDX $64				;$B3C12A	 |
+	LDX current_sprite		;$B3C12A	 |
 	LDA $5A,x			;$B3C12C	 |
 	BEQ CODE_B3C14A			;$B3C12E	 |
 	LDA $06,x			;$B3C130	 |
@@ -8797,7 +8797,7 @@ CODE_B3C151:
 	BRA CODE_B3C1D2			;$B3C16A	/
 
 CODE_B3C16C:
-	LDX $64				;$B3C16C	\
+	LDX current_sprite		;$B3C16C	\
 	LDA $42,x			;$B3C16E	 |
 	JSL CODE_B8D010			;$B3C170	 |
 	TYX				;$B3C174	 |
@@ -8821,7 +8821,7 @@ CODE_B3C18F:				;		 |
 	LDA $48,x			;$B3C18F	 |
 	BEQ CODE_B3C1C9			;$B3C191	 |
 	JSL CODE_B8D5E0			;$B3C193	 |
-	LDX $64				;$B3C197	 |
+	LDX current_sprite		;$B3C197	 |
 	LDA $1E,x			;$B3C199	 |
 	AND #$0001			;$B3C19B	 |
 	BEQ CODE_B3C1D0			;$B3C19E	 |
@@ -8856,7 +8856,7 @@ CODE_B3C1D2:
 	JMP CODE_B3A652			;$B3C1DA	/
 
 CODE_B3C1DD:
-	LDX $64				;$B3C1DD	\
+	LDX current_sprite		;$B3C1DD	\
 	LDA $30,x			;$B3C1DF	 |
 	CLC				;$B3C1E1	 |
 	BEQ CODE_B3C207			;$B3C1E2	 |
@@ -8868,7 +8868,7 @@ CODE_B3C1DD:
 	LDY #$0008			;$B3C1F4	 |
 	JSL CODE_BEBD8E			;$B3C1F7	 |
 	BCS CODE_B3C20D			;$B3C1FB	 |
-	LDX $64				;$B3C1FD	 |
+	LDX current_sprite		;$B3C1FD	 |
 	LDA $4A,x			;$B3C1FF	 |
 	JSL CODE_BEBE8B			;$B3C201	 |
 	BCS CODE_B3C208			;$B3C205	 |
@@ -8896,7 +8896,7 @@ CODE_B3C224:				;		 |
 	STA $60				;$B3C224	 |
 	JSR CODE_B3C24C			;$B3C226	 |
 	BCS CODE_B3C207			;$B3C229	 |
-	LDX $64				;$B3C22B	 |
+	LDX current_sprite		;$B3C22B	 |
 	LDA $20,x			;$B3C22D	 |
 	CLC				;$B3C22F	 |
 	ADC $60				;$B3C230	 |
@@ -8914,7 +8914,7 @@ CODE_B3C224:				;		 |
 	RTS				;$B3C24B	/
 
 CODE_B3C24C:
-	LDX $64				;$B3C24C	\
+	LDX current_sprite		;$B3C24C	\
 	LDA $2E,x			;$B3C24E	 |
 	AND #$00FF			;$B3C250	 |
 	CMP #$0002			;$B3C253	 |
@@ -8933,7 +8933,7 @@ CODE_B3C25A:
 	RTS				;$B3C270	/
 
 water_level_changer_main:
-	LDX $64				;$B3C271	\
+	LDX current_sprite		;$B3C271	\
 	LDY $0593			;$B3C273	 |
 	LDA $2E,x			;$B3C276	 |
 	CMP #$0100			;$B3C278	 |
@@ -9024,7 +9024,7 @@ CODE_B3C30B:				;		 |
 	PLB				;$B3C312	 |
 	CMP #$20CB			;$B3C313	 |
 	BNE CODE_B3C33B			;$B3C316	 |
-	LDX $64				;$B3C318	 |
+	LDX current_sprite		;$B3C318	 |
 	LDA $4E,x			;$B3C31A	 |
 	STA $0D52			;$B3C31C	 |
 	LDA $24,x			;$B3C31F	 |
@@ -9068,7 +9068,7 @@ CODE_B3C364:
 	BNE CODE_B3C391			;$B3C369	 |
 	LDX #$F8F8			;$B3C36B	 |
 	JSL CODE_B5F94C			;$B3C36E	 |
-	LDX $64				;$B3C372	 |
+	LDX current_sprite		;$B3C372	 |
 	LDA $1C,x			;$B3C374	 |
 	AND #$C000			;$B3C376	 |
 	EOR #$C000			;$B3C379	 |
@@ -9175,7 +9175,7 @@ CODE_B3C441:
 CODE_B3C444:
 	LDA #$072C			;$B3C444	\
 	JSL CODE_B58003			;$B3C447	 |
-	LDX $64				;$B3C44B	 |
+	LDX current_sprite		;$B3C44B	 |
 	LDA $42,x			;$B3C44D	 |
 	JSL CODE_BEC64C			;$B3C44F	 |
 	LDA #$0002			;$B3C453	 |
@@ -9226,7 +9226,7 @@ CODE_B3C4B3:				;		 |
 	JML [$05A9]			;$B3C4B7	/
 
 air_bubble_generator_main:
-	LDX $64				;$B3C4BA	\
+	LDX current_sprite		;$B3C4BA	\
 	LDA $12,x			;$B3C4BC	 |
 	AND #$CFFF			;$B3C4BE	 |
 	ORA #$1000			;$B3C4C1	 |
@@ -9278,7 +9278,7 @@ CODE_B3C512:
 	LDA #$0000			;$B3C512	\
 	JSR CODE_B3C62A			;$B3C515	 |
 	BCS CODE_B3C550			;$B3C518	 |
-	LDX $64				;$B3C51A	 |
+	LDX current_sprite		;$B3C51A	 |
 	INC $2E,x			;$B3C51C	 |
 	LDY $0593			;$B3C51E	 |
 	LDA $0006,y			;$B3C521	 |
@@ -9374,7 +9374,7 @@ CODE_B3C5DD:				;		 |
 	JMP CODE_B38000			;$B3C5DD	/
 
 CODE_B3C5E0:
-	LDX $64				;$B3C5E0	\
+	LDX current_sprite		;$B3C5E0	\
 	LDA $12,x			;$B3C5E2	 |
 	ASL A				;$B3C5E4	 |
 	EOR $48,x			;$B3C5E5	 |
@@ -9417,7 +9417,7 @@ CODE_B3C62A:
 	STA $0DC6			;$B3C62A	\
 	JSR CODE_B3A3A3			;$B3C62D	 |
 	BCC CODE_B3C686			;$B3C630	 |
-	LDX $64				;$B3C632	 |
+	LDX current_sprite		;$B3C632	 |
 	LDA #$0118			;$B3C634	 |
 	JSL CODE_BEBE14			;$B3C637	 |
 	BCS CODE_B3C65A			;$B3C63B	 |
@@ -9438,7 +9438,7 @@ CODE_B3C65A:
 	BEQ CODE_B3C671			;$B3C65A	\
 	LDA #$051E			;$B3C65C	 |
 	JSL CODE_B58003			;$B3C65F	 |
-	LDX $64				;$B3C663	 |
+	LDX current_sprite		;$B3C663	 |
 	SEP #$20			;$B3C665	 |
 	STZ $4B,x			;$B3C667	 |
 	LDA #$03			;$B3C669	 |
@@ -9451,7 +9451,7 @@ CODE_B3C671:
 	LDX $6A				;$B3C671	\
 	LDA $12,x			;$B3C673	 |
 	AND #$4000			;$B3C675	 |
-	LDX $64				;$B3C678	 |
+	LDX current_sprite		;$B3C678	 |
 	EOR $12,x			;$B3C67A	 |
 	AND #$4000			;$B3C67C	 |
 	EOR $12,x			;$B3C67F	 |
@@ -9483,7 +9483,7 @@ CODE_B3C6AB:
 CODE_B3C6AF:
 	STA $32				;$B3C6AF	\
 	STY $34				;$B3C6B1	 |
-	LDX $64				;$B3C6B3	 |
+	LDX current_sprite		;$B3C6B3	 |
 	LDY $0593			;$B3C6B5	 |
 	LDA $000C,y			;$B3C6B8	 |
 	SEC				;$B3C6BB	 |
@@ -9493,7 +9493,7 @@ CODE_B3C6AF:
 CODE_B3C6C0:
 	STA $32				;$B3C6C0	\
 	STY $34				;$B3C6C2	 |
-	LDX $64				;$B3C6C4	 |
+	LDX current_sprite		;$B3C6C4	 |
 	LDY $0593			;$B3C6C6	 |
 	LDA $000A,y			;$B3C6C9	 |
 	SEC				;$B3C6CC	 |
@@ -9589,7 +9589,7 @@ CODE_B3C75B:
 	LDA #$01F1			;$B3C75B	\
 CODE_B3C75E:				;		 |
 	JSL CODE_B9D0C6			;$B3C75E	 |
-	LDX $64				;$B3C762	 |
+	LDX current_sprite		;$B3C762	 |
 	INC $2E,x			;$B3C764	 |
 	JMP CODE_B38000			;$B3C766	/
 
@@ -9684,19 +9684,19 @@ CODE_B3C80E:				;		 |
 CODE_B3C811:
 	LDA #$01F1			;$B3C811	\
 	JSL CODE_B9D0C6			;$B3C814	 |
-	LDX $64				;$B3C818	 |
+	LDX current_sprite		;$B3C818	 |
 	INC $2E,x			;$B3C81A	 |
 	JMP CODE_B38000			;$B3C81C	/
 
 CODE_B3C81F:
 	LDA #$01F0			;$B3C81F	\
 	JSL CODE_B9D0C6			;$B3C822	 |
-	LDX $64				;$B3C826	 |
+	LDX current_sprite		;$B3C826	 |
 	INC $2E,x			;$B3C828	 |
 	JMP CODE_B38000			;$B3C82A	/
 
 CODE_B3C82D:
-	LDY $64				;$B3C82D	\
+	LDY current_sprite		;$B3C82D	\
 	LDA $0D54			;$B3C82F	 |
 	CLC				;$B3C832	 |
 	ADC #$00C0			;$B3C833	 |
@@ -9739,7 +9739,7 @@ CODE_B3C86F:
 CODE_B3C878:
 	JSR CODE_B3A3A3			;$B3C878	\
 	BCC CODE_B3C8AE			;$B3C87B	 |
-	LDX $64				;$B3C87D	 |
+	LDX current_sprite		;$B3C87D	 |
 	LDA #$0118			;$B3C87F	 |
 	JSL CODE_BEBE14			;$B3C882	 |
 	BCS CODE_B3C897			;$B3C886	 |
@@ -9756,7 +9756,7 @@ CODE_B3C897:
 	LDX $6A				;$B3C899	 |
 	LDA $12,x			;$B3C89B	 |
 	AND #$4000			;$B3C89D	 |
-	LDX $64				;$B3C8A0	 |
+	LDX current_sprite		;$B3C8A0	 |
 	EOR $12,x			;$B3C8A2	 |
 	AND #$4000			;$B3C8A4	 |
 	EOR $12,x			;$B3C8A7	 |
@@ -9884,7 +9884,7 @@ CODE_B3C97B:				;		 |
 	JMP CODE_B38000			;$B3C989	/
 
 CODE_B3C98C:
-	LDX $64				;$B3C98C	\
+	LDX current_sprite		;$B3C98C	\
 	LDA $48,x			;$B3C98E	 |
 	BEQ CODE_B3C9A1			;$B3C990	 |
 	LDA global_frame_counter	;$B3C992	 |
@@ -9923,7 +9923,7 @@ CODE_B3C9CB:
 	LDY $6A				;$B3C9CE	 |
 	LDA $0012,y			;$B3C9D0	 |
 	AND #$4000			;$B3C9D3	 |
-	LDX $64				;$B3C9D6	 |
+	LDX current_sprite		;$B3C9D6	 |
 	EOR $12,x			;$B3C9D8	 |
 	AND #$4000			;$B3C9DA	 |
 	EOR $12,x			;$B3C9DD	 |
@@ -9994,7 +9994,7 @@ CODE_B3CA4D:
 
 CODE_B3CA5D:
 	JSR CODE_B3CA85			;$B3CA5D	\
-	LDX $64				;$B3CA60	 |
+	LDX current_sprite		;$B3CA60	 |
 	LDA $06,x			;$B3CA62	 |
 	STA $0A3E			;$B3CA64	 |
 	LDA $0A,x			;$B3CA67	 |
@@ -10031,7 +10031,7 @@ CODE_B3CAA6:				;		 |
 	JSL CODE_BB8412			;$B3CAA9	 |
 	LDA #$018A			;$B3CAAD	 |
 	JSL CODE_B9D09B			;$B3CAB0	 |
-	LDX $68				;$B3CAB4	 |
+	LDX alternate_sprite		;$B3CAB4	 |
 	LDA $0A96			;$B3CAB6	 |
 	TAY				;$B3CAB9	 |
 	CLC				;$B3CABA	 |
@@ -10090,7 +10090,7 @@ DATA_B3CB0C:
 	db $08, $00, $03, $C0
 
 puftup_spikes_main:
-	LDY $64				;$B3CB38	\
+	LDY current_sprite		;$B3CB38	\
 	LDA $0054,y			;$B3CB3A	 |
 	STA $8E				;$B3CB3D	 |
 	JSL CODE_BCFB58			;$B3CB3F	 |
@@ -10101,7 +10101,7 @@ puftup_spikes_main:
 	JMP CODE_B38000			;$B3CB52	/
 
 CODE_B3CB55:
-	LDY $64				;$B3CB55	\
+	LDY current_sprite		;$B3CB55	\
 	LDA $002F,y			;$B3CB57	 |
 	AND #$00FF			;$B3CB5A	 |
 	ASL A				;$B3CB5D	 |
@@ -10109,7 +10109,7 @@ CODE_B3CB55:
 	LDA $0036,y			;$B3CB5F	 |
 	PHA				;$B3CB62	 |
 	JSR (DATA_B3CB6C,x)		;$B3CB63	 |
-	LDX $64				;$B3CB66	 |
+	LDX current_sprite		;$B3CB66	 |
 	PLA				;$B3CB68	 |
 	CMP $36,x			;$B3CB69	 |
 	RTL				;$B3CB6B	/
@@ -10174,7 +10174,7 @@ DATA_B3CBB9:
 	dw CODE_B3CC62
 
 CODE_B3CBCD:				;		\
-	LDX $64				;$B3CBCD	 |
+	LDX current_sprite		;$B3CBCD	 |
 	SEP #$20			;$B3CBCF	 |
 	LDA $2F,x			;$B3CBD1	 |
 	AND #$08			;$B3CBD3	 |
@@ -10184,7 +10184,7 @@ CODE_B3CBCD:				;		\
 	RTS				;$B3CBDB	/
 
 CODE_B3CBDC:				;		\
-	LDX $64				;$B3CBDC	 |
+	LDX current_sprite		;$B3CBDC	 |
 	INY				;$B3CBDE	 |
 	LDA [$32],y			;$B3CBDF	 |
 	STA $50,x			;$B3CBE1	 |
@@ -10201,7 +10201,7 @@ CODE_B3CBE4:				;		\
 	BRA CODE_B3CC5B			;$B3CBEF	/
 
 CODE_B3CBF1:				;		\
-	LDX $64				;$B3CBF1	 |
+	LDX current_sprite		;$B3CBF1	 |
 	INY				;$B3CBF3	 |
 	LDA [$32],y			;$B3CBF4	 |
 	STA $22,x			;$B3CBF6	 |
@@ -10216,7 +10216,7 @@ CODE_B3CBF1:				;		\
 	BRA CODE_B3CC5B			;$B3CC06	/
 
 CODE_B3CC08:				;		\
-	LDX $64				;$B3CC08	 |
+	LDX current_sprite		;$B3CC08	 |
 	INY				;$B3CC0A	 |
 	LDA [$32],y			;$B3CC0B	 |
 	STA $22,x			;$B3CC0D	 |
@@ -10235,7 +10235,7 @@ CODE_B3CC08:				;		\
 	BRA CODE_B3CC5B			;$B3CC23	/
 
 CODE_B3CC25:				;		\
-	LDX $64				;$B3CC25	 |
+	LDX current_sprite		;$B3CC25	 |
 	INY				;$B3CC27	 |
 	LDA [$32],y			;$B3CC28	 |
 	STA $50,x			;$B3CC2A	 |
@@ -10247,13 +10247,13 @@ CODE_B3CC25:				;		\
 	RTS				;$B3CC33	/
 
 CODE_B3CC34:				;		\
-	LDX $64				;$B3CC34	 |
+	LDX current_sprite		;$B3CC34	 |
 	LDA $4E,x			;$B3CC36	 |
 	STA $50,x			;$B3CC38	 |
 	RTS				;$B3CC3A	/
 
 CODE_B3CC3B:				;		\
-	LDX $64				;$B3CC3B	 |
+	LDX current_sprite		;$B3CC3B	 |
 	SEP #$20			;$B3CC3D	 |
 	LDA $2F,x			;$B3CC3F	 |
 	AND #$08			;$B3CC41	 |
@@ -10264,7 +10264,7 @@ CODE_B3CC3B:				;		\
 	BRA CODE_B3CC5B			;$B3CC4A	/
 
 CODE_B3CC4C:				;		\
-	LDX $64				;$B3CC4C	 |
+	LDX current_sprite		;$B3CC4C	 |
 	SEP #$20			;$B3CC4E	 |
 	LDA $2F,x			;$B3CC50	 |
 	ORA #$08			;$B3CC52	 |
@@ -10281,7 +10281,7 @@ CODE_B3CC5B:
 	RTS				;$B3CC61	/
 
 CODE_B3CC62:				;		\
-	LDX $64				;$B3CC62	 |
+	LDX current_sprite		;$B3CC62	 |
 	INY				;$B3CC64	 |
 	LDA [$32],y			;$B3CC65	 |
 	STA $22,x			;$B3CC67	 |
@@ -10418,7 +10418,7 @@ CODE_B3CD23:
 	BCS CODE_B3CCFC			;$B3CD2B	 |
 	INC $2E,x			;$B3CD2D	 |
 CODE_B3CD2F:				;		 |
-	LDX $64				;$B3CD2F	 |
+	LDX current_sprite		;$B3CD2F	 |
 	LDA $52,x			;$B3CD31	 |
 	BEQ CODE_B3CCFC			;$B3CD33	 |
 	JSL CODE_B9D0C6			;$B3CD35	 |
@@ -10437,20 +10437,20 @@ CODE_B3CD48:
 	LDA #$5428			;$B3CD50	 |
 	JSR CODE_B3CF41			;$B3CD53	 |
 	BCS CODE_B3CD8A			;$B3CD56	 |
-	LDX $64				;$B3CD58	 |
+	LDX current_sprite		;$B3CD58	 |
 	JSL CODE_B9D100			;$B3CD5A	 |
 	LDA #$0022			;$B3CD5E	 |
 	JSR CODE_B3CE79			;$B3CD61	 |
 	JMP CODE_B38000			;$B3CD64	/
 
 CODE_B3CD67:
-	LDX $64				;$B3CD67	\
+	LDX current_sprite		;$B3CD67	\
 	LDA $1C,x			;$B3CD69	 |
 	BEQ CODE_B3CD8D			;$B3CD6B	 |
 	DEC $1C,x			;$B3CD6D	 |
 	JSR CODE_B3CF60			;$B3CD6F	 |
 	BCS CODE_B3CD8A			;$B3CD72	 |
-	LDX $64				;$B3CD74	 |
+	LDX current_sprite		;$B3CD74	 |
 	LDA #$0000			;$B3CD76	 |
 	JSR CODE_B3B28E			;$B3CD79	 |
 	JSL CODE_B9D100			;$B3CD7C	 |
@@ -10469,7 +10469,7 @@ CODE_B3CD96:
 	LDA #$542C			;$B3CD96	\
 	JSR CODE_B3CF41			;$B3CD99	 |
 	BCS CODE_B3CDB7			;$B3CD9C	 |
-	LDX $64				;$B3CD9E	 |
+	LDX current_sprite		;$B3CD9E	 |
 	LDA $4A,x			;$B3CDA0	 |
 	STA $1C,x			;$B3CDA2	 |
 	STZ $2E,x			;$B3CDA4	 |
@@ -10514,7 +10514,7 @@ CODE_B3CDFD:
 	LDA #$0014			;$B3CDFD	\
 	JSL CODE_B8D8BA			;$B3CE00	 |
 	BCS CODE_B3CE48			;$B3CE04	 |
-	LDX $64				;$B3CE06	 |
+	LDX current_sprite		;$B3CE06	 |
 	LDA $4C,x			;$B3CE08	 |
 	STA $8E				;$B3CE0A	 |
 	LDA [$8E]			;$B3CE0C	 |
@@ -10567,12 +10567,12 @@ CODE_B3CE6E:
 	JMP CODE_B3A652			;$B3CE76	/
 
 CODE_B3CE79:
-	LDX $64				;$B3CE79	\
+	LDX current_sprite		;$B3CE79	\
 	JSL CODE_BEF03D			;$B3CE7B	 |
 	RTS				;$B3CE7F	/
 
 CODE_B3CE80:
-	LDX $64				;$B3CE80	\
+	LDX current_sprite		;$B3CE80	\
 	PHK				;$B3CE82	 |
 	PLB				;$B3CE83	 |
 	LDA $1A,x			;$B3CE84	 |
@@ -10712,7 +10712,7 @@ CODE_B3CFAC:
 	LDX $6A				;$B3CFB7	 |
 	LDA $12,x			;$B3CFB9	 |
 	AND #$4000			;$B3CFBB	 |
-	LDX $64				;$B3CFBE	 |
+	LDX current_sprite		;$B3CFBE	 |
 	EOR $12,x			;$B3CFC0	 |
 	AND #$4000			;$B3CFC2	 |
 	EOR $12,x			;$B3CFC5	 |
@@ -10773,7 +10773,7 @@ CODE_B3D019:
 	JSL CODE_B9D100			;$B3D024	 |
 CODE_B3D028:				;		 |
 	JSL CODE_BEF039			;$B3D028	 |
-	LDX $64				;$B3D02C	 |
+	LDX current_sprite		;$B3D02C	 |
 	LDA $2E,x			;$B3D02E	 |
 	AND #$0800			;$B3D030	 |
 	BNE CODE_B3D038			;$B3D033	 |
@@ -10787,12 +10787,12 @@ CODE_B3D03E:
 	LDY #$0008			;$B3D03E	\
 	JSL CODE_BB842C			;$B3D041	 |
 	BCS CODE_B3D069			;$B3D045	 |
-	LDX $64				;$B3D047	 |
+	LDX current_sprite		;$B3D047	 |
 	INC $2E,x			;$B3D049	 |
 CODE_B3D04B:				;		 |
 	JSR CODE_B3D184			;$B3D04B	 |
 	BCS CODE_B3D074			;$B3D04E	 |
-	LDX $64				;$B3D050	 |
+	LDX current_sprite		;$B3D050	 |
 	LDA $10,x			;$B3D052	 |
 	STA $8E				;$B3D054	 |
 	LDA [$8E]			;$B3D056	 |
@@ -10800,11 +10800,11 @@ CODE_B3D04B:				;		 |
 	JSL CODE_BB8432			;$B3D059	 |
 	BCS CODE_B3D069			;$B3D05D	 |
 	JSR CODE_B3D0F1			;$B3D05F	 |
-	LDX $64				;$B3D062	 |
+	LDX current_sprite		;$B3D062	 |
 	INC $2E,x			;$B3D064	 |
 	JSR CODE_B3D1D9			;$B3D066	 |
 CODE_B3D069:				;		 |
-	LDY $64				;$B3D069	 |
+	LDY current_sprite		;$B3D069	 |
 	LDA $0054,y			;$B3D06B	 |
 	STA $8E				;$B3D06E	 |
 	JSL CODE_B3D2EC			;$B3D070	 |
@@ -10812,7 +10812,7 @@ CODE_B3D074:				;		 |
 	JML [$05A9]			;$B3D074	/
 
 CODE_B3D077:
-	LDY $64				;$B3D077	\
+	LDY current_sprite		;$B3D077	\
 	LDX $1E,y			;$B3D079	 |
 	BEQ CODE_B3D086			;$B3D07B	 |
 	LDA $52,x			;$B3D07D	 |
@@ -10877,8 +10877,8 @@ CODE_B3D0EE:
 	JML [$05A9]			;$B3D0EE	/
 
 CODE_B3D0F1:
-	LDY $64				;$B3D0F1	\
-	LDX $68				;$B3D0F3	 |
+	LDY current_sprite		;$B3D0F1	\
+	LDX alternate_sprite		;$B3D0F3	 |
 	STX $1E,y			;$B3D0F5	 |
 	STY $56,x			;$B3D0F7	 |
 	LDA #$3C3C			;$B3D0F9	 |
@@ -10967,7 +10967,7 @@ CODE_B3D19B:
 	LDX $6A				;$B3D1A8	 |
 	LDA $12,x			;$B3D1AA	 |
 	AND #$4000			;$B3D1AC	 |
-	LDX $64				;$B3D1AF	 |
+	LDX current_sprite		;$B3D1AF	 |
 	EOR $12,x			;$B3D1B1	 |
 	AND #$4000			;$B3D1B3	 |
 	EOR $12,x			;$B3D1B6	 |
@@ -10994,7 +10994,7 @@ CODE_B3D1D7:
 CODE_B3D1D9:
 	PHK				;$B3D1D9	\
 	PLB				;$B3D1DA	 |
-	LDX $64				;$B3D1DB	 |
+	LDX current_sprite		;$B3D1DB	 |
 	LDA $10,x			;$B3D1DD	 |
 	STA $8E				;$B3D1DF	 |
 	LDY #$0006			;$B3D1E1	 |
@@ -11048,7 +11048,7 @@ CODE_B3D249:
 	TAX				;$B3D250	 |
 	JSR (DATA_B3D2CE,x)		;$B3D251	 |
 	BCS CODE_B3D295			;$B3D254	 |
-	LDX $64				;$B3D256	 |
+	LDX current_sprite		;$B3D256	 |
 	LDA $51,x			;$B3D258	 |
 	BMI CODE_B3D291			;$B3D25A	 |
 	AND #$FF00			;$B3D25C	 |
@@ -11064,7 +11064,7 @@ CODE_B3D273:				;		 |
 	JSL CODE_BEF039			;$B3D273	 |
 	JSL CODE_B3D2EC			;$B3D277	 |
 	JSL CODE_BBBB69			;$B3D27B	 |
-	LDX $64				;$B3D27F	 |
+	LDX current_sprite		;$B3D27F	 |
 	LDA $5A,x			;$B3D281	 |
 	BCC CODE_B3D28B			;$B3D283	 |
 	SBC #$0100			;$B3D285	 |
@@ -11079,7 +11079,7 @@ CODE_B3D291:				;		 |
 	JML [$05A9]			;$B3D292	/
 
 CODE_B3D295:
-	LDX $64				;$B3D295	\
+	LDX current_sprite		;$B3D295	\
 	LDA $2E,x			;$B3D297	 |
 	AND #$FF7F			;$B3D299	 |
 	STA $2E,x			;$B3D29C	 |
@@ -11133,7 +11133,7 @@ CODE_B3D2EB:
 	RTS				;$B3D2EB	/
 
 CODE_B3D2EC:
-	LDX $64				;$B3D2EC	\
+	LDX current_sprite		;$B3D2EC	\
 	LDA $40,x			;$B3D2EE	 |
 	PHA				;$B3D2F0	 |
 	JSL CODE_B9D100			;$B3D2F1	 |
@@ -11163,7 +11163,7 @@ CODE_B3D312:
 	JSR CODE_B39ECC			;$B3D312	\
 	JSR CODE_B39EBE			;$B3D315	 |
 	JSL CODE_B8D5E0			;$B3D318	 |
-	LDX $64				;$B3D31C	 |
+	LDX current_sprite		;$B3D31C	 |
 	LDA $1E,x			;$B3D31E	 |
 	AND #$0003			;$B3D320	 |
 	BNE CODE_B3D334			;$B3D323	 |
@@ -11203,7 +11203,7 @@ CODE_B3D379:
 	JSR CODE_B39ECC			;$B3D379	\
 	JSR CODE_B39EBE			;$B3D37C	 |
 	JSL CODE_B8D5E0			;$B3D37F	 |
-	LDX $64				;$B3D383	 |
+	LDX current_sprite		;$B3D383	 |
 	LDA #$FF7B			;$B3D385	 |
 	JSR CODE_B3D44A			;$B3D388	 |
 	BCS CODE_B3D39B			;$B3D38B	 |
@@ -11233,7 +11233,7 @@ CODE_B3D3B7:
 	JSR CODE_B39ECC			;$B3D3B7	\
 	JSR CODE_B39EBE			;$B3D3BA	 |
 	JSL CODE_B8D5E0			;$B3D3BD	 |
-	LDX $64				;$B3D3C1	 |
+	LDX current_sprite		;$B3D3C1	 |
 	LDA #$0000			;$B3D3C3	 |
 	JSR CODE_B3D44A			;$B3D3C6	 |
 	BCS CODE_B3D3D9			;$B3D3C9	 |
@@ -11264,12 +11264,12 @@ CODE_B3D3F1:
 CODE_B3D3F9:
 	JSR CODE_B39ECC			;$B3D3F9	\
 	JSR CODE_B39EBE			;$B3D3FC	 |
-	LDX $64				;$B3D3FF	 |
+	LDX current_sprite		;$B3D3FF	 |
 	LDA $26,x			;$B3D401	 |
 	PHA				;$B3D403	 |
 	JSL CODE_B8D5E0			;$B3D404	 |
 	PLY				;$B3D408	 |
-	LDX $64				;$B3D409	 |
+	LDX current_sprite		;$B3D409	 |
 	LDA $1E,x			;$B3D40B	 |
 	AND #$0202			;$B3D40D	 |
 	BEQ CODE_B3D41C			;$B3D410	 |
@@ -11325,7 +11325,7 @@ CODE_B3D46C:
 	STA $09FE,y			;$B3D46F	 |
 	LDA $03,s			;$B3D472	 |
 	STA $0A00,y			;$B3D474	 |
-	LDA $64				;$B3D477	 |
+	LDA current_sprite		;$B3D477	 |
 	STA $0A01,y			;$B3D479	 |
 	TYA				;$B3D47C	 |
 	CLC				;$B3D47D	 |
@@ -11334,7 +11334,7 @@ CODE_B3D46C:
 	RTL				;$B3D484	/
 
 CODE_B3D485:
-	LDX $64				;$B3D485	\
+	LDX current_sprite		;$B3D485	\
 	LDA $06,x			;$B3D487	 |
 	STA $1C,x			;$B3D489	 |
 	LDA $0A,x			;$B3D48B	 |
@@ -11344,7 +11344,7 @@ CODE_B3D485:
 	LDA $28,x			;$B3D493	 |
 	STA $0A,x			;$B3D495	 |
 	JSL CODE_BEF039			;$B3D497	 |
-	LDX $64				;$B3D49B	 |
+	LDX current_sprite		;$B3D49B	 |
 	LDA $22,x			;$B3D49D	 |
 	LDY $06,x			;$B3D49F	 |
 	STA $06,x			;$B3D4A1	 |
@@ -11356,7 +11356,7 @@ CODE_B3D485:
 	RTL				;$B3D4AD	/
 
 CODE_B3D4AE:
-	LDX $64				;$B3D4AE	\
+	LDX current_sprite		;$B3D4AE	\
 	STZ $34,x			;$B3D4B0	 |
 	JSL CODE_BCFB58			;$B3D4B2	 |
 	LDA #$0002			;$B3D4B6	 |
@@ -11391,7 +11391,7 @@ CODE_B3D4E0:				;		 |
 	RTL				;$B3D4EA	/
 
 CODE_B3D4EB:
-	LDX $64				;$B3D4EB	\
+	LDX current_sprite		;$B3D4EB	\
 	LDY $6A				;$B3D4ED	 |
 	LDA $0024,y			;$B3D4EF	 |
 if !version == 0
@@ -11510,13 +11510,13 @@ CODE_B3D59F:
 	JML [$05A9]			;$B3D5AA	/
 
 CODE_B3D5AD:
-	LDX $64				;$B3D5AD	\
+	LDX current_sprite		;$B3D5AD	\
 	LDA $54,x			;$B3D5AF	 |
 	STA $8E				;$B3D5B1	 |
 	JSR CODE_B3D5E0			;$B3D5B3	 |
 	JSL CODE_B3D485			;$B3D5B6	 |
 	JSL CODE_B3D4AE			;$B3D5BA	 |
-	LDX $64				;$B3D5BE	 |
+	LDX current_sprite		;$B3D5BE	 |
 	ROL A				;$B3D5C0	 |
 	STA $4E,x			;$B3D5C1	 |
 	LDA $34,x			;$B3D5C3	 |
@@ -11536,7 +11536,7 @@ CODE_B3D5DF:				;		 |
 	RTL				;$B3D5DF	/
 
 CODE_B3D5E0:
-	LDY $64				;$B3D5E0	\
+	LDY current_sprite		;$B3D5E0	\
 	LDA $004E,y			;$B3D5E2	 |
 	LSR A				;$B3D5E5	 |
 	BCC CODE_B3D622			;$B3D5E6	 |
@@ -11549,14 +11549,14 @@ CODE_B3D5E0:
 	BNE CODE_B3D622			;$B3D5F5	 |
 	LDY $0595			;$B3D5F7	 |
 	LDA $0004,y			;$B3D5FA	 |
-	LDY $64				;$B3D5FD	 |
+	LDY current_sprite		;$B3D5FD	 |
 	AND #$0300			;$B3D5FF	 |
 	BEQ CODE_B3D622			;$B3D602	 |
 	AND #$0100			;$B3D604	 |
 	CMP #$0001			;$B3D607	 |
 	LDY #$0008			;$B3D60A	 |
 	LDA [$8E],y			;$B3D60D	 |
-	LDY $64				;$B3D60F	 |
+	LDY current_sprite		;$B3D60F	 |
 	BCS CODE_B3D617			;$B3D611	 |
 	EOR #$FFFF			;$B3D613	 |
 	INC A				;$B3D616	 |
@@ -11686,13 +11686,13 @@ CODE_B3D71D:
 	JML [$05A9]			;$B3D728	/
 
 CODE_B3D72B:
-	LDX $64				;$B3D72B	\
+	LDX current_sprite		;$B3D72B	\
 	LDA $54,x			;$B3D72D	 |
 	STA $8E				;$B3D72F	 |
 	STZ $52,x			;$B3D731	 |
 	JSL CODE_B3D485			;$B3D733	 |
 	JSL CODE_B3D4AE			;$B3D737	 |
-	LDX $64				;$B3D73B	 |
+	LDX current_sprite		;$B3D73B	 |
 	ROL A				;$B3D73D	 |
 	STA $4E,x			;$B3D73E	 |
 	RTL				;$B3D740	/
@@ -11719,7 +11719,7 @@ CODE_B3D762:				;		 |
 	RTS				;$B3D762	/
 
 krochead_switch_barrel_main:
-	LDY $64				;$B3D763	\
+	LDY current_sprite		;$B3D763	\
 	LDA $002E,y			;$B3D765	 |
 	ASL A				;$B3D768	 |
 	TAX				;$B3D769	 |
@@ -11735,7 +11735,7 @@ DATA_B3D76D:
 
 CODE_B3D777:
 	JSL CODE_B9D100			;$B3D777	\
-	LDX $64				;$B3D77B	 |
+	LDX current_sprite		;$B3D77B	 |
 	DEC $46,x			;$B3D77D	 |
 	BNE CODE_B3D7A6			;$B3D77F	 |
 	INC $2E,x			;$B3D781	 |
@@ -11753,7 +11753,7 @@ CODE_B3D783:				;		 |
 	LDA #$0616			;$B3D79F	 |
 	JSL CODE_B58003			;$B3D7A2	 |
 CODE_B3D7A6:				;		 |
-	LDX $64				;$B3D7A6	 |
+	LDX current_sprite		;$B3D7A6	 |
 	LDA $44,x			;$B3D7A8	 |
 	BEQ CODE_B3D7B3			;$B3D7AA	 |
 	DEC $44,x			;$B3D7AC	 |
@@ -11761,7 +11761,7 @@ CODE_B3D7A6:				;		 |
 	STZ $0D58			;$B3D7B0	 |
 CODE_B3D7B3:				;		 |
 	JSL CODE_BBBB69			;$B3D7B3	 |
-	LDX $64				;$B3D7B7	 |
+	LDX current_sprite		;$B3D7B7	 |
 	BCS CODE_B3D7D1			;$B3D7B9	 |
 	LDA $2E,x			;$B3D7BB	 |
 	CMP #$0002			;$B3D7BD	 |
@@ -11810,7 +11810,7 @@ CODE_B3D801:
 	LDY #$0010			;$B3D808	 |
 	JSL CODE_BEBD8E			;$B3D80B	 |
 	BCS CODE_B3D845			;$B3D80F	 |
-	LDX $64				;$B3D811	 |
+	LDX current_sprite		;$B3D811	 |
 	LDA $42,x			;$B3D813	 |
 	ORA $2E,x			;$B3D815	 |
 	BMI CODE_B3D83E			;$B3D817	 |
@@ -11835,7 +11835,7 @@ CODE_B3D83E:				;		 |
 	JMP CODE_B38000			;$B3D842	/
 
 CODE_B3D845:
-	LDX $64				;$B3D845	\
+	LDX current_sprite		;$B3D845	\
 	LDY $0D5A			;$B3D847	 |
 	LDA $001C,y			;$B3D84A	 |
 	BEQ CODE_B3D862			;$B3D84D	 |
@@ -11870,7 +11870,7 @@ CODE_B3D881:
 	JMP CODE_B38000			;$B3D88F	/
 
 CODE_B3D892:
-	LDX $64				;$B3D892	\
+	LDX current_sprite		;$B3D892	\
 	LDY $0D5E			;$B3D894	 |
 	LDA $42,x			;$B3D897	 |
 	CLC				;$B3D899	 |
@@ -11892,7 +11892,7 @@ CODE_B3D8B3:
 	JMP CODE_B38000			;$B3D8C1	/
 
 CODE_B3D8C4:
-	LDX $64				;$B3D8C4	\
+	LDX current_sprite		;$B3D8C4	\
 	LDY $0D5E			;$B3D8C6	 |
 	LDA $4E,x			;$B3D8C9	 |
 	BEQ CODE_B3D8D7			;$B3D8CB	 |
@@ -11954,7 +11954,7 @@ DATA_B3D923:
 
 
 CODE_B3D939:
-	LDY $64				;$B3D939	\
+	LDY current_sprite		;$B3D939	\
 	LDA $002E,y			;$B3D93B	 |
 	ASL				;$B3D93E	 |
 	TAX				;$B3D93F	 |
@@ -11990,7 +11990,7 @@ CODE_B3D973:
 	CMP #$01B8			;$B3D97C	 |
 	BEQ CODE_B3D996			;$B3D97F	 |
 	JSL CODE_BCFB58			;$B3D981	 |
-	LDX $64				;$B3D985	 |
+	LDX current_sprite		;$B3D985	 |
 	LDA $12,x			;$B3D987	 |
 	STA $46,x			;$B3D989	 |
 	LDA #$0CDC			;$B3D98B	 |
@@ -12002,7 +12002,7 @@ CODE_B3D996:				;		 |
 	JMP CODE_B3D916			;$B3D99A	/
 
 CODE_B3D99D:
-	LDX $64				;$B3D99D	\
+	LDX current_sprite		;$B3D99D	\
 	LDA $46,x			;$B3D99F	 |
 	STA $12,x			;$B3D9A1	 |
 	LDA #$001E			;$B3D9A3	 |
@@ -12013,7 +12013,7 @@ CODE_B3D99D:
 	JSL CODE_B8D8BA			;$B3D9AD	 |
 	BCS CODE_B3D9C3			;$B3D9B1	 |
 CODE_B3D9B3:				;		 |
-	LDX $64				;$B3D9B3	 |
+	LDX current_sprite		;$B3D9B3	 |
 	LDA #$0300			;$B3D9B5	 |
 	BIT $42,x			;$B3D9B8	 |
 	BVC CODE_B3D9C0			;$B3D9BA	 |
@@ -12027,7 +12027,7 @@ CODE_B3D9C3:				;		 |
 	JML [$05A9]			;$B3D9CA	/
 
 CODE_B3D9CD:
-	LDX $64				;$B3D9CD	\
+	LDX current_sprite		;$B3D9CD	\
 	LDA $2E,x			;$B3D9CF	 |
 	ASL A				;$B3D9D1	 |
 	TAX				;$B3D9D2	 |
@@ -12039,7 +12039,7 @@ DATA_B3D9D6:
 
 
 CODE_B3D9DA:
-	LDX $64				;$B3D9DA	\
+	LDX current_sprite		;$B3D9DA	\
 	STX $19C4			;$B3D9DC	 |
 	STZ $42,x			;$B3D9DF	 |
 	INC $2E,x			;$B3D9E1	 |
@@ -12049,7 +12049,7 @@ CODE_B3D9DA:
 	JML [$05A9]			;$B3D9EB	/
 
 CODE_B3D9EE:
-	LDX $64				;$B3D9EE	\
+	LDX current_sprite		;$B3D9EE	\
 	LDA $4A,x			;$B3D9F0	 |
 	AND #$FFFE			;$B3D9F2	 |
 	STA $4A,x			;$B3D9F5	 |
@@ -12116,7 +12116,7 @@ CODE_B3DA66:				;		 |
 	JML [$05A9]			;$B3DA69	/
 
 CODE_B3DA6C:
-	LDX $64				;$B3DA6C	\
+	LDX current_sprite		;$B3DA6C	\
 	LDY #$FF80			;$B3DA6E	 |
 	LDA $46,x			;$B3DA71	 |
 	BEQ CODE_B3DA78			;$B3DA73	 |
@@ -12125,7 +12125,7 @@ CODE_B3DA78:				;		 |
 	STY $26,x			;$B3DA78	 |
 	LDA #$0030			;$B3DA7A	 |
 	JSR CODE_B3DBFA			;$B3DA7D	 |
-	LDX $64				;$B3DA80	 |
+	LDX current_sprite		;$B3DA80	 |
 	LDA $20,x			;$B3DA82	 |
 	STA $19BE			;$B3DA84	 |
 	RTS				;$B3DA87	/
@@ -12134,7 +12134,7 @@ CODE_B3DA88:
 	LDX $0593			;$B3DA88	\
 	LDA $0A,x			;$B3DA8B	 |
 	STA $32				;$B3DA8D	 |
-	LDX $64				;$B3DA8F	 |
+	LDX current_sprite		;$B3DA8F	 |
 	LDA $54,x			;$B3DA91	 |
 	STA $8E				;$B3DA93	 |
 	LDY $42,x			;$B3DA95	 |
@@ -12191,7 +12191,7 @@ CODE_B3DAD5:				;		 |
 	RTS				;$B3DAD5	/
 
 CODE_B3DAD6:
-	LDX $64				;$B3DAD6	\
+	LDX current_sprite		;$B3DAD6	\
 	LDA $2E,x			;$B3DAD8	 |
 	ASL A				;$B3DADA	 |
 	TAX				;$B3DADB	 |
@@ -12204,7 +12204,7 @@ DATA_B3DADF:
 
 
 CODE_B3DAE3:
-	LDX $64				;$B3DAE3	\
+	LDX current_sprite		;$B3DAE3	\
 	STZ $42,x			;$B3DAE5	 |
 	INC $2E,x			;$B3DAE7	 |
 	STZ $20,x			;$B3DAE9	 |
@@ -12222,7 +12222,7 @@ CODE_B3DAFF:				;		 |
 	JSR CODE_B3DBA9			;$B3DB02	 |
 	LDA #$0080			;$B3DB05	 |
 	JSR CODE_B3DBFA			;$B3DB08	 |
-	LDX $64				;$B3DB0B	 |
+	LDX current_sprite		;$B3DB0B	 |
 	LDA $20,x			;$B3DB0D	 |
 	STA $19BE			;$B3DB0F	 |
 	JML [$05A9]			;$B3DB12	/
@@ -12231,7 +12231,7 @@ CODE_B3DB15:
 	LDX $0593			;$B3DB15	\
 	LDA $06,x			;$B3DB18	 |
 	STA $32				;$B3DB1A	 |
-	LDX $64				;$B3DB1C	 |
+	LDX current_sprite		;$B3DB1C	 |
 	LDA $54,x			;$B3DB1E	 |
 	STA $8E				;$B3DB20	 |
 	LDY $42,x			;$B3DB22	 |
@@ -12277,7 +12277,7 @@ CODE_B3DB48:
 	RTS				;$B3DB56	/
 
 CODE_B3DB57:
-	LDX $64				;$B3DB57	\
+	LDX current_sprite		;$B3DB57	\
 	DEC $48,x			;$B3DB59	 |
 	BPL CODE_B3DB7B			;$B3DB5B	 |
 	LDA $44,x			;$B3DB5D	 |
@@ -12334,7 +12334,7 @@ CODE_B3DBA5:
 	RTS				;$B3DBA8	/
 
 CODE_B3DBA9:
-	LDX $64				;$B3DBA9	\
+	LDX current_sprite		;$B3DBA9	\
 	LDA $4A,x			;$B3DBAB	 |
 	LSR A				;$B3DBAD	 |
 	BCC CODE_B3DBDB			;$B3DBAE	 |
@@ -12379,7 +12379,7 @@ CODE_B3DBED:
 	RTS				;$B3DBF9	/
 
 CODE_B3DBFA:
-	LDX $64				;$B3DBFA	\
+	LDX current_sprite		;$B3DBFA	\
 	STA $32				;$B3DBFC	 |
 	LDA $26,x			;$B3DBFE	 |
 	SEC				;$B3DC00	 |
@@ -12406,7 +12406,7 @@ CODE_B3DC1B:				;		 |
 	RTS				;$B3DC20	/
 
 CODE_B3DC21:
-	LDY $64				;$B3DC21	\
+	LDY current_sprite		;$B3DC21	\
 	LDA $002E,y			;$B3DC23	 |
 	ASL A				;$B3DC26	 |
 	TAX				;$B3DC27	 |
@@ -12430,8 +12430,8 @@ CODE_B3DC43:
 	LDY #$00CC			;$B3DC43	\
 	JSL CODE_BB842C			;$B3DC46	 |
 	BCS CODE_B3DC74			;$B3DC4A	 |
-	LDX $64				;$B3DC4C	 |
-	LDY $68				;$B3DC4E	 |
+	LDX current_sprite		;$B3DC4C	 |
+	LDY alternate_sprite		;$B3DC4E	 |
 	TYA				;$B3DC50	 |
 	STA $4A,x			;$B3DC51	 |
 	LDA #$C000			;$B3DC53	 |
@@ -12451,7 +12451,7 @@ CODE_B3DC74:				;		 |
 	JML [$05A9]			;$B3DC74	/
 
 CODE_B3DC77:
-	LDX $64				;$B3DC77	\
+	LDX current_sprite		;$B3DC77	\
 	LDA $42,x			;$B3DC79	 |
 	AND #$0003			;$B3DC7B	 |
 	CMP #$0002			;$B3DC7E	 |
@@ -12464,7 +12464,7 @@ CODE_B3DC89:				;		 |
 	JSR CODE_B3DEF4			;$B3DC8F	 |
 	BCS CODE_B3DCA0			;$B3DC92	 |
 	JSR CODE_B3DF00			;$B3DC94	 |
-	LDX $64				;$B3DC97	 |
+	LDX current_sprite		;$B3DC97	 |
 	LDA $46,x			;$B3DC99	 |
 	BMI CODE_B3DCA0			;$B3DC9B	 |
 	JML [$05A9]			;$B3DC9D	/
@@ -12473,7 +12473,7 @@ CODE_B3DCA0:
 	LDA #$001F			;$B3DCA0	\
 	LDY #$0004			;$B3DCA3	 |
 	JSL CODE_B8D1E4			;$B3DCA6	 |
-	LDX $64				;$B3DCAA	 |
+	LDX current_sprite		;$B3DCAA	 |
 	LDA #$0008			;$B3DCAC	 |
 	STA $2E,x			;$B3DCAF	 |
 	JML [$05A9]			;$B3DCB1	/
@@ -12493,7 +12493,7 @@ CODE_B3DCBD:
 CODE_B3DCC0:
 	LDA #$0002			;$B3DCC0	\
 	TRB $08C4			;$B3DCC3	 |
-	LDX $64				;$B3DCC6	 |
+	LDX current_sprite		;$B3DCC6	 |
 	LDA #$0030			;$B3DCC8	 |
 	STA $4C,x			;$B3DCCB	 |
 	INC $2E,x			;$B3DCCD	 |
@@ -12511,7 +12511,7 @@ CODE_B3DCC0:
 	JML [$05A9]			;$B3DCED	/
 
 CODE_B3DCF0:
-	LDX $64				;$B3DCF0	\
+	LDX current_sprite		;$B3DCF0	\
 	DEC $4C,x			;$B3DCF2	 |
 	BPL CODE_B3DCFD			;$B3DCF4	 |
 	LDA $44,x			;$B3DCF6	 |
@@ -12527,7 +12527,7 @@ CODE_B3DD00:
 	LDA #$001F			;$B3DD08	 |
 	LDY #$0400			;$B3DD0B	 |
 	JSL CODE_B8D1E4			;$B3DD0E	 |
-	LDX $64				;$B3DD12	 |
+	LDX current_sprite		;$B3DD12	 |
 	LDA #$000A			;$B3DD14	 |
 	STA $2E,x			;$B3DD17	 |
 	LDA #$000A			;$B3DD19	 |
@@ -12535,12 +12535,12 @@ CODE_B3DD00:
 	JML [$05A9]			;$B3DD1E	/
 
 CODE_B3DD21:
-	LDX $64				;$B3DD21	\
+	LDX current_sprite		;$B3DD21	\
 	INC $2E,x			;$B3DD23	 |
 	LDA #$0027			;$B3DD25	 |
 	JSL CODE_B8D8BA			;$B3DD28	 |
 	BCS CODE_B3DD35			;$B3DD2C	 |
-	LDX $64				;$B3DD2E	 |
+	LDX current_sprite		;$B3DD2E	 |
 	LDA $42,x			;$B3DD30	 |
 	STA $0A86			;$B3DD32	 |
 CODE_B3DD35:				;		 |
@@ -12554,7 +12554,7 @@ CODE_B3DD38:
 	JML [$05A9]			;$B3DD45	/
 
 CODE_B3DD48:
-	LDX $64				;$B3DD48	\
+	LDX current_sprite		;$B3DD48	\
 	DEC $42,x			;$B3DD4A	 |
 	BEQ CODE_B3DD54			;$B3DD4C	 |
 	JSR CODE_B3DDA8			;$B3DD4E	 |
@@ -12573,7 +12573,7 @@ CODE_B3DD6A:
 	JML [$05A9]			;$B3DD6A	/
 
 CODE_B3DD6D:
-	LDX $64				;$B3DD6D	\
+	LDX current_sprite		;$B3DD6D	\
 	LDA $48,x			;$B3DD6F	 |
 	SEC				;$B3DD71	 |
 	SBC #$0100			;$B3DD72	 |
@@ -12603,7 +12603,7 @@ CODE_B3DDA7:				;		 |
 	RTS				;$B3DDA7	/
 
 CODE_B3DDA8:
-	LDX $64				;$B3DDA8	\
+	LDX current_sprite		;$B3DDA8	\
 	LDA $46,x			;$B3DDAA	 |
 	BMI CODE_B3DDE5			;$B3DDAC	 |
 	CMP #$0001			;$B3DDAE	 |
@@ -12619,7 +12619,7 @@ CODE_B3DDBF:				;		 |
 	TAX				;$B3DDC0	 |
 	LDA.l DATA_B3DE2C,x		;$B3DDC1	 |
 	STA $32				;$B3DDC5	 |
-	LDX $64				;$B3DDC7	 |
+	LDX current_sprite		;$B3DDC7	 |
 	AND #$00FF			;$B3DDC9	 |
 	ASL A				;$B3DDCC	 |
 	ASL A				;$B3DDCD	 |
@@ -12661,7 +12661,7 @@ CODE_B3DDFE:
 
 CODE_B3DE0A:
 	LDA $097F			;$B3DE0A	\
-	EOR $64				;$B3DE0D	 |
+	EOR current_sprite		;$B3DE0D	 |
 	STA $097F			;$B3DE0F	 |
 	RTS				;$B3DE12	/
 
@@ -12675,7 +12675,7 @@ CODE_B3DE0A:
 	RTS				;$B3DE25	/
 
 CODE_B3DE26:
-	LDA $64				;$B3DE26	\
+	LDA current_sprite		;$B3DE26	\
 	STA $097F			;$B3DE28	 |
 	RTS				;$B3DE2B	/
 
@@ -12768,7 +12768,7 @@ CODE_B3DF25:				;		 |
 endif					;		/
 
 CODE_B3DF3C:
-	LDX $64				;$B3DF3C	\
+	LDX current_sprite		;$B3DF3C	\
 	LDA $1C,x			;$B3DF3E	 |
 	CMP #$C000			;$B3DF40	 |
 	BNE CODE_B3DF47			;$B3DF43	 |
@@ -12777,7 +12777,7 @@ CODE_B3DF47:				;		 |
 	RTL				;$B3DF47	/
 
 CODE_B3DF48:
-	LDX $64				;$B3DF48	\
+	LDX current_sprite		;$B3DF48	\
 	LDA $2E,x			;$B3DF4A	 |
 	ASL A				;$B3DF4C	 |
 	TAX				;$B3DF4D	 |
@@ -12793,7 +12793,7 @@ DATA_B3DF51:
 	dw CODE_B3E006
 
 CODE_B3DF5F:
-	LDX $64				;$B3DF5F	\
+	LDX current_sprite		;$B3DF5F	\
 	INC $2E,x			;$B3DF61	 |
 	STZ $1A,x			;$B3DF63	 |
 	STZ $16,x			;$B3DF65	 |
@@ -12840,7 +12840,7 @@ CODE_B3DFA1:
 	STA $0A8A			;$B3DFAD	 |
 	LDA.w #CODE_B3E1E2>>16		;$B3DFB0	 |
 	STA $0A8C			;$B3DFB3	 |
-	LDX $64				;$B3DFB6	 |
+	LDX current_sprite		;$B3DFB6	 |
 	LDA #$0004			;$B3DFB8	 |
 	STA $2E,x			;$B3DFBB	 |
 CODE_B3DFBD:				;		 |
@@ -12868,7 +12868,7 @@ CODE_B3DFDD:
 	STA $0A8A			;$B3DFE9	 |
 	LDA.w #CODE_B3E2F4>>16		;$B3DFEC	 |
 	STA $0A8C			;$B3DFEF	 |
-	LDX $64				;$B3DFF2	 |
+	LDX current_sprite		;$B3DFF2	 |
 	LDA #$0004			;$B3DFF4	 |
 	STA $2E,x			;$B3DFF7	 |
 CODE_B3DFF9:				;		 |
@@ -12878,12 +12878,12 @@ CODE_B3DFFC:
 	JMP CODE_B3D916			;$B3DFFC	/
 
 CODE_B3DFFF:
-	LDX $64				;$B3DFFF	\
+	LDX current_sprite		;$B3DFFF	\
 	INC $2E,x			;$B3E001	 |
 	JMP CODE_B3D916			;$B3E003	/
 
 CODE_B3E006:
-	LDX $64				;$B3E006	\
+	LDX current_sprite		;$B3E006	\
 	LDA $32,x			;$B3E008	 |
 	BNE CODE_B3E063			;$B3E00A	 |
 	JSL CODE_BCFB58			;$B3E00C	 |
@@ -12896,7 +12896,7 @@ CODE_B3E006:
 	CMP #$01A0			;$B3E020	 |
 	BNE CODE_B3E060			;$B3E023	 |
 CODE_B3E025:				;		 |
-	LDX $64				;$B3E025	 |
+	LDX current_sprite		;$B3E025	 |
 	LDY $6A				;$B3E027	 |
 	LDA $0006,y			;$B3E029	 |
 	SEC				;$B3E02C	 |
@@ -12930,7 +12930,7 @@ CODE_B3E060:				;		 |
 	JMP CODE_B3D916			;$B3E060	/
 
 CODE_B3E063:
-	LDX $64				;$B3E063	\
+	LDX current_sprite		;$B3E063	\
 	STZ $30,x			;$B3E065	 |
 	STZ $32,x			;$B3E067	 |
 	JSL CODE_BB82C3			;$B3E069	 |
@@ -13018,7 +13018,7 @@ CODE_B3E0ED:				;		 |
 CODE_B3E113:
 	LDY $0D5E			;$B3E113	\
 	BEQ CODE_B3E128			;$B3E116	 |
-	LDX $64				;$B3E118	 |
+	LDX current_sprite		;$B3E118	 |
 	LDA $0020,y			;$B3E11A	 |
 	BEQ CODE_B3E134			;$B3E11D	 |
 	ROL A				;$B3E11F	 |
@@ -13065,7 +13065,7 @@ CODE_B3E158:
 	RTS				;$B3E159	/
 
 CODE_B3E15A:
-	LDX $64				;$B3E15A	\
+	LDX current_sprite		;$B3E15A	\
 	LDA $0A,x			;$B3E15C	 |
 	SEC				;$B3E15E	 |
 	SBC $17C2			;$B3E15F	 |
@@ -13215,7 +13215,7 @@ CODE_B3E246:				;		 |
 	EOR $12,x			;$B3E250	 |
 	STA $12,x			;$B3E252	 |
 	STZ $24,x			;$B3E254	 |
-	LDA $6C				;$B3E256	 |
+	LDA current_player_mount	;$B3E256	 |
 	BEQ CODE_B3E25F			;$B3E258	 |
 	LDA #$0040			;$B3E25A	 |
 	STA $24,x			;$B3E25D	 |
@@ -13248,7 +13248,7 @@ CODE_B3E28B:
 	JSR CODE_B3E2A7			;$B3E296	 |
 	LDX $0597			;$B3E299	 |
 	JSR CODE_B3E2A7			;$B3E29C	 |
-	LDX $6C				;$B3E29F	 |
+	LDX current_player_mount	;$B3E29F	 |
 	BEQ CODE_B3E2A6			;$B3E2A1	 |
 	JSR CODE_B3E2A7			;$B3E2A3	 |
 CODE_B3E2A6:				;		 |
@@ -13306,7 +13306,7 @@ CODE_B3E2F4:
 	LDA.l DATA_B896B7,x		;$B3E2FD	 |
 	AND #$0002			;$B3E301	 |
 	BEQ CODE_B3E310			;$B3E304	 |
-	LDX $64				;$B3E306	 |
+	LDX current_sprite		;$B3E306	 |
 	LDA #$0070			;$B3E308	 |
 	STA $2E,x			;$B3E30B	 |
 	BRL CODE_B3E392			;$B3E30D	/
@@ -13397,7 +13397,7 @@ CODE_B3E3B3:
 	ADC #$0034			;$B3E3C8	 |
 	STA $24,x			;$B3E3CB	 |
 CODE_B3E3CD:				;		 |
-	LDY $64				;$B3E3CD	 |
+	LDY current_sprite		;$B3E3CD	 |
 	LDA $0006,y			;$B3E3CF	 |
 	CMP $06,x			;$B3E3D2	 |
 	BPL CODE_B3E3DE			;$B3E3D4	 |
@@ -13534,7 +13534,7 @@ CODE_B3E4C1:
 	RTS				;$B3E4D8	/
 
 CODE_B3E4D9:
-	LDY $64				;$B3E4D9	\
+	LDY current_sprite		;$B3E4D9	\
 	LDA $002E,y			;$B3E4DB	 |
 	ASL A				;$B3E4DE	 |
 	TAX				;$B3E4DF	 |
@@ -13546,7 +13546,7 @@ DATA_B3E4E3:
 	dw CODE_B3E55B
 
 CODE_B3E4E9:
-	LDX $64				;$B3E4E9	\
+	LDX current_sprite		;$B3E4E9	\
 	LDA $42,x			;$B3E4EB	 |
 	CMP $08A6			;$B3E4ED	 |
 	BEQ CODE_B3E4F7			;$B3E4F0	 |
@@ -13570,7 +13570,7 @@ CODE_B3E507:
 	JMP CODE_B3D916			;$B3E518	/
 
 CODE_B3E51B:
-	LDX $64				;$B3E51B	\
+	LDX current_sprite		;$B3E51B	\
 	LDA $42,x			;$B3E51D	 |
 	STA $08A6			;$B3E51F	 |
 	LDA #$0001			;$B3E522	 |
@@ -13582,12 +13582,12 @@ CODE_B3E51B:
 	LDA $08A8			;$B3E533	 |
 	STA $08B0			;$B3E536	 |
 	STZ $08AE			;$B3E539	 |
-	LDA $6C				;$B3E53C	 |
+	LDA current_player_mount	;$B3E53C	 |
 	BNE CODE_B3E545			;$B3E53E	 |
 	LDA $6E				;$B3E540	 |
 	STA $08AE			;$B3E542	 |
 CODE_B3E545:				;		 |
-	LDX $64				;$B3E545	 |
+	LDX current_sprite		;$B3E545	 |
 	LDA $00,x			;$B3E547	 |
 	JSL CODE_BB82B8			;$B3E549	 |
 	JSL CODE_B3975C			;$B3E54D	 |
@@ -13596,10 +13596,10 @@ CODE_B3E545:				;		 |
 	JML [$05A9]			;$B3E558	/
 
 CODE_B3E55B:
-	LDX $64				;$B3E55B	\
+	LDX current_sprite		;$B3E55B	\
 	LDA $5C,x			;$B3E55D	 |
 	JSR CODE_B3ED5C			;$B3E55F	 |
-	LDX $64				;$B3E562	 |
+	LDX current_sprite		;$B3E562	 |
 	DEC $44,x			;$B3E564	 |
 	BMI CODE_B3E570			;$B3E566	 |
 	LDA $44,x			;$B3E568	 |
@@ -13607,7 +13607,7 @@ CODE_B3E55B:
 	JML [$05A9]			;$B3E56D	/
 
 CODE_B3E570:
-	LDX $64				;$B3E570	\
+	LDX current_sprite		;$B3E570	\
 	LDA $42,x			;$B3E572	 |
 	STA $08A6			;$B3E574	 |
 	JSR CODE_B3E58C			;$B3E577	 |
@@ -13619,7 +13619,7 @@ CODE_B3E570:
 
 CODE_B3E58C:
 	LDY $0593			;$B3E58C	\
-	LDX $64				;$B3E58F	 |
+	LDX current_sprite		;$B3E58F	 |
 	LDA $46,x			;$B3E591	 |
 	STA $002E,y			;$B3E593	 |
 	PHY				;$B3E596	 |
@@ -13638,7 +13638,7 @@ CODE_B3E5A4:
 
 CODE_B3E5AD:
 	LDY $0595			;$B3E5AD	\
-	LDA $6C				;$B3E5B0	 |
+	LDA current_player_mount	;$B3E5B0	 |
 	BEQ CODE_B3E5BB			;$B3E5B2	 |
 	TAY				;$B3E5B4	 |
 	LDA #$0001			;$B3E5B5	 |
@@ -13648,7 +13648,7 @@ CODE_B3E5BB:				;		 |
 
 CODE_B3E5BC:
 	LDY $0593			;$B3E5BC	\
-	LDX $64				;$B3E5BF	 |
+	LDX current_sprite		;$B3E5BF	 |
 	LDA $06,x			;$B3E5C1	 |
 	STA $0006,y			;$B3E5C3	 |
 	LDA $0A,x			;$B3E5C6	 |
@@ -13687,7 +13687,7 @@ CODE_B3E5FA:
 
 CODE_B3E615:
 	LDY $0595			;$B3E615	\
-	LDA $6C				;$B3E618	 |
+	LDA current_player_mount	;$B3E618	 |
 	BNE CODE_B3E61D			;$B3E61A	 |
 	RTS				;$B3E61C	/
 
@@ -13732,7 +13732,7 @@ CODE_B3E657:				;		 |
 	RTS				;$B3E65B	/
 
 CODE_B3E65C:
-	LDX $64				;$B3E65C	\
+	LDX current_sprite		;$B3E65C	\
 	LDA $2A,x			;$B3E65E	 |
 	AND #$0800			;$B3E660	 |
 	BEQ CODE_B3E67F			;$B3E663	 |
@@ -13755,7 +13755,7 @@ CODE_B3E67F:				;		 |
 CODE_B3E682:
 	PHK				;$B3E682	\
 	PLB				;$B3E683	 |
-	LDX $64				;$B3E684	 |
+	LDX current_sprite		;$B3E684	 |
 	LDA $2E,x			;$B3E686	 |
 	ASL A				;$B3E688	 |
 	TAX				;$B3E689	 |
@@ -13770,7 +13770,7 @@ CODE_B3E691:
 	JSR CODE_B3E6EF			;$B3E691	\
 	BCS CODE_B3E6AC			;$B3E694	 |
 	JSR CODE_B3E74B			;$B3E696	 |
-	LDX $64				;$B3E699	 |
+	LDX current_sprite		;$B3E699	 |
 	INC $2E,x			;$B3E69B	 |
 	STZ $44,x			;$B3E69D	 |
 	LDA $4E,x			;$B3E69F	 |
@@ -13792,7 +13792,7 @@ CODE_B3E6B3:
 	JML [$05A9]			;$B3E6C1	/
 
 CODE_B3E6C4:
-	LDX $64				;$B3E6C4	\
+	LDX current_sprite		;$B3E6C4	\
 	LDA $2A,x			;$B3E6C6	 |
 	AND #$1000			;$B3E6C8	 |
 	BNE CODE_B3E6D3			;$B3E6CB	 |
@@ -13821,13 +13821,13 @@ CODE_B3E6EA:
 	BRA CODE_B3E6E2			;$B3E6ED	/
 
 CODE_B3E6EF:
-	LDX $64				;$B3E6EF	\
+	LDX current_sprite		;$B3E6EF	\
 	LDY $42,x			;$B3E6F1	 |
 	LDA $0000,y			;$B3E6F3	 |
 	CMP #$0140			;$B3E6F6	 |
 	BNE CODE_B3E72A			;$B3E6F9	 |
 	LDA $003C,y			;$B3E6FB	 |
-	CMP $64				;$B3E6FE	 |
+	CMP current_sprite		;$B3E6FE	 |
 	BNE CODE_B3E72A			;$B3E700	 |
 	LDA $002A,y			;$B3E702	 |
 	STA $2A,x			;$B3E705	 |
@@ -13856,7 +13856,7 @@ CODE_B3E72A:
 	RTS				;$B3E72B	/
 
 CODE_B3E72C:
-	LDX $64				;$B3E72C	\
+	LDX current_sprite		;$B3E72C	\
 	LDY $42,x			;$B3E72E	 |
 	LDA $0044,y			;$B3E730	 |
 	BEQ CODE_B3E741			;$B3E733	 |
@@ -13878,7 +13878,7 @@ CODE_B3E746:
 
 CODE_B3E74B:
 	LDA #$0000			;$B3E74B	\
-	LDX $64				;$B3E74E	 |
+	LDX current_sprite		;$B3E74E	 |
 	LDY $42,x			;$B3E750	 |
 	LDA $0044,y			;$B3E752	 |
 	XBA				;$B3E755	 |
@@ -13897,7 +13897,7 @@ CODE_B3E765:
 	RTS				;$B3E767	/
 
 CODE_B3E768:
-	LDX $64				;$B3E768	\
+	LDX current_sprite		;$B3E768	\
 	LDA $2E,x			;$B3E76A	 |
 	ASL A				;$B3E76C	 |
 	TAX				;$B3E76D	 |
@@ -13922,7 +13922,7 @@ DATA_B3E771:
 
 
 CODE_B3E78F:
-	LDX $64				;$B3E78F	\
+	LDX current_sprite		;$B3E78F	\
 	LDA $06,x			;$B3E791	 |
 	STA $04,x			;$B3E793	 |
 	LDA $0A,x			;$B3E795	 |
@@ -13996,7 +13996,7 @@ CODE_B3E80F:				;		 |
 	STA $1C,x			;$B3E819	 |
 CODE_B3E81B:				;		 |
 	JSR CODE_B3F2A6			;$B3E81B	 |
-	LDX $64				;$B3E81E	 |
+	LDX current_sprite		;$B3E81E	 |
 	STZ $3C,x			;$B3E820	 |
 	LDA $46,x			;$B3E822	 |
 	AND #$0008			;$B3E824	 |
@@ -14038,8 +14038,8 @@ CODE_B3E85C:
 CODE_B3E866:				;		 |
 	JSL CODE_BB842C			;$B3E866	 |
 	BCS CODE_B3E8D0			;$B3E86A	 |
-	LDY $68				;$B3E86C	 |
-	LDX $64				;$B3E86E	 |
+	LDY alternate_sprite		;$B3E86C	 |
+	LDX current_sprite		;$B3E86E	 |
 	TYA				;$B3E870	 |
 	STA $3C,x			;$B3E871	 |
 	TXA				;$B3E873	 |
@@ -14100,7 +14100,7 @@ CODE_B3E8D3:
 	BRA CODE_B3E8C4			;$B3E8DB	/
 
 CODE_B3E8DD:
-	LDX $64				;$B3E8DD	\
+	LDX current_sprite		;$B3E8DD	\
 	LDA $32,x			;$B3E8DF	 |
 	BEQ CODE_B3E8FF			;$B3E8E1	 |
 	STZ $32,x			;$B3E8E3	 |
@@ -14111,7 +14111,7 @@ CODE_B3E8DD:
 	STA $2A,x			;$B3E8EF	 |
 	LDA #$054A			;$B3E8F1	 |
 	JSL CODE_B58003			;$B3E8F4	 |
-	LDX $64				;$B3E8F8	 |
+	LDX current_sprite		;$B3E8F8	 |
 	LDA #$00EC			;$B3E8FA	 |
 	STA $02,x			;$B3E8FD	 |
 CODE_B3E8FF:				;		 |
@@ -14139,7 +14139,7 @@ CODE_B3E917:
 
 CODE_B3E92D:
 	JSR CODE_B3F14C			;$B3E92D	\
-	LDX $64				;$B3E930	 |
+	LDX current_sprite		;$B3E930	 |
 	DEC $38,x			;$B3E932	 |
 	BMI CODE_B3E939			;$B3E934	 |
 	JML [$05A9]			;$B3E936	/
@@ -14227,13 +14227,13 @@ CODE_B3E9C5:
 
 CODE_B3E9D8:
 	JSR CODE_B3F14C			;$B3E9D8	\
-	LDX $64				;$B3E9DB	 |
+	LDX current_sprite		;$B3E9DB	 |
 	DEC $38,x			;$B3E9DD	 |
 	BMI CODE_B3E9E4			;$B3E9DF	 |
 	JML [$05A9]			;$B3E9E1	/
 
 CODE_B3E9E4:
-	LDX $64				;$B3E9E4	\
+	LDX current_sprite		;$B3E9E4	\
 	INC $2E,x			;$B3E9E6	 |
 	LDA #$0014			;$B3E9E8	 |
 	STA $38,x			;$B3E9EB	 |
@@ -14251,7 +14251,7 @@ CODE_B3E9E4:
 	CLC				;$B3EA03	 |
 	ADC #$0190			;$B3EA04	 |
 	STA $6E				;$B3EA07	 |
-	STZ $6C				;$B3EA09	 |
+	STZ current_player_mount	;$B3EA09	 |
 	PHK				;$B3EA0B	 |
 	PLB				;$B3EA0C	 |
 if !version == 1			;		 |
@@ -14306,7 +14306,7 @@ endif					;		 |
 	JSR CODE_B3EC94			;$B3EA63	 |
 	JSR CODE_B3F2A6			;$B3EA66	 |
 	JSR CODE_B3F1F3			;$B3EA69	 |
-	LDX $64				;$B3EA6C	 |
+	LDX current_sprite		;$B3EA6C	 |
 	LDA $5C,x			;$B3EA6E	 |
 	JSR CODE_B3ED5C			;$B3EA70	 |
 	LDA $46,x			;$B3EA73	 |
@@ -14361,7 +14361,7 @@ endif					;		/
 
 CODE_B3EACE:
 	JSR CODE_B3F33E			;$B3EACE	\
-	LDX $64				;$B3EAD1	 |
+	LDX current_sprite		;$B3EAD1	 |
 	DEC $38,x			;$B3EAD3	 |
 	BMI CODE_B3EADA			;$B3EAD5	 |
 	JMP CODE_B3D916			;$B3EAD7	/
@@ -14382,14 +14382,14 @@ CODE_B3EAE8:
 
 CODE_B3EAF5:
 	JSR CODE_B3F33E			;$B3EAF5	\
-	LDX $64				;$B3EAF8	 |
+	LDX current_sprite		;$B3EAF8	 |
 	LDA $3A,x			;$B3EAFA	 |
 	PHA				;$B3EAFC	 |
 	LDA #$0C00			;$B3EAFD	 |
 	STA $3A,x			;$B3EB00	 |
 	JSR CODE_B3EE60			;$B3EB02	 |
 	PLA				;$B3EB05	 |
-	LDX $64				;$B3EB06	 |
+	LDX current_sprite		;$B3EB06	 |
 	STA $3A,x			;$B3EB08	 |
 	BCS CODE_B3EB12			;$B3EB0A	 |
 	JSR CODE_B3F2A6			;$B3EB0C	 |
@@ -14397,10 +14397,10 @@ CODE_B3EAF5:
 
 CODE_B3EB12:
 	JSR CODE_B3F2A6			;$B3EB12	\
-	LDX $64				;$B3EB15	 |
+	LDX current_sprite		;$B3EB15	 |
 	LDA #$0001			;$B3EB17	 |
 	STA $2E,x			;$B3EB1A	 |
-	LDX $64				;$B3EB1C	 |
+	LDX current_sprite		;$B3EB1C	 |
 	LDA $46,x			;$B3EB1E	 |
 	XBA				;$B3EB20	 |
 	ASL A				;$B3EB21	 |
@@ -14425,7 +14425,7 @@ CODE_B3EB34:
 	CMP #$0011			;$B3EB46	 |
 	BNE CODE_B3EBAA			;$B3EB49	 |
 	JSR CODE_B3F33E			;$B3EB4B	 |
-	LDX $64				;$B3EB4E	 |
+	LDX current_sprite		;$B3EB4E	 |
 	DEC $38,x			;$B3EB50	 |
 	BPL CODE_B3EB59			;$B3EB52	 |
 	INC $38,x			;$B3EB54	 |
@@ -14436,7 +14436,7 @@ CODE_B3EB59:				;		 |
 	JML [$05A9]			;$B3EB5F	/
 
 CODE_B3EB62:
-	LDX $64				;$B3EB62	\
+	LDX current_sprite		;$B3EB62	\
 	LDA $48,x			;$B3EB64	 |
 	CLC				;$B3EB66	 |
 	ADC #$1000			;$B3EB67	 |
@@ -14445,7 +14445,7 @@ CODE_B3EB62:
 CODE_B3EB6F:				;		 |
 	JSR CODE_B3F2A6			;$B3EB6F	 |
 	JSR CODE_B3F14C			;$B3EB72	 |
-	LDX $64				;$B3EB75	 |
+	LDX current_sprite		;$B3EB75	 |
 	LDA #$0004			;$B3EB77	 |
 	STA $2E,x			;$B3EB7A	 |
 	LDA #$0001			;$B3EB7C	 |
@@ -14469,7 +14469,7 @@ CODE_B3EB84:
 	JML [$05A9]			;$B3EBA7	/
 
 CODE_B3EBAA:
-	LDX $64				;$B3EBAA	\
+	LDX current_sprite		;$B3EBAA	\
 	LDA $46,x			;$B3EBAC	 |
 	AND #$1010			;$B3EBAE	 |
 	BNE CODE_B3EBCE			;$B3EBB1	 |
@@ -14497,7 +14497,7 @@ CODE_B3EBD8:
 	JSR CODE_B3ECE7			;$B3EBDB	 |
 	BCS CODE_B3EC17			;$B3EBDE	 |
 	JSR CODE_B3F33E			;$B3EBE0	 |
-	LDX $64				;$B3EBE3	 |
+	LDX current_sprite		;$B3EBE3	 |
 	DEC $38,x			;$B3EBE5	 |
 	BPL CODE_B3EBF0			;$B3EBE7	 |
 	INC $38,x			;$B3EBE9	 |
@@ -14512,7 +14512,7 @@ CODE_B3EBF9:
 	JSR CODE_B3F2A6			;$B3EBF9	\
 	JSR CODE_B3F14C			;$B3EBFC	 |
 	JSR CODE_B3ED2C			;$B3EBFF	 |
-	LDX $64				;$B3EC02	 |
+	LDX current_sprite		;$B3EC02	 |
 	LDA $42,x			;$B3EC04	 |
 	XBA				;$B3EC06	 |
 	STA $42,x			;$B3EC07	 |
@@ -14534,7 +14534,7 @@ CODE_B3EC1A:
 	JSR CODE_B3F33E			;$B3EC22	 |
 	JSR CODE_B3F2A6			;$B3EC25	 |
 	JSR CODE_B3F14C			;$B3EC28	 |
-	LDX $64				;$B3EC2B	 |
+	LDX current_sprite		;$B3EC2B	 |
 	DEC $38,x			;$B3EC2D	 |
 	BMI CODE_B3EC34			;$B3EC2F	 |
 	JML [$05A9]			;$B3EC31	/
@@ -14546,7 +14546,7 @@ CODE_B3EC34:
 
 CODE_B3EC3C:
 	JSR CODE_B3F05F			;$B3EC3C	\
-	LDX $64				;$B3EC3F	 |
+	LDX current_sprite		;$B3EC3F	 |
 	LDA global_frame_counter	;$B3EC41	 |
 	LSR A				;$B3EC43	 |
 	BCS CODE_B3EC4A			;$B3EC44	 |
@@ -14565,7 +14565,7 @@ CODE_B3EC55:
 	BRL CODE_B3E9E4			;$B3EC5E	/
 
 CODE_B3EC61:
-	LDX $64				;$B3EC61	\
+	LDX current_sprite		;$B3EC61	\
 	DEC $38,x			;$B3EC63	 |
 	BMI CODE_B3EC6A			;$B3EC65	 |
 	JML [$05A9]			;$B3EC67	/
@@ -14576,7 +14576,7 @@ CODE_B3EC6A:
 	JML [$05A9]			;$B3EC6F	/
 
 CODE_B3EC72:
-	LDX $64				;$B3EC72	\
+	LDX current_sprite		;$B3EC72	\
 	LDA $3E,x			;$B3EC74	 |
 	CMP $08A6			;$B3EC76	 |
 	BEQ CODE_B3EC82			;$B3EC79	 |
@@ -14603,12 +14603,12 @@ CODE_B3EC94:
 	RTS				;$B3EC9D	/
 
 CODE_B3EC9E:
-	LDX $64				;$B3EC9E	\
+	LDX current_sprite		;$B3EC9E	\
 	LDA $00,x			;$B3ECA0	 |
 	CMP #$013C			;$B3ECA2	 |
 	BEQ CODE_B3ECCF			;$B3ECA5	 |
 	LDY $0593			;$B3ECA7	 |
-	LDX $68				;$B3ECAA	 |
+	LDX alternate_sprite		;$B3ECAA	 |
 	LDA $0020,y			;$B3ECAC	 |
 	CMP #$8000			;$B3ECAF	 |
 	ROR A				;$B3ECB2	 |
@@ -14628,7 +14628,7 @@ CODE_B3EC9E:
 	RTS				;$B3ECCE	/
 
 CODE_B3ECCF:
-	LDX $68				;$B3ECCF	\
+	LDX alternate_sprite		;$B3ECCF	\
 	LDA #$FFC0			;$B3ECD1	 |
 	STA $24,x			;$B3ECD4	 |
 	LDA $0A,x			;$B3ECD6	 |
@@ -14642,7 +14642,7 @@ CODE_B3ECCF:
 	RTS				;$B3ECE6	/
 
 CODE_B3ECE7:
-	LDX $64				;$B3ECE7	\
+	LDX current_sprite		;$B3ECE7	\
 	LDA $2A,x			;$B3ECE9	 |
 	AND #$2000			;$B3ECEB	 |
 	BNE CODE_B3ED02			;$B3ECEE	 |
@@ -14683,7 +14683,7 @@ CODE_B3ED2A:
 	RTS				;$B3ED2B	/
 
 CODE_B3ED2C:
-	LDX $64				;$B3ED2C	\
+	LDX current_sprite		;$B3ED2C	\
 	LDA $46,x			;$B3ED2E	 |
 	XBA				;$B3ED30	 |
 	EOR $2A,x			;$B3ED31	 |
@@ -14693,7 +14693,7 @@ CODE_B3ED2C:
 	RTS				;$B3ED3A	/
 
 CODE_B3ED3B:
-	LDX $64				;$B3ED3B	\
+	LDX current_sprite		;$B3ED3B	\
 	LDA $44,x			;$B3ED3D	 |
 	SEC				;$B3ED3F	 |
 	SBC #$0003			;$B3ED40	 |
@@ -14723,11 +14723,11 @@ CODE_B3ED5C:
 	ORA #$0080			;$B3ED64	 |
 	STA $7E9128,x			;$B3ED67	 |
 CODE_B3ED6B:				;		 |
-	LDX $64				;$B3ED6B	 |
+	LDX current_sprite		;$B3ED6B	 |
 	RTS				;$B3ED6D	/
 
 CODE_B3ED6E:
-	LDX $64				;$B3ED6E	\
+	LDX current_sprite		;$B3ED6E	\
 	LDA $46,x			;$B3ED70	 |
 	AND #$1000			;$B3ED72	 |
 	BNE CODE_B3ED94			;$B3ED75	 |
@@ -14783,24 +14783,24 @@ CODE_B3EDC8:
 	RTS				;$B3EDD3	/
 
 CODE_B3EDD4:
-	LDX $64				;$B3EDD4	\
+	LDX current_sprite		;$B3EDD4	\
 	LDA $46,x			;$B3EDD6	 |
 	AND #$0010			;$B3EDD8	 |
 	BNE CODE_B3EDDE			;$B3EDDB	 |
 	RTS				;$B3EDDD	/
 
 CODE_B3EDDE:
-	LDX $64				;$B3EDDE	\
+	LDX current_sprite		;$B3EDDE	\
 	LDA $54,x			;$B3EDE0	 |
 	PHA				;$B3EDE2	 |
 	PHX				;$B3EDE3	 |
 	LDY $0595			;$B3EDE4	 |
 	STY $66				;$B3EDE7	 |
 	LDX $0593			;$B3EDE9	 |
-	STX $64				;$B3EDEC	 |
+	STX current_sprite		;$B3EDEC	 |
 	JSR CODE_B3EE05			;$B3EDEE	 |
 	PLX				;$B3EDF1	 |
-	STX $64				;$B3EDF2	 |
+	STX current_sprite		;$B3EDF2	 |
 	PLA				;$B3EDF4	 |
 	STA $54,x			;$B3EDF5	 |
 	LDY $0593			;$B3EDF7	 |
@@ -14828,7 +14828,7 @@ CODE_B3EE1E:				;		 |
 if !version == 1			;		 |
 	JSR CODE_B3EE30			;$B3EE1E	 |
 endif					;		 |
-	LDX $64				;$B3EE21	 |
+	LDX current_sprite		;$B3EE21	 |
 	PLA				;$B3EE23	 |
 	STA $2A,x			;$B3EE24	 |
 	PLA				;$B3EE26	 |
@@ -14841,7 +14841,7 @@ endif					;		 |
 
 if !version == 1			;		\
 CODE_B3EE30:				;		 |
-	LDX $64				;$B3EE30	 |
+	LDX current_sprite		;$B3EE30	 |
 	LDA $17C0			;$B3EE32	 |
 	CLC				;$B3EE35	 |
 	ADC #$00E0			;$B3EE36	 |
@@ -14874,13 +14874,13 @@ CODE_B3EE59:
 endif					;		 /
 
 CODE_B3EE60:
-	LDX $64				;$B3EE60	\
+	LDX current_sprite		;$B3EE60	\
 	LDA $42,x			;$B3EE62	 |
 	XBA				;$B3EE64	 |
 	BRA CODE_B3EE6B			;$B3EE65	/
 
 CODE_B3EE67:
-	LDX $64				;$B3EE67	\
+	LDX current_sprite		;$B3EE67	\
 	LDA $42,x			;$B3EE69	 |
 CODE_B3EE6B:				;		 |
 	AND #$FF00			;$B3EE6B	 |
@@ -14932,7 +14932,7 @@ CODE_B3EEA1:
 	BRA CODE_B3EE8A			;$B3EEB7	/
 
 CODE_B3EEB9:
-	LDX $64				;$B3EEB9	\
+	LDX current_sprite		;$B3EEB9	\
 	LDA $2A,x			;$B3EEBB	 |
 	AND #$0800			;$B3EEBD	 |
 	BNE CODE_B3EEC5			;$B3EEC0	 |
@@ -14954,7 +14954,7 @@ CODE_B3EEDD:
 	LDA $09F5			;$B3EEDF	 |
 	AND #$0406			;$B3EEE2	 |
 	BEQ CODE_B3EF44			;$B3EEE5	 |
-	LDX $64				;$B3EEE7	 |
+	LDX current_sprite		;$B3EEE7	 |
 	LDA $46,x			;$B3EEE9	 |
 	AND #$0003			;$B3EEEB	 |
 	BEQ CODE_B3EF0E			;$B3EEEE	 |
@@ -15002,7 +15002,7 @@ CODE_B3EF44:
 CODE_B3EF46:
 	LDX $0597			;$B3EF46	\
 	LDA $42,x			;$B3EF49	 |
-	CMP $64				;$B3EF4B	 |
+	CMP current_sprite		;$B3EF4B	 |
 	BNE CODE_B3EF44			;$B3EF4D	 |
 	JSL CODE_BCFB58			;$B3EF4F	 |
 	LDA #$0008			;$B3EF53	 |
@@ -15043,7 +15043,7 @@ CODE_B3EF84:
 	LDY #$0034			;$B3EFA0	 |
 	JSL CODE_BB842C			;$B3EFA3	 |
 	LDX $0A84			;$B3EFA7	 |
-	STX $64				;$B3EFAA	 |
+	STX current_sprite		;$B3EFAA	 |
 	JSR CODE_B3F14C			;$B3EFAC	 |
 	LDY $0593			;$B3EFAF	 |
 	LDA #$0011			;$B3EFB2	 |
@@ -15066,7 +15066,7 @@ CODE_B3EF84:
 	ORA #$1000			;$B3EFE5	 |
 	STA $2A,x			;$B3EFE8	 |
 	JSR CODE_B3F01D			;$B3EFEA	 |
-	LDX $64				;$B3EFED	 |
+	LDX current_sprite		;$B3EFED	 |
 	LDA #$0001			;$B3EFEF	 |
 	STA $38,x			;$B3EFF2	 |
 	LDA $08C2			;$B3EFF4	 |
@@ -15078,7 +15078,7 @@ CODE_B3EF84:
 	BEQ CODE_B3F016			;$B3F005	 |
 	LDA $6E				;$B3F007	 |
 	BEQ CODE_B3F00F			;$B3F009	 |
-	LDA $6C				;$B3F00B	 |
+	LDA current_player_mount	;$B3F00B	 |
 	BEQ CODE_B3F015			;$B3F00D	 |
 CODE_B3F00F:				;		 |
 	LDA #$0032			;$B3F00F	 |
@@ -15163,7 +15163,7 @@ CODE_B3F069:
 	STZ $16,x			;$B3F0A3	 |
 	STZ $40,x			;$B3F0A5	 |
 	LDX $0A84			;$B3F0A7	 |
-	STX $64				;$B3F0AA	 |
+	STX current_sprite		;$B3F0AA	 |
 	JSR CODE_B3F01D			;$B3F0AC	 |
 	JSL CODE_B8808E			;$B3F0AF	 |
 	JSL CODE_B8A57C			;$B3F0B3	 |
@@ -15178,7 +15178,7 @@ CODE_B3F0B8:
 	STA $1C,x			;$B3F0C6	 |
 	LDA #$0010			;$B3F0C8	 |
 	STA $30,x			;$B3F0CB	 |
-	LDA $6C				;$B3F0CD	 |
+	LDA current_player_mount	;$B3F0CD	 |
 	BEQ CODE_B3F0DE			;$B3F0CF	 |
 	TAY				;$B3F0D1	 |
 	LDA #$0000			;$B3F0D2	 |
@@ -15250,7 +15250,7 @@ CODE_B3F111:
 	RTS				;$B3F14B	/
 
 CODE_B3F14C:
-	LDX $64				;$B3F14C	\
+	LDX current_sprite		;$B3F14C	\
 	LDY $0593			;$B3F14E	 |
 	LDA $06,x			;$B3F151	 |
 	STA $0006,y			;$B3F153	 |
@@ -15259,7 +15259,7 @@ CODE_B3F14C:
 	RTS				;$B3F15B	/
 
 CODE_B3F15C:
-	LDX $64				;$B3F15C	\
+	LDX current_sprite		;$B3F15C	\
 	LDY $0593			;$B3F15E	 |
 	LDA $48,x			;$B3F161	 |
 	STA $26				;$B3F163	 |
@@ -15267,7 +15267,7 @@ CODE_B3F15C:
 	XBA				;$B3F167	 |
 	AND #$FF00			;$B3F168	 |
 	STA $5E				;$B3F16B	 |
-	LDX $64				;$B3F16D	 |
+	LDX current_sprite		;$B3F16D	 |
 	LDA $46,x			;$B3F16F	 |
 	XBA				;$B3F171	 |
 	ASL A				;$B3F172	 |
@@ -15288,7 +15288,7 @@ CODE_B3F15C:
 	JSR CODE_B3F1C9			;$B3F191	 |
 	STA $0020,y			;$B3F194	 |
 	STA $0026,y			;$B3F197	 |
-	LDX $64				;$B3F19A	 |
+	LDX current_sprite		;$B3F19A	 |
 	LDA $26				;$B3F19C	 |
 	BEQ CODE_B3F1A8			;$B3F19E	 |
 	CMP #$7FFF			;$B3F1A0	 |
@@ -15337,7 +15337,7 @@ CODE_B3F1EF:
 	RTL				;$B3F1F2	/
 
 CODE_B3F1F3:
-	LDX $64				;$B3F1F3	\
+	LDX current_sprite		;$B3F1F3	\
 	LDA $46,x			;$B3F1F5	 |
 	PHA				;$B3F1F7	 |
 	LDA $54,x			;$B3F1F8	 |
@@ -15348,12 +15348,12 @@ CODE_B3F1F3:
 	PLA				;$B3F200	 |
 	STA $54,x			;$B3F201	 |
 	PLA				;$B3F203	 |
-	STX $64				;$B3F204	 |
+	STX current_sprite		;$B3F204	 |
 	RTS				;$B3F206	/
 
 CODE_B3F207:
 	LDX $0593			;$B3F207	\
-	STX $64				;$B3F20A	 |
+	STX current_sprite		;$B3F20A	 |
 	LDY $0595			;$B3F20C	 |
 	STY $66				;$B3F20F	 |
 	LDA $20,x			;$B3F211	 |
@@ -15373,7 +15373,7 @@ CODE_B3F207:
 	BEQ CODE_B3F25F			;$B3F236	 |
 	LDA $6E				;$B3F238	 |
 	BEQ CODE_B3F240			;$B3F23A	 |
-	LDA $6C				;$B3F23C	 |
+	LDA current_player_mount	;$B3F23C	 |
 	BEQ CODE_B3F25F			;$B3F23E	 |
 CODE_B3F240:				;		 |
 	JSL CODE_B880A2			;$B3F240	 |
@@ -15383,7 +15383,7 @@ CODE_B3F240:				;		 |
 	LDX #$001C			;$B3F24C	 |
 	LDY #$0000			;$B3F24F	 |
 	JSL CODE_B8D8D1			;$B3F252	 |
-	LDX $64				;$B3F256	 |
+	LDX current_sprite		;$B3F256	 |
 	LDA #$001C			;$B3F258	 |
 	JSL CODE_B9D0B8			;$B3F25B	 |
 CODE_B3F25F:				;		 |
@@ -15400,9 +15400,9 @@ CODE_B3F26E:				;		 |
 CODE_B3F273:
 	LDA #$0090			;$B3F273	\
 	JSL CODE_B9D08C			;$B3F276	 |
-	LDA $6C				;$B3F27A	 |
+	LDA current_player_mount	;$B3F27A	 |
 	BEQ CODE_B3F287			;$B3F27C	 |
-	STA $64				;$B3F27E	 |
+	STA current_sprite		;$B3F27E	 |
 	LDA #$004F			;$B3F280	 |
 	JSL CODE_B9D04B			;$B3F283	 |
 CODE_B3F287:				;		 |
@@ -15420,7 +15420,7 @@ CODE_B3F289:
 	BRA CODE_B3F26E			;$B3F2A4	/
 
 CODE_B3F2A6:
-	LDY $64				;$B3F2A6	\
+	LDY current_sprite		;$B3F2A6	\
 	LDA $0000,y			;$B3F2A8	 |
 	CMP #$013C			;$B3F2AB	 |
 	BEQ CODE_B3F2E5			;$B3F2AE	 |
@@ -15478,7 +15478,7 @@ DATA_B3F31E:
 	db $00, $00, $00, $80, $00, $80, $00, $80
 
 CODE_B3F33E:
-	LDX $64				;$B3F33E	\
+	LDX current_sprite		;$B3F33E	\
 	LDA $2A,x			;$B3F340	 |
 	AND #$4000			;$B3F342	 |
 	BNE CODE_B3F348			;$B3F345	 |
@@ -15486,7 +15486,7 @@ CODE_B3F33E:
 
 CODE_B3F348:
 	JSR CODE_B3F396			;$B3F348	\
-	LDX $64				;$B3F34B	 |
+	LDX current_sprite		;$B3F34B	 |
 	LDA $46,x			;$B3F34D	 |
 	AND #$0080			;$B3F34F	 |
 	BEQ CODE_B3F36A			;$B3F352	 |
@@ -15526,7 +15526,7 @@ CODE_B3F387:				;		 |
 	RTS				;$B3F387	/
 
 	JSR CODE_B3F396			;$B3F388	 |
-	LDX $64				;$B3F38B	 |
+	LDX current_sprite		;$B3F38B	 |
 	LDA $4C,x			;$B3F38D	 |
 	CLC				;$B3F38F	 |
 	ADC #$0240			;$B3F390	 |
@@ -15534,7 +15534,7 @@ CODE_B3F387:				;		 |
 	RTS				;$B3F395	/
 
 CODE_B3F396:
-	LDX $64				;$B3F396	\
+	LDX current_sprite		;$B3F396	\
 	LDA $4E,x			;$B3F398	 |
 	LSR A				;$B3F39A	 |
 	CMP $4C,x			;$B3F39B	 |
@@ -15567,7 +15567,7 @@ CODE_B3F3BE:				;		 |
 	PLX				;$B3F3CA	 |
 	JSR CODE_B3F431			;$B3F3CB	 |
 CODE_B3F3CE:				;		 |
-	LDX $64				;$B3F3CE	 |
+	LDX current_sprite		;$B3F3CE	 |
 	LDA $39				;$B3F3D0	 |
 	CMP $22,x			;$B3F3D2	 |
 	BPL CODE_B3F3DA			;$B3F3D4	 |
@@ -15576,7 +15576,7 @@ CODE_B3F3CE:				;		 |
 CODE_B3F3DA:				;		 |
 	LDA $2A,x			;$B3F3DA	 |
 	BMI CODE_B3F404			;$B3F3DC	 |
-	LDX $64				;$B3F3DE	 |
+	LDX current_sprite		;$B3F3DE	 |
 	LDA $38				;$B3F3E0	 |
 	CLC				;$B3F3E2	 |
 	ADC $4A,x			;$B3F3E3	 |
@@ -15600,7 +15600,7 @@ CODE_B3F3FA:
 	BRA CODE_B3F3CE			;$B3F402	/
 
 CODE_B3F404:
-	LDX $64				;$B3F404	\
+	LDX current_sprite		;$B3F404	\
 	LDA $4A,x			;$B3F406	 |
 	SEC				;$B3F408	 |
 	SBC $38				;$B3F409	 |

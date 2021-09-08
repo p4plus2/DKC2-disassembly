@@ -34,3 +34,13 @@ temp13 = $3E
 temp14 = $3F
 ;the amount of temps here I have documented as 30, but I will reserve filling that out pending more evidence
 ;I suspect the latter are used rare enough that they may effectively be dedicated addresses
+
+oam_size_index = $56
+
+current_sprite = $64
+UNKNOWN_66 = $66		;This is two bytes for some table at 16B2
+alternate_sprite = $68
+UNKNOWN_6A = $6A		;same as $66
+current_player_mount = $6C
+
+next_oam_slot = $70
