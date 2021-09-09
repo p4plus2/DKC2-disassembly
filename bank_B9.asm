@@ -314,7 +314,7 @@ CODE_B9D1C2:
 	INY				;$B9D1C4	 |
 	LDA $0000,y			;$B9D1C5	 |
 	PHY				;$B9D1C8	 |
-	JSL CODE_B58003			;$B9D1C9	 |
+	JSL queue_sound_effect		;$B9D1C9	 |
 	PLY				;$B9D1CD	 |
 	INY				;$B9D1CE	 |
 	INY				;$B9D1CF	 |
@@ -332,7 +332,7 @@ CODE_B9D1D5:
 	JSL CODE_BBBB69			;$B9D1E1	 |
 	PLA				;$B9D1E5	 |
 	BCS CODE_B9D1EC			;$B9D1E6	 |
-	JSL CODE_B58003			;$B9D1E8	 |
+	JSL queue_sound_effect		;$B9D1E8	 |
 CODE_B9D1EC:				;		 |
 	PLY				;$B9D1EC	 |
 	PLB				;$B9D1ED	 |
@@ -1607,7 +1607,7 @@ CODE_B9D9FF:				;		 |
 	BEQ CODE_B9DA18			;$B9DA0F	 |
 CODE_B9DA11:				;		 |
 	LDA #$0001			;$B9DA11	 |
-	JSL CODE_B58018			;$B9DA14	 |
+	JSL transition_song		;$B9DA14	 |
 CODE_B9DA18:				;		 |
 	RTS				;$B9DA18	/
 
@@ -1691,7 +1691,7 @@ CODE_B9DA81:
 
 CODE_B9DA94:
 	LDA #$050A			;$B9DA94	\
-	JSL CODE_B58003			;$B9DA97	 |
+	JSL queue_sound_effect		;$B9DA97	 |
 	LDY #$0016			;$B9DA9B	 |
 	JSL CODE_BB842C			;$B9DA9E	 |
 	RTS				;$B9DAA2	/
@@ -1975,7 +1975,7 @@ CODE_B9DC54:
 	ADC $20,x			;$B9DC5C	 |
 	STA $20,x			;$B9DC5E	 |
 	LDA #$052F			;$B9DC60	 |
-	JSL CODE_B58003			;$B9DC63	 |
+	JSL queue_sound_effect		;$B9DC63	 |
 	RTS				;$B9DC67	/
 
 CODE_B9DC68:
@@ -2115,7 +2115,7 @@ CODE_B9DD21:
 
 CODE_B9DD2B:
 	LDA #$0520			;$B9DD2B	\
-	JSL CODE_B58003			;$B9DD2E	 |
+	JSL queue_sound_effect		;$B9DD2E	 |
 	LDY #$0014			;$B9DD32	 |
 	JSL CODE_BB842C			;$B9DD35	 |
 	RTS				;$B9DD39	/
@@ -3085,7 +3085,7 @@ CODE_B9E357:
 
 CODE_B9E35F:
 	LDA #$0565			;$B9E35F	\
-	JSL CODE_B58003			;$B9E362	 |
+	JSL queue_sound_effect		;$B9E362	 |
 	LDX current_sprite		;$B9E366	 |
 	LDY #$0400			;$B9E368	 |
 	LDA $2E,x			;$B9E36B	 |
@@ -3144,7 +3144,7 @@ CODE_B9E3AF:
 	LDA #$0072			;$B9E3C4	 |
 	JSL CODE_B9D08C			;$B9E3C7	 |
 	LDA #$0549			;$B9E3CB	 |
-	JSL CODE_B58003			;$B9E3CE	 |
+	JSL queue_sound_effect		;$B9E3CE	 |
 	RTS				;$B9E3D2	/
 
 CODE_B9E3D3:
@@ -3446,7 +3446,7 @@ CODE_B9E594:
 	BCC CODE_B9E59F			;$B9E59A	 |
 	LDA #$0561			;$B9E59C	 |
 CODE_B9E59F:				;		 |
-	JSL CODE_B58003			;$B9E59F	 |
+	JSL queue_sound_effect		;$B9E59F	 |
 	LDX current_sprite		;$B9E5A3	 |
 	LDA #$FFFF			;$B9E5A5	 |
 	STA $46,x			;$B9E5A8	 |
@@ -3561,7 +3561,7 @@ CODE_B9E667:				;		 |
 	DEC $50,x			;$B9E66D	 |
 	BNE CODE_B9E613			;$B9E66F	 |
 	LDA #$0711			;$B9E671	 |
-	JSL CODE_B58003			;$B9E674	 |
+	JSL queue_sound_effect		;$B9E674	 |
 	RTS				;$B9E678	/
 
 CODE_B9E679:
@@ -3843,7 +3843,7 @@ CODE_B9E824:				;		 |
 
 CODE_B9E825:
 	LDA #$0502			;$B9E825	\
-	JSL CODE_B58003			;$B9E828	 |
+	JSL queue_sound_effect		;$B9E828	 |
 	LDX current_sprite		;$B9E82C	 |
 	LDA $2A,x			;$B9E82E	 |
 	EOR #$FFFF			;$B9E830	 |
@@ -3872,7 +3872,7 @@ CODE_B9E825:
 
 CODE_B9E860:
 	LDA #$0502			;$B9E860	\
-	JSL CODE_B58003			;$B9E863	 |
+	JSL queue_sound_effect		;$B9E863	 |
 	LDX current_sprite		;$B9E867	 |
 	LDA #$0100			;$B9E869	 |
 	STA $3A,x			;$B9E86C	 |
@@ -4346,7 +4346,7 @@ CODE_B9EB39:
 	PLB				;$B9EB51	 |
 	BCS CODE_B9EB93			;$B9EB52	 |
 	LDA #$056F			;$B9EB54	 |
-	JSL CODE_B58003			;$B9EB57	 |
+	JSL queue_sound_effect		;$B9EB57	 |
 	LDX current_sprite		;$B9EB5B	 |
 	LDA $46,x			;$B9EB5D	 |
 	STA $000A86			;$B9EB5F	 |
@@ -4399,7 +4399,7 @@ CODE_B9EBA4:
 	CMP #$0003			;$B9EBA9	 |
 	BNE CODE_B9EBD6			;$B9EBAC	 |
 	LDA #$066E			;$B9EBAE	 |
-	JSL CODE_B58003			;$B9EBB1	 |
+	JSL queue_sound_effect		;$B9EBB1	 |
 	LDX current_sprite		;$B9EBB5	 |
 	LDA $3C,x			;$B9EBB7	 |
 	STA $2C,x			;$B9EBB9	 |
@@ -4913,7 +4913,7 @@ endif					;		 |
 	STA $0915			;$B9EF07	 |
 CODE_B9EF0A:				;		 |
 	LDA #$066E			;$B9EF0A	 |
-	JSL CODE_B58003			;$B9EF0D	 |
+	JSL queue_sound_effect		;$B9EF0D	 |
 	RTS				;$B9EF11	/
 
 CODE_B9EF12:

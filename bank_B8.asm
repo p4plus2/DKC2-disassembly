@@ -366,7 +366,7 @@ CODE_B882C3:
 	LDA #$0070			;$B882C5	 |
 	STA $2E,x			;$B882C8	 |
 	LDA #$0001			;$B882CA	 |
-	JSL CODE_B58018			;$B882CD	 |
+	JSL transition_song		;$B882CD	 |
 	RTS				;$B882D1	/
 
 CODE_B882D2:
@@ -448,7 +448,7 @@ CODE_B88364:				;		 |
 endif					;		 |
 	JSL CODE_B8D1E4			;$B8836A	 |
 	LDA #$0002			;$B8836E	 |
-	JSL CODE_B58018			;$B88371	 |
+	JSL transition_song		;$B88371	 |
 	JSR CODE_B8A699			;$B88375	 |
 	RTS				;$B88378	/
 
@@ -459,7 +459,7 @@ CODE_B88379:
 	CMP #$000D			;$B88381	 |
 	BNE CODE_B8838D			;$B88384	 |
 	LDA #$077E			;$B88386	 |
-	JSL CODE_B58003			;$B88389	 |
+	JSL queue_sound_effect		;$B88389	 |
 CODE_B8838D:				;		 |
 	LDA current_song		;$B8838D	 |
 	CMP #$0003			;$B8838F	 |
@@ -470,7 +470,7 @@ CODE_B8838D:				;		 |
 	LDA #$02C0			;$B8839D	 |
 	STA $000A,y			;$B883A0	 |
 	LDA #$0766			;$B883A3	 |
-	JSL CODE_B58003			;$B883A6	 |
+	JSL queue_sound_effect		;$B883A6	 |
 CODE_B883AA:				;		 |
 	LDA current_player_mount	;$B883AA	 |
 	BEQ CODE_B883B8			;$B883AC	 |
@@ -523,7 +523,7 @@ CODE_B883D5:
 
 CODE_B88414:
 	LDA #$0001			;$B88414	\
-	JSL CODE_B58018			;$B88417	 |
+	JSL transition_song		;$B88417	 |
 CODE_B8841B:				;		 |
 	RTL				;$B8841B	/
 
@@ -782,7 +782,7 @@ CODE_B88633:				;		 |
 	STZ $24,x			;$B88639	 |
 	JSR CODE_B88646			;$B8863B	 |
 	LDA #$0668			;$B8863E	 |
-	JSL CODE_B58003			;$B88641	 |
+	JSL queue_sound_effect		;$B88641	 |
 	RTS				;$B88645	/
 
 CODE_B88646:
@@ -1072,7 +1072,7 @@ CODE_B88864:
 
 CODE_B88893:
 	LDA #$0004			;$B88893	\
-	JSL CODE_B58018			;$B88896	 |
+	JSL transition_song		;$B88896	 |
 CODE_B8889A:				;		 |
 	LDA #$A000			;$B8889A	 |
 	STA $0AF0			;$B8889D	 |
@@ -1528,13 +1528,13 @@ CODE_B88C23:				;		 |
 
 CODE_B88C33:
 	LDA #$0441			;$B88C33	\
-	JSL CODE_B58003			;$B88C36	 |
+	JSL queue_sound_effect		;$B88C36	 |
 	LDA #$0542			;$B88C3A	 |
-	JSL CODE_B58003			;$B88C3D	 |
+	JSL queue_sound_effect		;$B88C3D	 |
 	LDA #$0643			;$B88C41	 |
-	JSL CODE_B58003			;$B88C44	 |
+	JSL queue_sound_effect		;$B88C44	 |
 	LDA #$0744			;$B88C48	 |
-	JSL CODE_B58003			;$B88C4B	 |
+	JSL queue_sound_effect		;$B88C4B	 |
 	RTS				;$B88C4F	/
 
 CODE_B88C50:
@@ -1587,7 +1587,7 @@ CODE_B88C89:				;		 |
 endif					;		 |
 	JSR CODE_B8D1E8			;$B88C8F	 |
 	LDA #$0002			;$B88C92	 |
-	JSL CODE_B58018			;$B88C95	 |
+	JSL transition_song		;$B88C95	 |
 	JSR CODE_B8A6A9			;$B88C99	 |
 CODE_B88C9C:				;		 |
 	RTS				;$B88C9C	/
@@ -1774,7 +1774,7 @@ CODE_B88E15:
 	LSR A				;$B88E1B	 |
 	TAX				;$B88E1C	 |
 	LDA.l DATA_B88E0B,x		;$B88E1D	 |
-	JSL CODE_B58003			;$B88E21	 |
+	JSL queue_sound_effect		;$B88E21	 |
 	LDA #$4000			;$B88E25	 |
 	TRB $08C2			;$B88E28	 |
 	BEQ CODE_B88E47			;$B88E2B	 |
@@ -1914,7 +1914,7 @@ CODE_B88F14:
 	ADC $32				;$B88F24	 |
 	TAY				;$B88F26	 |
 	LDA $0000,y			;$B88F27	 |
-	JSL CODE_B58003			;$B88F2A	 |
+	JSL queue_sound_effect		;$B88F2A	 |
 	RTL				;$B88F2E	/
 
 DATA_B88F2F:
@@ -2195,12 +2195,12 @@ CODE_B89171:
 	LDA $08A4			;$B89171	\
 	BEQ CODE_B8917C			;$B89174	 |
 	TYA				;$B89176	 |
-	JSL CODE_B58018			;$B89177	 |
+	JSL transition_song		;$B89177	 |
 	RTS				;$B8917B	/
 
 CODE_B8917C:
 	TXA				;$B8917C	\
-	JSL CODE_B58018			;$B8917D	 |
+	JSL transition_song		;$B8917D	 |
 	RTS				;$B89181	/
 
 CODE_B89182:
@@ -2211,12 +2211,12 @@ CODE_B89186:
 	LDA $08A4			;$B89186	\
 	BEQ CODE_B89191			;$B89189	 |
 	TYA				;$B8918B	 |
-	JSL CODE_B58003			;$B8918C	 |
+	JSL queue_sound_effect		;$B8918C	 |
 	RTS				;$B89190	/
 
 CODE_B89191:
 	TXA				;$B89191	\
-	JSL CODE_B58003			;$B89192	 |
+	JSL queue_sound_effect		;$B89192	 |
 	RTS				;$B89196	/
 
 CODE_B89197:
@@ -3480,7 +3480,7 @@ CODE_B89C26:
 	LDA #$005A			;$B89C2D	 |
 	STA $42,x			;$B89C30	 |
 	LDA #$052F			;$B89C32	 |
-	JSL CODE_B58003			;$B89C35	 |
+	JSL queue_sound_effect		;$B89C35	 |
 	JMP CODE_B8AAE5			;$B89C39	/
 
 CODE_B89C3C:
@@ -6339,7 +6339,7 @@ CODE_B8B237:
 
 CODE_B8B245:
 	LDA #$075E			;$B8B245	\
-	JSL CODE_B58021			;$B8B248	 |
+	JSL play_high_priority_sound	;$B8B248	 |
 CODE_B8B24C:				;		 |
 	LDX current_sprite		;$B8B24C	 |
 	STZ $1C,x			;$B8B24E	 |
@@ -6347,7 +6347,7 @@ CODE_B8B24C:				;		 |
 
 CODE_B8B252:
 	LDA #$0700			;$B8B252	\
-	JSL CODE_B58021			;$B8B255	 |
+	JSL play_high_priority_sound	;$B8B255	 |
 	BRA CODE_B8B24C			;$B8B259	/
 
 CODE_B8B25B:
@@ -6847,7 +6847,7 @@ CODE_B8B62D:
 	LDA #$0023			;$B8B634	 |
 	JSL CODE_B8D8BA			;$B8B637	 |
 	LDA #$066D			;$B8B63B	 |
-	JSL CODE_B58003			;$B8B63E	 |
+	JSL queue_sound_effect		;$B8B63E	 |
 	SEC				;$B8B642	 |
 	RTS				;$B8B643	/
 
@@ -9246,7 +9246,7 @@ CODE_B8C623:				;		 |
 	ADC #$0340			;$B8C635	 |
 	STA $3A,x			;$B8C638	 |
 	LDA #$0530			;$B8C63A	 |
-	JSL CODE_B58003			;$B8C63D	 |
+	JSL queue_sound_effect		;$B8C63D	 |
 CODE_B8C641:				;		 |
 	RTS				;$B8C641	/
 
@@ -9408,7 +9408,7 @@ CODE_B8C778:
 	CMP #$0002			;$B8C77B	 |
 	BMI CODE_B8C79A			;$B8C77E	 |
 	LDA #$056B			;$B8C780	 |
-	JSL CODE_B58003			;$B8C783	 |
+	JSL queue_sound_effect		;$B8C783	 |
 	LDX current_sprite		;$B8C787	 |
 	JSR CODE_B8C7C0			;$B8C789	 |
 	LDA [$8E],y			;$B8C78C	 |
@@ -9665,7 +9665,7 @@ CODE_B8C949:				;		 |
 	LDA #$02D6			;$B8C958	 |
 	JSL CODE_B9D09B			;$B8C95B	 |
 	LDA #$0547			;$B8C95F	 |
-	JSL CODE_B58003			;$B8C962	 |
+	JSL queue_sound_effect		;$B8C962	 |
 	JSR CODE_B8C96A			;$B8C966	 |
 CODE_B8C969:				;		 |
 	RTS				;$B8C969	/
@@ -9873,7 +9873,7 @@ CODE_B8CA93:
 	BCS CODE_B8CA92			;$B8CAC9	 |
 	INC $19A6			;$B8CACB	 |
 	LDA #$0546			;$B8CACE	 |
-	JSL CODE_B58003			;$B8CAD1	 |
+	JSL queue_sound_effect		;$B8CAD1	 |
 	LDY #$008C			;$B8CAD5	 |
 	LDA [$8E],y			;$B8CAD8	 |
 	LDX current_sprite		;$B8CADA	 |

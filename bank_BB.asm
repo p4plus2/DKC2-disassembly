@@ -3017,7 +3017,7 @@ CODE_BB93E7:
 	AND #$0003			;$BB93F1	 |
 	BEQ CODE_BB93FE			;$BB93F4	 |
 	LDA #$0016			;$BB93F6	 |
-	JSL CODE_B5800C			;$BB93F9	 |
+	JSL play_song			;$BB93F9	 |
 	RTS				;$BB93FD	/
 
 CODE_BB93FE:
@@ -3054,7 +3054,7 @@ CODE_BB943B:				;		 |
 CODE_BB943E:				;		 |
 	AND #$00FF			;$BB943E	 |
 CODE_BB9441:				;		 |
-	JSL CODE_B5800F			;$BB9441	 |
+	JSL play_song_with_transition	;$BB9441	 |
 CODE_BB9445:				;		 |
 	RTS				;$BB9445	/
 
@@ -3066,7 +3066,7 @@ CODE_BB9446:
 
 CODE_BB944F:
 	LDA #$0003			;$BB944F	\
-	JSL CODE_B58018			;$BB9452	 |
+	JSL transition_song		;$BB9452	 |
 	RTS				;$BB9456	/
 
 CODE_BB9457:
@@ -3076,12 +3076,12 @@ CODE_BB9457:
 	CMP #$006B			;$BB945E	 |
 	BEQ CODE_BB946B			;$BB9461	 |
 	LDA #$0015			;$BB9463	 |
-	JSL CODE_B5800F			;$BB9466	 |
+	JSL play_song_with_transition	;$BB9466	 |
 	RTS				;$BB946A	/
 
 CODE_BB946B:
 	LDA #$001F			;$BB946B	\
-	JSL CODE_B5800F			;$BB946E	 |
+	JSL play_song_with_transition	;$BB946E	 |
 	RTS				;$BB9472	/
 
 CODE_BB9473:
@@ -3094,7 +3094,7 @@ CODE_BB9473:
 	LDA $051B			;$BB947F	 |
 	AND #$00FF			;$BB9482	 |
 	ORA #$0500			;$BB9485	 |
-	JSL CODE_B5800F			;$BB9488	 |
+	JSL play_song_with_transition	;$BB9488	 |
 	RTS				;$BB948C	/
 
 CODE_BB948D:
@@ -8291,7 +8291,7 @@ CODE_BBC34A:
 
 CODE_BBC35E:
 	LDA #$0001			;$BBC35E	\
-	JSL CODE_B58018			;$BBC361	 |
+	JSL transition_song		;$BBC361	 |
 	JMP CODE_BBC150			;$BBC365	/
 
 CODE_BBC368:

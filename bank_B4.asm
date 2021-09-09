@@ -239,14 +239,14 @@ CODE_B48203:
 	CMP current_song		;$B48206	 |
 	BEQ CODE_B4821B			;$B48208	 |
 CODE_B4820A:				;		 |
-	JSL CODE_B5800C			;$B4820A	 |
+	JSL play_song			;$B4820A	 |
 	BRA CODE_B4821B			;$B4820E	/
 
 CODE_B48210:
 	LDA #$0008			;$B48210	\
 	CMP current_song		;$B48213	 |
 	BEQ CODE_B4821B			;$B48215	 |
-	JSL CODE_B5800C			;$B48217	 |
+	JSL play_song			;$B48217	 |
 CODE_B4821B:				;		 |
 	PHB				;$B4821B	 |
 	PHK				;$B4821C	 |
@@ -1534,7 +1534,7 @@ CODE_B48C9D:
 	JSL CODE_B4BE2F			;$B48CDD	 |
 	LDY $0689			;$B48CE1	 |
 	LDA DATA_B4CD5B,y		;$B48CE4	 |
-	JSL CODE_B5800C			;$B48CE7	 |
+	JSL play_song			;$B48CE7	 |
 	LDY $0689			;$B48CEB	 |
 	LDX DATA_B4CD51,y		;$B48CEE	 |
 	LDA $0010,x			;$B48CF1	 |
@@ -3011,7 +3011,7 @@ CODE_B49A20:
 	AND #$F7FF			;$B49A23	 |
 	STA $06A1			;$B49A26	 |
 	LDA #$0633			;$B49A29	 |
-	JSL CODE_B58003			;$B49A2C	 |
+	JSL queue_sound_effect		;$B49A2C	 |
 	LDA $0654			;$B49A30	 |
 	CLC				;$B49A33	 |
 	ADC $06BB			;$B49A34	 |
@@ -3039,7 +3039,7 @@ CODE_B49A5A:
 	AND #$F7FF			;$B49A5D	 |
 	STA $06A1			;$B49A60	 |
 	LDA #$0633			;$B49A63	 |
-	JSL CODE_B58003			;$B49A66	 |
+	JSL queue_sound_effect		;$B49A66	 |
 	LDA $0654			;$B49A6A	 |
 	CLC				;$B49A6D	 |
 	ADC $06BB			;$B49A6E	 |
@@ -3385,7 +3385,7 @@ CODE_B49D1C:				;		 |
 	STA $065C			;$B49D1C	 |
 	JSR CODE_B49AFC			;$B49D1F	 |
 	LDA #$065F			;$B49D22	 |
-	JSL CODE_B58003			;$B49D25	 |
+	JSL queue_sound_effect		;$B49D25	 |
 	LDA $06A1			;$B49D29	 |
 	AND #$FDFF			;$B49D2C	 |
 	STA $06A1			;$B49D2F	 |
@@ -3406,7 +3406,7 @@ CODE_B49D40:				;		 |
 CODE_B49D4F:
 	PHA				;$B49D4F	\
 	LDA #$0634			;$B49D50	 |
-	JSL CODE_B58003			;$B49D53	 |
+	JSL queue_sound_effect		;$B49D53	 |
 	PLA				;$B49D57	 |
 	TAY				;$B49D58	 |
 	SEP #$10			;$B49D59	 |
@@ -4360,7 +4360,7 @@ CODE_B4A533:				;		 |
 
 CODE_B4A549:
 	LDA #$0633			;$B4A549	\
-	JSL CODE_B58003			;$B4A54C	 |
+	JSL queue_sound_effect		;$B4A54C	 |
 	LDA $06A1			;$B4A550	 |
 	AND #$F7FF			;$B4A553	 |
 	STA $06A1			;$B4A556	 |
@@ -4439,7 +4439,7 @@ CODE_B4A5E7:
 	CMP $066C			;$B4A604	 |
 	BNE CODE_B4A639			;$B4A607	 |
 	LDA #$0634			;$B4A609	 |
-	JSL CODE_B58003			;$B4A60C	 |
+	JSL queue_sound_effect		;$B4A60C	 |
 	LDA $079E			;$B4A610	 |
 	AND #$00FF			;$B4A613	 |
 	DEC A				;$B4A616	 |
@@ -4463,7 +4463,7 @@ CODE_B4A637:				;		 |
 
 CODE_B4A639:
 	LDA #$065F			;$B4A639	\
-	JSL CODE_B58003			;$B4A63C	 |
+	JSL queue_sound_effect		;$B4A63C	 |
 	LDX #$0100			;$B4A640	 |
 	LDA $0617			;$B4A643	 |
 	BEQ CODE_B4A64B			;$B4A646	 |
@@ -7476,7 +7476,7 @@ CODE_B4BEEF:
 	CMP #CODE_B491C5		;$B4BF2E	 |
 	BEQ CODE_B4BF3A			;$B4BF31	 |
 	LDA #$0019			;$B4BF33	 |
-	JSL CODE_B5800C			;$B4BF36	 |
+	JSL play_song			;$B4BF36	 |
 CODE_B4BF3A:				;		 |
 	JSL disable_screen		;$B4BF3A	 |
 	JSL clear_VRAM_wrapper		;$B4BF3E	 |

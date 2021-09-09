@@ -1,323 +1,323 @@
-upload_spc_engine_entry:
-	JMP upload_spc_engine_wrapper	;$B58000	 |
+upload_spc_engine:
+	JMP .upload_spc_engine_wrapper	;$B58000	 |
 
-CODE_B58003:
-	JMP CODE_B58030			;$B58003	 |
+#queue_sound_effect:
+	JMP .queue_sound_effect		;$B58003	 |
 
-set_song_simple_entry:
-	JMP set_song_simple		;$B58006	 |
+#queue_song:
+	JMP .queue_song			;$B58006	 |
 
-play_queued_song_entry:
-	JMP play_queued_song		;$B58009	 |
+#play_queued_song:
+	JMP .play_queued_song		;$B58009	 |
 
-CODE_B5800C:
-	JMP CODE_B58106			;$B5800C	 |
+#play_song:
+	JMP .play_song			;$B5800C	 |
 
-CODE_B5800F:
-	JMP CODE_B58132			;$B5800F	 |
+#play_song_with_transition:
+	JMP .play_song_with_transition	;$B5800F	 |
 
-CODE_B58012:
-	JMP CODE_B581CE			;$B58012	 |
+#CODE_B58012:
+	JMP .CODE_B581CE		;$B58012	 |
 
-null_spc_command_entry:
-	JMP null_spc_command		;$B58015	 |
+#null_spc_command:
+	JMP .null_spc_command		;$B58015	 |
 
-CODE_B58018:
-	JMP CODE_B581DB			;$B58018	 |
+#transition_song:
+	JMP .transition_song		;$B58018	 |
 
-CODE_B5801B:
-	JMP CODE_B581C2			;$B5801B	 |
+#CODE_B5801B:
+	JMP .CODE_B581C2		;$B5801B	 |
 
-CODE_B5801E:
-	JMP CODE_B58053			;$B5801E	 |
+#play_queued_sound_effect:
+	JMP .play_queued_sound_effect	;$B5801E	 |
 
-CODE_B58021:
-	JMP CODE_B580A9			;$B58021	 |
+#play_high_priority_sound:
+	JMP .play_high_priority_sound	;$B58021	 |
 
-CODE_B58024:
+.unused_play_sound_effect
 	PHB				;$B58024	\
-	PHK				;$B58025	 |
-	PLB				;$B58026	 |
-	ORA #$0500			;$B58027	 |
-	TAX				;$B5802A	 |
-	JSR write_spc_command		;$B5802B	 |
+	PHK				;$B58025	 |\ Use current databank
+	PLB				;$B58026	 |/
+	ORA #$0500			;$B58027	 |\ Play sound effect on channel 5
+	TAX				;$B5802A	 | |
+	JSR .write_spc_command		;$B5802B	 |/
 	PLB				;$B5802E	 |
 	RTL				;$B5802F	/
 
-CODE_B58030:
+.queue_sound_effect
 	PHB				;$B58030	\
-	PHY				;$B58031	 |
-	PHK				;$B58032	 |
-	PLB				;$B58033	 |
-	LDX $0634			;$B58034	 |
-	CMP $0622,x			;$B58037	 |
-	BEQ CODE_B58050			;$B5803A	 |
-	TAY				;$B5803C	 |
-	INX				;$B5803D	 |
-	INX				;$B5803E	 |
-	TXA				;$B5803F	 |
-	AND #$000E			;$B58040	 |
-	TAX				;$B58043	 |
-	LDA $0622,x			;$B58044	 |
-	BNE CODE_B58050			;$B58047	 |
-	TYA				;$B58049	 |
-	STA $0622,x			;$B5804A	 |
-	STX $0634			;$B5804D	 |
-CODE_B58050:				;		 |
-	PLY				;$B58050	 |
-	PLB				;$B58051	 |
+	PHY				;$B58031	 | Preserve Y (routine will only clobber A/X)
+	PHK				;$B58032	 |\ Use current databank
+	PLB				;$B58033	 |/
+	LDX $0634			;$B58034	 |\ If the current slot already has same the sound effect
+	CMP $0622,x			;$B58037	 | |
+	BEQ ..return			;$B5803A	 |/ skip adding it to the queue
+	TAY				;$B5803C	 | Preserve the sournd effect
+	INX				;$B5803D	 |\ Increment write ring index the next buffer slot
+	INX				;$B5803E	 | |
+	TXA				;$B5803F	 | |
+	AND #$000E			;$B58040	 | |
+	TAX				;$B58043	 |/
+	LDA $0622,x			;$B58044	 |\ If the slot is not empty, return -- buffer is full
+	BNE ..return			;$B58047	 |/
+	TYA				;$B58049	 | Restore the sound effect
+	STA $0622,x			;$B5804A	 | Write sound effect to the buffer
+	STX $0634			;$B5804D	 | Write new ring buffer index
+..return				;		 |
+	PLY				;$B58050	 |\ Restore Y and databank
+	PLB				;$B58051	 |/
 	RTL				;$B58052	/
 
-CODE_B58053:
+.play_queued_sound_effect
 	PHB				;$B58053	\
-	PHK				;$B58054	 |
-	PLB				;$B58055	 |
-	LDA global_frame_counter	;$B58056	 |
-	CMP $0636			;$B58058	 |
-	BEQ CODE_B58086			;$B5805B	 |
-	LDX $0632			;$B5805D	 |
-	LDA $0622,x			;$B58060	 |
-	BEQ CODE_B58086			;$B58063	 |
-	STZ $0622,x			;$B58065	 |
-	BMI CODE_B5806F			;$B58068	 |
-	JSR CODE_B58088			;$B5806A	 |
-	BRA CODE_B58076			;$B5806D	/
+	PHK				;$B58054	 |\ Use current databank
+	PLB				;$B58055	 |/
+	LDA global_frame_counter	;$B58056	 |\ If a sound effect was already uploaded this frame
+	CMP $0636			;$B58058	 | |
+	BEQ ..return			;$B5805B	 |/ return -- one effect per frame
+	LDX $0632			;$B5805D	 |\ If the sound effect slot is empty
+	LDA $0622,x			;$B58060	 | |
+	BEQ ..return			;$B58063	 |/ return -- nothing to do
+	STZ $0622,x			;$B58065	 | Clear slot after it is loaded
+	BMI ..upgrade_sound_priority	;$B58068	 | If the MSB is set, the sound effect is high priority
+	JSR .play_low_priority_sound	;$B5806A	 | If the MSB was clear, handle the sound effect as low priority
+	BRA ..increment_queue		;$B5806D	/ increment the sound effect read ring buffer index
 
-CODE_B5806F:
-	AND #$7FFF			;$B5806F	\
-	JSL CODE_B580A9			;$B58072	 |
-CODE_B58076:				;		 |
-	LDA $0632			;$B58076	 |
-	INC A				;$B58079	 |
-	INC A				;$B5807A	 |
-	AND #$000E			;$B5807B	 |
-	STA $0632			;$B5807E	 |
-	LDA global_frame_counter	;$B58081	 |
-	STA $0636			;$B58083	 |
-CODE_B58086:				;		 |
-	PLB				;$B58086	 |
+..upgrade_sound_priority
+	AND #$7FFF			;$B5806F	\ Mask off MSB to get the true sound effect value
+	JSL .play_high_priority_sound	;$B58072	 | Play the sound effect
+..increment_queue			;		 |
+	LDA $0632			;$B58076	 |\ Increment the read ring buffer index
+	INC A				;$B58079	 | |
+	INC A				;$B5807A	 | |
+	AND #$000E			;$B5807B	 | |
+	STA $0632			;$B5807E	 |/
+	LDA global_frame_counter	;$B58081	 |\ Write the frame of the last sound effect upload
+	STA $0636			;$B58083	 |/
+..return				;		 |
+	PLB				;$B58086	 | restore data bank
 	RTL				;$B58087	/
 
-CODE_B58088:
-	SEP #$30			;$B58088	\
-	XBA				;$B5808A	 |
-	TAX				;$B5808B	 |
-	LDA $0621			;$B5808C	 |
-	BIT DATA_B580CD,x		;$B5808F	 |
-	BNE CODE_B5809F			;$B58092	 |
-CODE_B58094:				;		 |
-	TXA				;$B58094	 |
-	XBA				;$B58095	 |
-	STA $0619,x			;$B58096	 |
-	REP #$30			;$B58099	 |
-	TAX				;$B5809B	 |
-	JMP write_spc_command		;$B5809C	/
+.play_low_priority_sound
+	SEP #$30			;$B58088	\ Enter 8 bit mode (to split sound effect and channel)
+	XBA				;$B5808A	 |\ Check if the target channel is already being used
+	TAX				;$B5808B	 | |
+	LDA $0621			;$B5808C	 | |
+	BIT .index_to_bit,x		;$B5808F	 | |
+	BNE .test_sound_backup_channel	;$B58092	 |/ If so, check if the backup channel is free
+.write_low_priority_sound		;		 |
+	TXA				;$B58094	 |\ Since the channel is free, write effect id to channel buffer
+	XBA				;$B58095	 | |
+	STA $0619,x			;$B58096	 |/
+	REP #$30			;$B58099	 |\ Return to 16 bit mode
+	TAX				;$B5809B	 |/
+	JMP .write_spc_command		;$B5809C	/ Transfer the sound effect to the SPC700
 
-CODE_B5809F:
-	LDX #$04			;$B5809F	\
-	BIT DATA_B580CD,x		;$B580A1	 |
-	BEQ CODE_B58094			;$B580A4	 |
-	REP #$30			;$B580A6	 |
+.test_sound_backup_channel		;		\
+	LDX #$04			;$B5809F	 |\ If the original channel was full, try channel 4 instead
+	BIT .index_to_bit,x		;$B580A1	 | |
+	BEQ .write_low_priority_sound	;$B580A4	 |/
+	REP #$30			;$B580A6	 | Otherwise restore 16  bit mode and return -- no slots left
 	RTS				;$B580A8	/
 
-CODE_B580A9:
-	SEP #$30			;$B580A9	\
-	XBA				;$B580AB	 |
-	AND #$0F			;$B580AC	 |
-	TAX				;$B580AE	 |
-	XBA				;$B580AF	 |
-	STA $0619,x			;$B580B0	 |
-	BEQ CODE_B580BD			;$B580B3	 |
-	LDA DATA_B580CD,x		;$B580B5	 |
-	TSB $0621			;$B580B8	 |
-	BRA CODE_B580C3			;$B580BB	/
+.play_high_priority_sound
+	SEP #$30			;$B580A9	\ Enter 8 bit mode (to split sound effect and channel)
+	XBA				;$B580AB	 |\ Get the sound effect channel
+	AND #$0F			;$B580AC	 | |
+	TAX				;$B580AE	 |/
+	XBA				;$B580AF	 |\ Write the sound effect id to the channel buffer
+	STA $0619,x			;$B580B0	 |/
+	BEQ .reset_channel		;$B580B3	 | Branch if the slot was empty
+	LDA .index_to_bit,x		;$B580B5	 |\ Mark the channel as used
+	TSB $0621			;$B580B8	 |/
+	BRA .write_sound		;$B580BB	/ skip marking the slot empty
 
-CODE_B580BD:
-	LDA DATA_B580CD,x		;$B580BD	\
-	TRB $0621			;$B580C0	 |
-CODE_B580C3:				;		 |
-	LDA $0619,x			;$B580C3	 |
-	REP #$30			;$B580C6	 |
-	TAX				;$B580C8	 |
-	JSR write_spc_command		;$B580C9	 |
+.reset_channel				;		\
+	LDA .index_to_bit,x		;$B580BD	 |\ Since the slot was empty mark the channel as empty
+	TRB $0621			;$B580C0	 |/
+.write_sound				;		 |
+	LDA $0619,x			;$B580C3	 |\ Write the sound effect to the SPC700
+	REP #$30			;$B580C6	 | |
+	TAX				;$B580C8	 | |
+	JSR .write_spc_command		;$B580C9	 |/
 	RTL				;$B580CC	/
 
-DATA_B580CD:
+.index_to_bit
 	db $01, $02, $04, $08, $10, $20, $40, $80
 
-set_song_simple:
+.queue_song
 	PHB				;$B580D5	\
-	PHK				;$B580D6	 |
-	PLB				;$B580D7	 |
-	STA current_song		;$B580D8	 |
-	LDX #$00FF			;$B580DA	 |
-	JSR write_spc_command		;$B580DD	 |
-	JSR upload_song_sample_set	;$B580E0	 |
-	JSR upload_song_data		;$B580E3	 |
-	JSR upload_song_sound_effects	;$B580E6	 |
-	JSR execute_spc_sound_engine	;$B580E9	 |
+	PHK				;$B580D6	 |\ Use current databank
+	PLB				;$B580D7	 |/
+	STA current_song		;$B580D8	 | Set the active song
+	LDX #$00FF			;$B580DA	 |\ Place SPC engine into upload mode
+	JSR .write_spc_command		;$B580DD	 |/
+	JSR .upload_song_sample_set	;$B580E0	 |\ Upload song data, sound effects, and samples
+	JSR .upload_song_data		;$B580E3	 | |
+	JSR .upload_song_sound_effects	;$B580E6	 |/
+	JSR .execute_spc_sound_engine	;$B580E9	 | Resume the SPC engine main loop
 	PLB				;$B580EC	 |
 	RTL				;$B580ED	/
 
-play_queued_song:			;		\
+.play_queued_song			;		\
 	PHB				;$B580EE	 |\ Change to current databank
 	PHK				;$B580EF	 | |
 	PLB				;$B580F0	 |/
-	JSR clear_sound_buffers		;$B580F1	 |
+	JSR .clear_sound_buffers	;$B580F1	 |
 	LDX #$00FE			;$B580F4	 |\ Tell the SPC engine to start playing music
-	JSR write_spc_command		;$B580F7	 |/
+	JSR .write_spc_command		;$B580F7	 |/
 	LDA stereo_select		;$B580FA	 |\ Write mono or stereo setting to SPC engine
 	XBA				;$B580FC	 | |
 	ORA #$00FA			;$B580FD	 | |
 	TAX				;$B58100	 | |
-	JSR write_spc_command		;$B58101	 |/
+	JSR .write_spc_command		;$B58101	 |/
 	PLB				;$B58104	 | Restore databank
 	RTL				;$B58105	/
 
-CODE_B58106:
+.play_song
 	PHB				;$B58106	\
-	PHK				;$B58107	 |
-	PLB				;$B58108	 |
-	STA current_song		;$B58109	 |
-	LDX #$00FF			;$B5810B	 |
-	JSR write_spc_command		;$B5810E	 |
-	JSR upload_song_sample_set	;$B58111	 |
-	JSR upload_song_data		;$B58114	 |
-	JSR upload_song_sound_effects	;$B58117	 |
-	JSR clear_sound_buffers		;$B5811A	 |
-	JSR execute_spc_sound_engine	;$B5811D	 |
+	PHK				;$B58107	 |\ Use current databank
+	PLB				;$B58108	 |/
+	STA current_song		;$B58109	 | Set the active song
+	LDX #$00FF			;$B5810B	 |\ Place SPC engine into upload mode
+	JSR .write_spc_command		;$B5810E	 |/
+	JSR .upload_song_sample_set	;$B58111	 |\ Upload song data, sound effects, and samples
+	JSR .upload_song_data		;$B58114	 | |
+	JSR .upload_song_sound_effects	;$B58117	 |/
+	JSR .clear_sound_buffers	;$B5811A	 | Clear the sound effect ring buffers
+	JSR .execute_spc_sound_engine	;$B5811D	 | Resume the SPC main loop
 	LDX #$00FE			;$B58120	 |\ Tell the SPC engine to start playing music
-	JSR write_spc_command		;$B58123	 |/
+	JSR .write_spc_command		;$B58123	 |/
 	LDA stereo_select		;$B58126	 |\ Write mono or stereo setting to SPC engine
 	XBA				;$B58128	 | |
 	ORA #$00FA			;$B58129	 | |
 	TAX				;$B5812C	 | |
-	JSR write_spc_command		;$B5812D	 |/
+	JSR .write_spc_command		;$B5812D	 |/
 	PLB				;$B58130	 | Restore databank
 	RTL				;$B58131	/
 
-CODE_B58132:
+.play_song_with_transition
 	PHB				;$B58132	\
-	PHK				;$B58133	 |
-	PLB				;$B58134	 |
-	PHA				;$B58135	 |
-	AND #$00FF			;$B58136	 |
-	STA current_song		;$B58139	 |
-	LDX #$00FF			;$B5813B	 |
-	JSR write_spc_command		;$B5813E	 |
-	JSR upload_song_sample_set	;$B58141	 |
-	JSR upload_song_data		;$B58144	 |
-	JSR upload_song_sound_effects	;$B58147	 |
-	JSR clear_sound_buffers		;$B5814A	 |
-	JSR execute_spc_sound_engine	;$B5814D	 |
-	PLA				;$B58150	 |
-	AND #$FF00			;$B58151	 |
-	ORA #$00FB			;$B58154	 |
-	TAX				;$B58157	 |
-	JSR write_spc_command		;$B58158	 |
+	PHK				;$B58133	 |\ Use current databank
+	PLB				;$B58134	 |/
+	PHA				;$B58135	 | Preserve input (used to extract transition state later)
+	AND #$00FF			;$B58136	 |\ Set the active song (mask off transition state)
+	STA current_song		;$B58139	 |/
+	LDX #$00FF			;$B5813B	 |\ Place SPC engine into upload mode
+	JSR .write_spc_command		;$B5813E	 |/
+	JSR .upload_song_sample_set	;$B58141	 |\ Upload song data, sound effects, and samples
+	JSR .upload_song_data		;$B58144	 | |
+	JSR .upload_song_sound_effects	;$B58147	 |/
+	JSR .clear_sound_buffers	;$B5814A	 | Clear the sound effect ring buffers
+	JSR .execute_spc_sound_engine	;$B5814D	 | Resume the SPC main loop
+	PLA				;$B58150	 |\ Set initial transition state (from preserved input)
+	AND #$FF00			;$B58151	 | |
+	ORA #$00FB			;$B58154	 | |
+	TAX				;$B58157	 | |
+	JSR .write_spc_command		;$B58158	 |/
 	LDX #$00FE			;$B5815B	 |\ Tell the SPC engine to start playing music
-	JSR write_spc_command		;$B5815E	 |/
+	JSR .write_spc_command		;$B5815E	 |/
 	LDA stereo_select		;$B58161	 |\ Write mono or stereo setting to SPC engine
 	XBA				;$B58163	 | |
 	ORA #$00FA			;$B58164	 | |
 	TAX				;$B58167	 | |
-	JSR write_spc_command		;$B58168	 |/
+	JSR .write_spc_command		;$B58168	 |/
 	PLB				;$B5816B	 | Restore databank
 	RTL				;$B5816C	/
 
-clear_sound_buffers:
-	LDX #$0007			;$B5816D	\
-.clear_buffer_entry			;		 |
-if !version == 0			;		 |
-	STZ $0622,x			;$B58170	 |
-	STZ $062A,x			;$B58173	 |
-else					;		 |
-	STZ $0621,x			;$B58170	 |
-	STZ $0629,x			;$B58173	 |
-endif					;		 |
-	STZ $0619,x			;$B58176	 |
-	DEX				;$B58179	 |
-	DEX				;$B5817A	 |
-	BPL .clear_buffer_entry		;$B5817B	 |
-	STZ $0634			;$B5817D	 |
-	STZ $0636			;$B58180	 |
-	LDA #$0002			;$B58183	 |
-	STA $0632			;$B58186	 |
+.clear_sound_buffers
+	LDX #$0007			;$B5816D	\ Load number of slots to clear
+.clear_buffer_entry			;		 |\ Iterate and clear sound betters
+if !version == 0			;		 | |
+	STZ $0622,x			;$B58170	 | |\ Clear main ring buffer
+	STZ $062A,x			;$B58173	 | | |
+else					;		 | | |
+	STZ $0621,x			;$B58170	 | | |
+	STZ $0629,x			;$B58173	 | | |
+endif					;		 | |/
+	STZ $0619,x			;$B58176	 | | Clear the high priority buffer
+	DEX				;$B58179	 | |
+	DEX				;$B5817A	 | |
+	BPL .clear_buffer_entry		;$B5817B	 |/
+	STZ $0634			;$B5817D	 | Clear next buffer position
+	STZ $0636			;$B58180	 | Clear last upload frame
+	LDA #$0002			;$B58183	 |\ Reset next read position
+	STA $0632			;$B58186	 |/
 	STZ $19B0			;$B58189	 |
 	RTS				;$B5818C	/
 
-upload_spc_engine_wrapper:
-	JSR upload_spc_engine		;$B5818D	\ Wrapper around SPC engine upload routine
+.upload_spc_engine_wrapper
+	JSR .upload_spc_engine		;$B5818D	\ Wrapper around SPC engine upload routine
 	RTL				;$B58190	/
 
-upload_spc_engine:
-	JSR upload_spc_base_engine	;$B58191	\ Upload the core of the SPC engine
-	JSR upload_spc_sound_engine	;$B58194	 | Upload the sound processor of the SPC engine
-	JSR upload_global_samples	;$B58197	 |
+.upload_spc_engine
+	JSR .upload_spc_base_engine	;$B58191	\ Upload the core of the SPC engine
+	JSR .upload_spc_sound_engine	;$B58194	 | Upload the sound processor of the SPC engine
+	JSR .upload_global_samples	;$B58197	 |
 	LDA #sound_effect_data		;$B5819A	 |\ Load pointer to sound effect data
 	STA $32				;$B5819D	 | |
 	LDA.w #sound_effect_data>>16	;$B5819F	 | |
 	STA $34				;$B581A2	 |/
-	JSR upload_inline_spc_block	;$B581A4	 | Upload the sound effect data
-	JSR execute_spc_sound_engine	;$B581A7	 | Jump to the sound engine entry
+	JSR .upload_inline_spc_block	;$B581A4	 | Upload the sound effect data
+	JSR .execute_spc_sound_engine	;$B581A7	 | Jump to the sound engine entry
 	RTS				;$B581AA	/
 
 .dead_code
 	RTS				;$B581AB	> Dead code
 
-execute_spc_sound_engine:		;		\
+.execute_spc_sound_engine		;		\
 	LDA #$0672			;$B581AC	 |\ Load the sound engine entry point
 	STA $35				;$B581AF	 |/
 	STZ $37				;$B581B1	 | Zero size transfer means execute jump
-	JSR upload_spc_block		;$B581B3	 | Call the upload routine
+	JSR .upload_spc_block		;$B581B3	 | Call the upload routine
 	RTS				;$B581B6	/
 
-CODE_B581B7:
+.unused_spc_execute
 	LDA #$06E3			;$B581B7	\ Dead code, would crash SPC engine.
 	STA $35				;$B581BA	 |
 	STZ $37				;$B581BC	 |
-	JSR upload_spc_block		;$B581BE	 |
+	JSR .upload_spc_block		;$B581BE	 |
 	RTS				;$B581C1	/
 
-CODE_B581C2:
+.CODE_B581C2
 	AND #$00FF			;$B581C2	\
 	XBA				;$B581C5	 |
 	ORA #$00FC			;$B581C6	 |
 	TAX				;$B581C9	 |
-	JSR write_spc_command		;$B581CA	 |
+	JSR .write_spc_command		;$B581CA	 |
 	RTL				;$B581CD	/
 
-CODE_B581CE:
+.CODE_B581CE
 	AND #$00FF			;$B581CE	\
 	XBA				;$B581D1	 |
 	ORA #$00FD			;$B581D2	 |
 	TAX				;$B581D5	 |
-	JSR write_spc_command		;$B581D6	 |
+	JSR .write_spc_command		;$B581D6	 |
 	RTL				;$B581D9	/
 
-null_spc_command:
+.null_spc_command
 	RTL				;$B581DA	> Unused SPC command that does nothing
 
-CODE_B581DB:
+.transition_song
 	PHB				;$B581DB	\
-	PHK				;$B581DC	 |
-	PLB				;$B581DD	 |
-	AND #$00FF			;$B581DE	 |
-	XBA				;$B581E1	 |
-	ORA #$00FB			;$B581E2	 |
-	TAX				;$B581E5	 |
-	JSR write_spc_command		;$B581E6	 |
+	PHK				;$B581DC	 |\ Use current databank
+	PLB				;$B581DD	 |/
+	AND #$00FF			;$B581DE	 |\ Select transition
+	XBA				;$B581E1	 | |
+	ORA #$00FB			;$B581E2	 | |
+	TAX				;$B581E5	 | |
+	JSR .write_spc_command		;$B581E6	 |/
 	LDX #$00FE			;$B581E9	 |\ Tell the SPC engine to start playing music
-	JSR write_spc_command		;$B581EC	 |/
+	JSR .write_spc_command		;$B581EC	 |/
 	LDA stereo_select		;$B581EF	 |\ Write mono or stereo setting to SPC engine
 	XBA				;$B581F1	 | |
 	ORA #$00FA			;$B581F2	 | |
 	TAX				;$B581F5	 | |
-	JSR write_spc_command		;$B581F6	 |/
+	JSR .write_spc_command		;$B581F6	 |/
 	PLB				;$B581F9	 | Restore databank
 	RTL				;$B581FA	/
 
-write_spc_command:
+.write_spc_command
 	TXA				;$B581FB	\ Move the command into A
 	REP #$20			;$B581FC	 |\ Use index as 8 bit, with 16 bit accumulator
 	SEP #$10			;$B581FE	 |/
@@ -332,7 +332,7 @@ write_spc_command:
 	REP #$30			;$B58210	 |
 	RTS				;$B58212	/ Command upload finished
 
-upload_spc_base_engine:			;		\
+.upload_spc_base_engine			;		\
 	REP #$20			;$B58213	 |\ Use index as 8 bit, with 16 bit accumulator
 	SEP #$10			;$B58215	 |/
 	LDA #$BBAA			;$B58217	 | The IPL uses BBAA to indicate ready state
@@ -348,7 +348,7 @@ upload_spc_base_engine:			;		\
 	CPX APU.IO1			;$B5822C	 | |
 	BNE -				;$B5822F	 |/
 	LDX #$00			;$B58231	 | Initialize the transfer counter
-.next_byte				;		 |\
+..next_byte				;		 |\
 	LDA.l spc_base_engine,x		;$B58233	 | |\ Load and store the current engine byte
 	TAY				;$B58237	 | | |
 	STY APU.IO2			;$B58238	 | |/
@@ -358,7 +358,7 @@ upload_spc_base_engine:			;		\
 	BNE -				;$B58241	 | |/
 	INX				;$B58243	 | | Increment the counter
 	CPX #$88			;$B58244	 | | Compare against the engine size
-	BNE .next_byte			;$B58246	 |/ If we haven't hit the engine size, load the next byte
+	BNE ..next_byte			;$B58246	 |/ If we haven't hit the engine size, load the next byte
 	INX				;$B58248	 |\ Increment counter by two to end transfer
 	TXA				;$B58249	 | | Use A to write the counter for 16 bit (high byte = 00)
 	STA APU.IO1			;$B5824A	 |/ Since the high byte is 00, It will execute the uploaded code
@@ -371,7 +371,7 @@ upload_spc_base_engine:			;		\
 	REP #$30			;$B58259	 |
 	RTS				;$B5825B	/ All done, new SPC base engine set up.
 
-upload_song_data:
+.upload_song_data
 	LDA current_song		;$B5825C	\ Load currently set song
 	CLC				;$B5825E	 |\ Multiply song number by 6 to get an offset to song data
 	ROL A				;$B5825F	 | | Effectively (X << 1) + (X << 2)
@@ -384,10 +384,10 @@ upload_song_data:
 	STA $32				;$B5826B	 | |
 	LDA.l song_data+2,x		;$B5826D	 | |
 	STA $34				;$B58271	 |/
-	JSR upload_inline_spc_block	;$B58273	 | Upload song data
+	JSR .upload_inline_spc_block	;$B58273	 | Upload song data
 	RTS				;$B58276	/
 
-upload_song_sound_effects:		;		\
+.upload_song_sound_effects		;		\
 	LDA current_song		;$B58277	 |\ Triple song id
 	CLC				;$B58279	 | |
 	ADC current_song		;$B5827A	 | |
@@ -397,10 +397,10 @@ upload_song_sound_effects:		;		\
 	STA $32				;$B58283	 | |
 	LDA.l DATA_EE117D,x		;$B58285	 | |
 	STA $34				;$B58289	 |/
-	JSR upload_inline_spc_block	;$B5828B	 | Upload sound effect data
+	JSR .upload_inline_spc_block	;$B5828B	 | Upload sound effect data
 	RTS				;$B5828E	/
 
-upload_spc_sound_engine:
+.upload_spc_sound_engine
 	REP #$30			;$B5828F	\
 	LDA #spc_sound_engine		;$B58291	 |\ Load a pointer to SPC sound engine
 	STA $32				;$B58294	 | |
@@ -410,10 +410,10 @@ upload_spc_sound_engine:
 	STA $35				;$B5829E	 |/
 	LDA #$067F			;$B582A0	 |\ Set the number of words to transfer
 	STA $37				;$B582A3	 |/
-	JSR upload_spc_block		;$B582A5	 | Upload SPC block
+	JSR .upload_spc_block		;$B582A5	 | Upload SPC block
 	RTS				;$B582A8	/
 
-upload_global_samples:			;		\
+.upload_global_samples			;		\
 	LDA #global_sample_map		;$B582A9	 |\ Load the pointer to the global sample map
 	STA $0E				;$B582AC	 | |
 	LDA.w #global_sample_map>>16	;$B582AE	 | |
@@ -424,7 +424,7 @@ upload_global_samples:			;		\
 	LDA #$3400			;$B582BA	 |\ Sample data ARAM destination
 	STA $06				;$B582BD	 |/
 	STZ $0A				;$B582BF	 | Reset the sample counter
-	JSR sample_uploader		;$B582C1	 |
+	JSR .sample_uploader		;$B582C1	 |
 	LDA $02				;$B582C4	 |\ Set next pending source directory ARAM destination
 	STA $04				;$B582C6	 |/
 	LDA $06				;$B582C8	 |\ Set next pending sample data ARAM destination
@@ -433,7 +433,7 @@ upload_global_samples:			;		\
 	STA $0C				;$B582CE	 |/
 	RTS				;$B582D0	/
 
-sample_uploader:
+.sample_uploader
 	STZ $0A				;$B582D1	\ Reset the sample counter
 	LDX #$0000			;$B582D3	 |
 	LDA $0A				;$B582D6	 |\ Copy sample number (always zero in this case)
@@ -499,7 +499,7 @@ sample_uploader:
 	INC A				;$B58348	 | |
 	LSR A				;$B58349	 | |
 	STA $37				;$B5834A	 |/
-	JSR upload_spc_block		;$B5834C	 | Upload sample directory
+	JSR .upload_spc_block		;$B5834C	 | Upload sample directory
 	LDA #global_sample_map		;$B5834F	 |\ Load global sample map pointer
 	STA $3E				;$B58352	 | |
 	LDA.w #global_sample_map>>16	;$B58354	 | |
@@ -552,14 +552,14 @@ sample_uploader:
 	STA $35				;$B583AE	 |/
 	LDA #$0080			;$B583B0	 |\ Set transfer size to 128 words
 	STA $37				;$B583B3	 |/
-	JSR upload_spc_block		;$B583B5	 | Upload the source number table
+	JSR .upload_spc_block		;$B583B5	 | Upload the source number table
 .upload_samples				;		 |
 	LDA $44				;$B583B8	 |\ Load and copy the sample destination pointer
 	STA $06				;$B583BA	 |/
 .upload_next_sample			;		 |
 	LDA [$0E]			;$B583BC	 | Load the sample number
 	CMP #$FFFF			;$B583BE	 |\ Sample number FFFF implies end of table, branch and return
-	BEQ .return			;$B583C1	 |/
+	BEQ ..return			;$B583C1	 |/
 	INC $0E				;$B583C3	 |\ Increment sample map pointer
 	INC $0E				;$B583C5	 |/
 	STA $3C				;$B583C7	 |\ Triple sample number to index sample data pointer table
@@ -585,13 +585,13 @@ sample_uploader:
 	LSR $37				;$B583EF	 |/
 	INC $32				;$B583F1	 |\ Increment pointer so the sample data start is the next byte
 	INC $32				;$B583F3	 |/
-	JSR upload_spc_block		;$B583F5	 | Upload the sample data
+	JSR .upload_spc_block		;$B583F5	 | Upload the sample data
 	BRA .upload_next_sample		;$B583F8	/ Continue uploading samples
 
-.return
+..return
 	RTS				;$B583FA	> All done, no more samples.
 
-upload_inline_spc_block:		;		\
+.upload_inline_spc_block		;		\
 	LDA [$32]			;$B583FB	 |\ Load the destination ARAM address from the block
 	STA $35				;$B583FD	 |/
 	INC $32				;$B583FF	 |\ Increment the pointer
@@ -600,9 +600,9 @@ upload_inline_spc_block:		;		\
 	STA $37				;$B58405	 |/
 	INC $32				;$B58407	 |\ Increment the pointer
 	INC $32				;$B58409	 |/
-	BRA upload_spc_block		;$B5840B	/ Continue to the normal SPC block upload
+	BRA .upload_spc_block		;$B5840B	/ Continue to the normal SPC block upload
 
-upload_spc_block:
+.upload_spc_block
 	SEP #$10			;$B5840D	\ 16 bit A, with 8 bit index
 	LDX spc_transaction		;$B5840F	 | Load the last SPC transaction id
 -					;		 |\ Wait for the previous transaction id to be echoed
@@ -659,7 +659,7 @@ upload_spc_block:
 	LDY #$00			;$B58465	 | Reset the data index
 	BRA .wait_for_echo		;$B58467	/
 
-upload_song_sample_set:
+.upload_song_sample_set
 	LDA current_song		;$B58469	\ Load currently set song
 	CLC				;$B5846B	 |\ Multiply song number by 6 to song sample set offset
 	ROL A				;$B5846C	 | | Effectively (X << 1) + (X << 2)
@@ -678,7 +678,7 @@ upload_song_sample_set:
 	STA $06				;$B58486	 |/
 	LDA $0C				;$B58488	 |\ Set next pending sample number
 	STA $0A				;$B5848A	 |/
-	JSR sample_uploader		;$B5848C	 | Upload the samples
+	JSR .sample_uploader		;$B5848C	 | Upload the samples
 	RTS				;$B5848F	/
 
 DATA_B58490:
@@ -9516,31 +9516,31 @@ CODE_B5DCFF:
 	CMP #$00F0			;$B5DD01	 |
 	BNE CODE_B5DD0D			;$B5DD04	 |
 	LDA #$0716			;$B5DD06	 |
-	JSL CODE_B58003			;$B5DD09	 |
+	JSL queue_sound_effect		;$B5DD09	 |
 CODE_B5DD0D:				;		 |
 	LDA global_frame_counter	;$B5DD0D	 |
 	CMP #$0100			;$B5DD0F	 |
 	BNE CODE_B5DD1B			;$B5DD12	 |
 	LDA #$0716			;$B5DD14	 |
-	JSL CODE_B58003			;$B5DD17	 |
+	JSL queue_sound_effect		;$B5DD17	 |
 CODE_B5DD1B:				;		 |
 	LDA global_frame_counter	;$B5DD1B	 |
 	CMP #$0125			;$B5DD1D	 |
 	BNE CODE_B5DD29			;$B5DD20	 |
 	LDA #$0716			;$B5DD22	 |
-	JSL CODE_B58003			;$B5DD25	 |
+	JSL queue_sound_effect		;$B5DD25	 |
 CODE_B5DD29:				;		 |
 	LDA global_frame_counter	;$B5DD29	 |
 	CMP #$0130			;$B5DD2B	 |
 	BNE CODE_B5DD37			;$B5DD2E	 |
 	LDA #$0716			;$B5DD30	 |
-	JSL CODE_B58003			;$B5DD33	 |
+	JSL queue_sound_effect		;$B5DD33	 |
 CODE_B5DD37:				;		 |
 	LDA global_frame_counter	;$B5DD37	 |
 	CMP #$0160			;$B5DD39	 |
 	BNE CODE_B5DD45			;$B5DD3C	 |
 	LDA #$0716			;$B5DD3E	 |
-	JSL CODE_B58003			;$B5DD41	 |
+	JSL queue_sound_effect		;$B5DD41	 |
 CODE_B5DD45:				;		 |
 	LDA global_frame_counter	;$B5DD45	 |
 	CMP #$01A0			;$B5DD47	 |
@@ -9666,9 +9666,9 @@ CODE_B5DE28:
 	BCC CODE_B5DE8D			;$B5DE2D	 |
 	PHX				;$B5DE2F	 |
 	LDA #$055B			;$B5DE30	 |
-	JSL CODE_B58003			;$B5DE33	 |
+	JSL queue_sound_effect		;$B5DE33	 |
 	LDA #$065C			;$B5DE37	 |
-	JSL CODE_B58003			;$B5DE3A	 |
+	JSL queue_sound_effect		;$B5DE3A	 |
 	PLX				;$B5DE3E	 |
 	INC $08FE			;$B5DE3F	 |
 	LDA #$0000			;$B5DE42	 |
@@ -9684,7 +9684,7 @@ CODE_B5DE51:
 	BCC CODE_B5DE8D			;$B5DE56	 |
 	PHX				;$B5DE58	 |
 	LDA #$055A			;$B5DE59	 |
-	JSL CODE_B58021			;$B5DE5C	 |
+	JSL play_high_priority_sound	;$B5DE5C	 |
 	PLX				;$B5DE60	 |
 	INC $08FE			;$B5DE61	 |
 	LDA #$FF00			;$B5DE64	 |
@@ -9699,7 +9699,7 @@ CODE_B5DE70:
 	BCC CODE_B5DE8D			;$B5DE75	 |
 	PHX				;$B5DE77	 |
 	LDA #$055A			;$B5DE78	 |
-	JSL CODE_B58021			;$B5DE7B	 |
+	JSL play_high_priority_sound	;$B5DE7B	 |
 	PLX				;$B5DE7F	 |
 	INC $08FE			;$B5DE80	 |
 	LDA #$FF00			;$B5DE83	 |
@@ -13577,7 +13577,7 @@ CODE_B5F8A4:
 	PHA				;$B5F8A5	 |
 	REP #$10			;$B5F8A6	 |
 	LDA #$0608			;$B5F8A8	 |
-	JSL CODE_B58003			;$B5F8AB	 |
+	JSL queue_sound_effect		;$B5F8AB	 |
 	LDA.l $7FD734			;$B5F8AF	 |
 	SEP #$09			;$B5F8B3	 |
 	ADC $08BC			;$B5F8B5	 |
@@ -13665,7 +13665,7 @@ CODE_B5F945:				;		 |
 CODE_B5F94C:
 	STX $32				;$B5F94C	\
 	LDA #$0608			;$B5F94E	 |
-	JSL CODE_B58003			;$B5F951	 |
+	JSL queue_sound_effect		;$B5F951	 |
 	LDA #$003C			;$B5F955	 |
 	STA $096F			;$B5F958	 |
 	LDA.l $7FD632			;$B5F95B	 |

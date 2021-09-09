@@ -393,7 +393,7 @@ start_engine:				;		\
 	DEX				;$8085DC	 | |
 	DEX				;$8085DD	 | |
 	BPL .rare_string_copy		;$8085DE	 |/ Copy the string until there are no more bytes
-	JSL upload_spc_engine_entry	;$8085E0	 | Upload the SPC engine
+	JSL upload_spc_engine	;$8085E0	 | Upload the SPC engine
 restart_rareware_logo:			;		 |
 	JSL disable_screen		;$8085E4	 | Disable the screen
 	JSR clear_wram_reset		;$8085E8	 | Clear WRAM
@@ -966,13 +966,13 @@ CODE_808A8D:
 	LDA #$0040			;$808A8D	\
 	TSB $08C2			;$808A90	 |
 	LDA #$075E			;$808A93	 |
-	JSL CODE_B58021			;$808A96	 |
+	JSL play_high_priority_sound	;$808A96	 |
 	LDA #$065E			;$808A9A	 |
-	JSL CODE_B58021			;$808A9D	 |
+	JSL play_high_priority_sound	;$808A9D	 |
 	LDA #$055E			;$808AA1	 |
-	JSL CODE_B58021			;$808AA4	 |
+	JSL play_high_priority_sound	;$808AA4	 |
 	LDA #$045E			;$808AA8	 |
-	JSL CODE_B58021			;$808AAB	 |
+	JSL play_high_priority_sound	;$808AAB	 |
 	LDA global_frame_counter	;$808AAF	 |
 	STA $0636			;$808AB1	 |
 endif					;		 |
@@ -1004,13 +1004,13 @@ CODE_808AE6:
 
 CODE_808AED:
 	LDA #$075E			;$808AED	\
-	JSL CODE_B58021			;$808AF0	 |
+	JSL play_high_priority_sound	;$808AF0	 |
 	LDA #$065E			;$808AF4	 |
-	JSL CODE_B58021			;$808AF7	 |
+	JSL play_high_priority_sound	;$808AF7	 |
 	LDA #$055E			;$808AFB	 |
-	JSL CODE_B58021			;$808AFE	 |
+	JSL play_high_priority_sound	;$808AFE	 |
 	LDA #$045E			;$808B02	 |
-	JSL CODE_B58021			;$808B05	 |
+	JSL play_high_priority_sound	;$808B05	 |
 	LDA #$00FF			;$808B09	 |
 	TRB $0621			;$808B0C	 |
 	STZ $19B0			;$808B0F	 |
@@ -1046,7 +1046,7 @@ CODE_808B41:
 	BNE CODE_808B40			;$808B4F	 |
 	JSL disable_screen		;$808B51	 |
 	LDA #$0505			;$808B55	 |
-	JSL CODE_B58021			;$808B58	 |
+	JSL play_high_priority_sound	;$808B58	 |
 	LDA #$0000			;$808B5C	 |
 CODE_808B5F:				;		 |
 	JSR CODE_808B6F			;$808B5F	 |
@@ -1752,7 +1752,7 @@ init_rareware_logo:
 	LDA #$3765			;$8090EF	 | |
 	STA rng_seed_2			;$8090F2	 |/
 	LDA #$0011			;$8090F4	 |\ Load Intro fanfare sound
-	JSL set_song_simple_entry	;$8090F7	 |/
+	JSL queue_song		;$8090F7	 |/
 	SEP #$20			;$8090FB	 |
 	LDA #$01			;$8090FD	 |\ Enable auto polling
 	STA CPU.enable_interrupts	;$8090FF	 |/
@@ -2118,7 +2118,7 @@ CODE_8094A0:				;		 |
 	LDA global_frame_counter	;$8094E1	 |\ Check if this is the first frame of the logo
 	CMP #$0001			;$8094E3	 | |
 	BNE .song_already_playing	;$8094E6	 |/
-	JSL play_queued_song_entry	;$8094E8	 | And start playing music if it is the first frame
+	JSL play_queued_song	;$8094E8	 | And start playing music if it is the first frame
 .song_already_playing			;		 |
 	LDA global_frame_counter	;$8094EC	 |\ On the frame that mode 7 scaling ends initiate a copy
 	CMP #$00F0			;$8094EE	 | | of the yellow/gold logo palette
@@ -2719,16 +2719,16 @@ CODE_809A13:
 	STA $004200			;$809A2D	 |
 	REP #$20			;$809A31	 |
 	LDA #$0018			;$809A33	 |
-	JSL CODE_B5800F			;$809A36	 |
+	JSL play_song_with_transition	;$809A36	 |
 	STZ $84				;$809A3A	 |
 	DEC $060D			;$809A3C	 |
 	LDA #$0633			;$809A3F	 |
-	JSL CODE_B58021			;$809A42	 |
+	JSL play_high_priority_sound	;$809A42	 |
 	JMP CODE_8099A7			;$809A46	/
 
 CODE_809A49:
 	LDA #$0633			;$809A49	\
-	JSL CODE_B58021			;$809A4C	 |
+	JSL play_high_priority_sound	;$809A4C	 |
 	DEC $060D			;$809A50	 |
 CODE_809A53:				;		 |
 	LDA $0506			;$809A53	 |
@@ -2739,7 +2739,7 @@ CODE_809A53:				;		 |
 	BCS CODE_809A6F			;$809A61	 |
 	INC $060D			;$809A63	 |
 	LDA #$0633			;$809A66	 |
-	JSL CODE_B58021			;$809A69	 |
+	JSL play_high_priority_sound	;$809A69	 |
 	BRA CODE_809ADC			;$809A6D	/
 
 CODE_809A6F:
@@ -2778,16 +2778,16 @@ CODE_809A84:				;		 |
 	STA $004200			;$809AB6	 |
 	REP #$20			;$809ABA	 |
 	LDA #$0018			;$809ABC	 |
-	JSL CODE_B5800F			;$809ABF	 |
+	JSL play_song_with_transition	;$809ABF	 |
 	STZ $84				;$809AC3	 |
 	INC $060D			;$809AC5	 |
 	LDA #$0633			;$809AC8	 |
-	JSL CODE_B58021			;$809ACB	 |
+	JSL play_high_priority_sound	;$809ACB	 |
 	JMP CODE_8099A7			;$809ACF	/
 
 CODE_809AD2:
 	LDA #$0633			;$809AD2	\
-	JSL CODE_B58021			;$809AD5	 |
+	JSL play_high_priority_sound	;$809AD5	 |
 	INC $060D			;$809AD9	 |
 CODE_809ADC:				;		 |
 	LDX #$0000			;$809ADC	 |
@@ -2884,7 +2884,7 @@ CODE_809B82:				;		 |
 	CMP #$0010			;$809BA5	 |
 	BNE CODE_809BC2			;$809BA8	 |
 	LDA #$0505			;$809BAA	 |
-	JSL CODE_B58021			;$809BAD	 |
+	JSL play_high_priority_sound	;$809BAD	 |
 	LDA #$0001			;$809BB1	 |
 	TSB $060B			;$809BB4	 |
 	SEP #$20			;$809BB7	 |
@@ -2912,7 +2912,7 @@ CODE_809BC2:				;		 |
 	CMP #$0010			;$809BE5	 |
 	BNE CODE_809C02			;$809BE8	 |
 	LDA #$0505			;$809BEA	 |
-	JSL CODE_B58021			;$809BED	 |
+	JSL play_high_priority_sound	;$809BED	 |
 	LDA #$0002			;$809BF1	 |
 	TSB $060B			;$809BF4	 |
 	SEP #$20			;$809BF7	 |
@@ -2943,7 +2943,7 @@ CODE_809C02:				;		 |
 	LDA #$820F			;$809C2B	 |
 	STA $0512			;$809C2E	 |
 	LDA #$0634			;$809C31	 |
-	JSL CODE_B58021			;$809C34	 |
+	JSL play_high_priority_sound	;$809C34	 |
 CODE_809C38:				;		 |
 	JSL CODE_8088AB			;$809C38	 |
 	LDA $060D			;$809C3C	 |
@@ -2980,7 +2980,7 @@ CODE_809C6F:				;		 |
 	BNE CODE_809C83			;$809C7E	 |
 	LDA #$030F			;$809C80	 |
 CODE_809C83:				;		 |
-	JSL CODE_B5800F			;$809C83	 |
+	JSL play_song_with_transition	;$809C83	 |
 	JMP CODE_8099A7			;$809C87	/
 
 CODE_809C8A:
@@ -3265,7 +3265,7 @@ CODE_809FA2:				;		 |
 	CPX #$00D1			;$809FA5	 |
 	BNE CODE_809FA2			;$809FA8	 |
 	LDA #$0024			;$809FAA	 |
-	JSL CODE_B5800C			;$809FAD	 |
+	JSL play_song			;$809FAD	 |
 	LDA #$AA55			;$809FB1	 |
 	STA rng_result			;$809FB4	 |
 	LDA #$FFFF			;$809FB6	 |
@@ -3606,9 +3606,9 @@ CODE_80A35B:
 	BNE CODE_80A375			;$80A365	 |
 CODE_80A367:				;		 |
 	LDA #$056F			;$80A367	 |
-	JSL CODE_B58021			;$80A36A	 |
+	JSL play_high_priority_sound	;$80A36A	 |
 	LDA #$0670			;$80A36E	 |
-	JSL CODE_B58021			;$80A371	 |
+	JSL play_high_priority_sound	;$80A371	 |
 CODE_80A375:				;		 |
 	LDA global_frame_counter	;$80A375	 |
 	SEC				;$80A377	 |
@@ -3637,17 +3637,17 @@ CODE_80A399:				;		 |
 	BNE CODE_80A3BA			;$80A3AA	 |
 CODE_80A3AC:				;		 |
 	LDA #$0515			;$80A3AC	 |
-	JSL CODE_B58021			;$80A3AF	 |
+	JSL play_high_priority_sound	;$80A3AF	 |
 	LDA #$0619			;$80A3B3	 |
-	JSL CODE_B58021			;$80A3B6	 |
+	JSL play_high_priority_sound	;$80A3B6	 |
 CODE_80A3BA:				;		 |
 	LDA global_frame_counter	;$80A3BA	 |
 	CMP #$00B2			;$80A3BC	 |
 	BNE CODE_80A3CF			;$80A3BF	 |
 	LDA #$0771			;$80A3C1	 |
-	JSL CODE_B58021			;$80A3C4	 |
+	JSL play_high_priority_sound	;$80A3C4	 |
 	LDA #$0472			;$80A3C8	 |
-	JSL CODE_B58021			;$80A3CB	 |
+	JSL play_high_priority_sound	;$80A3CB	 |
 CODE_80A3CF:				;		 |
 	LDA global_frame_counter	;$80A3CF	 |
 	BIT #$000F			;$80A3D1	 |
@@ -3761,9 +3761,9 @@ CODE_80A4B7:
 	CMP #$0340			;$80A4B9	 |
 	BNE CODE_80A4CC			;$80A4BC	 |
 	LDA #$0675			;$80A4BE	 |
-	JSL CODE_B58021			;$80A4C1	 |
+	JSL play_high_priority_sound	;$80A4C1	 |
 	LDA #$0776			;$80A4C5	 |
-	JSL CODE_B58021			;$80A4C8	 |
+	JSL play_high_priority_sound	;$80A4C8	 |
 CODE_80A4CC:				;		 |
 	LDA global_frame_counter	;$80A4CC	 |
 	SEC				;$80A4CE	 |
@@ -3876,9 +3876,9 @@ CODE_80A57F:				;		 |
 	CMP #$0000			;$80A591	 |
 	BEQ CODE_80A5C2			;$80A594	 |
 	LDA #$0700			;$80A596	 |
-	JSL CODE_B58021			;$80A599	 |
+	JSL play_high_priority_sound	;$80A599	 |
 	LDA #$0400			;$80A59D	 |
-	JSL CODE_B58021			;$80A5A0	 |
+	JSL play_high_priority_sound	;$80A5A0	 |
 	BRA CODE_80A5C2			;$80A5A4	/
 
 CODE_80A5A6:
@@ -3889,9 +3889,9 @@ CODE_80A5A6:
 	CMP #$0000			;$80A5AF	 |
 	BNE CODE_80A5C2			;$80A5B2	 |
 	LDA #$0773			;$80A5B4	 |
-	JSL CODE_B58021			;$80A5B7	 |
+	JSL play_high_priority_sound	;$80A5B7	 |
 	LDA #$0474			;$80A5BB	 |
-	JSL CODE_B58021			;$80A5BE	 |
+	JSL play_high_priority_sound	;$80A5BE	 |
 CODE_80A5C2:				;		 |
 	RTS				;$80A5C2	/
 
@@ -3932,7 +3932,7 @@ CODE_80A5F1:
 	JSL CODE_808E6A			;$80A5FE	 |
 	JSL CODE_8088AB			;$80A602	 |
 	LDA #$0018			;$80A606	 |
-	JSL CODE_B5800C			;$80A609	 |
+	JSL play_song			;$80A609	 |
 	LDA $0613			;$80A60D	 |
 	BEQ CODE_80A65D			;$80A610	 |
 	LDA $0611			;$80A612	 |
@@ -4325,7 +4325,7 @@ CODE_80A9CC:				;		 |
 	BEQ CODE_80A9DE			;$80A9D2	 |
 	STA $0611			;$80A9D4	 |
 	LDA #$0633			;$80A9D7	 |
-	JSL CODE_B58021			;$80A9DA	 |
+	JSL play_high_priority_sound	;$80A9DA	 |
 CODE_80A9DE:				;		 |
 	LDA $0613			;$80A9DE	 |
 	BIT #$000A			;$80A9E1	 |
@@ -4433,7 +4433,7 @@ CODE_80AA97:
 
 CODE_80AAB8:
 	LDA #$0634			;$80AAB8	\
-	JSL CODE_B58021			;$80AABB	 |
+	JSL play_high_priority_sound	;$80AABB	 |
 	LDA $0617			;$80AABF	 |
 	EOR #$0001			;$80AAC2	 |
 	STA $0617			;$80AAC5	 |
@@ -4443,7 +4443,7 @@ CODE_80AAB8:
 
 CODE_80AAD1:
 	LDA #$0634			;$80AAD1	\
-	JSL CODE_B58021			;$80AAD4	 |
+	JSL play_high_priority_sound	;$80AAD4	 |
 	LDA stereo_select		;$80AAD8	 |
 	EOR #$0001			;$80AADA	 |
 	STA stereo_select		;$80AADD	 |
@@ -4455,7 +4455,7 @@ CODE_80AAE7:
 	LDA #$0010			;$80AAE7	\
 	TSB $0613			;$80AAEA	 |
 	LDA #$0634			;$80AAED	 |
-	JSL CODE_B58021			;$80AAF0	 |
+	JSL play_high_priority_sound	;$80AAF0	 |
 	LDA $0611			;$80AAF4	 |
 	STA $0615			;$80AAF7	 |
 	BRA CODE_80AB58			;$80AAFA	/
@@ -4464,13 +4464,13 @@ CODE_80AAFC:
 	BIT #$0002			;$80AAFC	\
 	BEQ CODE_80AB2C			;$80AAFF	 |
 	LDA #$0634			;$80AB01	 |
-	JSL CODE_B58021			;$80AB04	 |
+	JSL play_high_priority_sound	;$80AB04	 |
 	JSR CODE_80AB7B			;$80AB08	 |
 	BRA CODE_80AB58			;$80AB0B	/
 
 CODE_80AB0D:
 	LDA #$0634			;$80AB0D	\
-	JSL CODE_B58021			;$80AB10	 |
+	JSL play_high_priority_sound	;$80AB10	 |
 	LDA $0613			;$80AB14	 |
 	BIT #$0008			;$80AB17	 |
 	BEQ CODE_80AB24			;$80AB1A	 |
@@ -4485,14 +4485,14 @@ CODE_80AB24:
 
 CODE_80AB2C:
 	LDA #$0634			;$80AB2C	\
-	JSL CODE_B58021			;$80AB2F	 |
+	JSL play_high_priority_sound	;$80AB2F	 |
 	LDA #$820F			;$80AB33	 |
 	STA $0512			;$80AB36	 |
 	BRA CODE_80AB58			;$80AB39	/
 
 CODE_80AB3B:
 	LDA #$0634			;$80AB3B	\
-	JSL CODE_B58021			;$80AB3E	 |
+	JSL play_high_priority_sound	;$80AB3E	 |
 	LDA $0613			;$80AB42	 |
 	BIT #$0002			;$80AB45	 |
 	BEQ CODE_80AB52			;$80AB48	 |
@@ -4547,7 +4547,7 @@ CODE_80ABA0:
 	JSL CODE_BBC53A			;$80ABA3	 |
 	BCS CODE_80ABE7			;$80ABA7	 |
 	LDA #$0634			;$80ABA9	 |
-	JSL CODE_B58021			;$80ABAC	 |
+	JSL play_high_priority_sound	;$80ABAC	 |
 	LDA $0611			;$80ABB0	 |
 	ASL A				;$80ABB3	 |
 	TAX				;$80ABB4	 |
@@ -5458,7 +5458,7 @@ CODE_80B3D7:
 	JSL CODE_8088D2			;$80B3EA	 |
 	JSL CODE_BB91F7			;$80B3EE	 |
 	LDA #$0002			;$80B3F2	 |
-	JSL CODE_B5800C			;$80B3F5	 |
+	JSL play_song			;$80B3F5	 |
 	STZ global_frame_counter	;$80B3F9	 |
 	JSR CODE_80B560			;$80B3FB	 |
 	LDA #$55AA			;$80B3FE	 |
@@ -5601,7 +5601,7 @@ CODE_80B532:				;		 |
 	LDA #$840F			;$80B532	 |
 	JSR CODE_808C32			;$80B535	 |
 	LDA #$0634			;$80B538	 |
-	JSL CODE_B58021			;$80B53B	 |
+	JSL play_high_priority_sound	;$80B53B	 |
 CODE_80B53F:				;		 |
 	LDA $0512			;$80B53F	 |
 	CMP #$8401			;$80B542	 |
@@ -9049,7 +9049,7 @@ CODE_80D4B7:
 	LDY #$0018			;$80D4CE	 |
 	JSL CODE_BB842C			;$80D4D1	 |
 	LDA #$0662			;$80D4D5	 |
-	JSL CODE_B58003			;$80D4D8	 |
+	JSL queue_sound_effect		;$80D4D8	 |
 	BRA CODE_80D4F9			;$80D4DC	/
 
 CODE_80D4DE:
@@ -9061,7 +9061,7 @@ CODE_80D4DE:
 	LDY #$001A			;$80D4EB	 |
 	JSL CODE_BB842C			;$80D4EE	 |
 	LDA #$0662			;$80D4F2	 |
-	JSL CODE_B58003			;$80D4F5	 |
+	JSL queue_sound_effect		;$80D4F5	 |
 CODE_80D4F9:				;		 |
 	RTS				;$80D4F9	/
 
@@ -12677,7 +12677,7 @@ CODE_80F3FB:
 	JSL CODE_8088AB			;$80F40D	 |
 	JSL CODE_BB91F7			;$80F411	 |
 	LDA #$001E			;$80F415	 |
-	JSL CODE_B5800C			;$80F418	 |
+	JSL play_song			;$80F418	 |
 	STZ $1730			;$80F41C	 |
 	LDA #$000E			;$80F41F	 |
 	JSL set_PPU_registers_wrapper	;$80F422	 |
@@ -13260,7 +13260,7 @@ CODE_80FA7C:
 	LDA #$001F			;$80FA91	 |
 	JSL set_PPU_registers_wrapper	;$80FA94	 |
 	LDA #$0014			;$80FA98	 |
-	JSL CODE_B5800C			;$80FA9B	 |
+	JSL play_song			;$80FA9B	 |
 	LDA #$0100			;$80FA9F	 |
 	JSR CODE_808C32			;$80FAA2	 |
 	LDA #DATA_FD258E		;$80FAA5	 |
