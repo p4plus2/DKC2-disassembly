@@ -44,3 +44,31 @@ UNKNOWN_6A = $6A		;same as $66
 current_player_mount = $6C
 
 next_oam_slot = $70
+
+nmi_submode = $94
+gameloop_submode = $96
+
+level_number = $D3
+
+
+;;;
+;;; End direct page
+;;;
+
+;Note there is no released state for active player
+player_1_held = $0502
+player_1_pressed = $0504
+player_1_released = $0506
+player_2_held = $0508
+player_2_pressed = $050A
+player_2_released = $050C
+player_active_held = $050E
+player_active_pressed = $0510
+
+screen_brightness = $0512
+screen_fade_speed = $0513
+screen_fade_timer = $0514
+pending_dma_hdma_channels = $059B
+
+intro_sparkle_x_position = $098F
+intro_sparkle_y_position = $0991

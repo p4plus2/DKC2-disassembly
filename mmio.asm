@@ -10,25 +10,25 @@ struct PPU $2100
 	.layer_mode: skip 1
 	.mosaic: skip 1
 
-	.layer_0_1_tilemap_base:
+	.layer_1_2_tilemap_base:
 		.layer_0_tilemap_base: skip 1
 		.layer_1_tilemap_base: skip 1
-	.layer_2_3_tilemap_base:
+	.layer_3_4_tilemap_base:
 		.layer_2_tilemap_base: skip 1
-		.layer_3_tilemap_base: skip 1
+		.layer_4_tilemap_base: skip 1
 
 	.layer_all_tiledata_base:
-		.layer_0_1_tiledata_base: skip 1
-		.layer_2_3_tiledata_base: skip 1
+		.layer_1_2_tiledata_base: skip 1
+		.layer_3_4_tiledata_base: skip 1
 
-	.layer_0_scroll_x: skip 1 ;write_twice
-	.layer_0_scroll_y: skip 1 ;write_twice
 	.layer_1_scroll_x: skip 1 ;write_twice
 	.layer_1_scroll_y: skip 1 ;write_twice
 	.layer_2_scroll_x: skip 1 ;write_twice
 	.layer_2_scroll_y: skip 1 ;write_twice
 	.layer_3_scroll_x: skip 1 ;write_twice
 	.layer_3_scroll_y: skip 1 ;write_twice
+	.layer_4_scroll_x: skip 1 ;write_twice
+	.layer_4_scroll_y: skip 1 ;write_twice
 
 	.vram_control: skip 1
 	.vram_address:
@@ -52,8 +52,8 @@ struct PPU $2100
 	.cgram_write: skip 1
 
 	.set_window_layer_all:
-		.set_window_layer_0_1: skip 1
-		.set_window_layer_2_3: skip 1
+		.set_window_layer_1_2: skip 1
+		.set_window_layer_3_4: skip 1
 	.set_window_sprite_color: skip 1
 	.window_1:
 		.window_1_left: skip 1

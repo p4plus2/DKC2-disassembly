@@ -3530,16 +3530,16 @@ CODE_BAB1B9:
 	JSL clear_VRAM_wrapper			;$BAB1DD   |
 	JSL CODE_BAC7C0				;$BAB1E1   |
 	SEP #$20				;$BAB1E5   |
-	STZ PPU.layer_1_scroll_x		;$BAB1E7   |
-	STZ PPU.layer_1_scroll_x		;$BAB1EA   |
+	STZ PPU.layer_2_scroll_x		;$BAB1E7   |
+	STZ PPU.layer_2_scroll_x		;$BAB1EA   |
 	LDA #$FF				;$BAB1ED   |
-	STA PPU.layer_1_scroll_y		;$BAB1EF   |
-	STA PPU.layer_1_scroll_y		;$BAB1F2   |
-	STZ PPU.layer_0_scroll_x		;$BAB1F5   |
-	STZ PPU.layer_0_scroll_x		;$BAB1F8   |
+	STA PPU.layer_2_scroll_y		;$BAB1EF   |
+	STA PPU.layer_2_scroll_y		;$BAB1F2   |
+	STZ PPU.layer_1_scroll_x		;$BAB1F5   |
+	STZ PPU.layer_1_scroll_x		;$BAB1F8   |
 	LDA #$FF				;$BAB1FB   |
-	STA PPU.layer_0_scroll_y		;$BAB1FD   |
-	STA PPU.layer_0_scroll_y		;$BAB200   |
+	STA PPU.layer_1_scroll_y		;$BAB1FD   |
+	STA PPU.layer_1_scroll_y		;$BAB200   |
 	REP #$20				;$BAB203   |
 	LDY $0650				;$BAB205   |
 	LDA $0004,y				;$BAB208   |
@@ -3666,9 +3666,9 @@ CODE_BAB31E:
 	LDA #$01				;$BAB338   |
 	STA CPU.enable_dma			;$BAB33A   |
 	REP #$20				;$BAB33D   |
-	JSL CODE_808C39				;$BAB33F   |
+	JSL fade_screen_global			;$BAB33F   |
 	SEP #$20				;$BAB343   |
-	LDA $0512				;$BAB345   |
+	LDA screen_brightness			;$BAB345   |
 	STA PPU.screen				;$BAB348   |
 	REP #$20				;$BAB34B   |
 	DEC $0660				;$BAB34D   |
@@ -3730,7 +3730,7 @@ CODE_BAB3A4:
 CODE_BAB3D1:					;	   |
 	DEC $065E				;$BAB3D1   |
 	BEQ CODE_BAB3F6				;$BAB3D4   |
-	LDA $0512				;$BAB3D6   |
+	LDA screen_brightness			;$BAB3D6   |
 	AND #$000F				;$BAB3D9   |
 	BNE CODE_BAB3E5				;$BAB3DC   |
 	LDA #CODE_8087E1			;$BAB3DE   |
@@ -3740,7 +3740,7 @@ CODE_BAB3E5:
 	CMP #$000F				;$BAB3E5  \
 	BNE CODE_BAB3FD				;$BAB3E8   |
 	JSL CODE_80897C				;$BAB3EA   |
-	LDA $0510				;$BAB3EE   |
+	LDA player_active_pressed		;$BAB3EE   |
 	BIT #$F0C0				;$BAB3F1   |
 	BEQ CODE_BAB3FD				;$BAB3F4   |
 CODE_BAB3F6:					;	   |
@@ -4123,12 +4123,12 @@ CODE_BAB768:					;	   |
 	STA CPU.enable_dma			;$BAB7A1   |
 	REP #$20				;$BAB7A4   |
 CODE_BAB7A6:					;	   |
-	JSL CODE_808C39				;$BAB7A6   |
+	JSL fade_screen_global			;$BAB7A6   |
 	SEP #$20				;$BAB7AA   |
-	LDA $0512				;$BAB7AC   |
+	LDA screen_brightness			;$BAB7AC   |
 	STA PPU.screen				;$BAB7AF   |
 	REP #$20				;$BAB7B2   |
-	LDA $0512				;$BAB7B4   |
+	LDA screen_brightness			;$BAB7B4   |
 	BNE CODE_BAB7BC				;$BAB7B7   |
 	JMP ($067F)				;$BAB7B9  /
 
@@ -4247,20 +4247,20 @@ CODE_BAB8B2:					;	   |
 	INC $0664				;$BAB8BB   |
 	LDA.l $000664				;$BAB8BE   |
 	SEP #$20				;$BAB8C2   |
-	STA PPU.layer_0_scroll_y		;$BAB8C4   |
+	STA PPU.layer_1_scroll_y		;$BAB8C4   |
 	XBA					;$BAB8C7   |
-	STA PPU.layer_0_scroll_y		;$BAB8C8   |
+	STA PPU.layer_1_scroll_y		;$BAB8C8   |
 	REP #$20				;$BAB8CB   |
 CODE_BAB8CD:					;	   |
 	LDA.l $0006A5				;$BAB8CD   |
 	BIT #$0004				;$BAB8D1   |
 	BEQ CODE_BAB8F8				;$BAB8D4   |
 CODE_BAB8D6:					;	   |
-	LDA $0512				;$BAB8D6   |
+	LDA screen_brightness			;$BAB8D6   |
 	CMP #$000F				;$BAB8D9   |
 	BNE CODE_BAB8F8				;$BAB8DC   |
 	JSL CODE_80897C				;$BAB8DE   |
-	LDA $050E				;$BAB8E2   |
+	LDA player_active_held			;$BAB8E2   |
 	BIT #$D0C0				;$BAB8E5   |
 	BEQ CODE_BAB8F8				;$BAB8E8   |
 	LDA #CODE_BAB8F9			;$BAB8EA   |
@@ -4664,7 +4664,7 @@ CODE_BAC328:					;	   |
 	JSL CODE_B8CFD4				;$BAC330   |
 	JSL CODE_B8CF7F				;$BAC334   |
 	JSL CODE_B9D100				;$BAC338   |
-	LDA $D3					;$BAC33C   |
+	LDA level_number			;$BAC33C   |
 	CMP #$001B				;$BAC33E   |
 	BEQ CODE_BAC346				;$BAC341   |
 	JML [$05A9]				;$BAC343  /

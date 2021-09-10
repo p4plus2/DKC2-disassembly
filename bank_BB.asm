@@ -213,7 +213,7 @@ CODE_BB8110:
 	RTL					;$BB8113  /
 
 CODE_BB8114:
-	LDA $D3					;$BB8114  \
+	LDA level_number			;$BB8114  \
 CODE_BB8116:					;	   |
 	JSR CODE_BB8169				;$BB8116   |
 	LDA.l $7E59B2,x				;$BB8119   |
@@ -227,7 +227,7 @@ CODE_BB8123:
 	RTL					;$BB8124  /
 
 CODE_BB8125:
-	LDA $D3					;$BB8125  \
+	LDA level_number			;$BB8125  \
 	JSR CODE_BB8169				;$BB8127   |
 	LDA.l $7E59B2,x				;$BB812A   |
 	ORA $60					;$BB812E   |
@@ -362,7 +362,7 @@ CODE_BB823B:					;	   |
 CODE_BB8241:					;	   |
 	DEX					;$BB8241   |
 	BNE CODE_BB823B				;$BB8242   |
-	LDA $D3					;$BB8244   |
+	LDA level_number			;$BB8244   |
 	JSL CODE_BBAF0C				;$BB8246   |
 	RTL					;$BB824A  /
 
@@ -376,7 +376,7 @@ CODE_BB824B:
 CODE_BB8259:					;	   |
 	RTS					;$BB8259  /
 
-	LDA $D3					;$BB825A   |
+	LDA level_number			;$BB825A   |
 CODE_BB825C:					;	   |
 	JSR CODE_BB8169				;$BB825C   |
 	LDA.l $7E59F2,x				;$BB825F   |
@@ -2847,7 +2847,7 @@ CODE_BB9265:					;	   |
 	JSL clear_VRAM_wrapper			;$BB9279   |
 	LDA $08A6				;$BB927D   |
 	XBA					;$BB9280   |
-	ORA $D3					;$BB9281   |
+	ORA level_number			;$BB9281   |
 	JSL CODE_BBAF0C				;$BB9283   |
 	LDA $060B				;$BB9287   |
 	AND #$0001				;$BB928A   |
@@ -2923,14 +2923,14 @@ CODE_BB9313:					;	   |
 	LDA #$9998				;$BB9337   |
 	STA $7FD734				;$BB933A   |
 CODE_BB933E:					;	   |
-	LDA $D3					;$BB933E   |
+	LDA level_number			;$BB933E   |
 	CMP #$002D				;$BB9340   |
 	BNE CODE_BB934B				;$BB9343   |
 	LDA #CODE_B5C60B			;$BB9345   |
 	STA $17B2				;$BB9348   |
 CODE_BB934B:					;	   |
 if !version == 1				;	   |
-	LDA $D3					;$BB934B   |
+	LDA level_number			;$BB934B   |
 	CMP #$000D				;$BB934D   |
 	BNE CODE_BB9358				;$BB9350   |
 	LDA #CODE_B5C3F4			;$BB9352   |
@@ -2962,7 +2962,7 @@ CODE_BB9379:					;	   |
 	RTL					;$BB938A  /
 
 CODE_BB938B:
-	LDA $D3					;$BB938B  \
+	LDA level_number			;$BB938B  \
 	CMP #$009A				;$BB938D   |
 	BNE CODE_BB939B				;$BB9390   |
 	LDA #$009B				;$BB9392   |
@@ -2972,14 +2972,14 @@ CODE_BB939A:					;	   |
 	RTS					;$BB939A  /
 
 CODE_BB939B:
-	LDA $D3					;$BB939B  \
+	LDA level_number			;$BB939B  \
 	CMP $08AC				;$BB939D   |
 	BNE CODE_BB939A				;$BB93A0   |
 CODE_BB93A2:					;	   |
 	LDA $08A6				;$BB93A2   |
 	BNE CODE_BB939A				;$BB93A5   |
 	LDA $08AC				;$BB93A7   |
-	STA $D3					;$BB93AA   |
+	STA level_number			;$BB93AA   |
 	LDA $08AA				;$BB93AC   |
 	STA $08A6				;$BB93AF   |
 	LDA $08AE				;$BB93B2   |
@@ -3010,7 +3010,7 @@ CODE_BB93D5:					;	   |
 	RTS					;$BB93E6  /
 
 CODE_BB93E7:
-	LDA $D3					;$BB93E7  \
+	LDA level_number			;$BB93E7  \
 	CMP #$00B9				;$BB93E9   |
 	BNE CODE_BB93FE				;$BB93EC   |
 	LDA $08FC				;$BB93EE   |
@@ -3029,7 +3029,7 @@ CODE_BB93FE:
 	RTS					;$BB940B  /
 
 CODE_BB940C:
-	LDX $D3					;$BB940C  \
+	LDX level_number			;$BB940C  \
 	LDA.l DATA_BB94C4,x			;$BB940E   |
 	AND #$00FF				;$BB9412   |
 	BEQ CODE_BB9424				;$BB9415   |
@@ -3070,7 +3070,7 @@ CODE_BB944F:
 	RTS					;$BB9456  /
 
 CODE_BB9457:
-	LDA $D3					;$BB9457  \
+	LDA level_number			;$BB9457  \
 	CMP #$0061				;$BB9459   |
 	BEQ CODE_BB946B				;$BB945C   |
 	CMP #$006B				;$BB945E   |
@@ -3374,7 +3374,7 @@ CODE_BB9798:					;	   |
 	SEP #$20				;$BB9798   |
 	LDA #$03				;$BB979A   |
 	LDX #$0002				;$BB979C   |
-	LDY $D3					;$BB979F   |
+	LDY level_number			;$BB979F   |
 	CPY #$00C3				;$BB97A1   |
 	BNE CODE_BB97AB				;$BB97A4   |
 	LDA #$01				;$BB97A6   |
@@ -3450,7 +3450,7 @@ CODE_BB9828:
 	LDA #$01				;$BB9857   |
 	STA CPU.enable_dma			;$BB9859   |
 	REP #$20				;$BB985C   |
-	LDA $D3					;$BB985E   |
+	LDA level_number			;$BB985E   |
 	CMP #$0022				;$BB9860   |
 	BEQ CODE_BB9866				;$BB9863   |
 	RTS					;$BB9865  /
@@ -3727,12 +3727,12 @@ CODE_BB9A93:
 	STZ HDMA[2].indirect_source_bank	;$BB9ABE   |
 	REP #$20				;$BB9AC1   |
 	LDA #$0401				;$BB9AC3   |
-	STA $059B				;$BB9AC6   |
+	STA pending_dma_hdma_channels		;$BB9AC6   |
 	RTS					;$BB9AC9  /
 
 CODE_BB9ACA:
 	JSR CODE_BBA8DD				;$BB9ACA  \
-	LDA $D3					;$BB9ACD   |
+	LDA level_number			;$BB9ACD   |
 	CMP #$0063				;$BB9ACF   |
 	BNE CODE_BB9AD9				;$BB9AD2   |
 	LDA #$001C				;$BB9AD4   |
@@ -3757,7 +3757,7 @@ CODE_BB9AD9:					;	   |
 	STZ HDMA[1].indirect_source_bank	;$BB9B0C   |
 	REP #$20				;$BB9B0F   |
 	LDA #$0201				;$BB9B11   |
-	STA $059B				;$BB9B14   |
+	STA pending_dma_hdma_channels		;$BB9B14   |
 	RTS					;$BB9B17  /
 
 CODE_BB9B18:
@@ -3783,7 +3783,7 @@ CODE_BB9B1E:					;	   |
 	STZ HDMA[1].indirect_source_bank	;$BB9B47   |
 	REP #$20				;$BB9B4A   |
 	LDA #$0201				;$BB9B4C   |
-	STA $059B				;$BB9B4F   |
+	STA pending_dma_hdma_channels		;$BB9B4F   |
 	LDA $0515				;$BB9B52   |
 	CMP #$0001				;$BB9B55   |
 	BEQ CODE_BB9B62				;$BB9B58   |
@@ -3792,7 +3792,7 @@ CODE_BB9B1E:					;	   |
 	RTS					;$BB9B61  /
 
 CODE_BB9B62:
-	LDA $D3					;$BB9B62  \
+	LDA level_number			;$BB9B62  \
 	CMP #$0087				;$BB9B64   |
 	BEQ CODE_BB9B71				;$BB9B67   |
 	LDY #$007A				;$BB9B69   |
@@ -3806,7 +3806,7 @@ CODE_BB9B71:
 
 CODE_BB9B79:
 	LDA #$0002				;$BB9B79  \
-	LDY $D3					;$BB9B7C   |
+	LDY level_number			;$BB9B7C   |
 	CPY #$0008				;$BB9B7E   |
 	BEQ CODE_BB9B86				;$BB9B81   |
 	LDA #$0044				;$BB9B83   |
@@ -3905,7 +3905,7 @@ CODE_BB9B86:					;	   |
 	STA HDMA[6].indirect_source_bank	;$BB9CB0   |
 	REP #$20				;$BB9CB3   |
 	LDA #$7E01				;$BB9CB5   |
-	STA $059B				;$BB9CB8   |
+	STA pending_dma_hdma_channels		;$BB9CB8   |
 	RTS					;$BB9CBB  /
 
 DATA_BB9CBC:
@@ -3996,7 +3996,7 @@ CODE_BB9D1D:
 	STZ HDMA[4].indirect_source_bank	;$BB9E03   |
 	REP #$20				;$BB9E06   |
 	LDA #$1E01				;$BB9E08   |
-	STA $059B				;$BB9E0B   |
+	STA pending_dma_hdma_channels		;$BB9E0B   |
 	RTS					;$BB9E0E  /
 
 CODE_BB9E0F:
@@ -4020,8 +4020,8 @@ CODE_BB9E18:					;	   |
 	STZ HDMA[1].indirect_source_bank	;$BB9E37   |
 	REP #$20				;$BB9E3A   |
 	LDA #$0201				;$BB9E3C   |
-	STA $059B				;$BB9E3F   |
-	LDA $D3					;$BB9E42   |
+	STA pending_dma_hdma_channels		;$BB9E3F   |
+	LDA level_number			;$BB9E42   |
 	CMP #$00BB				;$BB9E44   |
 	BEQ CODE_BB9E51				;$BB9E47   |
 	LDY #$00DA				;$BB9E49   |
@@ -4038,20 +4038,20 @@ CODE_BB9E59:
 	LDA #$0000				;$BB9E5C   |
 	STA $7E8012				;$BB9E5F   |
 	LDA #$0001				;$BB9E63   |
-	STA $059B				;$BB9E66   |
+	STA pending_dma_hdma_channels		;$BB9E66   |
 	RTS					;$BB9E69  /
 
 CODE_BB9E6A:
 	JSR CODE_BBA8DD				;$BB9E6A  \
 	LDA #$0001				;$BB9E6D   |
-	STA $059B				;$BB9E70   |
+	STA pending_dma_hdma_channels		;$BB9E70   |
 	RTS					;$BB9E73  /
 
 CODE_BB9E74:
 	LDA #$0004				;$BB9E74  \
 	STA $78					;$BB9E77   |
 	LDA #$0001				;$BB9E79   |
-	STA $059B				;$BB9E7C   |
+	STA pending_dma_hdma_channels		;$BB9E7C   |
 	RTS					;$BB9E7F  /
 
 CODE_BB9E80:
@@ -4183,7 +4183,7 @@ CODE_BB9F4A:					;	   |
 	JSL CODE_BB8418				;$BB9FFF   |
 	JSR CODE_BBABE2				;$BBA003   |
 	LDA #$DC01				;$BBA006   |
-	STA $059B				;$BBA009   |
+	STA pending_dma_hdma_channels		;$BBA009   |
 	RTS					;$BBA00C  /
 
 CODE_BBA00D:
@@ -4199,7 +4199,7 @@ CODE_BBA00D:
 	STA HDMA[1].indirect_source_bank	;$BBA025   |
 	REP #$20				;$BBA028   |
 	LDA #$0201				;$BBA02A   |
-	STA $059B				;$BBA02D   |
+	STA pending_dma_hdma_channels		;$BBA02D   |
 	RTS					;$BBA030  /
 
 CODE_BBA031:
@@ -4235,7 +4235,7 @@ CODE_BBA03D:					;	   |
 	STA HDMA[1].indirect_source_bank	;$BBA072   |
 	REP #$20				;$BBA075   |
 	LDA #$0201				;$BBA077   |
-	STA $059B				;$BBA07A   |
+	STA pending_dma_hdma_channels		;$BBA07A   |
 	RTS					;$BBA07D  /
 
 DATA_BBA07E:
@@ -4294,7 +4294,7 @@ CODE_BBA1FF:
 	LDA #$0024				;$BBA1FF  \
 	STA $78					;$BBA202   |
 	LDA #$0001				;$BBA204   |
-	STA $059B				;$BBA207   |
+	STA pending_dma_hdma_channels		;$BBA207   |
 	RTS					;$BBA20A  /
 
 CODE_BBA20B:
@@ -4321,7 +4321,7 @@ CODE_BBA213:					;	   |
 	STZ HDMA[1].indirect_source_bank	;$BBA23C   |
 	REP #$20				;$BBA23F   |
 	LDA #$0201				;$BBA241   |
-	STA $059B				;$BBA244   |
+	STA pending_dma_hdma_channels		;$BBA244   |
 	LDY #$00DC				;$BBA247   |
 	JSL CODE_BB83EF				;$BBA24A   |
 	RTS					;$BBA24E  /
@@ -4386,7 +4386,7 @@ CODE_BBA289:					;	   |
 	STA HDMA[2].indirect_source_bank	;$BBA2D6   |
 	REP #$20				;$BBA2D9   |
 	LDA #$0601				;$BBA2DB   |
-	STA $059B				;$BBA2DE   |
+	STA pending_dma_hdma_channels		;$BBA2DE   |
 	RTS					;$BBA2E1  /
 
 CODE_BBA2E2:
@@ -4430,7 +4430,7 @@ CODE_BBA2E2:
 	STZ HDMA[3].indirect_source_bank	;$BBA353   |
 	REP #$20				;$BBA356   |
 	LDA #$0E01				;$BBA358   |
-	STA $059B				;$BBA35B   |
+	STA pending_dma_hdma_channels		;$BBA35B   |
 	RTS					;$BBA35E  /
 
 DATA_BBA35F:
@@ -4594,7 +4594,7 @@ CODE_BBA4E0:					;	   |
 	LDY #DATA_FF0FD2			;$BBA59B   |
 	JSL CODE_BB8418				;$BBA59E   |
 	LDA #$DC01				;$BBA5A2   |
-	STA $059B				;$BBA5A5   |
+	STA pending_dma_hdma_channels		;$BBA5A5   |
 	RTS					;$BBA5A8  /
 
 CODE_BBA5A9:
@@ -4604,14 +4604,14 @@ CODE_BBA5A9:
 	LDA #$001C				;$BBA5B1   |
 	STA $78					;$BBA5B4   |
 	LDA #$0001				;$BBA5B6   |
-	STA $059B				;$BBA5B9   |
+	STA pending_dma_hdma_channels		;$BBA5B9   |
 	RTS					;$BBA5BC  /
 
 CODE_BBA5BD:
 	LDA #$0024				;$BBA5BD  \
 	STA $78					;$BBA5C0   |
 	LDA #$0001				;$BBA5C2   |
-	STA $059B				;$BBA5C5   |
+	STA pending_dma_hdma_channels		;$BBA5C5   |
 	RTS					;$BBA5C8  /
 
 CODE_BBA5C9:
@@ -4629,7 +4629,7 @@ CODE_BBA5DA:					;	   |
 	RTS					;$BBA5E0  /
 
 CODE_BBA5E1:
-	LDA $D3					;$BBA5E1  \
+	LDA level_number			;$BBA5E1  \
 	CMP #$0071				;$BBA5E3   |
 	BNE CODE_BBA605				;$BBA5E6   |
 	LDA $17BA				;$BBA5E8   |
@@ -4726,7 +4726,7 @@ CODE_BBA662:
 	STZ HDMA[2].indirect_source_bank	;$BBA6C7   |
 	REP #$20				;$BBA6CA   |
 	LDA #$0601				;$BBA6CC   |
-	STA $059B				;$BBA6CF   |
+	STA pending_dma_hdma_channels		;$BBA6CF   |
 	RTS					;$BBA6D2  /
 
 DATA_BBA6D3:
@@ -4888,7 +4888,7 @@ CODE_BBA817:					;	   |
 	LDY #DATA_FF0FD2			;$BBA8CF   |
 	JSL CODE_BB8418				;$BBA8D2   |
 	LDA #$6E01				;$BBA8D6   |
-	STA $059B				;$BBA8D9   |
+	STA pending_dma_hdma_channels		;$BBA8D9   |
 	RTS					;$BBA8DC  /
 
 CODE_BBA8DD:
@@ -4910,7 +4910,7 @@ CODE_BBA8F3:
 	LDA #$7FFF				;$BBA8F9   |
 	STA $0D4E				;$BBA8FC   |
 	LDA #$7E01				;$BBA8FF   |
-	STA $059B				;$BBA902   |
+	STA pending_dma_hdma_channels		;$BBA902   |
 	LDA #$007C				;$BBA905   |
 	STA $7E80E2				;$BBA908   |
 	LDA #$0211				;$BBA90C   |
@@ -4990,7 +4990,7 @@ CODE_BBA9E0:
 	LDY #DATA_FF0FD2			;$BBA9E9   |
 	JSL CODE_BB8418				;$BBA9EC   |
 	LDA #$FE01				;$BBA9F0   |
-	STA $059B				;$BBA9F3   |
+	STA pending_dma_hdma_channels		;$BBA9F3   |
 	RTS					;$BBA9F6  /
 
 CODE_BBA9F7:
@@ -5158,7 +5158,7 @@ CODE_BBABE2:
 	STA $0D4E				;$BBABE9   |
 	LDX #$FFFE				;$BBABEC   |
 	SEP #$20				;$BBABEF   |
-	LDA $D3					;$BBABF1   |
+	LDA level_number			;$BBABF1   |
 	DEC A					;$BBABF3   |
 CODE_BBABF4:					;	   |
 	INX					;$BBABF4   |
@@ -5309,7 +5309,7 @@ CODE_BBAD34:
 	RTS					;$BBAD97  /
 
 CODE_BBAD98:
-	LDA $D3					;$BBAD98  \
+	LDA level_number			;$BBAD98  \
 	CMP #$0009				;$BBAD9A   |
 	BEQ CODE_BBADB4				;$BBAD9D   |
 	CMP #$000D				;$BBAD9F   |
@@ -6158,7 +6158,7 @@ CODE_BBB375:					;	   |
 	PEA $FE00				;$BBB38C   |
 	PLB					;$BBB38F   |
 	PLB					;$BBB390   |
-	LDA $D3					;$BBB391   |
+	LDA level_number			;$BBB391   |
 	ASL A					;$BBB393   |
 	TAY					;$BBB394   |
 	LDA.w DATA_FE0000,y			;$BBB395   |
@@ -6462,7 +6462,7 @@ CODE_BBB5B9:					;	   |
 
 sprite_loader:
 	PHB					;$BBB5C4  \
-	LDA $D3					;$BBB5C5   |
+	LDA level_number			;$BBB5C5   |
 	ASL A					;$BBB5C7   |
 	TAX					;$BBB5C8   |
 	LDA.l DATA_FE0000,x			;$BBB5C9   |
@@ -7654,7 +7654,7 @@ endif
 	STZ current_player_mount		;$BBBDE9   |
 	LDA $08A8				;$BBBDEB   |
 	STA $08C8				;$BBBDEE   |
-	STA $D3					;$BBBDF1   |
+	STA level_number			;$BBBDF1   |
 	STZ $0902				;$BBBDF3   |
 	STZ $08A6				;$BBBDF6   |
 	LDA.l $0006B1				;$BBBDF9   |
@@ -7686,7 +7686,7 @@ CODE_BBBE28:
 	JSR CODE_BBC0A4				;$BBBE2B   |
 	LDA $08A6				;$BBBE2E   |
 	XBA					;$BBBE31   |
-	ORA $D3					;$BBBE32   |
+	ORA level_number			;$BBBE32   |
 	JSL CODE_BBAF0C				;$BBBE34   |
 	LDA #$0001				;$BBBE38   |
 	STA $0006CF				;$BBBE3B   |
@@ -7711,7 +7711,7 @@ CODE_BBBE54:
 	STZ $0902				;$BBBE61   |
 	LDA $08A8				;$BBBE64   |
 	STA $08C8				;$BBBE67   |
-	STA $D3					;$BBBE6A   |
+	STA level_number			;$BBBE6A   |
 	LDA #$0003				;$BBBE6C   |
 	TRB $06D1				;$BBBE6F   |
 	LDA $08BE				;$BBBE72   |
@@ -7829,7 +7829,7 @@ CODE_BBBF30:
 	JSR CODE_BBC07E				;$BBBF62   |
 CODE_BBBF65:					;	   |
 	LDA $08C8				;$BBBF65   |
-	STA $D3					;$BBBF68   |
+	STA level_number			;$BBBF68   |
 	STA $08A8				;$BBBF6A   |
 	STZ $08A6				;$BBBF6D   |
 	LDA #$8000				;$BBBF70   |
@@ -7840,12 +7840,12 @@ CODE_BBBF65:					;	   |
 
 CODE_BBBF81:
 	JSR CODE_BBBD8E				;$BBBF81  \
-	LDA $D3					;$BBBF84   |
+	LDA level_number			;$BBBF84   |
 	STA $05A3				;$BBBF86   |
 	LDA $059F				;$BBBF89   |
 	STA $05A5				;$BBBF8C   |
 	LDA $08C8				;$BBBF8F   |
-	STA $D3					;$BBBF92   |
+	STA level_number			;$BBBF92   |
 	STZ $08A6				;$BBBF94   |
 	LDA $0553				;$BBBF97   |
 	CMP #$0001				;$BBBF9A   |
@@ -7871,7 +7871,7 @@ CODE_BBBFC1:
 
 CODE_BBBFC8:
 	LDA $08C8				;$BBBFC8  \
-	STA $D3					;$BBBFCB   |
+	STA level_number			;$BBBFCB   |
 	STZ $08A6				;$BBBFCD   |
 	LDA #$8000				;$BBBFD0   |
 	TRB $08C6				;$BBBFD3   |
@@ -7890,7 +7890,7 @@ CODE_BBBFE3:					;	   |
 	LDA $05A5				;$BBBFEF   |
 	STA $08A6				;$BBBFF2   |
 	LDA $08C8				;$BBBFF5   |
-	STA $D3					;$BBBFF8   |
+	STA level_number			;$BBBFF8   |
 	LDA #$0080				;$BBBFFA   |
 	TSB $08C2				;$BBBFFD   |
 	LDA #CODE_8087E1			;$BBC000   |
@@ -7920,7 +7920,7 @@ CODE_BBBFE6:					;	   |
 	LDA $05A5				;$BBC026   |
 	STA $08A6				;$BBC029   |
 	LDA $08C8				;$BBC02C   |
-	STA $D3					;$BBC02F   |
+	STA level_number			;$BBC02F   |
 	LDA #$0080				;$BBC031   |
 	TSB $08C2				;$BBC034   |
 	LDA #CODE_8087E1			;$BBC037   |
@@ -8467,7 +8467,7 @@ CODE_BBC4C6:
 	JMP CODE_BBC150				;$BBC4DF  /
 
 CODE_BBC4E2:
-	LDA $D3					;$BBC4E2  \
+	LDA level_number			;$BBC4E2  \
 	CMP #$0061				;$BBC4E4   |
 	BNE CODE_BBC4FC				;$BBC4E7   |
 	LDY $0654				;$BBC4E9   |
@@ -8667,7 +8667,7 @@ CODE_BBC636:					;	   |
 	LDA $08D0				;$BBC669   |
 	LDY #$0007				;$BBC66C   |
 	STA [$D9],y				;$BBC66F   |
-	LDA $D3					;$BBC671   |
+	LDA level_number			;$BBC671   |
 	LDY #$0008				;$BBC673   |
 	STA [$D9],y				;$BBC676   |
 	LDA $08A4				;$BBC678   |
@@ -8818,7 +8818,7 @@ CODE_BBC776:
 	STA $08D0				;$BBC7AA   |
 	LDY #$0008				;$BBC7AD   |
 	LDA [$D9],y				;$BBC7B0   |
-	STA $D3					;$BBC7B2   |
+	STA level_number			;$BBC7B2   |
 	LDY #$00B3				;$BBC7B4   |
 	LDA [$D9],y				;$BBC7B7   |
 	STA $08A4				;$BBC7B9   |

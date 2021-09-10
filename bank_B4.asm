@@ -403,7 +403,7 @@ CODE_B48374:					;	   |
 	LDA $06B1				;$B48374   |
 	CMP #$0004				;$B48377   |
 	BNE CODE_B483BB				;$B4837A   |
-	LDA $0512				;$B4837C   |
+	LDA screen_brightness			;$B4837C   |
 	BIT #$8000				;$B4837F   |
 	BNE CODE_B483BB				;$B48382   |
 	LDA global_frame_counter		;$B48384   |
@@ -438,7 +438,7 @@ CODE_B483BB:					;	   |
 	LDA $06B1				;$B483BB   |
 	CMP #$0009				;$B483BE   |
 	BNE CODE_B48418				;$B483C1   |
-	LDA $0512				;$B483C3   |
+	LDA screen_brightness			;$B483C3   |
 	BIT #$8000				;$B483C6   |
 	BNE CODE_B48418				;$B483C9   |
 	SEP #$20				;$B483CB   |
@@ -584,17 +584,17 @@ CODE_B484BC:					;	   |
 CODE_B484FB:					;	   |
 	LDA $17BA				;$B484FB   |
 	SEP #$20				;$B484FE   |
-	STA PPU.layer_0_scroll_x		;$B48500   |
+	STA PPU.layer_1_scroll_x		;$B48500   |
 	XBA					;$B48503   |
-	STA PPU.layer_0_scroll_x		;$B48504   |
+	STA PPU.layer_1_scroll_x		;$B48504   |
 	REP #$20				;$B48507   |
 	LDA $069B				;$B48509   |
 	STA $17BA				;$B4850C   |
 	LDA $17C0				;$B4850F   |
 	SEP #$20				;$B48512   |
-	STA PPU.layer_0_scroll_y		;$B48514   |
+	STA PPU.layer_1_scroll_y		;$B48514   |
 	XBA					;$B48517   |
-	STA PPU.layer_0_scroll_y		;$B48518   |
+	STA PPU.layer_1_scroll_y		;$B48518   |
 	REP #$20				;$B4851B   |
 	LDA $069D				;$B4851D   |
 	STA $17C0				;$B48520   |
@@ -603,7 +603,7 @@ CODE_B484FB:					;	   |
 	AND #$FFEF				;$B48528   |
 	STA $06A1				;$B4852B   |
 	SEP #$20				;$B4852E   |
-	LDA $0512				;$B48530   |
+	LDA screen_brightness			;$B48530   |
 	STA PPU.screen				;$B48533   |
 	REP #$20				;$B48536   |
 	LDA $06A3				;$B48538   |
@@ -623,7 +623,7 @@ CODE_B48543:
 CODE_B4855B:					;	   |
 	LDA $0683				;$B4855B   |
 	BNE CODE_B4856B				;$B4855E   |
-	LDA $050E				;$B48560   |
+	LDA player_active_held			;$B48560   |
 	AND #$2020				;$B48563   |
 	CMP #$2020				;$B48566   |
 	BEQ CODE_B4856E				;$B48569   |
@@ -631,7 +631,7 @@ CODE_B4856B:					;	   |
 	BRL CODE_B48611				;$B4856B  /
 
 CODE_B4856E:
-	LDA $050E				;$B4856E  \
+	LDA player_active_held			;$B4856E  \
 	AND #$DFDF				;$B48571   |
 	BNE CODE_B48579				;$B48574   |
 	BRL CODE_B48620				;$B48576  /
@@ -646,7 +646,7 @@ CODE_B4857A:					;	   |
 	BRL CODE_B48620				;$B48582  /
 
 CODE_B48585:
-	LDA $0510				;$B48585  \
+	LDA player_active_pressed		;$B48585  \
 	AND #$DFDF				;$B48588   |
 	BNE CODE_B48590				;$B4858B   |
 	BRL CODE_B48620				;$B4858D  /
@@ -895,7 +895,7 @@ endif						;	   |
 	BRL CODE_B48927				;$B48776  /
 
 CODE_B48779:
-	LDA $0512				;$B48779  \
+	LDA screen_brightness			;$B48779  \
 	AND #$000F				;$B4877C   |
 	CMP #$000F				;$B4877F   |
 	BEQ CODE_B48787				;$B48782   |
@@ -910,7 +910,7 @@ CODE_B4878F:
 	LDA $08FB				;$B4878F  \
 	BIT #$0040				;$B48792   |
 	BEQ CODE_B487A2				;$B48795   |
-	LDA $050E				;$B48797   |
+	LDA player_active_held			;$B48797   |
 	CMP #$0030				;$B4879A   |
 	BNE CODE_B487A2				;$B4879D   |
 	BRL CODE_B4BE63				;$B4879F  /
@@ -929,7 +929,7 @@ CODE_B487B4:					;	   |
 endif						;	  /
 
 CODE_B487B7:
-	LDA $0510				;$B487B7  \
+	LDA player_active_pressed		;$B487B7  \
 	BIT #$D0C0				;$B487BA   |
 	BEQ CODE_B487C2				;$B487BD   |
 	BRL CODE_B48A46				;$B487BF  /
@@ -944,7 +944,7 @@ CODE_B487C2:
 	PLB					;$B487CC   |
 	LDA #$0004				;$B487CD   |
 	STA $065C				;$B487D0   |
-	LDA $050E				;$B487D3   |
+	LDA player_active_held			;$B487D3   |
 	XBA					;$B487D6   |
 	STA $065A				;$B487D7   |
 	LDA $0005,x				;$B487DA   |
@@ -1149,7 +1149,7 @@ CODE_B4896A:					;	   |
 	LDA $06A3				;$B4896A   |
 	BIT #$0002				;$B4896D   |
 	BEQ CODE_B48989				;$B48970   |
-	LDA $0512				;$B48972   |
+	LDA screen_brightness			;$B48972   |
 	BNE CODE_B48985				;$B48975   |
 	LDA #CODE_808D02			;$B48977   |
 	STA NMI_pointer				;$B4897A   |
@@ -1157,7 +1157,7 @@ CODE_B4896A:					;	   |
 	AND #$FFFD				;$B4897F   |
 	STA $06A3				;$B48982   |
 CODE_B48985:					;	   |
-	JSL CODE_808C39				;$B48985   |
+	JSL fade_screen_global			;$B48985   |
 CODE_B48989:					;	   |
 	LDA $06A1				;$B48989   |
 	BIT #$0040				;$B4898C   |
@@ -1336,7 +1336,7 @@ CODE_B48AEF:
 	PHK					;$B48AF8   |
 	PLB					;$B48AF9   |
 	LDA $0009,x				;$B48AFA   |
-	STA $D3					;$B48AFD   |
+	STA level_number			;$B48AFD   |
 	LDA $06A3				;$B48AFF   |
 	ORA #$0001				;$B48B02   |
 	AND #$EFFF				;$B48B05   |
@@ -1761,14 +1761,14 @@ CODE_B48F07:					;	   |
 	LDA $067F				;$B48F0F   |
 	CMP #CODE_B4C14E			;$B48F12   |
 	BNE CODE_B48F28				;$B48F15   |
-	LDA $0510				;$B48F17   |
+	LDA player_active_pressed		;$B48F17   |
 	BIT #$D0C0				;$B48F1A   |
 	BEQ CODE_B48F28				;$B48F1D   |
 	LDA #$0001				;$B48F1F   |
 	STA $0658				;$B48F22   |
 	JSR CODE_B48FF4				;$B48F25   |
 CODE_B48F28:					;	   |
-	JSL CODE_808C39				;$B48F28   |
+	JSL fade_screen_global			;$B48F28   |
 	JSR CODE_B49EF1				;$B48F2C   |
 	LDA $06A5				;$B48F2F   |
 	BIT #$0800				;$B48F32   |
@@ -1783,19 +1783,19 @@ CODE_B48F28:					;	   |
 	BIT #$0008				;$B48F4B   |
 	BNE CODE_B48F5C				;$B48F4E   |
 	SEP #$20				;$B48F50   |
-	STZ PPU.layer_0_scroll_y		;$B48F52   |
-	STZ PPU.layer_0_scroll_y		;$B48F55   |
+	STZ PPU.layer_1_scroll_y		;$B48F52   |
+	STZ PPU.layer_1_scroll_y		;$B48F55   |
 	REP #$20				;$B48F58   |
 	BRA CODE_B48F68				;$B48F5A  /
 
 CODE_B48F5C:
 	SEP #$20				;$B48F5C  \
 	LDA #$03				;$B48F5E   |
-	STA PPU.layer_0_scroll_y		;$B48F60   |
-	STZ PPU.layer_0_scroll_y		;$B48F63   |
+	STA PPU.layer_1_scroll_y		;$B48F60   |
+	STZ PPU.layer_1_scroll_y		;$B48F63   |
 	REP #$20				;$B48F66   |
 CODE_B48F68:					;	   |
-	LDA $0512				;$B48F68   |
+	LDA screen_brightness			;$B48F68   |
 	BNE CODE_B48F79				;$B48F6B   |
 	LDA $06A5				;$B48F6D   |
 	AND #$F7DF				;$B48F70   |
@@ -1870,7 +1870,7 @@ CODE_B4901B:
 	LDA $067F				;$B4901B  \
 	CMP #CODE_B4C14E			;$B4901E   |
 	BNE CODE_B49033				;$B49021   |
-	LDA $0510				;$B49023   |
+	LDA player_active_pressed		;$B49023   |
 	BIT #$D0C0				;$B49026   |
 	BNE CODE_B49033				;$B49029   |
 	LDA #$0011				;$B4902B   |
@@ -1878,7 +1878,7 @@ CODE_B4901B:
 	BRA CODE_B49042				;$B49031  /
 
 CODE_B49033:
-	LDA $0512				;$B49033  \
+	LDA screen_brightness			;$B49033  \
 	CMP #$000F				;$B49036   |
 	BNE CODE_B49042				;$B49039   |
 	LDA #$810F				;$B4903B   |
@@ -2067,12 +2067,12 @@ CODE_B491D7:
 	JSL CODE_B5A919				;$B491DC   |
 	JSL CODE_80F320				;$B491E0   |
 	JSR CODE_B4996E				;$B491E4   |
-	LDA $0512				;$B491E7   |
+	LDA screen_brightness			;$B491E7   |
 	CMP #$000F				;$B491EA   |
 	BEQ CODE_B491FF				;$B491ED   |
 	LDA $0676				;$B491EF   |
 	BNE CODE_B491FA				;$B491F2   |
-	JSL CODE_808C39				;$B491F4   |
+	JSL fade_screen_global			;$B491F4   |
 	BRA CODE_B49224				;$B491F8  /
 
 CODE_B491FA:
@@ -2110,7 +2110,7 @@ CODE_B49224:					;	   |
 	STA CPU.enable_dma			;$B49240   |
 	REP #$20				;$B49243   |
 	SEP #$20				;$B49245   |
-	LDA $0512				;$B49247   |
+	LDA screen_brightness			;$B49247   |
 	STA PPU.screen				;$B4924A   |
 	REP #$20				;$B4924D   |
 	JSL CODE_BAC7C0				;$B4924F   |
@@ -2313,7 +2313,7 @@ CODE_B493B7:
 	LDA #$0001				;$B493F6   |
 	JSR CODE_B4BD8D				;$B493F9   |
 CODE_B493FC:					;	   |
-	LDA $0510				;$B493FC   |
+	LDA player_active_pressed		;$B493FC   |
 	BIT #$D0C0				;$B493FF   |
 	BEQ CODE_B49425				;$B49402   |
 	LDA $0689				;$B49404   |
@@ -2330,10 +2330,10 @@ CODE_B49419:					;	   |
 	LDA #$0001				;$B4941F   |
 	STA $0658				;$B49422   |
 CODE_B49425:					;	   |
-	LDA $0510				;$B49425   |
+	LDA player_active_pressed		;$B49425   |
 	BIT #$0300				;$B49428   |
 	BEQ CODE_B49441				;$B4942B   |
-	LDA $0512				;$B4942D   |
+	LDA screen_brightness			;$B4942D   |
 	CMP #$000F				;$B49430   |
 	BNE CODE_B49441				;$B49433   |
 	LDA #CODE_808D7D			;$B49435   |
@@ -3047,7 +3047,7 @@ CODE_B49A5A:
 	BRA CODE_B49ADD				;$B49A74  /
 
 CODE_B49A76:
-	LDA $050E				;$B49A76  \
+	LDA player_active_held			;$B49A76  \
 	BIT #$0800				;$B49A79   |
 	BEQ CODE_B49A9E				;$B49A7C   |
 	LDA $0654				;$B49A7E   |
@@ -3078,7 +3078,7 @@ CODE_B49A9E:
 	BRL CODE_B499FA				;$B49AC0  /
 
 CODE_B49AC3:
-	LDA $0510				;$B49AC3  \
+	LDA player_active_pressed		;$B49AC3  \
 	BIT #$D0C0				;$B49AC6   |
 	BEQ CODE_B49ADD				;$B49AC9   |
 	LDA $06B5				;$B49ACB   |
@@ -3164,9 +3164,9 @@ CODE_B49B63:
 	JSL CODE_B5A919				;$B49B65   |
 	JSL CODE_80F320				;$B49B69   |
 	JSR CODE_B4996E				;$B49B6D   |
-	LDA $0512				;$B49B70   |
+	LDA screen_brightness			;$B49B70   |
 	BEQ CODE_B49BBB				;$B49B73   |
-	JSL CODE_808C39				;$B49B75   |
+	JSL fade_screen_global			;$B49B75   |
 	LDA #$0200				;$B49B79   |
 	STA DMA[0].source			;$B49B7C   |
 	STA DMA[0].unused_2			;$B49B7F   |
@@ -3180,7 +3180,7 @@ CODE_B49B63:
 	STA CPU.enable_dma			;$B49B95   |
 	REP #$20				;$B49B98   |
 	SEP #$20				;$B49B9A   |
-	LDA $0512				;$B49B9C   |
+	LDA screen_brightness			;$B49B9C   |
 	STA PPU.screen				;$B49B9F   |
 	REP #$20				;$B49BA2   |
 	JSL CODE_BAC7C0				;$B49BA4   |
@@ -3635,7 +3635,7 @@ CODE_B49EF1:
 	STA CPU.enable_dma			;$B49F0D   |
 	REP #$20				;$B49F10   |
 	SEP #$20				;$B49F12   |
-	LDA $0512				;$B49F14   |
+	LDA screen_brightness			;$B49F14   |
 	STA PPU.screen				;$B49F17   |
 	REP #$20				;$B49F1A   |
 	RTS					;$B49F1C  /
@@ -3785,10 +3785,10 @@ CODE_B4A050:					;	   |
 	RTS					;$B4A050  /
 
 CODE_B4A051:
-	LDA $0510				;$B4A051  \
+	LDA player_active_pressed		;$B4A051  \
 	BIT #$F0C0				;$B4A054   |
 	BEQ CODE_B4A06D				;$B4A057   |
-	LDA $0512				;$B4A059   |
+	LDA screen_brightness			;$B4A059   |
 	CMP #$000F				;$B4A05C   |
 	BNE CODE_B4A06D				;$B4A05F   |
 	LDA #CODE_808D7D			;$B4A061   |
@@ -3816,7 +3816,7 @@ CODE_B4A088:
 	JSR CODE_B4A051				;$B4A08B   |
 	DEC $064E				;$B4A08E   |
 	BNE CODE_B4A0A7				;$B4A091   |
-	LDA $0512				;$B4A093   |
+	LDA screen_brightness			;$B4A093   |
 	CMP #$000F				;$B4A096   |
 	BNE CODE_B4A0A7				;$B4A099   |
 	LDA #$810F				;$B4A09B   |
@@ -3880,8 +3880,8 @@ CODE_B4A10C:					;	   |
 	PLX					;$B4A111   |
 	SEP #$20				;$B4A112   |
 	LDA #$FF				;$B4A114   |
-	STA PPU.layer_2_scroll_y		;$B4A116   |
-	STA PPU.layer_2_scroll_y		;$B4A119   |
+	STA PPU.layer_3_scroll_y		;$B4A116   |
+	STA PPU.layer_3_scroll_y		;$B4A119   |
 	REP #$20				;$B4A11C   |
 	RTS					;$B4A11E  /
 
@@ -4050,8 +4050,8 @@ CODE_B4A26F:
 	RTS					;$B4A287  /
 
 CODE_B4A288:
-	JSL CODE_808C39				;$B4A288  \
-	LDA $0512				;$B4A28C   |
+	JSL fade_screen_global			;$B4A288  \
+	LDA screen_brightness			;$B4A28C   |
 	BEQ CODE_B4A292				;$B4A28F   |
 	RTS					;$B4A291  /
 
@@ -4063,8 +4063,8 @@ CODE_B4A292:
 	JML CODE_80A5F1				;$B4A2A0  /
 
 CODE_B4A2A4:
-	JSL CODE_808C39				;$B4A2A4  \
-	LDA $0512				;$B4A2A8   |
+	JSL fade_screen_global			;$B4A2A4  \
+	LDA screen_brightness			;$B4A2A8   |
 	CMP #$000F				;$B4A2AB   |
 	BNE CODE_B4A2BB				;$B4A2AE   |
 	LDA #CODE_808D30			;$B4A2B0   |
@@ -4159,7 +4159,7 @@ CODE_B4A371:
 	JSR CODE_B4A051				;$B4A374   |
 	DEC $064E				;$B4A377   |
 	BNE CODE_B4A390				;$B4A37A   |
-	LDA $0512				;$B4A37C   |
+	LDA screen_brightness			;$B4A37C   |
 	CMP #$000F				;$B4A37F   |
 	BNE CODE_B4A390				;$B4A382   |
 	LDA #$810F				;$B4A384   |
@@ -4374,7 +4374,7 @@ CODE_B4A566:
 	BRA CODE_B4A533				;$B4A566  /
 
 CODE_B4A568:
-	LDA $050E				;$B4A568  \
+	LDA player_active_held			;$B4A568  \
 	BIT #$0800				;$B4A56B   |
 	BEQ CODE_B4A590				;$B4A56E   |
 	LDA $066C				;$B4A570   |
@@ -4405,7 +4405,7 @@ CODE_B4A590:
 	BRL CODE_B4A52E				;$B4A5B2  /
 
 CODE_B4A5B5:
-	LDA $0510				;$B4A5B5  \
+	LDA player_active_pressed		;$B4A5B5  \
 	BIT #$D0C0				;$B4A5B8   |
 	BEQ CODE_B4A5CC				;$B4A5BB   |
 	LDA $06A3				;$B4A5BD   |
@@ -4649,7 +4649,7 @@ CODE_B4A7D7:					;	   |
 	RTS					;$B4A7D7  /
 
 CODE_B4A7D8:
-	LDA $0510				;$B4A7D8  \
+	LDA player_active_pressed		;$B4A7D8  \
 	BIT #$D0C0				;$B4A7DB   |
 	BEQ CODE_B4A7E6				;$B4A7DE   |
 	LDA #$0001				;$B4A7E0   |
@@ -4728,7 +4728,7 @@ CODE_B4A87F:
 	BNE CODE_B4A89B				;$B4A884   |
 	LDA #CODE_808D7D			;$B4A886   |
 	STA NMI_pointer				;$B4A889   |
-	LDA $0512				;$B4A88B   |
+	LDA screen_brightness			;$B4A88B   |
 	CMP #$000F				;$B4A88E   |
 	BNE CODE_B4A89B				;$B4A891   |
 	LDA #$810F				;$B4A893   |
@@ -4776,7 +4776,7 @@ CODE_B4A8D6:
 	BEQ CODE_B4A908				;$B4A8F2   |
 	LDA #CODE_808D7D			;$B4A8F4   |
 	STA NMI_pointer				;$B4A8F7   |
-	LDA $0512				;$B4A8F9   |
+	LDA screen_brightness			;$B4A8F9   |
 	CMP #$000F				;$B4A8FC   |
 	BNE CODE_B4A908				;$B4A8FF   |
 	LDA #$810F				;$B4A901   |
@@ -4816,10 +4816,10 @@ CODE_B4A90E:
 	LDA #$0001				;$B4A953   |
 	JSR CODE_B4BD8D				;$B4A956   |
 CODE_B4A959:					;	   |
-	LDA $0510				;$B4A959   |
+	LDA player_active_pressed		;$B4A959   |
 	BIT #$D0C0				;$B4A95C   |
 	BEQ CODE_B4A97B				;$B4A95F   |
-	LDA $0512				;$B4A961   |
+	LDA screen_brightness			;$B4A961   |
 	CMP #$000F				;$B4A964   |
 	BNE CODE_B4A97B				;$B4A967   |
 	LDA #$0001				;$B4A969   |
@@ -4951,7 +4951,7 @@ CODE_B4AA79:
 	BNE CODE_B4AA95				;$B4AA7E   |
 	LDA #CODE_808D7D			;$B4AA80   |
 	STA NMI_pointer				;$B4AA83   |
-	LDA $0512				;$B4AA85   |
+	LDA screen_brightness			;$B4AA85   |
 	CMP #$000F				;$B4AA88   |
 	BNE CODE_B4AA95				;$B4AA8B   |
 	LDA #$810F				;$B4AA8D   |
@@ -5036,10 +5036,10 @@ CODE_B4AB00:
 	LDA #$0001				;$B4AB45   |
 	JSR CODE_B4BD8D				;$B4AB48   |
 CODE_B4AB4B:					;	   |
-	LDA $0510				;$B4AB4B   |
+	LDA player_active_pressed		;$B4AB4B   |
 	BIT #$D0C0				;$B4AB4E   |
 	BEQ CODE_B4AB6D				;$B4AB51   |
-	LDA $0512				;$B4AB53   |
+	LDA screen_brightness			;$B4AB53   |
 	CMP #$000F				;$B4AB56   |
 	BNE CODE_B4AB6D				;$B4AB59   |
 	LDA #$0001				;$B4AB5B   |
@@ -5135,7 +5135,7 @@ CODE_B4ABEA:
 	LDA #$0001				;$B4AC34   |
 	JSR CODE_B4BD8D				;$B4AC37   |
 CODE_B4AC3A:					;	   |
-	LDA $0510				;$B4AC3A   |
+	LDA player_active_pressed		;$B4AC3A   |
 	BIT #$D0C0				;$B4AC3D   |
 	BEQ CODE_B4AC48				;$B4AC40   |
 	LDA #$0001				;$B4AC42   |
@@ -5809,7 +5809,7 @@ CODE_B4B242:					;	   |
 	CMP #$02				;$B4B24B   |
 	BCC CODE_B4B2C3				;$B4B24D   |
 	REP #$20				;$B4B24F   |
-	LDA $D3					;$B4B251   |
+	LDA level_number			;$B4B251   |
 	CMP #$006B				;$B4B253   |
 	BNE CODE_B4B29C				;$B4B256   |
 CODE_B4B258:					;	   |
@@ -5841,7 +5841,7 @@ CODE_B4B27D:					;	   |
 	JML CODE_808C80				;$B4B28F  /
 
 CODE_B4B293:
-	LDA $D3					;$B4B293  \
+	LDA level_number			;$B4B293  \
 	CMP #$006B				;$B4B295   |
 	BNE CODE_B4B2C3				;$B4B298   |
 	BRA CODE_B4B258				;$B4B29A  /
@@ -6583,8 +6583,8 @@ CODE_B4B82A:
 CODE_B4B82B:
 	LDA global_frame_counter		;$B4B82B  \
 	SEP #$20				;$B4B82D   |
-	STA PPU.layer_1_scroll_x		;$B4B82F   |
-	STZ PPU.layer_1_scroll_x		;$B4B832   |
+	STA PPU.layer_2_scroll_x		;$B4B82F   |
+	STZ PPU.layer_2_scroll_x		;$B4B832   |
 	REP #$20				;$B4B835   |
 	LDA current_sprite			;$B4B837   |
 	PHA					;$B4B839   |
@@ -6645,9 +6645,9 @@ CODE_B4B879:					;	   |
 	ADC $079A				;$B4B8B2   |
 	LDA $0A,x				;$B4B8B5   |
 	SEP #$20				;$B4B8B7   |
-	STA PPU.layer_0_scroll_y		;$B4B8B9   |
+	STA PPU.layer_1_scroll_y		;$B4B8B9   |
 	XBA					;$B4B8BC   |
-	STA PPU.layer_0_scroll_y		;$B4B8BD   |
+	STA PPU.layer_1_scroll_y		;$B4B8BD   |
 	REP #$20				;$B4B8C0   |
 	PLA					;$B4B8C2   |
 	STA current_sprite			;$B4B8C3   |
@@ -7365,19 +7365,19 @@ CODE_B4BE23:
 
 CODE_B4BE2F:
 	SEP #$20				;$B4BE2F  \
-	STZ PPU.layer_2_scroll_x		;$B4BE31   |
-	STZ PPU.layer_2_scroll_x		;$B4BE34   |
+	STZ PPU.layer_3_scroll_x		;$B4BE31   |
+	STZ PPU.layer_3_scroll_x		;$B4BE34   |
 	LDA #$FF				;$B4BE37   |
-	STA PPU.layer_2_scroll_y		;$B4BE39   |
-	STA PPU.layer_2_scroll_y		;$B4BE3C   |
-	STZ PPU.layer_1_scroll_x		;$B4BE3F   |
-	STZ PPU.layer_1_scroll_x		;$B4BE42   |
-	STA PPU.layer_1_scroll_y		;$B4BE45   |
-	STA PPU.layer_1_scroll_y		;$B4BE48   |
-	STZ PPU.layer_0_scroll_x		;$B4BE4B   |
-	STZ PPU.layer_0_scroll_x		;$B4BE4E   |
-	STA PPU.layer_0_scroll_y		;$B4BE51   |
-	STA PPU.layer_0_scroll_y		;$B4BE54   |
+	STA PPU.layer_3_scroll_y		;$B4BE39   |
+	STA PPU.layer_3_scroll_y		;$B4BE3C   |
+	STZ PPU.layer_2_scroll_x		;$B4BE3F   |
+	STZ PPU.layer_2_scroll_x		;$B4BE42   |
+	STA PPU.layer_2_scroll_y		;$B4BE45   |
+	STA PPU.layer_2_scroll_y		;$B4BE48   |
+	STZ PPU.layer_1_scroll_x		;$B4BE4B   |
+	STZ PPU.layer_1_scroll_x		;$B4BE4E   |
+	STA PPU.layer_1_scroll_y		;$B4BE51   |
+	STA PPU.layer_1_scroll_y		;$B4BE54   |
 	REP #$20				;$B4BE57   |
 	STZ $17BA				;$B4BE59   |
 	STZ $17C0				;$B4BE5C   |

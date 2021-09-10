@@ -1486,7 +1486,7 @@ CODE_B38C54:
 	JSR CODE_B38D1D				;$B38C5E   |
 	JSL CODE_B8D5E0				;$B38C61   |
 	JSL CODE_B9D100				;$B38C65   |
-	LDA $D3					;$B38C69   |
+	LDA level_number			;$B38C69   |
 	CMP #$0024				;$B38C6B   |
 	BEQ CODE_B38C51				;$B38C6E   |
 	JSL CODE_BBBB99				;$B38C70   |
@@ -1715,7 +1715,7 @@ CODE_B38DF1:
 if !version == 0				;	   |
 	BRA CODE_B38DEC				;$B38DFF   |
 else						;	   |
-	LDA $D3					;$B38DFF   |
+	LDA level_number			;$B38DFF   |
 	CMP #$008F				;$B38E01   |
 	BNE CODE_B38E12				;$B38E04   |
 	LDA $0915				;$B38E06   |
@@ -2464,7 +2464,7 @@ CODE_B39305:					;	   |
 	JML CODE_B38000				;$B39310  /
 
 CODE_B39314:
-	LDA $D3					;$B39314  \
+	LDA level_number			;$B39314  \
 	CMP #$0060				;$B39316   |
 	BNE CODE_B39324				;$B39319   |
 	LDX current_sprite			;$B3931B   |
@@ -2480,7 +2480,7 @@ CODE_B39324:					;	   |
 	BRA CODE_B39302				;$B39334  /
 
 CODE_B39336:
-	LDA $D3					;$B39336  \
+	LDA level_number			;$B39336  \
 	CMP #$0060				;$B39338   |
 	BNE CODE_B39344				;$B3933B   |
 	LDA #$067D				;$B3933D   |
@@ -2542,7 +2542,7 @@ CODE_B39396:					;	   |
 	BRL CODE_B39484				;$B3939E  /
 
 CODE_B393A1:
-	LDA $D3					;$B393A1  \
+	LDA level_number			;$B393A1  \
 	CMP #$0062				;$B393A3   |
 	BNE CODE_B393B1				;$B393A6   |
 	LDX current_sprite			;$B393A8   |
@@ -3906,7 +3906,7 @@ CODE_B39E49:					;	   |
 CODE_B39E4D:					;	   |
 	JSR CODE_B39E9C				;$B39E4D   |
 	BCC CODE_B39E61				;$B39E50   |
-	LDA $D3					;$B39E52   |
+	LDA level_number			;$B39E52   |
 	CMP #$000D				;$B39E54   |
 	BEQ CODE_B39E74				;$B39E57   |
 	LDA $0000,y				;$B39E59   |
@@ -8346,7 +8346,7 @@ CODE_B3BDFF:					;	   |
 	STA $52,x				;$B3BE0B   |
 	LDA #$0195				;$B3BE0D   |
 	JSR CODE_B3A627				;$B3BE10   |
-	LDA $D3					;$B3BE13   |
+	LDA level_number			;$B3BE13   |
 	CMP #$000D				;$B3BE15   |
 	BNE CODE_B3BE21				;$B3BE18   |
 	LDA $12,x				;$B3BE1A   |
@@ -13577,7 +13577,7 @@ CODE_B3E51B:
 	STA $08AA				;$B3E525   |
 	LDA $0902				;$B3E528   |
 	STA $08B2				;$B3E52B   |
-	LDA $D3					;$B3E52E   |
+	LDA level_number			;$B3E52E   |
 	STA $08AC				;$B3E530   |
 	LDA $08A8				;$B3E533   |
 	STA $08B0				;$B3E536   |

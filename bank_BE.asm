@@ -4164,7 +4164,7 @@ CODE_BED6BE:					;	   |
 	LDA $5C,x				;$BED6C4   |
 	STA $32					;$BED6C6   |
 	LDA $90					;$BED6C8   |
-	LDY $D3					;$BED6CA   |
+	LDY level_number			;$BED6CA   |
 	CPY #$000F				;$BED6CC   |
 	BNE CODE_BED6D4				;$BED6CF   |
 	LDA #$00FD				;$BED6D1   |
@@ -7599,7 +7599,7 @@ CODE_BEEFAD:
 	JML [$05A9]				;$BEEFB4  /
 
 CODE_BEEFB7:
-	LDA $D3					;$BEEFB7  \
+	LDA level_number			;$BEEFB7  \
 	CMP #$001B				;$BEEFB9   |
 	BNE CODE_BEEFAD				;$BEEFBC   |
 	LDA $08BC				;$BEEFBE   |
@@ -7616,7 +7616,7 @@ CODE_BEEFD1:					;	   |
 	JML [$05A9]				;$BEEFD6  /
 
 CODE_BEEFD9:
-	LDA $D3					;$BEEFD9  \
+	LDA level_number			;$BEEFD9  \
 	CMP #$0003				;$BEEFDB   |
 	BNE CODE_BEEFAD				;$BEEFDE   |
 	LDA $08BA				;$BEEFE0   |
@@ -7632,7 +7632,7 @@ CODE_BEEFD9:
 	BRA CODE_BEEFAD				;$BEEFF6  /
 
 CODE_BEEFF8:
-	LDA $D3					;$BEEFF8  \
+	LDA level_number			;$BEEFF8  \
 	CMP #$001B				;$BEEFFA   |
 	BNE CODE_BEEFAD				;$BEEFFD   |
 	LDA $08BA				;$BEEFFF   |

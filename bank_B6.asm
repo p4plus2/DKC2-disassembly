@@ -905,7 +905,7 @@ CODE_B68AAB:
 	LDY $000A,x				;$B68AB3   |
 	JSL CODE_BB842C				;$B68AB6   |
 	LDY alternate_sprite			;$B68ABA   |
-	LDA $D3					;$B68ABC   |
+	LDA level_number			;$B68ABC   |
 	CMP #$006B				;$B68ABE   |
 	BNE CODE_B68ACF				;$B68AC1   |
 	LDA $0012,y				;$B68AC3   |
@@ -1215,7 +1215,7 @@ CODE_B68D7C:
 	STA $000656				;$B68DA1   |
 	STA $42,x				;$B68DA5   |
 	STZ $44,x				;$B68DA7   |
-	LDA $D3					;$B68DA9   |
+	LDA level_number			;$B68DA9   |
 	CMP #$006B				;$B68DAB   |
 	BEQ CODE_B68DB3				;$B68DAE   |
 	BRL CODE_B68E56				;$B68DB0  /
@@ -1324,7 +1324,7 @@ CODE_B68E9C:
 CODE_B68EA8:					;	   |
 	LDA.l $000652				;$B68EA8   |
 	BNE CODE_B68EBB				;$B68EAC   |
-	LDA $D3					;$B68EAE   |
+	LDA level_number			;$B68EAE   |
 	CMP #$006B				;$B68EB0   |
 	BNE CODE_B68EB8				;$B68EB3   |
 	BRL CODE_B68F44				;$B68EB5  /
@@ -2020,7 +2020,7 @@ CODE_B695FB:					;	   |
 	JSL CODE_B9D09B				;$B6960C   |
 CODE_B69610:					;	   |
 	JSR CODE_B699C5				;$B69610   |
-	LDA $D3					;$B69613   |
+	LDA level_number			;$B69613   |
 	CMP #$006B				;$B69615   |
 	BNE CODE_B6961D				;$B69618   |
 	JSR CODE_B68F37				;$B6961A   |
@@ -2839,7 +2839,7 @@ CODE_B69D0E:					;	   |
 	STA $0006A3				;$B69D15   |
 	JSR CODE_B6800D				;$B69D19   |
 	STZ $072D				;$B69D1C   |
-	LDA $D3					;$B69D1F   |
+	LDA level_number			;$B69D1F   |
 	CMP #$006B				;$B69D21   |
 	BNE CODE_B69D44				;$B69D24   |
 	LDX $0654				;$B69D26   |
@@ -3082,7 +3082,7 @@ CODE_B69F24:
 CODE_B69F32:
 	BCC CODE_B69F6E				;$B69F32  \
 	LDX current_sprite			;$B69F34   |
-	LDA $D3					;$B69F36   |
+	LDA level_number			;$B69F36   |
 	CMP #$006B				;$B69F38   |
 	BEQ CODE_B69F89				;$B69F3B   |
 	LDA $2E,x				;$B69F3D   |
@@ -4725,7 +4725,7 @@ CODE_B6ABDD:					;	   |
 	ASL A					;$B6ABF2   |
 	TAY					;$B6ABF3   |
 	LDA DATA_B6D0D1,y			;$B6ABF4   |
-	LDX $D3					;$B6ABF7   |
+	LDX level_number			;$B6ABF7   |
 	CPX #$006B				;$B6ABF9   |
 	BNE CODE_B6AC01				;$B6ABFC   |
 	LDA DATA_B6D135,y			;$B6ABFE   |
@@ -4740,7 +4740,7 @@ CODE_B6AC01:					;	   |
 	BNE CODE_B6AC7F				;$B6AC13   |
 	LDA #CODE_B6B7C7			;$B6AC15   |
 	STA $44,x				;$B6AC18   |
-	LDA $D3					;$B6AC1A   |
+	LDA level_number			;$B6AC1A   |
 	CMP #$006B				;$B6AC1C   |
 	BNE CODE_B6AC34				;$B6AC1F   |
 	LDA #$0287				;$B6AC21   |
@@ -6700,7 +6700,7 @@ CODE_B6C0A0:
 	ASL A					;$B6C0A5   |
 	TAY					;$B6C0A6   |
 	LDA DATA_B6D0D1,y			;$B6C0A7   |
-	LDX $D3					;$B6C0AA   |
+	LDX level_number			;$B6C0AA   |
 	CPX #$006B				;$B6C0AC   |
 	BNE CODE_B6C0B4				;$B6C0AF   |
 	LDA DATA_B6D135,y			;$B6C0B1   |
@@ -6834,7 +6834,7 @@ CODE_B6C1DB:
 	ASL A					;$B6C1DF   |
 	TAY					;$B6C1E0   |
 	LDA DATA_B6D0D1,y			;$B6C1E1   |
-	LDX $D3					;$B6C1E4   |
+	LDX level_number			;$B6C1E4   |
 	CPX #$006B				;$B6C1E6   |
 	BNE CODE_B6C1EE				;$B6C1E9   |
 	LDA DATA_B6D135,y			;$B6C1EB   |
@@ -8102,7 +8102,7 @@ CODE_B6CB28:					;	   |
 	RTS					;$B6CB2D  /
 
 CODE_B6CB2E:
-	LDA $D3					;$B6CB2E  \
+	LDA level_number			;$B6CB2E  \
 	CMP #$0060				;$B6CB30   |
 	BNE CODE_B6CB36				;$B6CB33   |
 	RTS					;$B6CB35  /
@@ -8279,7 +8279,7 @@ if !version == 1				;	   |
 	INC $0650				;$B6CC74   |
 endif						;	   |
 CODE_B6CC77:					;	   |
-	LDA $D3					;$B6CC77   |
+	LDA level_number			;$B6CC77   |
 	CMP #$0060				;$B6CC79   |
 	BNE CODE_B6CC9B				;$B6CC7C   |
 	LDA.l $000652				;$B6CC7E   |
@@ -8507,7 +8507,7 @@ CODE_B6CE0F:					;	   |
 	ADC #$FFB3				;$B6CE16   |
 	STA $000A,y				;$B6CE19   |
 CODE_B6CE1C:					;	   |
-	LDA $D3					;$B6CE1C   |
+	LDA level_number			;$B6CE1C   |
 	CMP #$0060				;$B6CE1E   |
 	BEQ CODE_B6CE3A				;$B6CE21   |
 	LDY $4C,x				;$B6CE23   |
@@ -10840,7 +10840,7 @@ DATA_B6E0D9:
 CODE_B6E0F3:
 	LDX current_sprite			;$B6E0F3  \
 	LDY $0654				;$B6E0F5   |
-	LDA $D3					;$B6E0F8   |
+	LDA level_number			;$B6E0F8   |
 	CMP #$000D				;$B6E0FA   |
 	BNE CODE_B6E10A				;$B6E0FD   |
 	LDA $002E,y				;$B6E0FF   |
@@ -11991,7 +11991,7 @@ CODE_B6EAC4:
 
 CODE_B6EACD:
 	STZ $1C,x				;$B6EACD  \
-	LDA $D3					;$B6EACF   |
+	LDA level_number			;$B6EACF   |
 	CMP #$0061				;$B6EAD1   |
 	BNE CODE_B6EAE2				;$B6EAD4   |
 	LDA.l $0006A3				;$B6EAD6   |

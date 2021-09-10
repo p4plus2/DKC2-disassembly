@@ -8149,7 +8149,7 @@ CODE_B5CFD3:
 	STA CPU.rom_speed			;$B5CFDF   |
 	REP #$20				;$B5CFE2   |
 	LDA #$000F				;$B5CFE4   |
-	STA $0512				;$B5CFE7   |
+	STA screen_brightness			;$B5CFE7   |
 	JSL CODE_808CA8				;$B5CFEA   |
 	STZ global_frame_counter		;$B5CFEE   |
 	LDA #CODE_808CED			;$B5CFF0   |
@@ -8257,12 +8257,12 @@ CODE_B5D177:					;	   |
 	BIT #$0001				;$B5D19F   |
 	BEQ CODE_B5D1AC				;$B5D1A2   |
 CODE_B5D1A4:					;	   |
-	LDA $0512				;$B5D1A4   |
+	LDA screen_brightness			;$B5D1A4   |
 	BNE CODE_B5D1AC				;$B5D1A7   |
 	BRL CODE_B5D2CA				;$B5D1A9  /
 
 CODE_B5D1AC:
-	LDA $0512				;$B5D1AC  \
+	LDA screen_brightness			;$B5D1AC  \
 	BNE CODE_B5D1BD				;$B5D1AF   |
 	LDA.l $0006A5				;$B5D1B1   |
 	BIT #$0010				;$B5D1B5   |
@@ -8273,7 +8273,7 @@ CODE_B5D1BD:
 	LDA.l $0006A3				;$B5D1BD  \
 	BIT #$8000				;$B5D1C1   |
 	BEQ CODE_B5D1D0				;$B5D1C4   |
-	LDA $0512				;$B5D1C6   |
+	LDA screen_brightness			;$B5D1C6   |
 	BNE CODE_B5D1D0				;$B5D1C9   |
 	LDA #CODE_808CD9			;$B5D1CB   |
 	STA NMI_pointer				;$B5D1CE   |
@@ -8281,7 +8281,7 @@ CODE_B5D1D0:					;	   |
 	LDA.l $0006A5				;$B5D1D0   |
 	BIT #$2000				;$B5D1D4   |
 	BEQ CODE_B5D1F5				;$B5D1D7   |
-	LDA $0512				;$B5D1D9   |
+	LDA screen_brightness			;$B5D1D9   |
 	BNE CODE_B5D1F5				;$B5D1DC   |
 	LDA.l $0006A5				;$B5D1DE   |
 	AND #$DFFF				;$B5D1E2   |
@@ -8317,7 +8317,7 @@ CODE_B5D229:
 CODE_B5D22D:					;	   |
 	JSL CODE_B5A8DA				;$B5D22D   |
 	JSR CODE_B5D48E				;$B5D231   |
-	JSL CODE_808C39				;$B5D234   |
+	JSL fade_screen_global			;$B5D234   |
 	JSL CODE_808CA8				;$B5D238   |
 CODE_B5D23C:					;	   |
 	WAI					;$B5D23C   |
@@ -8527,12 +8527,12 @@ CODE_B5D3DC:					;	   |
 CODE_B5D3F3:
 	BIT #$0001				;$B5D3F3  \
 	BEQ CODE_B5D400				;$B5D3F6   |
-	LDA $0512				;$B5D3F8   |
+	LDA screen_brightness			;$B5D3F8   |
 	BNE CODE_B5D400				;$B5D3FB   |
 	JMP CODE_B5D47A				;$B5D3FD  /
 
 CODE_B5D400:
-	LDA $0512				;$B5D400  \
+	LDA screen_brightness			;$B5D400  \
 	BNE CODE_B5D411				;$B5D403   |
 	LDA.l $0006A5				;$B5D405   |
 	BIT #$0010				;$B5D409   |
@@ -8543,13 +8543,13 @@ CODE_B5D411:
 	LDA.l $0006A3				;$B5D411  \
 	BIT #$8000				;$B5D415   |
 	BEQ CODE_B5D424				;$B5D418   |
-	LDA $0512				;$B5D41A   |
+	LDA screen_brightness			;$B5D41A   |
 	BNE CODE_B5D424				;$B5D41D   |
 	LDA #CODE_808CD9			;$B5D41F   |
 	STA NMI_pointer				;$B5D422   |
 CODE_B5D424:					;	   |
 	SEP #$20				;$B5D424   |
-	LDA $0512				;$B5D426   |
+	LDA screen_brightness			;$B5D426   |
 	STA PPU.screen				;$B5D429   |
 	REP #$20				;$B5D42C   |
 	JSL CODE_80897C				;$B5D42E   |
@@ -8557,7 +8557,7 @@ CODE_B5D424:					;	   |
 	JSL sprite_handler			;$B5D434   |
 	JSL CODE_B5A8DA				;$B5D438   |
 	JSR CODE_B5D48E				;$B5D43C   |
-	JSL CODE_808C39				;$B5D43F   |
+	JSL fade_screen_global			;$B5D43F   |
 	JSL CODE_808CA8				;$B5D443   |
 CODE_B5D447:					;	   |
 	WAI					;$B5D447   |
@@ -8580,7 +8580,7 @@ CODE_B5D44A:
 	JML CODE_808C80				;$B5D476  /
 
 CODE_B5D47A:
-	LDA $D3					;$B5D47A  \
+	LDA level_number			;$B5D47A  \
 	STA $08A8				;$B5D47C   |
 	LDA.l $0006A3				;$B5D47F   |
 	AND #$FFFE				;$B5D483   |
@@ -8641,7 +8641,7 @@ CODE_B5D4E3:					;	   |
 	BNE CODE_B5D4E3				;$B5D4FE   |
 	JSR CODE_B5DF4F				;$B5D500   |
 	SEP #$20				;$B5D503   |
-	LDA $0512				;$B5D505   |
+	LDA screen_brightness			;$B5D505   |
 	STA PPU.screen				;$B5D508   |
 	REP #$20				;$B5D50B   |
 	INC global_frame_counter		;$B5D50D   |
@@ -8683,9 +8683,9 @@ CODE_B5D52C:					;	   |
 	JSL CODE_B5A8DA				;$B5D557   |
 	JSL CODE_B380EC				;$B5D55B   |
 	JSR CODE_B5D48E				;$B5D55F   |
-	JSL CODE_808C39				;$B5D562   |
+	JSL fade_screen_global			;$B5D562   |
 	JSL CODE_808CA8				;$B5D566   |
-	LDA $0512				;$B5D56A   |
+	LDA screen_brightness			;$B5D56A   |
 	BNE CODE_B5D57D				;$B5D56D   |
 	LDA #CODE_B48DFA			;$B5D56F   |
 	STA $00067D				;$B5D572   |
@@ -9878,10 +9878,10 @@ CODE_B5DFC5:					;	   |
 	CPX #$0010				;$B5DFCD   |
 	BNE CODE_B5DFC5				;$B5DFD0   |
 	LDA $17C0				;$B5DFD2   |
-	STA PPU.layer_0_scroll_y		;$B5DFD5   |
-	STZ PPU.layer_0_scroll_y		;$B5DFD8   |
-	STA PPU.layer_2_scroll_y		;$B5DFDB   |
-	STZ PPU.layer_2_scroll_y		;$B5DFDE   |
+	STA PPU.layer_1_scroll_y		;$B5DFD5   |
+	STZ PPU.layer_1_scroll_y		;$B5DFD8   |
+	STA PPU.layer_3_scroll_y		;$B5DFDB   |
+	STZ PPU.layer_3_scroll_y		;$B5DFDE   |
 	LDA global_frame_counter		;$B5DFE1   |
 	LSR A					;$B5DFE3   |
 	LSR A					;$B5DFE4   |
@@ -10011,9 +10011,9 @@ CODE_B5E0A1:
 	INX					;$B5E0D3   |
 	LDA $0000,x				;$B5E0D4   |
 	SEP #$20				;$B5E0D7   |
-	STA $94					;$B5E0D9   |
+	STA nmi_submode				;$B5E0D9   |
 	XBA					;$B5E0DB   |
-	STA $96					;$B5E0DC   |
+	STA gameloop_submode			;$B5E0DC   |
 	REP #$20				;$B5E0DE   |
 	RTS					;$B5E0E0  /
 
@@ -12569,7 +12569,7 @@ CODE_B5F13A:					;	   |
 	STA $3E					;$B5F160   |
 	LDA DATA_B5F3B1,x			;$B5F162   |
 	STA $36					;$B5F165   |
-	LDA $D3					;$B5F167   |
+	LDA level_number			;$B5F167   |
 	ASL A					;$B5F169   |
 	TAX					;$B5F16A   |
 	LDA.l DATA_FDAC4D,x			;$B5F16B   |

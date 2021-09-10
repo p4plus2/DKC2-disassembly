@@ -61,7 +61,7 @@ CODE_B88066:					;	   |
 	RTL					;$B88069  /
 
 CODE_B8806A:
-	LDA $0512				;$B8806A  \
+	LDA screen_brightness			;$B8806A  \
 	BNE CODE_B88066				;$B8806D   |
 	LDA #$0002				;$B8806F   |
 	TRB $08C2				;$B88072   |
@@ -3343,7 +3343,7 @@ CODE_B89B27:
 	JMP CODE_B89B02				;$B89B2D  /
 
 CODE_B89B30:
-	LDA $D3					;$B89B30  \
+	LDA level_number			;$B89B30  \
 	CMP #$00B2				;$B89B32   |
 	BNE CODE_B89B48				;$B89B35   |
 	LDX current_sprite			;$B89B37   |
@@ -3358,7 +3358,7 @@ CODE_B89B48:					;	   |
 	RTS					;$B89B48  /
 
 CODE_B89B49:
-	LDA $D3					;$B89B49  \
+	LDA level_number			;$B89B49  \
 	CMP #$002A				;$B89B4B   |
 	BEQ CODE_B89B8B				;$B89B4E   |
 	CMP #$006E				;$B89B50   |
@@ -3373,7 +3373,7 @@ CODE_B89B49:
 	TAX					;$B89B62   |
 	LDA.l DATA_B89B81,x			;$B89B63   |
 	STA $32					;$B89B67   |
-	LDA $D3					;$B89B69   |
+	LDA level_number			;$B89B69   |
 	CMP #$009B				;$B89B6B   |
 	BNE CODE_B89B75				;$B89B6E   |
 	LDA #$00F8				;$B89B70   |
@@ -4533,7 +4533,7 @@ CODE_B8A3F4:					;	   |
 	BEQ CODE_B8A413				;$B8A405   |
 	CMP #$0011				;$B8A407   |
 	BEQ CODE_B8A413				;$B8A40A   |
-	LDA $D3					;$B8A40C   |
+	LDA level_number			;$B8A40C   |
 	CMP #$00B9				;$B8A40E   |
 	BNE CODE_B8A424				;$B8A411   |
 CODE_B8A413:					;	   |
@@ -6539,7 +6539,7 @@ CODE_B8B3EC:
 	RTL					;$B8B3EF  /
 
 CODE_B8B3F0:
-	LDA $D3					;$B8B3F0  \
+	LDA level_number			;$B8B3F0  \
 	CMP #$0061				;$B8B3F2   |
 	BEQ CODE_B8B40A				;$B8B3F5   |
 	CMP #$00B9				;$B8B3F7   |
@@ -7400,7 +7400,7 @@ CODE_B8B9C7:
 	STA $92					;$B8B9C7  \
 	LDA #$0001				;$B8B9C9   |
 	TRB $08C4				;$B8B9CC   |
-	LDA $0513				;$B8B9CF   |
+	LDA screen_fade_speed			;$B8B9CF   |
 	AND #$00FF				;$B8B9D2   |
 	BNE CODE_B8B9DE				;$B8B9D5   |
 	LDX current_sprite			;$B8B9D7   |
@@ -7412,9 +7412,9 @@ CODE_B8B9DE:					;	   |
 
 CODE_B8B9E0:
 	LDY #$0000				;$B8B9E0  \
-	LDA $0510				;$B8B9E3   |
+	LDA player_active_pressed		;$B8B9E3   |
 	STA $0983				;$B8B9E6   |
-	LDA $050E				;$B8B9E9   |
+	LDA player_active_held			;$B8B9E9   |
 	STA $0981				;$B8B9EC   |
 	LDY $66					;$B8B9EF   |
 	LDA $0981				;$B8B9F1   |
@@ -10170,7 +10170,7 @@ CODE_B8CCE8:
 	RTS					;$B8CCE8  /
 
 CODE_B8CCE9:
-	LDA $0512				;$B8CCE9  \
+	LDA screen_brightness			;$B8CCE9  \
 	BEQ CODE_B8CCE8				;$B8CCEC   |
 	LDA #$2000				;$B8CCEE   |
 	BIT $08C2				;$B8CCF1   |

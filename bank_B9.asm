@@ -1681,7 +1681,7 @@ CODE_B9DA80:
 	RTS					;$B9DA80  |
 
 CODE_B9DA81:
-	LDA $D3					;$B9DA81  \
+	LDA level_number			;$B9DA81  \
 	STA $059D				;$B9DA83   |
 	LDA $08A6				;$B9DA86   |
 	STA $059F				;$B9DA89   |
@@ -4975,7 +4975,7 @@ CODE_B9EF5A:
 	CMP #$0005				;$B9EF5F   |
 	BEQ CODE_B9EF76				;$B9EF62   |
 	LDY #$0004				;$B9EF64   |
-	LDA $D3					;$B9EF67   |
+	LDA level_number			;$B9EF67   |
 	CMP #$006B				;$B9EF69   |
 	BNE CODE_B9EF71				;$B9EF6C   |
 	LDY #$000B				;$B9EF6E   |
