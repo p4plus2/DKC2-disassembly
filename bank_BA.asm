@@ -3611,7 +3611,7 @@ CODE_BAB1B9:
 	LDA #CODE_BAB31E			;$BAB2B2   |
 	STA $00067D				;$BAB2B5   |
 	LDA #$0100				;$BAB2B9   |
-	JSL CODE_808C2E				;$BAB2BC   |
+	JSL set_fade_global			;$BAB2BC   |
 	LDA.l $00065A				;$BAB2C0   |
 	XBA					;$BAB2C4   |
 	AND #$00FF				;$BAB2C5   |
@@ -3745,7 +3745,7 @@ CODE_BAB3E5:
 	BEQ CODE_BAB3FD				;$BAB3F4   |
 CODE_BAB3F6:					;	   |
 	LDA #$810F				;$BAB3F6   |
-	JSL CODE_808C2E				;$BAB3F9   |
+	JSL set_fade_global			;$BAB3F9   |
 CODE_BAB3FD:					;	   |
 	RTL					;$BAB3FD  /
 
@@ -4052,7 +4052,7 @@ CODE_BAB671:					;	   |
 	LDA #CODE_BAB6F6			;$BAB6E1   |
 	STA $00067D				;$BAB6E4   |
 	LDA #$0100				;$BAB6E8   |
-	JSL CODE_808C2E				;$BAB6EB   |
+	JSL set_fade_global			;$BAB6EB   |
 	LDA #$0081				;$BAB6EF   |
 	STA CPU.enable_interrupts		;$BAB6F2   |
 	RTL					;$BAB6F5  /
@@ -4192,7 +4192,7 @@ CODE_BAB83E:
 	BNE CODE_BAB858				;$BAB841   |
 	STA $00065E				;$BAB843   |
 	LDA #$810F				;$BAB847   |
-	JSL CODE_808C2E				;$BAB84A   |
+	JSL set_fade_global			;$BAB84A   |
 	LDA #CODE_BAB8FD			;$BAB84E   |
 	STA $00067F				;$BAB851   |
 	BRL CODE_BAB8B2				;$BAB855  /
@@ -4266,7 +4266,7 @@ CODE_BAB8D6:					;	   |
 	LDA #CODE_BAB8F9			;$BAB8EA   |
 	STA $00067F				;$BAB8ED   |
 	LDA #$810F				;$BAB8F1   |
-	JSL CODE_808C2E				;$BAB8F4   |
+	JSL set_fade_global			;$BAB8F4   |
 CODE_BAB8F8:					;	   |
 	RTL					;$BAB8F8  /
 
@@ -4862,59 +4862,59 @@ CODE_BAC7C0:
 
 CODE_BAC7C4:
 	REP #$20				;$BAC7C4  \
-	STZ $0400				;$BAC7C6   |
-	STZ $0402				;$BAC7C9   |
-	STZ $0404				;$BAC7CC   |
-	STZ $0406				;$BAC7CF   |
-	STZ $0408				;$BAC7D2   |
-	STZ $040A				;$BAC7D5   |
-	STZ $040C				;$BAC7D8   |
-	STZ $040E				;$BAC7DB   |
-	STZ $0410				;$BAC7DE   |
-	STZ $0412				;$BAC7E1   |
-	STZ $0414				;$BAC7E4   |
-	STZ $0416				;$BAC7E7   |
-	STZ $0418				;$BAC7EA   |
-	STZ $041A				;$BAC7ED   |
-	STZ $041C				;$BAC7F0   |
-	STZ $041E				;$BAC7F3   |
+	STZ oam_attribute[$00].size		;$BAC7C6   |
+	STZ oam_attribute[$02].size		;$BAC7C9   |
+	STZ oam_attribute[$04].size		;$BAC7CC   |
+	STZ oam_attribute[$06].size		;$BAC7CF   |
+	STZ oam_attribute[$08].size		;$BAC7D2   |
+	STZ oam_attribute[$0A].size		;$BAC7D5   |
+	STZ oam_attribute[$0C].size		;$BAC7D8   |
+	STZ oam_attribute[$0E].size		;$BAC7DB   |
+	STZ oam_attribute[$10].size		;$BAC7DE   |
+	STZ oam_attribute[$12].size		;$BAC7E1   |
+	STZ oam_attribute[$14].size		;$BAC7E4   |
+	STZ oam_attribute[$16].size		;$BAC7E7   |
+	STZ oam_attribute[$18].size		;$BAC7EA   |
+	STZ oam_attribute[$1A].size		;$BAC7ED   |
+	STZ oam_attribute[$1C].size		;$BAC7F0   |
+	STZ oam_attribute[$1E].size		;$BAC7F3   |
 	LDX #$0004				;$BAC7F6   |
 	LDY #$0000				;$BAC7F9   |
 	CLC					;$BAC7FC   |
 CODE_BAC7FD:					;	   |
 	LDA #$F000				;$BAC7FD   |
-	STA $0200,y				;$BAC800   |
-	STA $0204,y				;$BAC803   |
-	STA $0208,y				;$BAC806   |
-	STA $020C,y				;$BAC809   |
-	STA $0210,y				;$BAC80C   |
-	STA $0214,y				;$BAC80F   |
-	STA $0218,y				;$BAC812   |
-	STA $021C,y				;$BAC815   |
-	STA $0220,y				;$BAC818   |
-	STA $0224,y				;$BAC81B   |
-	STA $0228,y				;$BAC81E   |
-	STA $022C,y				;$BAC821   |
-	STA $0230,y				;$BAC824   |
-	STA $0234,y				;$BAC827   |
-	STA $0238,y				;$BAC82A   |
-	STA $023C,y				;$BAC82D   |
-	STA $0240,y				;$BAC830   |
-	STA $0244,y				;$BAC833   |
-	STA $0248,y				;$BAC836   |
-	STA $024C,y				;$BAC839   |
-	STA $0250,y				;$BAC83C   |
-	STA $0254,y				;$BAC83F   |
-	STA $0258,y				;$BAC842   |
-	STA $025C,y				;$BAC845   |
-	STA $0260,y				;$BAC848   |
-	STA $0264,y				;$BAC84B   |
-	STA $0268,y				;$BAC84E   |
-	STA $026C,y				;$BAC851   |
-	STA $0270,y				;$BAC854   |
-	STA $0274,y				;$BAC857   |
-	STA $0278,y				;$BAC85A   |
-	STA $027C,y				;$BAC85D   |
+	STA oam[$00].x,y			;$BAC800   |
+	STA oam[$01].x,y			;$BAC803   |
+	STA oam[$02].x,y			;$BAC806   |
+	STA oam[$03].x,y			;$BAC809   |
+	STA oam[$04].x,y			;$BAC80C   |
+	STA oam[$05].x,y			;$BAC80F   |
+	STA oam[$06].x,y			;$BAC812   |
+	STA oam[$07].x,y			;$BAC815   |
+	STA oam[$08].x,y			;$BAC818   |
+	STA oam[$09].x,y			;$BAC81B   |
+	STA oam[$0A].x,y			;$BAC81E   |
+	STA oam[$0B].x,y			;$BAC821   |
+	STA oam[$0C].x,y			;$BAC824   |
+	STA oam[$0D].x,y			;$BAC827   |
+	STA oam[$0E].x,y			;$BAC82A   |
+	STA oam[$0F].x,y			;$BAC82D   |
+	STA oam[$10].x,y			;$BAC830   |
+	STA oam[$11].x,y			;$BAC833   |
+	STA oam[$12].x,y			;$BAC836   |
+	STA oam[$13].x,y			;$BAC839   |
+	STA oam[$14].x,y			;$BAC83C   |
+	STA oam[$15].x,y			;$BAC83F   |
+	STA oam[$16].x,y			;$BAC842   |
+	STA oam[$17].x,y			;$BAC845   |
+	STA oam[$18].x,y			;$BAC848   |
+	STA oam[$19].x,y			;$BAC84B   |
+	STA oam[$1A].x,y			;$BAC84E   |
+	STA oam[$1B].x,y			;$BAC851   |
+	STA oam[$1C].x,y			;$BAC854   |
+	STA oam[$1D].x,y			;$BAC857   |
+	STA oam[$1E].x,y			;$BAC85A   |
+	STA oam[$1F].x,y			;$BAC85D   |
 	TYA					;$BAC860   |
 	ADC #$0080				;$BAC861   |
 	TAY					;$BAC864   |

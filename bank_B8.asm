@@ -4876,7 +4876,7 @@ CODE_B8A699:
 	STA $2E,x				;$B8A6A7   |
 CODE_B8A6A9:					;	   |
 	LDA #$830F				;$B8A6A9   |
-	JSL CODE_808C2E				;$B8A6AC   |
+	JSL set_fade_global			;$B8A6AC   |
 	LDA #$0002				;$B8A6B0   |
 	TSB $08C2				;$B8A6B3   |
 	RTS					;$B8A6B6  /

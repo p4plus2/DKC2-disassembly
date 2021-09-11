@@ -1660,7 +1660,7 @@ CODE_B9DA5C:
 
 CODE_B9DA61:
 	LDA #$810F				;$B9DA61  \
-	JSL CODE_808C2E				;$B9DA64   |
+	JSL set_fade_global			;$B9DA64   |
 	LDA #$0002				;$B9DA68   |
 	TSB $08C2				;$B9DA6B   |
 	LDA #$FFFF				;$B9DA6E   |

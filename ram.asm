@@ -55,6 +55,20 @@ level_number = $D3
 ;;; End direct page
 ;;;
 
+stack_end = $0100
+stack = $01FF
+struct oam $0200
+	.position:
+	.x:             skip 1
+	.y:             skip 1
+	.display:
+	.tile:          skip 1
+	.property:      skip 1
+endstruct
+struct oam_attribute $0400
+	.size		skip 1
+endstruct
+
 ;Note there is no released state for active player
 player_1_held = $0502
 player_1_pressed = $0504

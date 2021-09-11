@@ -1192,7 +1192,7 @@ CODE_B489B7:					;	   |
 	STA $06A9				;$B489D1   |
 CODE_B489D4:					;	   |
 	LDA #$810F				;$B489D4   |
-	JSL CODE_808C2E				;$B489D7   |
+	JSL set_fade_global			;$B489D7   |
 CODE_B489DB:					;	   |
 	LDA $07B0				;$B489DB   |
 	BEQ CODE_B489EB				;$B489DE   |
@@ -1257,7 +1257,7 @@ CODE_B48A46:
 	ORA #$0001				;$B48A57   |
 	STA $06A3				;$B48A5A   |
 	LDA #$810F				;$B48A5D   |
-	JSL CODE_808C2E				;$B48A60   |
+	JSL set_fade_global			;$B48A60   |
 	BRL CODE_B48927				;$B48A64  /
 
 CODE_B48A67:
@@ -1299,7 +1299,7 @@ CODE_B48A9F:					;	   |
 	ORA #$0020				;$B48AAB   |
 	STA $06A3				;$B48AAE   |
 	LDA #$810F				;$B48AB1   |
-	JSL CODE_808C2E				;$B48AB4   |
+	JSL set_fade_global			;$B48AB4   |
 	BRL CODE_B48927				;$B48AB8  /
 
 CODE_B48ABB:
@@ -1319,7 +1319,7 @@ CODE_B48ABB:
 	BPL CODE_B48AEF				;$B48AD5   |
 	STA $0689				;$B48AD7   |
 	LDA #$810F				;$B48ADA   |
-	JSL CODE_808C2E				;$B48ADD   |
+	JSL set_fade_global			;$B48ADD   |
 	LDA $06A3				;$B48AE1   |
 	ORA #$0002				;$B48AE4   |
 	STA $06A3				;$B48AE7   |
@@ -1342,7 +1342,7 @@ CODE_B48AEF:
 	AND #$EFFF				;$B48B05   |
 	STA $06A3				;$B48B08   |
 	LDA #$810F				;$B48B0B   |
-	JSL CODE_808C2E				;$B48B0E   |
+	JSL set_fade_global			;$B48B0E   |
 	BRL CODE_B48927				;$B48B12  /
 
 CODE_B48B15:
@@ -1440,7 +1440,7 @@ CODE_B48BEE:					;	   |
 	LDA #CODE_808CF5			;$B48BF1   |
 	STA NMI_pointer				;$B48BF4   |
 	LDA #$0100				;$B48BF6   |
-	JSL CODE_808C2E				;$B48BF9   |
+	JSL set_fade_global			;$B48BF9   |
 	LDA #$0005				;$B48BFD   |
 	STA $0676				;$B48C00   |
 	JML CODE_808C84				;$B48C03  /
@@ -1477,7 +1477,7 @@ CODE_B48C07:
 	LDA #CODE_808D4E			;$B48C5B   |
 	STA NMI_pointer				;$B48C5E   |
 	LDA #$0100				;$B48C60   |
-	JSL CODE_808C2E				;$B48C63   |
+	JSL set_fade_global			;$B48C63   |
 	JML CODE_808C84				;$B48C67  /
 
 CODE_B48C6B:
@@ -1684,7 +1684,7 @@ CODE_B48E49:					;	   |
 	LDA #CODE_B49043			;$B48E55   |
 	STA $067F				;$B48E58   |
 	LDA #$0100				;$B48E5B   |
-	JSL CODE_808C2E				;$B48E5E   |
+	JSL set_fade_global			;$B48E5E   |
 	LDA #$0001				;$B48E62   |
 	STA $064E				;$B48E65   |
 	JML CODE_808C84				;$B48E68  /
@@ -1882,7 +1882,7 @@ CODE_B49033:
 	CMP #$000F				;$B49036   |
 	BNE CODE_B49042				;$B49039   |
 	LDA #$810F				;$B4903B   |
-	JSL CODE_808C2E				;$B4903E   |
+	JSL set_fade_global			;$B4903E   |
 CODE_B49042:					;	   |
 	RTS					;$B49042  /
 
@@ -1981,7 +1981,7 @@ CODE_B490FF:					;	   |
 	LDA #CODE_B49122			;$B4910B   |
 	STA $067F				;$B4910E   |
 	LDA #$0100				;$B49111   |
-	JSL CODE_808C2E				;$B49114   |
+	JSL set_fade_global			;$B49114   |
 	LDA #$0001				;$B49118   |
 	STA $064E				;$B4911B   |
 	JML CODE_808C84				;$B4911E  /
@@ -2015,7 +2015,7 @@ CODE_B49159:					;	   |
 	LDA #CODE_B49188			;$B49165   |
 	STA $067F				;$B49168   |
 	LDA #$0100				;$B4916B   |
-	JSL CODE_808C2E				;$B4916E   |
+	JSL set_fade_global			;$B4916E   |
 	LDA #$0001				;$B49172   |
 	STA $064E				;$B49175   |
 	STA $0652				;$B49178   |
@@ -2339,7 +2339,7 @@ CODE_B49425:					;	   |
 	LDA #CODE_808D7D			;$B49435   |
 	STA NMI_pointer				;$B49438   |
 	LDA #$810F				;$B4943A   |
-	JSL CODE_808C2E				;$B4943D   |
+	JSL set_fade_global			;$B4943D   |
 CODE_B49441:					;	   |
 	JSR CODE_B49EF1				;$B49441   |
 CODE_B49444:					;	   |
@@ -3286,9 +3286,9 @@ CODE_B49C4D:
 	SEC					;$B49C61   |
 	SBC #$0006				;$B49C62   |
 	STA $C8					;$B49C65   |
-	LDA $041E				;$B49C67   |
+	LDA oam_attribute[$1E].size		;$B49C67   |
 	ORA #$8000				;$B49C6A   |
-	STA $041E				;$B49C6D   |
+	STA oam_attribute[$1E].size		;$B49C6D   |
 	RTS					;$B49C70  /
 
 CODE_B49C71:
@@ -3794,7 +3794,7 @@ CODE_B4A051:
 	LDA #CODE_808D7D			;$B4A061   |
 	STA NMI_pointer				;$B4A064   |
 	LDA #$810F				;$B4A066   |
-	JSL CODE_808C2E				;$B4A069   |
+	JSL set_fade_global			;$B4A069   |
 CODE_B4A06D:					;	   |
 	RTS					;$B4A06D  /
 
@@ -3820,7 +3820,7 @@ CODE_B4A088:
 	CMP #$000F				;$B4A096   |
 	BNE CODE_B4A0A7				;$B4A099   |
 	LDA #$810F				;$B4A09B   |
-	JSL CODE_808C2E				;$B4A09E   |
+	JSL set_fade_global			;$B4A09E   |
 	LDA #CODE_808D7D			;$B4A0A2   |
 	STA NMI_pointer				;$B4A0A5   |
 CODE_B4A0A7:					;	   |
@@ -4046,7 +4046,7 @@ CODE_B4A26F:
 	LDA #CODE_808D4E			;$B4A27B   |
 	STA NMI_pointer				;$B4A27E   |
 	LDA #$810F				;$B4A280   |
-	JSL CODE_808C2E				;$B4A283   |
+	JSL set_fade_global			;$B4A283   |
 	RTS					;$B4A287  /
 
 CODE_B4A288:
@@ -4163,7 +4163,7 @@ CODE_B4A371:
 	CMP #$000F				;$B4A37F   |
 	BNE CODE_B4A390				;$B4A382   |
 	LDA #$810F				;$B4A384   |
-	JSL CODE_808C2E				;$B4A387   |
+	JSL set_fade_global			;$B4A387   |
 	LDA #CODE_808D7D			;$B4A38B   |
 	STA NMI_pointer				;$B4A38E   |
 CODE_B4A390:					;	   |
@@ -4732,7 +4732,7 @@ CODE_B4A87F:
 	CMP #$000F				;$B4A88E   |
 	BNE CODE_B4A89B				;$B4A891   |
 	LDA #$810F				;$B4A893   |
-	JSL CODE_808C2E				;$B4A896   |
+	JSL set_fade_global			;$B4A896   |
 	RTS					;$B4A89A  /
 
 CODE_B4A89B:
@@ -4780,7 +4780,7 @@ CODE_B4A8D6:
 	CMP #$000F				;$B4A8FC   |
 	BNE CODE_B4A908				;$B4A8FF   |
 	LDA #$810F				;$B4A901   |
-	JSL CODE_808C2E				;$B4A904   |
+	JSL set_fade_global			;$B4A904   |
 CODE_B4A908:					;	   |
 	BRL CODE_B4A97B				;$B4A908  /
 
@@ -4827,7 +4827,7 @@ CODE_B4A959:					;	   |
 	LDA #CODE_808D7D			;$B4A96F   |
 	STA NMI_pointer				;$B4A972   |
 	LDA #$810F				;$B4A974   |
-	JSL CODE_808C2E				;$B4A977   |
+	JSL set_fade_global			;$B4A977   |
 CODE_B4A97B:					;	   |
 	RTS					;$B4A97B  /
 
@@ -4955,7 +4955,7 @@ CODE_B4AA79:
 	CMP #$000F				;$B4AA88   |
 	BNE CODE_B4AA95				;$B4AA8B   |
 	LDA #$810F				;$B4AA8D   |
-	JSL CODE_808C2E				;$B4AA90   |
+	JSL set_fade_global			;$B4AA90   |
 	RTS					;$B4AA94  /
 
 CODE_B4AA95:
@@ -5000,7 +5000,7 @@ CODE_B4AAD0:
 	LDA #CODE_808D7D			;$B4AAEE   |
 	STA NMI_pointer				;$B4AAF1   |
 	LDA #$810F				;$B4AAF3   |
-	JSL CODE_808C2E				;$B4AAF6   |
+	JSL set_fade_global			;$B4AAF6   |
 CODE_B4AAFA:					;	   |
 	BRL CODE_B4AB6D				;$B4AAFA  /
 
@@ -5047,7 +5047,7 @@ CODE_B4AB4B:					;	   |
 	LDA #CODE_808D7D			;$B4AB61   |
 	STA NMI_pointer				;$B4AB64   |
 	LDA #$810F				;$B4AB66   |
-	JSL CODE_808C2E				;$B4AB69   |
+	JSL set_fade_global			;$B4AB69   |
 CODE_B4AB6D:					;	   |
 	RTS					;$B4AB6D  /
 
@@ -5453,7 +5453,7 @@ CODE_B4AF9B:					;	   |
 	ORA #$0020				;$B4AF9E   |
 	STA $06A3				;$B4AFA1   |
 	LDA #$810F				;$B4AFA4   |
-	JSL CODE_808C2E				;$B4AFA7   |
+	JSL set_fade_global			;$B4AFA7   |
 	BRA CODE_B4AF6F				;$B4AFAB  /
 
 CODE_B4AFAD:
@@ -6261,7 +6261,7 @@ CODE_B4B5CC:					;	   |
 	PEA $7E00				;$B4B5E1   |
 	PLB					;$B4B5E4   |
 	PLB					;$B4B5E5   |
-	STA $0400,y				;$B4B5E6   |
+	STA oam_attribute.size,y		;$B4B5E6   |
 	PLB					;$B4B5E9   |
 CODE_B4B5EA:					;	   |
 	SEP #$20				;$B4B5EA   |
@@ -6316,7 +6316,7 @@ CODE_B4B62D:
 	PEA $7E00				;$B4B63D   |
 	PLB					;$B4B640   |
 	PLB					;$B4B641   |
-	LDA $0400,y				;$B4B642   |
+	LDA oam_attribute.size,y		;$B4B642   |
 	PLB					;$B4B645   |
 	STA $0654				;$B4B646   |
 	PLA					;$B4B649   |
@@ -6364,7 +6364,7 @@ CODE_B4B681:					;	   |
 	PEA $7E00				;$B4B696   |
 	PLB					;$B4B699   |
 	PLB					;$B4B69A   |
-	STA $0400,y				;$B4B69B   |
+	STA oam_attribute.size,y		;$B4B69B   |
 	PLB					;$B4B69E   |
 CODE_B4B69F:					;	   |
 	SEP #$20				;$B4B69F   |
@@ -6447,7 +6447,7 @@ CODE_B4B72A:					;	   |
 	PEA $7E00				;$B4B73F   |
 	PLB					;$B4B742   |
 	PLB					;$B4B743   |
-	STA $0400,y				;$B4B744   |
+	STA oam_attribute.size,y		;$B4B744   |
 	PLB					;$B4B747   |
 CODE_B4B748:					;	   |
 	LDA #$0004				;$B4B748   |
@@ -7428,7 +7428,7 @@ CODE_B4BEB0:					;	   |
 
 CODE_B4BEB4:
 	LDA #$810F				;$B4BEB4  \
-	JSL CODE_808C2E				;$B4BEB7   |
+	JSL set_fade_global			;$B4BEB7   |
 	LDA $06A3				;$B4BEBB   |
 	ORA #$8000				;$B4BEBE   |
 	STA $06A3				;$B4BEC1   |
@@ -7517,7 +7517,7 @@ CODE_B4BF3A:					;	   |
 	LDX #$0020				;$B4BF9F   |
 	JSL DMA_palette				;$B4BFA2   |
 	LDA #$0100				;$B4BFA6   |
-	JSL CODE_808C2E				;$B4BFA9   |
+	JSL set_fade_global			;$B4BFA9   |
 	LDA $08A4				;$B4BFAD   |
 	STA $0660				;$B4BFB0   |
 	STZ $08A4				;$B4BFB3   |

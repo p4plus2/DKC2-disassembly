@@ -2406,8 +2406,8 @@ CODE_BEC96A:
 	AND #$001F				;$BEC975   |
 	TAY					;$BEC978   |
 	LDA.l DATA_BEC985,x			;$BEC979   |
-	ORA $0400,y				;$BEC97D   |
-	STA $0400,y				;$BEC980   |
+	ORA oam_attribute.size,y		;$BEC97D   |
+	STA oam_attribute.size,y		;$BEC980   |
 	PLY					;$BEC983   |
 	RTS					;$BEC984  /
 
@@ -2428,8 +2428,8 @@ CODE_BEC995:
 	AND #$001F				;$BEC9A0   |
 	TAY					;$BEC9A3   |
 	LDA.l DATA_BEC9B0,x			;$BEC9A4   |
-	ORA $0400,y				;$BEC9A8   |
-	STA $0400,y				;$BEC9AB   |
+	ORA oam_attribute.size,y		;$BEC9A8   |
+	STA oam_attribute.size,y		;$BEC9AB   |
 	PLY					;$BEC9AE   |
 	RTS					;$BEC9AF  /
 

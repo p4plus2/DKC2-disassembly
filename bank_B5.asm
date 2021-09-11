@@ -8057,7 +8057,7 @@ CODE_B5CEF0:
 	REP #$30				;$B5CEF3   |
 	LDA #$0000				;$B5CEF5   |
 	TCD					;$B5CEF8   |
-	LDX #$01FF				;$B5CEF9   |
+	LDX #stack				;$B5CEF9   |
 	TXS					;$B5CEFC   |
 	JSR CODE_B5CEEB				;$B5CEFD   |
 	JSR CODE_B5D96E				;$B5CF00   |
@@ -8082,7 +8082,7 @@ CODE_B5CF20:					;	   |
 	STA CPU.rom_speed			;$B5CF35   |
 	REP #$20				;$B5CF38   |
 	LDA #$0100				;$B5CF3A   |
-	JSL CODE_808C2E				;$B5CF3D   |
+	JSL set_fade_global			;$B5CF3D   |
 	JSL CODE_808CA8				;$B5CF41   |
 	LDA.l $0006A3				;$B5CF45   |
 	AND #$FF9F				;$B5CF49   |
@@ -8103,7 +8103,7 @@ CODE_B5CF63:
 	REP #$30				;$B5CF66   |
 	LDA #$0000				;$B5CF68   |
 	TCD					;$B5CF6B   |
-	LDX #$01FF				;$B5CF6C   |
+	LDX #stack				;$B5CF6C   |
 	TXS					;$B5CF6F   |
 	JSR CODE_B5CEEB				;$B5CF70   |
 	JSL CODE_B480CD				;$B5CF73   |
@@ -8127,7 +8127,7 @@ CODE_B5CF99:					;	   |
 	STA CPU.rom_speed			;$B5CFA5   |
 	REP #$20				;$B5CFA8   |
 	LDA #$0100				;$B5CFAA   |
-	JSL CODE_808C2E				;$B5CFAD   |
+	JSL set_fade_global			;$B5CFAD   |
 	JSL CODE_808CA8				;$B5CFB1   |
 	LDA.l $0006A3				;$B5CFB5   |
 	AND #$FF9F				;$B5CFB9   |
@@ -8215,7 +8215,7 @@ DATA_B5D011:
 CODE_B5D13B:
 	PHK					;$B5D13B  \
 	PLB					;$B5D13C   |
-	LDX #$01FF				;$B5D13D   |
+	LDX #stack				;$B5D13D   |
 	TXS					;$B5D140   |
 	STZ PPU.oam_address			;$B5D141   |
 	LDA #$1E01				;$B5D144   |
@@ -8444,7 +8444,7 @@ DATA_B5D32C:
 CODE_B5D334:
 	PHK					;$B5D334  \
 	PLB					;$B5D335   |
-	LDX #$01FF				;$B5D336   |
+	LDX #stack				;$B5D336   |
 	TXS					;$B5D339   |
 	STZ PPU.oam_address			;$B5D33A   |
 	LDA.l $0006B1				;$B5D33D   |
@@ -8601,7 +8601,7 @@ CODE_B5D48E:
 	RTS					;$B5D4A6  /
 
 CODE_B5D4A7:
-	LDX #$01FF				;$B5D4A7  \
+	LDX #stack				;$B5D4A7  \
 	TXS					;$B5D4AA   |
 	PHK					;$B5D4AB   |
 	PLB					;$B5D4AC   |
@@ -9546,7 +9546,7 @@ CODE_B5DD45:					;	   |
 	CMP #$01A0				;$B5DD47   |
 	BNE CODE_B5DD53				;$B5DD4A   |
 	LDA #$810F				;$B5DD4C   |
-	JSL CODE_808C2E				;$B5DD4F   |
+	JSL set_fade_global			;$B5DD4F   |
 CODE_B5DD53:					;	   |
 	LDY #$0003				;$B5DD53   |
 	LDX #$147E				;$B5DD56   |
@@ -13012,7 +13012,7 @@ CODE_B5F4C4:
 	ADC #$60				;$B5F4E5   |
 	STA $38					;$B5F4E7   |
 	TAX					;$B5F4E9   |
-	LDA $03A0,x				;$B5F4EA   |
+	LDA oam[$68].position,x			;$B5F4EA   |
 	AND DATA_B5F538,y			;$B5F4ED   |
 	ORA DATA_B5F53C,y			;$B5F4F0   |
 	SEC					;$B5F4F3   |
@@ -13047,7 +13047,7 @@ CODE_B5F525:					;	   |
 	LSR A					;$B5F526   |
 	LSR A					;$B5F527   |
 	BCC CODE_B5F525				;$B5F528   |
-	STA $0400,y				;$B5F52A   |
+	STA oam_attribute.size,y		;$B5F52A   |
 	REP #$20				;$B5F52D   |
 	TXA					;$B5F52F   |
 	ASL A					;$B5F530   |
@@ -13300,7 +13300,7 @@ CODE_B5F6D5:
 CODE_B5F6DE:
 	PHX					;$B5F6DE  \
 	LDX $38					;$B5F6DF   |
-	STA $03A0,x				;$B5F6E1   |
+	STA oam[$68].position,x			;$B5F6E1   |
 	INC $38					;$B5F6E4   |
 	BMI CODE_B5F6D5				;$B5F6E6   |
 	LDA #$8580				;$B5F6E8   |
@@ -13356,7 +13356,7 @@ CODE_B5F739:
 CODE_B5F742:
 	PHX					;$B5F742  \
 	LDX $38					;$B5F743   |
-	STA $03A0,x				;$B5F745   |
+	STA oam[$68].position,x			;$B5F745   |
 	INC $38					;$B5F748   |
 	BMI CODE_B5F739				;$B5F74A   |
 	LDA #$8580				;$B5F74C   |

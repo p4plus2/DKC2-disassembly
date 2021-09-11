@@ -258,7 +258,7 @@ RESET_start:
 .prepare_message				;	   |
 	LDA #$0000				;$8084C4   |\ Zero the direct page register
 	TCD					;$8084C7   |/
-	LDX #$01FF				;$8084C8   |\ Reset the stack register
+	LDX #stack				;$8084C8   |\ Reset the stack register
 	TXS					;$8084CB   |/
 	%return(display_error_message)		;$8084CC   | Push address to decompress and display the message
 	%return(clear_VRAM)			;$8084CF   | Push address for clearing VRAM
@@ -280,7 +280,7 @@ RESET_start:
 .prepare_logo					;	  \
 	LDA #$0000				;$8084E7   |\ Clear first word of SRAM
 	STA $B06000				;$8084EA   |/
-	LDX #$01FF				;$8084EE   |\ Reset the stack register
+	LDX #stack				;$8084EE   |\ Reset the stack register
 	TXS					;$8084F1   |/
 	%return(start_engine)			;$8084F2   | Push address to start the game engine
 	%return(clear_VRAM)			;$8084F5   | Push address for clearing VRAM
@@ -644,7 +644,7 @@ CODE_8087E1:
 	PHK					;$8087EB   |
 	PLB					;$8087EC   |
 	LDA #$0200				;$8087ED   |
-	JSR CODE_808C32				;$8087F0   |
+	JSR set_fade				;$8087F0   |
 	JSR prepare_oam_dma_channel		;$8087F3   |
 	SEP #$20				;$8087F6   |
 	LDA $0529				;$8087F8   |
@@ -1150,17 +1150,17 @@ CODE_808C22:					;	   |
 	STA $0005F5				;$808C29   |
 	RTL					;$808C2D  /
 
-CODE_808C2E:
-	JSR CODE_808C32				;$808C2E  \
+set_fade_global:
+	JSR set_fade				;$808C2E  \ Simple local routine wrapper
 	RTL					;$808C31  /
 
-CODE_808C32:
-	STZ screen_fade_speed			;$808C32  \
-	STA screen_brightness			;$808C35   |
+set_fade:
+	STZ screen_fade_speed			;$808C32  \ Clear the fade speed
+	STA screen_brightness			;$808C35   | And set the brightness
 	RTS					;$808C38  /
 
 fade_screen_global:
-	JSR fade_screen				;$808C39  \
+	JSR fade_screen				;$808C39  \ Simple local routine wrapper
 	RTL					;$808C3C  /
 
 fade_screen:
@@ -1242,7 +1242,7 @@ prepare_oam_dma_channel:
 	RTS					;$808CC8  /
 
 CODE_808CC9:
-	LDX #$01FF				;$808CC9  \
+	LDX #stack				;$808CC9  \
 	TXS					;$808CCC   |
 	INC global_frame_counter		;$808CCD   |
 	JSL CODE_BAB31B				;$808CCF   |
@@ -1250,7 +1250,7 @@ CODE_808CC9:
 	BRA CODE_808D1C				;$808CD7  /
 
 CODE_808CD9:
-	LDX #$01FF				;$808CD9  \
+	LDX #stack				;$808CD9  \
 	TXS					;$808CDC   |
 	INC global_frame_counter		;$808CDD   |
 	JSL CODE_B4BE60				;$808CDF   |
@@ -1267,21 +1267,21 @@ CODE_808CF1:
 	JML CODE_B5D334				;$808CF1  /
 
 CODE_808CF5:
-	LDX #$01FF				;$808CF5  \
+	LDX #stack				;$808CF5  \
 	TXS					;$808CF8   |
 	INC global_frame_counter		;$808CF9   |
 	JSL CODE_B491D7				;$808CFB   |
 	BRL CODE_808D1C				;$808CFF  /
 
 CODE_808D02:
-	LDX #$01FF				;$808D02  \
+	LDX #stack				;$808D02  \
 	TXS					;$808D05   |
 	INC global_frame_counter		;$808D06   |
 	JSL CODE_B48B15				;$808D08   |
 	BRA CODE_808D1C				;$808D0C  /
 
 CODE_808D0E:
-	LDX #$01FF				;$808D0E  \
+	LDX #stack				;$808D0E  \
 	TXS					;$808D11   |
 	INC global_frame_counter		;$808D12   |
 	JSL CODE_B4935E				;$808D14   |
@@ -1291,7 +1291,7 @@ CODE_808D1C:					;	   |
 	BRA CODE_808D1C				;$808D1D  /
 
 CODE_808D1F:
-	LDX #$01FF				;$808D1F  \
+	LDX #stack				;$808D1F  \
 	TXS					;$808D22   |
 	INC global_frame_counter		;$808D23   |
 	JSL CODE_B49978				;$808D25   |
@@ -1299,14 +1299,14 @@ CODE_808D1F:
 	BRL CODE_808D1C				;$808D2D  /
 
 CODE_808D30:
-	LDX #$01FF				;$808D30  \
+	LDX #stack				;$808D30  \
 	TXS					;$808D33   |
 	INC global_frame_counter		;$808D34   |
 	JSL CODE_B49886				;$808D36   |
 	BRL CODE_808D1C				;$808D3A  /
 
 CODE_808D3D:
-	LDX #$01FF				;$808D3D  \
+	LDX #stack				;$808D3D  \
 	TXS					;$808D40   |
 	INC global_frame_counter		;$808D41   |
 	JSL CODE_B49F1D				;$808D43   |
@@ -1314,7 +1314,7 @@ CODE_808D3D:
 	BRL CODE_808D1C				;$808D4B  /
 
 CODE_808D4E:
-	LDX #$01FF				;$808D4E  \
+	LDX #stack				;$808D4E  \
 	TXS					;$808D51   |
 	INC global_frame_counter		;$808D52   |
 	JSL CODE_B49ED7				;$808D54   |
@@ -1322,7 +1322,7 @@ CODE_808D4E:
 	BRL CODE_808D1C				;$808D5C  /
 
 CODE_808D5F:
-	LDX #$01FF				;$808D5F  \
+	LDX #stack				;$808D5F  \
 	TXS					;$808D62   |
 	INC global_frame_counter		;$808D63   |
 	JSL CODE_B4AB6E				;$808D65   |
@@ -1330,14 +1330,14 @@ CODE_808D5F:
 	BRL CODE_808D1C				;$808D6D  /
 
 CODE_808D70:
-	LDX #$01FF				;$808D70  \
+	LDX #stack				;$808D70  \
 	TXS					;$808D73   |
 	INC global_frame_counter		;$808D74   |
 	JSL CODE_B4990F				;$808D76   |
 	BRL CODE_808D1C				;$808D7A  /
 
 CODE_808D7D:
-	LDX #$01FF				;$808D7D  \
+	LDX #stack				;$808D7D  \
 	TXS					;$808D80   |
 	INC global_frame_counter		;$808D81   |
 	JSL CODE_B49B63				;$808D83   |
@@ -1500,7 +1500,7 @@ clear_wram_reset:				;	  \
 	TXY					;$808EDE   | |
 	INY					;$808EDF   | |
 	MVN $80, $80				;$808EE0   |/
-	LDX #$01FF				;$808EE3   |\ Reset the stack
+	LDX #stack				;$808EE3   |\ Reset the stack
 	TXS					;$808EE6   |/
 	JMP ($0032)				;$808EE7  / Return using address from scratch RAM
 
@@ -1996,7 +1996,7 @@ CODE_8092D0:					;	   |\ Clear scratch RAM
 	JMP set_and_wait_for_nmi		;$8093B5  / Set NMI pointer and wait for NMI
 
 run_rareware_logo:				;	  \
-	LDX #$01FF				;$8093B8   |\ Reset the stack
+	LDX #stack				;$8093B8   |\ Reset the stack
 	TXS					;$8093BB   |/
 	LDA #$8928				;$8093BC   |\ Set DMA source word $8928
 	STA DMA[1].source			;$8093BF   | |
@@ -2659,7 +2659,7 @@ CODE_8097EB:					;	   |
 	JSL DMA_global_palette			;$80999B   |
 	STZ $84					;$80999F   |
 	LDA #$0300				;$8099A1   |
-	JSR CODE_808C32				;$8099A4   |
+	JSR set_fade				;$8099A4   |
 CODE_8099A7:					;	   |
 	STZ $36					;$8099A7   |
 	SEP #$20				;$8099A9   |
@@ -2674,7 +2674,7 @@ CODE_8099A7:					;	   |
 	JMP set_and_wait_for_nmi		;$8099C0  /
 
 CODE_8099C3:
-	LDX #$01FF				;$8099C3  \
+	LDX #stack				;$8099C3  \
 	TXS					;$8099C6   |
 	STZ PPU.oam_address			;$8099C7   |
 	LDA #$0401				;$8099CA   |
@@ -3160,16 +3160,16 @@ CODE_809E0E:					;	   |
 	ADC #$3002				;$809E28   |
 	STA $34					;$809E2B   |
 	LDA $32					;$809E2D   |
-	STA $0200,y				;$809E2F   |
+	STA oam[0].position,y			;$809E2F   |
 	LDA $34					;$809E32   |
-	STA $0202,y				;$809E34   |
+	STA oam[0].display,y			;$809E34   |
 	LDA $32					;$809E37   |
 	CLC					;$809E39   |
 	ADC #$0800				;$809E3A   |
-	STA $0204,y				;$809E3D   |
+	STA oam[1].position,y			;$809E3D   |
 	INC $34					;$809E40   |
 	LDA $34					;$809E42   |
-	STA $0206,y				;$809E44   |
+	STA oam[1].display,y			;$809E44   |
 	TYA					;$809E47   |
 	CLC					;$809E48   |
 	ADC #$0008				;$809E49   |
@@ -3183,15 +3183,15 @@ CODE_809E4D:					;	   |
 	BRA CODE_809E0E				;$809E57  /
 
 CODE_809E59:
-	STZ $0400				;$809E59  \
-	STZ $0402				;$809E5C   |
-	STZ $0404				;$809E5F   |
-	STZ $0406				;$809E62   |
-	STZ $0408				;$809E65   |
-	STZ $040A				;$809E68   |
-	STZ $040C				;$809E6B   |
-	STZ $040E				;$809E6E   |
-	STZ $0410				;$809E71   |
+	STZ oam_attribute[$00].size		;$809E59  \
+	STZ oam_attribute[$02].size		;$809E5C   |
+	STZ oam_attribute[$04].size		;$809E5F   |
+	STZ oam_attribute[$06].size		;$809E62   |
+	STZ oam_attribute[$08].size		;$809E65   |
+	STZ oam_attribute[$0A].size		;$809E68   |
+	STZ oam_attribute[$0C].size		;$809E6B   |
+	STZ oam_attribute[$0E].size		;$809E6E   |
+	STZ oam_attribute[$10].size		;$809E71   |
 	RTS					;$809E74  /
 
 DATA_809E75:
@@ -3536,13 +3536,13 @@ CODE_80A0E9:					;	   |
 	REP #$20				;$80A2BC   |
 	STZ global_frame_counter		;$80A2BE   |
 	LDA #$0300				;$80A2C0   |
-	JSR CODE_808C32				;$80A2C3   |
+	JSR set_fade				;$80A2C3   |
 	JSR prepare_oam_dma_channel		;$80A2C6   |
 	LDA #CODE_80A2CF			;$80A2C9   |
 	JMP set_and_wait_for_nmi		;$80A2CC  /
 
 CODE_80A2CF:
-	LDX #$01FF				;$80A2CF  \
+	LDX #stack				;$80A2CF  \
 	TXS					;$80A2D2   |
 	STZ PPU.oam_address			;$80A2D3   |
 	LDA #$FE01				;$80A2D6   |
@@ -3713,22 +3713,22 @@ CODE_80A44D:					;	   |
 	JSL CODE_B5A8DA				;$80A44D   |
 	LDA #$0200				;$80A451   |
 	STA $70					;$80A454   |
-	STZ $0400				;$80A456   |
-	STZ $0402				;$80A459   |
-	STZ $0404				;$80A45C   |
-	STZ $0406				;$80A45F   |
-	STZ $0408				;$80A462   |
-	STZ $040A				;$80A465   |
-	STZ $040C				;$80A468   |
-	STZ $040E				;$80A46B   |
-	STZ $0410				;$80A46E   |
-	STZ $0412				;$80A471   |
-	STZ $0414				;$80A474   |
-	STZ $0416				;$80A477   |
-	STZ $0418				;$80A47A   |
-	STZ $041A				;$80A47D   |
-	STZ $041C				;$80A480   |
-	STZ $041E				;$80A483   |
+	STZ oam_attribute[$00].size		;$80A456   |
+	STZ oam_attribute[$02].size		;$80A459   |
+	STZ oam_attribute[$04].size		;$80A45C   |
+	STZ oam_attribute[$06].size		;$80A45F   |
+	STZ oam_attribute[$08].size		;$80A462   |
+	STZ oam_attribute[$0A].size		;$80A465   |
+	STZ oam_attribute[$0C].size		;$80A468   |
+	STZ oam_attribute[$0E].size		;$80A46B   |
+	STZ oam_attribute[$10].size		;$80A46E   |
+	STZ oam_attribute[$12].size		;$80A471   |
+	STZ oam_attribute[$14].size		;$80A474   |
+	STZ oam_attribute[$16].size		;$80A477   |
+	STZ oam_attribute[$18].size		;$80A47A   |
+	STZ oam_attribute[$1A].size		;$80A47D   |
+	STZ oam_attribute[$1C].size		;$80A480   |
+	STZ oam_attribute[$1E].size		;$80A483   |
 	LDA #$0044				;$80A486   |
 	STA $78					;$80A489   |
 	JSL CODE_B59F40				;$80A48B   |
@@ -4114,11 +4114,11 @@ CODE_80A795:					;	   |
 	LDA #DATA_FB0400			;$80A7F8   |
 	LDY #$0080				;$80A7FB   |
 	JSL DMA_to_VRAM				;$80A7FE   |
-	STZ $0400				;$80A802   |
-	STZ $0402				;$80A805   |
-	STZ $0404				;$80A808   |
+	STZ oam_attribute[$00].size		;$80A802   |
+	STZ oam_attribute[$02].size		;$80A805   |
+	STZ oam_attribute[$04].size		;$80A808   |
 	LDA #$0300				;$80A80B   |
-	JSR CODE_808C32				;$80A80E   |
+	JSR set_fade				;$80A80E   |
 	SEP #$20				;$80A811   |
 	LDA CPU.irq_flag			;$80A813   |
 	LDA #$80				;$80A816   |
@@ -4132,40 +4132,40 @@ CODE_80A795:					;	   |
 
 CODE_80A82B:
 	LDA $36					;$80A82B  \
-	STA $0200,x				;$80A82D   |
+	STA oam[0].position,x			;$80A82D   |
 	LDA $34					;$80A830   |
-	STA $0202,x				;$80A832   |
+	STA oam[0].display,x			;$80A832   |
 	LDA $36					;$80A835   |
 	CLC					;$80A837   |
 	ADC #$0008				;$80A838   |
-	STA $0204,x				;$80A83B   |
+	STA oam[1].position,x			;$80A83B   |
 	LDA $34					;$80A83E   |
 	INC A					;$80A840   |
-	STA $0206,x				;$80A841   |
+	STA oam[1].display,x			;$80A841   |
 	LDA $36					;$80A844   |
 	CLC					;$80A846   |
 	ADC #$0800				;$80A847   |
-	STA $0208,x				;$80A84A   |
+	STA oam[2].position,x			;$80A84A   |
 	LDA $34					;$80A84D   |
 	INC A					;$80A84F   |
 	INC A					;$80A850   |
-	STA $020A,x				;$80A851   |
+	STA oam[2].display,x			;$80A851   |
 	LDA $36					;$80A854   |
 	CLC					;$80A856   |
 	ADC #$0808				;$80A857   |
-	STA $020C,x				;$80A85A   |
+	STA oam[3].position,x			;$80A85A   |
 	LDA $34					;$80A85D   |
 	INC A					;$80A85F   |
 	INC A					;$80A860   |
 	INC A					;$80A861   |
-	STA $020E,x				;$80A862   |
+	STA oam[3].display,x			;$80A862   |
 	RTS					;$80A865  /
 
 DATA_80A866:
 	db $A2, $74, $42, $75, $E2, $75
 
 CODE_80A86C:
-	LDX #$01FF				;$80A86C  \
+	LDX #stack				;$80A86C  \
 	TXS					;$80A86F   |
 	STZ PPU.oam_address			;$80A870   |
 	LDA #$0401				;$80A873   |
@@ -5498,7 +5498,7 @@ CODE_80B40E:					;	   |
 	STA CPU.rom_speed			;$80B444   |
 	REP #$20				;$80B447   |
 	LDA #$0400				;$80B449   |
-	JSR CODE_808C32				;$80B44C   |
+	JSR set_fade				;$80B44C   |
 	JSR prepare_oam_dma_channel		;$80B44F   |
 	LDA #$0001				;$80B452   |
 	STA CPU.enable_dma			;$80B455   |
@@ -5507,7 +5507,7 @@ CODE_80B40E:					;	   |
 	JMP set_and_wait_for_nmi		;$80B45E  /
 
 CODE_80B461:
-	LDX #$01FF				;$80B461  \
+	LDX #stack				;$80B461  \
 	TXS					;$80B464   |
 	STZ PPU.oam_address			;$80B465   |
 	SEP #$20				;$80B468   |
@@ -5562,22 +5562,22 @@ CODE_80B4C6:					;	   |
 	STA $70					;$80B4CD   |
 	LDA #$0400				;$80B4CF   |
 	STA $56					;$80B4D2   |
-	STZ $0400				;$80B4D4   |
-	STZ $0402				;$80B4D7   |
-	STZ $0404				;$80B4DA   |
-	STZ $0406				;$80B4DD   |
-	STZ $0408				;$80B4E0   |
-	STZ $040A				;$80B4E3   |
-	STZ $040C				;$80B4E6   |
-	STZ $040E				;$80B4E9   |
-	STZ $0410				;$80B4EC   |
-	STZ $0412				;$80B4EF   |
-	STZ $0414				;$80B4F2   |
-	STZ $0416				;$80B4F5   |
-	STZ $0418				;$80B4F8   |
-	STZ $041A				;$80B4FB   |
-	STZ $041C				;$80B4FE   |
-	STZ $041E				;$80B501   |
+	STZ oam_attribute[$00].size		;$80B4D4   |
+	STZ oam_attribute[$02].size		;$80B4D7   |
+	STZ oam_attribute[$04].size		;$80B4DA   |
+	STZ oam_attribute[$06].size		;$80B4DD   |
+	STZ oam_attribute[$08].size		;$80B4E0   |
+	STZ oam_attribute[$0A].size		;$80B4E3   |
+	STZ oam_attribute[$0C].size		;$80B4E6   |
+	STZ oam_attribute[$0E].size		;$80B4E9   |
+	STZ oam_attribute[$10].size		;$80B4EC   |
+	STZ oam_attribute[$12].size		;$80B4EF   |
+	STZ oam_attribute[$14].size		;$80B4F2   |
+	STZ oam_attribute[$16].size		;$80B4F5   |
+	STZ oam_attribute[$18].size		;$80B4F8   |
+	STZ oam_attribute[$1A].size		;$80B4FB   |
+	STZ oam_attribute[$1C].size		;$80B4FE   |
+	STZ oam_attribute[$1E].size		;$80B501   |
 	LDA #$001C				;$80B504   |
 	STA $78					;$80B507   |
 	JSL CODE_B59F40				;$80B509   |
@@ -5599,7 +5599,7 @@ CODE_80B52F:
 	INC $099B				;$80B52F  \
 CODE_80B532:					;	   |
 	LDA #$840F				;$80B532   |
-	JSR CODE_808C32				;$80B535   |
+	JSR set_fade				;$80B535   |
 	LDA #$0634				;$80B538   |
 	JSL play_high_priority_sound		;$80B53B   |
 CODE_80B53F:					;	   |
@@ -5721,7 +5721,7 @@ init_nintendo_copyright:
 	JMP set_and_wait_for_nmi		;$80B67E  /
 
 CODE_80B681:
-	LDX #$01FF				;$80B681  \
+	LDX #stack				;$80B681  \
 	TXS					;$80B684   |
 	STZ PPU.oam_address			;$80B685   |
 	SEP #$20				;$80B688   |
@@ -12597,22 +12597,22 @@ render_sprites:
 	STA $70					;$80F364   |
 	LDA #$0400				;$80F366   |
 	STA $56					;$80F369   |
-	STZ $0400				;$80F36B   |
-	STZ $0402				;$80F36E   |
-	STZ $0404				;$80F371   |
-	STZ $0406				;$80F374   |
-	STZ $0408				;$80F377   |
-	STZ $040A				;$80F37A   |
-	STZ $040C				;$80F37D   |
-	STZ $040E				;$80F380   |
-	STZ $0410				;$80F383   |
-	STZ $0412				;$80F386   |
-	STZ $0414				;$80F389   |
-	STZ $0416				;$80F38C   |
-	STZ $0418				;$80F38F   |
-	STZ $041A				;$80F392   |
-	STZ $041C				;$80F395   |
-	STZ $041E				;$80F398   |
+	STZ oam_attribute[$00].size		;$80F36B   |
+	STZ oam_attribute[$02].size		;$80F36E   |
+	STZ oam_attribute[$04].size		;$80F371   |
+	STZ oam_attribute[$06].size		;$80F374   |
+	STZ oam_attribute[$08].size		;$80F377   |
+	STZ oam_attribute[$0A].size		;$80F37A   |
+	STZ oam_attribute[$0C].size		;$80F37D   |
+	STZ oam_attribute[$0E].size		;$80F380   |
+	STZ oam_attribute[$10].size		;$80F383   |
+	STZ oam_attribute[$12].size		;$80F386   |
+	STZ oam_attribute[$14].size		;$80F389   |
+	STZ oam_attribute[$16].size		;$80F38C   |
+	STZ oam_attribute[$18].size		;$80F38F   |
+	STZ oam_attribute[$1A].size		;$80F392   |
+	STZ oam_attribute[$1C].size		;$80F395   |
+	STZ oam_attribute[$1E].size		;$80F398   |
 	JSL CODE_BEC695				;$80F39B   |
 	JSL CODE_B59F40				;$80F39F   |
 	JSL CODE_B5F0FD				;$80F3A3   |
@@ -12688,7 +12688,7 @@ CODE_80F3FB:
 	LDX #$0020				;$80F433   |
 	JSL DMA_palette				;$80F436   |
 	LDA #$0100				;$80F43A   |
-	JSL CODE_808C2E				;$80F43D   |
+	JSL set_fade_global			;$80F43D   |
 	LDA #$0100				;$80F441   |
 	STA $17BA				;$80F444   |
 	STA $17C0				;$80F447   |
@@ -13141,16 +13141,16 @@ CODE_80F97C:					;	   |
 	ADC #$3E02				;$80F996   |
 	STA $34					;$80F999   |
 	LDA $32					;$80F99B   |
-	STA $0200,y				;$80F99D   |
+	STA oam[0].position,y			;$80F99D   |
 	LDA $34					;$80F9A0   |
-	STA $0202,y				;$80F9A2   |
+	STA oam[0].display,y			;$80F9A2   |
 	LDA $32					;$80F9A5   |
 	CLC					;$80F9A7   |
 	ADC #$0800				;$80F9A8   |
-	STA $0204,y				;$80F9AB   |
+	STA oam[1].position,y			;$80F9AB   |
 	INC $34					;$80F9AE   |
 	LDA $34					;$80F9B0   |
-	STA $0206,y				;$80F9B2   |
+	STA oam[1].display,y			;$80F9B2   |
 	TYA					;$80F9B5   |
 	CLC					;$80F9B6   |
 	ADC #$0008				;$80F9B7   |
@@ -13170,22 +13170,22 @@ CODE_80F9C7:
 	STA $70					;$80F9CC   |
 	LDA #$0400				;$80F9CE   |
 	STA $56					;$80F9D1   |
-	STZ $0400				;$80F9D3   |
-	STZ $0402				;$80F9D6   |
-	STZ $0404				;$80F9D9   |
-	STZ $0406				;$80F9DC   |
-	STZ $0408				;$80F9DF   |
-	STZ $040A				;$80F9E2   |
-	STZ $040C				;$80F9E5   |
-	STZ $040E				;$80F9E8   |
-	STZ $0410				;$80F9EB   |
-	STZ $0412				;$80F9EE   |
-	STZ $0414				;$80F9F1   |
-	STZ $0416				;$80F9F4   |
-	STZ $0418				;$80F9F7   |
-	STZ $041A				;$80F9FA   |
-	STZ $041C				;$80F9FD   |
-	STZ $041E				;$80FA00   |
+	STZ oam_attribute[$00].size		;$80F9D3   |
+	STZ oam_attribute[$02].size		;$80F9D6   |
+	STZ oam_attribute[$04].size		;$80F9D9   |
+	STZ oam_attribute[$06].size		;$80F9DC   |
+	STZ oam_attribute[$08].size		;$80F9DF   |
+	STZ oam_attribute[$0A].size		;$80F9E2   |
+	STZ oam_attribute[$0C].size		;$80F9E5   |
+	STZ oam_attribute[$0E].size		;$80F9E8   |
+	STZ oam_attribute[$10].size		;$80F9EB   |
+	STZ oam_attribute[$12].size		;$80F9EE   |
+	STZ oam_attribute[$14].size		;$80F9F1   |
+	STZ oam_attribute[$16].size		;$80F9F4   |
+	STZ oam_attribute[$18].size		;$80F9F7   |
+	STZ oam_attribute[$1A].size		;$80F9FA   |
+	STZ oam_attribute[$1C].size		;$80F9FD   |
+	STZ oam_attribute[$1E].size		;$80FA00   |
 	LDA #$0054				;$80FA03   |
 	STA $78					;$80FA06   |
 	JSL CODE_B59F40				;$80FA08   |
@@ -13262,7 +13262,7 @@ CODE_80FA7C:
 	LDA #$0014				;$80FA98   |
 	JSL play_song				;$80FA9B   |
 	LDA #$0100				;$80FA9F   |
-	JSR CODE_808C32				;$80FAA2   |
+	JSR set_fade				;$80FAA2   |
 	LDA #DATA_FD258E			;$80FAA5   |
 	LDY #$0000				;$80FAA8   |
 	LDX #$0020				;$80FAAB   |
@@ -13373,7 +13373,7 @@ CODE_80FB62:					;	   |
 	BNE CODE_80FB93				;$80FB8B   |
 CODE_80FB8D:					;	   |
 	LDA #$820F				;$80FB8D   |
-	JSR CODE_808C32				;$80FB90   |
+	JSR set_fade				;$80FB90   |
 CODE_80FB93:					;	   |
 	JSR fade_screen				;$80FB93   |
 	LDA screen_brightness			;$80FB96   |
