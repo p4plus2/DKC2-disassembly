@@ -1974,23 +1974,23 @@ handle_VRAM_payload:
 .raw_pointer_payload
 	SEP #$20				;$BB8CD1   |\ Dead code as far as I can tell, but here is what it could do
 	LDA.w DATA_FD819A,x			;$BB8CD3   | |\ Set the DMA source bank
-	STA $004304				;$BB8CD6   | |/
+	STA.l DMA[0].source_bank		;$BB8CD6   | |/
 	REP #$20				;$BB8CDA   | |
 	LDA.w DATA_FD819B,x			;$BB8CDC   | |\ Set the DMA source word
-	STA $004302				;$BB8CDF   | |/
+	STA.l DMA[0].source			;$BB8CDF   | |/
 	LDA.w DATA_FD819D,x			;$BB8CE3   | |\ Set the VRAM address
-	STA $002116				;$BB8CE6   | |/
+	STA.l PPU.vram_address			;$BB8CE6   | |/
 	SEP #$20				;$BB8CEA   |/ Basically this code would set up a raw DMA source payload
 .DMA_payload					;	   |
 	LDA.w DATA_FD819F,x			;$BB8CEC   |\ Load and set DMA size
-	STA $004305				;$BB8CEF   | |
+	STA.l DMA[0].size_low			;$BB8CEF   | |
 	LDA.w DATA_FD81A0,x			;$BB8CF3   | |
-	STA $004306				;$BB8CF6   |/
+	STA.l DMA[0].size_high			;$BB8CF6   |/
 	LDA #$18				;$BB8CFA   |\ Set the DMA destination to $2118
-	STA $004301				;$BB8CFC   |/
+	STA.l DMA[0].destination		;$BB8CFC   |/
 	LDA #$01				;$BB8D00   |\ Set DMA transfer mode 01 (two registers, write once)
-	STA $004300				;$BB8D02   |/
-	STA $00420B				;$BB8D06   | Enable channel 1 DMA
+	STA.l DMA[0].control			;$BB8D02   |/
+	STA.l CPU.enable_dma			;$BB8D06   | Enable channel 1 DMA
 	REP #$20				;$BB8D0A   |
 	TXA					;$BB8D0C   |\ Add 7 bytes to the payload index to bypass DMA/VRAM settings
 	CLC					;$BB8D0D   | |
@@ -2019,15 +2019,15 @@ handle_VRAM_payload:
 	PLX					;$BB8D2E   | Restore the payload index
 	SEP #$20				;$BB8D2F   |
 	LDA.w DATA_FD819D,x			;$BB8D31   |\ Load and set the VRAM address (masks off top bit)
-	STA $002116				;$BB8D34   | |
+	STA.l PPU.vram_address			;$BB8D34   | |
 	LDA.w DATA_FD819E,x			;$BB8D38   | |
 	AND #$7F				;$BB8D3B   | |
-	STA $002117				;$BB8D3D   |/
+	STA.l PPU.vram_address_high		;$BB8D3D   |/
 	LDA #$7F				;$BB8D41   |\ Set DMA source to $7F0000
-	STA $004304				;$BB8D43   | |
+	STA.l DMA[0].source_bank		;$BB8D43   | |
 	REP #$20				;$BB8D47   | |
 	LDA #$0000				;$BB8D49   | |
-	STA $004302				;$BB8D4C   |/
+	STA.l DMA[0].source			;$BB8D4C   |/
 	SEP #$20				;$BB8D50   |
 	BRA .DMA_payload			;$BB8D52  / Launch the DMA to VRAM
 
@@ -2036,14 +2036,14 @@ handle_VRAM_payload:
 	LDA.w DATA_FD819A,x			;$BB8D56   |\ Get and set the bank of the source pointer
 	STA $28					;$BB8D59   |/
 	LDA #$7F				;$BB8D5B   |\ Set DMA source bank to 7F
-	STA $004304				;$BB8D5D   |/
+	STA.l DMA[0].source_bank		;$BB8D5D   |/
 	REP #$20				;$BB8D61   |
 	LDA #$0000				;$BB8D63   |\ Set DMA source word to 0000
-	STA $004302				;$BB8D66   |/ (Full source becomes $7F0000)
+	STA.l DMA[0].source			;$BB8D66   |/ (Full source becomes $7F0000)
 	LDA.w DATA_FD819B,x			;$BB8D6A   |\ Get and set the word portion of the source pointer
 	STA $26					;$BB8D6D   |/
 	LDA.w DATA_FD819D,x			;$BB8D6F   |\ Get and set the VRAM destination address
-	STA $002116				;$BB8D72   |/
+	STA.l PPU.vram_address			;$BB8D72   |/
 	PHX					;$BB8D76   | Preserve the payload index
 	LDA.w DATA_FD819F,x			;$BB8D77   | Load the number of bytes to copy
 	INC A					;$BB8D7A   |\ Ensure an even number of bytes to copy
@@ -2770,11 +2770,11 @@ build_decompression_lookup:		;
 disable_screen:
 	SEP #$20				;$BB91D9  \
 	LDA #$00				;$BB91DB   |\ Disable HDMA
-	STA $00420C				;$BB91DD   |/
+	STA.l CPU.enable_hdma			;$BB91DD   |/
 	LDA #$01				;$BB91E1   |\ Turn on autojoy, turn on NMI
-	STA $004200				;$BB91E3   |/
+	STA.l CPU.enable_interrupts		;$BB91E3   |/
 	LDA #$8F				;$BB91E7   |\ Enable f-blank
-	STA $002100				;$BB91E9   |/
+	STA.l PPU.screen			;$BB91E9   |/
 	REP #$20				;$BB91ED   |
 	LDA #$0000				;$BB91EF   |\ Disable OAM DMA
 	STA $00059B				;$BB91F2   |/

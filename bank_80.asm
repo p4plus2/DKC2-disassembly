@@ -738,17 +738,17 @@ CODE_8088A0:
 	EOR #$0001				;$8088A3   |
 	BRA CODE_80883B				;$8088A6  /
 
-CODE_8088A8:
-	LDA level_number			;$8088A8  \
-	RTL					;$8088AA  /
+get_level_number:
+	LDA level_number			;$8088A8  \ This routine is absolutely stupid.  Its a dp load used
+	RTL					;$8088AA  / exactly once in the entire ROM.  Competes with SMW stupidity
 
-CODE_8088AB:
-	LDA #$0200				;$8088AB  \
-	STA $70					;$8088AE   |
-	JSR set_unused_oam_offscreen		;$8088B0   |
+set_all_oam_offscreen:				;	  \
+	LDA #$0200				;$8088AB   |\ Mark the next oam slot as the first slot
+	STA $70					;$8088AE   |/
+	JSR set_unused_oam_offscreen		;$8088B0   | Run the normal OAM clear routine
 	RTL					;$8088B3  /
 
-CODE_8088B4:
+set_unused_oam_offscreen_global:
 	PHB					;$8088B4  \
 	JSR set_unused_oam_offscreen		;$8088B5   |
 	PLB					;$8088B8   |
@@ -758,7 +758,7 @@ set_unused_oam_offscreen:
 	PHK					;$8088BA  \
 	PLB					;$8088BB   |
 	LDX $70					;$8088BC   |
-	CPX #$0400				;$8088BE   |
+	CPX #oam_table+(sizeof(oam)*128)	;$8088BE   |
 	BEQ .oam_full				;$8088C1   |
 	LDA #$F0FF				;$8088C3   |
 .next_slot					;	   |
@@ -1186,8 +1186,8 @@ fade_screen:
 	CMP screen_fade_timer			;$808C68   | |
 	BNE .return				;$808C6B   |/ If it doesn't match the fade speed wait
 	STZ screen_fade_timer			;$808C6D   | Reset the fade timer for the next fade step
-	DEC screen_brightness			;$808C70   | Decrement the brightness
-	BMI .fade_finished			;$808C73   | If the brightness goes negative we are at full darkness
+	DEC screen_brightness			;$808C70   |\ Decrement the brightness
+	BMI .fade_finished			;$808C73   |/ If the brightness goes negative we are at full darkness
 	BNE .return				;$808C75   | Otherwise return and keep the current step
 .fade_finished					;	   |
 	STZ screen_fade_speed			;$808C77   | Reset the fade timer for the next time we fade
@@ -1228,16 +1228,16 @@ CODE_808CA8:
 	JSR prepare_oam_dma_channel		;$808CA8  \
 	RTL					;$808CAB  /
 
-prepare_oam_dma_channel:
-	LDA #$0200				;$808CAC  \
-	STA DMA[0].source			;$808CAF   |
-	STA DMA[0].unused_2			;$808CB2   |
-	LDA #$0220				;$808CB5   |
-	STA DMA[0].size				;$808CB8   |
-	LDA #$0400				;$808CBB   |
-	STA DMA[0].settings			;$808CBE   |
+prepare_oam_dma_channel:			;	  \
+	LDA #$0200				;$808CAC   |\ Set DMA source to $000200
+	STA DMA[0].source			;$808CAF   |/
+	STA DMA[0].unused_2			;$808CB2   | Unused
+	LDA #$0220				;$808CB5   |\ Set DMA size 544 bytes
+	STA DMA[0].size				;$808CB8   |/
+	LDA #$0400				;$808CBB   |\ DMA one reg write once to the OAM write register
+	STA DMA[0].settings			;$808CBE   |/
 	SEP #$20				;$808CC1   |
-	STZ DMA[0].source_bank			;$808CC3   |
+	STZ DMA[0].source_bank			;$808CC3   | Zero the source bank
 	REP #$20				;$808CC6   |
 	RTS					;$808CC8  /
 
@@ -2488,7 +2488,7 @@ CODE_8097AB:					;	   |
 	REP #$20				;$8097B2   |
 CODE_8097B4:					;	   |
 	LDA screen_brightness			;$8097B4   |
-	BNE CODE_8097C7				;$8097B7   |
+	BNE .fade				;$8097B7   |
 	LDA global_frame_counter		;$8097B9   |
 	CMP #$01A0				;$8097BB   |
 	BCS .transition_to_nintendo_copyright	;$8097BE   |
@@ -2497,11 +2497,11 @@ CODE_8097B4:					;	   |
 .transition_to_nintendo_copyright
 	JMP init_nintendo_copyright		;$8097C4  /
 
-CODE_8097C7:
-	JSR fade_screen				;$8097C7  \
-CODE_8097CA:					;	   |
-	WAI					;$8097CA   |
-	BRA CODE_8097CA				;$8097CB  /
+.fade
+	JSR fade_screen				;$8097C7  \ Run the screen fade check
+-						;	   |
+	WAI					;$8097CA   | Wait until the next frame
+	BRA -					;$8097CB  / Branch back sanity check
 
 CODE_8097CD:
 	JSL disable_screen			;$8097CD  \
@@ -2510,7 +2510,7 @@ CODE_8097CD:
 	JSR clear_VRAM				;$8097D3   |
 	JSL init_registers_wrapper		;$8097D6   |
 	JSL CODE_808E6A				;$8097DA   |
-	JSL CODE_8088AB				;$8097DE   |
+	JSL set_all_oam_offscreen		;$8097DE   |
 	STZ $060B				;$8097E2   |
 	LDX #$001E				;$8097E5   |
 	LDA #$0000				;$8097E8   |
@@ -2716,7 +2716,7 @@ CODE_809A13:
 	BEQ CODE_809A49				;$809A27   |
 	SEP #$20				;$809A29   |
 	LDA #$01				;$809A2B   |
-	STA $004200				;$809A2D   |
+	STA.l CPU.enable_interrupts		;$809A2D   |
 	REP #$20				;$809A31   |
 	LDA #$0018				;$809A33   |
 	JSL play_song_with_transition		;$809A36   |
@@ -2775,7 +2775,7 @@ CODE_809A84:					;	   |
 	BEQ CODE_809AD2				;$809AB0   |
 	SEP #$20				;$809AB2   |
 	LDA #$01				;$809AB4   |
-	STA $004200				;$809AB6   |
+	STA.l CPU.enable_interrupts		;$809AB6   |
 	REP #$20				;$809ABA   |
 	LDA #$0018				;$809ABC   |
 	JSL play_song_with_transition		;$809ABF   |
@@ -2945,7 +2945,7 @@ CODE_809C02:					;	   |
 	LDA #$0634				;$809C31   |
 	JSL play_high_priority_sound		;$809C34   |
 CODE_809C38:					;	   |
-	JSL CODE_8088AB				;$809C38   |
+	JSL set_all_oam_offscreen		;$809C38   |
 	LDA $060D				;$809C3C   |
 	CMP #$0003				;$809C3F   |
 	BNE CODE_809C8A				;$809C42   |
@@ -2973,7 +2973,7 @@ CODE_809C6A:					;	   |
 CODE_809C6F:					;	   |
 	SEP #$20				;$809C6F   |
 	LDA #$01				;$809C71   |
-	STA $004200				;$809C73   |
+	STA.l CPU.enable_interrupts		;$809C73   |
 	REP #$20				;$809C77   |
 	LDA $84					;$809C79   |
 	CMP #$000F				;$809C7B   |
@@ -3733,7 +3733,7 @@ CODE_80A44D:					;	   |
 	STA $78					;$80A489   |
 	JSL CODE_B59F40				;$80A48B   |
 	STZ $1730				;$80A48F   |
-	JSL CODE_8088B4				;$80A492   |
+	JSL set_unused_oam_offscreen_global	;$80A492   |
 	JSR prepare_oam_dma_channel		;$80A496   |
 	LDA #CODE_80A2CF			;$80A499   |
 	STA NMI_pointer				;$80A49C   |
@@ -3930,7 +3930,7 @@ CODE_80A5F1:
 	JSR clear_VRAM				;$80A5F7   |
 	JSL init_registers_wrapper		;$80A5FA   |
 	JSL CODE_808E6A				;$80A5FE   |
-	JSL CODE_8088AB				;$80A602   |
+	JSL set_all_oam_offscreen		;$80A602   |
 	LDA #$0018				;$80A606   |
 	JSL play_song				;$80A609   |
 	LDA $0613				;$80A60D   |
@@ -10889,7 +10889,7 @@ CODE_80E5B5:					;	   |
 	BPL CODE_80E5B5				;$80E5F0   |
 	PEA $807E				;$80E5F2   |
 	PLB					;$80E5F5   |
-	LDA.l $00002A				;$80E5F6   |
+	LDA.l global_frame_counter		;$80E5F6   |
 	LSR A					;$80E5FA   |
 	AND #$000E				;$80E5FB   |
 	CLC					;$80E5FE   |
@@ -10941,17 +10941,17 @@ CODE_80E64E:					;	   |
 	PLB					;$80E651   |
 	LDA $17BA				;$80E652   |
 	LSR A					;$80E655   |
-	STA $004204				;$80E656   |
+	STA.l CPU.dividen			;$80E656   |
 	SEP #$20				;$80E65A   |
 	LDA #$B2				;$80E65C   |
-	STA $004206				;$80E65E   |
+	STA.l CPU.divisor			;$80E65E   |
 	REP #$20				;$80E662   |
 	NOP					;$80E664   |
 	NOP					;$80E665   |
 	NOP					;$80E666   |
 	NOP					;$80E667   |
 	NOP					;$80E668   |
-	LDA.l $004216				;$80E669   |
+	LDA.l CPU.divide_remainder		;$80E669   |
 	STA $34					;$80E66D   |
 	XBA					;$80E66F   |
 	AND #$FF00				;$80E670   |
@@ -11068,10 +11068,10 @@ CODE_80E6DC:					;	   |
 	ROR $36					;$80E763   |
 	LSR A					;$80E765   |
 	ROR $36					;$80E766   |
-	STA $004204				;$80E768   |
+	STA.l CPU.dividen			;$80E768   |
 	SEP #$20				;$80E76C   |
 	LDA #$B2				;$80E76E   |
-	STA $004206				;$80E770   |
+	STA.l CPU.divisor			;$80E770   |
 	REP #$20				;$80E774   |
 	NOP					;$80E776   |
 	NOP					;$80E777   |
@@ -11105,21 +11105,21 @@ CODE_80E6DC:					;	   |
 	CLC					;$80E7A5   |
 	ADC #$0080				;$80E7A6   |
 	LSR A					;$80E7A9   |
-	STA $004204				;$80E7AA   |
+	STA.l CPU.dividen			;$80E7AA   |
 	SEP #$20				;$80E7AE   |
 	LDA #$D0				;$80E7B0   |
-	STA $004206				;$80E7B2   |
+	STA.l CPU.divisor			;$80E7B2   |
 	REP #$20				;$80E7B6   |
 	NOP					;$80E7B8   |
 	NOP					;$80E7B9   |
 	NOP					;$80E7BA   |
 	NOP					;$80E7BB   |
 	NOP					;$80E7BC   |
-	LDA.l $004216				;$80E7BD   |
+	LDA.l CPU.divide_remainder		;$80E7BD   |
 	SEC					;$80E7C1   |
 	SBC #$0075				;$80E7C2   |
 	STA $74					;$80E7C5   |
-	LDA.l $004214				;$80E7C7   |
+	LDA.l CPU.divide_result_low		;$80E7C7   |
 	AND #$0001				;$80E7CB   |
 	ASL A					;$80E7CE   |
 	TAX					;$80E7CF   |
@@ -11162,14 +11162,14 @@ CODE_80E7ED:					;	   |
 	EOR #$FFFF				;$80E81D   |
 	INC A					;$80E820   |
 	SEP #$20				;$80E821   |
-	STA $004202				;$80E823   |
+	STA.l CPU.multiply_A			;$80E823   |
 	LDA #$8B				;$80E827   |
-	STA $004203				;$80E829   |
+	STA.l CPU.multiply_B			;$80E829   |
 	NOP					;$80E82D   |
 	NOP					;$80E82E   |
 	LDA #$3E				;$80E82F   |
 	SEC					;$80E831   |
-	SBC $004217				;$80E832   |
+	SBC.l CPU.multiply_result_high		;$80E832   |
 	REP #$20				;$80E836   |
 	AND #$00FF				;$80E838   |
 	STA $8555,x				;$80E83B   |
@@ -11210,23 +11210,23 @@ CODE_80E86F:					;	   |
 	SEP #$20				;$80E873   |
 	LDA $74					;$80E875   |
 	BMI CODE_80E88C				;$80E877   |
-	STA $004202				;$80E879   |
+	STA.l CPU.multiply_A			;$80E879   |
 	LDA #$76				;$80E87D   |
-	STA $004203				;$80E87F   |
+	STA.l CPU.multiply_B			;$80E87F   |
 	LDA #$32				;$80E883   |
 	CLC					;$80E885   |
-	ADC $004217				;$80E886   |
+	ADC.l CPU.multiply_result_high		;$80E886   |
 	BRA CODE_80E8A0				;$80E88A  /
 
 CODE_80E88C:
 	EOR #$FF				;$80E88C  \
 	INC A					;$80E88E   |
-	STA $004202				;$80E88F   |
+	STA.l CPU.multiply_A			;$80E88F   |
 	LDA #$76				;$80E893   |
-	STA $004203				;$80E895   |
+	STA.l CPU.multiply_B			;$80E895   |
 	LDA #$31				;$80E899   |
 	SEC					;$80E89B   |
-	SBC $004217				;$80E89C   |
+	SBC.l CPU.multiply_result_high		;$80E89C   |
 CODE_80E8A0:					;	   |
 	REP #$20				;$80E8A0   |
 	AND #$00FF				;$80E8A2   |
@@ -11311,44 +11311,44 @@ CODE_80E913:					;	   |
 	STA CPU.dividen				;$80E938   |
 	SEP #$20				;$80E93B   |
 	LDA $7A					;$80E93D   |
-	STA $004206				;$80E93F   |
+	STA.l CPU.divisor			;$80E93F   |
 	REP #$20				;$80E943   |
 	NOP					;$80E945   |
 	NOP					;$80E946   |
 	NOP					;$80E947   |
 	NOP					;$80E948   |
 	NOP					;$80E949   |
-	LDA.l $004214				;$80E94A   |
+	LDA.l CPU.divide_result			;$80E94A   |
 	EOR #$FFFF				;$80E94E   |
 	INC A					;$80E951   |
 	BRA CODE_80E96C				;$80E952  /
 
 CODE_80E954:
 	XBA					;$80E954  \
-	STA $004204				;$80E955   |
+	STA.l CPU.dividen			;$80E955   |
 	SEP #$20				;$80E959   |
 	LDA $7A					;$80E95B   |
-	STA $004206				;$80E95D   |
+	STA.l CPU.divisor			;$80E95D   |
 	REP #$20				;$80E961   |
 	NOP					;$80E963   |
 	NOP					;$80E964   |
 	NOP					;$80E965   |
 	NOP					;$80E966   |
 	NOP					;$80E967   |
-	LDA.l $004214				;$80E968   |
+	LDA.l CPU.divide_result			;$80E968   |
 CODE_80E96C:					;	   |
 	STA $32					;$80E96C   |
 	LDA $74					;$80E96E   |
 	BMI CODE_80E989				;$80E970   |
 	SEP #$20				;$80E972   |
 	LDA $74					;$80E974   |
-	STA $004202				;$80E976   |
+	STA.l CPU.multiply_A			;$80E976   |
 	LDA $32					;$80E97A   |
-	STA $004203				;$80E97C   |
+	STA.l CPU.multiply_B			;$80E97C   |
 	REP #$20				;$80E980   |
 	LDA $74					;$80E982   |
 	SEC					;$80E984   |
-	ADC $004217				;$80E985   |
+	ADC.l CPU.multiply_result_high		;$80E985   |
 CODE_80E989:					;	   |
 	TAY					;$80E989   |
 	JSR CODE_80EBB2				;$80E98A   |
@@ -11441,34 +11441,34 @@ CODE_80EA20:					;	   |
 	EOR #$FFFF				;$80EA39   |
 	INC A					;$80EA3C   |
 	XBA					;$80EA3D   |
-	STA $004204				;$80EA3E   |
+	STA.l CPU.dividen			;$80EA3E   |
 	SEP #$20				;$80EA42   |
 	LDA $7A					;$80EA44   |
-	STA $004206				;$80EA46   |
+	STA.l CPU.divisor			;$80EA46   |
 	REP #$20				;$80EA4A   |
 	NOP					;$80EA4C   |
 	NOP					;$80EA4D   |
 	NOP					;$80EA4E   |
 	NOP					;$80EA4F   |
 	NOP					;$80EA50   |
-	LDA.l $004214				;$80EA51   |
+	LDA.l CPU.divide_result			;$80EA51   |
 	EOR #$FFFF				;$80EA55   |
 	INC A					;$80EA58   |
 	BRA CODE_80EA73				;$80EA59  /
 
 CODE_80EA5B:
 	XBA					;$80EA5B  \
-	STA $004204				;$80EA5C   |
+	STA.l CPU.dividen			;$80EA5C   |
 	SEP #$20				;$80EA60   |
 	LDA $7A					;$80EA62   |
-	STA $004206				;$80EA64   |
+	STA.l CPU.divisor			;$80EA64   |
 	REP #$20				;$80EA68   |
 	NOP					;$80EA6A   |
 	NOP					;$80EA6B   |
 	NOP					;$80EA6C   |
 	NOP					;$80EA6D   |
 	NOP					;$80EA6E   |
-	LDA.l $004214				;$80EA6F   |
+	LDA.l CPU.divide_result			;$80EA6F   |
 CODE_80EA73:					;	   |
 	STA $32					;$80EA73   |
 	LDA $B4					;$80EA75   |
@@ -11597,17 +11597,17 @@ CODE_80EB45:
 	SEC					;$80EB66   |
 	SBC $7A					;$80EB67   |
 	XBA					;$80EB69   |
-	STA $004204				;$80EB6A   |
+	STA.l CPU.dividen			;$80EB6A   |
 	SEP #$20				;$80EB6E   |
 	LDA $7A					;$80EB70   |
-	STA $004206				;$80EB72   |
+	STA.l CPU.divisor			;$80EB72   |
 	REP #$20				;$80EB76   |
 	NOP					;$80EB78   |
 	NOP					;$80EB79   |
 	NOP					;$80EB7A   |
 	NOP					;$80EB7B   |
 	NOP					;$80EB7C   |
-	LDA.l $004214				;$80EB7D   |
+	LDA.l CPU.divide_result			;$80EB7D   |
 	STA $32					;$80EB81   |
 	LDA $B4					;$80EB83   |
 	STA $3A					;$80EB85   |
@@ -12641,9 +12641,9 @@ CODE_80F3C1:
 	TCD					;$80F3CA   |
 	CLD					;$80F3CB   |
 	SEP #$20				;$80F3CC   |
-	LDA.l $004210				;$80F3CE   |
+	LDA.l CPU.nmi_flag			;$80F3CE   |
 	LDA #$8F				;$80F3D2   |
-	STA $002100				;$80F3D4   |
+	STA.l PPU.screen			;$80F3D4   |
 	REP #$20				;$80F3D8   |
 	LDA.l active_frame_counter		;$80F3DA   |
 	INC A					;$80F3DE   |
@@ -12652,7 +12652,7 @@ CODE_80F3C1:
 
 incomplete_frame_nmi:
 	SEP #$20				;$80F3E6  \
-	LDA.l $000512				;$80F3E8   |\ Write screen brightness
+	LDA.l screen_brightness			;$80F3E8   |\ Write screen brightness
 	STA.l PPU.screen			;$80F3EC   |/
 	REP #$20				;$80F3F0   |
 nmi_return:					;	   |
@@ -12674,7 +12674,7 @@ CODE_80F3FB:
 	JSL clear_VRAM_wrapper			;$80F401   |
 	JSL init_registers_wrapper		;$80F405   |
 	JSL CODE_808E6A				;$80F409   |
-	JSL CODE_8088AB				;$80F40D   |
+	JSL set_all_oam_offscreen		;$80F40D   |
 	JSL CODE_BB91F7				;$80F411   |
 	LDA #$001E				;$80F415   |
 	JSL play_song				;$80F418   |

@@ -10043,7 +10043,7 @@ CODE_B5E0E2:
 	REP #$20				;$B5E111   |
 	STZ $0AFC				;$B5E113   |
 	STZ $0AFE				;$B5E116   |
-	JSL CODE_8088A8				;$B5E119   |
+	JSL get_level_number			;$B5E119   |
 	ASL A					;$B5E11D   |
 	TAX					;$B5E11E   |
 	LDA.l DATA_FD934F,x			;$B5E11F   |
@@ -10657,7 +10657,7 @@ CODE_B5E5F5:
 	RTS					;$B5E5F9  /
 
 CODE_B5E5FA:
-	LDA.l $00002A				;$B5E5FA  \
+	LDA.l global_frame_counter		;$B5E5FA  \
 	LSR A					;$B5E5FE   |
 	LSR A					;$B5E5FF   |
 	AND #$003E				;$B5E600   |
@@ -10823,7 +10823,7 @@ CODE_B5E72F:
 	RTS					;$B5E748  /
 
 CODE_B5E749:
-	LDA.l $00002A				;$B5E749  \
+	LDA.l global_frame_counter		;$B5E749  \
 	LSR A					;$B5E74D   |
 	CLC					;$B5E74E   |
 	ADC $00002A				;$B5E74F   |
@@ -11566,7 +11566,7 @@ CODE_B5EBED:					;	   |
 
 CODE_B5EBF6:
 	SEP #$20				;$B5EBF6  \
-	STA $004202				;$B5EBF8   |
+	STA.l CPU.multiply_A			;$B5EBF8   |
 	REP #$20				;$B5EBFC   |
 	LDA $0D28				;$B5EBFE   |
 	BEQ CODE_B5EC61				;$B5EC01   |
@@ -11579,12 +11579,12 @@ CODE_B5EC03:					;	   |
 
 CODE_B5EC0C:
 	SEP #$20				;$B5EC0C  \
-	STA $004203				;$B5EC0E   |
+	STA.l CPU.multiply_B			;$B5EC0E   |
 	REP #$20				;$B5EC12   |
 	NOP					;$B5EC14   |
 	NOP					;$B5EC15   |
 	NOP					;$B5EC16   |
-	LDA.l $004216				;$B5EC17   |
+	LDA.l CPU.multiply_result		;$B5EC17   |
 	BMI CODE_B5EC26				;$B5EC1B   |
 CODE_B5EC1D:					;	   |
 	DEY					;$B5EC1D   |
@@ -11596,7 +11596,7 @@ CODE_B5EC1D:					;	   |
 CODE_B5EC25:
 	INY					;$B5EC25  \
 CODE_B5EC26:					;	   |
-	STA $004204				;$B5EC26   |
+	STA.l CPU.dividen			;$B5EC26   |
 	LDA $0D2A				;$B5EC2A   |
 	BEQ CODE_B5EC61				;$B5EC2D   |
 CODE_B5EC2F:					;	   |
@@ -11608,7 +11608,7 @@ CODE_B5EC2F:					;	   |
 
 CODE_B5EC38:
 	SEP #$20				;$B5EC38  \
-	STA $004206				;$B5EC3A   |
+	STA.l CPU.divisor			;$B5EC3A   |
 	REP #$20				;$B5EC3E   |
 	NOP					;$B5EC40   |
 	NOP					;$B5EC41   |
@@ -11617,7 +11617,7 @@ CODE_B5EC38:
 	TYA					;$B5EC44   |
 	BEQ CODE_B5EC53				;$B5EC45   |
 	BPL CODE_B5EC59				;$B5EC47   |
-	LDA.l $004214				;$B5EC49   |
+	LDA.l CPU.divide_result			;$B5EC49   |
 CODE_B5EC4D:					;	   |
 	LSR A					;$B5EC4D   |
 	INY					;$B5EC4E   |
@@ -11626,12 +11626,12 @@ CODE_B5EC4D:					;	   |
 	RTS					;$B5EC52  /
 
 CODE_B5EC53:
-	LDA.l $004214				;$B5EC53  \
+	LDA.l CPU.divide_result			;$B5EC53  \
 	PLY					;$B5EC57   |
 	RTS					;$B5EC58  /
 
 CODE_B5EC59:
-	LDA.l $004214				;$B5EC59  \
+	LDA.l CPU.divide_result			;$B5EC59  \
 CODE_B5EC5D:					;	   |
 	ASL A					;$B5EC5D   |
 	DEY					;$B5EC5E   |
@@ -11963,7 +11963,7 @@ CODE_B5EE78:					;	   |
 	RTS					;$B5EE78  /
 
 CODE_B5EE79:
-	LDA.l $00002A				;$B5EE79  \
+	LDA.l global_frame_counter		;$B5EE79  \
 	AND #$0003				;$B5EE7D   |
 	BNE CODE_B5EEBA				;$B5EE80   |
 	LDA $F6					;$B5EE82   |
@@ -13778,17 +13778,17 @@ CODE_B5FA00:					;	   |
 	BMI CODE_B5FA6C				;$B5FA1B   |
 	SEP #$30				;$B5FA1D   |
 	LDA $D635,x				;$B5FA1F   |
-	STA $002180				;$B5FA22   |
+	STA.l WRAM.data				;$B5FA22   |
 	LDA $D6B5,x				;$B5FA26   |
-	STA $002180				;$B5FA29   |
+	STA.l WRAM.data				;$B5FA29   |
 	LDA global_frame_counter		;$B5FA2D   |
 	AND #$0E				;$B5FA2F   |
 	CLC					;$B5FA31   |
 	ADC $000D2C				;$B5FA32   |
-	STA $002180				;$B5FA36   |
+	STA.l WRAM.data				;$B5FA36   |
 	LDA.l $000D2D				;$B5FA3A   |
 	ORA #$30				;$B5FA3E   |
-	STA $002180				;$B5FA40   |
+	STA.l WRAM.data				;$B5FA40   |
 	LDA $4A					;$B5FA44   |
 	LSR A					;$B5FA46   |
 	SEC					;$B5FA47   |

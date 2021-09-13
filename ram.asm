@@ -57,6 +57,7 @@ level_number = $D3
 
 stack_end = $0100
 stack = $01FF
+oam_table = $0200
 struct oam $0200
 	.position:
 	.x:             skip 1
