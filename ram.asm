@@ -9,7 +9,7 @@ stereo_select = $1E
 NMI_pointer = $20
 UNUSED_22 = $22
 UNUSED_23 = $23
-gameloop_pointer = $24
+gamemode_pointer = $24
 
 global_frame_counter = $2A
 active_frame_counter = $2C
@@ -46,7 +46,7 @@ current_player_mount = $6C
 next_oam_slot = $70
 
 nmi_submode = $94
-gameloop_submode = $96
+gamemode_submode = $96
 
 level_number = $D3
 
@@ -85,5 +85,8 @@ screen_fade_speed = $0513
 screen_fade_timer = $0514
 pending_dma_hdma_channels = $059B
 
+enable_intro_bypass = $090F
+
 intro_sparkle_x_position = $098F
 intro_sparkle_y_position = $0991
+player_skipped_demo = $099B

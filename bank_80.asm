@@ -399,24 +399,24 @@ restart_rareware_logo:				;	   |
 	JSR clear_wram_reset			;$8085E8   | Clear WRAM
 	JML init_rareware_logo			;$8085EB  / Initialize the Rareware logo
 
-CODE_8085EF:
-	LDA #$FFFF				;$8085EF  \
-	STA $00090F				;$8085F2   |
-	JSL disable_screen			;$8085F6   |
-	LDA #CODE_80B3D7			;$8085FA   |
-	STA gameloop_pointer			;$8085FD   |
+setup_title_screen_transition:			;	  \
+	LDA #$FFFF				;$8085EF   |\ After the title screen is reached the first time
+	STA.l enable_intro_bypass		;$8085F2   |/ allow it to be bypassed.
+	JSL disable_screen			;$8085F6   | Turn the screen off to allow for f-blank
+	LDA #init_title_screen			;$8085FA   |\ Set the active game mode to title screen init
+	STA gamemode_pointer			;$8085FD   |/
 	STZ PPU.oam_address			;$8085FF   |
-	LDA #CODE_808608			;$808602   |
+	LDA #simple_gamemode_nmi		;$808602   |
 	JMP CODE_808C82				;$808605  /
 
-CODE_808608:
-	LDA #$01FF				;$808608  \
-	TCS					;$80860B   |
+simple_gamemode_nmi:				;	  \
+	LDA #stack				;$808608   |\ Reset the stack to clear off the bytes used by the
+	TCS					;$80860B   |/ interrupt handled (and interrupt itself)
 CODE_80860C:					;	   |
-	LDA #incomplete_frame_nmi		;$80860C   |
-	STA NMI_pointer				;$80860F   |
-	INC global_frame_counter		;$808611   |
-	JMP.w (gameloop_pointer)		;$808613  /
+	LDA #incomplete_frame_nmi		;$80860C   |\ Setup a dummy NMI pointer for lag frames
+	STA NMI_pointer				;$80860F   |/
+	INC global_frame_counter		;$808611   | Increment the frame counter
+	JMP.w (gamemode_pointer)		;$808613  / Run the active gamemode
 
 CODE_808616:
 	LDA #$0100				;$808616   |
@@ -446,7 +446,7 @@ CODE_808636:
 	BNE CODE_808640				;$80863C   |
 	DEC $D7					;$80863E   |
 CODE_808640:					;	   |
-	LDA #CODE_808608			;$808640   |
+	LDA #simple_gamemode_nmi		;$808640   |
 	STA NMI_pointer				;$808643   |
 	SEP #$20				;$808645   |
 	LDA CPU.nmi_flag			;$808647   |
@@ -648,7 +648,7 @@ CODE_8087E1:
 	JSR prepare_oam_dma_channel		;$8087F3   |
 	SEP #$20				;$8087F6   |
 	LDA $0529				;$8087F8   |
-	STA gameloop_submode			;$8087FB   |
+	STA gamemode_submode			;$8087FB   |
 	LDA $0527				;$8087FD   |
 	STA nmi_submode				;$808800   |
 	REP #$20				;$808802   |
@@ -657,7 +657,7 @@ CODE_8087E1:
 
 CODE_80880A:
 	SEP #$20				;$80880A   |
-	STA gameloop_submode			;$80880C   |
+	STA gamemode_submode			;$80880C   |
 	XBA					;$80880E   |
 	STA nmi_submode				;$80880F   |
 	REP #$20				;$808811   |
@@ -676,7 +676,7 @@ CODE_808819:
 	LDA #$0005				;$808829   |
 	JSL throw_exception			;$80882C   |
 CODE_808830:					;	   |
-	LDA gameloop_submode			;$808830   |
+	LDA gamemode_submode			;$808830   |
 	ASL A					;$808832   |
 	TAX					;$808833   |
 	JMP (DATA_80D411,x)			;$808834  /
@@ -749,7 +749,7 @@ set_all_oam_offscreen:				;	  \
 	RTL					;$8088B3  /
 
 set_unused_oam_offscreen_global:
-	PHB					;$8088B4  \
+	PHB					;$8088B4  \ Wrapper for the routine that clears up unused OAM slots
 	JSR set_unused_oam_offscreen		;$8088B5   |
 	PLB					;$8088B8   |
 	RTL					;$8088B9  /
@@ -757,20 +757,20 @@ set_unused_oam_offscreen_global:
 set_unused_oam_offscreen:
 	PHK					;$8088BA  \
 	PLB					;$8088BB   |
-	LDX $70					;$8088BC   |
-	CPX #oam_table+(sizeof(oam)*128)	;$8088BE   |
-	BEQ .oam_full				;$8088C1   |
-	LDA #$F0FF				;$8088C3   |
-.next_slot					;	   |
-	STA $00,x				;$8088C6   |
-	INX					;$8088C8   |
-	INX					;$8088C9   |
-	INX					;$8088CA   |
-	INX					;$8088CB   |
-	CPX #$0400				;$8088CC   |
-	BNE .next_slot				;$8088CF   |
+	LDX $70					;$8088BC   |\ Check if oam is already full
+	CPX #oam_table+(sizeof(oam)*128)	;$8088BE   | |
+	BEQ .oam_full				;$8088C1   |/
+	LDA #$F0FF				;$8088C3   | Offscreen Y/X position
+.next_slot					;	   |\
+	STA $00,x				;$8088C6   | | Mark the slot screen
+	INX					;$8088C8   | |\ Increment to the next slot
+	INX					;$8088C9   | | |
+	INX					;$8088CA   | | |
+	INX					;$8088CB   | |/
+	CPX #$0400				;$8088CC   | | And check if we are at the last oam slot
+	BNE .next_slot				;$8088CF   |/
 .oam_full					;	   |
-	RTS					;$8088D1  /
+	RTS					;$8088D1  / Dead sprites nuked.
 
 CODE_8088D2:
 	LDY #DATA_8088F1			;$8088D2  \
@@ -1132,7 +1132,7 @@ CODE_808C10:					;	   |
 CODE_808C12:					;	   |
 	RTS					;$808C12  /
 
-throw_exception:			;
+throw_exception:				;
 	RTL					;$808C13  /
 
 	PHA					;$808C14   |
@@ -1219,7 +1219,7 @@ CODE_808C9B:					;	   |
 CODE_808C9E:
 	PHK					;$808C9E  \
 	PLB					;$808C9F   |
-	STA gameloop_pointer			;$808CA0   |
+	STA gamemode_pointer			;$808CA0   |
 CODE_808CA2:					;	   |
 	JSR prepare_oam_dma_channel		;$808CA2   |
 	JMP CODE_80862A				;$808CA5  /
@@ -2469,30 +2469,30 @@ CODE_80973E:					;	   |
 	LDA #$0000				;$809787   |
 	STA $7E8968,x				;$80978A   |
 CODE_80978E:					;	   |
-	LDA $090F				;$80978E   |
-	BEQ CODE_8097A4				;$809791   |
-	LDA screen_brightness			;$809793   |
-	CMP #$000F				;$809796   |
-	BNE CODE_8097A4				;$809799   |
-	LDA.l $000506				;$80979B   |
-	BIT #$D0C0				;$80979F   |
-	BNE CODE_8097AB				;$8097A2   |
-CODE_8097A4:					;	   |
-	LDA global_frame_counter		;$8097A4   |
-	CMP #$01A0				;$8097A6   |
-	BNE CODE_8097B4				;$8097A9   |
-CODE_8097AB:					;	   |
-	SEP #$20				;$8097AB   |
-	LDA #$82				;$8097AD   |
-	STA screen_fade_speed			;$8097AF   |
-	REP #$20				;$8097B2   |
-CODE_8097B4:					;	   |
-	LDA screen_brightness			;$8097B4   |
-	BNE .fade				;$8097B7   |
-	LDA global_frame_counter		;$8097B9   |
-	CMP #$01A0				;$8097BB   |
-	BCS .transition_to_nintendo_copyright	;$8097BE   |
-	JML CODE_8085EF				;$8097C0  /
+	LDA enable_intro_bypass			;$80978E   |\
+	BEQ .skip_bypass_check			;$809791   |/
+	LDA screen_brightness			;$809793   |\ If the brightness isn't at the max, don't check the player
+	CMP #$000F				;$809796   | | input, this prevents the bypass mid-transition
+	BNE .skip_bypass_check			;$809799   |/
+	LDA.l player_1_released			;$80979B   |\ Enter the fade out routine if B, Y, Start,  A, or X,
+	BIT #$D0C0				;$80979F   | | was released
+	BNE .fade_init				;$8097A2   |/
+.skip_bypass_check				;	   |
+	LDA global_frame_counter		;$8097A4   |\ Only run the fade out routine once on frame 01A0
+	CMP #$01A0				;$8097A6   | | (The end of the nintendo sparkle screen)
+	BNE .skip_fade_init			;$8097A9   |/
+.fade_init					;	   |
+	SEP #$20				;$8097AB   |\ Set the screen to fade out with a speed of 2
+	LDA #$82				;$8097AD   | |
+	STA screen_fade_speed			;$8097AF   | |
+	REP #$20				;$8097B2   |/
+.skip_fade_init					;	   |
+	LDA screen_brightness			;$8097B4   |\ If the screen is not off skip to the fade routine
+	BNE .fade				;$8097B7   |/
+	LDA global_frame_counter		;$8097B9   |\ If we are after frame #$01A0 the player didn't skip
+	CMP #$01A0				;$8097BB   | | the intro so continue to the nintendo copyright screen
+	BCS .transition_to_nintendo_copyright	;$8097BE   |/
+	JML setup_title_screen_transition	;$8097C0  / If the player skipped the intro, run the title screen
 
 .transition_to_nintendo_copyright
 	JMP init_nintendo_copyright		;$8097C4  /
@@ -5447,24 +5447,24 @@ DATA_80B379:
 	db $00, $03, $00, $00, $04, $00, $00, $05
 	db $00, $00, $06, $00, $01, $07
 
-CODE_80B3D7:
+init_title_screen:
 	JSL disable_screen			;$80B3D7  \
 	PHK					;$80B3DB   |
 	PLB					;$80B3DC   |
-	STZ $099B				;$80B3DD   |
+	STZ player_skipped_demo			;$80B3DD   |
 	STZ $060B				;$80B3E0   |
 	JSR clear_VRAM				;$80B3E3   |
 	JSL init_registers_wrapper		;$80B3E6   |
 	JSL CODE_8088D2				;$80B3EA   |
 	JSL CODE_BB91F7				;$80B3EE   |
-	LDA #$0002				;$80B3F2   |
-	JSL play_song				;$80B3F5   |
-	STZ global_frame_counter		;$80B3F9   |
+	LDA #$0002				;$80B3F2   |\ Play the title screen music
+	JSL play_song				;$80B3F5   |/
+	STZ global_frame_counter		;$80B3F9   | Reset the frame counter
 	JSR CODE_80B560				;$80B3FB   |
-	LDA #$55AA				;$80B3FE   |
-	STA rng_result				;$80B401   |
-	LDA #$FF00				;$80B403   |
-	STA rng_seed_2				;$80B406   |
+	LDA #$55AA				;$80B3FE   |\ Seed the random number generator
+	STA rng_result				;$80B401   | |
+	LDA #$FF00				;$80B403   | |
+	STA rng_seed_2				;$80B406   |/
 	LDX #$0DE2				;$80B408   |
 	LDY #$0000				;$80B40B   |
 CODE_80B40E:					;	   |
@@ -5494,33 +5494,33 @@ CODE_80B40E:					;	   |
 	LDA CPU.irq_flag			;$80B43A   |
 	LDA #$80				;$80B43D   |
 	STA PPU.oam_address_high		;$80B43F   |
-	LDA #$01				;$80B442   |
-	STA CPU.rom_speed			;$80B444   |
+	LDA #$01				;$80B442   |\ Enable fastrom again
+	STA CPU.rom_speed			;$80B444   |/
 	REP #$20				;$80B447   |
-	LDA #$0400				;$80B449   |
-	JSR set_fade				;$80B44C   |
-	JSR prepare_oam_dma_channel		;$80B44F   |
-	LDA #$0001				;$80B452   |
-	STA CPU.enable_dma			;$80B455   |
+	LDA #$0400				;$80B449   |\ Fade in the screen (speed 4)
+	JSR set_fade				;$80B44C   |/
+	JSR prepare_oam_dma_channel		;$80B44F   |\ Setup the OAM DMA channel (channel 1)
+	LDA #$0001				;$80B452   | |
+	STA CPU.enable_dma			;$80B455   |/ And run the DMA
 	JSR prepare_oam_dma_channel		;$80B458   |
 	LDA #CODE_80B461			;$80B45B   |
 	JMP set_and_wait_for_nmi		;$80B45E  /
 
-CODE_80B461:
-	LDX #stack				;$80B461  \
-	TXS					;$80B464   |
-	STZ PPU.oam_address			;$80B465   |
-	SEP #$20				;$80B468   |
-	LDA #$01				;$80B46A   |
-	STA CPU.enable_dma			;$80B46C   |
-	LDA screen_brightness			;$80B46F   |
-	STA PPU.screen				;$80B472   |
-	REP #$20				;$80B475   |
-	JSR intro_controller_read		;$80B477   |
-	INC global_frame_counter		;$80B47A   |
-	LDA global_frame_counter		;$80B47C   |
-	AND #$0003				;$80B47E   |
-	BNE CODE_80B4C6				;$80B481   |
+CODE_80B461:					;	  \
+	LDX #stack				;$80B461   |\ Reset the stack (gameloop entry point for title screen)
+	TXS					;$80B464   |/
+	STZ PPU.oam_address			;$80B465   |\ Reset the OAM address to zero and run OAM DMA for
+	SEP #$20				;$80B468   | | the chest twinkles.
+	LDA #$01				;$80B46A   | |
+	STA CPU.enable_dma			;$80B46C   |/
+	LDA screen_brightness			;$80B46F   |\ Set the screen brightness
+	STA PPU.screen				;$80B472   |/
+	REP #$20				;$80B475   | Whoo back to 16 bit
+	JSR intro_controller_read		;$80B477   | Parse the autojoy results
+	INC global_frame_counter		;$80B47A   |\ Increment the frame counter and
+	LDA global_frame_counter		;$80B47C   | |
+	AND #$0003				;$80B47E   | |
+	BNE CODE_80B4C6				;$80B481   |/
 	LDX #$0DE2				;$80B483   |
 CODE_80B486:					;	   |
 	LDA $1A,x				;$80B486   |
@@ -5596,7 +5596,7 @@ CODE_80B4C6:					;	   |
 	BRA CODE_80B532				;$80B52D  /
 
 CODE_80B52F:
-	INC $099B				;$80B52F  \
+	INC player_skipped_demo			;$80B52F  \
 CODE_80B532:					;	   |
 	LDA #$840F				;$80B532   |
 	JSR set_fade				;$80B535   |
@@ -5612,7 +5612,7 @@ CODE_80B54A:					;	   |
 	BRA CODE_80B54A				;$80B54B  /
 
 CODE_80B54D:
-	LDA $099B				;$80B54D  \
+	LDA player_skipped_demo			;$80B54D  \
 	BEQ CODE_80B559				;$80B550   |
 	STZ $0613				;$80B552   |
 	JML CODE_80A5F1				;$80B555  /
@@ -5744,7 +5744,7 @@ CODE_80B681:
 CODE_80B6B5:					;	   |
 	LDA screen_brightness			;$80B6B5   |
 	BNE CODE_80B6BE				;$80B6B8   |
-	JML CODE_8085EF				;$80B6BA  /
+	JML setup_title_screen_transition	;$80B6BA  /
 
 CODE_80B6BE:
 	WAI					;$80B6BE  \
@@ -12640,15 +12640,15 @@ CODE_80F3C1:
 	LDA #$0000				;$80F3C7   |
 	TCD					;$80F3CA   |
 	CLD					;$80F3CB   |
-	SEP #$20				;$80F3CC   |
-	LDA.l CPU.nmi_flag			;$80F3CE   |
-	LDA #$8F				;$80F3D2   |
-	STA.l PPU.screen			;$80F3D4   |
+	SEP #$20				;$80F3CC   | Drop to 8 bit mode for some basic MMIO updates
+	LDA.l CPU.nmi_flag			;$80F3CE   | Read the NMI flag to prevent retrigger
+	LDA #$8F				;$80F3D2   |\ Enable F-Blank, prevents glitches on overflow
+	STA.l PPU.screen			;$80F3D4   |/
 	REP #$20				;$80F3D8   |
-	LDA.l active_frame_counter		;$80F3DA   |
-	INC A					;$80F3DE   |
-	STA.l active_frame_counter		;$80F3DF   |
-	JMP.w (NMI_pointer)			;$80F3E3  /
+	LDA.l active_frame_counter		;$80F3DA   |\ Increment the active frame counter
+	INC A					;$80F3DE   | | It is never actually used. But it counts all frames
+	STA.l active_frame_counter		;$80F3DF   |/
+	JMP.w (NMI_pointer)			;$80F3E3  / Jump to the true NMI payload
 
 incomplete_frame_nmi:
 	SEP #$20				;$80F3E6  \

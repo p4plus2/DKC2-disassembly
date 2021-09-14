@@ -3201,8 +3201,8 @@ CODE_B49BBB:
 	LDA #$0001				;$B49BCA   |
 	TRB $0613				;$B49BCD   |
 	LDA #CODE_8087D9			;$B49BD0   |
-	STA gameloop_pointer			;$B49BD3   |
-	LDA #CODE_808608			;$B49BD5   |
+	STA gamemode_pointer			;$B49BD3   |
+	LDA #simple_gamemode_nmi		;$B49BD5   |
 	JML CODE_808C80				;$B49BD8  /
 
 CODE_B49BDC:
@@ -6088,8 +6088,8 @@ CODE_B4B46D:					;	   |
 	JSL CODE_80897C				;$B4B479   |
 	JSL CODE_B4AEAF				;$B4B47D   |
 	LDA #CODE_8087D9			;$B4B481   |
-	STA gameloop_pointer			;$B4B484   |
-	LDA #CODE_808608			;$B4B486   |
+	STA gamemode_pointer			;$B4B484   |
+	LDA #simple_gamemode_nmi		;$B4B486   |
 	JML CODE_808C80				;$B4B489  /
 
 CODE_B4B48D:
@@ -6099,11 +6099,11 @@ CODE_B4B48D:
 	LDA #$0063				;$B4B496   |
 	STA $08CA				;$B4B499   |
 	LDA #CODE_8087D9			;$B4B49C   |
-	STA gameloop_pointer			;$B4B49F   |
+	STA gamemode_pointer			;$B4B49F   |
 	JSR CODE_B4B42D				;$B4B4A1   |
 	JSL CODE_80897C				;$B4B4A4   |
 	JSL CODE_B4AEAF				;$B4B4A8   |
-	LDA #CODE_808608			;$B4B4AC   |
+	LDA #simple_gamemode_nmi		;$B4B4AC   |
 	JML CODE_808C80				;$B4B4AF  /
 
 CODE_B4B4B3:					;	  \
@@ -6114,8 +6114,8 @@ CODE_B4B4B3:					;	  \
 	JSR CODE_B4B42D				;$B4B4C0   |
 	JSL CODE_B4AEAF				;$B4B4C3   |
 	LDA #CODE_8087D9			;$B4B4C7   |
-	STA gameloop_pointer			;$B4B4CA   |
-	LDA #CODE_808608			;$B4B4CC   |
+	STA gamemode_pointer			;$B4B4CA   |
+	LDA #simple_gamemode_nmi		;$B4B4CC   |
 	JML CODE_808C80				;$B4B4CF  /
 
 CODE_B4B4D3:
@@ -7708,8 +7708,8 @@ CODE_B4C14E:
 CODE_B4C165:					;	   |
 	JSL CODE_B4AEAF				;$B4C165   |
 	LDA #CODE_8087D9			;$B4C169   |
-	STA gameloop_pointer			;$B4C16C   |
-	LDA #CODE_808608			;$B4C16E   |
+	STA gamemode_pointer			;$B4C16C   |
+	LDA #simple_gamemode_nmi		;$B4C16E   |
 	JML CODE_808C80				;$B4C171  /
 
 CODE_B4C175:

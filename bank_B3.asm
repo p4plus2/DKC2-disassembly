@@ -31,7 +31,7 @@ sprite_handler:
 	BEQ .get_next_slot			;$B3804A   |/ Get the next sprite
 	STX current_sprite			;$B3804C   |\ If the sprite was found, preserve the index
 	TAX					;$B3804E   | |
-	JMP (DATA_B38348,x)			;$B3804F  / / Then jump to the sprite code
+	JMP (DATA_B38348,x)			;$B3804F  /_/ Then jump to the sprite code
 
 .sprite_return
 	LDX current_sprite			;$B38052  \ Reload current sprite pointer
@@ -602,7 +602,7 @@ DATA_B38348:
 	dw krool_fish_main,$0000			;02AC
 	dw broken_kleever_hilt_main,$0000		;02B0
 	dw broken_kleever_fire_main,$0000		;02B4
-	dw king_zing_stiner_main,$0000			;02B8
+	dw king_zing_stinger_main,$0000			;02B8
 	dw unknown_sprite_02BC_main,$0000		;02BC
 	dw king_zing_ring_zinger_main,$0000		;02C0
 	dw kleever_attack_effect_main,$0000		;02C4
@@ -806,7 +806,7 @@ unknown_sprite_02BC_main:
 	LDA #$0004				;$B38795  \
 	JML CODE_BA9000				;$B38798  /
 
-king_zing_stiner_main:
+king_zing_stinger_main:
 	LDA #$0006				;$B3879C  \
 	JML CODE_BA9000				;$B3879F  /
 

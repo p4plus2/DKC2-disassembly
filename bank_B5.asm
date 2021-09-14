@@ -8287,8 +8287,8 @@ CODE_B5D1D0:					;	   |
 	AND #$DFFF				;$B5D1E2   |
 	STA $0006A5				;$B5D1E5   |
 	LDA #CODE_8087D9			;$B5D1E9   |
-	STA gameloop_pointer			;$B5D1EC   |
-	LDA #CODE_808608			;$B5D1EE   |
+	STA gamemode_pointer			;$B5D1EC   |
+	LDA #simple_gamemode_nmi		;$B5D1EE   |
 	JML CODE_808C80				;$B5D1F1  /
 
 CODE_B5D1F5:
@@ -8575,8 +8575,8 @@ CODE_B5D44A:
 	STA $0006A3				;$B5D467   |
 	STZ $06AF				;$B5D46B   |
 	LDA #CODE_8087D9			;$B5D46E   |
-	STA gameloop_pointer			;$B5D471   |
-	LDA #CODE_808608			;$B5D473   |
+	STA gamemode_pointer			;$B5D471   |
+	LDA #simple_gamemode_nmi		;$B5D473   |
 	JML CODE_808C80				;$B5D476  /
 
 CODE_B5D47A:
@@ -10013,7 +10013,7 @@ CODE_B5E0A1:
 	SEP #$20				;$B5E0D7   |
 	STA nmi_submode				;$B5E0D9   |
 	XBA					;$B5E0DB   |
-	STA gameloop_submode			;$B5E0DC   |
+	STA gamemode_submode			;$B5E0DC   |
 	REP #$20				;$B5E0DE   |
 	RTS					;$B5E0E0  /
 
