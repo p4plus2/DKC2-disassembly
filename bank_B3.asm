@@ -25,7 +25,7 @@ sprite_handler:
 	BNE CODE_B38087				;$B3803D   |
 	LDA #.sprite_return			;$B3803F   |\ Set sprite return pointer
 	STA $05A9				;$B38042   |/
-	LDX #$0DE2				;$B38045   | Load sprite base pointer
+	LDX #main_sprite_table			;$B38045   | Load sprite base pointer
 .next_slot					;	   |
 	LDA $00,x				;$B38048   |\ If the sprite doesn't exist
 	BEQ .get_next_slot			;$B3804A   |/ Get the next sprite
@@ -38,9 +38,9 @@ sprite_handler:
 .get_next_slot					;	   |
 	TXA					;$B38054   |\ Load next sprite slot
 	CLC					;$B38055   | |
-	ADC #$005E				;$B38056   | |
+	ADC #sizeof(sprite)			;$B38056   | |
 	TAX					;$B38059   |/
-	CPX #$16B2				;$B3805A   |\ If not at the last sprite
+	CPX #main_sprite_table_end		;$B3805A   |\ If not at the last sprite
 	BNE .next_slot				;$B3805D   |/ then test if the sprite exists
 	JSL CODE_B8805E				;$B3805F   |
 	JSR CODE_B38342				;$B38063   |
@@ -69,7 +69,7 @@ CODE_B38083:
 CODE_B38087:
 	LDA #CODE_B380D5			;$B38087  \
 	STA $05A9				;$B3808A   |
-	LDX #$0DE2				;$B3808D   |
+	LDX #main_sprite_table			;$B3808D   |
 CODE_B38090:					;	   |
 	LDA $00,x				;$B38090   |
 	BEQ CODE_B380D7				;$B38092   |
@@ -112,9 +112,9 @@ CODE_B380D5:
 CODE_B380D7:					;	   |
 	TXA					;$B380D7   |
 	CLC					;$B380D8   |
-	ADC #$005E				;$B380D9   |
+	ADC #sizeof(sprite)			;$B380D9   |
 	TAX					;$B380DC   |
-	CPX #$16B2				;$B380DD   |
+	CPX #main_sprite_table_end		;$B380DD   |
 	BNE CODE_B38090				;$B380E0   |
 	JSL CODE_B8805E				;$B380E2   |
 	JSR CODE_B38280				;$B380E6   |
@@ -3676,7 +3676,7 @@ CODE_B39C79:
 	JSR CODE_B39C39				;$B39C8D   |
 	TXA					;$B39C90   |
 	SEC					;$B39C91   |
-	SBC #$005E				;$B39C92   |
+	SBC #sizeof(sprite)			;$B39C92   |
 	STA current_sprite			;$B39C95   |
 CODE_B39C97:					;	   |
 	JML [$05A9]				;$B39C97  /
@@ -4199,9 +4199,9 @@ CODE_B3A059:					;	   |
 CODE_B3A05D:					;	   |
 	TXA					;$B3A05D   |
 	CLC					;$B3A05E   |
-	ADC #$005E				;$B3A05F   |
+	ADC #sizeof(sprite)			;$B3A05F   |
 	TAX					;$B3A062   |
-	CPX #$16B2				;$B3A063   |
+	CPX #main_sprite_table_end		;$B3A063   |
 	BNE CODE_B3A059				;$B3A066   |
 	JML CODE_B38000				;$B3A068  /
 

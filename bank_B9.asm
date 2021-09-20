@@ -124,7 +124,7 @@ CODE_B9D0B0:
 CODE_B9D0B8:
 	LDY $66					;$B9D0B8  \
 	STA $0000,y				;$B9D0BA   |
-	CPY #$16B2				;$B9D0BD   |
+	CPY #main_sprite_table_end		;$B9D0BD   |
 	BEQ CODE_B9D0C6				;$B9D0C0   |
 	CLC					;$B9D0C2   |
 	ADC #$00A3				;$B9D0C3   |

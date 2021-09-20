@@ -421,15 +421,15 @@ CODE_BB8296:					;	   |
 	RTS					;$BB8296  /
 
 CODE_BB8297:
-	LDX #$0DE2				;$BB8297  \
+	LDX #main_sprite_table			;$BB8297  \
 CODE_BB829A:					;	   |
 	LDA $00,x				;$BB829A   |
 	BEQ CODE_BB82B4				;$BB829C   |
 	TXA					;$BB829E   |
 	CLC					;$BB829F   |
-	ADC #$005E				;$BB82A0   |
+	ADC #sizeof(sprite)			;$BB82A0   |
 	TAX					;$BB82A3   |
-	CPX #$16B2				;$BB82A4   |
+	CPX #main_sprite_table_end		;$BB82A4   |
 	BNE CODE_BB829A				;$BB82A7   |
 	STZ alternate_sprite			;$BB82A9   |
 	LDA #$0007				;$BB82AB   |
@@ -485,9 +485,9 @@ CODE_BB82F2:					;	   |
 CODE_BB82F8:					;	   |
 	TXA					;$BB82F8   |
 	CLC					;$BB82F9   |
-	ADC #$005E				;$BB82FA   |
+	ADC #sizeof(sprite)			;$BB82FA   |
 	TAX					;$BB82FD   |
-	CPX #$16B2				;$BB82FE   |
+	CPX #main_sprite_table_end		;$BB82FE   |
 	BNE CODE_BB82F2				;$BB8301   |
 	LDX current_sprite			;$BB8303   |
 	BRA CODE_BB82C3				;$BB8305  /
@@ -1128,9 +1128,9 @@ CODE_BB870B:					;	   |
 	BEQ CODE_BB8783				;$BB870F   |
 	TXA					;$BB8711   |
 	CLC					;$BB8712   |
-	ADC #$005E				;$BB8713   |
+	ADC #sizeof(sprite)			;$BB8713   |
 	TAX					;$BB8716   |
-	CPX #$16B2				;$BB8717   |
+	CPX #main_sprite_table_end		;$BB8717   |
 	BNE CODE_BB870B				;$BB871A   |
 	LDA $1730				;$BB871C   |
 	CMP #$0018				;$BB871F   |
@@ -1241,9 +1241,9 @@ CODE_BB87D4:					;	   |
 	BEQ CODE_BB884C				;$BB87D8   |
 	TXA					;$BB87DA   |
 	CLC					;$BB87DB   |
-	ADC #$005E				;$BB87DC   |
+	ADC #sizeof(sprite)			;$BB87DC   |
 	TAX					;$BB87DF   |
-	CPX #$16B2				;$BB87E0   |
+	CPX #main_sprite_table_end		;$BB87E0   |
 	BNE CODE_BB87D4				;$BB87E3   |
 	LDA $1730				;$BB87E5   |
 	CMP #$0018				;$BB87E8   |
@@ -2790,7 +2790,7 @@ CODE_BB91FB:
 CODE_BB9201:					;	   |
 	STA $16FE,x				;$BB9201   |
 	CLC					;$BB9204   |
-	ADC #$005E				;$BB9205   |
+	ADC #sizeof(sprite)			;$BB9205   |
 	INX					;$BB9208   |
 	INX					;$BB9209   |
 	CPX #$0032				;$BB920A   |
@@ -5276,7 +5276,7 @@ CODE_BBAD2C:
 CODE_BBAD34:
 	LDA #$6682				;$BBAD34  \
 	JSL CODE_BB8A65				;$BBAD37   |
-	LDA #$16B2				;$BBAD3B   |
+	LDA #main_sprite_table_end		;$BBAD3B   |
 	STA $66					;$BBAD3E   |
 	LDY #$000E				;$BBAD40   |
 	JSL CODE_BB842C				;$BBAD43   |
@@ -6702,9 +6702,9 @@ CODE_BBB75D:					;	   |
 	BEQ CODE_BBB797				;$BBB761   |
 	TXA					;$BBB763   |
 	CLC					;$BBB764   |
-	ADC #$005E				;$BBB765   |
+	ADC #sizeof(sprite)			;$BBB765   |
 	TAX					;$BBB768   |
-	CPX #$16B2				;$BBB769   |
+	CPX #main_sprite_table_end		;$BBB769   |
 	BNE CODE_BBB75D				;$BBB76C   |
 	LDA $1730				;$BBB76E   |
 	CMP #$0018				;$BBB771   |

@@ -58,17 +58,7 @@ level_number = $D3
 stack_end = $0100
 stack = $01FF
 oam_table = $0200
-struct oam $0200
-	.position:
-	.x:             skip 1
-	.y:             skip 1
-	.display:
-	.tile:          skip 1
-	.property:      skip 1
-endstruct
-struct oam_attribute $0400
-	.size		skip 1
-endstruct
+oam_attribute_table = $0400
 
 ;Note there is no released state for active player
 player_1_held = $0502
@@ -90,3 +80,6 @@ enable_intro_bypass = $090F
 intro_sparkle_x_position = $098F
 intro_sparkle_y_position = $0991
 player_skipped_demo = $099B
+
+main_sprite_table = $0DE2
+main_sprite_table_end = $0DE2+(sizeof(sprite)*24)

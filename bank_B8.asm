@@ -1554,7 +1554,7 @@ CODE_B88C63:
 	RTS					;$B88C64  /
 CODE_B88C65:
 if !version == 1
-	LDX #$0DE2				;$B88C65  \
+	LDX #main_sprite_table			;$B88C65  \
 CODE_B88C68:					;	   |
 	LDA $00,x				;$B88C68   |
 	CMP #$0134				;$B88C6A   |
@@ -1570,9 +1570,9 @@ CODE_B88C68:					;	   |
 CODE_B88C7D:
 	TXA					;$B88C7D  \
 	CLC					;$B88C7E   |
-	ADC #$005E				;$B88C7F   |
+	ADC #sizeof(sprite)			;$B88C7F   |
 	TAX					;$B88C82   |
-	CPX #$16B2				;$B88C83   |
+	CPX #main_sprite_table_end		;$B88C83   |
 	BNE CODE_B88C68				;$B88C86   |
 CODE_B88C88:					;	   |
 	RTS					;$B88C88  /
@@ -2829,12 +2829,12 @@ CODE_B8966C:					;	   |
 CODE_B89670:
 	LDA #$16D8				;$B89670  \
 	STA $66					;$B89673   |
-	LDA #$16B2				;$B89675   |
+	LDA #main_sprite_table_end		;$B89675   |
 	STA $0591				;$B89678   |
 	BRA CODE_B89688				;$B8967B  /
 
 CODE_B8967D:
-	LDA #$16B2				;$B8967D  \
+	LDA #main_sprite_table_end		;$B8967D  \
 	STA $66					;$B89680   |
 	LDA #$16D8				;$B89682   |
 	STA $0591				;$B89685   |
@@ -3649,7 +3649,7 @@ CODE_B89D62:
 
 CODE_B89D69:
 if !version == 1				;	  \
-	LDX #$0DE2				;$B89D69   |
+	LDX #main_sprite_table			;$B89D69   |
 	LDA $54,x				;$B89D6C   |
 	STA $8E					;$B89D6E   |
 endif						;	   |
@@ -9699,7 +9699,7 @@ CODE_B8C999:					;	   |
 	RTS					;$B8C999  /
 
 CODE_B8C99A:
-	LDX #$0DE2				;$B8C99A  \
+	LDX #main_sprite_table			;$B8C99A  \
 	STZ $32					;$B8C99D   |
 	STZ $34					;$B8C99F   |
 	STZ $36					;$B8C9A1   |
@@ -9718,9 +9718,9 @@ CODE_B8C9A3:					;	   |
 CODE_B8C9BA:					;	   |
 	TXA					;$B8C9BA   |
 	CLC					;$B8C9BB   |
-	ADC #$005E				;$B8C9BC   |
+	ADC #sizeof(sprite)			;$B8C9BC   |
 	TAX					;$B8C9BF   |
-	CPX #$16B2				;$B8C9C0   |
+	CPX #main_sprite_table_end		;$B8C9C0   |
 	BNE CODE_B8C9A3				;$B8C9C3   |
 	LDA $32					;$B8C9C5   |
 	RTS					;$B8C9C7  /

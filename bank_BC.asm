@@ -10268,7 +10268,7 @@ CODE_BCFE07:
 
 CODE_BCFE0A:
 	STA $EB					;$BCFE0A  \
-	LDA #$16B2				;$BCFE0C   |
+	LDA #main_sprite_table_end		;$BCFE0C   |
 	STA $6A					;$BCFE0F   |
 	LDA $09E3				;$BCFE11   |
 	STA $D9					;$BCFE14   |
@@ -10284,7 +10284,7 @@ CODE_BCFE0A:
 CODE_BCFE28:					;	   |
 	LDA $6A					;$BCFE28   |
 	SEC					;$BCFE2A   |
-	SBC #$005E				;$BCFE2B   |
+	SBC #sizeof(sprite)			;$BCFE2B   |
 	STA $6A					;$BCFE2E   |
 	CMP #$0E40				;$BCFE30   |
 	BEQ CODE_BCFE07				;$BCFE33   |
@@ -10431,7 +10431,7 @@ CODE_BCFF1B:
 
 CODE_BCFF1D:
 	STA $EB					;$BCFF1D  \
-	LDA #$16B2				;$BCFF1F   |
+	LDA #main_sprite_table_end		;$BCFF1F   |
 	STA $6A					;$BCFF22   |
 	LDA $09E3				;$BCFF24   |
 	STA $D9					;$BCFF27   |
@@ -10449,7 +10449,7 @@ CODE_BCFF3B:					;	   |
 	LDA $6A					;$BCFF3B   |
 	CMP #$0D85				;$BCFF3D   |
 	BCC CODE_BCFF6E				;$BCFF40   |
-	SBC #$005E				;$BCFF42   |
+	SBC #sizeof(sprite)			;$BCFF42   |
 	STA $6A					;$BCFF45   |
 	CMP current_sprite			;$BCFF47   |
 	BEQ CODE_BCFF3B				;$BCFF49   |

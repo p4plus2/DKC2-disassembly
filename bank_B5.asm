@@ -8699,7 +8699,7 @@ CODE_B5D57D:
 CODE_B5D580:
 	LDA #$0004				;$B5D580  \
 	STA $0D84				;$B5D583   |
-	STA $0DE2				;$B5D586   |
+	STA main_sprite_table			;$B5D586   |
 	LDA #$002C				;$B5D589   |
 	STA $0D8A				;$B5D58C   |
 	STA $0DE8				;$B5D58F   |
@@ -8789,7 +8789,7 @@ CODE_B5D644:					;	   |
 	TAY					;$B5D676   |
 	TXA					;$B5D677   |
 	CLC					;$B5D678   |
-	ADC #$005E				;$B5D679   |
+	ADC #sizeof(sprite)			;$B5D679   |
 	TAX					;$B5D67C   |
 	CPX #$02F0				;$B5D67D   |
 	BNE CODE_B5D622				;$B5D680   |
@@ -9273,7 +9273,7 @@ CODE_B5DAEB:					;	   |
 	INC $34					;$B5DB33   |
 	TYA					;$B5DB35   |
 	CLC					;$B5DB36   |
-	ADC #$005E				;$B5DB37   |
+	ADC #sizeof(sprite)			;$B5DB37   |
 	TAY					;$B5DB3A   |
 	CPY #$1074				;$B5DB3B   |
 	BEQ CODE_B5DB43				;$B5DB3E   |
@@ -9378,7 +9378,7 @@ CODE_B5DBD5:					;	   |
 	INC $36					;$B5DBFB   |
 	TYA					;$B5DBFD   |
 	CLC					;$B5DBFE   |
-	ADC #$005E				;$B5DBFF   |
+	ADC #sizeof(sprite)			;$B5DBFF   |
 	TAY					;$B5DC02   |
 	CPY #$118E				;$B5DC03   |
 	BEQ CODE_B5DC0B				;$B5DC06   |
@@ -9427,7 +9427,7 @@ CODE_B5DC3D:					;	   |
 	STA $0D8E,x				;$B5DC5B   |
 	TXA					;$B5DC5E   |
 	CLC					;$B5DC5F   |
-	ADC #$005E				;$B5DC60   |
+	ADC #sizeof(sprite)			;$B5DC60   |
 	TAX					;$B5DC63   |
 	CPX #$0178				;$B5DC64   |
 	BNE CODE_B5DC0E				;$B5DC67   |
@@ -9592,7 +9592,7 @@ CODE_B5DD93:					;	   |
 CODE_B5DD99:					;	   |
 	TXA					;$B5DD99   |
 	CLC					;$B5DD9A   |
-	ADC #$005E				;$B5DD9B   |
+	ADC #sizeof(sprite)			;$B5DD9B   |
 	TAX					;$B5DD9E   |
 	DEY					;$B5DD9F   |
 	BNE CODE_B5DD59				;$B5DDA0   |

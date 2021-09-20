@@ -47,5 +47,16 @@ struct sprite $0000
 	.unknown_58:		skip 2
 	.unknown_5A:		skip 2
 	.unknown_5C:		skip 2
-	.unknown_5E:		skip 2
+endstruct
+
+struct oam oam_table
+	.position:
+	.x:             skip 1
+	.y:             skip 1
+	.display:
+	.tile:          skip 1
+	.property:      skip 1
+endstruct
+struct oam_attribute oam_attribute_table
+	.size		skip 1
 endstruct

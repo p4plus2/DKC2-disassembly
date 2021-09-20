@@ -687,9 +687,9 @@ CODE_808837:
 
 CODE_80883B:
 	BNE CODE_808863				;$80883B  \
-	LDA #$0DE2				;$80883D   |
+	LDA #main_sprite_table			;$80883D   |
 	STA $0593				;$808840   |
-	LDA #$16B2				;$808843   |
+	LDA #main_sprite_table_end		;$808843   |
 	STA $0595				;$808846   |
 	STZ $08A4				;$808849   |
 	LDA $08A4				;$80884C   |
@@ -711,9 +711,9 @@ CODE_808863:
 	STA $08A4				;$808872   |
 	INC A					;$808875   |
 	STA $08A2				;$808876   |
-	LDA #$0DE2				;$808879   |
+	LDA #main_sprite_table			;$808879   |
 	STA $0597				;$80887C   |
-	LDA #$16B2				;$80887F   |
+	LDA #main_sprite_table_end		;$80887F   |
 	STA $0599				;$808882   |
 	JSR CODE_808889				;$808885   |
 	RTS					;$808888  /
@@ -1410,7 +1410,7 @@ CODE_808DFB:
 	RTL					;$808E28  /
 
 CODE_808E29:
-	LDA #$16B2				;$808E29  \
+	LDA #main_sprite_table_end		;$808E29  \
 	STA $66					;$808E2C   |
 	LDY.w #DATA_FF1330			;$808E2E   |
 	JSL CODE_BB8432				;$808E31   |
@@ -3468,7 +3468,7 @@ CODE_80A0E9:					;	   |
 	LDA #$351C				;$80A1F3   |
 	STA $0DFC				;$80A1F6   |
 	LDA #$0004				;$80A1F9   |
-	STA $0DE2				;$80A1FC   |
+	STA main_sprite_table			;$80A1FC   |
 	LDA #$0038				;$80A1FF   |
 	STA $0DE8				;$80A202   |
 	LDA #$0101				;$80A205   |
@@ -3705,9 +3705,9 @@ CODE_80A440:					;	   |
 CODE_80A442:					;	   |
 	TXA					;$80A442   |
 	CLC					;$80A443   |
-	ADC #$005E				;$80A444   |
+	ADC #sizeof(sprite)			;$80A444   |
 	TAX					;$80A447   |
-	CPX #$16B2				;$80A448   |
+	CPX #main_sprite_table_end		;$80A448   |
 	BNE CODE_80A429				;$80A44B   |
 CODE_80A44D:					;	   |
 	JSL CODE_B5A8DA				;$80A44D   |
@@ -3748,7 +3748,7 @@ CODE_80A4A4:					;	   |
 	BEQ CODE_80A4B6				;$80A4A6   |
 	TXA					;$80A4A8   |
 	CLC					;$80A4A9   |
-	ADC #$005E				;$80A4AA   |
+	ADC #sizeof(sprite)			;$80A4AA   |
 	TAX					;$80A4AD   |
 	CPX #$0D84				;$80A4AE   |
 	BNE CODE_80A4A4				;$80A4B1   |
@@ -3790,7 +3790,7 @@ CODE_80A4E5:					;	   |
 	BCC CODE_80A505				;$80A4F2   |
 	LDA #$0000				;$80A4F4   |
 	STA $0D84				;$80A4F7   |
-	STA $0DE2				;$80A4FA   |
+	STA main_sprite_table			;$80A4FA   |
 	STA $0E40				;$80A4FD   |
 	STA $0EFC				;$80A500   |
 	BRA CODE_80A50C				;$80A503  /
@@ -5465,35 +5465,35 @@ init_title_screen:
 	STA rng_result				;$80B401   | |
 	LDA #$FF00				;$80B403   | |
 	STA rng_seed_2				;$80B406   |/
-	LDX #$0DE2				;$80B408   |
+	LDX #main_sprite_table			;$80B408   |
 	LDY #$0000				;$80B40B   |
-CODE_80B40E:					;	   |
-	LDA #$0001				;$80B40E   |
-	STA $00,x				;$80B411   |
-	LDA #$0180				;$80B413   |
-	STA $06,x				;$80B416   |
-	LDA #$FF88				;$80B418   |
-	STA $0A,x				;$80B41B   |
-	LDA #$2000				;$80B41D   |
-	STA $12,x				;$80B420   |
-	TYA					;$80B422   |
-	ASL A					;$80B423   |
-	ASL A					;$80B424   |
-	ASL A					;$80B425   |
-	CLC					;$80B426   |
-	ADC #$0100				;$80B427   |
-	STA $1A,x				;$80B42A   |
-	INY					;$80B42C   |
-	TXA					;$80B42D   |
-	CLC					;$80B42E   |
-	ADC #$005E				;$80B42F   |
-	TAX					;$80B432   |
-	CMP #$0F5A				;$80B433   |
-	BNE CODE_80B40E				;$80B436   |
+.next_sprite_slot				;	   |
+	LDA #$0001				;$80B40E   |\ Mark the sprite slot used by a sparkle
+	STA $00,x				;$80B411   |/
+	LDA #$0180				;$80B413   |\ Set a default X/Y position.  This position is offscreen
+	STA $06,x				;$80B416   | | and thus will not render until it "Respawns"
+	LDA #$FF88				;$80B418   | |
+	STA $0A,x				;$80B41B   |/
+	LDA #$2000				;$80B41D   |\ Set OAM size attribute
+	STA $12,x				;$80B420   |/
+	TYA					;$80B422   |\ Calculate the initial sparkle frame $0100+4*index
+	ASL A					;$80B423   | |
+	ASL A					;$80B424   | |
+	ASL A					;$80B425   | |
+	CLC					;$80B426   | |
+	ADC #$0100				;$80B427   | |
+	STA $1A,x				;$80B42A   |/ Set the sparkle frame
+	INY					;$80B42C   | Increment the initial sparkle frame for the next sparkle
+	TXA					;$80B42D   |\ Calculate the next sprite slot
+	CLC					;$80B42E   | |
+	ADC #sizeof(sprite)			;$80B42F   | |
+	TAX					;$80B432   | |
+	CMP #$0F5A				;$80B433   | |
+	BNE .next_sprite_slot			;$80B436   |/
 	SEP #$20				;$80B438   |
-	LDA CPU.irq_flag			;$80B43A   |
-	LDA #$80				;$80B43D   |
-	STA PPU.oam_address_high		;$80B43F   |
+	LDA CPU.irq_flag			;$80B43A   | Clear the IRQ flag (No point it isn't used)
+	LDA #$80				;$80B43D   |\ Enable alternate sprite priority
+	STA PPU.oam_address_high		;$80B43F   |/
 	LDA #$01				;$80B442   |\ Enable fastrom again
 	STA CPU.rom_speed			;$80B444   |/
 	REP #$20				;$80B447   |
@@ -5502,11 +5502,11 @@ CODE_80B40E:					;	   |
 	JSR prepare_oam_dma_channel		;$80B44F   |\ Setup the OAM DMA channel (channel 1)
 	LDA #$0001				;$80B452   | |
 	STA CPU.enable_dma			;$80B455   |/ And run the DMA
-	JSR prepare_oam_dma_channel		;$80B458   |
-	LDA #CODE_80B461			;$80B45B   |
-	JMP set_and_wait_for_nmi		;$80B45E  /
+	JSR prepare_oam_dma_channel		;$80B458   | Prepare the OAM DMA channel again (For active title screen)
+	LDA #run_title_screen			;$80B45B   | Prepare the title screen gameloop pointer
+	JMP set_and_wait_for_nmi		;$80B45E  / Banish the init phase, on to the run phase
 
-CODE_80B461:					;	  \
+run_title_screen:				;	  \
 	LDX #stack				;$80B461   |\ Reset the stack (gameloop entry point for title screen)
 	TXS					;$80B464   |/
 	STZ PPU.oam_address			;$80B465   |\ Reset the OAM address to zero and run OAM DMA for
@@ -5517,107 +5517,107 @@ CODE_80B461:					;	  \
 	STA PPU.screen				;$80B472   |/
 	REP #$20				;$80B475   | Whoo back to 16 bit
 	JSR intro_controller_read		;$80B477   | Parse the autojoy results
-	INC global_frame_counter		;$80B47A   |\ Increment the frame counter and
-	LDA global_frame_counter		;$80B47C   | |
+	INC global_frame_counter		;$80B47A   |\ Increment the frame counter and if the frame is divisible
+	LDA global_frame_counter		;$80B47C   | | by four update the animations, otherwise skip the update
 	AND #$0003				;$80B47E   | |
-	BNE CODE_80B4C6				;$80B481   |/
-	LDX #$0DE2				;$80B483   |
-CODE_80B486:					;	   |
-	LDA $1A,x				;$80B486   |
-	CLC					;$80B488   |
-	ADC #$0004				;$80B489   |
-	CMP #$0120				;$80B48C   |
-	BNE CODE_80B4B9				;$80B48F   |
-	JSR get_random_number			;$80B491   |
-	AND #$003F				;$80B494   |
-	STA $32					;$80B497   |
-	LSR A					;$80B499   |
-	LSR A					;$80B49A   |
-	CLC					;$80B49B   |
-	ADC $32					;$80B49C   |
-	CLC					;$80B49E   |
-	ADC #$0050				;$80B49F   |
-	STA $06,x				;$80B4A2   |
-	JSR get_random_number			;$80B4A4   |
-	AND #$001F				;$80B4A7   |
-	STA $32					;$80B4AA   |
-	LSR A					;$80B4AC   |
-	CLC					;$80B4AD   |
-	ADC $32					;$80B4AE   |
-	CLC					;$80B4B0   |
-	ADC #$0090				;$80B4B1   |
-	STA $0A,x				;$80B4B4   |
-	LDA #$0100				;$80B4B6   |
-CODE_80B4B9:					;	   |
-	STA $1A,x				;$80B4B9   |
-	TXA					;$80B4BB   |
-	CLC					;$80B4BC   |
-	ADC #$005E				;$80B4BD   |
-	TAX					;$80B4C0   |
-	CMP #$16B2				;$80B4C1   |
-	BNE CODE_80B486				;$80B4C4   |
-CODE_80B4C6:					;	   |
+	BNE .skip_sprite_update			;$80B481   |/
+	LDX #main_sprite_table			;$80B483   |
+.next_sprite_slot				;	   |
+	LDA $1A,x				;$80B486   |\ Increment the active sparkle frame to the next frame
+	CLC					;$80B488   | |
+	ADC #$0004				;$80B489   | |
+	CMP #$0120				;$80B48C   | | If not on the last frame update, otherwise fall through
+	BNE .set_sparkle_frame			;$80B48F   |/ to generate a new sparkle
+	JSR get_random_number			;$80B491   |\ Generate a random number for the sparkle X position offset
+	AND #$003F				;$80B494   | |\
+	STA $32					;$80B497   | | | calculate the X position range as follows:
+	LSR A					;$80B499   | | | X = (r & 3F) + ((r & 3F) >> 4) + $50
+	LSR A					;$80B49A   | | | where R is a random number.
+	CLC					;$80B49B   | | | This will generate a number between $50 and $92
+	ADC $32					;$80B49C   | | |
+	CLC					;$80B49E   | | |
+	ADC #$0050				;$80B49F   | |/
+	STA $06,x				;$80B4A2   |/ Set the sparkle X position
+	JSR get_random_number			;$80B4A4   |\
+	AND #$001F				;$80B4A7   | |\
+	STA $32					;$80B4AA   | | | calculate the Y position range as follows:
+	LSR A					;$80B4AC   | | | Y = (r & $1F) + ((r & $1F) >> 4) + $90
+	CLC					;$80B4AD   | | | where R is a random number.
+	ADC $32					;$80B4AE   | | | This will generate a number between $90 and $BE
+	CLC					;$80B4B0   | | |
+	ADC #$0090				;$80B4B1   | |/
+	STA $0A,x				;$80B4B4   |/ Set the sparkle Y position
+	LDA #$0100				;$80B4B6   | Load the first frame of the new sparkle
+.set_sparkle_frame				;	   |
+	STA $1A,x				;$80B4B9   | Set the sparkles display frame
+	TXA					;$80B4BB   |\ Calculate the next sprite slot
+	CLC					;$80B4BC   | |
+	ADC #sizeof(sprite)			;$80B4BD   | |
+	TAX					;$80B4C0   | |
+	CMP #main_sprite_table_end		;$80B4C1   | |
+	BNE .next_sprite_slot			;$80B4C4   |/
+.skip_sprite_update				;	   |
 	JSL CODE_B5A8DA				;$80B4C6   |
-	LDA #$0200				;$80B4CA   |
-	STA $70					;$80B4CD   |
-	LDA #$0400				;$80B4CF   |
-	STA $56					;$80B4D2   |
-	STZ oam_attribute[$00].size		;$80B4D4   |
-	STZ oam_attribute[$02].size		;$80B4D7   |
-	STZ oam_attribute[$04].size		;$80B4DA   |
-	STZ oam_attribute[$06].size		;$80B4DD   |
-	STZ oam_attribute[$08].size		;$80B4E0   |
-	STZ oam_attribute[$0A].size		;$80B4E3   |
-	STZ oam_attribute[$0C].size		;$80B4E6   |
-	STZ oam_attribute[$0E].size		;$80B4E9   |
-	STZ oam_attribute[$10].size		;$80B4EC   |
-	STZ oam_attribute[$12].size		;$80B4EF   |
-	STZ oam_attribute[$14].size		;$80B4F2   |
-	STZ oam_attribute[$16].size		;$80B4F5   |
-	STZ oam_attribute[$18].size		;$80B4F8   |
-	STZ oam_attribute[$1A].size		;$80B4FB   |
-	STZ oam_attribute[$1C].size		;$80B4FE   |
-	STZ oam_attribute[$1E].size		;$80B501   |
-	LDA #$001C				;$80B504   |
-	STA $78					;$80B507   |
+	LDA #$0200				;$80B4CA   |\ Reset the OAM index to the first entry
+	STA $70					;$80B4CD   |/
+	LDA #$0400				;$80B4CF   |\
+	STA $56					;$80B4D2   |/
+	STZ oam_attribute[$00].size		;$80B4D4   |\ Clear the OAM attribute buffer
+	STZ oam_attribute[$02].size		;$80B4D7   | |
+	STZ oam_attribute[$04].size		;$80B4DA   | |
+	STZ oam_attribute[$06].size		;$80B4DD   | |
+	STZ oam_attribute[$08].size		;$80B4E0   | |
+	STZ oam_attribute[$0A].size		;$80B4E3   | |
+	STZ oam_attribute[$0C].size		;$80B4E6   | |
+	STZ oam_attribute[$0E].size		;$80B4E9   | |
+	STZ oam_attribute[$10].size		;$80B4EC   | |
+	STZ oam_attribute[$12].size		;$80B4EF   | |
+	STZ oam_attribute[$14].size		;$80B4F2   | |
+	STZ oam_attribute[$16].size		;$80B4F5   | |
+	STZ oam_attribute[$18].size		;$80B4F8   | |
+	STZ oam_attribute[$1A].size		;$80B4FB   | |
+	STZ oam_attribute[$1C].size		;$80B4FE   | |
+	STZ oam_attribute[$1E].size		;$80B501   |/
+	LDA #$001C				;$80B504   |\
+	STA $78					;$80B507   |/
 	JSL CODE_B59F40				;$80B509   |
 	STZ $1730				;$80B50D   |
-	JSR set_unused_oam_offscreen		;$80B510   |
-	JSR prepare_oam_dma_channel		;$80B513   |
-	LDA screen_brightness			;$80B516   |
-	CMP #$000F				;$80B519   |
-	BNE CODE_80B53F				;$80B51C   |
-	LDA player_1_held			;$80B51E   |
-	AND #$D080				;$80B521   |
-	BNE CODE_80B52F				;$80B524   |
-	LDA global_frame_counter		;$80B526   |
-	CMP #$0960				;$80B528   |
-	BNE CODE_80B53F				;$80B52B   |
-	BRA CODE_80B532				;$80B52D  /
+	JSR set_unused_oam_offscreen		;$80B510   | Place any unused OAM tiles off the screen
+	JSR prepare_oam_dma_channel		;$80B513   | Prepare channel 1 for the OAM DMA
+	LDA screen_brightness			;$80B516   |\ If the brightness isn't full, run the fadeout routine
+	CMP #$000F				;$80B519   | |
+	BNE .run_fadeout			;$80B51C   |/
+	LDA player_1_held			;$80B51E   |\
+	AND #$D080				;$80B521   | | Check if B, Y, Start, or A are being help
+	BNE .trigger_menu_transition		;$80B524   |/
+	LDA global_frame_counter		;$80B526   |\ If we are on frame $0960 set the screen to fadeout.
+	CMP #$0960				;$80B528   | | This will then transition to the demo.
+	BNE .run_fadeout			;$80B52B   |/
+	BRA .trigger_demo_transition		;$80B52D  /
 
-CODE_80B52F:
-	INC player_skipped_demo			;$80B52F  \
-CODE_80B532:					;	   |
-	LDA #$840F				;$80B532   |
-	JSR set_fade				;$80B535   |
-	LDA #$0634				;$80B538   |
-	JSL play_high_priority_sound		;$80B53B   |
-CODE_80B53F:					;	   |
-	LDA screen_brightness			;$80B53F   |
-	CMP #$8401				;$80B542   |
-	BEQ CODE_80B54D				;$80B545   |
-	JSR fade_screen				;$80B547   |
-CODE_80B54A:					;	   |
-	WAI					;$80B54A   |
-	BRA CODE_80B54A				;$80B54B  /
+.trigger_menu_transition
+	INC player_skipped_demo			;$80B52F  \ Set that the player initiated the menu screen
+.trigger_demo_transition			;	   |
+	LDA #$840F				;$80B532   |\ Set the screen to fadeout with speed 4
+	JSR set_fade				;$80B535   |/
+	LDA #$0634				;$80B538   |\ Play the "continue" chime sound effect
+	JSL play_high_priority_sound		;$80B53B   |/
+.run_fadeout					;	   |
+	LDA screen_brightness			;$80B53F   |\ Check if we are on the last step of the fadeout
+	CMP #$8401				;$80B542   | |
+	BEQ .execute_transition			;$80B545   |/
+	JSR fade_screen				;$80B547   | Step the screen fade out state (or no-op if not fading)
+-						;	   |
+	WAI					;$80B54A   | Wait for interrupt to begin the next frame
+	BRA -					;$80B54B  / Spinlock in case something breaks the WAI
 
-CODE_80B54D:
-	LDA player_skipped_demo			;$80B54D  \
-	BEQ CODE_80B559				;$80B550   |
+.execute_transition				;	  \
+	LDA player_skipped_demo			;$80B54D   |\ Check if we are transitioning to the demo or menu
+	BEQ .set_demo_transition		;$80B550   |/
 	STZ $0613				;$80B552   |
 	JML CODE_80A5F1				;$80B555  /
 
-CODE_80B559:
+.set_demo_transition
 	LDA #CODE_8086F6			;$80B559  \
 	JML CODE_808C9E				;$80B55C  /
 
@@ -6693,7 +6693,7 @@ CODE_80BF1A:					;	   |
 	STA $7E8013				;$80BF1A   |
 	LDA $17C0				;$80BF1E   |
 	CLC					;$80BF21   |
-	ADC #$005E				;$80BF22   |
+	ADC #sizeof(sprite)			;$80BF22   |
 	SEC					;$80BF25   |
 	SBC $0AFE				;$80BF26   |
 	BPL CODE_80BF2E				;$80BF29   |
@@ -12629,17 +12629,17 @@ CODE_80F3B4:
 	JMP nmi_return				;$80F3BA  /
 
 NMI_start:
-	JML CODE_80F3C1				;$80F3BD  /
+	JML .fast_rom_hop			;$80F3BD  > Jump to fastrom addressing
 
-CODE_80F3C1:
+.fast_rom_hop:
 	REP #$30				;$80F3C1  \
-	PHD					;$80F3C3   |
-	PHA					;$80F3C4   |
-	PHX					;$80F3C5   |
-	PHY					;$80F3C6   |
-	LDA #$0000				;$80F3C7   |
-	TCD					;$80F3CA   |
-	CLD					;$80F3CB   |
+	PHD					;$80F3C3   |\
+	PHA					;$80F3C4   | |This is NMI preserve all the things.
+	PHX					;$80F3C5   | |
+	PHY					;$80F3C6   | |
+	LDA #$0000				;$80F3C7   | |
+	TCD					;$80F3CA   | |
+	CLD					;$80F3CB   |/
 	SEP #$20				;$80F3CC   | Drop to 8 bit mode for some basic MMIO updates
 	LDA.l CPU.nmi_flag			;$80F3CE   | Read the NMI flag to prevent retrigger
 	LDA #$8F				;$80F3D2   |\ Enable F-Blank, prevents glitches on overflow

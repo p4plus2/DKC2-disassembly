@@ -9,9 +9,9 @@ optimize address mirrors
 org $008000			;dummy org so functions work
 	incsrc macros.asm
 	incsrc constants.asm
+	incsrc ram.asm
 	incsrc structs.asm
 	incsrc mmio.asm
-	incsrc ram.asm
 
 org $C00000
 	incsrc bank_C0.asm

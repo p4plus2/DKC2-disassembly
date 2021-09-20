@@ -106,6 +106,10 @@ local function read_rom_byte(offset)
 	return memory2.BUS:read(offset)
 end
 
+local function read_rom_sbyte(offset)
+	return memory2.BUS:sread(offset)
+end
+
 local function to_pc(address)
 	return bit.band(address, 0x3FFFFF)
 end
@@ -195,6 +199,7 @@ local play_sound_effect = false
 --debug display control
 local show_debug = true
 local show_dma_debug = false
+local show_sprite_collision = true
 local active_screen = engine_screen
 local opacity = 0x80
 local fg_color = 0x00FFFFFF
@@ -208,6 +213,33 @@ local bottom_left = text_area:new()
 bottom_left:set_anchor(x_padding, 550)
 
 local context = gui.renderctx.new(256, 224)
+
+local sprite_colors = {
+    [0] = 0x00FF0000,
+          0x00FF7F00,
+          0x00FFD400,
+          0x00FFFF00,
+          0x00BFFF00,
+          0x006AFF00,
+          0x0000EAFF,
+          0x000095FF,
+          0x000040FF,
+          0x00AA00FF,
+          0x00FF00AA,
+          0x00EDB9B9,
+          0x00E7E9B9,
+          0x00B9EDE0,
+          0x00B9D7ED,
+          0x00DCB9ED,
+          0x008F2323,
+          0x008F6A23,
+          0x004F8F23,
+          0x0023628F,
+          0x006B238F,
+          0x00000000,
+          0x00737373,
+          0x00CCCCCC
+}
 
 --config files
 local sound_effects_path = base .. "sound_effects.txt"
@@ -223,6 +255,11 @@ end
 
 local function text(x, y, message)
 	gui.text(x+x_padding, y+y_padding, message, trans(fg_color), trans(bg_color))
+end
+
+local function draw_rectangle(x, y, w, h, color_line, color_bg)
+	x, y, w, h = 2*x, 2*y, 2*w, 2*h
+	gui.rectangle(x, y, w, h, 2, color_line, color_bg)
 end
 
 function clamp(value, low, high)
@@ -523,9 +560,15 @@ local function display_watch()
 	end
 	exec_watch_list = {}
 
+	local lookup = {}
+	for key in pairs(watched_addresses) do
+		table.insert(lookup, key)
+	end
+	table.sort(lookup)
+
 	upper_left:append_line("RAM watches: ")
-	for address, read_callback in pairs(watched_addresses) do
-		upper_left:append_line(read_callback())
+	for _, key in ipairs(lookup) do
+		upper_left:append_line(watched_addresses[key]())
 	end
 	upper_left:append_line("Execution counts: ")
 	for address, read_callback in pairs(exec_watched_addresses) do
@@ -550,6 +593,46 @@ local function display_cgram_state()
 		gui.solidrectangle(350 + ((i % 16) * 8), 550 + (math.floor(i / 16) * 8), 8, 8, colors:get(i))
 	end
 	--text(0, 550, "state")
+end
+
+--based on work by Amaraticando
+local function display_sprite_collision()
+	local camera_x = read_word(0x17BA)
+	local camera_y = read_word(0x17C0)
+	local sprites_count = 0
+	local second_kong_id = read_byte(0x08A4) == 0 and 1 or 0
+	local second_kong_alive_flag = bit.test(read_word(0x08c3), 6)
+
+	for id = 0, 23 do
+		if id ~= second_kong_id or second_kong_alive_flag then
+			local base = sprite_table + id * 0x5E
+			local sprite_number = read_word(base)
+
+			if sprite_number ~= 0 then
+				local oam_prop = read_byte(base + 0x13)
+
+				local x = read_word(base + 0x06)
+				local y = read_word(base + 0x0a)
+
+				local image = read_word(base + 0x1a)
+				local offset = read_rom_word(0xfcb600 + image//2)
+				local x_offset = read_rom_sbyte(0xfc0000 + offset)
+				local y_offset = read_rom_sbyte(0xfc0002 + offset)
+				local width = read_rom_sbyte(0xfc0004 + offset)
+				local height = read_rom_sbyte(0xfc0006 + offset)
+				if bit.test(oam_prop, 6) then x_offset = - x_offset - width end
+				if bit.test(oam_prop, 7) then y_offset = - y_offset - height end
+
+				local x_screen = x - camera_x + x_offset
+				local y_screen = y - camera_y + y_offset
+
+				text(2*(x-camera_x - 2) - x_padding, 2*(y-camera_y) - y_padding, id)
+				draw_rectangle(x_screen, y_screen, width + 1, height + 1, sprite_colors[id], 0xFF000000)
+
+				sprites_count = sprites_count + 1
+			end
+		end
+	end
 end
 
 local keys = {}
@@ -587,6 +670,8 @@ keys.register_keypress("numpad2" , function() toggle_layer(1) end)
 keys.register_keypress("numpad3" , function() toggle_layer(2) end)
 keys.register_keypress("numpad4" , function() toggle_layer(3) end)
 
+keys.register_keypress("numpad4" , function() show_collision = not show_collision ; gui.repaint() end)
+
 function on_paint(not_synth)
 	if show_debug then
 		context:clear()
@@ -608,6 +693,10 @@ function on_paint(not_synth)
 
 		display_ppu_state()
 		display_cgram_state()
+
+		if show_sprite_collision then
+			display_sprite_collision()
+		end
 
 		upper_left:render()
 		bottom_left:render()
