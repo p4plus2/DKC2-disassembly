@@ -128,7 +128,7 @@ piracy_string:
 
 display_error_message:
 	TYA					;$8083D0  \ Copy message id to A
-	JSL handle_VRAM_payload_wrapper		;$8083D1   | Upload the anti-piracy screen contents
+	JSL VRAM_payload_handler_global		;$8083D1   | Upload the anti-piracy screen contents
 	LDA #DATA_FD258E			;$8083D5   |\ Upload background palette
 	LDY #$0000				;$8083D8   | |
 	LDX #$0020				;$8083DB   | |
@@ -492,7 +492,7 @@ CODE_808684:
 	LDX #$0040				;$80869A   |
 	JSL DMA_palette				;$80869D   |
 	LDA #$0008				;$8086A1   |
-	JSL handle_VRAM_payload_wrapper		;$8086A4   |
+	JSL VRAM_payload_handler_global		;$8086A4   |
 	LDA #$0007				;$8086A8   |
 	JSL set_PPU_registers_wrapper		;$8086AB   |
 	LDA #$7000				;$8086AF   |
@@ -12682,7 +12682,7 @@ CODE_80F3FB:
 	LDA #$000E				;$80F41F   |
 	JSL set_PPU_registers_wrapper		;$80F422   |
 	LDA #$003A				;$80F426   |
-	JSL handle_VRAM_payload_wrapper		;$80F429   |
+	JSL VRAM_payload_handler_global		;$80F429   |
 	LDY #$0000				;$80F42D   |
 	LDA #DATA_FD13F0			;$80F430   |
 	LDX #$0020				;$80F433   |
@@ -13256,7 +13256,7 @@ CODE_80FA7C:
 	JSL clear_VRAM_wrapper			;$80FA82   |
 	JSL init_registers_wrapper		;$80FA86   |
 	LDA #$001F				;$80FA8A   |
-	JSL handle_VRAM_payload_wrapper		;$80FA8D   |
+	JSL VRAM_payload_handler_global		;$80FA8D   |
 	LDA #$001F				;$80FA91   |
 	JSL set_PPU_registers_wrapper		;$80FA94   |
 	LDA #$0014				;$80FA98   |

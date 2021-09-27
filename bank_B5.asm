@@ -9992,7 +9992,7 @@ CODE_B5E0A1:
 	LDA $0000,x				;$B5E0A9   |
 	AND #$00FF				;$B5E0AC   |
 	PHX					;$B5E0AF   |
-	JSL handle_VRAM_payload_wrapper		;$B5E0B0   |
+	JSL VRAM_payload_handler_global		;$B5E0B0   |
 	PLX					;$B5E0B4   |
 	INX					;$B5E0B5   |
 	LDA $0000,x				;$B5E0B6   |

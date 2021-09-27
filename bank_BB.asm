@@ -156,8 +156,8 @@ set_PPU_registers_wrapper:
 	JSR set_PPU_registers			;$BB80AC  \ Trampoline to the main PPU register routine
 	RTL					;$BB80AF  /
 
-handle_VRAM_payload_wrapper:
-	JSR handle_VRAM_payload			;$BB80B0  \ Trampoline to the main VRAM upload
+VRAM_payload_handler_global:
+	JSR VRAM_payload_handler			;$BB80B0  \ Trampoline to the main VRAM upload
 	RTL					;$BB80B3  /
 
 CODE_BB80B4:
@@ -1954,7 +1954,7 @@ set_PPU_registers:
 	PLB					;$BB8CB3   | Restore the data bank
 	RTS					;$BB8CB4  / Finished setting registers
 
-handle_VRAM_payload:
+VRAM_payload_handler:
 	PHB					;$BB8CB5  \ Preserve current data bank
 	PEA $FD81				;$BB8CB6   |\ Change data bank to FD
 	PLB					;$BB8CB9   | |
@@ -2873,7 +2873,7 @@ CODE_BB929D:					;	   |
 	CMP #$0002				;$BB92BD   |
 	BNE CODE_BB92C9				;$BB92C0   |
 	LDA #$0016				;$BB92C2   |
-	JSL handle_VRAM_payload_wrapper		;$BB92C5   |
+	JSL VRAM_payload_handler_global		;$BB92C5   |
 CODE_BB92C9:					;	   |
 	LDX #$000A				;$BB92C9   |
 	JSR ($0515,x)				;$BB92CC   |
@@ -3213,9 +3213,9 @@ DATA_BB95BC:
 
 CODE_BB95F2:
 	LDA #$0001				;$BB95F2  \
-	JSL handle_VRAM_payload_wrapper		;$BB95F5   |
+	JSL VRAM_payload_handler_global		;$BB95F5   |
 	LDA $0539				;$BB95F9   |
-	JSL handle_VRAM_payload_wrapper		;$BB95FC   |
+	JSL VRAM_payload_handler_global		;$BB95FC   |
 	JSR CODE_BB94B6				;$BB9600   |
 	LDA $0537				;$BB9603   |
 	JSL set_PPU_registers_wrapper		;$BB9606   |
@@ -3223,9 +3223,9 @@ CODE_BB95F2:
 
 CODE_BB960B:
 	LDA #$0001				;$BB960B  \
-	JSL handle_VRAM_payload_wrapper		;$BB960E   |
+	JSL VRAM_payload_handler_global		;$BB960E   |
 	LDA $0539				;$BB9612   |
-	JSL handle_VRAM_payload_wrapper		;$BB9615   |
+	JSL VRAM_payload_handler_global		;$BB9615   |
 	JSR CODE_BB94B6				;$BB9619   |
 	LDY #$0070				;$BB961C   |
 	LDA #DATA_FD15F0			;$BB961F   |
@@ -3237,9 +3237,9 @@ CODE_BB960B:
 
 CODE_BB9631:
 	LDA #$0001				;$BB9631  \
-	JSL handle_VRAM_payload_wrapper		;$BB9634   |
+	JSL VRAM_payload_handler_global		;$BB9634   |
 	LDA $0539				;$BB9638   |
-	JSL handle_VRAM_payload_wrapper		;$BB963B   |
+	JSL VRAM_payload_handler_global		;$BB963B   |
 	LDA #DATA_FD29EE			;$BB963F   |
 	STA $0A8E				;$BB9642   |
 	JSR CODE_BB94B6				;$BB9645   |
@@ -3249,9 +3249,9 @@ CODE_BB9631:
 
 CODE_BB9650:
 	LDA #$0001				;$BB9650  \
-	JSL handle_VRAM_payload_wrapper		;$BB9653   |
+	JSL VRAM_payload_handler_global		;$BB9653   |
 	LDA $0539				;$BB9657   |
-	JSL handle_VRAM_payload_wrapper		;$BB965A   |
+	JSL VRAM_payload_handler_global		;$BB965A   |
 	LDA #DATA_FD2AEE			;$BB965E   |
 	STA $0A8E				;$BB9661   |
 	JSR CODE_BB94B6				;$BB9664   |
@@ -3261,9 +3261,9 @@ CODE_BB9650:
 
 CODE_BB966F:
 	LDA #$0001				;$BB966F  \
-	JSL handle_VRAM_payload_wrapper		;$BB9672   |
+	JSL VRAM_payload_handler_global		;$BB9672   |
 	LDA $0539				;$BB9676   |
-	JSL handle_VRAM_payload_wrapper		;$BB9679   |
+	JSL VRAM_payload_handler_global		;$BB9679   |
 	JSR CODE_BB94B6				;$BB967D   |
 	LDY #$0010				;$BB9680   |
 	LDA #DATA_FD268E			;$BB9683   |
@@ -3290,9 +3290,9 @@ CODE_BB96AA:					;	   |
 
 CODE_BB96BC:
 	LDA #$0001				;$BB96BC  \
-	JSL handle_VRAM_payload_wrapper		;$BB96BF   |
+	JSL VRAM_payload_handler_global		;$BB96BF   |
 	LDA $0539				;$BB96C3   |
-	JSL handle_VRAM_payload_wrapper		;$BB96C6   |
+	JSL VRAM_payload_handler_global		;$BB96C6   |
 	JSR CODE_BB94B6				;$BB96CA   |
 	LDA $0537				;$BB96CD   |
 	JSL set_PPU_registers_wrapper		;$BB96D0   |
@@ -3300,9 +3300,9 @@ CODE_BB96BC:
 
 CODE_BB96D5:
 	LDA #$0001				;$BB96D5  \
-	JSL handle_VRAM_payload_wrapper		;$BB96D8   |
+	JSL VRAM_payload_handler_global		;$BB96D8   |
 	LDA $0539				;$BB96DC   |
-	JSL handle_VRAM_payload_wrapper		;$BB96DF   |
+	JSL VRAM_payload_handler_global		;$BB96DF   |
 	LDA $0537				;$BB96E3   |
 	JSL set_PPU_registers_wrapper		;$BB96E6   |
 	LDY #$0000				;$BB96EA   |
@@ -3313,9 +3313,9 @@ CODE_BB96D5:
 
 CODE_BB96F8:
 	LDA #$0001				;$BB96F8  \
-	JSL handle_VRAM_payload_wrapper		;$BB96FB   |
+	JSL VRAM_payload_handler_global		;$BB96FB   |
 	LDA $0539				;$BB96FF   |
-	JSL handle_VRAM_payload_wrapper		;$BB9702   |
+	JSL VRAM_payload_handler_global		;$BB9702   |
 	LDA $0537				;$BB9706   |
 	JSL set_PPU_registers_wrapper		;$BB9709   |
 	LDY #$0000				;$BB970D   |
@@ -3326,9 +3326,9 @@ CODE_BB96F8:
 
 CODE_BB971B:
 	LDA #$0001				;$BB971B  \
-	JSL handle_VRAM_payload_wrapper		;$BB971E   |
+	JSL VRAM_payload_handler_global		;$BB971E   |
 	LDA $0539				;$BB9722   |
-	JSL handle_VRAM_payload_wrapper		;$BB9725   |
+	JSL VRAM_payload_handler_global		;$BB9725   |
 	LDA $0537				;$BB9729   |
 	JSL set_PPU_registers_wrapper		;$BB972C   |
 	LDY #$0000				;$BB9730   |
@@ -3339,9 +3339,9 @@ CODE_BB971B:
 
 CODE_BB973E:
 	LDA #$0001				;$BB973E  \
-	JSL handle_VRAM_payload_wrapper		;$BB9741   |
+	JSL VRAM_payload_handler_global		;$BB9741   |
 	LDA $0539				;$BB9745   |
-	JSL handle_VRAM_payload_wrapper		;$BB9748   |
+	JSL VRAM_payload_handler_global		;$BB9748   |
 	LDA $0537				;$BB974C   |
 	JSL set_PPU_registers_wrapper		;$BB974F   |
 	LDY #$0000				;$BB9753   |
@@ -3352,9 +3352,9 @@ CODE_BB973E:
 
 CODE_BB9761:
 	LDA #$0001				;$BB9761  \
-	JSL handle_VRAM_payload_wrapper		;$BB9764   |
+	JSL VRAM_payload_handler_global		;$BB9764   |
 	LDA $0539				;$BB9768   |
-	JSL handle_VRAM_payload_wrapper		;$BB976B   |
+	JSL VRAM_payload_handler_global		;$BB976B   |
 	JSR CODE_BB94B6				;$BB976F   |
 	LDA $0537				;$BB9772   |
 	JSL set_PPU_registers_wrapper		;$BB9775   |
@@ -3387,9 +3387,9 @@ CODE_BB97AB:					;	   |
 
 CODE_BB97B4:
 	LDA #$0001				;$BB97B4  \
-	JSL handle_VRAM_payload_wrapper		;$BB97B7   |
+	JSL VRAM_payload_handler_global		;$BB97B7   |
 	LDA $0539				;$BB97BB   |
-	JSL handle_VRAM_payload_wrapper		;$BB97BE   |
+	JSL VRAM_payload_handler_global		;$BB97BE   |
 	JSR CODE_BB94B6				;$BB97C2   |
 	LDA $0537				;$BB97C5   |
 	JSL set_PPU_registers_wrapper		;$BB97C8   |
@@ -3401,9 +3401,9 @@ CODE_BB97B4:
 
 CODE_BB97DA:
 	LDA #$0001				;$BB97DA  \
-	JSL handle_VRAM_payload_wrapper		;$BB97DD   |
+	JSL VRAM_payload_handler_global		;$BB97DD   |
 	LDA $0539				;$BB97E1   |
-	JSL handle_VRAM_payload_wrapper		;$BB97E4   |
+	JSL VRAM_payload_handler_global		;$BB97E4   |
 	LDA #DATA_FD1610			;$BB97E8   |
 	STA $0A8E				;$BB97EB   |
 	JSR CODE_BB94B6				;$BB97EE   |
@@ -3413,9 +3413,9 @@ CODE_BB97DA:
 
 CODE_BB97F9:
 	LDA #$0001				;$BB97F9  \
-	JSL handle_VRAM_payload_wrapper		;$BB97FC   |
+	JSL VRAM_payload_handler_global		;$BB97FC   |
 	LDA $0539				;$BB9800   |
-	JSL handle_VRAM_payload_wrapper		;$BB9803   |
+	JSL VRAM_payload_handler_global		;$BB9803   |
 	JSR CODE_BB94B6				;$BB9807   |
 	LDY #$0070				;$BB980A   |
 	LDA #DATA_FD268E			;$BB980D   |

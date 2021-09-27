@@ -1544,7 +1544,7 @@ CODE_B48C9D:
 	LDA $0000,x				;$B48CFD   |
 	AND #$00FF				;$B48D00   |
 	PHX					;$B48D03   |
-	JSL handle_VRAM_payload_wrapper		;$B48D04   |
+	JSL VRAM_payload_handler_global		;$B48D04   |
 	PLX					;$B48D08   |
 	LDA $0001,x				;$B48D09   |
 	AND #$00FF				;$B48D0C   |
@@ -7509,7 +7509,7 @@ CODE_B4BF3A:					;	   |
 	PLA					;$B4BF88   |
 	STA $CC					;$B4BF89   |
 	LDA #$0039				;$B4BF8B   |
-	JSL handle_VRAM_payload_wrapper		;$B4BF8E   |
+	JSL VRAM_payload_handler_global		;$B4BF8E   |
 	LDA #$0038				;$B4BF92   |
 	JSL set_PPU_registers_wrapper		;$B4BF95   |
 	LDA #DATA_FD402E			;$B4BF99   |

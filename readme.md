@@ -3,7 +3,7 @@ Some random conventions, I'll add more as I remember
 ###Choosing label names
 
 Routines that act like game loops get names such as `run_<action>`
-Routines that primarily delegate many related tasks get the name `handle_<task>`
+Routines that primarily delegate many related tasks get the name `<task>_handler`
 Routines that are global trampolines for a local routine get a suffix of `<routine>_global`
 Use sublabels whenever possible, nesting deeper is okay but should be used sparingly
 Relative labels should be used minimally when a name wouldn't help the context (Like a spinlock)

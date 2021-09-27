@@ -3548,7 +3548,7 @@ CODE_BAB1B9:
 	LDA $0000,x				;$BAB212   |
 	AND #$00FF				;$BAB215   |
 	PHX					;$BAB218   |
-	JSL handle_VRAM_payload_wrapper		;$BAB219   |
+	JSL VRAM_payload_handler_global		;$BAB219   |
 	PLX					;$BAB21D   |
 	LDA $0001,x				;$BAB21E   |
 	AND #$00FF				;$BAB221   |
@@ -4019,7 +4019,7 @@ CODE_BAB671:					;	   |
 	DEC $0650				;$BAB674   |
 	BNE CODE_BAB671				;$BAB677   |
 	LDA #$0038				;$BAB679   |
-	JSL handle_VRAM_payload_wrapper		;$BAB67C   |
+	JSL VRAM_payload_handler_global		;$BAB67C   |
 	LDA #$0037				;$BAB680   |
 	JSL set_PPU_registers_wrapper		;$BAB683   |
 	LDA #DATA_BAB90B			;$BAB687   |
