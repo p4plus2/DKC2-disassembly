@@ -2799,7 +2799,7 @@ CODE_BB9201:					;	   |
 
 CODE_BB9210:
 	JSL CODE_BB819F				;$BB9210  \
-	JSL CODE_808E6A				;$BB9214   |
+	JSL clear_noncritical_wram		;$BB9214   |
 if !version == 0				;	   |
 	LDA #$0104				;$BB9218   |
 else						;	   |

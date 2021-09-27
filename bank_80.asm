@@ -396,7 +396,7 @@ start_engine:					;	  \
 	JSL upload_spc_engine			;$8085E0   | Upload the SPC engine
 restart_rareware_logo:				;	   |
 	JSL disable_screen			;$8085E4   | Disable the screen
-	JSR clear_wram_reset			;$8085E8   | Clear WRAM
+	JSR clear_full_wram			;$8085E8   | Clear WRAM
 	JML init_rareware_logo			;$8085EB  / Initialize the Rareware logo
 
 setup_title_screen_transition:			;	  \
@@ -406,8 +406,8 @@ setup_title_screen_transition:			;	  \
 	LDA #init_title_screen			;$8085FA   |\ Set the active game mode to title screen init
 	STA gamemode_pointer			;$8085FD   |/
 	STZ PPU.oam_address			;$8085FF   |
-	LDA #simple_gamemode_nmi		;$808602   |
-	JMP CODE_808C82				;$808605  /
+	LDA #simple_gamemode_nmi		;$808602   | Use a basic nmi routine that delegates to the game mode
+	JMP set_nmi_pointer_keep_bank		;$808605  / Set the nmi pointer (skip bank reset)
 
 simple_gamemode_nmi:				;	  \
 	LDA #stack				;$808608   |\ Reset the stack to clear off the bytes used by the
@@ -1196,10 +1196,10 @@ fade_screen:
 	REP #$20				;$808C7D   | Back to the joy of 16 bit land
 	RTS					;$808C7F  / No more fading for now. Cya next frame
 
-CODE_808C80:
+set_nmi_pointer:
 	PHK					;$808C80  \
 	PLB					;$808C81   |
-CODE_808C82:					;	   |
+set_nmi_pointer_keep_bank:			;	   |
 	STA NMI_pointer				;$808C82   |
 CODE_808C84:					;	   |
 	SEP #$20				;$808C84   |
@@ -1224,8 +1224,8 @@ CODE_808CA2:					;	   |
 	JSR prepare_oam_dma_channel		;$808CA2   |
 	JMP CODE_80862A				;$808CA5  /
 
-CODE_808CA8:
-	JSR prepare_oam_dma_channel		;$808CA8  \
+prepare_oam_dma_channel_global:
+	JSR prepare_oam_dma_channel		;$808CA8  \ Standard global wrapper
 	RTL					;$808CAB  /
 
 prepare_oam_dma_channel:			;	  \
@@ -1443,40 +1443,40 @@ CODE_808E53:
 	LDA rng_result				;$808E67   |
 	RTS					;$808E69  /
 
-CODE_808E6A:
-	PHB					;$808E6A  \
-	PHK					;$808E6B   |
-	PLB					;$808E6C   |
-	STZ $D9					;$808E6D   |
-	LDX #$00D9				;$808E6F   |
-	LDA #$0024				;$808E72   |
-	TXY					;$808E75   |
-	INY					;$808E76   |
-	MVN $80, $80				;$808E77   |
-	STZ $0911				;$808E7A   |
-	LDX #$0911				;$808E7D   |
-	LDA #$10C7				;$808E80   |
-	TXY					;$808E83   |
-	INY					;$808E84   |
-	MVN $80, $80				;$808E85   |
-	LDA #$0000				;$808E88   |
-	STA $7E5A12				;$808E8B   |
-	LDX #$5A12				;$808E8F   |
-	LDA #$3B14				;$808E92   |
-	TXY					;$808E95   |
-	INY					;$808E96   |
-	MVN $7E, $7E				;$808E97   |
-	LDA #$0000				;$808E9A   |
-	STA $7F0000				;$808E9D   |
-	LDX #$0000				;$808EA1   |
-	LDA #$FFFF				;$808EA4   |
-	TXY					;$808EA7   |
-	INY					;$808EA8   |
-	MVN $7F, $7F				;$808EA9   |
-	PLB					;$808EAC   |
+clear_noncritical_wram:				;	  \
+	PHB					;$808E6A   |\ Preserve the databank because mvn will corrupt it
+	PHK					;$808E6B   | | There is no reason to set the databank but they do
+	PLB					;$808E6C   |/ (unless called by a hirom bank...which it isn't)
+	STZ $D9					;$808E6D   |\
+	LDX #$00D9				;$808E6F   | | Clear $D9-$FF
+	LDA #$0024				;$808E72   | |
+	TXY					;$808E75   | |
+	INY					;$808E76   | |
+	MVN $80, $80				;$808E77   |/
+	STZ $0911				;$808E7A   |\ Clear $0911-$19DA
+	LDX #$0911				;$808E7D   | |
+	LDA #$10C7				;$808E80   | |
+	TXY					;$808E83   | |
+	INY					;$808E84   | |
+	MVN $80, $80				;$808E85   |/
+	LDA #$0000				;$808E88   |\ Clear $7E5A12-$7E9528
+	STA $7E5A12				;$808E8B   | |
+	LDX #$5A12				;$808E8F   | |
+	LDA #$3B14				;$808E92   | |
+	TXY					;$808E95   | |
+	INY					;$808E96   | |
+	MVN $7E, $7E				;$808E97   |/
+	LDA #$0000				;$808E9A   |\ Clear $7F0000-$7FFFFF
+	STA $7F0000				;$808E9D   | |
+	LDX #$0000				;$808EA1   | |
+	LDA #$FFFF				;$808EA4   | |
+	TXY					;$808EA7   | |
+	INY					;$808EA8   | |
+	MVN $7F, $7F				;$808EA9   |/
+	PLB					;$808EAC   | Restore the databank (otherwise mvn corrupts it)
 	RTL					;$808EAD  /
 
-clear_wram_reset:				;	  \
+clear_full_wram:				;	  \
 	PLA					;$808EAE   |\ Store the return address in scratch ram
 	INC A					;$808EAF   | |
 	STA $32					;$808EB0   |/
@@ -1731,7 +1731,7 @@ CODE_8090BB:
 	LDA #$0006				;$8090BF   |
 	STA $000689				;$8090C2   |
 	LDA #CODE_808D02			;$8090C6   |
-	JML CODE_808C80				;$8090C9  /
+	JML set_nmi_pointer			;$8090C9  /
 
 reset_controller_state:
 	STZ $060F				;$8090CD  \
@@ -2498,8 +2498,8 @@ CODE_80978E:					;	   |
 	JMP init_nintendo_copyright		;$8097C4  /
 
 .fade
-	JSR fade_screen				;$8097C7  \ Run the screen fade check
--						;	   |
+	JSR fade_screen				;$8097C7  > Run the screen fade check
+-						;	  \
 	WAI					;$8097CA   | Wait until the next frame
 	BRA -					;$8097CB  / Branch back sanity check
 
@@ -2509,7 +2509,7 @@ CODE_8097CD:
 	PLB					;$8097D2   |
 	JSR clear_VRAM				;$8097D3   |
 	JSL init_registers_wrapper		;$8097D6   |
-	JSL CODE_808E6A				;$8097DA   |
+	JSL clear_noncritical_wram		;$8097DA   |
 	JSL set_all_oam_offscreen		;$8097DE   |
 	STZ $060B				;$8097E2   |
 	LDX #$001E				;$8097E5   |
@@ -3254,7 +3254,7 @@ CODE_809F85:
 	PLB					;$809F8A   |
 	JSR clear_VRAM				;$809F8B   |
 	JSL init_registers_wrapper		;$809F8E   |
-	JSL CODE_808E6A				;$809F92   |
+	JSL clear_noncritical_wram		;$809F92   |
 	JSL CODE_BB91F7				;$809F96   |
 	STZ global_frame_counter		;$809F9A   |
 	LDA #$CCCC				;$809F9C   |
@@ -3929,7 +3929,7 @@ CODE_80A5F1:
 	PLB					;$80A5F6   |
 	JSR clear_VRAM				;$80A5F7   |
 	JSL init_registers_wrapper		;$80A5FA   |
-	JSL CODE_808E6A				;$80A5FE   |
+	JSL clear_noncritical_wram		;$80A5FE   |
 	JSL set_all_oam_offscreen		;$80A602   |
 	LDA #$0018				;$80A606   |
 	JSL play_song				;$80A609   |
@@ -5717,38 +5717,38 @@ init_nintendo_copyright:
 	STA CPU.rom_speed			;$80B674   |/
 	REP #$20				;$80B677   |\ Return to 16 bit mode and reset the frame counter
 	STZ global_frame_counter		;$80B679   |/
-	LDA #CODE_80B681			;$80B67B   |
+	LDA #run_nintendo_copyright		;$80B67B   |
 	JMP set_and_wait_for_nmi		;$80B67E  /
 
-CODE_80B681:
-	LDX #stack				;$80B681  \
-	TXS					;$80B684   |
-	STZ PPU.oam_address			;$80B685   |
-	SEP #$20				;$80B688   |
-	STZ PPU.layer_1_scroll_x		;$80B68A   |
-	STZ PPU.layer_1_scroll_x		;$80B68D   |
-	LDA #$FF				;$80B690   |
-	STA PPU.layer_1_scroll_y		;$80B692   |
-	STZ PPU.layer_1_scroll_y		;$80B695   |
-	LDA screen_brightness			;$80B698   |
-	STA PPU.screen				;$80B69B   |
-	REP #$20				;$80B69E   |
-	INC global_frame_counter		;$80B6A0   |
-	JSR intro_controller_read		;$80B6A2   |
-	JSR fade_screen				;$80B6A5   |
-	LDA global_frame_counter		;$80B6A8   |
-	CMP #$0070				;$80B6AA   |
-	BNE CODE_80B6B5				;$80B6AD   |
-	LDA #$0082				;$80B6AF   |
-	STA screen_fade_speed			;$80B6B2   |
-CODE_80B6B5:					;	   |
-	LDA screen_brightness			;$80B6B5   |
-	BNE CODE_80B6BE				;$80B6B8   |
-	JML setup_title_screen_transition	;$80B6BA  /
+run_nintendo_copyright:				;	  \
+	LDX #stack				;$80B681   |\ Stack reset time!
+	TXS					;$80B684   |/
+	STZ PPU.oam_address			;$80B685   | Reset the OAM address (for OAM DMA and sprite priority)
+	SEP #$20				;$80B688   |\ Reset the screen position
+	STZ PPU.layer_1_scroll_x		;$80B68A   | |
+	STZ PPU.layer_1_scroll_x		;$80B68D   | |
+	LDA #$FF				;$80B690   | |
+	STA PPU.layer_1_scroll_y		;$80B692   | |
+	STZ PPU.layer_1_scroll_y		;$80B695   |/
+	LDA screen_brightness			;$80B698   |\ And the developers said let there be brightness!
+	STA PPU.screen				;$80B69B   |/
+	REP #$20				;$80B69E   |\ Return to the 16 bit realm and increment the frame counter
+	INC global_frame_counter		;$80B6A0   |/
+	JSR intro_controller_read		;$80B6A2   | Read the autojoy registers
+	JSR fade_screen				;$80B6A5   | Run the screen fade routine
+	LDA global_frame_counter		;$80B6A8   |\ Check if we are on frame $0070 to start fade out
+	CMP #$0070				;$80B6AA   | |
+	BNE .skip_fadeout_start			;$80B6AD   |/
+	LDA #$0082				;$80B6AF   |\ Set the screen to fade out with speed 2
+	STA screen_fade_speed			;$80B6B2   |/
+.skip_fadeout_start				;	   |
+	LDA screen_brightness			;$80B6B5   |\ If the screen is still visibile, wait for the next frame
+	BNE .wait_for_next_frame		;$80B6B8   |/
+	JML setup_title_screen_transition	;$80B6BA  / If the screen is dark, start the title screen transition
 
-CODE_80B6BE:
+.wait_for_next_frame
 	WAI					;$80B6BE  \
-	BRA CODE_80B6BE				;$80B6BF  /
+	BRA .wait_for_next_frame		;$80B6BF  /
 
 DATA_80B6C1:
 	dw CODE_80B705
@@ -12673,7 +12673,7 @@ CODE_80F3FB:
 	PLB					;$80F400   |
 	JSL clear_VRAM_wrapper			;$80F401   |
 	JSL init_registers_wrapper		;$80F405   |
-	JSL CODE_808E6A				;$80F409   |
+	JSL clear_noncritical_wram		;$80F409   |
 	JSL set_all_oam_offscreen		;$80F40D   |
 	JSL CODE_BB91F7				;$80F411   |
 	LDA #$001E				;$80F415   |
@@ -12820,7 +12820,7 @@ CODE_80F551:					;	   |
 	LDA #CODE_BAB633			;$80F559   |
 	STA $00067D				;$80F55C   |
 	LDA #CODE_808CC9			;$80F560   |
-	JML CODE_808C80				;$80F563  /
+	JML set_nmi_pointer			;$80F563  /
 
 CODE_80F567:
 	JSL sprite_handler			;$80F567  \

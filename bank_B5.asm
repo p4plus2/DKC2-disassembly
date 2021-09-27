@@ -7888,7 +7888,7 @@ CODE_B5CDFD:
 	JSL disable_screen			;$B5CE01   |
 	JSL CODE_8088D2				;$B5CE05   |
 	JSL init_registers_wrapper		;$B5CE09   |
-	JSL CODE_808E6A				;$B5CE0D   |
+	JSL clear_noncritical_wram		;$B5CE0D   |
 	PHK					;$B5CE11   |
 	PLB					;$B5CE12   |
 	LDA.l $0006B1				;$B5CE13   |
@@ -8083,7 +8083,7 @@ CODE_B5CF20:					;	   |
 	REP #$20				;$B5CF38   |
 	LDA #$0100				;$B5CF3A   |
 	JSL set_fade_global			;$B5CF3D   |
-	JSL CODE_808CA8				;$B5CF41   |
+	JSL prepare_oam_dma_channel_global	;$B5CF41   |
 	LDA.l $0006A3				;$B5CF45   |
 	AND #$FF9F				;$B5CF49   |
 	STA $0006A3				;$B5CF4C   |
@@ -8128,7 +8128,7 @@ CODE_B5CF99:					;	   |
 	REP #$20				;$B5CFA8   |
 	LDA #$0100				;$B5CFAA   |
 	JSL set_fade_global			;$B5CFAD   |
-	JSL CODE_808CA8				;$B5CFB1   |
+	JSL prepare_oam_dma_channel_global	;$B5CFB1   |
 	LDA.l $0006A3				;$B5CFB5   |
 	AND #$FF9F				;$B5CFB9   |
 	STA $0006A3				;$B5CFBC   |
@@ -8150,7 +8150,7 @@ CODE_B5CFD3:
 	REP #$20				;$B5CFE2   |
 	LDA #$000F				;$B5CFE4   |
 	STA screen_brightness			;$B5CFE7   |
-	JSL CODE_808CA8				;$B5CFEA   |
+	JSL prepare_oam_dma_channel_global	;$B5CFEA   |
 	STZ global_frame_counter		;$B5CFEE   |
 	LDA #CODE_808CED			;$B5CFF0   |
 	JMP CODE_B5CFF6				;$B5CFF3  /
@@ -8289,7 +8289,7 @@ CODE_B5D1D0:					;	   |
 	LDA #CODE_8087D9			;$B5D1E9   |
 	STA gamemode_pointer			;$B5D1EC   |
 	LDA #simple_gamemode_nmi		;$B5D1EE   |
-	JML CODE_808C80				;$B5D1F1  /
+	JML set_nmi_pointer			;$B5D1F1  /
 
 CODE_B5D1F5:
 	JSL CODE_80897C				;$B5D1F5  \
@@ -8318,7 +8318,7 @@ CODE_B5D22D:					;	   |
 	JSL CODE_B5A8DA				;$B5D22D   |
 	JSR CODE_B5D48E				;$B5D231   |
 	JSL fade_screen_global			;$B5D234   |
-	JSL CODE_808CA8				;$B5D238   |
+	JSL prepare_oam_dma_channel_global	;$B5D238   |
 CODE_B5D23C:					;	   |
 	WAI					;$B5D23C   |
 	BRA CODE_B5D23C				;$B5D23D  /
@@ -8558,7 +8558,7 @@ CODE_B5D424:					;	   |
 	JSL CODE_B5A8DA				;$B5D438   |
 	JSR CODE_B5D48E				;$B5D43C   |
 	JSL fade_screen_global			;$B5D43F   |
-	JSL CODE_808CA8				;$B5D443   |
+	JSL prepare_oam_dma_channel_global	;$B5D443   |
 CODE_B5D447:					;	   |
 	WAI					;$B5D447   |
 	BRA CODE_B5D447				;$B5D448  /
@@ -8577,7 +8577,7 @@ CODE_B5D44A:
 	LDA #CODE_8087D9			;$B5D46E   |
 	STA gamemode_pointer			;$B5D471   |
 	LDA #simple_gamemode_nmi		;$B5D473   |
-	JML CODE_808C80				;$B5D476  /
+	JML set_nmi_pointer			;$B5D476  /
 
 CODE_B5D47A:
 	LDA level_number			;$B5D47A  \
@@ -8684,13 +8684,13 @@ CODE_B5D52C:					;	   |
 	JSL CODE_B380EC				;$B5D55B   |
 	JSR CODE_B5D48E				;$B5D55F   |
 	JSL fade_screen_global			;$B5D562   |
-	JSL CODE_808CA8				;$B5D566   |
+	JSL prepare_oam_dma_channel_global	;$B5D566   |
 	LDA screen_brightness			;$B5D56A   |
 	BNE CODE_B5D57D				;$B5D56D   |
 	LDA #CODE_B48DFA			;$B5D56F   |
 	STA $00067D				;$B5D572   |
 	LDA #CODE_808CD9			;$B5D576   |
-	JML CODE_808C80				;$B5D579  /
+	JML set_nmi_pointer			;$B5D579  /
 
 CODE_B5D57D:
 	WAI					;$B5D57D  \
