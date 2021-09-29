@@ -1,3 +1,7 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;ROM structures
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 struct sprite $0000
 	.number:		skip 2
 	.render_order:		skip 2
@@ -57,6 +61,17 @@ struct oam oam_table
 	.tile:          skip 1
 	.property:      skip 1
 endstruct
+
 struct oam_attribute oam_attribute_table
 	.size		skip 1
+endstruct
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;ROM structures
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+struct wram_clear_table $0000
+	.address: skip 2
+	.size: skip 2
 endstruct

@@ -1516,7 +1516,7 @@ CODE_B48C9D:
 	AND #$DDFF				;$B48CA7   |
 	STA $06A1				;$B48CAA   |
 	JSL disable_screen			;$B48CAD   |
-	JSL clear_VRAM_wrapper			;$B48CB1   |
+	JSL clear_VRAM_global			;$B48CB1   |
 	JSL CODE_BAC7C0				;$B48CB5   |
 	LDA #$0200				;$B48CB9   |
 	STA DMA[0].source			;$B48CBC   |
@@ -1549,7 +1549,7 @@ CODE_B48C9D:
 	LDA $0001,x				;$B48D09   |
 	AND #$00FF				;$B48D0C   |
 	PHX					;$B48D0F   |
-	JSL set_PPU_registers_wrapper		;$B48D10   |
+	JSL set_PPU_registers_global		;$B48D10   |
 	PLX					;$B48D14   |
 	LDA $0002,x				;$B48D15   |
 	LDY #$0000				;$B48D18   |
@@ -1563,7 +1563,7 @@ CODE_B48C9D:
 	LDY #$00F0				;$B48D32   |
 	LDX #$0004				;$B48D35   |
 	JSL DMA_palette				;$B48D38   |
-	JSL CODE_8088D2				;$B48D3C   |
+	JSL clear_wram_tables			;$B48D3C   |
 	JSL CODE_808D8A				;$B48D40   |
 	STZ $067A				;$B48D44   |
 	STZ $065E				;$B48D47   |
@@ -7479,9 +7479,9 @@ CODE_B4BEEF:
 	JSL play_song				;$B4BF36   |
 CODE_B4BF3A:					;	   |
 	JSL disable_screen			;$B4BF3A   |
-	JSL clear_VRAM_wrapper			;$B4BF3E   |
+	JSL clear_VRAM_global			;$B4BF3E   |
 	JSL CODE_BAC7C0				;$B4BF42   |
-	JSL CODE_8088D2				;$B4BF46   |
+	JSL clear_wram_tables			;$B4BF46   |
 	PHK					;$B4BF4A   |
 	PLB					;$B4BF4B   |
 	JSL CODE_B4BE2F				;$B4BF4C   |
@@ -7511,7 +7511,7 @@ CODE_B4BF3A:					;	   |
 	LDA #$0039				;$B4BF8B   |
 	JSL VRAM_payload_handler_global		;$B4BF8E   |
 	LDA #$0038				;$B4BF92   |
-	JSL set_PPU_registers_wrapper		;$B4BF95   |
+	JSL set_PPU_registers_global		;$B4BF95   |
 	LDA #DATA_FD402E			;$B4BF99   |
 	LDY #$0000				;$B4BF9C   |
 	LDX #$0020				;$B4BF9F   |

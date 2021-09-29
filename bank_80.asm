@@ -138,7 +138,7 @@ display_error_message:
 	LDX #$0001				;$8083E8   | |
 	JSL DMA_palette				;$8083EB   |/
 	LDA #$0039				;$8083EF   |\ Load PPU settings for anti-piracy screen
-	JSL set_PPU_registers_wrapper		;$8083F2   |/
+	JSL set_PPU_registers_global		;$8083F2   |/
 	STP					;$8083F6  /
 
 RESET_start:
@@ -347,7 +347,7 @@ init_registers:    				;	   |
 	REP #$20				;$808588   | Back to a full 16 bit
 	RTS					;$80858A  /
 
-init_registers_wrapper:
+init_registers_global:
 	JSR init_registers			;$80858B  \ Wrapper for long calls
 	RTL					;$80858E  /
 
@@ -370,7 +370,7 @@ clear_VRAM:
 	REP #$20				;$8085B2   |
 	RTS					;$8085B4  /
 
-clear_VRAM_wrapper:
+clear_VRAM_global:
 	JSR clear_VRAM				;$8085B5  \ Wrapper for long calls
 	RTL					;$8085B8  /
 
@@ -494,7 +494,7 @@ CODE_808684:
 	LDA #$0008				;$8086A1   |
 	JSL VRAM_payload_handler_global		;$8086A4   |
 	LDA #$0007				;$8086A8   |
-	JSL set_PPU_registers_wrapper		;$8086AB   |
+	JSL set_PPU_registers_global		;$8086AB   |
 	LDA #$7000				;$8086AF   |
 	STA PPU.vram_address			;$8086B2   |
 	LDY #$0064				;$8086B5   |
@@ -772,48 +772,62 @@ set_unused_oam_offscreen:
 .oam_full					;	   |
 	RTS					;$8088D1  / Dead sprites nuked.
 
-CODE_8088D2:
-	LDY #DATA_8088F1			;$8088D2  \
-	PHB					;$8088D5   |
-	PHK					;$8088D6   |
-	PLB					;$8088D7   |
-	BRA CODE_8088EA				;$8088D8  /
+clear_wram_tables:
+	LDY #.wram_tables			;$8088D2  \ Load an index to the table of tables to clear
+	PHB					;$8088D5   |\
+	PHK					;$8088D6   | | Standard data bank swap
+	PLB					;$8088D7   |/
+	BRA .clear_table_entry			;$8088D8  / Jump to the table clearing loop entry
 
-CODE_8088DA:
-	TAX					;$8088DA  \
-	LDA $0002,y				;$8088DB   |
-	LSR A					;$8088DE   |
-CODE_8088DF:					;	   |
-	STZ $00,x				;$8088DF   |
-	INX					;$8088E1   |
-	INX					;$8088E2   |
-	DEC A					;$8088E3   |
-	BNE CODE_8088DF				;$8088E4   |
-	INY					;$8088E6   |
-	INY					;$8088E7   |
-	INY					;$8088E8   |
-	INY					;$8088E9   |
-CODE_8088EA:					;	   |
-	LDA $0000,y				;$8088EA   |
-	BPL CODE_8088DA				;$8088ED   |
+.clear_table
+	TAX					;$8088DA  \ Move the table into X as a base pointer
+	LDA.w wram_clear_table.size,y		;$8088DB   |\ Get the number of bytes to clear (divided by 2 because
+	LSR A					;$8088DE   |/ each address is cleared as a word)
+.clear_table_slot				;	   |
+	STZ $00,x				;$8088DF   |\ Clear each slot until A is zero
+	INX					;$8088E1   | | Each clear handles two bytes
+	INX					;$8088E2   | |
+	DEC A					;$8088E3   | |
+	BNE .clear_table_slot			;$8088E4   |/
+	INY					;$8088E6   |\ Move to the next table entry
+	INY					;$8088E7   | |
+	INY					;$8088E8   | |
+	INY					;$8088E9   |/
+.clear_table_entry				;	   |
+	LDA.w wram_clear_table.address,y	;$8088EA   |\ Check if the address to clear is valid low ram
+	BPL .clear_table			;$8088ED   |/ Otherwise we are done
 	PLB					;$8088EF   |
 	RTL					;$8088F0  /
 
-DATA_8088F1:
-	db $84, $0D, $2E, $09, $B2, $16, $26, $00
-	db $D8, $16, $26, $00, $7A, $0D, $02, $00
-	db $A0, $0B, $02, $00, $A2, $0B, $02, $00
-	db $36, $0A, $02, $00, $38, $0A, $02, $00
-	db $04, $0B, $20, $00, $24, $0B, $40, $00
-	db $EF, $00, $02, $00, $F1, $00, $02, $00
-	db $64, $0B, $10, $00, $74, $0B, $10, $00
-	db $42, $0A, $40, $00, $29, $09, $02, $00
-	db $2B, $09, $02, $00, $2D, $09, $02, $00
-	db $23, $09, $02, $00, $15, $05, $3E, $00
-	db $5B, $09, $08, $00, $63, $09, $08, $00
-	db $4A, $0D, $02, $00, $89, $09, $02, $00
-	db $1B, $09, $02, $00, $19, $09, $02, $00
-	db $02, $0B, $02, $00, $FF, $FF
+.wram_tables
+	dw $0D84, $092E
+	dw $16B2, $0026
+	dw $16D8, $0026
+	dw $0D7A, $0002
+	dw $0BA0, $0002
+	dw $0BA2, $0002
+	dw $0A36, $0002
+	dw $0A38, $0002
+	dw $0B04, $0020
+	dw $0B24, $0040
+	dw $00EF, $0002
+	dw $00F1, $0002
+	dw $0B64, $0010
+	dw $0B74, $0010
+	dw $0A42, $0040
+	dw $0929, $0002
+	dw $092B, $0002
+	dw $092D, $0002
+	dw $0923, $0002
+	dw $0515, $003E
+	dw $095B, $0008
+	dw $0963, $0008
+	dw $0D4A, $0002
+	dw $0989, $0002
+	dw $091B, $0002
+	dw $0919, $0002
+	dw $0B02, $0002
+	dw $FFFF
 
 
 DMA_to_VRAM:
@@ -2508,7 +2522,7 @@ CODE_8097CD:
 	PHK					;$8097D1   |
 	PLB					;$8097D2   |
 	JSR clear_VRAM				;$8097D3   |
-	JSL init_registers_wrapper		;$8097D6   |
+	JSL init_registers_global		;$8097D6   |
 	JSL clear_noncritical_wram		;$8097DA   |
 	JSL set_all_oam_offscreen		;$8097DE   |
 	STZ $060B				;$8097E2   |
@@ -3253,7 +3267,7 @@ CODE_809F85:
 	PHK					;$809F89   |
 	PLB					;$809F8A   |
 	JSR clear_VRAM				;$809F8B   |
-	JSL init_registers_wrapper		;$809F8E   |
+	JSL init_registers_global		;$809F8E   |
 	JSL clear_noncritical_wram		;$809F92   |
 	JSL CODE_BB91F7				;$809F96   |
 	STZ global_frame_counter		;$809F9A   |
@@ -3928,7 +3942,7 @@ CODE_80A5F1:
 	PHK					;$80A5F5   |
 	PLB					;$80A5F6   |
 	JSR clear_VRAM				;$80A5F7   |
-	JSL init_registers_wrapper		;$80A5FA   |
+	JSL init_registers_global		;$80A5FA   |
 	JSL clear_noncritical_wram		;$80A5FE   |
 	JSL set_all_oam_offscreen		;$80A602   |
 	LDA #$0018				;$80A606   |
@@ -5454,19 +5468,19 @@ init_title_screen:
 	STZ player_skipped_demo			;$80B3DD   |
 	STZ $060B				;$80B3E0   |
 	JSR clear_VRAM				;$80B3E3   |
-	JSL init_registers_wrapper		;$80B3E6   |
-	JSL CODE_8088D2				;$80B3EA   |
+	JSL init_registers_global		;$80B3E6   |
+	JSL clear_wram_tables			;$80B3EA   | Clear some basic tables used by core systems
 	JSL CODE_BB91F7				;$80B3EE   |
 	LDA #$0002				;$80B3F2   |\ Play the title screen music
 	JSL play_song				;$80B3F5   |/
 	STZ global_frame_counter		;$80B3F9   | Reset the frame counter
-	JSR CODE_80B560				;$80B3FB   |
+	JSR setup_title_screen_screen		;$80B3FB   | Configure the screen and do basic uploads
 	LDA #$55AA				;$80B3FE   |\ Seed the random number generator
 	STA rng_result				;$80B401   | |
 	LDA #$FF00				;$80B403   | |
 	STA rng_seed_2				;$80B406   |/
-	LDX #main_sprite_table			;$80B408   |
-	LDY #$0000				;$80B40B   |
+	LDX #main_sprite_table			;$80B408   | Load the sprite base pointer
+	LDY #$0000				;$80B40B   | Load the initial sparkle frame index
 .next_sprite_slot				;	   |
 	LDA #$0001				;$80B40E   |\ Mark the sprite slot used by a sparkle
 	STA $00,x				;$80B411   |/
@@ -5621,63 +5635,63 @@ run_title_screen:				;	  \
 	LDA #CODE_8086F6			;$80B559  \
 	JML CODE_808C9E				;$80B55C  /
 
-CODE_80B560:
-	LDA #$0001				;$80B560  \
-	STA PPU.layer_mode			;$80B563   |
-	LDA #$1001				;$80B566   |
-	STA PPU.screens				;$80B569   |
-	LDA #$0024				;$80B56C   |
-	STA PPU.layer_all_tiledata_base		;$80B56F   |
-	LDA #$0102				;$80B572   |
-	STA PPU.color_addition_logic		;$80B575   |
-	LDA #$4C1C				;$80B578   |
-	STA PPU.layer_1_2_tilemap_base		;$80B57B   |
-	SEP #$20				;$80B57E   |
-	STZ PPU.layer_1_scroll_x		;$80B580   |
-	STZ PPU.layer_1_scroll_x		;$80B583   |
-	STZ PPU.layer_2_scroll_x		;$80B586   |
-	STZ PPU.layer_2_scroll_x		;$80B589   |
-	LDA #$FF				;$80B58C   |
-	STA PPU.layer_1_scroll_y		;$80B58E   |
-	STA PPU.layer_1_scroll_y		;$80B591   |
-	STA PPU.layer_2_scroll_y		;$80B594   |
-	STA PPU.layer_2_scroll_y		;$80B597   |
-	REP #$20				;$80B59A   |
-	LDX #DATA_ED0997			;$80B59C   |
-	LDY.w #DATA_ED0997>>16			;$80B59F   |
-	LDA #$0000				;$80B5A2   |
-	JSL decompress_data			;$80B5A5   |
-	LDA #$4000				;$80B5A9   |
-	STA PPU.vram_address			;$80B5AC   |
-	LDX #$007F				;$80B5AF   |
-	LDA #$0000				;$80B5B2   |
-	LDY #$6400				;$80B5B5   |
-	JSL DMA_to_VRAM				;$80B5B8   |
-	LDX #DATA_ED02A1			;$80B5BC   |
-	LDY.w #DATA_ED02A1>>16			;$80B5BF   |
-	LDA #$0000				;$80B5C2   |
-	JSL decompress_data			;$80B5C5   |
-	LDA #$1C00				;$80B5C9   |
-	STA PPU.vram_address			;$80B5CC   |
-	LDX #$007F				;$80B5CF   |
-	LDA #$0000				;$80B5D2   |
-	LDY #$0700				;$80B5D5   |
-	JSL DMA_to_VRAM				;$80B5D8   |
-	STZ PPU.vram_address			;$80B5DC   |
-	LDX.w #DATA_C00C01>>16			;$80B5DF   |
-	LDA #DATA_C00C01			;$80B5E2   |
-	LDY #$01A0				;$80B5E5   |
-	JSL DMA_to_VRAM				;$80B5E8   |
-	LDY #$0000				;$80B5EC   |
-	LDX #$0040				;$80B5EF   |
-	LDA #DATA_FD26AE			;$80B5F2   |
-	JSL DMA_palette				;$80B5F5   |
+setup_title_screen_screen:			;	  \
+	LDA #$0001				;$80B560   |\
+	STA PPU.layer_mode			;$80B563   |/
+	LDA #$1001				;$80B566   |\
+	STA PPU.screens				;$80B569   |/
+	LDA #$0024				;$80B56C   |\
+	STA PPU.layer_all_tiledata_base		;$80B56F   |/
+	LDA #$0102				;$80B572   |\
+	STA PPU.color_addition_logic		;$80B575   |/
+	LDA #$4C1C				;$80B578   |\
+	STA PPU.layer_1_2_tilemap_base		;$80B57B   |/
+	SEP #$20				;$80B57E   |\ Reset the screen positions for layer 1 and 2
+	STZ PPU.layer_1_scroll_x		;$80B580   | |
+	STZ PPU.layer_1_scroll_x		;$80B583   | |
+	STZ PPU.layer_2_scroll_x		;$80B586   | |
+	STZ PPU.layer_2_scroll_x		;$80B589   | |
+	LDA #$FF				;$80B58C   | |
+	STA PPU.layer_1_scroll_y		;$80B58E   | |
+	STA PPU.layer_1_scroll_y		;$80B591   | |
+	STA PPU.layer_2_scroll_y		;$80B594   | |
+	STA PPU.layer_2_scroll_y		;$80B597   | |
+	REP #$20				;$80B59A   |/
+	LDX #DATA_ED0997			;$80B59C   |\
+	LDY.w #DATA_ED0997>>16			;$80B59F   | |
+	LDA #$0000				;$80B5A2   | |
+	JSL decompress_data			;$80B5A5   | |
+	LDA #$4000				;$80B5A9   | |
+	STA PPU.vram_address			;$80B5AC   | |
+	LDX #$007F				;$80B5AF   | |
+	LDA #$0000				;$80B5B2   | |
+	LDY #$6400				;$80B5B5   | |
+	JSL DMA_to_VRAM				;$80B5B8   |/
+	LDX #DATA_ED02A1			;$80B5BC   |\
+	LDY.w #DATA_ED02A1>>16			;$80B5BF   | |
+	LDA #$0000				;$80B5C2   | |
+	JSL decompress_data			;$80B5C5   | |
+	LDA #$1C00				;$80B5C9   | |
+	STA PPU.vram_address			;$80B5CC   | |
+	LDX #$007F				;$80B5CF   | |
+	LDA #$0000				;$80B5D2   | |
+	LDY #$0700				;$80B5D5   | |
+	JSL DMA_to_VRAM				;$80B5D8   |/
+	STZ PPU.vram_address			;$80B5DC   |\
+	LDX.w #DATA_C00C01>>16			;$80B5DF   | |
+	LDA #DATA_C00C01			;$80B5E2   | |
+	LDY #$01A0				;$80B5E5   | |
+	JSL DMA_to_VRAM				;$80B5E8   |/
+	LDY #$0000				;$80B5EC   |\
+	LDX #$0040				;$80B5EF   | |
+	LDA #DATA_FD26AE			;$80B5F2   | |
+	JSL DMA_palette				;$80B5F5   |/
 	RTS					;$80B5F9  /
 
 init_nintendo_copyright:
 	JSL disable_screen			;$80B5FA  \ Turn off the screen and enable f-blank
 	JSL clear_VRAM				;$80B5FE   | Zero all VRAM
-	JSL init_registers_wrapper		;$80B602   | Run basic initialization of hardware registers
+	JSL init_registers_global		;$80B602   | Run basic initialization of hardware registers
 	JSL CODE_BB91F7				;$80B606   |
 	LDA #$0001				;$80B60A   |\ Enable mode 1 and place layer 1 on the mainscreen
 	STA PPU.layer_mode			;$80B60D   | |
@@ -12671,8 +12685,8 @@ CODE_80F3FB:
 	JSL disable_screen			;$80F3FB  \
 	PHK					;$80F3FF   |
 	PLB					;$80F400   |
-	JSL clear_VRAM_wrapper			;$80F401   |
-	JSL init_registers_wrapper		;$80F405   |
+	JSL clear_VRAM_global			;$80F401   |
+	JSL init_registers_global		;$80F405   |
 	JSL clear_noncritical_wram		;$80F409   |
 	JSL set_all_oam_offscreen		;$80F40D   |
 	JSL CODE_BB91F7				;$80F411   |
@@ -12680,7 +12694,7 @@ CODE_80F3FB:
 	JSL play_song				;$80F418   |
 	STZ $1730				;$80F41C   |
 	LDA #$000E				;$80F41F   |
-	JSL set_PPU_registers_wrapper		;$80F422   |
+	JSL set_PPU_registers_global		;$80F422   |
 	LDA #$003A				;$80F426   |
 	JSL VRAM_payload_handler_global		;$80F429   |
 	LDY #$0000				;$80F42D   |
@@ -13253,12 +13267,12 @@ CODE_80FA7C:
 	JSL disable_screen			;$80FA7C  \
 	PHK					;$80FA80   |
 	PLB					;$80FA81   |
-	JSL clear_VRAM_wrapper			;$80FA82   |
-	JSL init_registers_wrapper		;$80FA86   |
+	JSL clear_VRAM_global			;$80FA82   |
+	JSL init_registers_global		;$80FA86   |
 	LDA #$001F				;$80FA8A   |
 	JSL VRAM_payload_handler_global		;$80FA8D   |
 	LDA #$001F				;$80FA91   |
-	JSL set_PPU_registers_wrapper		;$80FA94   |
+	JSL set_PPU_registers_global		;$80FA94   |
 	LDA #$0014				;$80FA98   |
 	JSL play_song				;$80FA9B   |
 	LDA #$0100				;$80FA9F   |

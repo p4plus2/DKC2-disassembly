@@ -3527,7 +3527,7 @@ CODE_BAB1B9:
 	LDA DATA_BAB3FE,x			;$BAB1D2   |
 	STA $000650				;$BAB1D5   |
 	JSL disable_screen			;$BAB1D9   |
-	JSL clear_VRAM_wrapper			;$BAB1DD   |
+	JSL clear_VRAM_global			;$BAB1DD   |
 	JSL CODE_BAC7C0				;$BAB1E1   |
 	SEP #$20				;$BAB1E5   |
 	STZ PPU.layer_2_scroll_x		;$BAB1E7   |
@@ -3553,7 +3553,7 @@ CODE_BAB1B9:
 	LDA $0001,x				;$BAB21E   |
 	AND #$00FF				;$BAB221   |
 	PHX					;$BAB224   |
-	JSL set_PPU_registers_wrapper		;$BAB225   |
+	JSL set_PPU_registers_global		;$BAB225   |
 	LDA #$00AA				;$BAB229   |
 	LDY #$00E0				;$BAB22C   |
 	LDX #$0004				;$BAB22F   |
@@ -4004,9 +4004,9 @@ CODE_BAB633:
 	PLA					;$BAB646   |
 	STA $CC					;$BAB647   |
 	JSL disable_screen			;$BAB649   |
-	JSL clear_VRAM_wrapper			;$BAB64D   |
+	JSL clear_VRAM_global			;$BAB64D   |
 	JSL CODE_BAC7C0				;$BAB651   |
-	JSL CODE_8088D2				;$BAB655   |
+	JSL clear_wram_tables			;$BAB655   |
 	JSL CODE_BB91F7				;$BAB659   |
 	JSL CODE_B4BE2F				;$BAB65D   |
 	LDA #$0780				;$BAB661   |
@@ -4021,7 +4021,7 @@ CODE_BAB671:					;	   |
 	LDA #$0038				;$BAB679   |
 	JSL VRAM_payload_handler_global		;$BAB67C   |
 	LDA #$0037				;$BAB680   |
-	JSL set_PPU_registers_wrapper		;$BAB683   |
+	JSL set_PPU_registers_global		;$BAB683   |
 	LDA #DATA_BAB90B			;$BAB687   |
 	STA $000662				;$BAB68A   |
 	LDA #$0008				;$BAB68E   |

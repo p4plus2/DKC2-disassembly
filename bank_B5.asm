@@ -7886,8 +7886,8 @@ CODE_B5CDEF:
 CODE_B5CDFD:
 	STA $0006B1				;$B5CDFD  \
 	JSL disable_screen			;$B5CE01   |
-	JSL CODE_8088D2				;$B5CE05   |
-	JSL init_registers_wrapper		;$B5CE09   |
+	JSL clear_wram_tables			;$B5CE05   |
+	JSL init_registers_global		;$B5CE09   |
 	JSL clear_noncritical_wram		;$B5CE0D   |
 	PHK					;$B5CE11   |
 	PLB					;$B5CE12   |
@@ -9988,7 +9988,7 @@ CODE_B5E0A1:
 	INX					;$B5E0A2   |
 	PHK					;$B5E0A3   |
 	PLB					;$B5E0A4   |
-	JSL clear_VRAM_wrapper			;$B5E0A5   |
+	JSL clear_VRAM_global			;$B5E0A5   |
 	LDA $0000,x				;$B5E0A9   |
 	AND #$00FF				;$B5E0AC   |
 	PHX					;$B5E0AF   |
@@ -9998,7 +9998,7 @@ CODE_B5E0A1:
 	LDA $0000,x				;$B5E0B6   |
 	AND #$00FF				;$B5E0B9   |
 	PHX					;$B5E0BC   |
-	JSL set_PPU_registers_wrapper		;$B5E0BD   |
+	JSL set_PPU_registers_global		;$B5E0BD   |
 	PLX					;$B5E0C1   |
 	INX					;$B5E0C2   |
 	LDA $0000,x				;$B5E0C3   |
