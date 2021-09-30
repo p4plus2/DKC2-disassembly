@@ -1947,7 +1947,7 @@ CODE_B59F69:
 	PHK					;$B59F69  \
 	PLB					;$B59F6A   |
 	LDY $62					;$B59F6B   |
-	LDA $16FE,y				;$B59F6D   |
+	LDA sprite_render_table,y		;$B59F6D   |
 	TAY					;$B59F70   |
 	LDA $0000,y				;$B59F71   |
 	BNE CODE_B59F79				;$B59F74   |
@@ -2149,7 +2149,7 @@ CODE_B5A0E4:					;	   |
 	CMP $78					;$B5A0E7   |
 	BCS CODE_B5A0F7				;$B5A0E9   |
 	LDX $62					;$B5A0EB   |
-	LDA $16FE,x				;$B5A0ED   |
+	LDA sprite_render_table,x		;$B5A0ED   |
 	TAX					;$B5A0F0   |
 	LDA $1A,x				;$B5A0F1   |
 	CMP $16,x				;$B5A0F3   |
@@ -3304,7 +3304,7 @@ CODE_B5A8D5:
 	RTS					;$B5A8D9  /
 
 CODE_B5A8DA:
-	LDA $16FE				;$B5A8DA  \
+	LDA sprite_render_table			;$B5A8DA  \
 	TAY					;$B5A8DD   |
 	LDA $0014,y				;$B5A8DE   |
 	STA $54					;$B5A8E1   |
@@ -3322,7 +3322,7 @@ CODE_B5A8E6:					;	   |
 CODE_B5A8F9:					;	   |
 	INX					;$B5A8F9   |
 	INX					;$B5A8FA   |
-	CPX #$172C				;$B5A8FB   |
+	CPX #sprite_render_table_end-2		;$B5A8FB   |
 	BNE CODE_B5A8E6				;$B5A8FE   |
 CODE_B5A900:					;	   |
 	LDY $00,x				;$B5A900   |
@@ -8047,7 +8047,7 @@ CODE_B5CEE8:
 	RTS					;$B5CEEA  /
 
 CODE_B5CEEB:
-	JSL CODE_BB91F7				;$B5CEEB  \
+	JSL init_sprite_render_order_global	;$B5CEEB  \
 	RTS					;$B5CEEF  /
 
 CODE_B5CEF0:
@@ -8698,7 +8698,7 @@ CODE_B5D57D:
 
 CODE_B5D580:
 	LDA #$0004				;$B5D580  \
-	STA $0D84				;$B5D583   |
+	STA aux_sprite_table			;$B5D583   |
 	STA main_sprite_table			;$B5D586   |
 	LDA #$002C				;$B5D589   |
 	STA $0D8A				;$B5D58C   |
@@ -8753,7 +8753,7 @@ CODE_B5D580:
 	LDX #$01D6				;$B5D61F   |
 CODE_B5D622:					;	   |
 	LDA #$0004				;$B5D622   |
-	STA $0D84,x				;$B5D625   |
+	STA aux_sprite_table,x			;$B5D625   |
 	LDA #$00C0				;$B5D628   |
 	STA $0D8A,x				;$B5D62B   |
 	LDA #$0180				;$B5D62E   |
@@ -10499,7 +10499,7 @@ CODE_B5E4E6:					;	   |
 	CLC					;$B5E4ED   |
 	ADC $0A,x				;$B5E4EE   |
 	STA $0D8E				;$B5E4F0   |
-	LDY #$0D84				;$B5E4F3   |
+	LDY #aux_sprite_table			;$B5E4F3   |
 	JSR CODE_B5E560				;$B5E4F6   |
 	PHD					;$B5E4F9   |
 	LDA #$0A00				;$B5E4FA   |

@@ -773,7 +773,7 @@ CODE_BEBD92:
 	CLC					;$BEBDB5   |
 	ADC current_sprite			;$BEBDB6   |
 	SEC					;$BEBDB8   |
-	SBC #$0D84				;$BEBDB9   |
+	SBC #aux_sprite_table			;$BEBDB9   |
 	STA $0034,y				;$BEBDBC   |
 	SEC					;$BEBDBF   |
 CODE_BEBDC0:					;	   |
@@ -833,7 +833,7 @@ CODE_BEBE18:
 	LDA $34,x				;$BEBE24   |
 	AND #$3FFF				;$BEBE26   |
 	CLC					;$BEBE29   |
-	ADC #$0D84				;$BEBE2A   |
+	ADC #aux_sprite_table			;$BEBE2A   |
 	STA $6A					;$BEBE2D   |
 	LDA $5E					;$BEBE2F   |
 	BIT $60					;$BEBE31   |
@@ -1748,7 +1748,7 @@ CODE_BEC48C:					;	   |
 	CLC					;$BEC49F   |
 	ADC current_sprite			;$BEC4A0   |
 	SEC					;$BEC4A2   |
-	SBC #$0D84				;$BEC4A3   |
+	SBC #aux_sprite_table			;$BEC4A3   |
 	STA $0034,y				;$BEC4A6   |
 	LDA $0030,y				;$BEC4A9   |
 	AND #$FFFD				;$BEC4AC   |
@@ -2208,7 +2208,7 @@ CODE_BEC7FB:
 	STA $0D9E				;$BEC80A   |
 	STZ $0DA0				;$BEC80D   |
 	TYA					;$BEC810   |
-	LDY #$0D84				;$BEC811   |
+	LDY #aux_sprite_table			;$BEC811   |
 	JSL CODE_B59CAE				;$BEC814   |
 	LDA $0D9C				;$BEC818   |
 	STA $0977				;$BEC81B   |

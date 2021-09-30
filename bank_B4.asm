@@ -1351,7 +1351,7 @@ CODE_B48B15:
 	SEP #$20				;$B48B1B   |
 	STZ CPU.enable_interrupts		;$B48B1D   |
 	REP #$20				;$B48B20   |
-	JSL CODE_BB91F7				;$B48B22   |
+	JSL init_sprite_render_order_global	;$B48B22   |
 	LDA $06A3				;$B48B26   |
 	AND #$EFFF				;$B48B29   |
 	STA $06A3				;$B48B2C   |
@@ -7455,7 +7455,7 @@ CODE_B4BEEF:
 	SEP #$20				;$B4BEEF  \
 	STZ CPU.enable_interrupts		;$B4BEF1   |
 	REP #$20				;$B4BEF4   |
-	JSL CODE_BB91F7				;$B4BEF6   |
+	JSL init_sprite_render_order_global	;$B4BEF6   |
 	LDA #$8000				;$B4BEFA   |
 	TRB $06A3				;$B4BEFD   |
 	LDA #$0020				;$B4BF00   |

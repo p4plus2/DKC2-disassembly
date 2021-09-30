@@ -2780,22 +2780,22 @@ disable_screen:
 	STA $00059B				;$BB91F2   |/
 	RTL					;$BB91F6  /
 
-CODE_BB91F7:
-	JSR CODE_BB91FB				;$BB91F7  \
+init_sprite_render_order_global:
+	JSR init_sprite_render_order		;$BB91F7  \ Local trampoline
 	RTL					;$BB91FA  /
 
-CODE_BB91FB:
-	LDX #$0000				;$BB91FB  \
-	LDA #$0D84				;$BB91FE   |
-CODE_BB9201:					;	   |
-	STA $16FE,x				;$BB9201   |
-	CLC					;$BB9204   |
-	ADC #sizeof(sprite)			;$BB9205   |
-	INX					;$BB9208   |
-	INX					;$BB9209   |
-	CPX #$0032				;$BB920A   |
-	BNE CODE_BB9201				;$BB920D   |
-	RTS					;$BB920F  /
+init_sprite_render_order:			;	  \
+	LDX #$0000				;$BB91FB   | Initial slot index
+	LDA #aux_sprite_table			;$BB91FE   | Initial sprite slot to render
+.next_slot					;	   |
+	STA sprite_render_table,x		;$BB9201   |\ Write sprite slot to render, increment to the next slot
+	CLC					;$BB9204   | |
+	ADC #sizeof(sprite)			;$BB9205   |/
+	INX					;$BB9208   |\ Check if all render slots have been filled
+	INX					;$BB9209   | |
+	CPX #$0032				;$BB920A   | |
+	BNE .next_slot				;$BB920D   |/ If not, fill the next slot
+	RTS					;$BB920F  / The slots are filled, run away
 
 CODE_BB9210:
 	JSL CODE_BB819F				;$BB9210  \
@@ -2843,7 +2843,7 @@ CODE_BB9265:					;	   |
 	STZ $17C8				;$BB926B   |
 	JSL init_registers_global		;$BB926E   |
 	JSL clear_wram_tables			;$BB9272   |
-	JSR CODE_BB91FB				;$BB9276   |
+	JSR init_sprite_render_order		;$BB9276   |
 	JSL clear_VRAM_global			;$BB9279   |
 	LDA $08A6				;$BB927D   |
 	XBA					;$BB9280   |

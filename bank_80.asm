@@ -800,7 +800,7 @@ clear_wram_tables:
 	RTL					;$8088F0  /
 
 .wram_tables
-	dw $0D84, $092E
+	dw aux_sprite_table, $092E
 	dw $16B2, $0026
 	dw $16D8, $0026
 	dw $0D7A, $0002
@@ -3269,7 +3269,7 @@ CODE_809F85:
 	JSR clear_VRAM				;$809F8B   |
 	JSL init_registers_global		;$809F8E   |
 	JSL clear_noncritical_wram		;$809F92   |
-	JSL CODE_BB91F7				;$809F96   |
+	JSL init_sprite_render_order_global	;$809F96   |
 	STZ global_frame_counter		;$809F9A   |
 	LDA #$CCCC				;$809F9C   |
 	LDX #$0032				;$809F9F   |
@@ -3470,7 +3470,7 @@ CODE_80A0E9:					;	   |
 	LDA #$0000				;$80A1CF   |
 	STA $0D9E				;$80A1D2   |
 	LDA #$0004				;$80A1D5   |
-	STA $0D84				;$80A1D8   |
+	STA aux_sprite_table			;$80A1D8   |
 	LDA #$0036				;$80A1DB   |
 	STA $0D8A				;$80A1DE   |
 	LDA #$0100				;$80A1E1   |
@@ -3591,7 +3591,7 @@ CODE_80A2CF:
 	LDA $1000				;$80A322   |
 	STA global_frame_counter		;$80A325   |
 CODE_80A327:					;	   |
-	LDX #$0D84				;$80A327   |
+	LDX #aux_sprite_table			;$80A327   |
 	JSR CODE_80A545				;$80A32A   |
 	LDX #$0E9E				;$80A32D   |
 	JSR CODE_80A518				;$80A330   |
@@ -3702,7 +3702,7 @@ CODE_80A41F:					;	   |
 	LDA global_frame_counter		;$80A41F   |
 	BIT #$0003				;$80A421   |
 	BNE CODE_80A44D				;$80A424   |
-	LDX #$0D84				;$80A426   |
+	LDX #aux_sprite_table			;$80A426   |
 CODE_80A429:					;	   |
 	LDA $00,x				;$80A429   |
 	CMP #$0001				;$80A42B   |
@@ -3756,7 +3756,7 @@ CODE_80A49E:					;	   |
 	BRA CODE_80A49E				;$80A49F  /
 
 CODE_80A4A1:
-	LDX #$0D84				;$80A4A1  \
+	LDX #aux_sprite_table			;$80A4A1  \
 CODE_80A4A4:					;	   |
 	LDA $00,x				;$80A4A4   |
 	BEQ CODE_80A4B6				;$80A4A6   |
@@ -3764,7 +3764,7 @@ CODE_80A4A4:					;	   |
 	CLC					;$80A4A9   |
 	ADC #sizeof(sprite)			;$80A4AA   |
 	TAX					;$80A4AD   |
-	CPX #$0D84				;$80A4AE   |
+	CPX #aux_sprite_table			;$80A4AE   |
 	BNE CODE_80A4A4				;$80A4B1   |
 	LDA #$0001				;$80A4B3   |
 CODE_80A4B6:					;	   |
@@ -3803,10 +3803,10 @@ CODE_80A4E5:					;	   |
 	CMP #$0048				;$80A4EF   |
 	BCC CODE_80A505				;$80A4F2   |
 	LDA #$0000				;$80A4F4   |
-	STA $0D84				;$80A4F7   |
-	STA main_sprite_table			;$80A4FA   |
-	STA $0E40				;$80A4FD   |
-	STA $0EFC				;$80A500   |
+	STA aux_sprite_table+(sizeof(sprite)*0)	;$80A4F7   |
+	STA aux_sprite_table+(sizeof(sprite)*1)	;$80A4FA   |
+	STA aux_sprite_table+(sizeof(sprite)*2)	;$80A4FD   |
+	STA aux_sprite_table+(sizeof(sprite)*4)	;$80A500   |
 	BRA CODE_80A50C				;$80A503  /
 
 CODE_80A505:
@@ -5462,15 +5462,15 @@ DATA_80B379:
 	db $00, $00, $06, $00, $01, $07
 
 init_title_screen:
-	JSL disable_screen			;$80B3D7  \
-	PHK					;$80B3DB   |
-	PLB					;$80B3DC   |
-	STZ player_skipped_demo			;$80B3DD   |
+	JSL disable_screen			;$80B3D7  \ Turn off the screen
+	PHK					;$80B3DB   |\ Swap to current data bank
+	PLB					;$80B3DC   |/
+	STZ player_skipped_demo			;$80B3DD   | Reset the demo skip status
 	STZ $060B				;$80B3E0   |
-	JSR clear_VRAM				;$80B3E3   |
-	JSL init_registers_global		;$80B3E6   |
+	JSR clear_VRAM				;$80B3E3   | Clear all of VRAM
+	JSL init_registers_global		;$80B3E6   | Do some basic initializations of hardware
 	JSL clear_wram_tables			;$80B3EA   | Clear some basic tables used by core systems
-	JSL CODE_BB91F7				;$80B3EE   |
+	JSL init_sprite_render_order_global	;$80B3EE   |
 	LDA #$0002				;$80B3F2   |\ Play the title screen music
 	JSL play_song				;$80B3F5   |/
 	STZ global_frame_counter		;$80B3F9   | Reset the frame counter
@@ -5692,7 +5692,7 @@ init_nintendo_copyright:
 	JSL disable_screen			;$80B5FA  \ Turn off the screen and enable f-blank
 	JSL clear_VRAM				;$80B5FE   | Zero all VRAM
 	JSL init_registers_global		;$80B602   | Run basic initialization of hardware registers
-	JSL CODE_BB91F7				;$80B606   |
+	JSL init_sprite_render_order_global	;$80B606   |
 	LDA #$0001				;$80B60A   |\ Enable mode 1 and place layer 1 on the mainscreen
 	STA PPU.layer_mode			;$80B60D   | |
 	STA PPU.screens				;$80B610   |/
@@ -12689,7 +12689,7 @@ CODE_80F3FB:
 	JSL init_registers_global		;$80F405   |
 	JSL clear_noncritical_wram		;$80F409   |
 	JSL set_all_oam_offscreen		;$80F40D   |
-	JSL CODE_BB91F7				;$80F411   |
+	JSL init_sprite_render_order_global	;$80F411   |
 	LDA #$001E				;$80F415   |
 	JSL play_song				;$80F418   |
 	STZ $1730				;$80F41C   |

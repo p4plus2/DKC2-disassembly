@@ -545,7 +545,7 @@ CODE_BA9016:
 	CLC					;$BA9036   |
 	ADC current_sprite			;$BA9037   |
 	SEC					;$BA9039   |
-	SBC #$0D84				;$BA903A   |
+	SBC #aux_sprite_table			;$BA903A   |
 	STA $0034,y				;$BA903D   |
 	SEC					;$BA9040   |
 CODE_BA9041:					;	   |
@@ -4007,7 +4007,7 @@ CODE_BAB633:
 	JSL clear_VRAM_global			;$BAB64D   |
 	JSL CODE_BAC7C0				;$BAB651   |
 	JSL clear_wram_tables			;$BAB655   |
-	JSL CODE_BB91F7				;$BAB659   |
+	JSL init_sprite_render_order_global	;$BAB659   |
 	JSL CODE_B4BE2F				;$BAB65D   |
 	LDA #$0780				;$BAB661   |
 	STA $000650				;$BAB664   |

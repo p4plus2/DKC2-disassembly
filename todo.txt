@@ -93,3 +93,5 @@ if !version == 0			;		 |
 else					;		 |
 	LDX #$A408			;$80D061	 |
 endif
+
+handle 16FC
