@@ -1361,7 +1361,7 @@ CODE_B48B15:
 	PLA					;$B48B35   |
 	STA $067C				;$B48B36   |
 	REP #$20				;$B48B39   |
-	LDA $0613				;$B48B3B   |
+	LDA menu_action				;$B48B3B   |
 	BIT #$0001				;$B48B3E   |
 	BEQ CODE_B48B46				;$B48B41   |
 	BRL CODE_B48C07				;$B48B43  /
@@ -1370,7 +1370,7 @@ CODE_B48B46:
 	LDA $0689				;$B48B46  \
 	TAX					;$B48B49   |
 	LDA DATA_B4C53D,x			;$B48B4A   |
-	LDY $0617				;$B48B4D   |
+	LDY language_select			;$B48B4D   |
 	BEQ CODE_B48B55				;$B48B50   |
 	LDA DATA_B4C853,x			;$B48B52   |
 CODE_B48B55:					;	   |
@@ -1673,7 +1673,7 @@ CODE_B48DFA:
 	LDX #$0006				;$B48E38   |
 	STX $0658				;$B48E3B   |
 	LDA #DATA_F700B6			;$B48E3E   |
-	LDY $0617				;$B48E41   |
+	LDY language_select			;$B48E41   |
 	BEQ CODE_B48E49				;$B48E44   |
 	LDA #DATA_F7FCCA			;$B48E46   |
 CODE_B48E49:					;	   |
@@ -1907,7 +1907,7 @@ if !version == 0				;	   |
 else						;	   |
 	LDA #DATA_F7844E			;$B4906F   |
 endif						;	   |
-	LDY $0617				;$B49072   |
+	LDY language_select			;$B49072   |
 	BEQ CODE_B4907A				;$B49075   |
 	LDA #DATA_F7FCD6			;$B49077   |
 CODE_B4907A:					;	   |
@@ -1939,7 +1939,7 @@ CODE_B49098:					;	   |
 	BNE CODE_B490C7				;$B490B0   |
 	LDA #DATA_F78456			;$B490B2   |
 	PHY					;$B490B5   |
-	LDY $0617				;$B490B6   |
+	LDY language_select			;$B490B6   |
 	BEQ CODE_B490BE				;$B490B9   |
 	LDA #DATA_F7FCDE			;$B490BB   |
 CODE_B490BE:					;	   |
@@ -1970,7 +1970,7 @@ CODE_B490D9:
 	LDX #$0004				;$B490EE   |
 	STX $0658				;$B490F1   |
 	LDA #DATA_F700C2			;$B490F4   |
-	LDY $0617				;$B490F7   |
+	LDY language_select			;$B490F7   |
 	BEQ CODE_B490FF				;$B490FA   |
 	LDA #DATA_F7FCF0			;$B490FC   |
 CODE_B490FF:					;	   |
@@ -2004,7 +2004,7 @@ CODE_B49126:
 	LDX #$0002				;$B49148   |
 	STX $0658				;$B4914B   |
 	LDA #DATA_F700CA			;$B4914E   |
-	LDY $0617				;$B49151   |
+	LDY language_select			;$B49151   |
 	BEQ CODE_B49159				;$B49154   |
 	LDA #DATA_F7FCF8			;$B49156   |
 CODE_B49159:					;	   |
@@ -2041,7 +2041,7 @@ CODE_B49188:
 	LDA #$0002				;$B491AE   |
 	STA $0658				;$B491B1   |
 	LDA #DATA_F7845C			;$B491B4   |
-	LDY $0617				;$B491B7   |
+	LDY language_select			;$B491B7   |
 	BEQ CODE_B491BF				;$B491BA   |
 	LDA #DATA_F7FCE4			;$B491BC   |
 CODE_B491BF:					;	   |
@@ -2138,7 +2138,7 @@ CODE_B49266:
 	SBC $0658				;$B49281   |
 	ASL A					;$B49284   |
 	TAY					;$B49285   |
-	LDA $0617				;$B49286   |
+	LDA language_select			;$B49286   |
 	BNE CODE_B49293				;$B49289   |
 	JSR CODE_B4ADDF				;$B4928B   |
 	LDX $00AE,y				;$B4928E   |
@@ -2183,7 +2183,7 @@ CODE_B492C3:					;	   |
 	REP #$20				;$B492DF   |
 	LDY $0689				;$B492E1   |
 	LDX DATA_B4C533,y			;$B492E4   |
-	LDA $0617				;$B492E7   |
+	LDA language_select			;$B492E7   |
 	BEQ CODE_B492EF				;$B492EA   |
 	LDX DATA_B4C849,y			;$B492EC   |
 CODE_B492EF:					;	   |
@@ -2396,7 +2396,7 @@ CODE_B494AC:
 	LDA $0689				;$B494C3   |
 	TAX					;$B494C6   |
 	LDA DATA_B4C53D,x			;$B494C7   |
-	LDY $0617				;$B494CA   |
+	LDY language_select			;$B494CA   |
 	BEQ CODE_B494D2				;$B494CD   |
 	LDA DATA_B4C853,x			;$B494CF   |
 CODE_B494D2:					;	   |
@@ -2421,7 +2421,7 @@ CODE_B494DB:
 	LDA $0689				;$B49500   |
 	TAX					;$B49503   |
 	LDA #DATA_F70056			;$B49504   |
-	LDY $0617				;$B49507   |
+	LDY language_select			;$B49507   |
 	BEQ CODE_B4950F				;$B4950A   |
 	LDA #DATA_F7FC84			;$B4950C   |
 CODE_B4950F:					;	   |
@@ -2473,7 +2473,7 @@ CODE_B49578:					;	   |
 
 CODE_B49579:
 	LDY #DATA_B4C4F7			;$B49579  \
-	LDA $0617				;$B4957C   |
+	LDA language_select			;$B4957C   |
 	BEQ CODE_B49584				;$B4957F   |
 	LDY #DATA_B4C80D			;$B49581   |
 CODE_B49584:					;	   |
@@ -2496,7 +2496,7 @@ CODE_B49584:					;	   |
 
 CODE_B495A8:
 	LDX #DATA_BAD5AA			;$B495A8  \
-	LDA $0617				;$B495AB   |
+	LDA language_select			;$B495AB   |
 	BEQ CODE_B495B3				;$B495AE   |
 	LDX #DATA_BAEF04			;$B495B0   |
 CODE_B495B3:					;	   |
@@ -2530,7 +2530,7 @@ CODE_B495D3:
 	JSR CODE_B496BB				;$B495ED   |
 CODE_B495F0:					;	   |
 	LDY #DATA_B4C513			;$B495F0   |
-	LDA $0617				;$B495F3   |
+	LDA language_select			;$B495F3   |
 	BEQ CODE_B495FB				;$B495F6   |
 	LDY #DATA_B4C829			;$B495F8   |
 CODE_B495FB:					;	   |
@@ -2645,7 +2645,7 @@ CODE_B496DA:
 	INY					;$B496DD   |
 	INY					;$B496DE   |
 	INY					;$B496DF   |
-	LDA $0617				;$B496E0   |
+	LDA language_select			;$B496E0   |
 	BEQ CODE_B496F2				;$B496E3   |
 	LDA $0005,x				;$B496E5   |
 	AND #$00FF				;$B496E8   |
@@ -2669,7 +2669,7 @@ CODE_B496FD:					;	   |
 
 CODE_B49704:
 	LDX #DATA_B497F5			;$B49704  \
-	LDA $0617				;$B49707   |
+	LDA language_select			;$B49707   |
 	BEQ CODE_B4970F				;$B4970A   |
 	LDX #DATA_B49835			;$B4970C   |
 CODE_B4970F:					;	   |
@@ -2716,7 +2716,7 @@ CODE_B4974F:
 	LDA $0689				;$B4974F  \
 	BNE CODE_B49764				;$B49752   |
 	LDY #DATA_B4C4F7			;$B49754   |
-	LDX $0617				;$B49757   |
+	LDX language_select			;$B49757   |
 	BEQ CODE_B4975F				;$B4975A   |
 	LDY #DATA_B4C80D			;$B4975C   |
 CODE_B4975F:					;	   |
@@ -2727,7 +2727,7 @@ CODE_B49764:
 	CMP #$0006				;$B49764  \
 	BNE CODE_B49779				;$B49767   |
 	LDY #DATA_B4C513			;$B49769   |
-	LDX $0617				;$B4976C   |
+	LDX language_select			;$B4976C   |
 	BEQ CODE_B4975F				;$B4976F   |
 	LDY #DATA_B4C829			;$B49771   |
 	JSR CODE_B49875				;$B49774   |
@@ -2737,7 +2737,7 @@ CODE_B49779:
 	CMP #$0004				;$B49779  \
 	BNE CODE_B4978E				;$B4977C   |
 	LDY #DATA_B4C521			;$B4977E   |
-	LDX $0617				;$B49781   |
+	LDX language_select			;$B49781   |
 	BEQ CODE_B49789				;$B49784   |
 	LDY #DATA_B4C837			;$B49786   |
 CODE_B49789:					;	   |
@@ -2746,7 +2746,7 @@ CODE_B49789:					;	   |
 
 CODE_B4978E:
 	TAX					;$B4978E  \
-	LDA $0617				;$B4978F   |
+	LDA language_select			;$B4978F   |
 	BEQ CODE_B49799				;$B49792   |
 	LDA DATA_B4C803,x			;$B49794   |
 	BRA CODE_B4979C				;$B49797  /
@@ -3199,7 +3199,7 @@ CODE_B49BBB:
 	STZ $06AF				;$B49BC4   |
 	STZ $06AD				;$B49BC7   |
 	LDA #$0001				;$B49BCA   |
-	TRB $0613				;$B49BCD   |
+	TRB menu_action				;$B49BCD   |
 	LDA #CODE_8087D9			;$B49BD0   |
 	STA gamemode_pointer			;$B49BD3   |
 	LDA #simple_gamemode_nmi		;$B49BD5   |
@@ -3378,7 +3378,7 @@ endif						;	   |
 	LDA $0689				;$B49D0D   |
 	TAX					;$B49D10   |
 	LDA DATA_B4C547,x			;$B49D11   |
-	LDY $0617				;$B49D14   |
+	LDY language_select			;$B49D14   |
 	BEQ CODE_B49D1C				;$B49D17   |
 	LDA DATA_B4C85D,x			;$B49D19   |
 CODE_B49D1C:					;	   |
@@ -3734,7 +3734,7 @@ CODE_B49FD6:					;	   |
 	LDA #$0001				;$B49FE2   |
 	STA $064E				;$B49FE5   |
 	LDX #$01D4				;$B49FE8   |
-	LDA $0617				;$B49FEB   |
+	LDA language_select			;$B49FEB   |
 	BEQ CODE_B49FF3				;$B49FEE   |
 	LDX #DATA_F7FDC2			;$B49FF0   |
 CODE_B49FF3:					;	   |
@@ -3828,14 +3828,14 @@ CODE_B4A0A7:					;	   |
 
 CODE_B4A0A8:
 	LDA #DATA_B4C795			;$B4A0A8  \
-	LDY $0617				;$B4A0AB   |
+	LDY language_select			;$B4A0AB   |
 	BEQ CODE_B4A0C0				;$B4A0AE   |
 	LDA #DATA_B4CAAB			;$B4A0B0   |
 	BRA CODE_B4A0C0				;$B4A0B3  /
 
 CODE_B4A0B5:
 	LDA #DATA_B4C741			;$B4A0B5  \
-	LDY $0617				;$B4A0B8   |
+	LDY language_select			;$B4A0B8   |
 	BEQ CODE_B4A0C0				;$B4A0BB   |
 	LDA #DATA_B4CA57			;$B4A0BD   |
 CODE_B4A0C0:					;	   |
@@ -4040,7 +4040,7 @@ CODE_B4A26E:					;	   |
 
 CODE_B4A26F:
 	LDA #$0001				;$B4A26F  \
-	STA $0613				;$B4A272   |
+	STA menu_action				;$B4A272   |
 	LDA #CODE_B4A288			;$B4A275   |
 	STA $079C				;$B4A278   |
 	LDA #CODE_808D4E			;$B4A27B   |
@@ -4059,8 +4059,8 @@ CODE_B4A292:
 	JSL disable_screen			;$B4A292  \
 	JSL CODE_BBC5F4				;$B4A296   |
 	LDA #$0001				;$B4A29A   |
-	STA $0613				;$B4A29D   |
-	JML CODE_80A5F1				;$B4A2A0  /
+	STA menu_action				;$B4A29D   |
+	JML init_menu				;$B4A2A0  /
 
 CODE_B4A2A4:
 	JSL fade_screen_global			;$B4A2A4  \
@@ -4093,7 +4093,7 @@ CODE_B4A2BC:
 	AND #$FDFF				;$B4A2E8   |
 	STA $06A1				;$B4A2EB   |
 	LDA #DATA_F70168			;$B4A2EE   |
-	LDY $0617				;$B4A2F1   |
+	LDY language_select			;$B4A2F1   |
 	BEQ CODE_B4A2F9				;$B4A2F4   |
 	LDA #DATA_F7FD6E			;$B4A2F6   |
 CODE_B4A2F9:					;	   |
@@ -4182,7 +4182,7 @@ CODE_B4A391:
 	ASL A					;$B4A3A9   |
 	TAX					;$B4A3AA   |
 	LDY DATA_B4C55B,x			;$B4A3AB   |
-	LDA $0617				;$B4A3AE   |
+	LDA language_select			;$B4A3AE   |
 	BEQ CODE_B4A3B6				;$B4A3B1   |
 	LDY DATA_B4C871,x			;$B4A3B3   |
 CODE_B4A3B6:					;	   |
@@ -4445,7 +4445,7 @@ CODE_B4A5E7:
 	DEC A					;$B4A616   |
 	BNE CODE_B4A62C				;$B4A617   |
 	LDX #$0112				;$B4A619   |
-	LDA $0617				;$B4A61C   |
+	LDA language_select			;$B4A61C   |
 	BEQ CODE_B4A624				;$B4A61F   |
 	LDX #$FD2C				;$B4A621   |
 CODE_B4A624:					;	   |
@@ -4455,7 +4455,7 @@ CODE_B4A624:					;	   |
 
 CODE_B4A62C:
 	LDX #$0124				;$B4A62C  \
-	LDA $0617				;$B4A62F   |
+	LDA language_select			;$B4A62F   |
 	BEQ CODE_B4A637				;$B4A632   |
 	LDX #$FD38				;$B4A634   |
 CODE_B4A637:					;	   |
@@ -4465,7 +4465,7 @@ CODE_B4A639:
 	LDA #$065F				;$B4A639  \
 	JSL queue_sound_effect			;$B4A63C   |
 	LDX #$0100				;$B4A640   |
-	LDA $0617				;$B4A643   |
+	LDA language_select			;$B4A643   |
 	BEQ CODE_B4A64B				;$B4A646   |
 	LDX #DATA_F7FD20			;$B4A648   |
 CODE_B4A64B:					;	   |
@@ -4713,7 +4713,7 @@ CODE_B4A830:
 	LDA $0689				;$B4A866   |
 	TAX					;$B4A869   |
 	LDA DATA_B4C551,x			;$B4A86A   |
-	LDY $0617				;$B4A86D   |
+	LDY language_select			;$B4A86D   |
 	BEQ CODE_B4A875				;$B4A870   |
 	LDA DATA_B4C867,x			;$B4A872   |
 CODE_B4A875:					;	   |
@@ -4857,7 +4857,7 @@ CODE_B4A98C:
 	LDA $0689				;$B4A9B2   |
 	TAX					;$B4A9B5   |
 	LDA DATA_B4C551,x			;$B4A9B6   |
-	LDY $0617				;$B4A9B9   |
+	LDY language_select			;$B4A9B9   |
 	BEQ CODE_B4A9C1				;$B4A9BC   |
 	LDA DATA_B4C867,x			;$B4A9BE   |
 CODE_B4A9C1:					;	   |
@@ -4892,7 +4892,7 @@ CODE_B4A9DB:
 	LDA $0689				;$B4AA01   |
 	TAX					;$B4AA04   |
 	LDA DATA_B4C551,x			;$B4AA05   |
-	LDY $0617				;$B4AA08   |
+	LDY language_select			;$B4AA08   |
 	BEQ CODE_B4AA10				;$B4AA0B   |
 	LDA DATA_B4C867,x			;$B4AA0D   |
 CODE_B4AA10:					;	   |
@@ -4924,7 +4924,7 @@ CODE_B4AA2A:
 	LDA $0689				;$B4AA47   |
 	TAX					;$B4AA4A   |
 	LDA DATA_B4C547,x			;$B4AA4B   |
-	LDY $0617				;$B4AA4E   |
+	LDY language_select			;$B4AA4E   |
 	BEQ CODE_B4AA56				;$B4AA51   |
 	LDA DATA_B4C85D,x			;$B4AA53   |
 CODE_B4AA56:					;	   |
@@ -5160,7 +5160,7 @@ CODE_B4AC65:
 	STA $CA					;$B4AC6B   |
 	REP #$20				;$B4AC6D   |
 	LDX #DATA_B4AC84			;$B4AC6F   |
-	LDA $0617				;$B4AC72   |
+	LDA language_select			;$B4AC72   |
 	BEQ CODE_B4AC7A				;$B4AC75   |
 	LDX #DATA_B4AD3B			;$B4AC77   |
 CODE_B4AC7A:					;	   |
@@ -6703,7 +6703,7 @@ CODE_B4B910:
 	TAY					;$B4B927   |
 	LDA $000C,y				;$B4B928   |
 	XBA					;$B4B92B   |
-	LDY $0617				;$B4B92C   |
+	LDY language_select			;$B4B92C   |
 	BEQ CODE_B4B944				;$B4B92F   |
 	PHA					;$B4B931   |
 	LDA $0000,x				;$B4B932   |
@@ -7405,7 +7405,7 @@ else						;	   |
 CODE_B4BE87:					;	   |
 	TYA					;$B4BE87   |
 endif						;	   |
-	LDY $0617				;$B4BE88   |
+	LDY language_select			;$B4BE88   |
 	BEQ CODE_B4BE90				;$B4BE8B   |
 	LDA #DATA_F7FCEE			;$B4BE8D   |
 CODE_B4BE90:					;	   |
@@ -7419,7 +7419,7 @@ CODE_B4BE96:
 	LDA #$0002				;$B4BE9F   |
 	STA $0658				;$B4BEA2   |
 	LDA #DATA_F7845C			;$B4BEA5   |
-	LDY $0617				;$B4BEA8   |
+	LDY language_select			;$B4BEA8   |
 	BEQ CODE_B4BEB0				;$B4BEAB   |
 	LDA #DATA_F7FCE4			;$B4BEAD   |
 CODE_B4BEB0:					;	   |

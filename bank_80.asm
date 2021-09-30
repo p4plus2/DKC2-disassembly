@@ -1732,7 +1732,7 @@ CODE_8090A0:
 
 CODE_8090AA:
 	JSR CODE_8090B1				;$8090AA  \
-	JML CODE_80A5F1				;$8090AD  /
+	JML init_menu				;$8090AD  /
 
 CODE_8090B1:
 	LDA #$8000				;$8090B1  \
@@ -2509,7 +2509,7 @@ CODE_80978E:					;	   |
 	JML setup_title_screen_transition	;$8097C0  / If the player skipped the intro, run the title screen
 
 .transition_to_nintendo_copyright
-	JMP init_nintendo_copyright		;$8097C4  /
+	JMP init_nintendo_copyright		;$8097C4  > Run the nintendo copyright init
 
 .fade
 	JSR fade_screen				;$8097C7  > Run the screen fade check
@@ -3937,7 +3937,7 @@ CODE_80A5D1:					;	   |
 	STA $0A,x				;$80A5EE   |
 	RTS					;$80A5F0  /
 
-CODE_80A5F1:
+init_menu:
 	JSL disable_screen			;$80A5F1  \
 	PHK					;$80A5F5   |
 	PLB					;$80A5F6   |
@@ -3947,12 +3947,12 @@ CODE_80A5F1:
 	JSL set_all_oam_offscreen		;$80A602   |
 	LDA #$0018				;$80A606   |
 	JSL play_song				;$80A609   |
-	LDA $0613				;$80A60D   |
+	LDA menu_action				;$80A60D   |
 	BEQ CODE_80A65D				;$80A610   |
 	LDA $0611				;$80A612   |
 	ASL A					;$80A615   |
 	TAX					;$80A616   |
-	LDA.l DATA_80ABE8,x			;$80A617   |
+	LDA.l sram_file_offsets,x		;$80A617   |
 	STA $32					;$80A61B   |
 	LDA #$00B0				;$80A61D   |
 	STA $34					;$80A620   |
@@ -3964,7 +3964,7 @@ CODE_80A5F1:
 	LDA $0611				;$80A62B   |
 	ASL A					;$80A62E   |
 	TAX					;$80A62F   |
-	LDA.l DATA_80ABE8,x			;$80A630   |
+	LDA.l sram_file_offsets,x		;$80A630   |
 	CLC					;$80A634   |
 	ADC #$0006				;$80A635   |
 	STA $32					;$80A638   |
@@ -4045,12 +4045,12 @@ CODE_80A65D:					;	   |
 	STA $7E8024				;$80A704   |
 	SEP #$20				;$80A708   |
 	LDX #$2601				;$80A70A   |
-	STX DMA[2].settings			;$80A70D   |
+	STX HDMA[2].settings			;$80A70D   |
 	LDX #$8012				;$80A710   |
-	STX DMA[2].source			;$80A713   |
+	STX HDMA[2].source			;$80A713   |
 	LDA #$7E				;$80A716   |
-	STA DMA[2].source_bank			;$80A718   |
-	STZ DMA[2].unused_1			;$80A71B   |
+	STA HDMA[2].source_bank			;$80A718   |
+	STZ HDMA[2].indirect_source_bank	;$80A71B   |
 	REP #$20				;$80A71E   |
 	LDX #DATA_ED5E3F			;$80A720   |
 	LDY.w #DATA_ED5E3F>>16			;$80A723   |
@@ -4065,32 +4065,32 @@ CODE_80A65D:					;	   |
 	LDX #DATA_ED7507			;$80A740   |
 	LDY.w #DATA_ED7507>>16			;$80A743   |
 	LDA #$7428				;$80A746   |
-	JSR CODE_80AF83				;$80A749   |
+	JSR upload_menu_tilemap			;$80A749   |
 	LDX #DATA_ED7429			;$80A74C   |
 	LDY.w #DATA_ED7429>>16			;$80A74F   |
 	LDA #$74C1				;$80A752   |
-	JSR CODE_80AF83				;$80A755   |
+	JSR upload_menu_tilemap			;$80A755   |
 	LDX #DATA_ED7433			;$80A758   |
 	LDY.w #DATA_ED7433>>16			;$80A75B   |
 	LDA #$7561				;$80A75E   |
-	JSR CODE_80AF83				;$80A761   |
+	JSR upload_menu_tilemap			;$80A761   |
 	LDX #DATA_ED743D			;$80A764   |
 	LDY.w #DATA_ED743D>>16			;$80A767   |
 	LDA #$7601				;$80A76A   |
-	JSR CODE_80AF83				;$80A76D   |
-	LDA $0613				;$80A770   |
+	JSR upload_menu_tilemap			;$80A76D   |
+	LDA menu_action				;$80A770   |
 	BEQ CODE_80A783				;$80A773   |
 	LDX #DATA_ED7607			;$80A775   |
 	LDY.w #DATA_ED7607>>16			;$80A778   |
 	LDA #$7428				;$80A77B   |
-	JSR CODE_80AF83				;$80A77E   |
+	JSR upload_menu_tilemap			;$80A77E   |
 	BRA CODE_80A795				;$80A781  /
 
 CODE_80A783:
 	LDX #DATA_ED7569			;$80A783  \
 	LDY.w #DATA_ED7569>>16			;$80A786   |
 	LDA #$76C3				;$80A789   |
-	JSR CODE_80AF83				;$80A78C   |
+	JSR upload_menu_tilemap			;$80A78C   |
 	JSR CODE_80AC3C				;$80A78F   |
 	JSR CODE_80AC50				;$80A792   |
 CODE_80A795:					;	   |
@@ -4141,7 +4141,7 @@ CODE_80A795:					;	   |
 	STA CPU.rom_speed			;$80A81D   |
 	REP #$20				;$80A820   |
 	JSR prepare_oam_dma_channel		;$80A822   |
-	LDA #CODE_80A86C			;$80A825   |
+	LDA #run_menu				;$80A825   |
 	JMP set_and_wait_for_nmi		;$80A828  /
 
 CODE_80A82B:
@@ -4178,13 +4178,13 @@ CODE_80A82B:
 DATA_80A866:
 	db $A2, $74, $42, $75, $E2, $75
 
-CODE_80A86C:
+run_menu:
 	LDX #stack				;$80A86C  \
 	TXS					;$80A86F   |
 	STZ PPU.oam_address			;$80A870   |
 	LDA #$0401				;$80A873   |
 	STA CPU.enable_dma			;$80A876   |
-	LDA $0613				;$80A879   |
+	LDA menu_action				;$80A879   |
 	BIT #$00E4				;$80A87C   |
 	BNE CODE_80A8F4				;$80A87F   |
 	LDA global_frame_counter		;$80A881   |
@@ -4240,38 +4240,38 @@ CODE_80A8B7:					;	   |
 	STA CPU.enable_dma			;$80A8EF   |
 	REP #$20				;$80A8F2   |
 CODE_80A8F4:					;	   |
-	LDA $0613				;$80A8F4   |
+	LDA menu_action				;$80A8F4   |
 	BIT #$0080				;$80A8F7   |
 	BEQ CODE_80A905				;$80A8FA   |
 	JSR CODE_80AC3C				;$80A8FC   |
 	LDA #$0080				;$80A8FF   |
-	TRB $0613				;$80A902   |
+	TRB menu_action				;$80A902   |
 CODE_80A905:					;	   |
-	LDA $0613				;$80A905   |
+	LDA menu_action				;$80A905   |
 	BIT #$0100				;$80A908   |
 	BEQ CODE_80A916				;$80A90B   |
 	JSR CODE_80AC50				;$80A90D   |
 	LDA #$0100				;$80A910   |
-	TRB $0613				;$80A913   |
+	TRB menu_action				;$80A913   |
 CODE_80A916:					;	   |
-	LDA $0613				;$80A916   |
+	LDA menu_action				;$80A916   |
 	BIT #$0004				;$80A919   |
 	BEQ CODE_80A926				;$80A91C   |
 	LDA #$0006				;$80A91E   |
-	TRB $0613				;$80A921   |
+	TRB menu_action				;$80A921   |
 	BRA CODE_80A934				;$80A924  /
 
 CODE_80A926:
-	LDA $0613				;$80A926  \
+	LDA menu_action				;$80A926  \
 	BIT #$0040				;$80A929   |
 	BEQ CODE_80A94E				;$80A92C   |
 	LDA #$0078				;$80A92E   |
-	TRB $0613				;$80A931   |
+	TRB menu_action				;$80A931   |
 CODE_80A934:					;	   |
 	LDA $0611				;$80A934   |
 	ASL A					;$80A937   |
 	TAX					;$80A938   |
-	LDA.l DATA_80ABE8,x			;$80A939   |
+	LDA.l sram_file_offsets,x		;$80A939   |
 	STA $54					;$80A93D   |
 	LDA #$00B0				;$80A93F   |
 	STA $56					;$80A942   |
@@ -4279,7 +4279,7 @@ CODE_80A934:					;	   |
 	LDX $0611				;$80A948   |
 	JSR CODE_80ACB6				;$80A94B   |
 CODE_80A94E:					;	   |
-	LDA $0613				;$80A94E   |
+	LDA menu_action				;$80A94E   |
 	BIT #$0020				;$80A951   |
 	BEQ CODE_80A96E				;$80A954   |
 	LDA $0611				;$80A956   |
@@ -4288,9 +4288,9 @@ CODE_80A94E:					;	   |
 	LDA.l DATA_80A866,x			;$80A95B   |
 	LDX #DATA_ED7717			;$80A95F   |
 	LDY.w #DATA_ED7717>>16			;$80A962   |
-	JSR CODE_80AF83				;$80A965   |
+	JSR upload_menu_tilemap			;$80A965   |
 	LDA #$0040				;$80A968   |
-	TSB $0613				;$80A96B   |
+	TSB menu_action				;$80A96B   |
 CODE_80A96E:					;	   |
 	SEP #$20				;$80A96E   |
 	LDA screen_brightness			;$80A970   |
@@ -4307,7 +4307,7 @@ CODE_80A96E:					;	   |
 	STA $7E8022				;$80A993   |
 	LDA screen_brightness			;$80A997   |
 	BMI CODE_80A9DE				;$80A99A   |
-	LDA $0613				;$80A99C   |
+	LDA menu_action				;$80A99C   |
 	BIT #$0001				;$80A99F   |
 	BNE CODE_80A9DE				;$80A9A2   |
 	LDX $0611				;$80A9A4   |
@@ -4341,7 +4341,7 @@ CODE_80A9CC:					;	   |
 	LDA #$0633				;$80A9D7   |
 	JSL play_high_priority_sound		;$80A9DA   |
 CODE_80A9DE:					;	   |
-	LDA $0613				;$80A9DE   |
+	LDA menu_action				;$80A9DE   |
 	BIT #$000A				;$80A9E1   |
 	BEQ CODE_80A9ED				;$80A9E4   |
 	LDA global_frame_counter		;$80A9E6   |
@@ -4387,7 +4387,7 @@ CODE_80AA27:
 CODE_80AA31:					;	   |
 	STA $7E8015,x				;$80AA31   |
 CODE_80AA35:					;	   |
-	LDA $0613				;$80AA35   |
+	LDA menu_action				;$80AA35   |
 	BIT #$0008				;$80AA38   |
 	BEQ CODE_80AA63				;$80AA3B   |
 	LDA global_frame_counter		;$80AA3D   |
@@ -4395,7 +4395,7 @@ CODE_80AA35:					;	   |
 	BEQ CODE_80AA63				;$80AA42   |
 	LDA #$FF80				;$80AA44   |
 	STA $7E801F				;$80AA47   |
-	LDA $0613				;$80AA4B   |
+	LDA menu_action				;$80AA4B   |
 	BIT #$0010				;$80AA4E   |
 	BEQ CODE_80AA63				;$80AA51   |
 	LDA $0615				;$80AA53   |
@@ -4406,7 +4406,7 @@ CODE_80AA35:					;	   |
 	LDA #$0000				;$80AA5C   |
 	STA $7E8015,x				;$80AA5F   |
 CODE_80AA63:					;	   |
-	LDA $0613				;$80AA63   |
+	LDA menu_action				;$80AA63   |
 	BIT #$0002				;$80AA66   |
 	BEQ CODE_80AA79				;$80AA69   |
 	LDA global_frame_counter		;$80AA6B   |
@@ -4437,7 +4437,7 @@ CODE_80AA97:
 	BEQ CODE_80AAB8				;$80AA9F   |
 	CMP #$0006				;$80AAA1   |
 	BEQ CODE_80AAD1				;$80AAA4   |
-	LDA $0613				;$80AAA6   |
+	LDA menu_action				;$80AAA6   |
 	BIT #$0008				;$80AAA9   |
 	BEQ CODE_80AAFC				;$80AAAC   |
 	BIT #$0010				;$80AAAE   |
@@ -4448,11 +4448,11 @@ CODE_80AA97:
 CODE_80AAB8:
 	LDA #$0634				;$80AAB8  \
 	JSL play_high_priority_sound		;$80AABB   |
-	LDA $0617				;$80AABF   |
+	LDA language_select			;$80AABF   |
 	EOR #$0001				;$80AAC2   |
-	STA $0617				;$80AAC5   |
+	STA language_select			;$80AAC5   |
 	LDA #$0080				;$80AAC8   |
-	STA $0613				;$80AACB   |
+	STA menu_action				;$80AACB   |
 	JMP CODE_80AB58				;$80AACE  /
 
 CODE_80AAD1:
@@ -4462,12 +4462,12 @@ CODE_80AAD1:
 	EOR #$0001				;$80AADA   |
 	STA stereo_select			;$80AADD   |
 	LDA #$0100				;$80AADF   |
-	STA $0613				;$80AAE2   |
+	STA menu_action				;$80AAE2   |
 	BRA CODE_80AB58				;$80AAE5  /
 
 CODE_80AAE7:
 	LDA #$0010				;$80AAE7  \
-	TSB $0613				;$80AAEA   |
+	TSB menu_action				;$80AAEA   |
 	LDA #$0634				;$80AAED   |
 	JSL play_high_priority_sound		;$80AAF0   |
 	LDA $0611				;$80AAF4   |
@@ -4485,16 +4485,16 @@ CODE_80AAFC:
 CODE_80AB0D:
 	LDA #$0634				;$80AB0D  \
 	JSL play_high_priority_sound		;$80AB10   |
-	LDA $0613				;$80AB14   |
+	LDA menu_action				;$80AB14   |
 	BIT #$0008				;$80AB17   |
 	BEQ CODE_80AB24				;$80AB1A   |
 	LDA #$0078				;$80AB1C   |
-	TRB $0613				;$80AB1F   |
+	TRB menu_action				;$80AB1F   |
 	BRA CODE_80AB58				;$80AB22  /
 
 CODE_80AB24:
 	LDA #$0008				;$80AB24  \
-	STA $0613				;$80AB27   |
+	STA menu_action				;$80AB27   |
 	BRA CODE_80AB58				;$80AB2A  /
 
 CODE_80AB2C:
@@ -4507,23 +4507,23 @@ CODE_80AB2C:
 CODE_80AB3B:
 	LDA #$0634				;$80AB3B  \
 	JSL play_high_priority_sound		;$80AB3E   |
-	LDA $0613				;$80AB42   |
+	LDA menu_action				;$80AB42   |
 	BIT #$0002				;$80AB45   |
 	BEQ CODE_80AB52				;$80AB48   |
 	LDA #$0006				;$80AB4A   |
-	TRB $0613				;$80AB4D   |
+	TRB menu_action				;$80AB4D   |
 	BRA CODE_80AB58				;$80AB50  /
 
 CODE_80AB52:
 	LDA #$0002				;$80AB52  \
-	STA $0613				;$80AB55   |
+	STA menu_action				;$80AB55   |
 CODE_80AB58:					;	   |
 	JSR intro_controller_read		;$80AB58   |
 	INC global_frame_counter		;$80AB5B   |
 	LDA screen_brightness			;$80AB5D   |
 	CMP #$8201				;$80AB60   |
 	BNE CODE_80AB70				;$80AB63   |
-	LDA $0613				;$80AB65   |
+	LDA menu_action				;$80AB65   |
 	BNE CODE_80AB6D				;$80AB68   |
 	JMP CODE_80ABEE				;$80AB6A  /
 
@@ -4532,7 +4532,7 @@ CODE_80AB6D:
 
 CODE_80AB70:
 	JSR prepare_oam_dma_channel		;$80AB70  \
-	LDA #CODE_80A86C			;$80AB73   |
+	LDA #run_menu				;$80AB73   |
 	STA NMI_pointer				;$80AB76   |
 CODE_80AB78:					;	   |
 	WAI					;$80AB78   |
@@ -4542,7 +4542,7 @@ CODE_80AB7B:
 	LDA $0611				;$80AB7B  \
 	ASL A					;$80AB7E   |
 	TAX					;$80AB7F   |
-	LDA.l DATA_80ABE8,x			;$80AB80   |
+	LDA.l sram_file_offsets,x		;$80AB80   |
 	STA $32					;$80AB84   |
 	LDA #$00B0				;$80AB86   |
 	STA $34					;$80AB89   |
@@ -4551,7 +4551,7 @@ CODE_80AB7B:
 	INC A					;$80AB90   |
 	STA [$32],y				;$80AB91   |
 	LDA #$0004				;$80AB93   |
-	TSB $0613				;$80AB96   |
+	TSB menu_action				;$80AB96   |
 	LDA $0611				;$80AB99   |
 	JSR CODE_80ACA5				;$80AB9C   |
 	RTS					;$80AB9F  /
@@ -4565,14 +4565,14 @@ CODE_80ABA0:
 	LDA $0611				;$80ABB0   |
 	ASL A					;$80ABB3   |
 	TAX					;$80ABB4   |
-	LDA.l DATA_80ABE8,x			;$80ABB5   |
+	LDA.l sram_file_offsets,x		;$80ABB5   |
 	STA $32					;$80ABB9   |
 	LDA #$00B0				;$80ABBB   |
 	STA $34					;$80ABBE   |
 	LDA $0615				;$80ABC0   |
 	ASL A					;$80ABC3   |
 	TAX					;$80ABC4   |
-	LDA.l DATA_80ABE8,x			;$80ABC5   |
+	LDA.l sram_file_offsets,x		;$80ABC5   |
 	STA $36					;$80ABC9   |
 	LDA #$00B0				;$80ABCB   |
 	STA $38					;$80ABCE   |
@@ -4586,12 +4586,12 @@ CODE_80ABD3:					;	   |
 	LDA $0611				;$80ABDB   |
 	JSR CODE_80ACA5				;$80ABDE   |
 	LDA #$0020				;$80ABE1   |
-	TSB $0613				;$80ABE4   |
+	TSB menu_action				;$80ABE4   |
 CODE_80ABE7:					;	   |
 	RTS					;$80ABE7  /
 
-DATA_80ABE8:
-	db $08, $60, $B0, $62, $58, $65
+sram_file_offsets:
+	dw $6008, $62B0, $6558
 
 
 CODE_80ABEE:
@@ -4601,7 +4601,7 @@ CODE_80ABEE:
 	LDA $0611				;$80ABF7   |
 	ASL A					;$80ABFA   |
 	TAX					;$80ABFB   |
-	LDA.l DATA_80ABE8,x			;$80ABFC   |
+	LDA.l sram_file_offsets,x		;$80ABFC   |
 	STA $32					;$80AC00   |
 	LDA #$00B0				;$80AC02   |
 	STA $34					;$80AC05   |
@@ -4634,14 +4634,14 @@ DATA_80AC35:
 
 
 CODE_80AC3C:
-	LDA $0617				;$80AC3C  \
+	LDA language_select			;$80AC3C  \
 	ASL A					;$80AC3F   |
 	TAX					;$80AC40   |
 	LDA.l DATA_ED7447,x			;$80AC41   |
 	TAX					;$80AC45   |
 	LDY #$00ED				;$80AC46   |
 	LDA #$7731				;$80AC49   |
-	JSR CODE_80AF83				;$80AC4C   |
+	JSR upload_menu_tilemap			;$80AC4C   |
 	RTS					;$80AC4F  /
 
 CODE_80AC50:
@@ -4652,7 +4652,7 @@ CODE_80AC50:
 	TAX					;$80AC58   |
 	LDY #$00ED				;$80AC59   |
 	LDA #$7723				;$80AC5C   |
-	JSR CODE_80AF83				;$80AC5F   |
+	JSR upload_menu_tilemap			;$80AC5F   |
 	RTS					;$80AC62  /
 
 CODE_80AC63:
@@ -4732,7 +4732,7 @@ CODE_80ACD2:
 	LDA $32					;$80ACF4   |
 	LDX #DATA_ED7717			;$80ACF6   |
 	LDY.w #DATA_ED7717>>16			;$80ACF9   |
-	JSR CODE_80AF83				;$80ACFC   |
+	JSR upload_menu_tilemap			;$80ACFC   |
 	RTS					;$80ACFF  /
 
 CODE_80AD00:
@@ -4776,7 +4776,7 @@ CODE_80AD13:
 	TAX					;$80AD43   |
 	LDY #$00ED				;$80AD44   |
 	LDA $32					;$80AD47   |
-	JSR CODE_80AF83				;$80AD49   |
+	JSR upload_menu_tilemap			;$80AD49   |
 	LDA $32					;$80AD4C   |
 	SEC					;$80AD4E   |
 	SBC #$0058				;$80AD4F   |
@@ -5017,7 +5017,7 @@ CODE_80AF44:					;	   |
 	LDX #DATA_ED7889			;$80AF47   |
 	LDY.w #DATA_ED7889>>16			;$80AF4A   |
 	LDA $32					;$80AF4D   |
-	JSR CODE_80AF83				;$80AF4F   |
+	JSR upload_menu_tilemap			;$80AF4F   |
 	RTS					;$80AF52  /
 
 CODE_80AF53:
@@ -5044,36 +5044,41 @@ CODE_80AF53:
 	INC $32					;$80AF80   |
 	RTS					;$80AF82  /
 
-CODE_80AF83:
-	STA $32					;$80AF83  \
-	STX $34					;$80AF85   |
-	STY $36					;$80AF87   |
-	LDY #$0000				;$80AF89   |
-	LDA [$34],y				;$80AF8C   |
-	AND #$00FF				;$80AF8E   |
-	STA $38					;$80AF91   |
-	INY					;$80AF93   |
-	LDA [$34],y				;$80AF94   |
-	AND #$00FF				;$80AF96   |
-	STA $3A					;$80AF99   |
-	INY					;$80AF9B   |
-	LDA $32					;$80AF9C   |
-CODE_80AF9E:					;	   |
-	STA PPU.vram_address			;$80AF9E   |
-	LDX $38					;$80AFA1   |
-CODE_80AFA3:					;	   |
-	LDA [$34],y				;$80AFA3   |
-	STA PPU.vram_write			;$80AFA5   |
-	INY					;$80AFA8   |
-	INY					;$80AFA9   |
-	DEX					;$80AFAA   |
-	BNE CODE_80AFA3				;$80AFAB   |
-	LDA $32					;$80AFAD   |
-	CLC					;$80AFAF   |
-	ADC #$0020				;$80AFB0   |
-	STA $32					;$80AFB3   |
-	DEC $3A					;$80AFB5   |
-	BNE CODE_80AF9E				;$80AFB7   |
+upload_menu_tilemap:
+%local(.vram_destination, temp1)
+%local(.payload, temp3)
+%local(.payload_bank, temp5)
+%local(.column_count, temp7)
+%local(.row_count, temp9)
+	STA .vram_destination			;$80AF83  \ A contains the vram destination
+	STX .payload				;$80AF85   | X contains the word address of the payload
+	STY .payload_bank			;$80AF87   | Y contains the bank of the payload
+	LDY #$0000				;$80AF89   | Initial offset to read from in the payload
+	LDA [.payload],y			;$80AF8C   |\ Get the column count from the first byte of the payload
+	AND #$00FF				;$80AF8E   | |
+	STA .column_count			;$80AF91   | |
+	INY					;$80AF93   |/
+	LDA [.payload],y			;$80AF94   |\ Get the row count from the second byte of the payload
+	AND #$00FF				;$80AF96   | |
+	STA .row_count				;$80AF99   | |
+	INY					;$80AF9B   |/
+	LDA .vram_destination			;$80AF9C   | Load the initial vram destination
+.next_row					;	   |\
+	STA PPU.vram_address			;$80AF9E   | |\ Set the VRAM destination and load the column count
+	LDX .column_count			;$80AFA1   | |/ for the row
+.next_column					;	   | |\
+	LDA [.payload],y			;$80AFA3   | | | Copy two bytes from the payload to VRAM
+	STA PPU.vram_write			;$80AFA5   | | |
+	INY					;$80AFA8   | | |
+	INY					;$80AFA9   | | |
+	DEX					;$80AFAA   | | |
+	BNE .next_column			;$80AFAB   | |/ Continue until the column is finished
+	LDA .vram_destination			;$80AFAD   | |\ Increment the VRAM destination by $20
+	CLC					;$80AFAF   | | | This will correspond to the next row
+	ADC #$0020				;$80AFB0   | | |
+	STA .vram_destination			;$80AFB3   | |/
+	DEC .row_count				;$80AFB5   | | Decrement the row count after each row
+	BNE .next_row				;$80AFB7   |/ If the row count isn't zero, upload the next row
 	RTS					;$80AFB9  /
 
 upload_mode_7_tilemap:				;	  \
@@ -5628,8 +5633,8 @@ run_title_screen:				;	  \
 .execute_transition				;	  \
 	LDA player_skipped_demo			;$80B54D   |\ Check if we are transitioning to the demo or menu
 	BEQ .set_demo_transition		;$80B550   |/
-	STZ $0613				;$80B552   |
-	JML CODE_80A5F1				;$80B555  /
+	STZ menu_action				;$80B552   |
+	JML init_menu				;$80B555  /
 
 .set_demo_transition
 	LDA #CODE_8086F6			;$80B559  \

@@ -75,6 +75,10 @@ screen_fade_speed = $0513
 screen_fade_timer = $0514
 pending_dma_hdma_channels = $059B
 
+menu_action = $0613
+
+language_select = $0617
+
 enable_intro_bypass = $090F
 
 intro_sparkle_x_position = $098F

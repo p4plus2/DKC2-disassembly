@@ -72,3 +72,10 @@ macro sprite(param, x, y, sprite)
 		dw <param>, <x>, <y>, <sprite>
 	endif
 endmacro
+
+macro local(name, scratch)
+	pushpc
+		org <scratch>
+			<name>:
+	pullpc
+endmacro

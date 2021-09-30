@@ -3773,7 +3773,7 @@ CODE_BAB48B:
 	XBA					;$BAB48E   |
 	STA $00065C				;$BAB48F   |
 	XBA					;$BAB493   |
-	LDY $0617				;$BAB494   |
+	LDY language_select			;$BAB494   |
 	BEQ CODE_BAB4AE				;$BAB497   |
 	PHA					;$BAB499   |
 	LDA $0000,x				;$BAB49A   |
@@ -4207,7 +4207,7 @@ CODE_BAB862:
 	LDA $0001,x				;$BAB862  \
 	AND #$0008				;$BAB865   |
 	BEQ CODE_BAB89E				;$BAB868   |
-	LDA $0617				;$BAB86A   |
+	LDA language_select			;$BAB86A   |
 	BEQ CODE_BAB883				;$BAB86D   |
 	LDA $0000,x				;$BAB86F   |
 	AND #$00FF				;$BAB872   |
