@@ -85,7 +85,7 @@ DATA_ED0000:
 	db $F4, $F4, $F4, $F4, $F4, $F4, $F4, $10
 	db $00
 
-DATA_ED02A1:
+title_screen_tilemap:
 	db $00, $18, $08, $08, $02, $6F, $00, $01
 	db $04, $4F, $19, $18, $19, $19, $4F, $B2
 	db $1A, $1A, $B2, $4F, $18, $18, $6F, $08
@@ -310,7 +310,7 @@ DATA_ED02A1:
 	db $EC, $1A, $4F, $59, $A3, $6E, $03, $ED
 	db $12, $EE, $A4, $BB, $60, $00
 
-DATA_ED0997:
+title_screen_tiledata:
 	db $00, $00, $FF, $FF, $00, $FF, $00, $00
 	db $FF, $00, $00, $FF, $FF, $80, $00, $00
 	db $01, $01, $00, $00, $80, $7F, $FF, $FC

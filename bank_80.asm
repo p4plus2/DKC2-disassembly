@@ -5636,15 +5636,15 @@ run_title_screen:				;	  \
 	JML CODE_808C9E				;$80B55C  /
 
 setup_title_screen_screen:			;	  \
-	LDA #$0001				;$80B560   |\
+	LDA #$0001				;$80B560   |\ Set screen to mode 1
 	STA PPU.layer_mode			;$80B563   |/
-	LDA #$1001				;$80B566   |\
+	LDA #$1001				;$80B566   |\ Set sprites on the subscreen and layer 1 on the mainscreen
 	STA PPU.screens				;$80B569   |/
-	LDA #$0024				;$80B56C   |\
-	STA PPU.layer_all_tiledata_base		;$80B56F   |/
-	LDA #$0102				;$80B572   |\
+	LDA #$0024				;$80B56C   |\ Set layer 1/2 tiledata to $8000 and $4000 respectively
+	STA PPU.layer_all_tiledata_base		;$80B56F   |/ Also sets the sprite tiledata to $0000
+	LDA #$0102				;$80B572   |\ Enable subscreen color math with layer 1
 	STA PPU.color_addition_logic		;$80B575   |/
-	LDA #$4C1C				;$80B578   |\
+	LDA #$4C1C				;$80B578   |\ Set layer 1/2 tilemap to $3800 and $9800 respectively
 	STA PPU.layer_1_2_tilemap_base		;$80B57B   |/
 	SEP #$20				;$80B57E   |\ Reset the screen positions for layer 1 and 2
 	STZ PPU.layer_1_scroll_x		;$80B580   | |
@@ -5657,34 +5657,34 @@ setup_title_screen_screen:			;	  \
 	STA PPU.layer_2_scroll_y		;$80B594   | |
 	STA PPU.layer_2_scroll_y		;$80B597   | |
 	REP #$20				;$80B59A   |/
-	LDX #DATA_ED0997			;$80B59C   |\
-	LDY.w #DATA_ED0997>>16			;$80B59F   | |
+	LDX #title_screen_tiledata		;$80B59C   |\ decompress the tiledata for the title screen
+	LDY.w #title_screen_tiledata>>16	;$80B59F   | |
 	LDA #$0000				;$80B5A2   | |
-	JSL decompress_data			;$80B5A5   | |
-	LDA #$4000				;$80B5A9   | |
-	STA PPU.vram_address			;$80B5AC   | |
-	LDX #$007F				;$80B5AF   | |
+	JSL decompress_data			;$80B5A5   |/
+	LDA #$4000				;$80B5A9   |\ Set the VRAM address to $8000
+	STA PPU.vram_address			;$80B5AC   |/
+	LDX #$007F				;$80B5AF   |\ DMA the title screen tiledata to VRAM
 	LDA #$0000				;$80B5B2   | |
 	LDY #$6400				;$80B5B5   | |
 	JSL DMA_to_VRAM				;$80B5B8   |/
-	LDX #DATA_ED02A1			;$80B5BC   |\
-	LDY.w #DATA_ED02A1>>16			;$80B5BF   | |
+	LDX #title_screen_tilemap		;$80B5BC   |\ decompress the tilemap for the title screen
+	LDY.w #title_screen_tilemap>>16		;$80B5BF   | |
 	LDA #$0000				;$80B5C2   | |
-	JSL decompress_data			;$80B5C5   | |
-	LDA #$1C00				;$80B5C9   | |
-	STA PPU.vram_address			;$80B5CC   | |
-	LDX #$007F				;$80B5CF   | |
+	JSL decompress_data			;$80B5C5   |/
+	LDA #$1C00				;$80B5C9   |\ Set the VRAM address to $3800
+	STA PPU.vram_address			;$80B5CC   |/
+	LDX #$007F				;$80B5CF   |\ DMA the title screen tilemap to VRAM
 	LDA #$0000				;$80B5D2   | |
 	LDY #$0700				;$80B5D5   | |
 	JSL DMA_to_VRAM				;$80B5D8   |/
-	STZ PPU.vram_address			;$80B5DC   |\
-	LDX.w #DATA_C00C01>>16			;$80B5DF   | |
-	LDA #DATA_C00C01			;$80B5E2   | |
+	STZ PPU.vram_address			;$80B5DC   | Set the VRAM address to zero
+	LDX.w #intro_sparkle_graphics>>16	;$80B5DF   |\ DMA the title screen sprite sparkles to VRAM
+	LDA #intro_sparkle_graphics		;$80B5E2   | |
 	LDY #$01A0				;$80B5E5   | |
 	JSL DMA_to_VRAM				;$80B5E8   |/
-	LDY #$0000				;$80B5EC   |\
+	LDY #$0000				;$80B5EC   |\ DMA the title screen palette to CGRAM
 	LDX #$0040				;$80B5EF   | |
-	LDA #DATA_FD26AE			;$80B5F2   | |
+	LDA #title_screen_palette		;$80B5F2   | |
 	JSL DMA_palette				;$80B5F5   |/
 	RTS					;$80B5F9  /
 

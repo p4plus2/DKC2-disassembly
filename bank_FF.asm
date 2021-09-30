@@ -3415,7 +3415,7 @@ DATA_FF286A:
 	dw !initcommand_success
 
 DATA_FF287C:
-	dw !initcommand_setup_static, $00A0, $6682 : dl DATA_C00C01 : db $0D
+	dw !initcommand_setup_static, $00A0, $6682 : dl intro_sparkle_graphics : db $0D
 	dw sprite.render_order, $00FA
 	dw sprite.unknown_1C, $0000
 	dw !initcommand_set_oam, $3000
@@ -3504,7 +3504,7 @@ DATA_FF296E:
 	dw !initcommand_success
 
 DATA_FF299A:
-	dw !initcommand_setup_static, $004C, $6682 : dl DATA_C00C01 : db $0D
+	dw !initcommand_setup_static, $004C, $6682 : dl intro_sparkle_graphics : db $0D
 	dw !initcommand_spawn_relative, $0000, $0000
 	dw sprite.render_order, $00FA
 	dw sprite.unknown_1C, $0000
@@ -3526,7 +3526,7 @@ DATA_FF29BC:
 	dw !initcommand_success
 
 DATA_FF29E8:
-	dw !initcommand_setup_static, $0050, $6682 : dl DATA_C00C01 : db $0D
+	dw !initcommand_setup_static, $0050, $6682 : dl intro_sparkle_graphics : db $0D
 	dw sprite.render_order, $00FA
 	dw sprite.unknown_1C, $0000
 	dw !initcommand_set_oam, $2000

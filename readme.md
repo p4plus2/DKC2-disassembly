@@ -11,6 +11,14 @@ Strive for descriptive names, ideally under 30 chars but absolutely never exceed
 Anything in the global namespace should be specific to reduce chances of name conflict
 Underscores only.
 
+####Data naming notes
+Data which is local should get a sublabel
+Palettes should get the `_palette` suffix
+Layer graphics should get the `_tiledata` suffix
+Layer tile maps should get the `_tilemap` suffix
+Collections of sprite graphics should get the `_graphics` suffix
+Single sprite graphics should get the suffix `_frameN` where `N` is optional (used for when multiple frames exist)
+When practical, ROM data should get a struct defined in `structs.asm`  This allows for named member access
 
 ###Comment structure
 Its best to allow comments to flow around the code to cluster related opcodes.  Try to comment
