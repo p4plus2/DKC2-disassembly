@@ -8511,9 +8511,9 @@ CODE_BBC53A:
 	ASL A					;$BBC53A  \
 	ASL A					;$BBC53B   |
 	TAX					;$BBC53C   |
-	LDA.l DATA_BBC579,x			;$BBC53D   |
+	LDA.l .sram_file_offsets_low,x		;$BBC53D   |
 	STA $26					;$BBC541   |
-	LDA.l DATA_BBC57B,x			;$BBC543   |
+	LDA.l .sram_file_offsets_high,x		;$BBC543   |
 	STA $28					;$BBC547   |
 	LDY #$0004				;$BBC549   |
 	LDA [$26],y				;$BBC54C   |
@@ -8524,7 +8524,7 @@ CODE_BBC53A:
 	BEQ CODE_BBC560				;$BBC559   |
 	CMP #$0252				;$BBC55B   |
 	BNE CODE_BBC577				;$BBC55E   |
-CODE_BBC560:					;	   |
+#CODE_BBC560:					;	   |
 	JSR CODE_BBC585				;$BBC560   |
 	LDY #$0000				;$BBC563   |
 	LDA [$26],y				;$BBC566   |
@@ -8537,16 +8537,15 @@ CODE_BBC560:					;	   |
 	SEC					;$BBC575   |
 	RTL					;$BBC576  /
 
-CODE_BBC577:
+#CODE_BBC577:
 	CLC					;$BBC577  \
 	RTL					;$BBC578  /
 
-DATA_BBC579:
-	db $08, $60
-
-DATA_BBC57B:
-	db $B0, $00, $B0, $62, $B0, $00, $58, $65
-	db $B0, $00
+.sram_file_offsets_low
+%offset(.sram_file_offsets_high, 2)
+	dd save_file1
+	dd save_file2
+	dd save_file3
 
 CODE_BBC585:
 	STZ $5E					;$BBC585  \

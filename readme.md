@@ -10,6 +10,8 @@ Relative labels should be used minimally when a name wouldn't help the context (
 Strive for descriptive names, ideally under 30 chars but absolutely never exceeding 36
 Anything in the global namespace should be specific to reduce chances of name conflict
 Underscores only.
+Use of `#` should generally be temporary (code actively being documented) or if rarely used when it
+helps routines with multiple entries or similar conditions
 
 ####Data naming notes
 Data which is local should get a sublabel

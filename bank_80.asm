@@ -1732,7 +1732,7 @@ CODE_8090A0:
 
 CODE_8090AA:
 	JSR CODE_8090B1				;$8090AA  \
-	JML init_menu				;$8090AD  /
+	JML init_file_select			;$8090AD  /
 
 CODE_8090B1:
 	LDA #$8000				;$8090B1  \
@@ -3937,7 +3937,7 @@ CODE_80A5D1:					;	   |
 	STA $0A,x				;$80A5EE   |
 	RTS					;$80A5F0  /
 
-init_menu:
+init_file_select:
 	JSL disable_screen			;$80A5F1  \
 	PHK					;$80A5F5   |
 	PLB					;$80A5F6   |
@@ -3947,7 +3947,7 @@ init_menu:
 	JSL set_all_oam_offscreen		;$80A602   |
 	LDA #$0018				;$80A606   |
 	JSL play_song				;$80A609   |
-	LDA menu_action				;$80A60D   |
+	LDA file_select_action			;$80A60D   |
 	BEQ CODE_80A65D				;$80A610   |
 	LDA $0611				;$80A612   |
 	ASL A					;$80A615   |
@@ -4052,96 +4052,96 @@ CODE_80A65D:					;	   |
 	STA HDMA[2].source_bank			;$80A718   |
 	STZ HDMA[2].indirect_source_bank	;$80A71B   |
 	REP #$20				;$80A71E   |
-	LDX #DATA_ED5E3F			;$80A720   |
-	LDY.w #DATA_ED5E3F>>16			;$80A723   |
-	LDA #$0000				;$80A726   |
-	JSL decompress_data			;$80A729   |
-	LDA #$5000				;$80A72D   |
-	STA PPU.vram_address			;$80A730   |
-	LDX #$007F				;$80A733   |
-	LDA #$0000				;$80A736   |
-	LDY #$6000				;$80A739   |
-	JSL DMA_to_VRAM				;$80A73C   |
-	LDX #DATA_ED7507			;$80A740   |
-	LDY.w #DATA_ED7507>>16			;$80A743   |
-	LDA #$7428				;$80A746   |
-	JSR upload_menu_tilemap			;$80A749   |
-	LDX #DATA_ED7429			;$80A74C   |
-	LDY.w #DATA_ED7429>>16			;$80A74F   |
-	LDA #$74C1				;$80A752   |
-	JSR upload_menu_tilemap			;$80A755   |
-	LDX #DATA_ED7433			;$80A758   |
-	LDY.w #DATA_ED7433>>16			;$80A75B   |
-	LDA #$7561				;$80A75E   |
-	JSR upload_menu_tilemap			;$80A761   |
-	LDX #DATA_ED743D			;$80A764   |
-	LDY.w #DATA_ED743D>>16			;$80A767   |
-	LDA #$7601				;$80A76A   |
-	JSR upload_menu_tilemap			;$80A76D   |
-	LDA menu_action				;$80A770   |
-	BEQ CODE_80A783				;$80A773   |
-	LDX #DATA_ED7607			;$80A775   |
-	LDY.w #DATA_ED7607>>16			;$80A778   |
-	LDA #$7428				;$80A77B   |
-	JSR upload_menu_tilemap			;$80A77E   |
-	BRA CODE_80A795				;$80A781  /
+	LDX #DATA_ED5E3F			;$80A720   |\ Decompress the file select layer 1 tiledata
+	LDY.w #DATA_ED5E3F>>16			;$80A723   | | This is tiledata for all the various text
+	LDA #$0000				;$80A726   | |
+	JSL decompress_data			;$80A729   |/
+	LDA #$5000				;$80A72D   |\ Set the VRAM address to $A000
+	STA PPU.vram_address			;$80A730   |/
+	LDX #$007F				;$80A733   |\ Upload the layer 1 tiledata to VRAM address $A000
+	LDA #$0000				;$80A736   | |
+	LDY #$6000				;$80A739   | |
+	JSL DMA_to_VRAM				;$80A73C   |/
+	LDX #DATA_ED7507			;$80A740   |\ Upload tilemap for the "SELECT GAME" text
+	LDY.w #DATA_ED7507>>16			;$80A743   | |
+	LDA #$7428				;$80A746   | |
+	JSR upload_fileselect_tilemap		;$80A749   |/
+	LDX #DATA_ED7429			;$80A74C   |\ Upload tilemap for the "1" on the first file
+	LDY.w #DATA_ED7429>>16			;$80A74F   | |
+	LDA #$74C1				;$80A752   | |
+	JSR upload_fileselect_tilemap		;$80A755   |/
+	LDX #DATA_ED7433			;$80A758   |\ Upload tilemap for the "2" on the second file
+	LDY.w #DATA_ED7433>>16			;$80A75B   | |
+	LDA #$7561				;$80A75E   | |
+	JSR upload_fileselect_tilemap		;$80A761   |/
+	LDX #DATA_ED743D			;$80A764   |\ Upload tilemap for the "3" on the third file
+	LDY.w #DATA_ED743D>>16			;$80A767   | |
+	LDA #$7601				;$80A76A   | |
+	JSR upload_fileselect_tilemap		;$80A76D   |/
+	LDA file_select_action			;$80A770   |\ Check if we are running file select or save game
+	BEQ .load_file_select_option		;$80A773   |/ Skip replacing text if it is file select
+	LDX #DATA_ED7607			;$80A775   |\ Replace text with save game
+	LDY.w #DATA_ED7607>>16			;$80A778   | |
+	LDA #$7428				;$80A77B   | |
+	JSR upload_fileselect_tilemap		;$80A77E   |/
+	BRA .skip_options			;$80A781  / Skip uploading the copy/erase/language/channel count tilemap
 
-CODE_80A783:
-	LDX #DATA_ED7569			;$80A783  \
-	LDY.w #DATA_ED7569>>16			;$80A786   |
-	LDA #$76C3				;$80A789   |
-	JSR upload_menu_tilemap			;$80A78C   |
-	JSR CODE_80AC3C				;$80A78F   |
-	JSR CODE_80AC50				;$80A792   |
-CODE_80A795:					;	   |
-	LDX #DATA_EC83A0			;$80A795   |
-	LDY.w #DATA_EC83A0>>16			;$80A798   |
-	LDA #$0000				;$80A79B   |
-	JSL decompress_data			;$80A79E   |
-	LDA #$1000				;$80A7A2   |
-	STA PPU.vram_address			;$80A7A5   |
-	LDX #$007F				;$80A7A8   |
-	LDA #$0000				;$80A7AB   |
-	LDY #$8000				;$80A7AE   |
-	JSL DMA_to_VRAM				;$80A7B1   |
-	LDX #DATA_EC7CF0			;$80A7B5   |
-	LDY.w #DATA_EC7CF0>>16			;$80A7B8   |
-	LDA #$0000				;$80A7BB   |
-	JSL decompress_data			;$80A7BE   |
-	LDA #$7C00				;$80A7C2   |
-	STA PPU.vram_address			;$80A7C5   |
-	LDX #$007F				;$80A7C8   |
-	LDA #$0000				;$80A7CB   |
-	LDY #$0800				;$80A7CE   |
-	JSL DMA_to_VRAM				;$80A7D1   |
+.load_file_select_option			;	  \
+	LDX #DATA_ED7569			;$80A783   |\ Upload the copy and erase text
+	LDY.w #DATA_ED7569>>16			;$80A786   | |
+	LDA #$76C3				;$80A789   | |
+	JSR upload_fileselect_tilemap		;$80A78C   |/
+	JSR upload_language_tilemap		;$80A78F   | Upload the english or french text tilemap
+	JSR upload_channel_count_tilemap	;$80A792   | Upload the mono or stereo tilemap
+.skip_options					;	   |
+	LDX #DATA_EC83A0			;$80A795   |\ Decompress the file select layer 2 tiledata
+	LDY.w #DATA_EC83A0>>16			;$80A798   | | This is th etiles for the "map" background
+	LDA #$0000				;$80A79B   | |
+	JSL decompress_data			;$80A79E   |/
+	LDA #$1000				;$80A7A2   |\ Set the VRAM address to $2000
+	STA PPU.vram_address			;$80A7A5   |/
+	LDX #$007F				;$80A7A8   |\ Upload the layer 2 tiledata to VRAM address $2000
+	LDA #$0000				;$80A7AB   | |
+	LDY #$8000				;$80A7AE   | |
+	JSL DMA_to_VRAM				;$80A7B1   |/
+	LDX #DATA_EC7CF0			;$80A7B5   |\ Decompress the file select layer 2 tilemap
+	LDY.w #DATA_EC7CF0>>16			;$80A7B8   | | This is the tilemap for the "map" background
+	LDA #$0000				;$80A7BB   | |
+	JSL decompress_data			;$80A7BE   |/
+	LDA #$7C00				;$80A7C2   |\ Set the VRAM address to $F800
+	STA PPU.vram_address			;$80A7C5   |/
+	LDX #$007F				;$80A7C8   |\ Upload the layer 2 tilemap to VRAM address $F800
+	LDA #$0000				;$80A7CB   | |
+	LDY #$0800				;$80A7CE   | |
+	JSL DMA_to_VRAM				;$80A7D1   |/
 	JSR CODE_80AC63				;$80A7D5   |
-	LDY #$0000				;$80A7D8   |
-	LDX #$0040				;$80A7DB   |
-	LDA #DATA_FD3C6E			;$80A7DE   |
-	JSL DMA_palette				;$80A7E1   |
+	LDY #$0000				;$80A7D8   |\ Upload file select palette
+	LDX #$0040				;$80A7DB   | |
+	LDA #DATA_FD3C6E			;$80A7DE   | |
+	JSL DMA_palette				;$80A7E1   |/
 	STZ PPU.vram_address			;$80A7E5   |
-	LDX.w #DATA_FB0180>>16			;$80A7E8   |
-	LDA #DATA_FB0180			;$80A7EB   |
-	LDY #$0080				;$80A7EE   |
-	JSL DMA_to_VRAM				;$80A7F1   |
-	LDX.w #DATA_FB0400>>16			;$80A7F5   |
-	LDA #DATA_FB0400			;$80A7F8   |
-	LDY #$0080				;$80A7FB   |
-	JSL DMA_to_VRAM				;$80A7FE   |
-	STZ oam_attribute[$00].size		;$80A802   |
-	STZ oam_attribute[$02].size		;$80A805   |
-	STZ oam_attribute[$04].size		;$80A808   |
-	LDA #$0300				;$80A80B   |
-	JSR set_fade				;$80A80E   |
+	LDX.w #DATA_FB0180>>16			;$80A7E8   |\
+	LDA #DATA_FB0180			;$80A7EB   | |
+	LDY #$0080				;$80A7EE   | |
+	JSL DMA_to_VRAM				;$80A7F1   |/
+	LDX.w #DATA_FB0400>>16			;$80A7F5   |\
+	LDA #DATA_FB0400			;$80A7F8   | |
+	LDY #$0080				;$80A7FB   | |
+	JSL DMA_to_VRAM				;$80A7FE   |/
+	STZ oam_attribute[$00].size		;$80A802   |\
+	STZ oam_attribute[$02].size		;$80A805   | |
+	STZ oam_attribute[$04].size		;$80A808   |/
+	LDA #$0300				;$80A80B   |\ Set fade in with a speed of three
+	JSR set_fade				;$80A80E   |/
 	SEP #$20				;$80A811   |
-	LDA CPU.irq_flag			;$80A813   |
-	LDA #$80				;$80A816   |
-	STA PPU.oam_address_high		;$80A818   |
-	LDA #$01				;$80A81B   |
-	STA CPU.rom_speed			;$80A81D   |
+	LDA CPU.irq_flag			;$80A813   | Clear the IRQ flag (maybe IRQ was used in the past)
+	LDA #$80				;$80A816   |\ Set alternate sprite priority
+	STA PPU.oam_address_high		;$80A818   |/
+	LDA #$01				;$80A81B   |\ Enable fastrom again
+	STA CPU.rom_speed			;$80A81D   |/
 	REP #$20				;$80A820   |
-	JSR prepare_oam_dma_channel		;$80A822   |
-	LDA #run_menu				;$80A825   |
+	JSR prepare_oam_dma_channel		;$80A822   | Prepare the standard OAM channel
+	LDA #run_file_select			;$80A825   | Init is finished, set the game loop to run the file select
 	JMP set_and_wait_for_nmi		;$80A828  /
 
 CODE_80A82B:
@@ -4178,13 +4178,13 @@ CODE_80A82B:
 DATA_80A866:
 	db $A2, $74, $42, $75, $E2, $75
 
-run_menu:
+run_file_select:
 	LDX #stack				;$80A86C  \
 	TXS					;$80A86F   |
 	STZ PPU.oam_address			;$80A870   |
 	LDA #$0401				;$80A873   |
 	STA CPU.enable_dma			;$80A876   |
-	LDA menu_action				;$80A879   |
+	LDA file_select_action			;$80A879   |
 	BIT #$00E4				;$80A87C   |
 	BNE CODE_80A8F4				;$80A87F   |
 	LDA global_frame_counter		;$80A881   |
@@ -4240,33 +4240,33 @@ CODE_80A8B7:					;	   |
 	STA CPU.enable_dma			;$80A8EF   |
 	REP #$20				;$80A8F2   |
 CODE_80A8F4:					;	   |
-	LDA menu_action				;$80A8F4   |
+	LDA file_select_action			;$80A8F4   |
 	BIT #$0080				;$80A8F7   |
 	BEQ CODE_80A905				;$80A8FA   |
-	JSR CODE_80AC3C				;$80A8FC   |
+	JSR upload_language_tilemap		;$80A8FC   |
 	LDA #$0080				;$80A8FF   |
-	TRB menu_action				;$80A902   |
+	TRB file_select_action			;$80A902   |
 CODE_80A905:					;	   |
-	LDA menu_action				;$80A905   |
+	LDA file_select_action			;$80A905   |
 	BIT #$0100				;$80A908   |
 	BEQ CODE_80A916				;$80A90B   |
-	JSR CODE_80AC50				;$80A90D   |
+	JSR upload_channel_count_tilemap	;$80A90D   |
 	LDA #$0100				;$80A910   |
-	TRB menu_action				;$80A913   |
+	TRB file_select_action			;$80A913   |
 CODE_80A916:					;	   |
-	LDA menu_action				;$80A916   |
+	LDA file_select_action			;$80A916   |
 	BIT #$0004				;$80A919   |
 	BEQ CODE_80A926				;$80A91C   |
 	LDA #$0006				;$80A91E   |
-	TRB menu_action				;$80A921   |
+	TRB file_select_action			;$80A921   |
 	BRA CODE_80A934				;$80A924  /
 
 CODE_80A926:
-	LDA menu_action				;$80A926  \
+	LDA file_select_action			;$80A926  \
 	BIT #$0040				;$80A929   |
 	BEQ CODE_80A94E				;$80A92C   |
 	LDA #$0078				;$80A92E   |
-	TRB menu_action				;$80A931   |
+	TRB file_select_action			;$80A931   |
 CODE_80A934:					;	   |
 	LDA $0611				;$80A934   |
 	ASL A					;$80A937   |
@@ -4279,7 +4279,7 @@ CODE_80A934:					;	   |
 	LDX $0611				;$80A948   |
 	JSR CODE_80ACB6				;$80A94B   |
 CODE_80A94E:					;	   |
-	LDA menu_action				;$80A94E   |
+	LDA file_select_action			;$80A94E   |
 	BIT #$0020				;$80A951   |
 	BEQ CODE_80A96E				;$80A954   |
 	LDA $0611				;$80A956   |
@@ -4288,9 +4288,9 @@ CODE_80A94E:					;	   |
 	LDA.l DATA_80A866,x			;$80A95B   |
 	LDX #DATA_ED7717			;$80A95F   |
 	LDY.w #DATA_ED7717>>16			;$80A962   |
-	JSR upload_menu_tilemap			;$80A965   |
+	JSR upload_fileselect_tilemap		;$80A965   |
 	LDA #$0040				;$80A968   |
-	TSB menu_action				;$80A96B   |
+	TSB file_select_action			;$80A96B   |
 CODE_80A96E:					;	   |
 	SEP #$20				;$80A96E   |
 	LDA screen_brightness			;$80A970   |
@@ -4307,7 +4307,7 @@ CODE_80A96E:					;	   |
 	STA $7E8022				;$80A993   |
 	LDA screen_brightness			;$80A997   |
 	BMI CODE_80A9DE				;$80A99A   |
-	LDA menu_action				;$80A99C   |
+	LDA file_select_action			;$80A99C   |
 	BIT #$0001				;$80A99F   |
 	BNE CODE_80A9DE				;$80A9A2   |
 	LDX $0611				;$80A9A4   |
@@ -4341,7 +4341,7 @@ CODE_80A9CC:					;	   |
 	LDA #$0633				;$80A9D7   |
 	JSL play_high_priority_sound		;$80A9DA   |
 CODE_80A9DE:					;	   |
-	LDA menu_action				;$80A9DE   |
+	LDA file_select_action			;$80A9DE   |
 	BIT #$000A				;$80A9E1   |
 	BEQ CODE_80A9ED				;$80A9E4   |
 	LDA global_frame_counter		;$80A9E6   |
@@ -4387,7 +4387,7 @@ CODE_80AA27:
 CODE_80AA31:					;	   |
 	STA $7E8015,x				;$80AA31   |
 CODE_80AA35:					;	   |
-	LDA menu_action				;$80AA35   |
+	LDA file_select_action			;$80AA35   |
 	BIT #$0008				;$80AA38   |
 	BEQ CODE_80AA63				;$80AA3B   |
 	LDA global_frame_counter		;$80AA3D   |
@@ -4395,7 +4395,7 @@ CODE_80AA35:					;	   |
 	BEQ CODE_80AA63				;$80AA42   |
 	LDA #$FF80				;$80AA44   |
 	STA $7E801F				;$80AA47   |
-	LDA menu_action				;$80AA4B   |
+	LDA file_select_action			;$80AA4B   |
 	BIT #$0010				;$80AA4E   |
 	BEQ CODE_80AA63				;$80AA51   |
 	LDA $0615				;$80AA53   |
@@ -4406,7 +4406,7 @@ CODE_80AA35:					;	   |
 	LDA #$0000				;$80AA5C   |
 	STA $7E8015,x				;$80AA5F   |
 CODE_80AA63:					;	   |
-	LDA menu_action				;$80AA63   |
+	LDA file_select_action			;$80AA63   |
 	BIT #$0002				;$80AA66   |
 	BEQ CODE_80AA79				;$80AA69   |
 	LDA global_frame_counter		;$80AA6B   |
@@ -4437,7 +4437,7 @@ CODE_80AA97:
 	BEQ CODE_80AAB8				;$80AA9F   |
 	CMP #$0006				;$80AAA1   |
 	BEQ CODE_80AAD1				;$80AAA4   |
-	LDA menu_action				;$80AAA6   |
+	LDA file_select_action			;$80AAA6   |
 	BIT #$0008				;$80AAA9   |
 	BEQ CODE_80AAFC				;$80AAAC   |
 	BIT #$0010				;$80AAAE   |
@@ -4452,7 +4452,7 @@ CODE_80AAB8:
 	EOR #$0001				;$80AAC2   |
 	STA language_select			;$80AAC5   |
 	LDA #$0080				;$80AAC8   |
-	STA menu_action				;$80AACB   |
+	STA file_select_action			;$80AACB   |
 	JMP CODE_80AB58				;$80AACE  /
 
 CODE_80AAD1:
@@ -4462,12 +4462,12 @@ CODE_80AAD1:
 	EOR #$0001				;$80AADA   |
 	STA stereo_select			;$80AADD   |
 	LDA #$0100				;$80AADF   |
-	STA menu_action				;$80AAE2   |
+	STA file_select_action			;$80AAE2   |
 	BRA CODE_80AB58				;$80AAE5  /
 
 CODE_80AAE7:
 	LDA #$0010				;$80AAE7  \
-	TSB menu_action				;$80AAEA   |
+	TSB file_select_action			;$80AAEA   |
 	LDA #$0634				;$80AAED   |
 	JSL play_high_priority_sound		;$80AAF0   |
 	LDA $0611				;$80AAF4   |
@@ -4485,16 +4485,16 @@ CODE_80AAFC:
 CODE_80AB0D:
 	LDA #$0634				;$80AB0D  \
 	JSL play_high_priority_sound		;$80AB10   |
-	LDA menu_action				;$80AB14   |
+	LDA file_select_action			;$80AB14   |
 	BIT #$0008				;$80AB17   |
 	BEQ CODE_80AB24				;$80AB1A   |
 	LDA #$0078				;$80AB1C   |
-	TRB menu_action				;$80AB1F   |
+	TRB file_select_action			;$80AB1F   |
 	BRA CODE_80AB58				;$80AB22  /
 
 CODE_80AB24:
 	LDA #$0008				;$80AB24  \
-	STA menu_action				;$80AB27   |
+	STA file_select_action			;$80AB27   |
 	BRA CODE_80AB58				;$80AB2A  /
 
 CODE_80AB2C:
@@ -4507,23 +4507,23 @@ CODE_80AB2C:
 CODE_80AB3B:
 	LDA #$0634				;$80AB3B  \
 	JSL play_high_priority_sound		;$80AB3E   |
-	LDA menu_action				;$80AB42   |
+	LDA file_select_action			;$80AB42   |
 	BIT #$0002				;$80AB45   |
 	BEQ CODE_80AB52				;$80AB48   |
 	LDA #$0006				;$80AB4A   |
-	TRB menu_action				;$80AB4D   |
+	TRB file_select_action			;$80AB4D   |
 	BRA CODE_80AB58				;$80AB50  /
 
 CODE_80AB52:
 	LDA #$0002				;$80AB52  \
-	STA menu_action				;$80AB55   |
+	STA file_select_action			;$80AB55   |
 CODE_80AB58:					;	   |
 	JSR intro_controller_read		;$80AB58   |
 	INC global_frame_counter		;$80AB5B   |
 	LDA screen_brightness			;$80AB5D   |
 	CMP #$8201				;$80AB60   |
 	BNE CODE_80AB70				;$80AB63   |
-	LDA menu_action				;$80AB65   |
+	LDA file_select_action			;$80AB65   |
 	BNE CODE_80AB6D				;$80AB68   |
 	JMP CODE_80ABEE				;$80AB6A  /
 
@@ -4532,7 +4532,7 @@ CODE_80AB6D:
 
 CODE_80AB70:
 	JSR prepare_oam_dma_channel		;$80AB70  \
-	LDA #run_menu				;$80AB73   |
+	LDA #run_file_select			;$80AB73   |
 	STA NMI_pointer				;$80AB76   |
 CODE_80AB78:					;	   |
 	WAI					;$80AB78   |
@@ -4551,7 +4551,7 @@ CODE_80AB7B:
 	INC A					;$80AB90   |
 	STA [$32],y				;$80AB91   |
 	LDA #$0004				;$80AB93   |
-	TSB menu_action				;$80AB96   |
+	TSB file_select_action			;$80AB96   |
 	LDA $0611				;$80AB99   |
 	JSR CODE_80ACA5				;$80AB9C   |
 	RTS					;$80AB9F  /
@@ -4586,12 +4586,12 @@ CODE_80ABD3:					;	   |
 	LDA $0611				;$80ABDB   |
 	JSR CODE_80ACA5				;$80ABDE   |
 	LDA #$0020				;$80ABE1   |
-	TSB menu_action				;$80ABE4   |
+	TSB file_select_action			;$80ABE4   |
 CODE_80ABE7:					;	   |
 	RTS					;$80ABE7  /
 
 sram_file_offsets:
-	dw $6008, $62B0, $6558
+	dw save_file1, save_file2, save_file3
 
 
 CODE_80ABEE:
@@ -4633,26 +4633,26 @@ DATA_80AC35:
 	db $00, $01, $02, $05, $04, $05, $04
 
 
-CODE_80AC3C:
-	LDA language_select			;$80AC3C  \
-	ASL A					;$80AC3F   |
-	TAX					;$80AC40   |
-	LDA.l DATA_ED7447,x			;$80AC41   |
-	TAX					;$80AC45   |
-	LDY #$00ED				;$80AC46   |
-	LDA #$7731				;$80AC49   |
-	JSR upload_menu_tilemap			;$80AC4C   |
+upload_language_tilemap:			;	  \
+	LDA language_select			;$80AC3C   |\ Get an index to the current language tilemap
+	ASL A					;$80AC3F   | |
+	TAX					;$80AC40   |/
+	LDA.l DATA_ED7447,x			;$80AC41   |\ Load the pointer to the current language tilemap
+	TAX					;$80AC45   | | and upload it to VRAM
+	LDY #$00ED				;$80AC46   | |
+	LDA #$7731				;$80AC49   | |
+	JSR upload_fileselect_tilemap		;$80AC4C   |/
 	RTS					;$80AC4F  /
 
-CODE_80AC50:
-	LDA stereo_select			;$80AC50  \
-	ASL A					;$80AC52   |
-	TAX					;$80AC53   |
-	LDA.l DATA_ED7893,x			;$80AC54   |
-	TAX					;$80AC58   |
-	LDY #$00ED				;$80AC59   |
-	LDA #$7723				;$80AC5C   |
-	JSR upload_menu_tilemap			;$80AC5F   |
+upload_channel_count_tilemap:			;	  \
+	LDA stereo_select			;$80AC50   |\ Get an index to the current channel count tilemap
+	ASL A					;$80AC52   | |
+	TAX					;$80AC53   |/
+	LDA.l DATA_ED7893,x			;$80AC54   |\ Load the pointer to the current channel count tilemap
+	TAX					;$80AC58   | | and upload it to VRAM
+	LDY #$00ED				;$80AC59   | |
+	LDA #$7723				;$80AC5C   | |
+	JSR upload_fileselect_tilemap		;$80AC5F   |/
 	RTS					;$80AC62  /
 
 CODE_80AC63:
@@ -4732,7 +4732,7 @@ CODE_80ACD2:
 	LDA $32					;$80ACF4   |
 	LDX #DATA_ED7717			;$80ACF6   |
 	LDY.w #DATA_ED7717>>16			;$80ACF9   |
-	JSR upload_menu_tilemap			;$80ACFC   |
+	JSR upload_fileselect_tilemap		;$80ACFC   |
 	RTS					;$80ACFF  /
 
 CODE_80AD00:
@@ -4776,7 +4776,7 @@ CODE_80AD13:
 	TAX					;$80AD43   |
 	LDY #$00ED				;$80AD44   |
 	LDA $32					;$80AD47   |
-	JSR upload_menu_tilemap			;$80AD49   |
+	JSR upload_fileselect_tilemap		;$80AD49   |
 	LDA $32					;$80AD4C   |
 	SEC					;$80AD4E   |
 	SBC #$0058				;$80AD4F   |
@@ -5017,7 +5017,7 @@ CODE_80AF44:					;	   |
 	LDX #DATA_ED7889			;$80AF47   |
 	LDY.w #DATA_ED7889>>16			;$80AF4A   |
 	LDA $32					;$80AF4D   |
-	JSR upload_menu_tilemap			;$80AF4F   |
+	JSR upload_fileselect_tilemap		;$80AF4F   |
 	RTS					;$80AF52  /
 
 CODE_80AF53:
@@ -5044,7 +5044,7 @@ CODE_80AF53:
 	INC $32					;$80AF80   |
 	RTS					;$80AF82  /
 
-upload_menu_tilemap:
+upload_fileselect_tilemap:
 %local(.vram_destination, temp1)
 %local(.payload, temp3)
 %local(.payload_bank, temp5)
@@ -5608,14 +5608,14 @@ run_title_screen:				;	  \
 	BNE .run_fadeout			;$80B51C   |/
 	LDA player_1_held			;$80B51E   |\
 	AND #$D080				;$80B521   | | Check if B, Y, Start, or A are being help
-	BNE .trigger_menu_transition		;$80B524   |/
+	BNE .trigger_file_select_transition	;$80B524   |/
 	LDA global_frame_counter		;$80B526   |\ If we are on frame $0960 set the screen to fadeout.
 	CMP #$0960				;$80B528   | | This will then transition to the demo.
 	BNE .run_fadeout			;$80B52B   |/
 	BRA .trigger_demo_transition		;$80B52D  /
 
-.trigger_menu_transition
-	INC player_skipped_demo			;$80B52F  \ Set that the player initiated the menu screen
+.trigger_file_select_transition
+	INC player_skipped_demo			;$80B52F  \ Set that the player initiated the file select screen
 .trigger_demo_transition			;	   |
 	LDA #$840F				;$80B532   |\ Set the screen to fadeout with speed 4
 	JSR set_fade				;$80B535   |/
@@ -5631,10 +5631,10 @@ run_title_screen:				;	  \
 	BRA -					;$80B54B  / Spinlock in case something breaks the WAI
 
 .execute_transition				;	  \
-	LDA player_skipped_demo			;$80B54D   |\ Check if we are transitioning to the demo or menu
+	LDA player_skipped_demo			;$80B54D   |\ Check if we are transitioning to the demo or file select
 	BEQ .set_demo_transition		;$80B550   |/
-	STZ menu_action				;$80B552   |
-	JML init_menu				;$80B555  /
+	STZ file_select_action			;$80B552   |
+	JML init_file_select			;$80B555  /
 
 .set_demo_transition
 	LDA #CODE_8086F6			;$80B559  \

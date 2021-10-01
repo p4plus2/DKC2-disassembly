@@ -1361,7 +1361,7 @@ CODE_B48B15:
 	PLA					;$B48B35   |
 	STA $067C				;$B48B36   |
 	REP #$20				;$B48B39   |
-	LDA menu_action				;$B48B3B   |
+	LDA file_select_action			;$B48B3B   |
 	BIT #$0001				;$B48B3E   |
 	BEQ CODE_B48B46				;$B48B41   |
 	BRL CODE_B48C07				;$B48B43  /
@@ -3199,7 +3199,7 @@ CODE_B49BBB:
 	STZ $06AF				;$B49BC4   |
 	STZ $06AD				;$B49BC7   |
 	LDA #$0001				;$B49BCA   |
-	TRB menu_action				;$B49BCD   |
+	TRB file_select_action			;$B49BCD   |
 	LDA #CODE_8087D9			;$B49BD0   |
 	STA gamemode_pointer			;$B49BD3   |
 	LDA #simple_gamemode_nmi		;$B49BD5   |
@@ -4040,7 +4040,7 @@ CODE_B4A26E:					;	   |
 
 CODE_B4A26F:
 	LDA #$0001				;$B4A26F  \
-	STA menu_action				;$B4A272   |
+	STA file_select_action			;$B4A272   |
 	LDA #CODE_B4A288			;$B4A275   |
 	STA $079C				;$B4A278   |
 	LDA #CODE_808D4E			;$B4A27B   |
@@ -4059,8 +4059,8 @@ CODE_B4A292:
 	JSL disable_screen			;$B4A292  \
 	JSL CODE_BBC5F4				;$B4A296   |
 	LDA #$0001				;$B4A29A   |
-	STA menu_action				;$B4A29D   |
-	JML init_menu				;$B4A2A0  /
+	STA file_select_action			;$B4A29D   |
+	JML init_file_select			;$B4A2A0  /
 
 CODE_B4A2A4:
 	JSL fade_screen_global			;$B4A2A4  \

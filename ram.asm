@@ -75,7 +75,7 @@ screen_fade_speed = $0513
 screen_fade_timer = $0514
 pending_dma_hdma_channels = $059B
 
-menu_action = $0613
+file_select_action = $0613
 
 language_select = $0617
 
