@@ -130,7 +130,7 @@ CODE_B9D0B8:
 	ADC #$00A3				;$B9D0C3   |
 CODE_B9D0C6:					;	   |
 	PHB					;$B9D0C6   |
-	PEA $F900				;$B9D0C7   |
+	%pea_shift_dbr(DATA_F90000)		;$B9D0C7   |
 	PLB					;$B9D0CA   |
 	PLB					;$B9D0CB   |
 	LDX current_sprite			;$B9D0CC   |
@@ -174,7 +174,7 @@ CODE_B9D100:
 	BPL CODE_B9D13E				;$B9D10B   |
 CODE_B9D10D:					;	   |
 	PHB					;$B9D10D   |
-	PEA $F900				;$B9D10E   |
+	%pea_shift_dbr(DATA_F90000)		;$B9D10E   |
 	PLB					;$B9D111   |
 	PLB					;$B9D112   |
 	LDY $3C,x				;$B9D113   |
@@ -325,7 +325,7 @@ CODE_B9D1D5:
 	LDX current_sprite			;$B9D1D5  \
 	INY					;$B9D1D7   |
 	LDA $0000,y				;$B9D1D8   |
-	PEA $F980				;$B9D1DB   |
+	%pea_mirror_dbr()			;$B9D1DB   |
 	PLB					;$B9D1DE   |
 	PHY					;$B9D1DF   |
 	PHA					;$B9D1E0   |

@@ -12798,7 +12798,7 @@ CODE_B3DF5F:
 	STZ $1A,x				;$B3DF63   |
 	STZ $16,x				;$B3DF65   |
 	PER RESET_start+$330000			;$B3DF67   |
-	PEA $B380				;$B3DF6A   |
+	%pea_use_dbr(RESET_start)		;$B3DF6A   |
 	PLB					;$B3DF6D   |
 	LDY #$01E6				;$B3DF6E   |
 	LDA #$0000				;$B3DF71   |

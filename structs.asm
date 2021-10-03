@@ -66,6 +66,13 @@ struct oam_attribute oam_attribute_table
 	.size		skip 1
 endstruct
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;SRAM structures
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+struct save_file
+	.data:		skip 678
+endstruct
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;ROM structures

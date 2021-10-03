@@ -1938,7 +1938,7 @@ CODE_B59F53:					;	   |
 	LDA #$07				;$B59F5C   |
 	STA PPU.screen				;$B59F5E   |
 	REP #$20				;$B59F61   |
-	PEA $8080				;$B59F63   |
+	%pea_engine_dbr()			;$B59F63   |
 	PLB					;$B59F66   |
 	PLB					;$B59F67   |
 	RTL					;$B59F68  /
@@ -2240,7 +2240,7 @@ CODE_B5A17C:					;	   |
 	JMP CODE_B59F53				;$B5A187  /
 
 CODE_B5A18A:
-	PEA $8080				;$B5A18A  \
+	%pea_engine_dbr()			;$B5A18A  \
 	PLB					;$B5A18D   |
 	PLB					;$B5A18E   |
 	RTL					;$B5A18F  /
@@ -8324,7 +8324,7 @@ CODE_B5D23C:					;	   |
 	BRA CODE_B5D23C				;$B5D23D  /
 
 CODE_B5D23F:
-	PEA $7E00				;$B5D23F  \
+	%pea_mask_dbr($7E3202)			;$B5D23F  \
 	PLB					;$B5D242   |
 	PLB					;$B5D243   |
 	LDA.l $0006AB				;$B5D244   |
@@ -8348,7 +8348,7 @@ CODE_B5D263:					;	   |
 	ASL A					;$B5D264   |
 	ADC #$2A00				;$B5D265   |
 	TAY					;$B5D268   |
-	PEA $7E00				;$B5D269   |
+	%pea_mask_dbr($7E2A00)			;$B5D269   |
 	PLB					;$B5D26C   |
 	PLB					;$B5D26D   |
 	LDA $0002,y				;$B5D26E   |
@@ -9460,7 +9460,7 @@ CODE_B5DC8F:					;	   |
 	LDA #$0005				;$B5DC97   |
 CODE_B5DC9A:					;	   |
 	STA $32					;$B5DC9A   |
-	PEA $B57E				;$B5DC9C   |
+	%pea_use_dbr($7E8029)			;$B5DC9C   |
 	PLB					;$B5DC9F   |
 	LDX #$0000				;$B5DCA0   |
 	TXY					;$B5DCA3   |
@@ -10069,7 +10069,7 @@ CODE_B5E0E2:
 	STA $32					;$B5E152   |
 	LDA DATA_B5E38F,y			;$B5E154   |
 	STA $34					;$B5E157   |
-	PEA $FD93				;$B5E159   |
+	%pea_shift_dbr(DATA_FD934D)		;$B5E159   |
 	PLB					;$B5E15C   |
 	PLB					;$B5E15D   |
 	TXA					;$B5E15E   |
@@ -10244,7 +10244,7 @@ CODE_B5E2E0:					;	   |
 	CMP $36					;$B5E2E5   |
 	BCC CODE_B5E274				;$B5E2E7   |
 CODE_B5E2E9:					;	   |
-	PEA $7E8D				;$B5E2E9   |
+	%pea_shift_dbr($7E8D28)			;$B5E2E9   |
 	PLB					;$B5E2EC   |
 	PLB					;$B5E2ED   |
 	STX $0ABA				;$B5E2EE   |
@@ -10505,7 +10505,7 @@ CODE_B5E4E6:					;	   |
 	LDA #$0A00				;$B5E4FA   |
 	TCD					;$B5E4FD   |
 	PHB					;$B5E4FE   |
-	PEA $7E8D				;$B5E4FF   |
+	%pea_shift_dbr($7E8D28)			;$B5E4FF   |
 	PLB					;$B5E502   |
 	PLB					;$B5E503   |
 	JSR CODE_B5ED3A				;$B5E504   |
@@ -10553,7 +10553,7 @@ CODE_B5E533:					;	   |
 	LDA #$0A00				;$B5E537   |
 	TCD					;$B5E53A   |
 	PHB					;$B5E53B   |
-	PEA $7E8D				;$B5E53C   |
+	%pea_shift_dbr($7E8D28)			;$B5E53C   |
 	PLB					;$B5E53F   |
 	PLB					;$B5E540   |
 	LDA $054F				;$B5E541   |
@@ -12580,7 +12580,7 @@ CODE_B5F13A:					;	   |
 	STA $34					;$B5F176   |
 	LDA.l DATA_FDAC4B,x			;$B5F178   |
 	TAX					;$B5F17C   |
-	PEA $7FA6				;$B5F17D   |
+	%pea_shift_dbr($7FA632)			;$B5F17D   |
 	PLB					;$B5F180   |
 	PLB					;$B5F181   |
 	LDY #$0000				;$B5F182   |
@@ -13758,7 +13758,7 @@ CODE_B5F9F0:					;	   |
 
 CODE_B5F9F5:
 	PHB					;$B5F9F5  \
-	PEA $7FD6				;$B5F9F6   |
+	%pea_shift_dbr($7FD634)			;$B5F9F6   |
 	PLB					;$B5F9F9   |
 	PLB					;$B5F9FA   |
 	LDX $D632				;$B5F9FB   |

@@ -25,6 +25,28 @@ macro return(label)
 	PEA <label>-1
 endmacro
 
+macro pea_use_dbr(label)
+	?dummy:
+	PEA.w (<:?dummy<<8)|<:<label>
+endmacro
+
+macro pea_shift_dbr(label)
+	PEA.w <label>>>8
+endmacro
+
+macro pea_mask_dbr(label)
+	PEA.w <label>>>8&$FF00
+endmacro
+
+macro pea_engine_dbr()
+	PEA.w $8080
+endmacro
+
+macro pea_mirror_dbr()
+	?dummy:
+	PEA.w (<:?dummy<<8|$4000)|$80
+endmacro
+
 macro get_swanky_table()
 	!i #= 0
 	' ' = $2000

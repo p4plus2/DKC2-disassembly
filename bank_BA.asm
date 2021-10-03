@@ -552,7 +552,7 @@ CODE_BA9041:					;	   |
 	RTL					;$BA9041  /
 
 CODE_BA9042:
-	PEA $BA00				;$BA9042  \
+	%pea_mask_dbr(DATA_BAABA8)		;$BA9042  \
 	PLB					;$BA9045   |
 	PLB					;$BA9046   |
 	RTS					;$BA9047  /
@@ -2058,7 +2058,7 @@ CODE_BA9D64:					;	   |
 	ADC $0006FD				;$BA9D67   |
 	TAY					;$BA9D6B   |
 	PHB					;$BA9D6C   |
-	PEA $B600				;$BA9D6D   |
+	%pea_mask_dbr(DATA_B6AFE7)		;$BA9D6D   |
 	PLB					;$BA9D70   |
 	PLB					;$BA9D71   |
 	JSR CODE_BA9E84				;$BA9D72   |
@@ -3831,7 +3831,7 @@ CODE_BAB4EA:					;	   |
 
 CODE_BAB50D:
 	TAX					;$BAB50D  \
-	PEA $B400				;$BAB50E   |
+	%pea_mask_dbr(DATA_B4C4B3)		;$BAB50E   |
 	PLB					;$BAB511   |
 	PLB					;$BAB512   |
 	LDA.w DATA_B4C4B3,x			;$BAB513   |
@@ -3892,7 +3892,7 @@ CODE_BAB580:
 	STA $00065E				;$BAB583   |
 	JSR CODE_BAB60F				;$BAB587   |
 	PHB					;$BAB58A   |
-	PEA $B400				;$BAB58B   |
+	%pea_mask_dbr(DATA_B4C4B3)		;$BAB58B   |
 	PLB					;$BAB58E   |
 	PLB					;$BAB58F   |
 	JSR CODE_BAB5F5				;$BAB590   |
@@ -3969,7 +3969,7 @@ CODE_BAB5F5:
 
 CODE_BAB60F:
 	PHB					;$BAB60F  \
-	PEA $B400				;$BAB610   |
+	%pea_mask_dbr(DATA_B4C4B3)		;$BAB610   |
 	PLB					;$BAB613   |
 	PLB					;$BAB614   |
 	JSR CODE_BAB5F5				;$BAB615   |

@@ -747,7 +747,7 @@ CODE_B48620:					;	   |
 	ADC #$0006				;$B48655   |
 	STA $CB					;$B48658   |
 	LDY #$2A00				;$B4865A   |
-	PEA $7E00				;$B4865D   |
+	%pea_mask_dbr($7E2A00)			;$B4865D   |
 	PLB					;$B48660   |
 	PLB					;$B48661   |
 	LDA $C8					;$B48662   |
@@ -989,7 +989,7 @@ CODE_B48815:					;	   |
 	ASL A					;$B4881C   |
 	ADC #$2A00				;$B4881D   |
 	TAY					;$B48820   |
-	PEA $7E00				;$B48821   |
+	%pea_mask_dbr($7E2A00)			;$B48821   |
 	PLB					;$B48824   |
 	PLB					;$B48825   |
 	LDA $0000,y				;$B48826   |
@@ -1303,7 +1303,7 @@ CODE_B48A9F:					;	   |
 	BRL CODE_B48927				;$B48AB8  /
 
 CODE_B48ABB:
-	PEA $7E00				;$B48ABB  \
+	%pea_mask_dbr($7E3201)			;$B48ABB  \
 	PLB					;$B48ABE   |
 	PLB					;$B48ABF   |
 	LDA $06AB				;$B48AC0   |
@@ -3254,7 +3254,7 @@ CODE_B49C11:					;	   |
 
 CODE_B49C2A:
 	PHB					;$B49C2A  \
-	PEA $7E00				;$B49C2B   |
+	%pea_mask_dbr($7E3202)			;$B49C2B   |
 	PLB					;$B49C2E   |
 	PLB					;$B49C2F   |
 	LDA $06AB				;$B49C30   |
@@ -5194,13 +5194,13 @@ DATA_B4AD3B:
 	db $00
 
 CODE_B4ADDF:
-	PEA $F700				;$B4ADDF  \
+	%pea_mask_dbr(DATA_F7FCC2)		;$B4ADDF  \
 	PLB					;$B4ADE2   |
 	PLB					;$B4ADE3   |
 	RTS					;$B4ADE4  /
 
 CODE_B4ADE5:
-	PEA $BA00				;$B4ADE5  \
+	%pea_mask_dbr(DATA_BAEF04)		;$B4ADE5  \
 	PLB					;$B4ADE8   |
 	PLB					;$B4ADE9   |
 	RTS					;$B4ADEA  /
@@ -5611,7 +5611,7 @@ CODE_B4B0CE:					;	   |
 CODE_B4B0CF:
 	PHB					;$B4B0CF  \
 	PHP					;$B4B0D0   |
-	PEA $7E00				;$B4B0D1   |
+	%pea_mask_dbr($7E2A00)			;$B4B0D1   |
 	PLB					;$B4B0D4   |
 	PLB					;$B4B0D5   |
 	STZ $0652				;$B4B0D6   |
@@ -6258,7 +6258,7 @@ CODE_B4B5CC:					;	   |
 	ORA $0654				;$B4B5DC   |
 	PLY					;$B4B5DF   |
 	PHB					;$B4B5E0   |
-	PEA $7E00				;$B4B5E1   |
+	%pea_mask_dbr(wram_base)		;$B4B5E1   |
 	PLB					;$B4B5E4   |
 	PLB					;$B4B5E5   |
 	STA oam_attribute.size,y		;$B4B5E6   |
@@ -6313,7 +6313,7 @@ CODE_B4B62D:
 	AND #$00FE				;$B4B638   |
 	TAY					;$B4B63B   |
 	PHB					;$B4B63C   |
-	PEA $7E00				;$B4B63D   |
+	%pea_mask_dbr(wram_base)		;$B4B63D   |
 	PLB					;$B4B640   |
 	PLB					;$B4B641   |
 	LDA oam_attribute.size,y		;$B4B642   |
@@ -6361,7 +6361,7 @@ CODE_B4B681:					;	   |
 	ORA $0654				;$B4B691   |
 	PLY					;$B4B694   |
 	PHB					;$B4B695   |
-	PEA $7E00				;$B4B696   |
+	%pea_mask_dbr(wram_base)		;$B4B696   |
 	PLB					;$B4B699   |
 	PLB					;$B4B69A   |
 	STA oam_attribute.size,y		;$B4B69B   |
@@ -6388,7 +6388,7 @@ CODE_B4B69F:					;	   |
 	SBC #$0006				;$B4B6CA   |
 	STA $C8					;$B4B6CD   |
 	DEC $06A7				;$B4B6CF   |
-	PEA $7E00				;$B4B6D2   |
+	%pea_mask_dbr($7E041E)			;$B4B6D2   |
 	PLB					;$B4B6D5   |
 	PLB					;$B4B6D6   |
 	LDY $0685				;$B4B6D7   |
@@ -6444,7 +6444,7 @@ CODE_B4B72A:					;	   |
 	ORA $0654				;$B4B73A   |
 	PLY					;$B4B73D   |
 	PHB					;$B4B73E   |
-	PEA $7E00				;$B4B73F   |
+	%pea_mask_dbr(wram_base)		;$B4B73F   |
 	PLB					;$B4B742   |
 	PLB					;$B4B743   |
 	STA oam_attribute.size,y		;$B4B744   |
@@ -6484,7 +6484,7 @@ CODE_B4B76E:
 	ASL A					;$B4B771   |
 	ASL A					;$B4B772   |
 	TAY					;$B4B773   |
-	PEA $7E00				;$B4B774   |
+	%pea_mask_dbr($7E2A00)			;$B4B774   |
 	PLB					;$B4B777   |
 	PLB					;$B4B778   |
 	LDA $2A00,y				;$B4B779   |
@@ -6654,7 +6654,7 @@ CODE_B4B879:					;	   |
 	RTS					;$B4B8C5  /
 
 CODE_B4B8C6:
-	PEA $7E00				;$B4B8C6  \
+	%pea_mask_dbr($7E3202)			;$B4B8C6  \
 	PLB					;$B4B8C9   |
 	PLB					;$B4B8CA   |
 	LDA $06AB				;$B4B8CB   |

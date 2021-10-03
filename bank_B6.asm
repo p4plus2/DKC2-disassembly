@@ -7354,7 +7354,7 @@ CODE_B6C5BB:
 	ASL A					;$B6C5CB   |
 	TAX					;$B6C5CC   |
 	PHB					;$B6C5CD   |
-	PEA $BA00				;$B6C5CE   |
+	%pea_mask_dbr(DATA_BAA0E0)		;$B6C5CE   |
 	PLB					;$B6C5D1   |
 	PLB					;$B6C5D2   |
 	LDA.w DATA_BAA0E0,x			;$B6C5D3   |
@@ -9786,7 +9786,7 @@ DATA_B6D897:
 DATA_B6D923:
 
 CODE_B6D923:
-	PEA $BA00				;$B6D923  \
+	%pea_mask_dbr(DATA_BAABA8)		;$B6D923  \
 	PLB					;$B6D926   |
 	PLB					;$B6D927   |
 	RTS					;$B6D928  /

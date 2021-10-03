@@ -2278,7 +2278,7 @@ CODE_8095EB:					;	   |
 	XBA					;$8095F0   |
 	STA PPU.fixed_point_mul_A		;$8095F1   |
 	REP #$20				;$8095F4   |
-	PEA $8080				;$8095F6   |
+	%pea_use_dbr(DATA_80B317)		;$8095F6   |
 	PLB					;$8095F9   |
 	LDY #$0002				;$8095FA   |
 	LDX #$0002				;$8095FD   |
@@ -2360,7 +2360,7 @@ CODE_809689:					;	   |
 	XBA					;$80968E   |
 	STA PPU.fixed_point_mul_A		;$80968F   |
 	REP #$20				;$809692   |
-	PEA $8080				;$809694   |
+	%pea_use_dbr(DATA_80B377)		;$809694   |
 	PLB					;$809697   |
 	LDY #$0000				;$809698   |
 CODE_80969B:					;	   |
@@ -3938,85 +3938,87 @@ CODE_80A5D1:					;	   |
 	RTS					;$80A5F0  /
 
 init_file_select:
-	JSL disable_screen			;$80A5F1  \
-	PHK					;$80A5F5   |
-	PLB					;$80A5F6   |
-	JSR clear_VRAM				;$80A5F7   |
-	JSL init_registers_global		;$80A5FA   |
-	JSL clear_noncritical_wram		;$80A5FE   |
-	JSL set_all_oam_offscreen		;$80A602   |
-	LDA #$0018				;$80A606   |
-	JSL play_song				;$80A609   |
-	LDA file_select_action			;$80A60D   |
-	BEQ CODE_80A65D				;$80A610   |
-	LDA $0611				;$80A612   |
-	ASL A					;$80A615   |
-	TAX					;$80A616   |
-	LDA.l sram_file_offsets,x		;$80A617   |
-	STA $32					;$80A61B   |
-	LDA #$00B0				;$80A61D   |
-	STA $34					;$80A620   |
-	PEA $807E				;$80A622   |
-	PLB					;$80A625   |
-	LDY #$02A6				;$80A626   |
-	BRA CODE_80A653				;$80A629  /
-
-	LDA $0611				;$80A62B   |
-	ASL A					;$80A62E   |
-	TAX					;$80A62F   |
-	LDA.l sram_file_offsets,x		;$80A630   |
-	CLC					;$80A634   |
-	ADC #$0006				;$80A635   |
-	STA $32					;$80A638   |
-	LDA #$00B0				;$80A63A   |
-	STA $34					;$80A63D   |
-	LDA $060F				;$80A63F   |
-	BEQ CODE_80A64C				;$80A642   |
-	LDA $32					;$80A644   |
-	CLC					;$80A646   |
-	ADC #$014E				;$80A647   |
-	STA $32					;$80A64A   |
-CODE_80A64C:					;	   |
-	PEA $807E				;$80A64C   |
-	PLB					;$80A64F   |
+%local(.sram_pointer, temp1)
+%local(.sram_pointer_bank, temp3)
+	JSL disable_screen			;$80A5F1  \ Turn off the screen and enable F-blank
+	PHK					;$80A5F5   |\ Welcome back to bank 80
+	PLB					;$80A5F6   |/
+	JSR clear_VRAM				;$80A5F7   | Clear the entire contents of VRAM
+	JSL init_registers_global		;$80A5FA   | Run the standard hardware MMIO reset
+	JSL clear_noncritical_wram		;$80A5FE   | Clear all non critical WRAM
+	JSL set_all_oam_offscreen		;$80A602   | Move all sprite tiles off screen
+	LDA #$0018				;$80A606   |\ Play the file select song
+	JSL play_song				;$80A609   |/
+	LDA file_select_action			;$80A60D   |\ If the file select action is clear
+	BEQ .skip_sram_copy			;$80A610   |/ Skip saving the game, we are on file select
+	LDA $0611				;$80A612   |\ Calculate the index to the current SRAM file
+	ASL A					;$80A615   | |
+	TAX					;$80A616   |/
+	LDA.l sram_file_offsets,x		;$80A617   |\
+	STA .sram_pointer			;$80A61B   | |
+	LDA #$00B0				;$80A61D   | |
+	STA .sram_pointer_bank			;$80A620   |/
+	%pea_use_dbr(sram_file_buffer)		;$80A622   |\
+	PLB					;$80A625   |/
+	LDY #sizeof(save_file)			;$80A626   |
+	BRA .copy_sram				;$80A629  /
+.unused						;	  \
+	LDA $0611				;$80A62B   |\
+	ASL A					;$80A62E   | |
+	TAX					;$80A62F   |/
+	LDA.l sram_file_offsets,x		;$80A630   |\
+	CLC					;$80A634   | |
+	ADC #$0006				;$80A635   | |
+	STA .sram_pointer			;$80A638   | |
+	LDA #$00B0				;$80A63A   | |
+	STA .sram_pointer_bank			;$80A63D   |/
+	LDA $060F				;$80A63F   |\
+	BEQ CODE_80A64C				;$80A642   |/
+	LDA .sram_pointer			;$80A644   |\
+	CLC					;$80A646   | |
+	ADC #$014E				;$80A647   | |
+	STA .sram_pointer			;$80A64A   |/
+#CODE_80A64C:					;	   |
+	%pea_use_dbr(sram_file_buffer)		;$80A64C   |\
+	PLB					;$80A64F   |/
 	LDY #$014C				;$80A650   |
-CODE_80A653:					;	   |
-	LDA $56CA,y				;$80A653   |
-	STA [$32],y				;$80A656   |
-	DEY					;$80A658   |
-	DEY					;$80A659   |
-	BPL CODE_80A653				;$80A65A   |
+.copy_sram					;	   |
+	LDA.w sram_file_buffer,y		;$80A653   |\
+	STA [.sram_pointer],y			;$80A656   | |
+	DEY					;$80A658   | |
+	DEY					;$80A659   | |
+	BPL .copy_sram				;$80A65A   |/
 	PLB					;$80A65C   |
-CODE_80A65D:					;	   |
-	LDA #$0001				;$80A65D   |
-	STA PPU.layer_mode			;$80A660   |
-	LDA #$0213				;$80A663   |
-	STA PPU.screens				;$80A666   |
-	LDA #$0015				;$80A669   |
-	STA PPU.layer_all_tiledata_base		;$80A66C   |
-	LDA #$8020				;$80A66F   |
-	STA PPU.window_1			;$80A672   |
+.skip_sram_copy					;	   |
+	LDA #$0001				;$80A65D   |\
+	STA PPU.layer_mode			;$80A660   |/
+	LDA #$0213				;$80A663   |\
+	STA PPU.screens				;$80A666   |/
+	LDA #$0015				;$80A669   |\
+	STA PPU.layer_all_tiledata_base		;$80A66C   |/
+	LDA #$8020				;$80A66F   |\
+	STA PPU.window_1			;$80A672   |/
 	SEP #$20				;$80A675   |
-	LDA #$30				;$80A677   |
-	STA PPU.set_window_sprite_color		;$80A679   |
-	LDA #$E8				;$80A67C   |
-	STA PPU.fixed_color			;$80A67E   |
+	LDA #$30				;$80A677   |\
+	STA PPU.set_window_sprite_color		;$80A679   |/
+	LDA #$E8				;$80A67C   |\
+	STA PPU.fixed_color			;$80A67E   |/
 	REP #$20				;$80A681   |
-	LDA #$4122				;$80A683   |
-	STA PPU.color_addition_logic		;$80A686   |
-	LDA #$7C74				;$80A689   |
-	STA PPU.layer_1_2_tilemap_base		;$80A68C   |
-	STZ PPU.layer_1_scroll_x		;$80A68F   |
-	STZ PPU.layer_1_scroll_x		;$80A692   |
-	SEP #$20				;$80A695   |
-	LDA #$FF				;$80A697   |
-	STA PPU.layer_1_scroll_y		;$80A699   |
-	STA PPU.layer_1_scroll_y		;$80A69C   |
-	STA PPU.layer_2_scroll_y		;$80A69F   |
-	STA PPU.layer_2_scroll_y		;$80A6A2   |
-	STZ PPU.layer_2_scroll_x		;$80A6A5   |
-	STZ PPU.layer_2_scroll_x		;$80A6A8   |
-	REP #$20				;$80A6AB   |
+	LDA #$4122				;$80A683   |\
+	STA PPU.color_addition_logic		;$80A686   |/
+	LDA #$7C74				;$80A689   |\
+	STA PPU.layer_1_2_tilemap_base		;$80A68C   |/
+	STZ PPU.layer_1_scroll_x		;$80A68F   |\ Reset layer 1 and 2 positions
+	STZ PPU.layer_1_scroll_x		;$80A692   | |
+	SEP #$20				;$80A695   | |
+	LDA #$FF				;$80A697   | |
+	STA PPU.layer_1_scroll_y		;$80A699   | |
+	STA PPU.layer_1_scroll_y		;$80A69C   | |
+	STA PPU.layer_2_scroll_y		;$80A69F   | |
+	STA PPU.layer_2_scroll_y		;$80A6A2   | |
+	STZ PPU.layer_2_scroll_x		;$80A6A5   | |
+	STZ PPU.layer_2_scroll_x		;$80A6A8   | |
+	REP #$20				;$80A6AB   |/
 	LDA #$0028				;$80A6AD   |
 	STA $7E8012				;$80A6B0   |
 	LDA #$0000				;$80A6B4   |
@@ -4605,12 +4607,12 @@ CODE_80ABEE:
 	STA $32					;$80AC00   |
 	LDA #$00B0				;$80AC02   |
 	STA $34					;$80AC05   |
-	PEA $807E				;$80AC07   |
+	%pea_use_dbr(sram_file_buffer)		;$80AC07   |
 	PLB					;$80AC0A   |
 	LDY #$02A8				;$80AC0B   |
 CODE_80AC0E:					;	   |
 	LDA [$32],y				;$80AC0E   |
-	STA $56CA,y				;$80AC10   |
+	STA.w sram_file_buffer,y		;$80AC10   |
 	DEY					;$80AC13   |
 	DEY					;$80AC14   |
 	BPL CODE_80AC0E				;$80AC15   |
@@ -7957,7 +7959,7 @@ CODE_80C97C:
 	CLC					;$80C99A   |
 	ADC $17C0				;$80C99B   |
 	STA $17C4				;$80C99E   |
-	PEA $807E				;$80C9A1   |
+	%pea_use_dbr($7E8013)			;$80C9A1   |
 	PLB					;$80C9A4   |
 	LDY #$0000				;$80C9A5   |
 	LDA $17C4				;$80C9A8   |
@@ -8318,7 +8320,7 @@ CODE_80CC72:					;	   |
 	CLC					;$80CC8F   |
 	ADC $17C0				;$80CC90   |
 	STA $17C4				;$80CC93   |
-	PEA $807E				;$80CC96   |
+	%pea_use_dbr($7E8013)			;$80CC96   |
 	PLB					;$80CC99   |
 	LDY #$0000				;$80CC9A   |
 	LDA $17C4				;$80CC9D   |
@@ -9926,7 +9928,7 @@ CODE_80DBF2:
 	CLC					;$80DC22   |
 	ADC global_frame_counter		;$80DC23   |
 	STA $54					;$80DC25   |
-	PEA $80B3				;$80DC27   |
+	%pea_use_dbr(DATA_B3F4D8)		;$80DC27   |
 	PLB					;$80DC2A   |
 	LDA global_frame_counter		;$80DC2B   |
 	BIT #$0001				;$80DC2D   |
@@ -10142,7 +10144,7 @@ CODE_80DDA0:					;	   |
 	CLC					;$80DDAC   |
 	ADC $38					;$80DDAD   |
 	TAX					;$80DDAF   |
-	PEA $807E				;$80DDB0   |
+	%pea_use_dbr($7E8928)			;$80DDB0   |
 	PLB					;$80DDB3   |
 CODE_80DDB4:					;	   |
 	LDA.l $7E8928,x				;$80DDB4   |
@@ -10906,7 +10908,7 @@ CODE_80E5B5:					;	   |
 	TYA					;$80E5EC   |
 	CPX #$0000				;$80E5ED   |
 	BPL CODE_80E5B5				;$80E5F0   |
-	PEA $807E				;$80E5F2   |
+	%pea_use_dbr($7E807E)			;$80E5F2   |
 	PLB					;$80E5F5   |
 	LDA.l global_frame_counter		;$80E5F6   |
 	LSR A					;$80E5FA   |
@@ -10944,19 +10946,19 @@ CODE_80E627:					;	   |
 	RTS					;$80E63C  /
 
 CODE_80E63D:
-	PEA $807E				;$80E63D  \
+	%pea_use_dbr($7E8070)			;$80E63D  \
 	PLB					;$80E640   |
 	JSR CODE_80ECE5				;$80E641   |
 	PLB					;$80E644   |
 	RTS					;$80E645  /
 
 CODE_80E646:
-	PEA $807E				;$80E646  \
+	%pea_use_dbr($7E8070)			;$80E646  \
 	PLB					;$80E649   |
 	JSR CODE_80ECE5				;$80E64A   |
 	PLB					;$80E64D   |
 CODE_80E64E:					;	   |
-	PEA $807E				;$80E64E   |
+	%pea_use_dbr($7E8070)			;$80E64E   |
 	PLB					;$80E651   |
 	LDA $17BA				;$80E652   |
 	LSR A					;$80E655   |
@@ -13247,7 +13249,7 @@ CODE_80FA40:
 	BNE CODE_80FA70				;$80FA4C   |
 	INC $42,x				;$80FA4E   |
 	LDY $44,x				;$80FA50   |
-	PEA $80BA				;$80FA52   |
+	%pea_use_dbr(DATA_BAC259)		;$80FA52   |
 	PLB					;$80FA55   |
 	LDA $0000,y				;$80FA56   |
 	PLB					;$80FA59   |

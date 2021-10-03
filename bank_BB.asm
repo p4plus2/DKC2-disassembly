@@ -743,7 +743,7 @@ CODE_BB8468:					;	   |
 	STZ $32,x				;$BB8472   |
 CODE_BB8474:					;	   |
 	PHB					;$BB8474   |
-	PEA $FF00				;$BB8475   |
+	%pea_shift_dbr(DATA_FF0000)		;$BB8475   |
 	PLB					;$BB8478   |
 	PLB					;$BB8479   |
 	BRA parse_initscript_entry		;$BB847A  /
@@ -1829,7 +1829,7 @@ CODE_BB8BE9:
 	ASL A					;$BB8BF0   |
 	TAY					;$BB8BF1   |
 	PHB					;$BB8BF2   |
-	PEA $FE00				;$BB8BF3   |
+	%pea_shift_dbr(DATA_FE0000)		;$BB8BF3   |
 	PLB					;$BB8BF6   |
 	PLB					;$BB8BF7   |
 	LDA ($F5),y				;$BB8BF8   |
@@ -1920,7 +1920,7 @@ CODE_BB8C6E:					;	   |
 
 set_PPU_registers:
 	PHB					;$BB8C7F  \ Preserve current data bank
-	PEA $FD79				;$BB8C80   |\ Change data bank to FD
+	%pea_shift_dbr(DATA_FD79E2)		;$BB8C80   |\ Change data bank to FD
 	PLB					;$BB8C83   | |
 	PLB					;$BB8C84   |/
 	SEP #$20				;$BB8C85   |
@@ -1956,7 +1956,7 @@ set_PPU_registers:
 
 VRAM_payload_handler:
 	PHB					;$BB8CB5  \ Preserve current data bank
-	PEA $FD81				;$BB8CB6   |\ Change data bank to FD
+	%pea_shift_dbr(DATA_FD819A)		;$BB8CB6   |\ Change data bank to FD
 	PLB					;$BB8CB9   | |
 	PLB					;$BB8CBA   |/
 	ASL A					;$BB8CBB   |\ Double the VRAM payload id an index to the relative pointer
@@ -4656,7 +4656,7 @@ CODE_BBA60E:					;	   |
 	DEX					;$BBA616   |
 	DEX					;$BBA617   |
 	BPL CODE_BBA60E				;$BBA618   |
-	PEA $BB7E				;$BBA61A   |
+	%pea_use_dbr($7E8928)			;$BBA61A   |
 	PLB					;$BBA61D   |
 	LDX #$0000				;$BBA61E   |
 	TXY					;$BBA621   |
@@ -5516,7 +5516,7 @@ CODE_BBAF0F:					;	   |
 	ASL A					;$BBAF1C   |
 	TAY					;$BBAF1D   |
 	PHB					;$BBAF1E   |
-	PEA $FD00				;$BBAF1F   |
+	%pea_shift_dbr(DATA_FD0000)		;$BBAF1F   |
 	PLB					;$BBAF22   |
 	PLB					;$BBAF23   |
 	LDA.w DATA_FD0000,y			;$BBAF24   |
@@ -5949,7 +5949,7 @@ CODE_BBB1DD:
 
 CODE_BBB1E3:
 	PHB					;$BBB1E3  \
-	PEA $7F00				;$BBB1E4   |
+	%pea_mask_dbr(wram_base_high)		;$BBB1E4   |
 	PLB					;$BBB1E7   |
 	PLB					;$BBB1E8   |
 	LDA.l $0017B4				;$BBB1E9   |
@@ -6155,7 +6155,7 @@ CODE_BBB375:					;	   |
 	LDA #$0001				;$BBB384   |
 	STA $000B98				;$BBB387   |
 	PHB					;$BBB38B   |
-	PEA $FE00				;$BBB38C   |
+	%pea_shift_dbr(DATA_FE0000)		;$BBB38C   |
 	PLB					;$BBB38F   |
 	PLB					;$BBB390   |
 	LDA level_number			;$BBB391   |
@@ -6217,7 +6217,7 @@ CODE_BBB3F6:
 	RTS					;$BBB3F6  /
 
 CODE_BBB3F7:
-	PEA $BBB9				;$BBB3F7  \
+	%pea_shift_dbr(DATA_BBB93C)		;$BBB3F7  \
 	PLB					;$BBB3FA   |
 	PLB					;$BBB3FB   |
 	LDX $32					;$BBB3FC   |
@@ -6361,7 +6361,7 @@ CODE_BBB509:					;	   |
 
 CODE_BBB518:
 	PHB					;$BBB518  \
-	PEA $7E5A				;$BBB519   |
+	%pea_shift_dbr($7E5A12)			;$BBB519   |
 	PLB					;$BBB51C   |
 	PLB					;$BBB51D   |
 	LDA.l $7E5A12				;$BBB51E   |
@@ -6422,7 +6422,7 @@ CODE_BBB576:					;	   |
 
 CODE_BBB581:
 	PHB					;$BBB581  \
-	PEA $7E5A				;$BBB582   |
+	%pea_shift_dbr($7E5A12)			;$BBB582   |
 	PLB					;$BBB585   |
 	PLB					;$BBB586   |
 	LDX #$1FFE				;$BBB587   |
@@ -6502,7 +6502,7 @@ CODE_BBB602:					;	   |
 	ASL A					;$BBB611   |
 	TAX					;$BBB612   |
 	LDA $0BA6,x				;$BBB613   |
-	PEA $FE00				;$BBB616   |
+	%pea_shift_dbr(DATA_FE0000)		;$BBB616   |
 	PLB					;$BBB619   |
 	PLB					;$BBB61A   |
 	TAX					;$BBB61B   |
@@ -6656,7 +6656,7 @@ CODE_BBB70A:
 CODE_BBB70C:
 	PHY					;$BBB70C  \
 	PHB					;$BBB70D   |
-	PEA $8080				;$BBB70E   |
+	%pea_engine_dbr()			;$BBB70E   |
 	PLB					;$BBB711   |
 	PLB					;$BBB712   |
 	JSR CODE_BB8297				;$BBB713   |
@@ -6672,7 +6672,7 @@ CODE_BBB70C:
 	LDA.l DATA_FBE800,x			;$BBB722   |
 	TAX					;$BBB726   |
 	LDA.l DATA_FF0000,x			;$BBB727   |
-	PEA $FF00				;$BBB72B   |
+	%pea_shift_dbr(DATA_FF0000)		;$BBB72B   |
 	PLB					;$BBB72E   |
 	PLB					;$BBB72F   |
 	LDA.w DATA_FF0002,x			;$BBB730   |
@@ -6825,7 +6825,7 @@ CODE_BBB7DD:					;	   |
 CODE_BBB847:
 	PHY					;$BBB847  \
 	PHB					;$BBB848   |
-	PEA $8080				;$BBB849   |
+	%pea_engine_dbr()			;$BBB849   |
 	PLB					;$BBB84C   |
 	PLB					;$BBB84D   |
 	JSR CODE_BB8297				;$BBB84E   |
@@ -6887,7 +6887,7 @@ CODE_BBB8BD:
 	LDA #$0002				;$BBB8BD  \
 	PHY					;$BBB8C0   |
 	PHB					;$BBB8C1   |
-	PEA $8080				;$BBB8C2   |
+	%pea_engine_dbr()			;$BBB8C2   |
 	PLB					;$BBB8C5   |
 	PLB					;$BBB8C6   |
 	JSR CODE_BB8282				;$BBB8C7   |
@@ -6896,7 +6896,7 @@ CODE_BBB8BD:
 CODE_BBB8CC:
 	PHY					;$BBB8CC  \
 	PHB					;$BBB8CD   |
-	PEA $8080				;$BBB8CE   |
+	%pea_engine_dbr()			;$BBB8CE   |
 	PLB					;$BBB8D1   |
 	PLB					;$BBB8D2   |
 	JSR CODE_BB826F				;$BBB8D3   |
@@ -7057,7 +7057,7 @@ CODE_BBBA2E:
 	JSR CODE_BBBA7F				;$BBBA2E  \
 	BCC CODE_BBBA52				;$BBBA31   |
 	PHB					;$BBBA33   |
-	PEA $8080				;$BBBA34   |
+	%pea_engine_dbr()			;$BBBA34   |
 	PLB					;$BBBA37   |
 	PLB					;$BBBA38   |
 	PHY					;$BBBA39   |
@@ -7163,7 +7163,7 @@ CODE_BBBAD1:
 	ASL A					;$BBBAD7   |
 	TAY					;$BBBAD8   |
 	PHB					;$BBBAD9   |
-	PEA $FE00				;$BBBADA   |
+	%pea_shift_dbr(DATA_FE0000)		;$BBBADA   |
 	PLB					;$BBBADD   |
 	PLB					;$BBBADE   |
 	LDA ($F5),y				;$BBBADF   |
@@ -7188,7 +7188,7 @@ CODE_BBBAF3:
 	ASL A					;$BBBAF9   |
 	TAY					;$BBBAFA   |
 	PHB					;$BBBAFB   |
-	PEA $FE00				;$BBBAFC   |
+	%pea_shift_dbr(DATA_FE0000)		;$BBBAFC   |
 	PLB					;$BBBAFF   |
 	PLB					;$BBBB00   |
 	LDA ($F5),y				;$BBBB01   |
@@ -8594,11 +8594,11 @@ CODE_BBC5CC:
 	STA $32					;$BBC5D5   |
 	LDA #$00B0				;$BBC5D7   |
 	STA $34					;$BBC5DA   |
-	PEA $BB7E				;$BBC5DC   |
+	%pea_use_dbr(sram_file_buffer)		;$BBC5DC   |
 	PLB					;$BBC5DF   |
 	LDY #$02A6				;$BBC5E0   |
 CODE_BBC5E3:					;	   |
-	LDA $56CA,y				;$BBC5E3   |
+	LDA.w sram_file_buffer,y		;$BBC5E3   |
 	STA [$32],y				;$BBC5E6   |
 	DEY					;$BBC5E8   |
 	DEY					;$BBC5E9   |
@@ -8612,7 +8612,7 @@ DATA_BBC5EE:
 
 CODE_BBC5F4:
 	JSL CODE_BB819F				;$BBC5F4  \
-	LDA #$56CA				;$BBC5F8   |
+	LDA #sram_file_buffer			;$BBC5F8   |
 	STA $26					;$BBC5FB   |
 	LDA #$007E				;$BBC5FD   |
 	STA $28					;$BBC600   |
@@ -8762,7 +8762,7 @@ CODE_BBC718:					;	   |
 
 CODE_BBC736:
 	JSL CODE_808F68				;$BBC736  \
-	LDA #$56CA				;$BBC73A   |
+	LDA #sram_file_buffer			;$BBC73A   |
 	STA $26					;$BBC73D   |
 	LDA #$007E				;$BBC73F   |
 	STA $28					;$BBC742   |

@@ -75,6 +75,7 @@ screen_fade_speed = $0513
 screen_fade_timer = $0514
 pending_dma_hdma_channels = $059B
 
+file_select_selection = $0611
 file_select_action = $0613
 
 language_select = $0617
@@ -91,3 +92,11 @@ main_sprite_table_end = $0DE2+(sizeof(sprite)*24)
 
 sprite_render_table = $16FE
 sprite_render_table_end = $16FE+$30
+
+;;;
+;;; End low WRAM region
+;;;
+wram_base = $7E0000
+wram_base_high = $7F0000
+
+sram_file_buffer = $7E56CA
