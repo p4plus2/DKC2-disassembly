@@ -5720,7 +5720,7 @@ CODE_B4B18F:
 	LDY #DATA_B4E6D8			;$B4B1AB   |
 	STZ $0656				;$B4B1AE   |
 	SEP #$20				;$B4B1B1   |
-	LDA #$7E				;$B4B1B3   |
+	LDA #<:wram_base			;$B4B1B3   |
 	PHA					;$B4B1B5   |
 	PLB					;$B4B1B6   |
 	XBA					;$B4B1B7   |

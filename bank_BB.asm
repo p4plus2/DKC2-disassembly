@@ -8592,7 +8592,7 @@ CODE_BBC5CC:
 	TAX					;$BBC5D0   |
 	LDA.l DATA_BBC5EE,x			;$BBC5D1   |
 	STA $32					;$BBC5D5   |
-	LDA #$00B0				;$BBC5D7   |
+	LDA #<:sram_base			;$BBC5D7   |
 	STA $34					;$BBC5DA   |
 	%pea_use_dbr(sram_file_buffer)		;$BBC5DC   |
 	PLB					;$BBC5DF   |
@@ -8608,7 +8608,9 @@ CODE_BBC5E3:					;	   |
 
 
 DATA_BBC5EE:
-	db $08, $60, $B0, $62, $58, $65
+	dw save_file1
+	dw save_file2
+	dw save_file3
 
 CODE_BBC5F4:
 	JSL CODE_BB819F				;$BBC5F4  \

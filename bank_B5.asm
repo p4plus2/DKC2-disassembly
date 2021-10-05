@@ -11808,9 +11808,9 @@ CODE_B5ED61:					;	   |
 CODE_B5ED70:
 	LDX $90					;$B5ED70  \
 	BMI CODE_B5ED95				;$B5ED72   |
-	LDA #$0080				;$B5ED74   |
+	LDA #<:rare_string			;$B5ED74   |
 	STA $92					;$B5ED77   |
-	LDY #$83C0				;$B5ED79   |
+	LDY #rare_string			;$B5ED79   |
 	LDA [$90],y				;$B5ED7C   |
 	CLC					;$B5ED7E   |
 	ADC $B2					;$B5ED7F   |

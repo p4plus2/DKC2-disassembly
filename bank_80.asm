@@ -3142,7 +3142,7 @@ CODE_809DE2:
 	TAX					;$809DE7   |
 	LDA.l DATA_809C99,x			;$809DE8   |
 	STA $3A					;$809DEC   |
-	LDA #$0080				;$809DEE   |
+	LDA #<:DATA_809C99			;$809DEE   |
 	STA $3C					;$809DF1   |
 	LDY #$0000				;$809DF3   |
 	LDA #$0100				;$809DF6   |
@@ -3956,7 +3956,7 @@ init_file_select:
 	TAX					;$80A616   |/
 	LDA.l sram_file_offsets,x		;$80A617   |\
 	STA .sram_pointer			;$80A61B   | |
-	LDA #$00B0				;$80A61D   | |
+	LDA #<:sram_base			;$80A61D   | |
 	STA .sram_pointer_bank			;$80A620   |/
 	%pea_use_dbr(sram_file_buffer)		;$80A622   |\
 	PLB					;$80A625   |/
@@ -3970,7 +3970,7 @@ init_file_select:
 	CLC					;$80A634   | |
 	ADC #$0006				;$80A635   | |
 	STA .sram_pointer			;$80A638   | |
-	LDA #$00B0				;$80A63A   | |
+	LDA #<:sram_base			;$80A63A   | |
 	STA .sram_pointer_bank			;$80A63D   |/
 	LDA $060F				;$80A63F   |\
 	BEQ CODE_80A64C				;$80A642   |/
@@ -4178,7 +4178,9 @@ CODE_80A82B:
 	RTS					;$80A865  /
 
 DATA_80A866:
-	db $A2, $74, $42, $75, $E2, $75
+	dw save_file1_competitor
+	dw save_file2_competitor
+	dw save_file3_competitor
 
 run_file_select:
 	LDX #stack				;$80A86C  \
@@ -4275,7 +4277,7 @@ CODE_80A934:					;	   |
 	TAX					;$80A938   |
 	LDA.l sram_file_offsets,x		;$80A939   |
 	STA $54					;$80A93D   |
-	LDA #$00B0				;$80A93F   |
+	LDA #<:sram_base			;$80A93F   |
 	STA $56					;$80A942   |
 	LDA.l DATA_80A866,x			;$80A944   |
 	LDX $0611				;$80A948   |
@@ -4546,7 +4548,7 @@ CODE_80AB7B:
 	TAX					;$80AB7F   |
 	LDA.l sram_file_offsets,x		;$80AB80   |
 	STA $32					;$80AB84   |
-	LDA #$00B0				;$80AB86   |
+	LDA #<:sram_base			;$80AB86   |
 	STA $34					;$80AB89   |
 	LDY #$0000				;$80AB8B   |
 	LDA [$32],y				;$80AB8E   |
@@ -4569,14 +4571,14 @@ CODE_80ABA0:
 	TAX					;$80ABB4   |
 	LDA.l sram_file_offsets,x		;$80ABB5   |
 	STA $32					;$80ABB9   |
-	LDA #$00B0				;$80ABBB   |
+	LDA #<:sram_base			;$80ABBB   |
 	STA $34					;$80ABBE   |
 	LDA $0615				;$80ABC0   |
 	ASL A					;$80ABC3   |
 	TAX					;$80ABC4   |
 	LDA.l sram_file_offsets,x		;$80ABC5   |
 	STA $36					;$80ABC9   |
-	LDA #$00B0				;$80ABCB   |
+	LDA #<:sram_base			;$80ABCB   |
 	STA $38					;$80ABCE   |
 	LDY #$02A6				;$80ABD0   |
 CODE_80ABD3:					;	   |
@@ -4605,7 +4607,7 @@ CODE_80ABEE:
 	TAX					;$80ABFB   |
 	LDA.l sram_file_offsets,x		;$80ABFC   |
 	STA $32					;$80AC00   |
-	LDA #$00B0				;$80AC02   |
+	LDA #<:sram_base			;$80AC02   |
 	STA $34					;$80AC05   |
 	%pea_use_dbr(sram_file_buffer)		;$80AC07   |
 	PLB					;$80AC0A   |
@@ -4658,27 +4660,27 @@ upload_channel_count_tilemap:			;	  \
 	RTS					;$80AC62  /
 
 CODE_80AC63:
-	LDA #$00B0				;$80AC63  \
+	LDA #<:save_file1			;$80AC63  \
 	STA $56					;$80AC66   |
 	LDA #$0000				;$80AC68   |
 	JSR CODE_80ACA5				;$80AC6B   |
-	LDA #$6008				;$80AC6E   |
+	LDA #save_file1				;$80AC6E   |
 	STA $54					;$80AC71   |
-	LDA #$74A2				;$80AC73   |
+	LDA #save_file1_competitor		;$80AC73   |
 	LDX #$0000				;$80AC76   |
 	JSR CODE_80ACB6				;$80AC79   |
 	LDA #$0001				;$80AC7C   |
 	JSR CODE_80ACA5				;$80AC7F   |
-	LDA #$62B0				;$80AC82   |
+	LDA #save_file2				;$80AC82   |
 	STA $54					;$80AC85   |
-	LDA #$7542				;$80AC87   |
+	LDA #save_file2_competitor		;$80AC87   |
 	LDX #$0001				;$80AC8A   |
 	JSR CODE_80ACB6				;$80AC8D   |
 	LDA #$0002				;$80AC90   |
 	JSR CODE_80ACA5				;$80AC93   |
-	LDA #$6558				;$80AC96   |
+	LDA #save_file3				;$80AC96   |
 	STA $54					;$80AC99   |
-	LDA #$75E2				;$80AC9B   |
+	LDA #save_file3_competitor		;$80AC9B   |
 	LDX #$0002				;$80AC9E   |
 	JSR CODE_80ACB6				;$80ACA1   |
 	RTS					;$80ACA4  /
@@ -13125,7 +13127,7 @@ CODE_80F946:
 	TAX					;$80F951   |
 	LDA.l DATA_80F70C,x			;$80F952   |
 	STA $3A					;$80F956   |
-	LDA #$0080				;$80F958   |
+	LDA #<:DATA_80F70C			;$80F958   |
 	STA $3C					;$80F95B   |
 	LDY #$0000				;$80F95D   |
 CODE_80F960:					;	   |
