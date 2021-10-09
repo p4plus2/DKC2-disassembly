@@ -75,11 +75,13 @@ screen_fade_speed = $0513
 screen_fade_timer = $0514
 pending_dma_hdma_channels = $059B
 
+active_controller = $060F
 file_select_selection = $0611
 file_select_action = $0613
 
 language_select = $0617
 
+piracy_string_result = $0907
 enable_intro_bypass = $090F
 
 intro_sparkle_x_position = $098F
@@ -100,3 +102,18 @@ wram_base = $7E0000
 wram_base_high = $7F0000
 
 sram_file_buffer = $7E56CA
+
+
+; HDMA buffers
+; These buffers will have many overlapping addresses, some with structs, some without
+; These may take awhile to get right and could end up fairly volatile until I figure it out
+
+namespace hdma_intro
+	bgmode = $7E8012
+	color_math = $7E8022
+	subscreen = $7E8032
+namespace off
+; end buffers
+
+working_palette = $7E8928
+primary_palette = $7E8C28

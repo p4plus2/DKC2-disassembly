@@ -4652,16 +4652,16 @@ CODE_BBA605:
 	LDX #$02FE				;$BBA60B   |
 CODE_BBA60E:					;	   |
 	LDA.l DATA_FD334E,x			;$BBA60E   |
-	STA $7E8928,x				;$BBA612   |
+	STA working_palette,x			;$BBA612   |
 	DEX					;$BBA616   |
 	DEX					;$BBA617   |
 	BPL CODE_BBA60E				;$BBA618   |
-	%pea_use_dbr($7E8928)			;$BBA61A   |
+	%pea_use_dbr(working_palette)		;$BBA61A   |
 	PLB					;$BBA61D   |
 	LDX #$0000				;$BBA61E   |
 	TXY					;$BBA621   |
 CODE_BBA622:					;	   |
-	LDA.l $7E8928,x				;$BBA622   |
+	LDA working_palette,x			;$BBA622   |
 	XBA					;$BBA626   |
 	AND #$001F				;$BBA627   |
 	STA $34					;$BBA62A   |
@@ -4671,7 +4671,7 @@ CODE_BBA622:					;	   |
 	LDA.l $7E892C,x				;$BBA635   |
 	AND #$7C00				;$BBA639   |
 	ORA $34					;$BBA63C   |
-	STA $8C28,y				;$BBA63E   |
+	STA.w primary_palette,y			;$BBA63E   |
 	INY					;$BBA641   |
 	INY					;$BBA642   |
 	TXA					;$BBA643   |
@@ -8587,7 +8587,7 @@ CODE_BBC5C3:					;	   |
 	RTL					;$BBC5CB  /
 
 CODE_BBC5CC:
-	LDA $0611				;$BBC5CC  \
+	LDA file_select_selection		;$BBC5CC  \
 	ASL A					;$BBC5CF   |
 	TAX					;$BBC5D0   |
 	LDA.l DATA_BBC5EE,x			;$BBC5D1   |

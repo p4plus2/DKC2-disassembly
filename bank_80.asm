@@ -177,13 +177,13 @@ RESET_start:
 	DEY					;$808433   |\ If not at the end of RAM continue scanning
 	BPL .next_byte				;$808434   |/
 	REP #$20				;$808436   |\ Test that SRAM is present
-	LDA.l $B06000				;$808438   | |
+	LDA.l sram_base				;$808438   | |
 	INC A					;$80843C   | |
-	STA $B06000				;$80843D   | |
-	CMP $B06000				;$808441   | |
+	STA.l sram_base				;$80843D   | |
+	CMP.l sram_base				;$808441   | |
 	BNE .prepare_anti_piracy		;$808445   |/ Otherwise trigger anti piracy
 	DEC A					;$808447   |\ Restore byte modified from SRAM test
-	STA $B06000				;$808448   |/
+	STA.l sram_base				;$808448   |/
 	LDY #$003D				;$80844C   | Load wrong console message
 	LDA PPU.status_ppu2			;$80844F   |\ Verify the console is NTSC
 	AND #$0010				;$808452   | |
@@ -226,7 +226,7 @@ RESET_start:
 	PLB					;$80848C   |/
 	LDX #$0006				;$80848D   | Load anti piracy test string length
 -						;	   |
-	LDA $0907,x				;$808490   |\ Avoid false positive by checking if
+	LDA piracy_string_result,x		;$808490   |\ Avoid false positive by checking if
 	CMP rare_string,x			;$808493   | | the anti piracy check was prior passed
 	BNE .write_piracy_string		;$808496   | | Otherwise jump and fail anti piracy check
 	DEX					;$808498   | |
@@ -239,12 +239,12 @@ RESET_start:
 	LDY #$0004				;$8084A1   | Load target iteration count
 .write_next_byte				;	   |
 	LDA piracy_string,x			;$8084A4   |\ Load the current anti piracy byte
-	STA $0907,x				;$8084A7   | | Write the anti piracy byte in RAM
-	CMP.l $B06000,x				;$8084AA   | |\ If the byte is already in SRAM decrease the
+	STA piracy_string_result,x		;$8084A7   | | Write the anti piracy byte in RAM
+	CMP.l sram_base,x			;$8084AA   | |\ If the byte is already in SRAM decrease the
 	BNE +					;$8084AE   | | | iteration count.  If zero, the full string
 	DEY					;$8084B0   | |/ was already present.
 +						;	   | |
-	STA $B06000,x				;$8084B1   | | Write the anti piracy byte to SRAM
+	STA.l sram_base,x			;$8084B1   | | Write the anti piracy byte to SRAM
 	DEX					;$8084B5   | |\ Move anti piracy index
 	DEX					;$8084B6   | |/
 	BPL .write_next_byte			;$8084B7   |/ Continue writing until there are no more bytes
@@ -269,7 +269,7 @@ RESET_start:
 	PLB					;$8084D5   |/
 	LDX #$0006				;$8084D6   | Load anti piracy string length
 -						;	   |
-	LDA $0907,x				;$8084D9   |\ Verify the anti piracy failure string is not in RAM
+	LDA piracy_string_result,x		;$8084D9   |\ Verify the anti piracy failure string is not in RAM
 	CMP piracy_string,x			;$8084DC   | |
 	BNE .prepare_logo			;$8084DF   | |
 	DEX					;$8084E1   | |
@@ -279,7 +279,7 @@ RESET_start:
 
 .prepare_logo					;	  \
 	LDA #$0000				;$8084E7   |\ Clear first word of SRAM
-	STA $B06000				;$8084EA   |/
+	STA.l sram_base				;$8084EA   |/
 	LDX #stack				;$8084EE   |\ Reset the stack register
 	TXS					;$8084F1   |/
 	%return(start_engine)			;$8084F2   | Push address to start the game engine
@@ -389,7 +389,7 @@ start_engine:					;	  \
 	LDX #$0006				;$8085D3   |\ Number of bytes minus one to copy (due to 16 bit)
 .rare_string_copy				;	   | |
 	LDA rare_string,x			;$8085D6   | | Use the Rareware anti piracy success string,
-	STA $0907,x				;$8085D9   | | and copy that into RAM
+	STA piracy_string_result,x		;$8085D9   | | and copy that into RAM
 	DEX					;$8085DC   | |
 	DEX					;$8085DD   | |
 	BPL .rare_string_copy			;$8085DE   |/ Copy the string until there are no more bytes
@@ -1444,15 +1444,15 @@ CODE_808E4F:
 
 CODE_808E53:
 	LDA rng_result				;$808E53  \
-	STA $34					;$808E55   |
+	STA temp3				;$808E55   |
 	ASL A					;$808E57   |
 	LDA rng_seed_2				;$808E58   |
 	ROL A					;$808E5A   |
-	STA $32					;$808E5B   |
+	STA temp1				;$808E5B   |
 	LDA rng_seed_1				;$808E5D   |
-	EOR $32					;$808E5F   |
+	EOR temp1				;$808E5F   |
 	STA rng_result				;$808E61   |
-	LDA $34					;$808E63   |
+	LDA temp3				;$808E63   |
 	STA rng_seed_2				;$808E65   |
 	LDA rng_result				;$808E67   |
 	RTS					;$808E69  /
@@ -1490,12 +1490,13 @@ clear_noncritical_wram:				;	  \
 	PLB					;$808EAC   | Restore the databank (otherwise mvn corrupts it)
 	RTL					;$808EAD  /
 
-clear_full_wram:				;	  \
+clear_full_wram:
+%local(.return, temp1)				;	  \
 	PLA					;$808EAE   |\ Store the return address in scratch ram
 	INC A					;$808EAF   | |
-	STA $32					;$808EB0   |/
+	STA .return				;$808EB0   |/
 	LDA #$0000				;$808EB2   |\ Clear bank 7F using an MVN copy
-	STA $7F0000				;$808EB5   | | (Clear the first byte the recursive MVN)
+	STA wram_base_high			;$808EB5   | | (Clear the first byte the recursive MVN)
 	LDX #$0000				;$808EB9   | |
 	LDA #$FFFF				;$808EBC   | |
 	TXY					;$808EBF   | |
@@ -1508,15 +1509,15 @@ clear_full_wram:				;	  \
 	TXY					;$808ED1   | |
 	INY					;$808ED2   | |
 	MVN $7E, $7E				;$808ED3   |/
-	STZ $34					;$808ED6   |\ Clean $7E0034-$7E0906 with an MVN copy
-	LDX #$0034				;$808ED8   | |
+	STZ temp3				;$808ED6   |\ Clean $7E0034-$7E0906 with an MVN copy
+	LDX.w #temp3				;$808ED8   | |
 	LDA #$08D1				;$808EDB   | |
 	TXY					;$808EDE   | |
 	INY					;$808EDF   | |
 	MVN $80, $80				;$808EE0   |/
 	LDX #stack				;$808EE3   |\ Reset the stack
 	TXS					;$808EE6   |/
-	JMP ($0032)				;$808EE7  / Return using address from scratch RAM
+	JMP.w (.return)				;$808EE7  / Return using address from scratch RAM
 
 CODE_808EEA:
 	JSL disable_screen			;$808EEA  \
@@ -1930,53 +1931,55 @@ init_rareware_logo:
 	STA screen_brightness			;$8092C7   |/
 	LDA #$0000				;$8092CA   | Value to initialize scratch RAM and palette mirrors to
 	LDX #$01FE				;$8092CD   | Load number of bytes minus two to clear
-CODE_8092D0:					;	   |\ Clear scratch RAM
-	STA $7E8928,x				;$8092D0   | |
+.clear_palette					;	   |
+	STA working_palette,x				;$8092D0   |\ Clear palette
 	DEX					;$8092D4   | |
 	DEX					;$8092D5   | |
-	BPL CODE_8092D0				;$8092D6   |/ Continue to loop until all is cleared
+	BPL .clear_palette			;$8092D6   |/ Loop until all clear
 	LDX #$001C				;$8092D8   | Load number of bytes minus two to clear
 .clear_scratch_RAM				;	   |\ Clear scratch RAM
-	STZ $32,x				;$8092DB   | |
+	STZ temp1,x				;$8092DB   | |
 	DEX					;$8092DD   | |
 	DEX					;$8092DE   | |
 	BPL .clear_scratch_RAM			;$8092DF   |/ Continue to loop until all is cleared
+namespace hdma_intro				;	   |
 	LDA #$007F				;$8092E1   |\ For $7F scanlines set the bg mode to 3
-	STA $7E8012				;$8092E4   | |
+	STA bgmode+write_byte[0].count		;$8092E4   | |
 	LDA #$0003				;$8092E8   | |
-	STA $7E8013				;$8092EB   | |
+	STA bgmode+write_byte[0].value		;$8092EB   | |
 	LDA #$0018				;$8092EF   | | For $18 scanlines set the bg mode to 3
-	STA $7E8014				;$8092F2   | |
+	STA bgmode+write_byte[1].count		;$8092F2   | |
 	LDA #$0003				;$8092F6   | |
-	STA $7E8015				;$8092F9   | | For $3 scanlines set the bg mode to 3
-	STA $7E8016				;$8092FD   | |
-	STA $7E8017				;$809301   | |
+	STA bgmode+write_byte[1].value		;$8092F9   | | For $3 scanlines set the bg mode to 3
+	STA bgmode+write_byte[2].count		;$8092FD   | |
+	STA bgmode+write_byte[2].value		;$809301   | |
 	LDA #$0000				;$809305   | | Terminate HDMA table
-	STA $7E8018				;$809308   |/
+	STA bgmode+write_byte[3].terminate	;$809308   |/
 	LDA #$007F				;$80930C   |\ For $7F scanlines enable color math on layer 2
-	STA $7E8022				;$80930F   | |
+	STA color_math+write_byte[0].count	;$80930F   | |
 	LDA #$0002				;$809313   | |
-	STA $7E8023				;$809316   | |
+	STA color_math+write_byte[0].value	;$809316   | |
 	LDA #$0018				;$80931A   | | For $18 scanlines enable color math on layer 2
-	STA $7E8024				;$80931D   | |
+	STA color_math+write_byte[1].count	;$80931D   | |
 	LDA #$0002				;$809321   | |
-	STA $7E8025				;$809324   | | For $2 scanlines enable color math on layer 2
-	STA $7E8026				;$809328   | |
-	STA $7E8027				;$80932C   | |
+	STA color_math+write_byte[1].value	;$809324   | | For $2 scanlines enable color math on layer 2
+	STA color_math+write_byte[2].count	;$809328   | |
+	STA color_math+write_byte[2].value	;$80932C   | |
 	LDA #$0000				;$809330   | | Terminate HDMA table
-	STA $7E8028				;$809333   |/
+	STA color_math+write_byte[3].terminate	;$809333   |/
 	LDA #$007F				;$809337   |\ For $7F scanlines set layer 1 on the subscreen
-	STA $7E8032				;$80933A   | |
+	STA subscreen+write_byte[0].count	;$80933A   | |
 	LDA #$0001				;$80933E   | |
-	STA $7E8033				;$809341   | |
+	STA subscreen+write_byte[0].value	;$809341   | |
 	LDA #$0018				;$809345   | | For $18 scanlines set layer 1 on the subscreen
-	STA $7E8034				;$809348   | |
+	STA subscreen+write_byte[1].count	;$809348   | |
 	LDA #$0001				;$80934C   | |
-	STA $7E8035				;$80934F   | | For $1 scanlines set layer 1 on the subscreen
-	STA $7E8036				;$809353   | |
-	STA $7E8037				;$809357   | |
+	STA subscreen+write_byte[1].value	;$80934F   | | For $1 scanlines set layer 1 on the subscreen
+	STA subscreen+write_byte[2].count	;$809353   | |
+	STA subscreen+write_byte[2].value	;$809357   | |
 	LDA #$0000				;$80935B   | | Terminate HDMA table
-	STA $7E8038				;$80935E   |/
+	STA subscreen+write_byte[3].terminate	;$80935E   |/
+namespace off					;	   |
 	SEP #$20				;$809362   |\
 	LDX #$0500				;$809364   | |\ Set up write once HDMA with $2105 destination
 	STX HDMA[2].settings			;$809367   | |/
@@ -2012,7 +2015,7 @@ CODE_8092D0:					;	   |\ Clear scratch RAM
 run_rareware_logo:				;	  \
 	LDX #stack				;$8093B8   |\ Reset the stack
 	TXS					;$8093BB   |/
-	LDA #$8928				;$8093BC   |\ Set DMA source word $8928
+	LDA #working_palette			;$8093BC   |\ Set DMA source word the working palette
 	STA DMA[1].source			;$8093BF   | |
 	STA DMA[1].unused_2			;$8093C2   |/
 	LDA #$0200				;$8093C5   |\ Set DMA size to 512 bytes
@@ -2020,7 +2023,7 @@ run_rareware_logo:				;	  \
 	LDA #$2200				;$8093CB   |\ Set DMA destination to $2122 with write once, one register
 	STA DMA[1].settings			;$8093CE   |/
 	SEP #$20				;$8093D1   |
-	LDA #$7E				;$8093D3   |\ DMA source bank to $7E
+	LDA.b #<:working_palette		;$8093D3   |\ DMA source bank to $7E
 	STA DMA[1].source_bank			;$8093D5   |/
 	STZ PPU.cgram_address			;$8093D8   | Set CGRAM destination address to zero
 	LDA #$02				;$8093DB   |\ Run palette DMA
@@ -2037,10 +2040,12 @@ run_rareware_logo:				;	  \
 	CMP #$00E0				;$8093F5   | |
 	BNE .skip_mode_7_enable			;$8093F8   |/ Skip enabling mode 7
 	SEP #$20				;$8093FA   |
+namespace intro_hdma				;	   |
 	LDA #$07				;$8093FC   |\ Set background mode HDMA values to 7
-	STA $7E8013				;$8093FE   | |
-	STA $7E8015				;$809402   | |
-	STA $7E8017				;$809406   |/
+	STA bgmode+write_byte[0].value		;$8093FE   | |
+	STA bgmode+write_byte[1].value		;$809402   | |
+	STA bgmode+write_byte[2].value		;$809406   |/
+namespace off					;	   |
 	LDA #$74				;$80940A   |\ Place layer 1 tilemap at $E800 in VRAM
 	STA PPU.layer_1_2_tilemap_base		;$80940C   |/
 	LDA #$01				;$80940F   |\ Put layer 1 on the pain screen
@@ -2049,17 +2054,17 @@ run_rareware_logo:				;	  \
 .skip_mode_7_enable				;	   |
 	LDA global_frame_counter		;$809416   |\ If the frame count is not exactly $0110
 	CMP #$0110				;$809418   | |
-	BNE CODE_809430				;$80941B   |/ Skip uploading the first half of Nintendo Presents
+	BNE .skip_nintendo_presents_upload	;$80941B   |/ Skip uploading the first half of Nintendo Presents
 	LDA #$4000				;$80941D   |\ Set VRAM address to $8000
 	STA PPU.vram_address			;$809420   |/
 	LDX #$007F				;$809423   |\ Upload $1440 bytes from $7F0500 to VRAM address $8000
 	LDA #$0500				;$809426   | | The first half of tiledata for the Nintendo Presents
 	LDY #$1440				;$809429   | |
 	JSL DMA_to_VRAM				;$80942C   |/ DMA the payload
-CODE_809430:					;	   |
+.skip_nintendo_presents_upload			;	   |
 	LDA global_frame_counter		;$809430   |\ If the frame count is not exactly $0111
 	CMP #$0111				;$809432   | |
-	BNE CODE_809458				;$809435   |/ Skip uploading the second half of Nintendo Presents
+	BNE .skip_nintendo_presents_upload2	;$809435   |/ Skip uploading the second half of Nintendo Presents
 	LDA #$4A20				;$809437   |\ Set VRAM address to $9440
 	STA PPU.vram_address			;$80943A   |/
 	LDX #$007F				;$80943D   |\ Upload $1440 bytes from $7F1940 to VRAM address $9440
@@ -2069,14 +2074,14 @@ CODE_809430:					;	   |
 	LDA #$0000				;$80944A   |
 	LDX #$001E				;$80944D   | Number of bytes to clear minus 2
 .clear_palette					;	   |
-	STA $7E8928,x				;$809450   |\ Clear palette
+	STA working_palette,x			;$809450   |\ Clear palette
 	DEX					;$809454   | |
 	DEX					;$809455   | |
 	BNE .clear_palette			;$809456   |/ Loop until all clear
-CODE_809458:					;	   |
+.skip_nintendo_presents_upload2			;	   |
 	LDA global_frame_counter		;$809458   |\ If the frame count is not exactly $0112
 	CMP #$0112				;$80945A   | |
-	BNE CODE_8094A0				;$80945D   |/ Skip uploading the sparkle tilemap
+	BNE .skip_sparkle_upload		;$80945D   |/ Skip uploading the sparkle tilemap
 	LDA #$3000				;$80945F   |\ Set VRAM address to $6000
 	STA PPU.vram_address			;$809462   |/
 	LDX #$007F				;$809465   |\ Upload $500 bytes from $7F0000 to VRAM address $6000
@@ -2084,21 +2089,23 @@ CODE_809458:					;	   |
 	LDY #$0500				;$80946B   | |
 	JSL DMA_to_VRAM				;$80946E   |/ DMA the payload
 	SEP #$20				;$809472   |
+namespace intro_hdma				;	   |
 	LDA #$01				;$809474   |\ Use mode 1 for $97 scanlines
-	STA $7E8013				;$809476   | |
-	STA $7E8015				;$80947A   |/
+	STA bgmode+write_byte[0].value		;$809476   | |
+	STA bgmode+write_byte[1].value		;$80947A   |/
 	LDA #$05				;$80947E   |\ Use mode 5 for the remainder of the screen
-	STA $7E8017				;$809480   |/
-	LDA #$21				;$809484   |\ Enable color math on layer 1 and backgroup
-	STA $7E8023				;$809486   | |
-	STA $7E8025				;$80948A   |/
+	STA bgmode+write_byte[2].value		;$809480   |/
+	LDA #$21				;$809484   |\ Enable color math on layer 1 and background
+	STA color_math+write_byte[0].value	;$809486   | |
+	STA color_math+write_byte[1].value	;$80948A   |/
 	LDA #$04				;$80948E   |\ Place layer 3 on the subscreen
-	STA $7E8033				;$809490   | |
-	STA $7E8035				;$809494   |/
-	LDA #$00				;$809498   |\ Terminate color math HDMA
-	STA $7E8027				;$80949A   |/
+	STA subscreen+write_byte[0].value	;$809490   | |
+	STA subscreen+write_byte[1].value	;$809494   |/
+	LDA #$00				;$809498   |\ Disable color math
+	STA color_math+write_byte[2].value	;$80949A   |/
+namespace off					;	   |
 	REP #$20				;$80949E   |
-CODE_8094A0:					;	   |
+.skip_sparkle_upload				;	   |
 	SEP #$20				;$8094A0   |
 	LDA intro_sparkle_x_position		;$8094A2   |\ Set Layer 3 X position
 	STA PPU.layer_3_scroll_x		;$8094A5   | |
@@ -2119,9 +2126,9 @@ CODE_8094A0:					;	   |
 	EOR #$003F				;$8094CC   |/
 .skip_alternate_scale				;	   |
 	LSR A					;$8094CF   |\ Calculate scale factor based on relative frame counter
-	STA $32					;$8094D0   | | For frames 0-1F: scale += counter * 3/4
+	STA temp1				;$8094D0   | | For frames 0-1F: scale += counter * 3/4
 	LSR A					;$8094D2   | | For frames 20-2E:  scale += (counter ^ $3F) * 3/4
-	ADC $32					;$8094D3   | |
+	ADC temp1				;$8094D3   | |
 	CLC					;$8094D5   | |
 	ADC $7C					;$8094D6   |/
 	STA $7C					;$8094D8   |\ Store the mode 7 scale factor
@@ -2139,7 +2146,7 @@ CODE_8094A0:					;	   |
 	BNE .skip_palette_copy			;$8094F1   |/
 	LDX #$003E				;$8094F3   |\ Copy the yellow/gold logo palette
 .copy_palette					;	   | |
-	LDA.l $7E8928,x				;$8094F6   | |\ From palette slot 0/1 to 5/6
+	LDA working_palette,x			;$8094F6   | |\ From palette slot 0/1 to 5/6
 	STA $7E89C8,x				;$8094FA   | |/
 	DEX					;$8094FE   | |
 	DEX					;$8094FF   | |
@@ -2234,7 +2241,7 @@ CODE_80959F:					;	   |
 	CLC					;$8095A2   |
 	ADC $34					;$8095A3   |
 	ADC $32					;$8095A5   |
-	STA $7E8928,x				;$8095A7   | Write sparkle palette
+	STA working_palette,x			;$8095A7   | Write sparkle palette
 	INY					;$8095AB   |
 	INX					;$8095AC   |
 	INX					;$8095AD   |
@@ -2406,7 +2413,7 @@ CODE_8096E2:					;	   |
 	ASL A					;$8096E8   |
 	ASL A					;$8096E9   |
 	ORA $32					;$8096EA   |
-	STA $7E8928,x				;$8096EC   | Rareware palette post wireframe
+	STA working_palette,x			;$8096EC   | Rareware palette post wireframe
 	INX					;$8096F0   |
 	INX					;$8096F1   |
 	INY					;$8096F2   |
@@ -2586,12 +2593,12 @@ CODE_8097EB:					;	   |
 	STA $7E8021				;$80988A   |
 	SEP #$20				;$80988E   |
 	LDX #$3001				;$809890   |
-	STX DMA[2].settings			;$809893   |
+	STX HDMA[2].settings			;$809893   |
 	LDX #$8012				;$809896   |
-	STX DMA[2].source			;$809899   |
+	STX HDMA[2].source			;$809899   |
 	LDA #$7E				;$80989C   |
-	STA DMA[2].source_bank			;$80989E   |
-	STZ DMA[2].unused_1			;$8098A1   |
+	STA HDMA[2].source_bank			;$80989E   |
+	STZ HDMA[2].indirect_source_bank	;$8098A1   |
 	REP #$20				;$8098A4   |
 	LDX #DATA_EC83A0			;$8098A6   |
 	LDY.w #DATA_EC83A0>>16			;$8098A9   |
@@ -3951,48 +3958,48 @@ init_file_select:
 	JSL play_song				;$80A609   |/
 	LDA file_select_action			;$80A60D   |\ If the file select action is clear
 	BEQ .skip_sram_copy			;$80A610   |/ Skip saving the game, we are on file select
-	LDA $0611				;$80A612   |\ Calculate the index to the current SRAM file
+	LDA file_select_selection		;$80A612   |\ Calculate the index to the current SRAM file
 	ASL A					;$80A615   | |
 	TAX					;$80A616   |/
-	LDA.l sram_file_offsets,x		;$80A617   |\
+	LDA.l sram_file_offsets,x		;$80A617   |\ Setup pointer to the active save file
 	STA .sram_pointer			;$80A61B   | |
 	LDA #<:sram_base			;$80A61D   | |
 	STA .sram_pointer_bank			;$80A620   |/
-	%pea_use_dbr(sram_file_buffer)		;$80A622   |\
+	%pea_use_dbr(sram_file_buffer)		;$80A622   |\ Swap out dbr to access full wram
 	PLB					;$80A625   |/
-	LDY #sizeof(save_file)			;$80A626   |
-	BRA .copy_sram				;$80A629  /
+	LDY #sizeof(save_file)			;$80A626   | Load file length
+	BRA .copy_sram				;$80A629  / Jump to the actual copy routine
 .unused						;	  \
-	LDA $0611				;$80A62B   |\
+	LDA file_select_selection		;$80A62B   |\ Calculate the index to the current SRAM file
 	ASL A					;$80A62E   | |
 	TAX					;$80A62F   |/
-	LDA.l sram_file_offsets,x		;$80A630   |\
+	LDA.l sram_file_offsets,x		;$80A630   |\  Setup pointer to the active save file
 	CLC					;$80A634   | |
-	ADC #$0006				;$80A635   | |
+	ADC #$0006				;$80A635   | | This would skip the first 6 bytes of the file
 	STA .sram_pointer			;$80A638   | |
 	LDA #<:sram_base			;$80A63A   | |
 	STA .sram_pointer_bank			;$80A63D   |/
-	LDA $060F				;$80A63F   |\
-	BEQ CODE_80A64C				;$80A642   |/
-	LDA .sram_pointer			;$80A644   |\
+	LDA $060F				;$80A63F   |\ Check which controller is active
+	BEQ .copy_player_1			;$80A642   |/
+	LDA .sram_pointer			;$80A644   |\ Skip $14E bytes of the file
 	CLC					;$80A646   | |
 	ADC #$014E				;$80A647   | |
 	STA .sram_pointer			;$80A64A   |/
-#CODE_80A64C:					;	   |
-	%pea_use_dbr(sram_file_buffer)		;$80A64C   |\
+.copy_player_1					;	   |
+	%pea_use_dbr(sram_file_buffer)		;$80A64C   |\ Swap out dbr to access full wram
 	PLB					;$80A64F   |/
-	LDY #$014C				;$80A650   |
+	LDY #$014C				;$80A650   | Load file length (its much smaller than the normal file?)
 .copy_sram					;	   |
-	LDA.w sram_file_buffer,y		;$80A653   |\
+	LDA.w sram_file_buffer,y		;$80A653   |\ Simple copy loop from the SRAM buffer to actual SRAM
 	STA [.sram_pointer],y			;$80A656   | |
 	DEY					;$80A658   | |
 	DEY					;$80A659   | |
 	BPL .copy_sram				;$80A65A   |/
 	PLB					;$80A65C   |
 .skip_sram_copy					;	   |
-	LDA #$0001				;$80A65D   |\
+	LDA #$0001				;$80A65D   |\ Set the screen to mode 1
 	STA PPU.layer_mode			;$80A660   |/
-	LDA #$0213				;$80A663   |\
+	LDA #$0213				;$80A663   |\ Set obj/1/2 layers on the main screen and 2 on subscreen
 	STA PPU.screens				;$80A666   |/
 	LDA #$0015				;$80A669   |\
 	STA PPU.layer_all_tiledata_base		;$80A66C   |/
@@ -4130,7 +4137,7 @@ init_file_select:
 	LDA #DATA_FB0400			;$80A7F8   | |
 	LDY #$0080				;$80A7FB   | |
 	JSL DMA_to_VRAM				;$80A7FE   |/
-	STZ oam_attribute[$00].size		;$80A802   |\
+	STZ oam_attribute[$00].size		;$80A802   |\ Reset the OAM size of 6 tiles
 	STZ oam_attribute[$02].size		;$80A805   | |
 	STZ oam_attribute[$04].size		;$80A808   |/
 	LDA #$0300				;$80A80B   |\ Set fade in with a speed of three
@@ -4272,7 +4279,7 @@ CODE_80A926:
 	LDA #$0078				;$80A92E   |
 	TRB file_select_action			;$80A931   |
 CODE_80A934:					;	   |
-	LDA $0611				;$80A934   |
+	LDA file_select_selection		;$80A934   |
 	ASL A					;$80A937   |
 	TAX					;$80A938   |
 	LDA.l sram_file_offsets,x		;$80A939   |
@@ -4280,13 +4287,13 @@ CODE_80A934:					;	   |
 	LDA #<:sram_base			;$80A93F   |
 	STA $56					;$80A942   |
 	LDA.l DATA_80A866,x			;$80A944   |
-	LDX $0611				;$80A948   |
+	LDX file_select_selection		;$80A948   |
 	JSR CODE_80ACB6				;$80A94B   |
 CODE_80A94E:					;	   |
 	LDA file_select_action			;$80A94E   |
 	BIT #$0020				;$80A951   |
 	BEQ CODE_80A96E				;$80A954   |
-	LDA $0611				;$80A956   |
+	LDA file_select_selection		;$80A956   |
 	ASL A					;$80A959   |
 	TAX					;$80A95A   |
 	LDA.l DATA_80A866,x			;$80A95B   |
@@ -4314,7 +4321,7 @@ CODE_80A96E:					;	   |
 	LDA file_select_action			;$80A99C   |
 	BIT #$0001				;$80A99F   |
 	BNE CODE_80A9DE				;$80A9A2   |
-	LDX $0611				;$80A9A4   |
+	LDX file_select_selection		;$80A9A4   |
 	LDA $0511				;$80A9A7   |
 	LSR A					;$80A9AA   |
 	BCC CODE_80A9B3				;$80A9AB   |
@@ -4339,9 +4346,9 @@ CODE_80A9C5:
 	LDA.l DATA_80AC20,x			;$80A9C8   |
 CODE_80A9CC:					;	   |
 	AND #$00FF				;$80A9CC   |
-	CMP $0611				;$80A9CF   |
+	CMP file_select_selection		;$80A9CF   |
 	BEQ CODE_80A9DE				;$80A9D2   |
-	STA $0611				;$80A9D4   |
+	STA file_select_selection		;$80A9D4   |
 	LDA #$0633				;$80A9D7   |
 	JSL play_high_priority_sound		;$80A9DA   |
 CODE_80A9DE:					;	   |
@@ -4352,7 +4359,7 @@ CODE_80A9DE:					;	   |
 	BIT #$0004				;$80A9E8   |
 	BEQ CODE_80AA35				;$80A9EB   |
 CODE_80A9ED:					;	   |
-	LDA $0611				;$80A9ED   |
+	LDA file_select_selection		;$80A9ED   |
 	CMP #$0004				;$80A9F0   |
 	BNE CODE_80A9FD				;$80A9F3   |
 	LDA #$8000				;$80A9F5   |
@@ -4360,7 +4367,7 @@ CODE_80A9ED:					;	   |
 	BRA CODE_80AA31				;$80A9FB  /
 
 CODE_80A9FD:
-	LDA $0611				;$80A9FD  \
+	LDA file_select_selection		;$80A9FD  \
 	CMP #$0006				;$80AA00   |
 	BNE CODE_80AA0D				;$80AA03   |
 	LDA #$FF80				;$80AA05   |
@@ -4429,7 +4436,7 @@ CODE_80AA89:					;	   |
 	JMP CODE_80AB58				;$80AA89  /
 
 CODE_80AA8C:
-	LDA $0611				;$80AA8C  \
+	LDA file_select_selection		;$80AA8C  \
 	CMP #$0005				;$80AA8F   |
 	BNE CODE_80AA97				;$80AA92   |
 	JMP CODE_80AB3B				;$80AA94  /
@@ -4474,7 +4481,7 @@ CODE_80AAE7:
 	TSB file_select_action			;$80AAEA   |
 	LDA #$0634				;$80AAED   |
 	JSL play_high_priority_sound		;$80AAF0   |
-	LDA $0611				;$80AAF4   |
+	LDA file_select_selection		;$80AAF4   |
 	STA $0615				;$80AAF7   |
 	BRA CODE_80AB58				;$80AAFA  /
 
@@ -4543,7 +4550,7 @@ CODE_80AB78:					;	   |
 	BRA CODE_80AB78				;$80AB79  /
 
 CODE_80AB7B:
-	LDA $0611				;$80AB7B  \
+	LDA file_select_selection		;$80AB7B  \
 	ASL A					;$80AB7E   |
 	TAX					;$80AB7F   |
 	LDA.l sram_file_offsets,x		;$80AB80   |
@@ -4556,17 +4563,17 @@ CODE_80AB7B:
 	STA [$32],y				;$80AB91   |
 	LDA #$0004				;$80AB93   |
 	TSB file_select_action			;$80AB96   |
-	LDA $0611				;$80AB99   |
+	LDA file_select_selection		;$80AB99   |
 	JSR CODE_80ACA5				;$80AB9C   |
 	RTS					;$80AB9F  /
 
 CODE_80ABA0:
-	LDA $0611				;$80ABA0  \
+	LDA file_select_selection		;$80ABA0  \
 	JSL CODE_BBC53A				;$80ABA3   |
 	BCS CODE_80ABE7				;$80ABA7   |
 	LDA #$0634				;$80ABA9   |
 	JSL play_high_priority_sound		;$80ABAC   |
-	LDA $0611				;$80ABB0   |
+	LDA file_select_selection		;$80ABB0   |
 	ASL A					;$80ABB3   |
 	TAX					;$80ABB4   |
 	LDA.l sram_file_offsets,x		;$80ABB5   |
@@ -4587,7 +4594,7 @@ CODE_80ABD3:					;	   |
 	DEY					;$80ABD7   |
 	DEY					;$80ABD8   |
 	BPL CODE_80ABD3				;$80ABD9   |
-	LDA $0611				;$80ABDB   |
+	LDA file_select_selection		;$80ABDB   |
 	JSR CODE_80ACA5				;$80ABDE   |
 	LDA #$0020				;$80ABE1   |
 	TSB file_select_action			;$80ABE4   |
@@ -4599,10 +4606,10 @@ sram_file_offsets:
 
 
 CODE_80ABEE:
-	LDA $0611				;$80ABEE  \
+	LDA file_select_selection		;$80ABEE  \
 	JSL CODE_BBC53A				;$80ABF1   |
 	BCC CODE_80AC1C				;$80ABF5   |
-	LDA $0611				;$80ABF7   |
+	LDA file_select_selection		;$80ABF7   |
 	ASL A					;$80ABFA   |
 	TAX					;$80ABFB   |
 	LDA.l sram_file_offsets,x		;$80ABFC   |
@@ -7556,7 +7563,7 @@ CODE_80C5DE:
 	JSR CODE_80F324				;$80C5F8   |
 	LDA $0913				;$80C5FB   |
 	BEQ CODE_80C629				;$80C5FE   |
-	LDA #$8C28				;$80C600   |
+	LDA #primary_palette			;$80C600   |
 	STA DMA[0].source			;$80C603   |
 	STA DMA[0].unused_2			;$80C606   |
 	LDA #$0100				;$80C609   |
@@ -7564,7 +7571,7 @@ CODE_80C5DE:
 	LDA #$2200				;$80C60F   |
 	STA DMA[0].settings			;$80C612   |
 	SEP #$20				;$80C615   |
-	LDA #$7E				;$80C617   |
+	LDA.b #<:primary_palette		;$80C617   |
 	STA DMA[0].source_bank			;$80C619   |
 	STZ PPU.cgram_address			;$80C61C   |
 	LDA #$01				;$80C61F   |
@@ -8824,7 +8831,7 @@ CODE_80D083:					;	   |
 	LDA #$71				;$80D08D   |
 	STA PPU.cgram_address			;$80D08F   |
 	REP #$20				;$80D092   |
-	LDA #$8C28				;$80D094   |
+	LDA #primary_palette			;$80D094   |
 	STA DMA[0].source			;$80D097   |
 	STA DMA[0].unused_2			;$80D09A   |
 	LDA #$001E				;$80D09D   |
@@ -8832,7 +8839,7 @@ CODE_80D083:					;	   |
 	LDA #$2200				;$80D0A3   |
 	STA DMA[0].settings			;$80D0A6   |
 	SEP #$20				;$80D0A9   |
-	LDA #$7E				;$80D0AB   |
+	LDA.b #<:primary_palette		;$80D0AB   |
 	STA DMA[0].source_bank			;$80D0AD   |
 	LDA #$01				;$80D0B0   |
 	STA CPU.enable_dma			;$80D0B2   |
@@ -10146,13 +10153,13 @@ CODE_80DDA0:					;	   |
 	CLC					;$80DDAC   |
 	ADC $38					;$80DDAD   |
 	TAX					;$80DDAF   |
-	%pea_use_dbr($7E8928)			;$80DDB0   |
+	%pea_use_dbr(working_palette)		;$80DDB0   |
 	PLB					;$80DDB3   |
 CODE_80DDB4:					;	   |
-	LDA.l $7E8928,x				;$80DDB4   |
+	LDA working_palette,x			;$80DDB4   |
 	SEC					;$80DDB8   |
 	SBC.l DATA_FD364E,x			;$80DDB9   |
-	STA $7E8928,x				;$80DDBD   |
+	STA working_palette,x			;$80DDBD   |
 	XBA					;$80DDC1   |
 	AND #$001F				;$80DDC2   |
 	STA $34					;$80DDC5   |
@@ -10168,7 +10175,7 @@ CODE_80DDB4:					;	   |
 	STA $7E892C,x				;$80DDE2   |
 	AND #$7C00				;$80DDE6   |
 	ORA $34					;$80DDE9   |
-	STA $8C28,y				;$80DDEB   |
+	STA.w primary_palette,y			;$80DDEB   |
 	INY					;$80DDEE   |
 	INY					;$80DDEF   |
 	TXA					;$80DDF0   |
@@ -12567,7 +12574,7 @@ CODE_80F2E5:					;	   |
 	LDA #$0000				;$80F2F2   |
 CODE_80F2F5:					;	   |
 	ORA $38					;$80F2F5   |
-	STA $7E8C28,x				;$80F2F7   |
+	STA primary_palette,x			;$80F2F7   |
 	INY					;$80F2FB   |
 	INY					;$80F2FC   |
 	INX					;$80F2FD   |

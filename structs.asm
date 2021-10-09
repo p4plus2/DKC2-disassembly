@@ -66,6 +66,24 @@ struct oam_attribute oam_attribute_table
 	.size		skip 1
 endstruct
 
+struct write_byte $0000
+	.terminate:
+	.count: skip 1
+	.value: skip 1
+endstruct
+
+struct write_word $0000
+	.terminate:
+	.count: skip 1
+	.value: skip 2
+endstruct
+
+struct write_long $0000
+	.terminate:
+	.count: skip 1
+	.value: skip 4
+endstruct
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;SRAM structures
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
