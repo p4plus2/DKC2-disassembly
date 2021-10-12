@@ -2187,7 +2187,7 @@ copy_or_return_1:				;	  \
 	DEC $3C					;$BB8E39   | |
 	BNE .copy_byte				;$BB8E3B   |/
 	JMP execute_command_set_1		;$BB8E3D  / Read new command
-					;
+						;
 finalize_decompression:				;	  \
 	REP #$20				;$BB8E40   |\ Restore 16 bit A, data bank and Y
 	PLY					;$BB8E42   | |
@@ -2213,7 +2213,7 @@ finalize_decompression:				;	  \
 	REP #$20				;$BB8E6C   |/
 .skip_DMA					;	   |
 	RTL					;$BB8E6E  / Done with decompression
-					;
+						;
 copy_or_return_2:				;	  \
 	LDA [$34],y				;$BB8E6F   |\ Load next operand
 	INY					;$BB8E71   |/
@@ -2236,7 +2236,7 @@ copy_or_return_2:				;	  \
 	DEC $3C					;$BB8E8F   | |
 	BNE .copy_byte				;$BB8E91   |/
 	JMP execute_command_set_2_wide		;$BB8E93  / Run next command
-					;
+						;
 stream_byte_1:					;	  \
 	LDA [$46]				;$BB8E96   |\ Load operand high nibble
 	STA $3E					;$BB8E98   |/
@@ -2248,14 +2248,14 @@ stream_byte_1:					;	  \
 	STA $0000,x				;$BB8EA3   | |
 	INX					;$BB8EA6   |/
 	JMP execute_command_set_2		;$BB8EA7  / Run next command
-					;
+						;
 stream_byte_2:					;	  \
 	LDA [$34],y				;$BB8EAA   |\ Copy one byte from the compression stream
 	INY					;$BB8EAC   | |
 	STA $0000,x				;$BB8EAD   | |
 	INX					;$BB8EB0   |/
 	JMP execute_command_set_1		;$BB8EB1  / Run next command
-					;
+						;
 stream_word_1:					;	  \
 	LDA [$46]				;$BB8EB4   |\ Load operand high nibble into operand2
 	STA $3E					;$BB8EB6   |/
@@ -2277,7 +2277,7 @@ stream_word_1:					;	  \
 	STA $0000,x				;$BB8ED4   | |
 	INX					;$BB8ED7   |/
 	JMP execute_command_set_2		;$BB8ED8  / Run next command
-					;
+						;
 stream_word_2:					;	  \
 	REP #$20				;$BB8EDB   |\ Copy one word from the compression stream
 	LDA [$34],y				;$BB8EDD   | |
@@ -2288,7 +2288,7 @@ stream_word_2:					;	  \
 	INX					;$BB8EE5   | |
 	SEP #$20				;$BB8EE6   |/
 	JMP execute_command_set_1		;$BB8EE8  / Run next command
-					;
+						;
 stream_byte_fill_1:				;	  \
 	LDA $46					;$BB8EEB   |\ Load operand
 	AND #$0F				;$BB8EED   | | Count = operand & 0x0F + 3
@@ -2302,7 +2302,7 @@ stream_byte_fill_1:				;	  \
 	DEC $3C					;$BB8EFA   | |
 	BNE .fill_byte				;$BB8EFC   |/
 	JMP execute_command_set_1		;$BB8EFE  / Run next command
-					;
+						;
 stream_byte_fill_2:				;	  \
 	LDA [$34],y				;$BB8F01   |\ Load next operand
 	INY					;$BB8F03   |/
@@ -2324,7 +2324,7 @@ stream_byte_fill_2:				;	  \
 	DEC $3C					;$BB8F1F   | |
 	BNE .fill_byte				;$BB8F21   |/
 	JMP execute_command_set_2		;$BB8F23  / Run next command
-					;
+						;
 direct_byte_1_fill_1:				;	  \
 	LDA $46					;$BB8F26   |\ Load operand
 	AND #$0F				;$BB8F28   | | Count = operand & 0x0F + 3
@@ -2337,7 +2337,7 @@ direct_byte_1_fill_1:				;	  \
 	DEC $3C					;$BB8F34   | |
 	BNE .fill_byte				;$BB8F36   |/
 	JMP execute_command_set_1		;$BB8F38  / Run next command
-					;
+						;
 direct_byte_1_fill_2:				;	  \
 	LDA [$34],y				;$BB8F3B   |\ Load next operand
 	INY					;$BB8F3D   | |
@@ -2352,7 +2352,7 @@ direct_byte_1_fill_2:				;	  \
 	DEC $3C					;$BB8F4C   | |
 	BNE .fill_byte				;$BB8F4E   |/
 	JMP execute_command_set_2		;$BB8F50  / Run next command
-					;
+						;
 direct_byte_2_fill_1:				;	  \
 	LDA $46					;$BB8F53   |\  Load operand
 	AND #$0F				;$BB8F55   | | Count = (operand & 0x0F) + 3
@@ -2365,7 +2365,7 @@ direct_byte_2_fill_1:				;	  \
 	DEC $3C					;$BB8F61   | |
 	BNE .fill_byte				;$BB8F63   |/
 	JMP execute_command_set_1		;$BB8F65  / Run next command
-					;
+						;
 direct_byte_2_fill_2:				;	  \
 	LDA [$34],y				;$BB8F68   |\ Load next operand
 	INY					;$BB8F6A   | |
@@ -2380,7 +2380,7 @@ direct_byte_2_fill_2:				;	  \
 	DEC $3C					;$BB8F79   | |
 	BNE .fill_byte				;$BB8F7B   |/
 	JMP execute_command_set_2		;$BB8F7D  / Run next command
-					;
+						;
 direct_word_put_1:				;	  \
 	REP #$20				;$BB8F80   |\ Store direct word
 	LDA $54					;$BB8F82   | |
@@ -2389,7 +2389,7 @@ direct_word_put_1:				;	  \
 	INX					;$BB8F88   | |
 	SEP #$20				;$BB8F89   |/
 	JMP execute_command_set_2_wide		;$BB8F8B  / Run next command
-					;
+						;
 direct_word_put_2:				;	  \
 	REP #$20				;$BB8F8E   |\ Store direct word
 	LDA $54					;$BB8F90   | |
@@ -2398,32 +2398,32 @@ direct_word_put_2:				;	  \
 	INX					;$BB8F96   | |
 	SEP #$20				;$BB8F97   |/
 	JMP execute_command_set_1		;$BB8F99  / Run next command
-					;
+						;
 direct_byte_1_put_1:				;	  \
 	LDA $56					;$BB8F9C   |\ Store direct byte 1
 	STA $0000,x				;$BB8F9E   | |
 	INX					;$BB8FA1   |/
 	JMP execute_command_set_2_wide		;$BB8FA2  / Run next command
-					;
+						;
 direct_byte_1_put_2:				;	  \
 	LDA $56					;$BB8FA5   |\ Store direct byte 1
 	STA $0000,x				;$BB8FA7   | |
 	INX					;$BB8FAA   |/
 	JMP execute_command_set_1		;$BB8FAB  / Run next command
-					;
+						;
 direct_byte_2_put_1:				;	  \
 	LDA $57					;$BB8FAE   |\ Store direct byte 2
 	STA $0000,x				;$BB8FB0   | |
 	INX					;$BB8FB3   |/
 	JMP execute_command_set_2_wide		;$BB8FB4  / Run next command
-					;
+						;
 direct_byte_2_put_2:				;	  \
 	LDA $57					;$BB8FB7   |\ Store direct byte 2
 	STA $0000,x				;$BB8FB9   | |
 	INX					;$BB8FBC   |/
 	JMP execute_command_set_1		;$BB8FBD  / Run next command
-					;
-back_copy_word_1:			;
+						;
+back_copy_word_1:				;
 	PHY					;$BB8FC0  \ Preserve compression index
 	LDA $46					;$BB8FC1   | Load operand
 	AND #$0F				;$BB8FC3   |\  Offset = (operand & 0x0F) + 2
@@ -2441,7 +2441,7 @@ back_copy_word_1:			;
 	SEP #$20				;$BB8FD8   | Return to 8 bit A
 	PLY					;$BB8FDA   | Restore compression index
 	JMP execute_command_set_1		;$BB8FDB  / Run next command
-					;
+						;
 back_copy_word_2:				;	  \
 	LDA [$34],y				;$BB8FDE   |\ Load next operand
 	INY					;$BB8FE0   | |
@@ -2462,8 +2462,8 @@ back_copy_word_2:				;	  \
 	SEP #$20				;$BB8FF9   | Return to 8 bit A
 	PLY					;$BB8FFB   | Restore compression index
 	JMP execute_command_set_2		;$BB8FFC  / Run next command
-					;
-back_copy_1:				;
+						;
+back_copy_1:					;
 	LDA $46					;$BB8FFF  \ Load next operand
 	AND #$0F				;$BB9001   |\  Count = (operand & 0x0F) + 3
 	ADC #$03				;$BB9003   | |
@@ -2489,7 +2489,7 @@ back_copy_1:				;
 	BNE .byte_copy				;$BB9023   |/
 	PLY					;$BB9025   | Restore compression index
 	JMP execute_command_set_1		;$BB9026  / Run next command
-					;
+						;
 back_copy_2:					;	  \
 	LDA [$34],y				;$BB9029   |\ Load next operand
 	INY					;$BB902B   |/
@@ -2524,8 +2524,8 @@ back_copy_2:					;	  \
 	BNE .byte_copy				;$BB905C   |/
 	PLY					;$BB905E   | Restore compression index
 	JMP execute_command_set_2		;$BB905F  / Run next command
-					;
-back_copy_far_1:			;
+						;
+back_copy_far_1:				;
 	LDA $46					;$BB9062  \ Load next operand
 	AND #$0F				;$BB9064   |\  Count = (operand & 0x0F) + 3
 	ADC #$03				;$BB9066   | |
@@ -2559,7 +2559,7 @@ back_copy_far_1:			;
 	BNE .byte_copy				;$BB9091   |/
 	PLY					;$BB9093   | Restore compression index
 	JMP execute_command_set_2_wide		;$BB9094  / Run next command
-					;
+						;
 back_copy_far_2:				;	  \
 	LDA [$34],y				;$BB9097   |\ Load next operand
 	INY					;$BB9099   | |
@@ -2590,8 +2590,8 @@ back_copy_far_2:				;	  \
 	BNE .byte_copy				;$BB90C3   |/
 	PLY					;$BB90C5   | Restore compression index
 	JMP execute_command_set_1		;$BB90C6  / Run next command
-					;
-back_copy_arbitrary_1:			;
+						;
+back_copy_arbitrary_1:				;
 	LDA $46					;$BB90C9  \ Load next operand
 	AND #$0F				;$BB90CB   |\  Count = (operand & 0x0F) + 3
 	ADC #$03				;$BB90CD   | |
@@ -2617,7 +2617,7 @@ back_copy_arbitrary_1:			;
 	BNE .byte_copy				;$BB90EC   |/
 	PLY					;$BB90EE   | Restore compression index
 	JMP execute_command_set_1		;$BB90EF  / Run next command
-					;
+						;
 back_copy_arbitrary_2:				;	  \
 	LDA [$34],y				;$BB90F2   |\ Load next operand
 	INY					;$BB90F4   | |
@@ -2660,7 +2660,7 @@ back_copy_arbitrary_2:				;	  \
 	BNE .copy_byte				;$BB9132   |/
 	PLY					;$BB9134   | Restore compression index
 	JMP execute_command_set_2		;$BB9135  / Run next command Run next command
-					;
+						;
 duplicate_byte_1:				;	  \
 	DEX					;$BB9138   |\ Copy previous byte to the decompression stream
 	LDA $0000,x				;$BB9139   | |
@@ -2668,7 +2668,7 @@ duplicate_byte_1:				;	  \
 	INX					;$BB913F   | |
 	INX					;$BB9140   |/
 	JMP execute_command_set_2_wide		;$BB9141  / Run next command
-					;
+						;
 duplicate_byte_2:				;	  \
 	DEX					;$BB9144   |\ Copy previous byte to the decompression stream
 	LDA $0000,x				;$BB9145   | |
@@ -2676,7 +2676,7 @@ duplicate_byte_2:				;	  \
 	INX					;$BB914B   | |
 	INX					;$BB914C   |/
 	JMP execute_command_set_1		;$BB914D  / Run next command
-					;
+						;
 duplicate_word_1:				;	  \
 	REP #$20				;$BB9150   |\ Copy the previous word to the decompression stream
 	DEX					;$BB9152   | |
@@ -2689,7 +2689,7 @@ duplicate_word_1:				;	  \
 	INX					;$BB915E   | |
 	INX					;$BB915F   |/
 	JMP execute_command_set_2_wide		;$BB9160  / Run next command
-					;
+						;
 duplicate_word_2:				;	  \
 	REP #$20				;$BB9163   |\ Copy the previous word to the decompression stream
 	DEX					;$BB9165   | |
@@ -2702,8 +2702,8 @@ duplicate_word_2:				;	  \
 	INX					;$BB9171   | |
 	INX					;$BB9172   |/
 	JMP execute_command_set_1		;$BB9173  / Run next command
-					;
-copy_future_word_1:			;
+						;
+copy_future_word_1:				;
 	PHY					;$BB9176  \ Preserve compression index
 	LDA $46					;$BB9177   | Load next operand
 	REP #$20				;$BB9179   | Set A to 16 bit
@@ -2718,7 +2718,7 @@ copy_future_word_1:			;
 	INX					;$BB918B   |/
 	PLY					;$BB918C   | Restore compression index
 	JMP execute_command_set_1		;$BB918D  / Run next command
-					;
+						;
 copy_future_word_2:				;	  \
 	LDA [$34],y				;$BB9190   |\ Load next operand
 	INY					;$BB9192   | |
@@ -2738,8 +2738,8 @@ copy_future_word_2:				;	  \
 	INX					;$BB91AA   |/
 	PLY					;$BB91AB   | Restore compression index
 	JMP execute_command_set_2_wide		;$BB91AC  / Run next command
-					;
-build_decompression_lookup:		;
+						;
+build_decompression_lookup:			;
 	LDY #$0100				;$BB91AF  \ Prepare to generate the high nibble table
 	TDC					;$BB91B2   |\ Zero A and X and set 8 bit A
 	TAX					;$BB91B3   | |

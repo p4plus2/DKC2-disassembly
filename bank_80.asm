@@ -1834,13 +1834,13 @@ init_rareware_logo:
 	LDA #$80				;$809193   |\ Fill empty mode 7 space with transparency
 	STA PPU.set_mode_7			;$809195   |/
 	REP #$20				;$809198   |
-	LDA #$7400				;$80919A   |\ Clear $800 of VRAM at $E800
+	LDA #vram_intro_block_1			;$80919A   |\ Clear $800 of VRAM at $E800
 	JSR clear_VRAM_block			;$80919D   |/
-	LDA #$7000				;$8091A0   |\ Clear $800 of VRAM at $E000
+	LDA #vram_intro_block_2			;$8091A0   |\ Clear $800 of VRAM at $E000
 	JSR clear_VRAM_block			;$8091A3   |/
-	LDA #$7800				;$8091A6   |\ Clear $800 of VRAM at $F000
+	LDA #vram_intro_block_3			;$8091A6   |\ Clear $800 of VRAM at $F000
 	JSR clear_VRAM_block			;$8091A9   |/
-	LDA #$7C00				;$8091AC   |\ Clear $800 of VRAM at $F800
+	LDA #vram_intro_block_4			;$8091AC   |\ Clear $800 of VRAM at $F800
 	JSR clear_VRAM_block			;$8091AF   |/
 	LDX #DATA_F52FC7			;$8091B2   |\ Load pointer to Nintendo presents layer 1 tilemap
 	LDY.w #DATA_F52FC7>>16			;$8091B5   | |
@@ -1849,7 +1849,9 @@ init_rareware_logo:
 	LDA #$0000				;$8091BF   |\ Patch decompressed data, removes a couple of garbage tiles
 	STA $7F0100				;$8091C2   | |
 	STA $7F013E				;$8091C6   |/
-	LDA #$74A0				;$8091CA   |\ Set VRAM address to $E940
+namespace vram					;	   |\
+	LDA #intro_nintendo_presents_tilemap	;$8091CA   | | Set VRAM address to $E940
+namespace off					;	   | |
 	STA PPU.vram_address			;$8091CD   |/
 	LDX #$007F				;$8091D0   |\ Upload $0340 bytes from $7F0000 to VRAM address $E940
 	LDA #$0000				;$8091D3   | |
@@ -1859,7 +1861,7 @@ init_rareware_logo:
 	LDY.w #DATA_F80D10>>16			;$8091E0   | |
 	LDA #$0000				;$8091E3   | |
 	JSL decompress_data			;$8091E6   |/ Decompress the tilemap
-	LDA #$76BA				;$8091EA   |\ Set VRAM address to $ED74
+	LDA #vram_intro_mini_rare_logo_tilemap	;$8091EA   |\ Set VRAM address to $ED74
 	STA PPU.vram_address			;$8091ED   |/
 	LDX #$007F				;$8091F0   |\ Upload $00C8 bytes from $7F0000 to VRAM address $ED74
 	LDA #$0000				;$8091F3   | |
@@ -1869,7 +1871,7 @@ init_rareware_logo:
 	LDY.w #DATA_F50004>>16			;$809200   | |
 	LDA #$0000				;$809203   | |
 	JSL decompress_data			;$809206   |/
-	LDA #$78E0				;$80920A   |\ Set VRAM address to $F1C0
+	LDA #vram_intro_unknown			;$80920A   |\ Set VRAM address to $F1C0
 	STA PPU.vram_address			;$80920D   |/
 	LDX #$007F				;$809210   |\
 	LDA #$0000				;$809213   | |
@@ -1879,7 +1881,7 @@ init_rareware_logo:
 	LDY.w #DATA_F56AC9>>16			;$809220   | |
 	LDA #$0000				;$809223   | |
 	JSL decompress_data			;$809226   |/ DMA the payload
-	LDA #$7CE0				;$80922A   |\ Set VRAM address to $F9C0
+	LDA #vram_intro_unknown2		;$80922A   |\ Set VRAM address to $F9C0
 	STA PPU.vram_address			;$80922D   |/
 	LDX #$007F				;$809230   |\ Upload $0380 bytes from $7F0000 to VRAM address $F9C0
 	LDA #$0000				;$809233   | |
@@ -1889,7 +1891,7 @@ init_rareware_logo:
 	LDY.w #DATA_F55D4A>>16			;$809240   | |
 	LDA #$0000				;$809243   | |
 	JSL decompress_data			;$809246   |/
-	LDA #$4000				;$80924A   |\ Set VRAM address to $8000
+	LDA #vram_intro_unknown3		;$80924A   |\ Set VRAM address to $8000
 	STA PPU.vram_address			;$80924D   |/
 	LDX #$007F				;$809250   |\ Upload $2400 bytes from $7F0000 to VRAM address $8000
 	LDA #$0000				;$809253   | |
@@ -1899,7 +1901,7 @@ init_rareware_logo:
 	LDY.w #DATA_F8063E>>16			;$809260   | |
 	LDA #$0000				;$809263   | |
 	JSL decompress_data			;$809266   |/
-	LDA #$6000				;$80926A   |\ Set VRAM address to $C000
+	LDA #vram_intro_unknown4		;$80926A   |\ Set VRAM address to $C000
 	STA PPU.vram_address			;$80926D   |/
 	LDX #$007F				;$809270   |\ Upload $1000 bytes from $7F0000 to VRAM address $C000
 	LDA #$0000				;$809273   | |
@@ -1932,7 +1934,7 @@ init_rareware_logo:
 	LDA #$0000				;$8092CA   | Value to initialize scratch RAM and palette mirrors to
 	LDX #$01FE				;$8092CD   | Load number of bytes minus two to clear
 .clear_palette					;	   |
-	STA working_palette,x				;$8092D0   |\ Clear palette
+	STA working_palette,x			;$8092D0   |\ Clear palette
 	DEX					;$8092D4   | |
 	DEX					;$8092D5   | |
 	BPL .clear_palette			;$8092D6   |/ Loop until all clear
@@ -2040,7 +2042,7 @@ run_rareware_logo:				;	  \
 	CMP #$00E0				;$8093F5   | |
 	BNE .skip_mode_7_enable			;$8093F8   |/ Skip enabling mode 7
 	SEP #$20				;$8093FA   |
-namespace intro_hdma				;	   |
+namespace hdma_intro				;	   |
 	LDA #$07				;$8093FC   |\ Set background mode HDMA values to 7
 	STA bgmode+write_byte[0].value		;$8093FE   | |
 	STA bgmode+write_byte[1].value		;$809402   | |
@@ -2055,7 +2057,9 @@ namespace off					;	   |
 	LDA global_frame_counter		;$809416   |\ If the frame count is not exactly $0110
 	CMP #$0110				;$809418   | |
 	BNE .skip_nintendo_presents_upload	;$80941B   |/ Skip uploading the first half of Nintendo Presents
-	LDA #$4000				;$80941D   |\ Set VRAM address to $8000
+namespace vram					;	   |\
+	LDA #intro_nintendo_presents_tiledata1	;$80941D   | | Set VRAM address to $8000
+namespace off					;	   | |
 	STA PPU.vram_address			;$809420   |/
 	LDX #$007F				;$809423   |\ Upload $1440 bytes from $7F0500 to VRAM address $8000
 	LDA #$0500				;$809426   | | The first half of tiledata for the Nintendo Presents
@@ -2065,7 +2069,9 @@ namespace off					;	   |
 	LDA global_frame_counter		;$809430   |\ If the frame count is not exactly $0111
 	CMP #$0111				;$809432   | |
 	BNE .skip_nintendo_presents_upload2	;$809435   |/ Skip uploading the second half of Nintendo Presents
-	LDA #$4A20				;$809437   |\ Set VRAM address to $9440
+namespace vram					;	   |\
+	LDA #intro_nintendo_presents_tiledata2	;$809437   | | Set VRAM address to $9440
+namespace off					;	   | |
 	STA PPU.vram_address			;$80943A   |/
 	LDX #$007F				;$80943D   |\ Upload $1440 bytes from $7F1940 to VRAM address $9440
 	LDA #$1940				;$809440   | | The second half of tiledata for the Nintendo Presents
@@ -2082,14 +2088,14 @@ namespace off					;	   |
 	LDA global_frame_counter		;$809458   |\ If the frame count is not exactly $0112
 	CMP #$0112				;$80945A   | |
 	BNE .skip_sparkle_upload		;$80945D   |/ Skip uploading the sparkle tilemap
-	LDA #$3000				;$80945F   |\ Set VRAM address to $6000
+	LDA #vram_intro_sparkle_tilemap		;$80945F   |\ Set VRAM address to $6000
 	STA PPU.vram_address			;$809462   |/
 	LDX #$007F				;$809465   |\ Upload $500 bytes from $7F0000 to VRAM address $6000
 	LDA #$0000				;$809468   | | The source is the tiledata for the sparkles
 	LDY #$0500				;$80946B   | |
 	JSL DMA_to_VRAM				;$80946E   |/ DMA the payload
 	SEP #$20				;$809472   |
-namespace intro_hdma				;	   |
+namespace hdma_intro				;	   |
 	LDA #$01				;$809474   |\ Use mode 1 for $97 scanlines
 	STA bgmode+write_byte[0].value		;$809476   | |
 	STA bgmode+write_byte[1].value		;$80947A   |/
@@ -4001,19 +4007,19 @@ init_file_select:
 	STA PPU.layer_mode			;$80A660   |/
 	LDA #$0213				;$80A663   |\ Set obj/1/2 layers on the main screen and 2 on subscreen
 	STA PPU.screens				;$80A666   |/
-	LDA #$0015				;$80A669   |\
-	STA PPU.layer_all_tiledata_base		;$80A66C   |/
-	LDA #$8020				;$80A66F   |\
+	LDA #$0015				;$80A669   |\ Set layer 1/2 to $A000/$2000 respectively
+	STA PPU.layer_all_tiledata_base		;$80A66C   |/ (all others are $0000)
+	LDA #$8020				;$80A66F   |\ Set the initial window 1 setting, HDMA will overwrite this
 	STA PPU.window_1			;$80A672   |/
 	SEP #$20				;$80A675   |
-	LDA #$30				;$80A677   |\
+	LDA #$30				;$80A677   |\ Enable window 1 with inversion on the color window
 	STA PPU.set_window_sprite_color		;$80A679   |/
-	LDA #$E8				;$80A67C   |\
+	LDA #$E8				;$80A67C   |\ set intensity of $08 to all channels
 	STA PPU.fixed_color			;$80A67E   |/
 	REP #$20				;$80A681   |
-	LDA #$4122				;$80A683   |\
-	STA PPU.color_addition_logic		;$80A686   |/
-	LDA #$7C74				;$80A689   |\
+	LDA #$4122				;$80A683   |\ Enable color math inside the color window, add subscreen
+	STA PPU.color_addition_logic		;$80A686   |/ use half color math on layer 1
+	LDA #$7C74				;$80A689   |\ Set layer 1/2 tilemaps to $E800/$F800 respectively
 	STA PPU.layer_1_2_tilemap_base		;$80A68C   |/
 	STZ PPU.layer_1_scroll_x		;$80A68F   |\ Reset layer 1 and 2 positions
 	STZ PPU.layer_1_scroll_x		;$80A692   | |
@@ -4026,46 +4032,48 @@ init_file_select:
 	STZ PPU.layer_2_scroll_x		;$80A6A5   | |
 	STZ PPU.layer_2_scroll_x		;$80A6A8   | |
 	REP #$20				;$80A6AB   |/
-	LDA #$0028				;$80A6AD   |
-	STA $7E8012				;$80A6B0   |
-	LDA #$0000				;$80A6B4   |
-	STA $7E8013				;$80A6B7   |
-	LDA #$0028				;$80A6BB   |
-	STA $7E8015				;$80A6BE   |
-	LDA #$8102				;$80A6C2   |
-	STA $7E8016				;$80A6C5   |
-	LDA #$0028				;$80A6C9   |
-	STA $7E8018				;$80A6CC   |
-	LDA #$8102				;$80A6D0   |
-	STA $7E8019				;$80A6D3   |
-	LDA #$0028				;$80A6D7   |
-	STA $7E801B				;$80A6DA   |
-	LDA #$8102				;$80A6DE   |
-	STA $7E801C				;$80A6E1   |
-	LDA #$0028				;$80A6E5   |
-	STA $7E801E				;$80A6E8   |
-	LDA #$8102				;$80A6EC   |
-	STA $7E801F				;$80A6EF   |
-	LDA #$0001				;$80A6F3   |
-	STA $7E8021				;$80A6F6   |
-	LDA #$8102				;$80A6FA   |
-	STA $7E8022				;$80A6FD   |
-	LDA #$0000				;$80A701   |
-	STA $7E8024				;$80A704   |
+namespace hdma_menu				;	   |
+	LDA #$0028				;$80A6AD   |\ Windowing for "Save game"/"file select"
+	STA windowing+write_word[0].count	;$80A6B0   | |
+	LDA #$0000				;$80A6B4   | |
+	STA windowing+write_word[0].value	;$80A6B7   |/
+	LDA #$0028				;$80A6BB   |\ Windowing for File 1
+	STA windowing+write_word[1].count	;$80A6BE   | |
+	LDA #$8102				;$80A6C2   | |
+	STA windowing+write_word[1].value	;$80A6C5   |/
+	LDA #$0028				;$80A6C9   |\ Windowing for File 2
+	STA windowing+write_word[2].count	;$80A6CC   | |
+	LDA #$8102				;$80A6D0   | |
+	STA windowing+write_word[2].value	;$80A6D3   |/
+	LDA #$0028				;$80A6D7   |\ Windowing for File 3
+	STA windowing+write_word[3].count	;$80A6DA   | |
+	LDA #$8102				;$80A6DE   | |
+	STA windowing+write_word[3].value	;$80A6E1   |/
+	LDA #$0028				;$80A6E5   |\ Windowing for "copy game"/"erase game"
+	STA windowing+write_word[4].count	;$80A6E8   | |
+	LDA #$8102				;$80A6EC   | |
+	STA windowing+write_word[4].value	;$80A6EF   |/
+	LDA #$0001				;$80A6F3   |\ Windowing for "mono"/"english"
+	STA windowing+write_word[5].count	;$80A6F6   | |
+	LDA #$8102				;$80A6FA   | |
+	STA windowing+write_word[5].value	;$80A6FD   |/
+	LDA #$0000				;$80A701   |\ Terminate the HDMA
+	STA windowing+write_word[6].terminate	;$80A704   |/
 	SEP #$20				;$80A708   |
-	LDX #$2601				;$80A70A   |
-	STX HDMA[2].settings			;$80A70D   |
-	LDX #$8012				;$80A710   |
-	STX HDMA[2].source			;$80A713   |
-	LDA #$7E				;$80A716   |
-	STA HDMA[2].source_bank			;$80A718   |
-	STZ HDMA[2].indirect_source_bank	;$80A71B   |
+	LDX #$2601				;$80A70A   |\ Window 1 write, 2 regs write once
+	STX HDMA[2].settings			;$80A70D   |/
+	LDX #windowing				;$80A710   |\  Set the windowing HDMA pointer source
+	STX HDMA[2].source			;$80A713   | |
+	LDA.b #<:windowing			;$80A716   | |
+	STA HDMA[2].source_bank			;$80A718   | |
+	STZ HDMA[2].indirect_source_bank	;$80A71B   |/
+namespace off					;	   |
 	REP #$20				;$80A71E   |
 	LDX #DATA_ED5E3F			;$80A720   |\ Decompress the file select layer 1 tiledata
 	LDY.w #DATA_ED5E3F>>16			;$80A723   | | This is tiledata for all the various text
 	LDA #$0000				;$80A726   | |
 	JSL decompress_data			;$80A729   |/
-	LDA #$5000				;$80A72D   |\ Set the VRAM address to $A000
+	LDA #vram_menus_ui_tiledata		;$80A72D   |\ Set the VRAM address to $A000
 	STA PPU.vram_address			;$80A730   |/
 	LDX #$007F				;$80A733   |\ Upload the layer 1 tiledata to VRAM address $A000
 	LDA #$0000				;$80A736   | |
@@ -4073,32 +4081,32 @@ init_file_select:
 	JSL DMA_to_VRAM				;$80A73C   |/
 	LDX #DATA_ED7507			;$80A740   |\ Upload tilemap for the "SELECT GAME" text
 	LDY.w #DATA_ED7507>>16			;$80A743   | |
-	LDA #$7428				;$80A746   | |
+	LDA #vram_menus_select_game_tilemap	;$80A746   | |
 	JSR upload_fileselect_tilemap		;$80A749   |/
 	LDX #DATA_ED7429			;$80A74C   |\ Upload tilemap for the "1" on the first file
 	LDY.w #DATA_ED7429>>16			;$80A74F   | |
-	LDA #$74C1				;$80A752   | |
+	LDA #vram_menus_file_number_1_tilemap	;$80A752   | |
 	JSR upload_fileselect_tilemap		;$80A755   |/
 	LDX #DATA_ED7433			;$80A758   |\ Upload tilemap for the "2" on the second file
 	LDY.w #DATA_ED7433>>16			;$80A75B   | |
-	LDA #$7561				;$80A75E   | |
+	LDA #vram_menus_file_number_2_tilemap	;$80A75E   | |
 	JSR upload_fileselect_tilemap		;$80A761   |/
 	LDX #DATA_ED743D			;$80A764   |\ Upload tilemap for the "3" on the third file
 	LDY.w #DATA_ED743D>>16			;$80A767   | |
-	LDA #$7601				;$80A76A   | |
+	LDA #vram_menus_file_number_3_tilemap	;$80A76A   | |
 	JSR upload_fileselect_tilemap		;$80A76D   |/
 	LDA file_select_action			;$80A770   |\ Check if we are running file select or save game
 	BEQ .load_file_select_option		;$80A773   |/ Skip replacing text if it is file select
 	LDX #DATA_ED7607			;$80A775   |\ Replace text with save game
 	LDY.w #DATA_ED7607>>16			;$80A778   | |
-	LDA #$7428				;$80A77B   | |
+	LDA #vram_menus_save_game_tilemap	;$80A77B   | |
 	JSR upload_fileselect_tilemap		;$80A77E   |/
 	BRA .skip_options			;$80A781  / Skip uploading the copy/erase/language/channel count tilemap
 
 .load_file_select_option			;	  \
 	LDX #DATA_ED7569			;$80A783   |\ Upload the copy and erase text
 	LDY.w #DATA_ED7569>>16			;$80A786   | |
-	LDA #$76C3				;$80A789   | |
+	LDA #vram_menus_copy_erase_tilemap	;$80A789   | |
 	JSR upload_fileselect_tilemap		;$80A78C   |/
 	JSR upload_language_tilemap		;$80A78F   | Upload the english or french text tilemap
 	JSR upload_channel_count_tilemap	;$80A792   | Upload the mono or stereo tilemap
@@ -4107,7 +4115,7 @@ init_file_select:
 	LDY.w #DATA_EC83A0>>16			;$80A798   | | This is th etiles for the "map" background
 	LDA #$0000				;$80A79B   | |
 	JSL decompress_data			;$80A79E   |/
-	LDA #$1000				;$80A7A2   |\ Set the VRAM address to $2000
+	LDA #vram_menus_map_bg_tiledata		;$80A7A2   |\ Set the VRAM address to $2000
 	STA PPU.vram_address			;$80A7A5   |/
 	LDX #$007F				;$80A7A8   |\ Upload the layer 2 tiledata to VRAM address $2000
 	LDA #$0000				;$80A7AB   | |
@@ -4117,7 +4125,7 @@ init_file_select:
 	LDY.w #DATA_EC7CF0>>16			;$80A7B8   | | This is the tilemap for the "map" background
 	LDA #$0000				;$80A7BB   | |
 	JSL decompress_data			;$80A7BE   |/
-	LDA #$7C00				;$80A7C2   |\ Set the VRAM address to $F800
+	LDA #vram_menus_map_bg_tilemap		;$80A7C2   |\ Set the VRAM address to $F800
 	STA PPU.vram_address			;$80A7C5   |/
 	LDX #$007F				;$80A7C8   |\ Upload the layer 2 tilemap to VRAM address $F800
 	LDA #$0000				;$80A7CB   | |
@@ -4129,15 +4137,15 @@ init_file_select:
 	LDA #DATA_FD3C6E			;$80A7DE   | |
 	JSL DMA_palette				;$80A7E1   |/
 	STZ PPU.vram_address			;$80A7E5   |
-	LDX.w #DATA_FB0180>>16			;$80A7E8   |\
+	LDX.w #DATA_FB0180>>16			;$80A7E8   |\ Upload initial DK coin frame
 	LDA #DATA_FB0180			;$80A7EB   | |
 	LDY #$0080				;$80A7EE   | |
 	JSL DMA_to_VRAM				;$80A7F1   |/
-	LDX.w #DATA_FB0400>>16			;$80A7F5   |\
+	LDX.w #DATA_FB0400>>16			;$80A7F5   |\ Upload initial Kremkoin frame
 	LDA #DATA_FB0400			;$80A7F8   | |
 	LDY #$0080				;$80A7FB   | |
 	JSL DMA_to_VRAM				;$80A7FE   |/
-	STZ oam_attribute[$00].size		;$80A802   |\ Reset the OAM size of 6 tiles
+	STZ oam_attribute[$00].size		;$80A802   |\ Reset the OAM size of 12 tiles
 	STZ oam_attribute[$02].size		;$80A805   | |
 	STZ oam_attribute[$04].size		;$80A808   |/
 	LDA #$0300				;$80A80B   |\ Set fade in with a speed of three
@@ -4185,100 +4193,100 @@ CODE_80A82B:
 	RTS					;$80A865  /
 
 DATA_80A866:
-	dw save_file1_competitor
-	dw save_file2_competitor
-	dw save_file3_competitor
+	dw vram_menus_save_file1_tilemap
+	dw vram_menus_save_file2_tilemap
+	dw vram_menus_save_file3_tilemap
 
-run_file_select:
-	LDX #stack				;$80A86C  \
-	TXS					;$80A86F   |
-	STZ PPU.oam_address			;$80A870   |
-	LDA #$0401				;$80A873   |
-	STA CPU.enable_dma			;$80A876   |
-	LDA file_select_action			;$80A879   |
-	BIT #$00E4				;$80A87C   |
-	BNE CODE_80A8F4				;$80A87F   |
-	LDA global_frame_counter		;$80A881   |
-	BIT #$0003				;$80A883   |
-	BNE CODE_80A8B7				;$80A886   |
-	AND #$001C				;$80A888   |
-	ASL A					;$80A88B   |
-	ASL A					;$80A88C   |
-	ASL A					;$80A88D   |
-	ASL A					;$80A88E   |
-	ASL A					;$80A88F   |
-	CLC					;$80A890   |
-	ADC #$0000				;$80A891   |
-	STA DMA[1].source			;$80A894   |
-	STA DMA[1].unused_2			;$80A897   |
-	STZ PPU.vram_address			;$80A89A   |
-	LDA #$0080				;$80A89D   |
-	STA DMA[1].size				;$80A8A0   |
-	LDA #$1801				;$80A8A3   |
-	STA DMA[1].settings			;$80A8A6   |
+run_file_select:				;	  \
+	LDX #stack				;$80A86C   |\ Standard game loop stack reset
+	TXS					;$80A86F   |/
+	STZ PPU.oam_address			;$80A870   | Reset OAM address for DMA
+	LDA #$0401				;$80A873   |\ Run sprite DMA and enable the windowing HDMA
+	STA CPU.enable_dma			;$80A876   |/
+	LDA file_select_action			;$80A879   |\ If doing a confirmation, skip updating DK/kremkoin icons
+	BIT #$00E4				;$80A87C   | |
+	BNE .skip_kremkoin_update		;$80A87F   |/
+	LDA global_frame_counter		;$80A881   |\ Check if we are on a frame divisible by 4
+	BIT #$0003				;$80A883   | |
+	BNE .skip_dk_coin_update		;$80A886   |/ Otherwise skip cycling the DK coin frame
+	AND #$001C				;$80A888   |\ Calculate the current DK coin frame
+	ASL A					;$80A88B   | | Each entry is 128 bytes
+	ASL A					;$80A88C   | | There are 8 total frames that are cycled
+	ASL A					;$80A88D   | |
+	ASL A					;$80A88E   | |
+	ASL A					;$80A88F   | |
+	CLC					;$80A890   | |
+	ADC #DATA_FB0000			;$80A891   | | Add the DK coin base pointer to the frame offset
+	STA DMA[1].source			;$80A894   | |
+	STA DMA[1].unused_2			;$80A897   |/
+	STZ PPU.vram_address			;$80A89A   | The DK frame is located at VRAM addres $0000
+	LDA.w #vram_menus_dk_coin		;$80A89D   |\ Set the DMA size to 128 bytes
+	STA DMA[1].size				;$80A8A0   |/
+	LDA #$1801				;$80A8A3   |\ VRAM write, two regs, write once
+	STA DMA[1].settings			;$80A8A6   |/
 	SEP #$20				;$80A8A9   |
-	LDA #$FB				;$80A8AB   |
-	STA DMA[1].source_bank			;$80A8AD   |
-	LDA #$02				;$80A8B0   |
-	STA CPU.enable_dma			;$80A8B2   |
+	LDA.b #<:DATA_FB0000			;$80A8AB   |\ Set the DMA bank to FB
+	STA DMA[1].source_bank			;$80A8AD   |/
+	LDA #$02				;$80A8B0   |\ Run the DK coin DMA
+	STA CPU.enable_dma			;$80A8B2   |/
 	REP #$20				;$80A8B5   |
-CODE_80A8B7:					;	   |
-	LDA global_frame_counter		;$80A8B7   |
-	CLC					;$80A8B9   |
-	ADC #$0002				;$80A8BA   |
-	BIT #$0003				;$80A8BD   |
-	BNE CODE_80A8F4				;$80A8C0   |
-	AND #$001C				;$80A8C2   |
-	ASL A					;$80A8C5   |
-	ASL A					;$80A8C6   |
-	ASL A					;$80A8C7   |
-	ASL A					;$80A8C8   |
-	ASL A					;$80A8C9   |
-	CLC					;$80A8CA   |
-	ADC #$0400				;$80A8CB   |
-	STA DMA[1].source			;$80A8CE   |
-	STA DMA[1].unused_2			;$80A8D1   |
-	LDA #$0040				;$80A8D4   |
-	STA PPU.vram_address			;$80A8D7   |
-	LDA #$0080				;$80A8DA   |
-	STA DMA[1].size				;$80A8DD   |
-	LDA #$1801				;$80A8E0   |
-	STA DMA[1].settings			;$80A8E3   |
+.skip_dk_coin_update				;	   |
+	LDA global_frame_counter		;$80A8B7   |\ Check if we are on a frame divisible by 4
+	CLC					;$80A8B9   | | Offset the frame count by 2 so that the DK coin and
+	ADC #$0002				;$80A8BA   | | kremkoin are slightly out of phase
+	BIT #$0003				;$80A8BD   | |
+	BNE .skip_kremkoin_update		;$80A8C0   |/
+	AND #$001C				;$80A8C2   |\ Calculate the current kremkoin frame
+	ASL A					;$80A8C5   | | Each entry is 128 bytes
+	ASL A					;$80A8C6   | | There are 8 total frames that are cycled
+	ASL A					;$80A8C7   | |
+	ASL A					;$80A8C8   | |
+	ASL A					;$80A8C9   | |
+	CLC					;$80A8CA   | |
+	ADC #DATA_FB0400			;$80A8CB   | |
+	STA DMA[1].source			;$80A8CE   | |
+	STA DMA[1].unused_2			;$80A8D1   |/
+	LDA #$0040				;$80A8D4   |\ Set the VRAM offset to $0080 for the kremkoin slot
+	STA PPU.vram_address			;$80A8D7   |/
+	LDA #$0080				;$80A8DA   |\ Set the upload size to 128 bytes
+	STA DMA[1].size				;$80A8DD   |/
+	LDA #$1801				;$80A8E0   |\ VRAM write, two regs, write once
+	STA DMA[1].settings			;$80A8E3   |/
 	SEP #$20				;$80A8E6   |
-	LDA #$FB				;$80A8E8   |
-	STA DMA[1].source_bank			;$80A8EA   |
-	LDA #$02				;$80A8ED   |
-	STA CPU.enable_dma			;$80A8EF   |
+	LDA.b #<:DATA_FB0400			;$80A8E8   |\ Set the DMA bank to FB
+	STA DMA[1].source_bank			;$80A8EA   |/
+	LDA #$02				;$80A8ED   |\ Run the kremkoin DMA
+	STA CPU.enable_dma			;$80A8EF   |/
 	REP #$20				;$80A8F2   |
-CODE_80A8F4:					;	   |
+.skip_kremkoin_update				;	   |
 	LDA file_select_action			;$80A8F4   |
 	BIT #$0080				;$80A8F7   |
-	BEQ CODE_80A905				;$80A8FA   |
+	BEQ .skip_language_update		;$80A8FA   |
 	JSR upload_language_tilemap		;$80A8FC   |
 	LDA #$0080				;$80A8FF   |
 	TRB file_select_action			;$80A902   |
-CODE_80A905:					;	   |
+.skip_language_update				;	   |
 	LDA file_select_action			;$80A905   |
 	BIT #$0100				;$80A908   |
-	BEQ CODE_80A916				;$80A90B   |
+	BEQ .skip_channel_count_update		;$80A90B   |
 	JSR upload_channel_count_tilemap	;$80A90D   |
 	LDA #$0100				;$80A910   |
 	TRB file_select_action			;$80A913   |
-CODE_80A916:					;	   |
+.skip_channel_count_update			;	   |
 	LDA file_select_action			;$80A916   |
 	BIT #$0004				;$80A919   |
-	BEQ CODE_80A926				;$80A91C   |
+	BEQ .skip_ending_erase			;$80A91C   |
 	LDA #$0006				;$80A91E   |
 	TRB file_select_action			;$80A921   |
-	BRA CODE_80A934				;$80A924  /
+	BRA .handle_file_action			;$80A924  /
 
-CODE_80A926:
+.skip_ending_erase
 	LDA file_select_action			;$80A926  \
 	BIT #$0040				;$80A929   |
-	BEQ CODE_80A94E				;$80A92C   |
+	BEQ .skip_ending_copy			;$80A92C   |
 	LDA #$0078				;$80A92E   |
 	TRB file_select_action			;$80A931   |
-CODE_80A934:					;	   |
+.handle_file_action				;	   |
 	LDA file_select_selection		;$80A934   |
 	ASL A					;$80A937   |
 	TAX					;$80A938   |
@@ -4289,7 +4297,7 @@ CODE_80A934:					;	   |
 	LDA.l DATA_80A866,x			;$80A944   |
 	LDX file_select_selection		;$80A948   |
 	JSR CODE_80ACB6				;$80A94B   |
-CODE_80A94E:					;	   |
+.skip_ending_copy				;	   |
 	LDA file_select_action			;$80A94E   |
 	BIT #$0020				;$80A951   |
 	BEQ CODE_80A96E				;$80A954   |
@@ -4310,12 +4318,14 @@ CODE_80A96E:					;	   |
 	LDA #incomplete_frame_nmi		;$80A978   |
 	STA NMI_pointer				;$80A97B   |
 	JSR fade_screen				;$80A97D   |
+namespace hdma_menu				;	   |
 	LDA #$FF00				;$80A980   |
 	STA $7E8016				;$80A983   |
 	STA $7E8019				;$80A987   |
 	STA $7E801C				;$80A98B   |
 	STA $7E801F				;$80A98F   |
 	STA $7E8022				;$80A993   |
+namespace off					;	   |
 	LDA screen_brightness			;$80A997   |
 	BMI CODE_80A9DE				;$80A99A   |
 	LDA file_select_action			;$80A99C   |
@@ -4651,7 +4661,7 @@ upload_language_tilemap:			;	  \
 	LDA.l DATA_ED7447,x			;$80AC41   |\ Load the pointer to the current language tilemap
 	TAX					;$80AC45   | | and upload it to VRAM
 	LDY #$00ED				;$80AC46   | |
-	LDA #$7731				;$80AC49   | |
+	LDA #vram_menus_language_tilemap	;$80AC49   | |
 	JSR upload_fileselect_tilemap		;$80AC4C   |/
 	RTS					;$80AC4F  /
 
@@ -4662,7 +4672,7 @@ upload_channel_count_tilemap:			;	  \
 	LDA.l DATA_ED7893,x			;$80AC54   |\ Load the pointer to the current channel count tilemap
 	TAX					;$80AC58   | | and upload it to VRAM
 	LDY #$00ED				;$80AC59   | |
-	LDA #$7723				;$80AC5C   | |
+	LDA #vram_menus_channel_count_tilemap	;$80AC5C   | |
 	JSR upload_fileselect_tilemap		;$80AC5F   |/
 	RTS					;$80AC62  /
 
@@ -4673,21 +4683,21 @@ CODE_80AC63:
 	JSR CODE_80ACA5				;$80AC6B   |
 	LDA #save_file1				;$80AC6E   |
 	STA $54					;$80AC71   |
-	LDA #save_file1_competitor		;$80AC73   |
+	LDA #vram_menus_save_file1_tilemap	;$80AC73   |
 	LDX #$0000				;$80AC76   |
 	JSR CODE_80ACB6				;$80AC79   |
 	LDA #$0001				;$80AC7C   |
 	JSR CODE_80ACA5				;$80AC7F   |
 	LDA #save_file2				;$80AC82   |
 	STA $54					;$80AC85   |
-	LDA #save_file2_competitor		;$80AC87   |
+	LDA #vram_menus_save_file2_tilemap	;$80AC87   |
 	LDX #$0001				;$80AC8A   |
 	JSR CODE_80ACB6				;$80AC8D   |
 	LDA #$0002				;$80AC90   |
 	JSR CODE_80ACA5				;$80AC93   |
 	LDA #save_file3				;$80AC96   |
 	STA $54					;$80AC99   |
-	LDA #save_file3_competitor		;$80AC9B   |
+	LDA #vram_menus_save_file3_tilemap	;$80AC9B   |
 	LDX #$0002				;$80AC9E   |
 	JSR CODE_80ACB6				;$80ACA1   |
 	RTS					;$80ACA4  /
@@ -5639,13 +5649,13 @@ run_title_screen:				;	  \
 	JSR fade_screen				;$80B547   | Step the screen fade out state (or no-op if not fading)
 -						;	   |
 	WAI					;$80B54A   | Wait for interrupt to begin the next frame
-	BRA -					;$80B54B  / Spinlock in case something breaks the WAI
+	BRA -					;$80B54B  / Spinlock in case something breaks the WAI (via external IRQ)
 
 .execute_transition				;	  \
 	LDA player_skipped_demo			;$80B54D   |\ Check if we are transitioning to the demo or file select
 	BEQ .set_demo_transition		;$80B550   |/
 	STZ file_select_action			;$80B552   |
-	JML init_file_select			;$80B555  /
+	JML init_file_select			;$80B555  / Initialize the file select menu
 
 .set_demo_transition
 	LDA #CODE_8086F6			;$80B559  \
@@ -5677,7 +5687,7 @@ setup_title_screen_screen:			;	  \
 	LDY.w #title_screen_tiledata>>16	;$80B59F   | |
 	LDA #$0000				;$80B5A2   | |
 	JSL decompress_data			;$80B5A5   |/
-	LDA #$4000				;$80B5A9   |\ Set the VRAM address to $8000
+	LDA #vram_intro_title_screen_tiledata	;$80B5A9   |\ Set the VRAM address to $8000
 	STA PPU.vram_address			;$80B5AC   |/
 	LDX #$007F				;$80B5AF   |\ DMA the title screen tiledata to VRAM
 	LDA #$0000				;$80B5B2   | |
@@ -5687,7 +5697,7 @@ setup_title_screen_screen:			;	  \
 	LDY.w #title_screen_tilemap>>16		;$80B5BF   | |
 	LDA #$0000				;$80B5C2   | |
 	JSL decompress_data			;$80B5C5   |/
-	LDA #$1C00				;$80B5C9   |\ Set the VRAM address to $3800
+	LDA #vram_intro_title_screen_tilemap	;$80B5C9   |\ Set the VRAM address to $3800
 	STA PPU.vram_address			;$80B5CC   |/
 	LDX #$007F				;$80B5CF   |\ DMA the title screen tilemap to VRAM
 	LDA #$0000				;$80B5D2   | |
@@ -5721,9 +5731,11 @@ init_nintendo_copyright:
 	LDA #nintendo_copyright_tiledata	;$80B625   | |
 	LDY #$2000				;$80B628   | |
 	JSL DMA_to_VRAM				;$80B62B   |/
-	LDA #$7C00				;$80B62F   |\ Clear the $0800 block at $F800
+	LDA #vram_intro_block_4			;$80B62F   |\ Clear the $0800 block at $F800
 	JSR clear_VRAM_block			;$80B632   |/
-	LDA #$7D00				;$80B635   |\ Set the VRAM address to $FA00
+namespace vram					;	   |\
+	LDA #intro_nintendo_copyright_tilemap	;$80B635   | | Set the VRAM address to $FA00
+namespace off					;	   | |
 	STA PPU.vram_address			;$80B638   |/
 	LDX.w #nintendo_copyright_tilemap>>16	;$80B63B   |\ DMA the Nintendo copyright tilemap
 	LDA #nintendo_copyright_tilemap		;$80B63E   | |
@@ -5776,9 +5788,9 @@ run_nintendo_copyright:				;	  \
 	BNE .wait_for_next_frame		;$80B6B8   |/
 	JML setup_title_screen_transition	;$80B6BA  / If the screen is dark, start the title screen transition
 
-.wait_for_next_frame
-	WAI					;$80B6BE  \
-	BRA .wait_for_next_frame		;$80B6BF  /
+.wait_for_next_frame				;	  \ Standard frame wait spinlock with external IRQ protection.
+	WAI					;$80B6BE   | If you find a way to actually trigger this loop
+	BRA .wait_for_next_frame		;$80B6BF  / you are messing with dark magic. I sympathize.
 
 DATA_80B6C1:
 	dw CODE_80B705

@@ -11,6 +11,7 @@ org $008000			;dummy org so functions work
 	incsrc constants.asm
 	incsrc ram.asm
 	incsrc sram.asm
+	incsrc vram.asm
 	incsrc structs.asm
 	incsrc mmio.asm
 

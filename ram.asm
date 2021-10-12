@@ -113,6 +113,10 @@ namespace hdma_intro
 	color_math = $7E8022
 	subscreen = $7E8032
 namespace off
+
+namespace hdma_menu
+	windowing = $7E8012
+namespace off
 ; end buffers
 
 working_palette = $7E8928
