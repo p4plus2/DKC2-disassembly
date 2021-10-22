@@ -1444,15 +1444,15 @@ CODE_808E4F:
 
 CODE_808E53:
 	LDA rng_result				;$808E53  \
-	STA temp3				;$808E55   |
+	STA temp_34				;$808E55   |
 	ASL A					;$808E57   |
 	LDA rng_seed_2				;$808E58   |
 	ROL A					;$808E5A   |
-	STA temp1				;$808E5B   |
+	STA temp_32				;$808E5B   |
 	LDA rng_seed_1				;$808E5D   |
-	EOR temp1				;$808E5F   |
+	EOR temp_32				;$808E5F   |
 	STA rng_result				;$808E61   |
-	LDA temp3				;$808E63   |
+	LDA temp_34				;$808E63   |
 	STA rng_seed_2				;$808E65   |
 	LDA rng_result				;$808E67   |
 	RTS					;$808E69  /
@@ -1491,7 +1491,7 @@ clear_noncritical_wram:				;	  \
 	RTL					;$808EAD  /
 
 clear_full_wram:
-%local(.return, temp1)				;	  \
+%local(.return, temp_32)				;	  \
 	PLA					;$808EAE   |\ Store the return address in scratch ram
 	INC A					;$808EAF   | |
 	STA .return				;$808EB0   |/
@@ -1509,8 +1509,8 @@ clear_full_wram:
 	TXY					;$808ED1   | |
 	INY					;$808ED2   | |
 	MVN $7E, $7E				;$808ED3   |/
-	STZ temp3				;$808ED6   |\ Clean $7E0034-$7E0906 with an MVN copy
-	LDX.w #temp3				;$808ED8   | |
+	STZ temp_34				;$808ED6   |\ Clean $7E0034-$7E0906 with an MVN copy
+	LDX.w #temp_34				;$808ED8   | |
 	LDA #$08D1				;$808EDB   | |
 	TXY					;$808EDE   | |
 	INY					;$808EDF   | |
@@ -1766,7 +1766,7 @@ init_rareware_logo:
 	STA rng_result				;$8090ED   | |
 	LDA #$3765				;$8090EF   | |
 	STA rng_seed_2				;$8090F2   |/
-	LDA #$0011				;$8090F4   |\ Load Intro fanfare sound
+	LDA #!music_fanfare			;$8090F4   |\ Load Intro fanfare sound
 	JSL queue_song				;$8090F7   |/
 	SEP #$20				;$8090FB   |
 	LDA #$01				;$8090FD   |\ Enable auto polling
@@ -1940,7 +1940,7 @@ namespace off					;	   | |
 	BPL .clear_palette			;$8092D6   |/ Loop until all clear
 	LDX #$001C				;$8092D8   | Load number of bytes minus two to clear
 .clear_scratch_RAM				;	   |\ Clear scratch RAM
-	STZ temp1,x				;$8092DB   | |
+	STZ temp_32,x				;$8092DB   | |
 	DEX					;$8092DD   | |
 	DEX					;$8092DE   | |
 	BPL .clear_scratch_RAM			;$8092DF   |/ Continue to loop until all is cleared
@@ -2132,9 +2132,9 @@ namespace off					;	   |
 	EOR #$003F				;$8094CC   |/
 .skip_alternate_scale				;	   |
 	LSR A					;$8094CF   |\ Calculate scale factor based on relative frame counter
-	STA temp1				;$8094D0   | | For frames 0-1F: scale += counter * 3/4
+	STA temp_32				;$8094D0   | | For frames 0-1F: scale += counter * 3/4
 	LSR A					;$8094D2   | | For frames 20-2E:  scale += (counter ^ $3F) * 3/4
-	ADC temp1				;$8094D3   | |
+	ADC temp_32				;$8094D3   | |
 	CLC					;$8094D5   | |
 	ADC $7C					;$8094D6   |/
 	STA $7C					;$8094D8   |\ Store the mode 7 scale factor
@@ -2745,7 +2745,7 @@ CODE_809A13:
 	LDA #$01				;$809A2B   |
 	STA.l CPU.enable_interrupts		;$809A2D   |
 	REP #$20				;$809A31   |
-	LDA #$0018				;$809A33   |
+	LDA #!music_file_select			;$809A33   |
 	JSL play_song_with_transition		;$809A36   |
 	STZ $84					;$809A3A   |
 	DEC $060D				;$809A3C   |
@@ -2804,7 +2804,7 @@ CODE_809A84:					;	   |
 	LDA #$01				;$809AB4   |
 	STA.l CPU.enable_interrupts		;$809AB6   |
 	REP #$20				;$809ABA   |
-	LDA #$0018				;$809ABC   |
+	LDA #!music_file_select			;$809ABC   |
 	JSL play_song_with_transition		;$809ABF   |
 	STZ $84					;$809AC3   |
 	INC $060D				;$809AC5   |
@@ -3951,8 +3951,8 @@ CODE_80A5D1:					;	   |
 	RTS					;$80A5F0  /
 
 init_file_select:
-%local(.sram_pointer, temp1)
-%local(.sram_pointer_bank, temp3)
+%local(.sram_pointer, temp_32)
+%local(.sram_pointer_bank, temp_34)
 	JSL disable_screen			;$80A5F1  \ Turn off the screen and enable F-blank
 	PHK					;$80A5F5   |\ Welcome back to bank 80
 	PLB					;$80A5F6   |/
@@ -3960,20 +3960,21 @@ init_file_select:
 	JSL init_registers_global		;$80A5FA   | Run the standard hardware MMIO reset
 	JSL clear_noncritical_wram		;$80A5FE   | Clear all non critical WRAM
 	JSL set_all_oam_offscreen		;$80A602   | Move all sprite tiles off screen
-	LDA #$0018				;$80A606   |\ Play the file select song
+	LDA #!music_file_select			;$80A606   |\ Play the file select song
 	JSL play_song				;$80A609   |/
 	LDA file_select_action			;$80A60D   |\ If the file select action is clear
 	BEQ .skip_sram_copy			;$80A610   |/ Skip saving the game, we are on file select
 	LDA file_select_selection		;$80A612   |\ Calculate the index to the current SRAM file
 	ASL A					;$80A615   | |
 	TAX					;$80A616   |/
+namespace run_file_select			;	   | Use this namespace to acces the sram_file_offsets
 	LDA.l sram_file_offsets,x		;$80A617   |\ Setup pointer to the active save file
 	STA .sram_pointer			;$80A61B   | |
 	LDA #<:sram_base			;$80A61D   | |
 	STA .sram_pointer_bank			;$80A620   |/
 	%pea_use_dbr(sram_file_buffer)		;$80A622   |\ Swap out dbr to access full wram
 	PLB					;$80A625   |/
-	LDY #sizeof(save_file)			;$80A626   | Load file length
+	LDY #sizeof(save_file)-2		;$80A626   | Load file length
 	BRA .copy_sram				;$80A629  / Jump to the actual copy routine
 .unused						;	  \
 	LDA file_select_selection		;$80A62B   |\ Calculate the index to the current SRAM file
@@ -3981,20 +3982,21 @@ init_file_select:
 	TAX					;$80A62F   |/
 	LDA.l sram_file_offsets,x		;$80A630   |\  Setup pointer to the active save file
 	CLC					;$80A634   | |
-	ADC #$0006				;$80A635   | | This would skip the first 6 bytes of the file
+	ADC.w #save_file.contents		;$80A635   | | Skip the save file header
 	STA .sram_pointer			;$80A638   | |
 	LDA #<:sram_base			;$80A63A   | |
 	STA .sram_pointer_bank			;$80A63D   |/
+namespace off					;	   |
 	LDA $060F				;$80A63F   |\ Check which controller is active
 	BEQ .copy_player_1			;$80A642   |/
 	LDA .sram_pointer			;$80A644   |\ Skip $14E bytes of the file
 	CLC					;$80A646   | |
-	ADC #$014E				;$80A647   | |
+	ADC #sizeof(subfile)			;$80A647   | |
 	STA .sram_pointer			;$80A64A   |/
 .copy_player_1					;	   |
 	%pea_use_dbr(sram_file_buffer)		;$80A64C   |\ Swap out dbr to access full wram
 	PLB					;$80A64F   |/
-	LDY #$014C				;$80A650   | Load file length (its much smaller than the normal file?)
+	LDY #sizeof(subfile)-2			;$80A650   | Load subfile length
 .copy_sram					;	   |
 	LDA.w sram_file_buffer,y		;$80A653   |\ Simple copy loop from the SRAM buffer to actual SRAM
 	STA [.sram_pointer],y			;$80A656   | |
@@ -4131,7 +4133,7 @@ namespace off					;	   |
 	LDA #$0000				;$80A7CB   | |
 	LDY #$0800				;$80A7CE   | |
 	JSL DMA_to_VRAM				;$80A7D1   |/
-	JSR CODE_80AC63				;$80A7D5   |
+	JSR upload_file_tilemaps		;$80A7D5   | Upload all three file tilemaps
 	LDY #$0000				;$80A7D8   |\ Upload file select palette
 	LDX #$0040				;$80A7DB   | |
 	LDA #DATA_FD3C6E			;$80A7DE   | |
@@ -4198,6 +4200,10 @@ DATA_80A866:
 	dw vram_menus_save_file3_tilemap
 
 run_file_select:				;	  \
+%local(.sram_pointer, temp_32)			;	   |
+%local(.sram_pointer_bank, temp_34)		;	   |
+%local(.sram_pointer_original, temp_36)		;	   |
+%local(.sram_pointer_bank_original, temp_38)	;	   |
 	LDX #stack				;$80A86C   |\ Standard game loop stack reset
 	TXS					;$80A86F   |/
 	STZ PPU.oam_address			;$80A870   | Reset OAM address for DMA
@@ -4259,398 +4265,405 @@ run_file_select:				;	  \
 	STA CPU.enable_dma			;$80A8EF   |/
 	REP #$20				;$80A8F2   |
 .skip_kremkoin_update				;	   |
-	LDA file_select_action			;$80A8F4   |
-	BIT #$0080				;$80A8F7   |
-	BEQ .skip_language_update		;$80A8FA   |
-	JSR upload_language_tilemap		;$80A8FC   |
-	LDA #$0080				;$80A8FF   |
-	TRB file_select_action			;$80A902   |
+	LDA file_select_action			;$80A8F4   |\ Check if the language option was pressed
+	BIT #$0080				;$80A8F7   | |
+	BEQ .skip_language_update		;$80A8FA   |/ If the language wasn't changed, skip updating the tilemap
+	JSR upload_language_tilemap		;$80A8FC   | Update the language tilemap to reflect the new selection
+	LDA #$0080				;$80A8FF   |\ Reset the file select action
+	TRB file_select_action			;$80A902   |/
 .skip_language_update				;	   |
-	LDA file_select_action			;$80A905   |
-	BIT #$0100				;$80A908   |
-	BEQ .skip_channel_count_update		;$80A90B   |
-	JSR upload_channel_count_tilemap	;$80A90D   |
-	LDA #$0100				;$80A910   |
-	TRB file_select_action			;$80A913   |
+	LDA file_select_action			;$80A905   |\ Check if the channel count option was pressed
+	BIT #$0100				;$80A908   | |
+	BEQ .skip_channel_count_update		;$80A90B   |/ If the channel count wasn't changed, skip the update
+	JSR upload_channel_count_tilemap	;$80A90D   | Update the channel count tilemap to display the selection
+	LDA #$0100				;$80A910   |\ Reset the file select action
+	TRB file_select_action			;$80A913   |/
 .skip_channel_count_update			;	   |
-	LDA file_select_action			;$80A916   |
-	BIT #$0004				;$80A919   |
-	BEQ .skip_ending_erase			;$80A91C   |
-	LDA #$0006				;$80A91E   |
-	TRB file_select_action			;$80A921   |
-	BRA .handle_file_action			;$80A924  /
+	LDA file_select_action			;$80A916   |\ Check if the file in a erase option was selected
+	BIT #$0004				;$80A919   | |
+	BEQ .skip_ending_erase			;$80A91C   |/ If not, move on to the file copy checks
+	LDA #$0006				;$80A91E   |\ Reset the file select action
+	TRB file_select_action			;$80A921   |/
+	BRA .handle_file_action			;$80A924  / handle file actions (copy and erase)
 
-.skip_ending_erase
-	LDA file_select_action			;$80A926  \
-	BIT #$0040				;$80A929   |
-	BEQ .skip_ending_copy			;$80A92C   |
-	LDA #$0078				;$80A92E   |
-	TRB file_select_action			;$80A931   |
+.skip_ending_erase				;	  \
+	LDA file_select_action			;$80A926   |\ Check if we are selecting the final file in copy operation
+	BIT #$0040				;$80A929   | |
+	BEQ .skip_ending_copy			;$80A92C   |/ if not, move on the
+	LDA #$0078				;$80A92E   |\
+	TRB file_select_action			;$80A931   |/
 .handle_file_action				;	   |
-	LDA file_select_selection		;$80A934   |
-	ASL A					;$80A937   |
-	TAX					;$80A938   |
-	LDA.l sram_file_offsets,x		;$80A939   |
-	STA $54					;$80A93D   |
-	LDA #<:sram_base			;$80A93F   |
-	STA $56					;$80A942   |
-	LDA.l DATA_80A866,x			;$80A944   |
-	LDX file_select_selection		;$80A948   |
-	JSR CODE_80ACB6				;$80A94B   |
+	LDA file_select_selection		;$80A934   |\ Calculate the pointer to the currently selected file
+	ASL A					;$80A937   | |
+	TAX					;$80A938   | |
+	LDA.l .sram_file_offsets,x		;$80A939   | |
+	STA $54					;$80A93D   | |
+	LDA #<:sram_base			;$80A93F   | |
+	STA $56					;$80A942   |/
+	LDA.l DATA_80A866,x			;$80A944   |\ Get the VRAM offset of the target file line
+	LDX file_select_selection		;$80A948   |/
+	JSR upload_file_tilemap			;$80A94B   | Update the file line (clear or update after copy)
 .skip_ending_copy				;	   |
-	LDA file_select_action			;$80A94E   |
-	BIT #$0020				;$80A951   |
-	BEQ CODE_80A96E				;$80A954   |
-	LDA file_select_selection		;$80A956   |
-	ASL A					;$80A959   |
-	TAX					;$80A95A   |
-	LDA.l DATA_80A866,x			;$80A95B   |
-	LDX #DATA_ED7717			;$80A95F   |
-	LDY.w #DATA_ED7717>>16			;$80A962   |
-	JSR upload_fileselect_tilemap		;$80A965   |
-	LDA #$0040				;$80A968   |
-	TSB file_select_action			;$80A96B   |
-CODE_80A96E:					;	   |
+	LDA file_select_action			;$80A94E   |\ Check if the second file has been selected in a file copy
+	BIT #$0020				;$80A951   | |
+	BEQ .skip_copy_second_file_selected	;$80A954   |/ if not, skip uploading an empty file tilemap
+	LDA file_select_selection		;$80A956   |\ Get the VRAM offset off the file line to copy to
+	ASL A					;$80A959   | |
+	TAX					;$80A95A   | |
+	LDA.l DATA_80A866,x			;$80A95B   |/
+	LDX #DATA_ED7717			;$80A95F   |\ Upload a "empty file" tilemap to the selected file
+	LDY.w #DATA_ED7717>>16			;$80A962   | | This will help ensure no left over tiles if smaller
+	JSR upload_fileselect_tilemap		;$80A965   |/ numbers are in the new file for example
+	LDA #$0040				;$80A968   |\ Progress the copy action to its completion state
+	TSB file_select_action			;$80A96B   |/
+.skip_copy_second_file_selected			;	   |
 	SEP #$20				;$80A96E   |
-	LDA screen_brightness			;$80A970   |
-	STA PPU.screen				;$80A973   |
+	LDA screen_brightness			;$80A970   |\ Mirror the screen brightness to the screen
+	STA PPU.screen				;$80A973   |/
 	REP #$20				;$80A976   |
-	LDA #incomplete_frame_nmi		;$80A978   |
-	STA NMI_pointer				;$80A97B   |
-	JSR fade_screen				;$80A97D   |
+	LDA #incomplete_frame_nmi		;$80A978   |\ Set the NMI lag handler
+	STA NMI_pointer				;$80A97B   |/
+	JSR fade_screen				;$80A97D   | Run the screen fade routine
 namespace hdma_menu				;	   |
-	LDA #$FF00				;$80A980   |
-	STA $7E8016				;$80A983   |
-	STA $7E8019				;$80A987   |
-	STA $7E801C				;$80A98B   |
-	STA $7E801F				;$80A98F   |
-	STA $7E8022				;$80A993   |
+	LDA #$FF00				;$80A980   |\ Disable the color window on all but the first block
+	STA windowing+write_word[1].value	;$80A983   | |
+	STA windowing+write_word[2].value	;$80A987   | |
+	STA windowing+write_word[3].value	;$80A98B   | |
+	STA windowing+write_word[4].value	;$80A98F   | |
+	STA windowing+write_word[5].value	;$80A993   |/
 namespace off					;	   |
-	LDA screen_brightness			;$80A997   |
-	BMI CODE_80A9DE				;$80A99A   |
-	LDA file_select_action			;$80A99C   |
-	BIT #$0001				;$80A99F   |
-	BNE CODE_80A9DE				;$80A9A2   |
+	LDA screen_brightness			;$80A997   |\ Check if the screen is fading out
+	BMI .no_directions_pressed		;$80A99A   |/
+	LDA file_select_action			;$80A99C   |\ Check if we are on the save game screen
+	BIT #$0001				;$80A99F   | |
+	BNE .no_directions_pressed		;$80A9A2   |/
 	LDX file_select_selection		;$80A9A4   |
-	LDA $0511				;$80A9A7   |
-	LSR A					;$80A9AA   |
-	BCC CODE_80A9B3				;$80A9AB   |
-	LDA.l DATA_80AC35,x			;$80A9AD   |
-	BRA CODE_80A9CC				;$80A9B1  /
+	LDA player_active_pressed_high		;$80A9A7   |\ Check if the Right button was pressed
+	LSR A					;$80A9AA   | |
+	BCC .check_left				;$80A9AB   |/
+	LDA.l .move_selection_right,x		;$80A9AD   |
+	BRA .handle_direction_pressed		;$80A9B1  /
 
-CODE_80A9B3:
-	LSR A					;$80A9B3  \
-	BCC CODE_80A9BC				;$80A9B4   |
-	LDA.l DATA_80AC2E,x			;$80A9B6   |
-	BRA CODE_80A9CC				;$80A9BA  /
+.check_left					;	  \
+	LSR A					;$80A9B3   |\ Check if the Left button was pressed
+	BCC .check_down				;$80A9B4   |/
+	LDA.l .move_selection_left,x		;$80A9B6   |
+	BRA .handle_direction_pressed		;$80A9BA  /
 
-CODE_80A9BC:
-	LSR A					;$80A9BC  \
-	BCC CODE_80A9C5				;$80A9BD   |
-	LDA.l DATA_80AC27,x			;$80A9BF   |
-	BRA CODE_80A9CC				;$80A9C3  /
+.check_down					;	  \
+	LSR A					;$80A9BC   |\ Check if the Down button was pressed
+	BCC .check_up				;$80A9BD   |/
+	LDA.l .move_selection_down,x		;$80A9BF   |
+	BRA .handle_direction_pressed		;$80A9C3  /
 
-CODE_80A9C5:
-	LSR A					;$80A9C5  \
-	BCC CODE_80A9DE				;$80A9C6   |
-	LDA.l DATA_80AC20,x			;$80A9C8   |
-CODE_80A9CC:					;	   |
-	AND #$00FF				;$80A9CC   |
-	CMP file_select_selection		;$80A9CF   |
-	BEQ CODE_80A9DE				;$80A9D2   |
-	STA file_select_selection		;$80A9D4   |
-	LDA #$0633				;$80A9D7   |
-	JSL play_high_priority_sound		;$80A9DA   |
-CODE_80A9DE:					;	   |
-	LDA file_select_action			;$80A9DE   |
-	BIT #$000A				;$80A9E1   |
-	BEQ CODE_80A9ED				;$80A9E4   |
-	LDA global_frame_counter		;$80A9E6   |
-	BIT #$0004				;$80A9E8   |
-	BEQ CODE_80AA35				;$80A9EB   |
-CODE_80A9ED:					;	   |
-	LDA file_select_selection		;$80A9ED   |
-	CMP #$0004				;$80A9F0   |
-	BNE CODE_80A9FD				;$80A9F3   |
-	LDA #$8000				;$80A9F5   |
-	LDX #$000D				;$80A9F8   |
-	BRA CODE_80AA31				;$80A9FB  /
+.check_up					;	  \
+	LSR A					;$80A9C5   |\ Check if the Up button was pressed
+	BCC .no_directions_pressed		;$80A9C6   |/
+	LDA.l .move_selection_up,x		;$80A9C8   |
+.handle_direction_pressed			;	   |
+	AND #$00FF				;$80A9CC   |\ Check if the selections has changed
+	CMP file_select_selection		;$80A9CF   | |
+	BEQ .no_directions_pressed		;$80A9D2   |/ If not, skip playing the menu sound effect
+	STA file_select_selection		;$80A9D4   |\ Store the new selection and play menu sound effect
+	%lda_sound(6, menu_move)		;$80A9D7   | |
+	JSL play_high_priority_sound		;$80A9DA   |/
+.no_directions_pressed				;	   |
+	LDA file_select_action			;$80A9DE   |\ Check if a copy or erase action is active
+	BIT #$000A				;$80A9E1   | |
+	BEQ .skip_window_flashing		;$80A9E4   |/
+	LDA global_frame_counter		;$80A9E6   |\ Flashing happens on a 4 frame interval, 4 on, 4 off
+	BIT #$0004				;$80A9E8   | |
+	BEQ .skip_windowing			;$80A9EB   |/ If bit 2 is clear, it is an off cycle and HDMA is skipped
+.skip_window_flashing				;	   |
+	LDA file_select_selection		;$80A9ED   |\ Check if language select is selected
+	CMP #$0004				;$80A9F0   | |
+	BNE .language_not_selected		;$80A9F3   |/
+	LDA #$8000				;$80A9F5   |\ Enable windowing for the right half of the screen
+	LDX #$000D				;$80A9F8   |/ Write to windowing slot 5
+	BRA .update_window			;$80A9FB  /
 
-CODE_80A9FD:
-	LDA file_select_selection		;$80A9FD  \
-	CMP #$0006				;$80AA00   |
-	BNE CODE_80AA0D				;$80AA03   |
-	LDA #$FF80				;$80AA05   |
-	LDX #$000D				;$80AA08   |
-	BRA CODE_80AA31				;$80AA0B  /
+.language_not_selected				;	  \
+	LDA file_select_selection		;$80A9FD   |\ Check if channel count is selected
+	CMP #$0006				;$80AA00   | |
+	BNE .channel_count_not_selected		;$80AA03   |/
+	LDA #$FF80				;$80AA05   |\ Enable windowing for the left half of the screen
+	LDX #$000D				;$80AA08   |/ Write to windowing slot 5
+	BRA .update_window			;$80AA0B  /
 
-CODE_80AA0D:
-	CMP #$0005				;$80AA0D  \
-	BNE CODE_80AA1A				;$80AA10   |
-	LDA #$8000				;$80AA12   |
-	LDX #$000A				;$80AA15   |
-	BRA CODE_80AA31				;$80AA18  /
+.channel_count_not_selected			;	  \
+	CMP #$0005				;$80AA0D   |\ Check if erase is selected
+	BNE .erase_not_selected			;$80AA10   |/
+	LDA #$8000				;$80AA12   |\ Enable windowing for the right half of the screen
+	LDX #$000A				;$80AA15   |/ Write to windowing slot 4
+	BRA .update_window			;$80AA18  /
 
-CODE_80AA1A:
-	CMP #$0003				;$80AA1A  \
-	BNE CODE_80AA27				;$80AA1D   |
-	LDA #$FF80				;$80AA1F   |
-	LDX #$000A				;$80AA22   |
-	BRA CODE_80AA31				;$80AA25  /
+.erase_not_selected				;	  \
+	CMP #$0003				;$80AA1A   |\ Check if copy is selected
+	BNE .calculate_file_window		;$80AA1D   |/
+	LDA #$FF80				;$80AA1F   |\ Enable windowing for the left half of the screen
+	LDX #$000A				;$80AA22   |/ Write to windowing slot 4
+	BRA .update_window			;$80AA25  /
 
-CODE_80AA27:
-	STA $32					;$80AA27  \
-	ASL A					;$80AA29   |
-	SEC					;$80AA2A   |
-	ADC $32					;$80AA2B   |
-	TAX					;$80AA2D   |
+.calculate_file_window				;	  \
+	STA temp_32				;$80AA27   |\ Triple the file index to get the windowing HDMA address
+	ASL A					;$80AA29   | |
+	SEC					;$80AA2A   | | Uses SEC to implicitly add 1
+	ADC temp_32				;$80AA2B   | |
+	TAX					;$80AA2D   |/
 	LDA #$0000				;$80AA2E   |
-CODE_80AA31:					;	   |
-	STA $7E8015,x				;$80AA31   |
-CODE_80AA35:					;	   |
-	LDA file_select_action			;$80AA35   |
-	BIT #$0008				;$80AA38   |
-	BEQ CODE_80AA63				;$80AA3B   |
-	LDA global_frame_counter		;$80AA3D   |
-	BIT #$0008				;$80AA3F   |
-	BEQ CODE_80AA63				;$80AA42   |
-	LDA #$FF80				;$80AA44   |
-	STA $7E801F				;$80AA47   |
-	LDA file_select_action			;$80AA4B   |
-	BIT #$0010				;$80AA4E   |
-	BEQ CODE_80AA63				;$80AA51   |
-	LDA $0615				;$80AA53   |
-	ASL A					;$80AA56   |
-	SEC					;$80AA57   |
-	ADC $0615				;$80AA58   |
-	TAX					;$80AA5B   |
-	LDA #$0000				;$80AA5C   |
-	STA $7E8015,x				;$80AA5F   |
-CODE_80AA63:					;	   |
-	LDA file_select_action			;$80AA63   |
-	BIT #$0002				;$80AA66   |
-	BEQ CODE_80AA79				;$80AA69   |
-	LDA global_frame_counter		;$80AA6B   |
-	BIT #$0008				;$80AA6D   |
-	BEQ CODE_80AA79				;$80AA70   |
-	LDA #$8000				;$80AA72   |
-	STA $7E801F				;$80AA75   |
-CODE_80AA79:					;	   |
-	LDA player_active_pressed		;$80AA79   |
-	BIT #$D0C0				;$80AA7C   |
-	BEQ CODE_80AA89				;$80AA7F   |
-	LDA screen_brightness			;$80AA81   |
-	CMP #$000F				;$80AA84   |
-	BEQ CODE_80AA8C				;$80AA87   |
-CODE_80AA89:					;	   |
-	JMP CODE_80AB58				;$80AA89  /
+.update_window					;	   |
+namespace hdma_menu				;	   |\ Enable windowing HDMA to highlight the active menu option
+	STA windowing+write_word[1].count,x	;$80AA31   | |
+namespace off					;	   |/
+.skip_windowing					;	   |
+	LDA file_select_action			;$80AA35   |\ Check if the player has selected the copy option
+	BIT #$0008				;$80AA38   | |
+	BEQ .skip_copy_windowing		;$80AA3B   |/ If not, no need to flash the copy option
+	LDA global_frame_counter		;$80AA3D   |\ Flashing happens on a 8 frame interval, 8 on, 8 off
+	BIT #$0008				;$80AA3F   | | This controls flashing the copy option and initial file
+	BEQ .skip_copy_windowing		;$80AA42   |/ If bit 3 is clear, we are in an off cycle, skip windowing
+	LDA #$FF80				;$80AA44   |\ Enable windowing on the copy option (left half)
+namespace hdma_menu				;	   | |
+	STA windowing+write_word[4].value	;$80AA47   | |
+namespace off					;	   |/
+	LDA file_select_action			;$80AA4B   |\ Check if the first file has already been selected
+	BIT #$0010				;$80AA4E   | |
+	BEQ .skip_copy_windowing		;$80AA51   |/ If not, skip highlighting the first file
+	LDA file_select_file_to_copy		;$80AA53   |\ Triple the index of the file to copy to get the
+	ASL A					;$80AA56   | | Index of the windowing HDMA slot
+	SEC					;$80AA57   | |
+	ADC file_select_file_to_copy		;$80AA58   | |
+	TAX					;$80AA5B   |/
+	LDA #$0000				;$80AA5C   |\ Enable windowing on the initiailly selected file to copy
+namespace hdma_menu				;	   | |
+	STA windowing+write_word[1].count,x	;$80AA5F   | |
+namespace off					;	   |/
+.skip_copy_windowing				;	   |
+	LDA file_select_action			;$80AA63   |\ Check if the player has selected the erase option
+	BIT #$0002				;$80AA66   | |
+	BEQ .skip_erase_windowing		;$80AA69   |/ If not, no need to flash the erase option
+	LDA global_frame_counter		;$80AA6B   |\ Flashing happens on a 8 frame interval, 8 on, 8 off
+	BIT #$0008				;$80AA6D   | | This controls flashing the erase
+	BEQ .skip_erase_windowing		;$80AA70   |/ If bit 3 is clear, we are in an off cycle, skip windowing
+	LDA #$8000				;$80AA72   |\ Enable windowing on the erase option (right half)
+namespace hdma_menu				;	   | |
+	STA windowing+write_word[4].value	;$80AA75   | |
+namespace off					;	   |/
+.skip_erase_windowing				;	   |
+	LDA player_active_pressed		;$80AA79   |\ Check if B, Y, Start, A, or X were pressed
+	BIT #$D0C0				;$80AA7C   | |
+	BEQ .frame_finish_trampoline		;$80AA7F   |/ If not, skip processing menu options and finish the frame
+	LDA screen_brightness			;$80AA81   |\
+	CMP #$000F				;$80AA84   | |
+	BEQ .check_menu_selection		;$80AA87   |/
+.frame_finish_trampoline			;	   |
+	JMP .finish_file_select_frame		;$80AA89  / finish off the frame
 
-CODE_80AA8C:
-	LDA file_select_selection		;$80AA8C  \
-	CMP #$0005				;$80AA8F   |
-	BNE CODE_80AA97				;$80AA92   |
-	JMP CODE_80AB3B				;$80AA94  /
+.check_menu_selection				;	  \
+	LDA file_select_selection		;$80AA8C   |\ Check if the current selection is the erase option
+	CMP #$0005				;$80AA8F   | |
+	BNE .check_other_menu_selections	;$80AA92   |/ If not, skip forward to check the other menu options
+	JMP .handle_erase_selection		;$80AA94  / goto the erase handler (branch inversion trampoline)
 
-CODE_80AA97:
-	CMP #$0003				;$80AA97  \
-	BEQ CODE_80AB0D				;$80AA9A   |
-	CMP #$0004				;$80AA9C   |
-	BEQ CODE_80AAB8				;$80AA9F   |
-	CMP #$0006				;$80AAA1   |
-	BEQ CODE_80AAD1				;$80AAA4   |
-	LDA file_select_action			;$80AAA6   |
-	BIT #$0008				;$80AAA9   |
-	BEQ CODE_80AAFC				;$80AAAC   |
-	BIT #$0010				;$80AAAE   |
-	BEQ CODE_80AAE7				;$80AAB1   |
-	JSR CODE_80ABA0				;$80AAB3   |
-	BRA CODE_80AA89				;$80AAB6  /
+.check_other_menu_selections			;	  \
+	CMP #$0003				;$80AA97   |\ Check if the current selection is the copy option
+	BEQ .handle_copy_selection		;$80AA9A   |/ if so, go to the copy handler
+	CMP #$0004				;$80AA9C   |\ Check if the current selection is the language option
+	BEQ .handle_language_selection		;$80AA9F   |/ if so, go to the language handler
+	CMP #$0006				;$80AAA1   |\ Check if the current selection is the channel count option
+	BEQ .handle_channel_count_selection	;$80AAA4   |/ if so, go to the channel count handler
+	LDA file_select_action			;$80AAA6   |\ Check if the current action is a copy operation
+	BIT #$0008				;$80AAA9   | |
+	BEQ .check_erase_selection		;$80AAAC   |/ If bit 3 is clear, then goto the erase operation check
+	BIT #$0010				;$80AAAE   |\ Check if the initial file is being selected
+	BEQ .handle_first_copy_file_selected	;$80AAB1   |/ If bit 4 is clear, then goto the first file copy
+	JSR .copy_file				;$80AAB3   | All that is left is to handle finalizing the file copy
+	BRA .frame_finish_trampoline		;$80AAB6  / Finish off the frame
 
-CODE_80AAB8:
-	LDA #$0634				;$80AAB8  \
-	JSL play_high_priority_sound		;$80AABB   |
-	LDA language_select			;$80AABF   |
-	EOR #$0001				;$80AAC2   |
-	STA language_select			;$80AAC5   |
-	LDA #$0080				;$80AAC8   |
-	STA file_select_action			;$80AACB   |
-	JMP CODE_80AB58				;$80AACE  /
+.handle_language_selection			;	  \
+	%lda_sound(6, menu_select)		;$80AAB8   |\ Play the menu selection sound
+	JSL play_high_priority_sound		;$80AABB   |/
+	LDA language_select			;$80AABF   |\ Toggle the game language: 0 = English, 1 = French
+	EOR #$0001				;$80AAC2   | |
+	STA language_select			;$80AAC5   |/
+	LDA #$0080				;$80AAC8   |\ Set the action to language toggle for tilemap update
+	STA file_select_action			;$80AACB   |/
+	JMP .finish_file_select_frame		;$80AACE  / Finish off the frame
 
-CODE_80AAD1:
-	LDA #$0634				;$80AAD1  \
-	JSL play_high_priority_sound		;$80AAD4   |
-	LDA stereo_select			;$80AAD8   |
-	EOR #$0001				;$80AADA   |
-	STA stereo_select			;$80AADD   |
-	LDA #$0100				;$80AADF   |
-	STA file_select_action			;$80AAE2   |
-	BRA CODE_80AB58				;$80AAE5  /
+.handle_channel_count_selection			;	  \
+	%lda_sound(6, menu_select)		;$80AAD1   |\ Play the menu selection sound
+	JSL play_high_priority_sound		;$80AAD4   |/
+	LDA stereo_select			;$80AAD8   |\ Toggle the game channel count: 0 = Mono, 1 = Stereo
+	EOR #$0001				;$80AADA   | |
+	STA stereo_select			;$80AADD   |/
+	LDA #$0100				;$80AADF   |\ Set the action to channel count toggle for tilemap update
+	STA file_select_action			;$80AAE2   |/
+	BRA .finish_file_select_frame		;$80AAE5  / Finish off the frame
 
-CODE_80AAE7:
-	LDA #$0010				;$80AAE7  \
-	TSB file_select_action			;$80AAEA   |
-	LDA #$0634				;$80AAED   |
-	JSL play_high_priority_sound		;$80AAF0   |
-	LDA file_select_selection		;$80AAF4   |
-	STA $0615				;$80AAF7   |
-	BRA CODE_80AB58				;$80AAFA  /
+.handle_first_copy_file_selected		;	  \
+	LDA #$0010				;$80AAE7   |\ Mark the first file as having been selected
+	TSB file_select_action			;$80AAEA   |/
+	%lda_sound(6, menu_select)		;$80AAED   |\ Play the menu selection sound
+	JSL play_high_priority_sound		;$80AAF0   |/
+	LDA file_select_selection		;$80AAF4   |\ Set the file to be copied to the current file selection
+	STA file_select_file_to_copy		;$80AAF7   |/
+	BRA .finish_file_select_frame		;$80AAFA  / Finish off the frame
 
-CODE_80AAFC:
-	BIT #$0002				;$80AAFC  \
-	BEQ CODE_80AB2C				;$80AAFF   |
-	LDA #$0634				;$80AB01   |
-	JSL play_high_priority_sound		;$80AB04   |
-	JSR CODE_80AB7B				;$80AB08   |
-	BRA CODE_80AB58				;$80AB0B  /
+.check_erase_selection				;	  \
+	BIT #$0002				;$80AAFC   |\ Check if a erase operation is in progress
+	BEQ .handle_file_selected		;$80AAFF   |/ if bit 1 is clear, load the file
+	%lda_sound(6, menu_select)		;$80AB01   |\ Play the menu selection sound
+	JSL play_high_priority_sound		;$80AB04   |/
+	JSR .erase_file				;$80AB08   | Erase the file
+	BRA .finish_file_select_frame		;$80AB0B  / Finish off the frame
 
-CODE_80AB0D:
-	LDA #$0634				;$80AB0D  \
-	JSL play_high_priority_sound		;$80AB10   |
-	LDA file_select_action			;$80AB14   |
-	BIT #$0008				;$80AB17   |
-	BEQ CODE_80AB24				;$80AB1A   |
-	LDA #$0078				;$80AB1C   |
-	TRB file_select_action			;$80AB1F   |
-	BRA CODE_80AB58				;$80AB22  /
+.handle_copy_selection				;	  \
+	%lda_sound(6, menu_select)		;$80AB0D   |\ Play the menu selection sound
+	JSL play_high_priority_sound		;$80AB10   |/
+	LDA file_select_action			;$80AB14   |\ Check if a copy operation is in progress
+	BIT #$0008				;$80AB17   | | if bit 3 is clear, start a copy operation
+	BEQ .start_copy_operation		;$80AB1A   |/
+	LDA #$0078				;$80AB1C   |\ Otherwise we are cancelling the copy operation
+	TRB file_select_action			;$80AB1F   |/ Reset all copy operation bits
+	BRA .finish_file_select_frame		;$80AB22  / Finish off the frame
 
-CODE_80AB24:
-	LDA #$0008				;$80AB24  \
-	STA file_select_action			;$80AB27   |
-	BRA CODE_80AB58				;$80AB2A  /
+.start_copy_operation				;	  \
+	LDA #$0008				;$80AB24   |\ Mark the copy operation as started
+	STA file_select_action			;$80AB27   |/
+	BRA .finish_file_select_frame		;$80AB2A  / Finish off the frame
 
-CODE_80AB2C:
-	LDA #$0634				;$80AB2C  \
-	JSL play_high_priority_sound		;$80AB2F   |
-	LDA #$820F				;$80AB33   |
-	STA screen_brightness			;$80AB36   |
-	BRA CODE_80AB58				;$80AB39  /
+.handle_file_selected				;	  \
+	%lda_sound(6, menu_select)		;$80AB2C   |\ Play the menu selection sound
+	JSL play_high_priority_sound		;$80AB2F   |/
+	LDA #$820F				;$80AB33   |\ Set the screen to fade out with speed 2
+	STA screen_brightness			;$80AB36   |/
+	BRA .finish_file_select_frame		;$80AB39  / Finish off the frame
 
-CODE_80AB3B:
-	LDA #$0634				;$80AB3B  \
-	JSL play_high_priority_sound		;$80AB3E   |
-	LDA file_select_action			;$80AB42   |
-	BIT #$0002				;$80AB45   |
-	BEQ CODE_80AB52				;$80AB48   |
-	LDA #$0006				;$80AB4A   |
-	TRB file_select_action			;$80AB4D   |
-	BRA CODE_80AB58				;$80AB50  /
+.handle_erase_selection				;	  \
+	%lda_sound(6, menu_select)		;$80AB3B   |\ Play the menu selection sound
+	JSL play_high_priority_sound		;$80AB3E   |/
+	LDA file_select_action			;$80AB42   |\ Check if a erase operation is in progress
+	BIT #$0002				;$80AB45   | | if bit 3 is clear, start a erase operation
+	BEQ .start_erase_operation		;$80AB48   |/
+	LDA #$0006				;$80AB4A   |\ Otherwise we are cancelling the erase operation
+	TRB file_select_action			;$80AB4D   |/ Reset all erase operation bits
+	BRA .finish_file_select_frame		;$80AB50  / Finish off the frame
 
-CODE_80AB52:
-	LDA #$0002				;$80AB52  \
-	STA file_select_action			;$80AB55   |
-CODE_80AB58:					;	   |
-	JSR intro_controller_read		;$80AB58   |
-	INC global_frame_counter		;$80AB5B   |
-	LDA screen_brightness			;$80AB5D   |
-	CMP #$8201				;$80AB60   |
-	BNE CODE_80AB70				;$80AB63   |
-	LDA file_select_action			;$80AB65   |
-	BNE CODE_80AB6D				;$80AB68   |
-	JMP CODE_80ABEE				;$80AB6A  /
+.start_erase_operation				;	  \
+	LDA #$0002				;$80AB52   |\ Mark the erase operation as started
+	STA file_select_action			;$80AB55   |/
+.finish_file_select_frame			;	   |
+	JSR intro_controller_read		;$80AB58   | Populate the controller data
+	INC global_frame_counter		;$80AB5B   | Increment the frame counter
+	LDA screen_brightness			;$80AB5D   |\ Check if the screen is done fading out.
+	CMP #$8201				;$80AB60   | |
+	BNE .prepare_file_select_nmi		;$80AB63   |/ If not, setup NMI for the next frame
+	LDA file_select_action			;$80AB65   |\ At this point if the file select action is 1
+	BNE .return_to_game			;$80AB68   |/ then we are returning to the game
+	JMP .load_selected_file			;$80AB6A  / Otherwise load the file that is selected
 
-CODE_80AB6D:
-	JMP CODE_8090BB				;$80AB6D  /
+.return_to_game
+	JMP CODE_8090BB				;$80AB6D  >
 
-CODE_80AB70:
-	JSR prepare_oam_dma_channel		;$80AB70  \
-	LDA #run_file_select			;$80AB73   |
-	STA NMI_pointer				;$80AB76   |
-CODE_80AB78:					;	   |
-	WAI					;$80AB78   |
-	BRA CODE_80AB78				;$80AB79  /
+.prepare_file_select_nmi			;	  \
+	JSR prepare_oam_dma_channel		;$80AB70   | Prepare the OAM DMA channel for DMA next frame
+	LDA #run_file_select			;$80AB73   |\ Transition from the lag handler to the file select handler
+	STA NMI_pointer				;$80AB76   |/
+.spinlock					;	   |
+	WAI					;$80AB78   | You spin me right round right round waiting for an NMI
+	BRA .spinlock				;$80AB79  /
 
-CODE_80AB7B:
-	LDA file_select_selection		;$80AB7B  \
-	ASL A					;$80AB7E   |
-	TAX					;$80AB7F   |
-	LDA.l sram_file_offsets,x		;$80AB80   |
-	STA $32					;$80AB84   |
-	LDA #<:sram_base			;$80AB86   |
-	STA $34					;$80AB89   |
-	LDY #$0000				;$80AB8B   |
-	LDA [$32],y				;$80AB8E   |
-	INC A					;$80AB90   |
-	STA [$32],y				;$80AB91   |
-	LDA #$0004				;$80AB93   |
-	TSB file_select_action			;$80AB96   |
+.erase_file					;	  \
+	LDA file_select_selection		;$80AB7B   |\ Calculate the index to the current SRAM file
+	ASL A					;$80AB7E   | |
+	TAX					;$80AB7F   |/
+	LDA.l .sram_file_offsets,x		;$80AB80   |\ Setup pointer to the active save file
+	STA .sram_pointer			;$80AB84   | |
+	LDA #<:sram_base			;$80AB86   | |
+	STA .sram_pointer_bank			;$80AB89   |/
+	LDY.w #save_file.additive_checksum	;$80AB8B   |\ Increment the first byte which will cause the sram
+	LDA [.sram_pointer],y			;$80AB8E   | | file to no longer verify properly
+	INC A					;$80AB90   | |
+	STA [.sram_pointer],y			;$80AB91   |/
+	LDA #$0004				;$80AB93   |\ Mark the erase operation as completed
+	TSB file_select_action			;$80AB96   |/
 	LDA file_select_selection		;$80AB99   |
-	JSR CODE_80ACA5				;$80AB9C   |
+	JSR get_file_status			;$80AB9C   |
 	RTS					;$80AB9F  /
 
-CODE_80ABA0:
-	LDA file_select_selection		;$80ABA0  \
-	JSL CODE_BBC53A				;$80ABA3   |
-	BCS CODE_80ABE7				;$80ABA7   |
-	LDA #$0634				;$80ABA9   |
-	JSL play_high_priority_sound		;$80ABAC   |
-	LDA file_select_selection		;$80ABB0   |
-	ASL A					;$80ABB3   |
-	TAX					;$80ABB4   |
-	LDA.l sram_file_offsets,x		;$80ABB5   |
-	STA $32					;$80ABB9   |
-	LDA #<:sram_base			;$80ABBB   |
-	STA $34					;$80ABBE   |
-	LDA $0615				;$80ABC0   |
-	ASL A					;$80ABC3   |
-	TAX					;$80ABC4   |
-	LDA.l sram_file_offsets,x		;$80ABC5   |
-	STA $36					;$80ABC9   |
-	LDA #<:sram_base			;$80ABCB   |
-	STA $38					;$80ABCE   |
-	LDY #$02A6				;$80ABD0   |
-CODE_80ABD3:					;	   |
-	LDA [$36],y				;$80ABD3   |
-	STA [$32],y				;$80ABD5   |
-	DEY					;$80ABD7   |
-	DEY					;$80ABD8   |
-	BPL CODE_80ABD3				;$80ABD9   |
+.copy_file					;	  \
+	LDA file_select_selection		;$80ABA0   |
+	JSL validate_save_file			;$80ABA3   |
+	BCS .skip_valid_file			;$80ABA7   |
+	%lda_sound(6, menu_select)		;$80ABA9   |\ Play the menu selection sound
+	JSL play_high_priority_sound		;$80ABAC   |/
+	LDA file_select_selection		;$80ABB0   |\ Calculate the index to the current SRAM file
+	ASL A					;$80ABB3   | |
+	TAX					;$80ABB4   |/
+	LDA.l .sram_file_offsets,x		;$80ABB5   |\ Setup pointer to the active save file
+	STA .sram_pointer			;$80ABB9   | |
+	LDA #<:sram_base			;$80ABBB   | |
+	STA .sram_pointer_bank			;$80ABBE   |/
+	LDA file_select_file_to_copy		;$80ABC0   |\ Calculate the index to the file to copy from
+	ASL A					;$80ABC3   | |
+	TAX					;$80ABC4   |/
+	LDA.l .sram_file_offsets,x		;$80ABC5   |\ Setup pointer to the file to copy from
+	STA .sram_pointer_original		;$80ABC9   | |
+	LDA #<:sram_base			;$80ABCB   | |
+	STA .sram_pointer_bank_original		;$80ABCE   |/
+	LDY #sizeof(save_file)-2		;$80ABD0   | Load the size of the save file
+..copy_sram					;	   |
+	LDA [.sram_pointer_original],y		;$80ABD3   |\ Copy two bytes at a time from the original file to the
+	STA [.sram_pointer],y			;$80ABD5   | | New file
+	DEY					;$80ABD7   | |
+	DEY					;$80ABD8   | |
+	BPL ..copy_sram				;$80ABD9   |/ Continue until Y is negative (copy complete)
 	LDA file_select_selection		;$80ABDB   |
-	JSR CODE_80ACA5				;$80ABDE   |
-	LDA #$0020				;$80ABE1   |
-	TSB file_select_action			;$80ABE4   |
-CODE_80ABE7:					;	   |
+	JSR get_file_status			;$80ABDE   |
+	LDA #$0020				;$80ABE1   |\ Mark the file copy operation as completed
+	TSB file_select_action			;$80ABE4   |/
+.skip_valid_file				;	   |
 	RTS					;$80ABE7  /
 
-sram_file_offsets:
+.sram_file_offsets
 	dw save_file1, save_file2, save_file3
 
-
-CODE_80ABEE:
-	LDA file_select_selection		;$80ABEE  \
-	JSL CODE_BBC53A				;$80ABF1   |
-	BCC CODE_80AC1C				;$80ABF5   |
-	LDA file_select_selection		;$80ABF7   |
-	ASL A					;$80ABFA   |
-	TAX					;$80ABFB   |
-	LDA.l sram_file_offsets,x		;$80ABFC   |
-	STA $32					;$80AC00   |
-	LDA #<:sram_base			;$80AC02   |
-	STA $34					;$80AC05   |
-	%pea_use_dbr(sram_file_buffer)		;$80AC07   |
-	PLB					;$80AC0A   |
-	LDY #$02A8				;$80AC0B   |
-CODE_80AC0E:					;	   |
-	LDA [$32],y				;$80AC0E   |
-	STA.w sram_file_buffer,y		;$80AC10   |
-	DEY					;$80AC13   |
-	DEY					;$80AC14   |
-	BPL CODE_80AC0E				;$80AC15   |
-	PLB					;$80AC17   |
+.load_selected_file
+	LDA file_select_selection		;$80ABEE  \ Load the current file number
+	JSL validate_save_file			;$80ABF1   |\ Validate the SRAM file
+	BCC .new_file				;$80ABF5   |/ If carry clear it is a new or corrupt file
+	LDA file_select_selection		;$80ABF7   |\ Calculate the index to the current SRAM file
+	ASL A					;$80ABFA   | |
+	TAX					;$80ABFB   |/
+	LDA.l .sram_file_offsets,x		;$80ABFC   |\ Setup pointer to the active save file
+	STA .sram_pointer			;$80AC00   | |
+	LDA #<:sram_base			;$80AC02   | |
+	STA .sram_pointer_bank			;$80AC05   |/
+	%pea_use_dbr(sram_file_buffer)		;$80AC07   |\ Switch the dbr to the sram bank
+	PLB					;$80AC0A   |/
+	LDY #sizeof(save_file)			;$80AC0B   | Load the size of the save file, loads 2 extra bytes
+..copy_sram					;	   |
+	LDA [.sram_pointer],y			;$80AC0E   |\ Copy two bytes at a time from the save file save buffer
+	STA.w sram_file_buffer,y		;$80AC10   | |
+	DEY					;$80AC13   | |
+	DEY					;$80AC14   | |
+	BPL ..copy_sram				;$80AC15   |/ Continue until Y is negative (copy complete)
+	PLB					;$80AC17   | Restore the original bank (bank 80)
 	JML CODE_808F04				;$80AC18  /
 
-CODE_80AC1C:
-	JML CODE_8097CD				;$80AC1C  /
+.new_file
+	JML CODE_8097CD				;$80AC1C  > Starting a new file, initialize game type select
 
-DATA_80AC20:
+.move_selection_up
 	db $00, $00, $01, $02, $05, $02, $03
 
-DATA_80AC27:
+.move_selection_down
 	db $01, $02, $03, $06, $04, $04, $06
 
-DATA_80AC2E:
+.move_selection_left
 	db $00, $01, $02, $03, $06, $03, $06
 
-DATA_80AC35:
+.move_selection_right
 	db $00, $01, $02, $05, $04, $05, $04
 
 
@@ -4676,36 +4689,36 @@ upload_channel_count_tilemap:			;	  \
 	JSR upload_fileselect_tilemap		;$80AC5F   |/
 	RTS					;$80AC62  /
 
-CODE_80AC63:
+upload_file_tilemaps:
 	LDA #<:save_file1			;$80AC63  \
 	STA $56					;$80AC66   |
 	LDA #$0000				;$80AC68   |
-	JSR CODE_80ACA5				;$80AC6B   |
+	JSR get_file_status			;$80AC6B   |
 	LDA #save_file1				;$80AC6E   |
 	STA $54					;$80AC71   |
 	LDA #vram_menus_save_file1_tilemap	;$80AC73   |
 	LDX #$0000				;$80AC76   |
-	JSR CODE_80ACB6				;$80AC79   |
+	JSR upload_file_tilemap			;$80AC79   |
 	LDA #$0001				;$80AC7C   |
-	JSR CODE_80ACA5				;$80AC7F   |
+	JSR get_file_status			;$80AC7F   |
 	LDA #save_file2				;$80AC82   |
 	STA $54					;$80AC85   |
 	LDA #vram_menus_save_file2_tilemap	;$80AC87   |
 	LDX #$0001				;$80AC8A   |
-	JSR CODE_80ACB6				;$80AC8D   |
+	JSR upload_file_tilemap			;$80AC8D   |
 	LDA #$0002				;$80AC90   |
-	JSR CODE_80ACA5				;$80AC93   |
+	JSR get_file_status			;$80AC93   |
 	LDA #save_file3				;$80AC96   |
 	STA $54					;$80AC99   |
 	LDA #vram_menus_save_file3_tilemap	;$80AC9B   |
 	LDX #$0002				;$80AC9E   |
-	JSR CODE_80ACB6				;$80ACA1   |
+	JSR upload_file_tilemap			;$80ACA1   |
 	RTS					;$80ACA4  /
 
-CODE_80ACA5:
+get_file_status:
 	PHX					;$80ACA5  \
 	PHY					;$80ACA6   |
-	JSL CODE_BBC53A				;$80ACA7   |
+	JSL validate_save_file			;$80ACA7   |
 	LDA #$0000				;$80ACAB   |
 	ADC #$0000				;$80ACAE   |
 	STA $50					;$80ACB1   |
@@ -4713,7 +4726,7 @@ CODE_80ACA5:
 	PLX					;$80ACB4   |
 	RTS					;$80ACB5  /
 
-CODE_80ACB6:
+upload_file_tilemap:
 	STA $32					;$80ACB6  \
 	STX $3C					;$80ACB8   |
 	TXA					;$80ACBA   |
@@ -5066,11 +5079,11 @@ CODE_80AF53:
 	RTS					;$80AF82  /
 
 upload_fileselect_tilemap:
-%local(.vram_destination, temp1)
-%local(.payload, temp3)
-%local(.payload_bank, temp5)
-%local(.column_count, temp7)
-%local(.row_count, temp9)
+%local(.vram_destination, temp_32)
+%local(.payload, temp_34)
+%local(.payload_bank, temp_36)
+%local(.column_count, temp_38)
+%local(.row_count, temp_3A)
 	STA .vram_destination			;$80AF83  \ A contains the vram destination
 	STX .payload				;$80AF85   | X contains the word address of the payload
 	STY .payload_bank			;$80AF87   | Y contains the bank of the payload
@@ -5497,7 +5510,7 @@ init_title_screen:
 	JSL init_registers_global		;$80B3E6   | Do some basic initializations of hardware
 	JSL clear_wram_tables			;$80B3EA   | Clear some basic tables used by core systems
 	JSL init_sprite_render_order_global	;$80B3EE   |
-	LDA #$0002				;$80B3F2   |\ Play the title screen music
+	LDA #!music_main_theme			;$80B3F2   |\ Play the title screen music
 	JSL play_song				;$80B3F5   |/
 	STZ global_frame_counter		;$80B3F9   | Reset the frame counter
 	JSR setup_title_screen_screen		;$80B3FB   | Configure the screen and do basic uploads
@@ -5640,7 +5653,7 @@ run_title_screen:				;	  \
 .trigger_demo_transition			;	   |
 	LDA #$840F				;$80B532   |\ Set the screen to fadeout with speed 4
 	JSR set_fade				;$80B535   |/
-	LDA #$0634				;$80B538   |\ Play the "continue" chime sound effect
+	%lda_sound(6, menu_select)		;$80B538   |\ Play the "continue" chime sound effect
 	JSL play_high_priority_sound		;$80B53B   |/
 .run_fadeout					;	   |
 	LDA screen_brightness			;$80B53F   |\ Check if we are on the last step of the fadeout

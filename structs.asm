@@ -87,9 +87,21 @@ endstruct
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;SRAM structures
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+struct subfile $0000
+	.data: skip $014E
+endstruct
 
-struct save_file
-	.data:		skip 678
+struct save_file $0000
+	.header:
+	.additive_checksum: 	skip 2
+	.xor_checksum: 		skip 2
+	.file_signature:
+	.active_player:		skip 1
+	.file_type:		skip 1
+	.contents:
+	.player_1:		skip sizeof(subfile)
+	.player_2:		skip sizeof(subfile)
+	.data:			skip 6
 endstruct
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

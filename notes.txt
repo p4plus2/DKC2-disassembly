@@ -590,3 +590,5 @@ LDY $0617 <-- text message pointers
 4  92	<db sprite_variable_offset> <dw unused?>					returns from sub-routine?
 3  93	<db sound_effect_id> <db channel>						plays sound effect on the specified channel (0-7)
 1  94
+
+CODE_8087B9 probably init credits

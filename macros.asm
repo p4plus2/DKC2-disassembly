@@ -1,5 +1,6 @@
 function bank_word(addr) = ((addr&$FFFF)<<8)|(addr>>16)
 function fake(addr) = addr
+function sound(channel, effect) = channel<<8|effect
 
 macro offset(label, offset)
 	?tmp:
@@ -45,6 +46,10 @@ endmacro
 macro pea_mirror_dbr()
 	?dummy:
 	PEA.w (<:?dummy<<8|$4000)|$80
+endmacro
+
+macro lda_sound(channel, sound)
+	lda.w #<channel><<8|!sound_<sound>
 endmacro
 
 macro get_swanky_table()

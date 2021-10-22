@@ -8507,39 +8507,43 @@ CODE_BBC513:
 CODE_BBC537:					;	   |
 	JMP CODE_BBC150				;$BBC537  /
 
-CODE_BBC53A:
-	ASL A					;$BBC53A  \
-	ASL A					;$BBC53B   |
-	TAX					;$BBC53C   |
-	LDA.l .sram_file_offsets_low,x		;$BBC53D   |
-	STA $26					;$BBC541   |
-	LDA.l .sram_file_offsets_high,x		;$BBC543   |
-	STA $28					;$BBC547   |
-	LDY #$0004				;$BBC549   |
-	LDA [$26],y				;$BBC54C   |
-	AND #$FFFE				;$BBC54E   |
-	CMP #$0052				;$BBC551   |
-	BEQ CODE_BBC560				;$BBC554   |
-	CMP #$0152				;$BBC556   |
-	BEQ CODE_BBC560				;$BBC559   |
-	CMP #$0252				;$BBC55B   |
-	BNE CODE_BBC577				;$BBC55E   |
-#CODE_BBC560:					;	   |
-	JSR CODE_BBC585				;$BBC560   |
-	LDY #$0000				;$BBC563   |
-	LDA [$26],y				;$BBC566   |
-	CMP $5E					;$BBC568   |
-	BNE CODE_BBC577				;$BBC56A   |
-	LDY #$0002				;$BBC56C   |
-	LDA [$26],y				;$BBC56F   |
-	CMP $60					;$BBC571   |
-	BNE CODE_BBC577				;$BBC573   |
-	SEC					;$BBC575   |
-	RTL					;$BBC576  /
+validate_save_file:				;	  \
+%local(.sram_pointer, temp_26)			;	   |
+%local(.sram_pointer_bank, temp_28)		;	   |
+%local(.additive_checksum, temp_5E)		;	   |
+%local(.xor_checksum, temp_60)			;	   |
+	ASL A					;$BBC53A   |\ Calculate the index to the save file offset table
+	ASL A					;$BBC53B   | |
+	TAX					;$BBC53C   |/
+	LDA.l .sram_file_offsets_low,x		;$BBC53D   |\ Setup a pointer to the save file
+	STA .sram_pointer			;$BBC541   | |
+	LDA.l .sram_file_offsets_high,x		;$BBC543   | |
+	STA .sram_pointer_bank			;$BBC547   |/
+	LDY.w #save_file.file_signature		;$BBC549   |\ Load the file signature
+	LDA [.sram_pointer],y			;$BBC54C   | |
+	AND #$FFFE				;$BBC54E   |/ Mask off which player is active
+	CMP #$0052				;$BBC551   |\ Check for single player game type
+	BEQ .valid_file_signature		;$BBC554   |/ If so, verify the checksum
+	CMP #$0152				;$BBC556   |\ Check for cooperative player game type
+	BEQ .valid_file_signature		;$BBC559   |/ If so, verify the checksum
+	CMP #$0252				;$BBC55B   |\ Check for competitive player game type
+	BNE .invalid_file			;$BBC55E   |/ If not, the file cannot be valid, return such
+.valid_file_signature				;	   |
+	JSR calculate_checksum			;$BBC560   | Calculate the checksums of the save file payload
+	LDY.w #save_file.additive_checksum	;$BBC563   |\ Verify the additive checksum matches the one in the file
+	LDA [.sram_pointer],y			;$BBC566   | |
+	CMP .additive_checksum			;$BBC568   | |
+	BNE .invalid_file			;$BBC56A   |/ if not, the file is invalid
+	LDY.w #save_file.xor_checksum		;$BBC56C   |\ Verify the xor checksum matches the one in the file
+	LDA [.sram_pointer],y			;$BBC56F   | |
+	CMP .xor_checksum			;$BBC571   | |
+	BNE .invalid_file			;$BBC573   |/ if not, the file is invalid
+	SEC					;$BBC575   | Carry set means the file was valid
+	RTL					;$BBC576  / Return the good news
 
-#CODE_BBC577:
-	CLC					;$BBC577  \
-	RTL					;$BBC578  /
+.invalid_file
+	CLC					;$BBC577  \ Mark carry clear to indicate invalid file
+	RTL					;$BBC578  / Return with a sad story
 
 .sram_file_offsets_low
 %offset(.sram_file_offsets_high, 2)
@@ -8547,28 +8551,32 @@ CODE_BBC53A:
 	dd save_file2
 	dd save_file3
 
-CODE_BBC585:
-	STZ $5E					;$BBC585  \
-	STZ $60					;$BBC587   |
-	LDY #$0006				;$BBC589   |
-CODE_BBC58C:					;	   |
-	LDA [$26],y				;$BBC58C   |
-	CLC					;$BBC58E   |
-	ADC $5E					;$BBC58F   |
-	STA $5E					;$BBC591   |
-	INY					;$BBC593   |
-	INY					;$BBC594   |
-	CPY #$02A2				;$BBC595   |
-	BNE CODE_BBC58C				;$BBC598   |
-	LDY #$0006				;$BBC59A   |
-CODE_BBC59D:					;	   |
-	LDA [$26],y				;$BBC59D   |
-	EOR $60					;$BBC59F   |
-	STA $60					;$BBC5A1   |
-	INY					;$BBC5A3   |
-	INY					;$BBC5A4   |
-	CPY #$02A2				;$BBC5A5   |
-	BNE CODE_BBC59D				;$BBC5A8   |
+calculate_checksum:				;	  \
+%local(.sram_pointer, temp_26)			;	   |
+%local(.sram_pointer_bank, temp_28)		;	   |
+%local(.additive_checksum, temp_5E)		;	   |
+%local(.xor_checksum, temp_60)			;	   |
+	STZ .additive_checksum			;$BBC585   |\ Nullify both checksums initially
+	STZ .xor_checksum			;$BBC587   |/
+	LDY.w #save_file.contents		;$BBC589   | Load the an offset past the sram header
+.calculate_additive				;	   |
+	LDA [.sram_pointer],y			;$BBC58C   |\ Calculate a cumulative sum of the main save file payload
+	CLC					;$BBC58E   | |
+	ADC .additive_checksum			;$BBC58F   | |
+	STA .additive_checksum			;$BBC591   | |
+	INY					;$BBC593   | | DKC2 subtracts the header size from the loop, but this
+	INY					;$BBC594   | | is not actually correct.  However, the last 6 bytes are
+	CPY #sizeof(save_file)-6		;$BBC595   | | unused, so this doesn't cause issue.
+	BNE .calculate_additive			;$BBC598   |/
+	LDY.w #save_file.contents		;$BBC59A   | Load the an offset past the sram header
+.calculate_xor					;	   |
+	LDA [.sram_pointer],y			;$BBC59D   |\ Calculate a xor sum of the main save file payload
+	EOR .xor_checksum			;$BBC59F   | |
+	STA .xor_checksum			;$BBC5A1   | |
+	INY					;$BBC5A3   | |
+	INY					;$BBC5A4   | |
+	CPY #sizeof(save_file)-6		;$BBC5A5   | | The same header skip bug is present here
+	BNE .calculate_xor			;$BBC5A8   |/
 	RTS					;$BBC5AA  /
 
 CODE_BBC5AB:
@@ -8616,7 +8624,7 @@ CODE_BBC5F4:
 	JSL CODE_BB819F				;$BBC5F4  \
 	LDA #sram_file_buffer			;$BBC5F8   |
 	STA $26					;$BBC5FB   |
-	LDA #$007E				;$BBC5FD   |
+	LDA #<:sram_file_buffer			;$BBC5FD   |
 	STA $28					;$BBC600   |
 	SEP #$20				;$BBC602   |
 	LDA $060D				;$BBC604   |
@@ -8753,7 +8761,7 @@ CODE_BBC718:					;	   |
 	DEX					;$BBC720   |
 	DEX					;$BBC721   |
 	BPL CODE_BBC718				;$BBC722   |
-	JSR CODE_BBC585				;$BBC724   |
+	JSR calculate_checksum			;$BBC724   |
 	LDY #$0000				;$BBC727   |
 	LDA $5E					;$BBC72A   |
 	STA [$26],y				;$BBC72C   |
