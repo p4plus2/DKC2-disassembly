@@ -1116,7 +1116,7 @@ CODE_B389B8:					;	   |
 	TRB $0B02				;$B389C0   |
 	INC $44,x				;$B389C3   |
 	LDA #$02D7				;$B389C5   |
-	JSL CODE_B9D0C6				;$B389C8   |
+	JSL set_sprite_animation				;$B389C8   |
 CODE_B389CC:					;	   |
 	JSL CODE_B9D100				;$B389CC   |
 	LDA #CODE_B389D9			;$B389D0   |
@@ -2857,7 +2857,7 @@ CODE_B3962C:
 	LDA #$0002				;$B3962E   |
 	STA $2E,x				;$B39631   |
 	LDA #$02A6				;$B39633   |
-	JSL CODE_B9D0C6				;$B39636   |
+	JSL set_sprite_animation				;$B39636   |
 	JML [$05A9]				;$B3963A  /
 
 CODE_B3963D:
@@ -2865,7 +2865,7 @@ CODE_B3963D:
 	LDA #$0003				;$B3963F   |
 	STA $2E,x				;$B39642   |
 	LDA #$02A7				;$B39644   |
-	JSL CODE_B9D0C6				;$B39647   |
+	JSL set_sprite_animation				;$B39647   |
 	JML [$05A9]				;$B3964B  /
 
 CODE_B3964E:
@@ -2919,7 +2919,7 @@ CODE_B396A4:
 	LDX current_sprite			;$B396A4  \
 	INC $2E,x				;$B396A6   |
 	LDA #$02C5				;$B396A8   |
-	JSL CODE_B9D0C6				;$B396AB   |
+	JSL set_sprite_animation				;$B396AB   |
 	JML [$05A9]				;$B396AF  /
 
 CODE_B396B2:
@@ -2934,7 +2934,7 @@ CODE_B396BC:
 	LDA #$000C				;$B396BF   |
 	STA $44,x				;$B396C2   |
 	LDA #$02C4				;$B396C4   |
-	JSL CODE_B9D0C6				;$B396C7   |
+	JSL set_sprite_animation				;$B396C7   |
 	JML [$05A9]				;$B396CB  /
 
 CODE_B396CE:
@@ -3081,7 +3081,7 @@ CODE_B397C3:					;	   |
 	LDA $36,x				;$B397C9   |
 	STA $42,x				;$B397CB   |
 	LDA #$02B1				;$B397CD   |
-	JSL CODE_B9D0C6				;$B397D0   |
+	JSL set_sprite_animation				;$B397D0   |
 	LDA #$0439				;$B397D4   |
 	JSL queue_sound_effect			;$B397D7   |
 	LDA #$053B				;$B397DB   |
@@ -3131,7 +3131,7 @@ CODE_B3982C:
 	LDA $36,x				;$B39837   |
 	STA $42,x				;$B39839   |
 	LDA #$02B1				;$B3983B   |
-	JSL CODE_B9D0C6				;$B3983E   |
+	JSL set_sprite_animation				;$B3983E   |
 	JML [$05A9]				;$B39842  /
 
 CODE_B39845:
@@ -4578,7 +4578,7 @@ CODE_B3A2BF:
 	STA $002E,y				;$B3A2E8   |
 CODE_B3A2EB:					;	   |
 	LDA #$02B4				;$B3A2EB   |
-	JSL CODE_B9D0C6				;$B3A2EE   |
+	JSL set_sprite_animation				;$B3A2EE   |
 	LDA #$002A				;$B3A2F2   |
 	JSL CODE_B8D8BA				;$B3A2F5   |
 	BCS CODE_B3A310				;$B3A2F9   |
@@ -4860,7 +4860,7 @@ CODE_B3A4BF:
 	LDY #$0012				;$B3A4C6   |
 	LDA [$8E],y				;$B3A4C9   |
 	BEQ CODE_B3A4A0				;$B3A4CB   |
-	JSL CODE_B9D0C6				;$B3A4CD   |
+	JSL set_sprite_animation				;$B3A4CD   |
 	LDX current_sprite			;$B3A4D1   |
 	LDY #$0014				;$B3A4D3   |
 	LDA [$8E],y				;$B3A4D6   |
@@ -4892,7 +4892,7 @@ CODE_B3A505:
 	LDY #$000E				;$B3A505  \
 	LDA [$8E],y				;$B3A508   |
 	BEQ CODE_B3A4A0				;$B3A50A   |
-	JSL CODE_B9D0C6				;$B3A50C   |
+	JSL set_sprite_animation				;$B3A50C   |
 	LDX current_sprite			;$B3A510   |
 	LDY #$0010				;$B3A512   |
 	LDA [$8E],y				;$B3A515   |
@@ -5065,7 +5065,7 @@ CODE_B3A623:
 	RTL					;$B3A626  /
 
 CODE_B3A627:
-	JSL CODE_B9D0C6				;$B3A627  \
+	JSL set_sprite_animation				;$B3A627  \
 	INC $19BA				;$B3A62B   |
 	JSL CODE_BBBD6B				;$B3A62E   |
 	LDX current_sprite			;$B3A632   |
@@ -5336,7 +5336,7 @@ CODE_B3A84A:
 	DEC $4E,x				;$B3A84B   |
 	BNE CODE_B3A858				;$B3A84D   |
 	LDA #$0167				;$B3A84F   |
-	JSL CODE_B9D0C6				;$B3A852   |
+	JSL set_sprite_animation				;$B3A852   |
 	BRA CODE_B3A881				;$B3A856  /
 
 CODE_B3A858:
@@ -5590,7 +5590,7 @@ CODE_B3AA58:
 	LDX current_sprite			;$B3AA58  \
 	STA $2E,x				;$B3AA5A   |
 	TYA					;$B3AA5C   |
-	JSL CODE_B9D0C6				;$B3AA5D   |
+	JSL set_sprite_animation				;$B3AA5D   |
 	JMP CODE_B38000				;$B3AA61  /
 
 CODE_B3AA64:
@@ -5654,7 +5654,7 @@ CODE_B3AAB4:					;	   |
 	STA $2E,x				;$B3AAC8   |
 	STZ $26,x				;$B3AACA   |
 	LDA #$02E2				;$B3AACC   |
-	JSL CODE_B9D0C6				;$B3AACF   |
+	JSL set_sprite_animation				;$B3AACF   |
 	JML [$05A9]				;$B3AAD3  /
 
 CODE_B3AAD6:
@@ -5850,7 +5850,7 @@ CODE_B3AC41:					;	   |
 	BEQ CODE_B3AC74				;$B3AC69   |
 	STZ $26,x				;$B3AC6B   |
 	LDA #$01F6				;$B3AC6D   |
-	JSL CODE_B9D0C6				;$B3AC70   |
+	JSL set_sprite_animation				;$B3AC70   |
 CODE_B3AC74:					;	   |
 	BRL CODE_B3ADA2				;$B3AC74  /
 
@@ -6610,7 +6610,7 @@ CODE_B3B1D4:					;	   |
 	LDA #$0004				;$B3B1D4   |
 	STA $2E,x				;$B3B1D7   |
 	LDA #$0176				;$B3B1D9   |
-	JSL CODE_B9D0C6				;$B3B1DC   |
+	JSL set_sprite_animation				;$B3B1DC   |
 	SEC					;$B3B1E0   |
 	RTS					;$B3B1E1  /
 
@@ -6700,7 +6700,7 @@ CODE_B3B26B:					;	   |
 	LDA [$8E],y				;$B3B281   |
 	STA $28,x				;$B3B283   |
 	LDA #$0175				;$B3B285   |
-	JSL CODE_B9D0C6				;$B3B288   |
+	JSL set_sprite_animation				;$B3B288   |
 	SEC					;$B3B28C   |
 	RTS					;$B3B28D  /
 
@@ -6992,7 +6992,7 @@ CODE_B3B46E:
 	INC $2F,x				;$B3B46E  \
 	STZ $1C,x				;$B3B470   |
 	LDA #$017B				;$B3B472   |
-	JSL CODE_B9D0C6				;$B3B475   |
+	JSL set_sprite_animation				;$B3B475   |
 	RTS					;$B3B479  /
 
 CODE_B3B47A:
@@ -7074,7 +7074,7 @@ CODE_B3B50B:
 	JSR CODE_B3B822				;$B3B516   |
 	JSR CODE_B3B887				;$B3B519   |
 	LDA #$0177				;$B3B51C   |
-	JSL CODE_B9D0C6				;$B3B51F   |
+	JSL set_sprite_animation				;$B3B51F   |
 	RTS					;$B3B523  /
 
 lockjaw_main:
@@ -7198,7 +7198,7 @@ CODE_B3B60F:					;	   |
 	LDA [$8E],y				;$B3B614   |
 	STA $0C,x				;$B3B616   |
 	LDA #$0179				;$B3B618   |
-	JSL CODE_B9D0C6				;$B3B61B   |
+	JSL set_sprite_animation				;$B3B61B   |
 	JMP CODE_B38000				;$B3B61F  /
 
 CODE_B3B622:
@@ -7341,7 +7341,7 @@ CODE_B3B71F:
 	JSR CODE_B3B822				;$B3B72A   |
 	JSR CODE_B3B887				;$B3B72D   |
 	LDA #$0177				;$B3B730   |
-	JSL CODE_B9D0C6				;$B3B733   |
+	JSL set_sprite_animation				;$B3B733   |
 	JMP CODE_B38000				;$B3B737  /
 
 CODE_B3B73A:
@@ -7758,7 +7758,7 @@ CODE_B3B9D9:
 	INC $2F,x				;$B3B9E3   |
 	JSR CODE_B3BA6E				;$B3B9E5   |
 	LDA #$0181				;$B3B9E8   |
-	JSL CODE_B9D0C6				;$B3B9EB   |
+	JSL set_sprite_animation				;$B3B9EB   |
 	LDX current_sprite			;$B3B9EF   |
 	LDA #$0200				;$B3B9F1   |
 	STA $3A,x				;$B3B9F4   |
@@ -8308,7 +8308,7 @@ CODE_B3BDB8:					;	   |
 	LDA #$000F				;$B3BDBA   |
 	STA $52,x				;$B3BDBD   |
 	LDA #$0194				;$B3BDBF   |
-	JSL CODE_B9D0C6				;$B3BDC2   |
+	JSL set_sprite_animation				;$B3BDC2   |
 	RTS					;$B3BDC6  /
 
 CODE_B3BDC7:
@@ -9291,7 +9291,7 @@ CODE_B3C512:
 	AND #$4000				;$B3C52E   |
 	BEQ CODE_B3C53D				;$B3C531   |
 	LDA #$016B				;$B3C533   |
-	JSL CODE_B9D0C6				;$B3C536   |
+	JSL set_sprite_animation				;$B3C536   |
 	JMP CODE_B38000				;$B3C53A  /
 
 CODE_B3C53D:
@@ -9301,7 +9301,7 @@ CODE_B3C53D:
 	CMP #$FFC0				;$B3C544   |
 	BCS CODE_B3C57E				;$B3C547   |
 	LDA #$016C				;$B3C549   |
-	JSL CODE_B9D0C6				;$B3C54C   |
+	JSL set_sprite_animation				;$B3C54C   |
 CODE_B3C550:					;	   |
 	JMP CODE_B38000				;$B3C550  /
 
@@ -9350,7 +9350,7 @@ CODE_B3C59B:					;	   |
 	LDA #$0003				;$B3C5A7   |
 	STA $2E,x				;$B3C5AA   |
 	LDA #$016D				;$B3C5AC   |
-	JSL CODE_B9D0C6				;$B3C5AF   |
+	JSL set_sprite_animation				;$B3C5AF   |
 	JMP CODE_B38000				;$B3C5B3  /
 
 CODE_B3C5B6:
@@ -9588,7 +9588,7 @@ CODE_B3C74D:
 CODE_B3C75B:
 	LDA #$01F1				;$B3C75B  \
 CODE_B3C75E:					;	   |
-	JSL CODE_B9D0C6				;$B3C75E   |
+	JSL set_sprite_animation				;$B3C75E   |
 	LDX current_sprite			;$B3C762   |
 	INC $2E,x				;$B3C764   |
 	JMP CODE_B38000				;$B3C766  /
@@ -9613,7 +9613,7 @@ CODE_B3C77E:
 	BEQ CODE_B3C7A1				;$B3C786   |
 	INC $2E,x				;$B3C788   |
 	LDA #$01ED				;$B3C78A   |
-	JSL CODE_B9D0C6				;$B3C78D   |
+	JSL set_sprite_animation				;$B3C78D   |
 	JML [$05A9]				;$B3C791  /
 
 CODE_B3C794:
@@ -9634,7 +9634,7 @@ CODE_B3C7A1:
 	BEQ CODE_B3C7B5				;$B3C7B0   |
 	LDA #$01EE				;$B3C7B2   |
 CODE_B3C7B5:					;	   |
-	JSL CODE_B9D0C6				;$B3C7B5   |
+	JSL set_sprite_animation				;$B3C7B5   |
 	JMP CODE_B3C734				;$B3C7B9  /
 
 CODE_B3C7BC:
@@ -9683,14 +9683,14 @@ CODE_B3C80E:					;	   |
 
 CODE_B3C811:
 	LDA #$01F1				;$B3C811  \
-	JSL CODE_B9D0C6				;$B3C814   |
+	JSL set_sprite_animation				;$B3C814   |
 	LDX current_sprite			;$B3C818   |
 	INC $2E,x				;$B3C81A   |
 	JMP CODE_B38000				;$B3C81C  /
 
 CODE_B3C81F:
 	LDA #$01F0				;$B3C81F  \
-	JSL CODE_B9D0C6				;$B3C822   |
+	JSL set_sprite_animation				;$B3C822   |
 	LDX current_sprite			;$B3C826   |
 	INC $2E,x				;$B3C828   |
 	JMP CODE_B38000				;$B3C82A  /
@@ -9720,7 +9720,7 @@ CODE_B3C84C:
 	BEQ CODE_B3C86F				;$B3C854   |
 	INC $2E,x				;$B3C856   |
 	LDA #$01ED				;$B3C858   |
-	JSL CODE_B9D0C6				;$B3C85B   |
+	JSL set_sprite_animation				;$B3C85B   |
 	JML [$05A9]				;$B3C85F  /
 
 CODE_B3C862:
@@ -10194,7 +10194,7 @@ CODE_B3CBE4:					;	  \
 	INY					;$B3CBE4   |
 	PHY					;$B3CBE5   |
 	LDA [$32],y				;$B3CBE6   |
-	JSL CODE_B9D0C6				;$B3CBE8   |
+	JSL set_sprite_animation				;$B3CBE8   |
 	PLY					;$B3CBEC   |
 	INY					;$B3CBED   |
 	INY					;$B3CBEE   |
@@ -10421,7 +10421,7 @@ CODE_B3CD2F:					;	   |
 	LDX current_sprite			;$B3CD2F   |
 	LDA $52,x				;$B3CD31   |
 	BEQ CODE_B3CCFC				;$B3CD33   |
-	JSL CODE_B9D0C6				;$B3CD35   |
+	JSL set_sprite_animation				;$B3CD35   |
 	STZ $22,x				;$B3CD39   |
 	LDA $46,x				;$B3CD3B   |
 	STA $26,x				;$B3CD3D   |
@@ -10479,7 +10479,7 @@ CODE_B3CD96:
 	LDA #$018B				;$B3CDAC   |
 	CMP $36,x				;$B3CDAF   |
 	BEQ CODE_B3CDB7				;$B3CDB1   |
-	JSL CODE_B9D0C6				;$B3CDB3   |
+	JSL set_sprite_animation				;$B3CDB3   |
 CODE_B3CDB7:					;	   |
 	LDA #$0022				;$B3CDB7   |
 	JSR CODE_B3CE79				;$B3CDBA   |
@@ -10697,7 +10697,7 @@ CODE_B3CF94:
 	STA $2E,x				;$B3CF97   |
 	STZ $26,x				;$B3CF99   |
 	LDA #$018E				;$B3CF9B   |
-	JSL CODE_B9D0C6				;$B3CF9E   |
+	JSL set_sprite_animation				;$B3CF9E   |
 	LDA #$0055				;$B3CFA2   |
 	STA $3A,x				;$B3CFA5   |
 	STX $0AE8				;$B3CFA7   |
@@ -11660,7 +11660,7 @@ CODE_B3D6E4:
 	JSR CODE_B3D741				;$B3D6FB   |
 	BEQ krochead_main			;$B3D6FE   |
 	LDA #$02C9				;$B3D700   |
-	JSL CODE_B9D0C6				;$B3D703   |
+	JSL set_sprite_animation				;$B3D703   |
 	BRA krochead_main			;$B3D707  /
 
 CODE_B3D709:
@@ -11768,7 +11768,7 @@ CODE_B3D7B3:					;	   |
 	BNE CODE_B3D7F5				;$B3D7C0   |
 	DEC $2E,x				;$B3D7C2   |
 	LDA $36,x				;$B3D7C4   |
-	JSL CODE_B9D0C6				;$B3D7C6   |
+	JSL set_sprite_animation				;$B3D7C6   |
 	JSL CODE_B9D100				;$B3D7CA   |
 	JML [$05A9]				;$B3D7CE  /
 
@@ -12023,7 +12023,7 @@ CODE_B3D9C0:					;	   |
 	STA $0A86				;$B3D9C0   |
 CODE_B3D9C3:					;	   |
 	LDA #$01B8				;$B3D9C3   |
-	JSL CODE_B9D0C6				;$B3D9C6   |
+	JSL set_sprite_animation				;$B3D9C6   |
 	JML [$05A9]				;$B3D9CA  /
 
 CODE_B3D9CD:

@@ -13297,7 +13297,7 @@ CODE_80FA68:					;	   |
 	INY					;$80FA68   |
 	INY					;$80FA69   |
 	STY $44,x				;$80FA6A   |
-	JSL CODE_B9D0C6				;$80FA6C   |
+	JSL set_sprite_animation				;$80FA6C   |
 CODE_80FA70:					;	   |
 	JSL CODE_B9D100				;$80FA70   |
 	JSL CODE_BBBB8D				;$80FA74   |

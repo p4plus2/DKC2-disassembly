@@ -2095,82 +2095,82 @@ sample_table:
 
 song_data:
 	%offset(song_sample_sets, 3)
-	dl DATA_EE1939
-	dl DATA_EE1223
-	dl DATA_EE195F
-	dl DATA_EE124D
-	dl DATA_EE1F6E
-	dl DATA_EE1263
-	dl DATA_EE2CD3
-	dl DATA_EE127D
-	dl DATA_EE3D78
-	dl DATA_EE12C1
-	dl DATA_EE421F
-	dl DATA_EE12D7
-	dl DATA_EE52FC
-	dl DATA_EE1337
-	dl DATA_EE6007
-	dl DATA_EE135F
-	dl DATA_EE6F47
-	dl DATA_EE13B3
-	dl DATA_EE748C
-	dl DATA_EE13D3
-	dl DATA_EE8572
-	dl DATA_EE1437
-	dl DATA_EE8BC0
-	dl DATA_EE144B
-	dl DATA_EE9BE0
-	dl DATA_EE147F
-	dl DATA_EEA050
-	dl DATA_EE1497
-	dl DATA_EEAF4A
-	dl DATA_EE14D9
-	dl DATA_EEBDBD
-	dl DATA_EE1545
-	dl DATA_F2357A
-	dl DATA_EE157D
-	dl DATA_F244D4
-	dl DATA_EE15C3
-	dl DATA_F24760
-	dl DATA_EE15D5
-	dl DATA_F25872
-	dl DATA_EE1601
-	dl DATA_F25D1A
-	dl DATA_EE1613
-	dl DATA_F25FC2
-	dl DATA_EE1623
-	dl DATA_F26F5C
-	dl DATA_EE1655
-	dl DATA_F28044
-	dl DATA_EE168D
-	dl DATA_F290D1
-	dl DATA_EE16BF
-	dl DATA_F29654
-	dl DATA_EE16D5
-	dl DATA_F29F81
-	dl DATA_EE16EF
-	dl DATA_F2AB97
-	dl DATA_EE1735
-	dl DATA_F2BAD2
-	dl DATA_EE176D
-	dl DATA_F2BFAF
-	dl DATA_EE1781
-	dl DATA_F2CFE4
-	dl DATA_EE17B1
-	dl DATA_F2D64B
-	dl DATA_EE1837
-	dl DATA_EEBDBD
-	dl DATA_EE1863
-	dl DATA_F25FC2
-	dl DATA_EE1895
-	dl DATA_EEBDBD
-	dl DATA_EE1545
-	dl DATA_EEBDBD
-	dl DATA_EE18CB
-	dl DATA_F2E6A1
-	dl DATA_EE18F1
-	dl DATA_EEBDBD
-	dl DATA_EE1903
+	dl null_song_data
+	dl null_sample_set
+	dl island_map_song_data
+	dl island_map_sample_set
+	dl main_theme_song_data
+	dl main_theme_sample_set
+	dl swamp_song_data
+	dl swamp_sample_set
+	dl swanky_song_data
+	dl swanky_sample_set
+	dl forest_song_data
+	dl forest_sample_set
+	dl ship_deck_song_data
+	dl ship_deck_sample_set
+	dl mine_song_data
+	dl mine_sample_set
+	dl funky_song_data
+	dl funky_sample_set
+	dl brambles_song_data
+	dl brambles_sample_set
+	dl klubba_song_data
+	dl klubba_sample_set
+	dl wasp_hive_song_data
+	dl wasp_hive_sample_set
+	dl wrinkly_song_data
+	dl wrinkly_sample_set
+	dl lava_song_data
+	dl lava_sample_set
+	dl roller_coaster_song_data
+	dl roller_coaster_sample_set
+	dl bonus_song_data
+	dl bonus_sample_set
+	dl ship_hold_song_data
+	dl ship_hold_sample_set
+	dl fanfare_song_data
+	dl fanfare_sample_set
+	dl ship_deck_2_song_data
+	dl ship_deck_2_sample_set
+	dl rescue_kong_song_data
+	dl rescue_kong_sample_set
+	dl game_over_song_data
+	dl game_over_sample_set
+	dl big_boss_song_data
+	dl big_boss_sample_set
+	dl castle_song_data
+	dl castle_sample_set
+	dl haunted_song_data
+	dl haunted_sample_set
+	dl file_select_song_data
+	dl file_select_sample_set
+	dl cranky_song_data
+	dl cranky_sample_set
+	dl ice_song_data
+	dl ice_sample_set
+	dl jungle_song_data
+	dl jungle_sample_set
+	dl lost_world_song_data
+	dl lost_world_sample_set
+	dl rigging_song_data
+	dl rigging_sample_set
+	dl credits_song_data
+	dl credits_sample_set
+	dl k_rool_song_data
+	dl k_rool_sample_set
+	dl bonus_song_data
+	dl bonus_sample_set_2
+	dl big_boss_song_data
+	dl big_boss_sample_set_2
+	dl bonus_song_data
+	dl bonus_sample_set
+	dl bonus_song_data
+	dl bonus_sample_set_3
+	dl secret_ending_song_data
+	dl secret_ending_sample_set
+	dl bonus_song_data
+	dl bonus_sample_set_4
 	dl DATA_F2E728
 	dl DATA_EE1935
 	dl DATA_F2E72C
@@ -2235,7 +2235,7 @@ global_sample_map:
 	db $47, $00, $49, $00, $4B, $00, $4D, $00
 	db $FF, $FF
 
-DATA_EE1223:
+null_sample_set:
 	db $94, $00, $15, $00, $AB, $00, $C4, $00
 	db $CD, $00, $D3, $00, $0D, $00, $0E, $00
 	db $0B, $00, $9A, $00, $0F, $00, $10, $00
@@ -2243,18 +2243,18 @@ DATA_EE1223:
 	db $9F, $00, $C6, $00, $9D, $00, $CC, $00
 	db $FF, $FF
 
-DATA_EE124D:
+island_map_sample_set:
 	db $1D, $00, $1C, $00, $A2, $00, $A3, $00
 	db $A4, $00, $14, $00, $9A, $00, $94, $00
 	db $10, $00, $8F, $00, $FF, $FF
 
-DATA_EE1263:
+main_theme_sample_set:
 	db $1E, $00, $1F, $00, $20, $00, $21, $00
 	db $22, $00, $23, $00, $24, $00, $A2, $00
 	db $A4, $00, $A3, $00, $14, $00, $2B, $00
 	db $FF, $FF
 
-DATA_EE127D:
+swamp_sample_set:
 	db $14, $00, $15, $00, $88, $00, $89, $00
 	db $17, $00, $26, $00, $27, $00, $1C, $00
 	db $25, $00, $29, $00, $22, $00, $2B, $00
@@ -2265,12 +2265,12 @@ DATA_EE127D:
 	db $A1, $00, $D7, $00, $D8, $00, $94, $00
 	db $10, $00, $FF, $FF
 
-DATA_EE12C1:
+swanky_sample_set:
 	db $14, $00, $8C, $00, $A2, $00, $18, $00
 	db $19, $00, $8D, $00, $1B, $00, $8E, $00
 	db $2B, $00, $8F, $00, $FF, $FF
 
-DATA_EE12D7:
+forest_sample_set:
 	db $37, $00, $39, $00, $3B, $00, $3D, $00
 	db $3F, $00, $41, $00, $45, $00, $48, $00
 	db $4A, $00, $4C, $00, $4E, $00, $4F, $00
@@ -2284,14 +2284,14 @@ DATA_EE12D7:
 	db $0F, $00, $10, $00, $D3, $00, $9F, $00
 	db $0D, $00, $D7, $00, $9D, $00, $FF, $FF
 
-DATA_EE1337:
+ship_deck_sample_set:
 	db $9E, $00, $A8, $00, $A7, $00, $8F, $00
 	db $1E, $00, $13, $00, $A0, $00, $21, $00
 	db $22, $00, $24, $00, $94, $00, $9F, $00
 	db $0B, $00, $9A, $00, $0D, $00, $9F, $00
 	db $C6, $00, $53, $00, $D8, $00, $FF, $FF
 
-DATA_EE135F:
+mine_sample_set:
 	db $B3, $00, $2F, $00, $B2, $00, $AD, $00
 	db $AE, $00, $8B, $00, $18, $00, $14, $00
 	db $B4, $00, $1A, $00, $2B, $00, $39, $00
@@ -2304,13 +2304,13 @@ DATA_EE135F:
 	db $D7, $00, $0B, $00, $9A, $00, $0D, $00
 	db $9D, $00, $FF, $FF
 
-DATA_EE13B3:
+funky_sample_set:
 	db $7A, $00, $18, $00, $7B, $00, $7C, $00
 	db $7D, $00, $7E, $00, $7F, $00, $80, $00
 	db $81, $00, $82, $00, $83, $00, $84, $00
 	db $85, $00, $2B, $00, $8F, $00, $FF, $FF
 
-DATA_EE13D3:
+brambles_sample_set:
 	db $15, $00, $14, $00, $18, $00, $2E, $00
 	db $34, $00, $8E, $00, $1B, $00, $33, $00
 	db $35, $00, $B3, $00, $8F, $00, $28, $00
@@ -2325,12 +2325,12 @@ DATA_EE13D3:
 	db $9D, $00, $D8, $00, $9F, $00, $10, $00
 	db $0F, $00, $FF, $FF
 
-DATA_EE1437:
+klubba_sample_set:
 	db $A2, $00, $21, $00, $14, $00, $1E, $00
 	db $B6, $00, $A4, $00, $A5, $00, $2B, $00
 	db $8F, $00, $FF, $FF
 
-DATA_EE144B:
+wasp_hive_sample_set:
 	db $14, $00, $15, $00, $90, $00, $28, $00
 	db $8F, $00, $8E, $00, $91, $00, $92, $00
 	db $93, $00, $2E, $00, $D5, $00, $B5, $00
@@ -2339,12 +2339,12 @@ DATA_EE144B:
 	db $D7, $00, $9F, $00, $A9, $00, $D8, $00
 	db $BC, $00, $FF, $FF
 
-DATA_EE147F:
+wrinkly_sample_set:
 	db $B8, $00, $D6, $00, $C0, $00, $D4, $00
 	db $D1, $00, $C5, $00, $88, $00, $89, $00
 	db $97, $00, $2B, $00, $8F, $00, $FF, $FF
 
-DATA_EE1497:
+lava_sample_set:
 	db $8D, $00, $19, $00, $18, $00, $D4, $00
 	db $A0, $00, $14, $00, $8D, $00, $AF, $00
 	db $8E, $00, $21, $00, $39, $00, $3B, $00
@@ -2355,7 +2355,7 @@ DATA_EE1497:
 	db $C6, $00, $10, $00, $D7, $00, $9F, $00
 	db $FF, $FF
 
-DATA_EE14D9:
+roller_coaster_sample_set:
 	db $14, $00, $5A, $00, $5B, $00, $5C, $00
 	db $5D, $00, $5E, $00, $5F, $00, $60, $00
 	db $61, $00, $62, $00, $63, $00, $64, $00
@@ -2371,7 +2371,7 @@ DATA_EE14D9:
 	db $C6, $00, $CC, $00, $D0, $00, $D1, $00
 	db $D2, $00, $FF, $FF
 
-DATA_EE1545:
+bonus_sample_set:
 	db $B5, $00, $B6, $00, $B7, $00, $B3, $00
 	db $B8, $00, $33, $00, $8D, $00, $36, $00
 	db $8D, $00, $A2, $00, $19, $00, $36, $00
@@ -2380,7 +2380,7 @@ DATA_EE1545:
 	db $0E, $00, $15, $00, $A1, $00, $BC, $00
 	db $8F, $00, $9F, $00, $D8, $00, $FF, $FF
 
-DATA_EE157D:
+ship_hold_sample_set:
 	db $15, $00, $14, $00, $1D, $00, $24, $00
 	db $1E, $00, $1C, $00, $A6, $00, $37, $00
 	db $39, $00, $3B, $00, $3D, $00, $3F, $00
@@ -2391,12 +2391,12 @@ DATA_EE157D:
 	db $10, $00, $9B, $00, $9F, $00, $BC, $00
 	db $50, $00, $DA, $00, $FF, $FF
 
-DATA_EE15C3:
+fanfare_sample_set:
 	db $14, $00, $BE, $00, $A2, $00, $A4, $00
 	db $B5, $00, $A0, $00, $2B, $00, $8F, $00
 	db $FF, $FF
 
-DATA_EE15D5:
+ship_deck_2_sample_set:
 	db $14, $00, $8E, $00, $A5, $00, $18, $00
 	db $21, $00, $34, $00, $1B, $00, $33, $00
 	db $36, $00, $8D, $00, $2E, $00, $24, $00
@@ -2404,16 +2404,16 @@ DATA_EE15D5:
 	db $9A, $00, $0D, $00, $9F, $00, $C6, $00
 	db $53, $00, $FF, $FF
 
-DATA_EE1601:
+rescue_kong_sample_set:
 	db $1D, $00, $14, $00, $AF, $00, $B5, $00
 	db $1C, $00, $A5, $00, $33, $00, $BC, $00
 	db $FF, $FF
 
-DATA_EE1613:
+game_over_sample_set:
 	db $8D, $00, $24, $00, $18, $00, $14, $00
 	db $33, $00, $2B, $00, $8F, $00, $FF, $FF
 
-DATA_EE1623:
+big_boss_sample_set:
 	db $14, $00, $A5, $00, $A2, $00, $21, $00
 	db $22, $00, $23, $00, $1D, $00, $24, $00
 	db $A3, $00, $A4, $00, $1E, $00, $8F, $00
@@ -2422,7 +2422,7 @@ DATA_EE1623:
 	db $D7, $00, $86, $00, $9A, $00, $94, $00
 	db $FF, $FF
 
-DATA_EE1655:
+castle_sample_set:
 	db $AF, $00, $1D, $00, $A2, $00, $A4, $00
 	db $14, $00, $B0, $00, $24, $00, $B1, $00
 	db $22, $00, $AC, $00, $8F, $00, $2E, $00
@@ -2431,7 +2431,7 @@ DATA_EE1655:
 	db $0F, $00, $10, $00, $D7, $00, $53, $00
 	db $0E, $00, $D8, $00, $A9, $00, $FF, $FF
 
-DATA_EE168D:
+haunted_sample_set:
 	db $14, $00, $B8, $00, $BA, $00, $BE, $00
 	db $B6, $00, $A2, $00, $B9, $00, $BD, $00
 	db $1E, $00, $A4, $00, $3F, $00, $28, $00
@@ -2440,18 +2440,18 @@ DATA_EE168D:
 	db $C1, $00, $C2, $00, $C3, $00, $8E, $00
 	db $FF, $FF
 
-DATA_EE16BF:
+file_select_sample_set:
 	db $0C, $00, $17, $00, $0D, $00, $19, $00
 	db $18, $00, $B7, $00, $28, $00, $87, $00
 	db $2B, $00, $8F, $00, $FF, $FF
 
-DATA_EE16D5:
+cranky_sample_set:
 	db $B8, $00, $28, $00, $29, $00, $AF, $00
 	db $2B, $00, $16, $00, $17, $00, $19, $00
 	db $15, $00, $9F, $00, $2B, $00, $8F, $00
 	db $FF, $FF
 
-DATA_EE16EF:
+ice_sample_set:
 	db $12, $00, $88, $00, $37, $00, $39, $00
 	db $3B, $00, $3F, $00, $41, $00, $43, $00
 	db $45, $00, $47, $00, $48, $00, $4A, $00
@@ -2462,7 +2462,7 @@ DATA_EE16EF:
 	db $C6, $00, $2B, $00, $53, $00, $50, $00
 	db $D8, $00, $DA, $00, $FF, $FF
 
-DATA_EE1735:
+jungle_sample_set:
 	db $C8, $00, $C9, $00, $CA, $00, $0D, $00
 	db $31, $00, $29, $00, $CB, $00, $86, $00
 	db $C7, $00, $28, $00, $C0, $00, $A6, $00
@@ -2471,12 +2471,12 @@ DATA_EE1735:
 	db $D7, $00, $0B, $00, $9A, $00, $9F, $00
 	db $D8, $00, $53, $00, $B8, $00, $FF, $FF
 
-DATA_EE176D:
+lost_world_sample_set:
 	db $CE, $00, $CF, $00, $14, $00, $1D, $00
 	db $21, $00, $A6, $00, $90, $00, $BF, $00
 	db $9F, $00, $FF, $FF
 
-DATA_EE1781:
+rigging_sample_set:
 	db $13, $00, $1E, $00, $36, $00, $24, $00
 	db $21, $00, $86, $00, $A1, $00, $9C, $00
 	db $9D, $00, $14, $00, $8F, $00, $0B, $00
@@ -2484,7 +2484,7 @@ DATA_EE1781:
 	db $0E, $00, $0D, $00, $C6, $00, $53, $00
 	db $D8, $00, $9F, $00, $DA, $00, $FF, $FF
 
-DATA_EE17B1:
+credits_sample_set:
 	db $CE, $00, $CF, $00, $C0, $00, $A6, $00
 	db $90, $00, $B8, $00, $2E, $00, $34, $00
 	db $8E, $00, $B6, $00, $5A, $00, $5B, $00
@@ -2503,7 +2503,7 @@ DATA_EE17B1:
 	db $9F, $00, $0F, $00, $10, $00, $CD, $00
 	db $D7, $00, $99, $00, $FF, $FF
 
-DATA_EE1837:
+k_rool_sample_set:
 	db $CE, $00, $CF, $00, $21, $00, $A2, $00
 	db $BE, $00, $2E, $00, $90, $00, $A6, $00
 	db $96, $00, $8F, $00, $14, $00, $0D, $00
@@ -2511,7 +2511,7 @@ DATA_EE1837:
 	db $D2, $00, $86, $00, $AD, $00, $88, $00
 	db $94, $00, $FF, $FF
 
-DATA_EE1863:
+bonus_sample_set_2:
 	db $B5, $00, $B6, $00, $B7, $00, $B3, $00
 	db $B8, $00, $33, $00, $8D, $00, $36, $00
 	db $8D, $00, $A2, $00, $19, $00, $36, $00
@@ -2520,7 +2520,7 @@ DATA_EE1863:
 	db $C1, $00, $C2, $00, $C3, $00, $8E, $00
 	db $FF, $FF
 
-DATA_EE1895:
+big_boss_sample_set_2:
 	db $14, $00, $A5, $00, $A2, $00, $21, $00
 	db $22, $00, $23, $00, $1D, $00, $24, $00
 	db $A3, $00, $A4, $00, $1E, $00, $8F, $00
@@ -2529,19 +2529,19 @@ DATA_EE1895:
 	db $C6, $00, $A1, $00, $2F, $00, $D9, $00
 	db $BC, $00, $FF, $FF, $FF, $FF
 
-DATA_EE18CB:
+bonus_sample_set_3:
 	db $B5, $00, $B6, $00, $B7, $00, $B3, $00
 	db $B8, $00, $33, $00, $8D, $00, $36, $00
 	db $8D, $00, $A2, $00, $19, $00, $36, $00
 	db $0D, $00, $C6, $00, $8F, $00, $50, $00
 	db $99, $00, $DA, $00, $FF, $FF
 
-DATA_EE18F1:
+secret_ending_sample_set:
 	db $A7, $00, $9D, $00, $D9, $00, $88, $00
 	db $D3, $00, $C1, $00, $C2, $00, $C3, $00
 	db $FF, $FF
 
-DATA_EE1903:
+bonus_sample_set_4:
 	db $B5, $00, $B6, $00, $B7, $00, $B3, $00
 	db $B8, $00, $33, $00, $8D, $00, $36, $00
 	db $8D, $00, $A2, $00, $19, $00, $36, $00
@@ -2556,14 +2556,14 @@ DATA_EE1935:
 DATA_EE1937:
 	db $FF, $FF
 
-DATA_EE1939:
+null_song_data:
 	db $00, $13, $11, $00, $14, $13, $21, $13
 	db $21, $13, $21, $13, $21, $13, $21, $13
 	db $21, $13, $21, $13, $80, $FF, $00, $13
 	db $15, $37, $23, $23, $18, $7F, $0A, $01
 	db $01, $01, $01, $01, $01, $00
 
-DATA_EE195F:
+island_map_song_data:
 	db $00, $13, $06, $03, $17, $13, $54, $17
 	db $04, $16, $F8, $17, $1C, $14, $0A, $17
 	db $2B, $15, $88, $14, $CA, $FF, $00, $13
@@ -2759,7 +2759,7 @@ DATA_EE195F:
 	db $99, $08, $99, $08, $05, $02, $14, $14
 	db $99, $05, $99, $05, $99, $06, $05
 
-DATA_EE1F6E:
+main_theme_song_data:
 	db $00, $13, $B1, $06, $1B, $13, $32, $1B
 	db $03, $15, $F8, $15, $3D, $18, $B9, $1C
 	db $67, $14, $E6, $19, $A5, $FF, $00, $13
@@ -3190,7 +3190,7 @@ DATA_EE1F6E:
 	db $9E, $06, $02, $10, $10, $9E, $06, $02
 	db $08, $08, $9E, $04, $05
 
-DATA_EE2CD3:
+swamp_song_data:
 	db $00, $13, $51, $08, $B7, $1C, $1C, $22
 	db $A6, $1B, $2D, $1C, $7C, $20, $DA, $1D
 	db $A2, $1A, $26, $1B, $A0, $FF, $00, $13
@@ -3725,7 +3725,7 @@ DATA_EE2CD3:
 	db $02, $06, $0E, $96, $08, $02, $05, $02
 	db $94, $08, $96, $10, $05
 
-DATA_EE3D78:
+swanky_song_data:
 	db $00, $13, $52, $02, $3E, $13, $B4, $14
 	db $0B, $14, $C0, $16, $15, $16, $61, $17
 	db $75, $15, $C4, $13, $B0, $FF, $00, $13
@@ -3876,7 +3876,7 @@ DATA_EE3D78:
 	db $9F, $8A, $02, $06, $0C, $04, $02, $0B
 	db $17, $21, $00, $17, $03, $65, $17
 
-DATA_EE421F:
+forest_song_data:
 	db $00, $13, $6D, $08, $55, $1A, $C5, $1B
 	db $B2, $1C, $A1, $20, $F0, $1D, $DD, $22
 	db $8A, $1E, $24, $1F, $A5, $FF, $00, $13
@@ -4418,7 +4418,7 @@ DATA_EE421F:
 	db $10, $9C, $A8, $02, $05, $03, $21, $9B
 	db $21, $03, $E2, $22, $00
 
-DATA_EE52FC:
+ship_deck_song_data:
 	db $00, $13, $84, $06, $7F, $1A, $A7, $1B
 	db $7F, $1C, $DF, $1D, $AF, $1A, $D0, $1A
 	db $92, $1D, $B1, $1D, $A0, $FF, $00, $13
@@ -4838,7 +4838,7 @@ DATA_EE52FC:
 	db $0F, $04, $02, $17, $08, $80, $0A, $21
 	db $B3, $1F, $00
 
-DATA_EE6007:
+mine_song_data:
 	db $00, $13, $9E, $07, $71, $19, $E0, $1A
 	db $E2, $1C, $47, $1F, $DA, $1D, $10, $20
 	db $C0, $20, $78, $21, $A0, $FF, $00, $13
@@ -5328,7 +5328,7 @@ DATA_EE6007:
 	db $48, $E1, $02, $06, $0E, $01, $4B, $E1
 	db $02, $06, $0E, $01, $4D, $E1, $07, $05
 
-DATA_EE6F47:
+funky_song_data:
 	db $00, $13, $A1, $02, $52, $13, $E0, $13
 	db $42, $14, $CB, $15, $8E, $16, $02, $18
 	db $64, $17, $5E, $16, $BD, $FF, $00, $13
@@ -5499,7 +5499,7 @@ DATA_EE6F47:
 	db $21, $B1, $14, $21, $BA, $14, $21, $B1
 	db $14, $03, $0D, $18, $00
 
-DATA_EE748C:
+brambles_song_data:
 	db $00, $13, $71, $08, $C4, $1B, $E3, $22
 	db $5E, $1E, $6D, $1D, $8C, $1C, $1C, $22
 	db $1D, $1D, $D1, $1C, $A8, $FF, $00, $13
@@ -6042,7 +6042,7 @@ DATA_EE748C:
 	db $3F, $8D, $01, $4E, $14, $F4, $02, $7F
 	db $80, $81, $14, $0C, $07, $05
 
-DATA_EE8572:
+klubba_song_data:
 	db $00, $13, $25, $03, $17, $13, $53, $14
 	db $FE, $14, $A6, $17, $DE, $16, $7A, $16
 	db $D5, $13, $45, $17, $A5, $FF, $00, $13
@@ -6246,7 +6246,7 @@ DATA_EE8572:
 	db $30, $9E, $06, $02, $10, $10, $9E, $06
 	db $02, $08, $08, $9E, $04, $05
 
-DATA_EE8BC0:
+wasp_hive_song_data:
 	db $00, $13, $0E, $08, $B2, $1E, $F3, $1E
 	db $D3, $21, $A2, $1F, $72, $21, $C6, $22
 	db $C9, $20, $73, $22, $80, $FF, $00, $13
@@ -6764,7 +6764,7 @@ DATA_EE8BC0:
 	db $02, $03, $07, $10, $8B, $A7, $21, $90
 	db $20, $21, $53, $20, $03, $CB, $22, $00
 
-DATA_EE9BE0:
+wrinkly_song_data:
 	db $00, $13, $36, $02, $14, $13, $8C, $13
 	db $F0, $15, $46, $15, $81, $16, $E9, $14
 	db $B3, $15, $EE, $16, $A0, $FF, $00, $13
@@ -6908,7 +6908,7 @@ DATA_EE9BE0:
 	db $10, $05, $15, $37, $28, $28, $18, $70
 	db $BF, $DB, $E0, $E0, $0A, $C8, $C8, $05
 
-DATA_EEA050:
+lava_song_data:
 	db $00, $13, $7B, $07, $54, $1A, $01, $21
 	db $2D, $1C, $8A, $21, $C4, $1D, $49, $1F
 	db $C7, $1B, $4E, $1D, $BA, $FF, $00, $13
@@ -7390,7 +7390,7 @@ DATA_EEA050:
 	db $05, $9D, $20, $A0, $20, $9D, $20, $99
 	db $20, $05
 
-DATA_EEAF4A:
+roller_coaster_song_data:
 	db $00, $13, $38, $07, $08, $1B, $D6, $1C
 	db $B2, $1B, $A7, $1E, $5F, $1B, $36, $1C
 	db $84, $20, $1C, $1E, $75, $FF, $00, $13
@@ -7855,7 +7855,7 @@ DATA_EEAF4A:
 	db $9E, $04, $01, $5D, $9B, $08, $01, $69
 	db $9E, $04, $05
 
-DATA_EEBDBD:
+bonus_song_data:
 	db $00, $13, $51, $08, $50, $13, $B6, $17
 	db $28, $14, $E5, $16, $33, $16, $CA, $14
 	db $8F, $15, $E0, $13, $B0, $FF, $00, $13

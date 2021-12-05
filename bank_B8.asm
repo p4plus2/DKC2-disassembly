@@ -1376,7 +1376,7 @@ if !version == 0				;	   |
 						;	   |
 CODE_B88B15:					;	   |
 	LDA current_player_mount		;$B88B18   |
-	BNE current_sprite			;$B88B19   |
+	BNE CODE_B88B80				;$B88B19   |
 	LDA $6E					;$B88B1B   |
 	BNE CODE_B88B20				;$B88B1D   |
 	RTS					;$B88B1F   |

@@ -703,7 +703,7 @@ CODE_BA9192:					;	   |
 	STA current_sprite			;$BA91AB   |
 	STZ $0656				;$BA91AD   |
 	LDA #$0240				;$BA91B0   |
-	JSL CODE_B9D0C6				;$BA91B3   |
+	JSL set_sprite_animation				;$BA91B3   |
 	LDX current_sprite			;$BA91B7   |
 	LDA $0A,x				;$BA91B9   |
 	CLC					;$BA91BB   |
@@ -1037,12 +1037,12 @@ CODE_BA9450:
 CODE_BA9465:
 	LDA #$0230				;$BA9465  \
 CODE_BA9468:					;	   |
-	JSL CODE_B9D0C6				;$BA9468   |
+	JSL set_sprite_animation				;$BA9468   |
 	LDX $0656				;$BA946C   |
 	BEQ CODE_BA947F				;$BA946F   |
 	STX current_sprite			;$BA9471   |
 	LDA #$0232				;$BA9473   |
-	JSL CODE_B9D0C6				;$BA9476   |
+	JSL set_sprite_animation				;$BA9476   |
 	LDX $0654				;$BA947A   |
 	STX current_sprite			;$BA947D   |
 CODE_BA947F:					;	   |
@@ -1075,13 +1075,13 @@ CODE_BA9484:
 CODE_BA94B3:
 	LDA #$0231				;$BA94B3  \
 CODE_BA94B6:					;	   |
-	JSL CODE_B9D0C6				;$BA94B6   |
+	JSL set_sprite_animation				;$BA94B6   |
 	LDA.l $000656				;$BA94BA   |
 	BEQ CODE_BA94CD				;$BA94BE   |
 	PHX					;$BA94C0   |
 	STA current_sprite			;$BA94C1   |
 	LDA #$0233				;$BA94C3   |
-	JSL CODE_B9D0C6				;$BA94C6   |
+	JSL set_sprite_animation				;$BA94C6   |
 	PLX					;$BA94CA   |
 	STX current_sprite			;$BA94CB   |
 CODE_BA94CD:					;	   |
@@ -1188,12 +1188,12 @@ CODE_BA9540:
 CODE_BA95C3:					;	   |
 	DEC $070B				;$BA95C3   |
 	LDA #$0234				;$BA95C6   |
-	JSL CODE_B9D0C6				;$BA95C9   |
+	JSL set_sprite_animation				;$BA95C9   |
 	LDX $0656				;$BA95CD   |
 	STX current_sprite			;$BA95D0   |
 	STZ $1E,x				;$BA95D2   |
 	LDA #$0235				;$BA95D4   |
-	JSL CODE_B9D0C6				;$BA95D7   |
+	JSL set_sprite_animation				;$BA95D7   |
 	LDX $0654				;$BA95DB   |
 	STX current_sprite			;$BA95DE   |
 	LDA #DATA_B6CE3B			;$BA95E0   |
@@ -1518,7 +1518,7 @@ CODE_BA98C4:
 	STZ $2E,x				;$BA98D2   |
 	INC $1E,x				;$BA98D4   |
 	LDA #$0240				;$BA98D6   |
-	JSL CODE_B9D0C6				;$BA98D9   |
+	JSL set_sprite_animation				;$BA98D9   |
 CODE_BA98DD:					;	   |
 	JML [$05A9]				;$BA98DD  /
 
@@ -1943,7 +1943,7 @@ CODE_BA9C64:
 	BNE CODE_BA9CA4				;$BA9C7A   |
 	STZ $2E,x				;$BA9C7C   |
 	LDA #$0201				;$BA9C7E   |
-	JSL CODE_B9D0C6				;$BA9C81   |
+	JSL set_sprite_animation				;$BA9C81   |
 	LDY $0656				;$BA9C85   |
 	LDA #$01FC				;$BA9C88   |
 	STY alternate_sprite			;$BA9C8B   |
@@ -1976,12 +1976,12 @@ CODE_BA9CB5:					;	   |
 	STA $46,x				;$BA9CB5   |
 	STZ $1E,x				;$BA9CB7   |
 	LDA #$0207				;$BA9CB9   |
-	JSL CODE_B9D0C6				;$BA9CBC   |
+	JSL set_sprite_animation				;$BA9CBC   |
 	LDX $0656				;$BA9CC0   |
 	STX current_sprite			;$BA9CC3   |
 	STZ $1E,x				;$BA9CC5   |
 	LDA #$0208				;$BA9CC7   |
-	JSL CODE_B9D0C6				;$BA9CCA   |
+	JSL set_sprite_animation				;$BA9CCA   |
 	LDX $0654				;$BA9CCE   |
 	STX current_sprite			;$BA9CD1   |
 	LDA #DATA_B6CE3B			;$BA9CD3   |
@@ -4546,7 +4546,7 @@ CODE_BAC1F7:					;	   |
 	INY					;$BAC1F7   |
 	INY					;$BAC1F8   |
 	STY $44,x				;$BAC1F9   |
-	JSL CODE_B9D0C6				;$BAC1FB   |
+	JSL set_sprite_animation				;$BAC1FB   |
 CODE_BAC1FF:					;	   |
 	LDA.l $0006A5				;$BAC1FF   |
 	BIT #$0800				;$BAC203   |

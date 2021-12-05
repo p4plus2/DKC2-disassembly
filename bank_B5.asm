@@ -5737,52 +5737,52 @@ CODE_B5BAEA:					;	   |
 
 DATA_B5BAEF:
 	%offset(DATA_B5BAF1, 2)
-	dl DATA_E3438B
-	dl DATA_E36F39
-	dl DATA_E3B5D4
-	dl DATA_E3E006
-	dl DATA_E3F9B2
-	dl DATA_E4186E
-	dl DATA_E45ADE
-	dl DATA_E3A1C4
-	dl DATA_E479EE
-	dl DATA_E49E44
-	dl DATA_E4B767
-	dl DATA_E4F714
-	dl DATA_E5264B
-	dl DATA_E52732
-	dl DATA_E52832
-	dl DATA_E54E8A
+	dl forest_32x32
+	dl ship_hold_32x32
+	dl hive_32x32
+	dl ship_deck_32x32
+	dl ship_mast_32x32
+	dl carnival_32x32
+	dl lava_32x32
+	dl hive_2_32x32
+	dl mine_32x32
+	dl swamp_32x32
+	dl brambles_32x32
+	dl castle_32x32
+	dl k_rool_2_32x32
+	dl k_rool_32x32
+	dl ice_32x32
+	dl jungle_32x32
 	dl !null_pointer
-	dl DATA_E54351
-	dl DATA_E4E649
-	dl DATA_E43D8A
-	dl DATA_E4F714
+	dl ice_2_32x32
+	dl brambles_2_32x32
+	dl carnival_2_32x32
+	dl castle_32x32
 
 
 DATA_B5BB2E:
 	%offset(DATA_B5BB30, 2)
-	dl DATA_E572C5
-	dl DATA_E597E1
-	dl DATA_E5A71C
-	dl DATA_E5C627
-	dl DATA_E5E0C8
-	dl DATA_E5F52D
-	dl DATA_E60FB1
-	dl DATA_E5A71C
-	dl DATA_E6303A
-	dl DATA_E64C7F
-	dl DATA_E665F8
-	dl DATA_E68077
-	dl DATA_E694EC
-	dl DATA_E69CE2
-	dl DATA_E6A896
-	dl DATA_E6C9FF
+	dl forest_8x8
+	dl ship_hold_8x8
+	dl hive_8x8
+	dl ship_deck_8x8
+	dl ship_mast_8x8
+	dl carnival_8x8
+	dl lava_8x8
+	dl hive_8x8
+	dl mine_8x8
+	dl swamp_8x8
+	dl brambles_8x8
+	dl castle_8x8
+	dl k_rool_2_8x8
+	dl k_rool_8x8
+	dl ice_8x8
+	dl jungle_8x8
 	dl !null_pointer
-	dl DATA_E6A896
-	dl DATA_E665F8
-	dl DATA_E5F52D
-	dl DATA_E68077
+	dl ice_8x8
+	dl brambles_8x8
+	dl carnival_8x8
+	dl castle_8x8
 
 
 DATA_B5BB6D:
@@ -5795,27 +5795,27 @@ DATA_B5BB6D:
 
 DATA_B5BB97:
 	%offset(DATA_B5BB99, 2)
-	dl DATA_FC5900
-	dl DATA_FC5B8C
-	dl DATA_FC5D94
-	dl DATA_FC6154
-	dl DATA_FC63FC
-	dl DATA_FC665C
-	dl DATA_FC689C
-	dl DATA_FC5D94
-	dl DATA_FC6A0C
-	dl DATA_FC6AA8
-	dl DATA_FC6B30
-	dl DATA_FC70E8
-	dl DATA_FC7478
-	dl DATA_FC749C
-	dl DATA_FC74E0
-	dl DATA_FC7A58
-	dl DATA_FC5900
-	dl DATA_FC74E0
-	dl DATA_FC6B30
-	dl DATA_FC665C
-	dl DATA_FC70E8
+	dl forest_collision
+	dl ship_hold_collision
+	dl hive_collision
+	dl ship_deck_collision
+	dl ship_mast_collision
+	dl carnival_collision
+	dl lava_collision
+	dl hive_collision
+	dl mine_collision
+	dl swamp_collision
+	dl brambles_collision
+	dl castle_collision
+	dl k_rool_2_collision
+	dl k_rool_collision
+	dl ice_collision
+	dl jungle_collision
+	dl forest_collision
+	dl ice_collision
+	dl brambles_collision
+	dl carnival_collision
+	dl castle_collision
 
 
 DATA_B5BBD6:
@@ -7880,7 +7880,7 @@ CODE_B5CDEF:
 	RTS					;$B5CDF5  /
 
 	STX current_sprite			;$B5CDF6   |
-	JSL CODE_B9D0C6				;$B5CDF8   |
+	JSL set_sprite_animation				;$B5CDF8   |
 	RTS					;$B5CDFC  /
 
 CODE_B5CDFD:
