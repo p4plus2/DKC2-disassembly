@@ -5737,52 +5737,52 @@ CODE_B5BAEA:					;	   |
 
 DATA_B5BAEF:
 	%offset(DATA_B5BAF1, 2)
-	dl forest_32x32
-	dl ship_hold_32x32
-	dl hive_32x32
-	dl ship_deck_32x32
-	dl ship_mast_32x32
-	dl carnival_32x32
-	dl lava_32x32
-	dl hive_2_32x32
-	dl mine_32x32
-	dl swamp_32x32
-	dl brambles_32x32
-	dl castle_32x32
-	dl k_rool_2_32x32
-	dl k_rool_32x32
-	dl ice_32x32
-	dl jungle_32x32
+	dl forest_32x32_tilemap
+	dl ship_hold_32x32_tilemap
+	dl hive_32x32_tilemap
+	dl ship_deck_32x32_tilemap
+	dl ship_mast_32x32_tilemap
+	dl carnival_32x32_tilemap
+	dl lava_32x32_tilemap
+	dl hive_2_32x32_tilemap
+	dl mine_32x32_tilemap
+	dl swamp_32x32_tilemap
+	dl brambles_32x32_tilemap
+	dl castle_32x32_tilemap
+	dl k_rool_2_32x32_tilemap
+	dl k_rool_32x32_tilemap
+	dl ice_32x32_tilemap
+	dl jungle_32x32_tilemap
 	dl !null_pointer
-	dl ice_2_32x32
-	dl brambles_2_32x32
-	dl carnival_2_32x32
-	dl castle_32x32
+	dl ice_2_32x32_tilemap
+	dl brambles_2_32x32_tilemap
+	dl carnival_2_32x32_tilemap
+	dl castle_32x32_tilemap
 
 
 DATA_B5BB2E:
 	%offset(DATA_B5BB30, 2)
-	dl forest_8x8
-	dl ship_hold_8x8
-	dl hive_8x8
-	dl ship_deck_8x8
-	dl ship_mast_8x8
-	dl carnival_8x8
-	dl lava_8x8
-	dl hive_8x8
-	dl mine_8x8
-	dl swamp_8x8
-	dl brambles_8x8
-	dl castle_8x8
-	dl k_rool_2_8x8
-	dl k_rool_8x8
-	dl ice_8x8
-	dl jungle_8x8
+	dl forest_8x8_tilemap
+	dl ship_hold_8x8_tilemap
+	dl hive_8x8_tilemap
+	dl ship_deck_8x8_tilemap
+	dl ship_mast_8x8_tilemap
+	dl carnival_8x8_tilemap
+	dl lava_8x8_tilemap
+	dl hive_8x8_tilemap
+	dl mine_8x8_tilemap
+	dl swamp_8x8_tilemap
+	dl brambles_8x8_tilemap
+	dl castle_8x8_tilemap
+	dl k_rool_2_8x8_tilemap
+	dl k_rool_8x8_tilemap
+	dl ice_8x8_tilemap
+	dl jungle_8x8_tilemap
 	dl !null_pointer
-	dl ice_8x8
-	dl brambles_8x8
-	dl carnival_8x8
-	dl castle_8x8
+	dl ice_8x8_tilemap
+	dl brambles_8x8_tilemap
+	dl carnival_8x8_tilemap
+	dl castle_8x8_tilemap
 
 
 DATA_B5BB6D:
