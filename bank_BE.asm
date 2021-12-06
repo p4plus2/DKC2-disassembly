@@ -239,7 +239,7 @@ CODE_BEB9B2:					;	   |
 CODE_BEB9C6:
 	LDA #$01C4				;$BEB9C6  \
 CODE_BEB9C9:					;	   |
-	JSL set_sprite_animation				;$BEB9C9   |
+	JSL set_sprite_animation		;$BEB9C9   |
 	LDX current_sprite			;$BEB9CD   |
 	LDA #$0003				;$BEB9CF   |
 	JSL CODE_BB8C44				;$BEB9D2   |
@@ -297,7 +297,7 @@ CODE_BEBA3C:
 	JSL CODE_BB8135				;$BEBA3C  \
 	BCC CODE_BEBA50				;$BEBA40   |
 	LDA #$01C5				;$BEBA42   |
-	JSL set_sprite_animation				;$BEBA45   |
+	JSL set_sprite_animation		;$BEBA45   |
 	LDX current_sprite			;$BEBA49   |
 	INC $2E,x				;$BEBA4B   |
 	JML [$05A9]				;$BEBA4D  /

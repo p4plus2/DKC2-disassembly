@@ -280,7 +280,7 @@ CODE_B68225:
 	BNE CODE_B68267				;$B68248   |
 CODE_B6824A:					;	   |
 	LDA #$0296				;$B6824A   |
-	JSL set_sprite_animation				;$B6824D   |
+	JSL set_sprite_animation		;$B6824D   |
 	LDA.l $000656				;$B68251   |
 	STA alternate_sprite			;$B68255   |
 	LDA #$0297				;$B68257   |
@@ -1014,7 +1014,7 @@ CODE_B68BBB:
 	LDA #CODE_B68C27			;$B68BE7   |
 	STA $44,x				;$B68BEA   |
 	LDA #$029C				;$B68BEC   |
-	JSL set_sprite_animation				;$B68BEF   |
+	JSL set_sprite_animation		;$B68BEF   |
 	LDA.l $000656				;$B68BF3   |
 	STA alternate_sprite			;$B68BF7   |
 	LDA #$029D				;$B68BF9   |
@@ -1109,7 +1109,7 @@ CODE_B68CC2:
 	PHK					;$B68CC3   |
 	PLB					;$B68CC4   |
 	LDA #$01FB				;$B68CC5   |
-	JSL set_sprite_animation				;$B68CC8   |
+	JSL set_sprite_animation		;$B68CC8   |
 	LDA.l $000656				;$B68CCC   |
 	STA alternate_sprite			;$B68CD0   |
 	LDA #$028D				;$B68CD2   |
@@ -1141,7 +1141,7 @@ CODE_B68CE1:
 	BNE CODE_B68D21				;$B68D09   |
 CODE_B68D0B:					;	   |
 	LDA #$028E				;$B68D0B   |
-	JSL set_sprite_animation				;$B68D0E   |
+	JSL set_sprite_animation		;$B68D0E   |
 	LDA.l $000656				;$B68D12   |
 	STA alternate_sprite			;$B68D16   |
 	LDA #$028F				;$B68D18   |
@@ -1150,7 +1150,7 @@ CODE_B68D0B:					;	   |
 
 CODE_B68D21:
 	LDA #$01FB				;$B68D21  \
-	JSL set_sprite_animation				;$B68D24   |
+	JSL set_sprite_animation		;$B68D24   |
 	LDA.l $000656				;$B68D28   |
 	STA alternate_sprite			;$B68D2C   |
 	LDA #$028D				;$B68D2E   |
@@ -1237,7 +1237,7 @@ CODE_B68DB3:
 	STA $0A,x				;$B68DD9   |
 	STA $000A,y				;$B68DDB   |
 	LDA #$0257				;$B68DDE   |
-	JSL set_sprite_animation				;$B68DE1   |
+	JSL set_sprite_animation		;$B68DE1   |
 	LDA #$0258				;$B68DE5   |
 	JSL CODE_B9D09B				;$B68DE8   |
 	LDX current_sprite			;$B68DEC   |
@@ -1525,7 +1525,7 @@ CODE_B69043:
 	PLB					;$B69044   |
 	JSR CODE_B6D008				;$B69045   |
 	LDA #$025E				;$B69048   |
-	JSL set_sprite_animation				;$B6904B   |
+	JSL set_sprite_animation		;$B6904B   |
 	LDA.l $000656				;$B6904F   |
 	STA alternate_sprite			;$B69053   |
 	LDA #$025F				;$B69055   |
@@ -2706,7 +2706,7 @@ CODE_B69BFB:					;	   |
 	AND #$FFFD				;$B69C14   |
 	STA $2E,x				;$B69C17   |
 	LDA #$0268				;$B69C19   |
-	JSL set_sprite_animation				;$B69C1C   |
+	JSL set_sprite_animation		;$B69C1C   |
 CODE_B69C20:					;	   |
 	JSL CODE_B9D100				;$B69C20   |
 CODE_B69C24:					;	   |
@@ -2930,7 +2930,7 @@ CODE_B69DC2:
 	LDA #CODE_B69E33			;$B69DFA   |
 	STA $44,x				;$B69DFD   |
 	LDA #$025C				;$B69DFF   |
-	JSL set_sprite_animation				;$B69E02   |
+	JSL set_sprite_animation		;$B69E02   |
 	LDX $0656				;$B69E06   |
 	STX alternate_sprite			;$B69E09   |
 	LDA #$C000				;$B69E0B   |
@@ -3153,7 +3153,7 @@ CODE_B69FBF:					;	   |
 	JSL CODE_B3A600				;$B69FC5   |
 	JSL CODE_B3975C				;$B69FC9   |
 	LDA #$0280				;$B69FCD   |
-	JSL set_sprite_animation				;$B69FD0   |
+	JSL set_sprite_animation		;$B69FD0   |
 	LDX current_sprite			;$B69FD4   |
 	LDA #$0009				;$B69FD6   |
 	JSL CODE_BB8C44				;$B69FD9   |
@@ -4093,7 +4093,7 @@ CODE_B6A637:
 	STZ $2A,x				;$B6A639   |
 	INC $2E,x				;$B6A63B   |
 	LDA #$0243				;$B6A63D   |
-	JSL set_sprite_animation				;$B6A640   |
+	JSL set_sprite_animation		;$B6A640   |
 	LDA.l $00075B				;$B6A644   |
 	STA alternate_sprite			;$B6A648   |
 	LDA #$0244				;$B6A64A   |
@@ -4138,7 +4138,7 @@ CODE_B6A66F:
 	LDA #$0800				;$B6A6A7   |
 	STA $2A,x				;$B6A6AA   |
 	LDA #$0249				;$B6A6AC   |
-	JSL set_sprite_animation				;$B6A6AF   |
+	JSL set_sprite_animation		;$B6A6AF   |
 	BRA CODE_B6A668				;$B6A6B3  /
 
 CODE_B6A6B5:
@@ -4165,7 +4165,7 @@ CODE_B6A6CE:
 	STZ $2A,x				;$B6A6E4   |
 	INC $2E,x				;$B6A6E6   |
 	LDA #$024A				;$B6A6E8   |
-	JSL set_sprite_animation				;$B6A6EB   |
+	JSL set_sprite_animation		;$B6A6EB   |
 CODE_B6A6EF:					;	   |
 	JSL CODE_B9D100				;$B6A6EF   |
 	JML [$05A9]				;$B6A6F3  /
@@ -4744,7 +4744,7 @@ CODE_B6AC01:					;	   |
 	CMP #$006B				;$B6AC1C   |
 	BNE CODE_B6AC34				;$B6AC1F   |
 	LDA #$0287				;$B6AC21   |
-	JSL set_sprite_animation				;$B6AC24   |
+	JSL set_sprite_animation		;$B6AC24   |
 	LDX $0656				;$B6AC28   |
 	STX alternate_sprite			;$B6AC2B   |
 	STZ $1C,x				;$B6AC2D   |
@@ -4758,7 +4758,7 @@ CODE_B6AC34:
 	CMP #$0003				;$B6AC3D   |
 	BEQ CODE_B6AC55				;$B6AC40   |
 	LDA #$0287				;$B6AC42   |
-	JSL set_sprite_animation				;$B6AC45   |
+	JSL set_sprite_animation		;$B6AC45   |
 	LDX $0656				;$B6AC49   |
 	STX alternate_sprite			;$B6AC4C   |
 	STZ $1C,x				;$B6AC4E   |
@@ -4767,7 +4767,7 @@ CODE_B6AC34:
 
 CODE_B6AC55:
 	LDA #$0285				;$B6AC55  \
-	JSL set_sprite_animation				;$B6AC58   |
+	JSL set_sprite_animation		;$B6AC58   |
 	LDX $0656				;$B6AC5C   |
 	STX alternate_sprite			;$B6AC5F   |
 	STZ $1C,x				;$B6AC61   |
@@ -4776,7 +4776,7 @@ CODE_B6AC55:
 
 CODE_B6AC68:
 	LDA #$0278				;$B6AC68  \
-	JSL set_sprite_animation				;$B6AC6B   |
+	JSL set_sprite_animation		;$B6AC6B   |
 	LDX $0656				;$B6AC6F   |
 	STX alternate_sprite			;$B6AC72   |
 	STZ $1C,x				;$B6AC74   |
@@ -4788,7 +4788,7 @@ CODE_B6AC79:					;	   |
 CODE_B6AC7F:
 	JSR CODE_B6D008				;$B6AC7F  \
 	LDA #$025E				;$B6AC82   |
-	JSL set_sprite_animation				;$B6AC85   |
+	JSL set_sprite_animation		;$B6AC85   |
 	LDX $0656				;$B6AC89   |
 	STX alternate_sprite			;$B6AC8C   |
 	STZ $1C,x				;$B6AC8E   |
@@ -4807,7 +4807,7 @@ CODE_B6AC99:
 	CMP #$0006				;$B6ACAA   |
 	BEQ CODE_B6ACC1				;$B6ACAD   |
 	LDA #$028A				;$B6ACAF   |
-	JSL set_sprite_animation				;$B6ACB2   |
+	JSL set_sprite_animation		;$B6ACB2   |
 	LDA.l $000656				;$B6ACB6   |
 	STA alternate_sprite			;$B6ACBA   |
 	LDA #$028B				;$B6ACBC   |
@@ -4815,7 +4815,7 @@ CODE_B6AC99:
 
 CODE_B6ACC1:
 	LDA #$027A				;$B6ACC1  \
-	JSL set_sprite_animation				;$B6ACC4   |
+	JSL set_sprite_animation		;$B6ACC4   |
 	LDA.l $000656				;$B6ACC8   |
 	STA alternate_sprite			;$B6ACCC   |
 	LDA #$027B				;$B6ACCE   |
@@ -4832,7 +4832,7 @@ CODE_B6ACD8:
 	PLB					;$B6ACDA   |
 	JSR CODE_B6D008				;$B6ACDB   |
 	LDA #$025E				;$B6ACDE   |
-	JSL set_sprite_animation				;$B6ACE1   |
+	JSL set_sprite_animation		;$B6ACE1   |
 	LDX $0656				;$B6ACE5   |
 	STX alternate_sprite			;$B6ACE8   |
 	LDA #$027C				;$B6ACEA   |
@@ -4862,7 +4862,7 @@ CODE_B6AD0D:
 	PLB					;$B6AD0F   |
 	JSR CODE_B6D008				;$B6AD10   |
 	LDA #$025E				;$B6AD13   |
-	JSL set_sprite_animation				;$B6AD16   |
+	JSL set_sprite_animation		;$B6AD16   |
 	LDA.l $000656				;$B6AD1A   |
 	STA alternate_sprite			;$B6AD1E   |
 	LDA #$025F				;$B6AD20   |
@@ -5645,7 +5645,7 @@ CODE_B6B7C8:
 	LDA #$0774				;$B6B7D5   |
 	JSL queue_sound_effect			;$B6B7D8   |
 	LDA #$0266				;$B6B7DC   |
-	JSL set_sprite_animation				;$B6B7DF   |
+	JSL set_sprite_animation		;$B6B7DF   |
 	LDA.l $000656				;$B6B7E3   |
 	STA alternate_sprite			;$B6B7E7   |
 	LDA #$0267				;$B6B7E9   |
@@ -5718,7 +5718,7 @@ CODE_B6B87C:
 	LDA #$026F				;$B6B87F   |
 	JSL CODE_B9D09B				;$B6B882   |
 	LDA #$0264				;$B6B886   |
-	JSL set_sprite_animation				;$B6B889   |
+	JSL set_sprite_animation		;$B6B889   |
 	LDA.l $000656				;$B6B88D   |
 	STA alternate_sprite			;$B6B891   |
 	LDA #$0265				;$B6B893   |
@@ -5742,7 +5742,7 @@ CODE_B6B8BD:
 	STZ $44,x				;$B6B8BD  \
 	PHY					;$B6B8BF   |
 	LDA #$0250				;$B6B8C0   |
-	JSL set_sprite_animation				;$B6B8C3   |
+	JSL set_sprite_animation		;$B6B8C3   |
 	LDA #$051A				;$B6B8C7   |
 	JSL queue_sound_effect			;$B6B8CA   |
 	LDA.l $000656				;$B6B8CE   |
@@ -5770,7 +5770,7 @@ CODE_B6B903:
 	CMP #$0002				;$B6B908   |
 	BNE CODE_B6B923				;$B6B90B   |
 	LDA #$024D				;$B6B90D   |
-	JSL set_sprite_animation				;$B6B910   |
+	JSL set_sprite_animation		;$B6B910   |
 	LDA.l $000656				;$B6B914   |
 	STA alternate_sprite			;$B6B918   |
 	LDA #$024E				;$B6B91A   |
@@ -5779,7 +5779,7 @@ CODE_B6B903:
 
 CODE_B6B923:
 	LDA #$024B				;$B6B923  \
-	JSL set_sprite_animation				;$B6B926   |
+	JSL set_sprite_animation		;$B6B926   |
 	LDA.l $000656				;$B6B92A   |
 	STA alternate_sprite			;$B6B92E   |
 	LDA #$024C				;$B6B930   |
@@ -5899,7 +5899,7 @@ CODE_B6BA1F:					;	   |
 	STZ $26,x				;$B6BA1F   |
 	JSR CODE_B6BBAA				;$B6BA21   |
 	LDA #$029A				;$B6BA24   |
-	JSL set_sprite_animation				;$B6BA27   |
+	JSL set_sprite_animation		;$B6BA27   |
 	LDA.l $000656				;$B6BA2B   |
 	STA alternate_sprite			;$B6BA2F   |
 	LDA #$029B				;$B6BA31   |
@@ -5931,7 +5931,7 @@ CODE_B6BA4A:					;	   |
 	BIT #$2000				;$B6BA6C   |
 	BNE CODE_B6BA93				;$B6BA6F   |
 	LDA #$0290				;$B6BA71   |
-	JSL set_sprite_animation				;$B6BA74   |
+	JSL set_sprite_animation		;$B6BA74   |
 	LDA.l $000656				;$B6BA78   |
 	STA alternate_sprite			;$B6BA7C   |
 	LDA #$0291				;$B6BA7E   |
@@ -6018,7 +6018,7 @@ CODE_B6BAF3:
 	LDA #$0014				;$B6BB09   |
 	STA $000747				;$B6BB0C   |
 	LDA #$0292				;$B6BB10   |
-	JSL set_sprite_animation				;$B6BB13   |
+	JSL set_sprite_animation		;$B6BB13   |
 	LDA.l $000656				;$B6BB17   |
 	STA alternate_sprite			;$B6BB1B   |
 	LDA #$0293				;$B6BB1D   |
@@ -6044,7 +6044,7 @@ CODE_B6BB36:					;	   |
 	BCC CODE_B6BB68				;$B6BB49   |
 	STZ $44,x				;$B6BB4B   |
 	LDA #$0290				;$B6BB4D   |
-	JSL set_sprite_animation				;$B6BB50   |
+	JSL set_sprite_animation		;$B6BB50   |
 	LDA #$056D				;$B6BB54   |
 	JSL queue_sound_effect			;$B6BB57   |
 	LDA.l $000656				;$B6BB5B   |
@@ -6110,7 +6110,7 @@ CODE_B6BBCA:					;	   |
 CODE_B6BBCB:
 	PHY					;$B6BBCB  \
 	LDA #$0294				;$B6BBCC   |
-	JSL set_sprite_animation				;$B6BBCF   |
+	JSL set_sprite_animation		;$B6BBCF   |
 	LDA.l $000656				;$B6BBD3   |
 	STA alternate_sprite			;$B6BBD7   |
 	LDA #$0295				;$B6BBD9   |
@@ -6145,7 +6145,7 @@ CODE_B6BBE2:
 	BIT #$2000				;$B6BC1E   |
 	BNE CODE_B6BC37				;$B6BC21   |
 	LDA #$0292				;$B6BC23   |
-	JSL set_sprite_animation				;$B6BC26   |
+	JSL set_sprite_animation		;$B6BC26   |
 	LDA.l $000656				;$B6BC2A   |
 	STA alternate_sprite			;$B6BC2E   |
 	LDA #$0293				;$B6BC30   |
@@ -6216,7 +6216,7 @@ CODE_B6BC91:					;	   |
 	BIT #$2000				;$B6BCAF   |
 	BNE CODE_B6BCC8				;$B6BCB2   |
 	LDA #$028E				;$B6BCB4   |
-	JSL set_sprite_animation				;$B6BCB7   |
+	JSL set_sprite_animation		;$B6BCB7   |
 	LDA.l $000656				;$B6BCBB   |
 	STA alternate_sprite			;$B6BCBF   |
 	LDA #$028F				;$B6BCC1   |
@@ -6256,7 +6256,7 @@ CODE_B6BCE9:					;	   |
 	BIT #$2000				;$B6BD0B   |
 	BNE CODE_B6BD32				;$B6BD0E   |
 	LDA #$0290				;$B6BD10   |
-	JSL set_sprite_animation				;$B6BD13   |
+	JSL set_sprite_animation		;$B6BD13   |
 	LDA.l $000656				;$B6BD17   |
 	STA alternate_sprite			;$B6BD1B   |
 	LDA #$0291				;$B6BD1D   |
@@ -6555,7 +6555,7 @@ CODE_B6BF51:					;	   |
 	LDA #$0242				;$B6BF6F   |
 	JSL CODE_B9D09B				;$B6BF72   |
 	LDA #$0264				;$B6BF76   |
-	JSL set_sprite_animation				;$B6BF79   |
+	JSL set_sprite_animation		;$B6BF79   |
 	LDA.l $000656				;$B6BF7D   |
 	STA alternate_sprite			;$B6BF81   |
 	LDA #$0265				;$B6BF83   |
@@ -6710,7 +6710,7 @@ CODE_B6C0B4:					;	   |
 	STA $00072D				;$B6C0B8   |
 CODE_B6C0BC:					;	   |
 	LDA #$026A				;$B6C0BC   |
-	JSL set_sprite_animation				;$B6C0BF   |
+	JSL set_sprite_animation		;$B6C0BF   |
 	LDA.l $000656				;$B6C0C3   |
 	STA alternate_sprite			;$B6C0C7   |
 	LDA #$026B				;$B6C0C9   |
@@ -6764,7 +6764,7 @@ CODE_B6C12A:
 	LDX current_sprite			;$B6C135   |
 	STZ $44,x				;$B6C137   |
 	LDA #$025E				;$B6C139   |
-	JSL set_sprite_animation				;$B6C13C   |
+	JSL set_sprite_animation		;$B6C13C   |
 	LDA.l $000656				;$B6C140   |
 	STA alternate_sprite			;$B6C144   |
 	LDA #$025F				;$B6C146   |
@@ -6792,7 +6792,7 @@ CODE_B6C153:
 	STA $0A86				;$B6C183   |
 CODE_B6C186:					;	   |
 	LDA #$026D				;$B6C186   |
-	JSL set_sprite_animation				;$B6C189   |
+	JSL set_sprite_animation		;$B6C189   |
 	LDA.l $000656				;$B6C18D   |
 	STA alternate_sprite			;$B6C191   |
 	LDA #$026E				;$B6C193   |
@@ -6906,7 +6906,7 @@ CODE_B6C25E:					;	   |
 	LDA #$027F				;$B6C261   |
 	JSL CODE_B9D09B				;$B6C264   |
 	LDA #$0264				;$B6C268   |
-	JSL set_sprite_animation				;$B6C26B   |
+	JSL set_sprite_animation		;$B6C26B   |
 	LDA.l $000656				;$B6C26F   |
 	STA alternate_sprite			;$B6C273   |
 	LDA #$0265				;$B6C275   |
@@ -6986,7 +6986,7 @@ CODE_B6C311:					;	   |
 	LDA #$0012				;$B6C313   |
 	STA $000721				;$B6C316   |
 	LDA #$0260				;$B6C31A   |
-	JSL set_sprite_animation				;$B6C31D   |
+	JSL set_sprite_animation		;$B6C31D   |
 	LDA.l $000656				;$B6C321   |
 	STA alternate_sprite			;$B6C325   |
 	LDA #$0261				;$B6C327   |
@@ -8046,7 +8046,7 @@ CODE_B6CABE:					;	   |
 	LDY current_sprite			;$B6CAC8   |
 	PHY					;$B6CACA   |
 	STX current_sprite			;$B6CACB   |
-	JSL set_sprite_animation				;$B6CACD   |
+	JSL set_sprite_animation		;$B6CACD   |
 	PLY					;$B6CAD1   |
 	STY current_sprite			;$B6CAD2   |
 	PLY					;$B6CAD4   |
@@ -8118,12 +8118,12 @@ CODE_B6CB36:
 	ORA #$0002				;$B6CB48   |
 	STA $2E,x				;$B6CB4B   |
 	LDA #$0203				;$B6CB4D   |
-	JSL set_sprite_animation				;$B6CB50   |
+	JSL set_sprite_animation		;$B6CB50   |
 	LDA $42,x				;$B6CB54   |
 	PHX					;$B6CB56   |
 	STA current_sprite			;$B6CB57   |
 	LDA #$0206				;$B6CB59   |
-	JSL set_sprite_animation				;$B6CB5C   |
+	JSL set_sprite_animation		;$B6CB5C   |
 	PLX					;$B6CB60   |
 	STX current_sprite			;$B6CB61   |
 	PLY					;$B6CB63   |
@@ -8795,7 +8795,7 @@ CODE_B6D044:					;	   |
 	AND #$FDFF				;$B6D04D   |
 	STA $0006A3				;$B6D050   |
 	LDA #$01E7				;$B6D054   |
-	JSL set_sprite_animation				;$B6D057   |
+	JSL set_sprite_animation		;$B6D057   |
 	LDA $42,x				;$B6D05B   |
 	STA alternate_sprite			;$B6D05D   |
 	LDA #$01E8				;$B6D05F   |
@@ -9091,12 +9091,12 @@ CODE_B6D329:					;	   |
 	BEQ CODE_B6D2F4				;$B6D334   |
 	JSR CODE_B6E068				;$B6D336   |
 	LDA #$0210				;$B6D339   |
-	JSL set_sprite_animation				;$B6D33C   |
+	JSL set_sprite_animation		;$B6D33C   |
 	LDA.l $000656				;$B6D340   |
 	BEQ CODE_B6D2F4				;$B6D344   |
 	STA current_sprite			;$B6D346   |
 	LDA #$0211				;$B6D348   |
-	JSL set_sprite_animation				;$B6D34B   |
+	JSL set_sprite_animation		;$B6D34B   |
 	LDA.l $000654				;$B6D34F   |
 	STA current_sprite			;$B6D353   |
 	BRL CODE_B6D2F4				;$B6D355  /
@@ -9355,7 +9355,7 @@ CODE_B6D566:
 	BIT #$0008				;$B6D56F   |
 	BNE CODE_B6D57D				;$B6D572   |
 	LDA #$0210				;$B6D574   |
-	JSL set_sprite_animation				;$B6D577   |
+	JSL set_sprite_animation		;$B6D577   |
 	LDX current_sprite			;$B6D57B   |
 CODE_B6D57D:					;	   |
 	JSR CODE_B6E068				;$B6D57D   |
@@ -9429,7 +9429,7 @@ CODE_B6D5F4:
 
 CODE_B6D607:
 	LDA #$0219				;$B6D607  \
-	JSL set_sprite_animation				;$B6D60A   |
+	JSL set_sprite_animation		;$B6D60A   |
 	LDX current_sprite			;$B6D60E   |
 	LDA #CODE_B6DA16			;$B6D610   |
 	STA $52,x				;$B6D613   |
@@ -9914,7 +9914,7 @@ CODE_B6DA16:
 
 CODE_B6DA27:
 	LDA #$0217				;$B6DA27  \
-	JSL set_sprite_animation				;$B6DA2A   |
+	JSL set_sprite_animation		;$B6DA2A   |
 	LDX current_sprite			;$B6DA2E   |
 	LDA #$001E				;$B6DA30   |
 	STA $46,x				;$B6DA33   |
@@ -10017,11 +10017,11 @@ CODE_B6DAD6:
 	LDX $0656				;$B6DAE7   |
 	STX current_sprite			;$B6DAEA   |
 	LDA #$0213				;$B6DAEC   |
-	JSL set_sprite_animation				;$B6DAEF   |
+	JSL set_sprite_animation		;$B6DAEF   |
 	PLX					;$B6DAF3   |
 	STX current_sprite			;$B6DAF4   |
 	LDA #$0212				;$B6DAF6   |
-	JSL set_sprite_animation				;$B6DAF9   |
+	JSL set_sprite_animation		;$B6DAF9   |
 	LDX current_sprite			;$B6DAFD   |
 	LDA.l $000652				;$B6DAFF   |
 	LDY $06E9				;$B6DB03   |
@@ -10167,7 +10167,7 @@ CODE_B6DBE0:
 	PHX					;$B6DBE8   |
 	STY current_sprite			;$B6DBE9   |
 	LDA #$020F				;$B6DBEB   |
-	JSL set_sprite_animation				;$B6DBEE   |
+	JSL set_sprite_animation		;$B6DBEE   |
 	PLX					;$B6DBF2   |
 	STX current_sprite			;$B6DBF3   |
 	RTL					;$B6DBF5  /
@@ -10183,12 +10183,12 @@ CODE_B6DBFC:
 	PHX					;$B6DC01   |
 	STY current_sprite			;$B6DC02   |
 	LDA #$0216				;$B6DC04   |
-	JSL set_sprite_animation				;$B6DC07   |
+	JSL set_sprite_animation		;$B6DC07   |
 	PLX					;$B6DC0B   |
 	STX current_sprite			;$B6DC0C   |
 CODE_B6DC0E:					;	   |
 	LDA #$0215				;$B6DC0E   |
-	JSL set_sprite_animation				;$B6DC11   |
+	JSL set_sprite_animation		;$B6DC11   |
 	LDX current_sprite			;$B6DC15   |
 	LDA $2E,x				;$B6DC17   |
 	ORA #$0008				;$B6DC19   |
@@ -10235,12 +10235,12 @@ CODE_B6DC58:					;	   |
 	LDA.l $0006E9				;$B6DC58   |
 	BEQ CODE_B6DC67				;$B6DC5C   |
 	LDA #$021A				;$B6DC5E   |
-	JSL set_sprite_animation				;$B6DC61   |
+	JSL set_sprite_animation		;$B6DC61   |
 	BRA CODE_B6DC6E				;$B6DC65  /
 
 CODE_B6DC67:
 	LDA #$0210				;$B6DC67  \
-	JSL set_sprite_animation				;$B6DC6A   |
+	JSL set_sprite_animation		;$B6DC6A   |
 CODE_B6DC6E:					;	   |
 	PHB					;$B6DC6E   |
 	LDA #$4000				;$B6DC6F   |
@@ -10363,7 +10363,7 @@ CODE_B6DD55:					;	   |
 CODE_B6DD56:
 	BCS CODE_B6DD4E				;$B6DD56  \
 	LDA #$021A				;$B6DD58   |
-	JSL set_sprite_animation				;$B6DD5B   |
+	JSL set_sprite_animation		;$B6DD5B   |
 	LDX current_sprite			;$B6DD5F   |
 	BRA CODE_B6DD55				;$B6DD61  /
 
@@ -11032,14 +11032,14 @@ CODE_B6E275:
 	BEQ CODE_B6E28E				;$B6E283   |
 	STX current_sprite			;$B6E285   |
 	LDA #$0211				;$B6E287   |
-	JSL set_sprite_animation				;$B6E28A   |
+	JSL set_sprite_animation		;$B6E28A   |
 CODE_B6E28E:					;	   |
 	LDA #$066B				;$B6E28E   |
 	JSL queue_sound_effect			;$B6E291   |
 	PLX					;$B6E295   |
 	STX current_sprite			;$B6E296   |
 	LDA #$0210				;$B6E298   |
-	JSL set_sprite_animation				;$B6E29B   |
+	JSL set_sprite_animation		;$B6E29B   |
 	DEC $0652				;$B6E29F   |
 	BNE CODE_B6E2CF				;$B6E2A2   |
 	LDA current_sprite			;$B6E2A4   |
@@ -11170,7 +11170,7 @@ CODE_B6E3EA:
 	BNE CODE_B6E404				;$B6E3EF   |
 	STZ $32,x				;$B6E3F1   |
 	LDA #$0210				;$B6E3F3   |
-	JSL set_sprite_animation				;$B6E3F6   |
+	JSL set_sprite_animation		;$B6E3F6   |
 	LDX current_sprite			;$B6E3FA   |
 	JSR CODE_B6DC9B				;$B6E3FC   |
 	JSR CODE_B6DD13				;$B6E3FF   |
@@ -11437,7 +11437,7 @@ CODE_B6E5DF:					;	   |
 	EOR $12,x				;$B6E5E7   |
 	STA $12,x				;$B6E5E9   |
 	LDA #$02FD				;$B6E5EB   |
-	JSL set_sprite_animation				;$B6E5EE   |
+	JSL set_sprite_animation		;$B6E5EE   |
 	SEC					;$B6E5F2   |
 	RTS					;$B6E5F3  /
 
@@ -11492,7 +11492,7 @@ CODE_B6E635:
 	LDA #$0211				;$B6E657   |
 	STA $30,x				;$B6E65A   |
 	LDA #$02E3				;$B6E65C   |
-	JSL set_sprite_animation				;$B6E65F   |
+	JSL set_sprite_animation		;$B6E65F   |
 	BRA CODE_B6E697				;$B6E663  /
 
 CODE_B6E665:
@@ -12649,7 +12649,7 @@ CODE_B6F015:
 	DEC $4E,x				;$B6F01F   |
 	BNE CODE_B6F031				;$B6F021   |
 	LDA #$02A3				;$B6F023   |
-	JSL set_sprite_animation				;$B6F026   |
+	JSL set_sprite_animation		;$B6F026   |
 	LDA $2E,x				;$B6F02A   |
 	ORA #$0200				;$B6F02C   |
 	STA $2E,x				;$B6F02F   |
@@ -12902,7 +12902,7 @@ CODE_B6F229:
 	STA $22,x				;$B6F231   |
 	LDA #$0303				;$B6F233   |
 CODE_B6F236:					;	   |
-	JSL set_sprite_animation				;$B6F236   |
+	JSL set_sprite_animation		;$B6F236   |
 	LDA #$0001				;$B6F23A   |
 	SEP #$20				;$B6F23D   |
 	STA $2B,x				;$B6F23F   |
@@ -13015,12 +13015,12 @@ CODE_B6F2F5:					;	   |
 	STA $2E,x				;$B6F306   |
 	STZ $1E,x				;$B6F308   |
 	LDA #$0200				;$B6F30A   |
-	JSL set_sprite_animation				;$B6F30D   |
+	JSL set_sprite_animation		;$B6F30D   |
 	LDX $0656				;$B6F311   |
 	STX current_sprite			;$B6F314   |
 	STZ $1E,x				;$B6F316   |
 	LDA #$0204				;$B6F318   |
-	JSL set_sprite_animation				;$B6F31B   |
+	JSL set_sprite_animation		;$B6F31B   |
 	PLY					;$B6F31F   |
 	PLX					;$B6F320   |
 	STX current_sprite			;$B6F321   |
@@ -13509,7 +13509,7 @@ CODE_B6F71A:
 	LDX current_sprite			;$B6F71A  \
 	LDA $0C,x				;$B6F71C   |
 	BEQ CODE_B6F724				;$B6F71E   |
-	JSL set_sprite_animation				;$B6F720   |
+	JSL set_sprite_animation		;$B6F720   |
 CODE_B6F724:					;	   |
 	RTL					;$B6F724  /
 
@@ -13579,7 +13579,7 @@ CODE_B6F780:					;	   |
 CODE_B6F79E:					;	   |
 	LDA.l $00065C				;$B6F79E   |
 	BEQ CODE_B6F7AB				;$B6F7A2   |
-	JSL set_sprite_animation				;$B6F7A4   |
+	JSL set_sprite_animation		;$B6F7A4   |
 	STZ $065C				;$B6F7A8   |
 CODE_B6F7AB:					;	   |
 	LDA.l $00065E				;$B6F7AB   |
@@ -13588,7 +13588,7 @@ CODE_B6F7AB:					;	   |
 	PHX					;$B6F7B3   |
 	LDY $42,x				;$B6F7B4   |
 	STY current_sprite			;$B6F7B6   |
-	JSL set_sprite_animation				;$B6F7B8   |
+	JSL set_sprite_animation		;$B6F7B8   |
 	STZ $065E				;$B6F7BC   |
 	PLX					;$B6F7BF   |
 	STX current_sprite			;$B6F7C0   |
@@ -13699,12 +13699,12 @@ CODE_B6F8A4:					;	   |
 	STA $46,x				;$B6F8A4   |
 	STZ $1E,x				;$B6F8A6   |
 	LDA #$0207				;$B6F8A8   |
-	JSL set_sprite_animation				;$B6F8AB   |
+	JSL set_sprite_animation		;$B6F8AB   |
 	LDX $0656				;$B6F8AF   |
 	STX current_sprite			;$B6F8B2   |
 	STZ $1E,x				;$B6F8B4   |
 	LDA #$0208				;$B6F8B6   |
-	JSL set_sprite_animation				;$B6F8B9   |
+	JSL set_sprite_animation		;$B6F8B9   |
 	LDX $0654				;$B6F8BD   |
 	STX current_sprite			;$B6F8C0   |
 	LDA #DATA_B6CE3B			;$B6F8C2   |
@@ -13764,11 +13764,11 @@ CODE_B6F904:
 	STA $10,x				;$B6F91C   |
 	STX current_sprite			;$B6F91E   |
 	LDA #$020B				;$B6F920   |
-	JSL set_sprite_animation				;$B6F923   |
+	JSL set_sprite_animation		;$B6F923   |
 	PLX					;$B6F927   |
 	STX current_sprite			;$B6F928   |
 	LDA #$020C				;$B6F92A   |
-	JSL set_sprite_animation				;$B6F92D   |
+	JSL set_sprite_animation		;$B6F92D   |
 	RTL					;$B6F931  /
 
 DATA_B6F932:

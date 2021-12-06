@@ -7880,7 +7880,7 @@ CODE_B5CDEF:
 	RTS					;$B5CDF5  /
 
 	STX current_sprite			;$B5CDF6   |
-	JSL set_sprite_animation				;$B5CDF8   |
+	JSL set_sprite_animation		;$B5CDF8   |
 	RTS					;$B5CDFC  /
 
 CODE_B5CDFD:
