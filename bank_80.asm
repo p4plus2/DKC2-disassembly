@@ -129,7 +129,7 @@ piracy_string:
 display_error_message:
 	TYA					;$8083D0  \ Copy message id to A
 	JSL VRAM_payload_handler_global		;$8083D1   | Upload the anti-piracy screen contents
-	LDA #DATA_FD258E			;$8083D5   |\ Upload background palette
+	LDA #gameover_screen_palette		;$8083D5   |\ Upload background palette
 	LDY #$0000				;$8083D8   | |
 	LDX #$0020				;$8083DB   | |
 	JSL DMA_palette				;$8083DE   |/
@@ -487,7 +487,7 @@ CODE_808684:
 	STA PPU.layer_1_scroll_y		;$80868C   |
 	STA PPU.layer_1_scroll_y		;$80868F   |
 	REP #$20				;$808692   |
-	LDA #DATA_FD0FF0			;$808694   |
+	LDA #monkey_museum_palette		;$808694   |
 	LDY #$0000				;$808697   |
 	LDX #$0040				;$80869A   |
 	JSL DMA_palette				;$80869D   |
@@ -2678,7 +2678,7 @@ CODE_8097EB:					;	   |
 	JSL DMA_to_VRAM				;$809981   |
 	LDY #$0000				;$809985   |
 	LDX #$0040				;$809988   |
-	LDA #DATA_FD3C6E			;$80998B   |
+	LDA #file_select_screen_palette		;$80998B   |
 	JSL DMA_palette				;$80998E   |
 	LDY #$0080				;$809992   |
 	LDX #$0004				;$809995   |
@@ -3542,7 +3542,7 @@ CODE_80A0E9:					;	   |
 	STA $0F0E				;$80A280   |
 	LDY #$0000				;$80A283   |
 	LDX #$0020				;$80A286   |
-	LDA #DATA_FD420E			;$80A289   |
+	LDA #secret_ending_screen_palette	;$80A289   |
 	JSL DMA_palette				;$80A28C   |
 	LDY #$0080				;$80A290   |
 	LDX #$0020				;$80A293   |
@@ -4136,7 +4136,7 @@ namespace off					;	   |
 	JSR upload_file_tilemaps		;$80A7D5   | Upload all three file tilemaps
 	LDY #$0000				;$80A7D8   |\ Upload file select palette
 	LDX #$0040				;$80A7DB   | |
-	LDA #DATA_FD3C6E			;$80A7DE   | |
+	LDA #file_select_screen_palette		;$80A7DE   | |
 	JSL DMA_palette				;$80A7E1   |/
 	STZ PPU.vram_address			;$80A7E5   |
 	LDX.w #DATA_FB0180>>16			;$80A7E8   |\ Upload initial DK coin frame
@@ -7508,14 +7508,14 @@ CODE_80C515:					;	   |
 	ORA $36					;$80C53D   |
 	STA $0913				;$80C53F   |
 	LDY #$0000				;$80C542   |
-	LDX #DATA_FD0910			;$80C545   |
+	LDX #lockjaws_locker_level_palette	;$80C545   |
 	LDA $32					;$80C548   |
 	CMP #$0014				;$80C54A   |
 	BCS CODE_80C55C				;$80C54D   |
 	LDX #DATA_FD08F0			;$80C54F   |
 	CMP #$0010				;$80C552   |
 	BCS CODE_80C55C				;$80C555   |
-	LDX #DATA_FD07F0			;$80C557   |
+	LDX #lava_lagoon_level_palette		;$80C557   |
 	BRA CODE_80C55C				;$80C55A  /
 
 CODE_80C55C:
@@ -7723,7 +7723,7 @@ CODE_80C6E7:					;	   |
 	LDX #DATA_FD396E			;$80C721   |
 	CMP #$000C				;$80C724   |
 	BCS CODE_80C72E				;$80C727   |
-	LDX #DATA_FD0910			;$80C729   |
+	LDX #lockjaws_locker_level_palette	;$80C729   |
 	BRA CODE_80C72E				;$80C72C  /
 
 CODE_80C72E:
@@ -12739,7 +12739,7 @@ CODE_80F3FB:
 	LDA #$003A				;$80F426   |
 	JSL VRAM_payload_handler_global		;$80F429   |
 	LDY #$0000				;$80F42D   |
-	LDA #DATA_FD13F0			;$80F430   |
+	LDA #klubbas_kiosk_palette		;$80F430   |
 	LDX #$0020				;$80F433   |
 	JSL DMA_palette				;$80F436   |
 	LDA #$0100				;$80F43A   |
@@ -13318,7 +13318,7 @@ CODE_80FA7C:
 	JSL play_song				;$80FA9B   |
 	LDA #$0100				;$80FA9F   |
 	JSR set_fade				;$80FAA2   |
-	LDA #DATA_FD258E			;$80FAA5   |
+	LDA #gameover_screen_palette		;$80FAA5   |
 	LDY #$0000				;$80FAA8   |
 	LDX #$0020				;$80FAAB   |
 	JSL DMA_palette				;$80FAAE   |

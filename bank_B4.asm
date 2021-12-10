@@ -9029,7 +9029,7 @@ DATA_B4CD5B:
 	db $0A, $00
 
 DATA_B4CD65:
-	db $08, $07 : dw DATA_FD0FF0 : db $E0, $FF, $AB, $00
+	db $08, $07 : dw monkey_museum_palette : db $E0, $FF, $AB, $00
 	db $C0, $FF, $AB, $00, $00, $00
 
 DATA_B4CD73:
@@ -9041,7 +9041,7 @@ DATA_B4CD75:
 	db $40, $00, $00, $01
 
 DATA_B4CD81:
-	db $09, $08 : dw DATA_FD10F0 : db $10, $01, $C0, $00
+	db $09, $08 : dw funkys_flights_palette : db $10, $01, $C0, $00
 	db $30, $01, $C0, $00, $01, $00
 
 DATA_B4CD8F:
@@ -9053,7 +9053,7 @@ DATA_B4CD91:
 	db $C0, $00, $00, $01
 
 DATA_B4CD9D:
-	db $0B, $07 : dw DATA_FD12F0 : db $10, $01, $B8, $00
+	db $0B, $07 : dw swankys_bonus_bonanza_palette : db $10, $01, $B8, $00
 	db $30, $01, $B8, $00, $00, $00
 
 DATA_B4CDAB:
@@ -9065,7 +9065,7 @@ DATA_B4CDAD:
 	db $C8, $00, $00, $01
 
 DATA_B4CDB9:
-	db $0A, $07 : dw DATA_FD11F0 : db $10, $01, $B0, $00
+	db $0A, $07 : dw kong_kollege_palette : db $10, $01, $B0, $00
 	db $30, $01, $B0, $00, $01, $00
 
 DATA_B4CDC7:
@@ -9077,7 +9077,7 @@ DATA_B4CDC9:
 	db $C0, $00, $00, $01
 
 DATA_B4CDD5:
-	db $0C, $07 : dw DATA_FD13F0 : db $E0, $FF, $A4, $00
+	db $0C, $07 : dw klubbas_kiosk_palette : db $E0, $FF, $A4, $00
 	db $C0, $FF, $A4, $00, $00, $00
 
 DATA_B4CDE3:

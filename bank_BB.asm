@@ -3240,7 +3240,7 @@ CODE_BB9631:
 	JSL VRAM_payload_handler_global		;$BB9634   |
 	LDA $0539				;$BB9638   |
 	JSL VRAM_payload_handler_global		;$BB963B   |
-	LDA #DATA_FD29EE			;$BB963F   |
+	LDA #screechs_sprint_level_palette	;$BB963F   |
 	STA $0A8E				;$BB9642   |
 	JSR CODE_BB94B6				;$BB9645   |
 	LDA $0537				;$BB9648   |
@@ -3252,7 +3252,7 @@ CODE_BB9650:
 	JSL VRAM_payload_handler_global		;$BB9653   |
 	LDA $0539				;$BB9657   |
 	JSL VRAM_payload_handler_global		;$BB965A   |
-	LDA #DATA_FD2AEE			;$BB965E   |
+	LDA #bramble_scramble_level_palette	;$BB965E   |
 	STA $0A8E				;$BB9661   |
 	JSR CODE_BB94B6				;$BB9664   |
 	LDA $0537				;$BB9667   |
@@ -3306,7 +3306,7 @@ CODE_BB96D5:
 	LDA $0537				;$BB96E3   |
 	JSL set_PPU_registers_global		;$BB96E6   |
 	LDY #$0000				;$BB96EA   |
-	LDA #DATA_FD3A4E			;$BB96ED   |
+	LDA #web_woods_level_palette		;$BB96ED   |
 	LDX #$0020				;$BB96F0   |
 	JSL DMA_palette				;$BB96F3   |
 	RTS					;$BB96F7  /
@@ -3319,7 +3319,7 @@ CODE_BB96F8:
 	LDA $0537				;$BB9706   |
 	JSL set_PPU_registers_global		;$BB9709   |
 	LDY #$0000				;$BB970D   |
-	LDA #DATA_FD324E			;$BB9710   |
+	LDA #rattle_battle_level_palette	;$BB9710   |
 	LDX #$0020				;$BB9713   |
 	JSL DMA_palette				;$BB9716   |
 	RTS					;$BB971A  /
@@ -3332,7 +3332,7 @@ CODE_BB971B:
 	LDA $0537				;$BB9729   |
 	JSL set_PPU_registers_global		;$BB972C   |
 	LDY #$0000				;$BB9730   |
-	LDA #DATA_FD304E			;$BB9733   |
+	LDA #slime_climb_level_palette		;$BB9733   |
 	LDX #$0020				;$BB9736   |
 	JSL DMA_palette				;$BB9739   |
 	RTS					;$BB973D  /
@@ -3345,7 +3345,7 @@ CODE_BB973E:
 	LDA $0537				;$BB974C   |
 	JSL set_PPU_registers_global		;$BB974F   |
 	LDY #$0000				;$BB9753   |
-	LDA #DATA_FD07F0			;$BB9756   |
+	LDA #lava_lagoon_level_palette		;$BB9756   |
 	LDX #$0020				;$BB9759   |
 	JSL DMA_palette				;$BB975C   |
 	RTS					;$BB9760  /
@@ -3359,7 +3359,7 @@ CODE_BB9761:
 	LDA $0537				;$BB9772   |
 	JSL set_PPU_registers_global		;$BB9775   |
 	LDY #$0000				;$BB9779   |
-	LDA #DATA_FD2EEE			;$BB977C   |
+	LDA #haunted_hall_level_palette		;$BB977C   |
 	LDX #$0020				;$BB977F   |
 	JSL DMA_palette				;$BB9782   |
 	BRA CODE_BB9798				;$BB9786  /
@@ -3367,7 +3367,7 @@ CODE_BB9761:
 CODE_BB9788:
 	JSR CODE_BB95F2				;$BB9788  \
 	LDY #$0000				;$BB978B   |
-	LDA #DATA_FD1710			;$BB978E   |
+	LDA #carnival_level_palette		;$BB978E   |
 	LDX #$0020				;$BB9791   |
 	JSL DMA_palette				;$BB9794   |
 CODE_BB9798:					;	   |
@@ -3394,7 +3394,7 @@ CODE_BB97B4:
 	LDA $0537				;$BB97C5   |
 	JSL set_PPU_registers_global		;$BB97C8   |
 	LDY #$0000				;$BB97CC   |
-	LDA #DATA_FD2BEE			;$BB97CF   |
+	LDA #glimmers_galleon_level_palette	;$BB97CF   |
 	LDX #$0020				;$BB97D2   |
 	JSL DMA_palette				;$BB97D5   |
 	RTS					;$BB97D9  /
@@ -3404,7 +3404,7 @@ CODE_BB97DA:
 	JSL VRAM_payload_handler_global		;$BB97DD   |
 	LDA $0539				;$BB97E1   |
 	JSL VRAM_payload_handler_global		;$BB97E4   |
-	LDA #DATA_FD1610			;$BB97E8   |
+	LDA #mainbrace_mayhem_level_palette	;$BB97E8   |
 	STA $0A8E				;$BB97EB   |
 	JSR CODE_BB94B6				;$BB97EE   |
 	LDA $0537				;$BB97F1   |
@@ -4832,13 +4832,13 @@ CODE_BBA817:					;	   |
 	STA $7E8832				;$BBA824   |
 	LDA #$0000				;$BBA828   |
 	STA $7E8833				;$BBA82B   |
-	LDA.l DATA_FD2BEE			;$BBA82F   |
+	LDA.l glimmers_galleon_level_palette	;$BBA82F   |
 	STA $7E8835				;$BBA833   |
 	LDA #$006F				;$BBA837   |
 	STA $7E8837				;$BBA83A   |
 	LDA #$0000				;$BBA83E   |
 	STA $7E8838				;$BBA841   |
-	LDA.l DATA_FD2BEE			;$BBA845   |
+	LDA.l glimmers_galleon_level_palette	;$BBA845   |
 	STA $7E883A				;$BBA849   |
 	LDA #$0001				;$BBA84D   |
 	STA $7E883C				;$BBA850   |

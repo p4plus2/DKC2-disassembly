@@ -5739,12 +5739,12 @@ DATA_B5BAEF:
 	%offset(DATA_B5BAF1, 2)
 	dl forest_32x32_tilemap
 	dl ship_hold_32x32_tilemap
-	dl hive_32x32_tilemap
+	dl wasp_hive_32x32_tilemap
 	dl ship_deck_32x32_tilemap
 	dl ship_mast_32x32_tilemap
 	dl carnival_32x32_tilemap
 	dl lava_32x32_tilemap
-	dl hive_2_32x32_tilemap
+	dl wasp_hive_2_32x32_tilemap
 	dl mine_32x32_tilemap
 	dl swamp_32x32_tilemap
 	dl brambles_32x32_tilemap
@@ -5764,12 +5764,12 @@ DATA_B5BB2E:
 	%offset(DATA_B5BB30, 2)
 	dl forest_8x8_tilemap
 	dl ship_hold_8x8_tilemap
-	dl hive_8x8_tilemap
+	dl wasp_hive_8x8_tilemap
 	dl ship_deck_8x8_tilemap
 	dl ship_mast_8x8_tilemap
 	dl carnival_8x8_tilemap
 	dl lava_8x8_tilemap
-	dl hive_8x8_tilemap
+	dl wasp_hive_8x8_tilemap
 	dl mine_8x8_tilemap
 	dl swamp_8x8_tilemap
 	dl brambles_8x8_tilemap
@@ -5797,12 +5797,12 @@ DATA_B5BB97:
 	%offset(DATA_B5BB99, 2)
 	dl forest_collision
 	dl ship_hold_collision
-	dl hive_collision
+	dl wasp_hive_collision
 	dl ship_deck_collision
 	dl ship_mast_collision
 	dl carnival_collision
 	dl lava_collision
-	dl hive_collision
+	dl wasp_hive_collision
 	dl mine_collision
 	dl swamp_collision
 	dl brambles_collision
@@ -5850,27 +5850,27 @@ DATA_B5BC00:
 	dw CODE_B5C2DB
 
 DATA_B5BC2A:
-	dw DATA_FD06F0
-	dw DATA_FD0910
-	dw DATA_FD0A10
-	dw DATA_FD0CD0
-	dw DATA_FD14F0
-	dw DATA_FD1710
-	dw DATA_FD0DF0
-	dw DATA_FD0A10
-	dw DATA_FD228E
-	dw DATA_FD27EE
-	dw DATA_FD28EE
-	dw DATA_FD2DEE
-	dw DATA_FD2CEE
-	dw DATA_FD314E
-	dw DATA_FD398E
-	dw DATA_FD3B6E
+	dw ghostly_grove_level_palette
+	dw lockjaws_locker_level_palette
+	dw wasp_hive_level_palette
+	dw pirate_panic_level_palette
+	dw topsail_trouble_level_palette
+	dw carnival_level_palette
+	dw lava_level_palette
+	dw wasp_hive_level_palette
+	dw kannons_klaim_level_palette
+	dw barrel_bayou_level_palette
+	dw bramble_blast_level_palette
+	dw castle_level_palette
+	dw krocodile_kore_level_palette
+	dw k_rool_duel_level_palette
+	dw ice_level_palette
+	dw animal_antics_jungle_level_palette
 	dw DATA_FD2170
-	dw DATA_FD398E
-	dw DATA_FD28EE
-	dw DATA_FD1710
-	dw DATA_FD2DEE
+	dw ice_level_palette
+	dw bramble_blast_level_palette
+	dw carnival_level_palette
+	dw castle_level_palette
 
 
 DATA_B5BC54:

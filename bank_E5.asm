@@ -5365,7 +5365,7 @@ ship_hold_8x8_tilemap:
 	db $3B, $74, $1D, $4F, $43, $A3, $5A, $27
 	db $51, $90, $00
 
-hive_8x8_tilemap:
+wasp_hive_8x8_tilemap:
 	db $00, $00, $09, $0C, $0E, $00, $00, $A7
 	db $04, $BA, $0C, $96, $06, $59, $0C, $0C
 	db $36, $6F, $0C, $67, $0C, $8B, $0E, $B9
