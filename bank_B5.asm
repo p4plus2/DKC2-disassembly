@@ -7923,7 +7923,7 @@ CODE_B5CE40:
 	JSR CODE_B5E0A1				;$B5CE40  /
 
 DATA_B5CE43:
-	db $05, $04 : dw DATA_FD0B10 : db $04, $04
+	db $05, $04 : dw crocodile_isle_map_palette : db $04, $04
 
 
 CODE_B5CE49:
@@ -7934,7 +7934,7 @@ CODE_B5CE4F:
 	JSR CODE_B5E0A1				;$B5CE4F  /
 
 DATA_B5CE52:
-	db $0D, $09 : dw DATA_FD1870 : db $0B, $0B
+	db $0D, $09 : dw gangplank_galleon_map_palette : db $0B, $0B
 
 
 CODE_B5CE58:
@@ -7945,7 +7945,7 @@ CODE_B5CE5E:
 	JSR CODE_B5E0A1				;$B5CE5E  /
 
 DATA_B5CE61:
-	db $0E, $09 : dw DATA_FD1970 : db $0B, $0B
+	db $0E, $09 : dw crocodile_cauldron_map_palette : db $0B, $0B
 
 
 CODE_B5CE67:
@@ -7956,7 +7956,7 @@ CODE_B5CE6D:
 	JSR CODE_B5E0A1				;$B5CE6D  /
 
 DATA_B5CE70:
-	db $0F, $0A : dw DATA_FD1A70 : db $0B, $0B
+	db $0F, $0A : dw krem_quay_map_palette : db $0B, $0B
 
 
 CODE_B5CE76:
@@ -7967,7 +7967,7 @@ CODE_B5CE7C:
 	JSR CODE_B5E0A1				;$B5CE7C  /
 
 DATA_B5CE7F:
-	db $10, $09 : dw DATA_FD1B70 : db $0B, $0B
+	db $10, $09 : dw krazy_kremland_outside_map_palette : db $0B, $0B
 
 
 CODE_B5CE85:
@@ -7978,7 +7978,7 @@ CODE_B5CE8B:
 	JSR CODE_B5E0A1				;$B5CE8B  /
 
 DATA_B5CE8E:
-	db $11, $09 : dw DATA_FD1C70 : db $0B, $0B
+	db $11, $09 : dw gloomy_gultch_map_palette : db $0B, $0B
 
 
 CODE_B5CE94:
@@ -7989,7 +7989,7 @@ CODE_B5CE9A:
 	JSR CODE_B5E0A1				;$B5CE9A  /
 
 DATA_B5CE9D:
-	db $12, $0C : dw DATA_FD1D70 : db $0B, $0B
+	db $12, $0C : dw krools_keep_map_palette : db $0B, $0B
 
 
 CODE_B5CEA3:
@@ -8000,7 +8000,7 @@ CODE_B5CEA9:
 	JSR CODE_B5E0A1				;$B5CEA9  /
 
 DATA_B5CEAC:
-	db $14, $09 : dw DATA_FD1E70 : db $0B, $0B
+	db $14, $09 : dw the_flying_krock_map_palette : db $0B, $0B
 
 
 CODE_B5CEB2:
@@ -8011,7 +8011,7 @@ CODE_B5CEB8:
 	JSR CODE_B5E0A1				;$B5CEB8  /
 
 DATA_B5CEBB:
-	db $13, $09 : dw DATA_FD1F70 : db $0B, $0B
+	db $13, $09 : dw lost_world_map_palette : db $0B, $0B
 
 
 CODE_B5CEC1:
@@ -8022,7 +8022,7 @@ CODE_B5CEC7:
 	JSR CODE_B5E0A1				;$B5CEC7  /
 
 DATA_B5CECA:
-	db $15, $09 : dw DATA_FD2070 : db $0B, $0B
+	db $15, $09 : dw krazy_kremland_inside_map_palette : db $0B, $0B
 
 
 CODE_B5CED0:
@@ -8033,7 +8033,7 @@ CODE_B5CED6:
 	JSR CODE_B5E0A1				;$B5CED6  /
 
 DATA_B5CED9:
-	db $13, $0D : dw DATA_FD1F70 : db $21, $0B
+	db $13, $0D : dw lost_world_map_palette : db $21, $0B
 
 CODE_B5CEDF:
 	SEP #$20				;$B5CEDF  \

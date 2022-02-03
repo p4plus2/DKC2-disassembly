@@ -1229,7 +1229,7 @@ DATA_FF0F06:
 DATA_FF0F18:
 	dw sprite.number, $00FC
 	dw !initcommand_spawn_relative, $0000, $0000
-	dw !initcommand_set_palette, DATA_FD6574
+	dw !initcommand_set_palette, dixie_active_sprite_palette
 	dw !initcommand_set_animation, $015C
 	dw !initcommand_success
 
@@ -1238,7 +1238,7 @@ DATA_FF0F2C:
 	dw !initcommand_spawn_relative, $FFFB, $FFE2
 	dw sprite.unknown_42, $0400
 	dw !initcommand_set_oam, $3000
-	dw !initcommand_set_palette, DATA_FD6484
+	dw !initcommand_set_palette, diddy_active_sprite_palette
 	dw !initcommand_set_animation, $015D
 	dw !initcommand_success
 
@@ -1273,7 +1273,7 @@ DATA_FF0F84:
 DATA_FF0F98:
 	dw sprite.number, $0110
 	dw !initcommand_spawn_relative, $000A, $0008
-	dw !initcommand_set_palette, DATA_FD6574
+	dw !initcommand_set_palette, dixie_active_sprite_palette
 	dw !initcommand_set_animation, $0153
 	dw !initcommand_success
 
@@ -1422,7 +1422,7 @@ DATA_FF1162:
 	dw sprite.render_order, $00ED
 	dw sprite.action, $0000
 	dw sprite.unknown_4E, $2020
-	dw !initcommand_set_palette, DATA_FD6484
+	dw !initcommand_set_palette, diddy_active_sprite_palette
 	dw !initcommand_set_oam, $2000
 	dw !initcommand_success
 
@@ -1432,7 +1432,7 @@ DATA_FF1182:
 	dw sprite.render_order, $00ED
 	dw sprite.action, $0000
 	dw sprite.unknown_4E, $2020
-	dw !initcommand_set_palette, DATA_FD6574
+	dw !initcommand_set_palette, dixie_active_sprite_palette
 	dw !initcommand_set_oam, $2000
 	dw !initcommand_success
 
@@ -1590,7 +1590,7 @@ DATA_FF1330:
 	dw sprite.action, $0000
 	dw sprite.unknown_30, $001E
 	dw !initcommand_set_oam, $2000
-	dw !initcommand_set_palette, DATA_FD6484
+	dw !initcommand_set_palette, diddy_active_sprite_palette
 	dw !initcommand_success
 
 DATA_FF136E:
@@ -1608,7 +1608,7 @@ DATA_FF136E:
 	dw sprite.action, $0000
 	dw sprite.unknown_30, $001E
 	dw !initcommand_set_oam, $2000
-	dw !initcommand_set_palette, DATA_FD6574
+	dw !initcommand_set_palette, dixie_active_sprite_palette
 	dw !initcommand_success
 
 DATA_FF13AC:
@@ -2313,7 +2313,7 @@ DATA_FF1AEA:
 	dw !initcommand_spawn_relative, $FFFF, $FFDD
 	dw sprite.unknown_42, $002D
 	dw !initcommand_set_oam, $3000
-	dw !initcommand_set_palette, DATA_FD6484
+	dw !initcommand_set_palette, diddy_active_sprite_palette
 	dw !initcommand_set_animation, $015D
 	dw !initcommand_success
 

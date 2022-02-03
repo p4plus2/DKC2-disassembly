@@ -527,7 +527,7 @@ wasp_hive_level_palette:
 	db $73, $00, $45, $00, $C9, $00, $D0, $09
 	db $7F, $0B, $2B, $1D, $55, $3E, $FF, $7F
 
-DATA_FD0B10:
+crocodile_isle_map_palette:
 	db $00, $00, $42, $08, $A4, $10, $E6, $18
 	db $00, $00, $07, $1D, $49, $25, $8A, $29
 	db $00, $00, $8A, $29, $CC, $31, $0E, $3A
@@ -988,7 +988,7 @@ carnival_level_palette:
 	db $42, $08, $21, $04, $42, $08, $63, $0C
 	db $4A, $29, $29, $25, $C6, $18, $A5, $14
 
-DATA_FD1870:
+gangplank_galleon_map_palette:
 	db $00, $00, $FF, $7F, $F7, $5A, $EF, $31
 	db $88, $21, $21, $11, $E3, $10, $EE, $21
 	db $CC, $15, $8A, $09, $25, $0D, $C0, $0C
@@ -1022,7 +1022,7 @@ DATA_FD1870:
 	db $90, $19, $14, $22, $78, $2A, $B3, $08
 	db $EC, $0C, $BD, $2E, $5F, $08, $01, $7E
 
-DATA_FD1970:
+crocodile_cauldron_map_palette:
 	db $00, $00, $23, $00, $25, $00, $47, $00
 	db $49, $00, $6B, $00, $6D, $00, $8F, $00
 	db $91, $00, $B3, $00, $B5, $00, $D7, $00
@@ -1056,7 +1056,7 @@ DATA_FD1970:
 	db $26, $00, $26, $00, $27, $00, $27, $00
 	db $48, $00, $48, $00, $49, $00, $4A, $00
 
-DATA_FD1A70:
+krem_quay_map_palette:
 	db $00, $7C, $AB, $11, $6A, $0D, $48, $0D
 	db $E6, $08, $A5, $08, $83, $08, $62, $04
 	db $41, $04, $A5, $08, $42, $04, $C6, $0C
@@ -1090,7 +1090,7 @@ DATA_FD1A70:
 	db $74, $11, $CC, $08, $67, $04, $36, $11
 	db $23, $05, $50, $1A, $0A, $1E, $44, $06
 
-DATA_FD1B70:
+krazy_kremland_outside_map_palette:
 	db $00, $00, $41, $04, $63, $0C, $A4, $10
 	db $C6, $18, $07, $1D, $29, $25, $6A, $29
 	db $8C, $31, $CD, $35, $EF, $3D, $61, $04
@@ -1127,7 +1127,7 @@ DATA_FD1C2A:
 	db $27, $08, $28, $04, $41, $04, $63, $0C
 	db $A4, $10, $C6, $18, $07, $1D
 
-DATA_FD1C70:
+gloomy_gultch_map_palette:
 	db $00, $00, $20, $04, $41, $08, $61, $0C
 	db $81, $0C, $A1, $10, $C1, $14, $E1, $18
 	db $01, $19, $42, $1D, $C2, $14, $E3, $10
@@ -1161,7 +1161,7 @@ DATA_FD1C70:
 	db $64, $0D, $47, $16, $2A, $23, $ED, $2B
 	db $F3, $57, $F9, $7F, $E2, $14, $A1, $10
 
-DATA_FD1D70:
+krools_keep_map_palette:
 	db $00, $00, $67, $05, $88, $05, $C9, $09
 	db $0A, $0A, $4B, $0E, $8C, $0E, $AD, $1A
 	db $EF, $26, $31, $37, $51, $53, $03, $05
@@ -1195,7 +1195,7 @@ DATA_FD1D70:
 	db $36, $36, $98, $29, $FA, $1C, $E5, $10
 	db $27, $11, $C9, $09, $02, $11, $64, $04
 
-DATA_FD1E70:
+the_flying_krock_map_palette:
 	db $3C, $68, $E7, $01, $0A, $16, $4D, $26
 	db $70, $3A, $B3, $46, $15, $4F, $9A, $63
 	db $FF, $7F, $5A, $67, $B4, $4A, $50, $3A
@@ -1229,7 +1229,7 @@ DATA_FD1E70:
 	db $FF, $7F, $69, $01, $4F, $3A, $EC, $2D
 	db $8A, $21, $26, $11, $C3, $08, $80, $00
 
-DATA_FD1F70:
+lost_world_map_palette:
 	db $1F, $7C, $7F, $00, $FF, $01, $BF, $01
 	db $68, $04, $98, $00, $CC, $08, $EA, $0C
 	db $5F, $01, $A8, $05, $08, $01, $B0, $04
@@ -1263,7 +1263,7 @@ DATA_FD1F70:
 	db $86, $64, $D1, $7C, $83, $7E, $E3, $79
 	db $62, $65, $21, $51, $E1, $3C, $A0, $28
 
-DATA_FD2070:
+krazy_kremland_inside_map_palette:
 	db $1F, $7C, $00, $00, $43, $00, $65, $00
 	db $8A, $04, $CF, $04, $F4, $08, $B8, $11
 	db $5C, $1E, $1F, $2B, $9F, $37, $07, $09
@@ -3936,11 +3936,11 @@ DATA_FD5FEC:
 
 DATA_FD5FEE:
 	dw DATA_FD6682
-	dw DATA_FD6484
+	dw diddy_active_sprite_palette
 	dw DATA_FD6664
 	dw DATA_FD68BC
-	dw DATA_FD6574
-	dw DATA_FD66A0
+	dw dixie_active_sprite_palette
+	dw squitter_sprite_palette
 	dw DATA_FD66BE
 	dw DATA_FD66DC
 	dw DATA_FD66FA
@@ -3948,9 +3948,9 @@ DATA_FD5FEE:
 	dw DATA_FD6736
 	dw DATA_FD6772
 	dw DATA_FD6790
-	dw DATA_FD67EA
+	dw rattly_sprite_palette
 	dw DATA_FD6808
-	dw DATA_FD6826
+	dw squawks_sprite_palette
 	dw DATA_FD6862
 	dw DATA_FD6880
 	dw DATA_FD689E
@@ -3970,10 +3970,10 @@ DATA_FD5FEE:
 	dw DATA_FD6A24
 	dw DATA_FD6A60
 	dw DATA_FD6A42
-	dw DATA_FD7528
+	dw funky_kong_sprite_palette
 	dw DATA_FD7898
 	dw DATA_FD7546
-	dw DATA_FD6A7E
+	dw cranky_kong_sprite_palette
 	dw DATA_FD6ABA
 	dw DATA_FD6B8C
 	dw DATA_FD78B6
@@ -3992,7 +3992,7 @@ DATA_FD6044:
 	dw DATA_FD7292
 	dw DATA_FD7184
 	dw DATA_FD71A2
-	dw DATA_FD6A9C
+	dw swanky_kong_sprite_palette
 	dw DATA_FD6C04
 	dw DATA_FD79C4
 	dw DATA_FD6C40
@@ -4004,13 +4004,13 @@ DATA_FD6044:
 	dw DATA_FD6318
 	dw DATA_FD765A
 	dw DATA_FD7678
-	dw DATA_FD6D12
+	dw rambi_sprite_palette
 	dw DATA_FD6D30
 	dw DATA_FD6D4E
 	dw DATA_FD6D6C
 	dw DATA_FD6D8A
 	dw DATA_FD6BE6
-	dw DATA_FD6CF4
+	dw glimmer_sprite_palette
 	dw DATA_FD67AE
 	dw DATA_FD6C22
 	dw DATA_FD67CC
@@ -4021,7 +4021,7 @@ DATA_FD6044:
 	dw DATA_FD6DC6
 	dw DATA_FD6E02
 	dw DATA_FD6E20
-	dw DATA_FD6844
+	dw quawks_sprite_palette
 	dw DATA_FD785C
 	dw DATA_FD787A
 	dw DATA_FD6DE4
@@ -4033,7 +4033,7 @@ DATA_FD6044:
 	dw DATA_FD6EF2
 	dw DATA_FD62A0
 	dw DATA_FD62BE
-	dw DATA_FD6F4C
+	dw enguarde_sprite_palette
 	dw DATA_FD69E8
 	dw DATA_FD6F10
 	dw DATA_FD6F2E
@@ -4048,14 +4048,14 @@ DATA_FD6044:
 	dw DATA_FD703C
 	dw DATA_FD7078
 	dw DATA_FD6242
-	dw DATA_FD7096
+	dw clapper_sprite_palette
 	dw DATA_FD70B4
 	dw DATA_FD721A
 	dw DATA_FD7238
 	dw DATA_FD7256
 	dw DATA_FD7274
-	dw DATA_FD72B2
-	dw DATA_FD72D0
+	dw yoshi_sprite_palette
+	dw mario_sprite_palette
 	dw DATA_FD70EE
 	dw DATA_FD6336
 	dw DATA_FD6354
@@ -4066,7 +4066,7 @@ DATA_FD6044:
 	dw DATA_FD63EA
 	dw DATA_FD6408
 	dw DATA_FD7800
-	dw DATA_FD6446
+	dw link_sprite_palette
 	dw DATA_FD7910
 	dw DATA_FD792E
 	dw DATA_FD794C
@@ -4100,8 +4100,8 @@ DATA_FD6044:
 	dw DATA_FD7456
 	dw DATA_FD7474
 	dw DATA_FD7492
-	dw DATA_FD7582
-	dw DATA_FD75A0
+	dw wrinkly_kong_sprite_palette
+	dw wrinkly_kong_book_sprite_palette
 	dw DATA_FD763A
 	dw DATA_FD7696
 	dw DATA_FD76B6
@@ -4297,7 +4297,7 @@ DATA_FD6428:
 	db $BF, $51, $CC, $04, $E0, $02, $97, $04
 	db $BF, $0C, $EF, $3D, $FF, $7F
 
-DATA_FD6446:
+link_sprite_palette:
 	db $7F, $4B, $BC, $3A, $F8, $29, $50, $19
 	db $00, $0E, $C0, $0D, $60, $09, $A0, $04
 	db $60, $00, $5D, $03, $35, $0A, $EC, $00
@@ -4310,7 +4310,7 @@ DATA_FD6464:
 	db $09, $04, $7B, $0C, $CF, $39, $30, $04
 
 
-DATA_FD6484:
+diddy_active_sprite_palette:
 	db $66, $04, $8A, $08, $CD, $0C, $12, $0D
 	db $56, $11, $52, $1D, $D9, $2D, $7F, $3A
 	db $DF, $46, $5F, $4F, $55, $04, $7A, $08
@@ -4342,7 +4342,7 @@ DATA_FD6484:
 	db $FF, $7F, $FF, $7F, $FF, $7F, $1F, $19
 	db $5F, $1D, $FF, $2D, $FF, $7F, $FF, $7F
 
-DATA_FD6574:
+dixie_active_sprite_palette:
 	db $24, $04, $8A, $04, $F1, $04, $5A, $09
 	db $1B, $2E, $FF, $46, $BF, $5B, $AF, $0D
 	db $98, $16, $FF, $2B, $B2, $24, $F9, $30
@@ -4386,7 +4386,7 @@ DATA_FD6682:
 	db $EF, $39, $09, $00, $0C, $00, $30, $04
 	db $34, $04, $5F, $08, $BF, $05
 
-DATA_FD66A0:
+squitter_sprite_palette:
 	db $05, $00, $0C, $00, $32, $00, $59, $00
 	db $7F, $00, $FF, $00, $5F, $01, $FF, $01
 	db $9F, $02, $6B, $00, $14, $01, $29, $25
@@ -4452,7 +4452,7 @@ DATA_FD67CC:
 	db $92, $11, $5A, $16, $3E, $23, $DF, $53
 	db $9F, $04, $FF, $7F, $FF, $7F
 
-DATA_FD67EA:
+rattly_sprite_palette:
 	db $62, $00, $C4, $00, $67, $01, $09, $02
 	db $CD, $06, $F7, $27, $6E, $14, $1B, $31
 	db $FE, $49, $FF, $66, $4C, $0D, $34, $12
@@ -4464,13 +4464,13 @@ DATA_FD6808:
 	db $7A, $04, $5B, $0D, $3D, $1A, $FE, $22
 	db $DF, $2B, $B6, $5E, $BE, $77
 
-DATA_FD6826:
+squawks_sprite_palette:
 	db $83, $04, $C2, $00, $43, $01, $A4, $01
 	db $27, $02, $8D, $02, $A9, $00, $16, $01
 	db $D8, $05, $5D, $06, $FF, $0E, $9F, $2F
 	db $0E, $00, $39, $00, $FF, $7F
 
-DATA_FD6844:
+quawks_sprite_palette:
 	db $42, $10, $63, $1C, $A5, $2C, $E7, $3C
 	db $4A, $51, $AD, $65, $A9, $00, $16, $01
 	db $D8, $05, $5D, $06, $FF, $0E, $9F, $2F
@@ -4584,13 +4584,13 @@ DATA_FD6A60:
 	db $84, $10, $C6, $18, $28, $21, $8C, $2D
 	db $10, $3A, $F7, $5A, $DE, $77
 
-DATA_FD6A7E:
+cranky_kong_sprite_palette:
 	db $23, $00, $11, $19, $99, $21, $5F, $32
 	db $1F, $47, $26, $00, $8A, $08, $CD, $0C
 	db $F6, $2D, $63, $21, $E4, $29, $86, $3A
 	db $8C, $31, $B5, $56, $9C, $73
 
-DATA_FD6A9C:
+swanky_kong_sprite_palette:
 	db $21, $00, $6B, $00, $D2, $00, $39, $01
 	db $82, $18, $25, $35, $A6, $4D, $8A, $76
 	db $DC, $25, $5F, $32, $FF, $3E, $9F, $47
@@ -4710,13 +4710,13 @@ DATA_FD6CD6:
 	db $6D, $37, $EF, $3F, $51, $4F, $B5, $63
 	db $B1, $01, $79, $26, $FF, $7F
 
-DATA_FD6CF4:
+glimmer_sprite_palette:
 	db $22, $00, $47, $04, $A8, $0C, $AE, $04
 	db $2E, $19, $6B, $25, $CE, $41, $F1, $04
 	db $32, $15, $B3, $21, $57, $36, $58, $36
 	db $95, $46, $5B, $5B, $FF, $7F
 
-DATA_FD6D12:
+rambi_sprite_palette:
 	db $00, $00, $63, $0C, $C7, $14, $2C, $21
 	db $70, $29, $D4, $35, $36, $42, $B9, $4E
 	db $1B, $5B, $7D, $67, $FF, $73, $B8, $1C
@@ -4830,7 +4830,7 @@ DATA_FD6F2E:
 	db $9C, $4E, $3D, $63, $FF, $7F, $A9, $08
 	db $CA, $18, $35, $11, $7E, $0C
 
-DATA_FD6F4C:
+enguarde_sprite_palette:
 	db $60, $18, $A0, $30, $E0, $3C, $41, $49
 	db $C3, $59, $65, $6A, $E6, $7A, $C9, $7F
 	db $AB, $2A, $C3, $45, $85, $42, $49, $3B
@@ -4896,7 +4896,7 @@ DATA_FD7078:
 	db $C0, $31, $A0, $52, $81, $73, $6C, $46
 	db $60, $25, $16, $39, $FF, $7F
 
-DATA_FD7096:
+clapper_sprite_palette:
 	db $00, $00, $A5, $1C, $E7, $24, $29, $31
 	db $6B, $3D, $10, $52, $95, $6A, $3A, $7F
 	db $D4, $20, $44, $08, $32, $1D, $B9, $29
@@ -4995,13 +4995,13 @@ DATA_FD7292:
 	db $9B, $36, $1E, $43, $9C, $73, $94, $52
 	db $A5, $14, $1F, $00, $6A, $2D, $20, $70
 
-DATA_FD72B2:
+yoshi_sprite_palette:
 	db $60, $04, $49, $25, $31, $46, $18, $63
 	db $FF, $7F, $6B, $00, $D2, $00, $59, $01
 	db $3F, $1E, $E1, $04, $82, $09, $23, $12
 	db $C4, $16, $6E, $33, $F8, $4F
 
-DATA_FD72D0:
+mario_sprite_palette:
 	db $21, $4E, $29, $25, $52, $4A, $FF, $7F
 	db $48, $00, $EE, $14, $02, $60, $01, $40
 	db $01, $1C, $10, $00, $9F, $10, $10, $21
@@ -5121,7 +5121,7 @@ DATA_FD750A:
 	db $1F, $00, $1F, $00, $1F, $00, $1F, $00
 	db $1F, $00, $1F, $00, $1F, $00
 
-DATA_FD7528:
+funky_kong_sprite_palette:
 	db $00, $00, $47, $00, $8D, $00, $D3, $00
 	db $18, $01, $76, $1D, $FF, $29, $9F, $32
 	db $5F, $43, $0F, $1C, $17, $2C, $1F, $40
@@ -5139,13 +5139,13 @@ DATA_FD7564:
 	db $4D, $15, $8F, $19, $B0, $1D, $F5, $19
 	db $57, $2A, $79, $22, $1F, $33
 
-DATA_FD7582:
+wrinkly_kong_sprite_palette:
 	db $00, $00, $45, $00, $8A, $04, $CF, $08
 	db $76, $1D, $FF, $29, $9F, $32, $5F, $43
 	db $73, $21, $2B, $21, $D3, $31, $57, $46
 	db $52, $4A, $18, $63, $FF, $7F
 
-DATA_FD75A0:
+wrinkly_kong_book_sprite_palette:
 	db $00, $00, $A3, $00, $27, $05, $CB, $09
 	db $6F, $0E, $13, $13, $B7, $17, $CB, $00
 	db $71, $01, $37, $02, $1C, $03, $08, $21
