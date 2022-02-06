@@ -3937,32 +3937,32 @@ DATA_FD5FEC:
 DATA_FD5FEE:
 	dw DATA_FD6682
 	dw diddy_active_sprite_palette
-	dw DATA_FD6664
-	dw DATA_FD68BC
+	dw barrel_sprite_palette
+	dw coin_sprite_palette
 	dw dixie_active_sprite_palette
 	dw squitter_sprite_palette
 	dw DATA_FD66BE
 	dw klomp_sprite_palette
 	dw kannon_sprite_palette
-	dw DATA_FD6718
-	dw DATA_FD6736
+	dw cannonball_sprite_palette
+	dw cannon_sprite_palette
 	dw shuri_orange_sprite_palette
 	dw kruncha_blue_sprite_palette
 	dw rattly_sprite_palette
 	dw lockjaw_sprite_palette
 	dw squawks_sprite_palette
 	dw click_clack_credits_sprite_palette
-	dw DATA_FD6880
+	dw water_splash_sprite_palette
 	dw kutlass_yellow_sprite_palette
 	dw DATA_FD6428
-	dw DATA_FD68BC
-	dw DATA_FD6754
+	dw coin_sprite_palette
+	dw loaded_cannon_sprite_palette
 	dw DATA_FD68F8
-	dw DATA_FD6916
-	dw DATA_FD6934
-	dw DATA_FD6952
-	dw DATA_FD6970
-	dw DATA_FD68DA
+	dw level_end_goal_sprite_palette
+	dw life_balloon_red_sprite_palette
+	dw life_balloon_green_sprite_palette
+	dw life_balloon_blue_sprite_palette
+	dw no_animals_sign_sprite_palette
 	dw neek_sprite_palette
 	dw cat_o_9_tails_sprite_palette
 	dw mini_necky_sprite_palette
@@ -3974,36 +3974,36 @@ DATA_FD5FEE:
 	dw klank_orange_sprite_palette
 	dw DATA_FD7546
 	dw cranky_kong_sprite_palette
-	dw DATA_FD6ABA
+	dw skull_cart_sprite_palette
 	dw DATA_FD6B8C
 	dw klank_pink_sprite_palette
 	dw klobber_red_sprite_palette
 
 DATA_FD6044:
 	dw DATA_FD7166
-	dw DATA_FD7564
-	dw DATA_FD6AF6
-	dw DATA_FD6B14
+	dw k_rool_letter_sprite_palette
+	dw roller_coaster_gate_sprite_palette
+	dw ghost_rope_sprite_palette
 	dw kaboing_grey_sprite_palette
-	dw DATA_FD6B6E
+	dw haunted_hall_door_sprite_palette
 	dw DATA_FD6BAA
 	dw puftup_brown_sprite_palette
-	dw DATA_FD705A
-	dw DATA_FD7292
-	dw DATA_FD7184
-	dw DATA_FD71A2
+	dw boom_box_sprite_palette
+	dw map_funky_barrel_sprite_palette
+	dw racing_flag_sprite_palette
+	dw traffic_light_sprite_palette
 	dw swanky_kong_sprite_palette
 	dw zinger_yellow_sprite_palette
-	dw DATA_FD79C4
+	dw wall_forest_right_sprite_palette
 	dw klinger_sprite_palette
 	dw flitter_sprite_palette
 	dw blue_flotsam_sprite_palette
 	dw flotsam_unused_1_sprite_palette
-	dw DATA_FD62DC
-	dw DATA_FD62FA
-	dw DATA_FD6318
+	dw wall_ship_deck_sprite_palette
+	dw wall_wasp_hive_sprite_palette
+	dw wall_forest_left_sprite_palette
 	dw DATA_FD765A
-	dw DATA_FD7678
+	dw kudgel_splash_sprite_palette
 	dw rambi_sprite_palette
 	dw flitter_unused_1_sprite_palette
 	dw flitter_unused_2_sprite_palette
@@ -4023,21 +4023,21 @@ DATA_FD6044:
 	dw klampon_sprite_palette
 	dw quawks_sprite_palette
 	dw krook_sprite_palette
-	dw DATA_FD787A
+	dw krockhead_green_sprite_palette
 	dw DATA_FD6DE4
-	dw DATA_FD6E5C
+	dw bullrush_sprite_palette
 	dw DATA_FD6E7A
-	dw DATA_FD6E98
-	dw DATA_FD6EB6
+	dw hot_air_balloon_sprite_palette
+	dw chest_dark_sprite_palette
 	dw kloak_sprite_palette
-	dw DATA_FD6EF2
+	dw funky_barrel_wings_sprite_palette
 	dw DATA_FD62A0
 	dw DATA_FD62BE
 	dw enguarde_sprite_palette
 	dw mini_necky_ghost_sprite_palette
 	dw DATA_FD6F10
 	dw DATA_FD6F2E
-	dw DATA_FD6E3E
+	dw krockhead_brown_sprite_palette
 	dw klobber_yellow_sprite_palette
 	dw klobber_black_sprite_palette
 	dw DATA_FD6FA6
@@ -4045,7 +4045,7 @@ DATA_FD6044:
 	dw DATA_FD6FE2
 	dw DATA_FD7000
 	dw DATA_FD701E
-	dw DATA_FD703C
+	dw guitar_sprite_palette
 	dw klank_blue_sprite_palette
 	dw DATA_FD6242
 	dw clapper_sprite_palette
@@ -4056,12 +4056,12 @@ DATA_FD6044:
 	dw DATA_FD7274
 	dw yoshi_sprite_palette
 	dw mario_sprite_palette
-	dw DATA_FD70EE
-	dw DATA_FD6336
+	dw screech_sprite_palette
+	dw wall_castle_sprite_palette
 	dw DATA_FD6354
-	dw DATA_FD6372
-	dw DATA_FD6390
-	dw DATA_FD63AE
+	dw wall_lava_sprite_palette
+	dw wall_ship_hold_high_sprite_palette
+	dw wall_ice_sprite_palette
 	dw DATA_FD63CC
 	dw DATA_FD63EA
 	dw DATA_FD6408
@@ -4102,23 +4102,23 @@ DATA_FD6044:
 	dw DATA_FD7492
 	dw wrinkly_kong_sprite_palette
 	dw wrinkly_kong_book_sprite_palette
-	dw DATA_FD763A
-	dw DATA_FD7696
+	dw map_boss_sprite_palette
+	dw map_lost_world_step_sprite_palette
 	dw DATA_FD76B6
-	dw DATA_FD76D4
-	dw DATA_FD76F2
-	dw DATA_FD6426
-	dw DATA_FD6464
-	dw DATA_FD774C
-	dw DATA_FD75FA
-	dw DATA_FD761A
+	dw donkey_kong_sprite_palette
+	dw flopping_fish_sprite_palette
+	dw map_kong_and_text_sprite_palette
+	dw map_kremling_sprite_palette
+	dw roof_piece_sprite_palette
+	dw map_cranky_wrinkly_sprite_palette
+	dw map_funky_swanky_sprite_palette
 	dw DATA_FD776A
 	dw shuri_pink_sprite_palette
 	dw puftup_purple_sprite_palette
 	dw snapjaw_sprite_palette
-	dw DATA_FD772E
+	dw wall_ship_hold_low_sprite_palette
 	dw kutlass_green_sprite_palette
-	dw DATA_FD77A6
+	dw giant_tire_sprite_palette
 	dw DATA_FD77C4
 	dw click_clack_sprite_palette
 	dw DATA_FD78D4
@@ -4131,10 +4131,10 @@ DATA_FD6044:
 	dw !null_pointer
 
 DATA_FD616E:
-	dw DATA_FD7820
+	dw map_k_rool_sprite_palette
 
 DATA_FD6170:
-	dw DATA_FD783E
+	dw map_k_rool_splash_sprite_palette
 	dw !null_pointer
 	dw !null_pointer
 	dw !null_pointer
@@ -4156,26 +4156,26 @@ DATA_FD618E:
 	dw DATA_FD6682
 	dw DATA_FD6682
 	dw DATA_FD6682
-	dw DATA_FD6664
-	dw DATA_FD6664
-	dw DATA_FD6664
-	dw DATA_FD6934
-	dw DATA_FD6952
-	dw DATA_FD6970
-	dw DATA_FD68BC
-	dw DATA_FD68BC
-	dw DATA_FD68BC
-	dw DATA_FD68BC
-	dw DATA_FD68BC
-	dw DATA_FD68BC
-	dw DATA_FD68BC
-	dw DATA_FD6718
-	dw DATA_FD68BC
-	dw DATA_FD68BC
-	dw DATA_FD68BC
-	dw DATA_FD68BC
-	dw DATA_FD68BC
-	dw DATA_FD68BC
+	dw barrel_sprite_palette
+	dw barrel_sprite_palette
+	dw barrel_sprite_palette
+	dw life_balloon_red_sprite_palette
+	dw life_balloon_green_sprite_palette
+	dw life_balloon_blue_sprite_palette
+	dw coin_sprite_palette
+	dw coin_sprite_palette
+	dw coin_sprite_palette
+	dw coin_sprite_palette
+	dw coin_sprite_palette
+	dw coin_sprite_palette
+	dw coin_sprite_palette
+	dw cannonball_sprite_palette
+	dw coin_sprite_palette
+	dw coin_sprite_palette
+	dw coin_sprite_palette
+	dw coin_sprite_palette
+	dw coin_sprite_palette
+	dw coin_sprite_palette
 	dw DATA_FD6682
 
 DATA_FD61C2:
@@ -4222,25 +4222,25 @@ DATA_FD62BE:
 	db $14, $43, $FA, $57, $68, $04, $D1, $0C
 	db $57, $15, $B0, $2D, $FF, $7F
 
-DATA_FD62DC:
+wall_ship_deck_sprite_palette:
 	db $21, $00, $43, $04, $65, $08, $87, $0C
 	db $C9, $10, $EB, $10, $2D, $15, $4F, $19
 	db $71, $19, $93, $1D, $D5, $21, $17, $26
 	db $39, $2A, $5B, $2E, $9D, $32
 
-DATA_FD62FA:
+wall_wasp_hive_sprite_palette:
 	db $44, $00, $68, $04, $49, $00, $A9, $04
 	db $CD, $04, $0E, $05, $13, $09, $66, $04
 	db $31, $05, $75, $09, $97, $09, $9A, $09
 	db $FA, $09, $9F, $0A, $23, $00
 
-DATA_FD6318:
+wall_forest_left_sprite_palette:
 	db $00, $00, $21, $04, $23, $04, $44, $08
 	db $46, $08, $67, $0C, $89, $10, $AB, $14
 	db $CD, $14, $0F, $19, $31, $1D, $54, $21
 	db $11, $21, $54, $21, $94, $21
 
-DATA_FD6336:
+wall_castle_sprite_palette:
 	db $00, $00, $21, $04, $60, $00, $42, $04
 	db $C0, $00, $A7, $0C, $EB, $10, $4D, $19
 	db $6E, $1D, $6E, $25, $A8, $0C, $D1, $29
@@ -4252,19 +4252,19 @@ DATA_FD6354:
 	db $21, $04, $42, $04, $64, $08, $85, $0C
 	db $82, $08, $62, $04, $A3, $08
 
-DATA_FD6372:
+wall_lava_sprite_palette:
 	db $00, $00, $22, $00, $44, $00, $66, $00
 	db $88, $00, $AA, $00, $AC, $00, $CE, $00
 	db $F0, $00, $12, $01, $22, $00, $23, $00
 	db $45, $00, $46, $00, $67, $00
 
-DATA_FD6390:
+wall_ship_hold_high_sprite_palette:
 	db $2E, $15, $EB, $10, $A8, $0C, $21, $00
 	db $90, $21, $5A, $2E, $B3, $21, $0C, $15
 	db $43, $04, $64, $08, $86, $08, $C9, $10
 	db $0B, $11, $6F, $19, $F3, $29
 
-DATA_FD63AE:
+wall_ice_sprite_palette:
 	db $C4, $18, $46, $29, $85, $2D, $E5, $31
 	db $47, $46, $C8, $52, $4C, $67, $CF, $7B
 	db $E5, $24, $27, $31, $EA, $55, $2C, $66
@@ -4288,7 +4288,7 @@ DATA_FD6408:
 	db $0C, $0D, $4E, $11, $91, $15, $D4, $19
 	db $A0, $00, $80, $00, $63, $04
 
-DATA_FD6426:
+map_kong_and_text_sprite_palette:
 	db $00, $7C
 
 DATA_FD6428:
@@ -4303,7 +4303,7 @@ link_sprite_palette:
 	db $60, $00, $5D, $03, $35, $0A, $EC, $00
 	db $AA, $00, $87, $04, $45, $04
 
-DATA_FD6464:
+map_kremling_sprite_palette:
 	db $00, $7C, $63, $04, $E6, $0C, $AB, $19
 	db $4F, $26, $14, $33, $9A, $5B, $1E, $00
 	db $1F, $42, $FF, $7F, $95, $56, $00, $00
@@ -4374,7 +4374,7 @@ dixie_active_sprite_palette:
 	db $BF, $2B, $FF, $3B, $FF, $63, $DF, $55
 	db $5F, $72, $3F, $7F, $E4, $13, $FF, $7F
 
-DATA_FD6664:
+barrel_sprite_palette:
 	db $43, $04, $65, $04, $A8, $08, $CB, $0C
 	db $0E, $11, $51, $15, $73, $15, $B6, $19
 	db $F9, $1D, $64, $0C, $C5, $18, $4A, $29
@@ -4410,19 +4410,19 @@ kannon_sprite_palette:
 	db $1F, $73, $3A, $22, $3F, $33, $FF, $4F
 	db $2E, $19, $B3, $25, $FF, $7F
 
-DATA_FD6718:
+cannonball_sprite_palette:
 	db $FF, $7F, $9D, $77, $5B, $6F, $19, $67
 	db $D7, $5E, $95, $56, $53, $4E, $11, $46
 	db $CF, $39, $8D, $31, $4A, $29, $08, $21
 	db $C6, $18, $84, $10, $42, $08
 
-DATA_FD6736:
+cannon_sprite_palette:
 	db $21, $04, $42, $08, $63, $08, $85, $10
 	db $CA, $0C, $ED, $0C, $51, $15, $93, $19
 	db $E7, $1C, $09, $21, $44, $00, $4B, $29
 	db $8C, $35, $B3, $21, $EF, $3D
 
-DATA_FD6754:
+loaded_cannon_sprite_palette:
 	db $41, $04, $81, $04, $C2, $08, $43, $0D
 	db $CA, $0C, $ED, $0C, $51, $15, $93, $19
 	db $C4, $11, $25, $16, $44, $00, $C6, $1A
@@ -4482,7 +4482,7 @@ click_clack_credits_sprite_palette:
 	db $28, $29, $A8, $3C, $0A, $41, $AA, $35
 	db $EE, $3D, $19, $67, $FF, $7F
 
-DATA_FD6880:
+water_splash_sprite_palette:
 	db $F1, $62, $F2, $62, $13, $67, $14, $67
 	db $34, $6B, $55, $6B, $56, $6F, $77, $6F
 	db $78, $73, $99, $77, $BA, $77, $BA, $7B
@@ -4494,13 +4494,13 @@ kutlass_yellow_sprite_palette:
 	db $10, $02, $F7, $02, $FF, $07, $38, $32
 	db $4E, $1D, $1F, $21, $FF, $7F
 
-DATA_FD68BC:
+coin_sprite_palette:
 	db $01, $00, $43, $04, $86, $04, $EB, $08
 	db $50, $11, $72, $11, $94, $11, $D6, $15
 	db $18, $1A, $5A, $22, $BC, $2A, $FE, $32
 	db $3F, $43, $7F, $53, $DF, $63
 
-DATA_FD68DA:
+no_animals_sign_sprite_palette:
 	db $43, $00, $88, $00, $CC, $00, $11, $01
 	db $55, $01, $98, $01, $DA, $01, $1F, $00
 	db $10, $00, $D3, $00, $00, $7C, $73, $7E
@@ -4512,25 +4512,25 @@ DATA_FD68F8:
 	db $C5, $09, $07, $0E, $29, $12, $4B, $16
 	db $8D, $1A, $AF, $1E, $F1, $22
 
-DATA_FD6916:
+level_end_goal_sprite_palette:
 	db $43, $04, $86, $08, $CA, $0C, $0E, $11
 	db $52, $15, $95, $19, $F9, $1D, $1F, $00
 	db $00, $7C, $64, $0C, $C5, $18, $4A, $29
 	db $CF, $35, $F7, $5A, $FF, $7F
 
-DATA_FD6934:
+life_balloon_red_sprite_palette:
 	db $02, $00, $05, $00, $07, $00, $0A, $00
 	db $0C, $00, $0F, $00, $13, $00, $17, $00
 	db $1B, $00, $1F, $00, $5F, $29, $7F, $4E
 	db $BF, $77, $AD, $35, $FF, $7F
 
-DATA_FD6952:
+life_balloon_green_sprite_palette:
 	db $40, $00, $80, $04, $C0, $08, $00, $0D
 	db $40, $11, $A0, $15, $E0, $19, $20, $1E
 	db $60, $22, $A0, $26, $2A, $3F, $94, $5B
 	db $FE, $77, $AD, $35, $FF, $7F
 
-DATA_FD6970:
+life_balloon_blue_sprite_palette:
 	db $00, $08, $20, $14, $60, $24, $80, $30
 	db $C0, $3C, $E0, $48, $20, $59, $40, $65
 	db $80, $71, $A0, $7D, $4A, $7E, $14, $7F
@@ -4596,7 +4596,7 @@ swanky_kong_sprite_palette:
 	db $DC, $25, $5F, $32, $FF, $3E, $9F, $47
 	db $4B, $25, $94, $52, $FF, $7F
 
-DATA_FD6ABA:
+skull_cart_sprite_palette:
 	db $64, $08, $86, $0C, $C8, $10, $6E, $1D
 	db $F3, $29, $78, $32, $3C, $3F, $FF, $4F
 	db $BE, $5F, $9C, $73, $F9, $08, $10, $00
@@ -4608,13 +4608,13 @@ klobber_red_sprite_palette:
 	db $F3, $49, $33, $36, $5F, $16, $1F, $24
 	db $AD, $35, $D6, $5A, $FF, $7F
 
-DATA_FD6AF6:
+roller_coaster_gate_sprite_palette:
 	db $21, $00, $43, $00, $64, $00, $64, $04
 	db $A6, $08, $C8, $08, $EA, $08, $CC, $0C
 	db $0D, $11, $4F, $11, $91, $15, $D4, $1D
 	db $18, $22, $5C, $26, $BF, $2A
 
-DATA_FD6B14:
+ghost_rope_sprite_palette:
 	db $9F, $10, $BF, $35, $A5, $14, $E7, $1C
 	db $29, $25, $6B, $2D, $CE, $39, $10, $42
 	db $52, $4A, $94, $52, $F7, $5E, $39, $67
@@ -4632,7 +4632,7 @@ kaboing_green_sprite_palette:
 	db $38, $22, $BC, $32, $BF, $0C, $9B, $05
 	db $BF, $0A, $FF, $23, $FF, $7F
 
-DATA_FD6B6E:
+haunted_hall_door_sprite_palette:
 	db $1F, $00, $12, $00, $05, $00, $5B, $26
 	db $B5, $1D, $2F, $15, $A9, $10, $64, $04
 	db $D5, $21, $71, $19, $2D, $15, $CA, $0C
@@ -4776,13 +4776,13 @@ klampon_sprite_palette:
 	db $D4, $39, $6B, $00, $BB, $00, $DF, $11
 	db $2E, $31, $D6, $5A, $FF, $7F
 
-DATA_FD6E3E:
+krockhead_brown_sprite_palette:
 	db $20, $04, $65, $04, $AA, $08, $EE, $0C
 	db $33, $11, $ED, $10, $50, $19, $D3, $25
 	db $56, $2E, $DA, $3A, $5D, $43, $FE, $3D
 	db $F3, $3D, $6F, $2D, $FF, $7F
 
-DATA_FD6E5C:
+bullrush_sprite_palette:
 	db $40, $00, $A0, $00, $01, $01, $61, $01
 	db $E1, $01, $44, $02, $C7, $02, $2A, $03
 	db $22, $00, $24, $00, $46, $00, $69, $00
@@ -4794,13 +4794,13 @@ DATA_FD6E7A:
 	db $86, $04, $A8, $04, $CA, $08, $0C, $09
 	db $2E, $09, $70, $09, $93, $0D
 
-DATA_FD6E98:
+hot_air_balloon_sprite_palette:
 	db $20, $10, $41, $1C, $62, $28, $A3, $34
 	db $C4, $48, $05, $5D, $26, $6D, $67, $7D
 	db $06, $55, $68, $6D, $AA, $75, $0C, $7E
 	db $4D, $7E, $D1, $7E, $76, $7F
 
-DATA_FD6EB6:
+chest_dark_sprite_palette:
 	db $22, $04, $22, $04, $43, $04, $43, $04
 	db $44, $04, $44, $04, $65, $04, $65, $04
 	db $66, $04, $22, $04, $42, $08, $43, $08
@@ -4812,7 +4812,7 @@ kloak_sprite_palette:
 	db $69, $10, $90, $18, $18, $25, $7E, $2D
 	db $AD, $35, $94, $52, $FF, $7F
 
-DATA_FD6EF2:
+funky_barrel_wings_sprite_palette:
 	db $0F, $09, $2D, $09, $84, $04, $71, $19
 	db $43, $04, $4C, $19, $BA, $3A, $7F, $4B
 	db $0D, $00, $9F, $10, $00, $30, $00, $70
@@ -4878,13 +4878,13 @@ DATA_FD701E:
 	db $00, $00, $00, $00, $00, $00, $00, $00
 	db $00, $00, $00, $00, $FF, $7F
 
-DATA_FD703C:
+guitar_sprite_palette:
 	db $00, $00, $C0, $34, $40, $4D, $A0, $65
 	db $00, $7E, $C5, $7E, $B1, $00, $BF, $01
 	db $F8, $05, $7C, $16, $FF, $26, $08, $21
 	db $10, $42, $18, $63, $FF, $7F
 
-DATA_FD705A:
+boom_box_sprite_palette:
 	db $00, $00, $42, $08, $63, $0C, $A5, $14
 	db $C6, $18, $08, $21, $4A, $29, $6B, $2D
 	db $AD, $35, $EF, $3D, $52, $4A, $B5, $56
@@ -4912,7 +4912,7 @@ DATA_FD70B4:
 	db $08, $1D, $6B, $29, $CE, $35, $11, $42
 	db $75, $4E
 
-DATA_FD70EE:
+screech_sprite_palette:
 	db $00, $00, $04, $00, $07, $00, $0B, $00
 	db $14, $00, $3C, $00, $BF, $01, $EF, $00
 	db $B3, $09, $1F, $03, $FF, $17, $90, $21
@@ -4942,13 +4942,13 @@ DATA_FD7166:
 	db $7F, $01, $BF, $01, $1F, $02, $7F, $02
 	db $BF, $02, $1F, $03, $7F, $03
 
-DATA_FD7184:
+racing_flag_sprite_palette:
 	db $B6, $1D, $11, $11, $8B, $04, $46, $08
 	db $00, $00, $6B, $2D, $AD, $35, $EF, $3D
 	db $31, $46, $94, $52, $D6, $5A, $18, $63
 	db $7B, $6F, $BD, $77, $FF, $7F
 
-DATA_FD71A2:
+traffic_light_sprite_palette:
 	db $42, $08, $A5, $14, $C6, $18, $E7, $1C
 	db $AD, $35, $94, $52, $08, $21, $8C, $31
 	db $73, $4E, $08, $21, $8C, $31, $73, $4E
@@ -4989,7 +4989,7 @@ DATA_FD7274:
 	db $4A, $29, $6B, $2D, $8C, $31, $CE, $39
 	db $10, $42, $52, $4A, $94, $52
 
-DATA_FD7292:
+map_funky_barrel_sprite_palette:
 	db $00, $00, $39, $2A, $D5, $21, $91, $19
 	db $51, $11, $ED, $0C, $A9, $08, $43, $04
 	db $9B, $36, $1E, $43, $9C, $73, $94, $52
@@ -5133,7 +5133,7 @@ DATA_FD7546:
 	db $9C, $01, $7F, $05, $10, $42, $B6, $15
 	db $5A, $0B, $92, $05, $60, $01
 
-DATA_FD7564:
+k_rool_letter_sprite_palette:
 	db $82, $11, $0C, $00, $D1, $10, $21, $04
 	db $63, $04, $85, $08, $C8, $0C, $0A, $11
 	db $4D, $15, $8F, $19, $B0, $1D, $F5, $19
@@ -5159,19 +5159,19 @@ wrinkly_kong_book_sprite_palette:
 	db $2A, $15, $E1, $15, $01, $1A, $20, $1A
 	db $40, $1E
 
-DATA_FD75FA:
+map_cranky_wrinkly_sprite_palette:
 	db $00, $7C, $21, $00, $26, $00, $8A, $08
 	db $CD, $0C, $11, $19, $99, $21, $5F, $32
 	db $DF, $3E, $D3, $31, $F6, $2D, $57, $46
 	db $8C, $31, $31, $46, $D6, $5A, $9C, $73
 
-DATA_FD761A:
+map_funky_swanky_sprite_palette:
 	db $00, $7C, $00, $00, $47, $00, $8D, $00
 	db $F4, $00, $76, $1D, $FF, $29, $9F, $32
 	db $5F, $43, $0D, $14, $17, $2C, $BF, $56
 	db $29, $25, $10, $42, $18, $63, $FF, $7F
 
-DATA_FD763A:
+map_boss_sprite_palette:
 	db $00, $7C, $00, $00, $63, $04, $A6, $08
 	db $2D, $09, $B4, $0D, $5B, $12, $DD, $22
 	db $7E, $37, $FF, $47, $FF, $5B, $FF, $6F
@@ -5183,13 +5183,13 @@ DATA_FD765A:
 	db $7F, $01, $BF, $01, $1F, $02, $7F, $02
 	db $BF, $02, $1F, $03, $7F, $03
 
-DATA_FD7678:
+kudgel_splash_sprite_palette:
 	db $6F, $1D, $8D, $1D, $CC, $1D, $EA, $21
 	db $09, $22, $47, $22, $66, $22, $A5, $26
 	db $C7, $2E, $09, $37, $2B, $43, $6D, $4B
 	db $8F, $53, $D1, $5F, $F4, $67
 
-DATA_FD7696:
+map_lost_world_step_sprite_palette:
 	db $80, $7D, $61, $2C, $23, $1C, $62, $14
 	db $83, $18, $A4, $18, $A5, $1C, $C6, $1C
 	db $E7, $20, $08, $21, $4B, $29, $8D, $31
@@ -5201,13 +5201,13 @@ DATA_FD76B6:
 	db $D3, $04, $8F, $00, $4C, $00, $09, $00
 	db $06, $00, $04, $00, $02, $00
 
-DATA_FD76D4:
+donkey_kong_sprite_palette:
 	db $22, $00, $68, $00, $CC, $00, $11, $01
 	db $55, $01, $98, $01, $DA, $01, $1F, $00
 	db $10, $00, $D3, $00, $DD, $31, $5D, $46
 	db $FE, $5A, $7F, $6F, $FF, $7F
 
-DATA_FD76F2:
+flopping_fish_sprite_palette:
 	db $21, $04, $DB, $00, $1E, $05, $5F, $05
 	db $9F, $0D, $FF, $19, $7F, $2A, $5F, $47
 	db $CC, $51, $0E, $5A, $50, $62, $B3, $6A
@@ -5219,13 +5219,13 @@ snapjaw_sprite_palette:
 	db $1A, $34, $FA, $54, $DB, $71, $BA, $7E
 	db $BE, $7F, $B6, $5E, $BE, $77
 
-DATA_FD772E:
+wall_ship_hold_low_sprite_palette:
 	db $F1, $10, $AD, $0C, $8A, $08, $02, $00
 	db $34, $19, $DF, $25, $57, $19, $CF, $10
 	db $23, $04, $45, $04, $67, $08, $AB, $0C
 	db $CD, $0C, $13, $15, $77, $21
 
-DATA_FD774C:
+roof_piece_sprite_palette:
 	db $00, $00, $40, $04, $60, $04, $80, $08
 	db $A1, $08, $E1, $08, $21, $0D, $63, $15
 	db $A6, $21, $E9, $29, $4C, $36, $A9, $08
@@ -5243,7 +5243,7 @@ kutlass_green_sprite_palette:
 	db $08, $22, $EC, $32, $EF, $3F, $38, $32
 	db $4E, $1D, $1F, $21, $FF, $7F
 
-DATA_FD77A6:
+giant_tire_sprite_palette:
 	db $21, $04, $21, $04, $21, $04, $42, $08
 	db $42, $08, $42, $08, $63, $0C, $63, $0C
 	db $63, $0C, $84, $10, $84, $10, $08, $21
@@ -5267,13 +5267,13 @@ DATA_FD7800:
 	db $CF, $50, $95, $69, $CC, $04, $1F, $7C
 	db $06, $7C, $C9, $7C, $EF, $3D, $1F, $63
 
-DATA_FD7820:
+map_k_rool_sprite_palette:
 	db $20, $00, $08, $00, $8E, $00, $E6, $0C
 	db $CA, $15, $CD, $16, $A4, $18, $28, $2D
 	db $0E, $52, $31, $46, $4F, $11, $97, $22
 	db $DF, $33, $71, $25, $FF, $7F
 
-DATA_FD783E:
+map_k_rool_splash_sprite_palette:
 	db $22, $37, $25, $3F, $49, $47, $6C, $4F
 	db $6F, $57, $92, $5F, $B6, $67, $B9, $6F
 	db $DC, $7B, $FF, $7F, $FF, $7F, $FF, $7F
@@ -5285,7 +5285,7 @@ krook_sprite_palette:
 	db $49, $2D, $30, $4E, $36, $6F, $C3, $00
 	db $66, $01, $4C, $12, $FF, $7F
 
-DATA_FD787A:
+krockhead_green_sprite_palette:
 	db $21, $00, $A2, $08, $24, $11, $88, $15
 	db $0C, $1A, $90, $19, $F2, $21, $B5, $2A
 	db $33, $2B, $98, $37, $FD, $43, $FE, $3D
@@ -5351,7 +5351,7 @@ DATA_FD79A6:
 	db $22, $04, $43, $04, $65, $08, $C4, $1C
 	db $E6, $24, $28, $29, $6A, $31
 
-DATA_FD79C4:
+wall_forest_right_sprite_palette:
 	db $B1, $15, $21, $00, $22, $00, $43, $00
 	db $65, $04, $86, $04, $A7, $08, $EA, $0C
 	db $0C, $0D, $4E, $11, $91, $15, $D4, $19

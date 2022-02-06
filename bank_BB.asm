@@ -1340,7 +1340,7 @@ CODE_BB8879:					;	   |
 
 	LDX #$0000				;$BB888C   |
 CODE_BB888F:					;	   |
-	LDA.l DATA_FD62DC,x			;$BB888F   |
+	LDA.l wall_ship_deck_sprite_palette,x	;$BB888F   |
 	AND #$001F				;$BB8893   |
 	STA $32					;$BB8896   |
 	LSR A					;$BB8898   |
@@ -1348,7 +1348,7 @@ CODE_BB888F:					;	   |
 	ADC $32					;$BB889A   |
 	LSR A					;$BB889C   |
 	STA $34					;$BB889D   |
-	LDA.l DATA_FD62DC,x			;$BB889F   |
+	LDA.l wall_ship_deck_sprite_palette,x	;$BB889F   |
 	AND #$03E0				;$BB88A3   |
 	STA $32					;$BB88A6   |
 	LSR A					;$BB88A8   |
@@ -1358,7 +1358,7 @@ CODE_BB888F:					;	   |
 	LSR A					;$BB88AD   |
 	AND #$03E0				;$BB88AE   |
 	TSB $34					;$BB88B1   |
-	LDA.l DATA_FD62DC,x			;$BB88B3   |
+	LDA.l wall_ship_deck_sprite_palette,x	;$BB88B3   |
 	AND #$7C00				;$BB88B7   |
 	STA $32					;$BB88BA   |
 	LSR A					;$BB88BC   |
@@ -1382,7 +1382,7 @@ CODE_BB88C9:					;	   |
 
 	LDX #$0000				;$BB88E0   |
 CODE_BB88E3:					;	   |
-	LDA.l DATA_FD62DC,x			;$BB88E3   |
+	LDA.l wall_ship_deck_sprite_palette,x	;$BB88E3   |
 	AND #$001F				;$BB88E7   |
 	XBA					;$BB88EA   |
 	LSR A					;$BB88EB   |
@@ -1395,7 +1395,7 @@ CODE_BB88E3:					;	   |
 	XBA					;$BB88F4   |
 	AND #$001F				;$BB88F5   |
 	STA $32					;$BB88F8   |
-	LDA.l DATA_FD62DC,x			;$BB88FA   |
+	LDA.l wall_ship_deck_sprite_palette,x	;$BB88FA   |
 	AND #$03E0				;$BB88FE   |
 	LSR A					;$BB8901   |
 	STA $34					;$BB8902   |
@@ -1417,11 +1417,11 @@ CODE_BB88E3:					;	   |
 	CPX #$014A				;$BB891B   |
 	BNE CODE_BB88E3				;$BB891E   |
 CODE_BB8920:					;	   |
-	LDA.l DATA_FD62DC,x			;$BB8920   |
+	LDA.l wall_ship_deck_sprite_palette,x	;$BB8920   |
 	AND #$001F				;$BB8924   |
 	LSR A					;$BB8927   |
 	STA $32					;$BB8928   |
-	LDA.l DATA_FD62DC,x			;$BB892A   |
+	LDA.l wall_ship_deck_sprite_palette,x	;$BB892A   |
 	LSR A					;$BB892E   |
 	AND #$01E0				;$BB892F   |
 	TSB $32					;$BB8932   |
@@ -1431,7 +1431,7 @@ CODE_BB8920:					;	   |
 	ASL A					;$BB8937   |
 	ASL A					;$BB8938   |
 	STA $34					;$BB8939   |
-	LDA.l DATA_FD62DC,x			;$BB893B   |
+	LDA.l wall_ship_deck_sprite_palette,x	;$BB893B   |
 	LSR A					;$BB893F   |
 	AND #$3C00				;$BB8940   |
 	CLC					;$BB8943   |
@@ -1447,7 +1447,7 @@ CODE_BB8920:					;	   |
 	RTS					;$BB8959  /
 
 CODE_BB895A:
-	LDA.l DATA_FD62DC,x			;$BB895A  \
+	LDA.l wall_ship_deck_sprite_palette,x	;$BB895A  \
 	STA $7F9650,x				;$BB895E   |
 	INX					;$BB8962   |
 	INX					;$BB8963   |
@@ -1463,12 +1463,12 @@ CODE_BB896A:
 
 	LDX #$0000				;$BB8976   |
 CODE_BB8979:					;	   |
-	LDA.l DATA_FD62DC,x			;$BB8979   |
+	LDA.l wall_ship_deck_sprite_palette,x	;$BB8979   |
 	AND #$001F				;$BB897D   |
 	LSR A					;$BB8980   |
 	LSR A					;$BB8981   |
 	STA $32					;$BB8982   |
-	LDA.l DATA_FD62DC,x			;$BB8984   |
+	LDA.l wall_ship_deck_sprite_palette,x	;$BB8984   |
 	LSR A					;$BB8988   |
 	AND #$01E0				;$BB8989   |
 	TSB $32					;$BB898C   |
@@ -1484,11 +1484,11 @@ CODE_BB8979:					;	   |
 	CPX #$014A				;$BB899B   |
 	BNE CODE_BB8979				;$BB899E   |
 CODE_BB89A0:					;	   |
-	LDA.l DATA_FD62DC,x			;$BB89A0   |
+	LDA.l wall_ship_deck_sprite_palette,x	;$BB89A0   |
 	AND #$001F				;$BB89A4   |
 	LSR A					;$BB89A7   |
 	STA $32					;$BB89A8   |
-	LDA.l DATA_FD62DC,x			;$BB89AA   |
+	LDA.l wall_ship_deck_sprite_palette,x	;$BB89AA   |
 	AND #$03E0				;$BB89AE   |
 	LSR A					;$BB89B1   |
 	STA $34					;$BB89B2   |
@@ -1498,7 +1498,7 @@ CODE_BB89A0:					;	   |
 	LSR A					;$BB89B8   |
 	AND #$03E0				;$BB89B9   |
 	TSB $32					;$BB89BC   |
-	LDA.l DATA_FD62DC,x			;$BB89BE   |
+	LDA.l wall_ship_deck_sprite_palette,x	;$BB89BE   |
 	LSR A					;$BB89C2   |
 	STA $34					;$BB89C3   |
 	LSR A					;$BB89C5   |
@@ -1518,12 +1518,12 @@ CODE_BB89A0:					;	   |
 
 	LDX #$0000				;$BB89E1   |
 CODE_BB89E4:					;	   |
-	LDA.l DATA_FD62DC,x			;$BB89E4   |
+	LDA.l wall_ship_deck_sprite_palette,x	;$BB89E4   |
 	AND #$001F				;$BB89E8   |
 	LSR A					;$BB89EB   |
 	LSR A					;$BB89EC   |
 	STA $32					;$BB89ED   |
-	LDA.l DATA_FD62DC,x			;$BB89EF   |
+	LDA.l wall_ship_deck_sprite_palette,x	;$BB89EF   |
 	LSR A					;$BB89F3   |
 	AND #$01E0				;$BB89F4   |
 	TSB $32					;$BB89F7   |
@@ -1539,7 +1539,7 @@ CODE_BB89E4:					;	   |
 	CPX #$014A				;$BB8A06   |
 	BNE CODE_BB89E4				;$BB8A09   |
 CODE_BB8A0B:					;	   |
-	LDA.l DATA_FD62DC,x			;$BB8A0B   |
+	LDA.l wall_ship_deck_sprite_palette,x	;$BB8A0B   |
 	AND #$001F				;$BB8A0F   |
 	LSR A					;$BB8A12   |
 	STA $32					;$BB8A13   |
@@ -1549,7 +1549,7 @@ CODE_BB8A0B:					;	   |
 	ADC $32					;$BB8A18   |
 	ADC #$0004				;$BB8A1A   |
 	STA $32					;$BB8A1D   |
-	LDA.l DATA_FD62DC,x			;$BB8A1F   |
+	LDA.l wall_ship_deck_sprite_palette,x	;$BB8A1F   |
 	AND #$03E0				;$BB8A23   |
 	LSR A					;$BB8A26   |
 	STA $34					;$BB8A27   |
@@ -1561,7 +1561,7 @@ CODE_BB8A0B:					;	   |
 	ADC #$0060				;$BB8A2F   |
 	AND #$03E0				;$BB8A32   |
 	TSB $32					;$BB8A35   |
-	LDA.l DATA_FD62DC,x			;$BB8A37   |
+	LDA.l wall_ship_deck_sprite_palette,x	;$BB8A37   |
 	AND #$7C00				;$BB8A3B   |
 	LSR A					;$BB8A3E   |
 	STA $34					;$BB8A3F   |
