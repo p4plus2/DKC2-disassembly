@@ -3967,9 +3967,9 @@ DATA_FD5FEE:
 	dw cat_o_9_tails_sprite_palette
 	dw mini_necky_sprite_palette
 	dw klobber_green_sprite_palette
-	dw DATA_FD6A24
-	dw DATA_FD6A60
-	dw DATA_FD6A42
+	dw krow_egg_sprite_palette
+	dw krow_head_sprite_palette
+	dw krow_body_sprite_palette
 	dw funky_kong_sprite_palette
 	dw klank_orange_sprite_palette
 	dw DATA_FD7546
@@ -4018,41 +4018,41 @@ DATA_FD6044:
 	dw flotsam_unused_2_sprite_palette
 	dw green_flotsam_sprite_palette
 	dw spiny_sprite_palette
-	dw DATA_FD6DC6
+	dw kleever_1_sprite_palette
 	dw DATA_FD6E02
 	dw klampon_sprite_palette
 	dw quawks_sprite_palette
 	dw krook_sprite_palette
 	dw krockhead_green_sprite_palette
-	dw DATA_FD6DE4
+	dw kleever_hurt_3_sprite_palette
 	dw bullrush_sprite_palette
 	dw DATA_FD6E7A
 	dw hot_air_balloon_sprite_palette
 	dw chest_dark_sprite_palette
 	dw kloak_sprite_palette
 	dw funky_barrel_wings_sprite_palette
-	dw DATA_FD62A0
-	dw DATA_FD62BE
+	dw klubba_club_sprite_palette
+	dw klubba_sprite_palette
 	dw enguarde_sprite_palette
 	dw mini_necky_ghost_sprite_palette
-	dw DATA_FD6F10
-	dw DATA_FD6F2E
+	dw kleever_hurt_1_sprite_palette
+	dw kleever_hurt_2_sprite_palette
 	dw krockhead_brown_sprite_palette
 	dw klobber_yellow_sprite_palette
 	dw klobber_black_sprite_palette
 	dw DATA_FD6FA6
 	dw DATA_FD6FC4
-	dw DATA_FD6FE2
-	dw DATA_FD7000
-	dw DATA_FD701E
+	dw k_rool_sprite_palette
+	dw k_rool_gun_sprite_palette
+	dw k_rool_burnt_sprite_palette
 	dw guitar_sprite_palette
 	dw klank_blue_sprite_palette
 	dw DATA_FD6242
 	dw clapper_sprite_palette
-	dw DATA_FD70B4
-	dw DATA_FD721A
-	dw DATA_FD7238
-	dw DATA_FD7256
+	dw k_rool_vacuum_sprite_palette
+	dw k_rool_blue_gas_sprite_palette
+	dw k_rool_red_gas_sprite_palette
+	dw k_rool_purple_gas_sprite_palette
 	dw DATA_FD7274
 	dw yoshi_sprite_palette
 	dw mario_sprite_palette
@@ -4067,12 +4067,12 @@ DATA_FD6044:
 	dw DATA_FD6408
 	dw DATA_FD7800
 	dw link_sprite_palette
-	dw DATA_FD7910
-	dw DATA_FD792E
-	dw DATA_FD794C
-	dw DATA_FD796A
-	dw DATA_FD7988
-	dw DATA_FD79A6
+	dw kreepy_krow_dying_head_1_sprite_palette
+	dw kreepy_krow_dying_body_1_sprite_palette
+	dw kreepy_krow_dying_head_2_sprite_palette
+	dw kreepy_krow_dying_body_2_sprite_palette
+	dw kreepy_krow_dying_head_3_sprite_palette
+	dw kreepy_krow_dying_body_3_sprite_palette
 	dw !null_pointer
 	dw !null_pointer
 	dw !null_pointer
@@ -4081,25 +4081,25 @@ DATA_FD6044:
 	dw !null_pointer
 	dw !null_pointer
 	dw !null_pointer
-	dw DATA_FD72EE
-	dw DATA_FD730C
-	dw DATA_FD732A
-	dw DATA_FD7348
-	dw DATA_FD7366
-	dw DATA_FD7384
-	dw DATA_FD73A2
-	dw DATA_FD73C0
-	dw DATA_FD74B0
-	dw DATA_FD74CE
-	dw DATA_FD74EC
-	dw DATA_FD750A
-	dw DATA_FD73DE
-	dw DATA_FD73FC
-	dw DATA_FD741A
-	dw DATA_FD7438
-	dw DATA_FD7456
-	dw DATA_FD7474
-	dw DATA_FD7492
+	dw k_rool_fade_1_sprite_palette
+	dw k_rool_fade_2_sprite_palette
+	dw k_rool_fade_3_sprite_palette
+	dw k_rool_gun_fade_1_sprite_palette
+	dw k_rool_gun_fade_2_sprite_palette
+	dw k_rool_gun_fade_3_sprite_palette
+	dw kudgel_sprite_palette
+	dw kudgel_club_sprite_palette
+	dw king_zing_stinger_1_sprite_palette
+	dw king_zing_stinger_2_sprite_palette
+	dw king_zing_stinger_3_sprite_palette
+	dw king_zing_stinger_4_sprite_palette
+	dw king_zing_dark_1_sprite_palette
+	dw king_zing_dark_2_sprite_palette
+	dw king_zing_dark_3_sprite_palette
+	dw kleever_2_sprite_palette
+	dw kleever_5_sprite_palette
+	dw kleever_3_sprite_palette
+	dw kleever_4_sprite_palette
 	dw wrinkly_kong_sprite_palette
 	dw wrinkly_kong_book_sprite_palette
 	dw map_boss_sprite_palette
@@ -4121,8 +4121,8 @@ DATA_FD6044:
 	dw giant_tire_sprite_palette
 	dw DATA_FD77C4
 	dw click_clack_sprite_palette
-	dw DATA_FD78D4
-	dw DATA_FD78F2
+	dw kreepy_krow_head_sprite_palette
+	dw kreepy_krow_body_sprite_palette
 	dw puftup_green_sprite_palette
 	dw !null_pointer
 	dw !null_pointer
@@ -4210,13 +4210,13 @@ DATA_FD6242:
 	db $EF, $39, $09, $00, $0C, $00, $30, $04
 	db $34, $04, $5F, $08, $BF, $05
 
-DATA_FD62A0:
+klubba_club_sprite_palette:
 	db $43, $08, $86, $10, $EA, $18, $2C, $21
 	db $6F, $29, $B1, $31, $56, $4A, $A8, $08
 	db $0C, $11, $71, $19, $D6, $25, $E7, $1C
 	db $AE, $39, $95, $56, $7C, $73
 
-DATA_FD62BE:
+klubba_sprite_palette:
 	db $41, $00, $A3, $00, $05, $09, $88, $15
 	db $0B, $1A, $CF, $1E, $74, $33, $2E, $2E
 	db $14, $43, $FA, $57, $68, $04, $D1, $0C
@@ -4566,19 +4566,19 @@ klobber_green_sprite_palette:
 	db $F3, $49, $33, $36, $DF, $3F, $1F, $24
 	db $AD, $35, $D6, $5A, $FF, $7F
 
-DATA_FD6A24:
+krow_egg_sprite_palette:
 	db $82, $0C, $A4, $14, $E7, $1C, $09, $21
 	db $4B, $29, $B0, $39, $14, $4A, $14, $4A
 	db $14, $4A, $36, $4E, $79, $56, $9A, $5E
 	db $DC, $66, $1E, $6F, $5F, $7B
 
-DATA_FD6A42:
+krow_body_sprite_palette:
 	db $21, $04, $63, $0C, $A5, $14, $E7, $1C
 	db $29, $25, $6B, $2D, $AD, $35, $31, $46
 	db $46, $04, $89, $08, $0D, $19, $5B, $36
 	db $FD, $3E, $9F, $4B, $BE, $53
 
-DATA_FD6A60:
+krow_head_sprite_palette:
 	db $BD, $10, $77, $0C, $1B, $22, $2F, $19
 	db $93, $21, $F8, $29, $BF, $3A, $63, $08
 	db $84, $10, $C6, $18, $28, $21, $8C, $2D
@@ -4752,13 +4752,13 @@ spiny_sprite_palette:
 	db $EB, $14, $50, $21, $B6, $2D, $7E, $3A
 	db $5F, $4F, $5F, $10, $FF, $7F
 
-DATA_FD6DC6:
+kleever_1_sprite_palette:
 	db $42, $08, $83, $20, $07, $39, $8A, $51
 	db $AC, $4D, $ED, $4D, $30, $4E, $93, $56
 	db $F6, $5E, $39, $67, $FF, $7F, $A9, $08
 	db $60, $2A, $40, $37, $7E, $0C
 
-DATA_FD6DE4:
+kleever_hurt_3_sprite_palette:
 	db $47, $08, $06, $00, $2B, $04, $50, $04
 	db $75, $08, $9A, $08, $BF, $0C, $9F, $29
 	db $5F, $46, $3F, $63, $FF, $7F, $A9, $08
@@ -4818,13 +4818,13 @@ funky_barrel_wings_sprite_palette:
 	db $0D, $00, $9F, $10, $00, $30, $00, $70
 	db $52, $4A, $39, $67, $FF, $7F
 
-DATA_FD6F10:
+kleever_hurt_1_sprite_palette:
 	db $44, $08, $64, $14, $C8, $24, $2C, $35
 	db $4F, $35, $71, $35, $B5, $35, $37, $46
 	db $B9, $56, $3B, $67, $FF, $7F, $A9, $08
 	db $85, $21, $2B, $22, $7E, $0C
 
-DATA_FD6F2E:
+kleever_hurt_2_sprite_palette:
 	db $45, $08, $25, $0C, $6A, $14, $AE, $1C
 	db $D2, $1C, $16, $21, $3A, $21, $DB, $39
 	db $9C, $4E, $3D, $63, $FF, $7F, $A9, $08
@@ -4860,19 +4860,19 @@ DATA_FD6FC4:
 	db $F7, $19, $5A, $22, $BC, $2A, $FE, $32
 	db $3F, $43, $7F, $53, $DF, $63
 
-DATA_FD6FE2:
+k_rool_sprite_palette:
 	db $20, $00, $07, $00, $2A, $00, $8E, $00
 	db $A4, $04, $05, $09, $88, $11, $2B, $12
 	db $CD, $16, $4F, $11, $97, $22, $DF, $33
 	db $31, $46, $18, $63, $FF, $7F
 
-DATA_FD7000:
+k_rool_gun_sprite_palette:
 	db $00, $00, $A4, $18, $E6, $20, $28, $2D
 	db $8A, $39, $0E, $52, $D3, $6E, $BB, $7F
 	db $B1, $2D, $1A, $5B, $65, $08, $67, $08
 	db $8A, $0C, $CD, $10, $71, $25
 
-DATA_FD701E:
+k_rool_burnt_sprite_palette:
 	db $20, $00, $00, $00, $00, $00, $00, $00
 	db $00, $00, $00, $00, $00, $00, $00, $00
 	db $00, $00, $00, $00, $00, $00, $00, $00
@@ -4902,7 +4902,7 @@ clapper_sprite_palette:
 	db $D4, $20, $44, $08, $32, $1D, $B9, $29
 	db $5F, $3A, $7F, $53, $FF, $7F
 
-DATA_FD70B4:
+k_rool_vacuum_sprite_palette:
 	db $B3, $4D, $F4, $51, $15, $56, $56, $5A
 	db $77, $5E, $98, $62, $D9, $66, $FA, $6A
 	db $3B, $6F, $5C, $73, $7D, $77, $BE, $7B
@@ -4965,19 +4965,19 @@ traffic_light_sprite_palette:
 	db $1F, $00, $BF, $35, $16, $00, $1F, $00
 	db $BF, $35, $41, $06, $E0, $03, $EC, $33
 
-DATA_FD721A:
+k_rool_blue_gas_sprite_palette:
 	db $00, $10, $20, $1C, $60, $28, $80, $34
 	db $A0, $40, $C0, $4C, $01, $59, $64, $61
 	db $C7, $65, $2A, $6E, $AE, $72, $11, $7B
 	db $75, $7F, $BA, $7F, $FF, $7F
 
-DATA_FD7238:
+k_rool_red_gas_sprite_palette:
 	db $05, $00, $06, $00, $08, $00, $0A, $00
 	db $0C, $00, $0E, $00, $10, $00, $12, $00
 	db $19, $00, $1F, $00, $DF, $18, $BF, $35
 	db $7F, $4E, $3F, $67, $FF, $7F
 
-DATA_FD7256:
+k_rool_purple_gas_sprite_palette:
 	db $01, $0C, $22, $18, $24, $24, $24, $28
 	db $46, $34, $48, $3C, $6A, $48, $8B, $54
 	db $AD, $60, $30, $65, $D3, $6D, $56, $72
@@ -5007,115 +5007,115 @@ mario_sprite_palette:
 	db $01, $1C, $10, $00, $9F, $10, $10, $21
 	db $95, $31, $FF, $3D, $9F, $52
 
-DATA_FD72EE:
+k_rool_fade_1_sprite_palette:
 	db $00, $00, $05, $00, $08, $00, $6B, $00
 	db $83, $04, $C4, $04, $26, $0D, $A8, $0D
 	db $2A, $0E, $EB, $0C, $F1, $19, $F8, $26
 	db $8C, $31, $52, $4A, $18, $63
 
-DATA_FD730C:
+k_rool_fade_2_sprite_palette:
 	db $00, $00, $03, $00, $05, $00, $47, $00
 	db $62, $04, $83, $04, $C4, $08, $25, $09
 	db $67, $09, $A7, $08, $4C, $11, $F0, $19
 	db $08, $21, $8C, $31, $10, $42
 
-DATA_FD732A:
+k_rool_fade_3_sprite_palette:
 	db $00, $00, $02, $00, $03, $00, $24, $00
 	db $21, $00, $41, $00, $62, $04, $83, $04
 	db $C3, $04, $44, $04, $A6, $08, $08, $0D
 	db $84, $10, $C6, $18, $08, $21
 
-DATA_FD7348:
+k_rool_gun_fade_1_sprite_palette:
 	db $00, $00, $83, $10, $A5, $18, $E6, $20
 	db $28, $29, $8B, $3D, $2E, $52, $D4, $62
 	db $2C, $21, $54, $46, $43, $08, $45, $08
 	db $67, $08, $AA, $0C, $0D, $1D
 
-DATA_FD7366:
+k_rool_gun_fade_2_sprite_palette:
 	db $00, $00, $62, $0C, $83, $10, $A4, $14
 	db $C5, $1C, $07, $29, $6A, $39, $EE, $41
 	db $C8, $14, $8D, $2D, $22, $04, $44, $04
 	db $45, $04, $67, $08, $C9, $14
 
-DATA_FD7384:
+k_rool_gun_fade_3_sprite_palette:
 	db $00, $00, $21, $04, $42, $08, $42, $0C
 	db $63, $0C, $84, $14, $C5, $1C, $E7, $20
 	db $64, $0C, $C7, $18, $21, $04, $22, $04
 	db $22, $04, $43, $04, $64, $08
 
-DATA_FD73A2:
+kudgel_sprite_palette:
 	db $21, $04, $84, $10, $E7, $1C, $29, $25
 	db $8C, $31, $31, $46, $F7, $5E, $CE, $39
 	db $94, $52, $7B, $6F, $53, $01, $5B, $02
 	db $5F, $03, $B0, $2D, $FF, $7F
 
-DATA_FD73C0:
+kudgel_club_sprite_palette:
 	db $43, $08, $67, $0C, $AB, $14, $CE, $18
 	db $51, $21, $F4, $2D, $77, $3A, $A8, $08
 	db $0C, $11, $71, $19, $D6, $25, $E7, $1C
 	db $AE, $39, $95, $56, $7C, $73
 
-DATA_FD73DE:
+king_zing_dark_1_sprite_palette:
 	db $00, $00, $46, $00, $ED, $08, $CD, $45
 	db $6B, $2D, $63, $14, $50, $62, $04, $25
 	db $CB, $62, $A6, $00, $6E, $01, $32, $12
 	db $18, $23, $18, $3F, $18, $63
 
-DATA_FD73FC:
+king_zing_dark_2_sprite_palette:
 	db $00, $00, $44, $00, $A9, $08, $49, $2D
 	db $E7, $1C, $42, $0C, $8B, $41, $A3, $18
 	db $E8, $41, $64, $00, $E9, $00, $8C, $0D
 	db $10, $1A, $10, $2A, $10, $42
 
-DATA_FD741A:
+king_zing_dark_3_sprite_palette:
 	db $00, $00, $22, $00, $44, $04, $A4, $18
 	db $84, $10, $21, $08, $C5, $20, $61, $0C
 	db $E4, $20, $42, $00, $85, $00, $C6, $04
 	db $08, $0D, $08, $15, $08, $21
 
-DATA_FD7438:
+kleever_2_sprite_palette:
 	db $42, $08, $83, $20, $07, $39, $8A, $51
 	db $AC, $4D, $ED, $4D, $30, $4E, $93, $56
 	db $F6, $5E, $39, $67, $FF, $7F, $A9, $08
 	db $40, $2B, $E0, $37, $1E, $21
 
-DATA_FD7456:
+kleever_5_sprite_palette:
 	db $42, $08, $83, $20, $07, $39, $8A, $51
 	db $AC, $4D, $ED, $4D, $30, $4E, $93, $56
 	db $F6, $5E, $39, $67, $FF, $7F, $A9, $08
 	db $E0, $04, $40, $09, $06, $00
 
-DATA_FD7474:
+kleever_3_sprite_palette:
 	db $42, $08, $83, $20, $07, $39, $8A, $51
 	db $AC, $4D, $ED, $4D, $30, $4E, $93, $56
 	db $F6, $5E, $39, $67, $FF, $7F, $A9, $08
 	db $80, $1D, $A0, $26, $7E, $0C
 
-DATA_FD7492:
+kleever_4_sprite_palette:
 	db $42, $08, $83, $20, $07, $39, $8A, $51
 	db $AC, $4D, $ED, $4D, $30, $4E, $93, $56
 	db $F6, $5E, $39, $67, $FF, $7F, $A9, $08
 	db $00, $1D, $00, $26, $7E, $0C
 
-DATA_FD74B0:
+king_zing_stinger_1_sprite_palette:
 	db $08, $00, $4E, $00, $4E, $00, $D5, $45
 	db $72, $2D, $6B, $14, $58, $62, $0C, $25
 	db $D3, $62, $AE, $00, $75, $01, $3A, $12
 	db $1F, $23, $1F, $3F, $1F, $63
 
-DATA_FD74CE:
+king_zing_stinger_2_sprite_palette:
 	db $10, $00, $54, $00, $54, $00, $59, $2D
 	db $F7, $1C, $52, $0C, $9A, $41, $B2, $18
 	db $F7, $41, $74, $00, $F9, $00, $9C, $0D
 	db $1F, $1A, $1F, $2A, $1F, $42
 
-DATA_FD74EC:
+king_zing_stinger_3_sprite_palette:
 	db $18, $00, $3A, $00, $3A, $00, $BC, $18
 	db $9B, $10, $39, $08, $DD, $20, $79, $0C
 	db $FB, $20, $5A, $00, $9C, $00, $DE, $04
 	db $1F, $0D, $1F, $15, $1F, $21
 
-DATA_FD750A:
+king_zing_stinger_4_sprite_palette:
 	db $1F, $00, $1F, $00, $1F, $00, $1F, $00
 	db $1F, $00, $1F, $00, $1F, $00, $1F, $00
 	db $1F, $00, $1F, $00, $1F, $00, $1F, $00
@@ -5303,49 +5303,49 @@ klank_pink_sprite_palette:
 	db $DA, $20, $9F, $41, $DF, $66, $38, $32
 	db $4E, $1D, $1F, $21, $FF, $7F
 
-DATA_FD78D4:
+kreepy_krow_head_sprite_palette:
 	db $74, $11, $10, $0D, $6E, $5A, $A7, $41
 	db $2B, $52, $D0, $62, $55, $73, $63, $08
 	db $C6, $14, $49, $21, $AC, $31, $10, $3E
 	db $73, $4A, $F7, $5A, $DE, $77
 
-DATA_FD78F2:
+kreepy_krow_body_sprite_palette:
 	db $61, $04, $C3, $0C, $05, $15, $67, $1D
 	db $AA, $29, $0C, $32, $4E, $3A, $B1, $46
 	db $46, $08, $A9, $10, $0D, $15, $EB, $4D
 	db $6F, $5E, $F4, $6A, $99, $7B
 
-DATA_FD7910:
+kreepy_krow_dying_head_1_sprite_palette:
 	db $ED, $0C, $AB, $08, $A9, $39, $24, $2D
 	db $67, $35, $CB, $41, $2E, $4A, $42, $04
 	db $84, $0C, $C6, $14, $28, $21, $6A, $29
 	db $AD, $31, $EF, $39, $94, $4E
 
-DATA_FD792E:
+kreepy_krow_dying_body_1_sprite_palette:
 	db $40, $00, $82, $08, $A3, $0C, $E5, $14
 	db $26, $19, $48, $21, $89, $25, $CB, $2D
 	db $24, $04, $66, $08, $A9, $0C, $47, $35
 	db $AA, $3D, $ED, $45, $51, $52
 
-DATA_FD794C:
+kreepy_krow_dying_head_2_sprite_palette:
 	db $AA, $08, $88, $04, $27, $2D, $C3, $20
 	db $05, $29, $68, $31, $AA, $39, $21, $04
 	db $63, $08, $A4, $10, $C6, $18, $08, $1D
 	db $29, $25, $6B, $2D, $EF, $39
 
-DATA_FD796A:
+kreepy_krow_dying_body_2_sprite_palette:
 	db $20, $00, $61, $04, $82, $08, $A3, $0C
 	db $C5, $14, $06, $19, $27, $1D, $48, $21
 	db $23, $04, $44, $08, $86, $08, $E5, $24
 	db $27, $2D, $6A, $35, $CC, $3D
 
-DATA_FD7988:
+kreepy_krow_dying_head_3_sprite_palette:
 	db $88, $04, $66, $04, $E5, $20, $A2, $18
 	db $E4, $20, $06, $25, $48, $2D, $21, $04
 	db $42, $08, $83, $0C, $A5, $10, $C6, $18
 	db $E7, $1C, $29, $21, $8C, $2D
 
-DATA_FD79A6:
+kreepy_krow_dying_body_3_sprite_palette:
 	db $20, $00, $41, $04, $62, $08, $83, $0C
 	db $A4, $10, $C4, $10, $E5, $14, $06, $19
 	db $22, $04, $43, $04, $65, $08, $C4, $1C
