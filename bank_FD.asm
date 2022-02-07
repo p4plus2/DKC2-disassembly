@@ -290,7 +290,7 @@ DATA_FD01A0:
 	db $00, $00, $00, $00, $00, $00, $00, $00
 	db $08, $29, $00, $00, $00, $00, $6B, $2D
 
-DATA_FD0408:
+error_screen_text_layer_3_palette:
 	db $00, $00, $FF, $7F, $04, $00, $08, $21
 	db $00, $00, $10, $2A, $10, $2A, $10, $2A
 	db $10, $2A, $10, $2A, $10, $2A, $10, $2A
@@ -453,7 +453,7 @@ lava_lagoon_level_palette:
 	db $44, $04, $A9, $14, $89, $08, $A6, $14
 	db $2E, $01, $63, $00, $E8, $00, $6C, $01
 
-DATA_FD08F0:
+water_hot_fade_layer_3_palette:
 	db $67, $04, $CE, $08, $9B, $19, $3F, $26
 	db $67, $04, $F2, $0C, $DF, $1D, $7F, $2A
 	db $67, $04, $57, $11, $9B, $19, $3F, $26
@@ -626,7 +626,7 @@ pirate_panic_level_palette:
 	db $DA, $46, $68, $0C, $91, $10, $BA, $14
 	db $CA, $10, $07, $05, $2D, $15, $93, $1D
 
-DATA_FD0DD0:
+red_hot_ride_smoke_layer_3_palette:
 	db $00, $00, $EF, $3D, $B5, $56, $7B, $6F
 	db $29, $25, $B5, $56, $7B, $6F, $FF, $7F
 	db $29, $25, $7B, $6F, $FF, $7F, $FF, $7F
@@ -902,7 +902,7 @@ topsail_trouble_level_palette:
 	db $E5, $30, $E5, $2C, $C5, $28, $C5, $24
 	db $A4, $1C, $A4, $18, $84, $14, $84, $10
 
-DATA_FD15F0:
+topsail_trouble_bg_layer_2_palette:
 	db $1F, $64, $84, $10, $A5, $14, $C6, $14
 	db $C7, $18, $E8, $18, $09, $1D, $2A, $1D
 	db $4B, $21, $6C, $21, $6D, $25, $8E, $25
@@ -1304,7 +1304,7 @@ DATA_FD2164:
 DATA_FD2168:
 	db $FF, $03, $00, $7C, $E0, $03, $1F, $00
 
-DATA_FD2170:
+ship_deck_cabin_level_palette:
 	db $00, $7C, $FF, $7F, $00, $00, $F5, $04
 	db $AF, $04, $8C, $04, $8A, $04, $69, $04
 	db $67, $04, $46, $00, $44, $00, $22, $00
@@ -1338,7 +1338,7 @@ DATA_FD2170:
 	db $86, $39, $08, $56, $D0, $0C, $93, $1D
 	db $22, $04, $2A, $04, $C3, $1C, $24, $29
 
-DATA_FD2270:
+mine_glint_layer_3_palette:
 	db $F7, $5E, $7B, $6F, $FF, $7F, $00, $00
 	db $8C, $31, $31, $46, $F7, $5E, $00, $00
 	db $E7, $1C, $8C, $31, $31, $46, $00, $00
@@ -1479,7 +1479,7 @@ gameover_screen_palette:
 	db $6E, $18, $4A, $10, $DD, $0E, $23, $00
 	db $45, $04, $68, $04, $8B, $08, $CF, $08
 
-DATA_FD268E:
+falling_leaves_layer_1_palette:
 	db $00, $7C, $A2, $04, $E3, $08, $44, $09
 	db $A6, $0D, $07, $0E, $48, $12, $AA, $12
 	db $0B, $17, $86, $04, $A8, $04, $CA, $08
@@ -1732,7 +1732,7 @@ DATA_FD2CF0:
 	db $CB, $08, $CD, $04, $0C, $00, $88, $04
 	db $22, $00, $24, $00, $43, $08
 
-DATA_FD2DCE:
+water_toxic_layer_3_palette:
 	db $20, $01, $C5, $1D, $0E, $33, $F7, $4B
 	db $20, $15, $28, $26, $91, $3B, $FA, $4F
 	db $20, $15, $AB, $2E, $0E, $33, $F7, $4B
@@ -2127,7 +2127,7 @@ DATA_FD3652:
 	db $28, $00, $04, $00, $60, $00, $38, $00
 	db $04, $00, $80, $00
 
-DATA_FD394E:
+water_frozen_layer_3_palette:
 	db $C9, $39, $B2, $56, $FF, $7F, $FF, $7F
 	db $C9, $39, $57, $6B, $FF, $7F, $FF, $7F
 	db $C9, $39, $FD, $7F, $FF, $7F, $FF, $7F
@@ -2289,7 +2289,7 @@ DATA_FD3DAE:
 	db $A7, $08, $A8, $08, $C8, $0C, $C9, $0C
 	db $E9, $0C, $EA, $10, $0A, $11, $0B, $11
 
-DATA_FD3DEE:
+destroy_them_all_layer_1_palette:
 	db $0D, $0D, $FA, $2D, $F9, $2D, $7E, $3A
 	db $1F, $4B, $FF, $7F, $C6, $18, $EB, $18
 	db $79, $15, $8C, $08, $22, $04, $28, $04
@@ -2315,7 +2315,7 @@ DATA_FD3DEE:
 	db $77, $42, $0A, $1D, $AC, $10, $A8, $08
 	db $4D, $19, $F7, $25, $5A, $2E, $1E, $3F
 
-DATA_FD3EAE:
+collect_the_stars_layer_1_palette:
 	db $2A, $00, $86, $04, $EB, $0C, $70, $15
 	db $F5, $1D, $58, $22, $DC, $26, $3F, $2B
 	db $7F, $47, $BF, $63, $FF, $7F, $CA, $0C
@@ -2341,7 +2341,7 @@ DATA_FD3EAE:
 	db $1F, $4B, $FB, $2D, $74, $21, $66, $08
 	db $44, $04, $22, $00, $66, $08, $42, $04
 
-DATA_FD3F6E:
+find_the_token_layer_1_palette:
 	db $2D, $5D, $68, $0C, $10, $19, $AA, $10
 	db $64, $04, $22, $04, $FD, $41, $7F, $4F
 	db $FF, $6B, $A9, $08, $13, $11, $72, $21
@@ -2367,7 +2367,7 @@ DATA_FD3F6E:
 	db $9C, $0D, $DF, $23, $7F, $1F, $1E, $1B
 	db $9C, $16, $F6, $11, $D2, $11, $0B, $0D
 
-DATA_FD402E:
+video_game_hero_screen_palette:
 	db $00, $00, $FF, $7F, $00, $00, $42, $0C
 	db $A4, $18, $07, $25, $6B, $35, $CE, $45
 	db $52, $56, $52, $62, $72, $6A, $F6, $76
@@ -2401,25 +2401,25 @@ DATA_FD402E:
 	db $A4, $18, $67, $0C, $00, $10, $0F, $00
 	db $00, $3C, $00, $01, $A1, $04, $22, $04
 
-DATA_FD412E:
+credits_header_layer_1_palette:
 	db $E0, $7F, $11, $00, $16, $00, $1B, $00
 	db $1F, $00, $0D, $00, $E0, $7F, $E0, $7F
 	db $E0, $7F, $E0, $7F, $E0, $7F, $E0, $7F
 	db $E0, $7F, $E0, $7F, $E0, $7F, $E0, $7F
 
-DATA_FD414E:
+credits_name_text_layer_1_palette:
 	db $00, $7C, $FF, $7F, $84, $10, $8C, $31
 	db $10, $42, $94, $52, $18, $63, $9C, $73
 	db $40, $02, $E0, $03, $08, $21, $1F, $7C
 	db $97, $04, $BF, $0C, $EF, $3D, $FF, $7F
 
-DATA_FD416E:
+secret_ending_beam_sprite_palette:
 	db $00, $00, $20, $08, $41, $10, $C1, $28
 	db $62, $41, $E3, $55, $22, $5A, $61, $5E
 	db $25, $6F, $EA, $7F, $F7, $7F, $9F, $7D
 	db $1F, $7E, $9F, $7E, $3F, $7F, $BF, $7F
 
-DATA_FD418E:
+secret_ending_isle_sprite_palette:
 	db $22, $00, $22, $00, $46, $04, $43, $04
 	db $61, $04, $A2, $08, $89, $00, $EF, $08
 	db $21, $04, $42, $08, $83, $0C, $A4, $10
@@ -3935,7 +3935,7 @@ DATA_FD5FEC:
 
 
 DATA_FD5FEE:
-	dw DATA_FD6682
+	dw global_sprite_palette
 	dw diddy_active_sprite_palette
 	dw barrel_sprite_palette
 	dw coin_sprite_palette
@@ -3975,7 +3975,7 @@ DATA_FD5FEE:
 	dw DATA_FD7546
 	dw cranky_kong_sprite_palette
 	dw skull_cart_sprite_palette
-	dw DATA_FD6B8C
+	dw barrel_good_bad_sprite_palette
 	dw klank_pink_sprite_palette
 	dw klobber_red_sprite_palette
 
@@ -4151,11 +4151,11 @@ DATA_FD6170:
 	dw !null_pointer
 
 DATA_FD618E:
-	dw DATA_FD6682
-	dw DATA_FD6682
-	dw DATA_FD6682
-	dw DATA_FD6682
-	dw DATA_FD6682
+	dw global_sprite_palette
+	dw global_sprite_palette
+	dw global_sprite_palette
+	dw global_sprite_palette
+	dw global_sprite_palette
 	dw barrel_sprite_palette
 	dw barrel_sprite_palette
 	dw barrel_sprite_palette
@@ -4176,7 +4176,7 @@ DATA_FD618E:
 	dw coin_sprite_palette
 	dw coin_sprite_palette
 	dw coin_sprite_palette
-	dw DATA_FD6682
+	dw global_sprite_palette
 
 DATA_FD61C2:
 	db $00, $00, $00, $0C, $00, $14, $00, $20
@@ -4380,7 +4380,7 @@ barrel_sprite_palette:
 	db $F9, $1D, $64, $0C, $C5, $18, $4A, $29
 	db $CF, $35, $F7, $5A, $FF, $7F
 
-DATA_FD6682:
+global_sprite_palette:
 	db $C8, $00, $2E, $01, $B5, $1D, $7B, $02
 	db $7F, $07, $FF, $7F, $5A, $6B, $94, $52
 	db $EF, $39, $09, $00, $0C, $00, $30, $04
@@ -4638,7 +4638,7 @@ haunted_hall_door_sprite_palette:
 	db $D5, $21, $71, $19, $2D, $15, $CA, $0C
 	db $A7, $08, $65, $08, $00, $00
 
-DATA_FD6B8C:
+barrel_good_bad_sprite_palette:
 	db $43, $04, $86, $08, $CA, $0C, $0E, $11
 	db $52, $15, $95, $19, $F9, $1D, $64, $0C
 	db $C5, $18, $4A, $29, $CF, $35, $20, $02

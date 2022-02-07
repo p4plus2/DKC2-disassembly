@@ -3755,15 +3755,15 @@ DATA_BAB3FE:
 	dw DATA_BAB461
 
 DATA_BAB404:
-	db $35, $36 : dw DATA_FD3DEE : db $0F, $00
+	db $35, $36 : dw destroy_them_all_layer_1_palette : db $0F, $00
 	db $11, ">DESTROY THEM ALL!", $13, ">D?TRUISEZ-LES TOUS!"
 
 DATA_BAB432:
-	db $36, $36 : dw DATA_FD3EAE : db $0F, $00
+	db $36, $36 : dw collect_the_stars_layer_1_palette : db $0F, $00
 	db $12, ">COLLECT THE STARS!", $13, ">% VOUS LES ?TOILES!"
 
 DATA_BAB461:
-	db $37, $36 : dw DATA_FD3F6E : db $0F, $00
+	db $37, $36 : dw find_the_token_layer_1_palette : db $0F, $00
 	db $0F, ">FIND THE TOKEN!", $11, ">TROUVEZ LE JETON!"
 
 CODE_BAB48B:
@@ -4032,7 +4032,7 @@ CODE_BAB671:					;	   |
 	LDY #$0000				;$BAB69F   |
 	LDX #$0008				;$BAB6A2   |
 	JSL DMA_palette				;$BAB6A5   |
-	LDA #DATA_FD412E			;$BAB6A9   |
+	LDA #credits_header_layer_1_palette	;$BAB6A9   |
 	LDY #$0030				;$BAB6AC   |
 	LDX #$0004				;$BAB6AF   |
 	JSL DMA_palette				;$BAB6B2   |
@@ -4040,7 +4040,7 @@ CODE_BAB671:					;	   |
 	LDY #$0020				;$BAB6B9   |
 	LDX #$0004				;$BAB6BC   |
 	JSL DMA_global_palette			;$BAB6BF   |
-	LDA #DATA_FD414E			;$BAB6C3   |
+	LDA #credits_name_text_layer_1_palette	;$BAB6C3   |
 	LDY #$0040				;$BAB6C6   |
 	LDX #$0004				;$BAB6C9   |
 	JSL DMA_palette				;$BAB6CC   |

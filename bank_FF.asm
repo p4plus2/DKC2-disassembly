@@ -901,7 +901,7 @@ DATA_FF0B5C:
 DATA_FF0B6E:
 	dw sprite.number, $0308
 	dw sprite.unknown_1C, $0000
-	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_set_palette, global_sprite_palette
 	dw !initcommand_set_animation, $01BF
 	dw !initcommand_success
 
@@ -941,7 +941,7 @@ DATA_FF0BC0:
 	dw sprite.unknown_30, $0000
 	dw sprite.unknown_1C, $8000
 	dw !initcommand_set_oam, $3000
-	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_set_palette, global_sprite_palette
 	dw !initcommand_success
 
 DATA_FF0BE6:
@@ -985,7 +985,7 @@ DATA_FF0C2C:
 	dw sprite.max_y_speed, $0000
 	dw sprite.render_order, $00D6
 	dw !initcommand_set_animation, $01BF
-	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_set_palette, global_sprite_palette
 	dw sprite.unknown_52, $0000
 	dw !initcommand_success
 
@@ -996,7 +996,7 @@ DATA_FF0C60:
 	dw sprite.unknown_30, $0000
 	dw sprite.unknown_1C, $8000
 	dw !initcommand_set_oam, $3000
-	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_set_palette, global_sprite_palette
 	dw !initcommand_success
 
 DATA_FF0C7E:
@@ -1015,7 +1015,7 @@ DATA_FF0C88:
 	dw sprite.y_speed, $0000
 	dw sprite.unknown_30, $0000
 	dw !initcommand_set_oam, $1000
-	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_set_palette, global_sprite_palette
 	dw !initcommand_set_animation, $015F
 	dw !initcommand_success
 
@@ -1245,14 +1245,14 @@ DATA_FF0F2C:
 DATA_FF0F48:
 	dw sprite.number, $010C
 	dw !initcommand_spawn_relative, $0000, $FFF6
-	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_set_palette, global_sprite_palette
 	dw !initcommand_set_animation, $01B6
 	dw !initcommand_success
 
 DATA_FF0F5C:
 	dw sprite.number, $010C
 	dw !initcommand_spawn_relative, $0000, $0000
-	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_set_palette, global_sprite_palette
 	dw !initcommand_set_animation, $01B6
 	dw !initcommand_success
 
@@ -1319,7 +1319,7 @@ DATA_FF1004:
 DATA_FF103A:
 	dw sprite.number, $0238
 	dw !initcommand_set_position
-	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_set_palette, global_sprite_palette
 	dw !initcommand_set_oam, $3000
 	dw !initcommand_set_animation, $0168
 	dw !initcommand_success
@@ -1327,7 +1327,7 @@ DATA_FF103A:
 DATA_FF104E:
 	dw sprite.number, $0238
 	dw !initcommand_spawn_relative, $0000, $0000
-	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_set_palette, global_sprite_palette
 	dw !initcommand_set_oam, $3000
 	dw !initcommand_set_animation, $0168
 	dw !initcommand_success
@@ -1387,7 +1387,7 @@ DATA_FF10F4:
 	dw sprite.unknown_54, $021C
 	dw sprite.render_order, $00C8
 	dw !initcommand_set_oam, $2000
-	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_set_palette, global_sprite_palette
 	dw !initcommand_set_animation, $02B2
 	dw sprite.action, $0002
 	dw sprite.unknown_4E, $0010
@@ -1477,7 +1477,7 @@ DATA_FF11FA:
 	dw sprite.number, $023C
 	dw sprite.render_order, $00F0
 	dw sprite.unknown_30, $0000
-	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_set_palette, global_sprite_palette
 	dw !initcommand_set_animation, $01BB
 	dw !initcommand_success
 
@@ -1864,7 +1864,7 @@ DATA_FF164E:
 	dw !initcommand_spawn_relative, $0000, $0000
 	dw sprite.render_order, $00CC
 	dw sprite.action, $0000
-	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_set_palette, global_sprite_palette
 	dw !initcommand_set_animation, $02BF
 	dw !initcommand_success
 
@@ -1961,7 +1961,7 @@ DATA_FF1766:
 	dw !initcommand_success
 
 DATA_FF178A:
-	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_set_palette, global_sprite_palette
 	dw sprite.number, $01D4
 	dw sprite.unknown_54, $021C
 	dw sprite.action, $0000
@@ -1974,7 +1974,7 @@ DATA_FF178A:
 DATA_FF17AC:
 	dw !initcommand_spawn_relative, $0000, $0000
 	dw sprite.number, $0104
-	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_set_palette, global_sprite_palette
 	dw !initcommand_set_animation, $019E
 	dw !initcommand_success
 
@@ -2324,7 +2324,7 @@ DATA_FF1B06:
 	dw sprite.y_speed, $0000
 	dw sprite.unknown_48, $0000
 	dw sprite.unknown_1C, $0000
-	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_set_palette, global_sprite_palette
 	dw !initcommand_set_animation, $02D5
 	dw !initcommand_success
 
@@ -2338,7 +2338,7 @@ DATA_FF1B2A:
 	dw sprite.unknown_44, $0000
 	dw sprite.unknown_48, $0000
 	dw sprite.unknown_1C, $0000
-	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_set_palette, global_sprite_palette
 	dw !initcommand_success
 
 DATA_FF1B56:
@@ -3419,7 +3419,7 @@ DATA_FF287C:
 	dw sprite.render_order, $00FA
 	dw sprite.unknown_1C, $0000
 	dw !initcommand_set_oam, $3000
-	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_set_palette, global_sprite_palette
 	dw !initcommand_set_animation, $022D
 	dw !initcommand_success
 
@@ -3456,7 +3456,7 @@ DATA_FF28DC:
 DATA_FF28FC:
 	dw !initcommand_load_subconfig, DATA_FF2042
 	dw sprite.render_order, $00F8
-	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_set_palette, global_sprite_palette
 	dw !initcommand_set_oam, $3000
 	dw !initcommand_set_animation, $01FE
 	dw !initcommand_success
@@ -17844,7 +17844,7 @@ DATA_FFD35A:
 	dw sprite.unknown_30, $0000
 	dw sprite.unknown_1C, $C000
 	dw !initcommand_set_oam, $3000
-	dw !initcommand_set_palette, DATA_FD6682
+	dw !initcommand_set_palette, global_sprite_palette
 	dw !initcommand_success
 
 DATA_FFD388:

@@ -5866,7 +5866,7 @@ DATA_B5BC2A:
 	dw k_rool_duel_level_palette
 	dw ice_level_palette
 	dw animal_antics_jungle_level_palette
-	dw DATA_FD2170
+	dw ship_deck_cabin_level_palette
 	dw ice_level_palette
 	dw bramble_blast_level_palette
 	dw carnival_level_palette

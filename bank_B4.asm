@@ -1559,7 +1559,7 @@ CODE_B48C9D:
 	LDY #$00E0				;$B48D25   |
 	LDX #$0004				;$B48D28   |
 	JSL DMA_global_palette			;$B48D2B   |
-	LDA #DATA_FD6682			;$B48D2F   |
+	LDA #global_sprite_palette		;$B48D2F   |
 	LDY #$00F0				;$B48D32   |
 	LDX #$0004				;$B48D35   |
 	JSL DMA_palette				;$B48D38   |
@@ -7460,7 +7460,7 @@ CODE_B4BEEF:
 	TRB $06A3				;$B4BEFD   |
 	LDA #$0020				;$B4BF00   |
 	TSB $06A5				;$B4BF03   |
-	LDA #DATA_FD6682			;$B4BF06   |
+	LDA #global_sprite_palette		;$B4BF06   |
 	LDY #$00F0				;$B4BF09   |
 	LDX #$0004				;$B4BF0C   |
 	JSL DMA_palette				;$B4BF0F   |
@@ -7512,7 +7512,7 @@ CODE_B4BF3A:					;	   |
 	JSL VRAM_payload_handler_global		;$B4BF8E   |
 	LDA #$0038				;$B4BF92   |
 	JSL set_PPU_registers_global		;$B4BF95   |
-	LDA #DATA_FD402E			;$B4BF99   |
+	LDA #video_game_hero_screen_palette	;$B4BF99   |
 	LDY #$0000				;$B4BF9C   |
 	LDX #$0020				;$B4BF9F   |
 	JSL DMA_palette				;$B4BFA2   |

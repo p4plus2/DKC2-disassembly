@@ -3228,7 +3228,7 @@ CODE_BB960B:
 	JSL VRAM_payload_handler_global		;$BB9615   |
 	JSR CODE_BB94B6				;$BB9619   |
 	LDY #$0070				;$BB961C   |
-	LDA #DATA_FD15F0			;$BB961F   |
+	LDA #topsail_trouble_bg_layer_2_palette	;$BB961F   |
 	LDX #$0004				;$BB9622   |
 	JSL DMA_palette				;$BB9625   |
 	LDA $0537				;$BB9629   |
@@ -3266,7 +3266,7 @@ CODE_BB966F:
 	JSL VRAM_payload_handler_global		;$BB9679   |
 	JSR CODE_BB94B6				;$BB967D   |
 	LDY #$0010				;$BB9680   |
-	LDA #DATA_FD268E			;$BB9683   |
+	LDA #falling_leaves_layer_1_palette	;$BB9683   |
 	LDX #$0004				;$BB9686   |
 	JSL DMA_palette				;$BB9689   |
 	LDA $0537				;$BB968D   |
@@ -3418,7 +3418,7 @@ CODE_BB97F9:
 	JSL VRAM_payload_handler_global		;$BB9803   |
 	JSR CODE_BB94B6				;$BB9807   |
 	LDY #$0070				;$BB980A   |
-	LDA #DATA_FD268E			;$BB980D   |
+	LDA #falling_leaves_layer_1_palette	;$BB980D   |
 	LDX #$0004				;$BB9810   |
 	JSL DMA_palette				;$BB9813   |
 	LDA $0537				;$BB9817   |
@@ -3465,7 +3465,7 @@ CODE_BB9866:
 CODE_BB9874:
 	JSR CODE_BB99DB				;$BB9874  \
 	LDY #$0000				;$BB9877   |
-	LDA #DATA_FD0DD0			;$BB987A   |
+	LDA #red_hot_ride_smoke_layer_3_palette	;$BB987A   |
 	LDX #$0004				;$BB987D   |
 	JSL DMA_palette				;$BB9880   |
 	RTS					;$BB9884  /
@@ -3495,7 +3495,7 @@ CODE_BB98B4:
 	STA $17B6				;$BB98B7   |
 	JSR CODE_BB95F2				;$BB98BA   |
 	LDY #$0000				;$BB98BD   |
-	LDA #DATA_FD2DCE			;$BB98C0   |
+	LDA #water_toxic_layer_3_palette	;$BB98C0   |
 	LDX #$0004				;$BB98C3   |
 	JSL DMA_palette				;$BB98C6   |
 	LDA #$2700				;$BB98CA   |

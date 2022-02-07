@@ -133,7 +133,7 @@ display_error_message:
 	LDY #$0000				;$8083D8   | |
 	LDX #$0020				;$8083DB   | |
 	JSL DMA_palette				;$8083DE   |/
-	LDA #DATA_FD0408			;$8083E2   |\ Upload piracy text color
+	LDA #error_screen_text_layer_3_palette	;$8083E2   |\ Upload piracy text color
 	LDY #$0000				;$8083E5   | |
 	LDX #$0001				;$8083E8   | |
 	JSL DMA_palette				;$8083EB   |/
@@ -3546,7 +3546,7 @@ CODE_80A0E9:					;	   |
 	JSL DMA_palette				;$80A28C   |
 	LDY #$0080				;$80A290   |
 	LDX #$0020				;$80A293   |
-	LDA #DATA_FD416E			;$80A296   |
+	LDA #secret_ending_beam_sprite_palette	;$80A296   |
 	JSL DMA_palette				;$80A299   |
 	LDY #$00D0				;$80A29D   |
 	LDX #$0004				;$80A2A0   |
@@ -3583,7 +3583,7 @@ CODE_80A2CF:
 	STA $7E8012				;$80A2E7   |
 	LDY #$0090				;$80A2EB   |
 	LDX #$0004				;$80A2EE   |
-	LDA #DATA_FD418E			;$80A2F1   |
+	LDA #secret_ending_isle_sprite_palette	;$80A2F1   |
 	JSL DMA_palette				;$80A2F4   |
 	JSL CODE_B5A919				;$80A2F8   |
 	LDA $17C0				;$80A2FC   |
@@ -7512,7 +7512,7 @@ CODE_80C515:					;	   |
 	LDA $32					;$80C548   |
 	CMP #$0014				;$80C54A   |
 	BCS CODE_80C55C				;$80C54D   |
-	LDX #DATA_FD08F0			;$80C54F   |
+	LDX #water_hot_fade_layer_3_palette	;$80C54F   |
 	CMP #$0010				;$80C552   |
 	BCS CODE_80C55C				;$80C555   |
 	LDX #lava_lagoon_level_palette		;$80C557   |
@@ -7716,7 +7716,7 @@ CODE_80C6E7:					;	   |
 	ORA $36					;$80C70F   |
 	STA $0913				;$80C711   |
 	LDY #$0000				;$80C714   |
-	LDX #DATA_FD394E			;$80C717   |
+	LDX #water_frozen_layer_3_palette	;$80C717   |
 	LDA $32					;$80C71A   |
 	CMP #$0014				;$80C71C   |
 	BCS CODE_80C72E				;$80C71F   |
@@ -9323,7 +9323,7 @@ CODE_80D6AB:					;	   |
 	STA $34					;$80D6B6   |
 	LDX #$0000				;$80D6B8   |
 CODE_80D6BB:					;	   |
-	LDA.l DATA_FD2270,x			;$80D6BB   |
+	LDA.l mine_glint_layer_3_palette,x	;$80D6BB   |
 	AND #$001F				;$80D6BF   |
 	SEC					;$80D6C2   |
 	SBC $32					;$80D6C3   |
@@ -9334,7 +9334,7 @@ CODE_80D6BB:					;	   |
 	LDA #$0000				;$80D6CD   |
 CODE_80D6D0:					;	   |
 	STA $38					;$80D6D0   |
-	LDA.l DATA_FD2270,x			;$80D6D2   |
+	LDA.l mine_glint_layer_3_palette,x	;$80D6D2   |
 	AND #$03E0				;$80D6D6   |
 	SEC					;$80D6D9   |
 	SBC $34					;$80D6DA   |
@@ -9345,7 +9345,7 @@ CODE_80D6D0:					;	   |
 	LDA #$0000				;$80D6E4   |
 CODE_80D6E7:					;	   |
 	TSB $38					;$80D6E7   |
-	LDA.l DATA_FD2270,x			;$80D6E9   |
+	LDA.l mine_glint_layer_3_palette,x	;$80D6E9   |
 	AND #$7C00				;$80D6ED   |
 	SEC					;$80D6F0   |
 	SBC $36					;$80D6F1   |
