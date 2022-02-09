@@ -2479,7 +2479,7 @@ DATA_E70000:
 	db $C3, $2A, $BE, $04, $41, $BE, $40, $BF
 	db $00
 
-DATA_E74D71:
+crocodile_cauldron_8x8_tilemap:
 	db $00, $1C, $00, $1C, $00, $1C, $01, $1C
 	db $02, $1C, $03, $1C, $04, $1C, $05, $14
 	db $06, $14, $07, $14, $08, $14, $09, $14
@@ -2705,7 +2705,7 @@ DATA_E74D71:
 	db $0D, $5B, $4B, $0A, $98, $18, $0F, $0B
 	db $10, $07, $11, $07, $12, $07, $13, $07
 
-DATA_E75471:
+crocodile_cauldron_tiledata:
 	db $00, $FF, $00, $FF, $00, $FF, $00, $FF
 	db $FF, $00, $FF, $3F, $FF, $FF, $7F, $FE
 	db $FF, $00, $00, $FE, $01, $F8, $07, $7F
@@ -5076,7 +5076,7 @@ DATA_E75471:
 	db $8D, $FE, $02, $73, $81, $B1, $C4, $67
 	db $8C, $B5, $7B, $E2, $7F, $80, $00
 
-DATA_E79E78:
+krem_quay_tiledata:
 	db $00, $00, $FF, $FF, $00, $FF, $00, $00
 	db $FF, $00, $00, $FF, $FF, $FE, $01, $7F
 	db $80, $E0, $1F, $FC, $03, $C0, $3F, $01

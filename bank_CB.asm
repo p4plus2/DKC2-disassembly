@@ -5618,7 +5618,7 @@ DATA_CBA6D7:
 	db $00, $00, $00, $00, $00, $00, $23, $00
 	db $33, $0C
 
-DATA_CBAC49:
+lost_world_tiledata:
 	db $00, $00, $FF, $00, $FF, $00, $FF, $FF
 	db $00, $FF, $FF, $FF, $7F, $FF, $FE, $FE
 	db $FF, $00, $00, $7F, $00, $7F, $FF, $80

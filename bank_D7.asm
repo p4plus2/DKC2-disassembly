@@ -8310,7 +8310,7 @@ DATA_D7F78B:
 	db $04, $8E, $FC, $FC, $FC, $FC, $FC, $F8
 	db $F8, $F8, $F0, $F8
 
-DATA_D7F9A7:
+krem_quay_left_8x8_tilemap:
 	db $00, $40, $00, $00, $0D, $3E, $1D, $00
 	db $3C, $00, $09, $1D, $00, $3F, $00, $3D
 	db $00, $00, $11, $2D, $80, $00, $35, $40

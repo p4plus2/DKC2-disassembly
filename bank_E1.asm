@@ -214,7 +214,7 @@ DATA_E10000:
 	db $73, $80, $70, $30, $F0, $30, $70, $1B
 	db $13, $09, $20, $10, $6F, $68, $00
 
-DATA_E106AF:
+swamp_level_tiledata:
 	db $00, $00, $FF, $FF, $00, $FF, $00, $00
 	db $FF, $FF, $FF, $00, $00, $FE, $01, $00
 	db $80, $1F, $00, $1F, $E0, $00, $F0, $FE
@@ -2915,7 +2915,7 @@ DATA_E106AF:
 	db $00, $5C, $D4, $1A, $B6, $23, $0C, $27
 	db $00, $0C, $62, $06, $07, $00
 
-DATA_E15B05:
+brambles_level_tiledata:
 	db $00, $00, $FF, $00, $FF, $FF, $00, $00
 	db $00, $01, $00, $00, $FF, $00, $01, $00
 	db $80, $0F, $00, $80, $00, $00, $C0, $FE
@@ -7685,7 +7685,7 @@ DATA_E1BF3E:
 	db $40, $3F, $03, $7C, $10, $EF, $00, $E7
 	db $00, $CF, $42, $8D, $82, $6D, $00, $CF
 
-DATA_E1EFDE:
+krocodile_kore_level_tiledata:
 	db $00, $FF, $00, $FF, $00, $00, $FF, $FF
 	db $00, $FF, $FF, $00, $00, $80, $7F, $C0
 	db $3F, $7F, $80, $01, $FE, $3F, $C0, $FC

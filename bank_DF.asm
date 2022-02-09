@@ -270,7 +270,7 @@ DATA_DF0000:
 	db $4F, $C0, $C7, $CB, $38, $35, $05, $61
 	db $80, $63, $80, $C3, $B1, $09, $F7, $00
 
-DATA_DF0870:
+ship_hold_level_tiledata:
 	db $00, $00, $FF, $00, $FF, $FF, $00, $00
 	db $FF, $00, $00, $FF, $FF, $FE, $00, $3F
 	db $00, $01, $00, $00, $C0, $00, $1F, $3F
@@ -1550,7 +1550,7 @@ DATA_DF0870:
 	db $BC, $11, $36, $A0, $33, $F0, $40, $70
 	db $00
 
-DATA_DF3059:
+wasp_hive_level_tiledata:
 	db $00, $00, $FF, $00, $FF, $FF, $00, $00
 	db $FF, $0F, $F0, $80, $00, $C0, $FF, $80
 	db $FF, $7F, $80, $F0, $00, $01, $FE, $1F
@@ -4136,7 +4136,7 @@ DATA_DF3059:
 	db $27, $D8, $09, $6C, $1C, $EF, $08, $3B
 	db $3A, $BD, $1F, $C0, $00
 
-DATA_DF8116:
+ship_deck_level_tiledata:
 	db $00, $00, $FF, $00, $FF, $FF, $00, $00
 	db $FF, $00, $00, $FF, $FF, $7F, $00, $E0
 	db $00, $C0, $00, $80, $00, $00, $80, $01
@@ -6831,7 +6831,7 @@ DATA_DF8116:
 	db $10, $2F, $8C, $21, $69, $C1, $01, $44
 	db $00
 
-DATA_DFD537:
+ship_mast_level_tiledata:
 	db $00, $00, $FF, $00, $FF, $FF, $00, $00
 	db $00, $00, $FF, $00, $80, $80, $00, $FE
 	db $FF, $03, $00, $00, $01, $FF, $FF, $FF

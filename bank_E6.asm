@@ -8118,7 +8118,7 @@ jungle_8x8_tilemap:
 	db $22, $C0, $8C, $F3, $EC, $0B, $91, $BD
 	db $21, $30, $B0, $00
 
-DATA_E6FCF3:
+gangplank_galleon_tiledata:
 	db $00, $00, $FF, $FF, $00, $FF, $00, $00
 	db $FF, $FF, $FF, $00, $00, $80, $00, $00
 	db $80, $01, $00, $00, $C0, $03, $00, $FF

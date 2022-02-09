@@ -6175,7 +6175,7 @@ DATA_FD8217:
 	db $00
 
 DATA_FD821F:
-	dl bank_word(DATA_DEA932)
+	dl bank_word(forest_level_tiledata)
 	dw $2000|$8000
 	dw $71C0
 	dl bank_word(DATA_D5FEB3)
@@ -6187,7 +6187,7 @@ DATA_FD821F:
 	db $00
 
 DATA_FD8235:
-	dl bank_word(DATA_DF0870)
+	dl bank_word(ship_hold_level_tiledata)
 	dw $2000|$8000
 	dw $3400
 	dl bank_word(DATA_C2FAC9)
@@ -6226,7 +6226,7 @@ DATA_FD826E:
 	dl bank_word(DATA_EB2EA0)
 	dw $5300|$8000
 	dw $2A00
-	dl bank_word(DATA_DF3059)
+	dl bank_word(wasp_hive_level_tiledata)
 	dw $2000|$8000
 	dw $6600
 	db $00
@@ -6259,7 +6259,7 @@ DATA_FD82BD:
 	db $00
 
 DATA_FD82C5:
-	dl bank_word(DATA_DF8116)
+	dl bank_word(ship_deck_level_tiledata)
 	dw $2000|$8000
 	dw $8000
 	dl bank_word(DATA_F52BA7)
@@ -6361,67 +6361,67 @@ DATA_FD836B:
 	db $00
 
 DATA_FD838F:
-	dl bank_word(DATA_E6FCF3)
+	dl bank_word(gangplank_galleon_tiledata)
 	dw $2000|$8000
 	dw $6DC0
-	dl bank_word(DATA_D9F97B)
+	dl bank_word(gangplank_galleon_8x8_tilemap)
 	dw $7800
 	dw $0700
 	db $00
 
 DATA_FD839E:
-	dl bank_word(DATA_E75471)
+	dl bank_word(crocodile_cauldron_tiledata)
 	dw $2000|$8000
 	dw $7000
-	dl bank_word(DATA_E74D71)
+	dl bank_word(crocodile_cauldron_8x8_tilemap)
 	dw $7800
 	dw $0700
 	db $00
 
 DATA_FD83AD:
-	dl bank_word(DATA_E79E78)
+	dl bank_word(krem_quay_tiledata)
 	dw $2000|$8000
 	dw $7CA0
-	dl bank_word(DATA_D7F9A7)
+	dl bank_word(krem_quay_left_8x8_tilemap)
 	dw $7000|$8000
 	dw $0700
-	dl bank_word(DATA_C4F9C0)
+	dl bank_word(krem_quay_right_8x8_tilemap)
 	dw $7400|$8000
 	dw $0700
 	db $00
 
 DATA_FD83C3:
-	dl bank_word(DATA_E80535)
+	dl bank_word(krazy_kremland_bottom_tiledata)
 	dw $2000|$8000
 	dw $6E20
-	dl bank_word(DATA_DBFB2C)
+	dl bank_word(krazy_kremland_bottom_8x8_tilemap)
 	dw $7800|$8000
 	dw $0700
 	db $00
 
 DATA_FD83D2:
-	dl bank_word(DATA_E854F8)
+	dl bank_word(gloomy_gulch_tiledata)
 	dw $2000|$8000
 	dw $6E40
-	dl bank_word(DATA_E84E0D)
+	dl bank_word(gloomy_gulch_8x8_tilemap)
 	dw $7800|$8000
 	dw $0700
 	db $00
 
 DATA_FD83E1:
-	dl bank_word(DATA_F82106)
+	dl bank_word(k_rools_keep_tiledata)
 	dw $2000|$8000
 	dw $7FC0
-	dl bank_word(DATA_E8A6D7)
+	dl bank_word(k_rools_keep_8x8_tilemap)
 	dw $7000|$8000
 	dw $0E00
 	db $00
 
 DATA_FD83F0:
-	dl bank_word(DATA_CBAC49)
+	dl bank_word(lost_world_tiledata)
 	dw $2000|$8000
 	dw $6E80
-	dl bank_word(DATA_E98407)
+	dl bank_word(lost_world_8x8_tilemap)
 	dw $7800
 	dw $0700
 	dl bank_word(DATA_FA4320)
@@ -6433,19 +6433,19 @@ DATA_FD83F0:
 	db $00
 
 DATA_FD840D:
-	dl bank_word(DATA_E8B924)
+	dl bank_word(the_flying_krock_tiledata)
 	dw $2000|$8000
 	dw $6E40
-	dl bank_word(DATA_E8B224)
+	dl bank_word(the_flying_krock_8x8_tilemap)
 	dw $7800
 	dw $0700
 	db $00
 
 DATA_FD841C:
-	dl bank_word(DATA_E909EC)
+	dl bank_word(krazy_kremland_top_tiledata)
 	dw $2000|$8000
 	dw $6960
-	dl bank_word(DATA_DA4C4F)
+	dl bank_word(krazy_kremland_top_8x8_tilemap)
 	dw $7800|$8000
 	dw $0700
 	db $00
@@ -6457,7 +6457,7 @@ DATA_FD842B:
 	db $00
 
 DATA_FD8433:
-	dl bank_word(DATA_DEA932)
+	dl bank_word(forest_level_tiledata)
 	dw $2000|$8000
 	dw $71C0
 	dl bank_word(DATA_D5FEB3)
@@ -6475,7 +6475,7 @@ DATA_FD8433:
 	db $00
 
 DATA_FD8457:
-	dl bank_word(DATA_DEA932)
+	dl bank_word(forest_level_tiledata)
 	dw $2000|$8000
 	dw $71C0
 	dl bank_word(DATA_D5FEB3)
@@ -6505,7 +6505,7 @@ DATA_FD847B:
 	db $00
 
 DATA_FD8491:
-	dl bank_word(DATA_E07174)
+	dl bank_word(lava_level_tiledata)
 	dw $2000|$8000
 	dw $8000
 	dl bank_word(DATA_EAD1D1)
@@ -6517,7 +6517,7 @@ DATA_FD8491:
 	db $00
 
 DATA_FD84A7:
-	dl bank_word(DATA_DFD537)
+	dl bank_word(ship_mast_level_tiledata)
 	dw $2000|$8000
 	dw $7800
 	dl bank_word(DATA_EA121C)
@@ -6541,7 +6541,7 @@ DATA_FD84A7:
 	db $00
 
 DATA_FD84D9:
-	dl bank_word(DATA_E02195)
+	dl bank_word(carnival_level_tiledata)
 	dw $2000|$8000
 	dw $7800
 	dl bank_word(DATA_CFFFD9)
@@ -6571,7 +6571,7 @@ DATA_FD84EF:
 	db $00
 
 DATA_FD8513:
-	dl bank_word(DATA_E0CF31)
+	dl bank_word(mine_level_tiledata)
 	dw $2000|$8000
 	dw $7800
 	dl bank_word(DATA_F60000)
@@ -6589,7 +6589,7 @@ DATA_FD8513:
 	db $00
 
 DATA_FD8537:
-	dl bank_word(DATA_DFD537)
+	dl bank_word(ship_mast_level_tiledata)
 	dw $2000|$8000
 	dw $5E00
 	dl bank_word(DATA_EA121C)
@@ -6607,7 +6607,7 @@ DATA_FD8537:
 	db $00
 
 DATA_FD855B:
-	dl bank_word(DATA_E106AF)
+	dl bank_word(swamp_level_tiledata)
 	dw $2000|$8000
 	dw $70E0
 	dl bank_word(DATA_EA4E35)
@@ -6640,7 +6640,7 @@ DATA_FD855B:
 	db $00
 
 DATA_FD85A2:
-	dl bank_word(DATA_E15B05)
+	dl bank_word(brambles_level_tiledata)
 	dw $2000|$8000
 	dw $70E0
 	dl bank_word(DATA_EAA94D)
@@ -6658,7 +6658,7 @@ DATA_FD85A2:
 	db $00
 
 DATA_FD85C6:
-	dl bank_word(DATA_DF0870)
+	dl bank_word(ship_hold_level_tiledata)
 	dw $2000|$8000
 	dw $3400
 	dl bank_word(DATA_C2FAC9)
@@ -6694,7 +6694,7 @@ DATA_FD85C6:
 	db $00
 
 DATA_FD8614:
-	dl bank_word(DATA_E07174)
+	dl bank_word(lava_level_tiledata)
 	dw $2000|$8000
 	dw $8000
 	dl bank_word(DATA_EB4B73)
@@ -6703,7 +6703,7 @@ DATA_FD8614:
 	db $00
 
 DATA_FD8623:
-	dl bank_word(DATA_E1EFDE)
+	dl bank_word(krocodile_kore_level_tiledata)
 	dw $2000|$8000
 	dw $8000
 	dl bank_word(DATA_EAD7DE)
@@ -6733,7 +6733,7 @@ DATA_FD8639:
 	db $00
 
 DATA_FD865D:
-	dl bank_word(DATA_E02195)
+	dl bank_word(carnival_level_tiledata)
 	dw $2000|$8000
 	dw $6C80
 	dl bank_word(DATA_E98C68)
@@ -6751,7 +6751,7 @@ DATA_FD865D:
 	db $00
 
 DATA_FD8681:
-	dl bank_word(DATA_DFD537)
+	dl bank_word(ship_mast_level_tiledata)
 	dw $2000|$8000
 	dw $5D20
 	dl bank_word(DATA_EA121C)
@@ -6769,7 +6769,7 @@ DATA_FD8681:
 	db $00
 
 DATA_FD86A5:
-	dl bank_word(DATA_E23790)
+	dl bank_word(k_rool_duel_level_tiledata)
 	dw $2000|$8000
 	dw $8000
 	dl bank_word(DATA_EAA94D)
@@ -6781,7 +6781,7 @@ DATA_FD86A5:
 	db $00
 
 DATA_FD86BB:
-	dl bank_word(DATA_E29E5F)
+	dl bank_word(ice_level_tiledata)
 	dw $2000|$8000
 	dw $5100
 	dl bank_word(DATA_DCFA5E)
@@ -6805,7 +6805,7 @@ DATA_FD86BB:
 	db $00
 
 DATA_FD86ED:
-	dl bank_word(DATA_E2E556)
+	dl bank_word(jungle_level_tiledata)
 	dw $2000|$8000
 	dw $8000
 	dl bank_word(DATA_F30802)
@@ -6835,7 +6835,7 @@ DATA_FD8703:
 	db $00
 
 DATA_FD8727:
-	dl bank_word(DATA_E15B05)
+	dl bank_word(brambles_level_tiledata)
 	dw $2000|$8000
 	dw $70E0
 	dl bank_word(DATA_EAA94D)
@@ -6850,7 +6850,7 @@ DATA_FD8727:
 	db $00
 
 DATA_FD8744:
-	dl bank_word(DATA_E0CF31)
+	dl bank_word(mine_level_tiledata)
 	dw $2000|$8000
 	dw $6000
 	dl bank_word(DATA_F60000)
@@ -6868,7 +6868,7 @@ DATA_FD8744:
 	db $00
 
 DATA_FD8768:
-	dl bank_word(DATA_DEA932)
+	dl bank_word(forest_level_tiledata)
 	dw $2000|$8000
 	dw $71C0
 	dl bank_word(DATA_D5FEB3)
