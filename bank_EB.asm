@@ -2596,7 +2596,7 @@ DATA_EB4B73:
 	db $48, $67, $87, $EF, $CE, $E0, $3C, $63
 	db $83, $08, $00
 
-DATA_EB50CE:
+klubbas_kiosk_tiledata:
 	db $00, $00, $FF, $FF, $00, $00, $FF, $FF
 	db $00, $00, $00, $FF, $FF, $FF, $3F, $80
 	db $FF, $FE, $FF, $03, $FF, $FF, $03, $0F
@@ -5212,7 +5212,7 @@ DATA_EB50CE:
 	db $89, $04, $93, $83, $91, $81, $33, $C0
 	db $B1, $2C, $51, $F8, $D0, $00
 
-DATA_EBA27C:
+funkys_flights_tiledata:
 	db $00, $FF, $00, $FF, $00, $00, $FF, $FF
 	db $00, $FF, $FF, $00, $00, $FC, $FF, $7F
 	db $FF, $3F, $C0, $FE, $01, $01, $00, $FF
@@ -6665,7 +6665,7 @@ DATA_EBA27C:
 	db $5A, $69, $52, $83, $7C, $B1, $88, $E8
 	db $40, $AA, $95, $70, $00
 
-DATA_EBCFD1:
+monkey_museum_tiledata:
 	db $00, $00, $FF, $00, $FF, $FF, $00, $00
 	db $FF, $00, $00, $80, $00, $00, $80, $01
 	db $01, $FF, $FF, $1F, $00, $00, $01, $00

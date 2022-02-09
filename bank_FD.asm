@@ -6274,10 +6274,10 @@ DATA_FD82C5:
 	db $00
 
 DATA_FD82E2:
-	dl bank_word(DATA_EC1B0F)
+	dl bank_word(monkey_museum_8x8_tilemap)
 	dw $7000|$8000
 	dw $0800
-	dl bank_word(DATA_EBCFD1)
+	dl bank_word(monkey_museum_tiledata)
 	dw $2000|$8000
 	dw $8000
 	dl bank_word(DATA_ED57EF)
@@ -6289,10 +6289,10 @@ DATA_FD82E2:
 	db $00
 
 DATA_FD82FF:
-	dl bank_word(DATA_C3FD35)
+	dl bank_word(funkys_flights_8x8_tilemap)
 	dw $7400|$8000
 	dw $0800
-	dl bank_word(DATA_EBA27C)
+	dl bank_word(funkys_flights_tiledata)
 	dw $2000|$8000
 	dw $4240
 	dl bank_word(DATA_ED57EF)
@@ -6310,10 +6310,10 @@ DATA_FD82FF:
 	db $00
 
 DATA_FD832A:
-	dl bank_word(DATA_CEFA9F)
+	dl bank_word(kong_kollege_8x8_tilemap)
 	dw $7000
 	dw $0800
-	dl bank_word(DATA_D2B9FD)
+	dl bank_word(kong_kollege_tiledata)
 	dw $2000|$8000
 	dw $8000
 	dl bank_word(DATA_ED57EF)
@@ -6325,10 +6325,10 @@ DATA_FD832A:
 	db $00
 
 DATA_FD8347:
-	dl bank_word(DATA_C5FAA8)
+	dl bank_word(swankys_bonus_bonanza_8x8_tilemap)
 	dw $7000|$8000
 	dw $0800
-	dl bank_word(DATA_EDA1AB)
+	dl bank_word(swankys_bonus_bonanza_tiledata)
 	dw $2000|$8000
 	dw $8000
 	dl bank_word(DATA_ED57EF)
@@ -6343,10 +6343,10 @@ DATA_FD8347:
 	db $00
 
 DATA_FD836B:
-	dl bank_word(DATA_F30000)
+	dl bank_word(klubbas_kiosk_8x8_tilemap)
 	dw $7000
 	dw $0800
-	dl bank_word(DATA_EB50CE)
+	dl bank_word(klubbas_kiosk_tiledata)
 	dw $2000|$8000
 	dw $6000
 	dl bank_word(DATA_ED57EF)
@@ -6493,13 +6493,13 @@ DATA_FD8457:
 	db $00
 
 DATA_FD847B:
-	dl bank_word(DATA_FA56C1)
+	dl bank_word(gameover_screen_8x8_tilemap)
 	dw $6C00
 	dw $0580
 	dl bank_word(DATA_FA5C41)
 	dw $72C0
 	dw $0180
-	dl bank_word(DATA_F444D2)
+	dl bank_word(gameover_screen_tiledata)
 	dw $2000|$8000
 	dw $8000
 	db $00
@@ -6970,10 +6970,10 @@ DATA_FD8807:
 	db $00
 
 DATA_FD8832:
-	dl bank_word(DATA_F30000)
+	dl bank_word(klubbas_kiosk_8x8_tilemap)
 	dw $7800
 	dw $0800
-	dl bank_word(DATA_EB50CE)
+	dl bank_word(klubbas_kiosk_tiledata)
 	dw $2000|$8000
 	dw $6000
 	dl bank_word(DATA_FC0660)
@@ -6988,10 +6988,10 @@ DATA_FD8832:
 	db $00
 
 DATA_FD8856:
-	dl bank_word(DATA_FA56C1)
+	dl bank_word(gameover_screen_8x8_tilemap)
 	dw $6C80
 	dw $0580
-	dl bank_word(DATA_F444D2)
+	dl bank_word(gameover_screen_tiledata)
 	dw $2000|$8000
 	dw $8000
 	dl bank_word(DATA_ED57EF)
@@ -7003,10 +7003,10 @@ DATA_FD8856:
 	db $00
 
 DATA_FD8873:
-	dl bank_word(DATA_FA56C1)
+	dl bank_word(gameover_screen_8x8_tilemap)
 	dw $6C80
 	dw $0580
-	dl bank_word(DATA_F444D2)
+	dl bank_word(gameover_screen_tiledata)
 	dw $2000|$8000
 	dw $8000
 	dl bank_word(DATA_ED57EF)
@@ -7018,10 +7018,10 @@ DATA_FD8873:
 	db $00
 
 DATA_FD8890:
-	dl bank_word(DATA_FA56C1)
+	dl bank_word(gameover_screen_8x8_tilemap)
 	dw $6C80
 	dw $0580
-	dl bank_word(DATA_F444D2)
+	dl bank_word(gameover_screen_tiledata)
 	dw $2000|$8000
 	dw $8000
 	dl bank_word(DATA_ED57EF)

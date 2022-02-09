@@ -5296,7 +5296,7 @@ DATA_EDA030:
 	db $4F, $4F, $4F, $4F, $4F, $4F, $4F, $4F
 	db $4F, $60, $00
 
-DATA_EDA1AB:
+swankys_bonus_bonanza_tiledata:
 	db $00, $FF, $00, $FF, $00, $FF, $00, $00
 	db $FF, $00, $00, $FF, $FF, $80, $7F, $F8
 	db $FF, $C0, $FF, $3F, $C0, $80, $FF, $F8
