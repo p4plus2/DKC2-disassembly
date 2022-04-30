@@ -100,6 +100,14 @@ macro sprite(param, x, y, sprite)
 	endif
 endmacro
 
+macro banana(param_a, param_b, param_c, type)
+	db <param_a>, <param_b>, <param_c>, <type>
+endmacro
+
+macro camera(param_a, param_b, param_c, param_d, param_e)
+	db <param_a>, <param_b>, <param_c>, <param_d>, <param_e>
+endmacro
+
 macro local(name, scratch)
 	pushpc
 		org <scratch>
