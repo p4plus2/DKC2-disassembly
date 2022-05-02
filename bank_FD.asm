@@ -7593,433 +7593,433 @@ DATA_FD934D:
 	dw DATA_FDAC49-DATA_FD934D
 	
 DATA_FD94ED:
-        incsrc "data/levels/cameras/glimmers_galleon_cameras.asm"
+	incsrc "data/levels/cameras/glimmers_galleon_cameras.asm"
 
 DATA_FD957E:
-        incsrc "data/levels/cameras/rambi_rumble_cameras.asm"
+	incsrc "data/levels/cameras/rambi_rumble_cameras.asm"
 
 DATA_FD9641:
-        incsrc "data/levels/cameras/pirate_panic_cameras.asm"
+	incsrc "data/levels/cameras/pirate_panic_cameras.asm"
 
 DATA_FD9696:
-        incsrc "data/levels/cameras/gangplank_galley_cameras.asm"
+	incsrc "data/levels/cameras/gangplank_galley_cameras.asm"
 
 DATA_FD9718:
-        incsrc "data/levels/cameras/rattle_battle_cameras.asm"
+	incsrc "data/levels/cameras/rattle_battle_cameras.asm"
 
 DATA_FD979F:
-        incsrc "data/levels/cameras/glimmers_galleon_exit_room_cameras.asm"
+	incsrc "data/levels/cameras/glimmers_galleon_exit_room_cameras.asm"
 
 DATA_FD97A4:
-        incsrc "data/levels/cameras/hot_head_hop_cameras.asm"
+	incsrc "data/levels/cameras/hot_head_hop_cameras.asm"
 
 DATA_FD981C:
-        incsrc "data/levels/cameras/red_hot_ride_cameras.asm"
+	incsrc "data/levels/cameras/red_hot_ride_cameras.asm"
 
 DATA_FD987B:
-        incsrc "data/levels/cameras/krows_nest_cameras.asm"
+	incsrc "data/levels/cameras/krows_nest_cameras.asm"
 
 DATA_FD9880:
-        incsrc "data/levels/cameras/slime_climb_cameras.asm"
+	incsrc "data/levels/cameras/slime_climb_cameras.asm"
 
 DATA_FD98AD:
-        incsrc "data/levels/cameras/topsail_trouble_cameras.asm"
+	incsrc "data/levels/cameras/topsail_trouble_cameras.asm"
 
 DATA_FD98B7:
-        incsrc "data/levels/cameras/mainbrace_mayhem_cameras.asm"
+	incsrc "data/levels/cameras/mainbrace_mayhem_cameras.asm"
 
 DATA_FD98D5:
-        incsrc "data/levels/cameras/kreepy_krow_cameras.asm"
+	incsrc "data/levels/cameras/kreepy_krow_cameras.asm"
 
 DATA_FD98E4:
-        incsrc "data/levels/cameras/target_terror_cameras.asm"
+	incsrc "data/levels/cameras/target_terror_cameras.asm"
 
 DATA_FD9907:
-        incsrc "data/levels/cameras/rickety_race_cameras.asm"
+	incsrc "data/levels/cameras/rickety_race_cameras.asm"
 
 DATA_FD9920:
-        incsrc "data/levels/cameras/haunted_hall_cameras.asm"
+	incsrc "data/levels/cameras/haunted_hall_cameras.asm"
 
 DATA_FD9939:
-        incsrc "data/levels/cameras/hornet_hole_cameras.asm"
+	incsrc "data/levels/cameras/hornet_hole_cameras.asm"
 
 DATA_FD9A29:
-        incsrc "data/levels/cameras/rambi_rumble_rambi_room_cameras.asm"
+	incsrc "data/levels/cameras/rambi_rumble_rambi_room_cameras.asm"
 
 DATA_FD9A2E:
-        incsrc "data/levels/cameras/parrot_chute_panic_cameras.asm"
+	incsrc "data/levels/cameras/parrot_chute_panic_cameras.asm"
 
 DATA_FD9B14:
-        incsrc "data/levels/cameras/lava_lagoon_cameras.asm"
+	incsrc "data/levels/cameras/lava_lagoon_cameras.asm"
 
 DATA_FD9BAF:
-        incsrc "data/levels/cameras/lockjaws_locker_cameras.asm"
+	incsrc "data/levels/cameras/lockjaws_locker_cameras.asm"
 
 DATA_FD9C72:
-        incsrc "data/levels/cameras/fiery_furnace_cameras.asm"
+	incsrc "data/levels/cameras/fiery_furnace_cameras.asm"
 
 DATA_FD9D17:
-        incsrc "data/levels/cameras/web_woods_cameras.asm"
+	incsrc "data/levels/cameras/web_woods_cameras.asm"
 
 DATA_FD9DDA:
-        incsrc "data/levels/cameras/gusty_glade_cameras.asm"
+	incsrc "data/levels/cameras/gusty_glade_cameras.asm"
 
 DATA_FD9E7F:
-        incsrc "data/levels/cameras/ghostly_grove_cameras.asm"
+	incsrc "data/levels/cameras/ghostly_grove_cameras.asm"
 
 DATA_FD9F1A:
-        incsrc "data/levels/cameras/topsail_trouble_warp_room_cameras.asm"
+	incsrc "data/levels/cameras/topsail_trouble_warp_room_cameras.asm"
 
 DATA_FD9F1F:
-        incsrc "data/levels/cameras/pirate_panic_k_rools_cabin_cameras.asm"
+	incsrc "data/levels/cameras/pirate_panic_k_rools_cabin_cameras.asm"
 
 DATA_FD9F24:
-        incsrc "data/levels/cameras/hot_head_hop_bonus_2_cameras.asm"
+	incsrc "data/levels/cameras/hot_head_hop_bonus_2_cameras.asm"
 
 DATA_FD9F2E:
-        incsrc "data/levels/cameras/pirate_panic_warp_room_cameras.asm"
+	incsrc "data/levels/cameras/pirate_panic_warp_room_cameras.asm"
 
 DATA_FD9F3D:
-        incsrc "data/levels/cameras/target_terror_exit_room_cameras.asm"
+	incsrc "data/levels/cameras/target_terror_exit_room_cameras.asm"
 
 DATA_FD9F51:
-        incsrc "data/levels/cameras/web_woods_room_unused_cameras.asm"
+	incsrc "data/levels/cameras/web_woods_room_unused_cameras.asm"
 
 DATA_FD9F56:
-        incsrc "data/levels/cameras/mainbrace_mayhem_warp_room_cameras.asm"
+	incsrc "data/levels/cameras/mainbrace_mayhem_warp_room_cameras.asm"
 
 DATA_FD9F5B:
-        incsrc "data/levels/cameras/kleevers_kiln_cameras.asm"
+	incsrc "data/levels/cameras/kleevers_kiln_cameras.asm"
 
 DATA_FD9F65:
-        incsrc "data/levels/cameras/rattle_battle_rattly_room_cameras.asm"
+	incsrc "data/levels/cameras/rattle_battle_rattly_room_cameras.asm"
 
 DATA_FD9F6A:
-        incsrc "data/levels/cameras/windy_well_cameras.asm"
+	incsrc "data/levels/cameras/windy_well_cameras.asm"
 
 DATA_FD9FEC:
-        incsrc "data/levels/cameras/squawks_shaft_cameras.asm"
+	incsrc "data/levels/cameras/squawks_shaft_cameras.asm"
 
 DATA_FDA028:
-        incsrc "data/levels/cameras/kannons_klaim_cameras.asm"
+	incsrc "data/levels/cameras/kannons_klaim_cameras.asm"
 
 DATA_FDA02D:
-        incsrc "data/levels/cameras/parrot_chute_panic_warp_room_cameras.asm"
+	incsrc "data/levels/cameras/parrot_chute_panic_warp_room_cameras.asm"
 
 DATA_FDA032:
-        incsrc "data/levels/cameras/kannons_klaim_warp_room_cameras.asm"
+	incsrc "data/levels/cameras/kannons_klaim_warp_room_cameras.asm"
 
 DATA_FDA037:
-        incsrc "data/levels/cameras/barrel_bayou_cameras.asm"
+	incsrc "data/levels/cameras/barrel_bayou_cameras.asm"
 
 DATA_FDA0B9:
-        incsrc "data/levels/cameras/krockhead_klamber_cameras.asm"
+	incsrc "data/levels/cameras/krockhead_klamber_cameras.asm"
 
 DATA_FDA12C:
-        incsrc "data/levels/cameras/web_woods_squitter_room_cameras.asm"
+	incsrc "data/levels/cameras/web_woods_squitter_room_cameras.asm"
 
 DATA_FDA131:
-        incsrc "data/levels/cameras/barrel_bayou_warp_room_cameras.asm"
+	incsrc "data/levels/cameras/barrel_bayou_warp_room_cameras.asm"
 
 DATA_FDA136:
-        incsrc "data/levels/cameras/mudhole_marsh_cameras.asm"
+	incsrc "data/levels/cameras/mudhole_marsh_cameras.asm"
 
 DATA_FDA1BD:
-        incsrc "data/levels/cameras/bramble_blast_cameras.asm"
+	incsrc "data/levels/cameras/bramble_blast_cameras.asm"
 
 DATA_FDA21C:
-        incsrc "data/levels/cameras/bramble_scramble_cameras.asm"
+	incsrc "data/levels/cameras/bramble_scramble_cameras.asm"
 
 DATA_FDA30C:
-        incsrc "data/levels/cameras/screechs_sprint_cameras.asm"
+	incsrc "data/levels/cameras/screechs_sprint_cameras.asm"
 
 DATA_FDA3DE:
-        incsrc "data/levels/cameras/king_zing_sting_cameras.asm"
+	incsrc "data/levels/cameras/king_zing_sting_cameras.asm"
 
 DATA_FDA3E8:
-        incsrc "data/levels/cameras/k_rool_duel_cameras.asm"
+	incsrc "data/levels/cameras/k_rool_duel_cameras.asm"
 
 DATA_FDA3ED:
-        incsrc "data/levels/cameras/castle_crush_cameras.asm"
+	incsrc "data/levels/cameras/castle_crush_cameras.asm"
 
 DATA_FDA4AB:
-        incsrc "data/levels/cameras/kudgels_kontest_cameras.asm"
+	incsrc "data/levels/cameras/kudgels_kontest_cameras.asm"
 
 DATA_FDA4B0:
-        incsrc "data/levels/cameras/lockjaws_locker_warp_room_cameras.asm"
+	incsrc "data/levels/cameras/lockjaws_locker_warp_room_cameras.asm"
 
 DATA_FDA4BA:
-        incsrc "data/levels/cameras/lava_lagoon_warp_room_cameras.asm"
+	incsrc "data/levels/cameras/lava_lagoon_warp_room_cameras.asm"
 
 DATA_FDA4BF:
-        incsrc "data/levels/cameras/squawks_shaft_warp_room_cameras.asm"
+	incsrc "data/levels/cameras/squawks_shaft_warp_room_cameras.asm"
 
 DATA_FDA4C4:
-        incsrc "data/levels/cameras/krocodile_kore_cameras.asm"
+	incsrc "data/levels/cameras/krocodile_kore_cameras.asm"
 
 DATA_FDA4C9:
-        incsrc "data/levels/cameras/arctic_abyss_cameras.asm"
+	incsrc "data/levels/cameras/arctic_abyss_cameras.asm"
 
 DATA_FDA573:
-        incsrc "data/levels/cameras/chain_link_chamber_cameras.asm"
+	incsrc "data/levels/cameras/chain_link_chamber_cameras.asm"
 
 DATA_FDA636:
-        incsrc "data/levels/cameras/toxic_tower_cameras.asm"
+	incsrc "data/levels/cameras/toxic_tower_cameras.asm"
 
 DATA_FDA6C2:
-        incsrc "data/levels/cameras/pirate_panic_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/pirate_panic_bonus_1_cameras.asm"
 
 DATA_FDA6C7:
-        incsrc "data/levels/cameras/pirate_panic_bonus_2_cameras.asm"
+	incsrc "data/levels/cameras/pirate_panic_bonus_2_cameras.asm"
 
 DATA_FDA6CC:
-        incsrc "data/levels/cameras/gangplank_galley_bonus_2_cameras.asm"
+	incsrc "data/levels/cameras/gangplank_galley_bonus_2_cameras.asm"
 
 DATA_FDA6D1:
-        incsrc "data/levels/cameras/rattle_battle_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/rattle_battle_bonus_1_cameras.asm"
 
 DATA_FDA6D6:
-        incsrc "data/levels/cameras/rattle_battle_bonus_3_cameras.asm"
+	incsrc "data/levels/cameras/rattle_battle_bonus_3_cameras.asm"
 
 DATA_FDA6DB:
-        incsrc "data/levels/cameras/hot_head_hop_bonus_3_cameras.asm"
+	incsrc "data/levels/cameras/hot_head_hop_bonus_3_cameras.asm"
 
 DATA_FDA6E0:
-        incsrc "data/levels/cameras/hot_head_hop_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/hot_head_hop_bonus_1_cameras.asm"
 
 DATA_FDA6E5:
-        incsrc "data/levels/cameras/red_hot_ride_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/red_hot_ride_bonus_1_cameras.asm"
 
 DATA_FDA6EA:
-        incsrc "data/levels/cameras/red_hot_ride_bonus_2_cameras.asm"
+	incsrc "data/levels/cameras/red_hot_ride_bonus_2_cameras.asm"
 
 DATA_FDA6EF:
-        incsrc "data/levels/cameras/mainbrace_mayhem_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/mainbrace_mayhem_bonus_1_cameras.asm"
 
 DATA_FDA6F4:
-        incsrc "data/levels/cameras/mainbrace_mayhem_bonus_2_cameras.asm"
+	incsrc "data/levels/cameras/mainbrace_mayhem_bonus_2_cameras.asm"
 
 DATA_FDA6F9:
-        incsrc "data/levels/cameras/slime_climb_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/slime_climb_bonus_1_cameras.asm"
 
 DATA_FDA6FE:
-        incsrc "data/levels/cameras/topsail_trouble_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/topsail_trouble_bonus_1_cameras.asm"
 
 DATA_FDA703:
-        incsrc "data/levels/cameras/topsail_trouble_bonus_2_cameras.asm"
+	incsrc "data/levels/cameras/topsail_trouble_bonus_2_cameras.asm"
 
 DATA_FDA708:
-        incsrc "data/levels/cameras/mainbrace_mayhem_bonus_3_cameras.asm"
+	incsrc "data/levels/cameras/mainbrace_mayhem_bonus_3_cameras.asm"
 
 DATA_FDA70D:
-        incsrc "data/levels/cameras/slime_climb_bonus_2_cameras.asm"
+	incsrc "data/levels/cameras/slime_climb_bonus_2_cameras.asm"
 
 DATA_FDA712:
-        incsrc "data/levels/cameras/rattle_battle_bonus_2_cameras.asm"
+	incsrc "data/levels/cameras/rattle_battle_bonus_2_cameras.asm"
 
 DATA_FDA717:
-        incsrc "data/levels/cameras/klobber_karnage_cameras.asm"
+	incsrc "data/levels/cameras/klobber_karnage_cameras.asm"
 
 DATA_FDA799:
-        incsrc "data/levels/cameras/lockjaws_locker_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/lockjaws_locker_bonus_1_cameras.asm"
 
 DATA_FDA79E:
-        incsrc "data/levels/cameras/glimmers_galleon_bonus_2_cameras.asm"
+	incsrc "data/levels/cameras/glimmers_galleon_bonus_2_cameras.asm"
 
 DATA_FDA7A3:
-        incsrc "data/levels/cameras/lava_lagoon_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/lava_lagoon_bonus_1_cameras.asm"
 
 DATA_FDA7B7:
-        incsrc "data/levels/cameras/glimmers_galleon_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/glimmers_galleon_bonus_1_cameras.asm"
 
 DATA_FDA7BC:
-        incsrc "data/levels/cameras/ghostly_grove_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/ghostly_grove_bonus_1_cameras.asm"
 
 DATA_FDA7C1:
-        incsrc "data/levels/cameras/gusty_glade_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/gusty_glade_bonus_1_cameras.asm"
 
 DATA_FDA7C6:
-        incsrc "data/levels/cameras/gusty_glade_bonus_2_cameras.asm"
+	incsrc "data/levels/cameras/gusty_glade_bonus_2_cameras.asm"
 
 DATA_FDA7CB:
-        incsrc "data/levels/cameras/ghostly_grove_bonus_2_cameras.asm"
+	incsrc "data/levels/cameras/ghostly_grove_bonus_2_cameras.asm"
 
 DATA_FDA7D0:
-        incsrc "data/levels/cameras/barrel_bayou_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/barrel_bayou_bonus_1_cameras.asm"
 
 DATA_FDA7D5:
-        incsrc "data/levels/cameras/barrel_bayou_bonus_2_cameras.asm"
+	incsrc "data/levels/cameras/barrel_bayou_bonus_2_cameras.asm"
 
 DATA_FDA7DA:
-        incsrc "data/levels/cameras/krockhead_klamber_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/krockhead_klamber_bonus_1_cameras.asm"
 
 DATA_FDA7DF:
-        incsrc "data/levels/cameras/mudhole_marsh_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/mudhole_marsh_bonus_1_cameras.asm"
 
 DATA_FDA7E4:
-        incsrc "data/levels/cameras/mudhole_marsh_bonus_2_cameras.asm"
+	incsrc "data/levels/cameras/mudhole_marsh_bonus_2_cameras.asm"
 
 DATA_FDA7E9:
-        incsrc "data/levels/cameras/hot_head_hop_warp_room_cameras.asm"
+	incsrc "data/levels/cameras/hot_head_hop_warp_room_cameras.asm"
 
 DATA_FDA7EE:
-        incsrc "data/levels/cameras/clappers_cavern_cameras.asm"
+	incsrc "data/levels/cameras/clappers_cavern_cameras.asm"
 
 DATA_FDA866:
-        incsrc "data/levels/cameras/animal_antics_enguarde_section_cameras.asm"
+	incsrc "data/levels/cameras/animal_antics_enguarde_section_cameras.asm"
 
 DATA_FDA8A7:
-        incsrc "data/levels/cameras/clappers_cavern_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/clappers_cavern_bonus_1_cameras.asm"
 
 DATA_FDA8AC:
-        incsrc "data/levels/cameras/clappers_cavern_bonus_2_cameras.asm"
+	incsrc "data/levels/cameras/clappers_cavern_bonus_2_cameras.asm"
 
 DATA_FDA8C5:
-        incsrc "data/levels/cameras/arctic_abyss_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/arctic_abyss_bonus_1_cameras.asm"
 
 DATA_FDA8CA:
-        incsrc "data/levels/cameras/black_ice_battle_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/black_ice_battle_bonus_1_cameras.asm"
 
 DATA_FDA8D4:
-        incsrc "data/levels/cameras/arctic_abyss_bonus_2_cameras.asm"
+	incsrc "data/levels/cameras/arctic_abyss_bonus_2_cameras.asm"
 
 DATA_FDA8E3:
-        incsrc "data/levels/cameras/black_ice_battle_cameras.asm"
+	incsrc "data/levels/cameras/black_ice_battle_cameras.asm"
 
 DATA_FDA924:
-        incsrc "data/levels/cameras/klobber_karnage_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/klobber_karnage_bonus_1_cameras.asm"
 
 DATA_FDA929:
-        incsrc "data/levels/cameras/jungle_jinx_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/jungle_jinx_bonus_1_cameras.asm"
 
 DATA_FDA92E:
-        incsrc "data/levels/cameras/jungle_jinx_cameras.asm"
+	incsrc "data/levels/cameras/jungle_jinx_cameras.asm"
 
 DATA_FDAA2D:
-        incsrc "data/levels/cameras/animal_antics_rambi_section_cameras.asm"
+	incsrc "data/levels/cameras/animal_antics_rambi_section_cameras.asm"
 
 DATA_FDAA5A:
-        incsrc "data/levels/cameras/animal_antics_squitter_section_cameras.asm"
+	incsrc "data/levels/cameras/animal_antics_squitter_section_cameras.asm"
 
 DATA_FDAA7D:
-        incsrc "data/levels/cameras/animal_antics_rattly_section_cameras.asm"
+	incsrc "data/levels/cameras/animal_antics_rattly_section_cameras.asm"
 
 DATA_FDAAA0:
-        incsrc "data/levels/cameras/animal_antics_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/animal_antics_bonus_1_cameras.asm"
 
 DATA_FDAAAF:
-        incsrc "data/levels/cameras/fiery_furnace_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/fiery_furnace_bonus_1_cameras.asm"
 
 DATA_FDAAC3:
-        incsrc "data/levels/cameras/animal_antics_squawks_section_cameras.asm"
+	incsrc "data/levels/cameras/animal_antics_squawks_section_cameras.asm"
 
 DATA_FDAB22:
-        incsrc "data/levels/cameras/bramble_blast_bonus_2_cameras.asm"
+	incsrc "data/levels/cameras/bramble_blast_bonus_2_cameras.asm"
 
 DATA_FDAB40:
-        incsrc "data/levels/cameras/target_terror_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/target_terror_bonus_1_cameras.asm"
 
 DATA_FDAB4F:
-        incsrc "data/levels/cameras/bramble_scramble_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/bramble_scramble_bonus_1_cameras.asm"
 
 DATA_FDAB59:
-        incsrc "data/levels/cameras/windy_well_bonus_2_cameras.asm"
+	incsrc "data/levels/cameras/windy_well_bonus_2_cameras.asm"
 
 DATA_FDAB5E:
-        incsrc "data/levels/cameras/web_woods_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/web_woods_bonus_1_cameras.asm"
 
 DATA_FDAB68:
-        incsrc "data/levels/cameras/toxic_tower_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/toxic_tower_bonus_1_cameras.asm"
 
 DATA_FDAB7C:
-        incsrc "data/levels/cameras/bramble_blast_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/bramble_blast_bonus_1_cameras.asm"
 
 DATA_FDAB8B:
-        incsrc "data/levels/cameras/screechs_sprint_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/screechs_sprint_bonus_1_cameras.asm"
 
 DATA_FDABAE:
-        incsrc "data/levels/cameras/gangplank_galley_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/gangplank_galley_bonus_1_cameras.asm"
 
 DATA_FDABB3:
-        incsrc "data/levels/cameras/squawks_shaft_bonus_3_cameras.asm"
+	incsrc "data/levels/cameras/squawks_shaft_bonus_3_cameras.asm"
 
 DATA_FDABB8:
-        incsrc "data/levels/cameras/kannons_klaim_bonus_3_cameras.asm"
+	incsrc "data/levels/cameras/kannons_klaim_bonus_3_cameras.asm"
 
 DATA_FDABBD:
-        incsrc "data/levels/cameras/kannons_klaim_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/kannons_klaim_bonus_1_cameras.asm"
 
 DATA_FDABC2:
-        incsrc "data/levels/cameras/squawks_shaft_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/squawks_shaft_bonus_1_cameras.asm"
 
 DATA_FDABC7:
-        incsrc "data/levels/cameras/kannons_klaim_bonus_2_cameras.asm"
+	incsrc "data/levels/cameras/kannons_klaim_bonus_2_cameras.asm"
 
 DATA_FDABCC:
-        incsrc "data/levels/cameras/hornet_hole_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/hornet_hole_bonus_1_cameras.asm"
 
 DATA_FDABD1:
-        incsrc "data/levels/cameras/parrot_chute_panic_bonus_2_cameras.asm"
+	incsrc "data/levels/cameras/parrot_chute_panic_bonus_2_cameras.asm"
 
 DATA_FDABD6:
-        incsrc "data/levels/cameras/hornet_hole_bonus_3_cameras.asm"
+	incsrc "data/levels/cameras/hornet_hole_bonus_3_cameras.asm"
 
 DATA_FDABDB:
-        incsrc "data/levels/cameras/parrot_chute_panic_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/parrot_chute_panic_bonus_1_cameras.asm"
 
 DATA_FDABE0:
-        incsrc "data/levels/cameras/rambi_rumble_bonus_2_cameras.asm"
+	incsrc "data/levels/cameras/rambi_rumble_bonus_2_cameras.asm"
 
 DATA_FDABEA:
-        incsrc "data/levels/cameras/hornet_hole_bonus_2_cameras.asm"
+	incsrc "data/levels/cameras/hornet_hole_bonus_2_cameras.asm"
 
 DATA_FDABEF:
-        incsrc "data/levels/cameras/rambi_rumble_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/rambi_rumble_bonus_1_cameras.asm"
 
 DATA_FDABF4:
-        incsrc "data/levels/cameras/chain_link_chamber_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/chain_link_chamber_bonus_1_cameras.asm"
 
 DATA_FDABF9:
-        incsrc "data/levels/cameras/chain_link_chamber_bonus_2_cameras.asm"
+	incsrc "data/levels/cameras/chain_link_chamber_bonus_2_cameras.asm"
 
 DATA_FDABFE:
-        incsrc "data/levels/cameras/castle_crush_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/castle_crush_bonus_1_cameras.asm"
 
 DATA_FDAC08:
-        incsrc "data/levels/cameras/castle_crush_bonus_2_cameras.asm"
+	incsrc "data/levels/cameras/castle_crush_bonus_2_cameras.asm"
 
 DATA_FDAC12:
-        incsrc "data/levels/cameras/stronghold_showdown_cameras.asm"
+	incsrc "data/levels/cameras/stronghold_showdown_cameras.asm"
 
 DATA_FDAC17:
-        incsrc "data/levels/cameras/squawks_shaft_bonus_2_cameras.asm"
+	incsrc "data/levels/cameras/squawks_shaft_bonus_2_cameras.asm"
 
 DATA_FDAC1C:
-        incsrc "data/levels/cameras/web_woods_bonus_2_cameras.asm"
+	incsrc "data/levels/cameras/web_woods_bonus_2_cameras.asm"
 
 DATA_FDAC21:
-        incsrc "data/levels/cameras/windy_well_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/windy_well_bonus_1_cameras.asm"
 
 DATA_FDAC26:
-        incsrc "data/levels/cameras/haunted_hall_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/haunted_hall_bonus_1_cameras.asm"
 
 DATA_FDAC2B:
-        incsrc "data/levels/cameras/rickety_race_exit_cameras.asm"
+	incsrc "data/levels/cameras/rickety_race_exit_cameras.asm"
 
 DATA_FDAC30:
-        incsrc "data/levels/cameras/haunted_hall_exit_cameras.asm"
+	incsrc "data/levels/cameras/haunted_hall_exit_cameras.asm"
 
 DATA_FDAC35:
-        incsrc "data/levels/cameras/haunted_hall_bonus_3_cameras.asm"
+	incsrc "data/levels/cameras/haunted_hall_bonus_3_cameras.asm"
 
 DATA_FDAC3A:
-        incsrc "data/levels/cameras/target_terror_bonus_2_cameras.asm"
+	incsrc "data/levels/cameras/target_terror_bonus_2_cameras.asm"
 
 DATA_FDAC3F:
-        incsrc "data/levels/cameras/haunted_hall_bonus_2_cameras.asm"
+	incsrc "data/levels/cameras/haunted_hall_bonus_2_cameras.asm"
 
 DATA_FDAC44:
-        incsrc "data/levels/cameras/rickety_race_bonus_1_cameras.asm"
+	incsrc "data/levels/cameras/rickety_race_bonus_1_cameras.asm"
 
 DATA_FDAC49:
 %offset(DATA_FDAC4B, 2)
@@ -8237,340 +8237,340 @@ DATA_FDAC49:
 	dw DATA_FDCA83-DATA_FDAC4B
 
 DATA_FDADEB:
-        incsrc "data/levels/bananas/glimmers_galleon_bananas.asm"
+	incsrc "data/levels/bananas/glimmers_galleon_bananas.asm"
 
 DATA_FDAEDF:
-        incsrc "data/levels/bananas/rambi_rumble_bananas.asm"
+	incsrc "data/levels/bananas/rambi_rumble_bananas.asm"
 
 DATA_FDAFA7:
-        incsrc "data/levels/bananas/pirate_panic_bananas.asm"
+	incsrc "data/levels/bananas/pirate_panic_bananas.asm"
 
 DATA_FDAFEF:
-        incsrc "data/levels/bananas/gangplank_galley_bananas.asm"
+	incsrc "data/levels/bananas/gangplank_galley_bananas.asm"
 
 DATA_FDB027:
-        incsrc "data/levels/bananas/rattle_battle_bananas.asm"
+	incsrc "data/levels/bananas/rattle_battle_bananas.asm"
 
 DATA_FDB08F:
-        incsrc "data/levels/bananas/hot_head_hop_bananas.asm"
+	incsrc "data/levels/bananas/hot_head_hop_bananas.asm"
 
 DATA_FDB10B:
-        incsrc "data/levels/bananas/red_hot_ride_bananas.asm"
+	incsrc "data/levels/bananas/red_hot_ride_bananas.asm"
 
 DATA_FDB187:
-        incsrc "data/levels/bananas/slime_climb_bananas.asm"
+	incsrc "data/levels/bananas/slime_climb_bananas.asm"
 
 DATA_FDB233:
-        incsrc "data/levels/bananas/topsail_trouble_bananas.asm"
+	incsrc "data/levels/bananas/topsail_trouble_bananas.asm"
 
 DATA_FDB297:
-        incsrc "data/levels/bananas/mainbrace_mayhem_bananas.asm"
+	incsrc "data/levels/bananas/mainbrace_mayhem_bananas.asm"
 
 DATA_FDB307:
-        incsrc "data/levels/bananas/kreepy_krow_bananas.asm"
+	incsrc "data/levels/bananas/kreepy_krow_bananas.asm"
 
 DATA_FDB313:
-        incsrc "data/levels/bananas/target_terror_bananas.asm"
+	incsrc "data/levels/bananas/target_terror_bananas.asm"
 
 DATA_FDB3CF:
-        incsrc "data/levels/bananas/rickety_race_bananas.asm"
+	incsrc "data/levels/bananas/rickety_race_bananas.asm"
 
 DATA_FDB447:
-        incsrc "data/levels/bananas/haunted_hall_bananas.asm"
+	incsrc "data/levels/bananas/haunted_hall_bananas.asm"
 
 DATA_FDB513:
-        incsrc "data/levels/bananas/hornet_hole_bananas.asm"
+	incsrc "data/levels/bananas/hornet_hole_bananas.asm"
 
 DATA_FDB5F7:
-        incsrc "data/levels/bananas/rambi_rumble_rambi_room_bananas.asm"
+	incsrc "data/levels/bananas/rambi_rumble_rambi_room_bananas.asm"
 
 DATA_FDB5FB:
-        incsrc "data/levels/bananas/parrot_chute_panic_bananas.asm"
+	incsrc "data/levels/bananas/parrot_chute_panic_bananas.asm"
 
 DATA_FDB6EF:
-        incsrc "data/levels/bananas/lava_lagoon_bananas.asm"
+	incsrc "data/levels/bananas/lava_lagoon_bananas.asm"
 
 DATA_FDB79F:
-        incsrc "data/levels/bananas/lockjaws_locker_bananas.asm"
+	incsrc "data/levels/bananas/lockjaws_locker_bananas.asm"
 
 DATA_FDB85F:
-        incsrc "data/levels/bananas/fiery_furnace_bananas.asm"
+	incsrc "data/levels/bananas/fiery_furnace_bananas.asm"
 
 DATA_FDB90B:
-        incsrc "data/levels/bananas/web_woods_bananas.asm"
+	incsrc "data/levels/bananas/web_woods_bananas.asm"
 
 DATA_FDB973:
-        incsrc "data/levels/bananas/gusty_glade_bananas.asm"
+	incsrc "data/levels/bananas/gusty_glade_bananas.asm"
 
 DATA_FDBA03:
-        incsrc "data/levels/bananas/ghostly_grove_bananas.asm"
+	incsrc "data/levels/bananas/ghostly_grove_bananas.asm"
 
 DATA_FDBA8F:
-        incsrc "data/levels/bananas/topsail_trouble_warp_room_bananas.asm"
+	incsrc "data/levels/bananas/topsail_trouble_warp_room_bananas.asm"
 
 DATA_FDBA93:
-        incsrc "data/levels/bananas/hot_head_hop_bonus_2_bananas.asm"
+	incsrc "data/levels/bananas/hot_head_hop_bonus_2_bananas.asm"
 
 DATA_FDBA97:
-        incsrc "data/levels/bananas/pirate_panic_warp_room_bananas.asm"
+	incsrc "data/levels/bananas/pirate_panic_warp_room_bananas.asm"
 
 DATA_FDBA9F:
-        incsrc "data/levels/bananas/target_terror_exit_room_bananas.asm"
+	incsrc "data/levels/bananas/target_terror_exit_room_bananas.asm"
 
 DATA_FDBAA7:
-        incsrc "data/levels/bananas/web_woods_room_unused_bananas.asm"
+	incsrc "data/levels/bananas/web_woods_room_unused_bananas.asm"
 
 DATA_FDBAAB:
-        incsrc "data/levels/bananas/mainbrace_mayhem_warp_room_bananas.asm"
+	incsrc "data/levels/bananas/mainbrace_mayhem_warp_room_bananas.asm"
 
 DATA_FDBAAF:
-        incsrc "data/levels/bananas/rattle_battle_rattly_room_bananas.asm"
+	incsrc "data/levels/bananas/rattle_battle_rattly_room_bananas.asm"
 
 DATA_FDBAB3:
-        incsrc "data/levels/bananas/windy_well_bananas.asm"
+	incsrc "data/levels/bananas/windy_well_bananas.asm"
 
 DATA_FDBB53:
-        incsrc "data/levels/bananas/squawks_shaft_bananas.asm"
+	incsrc "data/levels/bananas/squawks_shaft_bananas.asm"
 
 DATA_FDBBBF:
-        incsrc "data/levels/bananas/kannons_klaim_bananas.asm"
+	incsrc "data/levels/bananas/kannons_klaim_bananas.asm"
 
 DATA_FDBC3B:
-        incsrc "data/levels/bananas/parrot_chute_panic_warp_room_bananas.asm"
+	incsrc "data/levels/bananas/parrot_chute_panic_warp_room_bananas.asm"
 
 DATA_FDBC43:
-        incsrc "data/levels/bananas/kannons_klaim_warp_room_bananas.asm"
+	incsrc "data/levels/bananas/kannons_klaim_warp_room_bananas.asm"
 
 DATA_FDBC47:
-        incsrc "data/levels/bananas/barrel_bayou_bananas.asm"
+	incsrc "data/levels/bananas/barrel_bayou_bananas.asm"
 
 DATA_FDBCBB:
-        incsrc "data/levels/bananas/krockhead_klamber_bananas.asm"
+	incsrc "data/levels/bananas/krockhead_klamber_bananas.asm"
 
 DATA_FDBD73:
-        incsrc "data/levels/bananas/web_woods_squitter_room_bananas.asm"
+	incsrc "data/levels/bananas/web_woods_squitter_room_bananas.asm"
 
 DATA_FDBD87:
-        incsrc "data/levels/bananas/mudhole_marsh_bananas.asm"
+	incsrc "data/levels/bananas/mudhole_marsh_bananas.asm"
 
 DATA_FDBDEB:
-        incsrc "data/levels/bananas/bramble_blast_bananas.asm"
+	incsrc "data/levels/bananas/bramble_blast_bananas.asm"
 
 DATA_FDBEA7:
-        incsrc "data/levels/bananas/bramble_scramble_bananas.asm"
+	incsrc "data/levels/bananas/bramble_scramble_bananas.asm"
 
 DATA_FDBF6F:
-        incsrc "data/levels/bananas/screechs_sprint_bananas.asm"
+	incsrc "data/levels/bananas/screechs_sprint_bananas.asm"
 
 DATA_FDC047:
-        incsrc "data/levels/bananas/king_zing_sting_bananas.asm"
+	incsrc "data/levels/bananas/king_zing_sting_bananas.asm"
 
 DATA_FDC04B:
-        incsrc "data/levels/bananas/castle_crush_bananas.asm"
+	incsrc "data/levels/bananas/castle_crush_bananas.asm"
 
 DATA_FDC0DF:
-        incsrc "data/levels/bananas/lockjaws_locker_warp_room_bananas.asm"
+	incsrc "data/levels/bananas/lockjaws_locker_warp_room_bananas.asm"
 
 DATA_FDC0E3:
-        incsrc "data/levels/bananas/lava_lagoon_warp_room_bananas.asm"
+	incsrc "data/levels/bananas/lava_lagoon_warp_room_bananas.asm"
 
 DATA_FDC0E7:
-        incsrc "data/levels/bananas/squawks_shaft_warp_room_bananas.asm"
+	incsrc "data/levels/bananas/squawks_shaft_warp_room_bananas.asm"
 
 DATA_FDC0EB:
-        incsrc "data/levels/bananas/arctic_abyss_bananas.asm"
+	incsrc "data/levels/bananas/arctic_abyss_bananas.asm"
 
 DATA_FDC14B:
-        incsrc "data/levels/bananas/chain_link_chamber_bananas.asm"
+	incsrc "data/levels/bananas/chain_link_chamber_bananas.asm"
 
 DATA_FDC1C3:
-        incsrc "data/levels/bananas/toxic_tower_bananas.asm"
+	incsrc "data/levels/bananas/toxic_tower_bananas.asm"
 
 DATA_FDC26F:
-        incsrc "data/levels/bananas/pirate_panic_bonus_1_bananas.asm"
+	incsrc "data/levels/bananas/pirate_panic_bonus_1_bananas.asm"
 
 DATA_FDC27B:
-        incsrc "data/levels/bananas/gangplank_galley_bonus_2_bananas.asm"
+	incsrc "data/levels/bananas/gangplank_galley_bonus_2_bananas.asm"
 
 DATA_FDC27F:
-        incsrc "data/levels/bananas/rattle_battle_bonus_1_bananas.asm"
+	incsrc "data/levels/bananas/rattle_battle_bonus_1_bananas.asm"
 
 DATA_FDC29F:
-        incsrc "data/levels/bananas/rattle_battle_bonus_3_bananas.asm"
+	incsrc "data/levels/bananas/rattle_battle_bonus_3_bananas.asm"
 
 DATA_FDC2BB:
-        incsrc "data/levels/bananas/hot_head_hop_bonus_3_bananas.asm"
+	incsrc "data/levels/bananas/hot_head_hop_bonus_3_bananas.asm"
 
 DATA_FDC2C7:
-        incsrc "data/levels/bananas/hot_head_hop_bonus_1_bananas.asm"
+	incsrc "data/levels/bananas/hot_head_hop_bonus_1_bananas.asm"
 
 DATA_FDC2DF:
-        incsrc "data/levels/bananas/red_hot_ride_bonus_1_bananas.asm"
+	incsrc "data/levels/bananas/red_hot_ride_bonus_1_bananas.asm"
 
 DATA_FDC2E7:
-        incsrc "data/levels/bananas/red_hot_ride_bonus_2_bananas.asm"
+	incsrc "data/levels/bananas/red_hot_ride_bonus_2_bananas.asm"
 
 DATA_FDC2F7:
-        incsrc "data/levels/bananas/mainbrace_mayhem_bonus_1_bananas.asm"
+	incsrc "data/levels/bananas/mainbrace_mayhem_bonus_1_bananas.asm"
 
 DATA_FDC317:
-        incsrc "data/levels/bananas/slime_climb_bonus_1_bananas.asm"
+	incsrc "data/levels/bananas/slime_climb_bonus_1_bananas.asm"
 
 DATA_FDC33F:
-        incsrc "data/levels/bananas/topsail_trouble_bonus_2_bananas.asm"
+	incsrc "data/levels/bananas/topsail_trouble_bonus_2_bananas.asm"
 
 DATA_FDC343:
-        incsrc "data/levels/bananas/mainbrace_mayhem_bonus_3_bananas.asm"
+	incsrc "data/levels/bananas/mainbrace_mayhem_bonus_3_bananas.asm"
 
 DATA_FDC363:
-        incsrc "data/levels/bananas/klobber_karnage_bananas.asm"
+	incsrc "data/levels/bananas/klobber_karnage_bananas.asm"
 
 DATA_FDC3E7:
-        incsrc "data/levels/bananas/lockjaws_locker_bonus_1_bananas.asm"
+	incsrc "data/levels/bananas/lockjaws_locker_bonus_1_bananas.asm"
 
 DATA_FDC41B:
-        incsrc "data/levels/bananas/glimmers_galleon_bonus_2_bananas.asm"
+	incsrc "data/levels/bananas/glimmers_galleon_bonus_2_bananas.asm"
 
 DATA_FDC43B:
-        incsrc "data/levels/bananas/gusty_glade_bonus_1_bananas.asm"
+	incsrc "data/levels/bananas/gusty_glade_bonus_1_bananas.asm"
 
 DATA_FDC447:
-        incsrc "data/levels/bananas/gusty_glade_bonus_2_bananas.asm"
+	incsrc "data/levels/bananas/gusty_glade_bonus_2_bananas.asm"
 
 DATA_FDC45F:
-        incsrc "data/levels/bananas/ghostly_grove_bonus_2_bananas.asm"
+	incsrc "data/levels/bananas/ghostly_grove_bonus_2_bananas.asm"
 
 DATA_FDC473:
-        incsrc "data/levels/bananas/barrel_bayou_bonus_2_bananas.asm"
+	incsrc "data/levels/bananas/barrel_bayou_bonus_2_bananas.asm"
 
 DATA_FDC47F:
-        incsrc "data/levels/bananas/mudhole_marsh_bonus_1_bananas.asm"
+	incsrc "data/levels/bananas/mudhole_marsh_bonus_1_bananas.asm"
 
 DATA_FDC497:
-        incsrc "data/levels/bananas/mudhole_marsh_bonus_2_bananas.asm"
+	incsrc "data/levels/bananas/mudhole_marsh_bonus_2_bananas.asm"
 
 DATA_FDC4A3:
-        incsrc "data/levels/bananas/hot_head_hop_warp_room_bananas.asm"
+	incsrc "data/levels/bananas/hot_head_hop_warp_room_bananas.asm"
 
 DATA_FDC4A7:
-        incsrc "data/levels/bananas/clappers_cavern_bananas.asm"
+	incsrc "data/levels/bananas/clappers_cavern_bananas.asm"
 
 DATA_FDC537:
-        incsrc "data/levels/bananas/animal_antics_enguarde_section_bananas.asm"
+	incsrc "data/levels/bananas/animal_antics_enguarde_section_bananas.asm"
 
 DATA_FDC557:
-        incsrc "data/levels/bananas/clappers_cavern_bonus_1_bananas.asm"
+	incsrc "data/levels/bananas/clappers_cavern_bonus_1_bananas.asm"
 
 DATA_FDC573:
-        incsrc "data/levels/bananas/clappers_cavern_bonus_2_bananas.asm"
+	incsrc "data/levels/bananas/clappers_cavern_bonus_2_bananas.asm"
 
 DATA_FDC593:
-        incsrc "data/levels/bananas/arctic_abyss_bonus_1_bananas.asm"
+	incsrc "data/levels/bananas/arctic_abyss_bonus_1_bananas.asm"
 
 DATA_FDC5B3:
-        incsrc "data/levels/bananas/black_ice_battle_bonus_1_bananas.asm"
+	incsrc "data/levels/bananas/black_ice_battle_bonus_1_bananas.asm"
 
 DATA_FDC5BF:
-        incsrc "data/levels/bananas/arctic_abyss_bonus_2_bananas.asm"
+	incsrc "data/levels/bananas/arctic_abyss_bonus_2_bananas.asm"
 
 DATA_FDC5C7:
-        incsrc "data/levels/bananas/black_ice_battle_bananas.asm"
+	incsrc "data/levels/bananas/black_ice_battle_bananas.asm"
 
 DATA_FDC62B:
-        incsrc "data/levels/bananas/jungle_jinx_bananas.asm"
+	incsrc "data/levels/bananas/jungle_jinx_bananas.asm"
 
 DATA_FDC6E7:
-        incsrc "data/levels/bananas/animal_antics_rambi_section_bananas.asm"
+	incsrc "data/levels/bananas/animal_antics_rambi_section_bananas.asm"
 
 DATA_FDC6FF:
-        incsrc "data/levels/bananas/animal_antics_squitter_section_bananas.asm"
+	incsrc "data/levels/bananas/animal_antics_squitter_section_bananas.asm"
 
 DATA_FDC72F:
-        incsrc "data/levels/bananas/animal_antics_rattly_section_bananas.asm"
+	incsrc "data/levels/bananas/animal_antics_rattly_section_bananas.asm"
 
 DATA_FDC747:
-        incsrc "data/levels/bananas/fiery_furnace_bonus_1_bananas.asm"
+	incsrc "data/levels/bananas/fiery_furnace_bonus_1_bananas.asm"
 
 DATA_FDC763:
-        incsrc "data/levels/bananas/animal_antics_squawks_section_bananas.asm"
+	incsrc "data/levels/bananas/animal_antics_squawks_section_bananas.asm"
 
 DATA_FDC7BF:
-        incsrc "data/levels/bananas/bramble_blast_bonus_2_bananas.asm"
+	incsrc "data/levels/bananas/bramble_blast_bonus_2_bananas.asm"
 
 DATA_FDC7D3:
-        incsrc "data/levels/bananas/bramble_scramble_bonus_1_bananas.asm"
+	incsrc "data/levels/bananas/bramble_scramble_bonus_1_bananas.asm"
 
 DATA_FDC7FB:
-        incsrc "data/levels/bananas/windy_well_bonus_2_bananas.asm"
+	incsrc "data/levels/bananas/windy_well_bonus_2_bananas.asm"
 
 DATA_FDC80F:
-        incsrc "data/levels/bananas/web_woods_bonus_1_bananas.asm"
+	incsrc "data/levels/bananas/web_woods_bonus_1_bananas.asm"
 
 DATA_FDC81F:
-        incsrc "data/levels/bananas/toxic_tower_bonus_1_bananas.asm"
+	incsrc "data/levels/bananas/toxic_tower_bonus_1_bananas.asm"
 
 DATA_FDC837:
-        incsrc "data/levels/bananas/bramble_blast_bonus_1_bananas.asm"
+	incsrc "data/levels/bananas/bramble_blast_bonus_1_bananas.asm"
 
 DATA_FDC83B:
-        incsrc "data/levels/bananas/screechs_sprint_bonus_1_bananas.asm"
+	incsrc "data/levels/bananas/screechs_sprint_bonus_1_bananas.asm"
 
 DATA_FDC87B:
-        incsrc "data/levels/bananas/kannons_klaim_bonus_1_bananas.asm"
+	incsrc "data/levels/bananas/kannons_klaim_bonus_1_bananas.asm"
 
 DATA_FDC883:
-        incsrc "data/levels/bananas/kannons_klaim_bonus_2_bananas.asm"
+	incsrc "data/levels/bananas/kannons_klaim_bonus_2_bananas.asm"
 
 DATA_FDC897:
-        incsrc "data/levels/bananas/parrot_chute_panic_bonus_2_bananas.asm"
+	incsrc "data/levels/bananas/parrot_chute_panic_bonus_2_bananas.asm"
 
 DATA_FDC8A3:
-        incsrc "data/levels/bananas/hornet_hole_bonus_3_bananas.asm"
+	incsrc "data/levels/bananas/hornet_hole_bonus_3_bananas.asm"
 
 DATA_FDC8A7:
-        incsrc "data/levels/bananas/parrot_chute_panic_bonus_1_bananas.asm"
+	incsrc "data/levels/bananas/parrot_chute_panic_bonus_1_bananas.asm"
 
 DATA_FDC8D7:
-        incsrc "data/levels/bananas/rambi_rumble_bonus_2_bananas.asm"
+	incsrc "data/levels/bananas/rambi_rumble_bonus_2_bananas.asm"
 
 DATA_FDC8E7:
-        incsrc "data/levels/bananas/hornet_hole_bonus_2_bananas.asm"
+	incsrc "data/levels/bananas/hornet_hole_bonus_2_bananas.asm"
 
 DATA_FDC8EB:
-        incsrc "data/levels/bananas/rambi_rumble_bonus_1_bananas.asm"
+	incsrc "data/levels/bananas/rambi_rumble_bonus_1_bananas.asm"
 
 DATA_FDC903:
-        incsrc "data/levels/bananas/chain_link_chamber_bonus_1_bananas.asm"
+	incsrc "data/levels/bananas/chain_link_chamber_bonus_1_bananas.asm"
 
 DATA_FDC923:
-        incsrc "data/levels/bananas/chain_link_chamber_bonus_2_bananas.asm"
+	incsrc "data/levels/bananas/chain_link_chamber_bonus_2_bananas.asm"
 
 DATA_FDC93B:
-        incsrc "data/levels/bananas/castle_crush_bonus_2_bananas.asm"
+	incsrc "data/levels/bananas/castle_crush_bonus_2_bananas.asm"
 
 DATA_FDC96B:
-        incsrc "data/levels/bananas/squawks_shaft_bonus_2_bananas.asm"
+	incsrc "data/levels/bananas/squawks_shaft_bonus_2_bananas.asm"
 
 DATA_FDC98F:
-        incsrc "data/levels/bananas/web_woods_bonus_2_bananas.asm"
+	incsrc "data/levels/bananas/web_woods_bonus_2_bananas.asm"
 
 DATA_FDC99F:
-        incsrc "data/levels/bananas/windy_well_bonus_1_bananas.asm"
+	incsrc "data/levels/bananas/windy_well_bonus_1_bananas.asm"
 
 DATA_FDC9A7:
-        incsrc "data/levels/bananas/haunted_hall_bonus_1_bananas.asm"
+	incsrc "data/levels/bananas/haunted_hall_bonus_1_bananas.asm"
 
 DATA_FDC9CB:
-        incsrc "data/levels/bananas/rickety_race_exit_bananas.asm"
+	incsrc "data/levels/bananas/rickety_race_exit_bananas.asm"
 
 DATA_FDC9DB:
-        incsrc "data/levels/bananas/haunted_hall_bonus_3_bananas.asm"
+	incsrc "data/levels/bananas/haunted_hall_bonus_3_bananas.asm"
 
 DATA_FDCA13:
-        incsrc "data/levels/bananas/target_terror_bonus_2_bananas.asm"
+	incsrc "data/levels/bananas/target_terror_bonus_2_bananas.asm"
 
 DATA_FDCA3F:
-        incsrc "data/levels/bananas/haunted_hall_bonus_2_bananas.asm"
+	incsrc "data/levels/bananas/haunted_hall_bonus_2_bananas.asm"
 
 DATA_FDCA83:
 	dw DATA_FDCB5D-DATA_FDCA83
@@ -8684,1030 +8684,862 @@ DATA_FDCA83:
 	dw DATA_FDCF65-DATA_FDCA83
 
 DATA_FDCB5D:
-        db $00, $00, $00
+	db $00, $00, $00
 
 DATA_FDCB60:
-        db $01, $01, $01
+	db $01, $01, $01
 
 DATA_FDCB63:
-        db $01, $04, $09
+	db $01, $04, $09
 
 DATA_FDCB66:
-        db $01, $05, $11
+	db $01, $05, $11
 
 DATA_FDCB69:
-        db $01, $06, $21
+	db $01, $06, $21
 
 DATA_FDCB6C:
-        db $01, $07, $49
+	db $01, $07, $49
 
 DATA_FDCB6F:
-        db $01, $07, $41
+	db $01, $07, $41
 
 DATA_FDCB72:
-        db $01, $09, $01, $01
+	db $01, $09, $01, $01
 
 DATA_FDCB76:
-        db $01, $09, $11, $01
+	db $01, $09, $11, $01
 
 DATA_FDCB7A:
-        db $01, $0A, $49, $02
+	db $01, $0A, $49, $02
 
 DATA_FDCB7E:
-        db $01, $0B, $21, $04
+	db $01, $0B, $21, $04
 
 DATA_FDCB82:
-        db $01, $0D, $11, $11
+	db $01, $0D, $11, $11
 
 DATA_FDCB86:
-        db $01, $0D, $49, $12
+	db $01, $0D, $49, $12
 
 DATA_FDCB8A:
-        db $01, $0D, $41, $10
+	db $01, $0D, $41, $10
 
 DATA_FDCB8E:
-        db $01, $10, $21, $84
+	db $01, $10, $21, $84
 
 DATA_FDCB92:
-        db $02, $06, $60, $00
+	db $02, $06, $60, $00
 
 DATA_FDCB96:
-        db $03, $01, $05
+	db $03, $01, $05
 
 DATA_FDCB99:
-        db $03, $03, $44, $00
+	db $03, $03, $44, $00
 
 DATA_FDCB9D:
-        db $03, $03, $01, $01
+	db $03, $03, $01, $01
 
 DATA_FDCBA1:
-        db $03, $03, $45, $01
+	db $03, $03, $45, $01
 
 DATA_FDCBA5:
-        db $04, $01, $09
+	db $04, $01, $09
 
 DATA_FDCBA8:
-        db $04, $03, $01, $08
+	db $04, $03, $01, $08
 
 DATA_FDCBAC:
-        db $04, $03, $04, $02
+	db $04, $03, $04, $02
 
 DATA_FDCBB0:
-        db $04, $04, $01, $80
+	db $04, $04, $01, $80
 
 DATA_FDCBB4:
-        db $04, $04, $08, $10
+	db $04, $04, $08, $10
 
 DATA_FDCBB8:
-        db $04, $04, $09, $90
+	db $04, $04, $09, $90
 
 DATA_FDCBBC:
-        db $04, $07, $49, $00, $20, $09
+	db $04, $07, $49, $00, $20, $09
 
 DATA_FDCBC2:
-        db $04, $08, $01, $10, $00, $80
+	db $04, $08, $01, $10, $00, $80
 
 DATA_FDCBC8:
-        db $04, $08, $80, $00, $10, $01
+	db $04, $08, $80, $00, $10, $01
 
 DATA_FDCBCE:
-        db $05, $01, $15
+	db $05, $01, $15
 
 DATA_FDCBD1:
-        db $05, $01, $11
+	db $05, $01, $11
 
 DATA_FDCBD4:
-        db $05, $03, $45, $51
+	db $05, $03, $45, $51
 
 DATA_FDCBD8:
-        db $05, $05, $01, $00, $00, $01
+	db $05, $05, $01, $00, $00, $01
 
 DATA_FDCBDE:
-        db $05, $05, $10, $00, $10, $00
+	db $05, $05, $10, $00, $10, $00
 
 DATA_FDCBE4:
-        db $05, $05, $11, $00, $10, $01
+	db $05, $05, $11, $00, $10, $01
 
 DATA_FDCBEA:
-        db $05, $07, $15, $22, $91, $58, $01
+	db $05, $07, $15, $22, $91, $58, $01
 
 DATA_FDCBF1:
-        db $05, $09, $04, $04, $54, $15, $40, $00
+	db $05, $09, $04, $04, $54, $15, $40, $00
 
 DATA_FDCBF9:
-        db $05, $09, $40, $00, $55, $05, $04, $04
+	db $05, $09, $40, $00, $55, $05, $04, $04
 
 DATA_FDCC01:
-        db $05, $09, $11, $01, $00, $00, $10, $11
+	db $05, $09, $11, $01, $00, $00, $10, $11
 
 DATA_FDCC09:
-        db $05, $0B, $05, $8A, $60, $08, $83, $18
-        db $28
+	db $05, $0B, $05, $8A, $60, $08, $83, $18
+	db $28
 
 DATA_FDCC12:
-        db $05, $0B, $21, $0C, $61, $08, $A3, $A8
-        db $28
+	db $05, $0B, $21, $0C, $61, $08, $A3, $A8
+	db $28
 
 DATA_FDCC1B:
-        db $05, $0B, $50, $85, $40, $15, $20, $00
-        db $01
+	db $05, $0B, $50, $85, $40, $15, $20, $00
+	db $01
 
 DATA_FDCC24:
-        db $05, $0D, $11, $11, $00, $00, $00, $00
-        db $10, $11, $01
+	db $05, $0D, $11, $11, $00, $00, $00, $00
+	db $10, $11, $01
 
 DATA_FDCC2F:
-        db $05, $0F, $00, $14, $81, $6A, $51, $55
-        db $A0, $0A, $40, $01
+	db $05, $0F, $00, $14, $81, $6A, $51, $55
+	db $A0, $0A, $40, $01
 
 DATA_FDCC3B:
-        db $06, $01, $21
+	db $06, $01, $21
 
 DATA_FDCC3E:
-        db $06, $03, $0C, $C3, $00
+	db $06, $03, $0C, $C3, $00
 
 DATA_FDCC43:
-        db $07, $01, $49
+	db $07, $01, $49
 
 DATA_FDCC46:
-        db $07, $01, $41
+	db $07, $01, $41
 
 DATA_FDCC49:
-        db $07, $04, $09, $90, $00, $09
+	db $07, $04, $09, $90, $00, $09
 
 DATA_FDCC4F:
-        db $07, $07, $01, $00, $00, $01, $00, $00
-        db $01
+	db $07, $07, $01, $00, $00, $01, $00, $00
+	db $01
 
 DATA_FDCC58:
-        db $07, $07, $49, $00, $20, $09, $00, $24
-        db $01
+	db $07, $07, $49, $00, $20, $09, $00, $24
+	db $01
 
 DATA_FDCC61:
-        db $07, $07, $40, $00, $00, $01, $00, $04
-        db $00
+	db $07, $07, $40, $00, $00, $01, $00, $04
+	db $00
 
 DATA_FDCC6A:
-        db $07, $09, $01, $20, $00, $00, $04, $00
-        db $00, $40
+	db $07, $09, $01, $20, $00, $00, $04, $00
+	db $00, $40
 
 DATA_FDCC74:
-        db $07, $09, $00, $21, $00, $10, $00, $00
-        db $40, $00
+	db $07, $09, $00, $21, $00, $10, $00, $00
+	db $40, $00
 
 DATA_FDCC7E:
-        db $07, $09, $00, $01, $00, $00, $04, $00
-        db $42, $00
+	db $07, $09, $00, $01, $00, $00, $04, $00
+	db $42, $00
 
 DATA_FDCC88:
-        db $07, $0D, $00, $10, $80, $00, $84, $2A
-        db $00, $10, $00, $08, $00, $04
+	db $07, $0D, $00, $10, $80, $00, $84, $2A
+	db $00, $10, $00, $08, $00, $04
 
 DATA_FDCC96:
-        db $07, $0D, $01, $00, $00, $40, $00, $00
-        db $00, $10, $00, $00, $00, $04
+	db $07, $0D, $01, $00, $00, $40, $00, $00
+	db $00, $10, $00, $00, $00, $04
 
 DATA_FDCCA4:
-        db $07, $0D, $55, $15, $00, $04, $41, $00
-        db $10, $04, $01, $00, $45, $01
+	db $07, $0D, $55, $15, $00, $04, $41, $00
+	db $10, $04, $01, $00, $45, $01
 
 DATA_FDCCB2:
-        db $07, $0D, $55, $01, $80, $40, $40, $00
-        db $00, $01, $01, $48, $55, $00
+	db $07, $0D, $55, $01, $80, $40, $40, $00
+	db $00, $01, $01, $48, $55, $00
 
 DATA_FDCCC0:
-        db $08, $05, $44, $55, $42, $08, $21
+	db $08, $05, $44, $55, $42, $08, $21
 
 DATA_FDCCC7:
-        db $08, $05, $84, $10, $42, $AA, $22
+	db $08, $05, $84, $10, $42, $AA, $22
 
 DATA_FDCCCE:
-        db $08, $0F, $10, $40, $02, $40, $14, $94
-        db $A0, $10, $05, $25, $28, $04, $41, $00
-        db $0A
+	db $08, $0F, $10, $40, $02, $40, $14, $94
+	db $A0, $10, $05, $25, $28, $04, $41, $00
+	db $0A
 
 DATA_FDCCDF:
-        db $09, $01, $11, $01
+	db $09, $01, $11, $01
 
 DATA_FDCCE3:
-        db $09, $03, $04, $20, $00, $01
+	db $09, $03, $04, $20, $00, $01
 
 DATA_FDCCE9:
-        db $09, $03, $01, $20, $00, $04
+	db $09, $03, $01, $20, $00, $04
 
 DATA_FDCCEF:
-        db $09, $03, $45, $51, $14, $05
+	db $09, $03, $45, $51, $14, $05
 
 DATA_FDCCF5:
-        db $09, $05, $01, $00, $40, $00, $00, $10
+	db $09, $05, $01, $00, $40, $00, $00, $10
 
 DATA_FDCCFD:
-        db $09, $05, $10, $00, $40, $00, $00, $01
+	db $09, $05, $10, $00, $40, $00, $00, $01
 
 DATA_FDCD05:
-        db $09, $07, $40, $00, $00, $80, $00, $00
-        db $00, $01
+	db $09, $07, $40, $00, $00, $80, $00, $00
+	db $00, $01
 
 DATA_FDCD0F:
-        db $09, $09, $00, $01, $00, $00, $00, $01
-        db $00, $00, $00, $01, $00
+	db $09, $09, $00, $01, $00, $00, $00, $01
+	db $00, $00, $00, $01, $00
 
 DATA_FDCD1C:
-        db $09, $09, $01, $00, $00, $00, $00, $01
-        db $00, $00, $00, $00, $01
+	db $09, $09, $01, $00, $00, $00, $00, $01
+	db $00, $00, $00, $00, $01
 
 DATA_FDCD29:
-        db $0A, $01, $49, $02
+	db $0A, $01, $49, $02
 
 DATA_FDCD2D:
-        db $0A, $04, $09, $90, $00, $09, $90
+	db $0A, $04, $09, $90, $00, $09, $90
 
 DATA_FDCD34:
-        db $0A, $07, $49, $00, $20, $09, $00, $24
-        db $01, $80, $24
+	db $0A, $07, $49, $00, $20, $09, $00, $24
+	db $01, $80, $24
 
 DATA_FDCD3F:
-        db $0A, $07, $40, $00, $00, $08, $00, $80
-        db $00, $88, $00
+	db $0A, $07, $40, $00, $00, $08, $00, $80
+	db $00, $88, $00
 
 DATA_FDCD4A:
-        db $0A, $0A, $01, $20, $00, $00, $10, $00
-        db $00, $00, $10, $00, $00, $00, $08
+	db $0A, $0A, $01, $20, $00, $00, $10, $00
+	db $00, $00, $10, $00, $00, $00, $08
 
 DATA_FDCD59:
-        db $0A, $0A, $01, $00, $00, $00, $02, $00
-        db $00, $00, $04, $00, $00, $00, $08
+	db $0A, $0A, $01, $00, $00, $00, $02, $00
+	db $00, $00, $04, $00, $00, $00, $08
 
 DATA_FDCD68:
-        db $0A, $0A, $49, $02, $00, $40, $92, $00
-        db $00, $90, $24, $00, $00, $24, $09
+	db $0A, $0A, $49, $02, $00, $40, $92, $00
+	db $00, $90, $24, $00, $00, $24, $09
 
 DATA_FDCD77:
-        db $0A, $0A, $00, $02, $00, $00, $40, $00
-        db $00, $00, $04, $00, $08, $04, $00
+	db $0A, $0A, $00, $02, $00, $00, $40, $00
+	db $00, $00, $04, $00, $08, $04, $00
 
 DATA_FDCD86:
-        db $0A, $0D, $49, $12, $00, $00, $80, $24
-        db $09, $00, $00, $40, $92, $04, $00, $00
-        db $20, $49, $02
+	db $0A, $0D, $49, $12, $00, $00, $80, $24
+	db $09, $00, $00, $40, $92, $04, $00, $00
+	db $20, $49, $02
 
 DATA_FDCD99:
-        db $0B, $01, $21, $04
+	db $0B, $01, $21, $04
 
 DATA_FDCD9D:
-        db $0B, $05, $01, $00, $00, $08, $00, $00
-        db $40
+	db $0B, $05, $01, $00, $00, $08, $00, $00
+	db $40
 
 DATA_FDCDA6:
-        db $0D, $01, $11, $11
+	db $0D, $01, $11, $11
 
 DATA_FDCDAA:
-        db $0D, $01, $49, $12
+	db $0D, $01, $49, $12
 
 DATA_FDCDAE:
-        db $0D, $05, $11, $00, $10, $01, $00, $11
-        db $00, $10, $01
+	db $0D, $05, $11, $00, $10, $01, $00, $11
+	db $00, $10, $01
 
 DATA_FDCDB9:
-        db $0D, $08, $01, $08, $00, $40, $00, $00
-        db $80, $00, $00, $40, $00, $08, $01
+	db $0D, $08, $01, $08, $00, $40, $00, $00
+	db $80, $00, $00, $40, $00, $08, $01
 
 DATA_FDCDC8:
-        db $0D, $09, $01, $10, $00, $00, $02, $00
-        db $00, $40, $00, $00, $80, $00, $40, $10
-        db $00
+	db $0D, $09, $01, $10, $00, $00, $02, $00
+	db $00, $40, $00, $00, $80, $00, $40, $10
+	db $00
 
 DATA_FDCDD9:
-        db $0D, $0D, $01, $00, $00, $00, $00, $04
-        db $00, $00, $00, $00, $10, $00, $00, $00
-        db $00, $40, $00, $00, $00, $00, $00, $01
+	db $0D, $0D, $01, $00, $00, $00, $00, $04
+	db $00, $00, $00, $00, $10, $00, $00, $00
+	db $00, $40, $00, $00, $00, $00, $00, $01
 
 DATA_FDCDF1:
-        db $0D, $0D, $00, $10, $00, $00, $00, $00
-        db $00, $10, $00, $00, $00, $00, $00, $10
-        db $00, $00, $00, $00, $00, $10, $00, $00
+	db $0D, $0D, $00, $10, $00, $00, $00, $00
+	db $00, $10, $00, $00, $00, $00, $00, $10
+	db $00, $00, $00, $00, $00, $10, $00, $00
 
 DATA_FDCE09:
-        db $0D, $0D, $11, $11, $00, $00, $00, $00
-        db $10, $11, $01, $00, $00, $00, $00, $11
-        db $11, $00, $00, $00, $00, $10, $11, $01
+	db $0D, $0D, $11, $11, $00, $00, $00, $00
+	db $10, $11, $01, $00, $00, $00, $00, $11
+	db $11, $00, $00, $00, $00, $10, $11, $01
 
 DATA_FDCE21:
-        db $0D, $0D, $01, $00, $00, $00, $00, $00
-        db $00, $01, $00, $00, $00, $00, $00, $00
-        db $01, $00, $00, $00, $00, $00, $00, $01
+	db $0D, $0D, $01, $00, $00, $00, $00, $00
+	db $00, $01, $00, $00, $00, $00, $00, $00
+	db $01, $00, $00, $00, $00, $00, $00, $01
 
 DATA_FDCE39:
-        db $10, $01, $49, $92
+	db $10, $01, $49, $92
 
 DATA_FDCE3D:
-        db $10, $01, $21, $84
+	db $10, $01, $21, $84
 
 DATA_FDCE41:
-        db $10, $09, $01, $10, $00, $00, $02, $00
-        db $00, $40, $00, $00, $00, $02, $00, $00
-        db $04, $00, $82, $00
+	db $10, $09, $01, $10, $00, $00, $02, $00
+	db $00, $40, $00, $00, $00, $02, $00, $00
+	db $04, $00, $82, $00
 
 DATA_FDCE55:
-        db $11, $01, $11, $11, $01
+	db $11, $01, $11, $11, $01
 
 DATA_FDCE5A:
-        db $11, $05, $11, $00, $10, $01, $00, $01
-        db $00, $10, $01, $00, $11
+	db $11, $05, $11, $00, $10, $01, $00, $01
+	db $00, $10, $01, $00, $11
 
 DATA_FDCE67:
-        db $11, $05, $11, $00, $10, $01, $00, $11
-        db $00, $10, $01, $00, $11
+	db $11, $05, $11, $00, $10, $01, $00, $11
+	db $00, $10, $01, $00, $11
 
 DATA_FDCE74:
-        db $11, $09, $11, $01, $00, $00, $10, $11
-        db $00, $00, $00, $11, $01, $00, $00, $10
-        db $11, $00, $00, $00, $11, $01
+	db $11, $09, $11, $01, $00, $00, $10, $11
+	db $00, $00, $00, $11, $01, $00, $00, $10
+	db $11, $00, $00, $00, $11, $01
 
 DATA_FDCE8A:
-        db $11, $0D, $11, $11, $00, $00, $00, $00
-        db $10, $11, $01, $00, $00, $00, $00, $11
-        db $11, $00, $00, $00, $00, $10, $11, $01
-        db $00, $00, $00, $00, $11, $11
+	db $11, $0D, $11, $11, $00, $00, $00, $00
+	db $10, $11, $01, $00, $00, $00, $00, $11
+	db $11, $00, $00, $00, $00, $10, $11, $01
+	db $00, $00, $00, $00, $11, $11
 
 DATA_FDCEA8:
-        db $13, $04, $09, $90, $00, $09, $90, $00
-        db $09, $90, $00, $09
+	db $13, $04, $09, $90, $00, $09, $90, $00
+	db $09, $90, $00, $09
 
 DATA_FDCEB4:
-        db $13, $0A, $49, $02, $00, $40, $92, $00
-        db $00, $90, $24, $00, $00, $24, $09, $00
-        db $00, $49, $02, $00, $40, $92, $00, $00
-        db $90, $24
+	db $13, $0A, $49, $02, $00, $40, $92, $00
+	db $00, $90, $24, $00, $00, $24, $09, $00
+	db $00, $49, $02, $00, $40, $92, $00, $00
+	db $90, $24
 
 DATA_FDCECE:
-        db $15, $01, $21, $84, $10
+	db $15, $01, $21, $84, $10
 
 DATA_FDCED3:
-        db $15, $01, $11, $11, $11
+	db $15, $01, $11, $11, $11
 
 DATA_FDCED8:
-        db $15, $05, $11, $00, $10, $01, $00, $11
-        db $00, $10, $01, $00, $11, $00, $10, $01
+	db $15, $05, $11, $00, $10, $01, $00, $11
+	db $00, $10, $01, $00, $11, $00, $10, $01
 
 DATA_FDCEE8:
-        db $15, $06, $21, $00, $00, $40, $08, $00
-        db $00, $10, $02, $00, $00, $84, $00, $00
-        db $00, $21
+	db $15, $06, $21, $00, $00, $40, $08, $00
+	db $00, $10, $02, $00, $00, $84, $00, $00
+	db $00, $21
 
 DATA_FDCEFA:
-        db $15, $09, $11, $01, $00, $00, $10, $11
-        db $00, $00, $00, $11, $01, $00, $00, $10
-        db $11, $00, $00, $00, $11, $01, $00, $00
-        db $10, $11
+	db $15, $09, $11, $01, $00, $00, $10, $11
+	db $00, $00, $00, $11, $01, $00, $00, $10
+	db $11, $00, $00, $00, $11, $01, $00, $00
+	db $10, $11
 
 DATA_FDCF14:
-        db $15, $0D, $11, $11, $00, $00, $00, $00
-        db $10, $11, $01, $00, $00, $00, $00, $11
-        db $11, $00, $00, $00, $00, $10, $11, $01
-        db $00, $00, $00, $00, $11, $11, $00, $00
-        db $00, $00, $10, $11, $01
+	db $15, $0D, $11, $11, $00, $00, $00, $00
+	db $10, $11, $01, $00, $00, $00, $00, $11
+	db $11, $00, $00, $00, $00, $10, $11, $01
+	db $00, $00, $00, $00, $11, $11, $00, $00
+	db $00, $00, $10, $11, $01
 
 DATA_FDCF39:
-        db $15, $10, $21, $84, $00, $00, $00, $00
-        db $00, $00, $00, $00, $21, $84, $00, $00
-        db $00, $00, $00, $00, $00, $00, $21, $84
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $21, $84, $00, $00, $00, $00, $00, $00
-        db $00, $00, $21, $84
+	db $15, $10, $21, $84, $00, $00, $00, $00
+	db $00, $00, $00, $00, $21, $84, $00, $00
+	db $00, $00, $00, $00, $00, $00, $21, $84
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $21, $84, $00, $00, $00, $00, $00, $00
+	db $00, $00, $21, $84
 	
 DATA_FDCF65:
 	db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
-        db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00
 
-;DATA_FDD364:						;there is probably a pointer to this somewhere
+DATA_FDD364:
+	dw DATA_FDD4E4, DATA_FDDAD0, $0480, $0680
+	dw DATA_FDD4D6, DATA_FDDA70, $0480, $0680
 if !version == 1
-	db $E4, $D4, $D0, $DA, $80, $04, $80, $06
-	db $D6, $D4, $70, $DA, $80, $04, $80, $06
-	db $C2, $D4, $9A, $D9, $00, $04, $C0, $05
-	db $A8, $D4, $6A, $D9, $00, $04, $40, $05
-	db $76, $D4, $12, $D8, $80, $04, $00, $05
-	db $38, $D4, $D8, $D7, $80, $04, $80, $04
-	db $FA, $D3, $10, $D6, $00, $03, $80, $04
-	db $BC, $D3, $F2, $D5, $00, $03, $80, $04
-	db $B6, $D3, $EC, $D4, $20, $01, $80, $03
+	dw DATA_FDD4C2, DATA_FDD99A, $0400, $05C0
+	dw DATA_FDD4A8, DATA_FDD96A, $0400, $0540
+	dw DATA_FDD476, DATA_FDD812, $0480, $0500
 else
-	db $E3, $D4, $A7, $DA, $80, $04, $80, $06
-	db $D5, $D4, $47, $DA, $80, $04, $80, $06
-	db $C1, $D4, $89, $D9, $00, $04, $40, $06
-	db $A7, $D4, $69, $D9, $00, $04, $C0, $05
-	db $75, $D4, $11, $D8, $80, $04, $40, $05
-	db $37, $D4, $D7, $D7, $80, $04, $80, $04
-	db $F9, $D3, $0F, $D6, $00, $03, $80, $04
-	db $BB, $D3, $F1, $D5, $00, $03, $80, $04
-	db $B5, $D3, $EB, $D4, $20, $01, $80, $03
+	dw DATA_FDD4C2, DATA_FDD99A, $0400, $0640
+	dw DATA_FDD4A8, DATA_FDD96A, $0400, $05C0
+	dw DATA_FDD476, DATA_FDD812, $0480, $0540
 endif
+	dw DATA_FDD438, DATA_FDD7D8, $0480, $0480
+	dw DATA_FDD3FA, DATA_FDD610, $0300, $0480
+	dw DATA_FDD3BC, DATA_FDD5F2, $0300, $0480
+	dw DATA_FDD3B6, DATA_FDD4EC, $0120, $0380
 
 %offset(DATA_FDD3AC, -1)
+	db $11, $0F, $03, $00, $00, $00, $19, $19
+	db $19
+
+DATA_FDD3B6:
+	db $60, $04, $CD, $02, $20, $FD
+
+DATA_FDD3BC:
+	db $30, $09, $CD, $01, $50, $91, $00, $0E
+	db $AC, $02, $50, $91, $00, $11, $8D, $01
+	db $50, $91, $A0, $14, $89, $01, $50, $91
+	db $80, $1C, $8D, $02, $50, $91, $00, $26
+	db $2D, $02, $50, $91, $E0, $2C, $8D, $01
+	db $50, $91, $40, $37, $A9, $01, $50, $91
+	db $80, $44, $4D, $02, $50, $91, $80, $53
+	db $0C, $02, $50, $91, $FF, $FF
+
+DATA_FDD3FA:
+	db $90, $0E, $CD, $02, $00, $96, $20, $11
+	db $89, $01, $50, $91, $B0, $15, $C5, $02
+	db $50, $91, $A0, $1C, $89, $02, $50, $91
+	db $00, $27, $2D, $02, $50, $91, $40, $2E
+	db $8D, $01, $50, $91, $80, $37, $B0, $01
+	db $50, $91, $C0, $3C, $49, $01, $50, $91
+	db $00, $48, $6D, $02, $50, $91, $A0, $53
+	db $0D, $02, $50, $91, $FF, $FF
+
+DATA_FDD438:
+	db $A8, $14, $8B, $01, $60, $9F, $70, $18
+	db $CC, $01, $60, $9F, $90, $1D, $6C, $02
+	db $60, $9F, $40, $28, $2D, $02, $60, $9F
+	db $60, $2F, $ED, $01, $60, $9F, $60, $37
+	db $AD, $01, $60, $9F, $D0, $3E, $8C, $02
+	db $60, $9F, $00, $49, $4D, $02, $60, $9F
+	db $00, $54, $11, $02, $60, $9F, $70, $5C
+	db $AD, $01, $60, $9F, $FF, $FF
+
+DATA_FDD476:
+	db $00, $1F, $6D, $02, $10, $A4, $E0, $22
+	db $4D, $02, $50, $91, $80, $28, $2D, $02
+	db $50, $91, $D0, $30, $4D, $02, $50, $91
+	db $C0, $38, $AC, $01, $50, $91, $80, $40
+	db $6D, $02, $50, $91, $A0, $49, $49, $02
+	db $50, $91, $40, $54, $09, $02, $50, $91
+	db $FF, $FF
+
+DATA_FDD4A8:
+	db $E0, $29, $2D, $02, $C0, $A8, $D0, $35
+	db $8D, $01, $C0, $A8, $80, $41, $6D, $02
+	db $C0, $A8, $C0, $4F, $0D, $02, $C0, $A8
+	db $FF, $FF
+
+DATA_FDD4C2:
+	db $70, $33, $51, $02, $70, $AD, $00, $45
+	db $4D, $02, $70, $AD, $D0, $51, $09, $02
+	db $70, $AD, $FF, $FF
+
+DATA_FDD4D6:
+	db $00, $3F, $8D, $02, $20, $B2, $E0, $48
+	db $54, $02, $20, $B2, $FF, $FF
+
+DATA_FDD4E4:
+	db $F0, $4E, $0D, $02, $C0, $A8, $FF, $FF
+
+DATA_FDD4EC:
+	db $60, $04, $40, $00, $80, $00, $04, $00
+	db $88, $04, $00, $08, $04, $00, $40, $05
+	db $00, $01, $88, $06, $40, $00, $80, $04
+	db $C8, $00, $E0, $06, $00, $06, $F0, $07
+	db $00, $08, $02, $00, $00, $0C, $00, $01
+	db $F0, $0C, $00, $01, $00, $0F, $00, $01
+	db $D0, $0F, $40, $00, $00, $03, $C8, $00
+	db $80, $10, $40, $00, $E0, $01, $0A, $00
+	db $80, $12, $00, $01, $30, $14, $00, $06
+	db $60, $15, $00, $01, $E0, $15, $40, $00
+	db $00, $03, $C8, $00, $60, $18, $00, $01
+	db $78, $1A, $00, $06, $70, $1B, $00, $06
+	db $30, $1C, $00, $01, $70, $1D, $00, $01
+	db $C0, $1D, $00, $01, $80, $20, $00, $01
+	db $48, $22, $00, $06, $68, $23, $00, $06
+	db $90, $25, $00, $01, $08, $29, $00, $06
+	db $30, $2C, $00, $01, $E0, $2D, $00, $04
+	db $68, $31, $00, $06, $88, $32, $00, $06
+	db $30, $34, $00, $01, $C0, $36, $00, $06
+	db $B0, $37, $00, $01, $60, $38, $00, $04
+	db $20, $39, $00, $04, $40, $3A, $00, $01
+	db $28, $3B, $00, $04, $40, $3F, $00, $01
+	db $50, $40, $00, $01, $A0, $40, $00, $01
+	db $80, $42, $00, $06, $80, $43, $00, $06
+	db $B8, $45, $00, $04, $A0, $46, $00, $06
+	db $C0, $47, $00, $01, $10, $48, $00, $01
+	db $70, $49, $00, $01, $40, $4C, $00, $04
+	db $E0, $4C, $00, $04, $90, $4E, $00, $01
+	db $C0, $4F, $00, $01, $A0, $53, $00, $01
+	db $A0, $55, $00, $06, $A0, $56, $00, $06
+	db $A0, $57, $00, $06, $A0, $58, $00, $06
+	db $50, $59, $00, $01, $20, $5B, $00, $01
+	db $30, $5E, $00, $01, $FF, $FF
+
+DATA_FDD5F2:
+	db $30, $09, $40, $00, $80, $03, $50, $00
+	db $00, $0B, $00, $08, $04, $00, $00, $0C
+	db $00, $01, $F0, $0C, $00, $01, $00, $0E
+	db $40, $00, $00, $04, $50, $00
+
+DATA_FDD610:
+	db $90, $0E, $40, $00, $00, $04, $04, $00
+	db $00, $0F, $40, $00, $80, $04, $28, $00
+	db $80, $0F, $00, $01, $00, $10, $00, $08
+	db $04, $00, $00, $11, $40, $00, $00, $04
+	db $50, $00, $20, $11, $40, $00, $00, $04
+	db $04, $00, $80, $11, $00, $08, $00, $00
+	db $80, $12, $00, $01, $30, $14, $00, $06
+	db $A0, $14, $40, $00, $00, $05, $50, $00
+	db $E0, $14, $40, $00, $00, $05, $50, $00
+	db $B0, $15, $40, $00, $00, $05, $04, $00
+	db $70, $18, $00, $01, $00, $19, $40, $00
+	db $00, $05, $0A, $00, $70, $1A, $00, $06
+	db $70, $1B, $00, $06, $30, $1C, $00, $01
+	db $80, $1C, $40, $00, $40, $05, $50, $00
+	db $A0, $1C, $40, $00, $40, $05, $04, $00
+	db $70, $1D, $00, $01, $80, $1D, $40, $00
+	db $80, $05, $0A, $00, $C0, $1D, $00, $01
+	db $80, $1E, $00, $01, $A0, $1F, $40, $00
+	db $00, $06, $50, $00, $80, $20, $00, $01
+	db $48, $22, $00, $06, $68, $23, $00, $06
+	db $90, $25, $00, $01, $D0, $25, $40, $00
+	db $00, $06, $50, $00, $00, $26, $40, $00
+	db $00, $06, $50, $00, $C0, $26, $00, $01
+	db $00, $27, $40, $00, $00, $06, $04, $00
+	db $08, $29, $00, $06, $20, $2A, $40, $00
+	db $00, $06, $50, $00, $F0, $2A, $00, $08
+	db $04, $00, $C0, $2B, $00, $08, $04, $00
+	db $28, $2C, $40, $00, $00, $06, $50, $00
+	db $30, $2C, $00, $01, $E0, $2C, $40, $00
+	db $00, $06, $50, $00, $00, $2D, $00, $08
+	db $04, $00, $E0, $2D, $00, $04, $40, $2E
+	db $40, $00, $00, $06, $04, $00, $68, $31
+	db $00, $06, $88, $32, $00, $04, $B0, $33
+	db $40, $00, $00, $06, $50, $00, $30, $34
+	db $00, $01, $C0, $36, $00, $06, $40, $37
+	db $40, $00, $00, $06, $50, $00, $80, $37
+	db $40, $00, $00, $06, $04, $00, $B0, $37
+	db $00, $01, $60, $38, $00, $04, $20, $39
+	db $00, $04, $40, $3A, $00, $01, $28, $3B
+	db $00, $04, $C0, $3C, $40, $00, $00, $06
+	db $04, $00, $40, $3F, $00, $01, $D0, $3F
+	db $40, $00, $00, $06, $50, $00, $50, $40
+	db $00, $01, $A0, $40, $00, $01, $80, $42
+	db $00, $06, $80, $43, $00, $06, $80, $44
+	db $40, $00, $00, $06, $50, $00, $B8, $45
+	db $00, $04, $A0, $46, $00, $06, $C0, $47
+	db $00, $01, $00, $48, $40, $00, $E0, $05
+	db $04, $00, $10, $48, $00, $01, $70, $49
+	db $00, $01, $40, $4C, $00, $04, $E0, $4C
+	db $00, $04, $90, $4E, $00, $01, $30, $4F
+	db $40, $00, $00, $06, $50, $00, $C0, $4F
+	db $00, $01, $80, $53, $40, $00, $00, $06
+	db $50, $00, $A0, $53, $40, $00, $00, $06
+	db $04, $00, $A0, $55, $00, $06, $A0, $56
+	db $00, $06, $A0, $57, $00, $06, $A0, $58
+	db $00, $06, $50, $59, $00, $01, $20, $5B
+	db $00, $01, $30, $5E, $00, $01, $FF, $FF
+
+DATA_FDD7D8:
+	db $A8, $14, $40, $00, $40, $05, $04, $00
+	db $60, $15, $00, $01, $B0, $17, $00, $08
+	db $04, $00, $60, $18, $00, $01, $70, $18
+	db $40, $00, $40, $05, $04, $00, $78, $1A
+	db $00, $06, $70, $1B, $00, $06, $30, $1C
+	db $00, $01, $70, $1D, $00, $01, $90, $1D
+	db $40, $00, $40, $05, $04, $00, $C0, $1D
+	db $00, $01
+
+DATA_FDD812:
+	db $00, $1F, $40, $00, $00, $05, $04, $00
+	db $80, $1F, $40, $00, $C0, $04, $50, $00
+	db $80, $20, $00, $01, $48, $22, $00, $06
+	db $E0, $22, $40, $00, $20, $05, $28, $00
+	db $68, $23, $00, $06, $90, $25, $00, $01
+	db $C0, $26, $00, $01, $40, $28, $40, $00
+	db $40, $05, $14, $00, $80, $28, $40, $00
+	db $40, $05, $28, $00, $08, $29, $00, $06
+	db $20, $2A, $40, $00, $40, $05, $50, $00
+	db $F0, $2A, $00, $08, $04, $00, $C0, $2B
+	db $00, $08, $04, $00, $28, $2C, $40, $00
+	db $40, $05, $50, $00, $30, $2C, $00, $01
+	db $00, $2D, $00, $08, $04, $00, $E0, $2D
+	db $00, $04, $60, $2F, $40, $00, $40, $05
+	db $14, $00, $D0, $30, $40, $00, $40, $05
+	db $28, $00, $68, $31, $00, $06, $88, $32
+	db $00, $04, $B0, $33, $40, $00, $40, $05
+	db $50, $00, $30, $34, $00, $01, $C0, $36
+	db $00, $06, $60, $37, $40, $00, $40, $05
+	db $14, $00, $B0, $37, $00, $01, $60, $38
+	db $00, $04, $C0, $38, $40, $00, $40, $05
+	db $28, $00, $20, $39, $00, $04, $40, $3A
+	db $00, $01, $28, $3B, $00, $04, $D0, $3E
+	db $40, $00, $40, $05, $14, $00, $40, $3F
+	db $00, $01, $D0, $3F, $40, $00, $40, $05
+	db $50, $00, $50, $40, $00, $01, $80, $40
+	db $40, $00, $40, $05, $28, $00, $A0, $40
+	db $00, $01, $80, $42, $00, $06, $80, $43
+	db $00, $06, $B8, $45, $00, $04, $A0, $46
+	db $00, $06, $C0, $47, $00, $01, $10, $48
+	db $00, $01, $00, $49, $40, $00, $20, $05
+	db $14, $00, $70, $49, $00, $01, $A0, $49
+	db $40, $00, $20, $05, $28, $00, $40, $4C
+	db $00, $04, $E0, $4C, $00, $04, $90, $4E
+	db $00, $01, $30, $4F, $40, $00, $40, $05
+	db $50, $00, $C0, $4F, $00, $01, $A0, $53
+	db $00, $01, $00, $54, $40, $00, $40, $05
+	db $14, $00, $40, $54, $40, $00, $40, $05
+	db $28, $00, $A0, $55, $00, $06, $A0, $56
+	db $00, $06, $A0, $57, $00, $06, $A0, $58
+	db $00, $06, $50, $59, $00, $01, $20, $5B
+	db $00, $01, $70, $5C, $40, $00, $40, $05
+	db $14, $00, $30, $5E, $00, $01, $FF, $FF
+
+DATA_FDD96A:
 if !version == 1
-	db $11, $0F, $03, $00, $00, $00, $19, $19
-	db $19, $60, $04, $CD, $02, $20, $FD, $30
-	db $09, $CD, $01, $50, $91, $00, $0E, $AC
-	db $02, $50, $91, $00, $11, $8D, $01, $50
-	db $91, $A0, $14, $89, $01, $50, $91, $80
-	db $1C, $8D, $02, $50, $91, $00, $26, $2D
-	db $02, $50, $91, $E0, $2C, $8D, $01, $50
-	db $91, $40, $37, $A9, $01, $50, $91, $80
-	db $44, $4D, $02, $50, $91, $80, $53, $0C
-	db $02, $50, $91, $FF, $FF, $90, $0E, $CD
-	db $02, $00, $96, $20, $11, $89, $01, $50
-	db $91, $B0, $15, $C5, $02, $50, $91, $A0
-	db $1C, $89, $02, $50, $91, $00, $27, $2D
-	db $02, $50, $91, $40, $2E, $8D, $01, $50
-	db $91, $80, $37, $B0, $01, $50, $91, $C0
-	db $3C, $49, $01, $50, $91, $00, $48, $6D
-	db $02, $50, $91, $A0, $53, $0D, $02, $50
-	db $91, $FF, $FF, $A8, $14, $8B, $01, $60
-	db $9F, $70, $18, $CC, $01, $60, $9F, $90
-	db $1D, $6C, $02, $60, $9F, $40, $28, $2D
-	db $02, $60, $9F, $60, $2F, $ED, $01, $60
-	db $9F, $60, $37, $AD, $01, $60, $9F, $D0
-	db $3E, $8C, $02, $60, $9F, $00, $49, $4D
-	db $02, $60, $9F, $00, $54, $11, $02, $60
-	db $9F, $70, $5C, $AD, $01, $60, $9F, $FF
-	db $FF, $00, $1F, $6D, $02, $10, $A4, $E0
-	db $22, $4D, $02, $50, $91, $80, $28, $2D
-	db $02, $50, $91, $D0, $30, $4D, $02, $50
-	db $91, $C0, $38, $AC, $01, $50, $91, $80
-	db $40, $6D, $02, $50, $91, $A0, $49, $49
-	db $02, $50, $91, $40, $54, $09, $02, $50
-	db $91, $FF, $FF, $E0, $29, $2D, $02, $C0
-	db $A8, $D0, $35, $8D, $01, $C0, $A8, $80
-	db $41, $6D, $02, $C0, $A8, $C0, $4F, $0D
-	db $02, $C0, $A8, $FF, $FF, $70, $33, $51
-	db $02, $70, $AD, $00, $45, $4D, $02, $70
-	db $AD, $D0, $51, $09, $02, $70, $AD, $FF
-	db $FF, $00, $3F, $8D, $02, $20, $B2, $E0
-	db $48, $54, $02, $20, $B2, $FF, $FF, $F0
-	db $4E, $0D, $02, $C0, $A8, $FF, $FF, $60
-	db $04, $40, $00, $80, $00, $04, $00, $88
-	db $04, $00, $08, $04, $00, $40, $05, $00
-	db $01, $88, $06, $40, $00, $80, $04, $C8
-	db $00, $E0, $06, $00, $06, $F0, $07, $00
-	db $08, $02, $00, $00, $0C, $00, $01, $F0
-	db $0C, $00, $01, $00, $0F, $00, $01, $D0
-	db $0F, $40, $00, $00, $03, $C8, $00, $80
-	db $10, $40, $00, $E0, $01, $0A, $00, $80
-	db $12, $00, $01, $30, $14, $00, $06, $60
-	db $15, $00, $01, $E0, $15, $40, $00, $00
-	db $03, $C8, $00, $60, $18, $00, $01, $78
-	db $1A, $00, $06, $70, $1B, $00, $06, $30
-	db $1C, $00, $01, $70, $1D, $00, $01, $C0
-	db $1D, $00, $01, $80, $20, $00, $01, $48
-	db $22, $00, $06, $68, $23, $00, $06, $90
-	db $25, $00, $01, $08, $29, $00, $06, $30
-	db $2C, $00, $01, $E0, $2D, $00, $04, $68
-	db $31, $00, $06, $88, $32, $00, $06, $30
-	db $34, $00, $01, $C0, $36, $00, $06, $B0
-	db $37, $00, $01, $60, $38, $00, $04, $20
-	db $39, $00, $04, $40, $3A, $00, $01, $28
-	db $3B, $00, $04, $40, $3F, $00, $01, $50
-	db $40, $00, $01, $A0, $40, $00, $01, $80
-	db $42, $00, $06, $80, $43, $00, $06, $B8
-	db $45, $00, $04, $A0, $46, $00, $06, $C0
-	db $47, $00, $01, $10, $48, $00, $01, $70
-	db $49, $00, $01, $40, $4C, $00, $04, $E0
-	db $4C, $00, $04, $90, $4E, $00, $01, $C0
-	db $4F, $00, $01, $A0, $53, $00, $01, $A0
-	db $55, $00, $06, $A0, $56, $00, $06, $A0
-	db $57, $00, $06, $A0, $58, $00, $06, $50
-	db $59, $00, $01, $20, $5B, $00, $01, $30
-	db $5E, $00, $01, $FF, $FF, $30, $09, $40
-	db $00, $80, $03, $50, $00, $00, $0B, $00
-	db $08, $04, $00, $00, $0C, $00, $01, $F0
-	db $0C, $00, $01, $00, $0E, $40, $00, $00
-	db $04, $50, $00, $90, $0E, $40, $00, $00
-	db $04, $04, $00, $00, $0F, $40, $00, $80
-	db $04, $28, $00, $80, $0F, $00, $01, $00
-	db $10, $00, $08, $04, $00, $00, $11, $40
-	db $00, $00, $04, $50, $00, $20, $11, $40
-	db $00, $00, $04, $04, $00, $80, $11, $00
-	db $08, $00, $00, $80, $12, $00, $01, $30
-	db $14, $00, $06, $A0, $14, $40, $00, $00
-	db $05, $50, $00, $E0, $14, $40, $00, $00
-	db $05, $50, $00, $B0, $15, $40, $00, $00
-	db $05, $04, $00, $70, $18, $00, $01, $00
-	db $19, $40, $00, $00, $05, $0A, $00, $70
-	db $1A, $00, $06, $70, $1B, $00, $06, $30
-	db $1C, $00, $01, $80, $1C, $40, $00, $40
-	db $05, $50, $00, $A0, $1C, $40, $00, $40
-	db $05, $04, $00, $70, $1D, $00, $01, $80
-	db $1D, $40, $00, $80, $05, $0A, $00, $C0
-	db $1D, $00, $01, $80, $1E, $00, $01, $A0
-	db $1F, $40, $00, $00, $06, $50, $00, $80
-	db $20, $00, $01, $48, $22, $00, $06, $68
-	db $23, $00, $06, $90, $25, $00, $01, $D0
-	db $25, $40, $00, $00, $06, $50, $00, $00
-	db $26, $40, $00, $00, $06, $50, $00, $C0
-	db $26, $00, $01, $00, $27, $40, $00, $00
-	db $06, $04, $00, $08, $29, $00, $06, $20
-	db $2A, $40, $00, $00, $06, $50, $00, $F0
-	db $2A, $00, $08, $04, $00, $C0, $2B, $00
-	db $08, $04, $00, $28, $2C, $40, $00, $00
-	db $06, $50, $00, $30, $2C, $00, $01, $E0
-	db $2C, $40, $00, $00, $06, $50, $00, $00
-	db $2D, $00, $08, $04, $00, $E0, $2D, $00
-	db $04, $40, $2E, $40, $00, $00, $06, $04
-	db $00, $68, $31, $00, $06, $88, $32, $00
-	db $04, $B0, $33, $40, $00, $00, $06, $50
-	db $00, $30, $34, $00, $01, $C0, $36, $00
-	db $06, $40, $37, $40, $00, $00, $06, $50
-	db $00, $80, $37, $40, $00, $00, $06, $04
-	db $00, $B0, $37, $00, $01, $60, $38, $00
-	db $04, $20, $39, $00, $04, $40, $3A, $00
-	db $01, $28, $3B, $00, $04, $C0, $3C, $40
-	db $00, $00, $06, $04, $00, $40, $3F, $00
-	db $01, $D0, $3F, $40, $00, $00, $06, $50
-	db $00, $50, $40, $00, $01, $A0, $40, $00
-	db $01, $80, $42, $00, $06, $80, $43, $00
-	db $06, $80, $44, $40, $00, $00, $06, $50
-	db $00, $B8, $45, $00, $04, $A0, $46, $00
-	db $06, $C0, $47, $00, $01, $00, $48, $40
-	db $00, $E0, $05, $04, $00, $10, $48, $00
-	db $01, $70, $49, $00, $01, $40, $4C, $00
-	db $04, $E0, $4C, $00, $04, $90, $4E, $00
-	db $01, $30, $4F, $40, $00, $00, $06, $50
-	db $00, $C0, $4F, $00, $01, $80, $53, $40
-	db $00, $00, $06, $50, $00, $A0, $53, $40
-	db $00, $00, $06, $04, $00, $A0, $55, $00
-	db $06, $A0, $56, $00, $06, $A0, $57, $00
-	db $06, $A0, $58, $00, $06, $50, $59, $00
-	db $01, $20, $5B, $00, $01, $30, $5E, $00
-	db $01, $FF, $FF, $A8, $14, $40, $00, $40
-	db $05, $04, $00, $60, $15, $00, $01, $B0
-	db $17, $00, $08, $04, $00, $60, $18, $00
-	db $01, $70, $18, $40, $00, $40, $05, $04
-	db $00, $78, $1A, $00, $06, $70, $1B, $00
-	db $06, $30, $1C, $00, $01, $70, $1D, $00
-	db $01, $90, $1D, $40, $00, $40, $05, $04
-	db $00, $C0, $1D, $00, $01, $00, $1F, $40
-	db $00, $00, $05, $04, $00, $80, $1F, $40
-	db $00, $C0, $04, $50, $00, $80, $20, $00
-	db $01, $48, $22, $00, $06, $E0, $22, $40
-	db $00, $20, $05, $28, $00, $68, $23, $00
-	db $06, $90, $25, $00, $01, $C0, $26, $00
-	db $01, $40, $28, $40, $00, $40, $05, $14
-	db $00, $80, $28, $40, $00, $40, $05, $28
-	db $00, $08, $29, $00, $06, $20, $2A, $40
-	db $00, $40, $05, $50, $00, $F0, $2A, $00
-	db $08, $04, $00, $C0, $2B, $00, $08, $04
-	db $00, $28, $2C, $40, $00, $40, $05, $50
-	db $00, $30, $2C, $00, $01, $00, $2D, $00
-	db $08, $04, $00, $E0, $2D, $00, $04, $60
-	db $2F, $40, $00, $40, $05, $14, $00, $D0
-	db $30, $40, $00, $40, $05, $28, $00, $68
-	db $31, $00, $06, $88, $32, $00, $04, $B0
-	db $33, $40, $00, $40, $05, $50, $00, $30
-	db $34, $00, $01, $C0, $36, $00, $06, $60
-	db $37, $40, $00, $40, $05, $14, $00, $B0
-	db $37, $00, $01, $60, $38, $00, $04, $C0
-	db $38, $40, $00, $40, $05, $28, $00, $20
-	db $39, $00, $04, $40, $3A, $00, $01, $28
-	db $3B, $00, $04, $D0, $3E, $40, $00, $40
-	db $05, $14, $00, $40, $3F, $00, $01, $D0
-	db $3F, $40, $00, $40, $05, $50, $00, $50
-	db $40, $00, $01, $80, $40, $40, $00, $40
-	db $05, $28, $00, $A0, $40, $00, $01, $80
-	db $42, $00, $06, $80, $43, $00, $06, $B8
-	db $45, $00, $04, $A0, $46, $00, $06, $C0
-	db $47, $00, $01, $10, $48, $00, $01, $00
-	db $49, $40, $00, $20, $05, $14, $00, $70
-	db $49, $00, $01, $A0, $49, $40, $00, $20
-	db $05, $28, $00, $40, $4C, $00, $04, $E0
-	db $4C, $00, $04, $90, $4E, $00, $01, $30
-	db $4F, $40, $00, $40, $05, $50, $00, $C0
-	db $4F, $00, $01, $A0, $53, $00, $01, $00
-	db $54, $40, $00, $40, $05, $14, $00, $40
-	db $54, $40, $00, $40, $05, $28, $00, $A0
-	db $55, $00, $06, $A0, $56, $00, $06, $A0
-	db $57, $00, $06, $A0, $58, $00, $06, $50
-	db $59, $00, $01, $20, $5B, $00, $01, $70
-	db $5C, $40, $00, $40, $05, $14, $00, $30
-	db $5E, $00, $01, $FF, $FF, $E0, $29, $40
-	db $00, $40, $05, $04, $00, $20, $2A, $40
-	db $00, $80, $05, $50, $00, $00, $2C, $40
-	db $00, $00, $04, $50, $00, $30, $2C, $00
-	db $01, $C0, $2C, $40, $00, $00, $04, $50
-	db $00, $E0, $2D, $00, $04, $68, $31, $00
-	db $06, $88, $32, $00, $06, $70, $33, $40
-	db $00, $00, $05, $04, $00, $B0, $33, $40
-	db $00, $C0, $05, $50, $00, $30, $34, $00
-	db $01, $D0, $35, $40, $00, $40, $05, $04
-	db $00, $20, $36, $40, $00, $C0, $04, $64
-	db $00, $C0, $36, $00, $06, $40, $37, $40
-	db $00, $00, $05, $64, $00, $B0, $37, $00
-	db $01, $00, $38, $40, $00, $00, $05, $64
-	db $00, $60, $38, $00, $04, $20, $39, $00
-	db $04, $40, $3A, $00, $01, $28, $3B, $00
-	db $04, $40, $3F, $00, $01, $D0, $3F, $40
-	db $00, $40, $05, $50, $00, $50, $40, $00
-	db $01, $A0, $40, $00, $01, $80, $41, $40
-	db $00, $40, $05, $04, $00, $80, $42, $00
-	db $06, $80, $43, $00, $06, $00, $45, $40
-	db $00, $C0, $05, $04, $00, $B8, $45, $00
-	db $04, $A0, $46, $00, $06, $C0, $47, $00
-	db $01, $10, $48, $00, $01, $70, $49, $00
-	db $01, $40, $4C, $00, $04, $E0, $4C, $00
-	db $04, $90, $4E, $00, $01, $30, $4F, $40
-	db $00, $00, $06, $50, $00, $C0, $4F, $40
-	db $00, $40, $05, $04, $00, $F0, $4F, $00
-	db $01, $D0, $51, $40, $00, $C0, $05, $04
-	db $00, $A0, $53, $00, $01, $A0, $55, $00
-	db $06, $A0, $56, $00, $06, $A0, $57, $00
-	db $06, $A0, $58, $00, $06, $50, $59, $00
-	db $01, $20, $5B, $00, $01, $30, $5E, $00
-	db $01, $FF, $FF, $00, $3F, $40, $00, $00
-	db $06, $04, $00, $40, $3F, $00, $01, $50
-	db $40, $00, $01, $A0, $40, $00, $01, $00
-	db $41, $40, $00, $00, $06, $50, $00, $D0
-	db $41, $00, $01, $80, $42, $00, $06, $80
-	db $43, $00, $06, $40, $44, $40, $00, $A0
-	db $05, $50, $00, $B8, $45, $00, $04, $A0
-	db $46, $00, $06, $C0, $47, $00, $01, $10
-	db $48, $00, $01, $E0, $48, $40, $00, $F0
-	db $04, $28, $00, $00, $49, $40, $00, $F0
-	db $04, $28, $00, $70, $49, $00, $01, $40
-	db $4C, $00, $04, $E0, $4C, $00, $04, $90
-	db $4E, $00, $01, $F0, $4E, $40, $00, $80
-	db $05, $04, $00, $30, $4F, $40, $00, $00
-	db $06, $50, $00, $C0, $4F, $00, $01, $A0
-	db $53, $00, $01, $00, $54, $40, $00, $E0
-	db $05, $50, $00, $70, $54, $00, $01, $A0
-	db $55, $00, $06, $A0, $56, $00, $06, $A0
-	db $57, $00, $06, $20, $58, $40, $00, $80
-	db $05, $64, $00, $A0, $58, $00, $06, $50
-	db $59, $00, $01, $80, $59, $40, $00, $F0
-	db $04, $50, $00, $20, $5B, $00, $01, $60
-	db $5D, $00, $01, $90, $5E, $00, $01, $FF
-	db $FF, $00, $00, $00, $00, $00, $00, $00
+	db $E0, $29, $40, $00, $40, $05, $04, $00
+	db $20, $2A, $40, $00, $80, $05, $50, $00
+	db $00, $2C, $40, $00, $00, $04, $50, $00
+	db $30, $2C, $00, $01, $C0, $2C, $40, $00
+	db $00, $04, $50, $00, $E0, $2D, $00, $04
+	db $68, $31, $00, $06, $88, $32, $00, $06
 else
-	db $11, $0F, $03, $00, $00, $00, $19, $19
-	db $19, $60, $04, $CD, $02, $20, $FD, $30
-	db $09, $CD, $01, $50, $91, $00, $0E, $AC
-	db $02, $50, $91, $00, $11, $8D, $01, $50
-	db $91, $A0, $14, $89, $01, $50, $91, $80
-	db $1C, $8D, $02, $50, $91, $00, $26, $2D
-	db $02, $50, $91, $E0, $2C, $8D, $01, $50
-	db $91, $40, $37, $A9, $01, $50, $91, $80
-	db $44, $4D, $02, $50, $91, $80, $53, $0C
-	db $02, $50, $91, $FF, $FF, $90, $0E, $CD
-	db $02, $00, $96, $20, $11, $89, $01, $50
-	db $91, $B0, $15, $C5, $02, $50, $91, $A0
-	db $1C, $89, $02, $50, $91, $00, $27, $2D
-	db $02, $50, $91, $40, $2E, $8D, $01, $50
-	db $91, $80, $37, $B0, $01, $50, $91, $C0
-	db $3C, $49, $01, $50, $91, $00, $48, $6D
-	db $02, $50, $91, $A0, $53, $0D, $02, $50
-	db $91, $FF, $FF, $A8, $14, $8B, $01, $60
-	db $9F, $70, $18, $CC, $01, $60, $9F, $90
-	db $1D, $6C, $02, $60, $9F, $40, $28, $2D
-	db $02, $60, $9F, $60, $2F, $ED, $01, $60
-	db $9F, $60, $37, $AD, $01, $60, $9F, $D0
-	db $3E, $8C, $02, $60, $9F, $00, $49, $4D
-	db $02, $60, $9F, $00, $54, $11, $02, $60
-	db $9F, $70, $5C, $AD, $01, $60, $9F, $FF
-	db $FF, $00, $1F, $6D, $02, $10, $A4, $E0
-	db $22, $4D, $02, $50, $91, $80, $28, $2D
-	db $02, $50, $91, $D0, $30, $4D, $02, $50
-	db $91, $C0, $38, $AC, $01, $50, $91, $80
-	db $40, $6D, $02, $50, $91, $A0, $49, $49
-	db $02, $50, $91, $40, $54, $09, $02, $50
-	db $91, $FF, $FF, $E0, $29, $2D, $02, $C0
-	db $A8, $D0, $35, $8D, $01, $C0, $A8, $80
-	db $41, $6D, $02, $C0, $A8, $C0, $4F, $0D
-	db $02, $C0, $A8, $FF, $FF, $70, $33, $51
-	db $02, $70, $AD, $00, $45, $4D, $02, $70
-	db $AD, $D0, $51, $09, $02, $70, $AD, $FF
-	db $FF, $00, $3F, $8D, $02, $20, $B2, $E0
-	db $48, $54, $02, $20, $B2, $FF, $FF, $F0
-	db $4E, $0D, $02, $C0, $A8, $FF, $FF, $60
-	db $04, $40, $00, $80, $00, $04, $00, $88
-	db $04, $00, $08, $04, $00, $40, $05, $00
-	db $01, $88, $06, $40, $00, $80, $04, $C8
-	db $00, $E0, $06, $00, $06, $F0, $07, $00
-	db $08, $02, $00, $00, $0C, $00, $01, $F0
-	db $0C, $00, $01, $00, $0F, $00, $01, $D0
-	db $0F, $40, $00, $00, $03, $C8, $00, $80
-	db $10, $40, $00, $E0, $01, $0A, $00, $80
-	db $12, $00, $01, $30, $14, $00, $06, $60
-	db $15, $00, $01, $E0, $15, $40, $00, $00
-	db $03, $C8, $00, $60, $18, $00, $01, $78
-	db $1A, $00, $06, $70, $1B, $00, $06, $30
-	db $1C, $00, $01, $70, $1D, $00, $01, $C0
-	db $1D, $00, $01, $80, $20, $00, $01, $48
-	db $22, $00, $06, $68, $23, $00, $06, $90
-	db $25, $00, $01, $08, $29, $00, $06, $30
-	db $2C, $00, $01, $E0, $2D, $00, $04, $68
-	db $31, $00, $06, $88, $32, $00, $06, $30
-	db $34, $00, $01, $C0, $36, $00, $06, $B0
-	db $37, $00, $01, $60, $38, $00, $04, $20
-	db $39, $00, $04, $40, $3A, $00, $01, $28
-	db $3B, $00, $04, $40, $3F, $00, $01, $50
-	db $40, $00, $01, $A0, $40, $00, $01, $80
-	db $42, $00, $06, $80, $43, $00, $06, $B8
-	db $45, $00, $04, $A0, $46, $00, $06, $C0
-	db $47, $00, $01, $10, $48, $00, $01, $70
-	db $49, $00, $01, $40, $4C, $00, $04, $E0
-	db $4C, $00, $04, $90, $4E, $00, $01, $C0
-	db $4F, $00, $01, $A0, $53, $00, $01, $A0
-	db $55, $00, $06, $A0, $56, $00, $06, $A0
-	db $57, $00, $06, $A0, $58, $00, $06, $50
-	db $59, $00, $01, $20, $5B, $00, $01, $30
-	db $5E, $00, $01, $FF, $FF, $30, $09, $40
-	db $00, $80, $03, $50, $00, $00, $0B, $00
-	db $08, $04, $00, $00, $0C, $00, $01, $F0
-	db $0C, $00, $01, $00, $0E, $40, $00, $00
-	db $04, $50, $00, $90, $0E, $40, $00, $00
-	db $04, $04, $00, $00, $0F, $40, $00, $80
-	db $04, $28, $00, $80, $0F, $00, $01, $00
-	db $10, $00, $08, $04, $00, $00, $11, $40
-	db $00, $00, $04, $50, $00, $20, $11, $40
-	db $00, $00, $04, $04, $00, $80, $11, $00
-	db $08, $00, $00, $80, $12, $00, $01, $30
-	db $14, $00, $06, $A0, $14, $40, $00, $00
-	db $05, $50, $00, $E0, $14, $40, $00, $00
-	db $05, $50, $00, $B0, $15, $40, $00, $00
-	db $05, $04, $00, $70, $18, $00, $01, $00
-	db $19, $40, $00, $00, $05, $0A, $00, $70
-	db $1A, $00, $06, $70, $1B, $00, $06, $30
-	db $1C, $00, $01, $80, $1C, $40, $00, $40
-	db $05, $50, $00, $A0, $1C, $40, $00, $40
-	db $05, $04, $00, $70, $1D, $00, $01, $80
-	db $1D, $40, $00, $80, $05, $0A, $00, $C0
-	db $1D, $00, $01, $80, $1E, $00, $01, $A0
-	db $1F, $40, $00, $00, $06, $50, $00, $80
-	db $20, $00, $01, $48, $22, $00, $06, $68
-	db $23, $00, $06, $90, $25, $00, $01, $D0
-	db $25, $40, $00, $00, $06, $50, $00, $00
-	db $26, $40, $00, $00, $06, $50, $00, $C0
-	db $26, $00, $01, $00, $27, $40, $00, $00
-	db $06, $04, $00, $08, $29, $00, $06, $20
-	db $2A, $40, $00, $00, $06, $50, $00, $F0
-	db $2A, $00, $08, $04, $00, $C0, $2B, $00
-	db $08, $04, $00, $28, $2C, $40, $00, $00
-	db $06, $50, $00, $30, $2C, $00, $01, $E0
-	db $2C, $40, $00, $00, $06, $50, $00, $00
-	db $2D, $00, $08, $04, $00, $E0, $2D, $00
-	db $04, $40, $2E, $40, $00, $00, $06, $04
-	db $00, $68, $31, $00, $06, $88, $32, $00
-	db $04, $B0, $33, $40, $00, $00, $06, $50
-	db $00, $30, $34, $00, $01, $C0, $36, $00
-	db $06, $40, $37, $40, $00, $00, $06, $50
-	db $00, $80, $37, $40, $00, $00, $06, $04
-	db $00, $B0, $37, $00, $01, $60, $38, $00
-	db $04, $20, $39, $00, $04, $40, $3A, $00
-	db $01, $28, $3B, $00, $04, $C0, $3C, $40
-	db $00, $00, $06, $04, $00, $40, $3F, $00
-	db $01, $D0, $3F, $40, $00, $00, $06, $50
-	db $00, $50, $40, $00, $01, $A0, $40, $00
-	db $01, $80, $42, $00, $06, $80, $43, $00
-	db $06, $80, $44, $40, $00, $00, $06, $50
-	db $00, $B8, $45, $00, $04, $A0, $46, $00
-	db $06, $C0, $47, $00, $01, $00, $48, $40
-	db $00, $E0, $05, $04, $00, $10, $48, $00
-	db $01, $70, $49, $00, $01, $40, $4C, $00
-	db $04, $E0, $4C, $00, $04, $90, $4E, $00
-	db $01, $30, $4F, $40, $00, $00, $06, $50
-	db $00, $C0, $4F, $00, $01, $80, $53, $40
-	db $00, $00, $06, $50, $00, $A0, $53, $40
-	db $00, $00, $06, $04, $00, $A0, $55, $00
-	db $06, $A0, $56, $00, $06, $A0, $57, $00
-	db $06, $A0, $58, $00, $06, $50, $59, $00
-	db $01, $20, $5B, $00, $01, $30, $5E, $00
-	db $01, $FF, $FF, $A8, $14, $40, $00, $40
-	db $05, $04, $00, $60, $15, $00, $01, $B0
-	db $17, $00, $08, $04, $00, $60, $18, $00
-	db $01, $70, $18, $40, $00, $40, $05, $04
-	db $00, $78, $1A, $00, $06, $70, $1B, $00
-	db $06, $30, $1C, $00, $01, $70, $1D, $00
-	db $01, $90, $1D, $40, $00, $40, $05, $04
-	db $00, $C0, $1D, $00, $01, $00, $1F, $40
-	db $00, $00, $05, $04, $00, $80, $1F, $40
-	db $00, $C0, $04, $50, $00, $80, $20, $00
-	db $01, $48, $22, $00, $06, $E0, $22, $40
-	db $00, $20, $05, $28, $00, $68, $23, $00
-	db $06, $90, $25, $00, $01, $C0, $26, $00
-	db $01, $40, $28, $40, $00, $40, $05, $14
-	db $00, $80, $28, $40, $00, $40, $05, $28
-	db $00, $08, $29, $00, $06, $20, $2A, $40
-	db $00, $40, $05, $50, $00, $F0, $2A, $00
-	db $08, $04, $00, $C0, $2B, $00, $08, $04
-	db $00, $28, $2C, $40, $00, $40, $05, $50
-	db $00, $30, $2C, $00, $01, $00, $2D, $00
-	db $08, $04, $00, $E0, $2D, $00, $04, $60
-	db $2F, $40, $00, $40, $05, $14, $00, $D0
-	db $30, $40, $00, $40, $05, $28, $00, $68
-	db $31, $00, $06, $88, $32, $00, $04, $B0
-	db $33, $40, $00, $40, $05, $50, $00, $30
-	db $34, $00, $01, $C0, $36, $00, $06, $60
-	db $37, $40, $00, $40, $05, $14, $00, $B0
-	db $37, $00, $01, $60, $38, $00, $04, $C0
-	db $38, $40, $00, $40, $05, $28, $00, $20
-	db $39, $00, $04, $40, $3A, $00, $01, $28
-	db $3B, $00, $04, $D0, $3E, $40, $00, $40
-	db $05, $14, $00, $40, $3F, $00, $01, $D0
-	db $3F, $40, $00, $40, $05, $50, $00, $50
-	db $40, $00, $01, $80, $40, $40, $00, $40
-	db $05, $28, $00, $A0, $40, $00, $01, $80
-	db $42, $00, $06, $80, $43, $00, $06, $B8
-	db $45, $00, $04, $A0, $46, $00, $06, $C0
-	db $47, $00, $01, $10, $48, $00, $01, $00
-	db $49, $40, $00, $20, $05, $14, $00, $70
-	db $49, $00, $01, $A0, $49, $40, $00, $20
-	db $05, $28, $00, $40, $4C, $00, $04, $E0
-	db $4C, $00, $04, $90, $4E, $00, $01, $30
-	db $4F, $40, $00, $40, $05, $50, $00, $C0
-	db $4F, $00, $01, $A0, $53, $00, $01, $00
-	db $54, $40, $00, $40, $05, $14, $00, $40
-	db $54, $40, $00, $40, $05, $28, $00, $A0
-	db $55, $00, $06, $A0, $56, $00, $06, $A0
-	db $57, $00, $06, $A0, $58, $00, $06, $50
-	db $59, $00, $01, $20, $5B, $00, $01, $70
-	db $5C, $40, $00, $40, $05, $14, $00, $30
-	db $5E, $00, $01, $FF, $FF, $E0, $29, $40
-	db $00, $00, $05, $04, $00, $20, $2A, $40
-	db $00, $80, $05, $50, $00, $30, $2C, $00
-	db $01, $E0, $2D, $00, $04, $68, $31, $00
-	db $06, $88, $32, $00, $06, $70, $33, $40
-	db $00, $00, $05, $04, $00, $B0, $33, $40
-	db $00, $C0, $05, $50, $00, $30, $34, $00
-	db $01, $D0, $35, $40, $00, $C0, $05, $04
-	db $00, $C0, $36, $00, $06, $B0, $37, $00
-	db $01, $60, $38, $00, $04, $20, $39, $00
-	db $04, $40, $3A, $00, $01, $28, $3B, $00
-	db $04, $40, $3F, $00, $01, $D0, $3F, $40
-	db $00, $00, $06, $50, $00, $50, $40, $00
-	db $01, $A0, $40, $00, $01, $80, $41, $40
-	db $00, $E0, $05, $04, $00, $80, $42, $00
-	db $06, $80, $43, $00, $06, $00, $45, $40
-	db $00, $E0, $05, $04, $00, $B8, $45, $00
-	db $04, $A0, $46, $00, $06, $C0, $47, $00
-	db $01, $10, $48, $00, $01, $70, $49, $00
-	db $01, $40, $4C, $00, $04, $E0, $4C, $00
-	db $04, $90, $4E, $00, $01, $30, $4F, $40
-	db $00, $00, $06, $50, $00, $C0, $4F, $40
-	db $00, $00, $06, $04, $00, $F0, $4F, $00
-	db $01, $D0, $51, $40, $00, $00, $06, $04
-	db $00, $A0, $53, $00, $01, $A0, $55, $00
-	db $06, $A0, $56, $00, $06, $A0, $57, $00
-	db $06, $A0, $58, $00, $06, $50, $59, $00
-	db $01, $20, $5B, $00, $01, $30, $5E, $00
-	db $01, $FF, $FF, $00, $3F, $40, $00, $00
-	db $06, $04, $00, $40, $3F, $00, $01, $50
-	db $40, $00, $01, $A0, $40, $00, $01, $00
-	db $41, $40, $00, $00, $06, $50, $00, $D0
-	db $41, $00, $01, $80, $42, $00, $06, $80
-	db $43, $00, $06, $40, $44, $40, $00, $A0
-	db $05, $50, $00, $B8, $45, $00, $04, $A0
-	db $46, $00, $06, $C0, $47, $00, $01, $10
-	db $48, $00, $01, $E0, $48, $40, $00, $F0
-	db $04, $28, $00, $00, $49, $40, $00, $F0
-	db $04, $28, $00, $70, $49, $00, $01, $40
-	db $4C, $00, $04, $E0, $4C, $00, $04, $90
-	db $4E, $00, $01, $F0, $4E, $40, $00, $80
-	db $05, $04, $00, $30, $4F, $40, $00, $00
-	db $06, $50, $00, $C0, $4F, $00, $01, $A0
-	db $53, $00, $01, $00, $54, $40, $00, $E0
-	db $05, $50, $00, $70, $54, $00, $01, $A0
-	db $55, $00, $06, $A0, $56, $00, $06, $A0
-	db $57, $00, $06, $20, $58, $40, $00, $80
-	db $05, $64, $00, $A0, $58, $00, $06, $50
-	db $59, $00, $01, $80, $59, $40, $00, $F0
-	db $04, $50, $00, $20, $5B, $00, $01, $60
-	db $5D, $00, $01, $90, $5E, $00, $01, $FF
-	db $FF, $00, $00, $00
+	db $E0, $29, $40, $00, $00, $05, $04, $00
+	db $20, $2A, $40, $00, $80, $05, $50, $00
+	db $30, $2C, $00, $01, $E0, $2D, $00, $04
+	db $68, $31, $00, $06, $88, $32, $00, $06
 endif
+
+DATA_FDD99A:
+if !version == 1
+	db $70, $33, $40, $00, $00, $05, $04, $00
+	db $B0, $33, $40, $00, $C0, $05, $50, $00
+	db $30, $34, $00, $01, $D0, $35, $40, $00
+	db $40, $05, $04, $00, $20, $36, $40, $00
+	db $C0, $04, $64, $00, $C0, $36, $00, $06
+	db $40, $37, $40, $00, $00, $05, $64, $00
+	db $B0, $37, $00, $01, $00, $38, $40, $00
+	db $00, $05, $64, $00, $60, $38, $00, $04
+	db $20, $39, $00, $04, $40, $3A, $00, $01
+	db $28, $3B, $00, $04, $40, $3F, $00, $01
+	db $D0, $3F, $40, $00, $40, $05, $50, $00
+	db $50, $40, $00, $01, $A0, $40, $00, $01
+	db $80, $41, $40, $00, $40, $05, $04, $00
+	db $80, $42, $00, $06, $80, $43, $00, $06
+	db $00, $45, $40, $00, $C0, $05, $04, $00
+	db $B8, $45, $00, $04, $A0, $46, $00, $06
+	db $C0, $47, $00, $01, $10, $48, $00, $01
+	db $70, $49, $00, $01, $40, $4C, $00, $04
+	db $E0, $4C, $00, $04, $90, $4E, $00, $01
+	db $30, $4F, $40, $00, $00, $06, $50, $00
+	db $C0, $4F, $40, $00, $40, $05, $04, $00
+	db $F0, $4F, $00, $01, $D0, $51, $40, $00
+	db $C0, $05, $04, $00, $A0, $53, $00, $01
+	db $A0, $55, $00, $06, $A0, $56, $00, $06
+	db $A0, $57, $00, $06, $A0, $58, $00, $06
+	db $50, $59, $00, $01, $20, $5B, $00, $01
+	db $30, $5E, $00, $01, $FF, $FF
+else
+	db $70, $33, $40, $00, $00, $05, $04, $00
+	db $B0, $33, $40, $00, $C0, $05, $50, $00
+	db $30, $34, $00, $01, $D0, $35, $40, $00
+	db $C0, $05, $04, $00, $C0, $36, $00, $06
+	db $B0, $37, $00, $01, $60, $38, $00, $04
+	db $20, $39, $00, $04, $40, $3A, $00, $01
+	db $28, $3B, $00, $04, $40, $3F, $00, $01
+	db $D0, $3F, $40, $00, $00, $06, $50, $00
+	db $50, $40, $00, $01, $A0, $40, $00, $01
+	db $80, $41, $40, $00, $E0, $05, $04, $00
+	db $80, $42, $00, $06, $80, $43, $00, $06
+	db $00, $45, $40, $00, $E0, $05, $04, $00
+	db $B8, $45, $00, $04, $A0, $46, $00, $06
+	db $C0, $47, $00, $01, $10, $48, $00, $01
+	db $70, $49, $00, $01, $40, $4C, $00, $04
+	db $E0, $4C, $00, $04, $90, $4E, $00, $01
+	db $30, $4F, $40, $00, $00, $06, $50, $00
+	db $C0, $4F, $40, $00, $00, $06, $04, $00
+	db $F0, $4F, $00, $01, $D0, $51, $40, $00
+	db $00, $06, $04, $00, $A0, $53, $00, $01
+	db $A0, $55, $00, $06, $A0, $56, $00, $06
+	db $A0, $57, $00, $06, $A0, $58, $00, $06
+	db $50, $59, $00, $01, $20, $5B, $00, $01
+	db $30, $5E, $00, $01, $FF, $FF
+endif
+
+DATA_FDDA70:
+	db $00, $3F, $40, $00, $00, $06, $04, $00
+	db $40, $3F, $00, $01, $50, $40, $00, $01
+	db $A0, $40, $00, $01, $00, $41, $40, $00
+	db $00, $06, $50, $00, $D0, $41, $00, $01
+	db $80, $42, $00, $06, $80, $43, $00, $06
+	db $40, $44, $40, $00, $A0, $05, $50, $00
+	db $B8, $45, $00, $04, $A0, $46, $00, $06
+	db $C0, $47, $00, $01, $10, $48, $00, $01
+	db $E0, $48, $40, $00, $F0, $04, $28, $00
+	db $00, $49, $40, $00, $F0, $04, $28, $00
+	db $70, $49, $00, $01, $40, $4C, $00, $04
+	db $E0, $4C, $00, $04, $90, $4E, $00, $01
+
+DATA_FDDAD0:
+	db $F0, $4E, $40, $00, $80, $05, $04, $00
+	db $30, $4F, $40, $00, $00, $06, $50, $00
+	db $C0, $4F, $00, $01, $A0, $53, $00, $01
+	db $00, $54, $40, $00, $E0, $05, $50, $00
+	db $70, $54, $00, $01, $A0, $55, $00, $06
+	db $A0, $56, $00, $06, $A0, $57, $00, $06
+	db $20, $58, $40, $00, $80, $05, $64, $00
+	db $A0, $58, $00, $06, $50, $59, $00, $01
+	db $80, $59, $40, $00, $F0, $04, $50, $00
+	db $20, $5B, $00, $01, $60, $5D, $00, $01
+	db $90, $5E, $00, $01, $FF, $FF
+
 	db $00, $00, $00, $00, $00, $00, $00, $00
 	db $00, $00, $00, $00, $00, $00, $00, $00
 	db $00, $00, $00, $00, $00, $00, $00, $00

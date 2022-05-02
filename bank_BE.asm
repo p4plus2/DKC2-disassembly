@@ -6568,11 +6568,7 @@ CODE_BEE827:
 	ASL A					;$BEE833   |
 	ASL A					;$BEE834   |
 	ASL A					;$BEE835   |
-if !version == 0				;	   |
-	ADC #$D364				;$BEE836   |
-else						;	   |
-	ADC #$D365				;$BEE836   |
-endif						;	   |
+	ADC #DATA_FDD364			;$BEE836   |
 	STA $06,x				;$BEE839   |
 	STA $32					;$BEE83B   |
 	LDA #$00FD				;$BEE83D   |
