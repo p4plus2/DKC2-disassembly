@@ -2631,7 +2631,7 @@ krazy_kremland_top_tiledata:
 	db $FF, $0B, $89, $15, $B7, $97, $D4, $01
 	db $9F, $A9, $D7, $80, $00
 
-DATA_E95221:
+haunted_hall_kackle_layer_2_tiledata:
 	db $00, $00, $01, $00, $10, $FF, $00, $01
 	db $02, $03, $00, $00, $FF, $00, $1F, $1F
 	db $00, $1F, $20, $80, $80, $FC, $03, $00
@@ -2762,7 +2762,7 @@ DATA_E95221:
 	db $6A, $11, $A1, $F8, $4F, $46, $1E, $04
 	db $B0, $00
 
-DATA_E95623:
+ice_bg_layer_2_tiledata:
 	db $00, $00, $FF, $00, $FF, $FF, $00, $00
 	db $FF, $FF, $80, $FE, $00, $FF, $3F, $00
 	db $7F, $FF, $FE, $1F, $E0, $00, $00, $FF
@@ -3761,7 +3761,7 @@ DATA_E95623:
 	db $EB, $0C, $B9, $C8, $24, $2C, $D2, $1E
 	db $27, $8F, $83, $8B, $F0, $00
 
-DATA_E97549:
+jungle_bg_layer_3_tiledata:
 	db $00, $00, $FF, $FF, $00, $00, $FF, $FF
 	db $00, $00, $80, $00, $00, $01, $00, $00
 	db $01, $40, $00, $00, $20, $80, $00, $02
@@ -4461,7 +4461,7 @@ lost_world_8x8_tilemap:
 	db $F8, $06, $F9, $06, $FA, $1A, $FB, $1A
 	db $E0, $18, $E1, $18, $8B, $18, $8C, $18
 
-DATA_E98B07:
+falling_leaves_8x8_tilemap:
 	db $00, $A9, $AA, $7C, $BC, $00, $3C, $3C
 	db $00, $3C, $06, $04, $FC, $0B, $3C, $02
 	db $FC, $05, $3C, $03, $3C, $0C, $7C, $0B
@@ -4508,7 +4508,7 @@ DATA_E98B07:
 	db $40, $1F, $41, $01, $A1, $3C, $13, $C0
 	db $00
 
-DATA_E98C68:
+haunted_hall_bg_layer_3_8x8_tilemap:
 	db $00, $04, $00, $04, $08, $01, $00, $38
 	db $08, $49, $14, $4B, $18, $8E, $10, $28
 	db $08, $04, $07, $07, $04, $61, $18, $F8
@@ -4761,7 +4761,7 @@ DATA_E98C68:
 	db $F6, $B9, $1F, $BB, $53, $07, $61, $F3
 	db $80, $00
 
-DATA_E9943A:
+haunted_hall_bg_layer_3_tiledata:
 	db $00, $00, $FF, $00, $FF, $FF, $00, $00
 	db $FF, $00, $00, $FF, $FF, $03, $00, $01
 	db $FF, $00, $03, $07, $00, $3F, $C0, $FF
@@ -5149,7 +5149,7 @@ DATA_E9943A:
 	db $84, $71, $02, $B2, $2B, $AE, $A4, $99
 	db $10, $30, $00
 
-DATA_E9A045:
+lava_fall_layer_3_8x8_tilemap:
 	db $00, $00, $01, $00, $02, $00, $03, $00
 	db $03, $00, $04, $00, $05, $00, $06, $00
 	db $07, $00, $08, $00, $09, $00, $0A, $00
@@ -7109,7 +7109,7 @@ DATA_E9A905:
 	db $35, $2B, $0A, $FF, $40, $FB, $13, $F4
 	db $80, $00
 
-DATA_E9DD37:
+crocodile_isle_clouds_layer_3_tiledata:
 	db $00, $00, $FF, $00, $FF, $FF, $00, $F8
 	db $07, $00, $FF, $3F, $FF, $C0, $3F, $07
 	db $00, $E0, $1F, $00, $07, $3F, $00, $03
@@ -7426,7 +7426,7 @@ DATA_E9DD37:
 	db $44, $A5, $82, $18, $04, $4A, $26, $B4
 	db $80, $00
 
-DATA_E9E709:
+crocodile_isle_bg_layer_2_tiledata:
 	db $00, $FF, $00, $FF, $00, $00, $FF, $FF
 	db $00, $FF, $FF, $7F, $FF, $0F, $F0, $FE
 	db $FF, $1F, $E0, $7F, $80, $FE, $01, $F0
@@ -8154,7 +8154,7 @@ DATA_E9E709:
 	db $F4, $03, $B1, $2B, $DB, $09, $F9, $46
 	db $FD, $00
 
-DATA_E9FDB3:
+ship_deck_ocean_layer_2_tiledata:
 	db $00, $FF, $00, $FF, $00, $00, $FF, $FF
 	db $00, $FF, $FF, $00, $00, $F0, $0F, $7F
 	db $80, $07, $F8, $01, $FE, $80, $FF, $C0

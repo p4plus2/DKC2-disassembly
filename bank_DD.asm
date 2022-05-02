@@ -362,7 +362,7 @@ DATA_DD0924:
 	db $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF
 	db $FF, $FF, $FF, $FF, $E2, $DF, $0A, $FA
 
-DATA_DD0AFC:
+crocodile_isle_layer_1_8x8_tilemap:
 	db $00, $00, $15, $16, $15, $30, $04, $00
 	db $00, $00, $20, $11, $05, $30, $24, $05
 	db $11, $15, $1A, $30, $09, $35, $15, $1A
@@ -8389,7 +8389,7 @@ DATA_DDFA34:
 	db $3D, $3E, $FA, $FC, $F4, $F8, $E0, $F0
 	db $46, $E0, $44, $00, $00, $00
 
-DATA_DDFDBA:
+brambles_sky_bg_layer_3_8x8_tilemap:
 	db $00, $A9, $AA, $81, $01, $14, $01, $15
 	db $81, $1C, $81, $01, $1A, $45, $85, $51
 	db $89, $81, $15, $15, $01, $20, $81, $A2

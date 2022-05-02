@@ -1096,7 +1096,7 @@ monkey_museum_8x8_tilemap:
 	db $CB, $46, $A1, $B4, $A9, $20, $A2, $7B
 	db $80, $00
 
-DATA_EC2229:
+forest_fog_layer_1_8x8_tilemap:
 	db $00, $1C, $01, $1C, $02, $1C, $03, $1C
 	db $04, $1C, $04, $5C, $03, $5C, $02, $5C
 	db $01, $5C, $00, $5C, $05, $1C, $06, $1C
@@ -1354,7 +1354,7 @@ DATA_EC2229:
 	db $CF, $DC, $C4, $DC, $C3, $DC, $67, $DC
 	db $66, $DC, $CE, $DC, $B0, $1C, $CD, $DC
 
-DATA_EC2A29:
+forest_fog_layer_1_tiledata:
 	db $33, $F3, $F0, $F0, $F0, $F0, $E1, $E0
 	db $FF, $FC, $F8, $F8, $F4, $F4, $FA, $FA
 	db $0C, $00, $0F, $00, $0F, $00, $1F, $00
@@ -8146,7 +8146,7 @@ DATA_EC83A0:
 	db $E0, $D1, $E0, $E0, $20, $F1, $A1, $0F
 	db $31, $1A, $40, $11, $00, $00
 
-DATA_ECFDEE:
+video_game_hero_screen_8x8_tilemap:
 	db $00, $00, $05, $0C, $11, $00, $00, $12
 	db $10, $14, $00, $11, $12, $04, $00, $E4
 	db $0C, $0C, $E4, $31, $11, $F8, $1C, $F2

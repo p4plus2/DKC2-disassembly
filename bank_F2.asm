@@ -1738,10 +1738,10 @@ fanfare_song_data:
 	incbin "data/sound/music/fanfare_song_data.bin"
 
 ship_deck_2_song_data:
-if !version == 0
-	incbin "data/sound/music/ship_deck_2_song_data_v0.bin"
-else
+if !version == 1
 	incbin "data/sound/music/ship_deck_2_song_data_v1.bin"
+else
+	incbin "data/sound/music/ship_deck_2_song_data_v0.bin"
 endif
 
 rescue_kong_song_data:

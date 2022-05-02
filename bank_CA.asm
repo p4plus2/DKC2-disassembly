@@ -8260,7 +8260,7 @@ DATA_CAF842:
 	db $23, $70, $11, $10, $19, $0C, $3C, $1C
 	db $7C, $3C, $7E, $7E
 
-DATA_CAFABE:
+ship_mast_sky_bg_layer_2_8x8_tilemap:
 	db $00, $1C, $AA, $1C, $9C, $1C, $0E, $1C
 	db $15, $1C, $46, $1C, $30, $0E, $9C, $1C
 	db $05, $60, $1C, $0B, $1C, $1C, $82, $1C

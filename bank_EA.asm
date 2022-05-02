@@ -536,7 +536,7 @@ DATA_EA0000:
 	db $12, $0C, $FB, $CB, $11, $51, $20, $70
 	db $15, $90, $00
 
-DATA_EA10BB:
+water_layer_3_tiledata:
 	db $00, $00, $AB, $00, $FC, $FF, $00, $00
 	db $FF, $00, $F8, $E0, $00, $0F, $00, $00
 	db $0F, $C0, $00, $F8, $00, $00, $80, $1F
@@ -583,7 +583,7 @@ DATA_EA10BB:
 	db $1B, $40, $F5, $62, $9F, $60, $F6, $F8
 	db $00
 
-DATA_EA121C:
+ship_mast_sky_bg_layer_2_tiledata:
 	db $00, $FF, $00, $FF, $00, $00, $FF, $FF
 	db $00, $03, $FC, $F8, $07, $3F, $C0, $1F
 	db $E0, $80, $7F, $FE, $FF, $07, $F8, $00
@@ -1152,7 +1152,7 @@ DATA_EA121C:
 	db $5F, $B1, $1B, $D2, $38, $C0, $B3, $1D
 	db $12, $83, $7C, $EB, $C0, $3D, $70, $00
 
-DATA_EA23D4:
+carnival_bg_layer_2_tiledata:
 	db $00, $00, $FF, $00, $FF, $00, $FF, $FF
 	db $00, $00, $00, $FC, $03, $01, $00, $FF
 	db $FF, $E0, $1F, $FE, $01, $7F, $00, $01
@@ -1925,7 +1925,7 @@ DATA_EA23D4:
 	db $14, $21, $38, $B1, $A2, $8A, $F0, $E7
 	db $1C, $F7, $10, $34, $70, $00
 
-DATA_EA3BEA:
+swamp_fg_layer_1_tiledata:
 	db $00, $00, $80, $FF, $00, $00, $00, $00
 	db $FF, $01, $01, $00, $C0, $FF, $00, $00
 	db $0F, $80, $7F, $00, $1F, $00, $FC, $C0
@@ -2513,7 +2513,7 @@ DATA_EA3BEA:
 	db $08, $14, $04, $15, $33, $12, $01, $40
 	db $D4, $10, $00
 
-DATA_EA4E35:
+swamp_bg_layer_3_tiledata:
 	db $00, $FF, $00, $FF, $00, $1F, $FF, $00
 	db $FF, $FF, $01, $C0, $00, $BF, $7F, $FE
 	db $FF, $7F, $FF, $FC, $FF, $EF, $1F, $F0
@@ -2876,7 +2876,7 @@ DATA_EA4E35:
 	db $47, $1E, $5B, $0A, $BB, $04, $D5, $FA
 	db $D5, $FA, $00
 
-DATA_EA5978:
+ship_deck_cabin_tiledata:
 	db $00, $FF, $00, $FF, $00, $00, $FF, $FF
 	db $00, $FF, $FF, $00, $00, $FF, $7F, $01
 	db $FE, $03, $FC, $0F, $FF, $7F, $FF, $FE
@@ -4535,7 +4535,7 @@ DATA_EA5978:
 	db $3F, $80, $8F, $CB, $0A, $2B, $1F, $EB
 	db $16, $D3, $80, $00
 
-DATA_EA8D3C:
+ship_mast_clouds_fg_layer_3_tiledata:
 	db $00, $FF, $00, $FF, $FE, $00, $FF, $FF
 	db $00, $F0, $0F, $FF, $FE, $E0, $FF, $C0
 	db $3F, $F8, $07, $80, $7F, $0F, $FF, $80
@@ -4856,7 +4856,7 @@ DATA_EA8D3C:
 	db $F2, $0D, $B8, $67, $CB, $06, $F9, $10
 	db $87, $00
 
-DATA_EA972E:
+forest_light_shafts_layer_1_tiledata:
 	db $00, $00, $FF, $00, $03, $07, $00, $FF
 	db $00, $F8, $FF, $C0, $3F, $00, $0F, $FC
 	db $00, $0F, $00, $00, $F8, $03, $00, $03
@@ -5440,7 +5440,7 @@ DATA_EAA93D:
 	db $FF, $00, $FF, $00, $FF, $00, $FF, $00
 	db $FF, $00, $FF, $00, $FF, $00, $FF, $00
 
-DATA_EAA94D:
+brambles_sky_bg_layer_3_tiledata:
 	db $00, $FF, $00, $00, $FF, $FF, $FF, $00
 	db $FF, $FE, $FF, $7F, $FF, $3F, $FF, $FC
 	db $FF, $FF, $FE, $F8, $FF, $BF, $7F, $7F
@@ -5879,7 +5879,7 @@ DATA_EAA94D:
 	db $B0, $1E, $D2, $3E, $1F, $B1, $43, $B1
 	db $0F, $80, $00
 
-DATA_EAB6F0:
+brambles_bg_layer_2_tiledata:
 	db $00, $FF, $00, $FF, $7F, $FF, $FF, $FF
 	db $FE, $FE, $FF, $00, $FF, $1F, $1F, $F0
 	db $FF, $FE, $FE, $FF, $FC, $C0, $C0, $FF
@@ -6742,7 +6742,7 @@ DATA_EAB6F0:
 	db $81, $B2, $69, $F1, $01, $71, $87, $70
 	db $00
 
-DATA_EAD1D1:
+lava_fall_layer_3_tiledata:
 	db $00, $00, $FF, $00, $80, $00, $00, $C0
 	db $00, $E0, $00, $03, $00, $00, $E0, $80
 	db $00, $00, $80, $00, $C0, $01, $00, $00
@@ -7025,7 +7025,7 @@ DATA_EAD7DE:
 	db $7A, $3D, $05, $73, $1F, $0B, $10, $05
 	db $F0, $53, $31, $F0, $A3, $0A, $53, $00
 
-DATA_EADA86:
+crocodile_isle_layer_1_tiledata:
 	db $00, $00, $FF, $FF, $00, $FF, $00, $00
 	db $FF, $00, $00, $FF, $FF, $00, $80, $80
 	db $FF, $7F, $00, $7F, $FF, $80, $00, $03

@@ -500,7 +500,7 @@ CODE_808684:
 	LDY #$0064				;$8086B5   |
 	LDX #$0000				;$8086B8   |
 CODE_8086BB:					;	   |
-	LDA.l DATA_ED57EF,x			;$8086BB   |
+	LDA.l text_tiledata,x			;$8086BB   |
 	STA PPU.vram_write			;$8086BF   |
 	INX					;$8086C2   |
 	INX					;$8086C3   |
@@ -1907,8 +1907,8 @@ namespace off					;	   | |
 	LDA #$0000				;$809273   | |
 	LDY #$1000				;$809276   | |
 	JSL DMA_to_VRAM				;$809279   |/ DMA the payload
-	LDX #DATA_D9F7C9			;$80927D   |\ Load pointer to Nintendo presents screen layer 3 tilemap
-	LDY.w #DATA_D9F7C9>>16			;$809280   | |
+	LDX #sparkle_layer_3_8x8_tilemap	;$80927D   |\ Load pointer to Nintendo presents screen layer 3 tilemap
+	LDY.w #sparkle_layer_3_8x8_tilemap>>16	;$809280   | |
 	LDA #$0000				;$809283   | |
 	JSL decompress_data			;$809286   |/ Decompress the tilemap
 	LDA #$7000				;$80928A   |\ Set VRAM address to $E000
@@ -1921,8 +1921,8 @@ namespace off					;	   | |
 	LDY.w #DATA_F5325B>>16			;$8092A0   | |
 	LDA #$0000				;$8092A3   | |
 	JSL decompress_data			;$8092A6   |/
-	LDX #DATA_EB2B84			;$8092AA   |\ Decompress tilemap for Nintendo presents sparkles
-	LDY.w #DATA_EB2B84>>16			;$8092AD   | | (This overwrites the Nintendo presents logo)
+	LDX #sparkle_layer_3_tiledata		;$8092AA   |\ Decompress tilemap for Nintendo presents sparkles
+	LDY.w #sparkle_layer_3_tiledata>>16	;$8092AD   | | (This overwrites the Nintendo presents logo)
 	LDA #$0000				;$8092B0   | |
 	JSL decompress_data			;$8092B3   |/
 	LDX #DATA_F5325B			;$8092B7   |\ Redecompress the Nintendo presents logo
@@ -7958,7 +7958,7 @@ CODE_80C933:					;	   |
 	RTS					;$80C962  /
 
 DATA_80C963:
-	dw DATA_F30EBB
+	dw mine_debris_layer_3_tiledata
 	dw DATA_F30FCB
 	dw DATA_F310DB
 	dw DATA_F311EB
@@ -8397,7 +8397,7 @@ CODE_80CCA8:					;	   |
 	RTS					;$80CCE7  /
 
 DATA_80CCE8:
-	dw DATA_F56C13
+	dw falling_leaves_tiledata
 	dw DATA_F56E33
 	dw DATA_F57053
 	dw DATA_F57273

@@ -1393,7 +1393,7 @@ DATA_EB0000:
 	db $C0, $D4, $7A, $18, $01, $C0, $4F, $47
 	db $1E, $04, $B0, $00
 
-DATA_EB2B84:
+sparkle_layer_3_tiledata:
 	db $00, $00, $FF, $07, $FF, $3F, $FF, $FC
 	db $03, $00, $FF, $C0, $00, $F8, $00, $00
 	db $01, $00, $F0, $01, $00, $FF, $00, $FF
@@ -1495,7 +1495,7 @@ DATA_EB2B84:
 	db $73, $FF, $EF, $EF, $EA, $30, $06, $2B
 	db $F7, $F5, $D0, $00
 
-DATA_EB2EA0:
+wasp_hive_honey_layer_1_tiledata:
 	db $00, $00, $FF, $00, $FF, $FF, $00, $F8
 	db $07, $01, $00, $28, $10, $03, $00, $FE
 	db $01, $F0, $0F, $07, $00, $0F, $00, $19

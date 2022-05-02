@@ -8371,7 +8371,7 @@ DATA_C7FA6E:
 	db $1E, $FE, $1E, $7E, $0E, $7F, $04, $7F
 	db $00, $7E
 
-DATA_C7FCB8:
+ship_deck_ocean_layer_2_8x8_tilemap:
 	db $00, $04, $AB, $04, $44, $04, $8D, $04
 	db $F9, $04, $36, $FC, $04, $04, $12, $16
 	db $04, $04, $0F, $53, $04, $04, $14, $04

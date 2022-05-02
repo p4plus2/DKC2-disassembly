@@ -1,4 +1,4 @@
-DATA_F60000:
+mine_bg_layer_2_tiledata:
 	db $00, $00, $FF, $FF, $00, $00, $FF, $FF
 	db $00, $7F, $FF, $FF, $FE, $1F, $FF, $FF
 	db $FC, $FC, $FF, $1F, $E0, $FF, $FF, $01
@@ -936,7 +936,7 @@ DATA_F60000:
 	db $CF, $0E, $05, $08, $F0, $D8, $20, $F0
 	db $B0, $07, $92, $3C, $FE, $00
 
-DATA_F61D3E:
+video_game_hero_screen_tiledata:
 	db $00, $00, $FF, $FF, $00, $00, $00, $FF
 	db $00, $00, $FF, $FF, $FF, $80, $00, $00
 	db $80, $01, $00, $00, $01, $80, $80, $7F

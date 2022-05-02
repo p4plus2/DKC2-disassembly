@@ -8439,7 +8439,7 @@ DATA_B5D32C:
 	dw DATA_FA2720
 	dw DATA_FA2E20
 	dw DATA_FA3520
-	dw DATA_FA3C20
+	dw lost_world_head_layer_1_8x8_tilemap
 
 CODE_B5D334:
 	PHK					;$B5D334  \

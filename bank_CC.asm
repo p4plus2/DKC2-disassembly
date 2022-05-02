@@ -8453,7 +8453,7 @@ DATA_CCFD95:
 	db $B7, $18, $C7, $AF, $06, $AF, $06, $F4
 	db $FB, $00
 
-DATA_CCFEDF:
+haunted_hall_kackle_layer_2_8x8_tilemap:
 	db $00, $28, $AB, $28, $08, $00, $28, $28
 	db $00, $28, $0C, $28, $0E, $28, $0B, $28
 	db $0A, $28, $09, $28, $13, $28, $12, $28
