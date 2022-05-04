@@ -3271,8 +3271,8 @@ CODE_BB966F:
 	JSL DMA_palette				;$BB9689   |
 	LDA $0537				;$BB968D   |
 	JSL set_PPU_registers_global		;$BB9690   |
-	LDX #falling_leaves_8x8_tilemap			;$BB9694   |
-	LDY.w #falling_leaves_8x8_tilemap>>16			;$BB9697   |
+	LDX #falling_leaves_8x8_tilemap		;$BB9694   |
+	LDY.w #falling_leaves_8x8_tilemap>>16	;$BB9697   |
 	LDA #$F800				;$BB969A   |
 	JSL decompress_data			;$BB969D   |
 	LDA #$6000				;$BB96A1   |
