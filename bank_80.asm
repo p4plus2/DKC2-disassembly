@@ -1,3 +1,4 @@
+;HDMA gradient (blue) used in Lockjaw's Locker/Toxic Tower
 DATA_808000:
 	db $00, $00, $72, $4E, $00, $00, $71, $4E
 	db $00, $00, $71, $4E, $00, $00, $71, $4E
@@ -59,6 +60,9 @@ DATA_808000:
 	db $00, $00, $61, $14, $00, $00, $61, $14
 	db $00, $00, $60, $14, $00, $00, $60, $14
 	db $00, $00, $60, $14, $00, $00, $60, $14
+
+;HDMA gradient (red) used in Lava Lagoon
+DATA_8081E0:
 	db $00, $00, $77, $4A, $00, $00, $77, $46
 	db $00, $00, $77, $46, $00, $00, $77, $46
 	db $00, $00, $57, $46, $00, $00, $57, $46
@@ -5464,41 +5468,36 @@ update_mode_7:
 	db $E7, $EA, $ED, $F0, $F3, $F6, $F9, $FC
 
 DATA_80B317:
-	db $00
+	%offset(DATA_80B318, 1)
+	db $00, $00, $01, $01, $01, $04, $03, $09
+	db $05, $0E, $07, $13, $0C, $19, $0E, $1C
+	db $12, $1F, $14, $1F, $16, $1F, $18, $1F
+	db $1A, $1F, $1C, $1F, $1E, $1F, $1F, $1F
+	db $00, $00, $01, $01, $01, $04, $03, $09
+	db $05, $0E, $07, $13, $0D, $19, $14, $1F
+	db $15, $1F, $17, $1F, $18, $1F, $1A, $1F
+	db $1B, $1F, $1D, $1F, $1E, $1F, $1F, $1F
+	db $00, $00, $01, $01, $01, $04, $03, $09
+	db $05, $0E, $07, $13, $09, $16, $0B, $19
+	db $0C, $1A, $0D, $1B, $0E, $1B, $0F, $1C
+	db $10, $1D, $11, $1E, $12, $1F, $13, $1F
 
-DATA_80B318:
-	db $00, $01, $01, $01, $04, $03, $09, $05
-	db $0E, $07, $13, $0C, $19, $0E, $1C, $12
-	db $1F, $14, $1F, $16, $1F, $18, $1F, $1A
-	db $1F, $1C, $1F, $1E, $1F, $1F, $1F, $00
-	db $00, $01, $01, $01, $04, $03, $09, $05
-	db $0E, $07, $13, $0D, $19, $14, $1F, $15
-	db $1F, $17, $1F, $18, $1F, $1A, $1F, $1B
-	db $1F, $1D, $1F, $1E, $1F, $1F, $1F, $00
-	db $00, $01, $01, $01, $04, $03, $09, $05
-	db $0E, $07, $13, $09, $16, $0B, $19, $0C
-	db $1A, $0D, $1B, $0E, $1B, $0F, $1C, $10
-	db $1D, $11, $1E, $12, $1F, $13, $1F
-
+;rareware logo palette (colored version)
 DATA_80B377:
-	db $00
-
-DATA_80B378:
-	db $00
-
-DATA_80B379:
-	db $00, $00, $00, $02, $03, $02, $01, $09
-	db $06, $02, $0B, $08, $03, $0E, $09, $03
-	db $12, $0C, $04, $17, $0F, $05, $1C, $12
-	db $06, $1D, $14, $09, $1D, $15, $0B, $1E
-	db $17, $0E, $1F, $18, $11, $1F, $1B, $16
-	db $1F, $1D, $1B, $1F, $1F, $1F, $00, $00
-	db $00, $03, $02, $01, $0B, $08, $03, $12
-	db $0C, $04, $19, $11, $06, $1F, $16, $08
-	db $1F, $18, $09, $1F, $1B, $0B, $1F, $1B
-	db $0B, $1F, $1D, $15, $1F, $1F, $1F, $00
-	db $00, $03, $00, $00, $04, $00, $00, $05
-	db $00, $00, $06, $00, $01, $07
+	%offset(DATA_80B378, 1)
+	%offset(DATA_80B379, 2)
+	db $00, $00, $00, $00, $00, $02, $03, $02
+	db $01, $09, $06, $02, $0B, $08, $03, $0E
+	db $09, $03, $12, $0C, $04, $17, $0F, $05
+	db $1C, $12, $06, $1D, $14, $09, $1D, $15
+	db $0B, $1E, $17, $0E, $1F, $18, $11, $1F
+	db $1B, $16, $1F, $1D, $1B, $1F, $1F, $1F
+	db $00, $00, $00, $03, $02, $01, $0B, $08
+	db $03, $12, $0C, $04, $19, $11, $06, $1F
+	db $16, $08, $1F, $18, $09, $1F, $1B, $0B
+	db $1F, $1B, $0B, $1F, $1D, $15, $1F, $1F
+	db $1F, $00, $00, $03, $00, $00, $04, $00
+	db $00, $05, $00, $00, $06, $00, $01, $07
 
 init_title_screen:
 	JSL disable_screen			;$80B3D7  \ Turn off the screen
@@ -5806,40 +5805,40 @@ run_nintendo_copyright:				;	  \
 	BRA .wait_for_next_frame		;$80B6BF  / you are messing with dark magic. I sympathize.
 
 DATA_80B6C1:
-	dw CODE_80B705
-	dw CODE_80B746
-	dw CODE_80B779
-	dw CODE_80B7A6
-	dw CODE_80B95F
-	dw CODE_80B720
-	dw CODE_80B977
-	dw CODE_80B9C6
-	dw CODE_80BB77
-	dw CODE_80BBD5
-	dw CODE_80BC3D
-	dw CODE_80BC6D
-	dw CODE_80BC85
-	dw CODE_80BDAA
-	dw CODE_80BE9C
-	dw CODE_80BED2
-	dw CODE_80BF08
-	dw CODE_80BF82
-	dw CODE_80BFDE
-	dw CODE_80C05A
-	dw CODE_80C074
-	dw CODE_80C180
-	dw CODE_80C26B
-	dw CODE_80C466
-	dw CODE_80C4A5
-	dw CODE_80C584
-	dw CODE_80C5DE
-	dw CODE_80C65B
-	dw CODE_80C750
-	dw CODE_80C7C6
-	dw CODE_80C821
-	dw CODE_80C847
-	dw CODE_80C8AA
-	dw CODE_80C8FF
+	dw CODE_80B705				;00
+	dw CODE_80B746				;01
+	dw CODE_80B779				;02
+	dw CODE_80B7A6				;03
+	dw CODE_80B95F				;04
+	dw CODE_80B720				;05
+	dw CODE_80B977				;06
+	dw CODE_80B9C6				;07
+	dw CODE_80BB77				;08
+	dw CODE_80BBD5				;09
+	dw CODE_80BC3D				;0A
+	dw CODE_80BC6D				;0B
+	dw CODE_80BC85				;0C
+	dw CODE_80BDAA				;0D
+	dw CODE_80BE9C				;0E
+	dw CODE_80BED2				;0F
+	dw CODE_80BF08				;10
+	dw CODE_80BF82				;11
+	dw CODE_80BFDE				;12
+	dw CODE_80C05A				;13
+	dw CODE_80C074				;14
+	dw CODE_80C180				;15
+	dw CODE_80C26B				;16
+	dw CODE_80C466				;17
+	dw CODE_80C4A5				;18
+	dw CODE_80C584				;19
+	dw CODE_80C5DE				;1A
+	dw CODE_80C65B				;1B
+	dw CODE_80C750				;1C
+	dw CODE_80C7C6				;1D
+	dw CODE_80C821				;1E
+	dw CODE_80C847				;1F
+	dw CODE_80C8AA				;20
+	dw CODE_80C8FF				;21
 
 CODE_80B705:
 	LDA pending_dma_hdma_channels		;$80B705  \
@@ -6267,14 +6266,13 @@ CODE_80BA8E:					;	   |
 	REP #$30				;$80BA8E   |
 	RTS					;$80BA90  /
 
+;lava fall animated palette
 DATA_80BA91:
-	db $DF
-
-DATA_80BA92:
-	db $02, $7F, $02, $FF, $01, $9F, $01, $1F
-	db $01, $BF, $00, $7F, $01, $1F, $02, $DF
-	db $02, $7F, $02, $FF, $01, $9F, $01, $1F
-	db $01, $BF, $00, $7F, $01, $1F, $02
+	%offset(DATA_80BA92,1)
+	db $DF, $02, $7F, $02, $FF, $01, $9F, $01
+	db $1F, $01, $BF, $00, $7F, $01, $1F, $02
+	db $DF, $02, $7F, $02, $FF, $01, $9F, $01
+	db $1F, $01, $BF, $00, $7F, $01, $1F, $02
 
 CODE_80BAB1:
 	LDA $17BA				;$80BAB1  \
@@ -6512,18 +6510,17 @@ CODE_80BC85:
 	REP #$20				;$80BCC5   |
 	RTS					;$80BCC7  /
 
+;mine/nintendo presents sparkle effect positions (used to randomly move sparkles around the screen)
 DATA_80BCC8:
-	db $25
-
-DATA_80BCC9:
-	db $1B, $1D, $27, $16, $39, $F0, $D2, $5D
-	db $21, $7E, $49, $67, $48, $B6, $2B, $C5
-	db $25, $3F, $67, $32, $77, $27, $63, $3B
-	db $92, $F3, $4A, $FE, $59, $79, $67, $7E
-	db $7C, $AC, $60, $C1, $8E, $9B, $90, $0A
-	db $9E, $1B, $BC, $47, $DE, $42, $F4, $5F
-	db $B7, $6A, $9F, $7D, $B7, $68, $CD, $AC
-	db $C4, $C3, $BE, $47, $DE, $3F, $67
+	%offset(DATA_80BCC9, 1)
+	db $25, $1B, $1D, $27, $16, $39, $F0, $D2
+	db $5D, $21, $7E, $49, $67, $48, $B6, $2B
+	db $C5, $25, $3F, $67, $32, $77, $27, $63
+	db $3B, $92, $F3, $4A, $FE, $59, $79, $67
+	db $7E, $7C, $AC, $60, $C1, $8E, $9B, $90
+	db $0A, $9E, $1B, $BC, $47, $DE, $42, $F4
+	db $5F, $B7, $6A, $9F, $7D, $B7, $68, $CD
+	db $AC, $C4, $C3, $BE, $47, $DE, $3F, $67
 
 CODE_80BD08:
 	LDA global_frame_counter		;$80BD08  \
@@ -10387,21 +10384,31 @@ CODE_80DF2F:					;	   |
 	RTS					;$80DF33  /
 
 DATA_80DF34:
-	db $0C, $00
-
-DATA_80DF36:
-	db $F6, $FF, $0C, $00, $F6, $FF, $0C, $00
-	db $F6, $FF, $0C, $00, $F6, $FF, $0C, $00
-	db $F6, $FF, $0C, $00, $F6, $FF, $0C, $00
-	db $F6, $FF, $0C, $00, $F6, $FF, $0C, $00
-	db $F6, $FF, $0C, $00, $F6, $FF, $0C, $00
-	db $F6, $FF, $0C, $00, $F6, $FF, $0C, $00
-	db $F6, $FF, $0C, $00, $F6, $FF, $0C, $00
-	db $F6, $FF, $0C, $00, $F6, $FF, $0C, $00
-	db $F6, $FF, $08, $00, $F6, $FF, $04, $00
-	db $F6, $FF, $00, $00, $F6, $FF, $0C, $00
-	db $F6, $FF, $FC, $FF, $F6, $FF, $FC, $FF
-	db $F6, $FF, $F8, $FF, $F6, $FF
+	%offset(DATA_80DF36,2)
+	dw $000C, $FFF6
+	dw $000C, $FFF6
+	dw $000C, $FFF6
+	dw $000C, $FFF6
+	dw $000C, $FFF6
+	dw $000C, $FFF6
+	dw $000C, $FFF6
+	dw $000C, $FFF6
+	dw $000C, $FFF6
+	dw $000C, $FFF6
+	dw $000C, $FFF6
+	dw $000C, $FFF6
+	dw $000C, $FFF6
+	dw $000C, $FFF6
+	dw $000C, $FFF6
+	dw $000C, $FFF6
+	dw $000C, $FFF6
+	dw $0008, $FFF6
+	dw $0004, $FFF6
+	dw $0000, $FFF6
+	dw $000C, $FFF6
+	dw $FFFC, $FFF6
+	dw $FFFC, $FFF6
+	dw $FFF8, $FFF6
 
 CODE_80DF94:
 	LDY $0989				;$80DF94  \
