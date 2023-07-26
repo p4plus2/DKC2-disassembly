@@ -3165,7 +3165,7 @@ CODE_B9E3E5:					;	   |
 	CMP #$0009				;$B9E3E7   |
 	BEQ CODE_B9E401				;$B9E3EA   |
 CODE_B9E3EC:					;	   |
-	LDA #$4C82				;$B9E3EC   |
+	LDA #DATA_F94C82			;$B9E3EC   |
 	STA $3C,x				;$B9E3EF   |
 	STZ $3E,x				;$B9E3F1   |
 	STZ $38,x				;$B9E3F3   |
@@ -3202,7 +3202,7 @@ CODE_B9E41C:					;	   |
 	CMP #$0009				;$B9E41E   |
 	BEQ CODE_B9E438				;$B9E421   |
 CODE_B9E423:					;	   |
-	LDA #$4D19				;$B9E423   |
+	LDA #DATA_F94D19			;$B9E423   |
 	STA $3C,x				;$B9E426   |
 	STZ $3E,x				;$B9E428   |
 	STZ $38,x				;$B9E42A   |
@@ -3634,7 +3634,7 @@ CODE_B9E6D8:
 	CMP #$0160				;$B9E6DA   |
 	BCC CODE_B9E6E6				;$B9E6DD   |
 	STZ $3E,x				;$B9E6DF   |
-	LDA #$56E6				;$B9E6E1   |
+	LDA #DATA_F956E6			;$B9E6E1   |
 	STA $3C,x				;$B9E6E4   |
 CODE_B9E6E6:					;	   |
 	RTS					;$B9E6E6  /
@@ -3653,7 +3653,7 @@ CODE_B9E6ED:
 CODE_B9E6F4:
 	LDA $26,x				;$B9E6F4  \
 	BNE CODE_B9E704				;$B9E6F6   |
-	LDA #$5798				;$B9E6F8   |
+	LDA #DATA_F95798			;$B9E6F8   |
 	STA $3C,x				;$B9E6FB   |
 	LDA #CODE_B9E705			;$B9E6FD   |
 	STA $3E,x				;$B9E700   |
@@ -3666,7 +3666,7 @@ CODE_B9E705:
 	BEQ CODE_B9E704				;$B9E707   |
 	STZ $3E,x				;$B9E709   |
 	STZ $38,x				;$B9E70B   |
-	LDA #$57AA				;$B9E70D   |
+	LDA #DATA_F957AA			;$B9E70D   |
 	STA $3C,x				;$B9E710   |
 	RTS					;$B9E712  /
 
@@ -3835,7 +3835,7 @@ CODE_B9E816:
 	LDA $52,x				;$B9E816  \
 	AND #$FF00				;$B9E818   |
 	BNE CODE_B9E824				;$B9E81B   |
-	LDA #$596D				;$B9E81D   |
+	LDA #DATA_F9596D			;$B9E81D   |
 	STA $3C,x				;$B9E820   |
 	STZ $3E,x				;$B9E822   |
 CODE_B9E824:					;	   |
@@ -4130,7 +4130,7 @@ CODE_B9E9D1:
 CODE_B9E9E1:
 	LDA $50,x				;$B9E9E1  \
 	BNE CODE_B9E9EE				;$B9E9E3   |
-	LDA #$5EF2				;$B9E9E5   |
+	LDA #DATA_F95EF2			;$B9E9E5   |
 	STA $3C,x				;$B9E9E8   |
 	STZ $38,x				;$B9E9EA   |
 	STZ $3E,x				;$B9E9EC   |
@@ -4267,7 +4267,7 @@ CODE_B9EAD0:
 	LDA $4E,x				;$B9EAD0  \
 	LSR A					;$B9EAD2   |
 	BCC CODE_B9EAFB				;$B9EAD3   |
-	LDA #$6266				;$B9EAD5   |
+	LDA #DATA_F96266			;$B9EAD5   |
 	STA $3C,x				;$B9EAD8   |
 	STZ $3E,x				;$B9EADA   |
 	RTS					;$B9EADC  /
@@ -4276,7 +4276,7 @@ CODE_B9EADD:
 	LDA $4E,x				;$B9EADD  \
 	LSR A					;$B9EADF   |
 	BCS CODE_B9EAFB				;$B9EAE0   |
-	LDA #$62EC				;$B9EAE2   |
+	LDA #DATA_F962EC			;$B9EAE2   |
 	STA $3C,x				;$B9EAE5   |
 	STZ $3E,x				;$B9EAE7   |
 	RTS					;$B9EAE9  /
@@ -4297,7 +4297,7 @@ CODE_B9EAFC:
 	LDA $44,x				;$B9EAFC  \
 	BEQ CODE_B9EB23				;$B9EAFE   |
 	STZ $3E,x				;$B9EB00   |
-	LDA #$6320				;$B9EB02   |
+	LDA #DATA_F96320			;$B9EB02   |
 	STA $3C,x				;$B9EB05   |
 	RTS					;$B9EB07  /
 
@@ -4461,7 +4461,7 @@ CODE_B9EC36:
 	LDA $4A,x				;$B9EC36  \
 	BIT #$0080				;$B9EC38   |
 	BEQ CODE_B9EC4A				;$B9EC3B   |
-	LDA #$654C				;$B9EC3D   |
+	LDA #DATA_F9654C			;$B9EC3D   |
 	STA $3C,x				;$B9EC40   |
 	STZ $38,x				;$B9EC42   |
 	LDA #CODE_B9EC4A			;$B9EC44   |
@@ -4472,7 +4472,7 @@ CODE_B9EC4A:
 	LDA $48,x				;$B9EC4A  \
 	CMP #$0009				;$B9EC4C   |
 	BEQ CODE_B9EC66				;$B9EC4F   |
-	LDA #$6504				;$B9EC51   |
+	LDA #DATA_F96504			;$B9EC51   |
 	STA $3C,x				;$B9EC54   |
 	STZ $3E,x				;$B9EC56   |
 	STZ $38,x				;$B9EC58   |
@@ -4609,7 +4609,7 @@ CODE_B9ED2B:					;	   |
 CODE_B9ED34:					;	   |
 	STA $3A,x				;$B9ED34   |
 	LDA $3C,x				;$B9ED36   |
-	CMP #$6600				;$B9ED38   |
+	CMP #DATA_F96600			;$B9ED38   |
 	ROR A					;$B9ED3B   |
 	EOR $26,x				;$B9ED3C   |
 	BPL CODE_B9ED6E				;$B9ED3E   |
@@ -4625,7 +4625,7 @@ CODE_B9ED34:					;	   |
 	ADC $5E					;$B9ED4F   |
 	EOR #$FFFF				;$B9ED51   |
 	SEC					;$B9ED54   |
-	ADC #$6609				;$B9ED55   |
+	ADC #DATA_F96609			;$B9ED55   |
 	STA $3C,x				;$B9ED58   |
 	RTS					;$B9ED5A  /
 
@@ -4639,7 +4639,7 @@ CODE_B9ED5B:
 	CLC					;$B9ED65   |
 	ADC $5E					;$B9ED66   |
 	CLC					;$B9ED68   |
-	ADC #$65F4				;$B9ED69   |
+	ADC #DATA_F965F4			;$B9ED69   |
 	STA $3C,x				;$B9ED6C   |
 CODE_B9ED6E:					;	   |
 	RTS					;$B9ED6E  /
