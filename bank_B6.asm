@@ -25,26 +25,26 @@ CODE_B68025:
 	JMP (DATA_B6802B,x)			;$B68028  /
 
 DATA_B6802B:
-	dw CODE_B68053
-	dw CODE_B682DF
-	dw CODE_B69397
-	dw CODE_B699EB
-	dw CODE_B69A5A
-	dw CODE_B69EEA
-	dw CODE_B6A3D6
-	dw CODE_B6A3D6
-	dw CODE_B6A3D6
-	dw CODE_B6A3DD
-	dw CODE_B6A43B
-	dw CODE_B6A485
-	dw CODE_B6A725
-	dw CODE_B6A82A
-	dw CODE_B6A82A
-	dw CODE_B6A877
-	dw CODE_B6D02E
-	dw CODE_B6D06E
-	dw CODE_B68D70
-	dw CODE_B6A877
+	dw CODE_B68053				;0000 kudgel_main
+	dw CODE_B682DF				;0002 kudgels_club_main
+	dw CODE_B69397				;0004 krool_gun_main
+	dw CODE_B699EB				;0006 shot_donkey_kong_main
+	dw CODE_B69A5A				;0008 krool_canball_main
+	dw CODE_B69EEA				;000A spiked_canballs_main
+	dw CODE_B6A3D6				;000C krool_gun_fire_main
+	dw CODE_B6A3D6				;000E krool_gun_vacuum_effect_main
+	dw CODE_B6A3D6				;0010 krools_blinking_eyes_main
+	dw CODE_B6A3DD				;0012 krool_puddle_main
+	dw CODE_B6A43B				;0014 unknown_sprite_0294_main
+	dw CODE_B6A485				;0016 tied_up_donkey_kong_main
+	dw CODE_B6A725				;0018 unknown_sprite_0290_main
+	dw CODE_B6A82A				;001A donkey_kongs_rope_main
+	dw CODE_B6A82A				;001C donkey_kongs_bindings_main
+	dw CODE_B6A877				;001E lava_splash_main
+	dw CODE_B6D02E				;0020 klubba_main
+	dw CODE_B6D06E				;0022 klubbas_club_main
+	dw CODE_B68D70				;0024 krool_main
+	dw CODE_B6A877				;0026 unknown_sprite_004C_main
 
 CODE_B68053:
 	PHB					;$B68053  \
@@ -61,7 +61,7 @@ CODE_B68053:
 	STZ $06A5				;$B6806B   |
 	LDA #DATA_B684D4			;$B6806E   |
 	STA $00065A				;$B68071   |
-	LDA #$0006				;$B68075   |
+	LDA #$0006				;$B68075   | set kudgel hit counter
 	STA $000652				;$B68078   |
 	LDY #$015E				;$B6807C   |
 	JSL CODE_BB8443				;$B6807F   |
@@ -246,10 +246,16 @@ CODE_B681C7:					;	   |
 CODE_B681FE:					;	   |
 	RTS					;$B681FE  /
 
+;kudgel landing stun timers
+;each phase stuns the player for a different amount of time
 DATA_B681FF:
-	db $00, $00, $16, $00, $15, $00, $18, $00
-	db $1A, $00, $1C, $00, $20, $00
-
+	dw $0000
+	dw $0016
+	dw $0015
+	dw $0018
+	dw $001A
+	dw $001C
+	dw $0020
 
 CODE_B6820D:
 	LDX current_sprite			;$B6820D  \
@@ -1241,7 +1247,7 @@ CODE_B68DB3:
 	LDA #$0258				;$B68DE5   |
 	JSL CODE_B9D09B				;$B68DE8   |
 	LDX current_sprite			;$B68DEC   |
-	LDA #$9355				;$B68DEE   |
+	LDA #DATA_B69355			;$B68DEE   |
 	STA $46,x				;$B68DF1   |
 	LDA #$0001				;$B68DF3   |
 	STA $000652				;$B68DF6   |
@@ -1533,21 +1539,22 @@ CODE_B69043:
 	RTL					;$B6905C  /
 
 DATA_B6905D:
-	db $00, $20
+%offset(DATA_B6905F, 2)
+	dw $2000, $003C
+	dw $1000, $001E
+	dw $0000, $001E
+	dw $1000, $001E
 
-DATA_B6905F:
-	db $3C, $00, $00, $10, $1E, $00, $00, $00
-	db $1E, $00, $00, $10, $1E, $00
-
+;k.rool (krocodile kore) water drop animation data
+;x offset, y offset, animation number
 DATA_B6906D:
-	db $05, $00
-
+	dw $0005				;number of drop sprites
 DATA_B6906F:
-	db $F5, $FF, $D5, $FF, $25, $02
-	db $E3, $FF, $F6, $FF, $26, $02
-	db $FB, $FF, $EB, $FF, $27, $02
-	db $16, $00, $EE, $FF, $28, $02
-	db $0A, $00, $D3, $FF, $27, $02
+	dw $FFF5, $FFD5, $0225
+	dw $FFE3, $FFF6, $0226
+	dw $FFFB, $FFEB, $0227
+	dw $0016, $FFEE, $0228
+	dw $000A, $FFD3, $0227
 
 DATA_B6908D:
 	dw !boss_command_wait, $0064
@@ -1585,6 +1592,8 @@ DATA_B690ED:
 	dw !boss_command_wait, $0032
 	dw !boss_command_vacuum
 	dw !boss_command_goto_or_reset, DATA_B690ED, DATA_B690ED
+
+DATA_B69109:
 	dw !boss_command_wait, $0032
 	dw !boss_command_shoot
 	dw !boss_command_wait, $0078
@@ -1595,6 +1604,8 @@ DATA_B690ED:
 	dw !boss_command_wait, $0032
 	dw !boss_command_vacuum
 	dw !boss_command_goto_or_reset, !null_pointer
+
+DATA_B6912F:
 	dw !boss_command_wait, $003C
 	dw !boss_command_shoot
 	dw !boss_command_wait, $0050
@@ -1608,6 +1619,8 @@ DATA_B690ED:
 	dw !boss_command_wait, $0050
 	dw !boss_command_vacuum
 	dw !boss_command_goto_or_reset, !null_pointer
+	
+DATA_B69163:
 	dw !boss_command_spawn_sprite, DATA_FF2216, $01C8, $0170, CODE_B6AD02, $0000, $FFEA
 
 DATA_B69171:
@@ -1617,6 +1630,8 @@ DATA_B69171:
 	dw !boss_command_goto_if, DATA_B69171
 	dw !boss_command_vacuum
 	dw !boss_command_goto_or_reset, DATA_B69171, DATA_B69171
+
+DATA_B69187:
 	dw !boss_command_wait, $0050
 	dw !boss_command_dash, $0580, $0006
 
@@ -1627,6 +1642,8 @@ DATA_B69191:
 	dw !boss_command_goto_if, DATA_B69191
 	dw !boss_command_vacuum
 	dw !boss_command_goto_or_reset, DATA_B69191, DATA_B69191
+
+DATA_B691A7:
 	dw !boss_command_wait, $0028
 	dw !boss_command_dash, $05C0, $0006
 
@@ -1637,6 +1654,8 @@ DATA_B691B1:
 	dw !boss_command_goto_if, DATA_B691B1
 	dw !boss_command_vacuum
 	dw !boss_command_goto_or_reset, DATA_B691B1, DATA_B691B1
+
+DATA_B691C7:
 	dw !boss_command_spawn_sprite, DATA_FF2216, $01C8, $0170, CODE_B6AD02, $0000, $FFEA
 	dw !boss_command_wait, $0032
 	dw !boss_command_dash, $0600, $0006
@@ -1661,6 +1680,8 @@ DATA_B691DF:
 	dw !boss_command_set_visibility, $2000
 	dw !boss_command_vacuum
 	dw !boss_command_goto_or_reset, DATA_B691DF, DATA_B691DF
+
+DATA_B69241:
 	dw !boss_command_wait, $0028
 	dw !boss_command_dash, $0640, $0006
 	dw !boss_command_wait, $0028
@@ -1674,6 +1695,8 @@ DATA_B691DF:
 	dw !boss_command_wait, $0032
 	dw !boss_command_vacuum
 	dw !boss_command_goto_or_reset, !null_pointer
+
+DATA_B69279:
 	dw !boss_command_wait, $0028
 	dw !boss_command_dash, $0680, $0006
 	dw !boss_command_wait, $0028
@@ -1723,6 +1746,8 @@ DATA_B691DF:
 	dw !boss_command_set_visibility, $2000
 	dw !boss_command_timed_vacuum, $0064
 	dw !boss_command_goto_or_reset, !null_pointer
+
+DATA_B69355:
 	dw !boss_command_wait, $01F4
 	dw !boss_command_wait, $001E
 	dw !boss_command_shoot_fish
@@ -1737,10 +1762,18 @@ DATA_B69363:
 	dw !boss_command_timed_vacuum, $0168
 	dw !boss_command_goto_or_reset, DATA_B69363, DATA_B69363
 
+;k.rool backfire projectile x velocities
 DATA_B69383:
-	db $00, $00, $B0, $05, $60, $05, $10, $05
-	db $C0, $04, $70, $04, $20, $04, $D0, $03
-	db $80, $03, $80, $02
+	dw $0000
+	dw $05B0
+	dw $0560
+	dw $0510
+	dw $04C0
+	dw $0470
+	dw $0420
+	dw $03D0
+	dw $0380
+	dw $0280
 
 CODE_B69397:
 	LDX $0654				;$B69397  \
@@ -2402,6 +2435,7 @@ CODE_B6995A:					;	   |
 	PLB					;$B699A6   |
 	RTS					;$B699A7  /
 
+CODE_B699A8:
 	LDA #$051A				;$B699A8   |
 	JSL queue_sound_effect			;$B699AB   |
 	LDY #$017E				;$B699AF   |
@@ -2881,7 +2915,7 @@ CODE_B69D75:					;	   |
 	PLX					;$B69D7F   |
 	STX current_sprite			;$B69D80   |
 	LDY $0654				;$B69D82   |
-	LDA #CODE_B6B7C7			;$B69D85   |
+	LDA #boss_command_code_03		;$B69D85   |
 	STA $0044,y				;$B69D88   |
 	JSR CODE_B6AD9B				;$B69D8B   |
 	STZ $0735				;$B69D8E   |
@@ -4738,7 +4772,7 @@ CODE_B6AC01:					;	   |
 	LDX $0654				;$B6AC0D   |
 	DEC $070B				;$B6AC10   |
 	BNE CODE_B6AC7F				;$B6AC13   |
-	LDA #CODE_B6B7C7			;$B6AC15   |
+	LDA #boss_command_code_03		;$B6AC15   |
 	STA $44,x				;$B6AC18   |
 	LDA level_number			;$B6AC1A   |
 	CMP #$006B				;$B6AC1C   |
@@ -4943,15 +4977,20 @@ CODE_B6ADA8:
 	CLC					;$B6ADA8  \
 	RTS					;$B6ADA9  /
 
+
+;k.rool color palette numbers (used for k.rool's transition to transparent)
 DATA_B6ADAA:
-	db $90, $00, $93, $00, $91, $00, $94, $00
-	db $92, $00, $95, $00
+	dw $0090, $0093
+	dw $0091, $0094
+	dw $0092, $0095
 
+;k.rool color palette numbers (used for k.rool's transition from transparent)
 DATA_B6ADB6:
-	db $92, $00, $95, $00, $91, $00, $94, $00
-	db $90, $00, $93, $00, $69, $00, $6A, $00
+	dw $0092, $0095
+	dw $0091, $0094
+	dw $0090, $0093
+	dw $0069, $006A
 DATA_B6ADC6:
-
 
 CODE_B6ADC6:
 	PHB					;$B6ADC6  \
@@ -5033,9 +5072,16 @@ CODE_B6AE55:					;	   |
 	RTL					;$B6AE72  /
 
 DATA_B6AE73:
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $02, $00, $02, $00, $02, $00, $02, $00
-	db $01, $00, $01, $00
+	dw $0000
+	dw $0000
+	dw $0000
+	dw $0000
+	dw $0002
+	dw $0002
+	dw $0002
+	dw $0002
+	dw $0001
+	dw $0001
 
 DATA_B6AE87:
 	dw !boss_command_26, $026E, $016D, DATA_B6AE73
@@ -5249,6 +5295,8 @@ DATA_B6B115:
 	dw !boss_command_1E, $0115, $0157, $0002
 	dw !boss_command_23
 	dw !boss_command_goto_or_reset, DATA_B6AFE7, DATA_B6AFE7
+
+DATA_B6B1ED:
 	dw !boss_command_krow_animation, $0200, $0204
 	dw !boss_command_20, DATA_B6B64F
 	dw !boss_command_fly_to, $01B0, $06C0, $0003
@@ -5345,6 +5393,8 @@ DATA_B6B335:
 	dw !boss_command_23
 	dw !boss_command_fly_to, $01B0, $06C0, $0002
 	dw !boss_command_goto_or_reset, DATA_B6B20B, DATA_B6B20B
+
+DATA_B6B413:
 	dw !boss_command_krow_animation, $0200, $0204
 	dw !boss_command_20, DATA_B6B65D
 	dw !boss_command_fly_to, $01B0, $0180, $0003
@@ -5446,23 +5496,38 @@ DATA_B6B631:
 	dw !boss_command_animated_wait, $003C, $0201
 	dw !boss_command_krow_animation, $0200, $0000
 	dw !boss_command_goto_or_reset, !null_pointer
+
+;kreepy krow hook spawning array
 DATA_B6B64F:
-	dw !boss_command_03, $0128, $0BB0, $016C, $0B70, $01B0, $0B30
+	dw $0003				;how many hooks to spawn
+	dw $0128, $0BB0				;positions of hooks
+	dw $016C, $0B70
+	dw $01B0, $0B30
+
+;kreepy krow hook spawning array
 DATA_B6B65D:
-	dw !boss_command_03, $0248, $06B0, $0204, $0668, $01C0, $0620
+	dw $0003				;how many hooks to spawn
+	dw $0248, $06B0				;positions of hooks
+	dw $0204, $0668
+	dw $01C0, $0620
 
+;kreepy krow barrel spawn locations (phase 1)
 DATA_B6B66B:
-	db $2E, $01, $2D, $0C, $B0, $01, $2D, $0C
-	db $37, $02, $2D, $0C
+	dw $012E, $0C2D
+	dw $01B0, $0C2D
+	dw $0237, $0C2D
 
+;kreepy krow barrel spawn locations (phase 2)
 DATA_B6B677:
-	db $1D, $01, $29, $07, $B0, $01, $4D, $07
-	db $41, $02, $29, $07
+	dw $011D, $0729
+	dw $01B0, $074D
+	dw $0241, $0729
 
+;kreepy krow barrel spawn locations (phase 3)
 DATA_B6B683:
-	db $1D, $01, $E9, $01, $B0, $01, $01, $02
-	db $41, $02, $E9, $01
-
+	dw $011D, $01E9
+	dw $01B0, $0201
+	dw $0241, $01E9
 
 CODE_B6B68F:
 	PHB					;$B6B68F  \
@@ -5480,163 +5545,89 @@ CODE_B6B697:
 	PLB					;$B6B69D   |
 	RTL					;$B6B69E  /
 
-
+;boss commands
 DATA_B6B69F:
 	%offset(DATA_B6B6A1, 2)
-	dw CODE_B6CB77
-	dw CODE_B6CC53
-	dw CODE_B6C994
-	dw CODE_B6B7C7
-	dw CODE_B6C977
-	dw CODE_B6B7C7
-	dw CODE_B6B7C7
-	dw CODE_B6CAD7
-	dw CODE_B6CAE3
-	dw CODE_B6B7C7
-	dw CODE_B6CAA9
-	dw CODE_B6B7C7
-	dw CODE_B6C816
-	dw CODE_B6B7C7
-	dw CODE_B6C848
-	dw CODE_B6B7C7
-	dw CODE_B6C9C4
-	dw CODE_B6CA27
-	dw CODE_B6C7E0
-	dw CODE_B6B7C7
-	dw CODE_B6C7EF
-	dw CODE_B6B7C7
-	dw CODE_B6C7FF
-	dw CODE_B6B7C7
-	dw CODE_B6C6EF
-	dw CODE_B6CC53
-	dw CODE_B6C7B4
-	dw CODE_B6B7C7
-	dw CODE_B6C6DC
-	dw CODE_B6B7C7
-	dw CODE_B6C9E5
-	dw CODE_B6CA27
-	dw CODE_B6C6C8
-	dw CODE_B6B7C7
-	dw CODE_B6C6D2
-	dw CODE_B6B7C7
-	dw CODE_B6CB65
-	dw CODE_B6CC53
-	dw CODE_B6C6BE
-	dw CODE_B6B7C7
-	dw CODE_B6C7C4
-	dw CODE_B6B7C7
-	dw CODE_B6C68B
-	dw CODE_B6B7C7
-	dw CODE_B6C657
-	dw CODE_B6B7C7
-	dw CODE_B6C64F
-	dw CODE_B6B7C7
-	dw CODE_B6C635
-	dw CODE_B6B7C7
-	dw CODE_B6C603
-	dw CODE_B6B7C7
-	dw CODE_B6C9FF
-	dw CODE_B6CA27
-	dw CODE_B6CB0D
-	dw CODE_B6B7C7
-	dw CODE_B6C643
-	dw CODE_B6B7C7
-	dw CODE_B6C5BB
-	dw CODE_B6B7C7
-	dw CODE_B6C5AF
-	dw CODE_B6CC53
-	dw CODE_B6C591
-	dw CODE_B6B7C7
-	dw CODE_B6C52B
-	dw CODE_B6B7C7
-	dw CODE_B6C504
-	dw CODE_B6C50E
-	dw CODE_B6C51F
-	dw CODE_B6B7C7
-	dw CODE_B6C4F1
-	dw CODE_B6B7C7
-	dw CODE_B6C4D3
-	dw CODE_B6B7C7
-	dw CODE_B6C4AE
-	dw CODE_B6B7C7
-	dw CODE_B6C474
-	dw CODE_B6CC53
-	dw CODE_B6C48A
-	dw CODE_B6B7C7
-	dw CODE_B6C45A
-	dw CODE_B6C464
-	dw CODE_B6C2DA
-	dw CODE_B6C36C
-	dw CODE_B6C20C
-	dw CODE_B6C256
-	dw CODE_B6C0A0
-	dw CODE_B6C122
-	dw CODE_B6C082
-	dw CODE_B6B7C7
-	dw CODE_B6C071
-	dw CODE_B6B7C7
-	dw CODE_B6C00A
-	dw CODE_B6B7C7
-	dw CODE_B6BEEE
-	dw CODE_B6BF11
-	dw CODE_B6BEE8
-	dw CODE_B6B7C7
-	dw CODE_B6BEC5
-	dw CODE_B6B7C7
-	dw CODE_B6BEDA
-	dw CODE_B6B7C7
-	dw CODE_B6BE85
-	dw CODE_B6B7C7
-	dw CODE_B6BE0D
-	dw CODE_B6B7C7
-	dw CODE_B6BE00
-	dw CODE_B6C122
-	dw CODE_B6BDE2
-	dw CODE_B6C464
-	dw CODE_B6BD84
-	dw CODE_B6BDA4
-	dw CODE_B6BD73
-	dw CODE_B6B7C7
-	dw CODE_B6BD7D
-	dw CODE_B6B7C7
-	dw CODE_B6BC7B
-	dw CODE_B6BCCF
-	dw CODE_B6BBE2
-	dw CODE_B6BC3E
-	dw CODE_B6BBCB
-	dw CODE_B6B7C7
-	dw CODE_B6BBA4
-	dw CODE_B6B7C7
-	dw CODE_B6BB98
-	dw CODE_B6B7C7
-	dw CODE_B6BB6C
-	dw CODE_B6B7C7
-	dw CODE_B6BAF3
-	dw CODE_B6BB2B
-	dw CODE_B6BABF
-	dw CODE_B6BAD8
-	dw CODE_B6BA97
-	dw CODE_B6B7C7
-	dw CODE_B6BAB8
-	dw CODE_B6B7C7
-	dw CODE_B6B995
-	dw CODE_B6BA3F
-	dw CODE_B6B93D
-	dw CODE_B6B7C7
-	dw CODE_B6B903
-	dw CODE_B6B7C7
-	dw CODE_B6B8BD
-	dw CODE_B6B7C7
-	dw CODE_B6B84C
-	dw CODE_B6B874
-	dw CODE_B6B7C8
-	dw CODE_B6B7C7
+	dw boss_command_code_00, CODE_B6CC53
+	dw boss_command_code_01, boss_command_code_03
+	dw boss_command_code_02, boss_command_code_03
+	dw boss_command_code_03, CODE_B6CAD7
+	dw boss_command_code_04, boss_command_code_03
+	dw boss_command_code_05, boss_command_code_03
+	dw boss_command_code_06, boss_command_code_03
+	dw boss_command_code_07, boss_command_code_03
+	dw boss_command_code_08, CODE_B6CA27
+	dw boss_command_code_09, boss_command_code_03
+	dw boss_command_code_0A, boss_command_code_03
+	dw boss_command_code_0B, boss_command_code_03
+	dw boss_command_code_0C, CODE_B6CC53
+	dw boss_command_code_0D, boss_command_code_03
+	dw boss_command_code_0E, boss_command_code_03
+	dw boss_command_code_0F, CODE_B6CA27
+	dw boss_command_code_10, boss_command_code_03
+	dw boss_command_code_11, boss_command_code_03
+	dw boss_command_code_12, CODE_B6CC53
+	dw boss_command_code_13, boss_command_code_03
+	dw boss_command_code_14, boss_command_code_03
+	dw boss_command_code_15, boss_command_code_03
+	dw boss_command_code_16, boss_command_code_03
+	dw boss_command_code_17, boss_command_code_03
+	dw boss_command_code_18, boss_command_code_03
+	dw boss_command_code_19, boss_command_code_03
+	dw boss_command_code_1A, CODE_B6CA27
+	dw boss_command_code_1B, boss_command_code_03
+	dw boss_command_code_1C, boss_command_code_03
+	dw boss_command_code_1D, boss_command_code_03
+	dw boss_command_code_1E, CODE_B6CC53
+	dw boss_command_code_1F, boss_command_code_03
+	dw boss_command_code_20, boss_command_code_03
+	dw boss_command_code_21, CODE_B6C50E
+	dw boss_command_code_22, boss_command_code_03
+	dw boss_command_code_23, boss_command_code_03
+	dw boss_command_code_24, boss_command_code_03
+	dw boss_command_code_25, boss_command_code_03
+	dw boss_command_code_26, CODE_B6CC53
+	dw boss_command_code_27, boss_command_code_03
+	dw boss_command_code_28, CODE_B6C464
+	dw boss_command_code_29, CODE_B6C36C
+	dw boss_command_code_2A, CODE_B6C256
+	dw boss_command_code_2B, CODE_B6C122
+	dw boss_command_code_2C, boss_command_code_03
+	dw boss_command_code_2D, boss_command_code_03
+	dw boss_command_code_2E, boss_command_code_03
+	dw boss_command_code_2F, CODE_B6BF11
+	dw boss_command_code_30, boss_command_code_03
+	dw boss_command_code_31, boss_command_code_03
+	dw boss_command_code_32, boss_command_code_03
+	dw boss_command_code_33, boss_command_code_03
+	dw boss_command_code_34, boss_command_code_03
+	dw boss_command_code_35, CODE_B6C122
+	dw boss_command_code_36, CODE_B6C464
+	dw boss_command_code_37, CODE_B6BDA4
+	dw boss_command_code_38, boss_command_code_03
+	dw boss_command_code_39, boss_command_code_03
+	dw boss_command_code_3A, CODE_B6BCCF
+	dw boss_command_code_3B, CODE_B6BC3E
+	dw boss_command_code_3C, boss_command_code_03
+	dw boss_command_code_3D, boss_command_code_03
+	dw boss_command_code_3E, boss_command_code_03
+	dw boss_command_code_3F, boss_command_code_03
+	dw boss_command_code_40, CODE_B6BB2B
+	dw boss_command_code_41, CODE_B6BAD8
+	dw boss_command_code_42, boss_command_code_03
+	dw boss_command_code_43, boss_command_code_03
+	dw boss_command_code_44, CODE_B6BA3F
+	dw boss_command_code_45, boss_command_code_03
+	dw boss_command_code_46, boss_command_code_03
+	dw boss_command_code_47, boss_command_code_03
+	dw boss_command_code_48, CODE_B6B874
+	dw boss_command_code_49, boss_command_code_03
 
 
-CODE_B6B7C7:
+boss_command_code_03:
 	RTS					;$B6B7C7  /
 
-CODE_B6B7C8:
+boss_command_code_49:
 	PHY					;$B6B7C8  \
 	STZ $44,x				;$B6B7C9   |
 	JSR CODE_B6C28F				;$B6B7CB   |
@@ -5691,7 +5682,7 @@ CODE_B6B7FE:					;	   |
 	PLB					;$B6B84A   |
 	RTS					;$B6B84B  /
 
-CODE_B6B84C:
+boss_command_code_48:
 	PHY					;$B6B84C  \
 	LDA.l $0006A3				;$B6B84D   |
 	AND #$FEFF				;$B6B851   |
@@ -5738,7 +5729,7 @@ CODE_B6B87C:
 CODE_B6B8BC:					;	   |
 	RTS					;$B6B8BC  /
 
-CODE_B6B8BD:
+boss_command_code_47:
 	STZ $44,x				;$B6B8BD  \
 	PHY					;$B6B8BF   |
 	LDA #$0250				;$B6B8C0   |
@@ -5764,7 +5755,7 @@ CODE_B6B8BD:
 	PLY					;$B6B901   |
 	RTS					;$B6B902  /
 
-CODE_B6B903:
+boss_command_code_46:
 	PHY					;$B6B903  \
 	LDA.l $000763				;$B6B904   |
 	CMP #$0002				;$B6B908   |
@@ -5790,7 +5781,7 @@ CODE_B6B937:					;	   |
 	PLY					;$B6B93B   |
 	RTS					;$B6B93C  /
 
-CODE_B6B93D:
+boss_command_code_45:
 	LDA $0000,y				;$B6B93D  \
 	LDX $075F				;$B6B940   |
 	STX alternate_sprite			;$B6B943   |
@@ -5836,7 +5827,7 @@ CODE_B6B982:
 DATA_B6B98D:
 	db $00, $00, $1E, $00, $2D, $00, $3C, $00
 
-CODE_B6B995:
+boss_command_code_44:
 	PHY					;$B6B995  \
 	LDX $0656				;$B6B996   |
 	LDA $30,x				;$B6B999   |
@@ -5944,7 +5935,7 @@ CODE_B6BA93:					;	   |
 	JSR CODE_B68D5D				;$B6BA93   |
 	RTS					;$B6BA96  /
 
-CODE_B6BA97:
+boss_command_code_42:
 	STZ $32,x				;$B6BA97  \
 	LDX $0656				;$B6BA99   |
 	STZ $32,x				;$B6BA9C   |
@@ -5967,12 +5958,12 @@ CODE_B6BAB0:
 	PLA					;$B6BAB5   |
 	BRA CODE_B6BAAD				;$B6BAB6  /
 
-CODE_B6BAB8:
+boss_command_code_43:
 	LDA $2E,x				;$B6BAB8  \
 	AND #$FEFF				;$B6BABA   |
 	BRA CODE_B6BAAB				;$B6BABD  /
 
-CODE_B6BABF:
+boss_command_code_41:
 	LDA.l $00074F				;$B6BABF  \
 	BEQ CODE_B6BACA				;$B6BAC3   |
 	LDA $0002,y				;$B6BAC5   |
@@ -6005,7 +5996,7 @@ CODE_B6BAEC:
 CODE_B6BAF2:					;	   |
 	RTS					;$B6BAF2  /
 
-CODE_B6BAF3:
+boss_command_code_40:
 	PHY					;$B6BAF3  \
 	LDA $0000,y				;$B6BAF4   |
 	STA $24,x				;$B6BAF7   |
@@ -6055,7 +6046,7 @@ CODE_B6BB68:					;	   |
 	JSR CODE_B68D5D				;$B6BB68   |
 	RTS					;$B6BB6B  /
 
-CODE_B6BB6C:
+boss_command_code_3F:
 	PHY					;$B6BB6C  \
 	LDA.l $00074F				;$B6BB6D   |
 	BEQ CODE_B6BB8E				;$B6BB71   |
@@ -6075,7 +6066,7 @@ CODE_B6BB8E:					;	   |
 	PLY					;$B6BB96   |
 	RTS					;$B6BB97  /
 
-CODE_B6BB98:
+boss_command_code_3E:
 	LDA $0000,y				;$B6BB98  \
 	STA $00074D				;$B6BB9B   |
 	INY					;$B6BB9F   |
@@ -6083,7 +6074,7 @@ CODE_B6BB98:
 	STZ $44,x				;$B6BBA1   |
 	RTS					;$B6BBA3  /
 
-CODE_B6BBA4:
+boss_command_code_3D:
 	JSR CODE_B6BBAA				;$B6BBA4  \
 	STZ $44,x				;$B6BBA7   |
 	RTS					;$B6BBA9  /
@@ -6107,7 +6098,7 @@ CODE_B6BBC0:
 CODE_B6BBCA:					;	   |
 	RTS					;$B6BBCA  /
 
-CODE_B6BBCB:
+boss_command_code_3C:
 	PHY					;$B6BBCB  \
 	LDA #$0294				;$B6BBCC   |
 	JSL set_sprite_animation		;$B6BBCF   |
@@ -6118,7 +6109,7 @@ CODE_B6BBCB:
 	PLY					;$B6BBE0   |
 	RTS					;$B6BBE1  /
 
-CODE_B6BBE2:
+boss_command_code_3B:
 	PHY					;$B6BBE2  \
 	LDX $0656				;$B6BBE3   |
 	LDA $30,x				;$B6BBE6   |
@@ -6187,7 +6178,7 @@ CODE_B6BC77:					;	   |
 	JSR CODE_B68D5D				;$B6BC77   |
 	RTS					;$B6BC7A  /
 
-CODE_B6BC7B:
+boss_command_code_3A:
 	PHY					;$B6BC7B  \
 	LDA $0000,y				;$B6BC7C   |
 	BNE CODE_B6BC8A				;$B6BC7F   |
@@ -6291,7 +6282,7 @@ CODE_B6BD6F:					;	   |
 	JSR CODE_B68D5D				;$B6BD6F   |
 	RTS					;$B6BD72  /
 
-CODE_B6BD73:
+boss_command_code_38:
 	LDA $2E,x				;$B6BD73  \
 	ORA #$2000				;$B6BD75   |
 CODE_B6BD78:					;	   |
@@ -6299,12 +6290,12 @@ CODE_B6BD78:					;	   |
 	STZ $44,x				;$B6BD7A   |
 	RTS					;$B6BD7C  /
 
-CODE_B6BD7D:
+boss_command_code_39:
 	LDA $2E,x				;$B6BD7D  \
 	AND #$DFFF				;$B6BD7F   |
 	BRA CODE_B6BD78				;$B6BD82  /
 
-CODE_B6BD84:
+boss_command_code_37:
 	LDA $0000,y				;$B6BD84  \
 	STA $00073F				;$B6BD87   |
 	LDA $0002,y				;$B6BD8B   |
@@ -6345,7 +6336,7 @@ CODE_B6BDBF:
 CODE_B6BDE1:					;	   |
 	RTS					;$B6BDE1  /
 
-CODE_B6BDE2:
+boss_command_code_36:
 	LDA $0919				;$B6BDE2  \
 	AND #$0003				;$B6BDE5   |
 	BNE CODE_B6BDF6				;$B6BDE8   |
@@ -6363,7 +6354,7 @@ CODE_B6BDFD:					;	   |
 	INY					;$B6BDFE   |
 	RTS					;$B6BDFF  /
 
-CODE_B6BE00:
+boss_command_code_35:
 	LDA $0000,y				;$B6BE00  \
 	INY					;$B6BE03   |
 	INY					;$B6BE04   |
@@ -6371,7 +6362,7 @@ CODE_B6BE00:
 	STA $00072D				;$B6BE06   |
 	BRL CODE_B6C0BC				;$B6BE0A  /
 
-CODE_B6BE0D:
+boss_command_code_34:
 	PHY					;$B6BE0D  \
 	LDY #$7FFF				;$B6BE0E   |
 	JSL CODE_808E4F				;$B6BE11   |
@@ -6437,7 +6428,7 @@ CODE_B6BE7D:
 	STA $12,x				;$B6BE82   |
 	RTS					;$B6BE84  /
 
-CODE_B6BE85:
+boss_command_code_33:
 	LDX current_sprite			;$B6BE85  \
 	STZ $44,x				;$B6BE87   |
 	LDA $0000,y				;$B6BE89   |
@@ -6469,7 +6460,7 @@ CODE_B6BEB2:
 	STA $1C,x				;$B6BEC1   |
 	BRA CODE_B6BEAF				;$B6BEC3  /
 
-CODE_B6BEC5:
+boss_command_code_31:
 	STZ $4E,x				;$B6BEC5  \
 	LDA DATA_B6905F				;$B6BEC7   |
 	STA $4C,x				;$B6BECA   |
@@ -6483,7 +6474,7 @@ CODE_B6BECF:
 	STA $12,x				;$B6BED7   |
 	RTS					;$B6BED9  /
 
-CODE_B6BEDA:
+boss_command_code_32:
 	JSR CODE_B6BECF				;$B6BEDA  \
 	STZ $4C,x				;$B6BEDD   |
 	STZ $44,x				;$B6BEDF   |
@@ -6491,12 +6482,12 @@ CODE_B6BEDA:
 	JSR CODE_B6BECF				;$B6BEE4   |
 	RTS					;$B6BEE7  /
 
-CODE_B6BEE8:
+boss_command_code_30:
 	STZ $0919				;$B6BEE8  \
 	STZ $44,x				;$B6BEEB   |
 	RTS					;$B6BEED  /
 
-CODE_B6BEEE:
+boss_command_code_2F:
 	PHY					;$B6BEEE  \
 	LDA.l $0006A3				;$B6BEEF   |
 	AND #$FEFF				;$B6BEF3   |
@@ -6614,7 +6605,7 @@ CODE_B6BFC6:					;	   |
 CODE_B6C009:					;	   |
 	RTS					;$B6C009  /
 
-CODE_B6C00A:
+boss_command_code_2E:
 	PHY					;$B6C00A  \
 	LDA $0000,y				;$B6C00B   |
 	CMP #DATA_FF2216			;$B6C00E   |
@@ -6663,7 +6654,7 @@ CODE_B6C068:					;	   |
 	TAY					;$B6C06F   |
 	RTS					;$B6C070  /
 
-CODE_B6C071:
+boss_command_code_2D:
 	LDA.l $000735				;$B6C071  \
 	BNE CODE_B6C07D				;$B6C075   |
 	LDA $0000,y				;$B6C077   |
@@ -6677,7 +6668,7 @@ CODE_B6C07F:					;	   |
 	STZ $44,x				;$B6C07F   |
 	RTS					;$B6C081  /
 
-CODE_B6C082:
+boss_command_code_2C:
 	PHY					;$B6C082  \
 	STZ $44,x				;$B6C083   |
 	LDX $0735				;$B6C085   |
@@ -6694,7 +6685,7 @@ CODE_B6C095:					;	   |
 	PLY					;$B6C09E   |
 	RTS					;$B6C09F  /
 
-CODE_B6C0A0:
+boss_command_code_2B:
 	PHY					;$B6C0A0  \
 	LDA.l $000652				;$B6C0A1   |
 	ASL A					;$B6C0A5   |
@@ -6861,7 +6852,7 @@ CODE_B6C20A:					;	   |
 CODE_B6C20B:
 	RTS					;$B6C20B  /
 
-CODE_B6C20C:
+boss_command_code_2A:
 	PHY					;$B6C20C  \
 	LDA.l $0006A3				;$B6C20D   |
 	AND #$FEFF				;$B6C211   |
@@ -6884,6 +6875,7 @@ CODE_B6C20C:
 	PLY					;$B6C240   |
 	RTS					;$B6C241  /
 
+;k rool projectile type to use for each phase (these are pointers to code)
 DATA_B6C242:
 	dw !null_pointer
 	dw CODE_B69877
@@ -6895,7 +6887,6 @@ DATA_B6C242:
 	dw CODE_B69572
 	dw CODE_B694F3
 	dw CODE_B6949C
-
 
 CODE_B6C256:
 	DEC $0729				;$B6C256  \
@@ -6957,7 +6948,7 @@ CODE_B6C2BB:					;	   |
 	STA $0044,y				;$B6C2D6   |
 	RTS					;$B6C2D9  /
 
-CODE_B6C2DA:
+boss_command_code_29:
 	PHY					;$B6C2DA  \
 	STZ $24,x				;$B6C2DB   |
 	STZ $2A,x				;$B6C2DD   |
@@ -7135,7 +7126,7 @@ CODE_B6C44F:
 	STA $000A,y				;$B6C456   |
 	RTS					;$B6C459  /
 
-CODE_B6C45A:
+boss_command_code_28:
 	LDA $0000,y				;$B6C45A  \
 	STA $000721				;$B6C45D   |
 	INY					;$B6C461   |
@@ -7153,7 +7144,7 @@ CODE_B6C471:					;	   |
 CODE_B6C473:					;	   |
 	RTS					;$B6C473  /
 
-CODE_B6C474:
+boss_command_code_26:
 	PHY					;$B6C474  \
 	JSR CODE_B6C59D				;$B6C475   |
 	STA $4A,x				;$B6C478   |
@@ -7165,7 +7156,7 @@ CODE_B6C474:
 	LDA $0000,y				;$B6C484   |
 	BRL CODE_B6CB9D				;$B6C487  /
 
-CODE_B6C48A:
+boss_command_code_27:
 	PHY					;$B6C48A  \
 	LDA $0000,y				;$B6C48B   |
 	BNE CODE_B6C49D				;$B6C48E   |
@@ -7187,7 +7178,7 @@ CODE_B6C4A8:					;	   |
 	INY					;$B6C4AC   |
 	RTS					;$B6C4AD  /
 
-CODE_B6C4AE:
+boss_command_code_25:
 	PHY					;$B6C4AE  \
 	LDY $0593				;$B6C4AF   |
 	LDA $06,x				;$B6C4B2   |
@@ -7209,7 +7200,7 @@ CODE_B6C4CF:					;	   |
 	PLY					;$B6C4D1   |
 	RTS					;$B6C4D2  /
 
-CODE_B6C4D3:
+boss_command_code_24:
 	PHB					;$B6C4D3  \
 	LDX $0000,y				;$B6C4D4   |
 	PHK					;$B6C4D7   |
@@ -7228,7 +7219,7 @@ CODE_B6C4D3:
 	PLB					;$B6C4EF   |
 	RTS					;$B6C4F0  /
 
-CODE_B6C4F1:
+boss_command_code_23:
 	PHY					;$B6C4F1  \
 	LDY $0707				;$B6C4F2   |
 	BEQ CODE_B6C500				;$B6C4F5   |
@@ -7240,7 +7231,7 @@ CODE_B6C500:					;	   |
 	PLY					;$B6C502   |
 	RTS					;$B6C503  /
 
-CODE_B6C504:
+boss_command_code_21:
 	LDA $0000,y				;$B6C504  \
 	STA $000705				;$B6C507   |
 	INY					;$B6C50B   |
@@ -7257,7 +7248,7 @@ CODE_B6C50E:
 CODE_B6C51E:					;	   |
 	RTS					;$B6C51E  /
 
-CODE_B6C51F:
+boss_command_code_22:
 	LDX current_sprite			;$B6C51F  \
 	LDA $2E,x				;$B6C521   |
 	ORA #$2000				;$B6C523   |
@@ -7265,7 +7256,7 @@ CODE_B6C51F:
 	STZ $44,x				;$B6C528   |
 	RTS					;$B6C52A  /
 
-CODE_B6C52B:
+boss_command_code_20:
 	LDA.l $000652				;$B6C52B  \
 	CMP #$0001				;$B6C52F   |
 	BCS CODE_B6C537				;$B6C532   |
@@ -7317,7 +7308,7 @@ CODE_B6C58C:					;	   |
 	INY					;$B6C58F   |
 	RTS					;$B6C590  /
 
-CODE_B6C591:
+boss_command_code_1F:
 	LDA $0000,y				;$B6C591  \
 	STA $0006FF				;$B6C594   |
 	STZ $44,x				;$B6C598   |
@@ -7335,14 +7326,14 @@ CODE_B6C59D:
 	LDA $0002,y				;$B6C5AB   |
 	RTS					;$B6C5AE  /
 
-CODE_B6C5AF:
+boss_command_code_1E:
 	PHY					;$B6C5AF  \
 	JSR CODE_B6C59D				;$B6C5B0   |
 	CLC					;$B6C5B3   |
 	ADC $0006FF				;$B6C5B4   |
 	BRL CODE_B6CB89				;$B6C5B8  /
 
-CODE_B6C5BB:
+boss_command_code_1D:
 	LDX current_sprite			;$B6C5BB  \
 	LDA $2E,x				;$B6C5BD   |
 	ORA #$0001				;$B6C5BF   |
@@ -7377,7 +7368,7 @@ CODE_B6C5BB:
 	TAY					;$B6C601   |
 	RTS					;$B6C602  /
 
-CODE_B6C603:
+boss_command_code_19:
 	PHY					;$B6C603  \
 	LDX current_sprite			;$B6C604   |
 	LDA $2E,x				;$B6C606   |
@@ -7401,14 +7392,14 @@ CODE_B6C603:
 	TAY					;$B6C633   |
 	RTS					;$B6C634  /
 
-CODE_B6C635:
+boss_command_code_18:
 	LDA.l $0006A1				;$B6C635  \
 	AND #$7FFF				;$B6C639   |
 	STA $0006A1				;$B6C63C   |
 	STZ $44,x				;$B6C640   |
 	RTS					;$B6C642  /
 
-CODE_B6C643:
+boss_command_code_1C:
 	LDA $2E,x				;$B6C643  \
 	AND #$FDFF				;$B6C645   |
 	STA $2E,x				;$B6C648   |
@@ -7416,14 +7407,14 @@ CODE_B6C643:
 	STZ $44,x				;$B6C64C   |
 	RTS					;$B6C64E  /
 
-CODE_B6C64F:
+boss_command_code_17:
 	PHY					;$B6C64F  \
 	JSR CODE_B6F8F3				;$B6C650   |
 	STZ $44,x				;$B6C653   |
 	PLY					;$B6C655   |
 	RTS					;$B6C656  /
 
-CODE_B6C657:
+boss_command_code_16:
 	PHY					;$B6C657  \
 	PHX					;$B6C658   |
 	LDA #$0402				;$B6C659   |
@@ -7449,7 +7440,7 @@ CODE_B6C657:
 	PLY					;$B6C689   |
 	RTS					;$B6C68A  /
 
-CODE_B6C68B:
+boss_command_code_15:
 	STY $CE					;$B6C68B  \
 	PHY					;$B6C68D   |
 	SEP #$20				;$B6C68E   |
@@ -7479,28 +7470,28 @@ CODE_B6C68B:
 	TAY					;$B6C6BC   |
 	RTS					;$B6C6BD  /
 
-CODE_B6C6BE:
+boss_command_code_13:
 	LDA $2E,x				;$B6C6BE  \
 	EOR #$0010				;$B6C6C0   |
 	STA $2E,x				;$B6C6C3   |
 	STZ $44,x				;$B6C6C5   |
 	RTS					;$B6C6C7  /
 
-CODE_B6C6C8:
+boss_command_code_10:
 	LDA $2E,x				;$B6C6C8  \
 	ORA #$0008				;$B6C6CA   |
 	STA $2E,x				;$B6C6CD   |
 	STZ $44,x				;$B6C6CF   |
 	RTS					;$B6C6D1  /
 
-CODE_B6C6D2:
+boss_command_code_11:
 	LDA $2E,x				;$B6C6D2  \
 	AND #$FFF7				;$B6C6D4   |
 	STA $2E,x				;$B6C6D7   |
 	STZ $44,x				;$B6C6D9   |
 	RTS					;$B6C6DB  /
 
-CODE_B6C6DC:
+boss_command_code_0E:
 	PHY					;$B6C6DC  \
 	LDA $2E,x				;$B6C6DD   |
 	ORA #$0001				;$B6C6DF   |
@@ -7511,7 +7502,7 @@ CODE_B6C6DC:
 	PLY					;$B6C6ED   |
 	RTS					;$B6C6EE  /
 
-CODE_B6C6EF:
+boss_command_code_0C:
 	LDX current_sprite			;$B6C6EF  \
 	PHY					;$B6C6F1   |
 	LDA $0000,y				;$B6C6F2   |
@@ -7621,7 +7612,7 @@ CODE_B6C7AD:					;	   |
 	TAY					;$B6C7B2   |
 	RTS					;$B6C7B3  /
 
-CODE_B6C7B4:
+boss_command_code_0D:
 	LDA $0000,y				;$B6C7B4  \
 	STA $00065A				;$B6C7B7   |
 	STZ $44,x				;$B6C7BB   |
@@ -7631,7 +7622,7 @@ CODE_B6C7B4:
 	TAY					;$B6C7C2   |
 	RTS					;$B6C7C3  /
 
-CODE_B6C7C4:
+boss_command_code_14:
 	LDA $2E,x				;$B6C7C4  \
 	BIT #$0010				;$B6C7C6   |
 	BNE CODE_B6C7D0				;$B6C7C9   |
@@ -7649,7 +7640,7 @@ CODE_B6C7D3:					;	   |
 	TAY					;$B6C7DE   |
 	RTS					;$B6C7DF  /
 
-CODE_B6C7E0:
+boss_command_code_09:
 	PHY					;$B6C7E0  \
 	LDA #$0001				;$B6C7E1   |
 	LDY #$0000				;$B6C7E4   |
@@ -7658,7 +7649,7 @@ CODE_B6C7E0:
 	PLY					;$B6C7ED   |
 	RTS					;$B6C7EE  /
 
-CODE_B6C7EF:
+boss_command_code_0A:
 	PHY					;$B6C7EF  \
 	LDA.l $0006A1				;$B6C7F0   |
 	ORA #$4000				;$B6C7F4   |
@@ -7667,7 +7658,7 @@ CODE_B6C7EF:
 	PLY					;$B6C7FD   |
 	RTS					;$B6C7FE  /
 
-CODE_B6C7FF:
+boss_command_code_0B:
 	LDA $0000,y				;$B6C7FF  \
 	JSL CODE_B5F0CD				;$B6C802   |
 	LDA $0002,y				;$B6C806   |
@@ -7680,7 +7671,7 @@ CODE_B6C7FF:
 	STZ $44,x				;$B6C813   |
 	RTS					;$B6C815  /
 
-CODE_B6C816:
+boss_command_code_06:
 	PHY					;$B6C816  \
 	LDA #$0564				;$B6C817   |
 	JSL queue_sound_effect			;$B6C81A   |
@@ -7703,7 +7694,7 @@ CODE_B6C816:
 	PLY					;$B6C846   |
 	RTS					;$B6C847  /
 
-CODE_B6C848:
+boss_command_code_07:
 	PHY					;$B6C848  \
 	LDA #$0565				;$B6C849   |
 	JSL queue_sound_effect			;$B6C84C   |
@@ -7848,7 +7839,7 @@ CODE_B6C959:					;	   |
 	TAY					;$B6C975   |
 	RTS					;$B6C976  /
 
-CODE_B6C977:
+boss_command_code_02:
 	STZ $44,x				;$B6C977  \
 	LDA $0000,y				;$B6C979   |
 	BEQ CODE_B6C990				;$B6C97C   |
@@ -7869,7 +7860,7 @@ CODE_B6C990:
 CODE_B6C993:					;	   |
 	RTS					;$B6C993  /
 
-CODE_B6C994:
+boss_command_code_01:
 	PHY					;$B6C994  \
 	LDA $0000,y				;$B6C995   |
 	STA $00065C				;$B6C998   |
@@ -7892,7 +7883,7 @@ CODE_B6C994:
 	TAY					;$B6C9C2   |
 	RTS					;$B6C9C3  /
 
-CODE_B6C9C4:
+boss_command_code_08:
 	TYA					;$B6C9C4  \
 	CLC					;$B6C9C5   |
 	ADC #$0002				;$B6C9C6   |
@@ -7910,7 +7901,7 @@ CODE_B6C9C4:
 	LDA $0000,x				;$B6C9E0   |
 	BRA CODE_B6CA0E				;$B6C9E3  /
 
-CODE_B6C9E5:
+boss_command_code_0F:
 	LDA $0000,y				;$B6C9E5  \
 	STA $1E,x				;$B6C9E8   |
 	TYA					;$B6C9EA   |
@@ -7925,7 +7916,7 @@ CODE_B6C9E5:
 	LDA $0014,x				;$B6C9FA   |
 	BRA CODE_B6CA0E				;$B6C9FD  /
 
-CODE_B6C9FF:
+boss_command_code_1A:
 	LDA $0002,y				;$B6C9FF  \
 	STA $1E,x				;$B6CA02   |
 	LDX $0000,y				;$B6CA04   |
@@ -8022,7 +8013,7 @@ CODE_B6CA9E:
 	STA $2E,x				;$B6CAA6   |
 	RTL					;$B6CAA8  /
 
-CODE_B6CAA9:
+boss_command_code_05:
 	LDX current_sprite			;$B6CAA9  \
 	JSR CODE_B6CAB7				;$B6CAAB   |
 	TYA					;$B6CAAE   |
@@ -8063,7 +8054,7 @@ CODE_B6CAD7:
 CODE_B6CAE2:					;	   |
 	RTS					;$B6CAE2  /
 
-CODE_B6CAE3:
+boss_command_code_04:
 	LDX current_sprite			;$B6CAE3  \
 	LDA $0000,y				;$B6CAE5   |
 	STA $000650				;$B6CAE8   |
@@ -8083,7 +8074,7 @@ CODE_B6CAE3:
 	INY					;$B6CB0B   |
 	RTS					;$B6CB0C  /
 
-CODE_B6CB0D:
+boss_command_code_1B:
 	PHY					;$B6CB0D  \
 	LDX current_sprite			;$B6CB0E   |
 	LDA $0000,y				;$B6CB10   |
@@ -8129,7 +8120,7 @@ CODE_B6CB36:
 	PLY					;$B6CB63   |
 	RTS					;$B6CB64  /
 
-CODE_B6CB65:
+boss_command_code_12:
 	PHY					;$B6CB65  \
 	LDX current_sprite			;$B6CB66   |
 	LDA $0000,y				;$B6CB68   |
@@ -8140,7 +8131,7 @@ CODE_B6CB65:
 	ADC $0A,x				;$B6CB73   |
 	BRA CODE_B6CB89				;$B6CB75  /
 
-CODE_B6CB77:
+boss_command_code_00:
 	PHY					;$B6CB77  \
 	LDX current_sprite			;$B6CB78   |
 	LDA $2E,x				;$B6CB7A   |
@@ -8524,20 +8515,33 @@ CODE_B6CE3A:					;	   |
 	RTS					;$B6CE3A  /
 
 DATA_B6CE3B:
-	db $04, $00, $FA, $FF, $04, $00, $FB, $FF
-	db $03, $00, $FC, $FF, $03, $00, $FD, $FF
-	db $03, $00, $FD, $FF, $03, $00, $FE, $FF
-	db $02, $00, $FE, $FF, $03, $00, $FF, $FF
-	db $02, $00, $FF, $FF, $03, $00, $FF, $FF
-	db $02, $00, $FF, $FF, $02, $00, $00, $00
-	db $02, $00, $00, $00, $01, $00, $00, $00
-	db $02, $00, $00, $00, $01, $00, $00, $00
-	db $02, $00, $01, $00, $01, $00, $01, $00
-	db $01, $00, $01, $00, $01, $00, $02, $00
-	db $01, $00, $02, $00, $00, $00, $02, $00
-	db $01, $00, $02, $00, $00, $00, $01, $00
-	db $01, $00, $02, $00, $00, $00, $01, $00
-	db $01, $00, $01, $00
+	dw $0004, $FFFA
+	dw $0004, $FFFB
+	dw $0003, $FFFC
+	dw $0003, $FFFD
+	dw $0003, $FFFD
+	dw $0003, $FFFE
+	dw $0002, $FFFE
+	dw $0003, $FFFF
+	dw $0002, $FFFF
+	dw $0003, $FFFF
+	dw $0002, $FFFF
+	dw $0002, $0000
+	dw $0002, $0000
+	dw $0001, $0000
+	dw $0002, $0000
+	dw $0001, $0000
+	dw $0002, $0001
+	dw $0001, $0001
+	dw $0001, $0001
+	dw $0001, $0002
+	dw $0001, $0002
+	dw $0000, $0002
+	dw $0001, $0002
+	dw $0000, $0001
+	dw $0001, $0002
+	dw $0000, $0001
+	dw $0001, $0001
 DATA_B6CEA7:
 
 CODE_B6CEA7:
@@ -8776,58 +8780,76 @@ CODE_B6D010:
 	STY $46,x				;$B6D02B   |
 	RTS					;$B6D02D  /
 
+;klubba
 CODE_B6D02E:
 	PHB					;$B6D02E  \
 	PHK					;$B6D02F   |
 	PLB					;$B6D030   |
-	LDX current_sprite			;$B6D031   |
-	LDA $42,x				;$B6D033   |
-	BNE CODE_B6D044				;$B6D035   |
-	LDY #$010C				;$B6D037   |
+	LDX current_sprite			;$B6D031   | get klubba sprite
+	LDA $42,x				;$B6D033   | check if club sprite exists
+	BNE CODE_B6D044				;$B6D035   | if not
+	LDY #$010C				;$B6D037   | spawn the club sprite
 	JSL CODE_BB842C				;$B6D03A   |
 	LDA alternate_sprite			;$B6D03E   |
 	LDX current_sprite			;$B6D040   |
-	STA $42,x				;$B6D042   |
+	STA $42,x				;$B6D042   | tell klubba what slot club is in
 CODE_B6D044:					;	   |
 	LDA.l $0006A3				;$B6D044   |
-	BIT #$0200				;$B6D048   |
-	BEQ CODE_B6D066				;$B6D04B   |
-	AND #$FDFF				;$B6D04D   |
+	BIT #$0200				;$B6D048   | check for "fight him" pressed
+	BEQ CODE_B6D066				;$B6D04B   | if "fight him" was selected
+	AND #$FDFF				;$B6D04D   | reset fight him flag
 	STA $0006A3				;$B6D050   |
 	LDA #$01E7				;$B6D054   |
-	JSL set_sprite_animation		;$B6D057   |
+	JSL set_sprite_animation		;$B6D057   | play klubba attack animation
 	LDA $42,x				;$B6D05B   |
 	STA alternate_sprite			;$B6D05D   |
-	LDA #$01E8				;$B6D05F   |
+	LDA #$01E8				;$B6D05F   | play klubba club attack animation
 	JSL CODE_B9D09B				;$B6D062   |
 CODE_B6D066:					;	   |
 	JSL CODE_B9D100				;$B6D066   |
 	PLB					;$B6D06A   |
 	JML [$05A9]				;$B6D06B  /
 
+;klubba club
 CODE_B6D06E:
 	PHB					;$B6D06E  \
 	PHK					;$B6D06F   |
 	PLB					;$B6D070   |
-	JSL CODE_B9D100				;$B6D071   |
+	JSL CODE_B9D100				;$B6D071   | process animation
 	PLB					;$B6D075   |
 	JML [$05A9]				;$B6D076  /
 
+;krow/kreepy krow shake offsets (used to make krow shake slightly when in air during egg drop/necky swoop)
+;each offset applied after 4 frames
 DATA_B6D079:
-	db $01, $00, $01, $00, $00, $00, $01, $00
-	db $FF, $FF, $01, $00, $00, $00, $01, $00
-	db $FF, $FF, $FF, $FF, $00, $00, $FF, $FF
-	db $01, $00, $FF, $FF, $00, $00, $FF, $FF
-	db $01, $00, $FF, $FF, $00, $00, $FF, $FF
-	db $FF, $FF, $FF, $FF, $00, $00, $FF, $FF
-	db $FF, $FF, $01, $00, $00, $00, $01, $00
-	db $01, $00, $01, $00, $00, $00, $01, $00
+	dw $0001, $0001
+	dw $0000, $0001
+	dw $FFFF, $0001
+	dw $0000, $0001
+	dw $FFFF, $FFFF
+	dw $0000, $FFFF
+	dw $0001, $FFFF
+	dw $0000, $FFFF
+	dw $0001, $FFFF
+	dw $0000, $FFFF
+	dw $FFFF, $FFFF
+	dw $0000, $FFFF
+	dw $FFFF, $0001
+	dw $0000, $0001
+	dw $0001, $0001
+	dw $0000, $0001
 
+;krow/kreepy krow shake offsets (used to make krow shake slightly when hit)
+;each offset applied after 2 frames
 DATA_B6D0B9:
-	db $02, $00, $00, $00, $02, $00, $00, $00
-	db $02, $00, $00, $00, $FE, $FF, $00, $00
-	db $FE, $FF, $00, $00, $FE, $FF, $00, $00
+	dw $0002, $0000
+	dw $0002, $0000
+	dw $0002, $0000
+	dw $FFFE, $0000
+	dw $FFFE, $0000
+	dw $FFFE, $0000
 
+;k rool vacuum attack table
 DATA_B6D0D1:
 	dw DATA_B6D0E5
 	dw DATA_B6D0ED
@@ -8840,46 +8862,49 @@ DATA_B6D0D1:
 	dw DATA_B6D125
 	dw DATA_B6D12D
 
+;k rool vacuum attack data
 DATA_B6D0E5:
-	db $00, $00, $00, $00, $00, $00, $00, $00
+	dw $0000, $0000, $0000, !null_pointer
 
 DATA_B6D0ED:
-	db $B4, $00, $90, $03, $00, $01, $79, $92
+	dw $00B4, $0390, $0100, DATA_B69279
 
 DATA_B6D0F5:
-	db $F0, $00, $40, $03, $00, $01, $41, $92
+	dw $00F0, $0340, $0100, DATA_B69241
 
 DATA_B6D0FD:
-	db $F0, $00, $00, $03, $00, $01, $C7, $91
+	dw $00F0, $0300, $0100, DATA_B691C7
 
 DATA_B6D105:
-	db $F0, $00, $C0, $02, $00, $01, $A7, $91
+	dw $00F0, $02C0, $0100, DATA_B691A7
 
 DATA_B6D10D:
-	db $F0, $00, $80, $02, $00, $01, $87, $91
+	dw $00F0, $0280, $0100, DATA_B69187
 
 DATA_B6D115:
-	db $F0, $00, $40, $02, $00, $01, $63, $91
+	dw $00F0, $0240, $0100, DATA_B69163
 
 DATA_B6D11D:
-	db $F0, $00, $00, $02, $00, $01, $2F, $91
+	dw $00F0, $0200, $0100, DATA_B6912F
 
 DATA_B6D125:
-	db $F0, $00, $C0, $01, $00, $01, $09, $91
+	dw $00F0, $01C0, $0100, DATA_B69109
 
 DATA_B6D12D:
-	db $68, $01, $00, $01, $00, $01, $97, $90
+	dw $0168, $0100, $0100, DATA_B69097
 
+;k rool vacuum attack table (krocodile kore)
 DATA_B6D135:
 	dw DATA_B6D13B
 	dw DATA_B6D143
 	dw DATA_B6D143
 
+;k rool vacuum attack data (krocodile kore)
 DATA_B6D13B:
-	db $00, $00, $00, $00, $00, $00, $00, $00
+	dw $0000, $0000, $0000, !null_pointer
 
 DATA_B6D143:
-	db $00, $00, $90, $03, $00, $01, $55, $93
+	dw $0000, $0390, $0100, DATA_B69355
 
 DATA_B6D14B:
 	db $03, $00 : dw DATA_FF2238
@@ -8901,27 +8926,27 @@ CODE_B6D171:
 	JMP (DATA_B6D177,x)			;$B6D174  /
 
 DATA_B6D177:
-	dw CODE_B6D1A1
-	dw CODE_B6DE34
-	dw CODE_B6E0F3
-	dw CODE_B6E49E
-	dw CODE_B6E79E
-	dw CODE_B6E7A5
-	dw CODE_B6E97C
-	dw CODE_B6E9DD
-	dw CODE_B6E9E4
-	dw CODE_B6EAA4
-	dw CODE_B6EAB8
-	dw CODE_B6EAB8
-	dw CODE_B6EAB8
-	dw CODE_B6EAB8
-	dw CODE_B6EAB8
-	dw CODE_B6EAB8
-	dw CODE_B6EAB8
-	dw CODE_B6EAB8
-	dw CODE_B6ECF3
-	dw CODE_B6F571
-	dw CODE_B6F7C3
+	dw CODE_B6D1A1				;0000 kleever_main
+	dw CODE_B6DE34				;0002 kleever_fireballs_main
+	dw CODE_B6E0F3				;0004 dropping_hooks_main
+	dw CODE_B6E49E				;0006 kleever_canball_main
+	dw CODE_B6E79E				;0008 kleevers_hand_bubbles_main
+	dw CODE_B6E7A5				;000A kleever_hand_main
+	dw CODE_B6E97C				;000C kleever_falling_canball_main
+	dw CODE_B6E9DD				;000E kleever_attack_effect_main
+	dw CODE_B6E9E4				;0010 broken_kleever_hilt_main
+	dw CODE_B6EAA4				;0012 broken_kleever_fire_main
+	dw CODE_B6EAB8				;0014 kleever_bone_pieces_main
+	dw CODE_B6EAB8				;0016 unknown_sprite_0030_main
+	dw CODE_B6EAB8				;0018 kleever_pieces1_main
+	dw CODE_B6EAB8				;001A kleever_pieces2_main
+	dw CODE_B6EAB8				;001C kleever_pieces3_main
+	dw CODE_B6EAB8				;001E unknown_sprite_0040_main
+	dw CODE_B6EAB8				;0020 kleever_pieces4_main
+	dw CODE_B6EAB8				;0022 kleever_pieces5_main
+	dw CODE_B6ECF3				;0024 krows_egg_main
+	dw CODE_B6F571				;0026 krows_body_main
+	dw CODE_B6F7C3				;0028 krows_head_main
 
 
 CODE_B6D1A1:
@@ -9022,7 +9047,7 @@ CODE_B6D1B4:
 	STA $000A,y				;$B6D28F   |
 	LDA #$0003				;$B6D292   |
 	STA $0042,y				;$B6D295   |
-	LDA #$A6BC				;$B6D298   |
+	LDA #DATA_BAA6BC			;$B6D298   |
 	STA $0044,y				;$B6D29B   |
 	STA $0046,y				;$B6D29E   |
 	LDA #$A6D0				;$B6D2A1   |
@@ -9224,15 +9249,30 @@ CODE_B6D44E:					;	   |
 	RTS					;$B6D450  /
 
 DATA_B6D451:
-	db $07, $00
+	dw $0007
 
+;kleever cannonball x pos spawn locations (left side)
 DATA_B6D453:
-	db $90, $03, $A0, $03, $B0, $03, $C0, $03
-	db $D0, $03, $E0, $03, $F0, $03, $07, $00
+	dw $0390
+	dw $03A0
+	dw $03B0
+	dw $03C0
+	dw $03D0
+	dw $03E0
+	dw $03F0
 
+	dw $0007
+
+;kleever cannonball x pos spawn locations (right side)
 DATA_B6D463:
-	db $40, $06, $50, $06, $60, $06, $70, $06
-	db $80, $06, $90, $06, $A0, $06
+	dw $0640
+	dw $0650
+	dw $0660
+	dw $0670
+	dw $0680
+	dw $0690
+	dw $06A0
+
 
 CODE_B6D471:
 	LDA $000652				;$B6D471  \
@@ -9764,25 +9804,45 @@ CODE_B6D892:					;	   |
 CODE_B6D896:					;	   |
 	RTS					;$B6D896  /
 
+;kleever rise from lava position offsets
+;these offsets are applied to kleever's current position every frame to make him rise from the lava
+;used at the beginning of the fight to reveal kleever
 DATA_B6D897:
-	db $00, $00, $FF, $FF, $00, $00, $FE, $FF
-	db $00, $00, $FE, $FF, $00, $00, $FD, $FF
-	db $00, $00, $FE, $FF, $00, $00, $FD, $FF
-	db $00, $00, $FD, $FF, $00, $00, $FD, $FF
-	db $00, $00, $FC, $FF, $00, $00, $FD, $FF
-	db $00, $00, $FC, $FF, $00, $00, $FC, $FF
-	db $00, $00, $FC, $FF, $00, $00, $FC, $FF
-	db $00, $00, $FB, $FF, $00, $00, $FC, $FF
-	db $00, $00, $FB, $FF, $00, $00, $FC, $FF
-	db $00, $00, $FB, $FF, $00, $00, $FB, $FF
-	db $00, $00, $FB, $FF, $00, $00, $FB, $FF
-	db $00, $00, $FB, $FF, $00, $00, $FB, $FF
-	db $00, $00, $FC, $FF, $00, $00, $FC, $FF
-	db $00, $00, $FD, $FF, $00, $00, $FD, $FF
-	db $00, $00, $FE, $FF, $00, $00, $FE, $FF
-	db $00, $00, $FE, $FF, $00, $00, $FF, $FF
-	db $00, $00, $FF, $FF, $00, $00, $FF, $FF
-	db $00, $00, $FF, $FF
+	dw $0000, $FFFF
+	dw $0000, $FFFE
+	dw $0000, $FFFE
+	dw $0000, $FFFD
+	dw $0000, $FFFE
+	dw $0000, $FFFD
+	dw $0000, $FFFD
+	dw $0000, $FFFD
+	dw $0000, $FFFC
+	dw $0000, $FFFD
+	dw $0000, $FFFC
+	dw $0000, $FFFC
+	dw $0000, $FFFC
+	dw $0000, $FFFC
+	dw $0000, $FFFB
+	dw $0000, $FFFC
+	dw $0000, $FFFB
+	dw $0000, $FFFC
+	dw $0000, $FFFB
+	dw $0000, $FFFB
+	dw $0000, $FFFB
+	dw $0000, $FFFB
+	dw $0000, $FFFB
+	dw $0000, $FFFB
+	dw $0000, $FFFC
+	dw $0000, $FFFC
+	dw $0000, $FFFD
+	dw $0000, $FFFD
+	dw $0000, $FFFE
+	dw $0000, $FFFE
+	dw $0000, $FFFE
+	dw $0000, $FFFF
+	dw $0000, $FFFF
+	dw $0000, $FFFF
+	dw $0000, $FFFF
 DATA_B6D923:
 
 CODE_B6D923:
@@ -10808,14 +10868,30 @@ CODE_B6E08E:					;	   |
 	RTS					;$B6E08E  /
 
 
+;kleever color palette numbers (used for kleever's red glowing animation)
 DATA_B6E08F:
-	db $62, $00, $63, $00, $57, $00, $57, $00
-	db $63, $00, $62, $00, $51, $00, $51, $00
-	db $51, $00, $51, $00
+	dw $0062
+	dw $0063
+	dw $0057
+	dw $0057
+	dw $0063
+	dw $0062
+	dw $0051
+	dw $0051
+	dw $0051
+	dw $0051
 
+;kleever color palette numbers (used for kleever's eyes/handle glow animation)
 DATA_B6E0A3:
-	db $9F, $00, $51, $00, $A1, $00, $A2, $00
-	db $A0, $00, $A2, $00, $A1, $00, $51, $00
+	dw $009F
+	dw $0051
+	dw $00A1
+	dw $00A2
+	dw $00A0
+	dw $00A2
+	dw $00A1
+	dw $0051
+
 
 DATA_B6E0B3:
 	dw !null_pointer
@@ -10825,17 +10901,28 @@ DATA_B6E0B3:
 	dw DATA_B6E0D9
 	dw !null_pointer
 
+;kleever hook spawning arrays (right to left)
+;only used for first 2 phases
 DATA_B6E0BF:
-	db $06, $00, $30, $06, $20, $02, $D0, $05
-	db $08, $02, $60, $05, $48, $02, $10, $05
-	db $08, $02, $A0, $04, $48, $02, $50, $04
-	db $08, $02
+	dw $0006				;how many hooks to spawn	
+	dw $0630, $0220				;positions of hooks
+	dw $05D0, $0208
+	dw $0560, $0248
+	dw $0510, $0208
+	dw $04A0, $0248
+	dw $0450, $0208
 
+;kleever hook spawning arrays (left to right)
+;only used for first 2 phases
 DATA_B6E0D9:
-	db $06, $00, $F0, $03, $18, $02, $50, $04
-	db $F8, $01, $B0, $04, $08, $02, $10, $05
-	db $18, $02, $70, $05, $28, $02, $D0, $05
-	db $38, $02
+	dw $0006				;how many hooks to spawn
+	dw $03F0, $0218				;positions of hooks
+	dw $0450, $01F8
+	dw $04B0, $0208
+	dw $0510, $0218
+	dw $0570, $0228
+	dw $05D0, $0238
+
 
 CODE_B6E0F3:
 	LDX current_sprite			;$B6E0F3  \
@@ -11149,19 +11236,37 @@ CODE_B6E37F:					;	   |
 	STA $0006DD				;$B6E3A5   |
 	RTS					;$B6E3A9  /
 
+
+;kleever shake offsets (used to make kleever shake slightly when hit)
+;first 2 phases (in lava)
+;each offset applied after 1 frame
 DATA_B6E3AA:
-	db $02, $00, $00, $00, $02, $00, $00, $00
-	db $02, $00, $00, $00, $FE, $FF, $00, $00
-	db $FE, $FF, $00, $00, $FE, $FF, $00, $00
+	dw $0002, $0000
+	dw $0002, $0000
+	dw $0002, $0000
+	dw $FFFE, $0000
+	dw $FFFE, $0000
+	dw $FFFE, $0000
 
+;kleever shake offsets (used to make kleever shake slightly when hit)
+;second 2 phases (in air)
+;each offset applied after 1 frame
 DATA_B6E3C2:
-	db $02, $00, $FF, $FF, $02, $00, $FF, $FF
-	db $02, $00, $FF, $FF, $FE, $FF, $FF, $FF
-	db $FE, $FF, $FF, $FF, $FE, $FF, $FF, $FF
+	dw $0002, $FFFF
+	dw $0002, $FFFF
+	dw $0002, $FFFF
+	dw $FFFE, $FFFF
+	dw $FFFE, $FFFF
+	dw $FFFE, $FFFF
 
+;kleever shake offsets (used to make kleever shake slightly when defeated)
+;when defeated before exploding
+;each offset applied after 1 frame
 DATA_B6E3DA:
-	db $FB, $FF, $00, $00, $05, $00, $00, $00
-	db $05, $00, $00, $00, $FB, $FF, $00, $00
+	dw $FFFB, $0000
+	dw $0005, $0000
+	dw $0005, $0000
+	dw $FFFB, $0000
 DATA_B6E3EA:
 
 CODE_B6E3EA:
@@ -11806,22 +11911,38 @@ CODE_B6E8EE:					;	   |
 	RTS					;$B6E8FB  /
 
 DATA_B6E8FC:
-	db $00, $00, $D0, $FF, $00, $00, $F8, $FF
-	db $00, $00, $F8, $FF, $00, $00, $F8, $FF
-	db $00, $00, $F8, $FF, $00, $00, $F8, $FF
-	db $00, $00, $F8, $FF, $00, $00, $F8, $FF
-	db $00, $00, $F8, $FF, $00, $00, $F8, $FF
-	db $00, $00, $F8, $FF, $00, $00, $F9, $FF
-	db $00, $00, $F9, $FF, $00, $00, $F9, $FF
-	db $00, $00, $F9, $FF, $00, $00, $FA, $FF
-	db $00, $00, $FA, $FF, $00, $00, $FA, $FF
-	db $00, $00, $FB, $FF, $00, $00, $FB, $FF
-	db $00, $00, $FB, $FF, $00, $00, $FC, $FF
-	db $00, $00, $FC, $FF, $00, $00, $FD, $FF
-	db $00, $00, $FD, $FF, $00, $00, $FE, $FF
-	db $00, $00, $FE, $FF, $00, $00, $FE, $FF
-	db $00, $00, $FF, $FF, $00, $00, $FF, $FF
-	db $00, $00, $FF, $FF, $00, $00, $FF, $FF
+	dw $0000, $FFD0
+	dw $0000, $FFF8
+	dw $0000, $FFF8
+	dw $0000, $FFF8
+	dw $0000, $FFF8
+	dw $0000, $FFF8
+	dw $0000, $FFF8
+	dw $0000, $FFF8
+	dw $0000, $FFF8
+	dw $0000, $FFF8
+	dw $0000, $FFF8
+	dw $0000, $FFF9
+	dw $0000, $FFF9
+	dw $0000, $FFF9
+	dw $0000, $FFF9
+	dw $0000, $FFFA
+	dw $0000, $FFFA
+	dw $0000, $FFFA
+	dw $0000, $FFFB
+	dw $0000, $FFFB
+	dw $0000, $FFFB
+	dw $0000, $FFFC
+	dw $0000, $FFFC
+	dw $0000, $FFFD
+	dw $0000, $FFFD
+	dw $0000, $FFFE
+	dw $0000, $FFFE
+	dw $0000, $FFFE
+	dw $0000, $FFFF
+	dw $0000, $FFFF
+	dw $0000, $FFFF
+	dw $0000, $FFFF
 DATA_B6E97C:
 
 CODE_B6E97C:
@@ -12154,6 +12275,7 @@ CODE_B6EC0A:
 	STA $42,x				;$B6EC17   |
 	RTS					;$B6EC19  /
 
+;kleever attack patterns
 DATA_B6EC1A:
 	dw DATA_B6EC28
 	dw DATA_B6EC3C
@@ -12163,40 +12285,90 @@ DATA_B6EC1A:
 	dw DATA_B6EC8C
 	dw DATA_B6ECA0
 
+;defeated
 DATA_B6EC28:
-	db $00, $00, $96, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00 : dw DATA_B6E3DA, DATA_B6E3EA
-	db $00, $00, $00, $00
+	dw $0000				;fireball speed
+	dw $0096				;stun timer
+	dw $0000				;charged melee attack delay
+	dw $0000				;flying chase speed
+	dw $0000				;delay before next fireball sequence
+	dw $0000				;delay between each fireball shot
+	dw DATA_B6E3DA, DATA_B6E3EA		;stun shake offset sequence to use (start/end)
+	dw $0000
+	dw $0000
 
+;phase 6
 DATA_B6EC3C:
-	db $00, $00, $5A, $00, $28, $00, $60, $01
-	db $00, $00, $00, $00 : dw DATA_B6E3C2, DATA_B6E3DA
-	db $00, $00, $00, $00
+	dw $0000				;fireball speed
+	dw $005A				;stun timer
+	dw $0028				;charged melee attack delay
+	dw $0160				;flying chase speed
+	dw $0000				;delay before next fireball sequence
+	dw $0000				;delay between each fireball shot
+	dw DATA_B6E3C2, DATA_B6E3DA		;stun shake offset sequence to use (start/end)
+	dw $0000
+	dw $0000
 
+;phase 5
 DATA_B6EC50:
-	db $00, $00, $64, $00, $3A, $00, $48, $01
-	db $00, $00, $00, $00 : dw DATA_B6E3C2, DATA_B6E3DA
-	db $00, $00, $00, $00
+	dw $0000				;fireball speed
+	dw $0064				;stun timer
+	dw $003A				;charged melee attack delay
+	dw $0148				;flying chase speed
+	dw $0000				;delay before next fireball sequence
+	dw $0000				;delay between each fireball shot
+	dw DATA_B6E3C2, DATA_B6E3DA		;stun shake offset sequence to use (start/end)
+	dw $0000
+	dw $0000
 
+;phase 4
 DATA_B6EC64:
-	db $00, $00, $6E, $00, $46, $00, $30, $01
-	db $00, $00, $00, $00 : dw DATA_B6E3AA, DATA_B6E3C2
-	db $00, $00, $00, $00
+	dw $0000				;fireball speed
+	dw $006E				;stun timer
+	dw $0046				;charged melee attack delay
+	dw $0130				;flying chase speed
+	dw $0000				;delay before next fireball sequence
+	dw $0000				;delay between each fireball shot
+	dw DATA_B6E3AA, DATA_B6E3C2		;stun shake offset sequence to use (start/end)
+	dw $0000
+	dw $0000
 
+;phase 3
 DATA_B6EC78:
-	db $02, $00, $C8, $00, $00, $00, $A0, $01
-	db $B4, $00, $41, $00 : dw DATA_B6E3AA, DATA_B6E3C2
-	db $03, $00, $05, $00
+	dw $0002				;fireball speed
+	dw $00C8				;stun timer
+	dw $0000				;charged melee attack delay
+	dw $01A0				;flying chase speed
+	dw $00B4				;delay before next fireball sequence
+	dw $0041				;delay between each fireball shot
+	dw DATA_B6E3AA, DATA_B6E3C2		;stun shake offset sequence to use (start/end)
+	dw $0003
+	dw $0005
 
+;phase 2
 DATA_B6EC8C:
-	db $02, $00, $C8, $00, $00, $00, $A0, $01
-	db $C8, $00, $55, $00 : dw DATA_B6E3AA, DATA_B6E3C2
-	db $03, $00, $06, $00
+	dw $0002				;fireball speed
+	dw $00C8				;stun timer
+	dw $0000				;charged melee attack delay
+	dw $01A0				;flying chase speed
+	dw $00C8				;delay before next fireball sequence
+	dw $0055				;delay between each fireball shot
+	dw DATA_B6E3AA, DATA_B6E3C2		;stun shake offset sequence to use (start/end)
+	dw $0003
+	dw $0006
 
+;phase 1
 DATA_B6ECA0:
-	db $02, $00, $C8, $00, $00, $00, $A0, $01
-	db $2C, $01, $69, $00 : dw !null_pointer, !null_pointer
-	db $04, $00, $08, $00
+	dw $0002				;fireball speed
+	dw $00C8				;stun timer
+	dw $0000				;charged melee attack delay
+	dw $01A0				;flying chase speed
+	dw $012C				;delay before next fireball sequence
+	dw $0069				;delay between each fireball shot
+	dw !null_pointer, !null_pointer		;stun shake offset sequence to use (start/end)
+	dw $0004
+	dw $0008
+
 
 CODE_B6ECB4:
 	JSL CODE_BB82B8				;$B6ECB4  \
@@ -14008,29 +14180,68 @@ DATA_B6FE24:
 	dw DATA_B6FE82
 
 DATA_B6FE2E:
-	db $0A, $00, $64, $00, $00, $00, $02, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $50, $00, $78, $00
-	db $01, $00, $00, $00
+	dw $000A
+	dw $0064
+	dw $0000
+	dw $0002
+	dw $0000
+	dw $0000
+	dw $0000
+	dw $0000
+	dw $0000
+	dw $0000
+	dw $0050
+	dw $0078				;egg fall delay
+	dw $0001
+	dw $0000
 
 DATA_B6FE4A:
-	db $0A, $00, $64, $00, $00, $00, $02, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $78, $00, $B4, $00
-	db $01, $00, $00, $00
+	dw $000A
+	dw $0064
+	dw $0000
+	dw $0002
+	dw $0000
+	dw $0000
+	dw $0000
+	dw $0000
+	dw $0000
+	dw $0000
+	dw $0078
+	dw $00B4				;egg fall delay
+	dw $0001
+	dw $0000
 
 DATA_B6FE66:
-	db $2C, $01, $50, $00, $50, $00, $02, $00
-	db $00, $00, $0E, $00, $00, $00, $00, $00
-	db $C8, $00, $08, $00, $00, $00, $00, $00
-	db $02, $00, $02, $00
+	dw $012C				;time before swoop after egg drop
+	dw $0050
+	dw $0050
+	dw $0002				;fly speed to drop location
+	dw $0000
+	dw $000E
+	dw $0000
+	dw $0000
+	dw $00C8				;time before egg crack
+	dw $0008
+	dw $0000
+	dw $0000				;egg fall delay
+	dw $0002
+	dw $0002
 
 DATA_B6FE82:
-	db $68, $01, $50, $00, $50, $00, $01, $00
-	db $00, $00, $0C, $00, $00, $00, $00, $00
-	db $C8, $00, $0A, $00, $00, $00, $00, $00
-	db $02, $00, $02, $00
-
+	dw $0168				;time before swoop after egg drop
+	dw $0050
+	dw $0050
+	dw $0001				;fly speed to drop location
+	dw $0000
+	dw $000C
+	dw $0000
+	dw $0000
+	dw $00C8				;time before egg crack
+	dw $000A
+	dw $0000
+	dw $0000				;egg fall delay
+	dw $0002
+	dw $0002
 
 CODE_B6FE9E:
 	JSR CODE_B6FEA2				;$B6FE9E  \
