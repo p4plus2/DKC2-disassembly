@@ -526,7 +526,7 @@ CODE_B48435:					;	   |
 	LSR A					;$B48470   |
 	LSR A					;$B48471   |
 	CLC					;$B48472   |
-	ADC #$443E				;$B48473   |
+	ADC #DATA_FA443E			;$B48473   | boss map icon tiledata offset
 	STA DMA[0].source			;$B48476   |
 	SEP #$20				;$B48479   |
 	LDA #$01				;$B4847B   |
