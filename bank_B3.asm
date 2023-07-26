@@ -12276,29 +12276,35 @@ CODE_B3DB48:
 	STZ $48,x				;$B3DB54   |
 	RTS					;$B3DB56  /
 
+;wind controller varables:
+;$44,x	wind script base address (location of current wind script)
+;$46,x	wind script offset (where in the current script is being processed)
+;$48,x	wind timer (how long for wind to blow)
+;$4A,x	wind command
+
 CODE_B3DB57:
-	LDX current_sprite			;$B3DB57  \
-	DEC $48,x				;$B3DB59   |
-	BPL CODE_B3DB7B				;$B3DB5B   |
-	LDA $44,x				;$B3DB5D   |
-	STA $8E					;$B3DB5F   |
-	LDY $46,x				;$B3DB61   |
-	LDA [$8E],y				;$B3DB63   |
-	STA $4A,x				;$B3DB65   |
+	LDX current_sprite			;$B3DB57  \ \ get current sprite
+	DEC $48,x				;$B3DB59   | | decrement wind timer
+	BPL CODE_B3DB7B				;$B3DB5B   |/ if wind timer is less than 0 done processing
+	LDA $44,x				;$B3DB5D   |\ load and update wind script base address
+	STA $8E					;$B3DB5F   |/
+	LDY $46,x				;$B3DB61   | load wind script offset into Y
+	LDA [$8E],y				;$B3DB63   |\ load and update wind command
+	STA $4A,x				;$B3DB65   |/
 	INY					;$B3DB67   |
 	INY					;$B3DB68   |
-	LDA [$8E],y				;$B3DB69   |
-	STA $48,x				;$B3DB6B   |
+	LDA [$8E],y				;$B3DB69   | load new wind time
+	STA $48,x				;$B3DB6B   | set wind timer
 	INY					;$B3DB6D   |
 	INY					;$B3DB6E   |
-	LDA [$8E],y				;$B3DB6F   |
-	CMP #$0002				;$B3DB71   |
-	BNE CODE_B3DB79				;$B3DB74   |
-	LDY #$0000				;$B3DB76   |
-CODE_B3DB79:					;	   |
-	STY $46,x				;$B3DB79   |
-CODE_B3DB7B:					;	   |
-	RTS					;$B3DB7B  /
+	LDA [$8E],y				;$B3DB6F   | load wind command
+	CMP #$0002				;$B3DB71   |\ if command is 2 then
+	BNE CODE_B3DB79				;$B3DB74   | |
+	LDY #$0000				;$B3DB76   |/ loop to start of wind script
+CODE_B3DB79:					;	   |\
+	STY $46,x				;$B3DB79   | | update wind script offset
+CODE_B3DB7B:					;	   |/
+	RTS					;$B3DB7B  / return
 
 DATA_B3DB7C:
 	dw CODE_B3DB9C
@@ -12333,9 +12339,10 @@ CODE_B3DBA5:
 	SBC #$0024				;$B3DBA5  \
 	RTS					;$B3DBA8  /
 
+;parse wind command
 CODE_B3DBA9:
-	LDX current_sprite			;$B3DBA9  \
-	LDA $4A,x				;$B3DBAB   |
+	LDX current_sprite			;$B3DBA9  \ get current sprite
+	LDA $4A,x				;$B3DBAB   | get wind command
 	LSR A					;$B3DBAD   |
 	BCC CODE_B3DBDB				;$B3DBAE   |
 	AND #$2000				;$B3DBB0   |
