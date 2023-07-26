@@ -17,3 +17,7 @@ DMA_log*
 *.avi
 *.sox
 *.trace
+multibuild.bat
+verify.bat
+verify.py
+asar.exe
