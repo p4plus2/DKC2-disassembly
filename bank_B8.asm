@@ -5,52 +5,53 @@ else
 	db $B3, $DE, $12, $29
 endif
 
+;Jump table for various Kong-to-object interaction routines (RAM address $0A82)
 DATA_B88004:
-	dw CODE_B89197
-	dw CODE_B89220
-	dw CODE_B8852B
-	dw CODE_B8842B
-	dw CODE_B8848E
-	dw CODE_B884EC
-	dw CODE_B88623
-	dw CODE_B885B8
-	dw CODE_B8871B
-	dw CODE_B8865B
-	dw CODE_B8811E
-	dw CODE_B880D2
-	dw CODE_B89385
-	dw CODE_B88755
-	dw CODE_B89385
-	dw CODE_B89385
-	dw CODE_B886F3
-	dw CODE_B8869E
-	dw CODE_B89319
-	dw CODE_B8934A
-	dw CODE_B881E9
-	dw CODE_B88228
-	dw CODE_B893AA
-	dw CODE_B894C2
-	dw CODE_B88B15
-	dw CODE_B8874D
-	dw CODE_B887D2
-	dw CODE_B8857E
-	dw CODE_B88911
-	dw CODE_B88929
-	dw CODE_B885D5
-	dw CODE_B88A4C
-	dw CODE_B88A92
-	dw CODE_B88C9D
-	dw CODE_B88CA3
-	dw CODE_B8815F
-	dw CODE_B885F5
-	dw CODE_B8899C
-	dw CODE_B88269
-	dw CODE_B88340
-	dw CODE_B88379
-	dw CODE_B88864
-	dw CODE_B89385
-	dw CODE_B88421
-	dw CODE_B8841C
+	dw CODE_B89197				;0001: Swapping in water
+	dw CODE_B89220				;0002: Swapping on land
+	dw CODE_B8852B				;0003: Rejoining team-up after throwing partner upwards
+	dw CODE_B8842B				;0004: Initiating team-up
+	dw CODE_B8848E				;0005: Teamed up
+	dw CODE_B884EC				;0006: Canceling team-up
+	dw CODE_B88623				;0007: Getting stuck to honey on ground
+	dw CODE_B885B8				;0008: Getting stuck to honey on wall
+	dw CODE_B8871B				;0009: 14
+	dw CODE_B8865B				;000A: 16
+	dw CODE_B8811E				;000B: Stunned by enemy on ground (Kudgel)
+	dw CODE_B880D2				;000C: 1A
+	dw CODE_B89385				;000D: 1C
+	dw CODE_B88755				;000E: Bouncing off of tire
+	dw CODE_B89385				;000F: 20
+	dw CODE_B89385				;0010: Entering barrel/cannon
+	dw CODE_B886F3				;0011: Grabbing horizontal rope
+	dw CODE_B8869E				;0012: Grabbing vertical rope
+	dw CODE_B89319				;0013: 28
+	dw CODE_B8934A				;0014: 2A
+	dw CODE_B881E9				;0015: Mounting skull cart
+	dw CODE_B88228				;0016: Jumping off skull cart
+	dw CODE_B893AA				;0017: Mounting Animal Buddy
+	dw CODE_B894C2				;0018: Dismounting Animal Buddy
+	dw CODE_B88B15				;0019: Transforming Animal Buddy into item (crossing No-Animal sign)
+	dw CODE_B8874D				;001A: 36
+	dw CODE_B887D2				;001B: Defeating enemy by stomping
+	dw CODE_B8857E				;001C: Defeating enemy by rolling
+	dw CODE_B88911				;001D: Defeating enemy by team throw
+	dw CODE_B88929				;001E: Knocked back by enemy
+	dw CODE_B885D5				;001F: Stunned by K. Rool before being hit by his blunderbuss
+	dw CODE_B88A4C				;0020: 42
+	dw CODE_B88A92				;0021: 44
+	dw CODE_B88C9D				;0022: 46
+	dw CODE_B88CA3				;0023: Hurt by enemy/obstacle
+	dw CODE_B8815F				;0024: Frozen by K. Rool's blue gas cloud
+	dw CODE_B885F5				;0025: Slowed down by K. Rool's red gas cloud/reversed by K. Rool's purple gas cloud
+	dw CODE_B8899C				;0026: Hurt by being hit by K. Rool's blunderbuss
+	dw CODE_B88269				;0027: Collecting Kremkoin
+	dw CODE_B88340				;0028: 52
+	dw CODE_B88379				;0029: Falling into pit
+	dw CODE_B88864				;002A: Hitting goal target
+	dw CODE_B89385				;002B: Walking through an entrance/running off screen after hitting target
+	dw CODE_B88421				;002C: 5A
+	dw CODE_B8841C				;002D: Leaving level
 
 CODE_B8805E:
 	LDA $08C2				;$B8805E  \
@@ -2577,21 +2578,23 @@ DATA_B89462:
 	dw CODE_B8941D
 	dw CODE_B8941D
 
+;dixie animal position offsets
 DATA_B89472:
-	db $FB, $FF
+%offset(DATA_B89474, 2)
+	dw $FFFB, $FFFF				;Squitter
+	dw $FFFC, $FFDD				;Rattly
+	dw $FFFD, $0018				;Squawks
+	dw $0001, $FFF2				;Rambi
+	dw $0000, $0000				;Enguarde
 
-DATA_B89474:
-	db $FF, $FF, $FC, $FF, $DD, $FF, $FD, $FF
-	db $18, $00, $01, $00, $F2, $FF, $00, $00
-	db $00, $00
-
+;diddy animal position offsets
 DATA_B89486:
-	db $F6, $FF
-
-DATA_B89488:
-	db $0E, $00, $FC, $FF, $E8, $FF, $FD, $FF
-	db $12, $00, $00, $00, $00, $00, $FC, $FF
-	db $0E, $00
+%offset(DATA_B89488, 2)
+	dw $FFF6, $000E				;Squitter
+	dw $FFFC, $FFE8				;Rattly
+	dw $FFFD, $0012				;Squawks
+	dw $0000, $0000				;Rambi
+	dw $FFFC, $000E				;Enguarde
 
 CODE_B8949A:
 	LDX current_sprite			;$B8949A  \
@@ -2866,138 +2869,138 @@ CODE_B896A0:
 
 DATA_B896B5:
 	%offset(DATA_B896B7, 2)
-	dw CODE_B899ED : db $00, $00
-	dw CODE_B899FF : db $00, $00
-	dw CODE_B89A17 : db $00, $00
-	dw CODE_B89A62 : db $00, $00
-	dw CODE_B89A64 : db $00, $00
-	dw CODE_B89A73 : db $01, $00
-	dw CODE_B89A83 : db $00, $00
-	dw CODE_B89A86 : db $00, $00
-	dw CODE_B89A92 : db $04, $00
-	dw CODE_B89AA2 : db $00, $00
-	dw CODE_B89B02 : db $00, $00
-	dw CODE_B89B27 : db $00, $00
-	dw CODE_B89B9C : db $00, $00
-	dw CODE_B89BD3 : db $00, $00
-	dw CODE_B89BE4 : db $00, $00
-	dw CODE_B89BE7 : db $00, $00
-	dw CODE_B89BF6 : db $00, $00
-	dw CODE_B89D1A : db $48, $00
-	dw CODE_B89D69 : db $40, $00
-	dw CODE_B89E64 : db $04, $02
-	dw CODE_B89E6B : db $00, $00
-	dw CODE_B89E7A : db $00, $00
-	dw CODE_B89E98 : db $00, $00
-	dw CODE_B89EB9 : db $00, $00
-	dw CODE_B89ECE : db $00, $00
-	dw CODE_B89ED8 : db $00, $00
-	dw CODE_B89EDB : db $00, $00
-	dw CODE_B89EF3 : db $00, $00
-	dw CODE_B89EF6 : db $00, $00
-	dw CODE_B89F09 : db $00, $00
-	dw CODE_B89FD4 : db $00, $00
-	dw CODE_B89FEA : db $00, $00
-	dw CODE_B8A07C : db $04, $02
-	dw CODE_B8A085 : db $00, $00
-	dw CODE_B8A164 : db $10, $00
-	dw CODE_B8A174 : db $08, $00
-	dw CODE_B8A19E : db $01, $02
-	dw CODE_B8A1B0 : db $04, $02
-	dw CODE_B8A21F : db $04, $02
-	dw CODE_B8A23E : db $04, $02
-	dw CODE_B8A312 : db $04, $02
-	dw CODE_B8A32D : db $00, $00
-	dw CODE_B8A352 : db $10, $00
-	dw CODE_B8A3B3 : db $00, $00
-	dw CODE_B8A4DC : db $88, $02
-	dw CODE_B8A4F1 : db $00, $00
+	dw CODE_B899ED : db $00, $00		;00
+	dw CODE_B899FF : db $00, $00		;01
+	dw CODE_B89A17 : db $00, $00		;02
+	dw CODE_B89A62 : db $00, $00		;03
+	dw CODE_B89A64 : db $00, $00		;04
+	dw CODE_B89A73 : db $01, $00		;05
+	dw CODE_B89A83 : db $00, $00		;06
+	dw CODE_B89A86 : db $00, $00		;07
+	dw CODE_B89A92 : db $04, $00		;08
+	dw CODE_B89AA2 : db $00, $00		;09
+	dw CODE_B89B02 : db $00, $00		;0A
+	dw CODE_B89B27 : db $00, $00		;0B
+	dw CODE_B89B9C : db $00, $00		;0C
+	dw CODE_B89BD3 : db $00, $00		;0D
+	dw CODE_B89BE4 : db $00, $00		;0E
+	dw CODE_B89BE7 : db $00, $00		;0F
+	dw CODE_B89BF6 : db $00, $00		;10
+	dw CODE_B89D1A : db $48, $00		;11
+	dw CODE_B89D69 : db $40, $00		;12
+	dw CODE_B89E64 : db $04, $02		;13
+	dw CODE_B89E6B : db $00, $00		;14
+	dw CODE_B89E7A : db $00, $00		;15
+	dw CODE_B89E98 : db $00, $00		;16
+	dw CODE_B89EB9 : db $00, $00		;17
+	dw CODE_B89ECE : db $00, $00		;18
+	dw CODE_B89ED8 : db $00, $00		;19
+	dw CODE_B89EDB : db $00, $00		;1A
+	dw CODE_B89EF3 : db $00, $00		;1B
+	dw CODE_B89EF6 : db $00, $00		;1C
+	dw CODE_B89F09 : db $00, $00		;1D
+	dw CODE_B89FD4 : db $00, $00		;1E
+	dw CODE_B89FEA : db $00, $00		;1F
+	dw CODE_B8A07C : db $04, $02		;20
+	dw CODE_B8A085 : db $00, $00		;21
+	dw CODE_B8A164 : db $10, $00		;22
+	dw CODE_B8A174 : db $08, $00		;23
+	dw CODE_B8A19E : db $01, $02		;24
+	dw CODE_B8A1B0 : db $04, $02		;25
+	dw CODE_B8A21F : db $04, $02		;26
+	dw CODE_B8A23E : db $04, $02		;27
+	dw CODE_B8A312 : db $04, $02		;28
+	dw CODE_B8A32D : db $00, $00		;29
+	dw CODE_B8A352 : db $10, $00		;2A
+	dw CODE_B8A3B3 : db $00, $00		;2B
+	dw CODE_B8A4DC : db $88, $02		;2C
+	dw CODE_B8A4F1 : db $00, $00		;2D
 if !version == 0
-	dw CODE_B8A4F4 : db $00, $02
+	dw CODE_B8A4F4 : db $00, $02		;2E
 else
-	dw CODE_B8A4F4 : db $04, $02
+	dw CODE_B8A4F4 : db $04, $02		;2E
 endif
-	dw CODE_B8A55B : db $00, $00
-	dw CODE_B8A56C : db $6C, $00
-	dw CODE_B8A62D : db $00, $02
-	dw CODE_B8A63F : db $00, $02
-	dw CODE_B8A66E : db $20, $00
-	dw CODE_B8A6B7 : db $20, $00
-	dw CODE_B8A6BD : db $00, $00
-	dw CODE_B8A733 : db $00, $00
-	dw CODE_B8A746 : db $00, $00
-	dw CODE_B8A807 : db $00, $00
-	dw CODE_B8A860 : db $00, $00
-	dw CODE_B8A86C : db $00, $00
-	dw CODE_B8A88C : db $04, $00
-	dw CODE_B8A8A8 : db $04, $00
-	dw CODE_B8A8CC : db $00, $00
-	dw CODE_B8A8DA : db $00, $00
-	dw CODE_B8AA3E : db $00, $00
-	dw CODE_B8AA50 : db $00, $00
-	dw CODE_B8AA77 : db $00, $00
-	dw CODE_B8AAA2 : db $00, $00
-	dw CODE_B8AAD5 : db $00, $00
-	dw CODE_B8AAE5 : db $00, $00
-	dw CODE_B8AB11 : db $00, $00
-	dw CODE_B8AB78 : db $20, $00
-	dw CODE_B8ABE6 : db $24, $00
-	dw CODE_B8ABF6 : db $00, $00
-	dw CODE_B8AC06 : db $0C, $02
-	dw CODE_B8AC19 : db $0C, $02
-	dw CODE_B8AC28 : db $0C, $02
-	dw CODE_B8AC69 : db $08, $02
-	dw CODE_B8ACC1 : db $00, $00
-	dw CODE_B8AD02 : db $00, $00
-	dw CODE_B8AD0F : db $00, $00
-	dw CODE_B8AD2A : db $00, $00
-	dw CODE_B8AD92 : db $00, $00
-	dw CODE_B8ADAF : db $00, $00
-	dw CODE_B8ADF0 : db $00, $00
-	dw CODE_B8AD2A : db $00, $00
-	dw CODE_B8AE11 : db $00, $00
-	dw CODE_B8AE18 : db $00, $00
-	dw CODE_B8AE51 : db $00, $00
-	dw CODE_B8AE63 : db $00, $00
-	dw CODE_B8AE83 : db $00, $00
-	dw CODE_B8AEA4 : db $00, $00
-	dw CODE_B8AEB0 : db $02, $00
-	dw CODE_B8AEB0 : db $02, $00
-	dw CODE_B8AEE9 : db $00, $00
-	dw CODE_B8AFBC : db $00, $00
-	dw CODE_B8AFE2 : db $00, $00
-	dw CODE_B8B008 : db $00, $00
-	dw CODE_B8B022 : db $00, $00
-	dw CODE_B8B031 : db $00, $00
-	dw CODE_B8B051 : db $00, $00
-	dw CODE_B8B08F : db $20, $00
-	dw CODE_B8B0B1 : db $20, $00
-	dw CODE_B8B0E6 : db $20, $00
-	dw CODE_B8B0EC : db $02, $00
-	dw CODE_B8B101 : db $00, $00
-	dw CODE_B8B137 : db $04, $00
-	dw CODE_B8B178 : db $00, $00
-	dw CODE_B8B187 : db $00, $00
-	dw CODE_B8B199 : db $00, $00
-	dw CODE_B8B1CE : db $00, $00
-	dw CODE_B8B1E5 : db $00, $00
-	dw CODE_B8B211 : db $04, $02
-	dw CODE_B8AEC0 : db $00, $00
-	dw CODE_B8B25B : db $00, $00
-	dw CODE_B8B262 : db $00, $00
-	dw CODE_B8B27B : db $00, $01
-	dw CODE_B8B282 : db $00, $01
-	dw CODE_B8B28D : db $00, $01
-	dw CODE_B8B2A1 : db $00, $00
-	dw CODE_B8B2FE : db $0C, $02
-	dw CODE_B8B307 : db $0C, $02
-	dw CODE_B8B378 : db $08, $00
-	dw CODE_B8B388 : db $08, $00
-	dw CODE_B8B398 : db $08, $00
-	dw CODE_B8B467 : db $00, $01
-	dw CODE_B8B488 : db $06, $02
-	dw CODE_B8B4A4 : db $04, $02
-	dw CODE_B8B4AE : db $06, $02
+	dw CODE_B8A55B : db $00, $00		;2F
+	dw CODE_B8A56C : db $6C, $00		;30
+	dw CODE_B8A62D : db $00, $02		;31
+	dw CODE_B8A63F : db $00, $02		;32
+	dw CODE_B8A66E : db $20, $00		;33
+	dw CODE_B8A6B7 : db $20, $00		;34
+	dw CODE_B8A6BD : db $00, $00		;35
+	dw CODE_B8A733 : db $00, $00		;36
+	dw CODE_B8A746 : db $00, $00		;37
+	dw CODE_B8A807 : db $00, $00		;38
+	dw CODE_B8A860 : db $00, $00		;39
+	dw CODE_B8A86C : db $00, $00		;3A
+	dw CODE_B8A88C : db $04, $00		;3B
+	dw CODE_B8A8A8 : db $04, $00		;3C
+	dw CODE_B8A8CC : db $00, $00		;3D
+	dw CODE_B8A8DA : db $00, $00		;3E
+	dw CODE_B8AA3E : db $00, $00		;3F
+	dw CODE_B8AA50 : db $00, $00		;40
+	dw CODE_B8AA77 : db $00, $00		;41
+	dw CODE_B8AAA2 : db $00, $00		;42
+	dw CODE_B8AAD5 : db $00, $00		;43
+	dw CODE_B8AAE5 : db $00, $00		;44
+	dw CODE_B8AB11 : db $00, $00		;45
+	dw CODE_B8AB78 : db $20, $00		;46
+	dw CODE_B8ABE6 : db $24, $00		;47
+	dw CODE_B8ABF6 : db $00, $00		;48
+	dw CODE_B8AC06 : db $0C, $02		;49
+	dw CODE_B8AC19 : db $0C, $02		;4A
+	dw CODE_B8AC28 : db $0C, $02		;4B
+	dw CODE_B8AC69 : db $08, $02		;4C
+	dw CODE_B8ACC1 : db $00, $00		;4D
+	dw CODE_B8AD02 : db $00, $00		;4E
+	dw CODE_B8AD0F : db $00, $00		;4F
+	dw CODE_B8AD2A : db $00, $00		;50
+	dw CODE_B8AD92 : db $00, $00		;51
+	dw CODE_B8ADAF : db $00, $00		;52
+	dw CODE_B8ADF0 : db $00, $00		;53
+	dw CODE_B8AD2A : db $00, $00		;54
+	dw CODE_B8AE11 : db $00, $00		;55
+	dw CODE_B8AE18 : db $00, $00		;56
+	dw CODE_B8AE51 : db $00, $00		;57
+	dw CODE_B8AE63 : db $00, $00		;58
+	dw CODE_B8AE83 : db $00, $00		;59
+	dw CODE_B8AEA4 : db $00, $00		;5A
+	dw CODE_B8AEB0 : db $02, $00		;5B
+	dw CODE_B8AEB0 : db $02, $00		;5C
+	dw CODE_B8AEE9 : db $00, $00		;5D
+	dw CODE_B8AFBC : db $00, $00		;5E
+	dw CODE_B8AFE2 : db $00, $00		;5F
+	dw CODE_B8B008 : db $00, $00		;60
+	dw CODE_B8B022 : db $00, $00		;61
+	dw CODE_B8B031 : db $00, $00		;62
+	dw CODE_B8B051 : db $00, $00		;63
+	dw CODE_B8B08F : db $20, $00		;64
+	dw CODE_B8B0B1 : db $20, $00		;65
+	dw CODE_B8B0E6 : db $20, $00		;66
+	dw CODE_B8B0EC : db $02, $00		;67
+	dw CODE_B8B101 : db $00, $00		;68
+	dw CODE_B8B137 : db $04, $00		;69
+	dw CODE_B8B178 : db $00, $00		;6A
+	dw CODE_B8B187 : db $00, $00		;6B
+	dw CODE_B8B199 : db $00, $00		;6C
+	dw CODE_B8B1CE : db $00, $00		;6D
+	dw CODE_B8B1E5 : db $00, $00		;6E
+	dw CODE_B8B211 : db $04, $02		;6F
+	dw CODE_B8AEC0 : db $00, $00		;70
+	dw CODE_B8B25B : db $00, $00		;71
+	dw CODE_B8B262 : db $00, $00		;72
+	dw CODE_B8B27B : db $00, $01		;73
+	dw CODE_B8B282 : db $00, $01		;74
+	dw CODE_B8B28D : db $00, $01		;75
+	dw CODE_B8B2A1 : db $00, $00		;76
+	dw CODE_B8B2FE : db $0C, $02		;77
+	dw CODE_B8B307 : db $0C, $02		;78
+	dw CODE_B8B378 : db $08, $00		;79
+	dw CODE_B8B388 : db $08, $00		;7A
+	dw CODE_B8B398 : db $08, $00		;7B
+	dw CODE_B8B467 : db $00, $01		;7C
+	dw CODE_B8B488 : db $06, $02		;7D
+	dw CODE_B8B4A4 : db $04, $02		;7E
+	dw CODE_B8B4AE : db $06, $02		;7F
 
 
 CODE_B898B5:
@@ -7539,756 +7542,756 @@ CODE_B8BAC6:
 	RTS					;$B8BACE  /
 
 CODE_B8BACF:
-	LDA $92					;$B8BACF  \
+	LDA $92					;$B8BACF  \ load current player action
 	ASL A					;$B8BAD1   |
 	TAX					;$B8BAD2   |
 	JMP (DATA_B8BB3F,x)			;$B8BAD3  /
 
 CODE_B8BAD6:
-	LDA $92					;$B8BAD6  \
+	LDA $92					;$B8BAD6  \ load current player action
 	ASL A					;$B8BAD8   |
 	TAX					;$B8BAD9   |
 	JMP (DATA_B8BB8D,x)			;$B8BADA  /
 
 CODE_B8BADD:
-	LDA $92					;$B8BADD  \
+	LDA $92					;$B8BADD  \ load current player action
 	ASL A					;$B8BADF   |
 	TAX					;$B8BAE0   |
 	JMP (DATA_B8BBDB,x)			;$B8BAE1  /
 
 CODE_B8BAE4:
-	LDA $92					;$B8BAE4  \
+	LDA $92					;$B8BAE4  \ load current player action
 	ASL A					;$B8BAE6   |
 	TAX					;$B8BAE7   |
 	JMP (DATA_B8BC29,x)			;$B8BAE8  /
 
 CODE_B8BAEB:
-	LDA $92					;$B8BAEB  \
+	LDA $92					;$B8BAEB  \ load current player action
 	ASL A					;$B8BAED   |
 	TAX					;$B8BAEE   |
 	JMP (DATA_B8BC77,x)			;$B8BAEF  /
 
 CODE_B8BAF2:
-	LDA $92					;$B8BAF2  \
+	LDA $92					;$B8BAF2  \ load current player action
 	ASL A					;$B8BAF4   |
 	TAX					;$B8BAF5   |
 	JMP (DATA_B8BCC5,x)			;$B8BAF6  /
 
 CODE_B8BAF9:
-	LDA $92					;$B8BAF9  \
+	LDA $92					;$B8BAF9  \ load current player action
 	ASL A					;$B8BAFB   |
 	TAX					;$B8BAFC   |
 	JMP (DATA_B8BD13,x)			;$B8BAFD  /
 
 CODE_B8BB00:
-	LDA $92					;$B8BB00  \
+	LDA $92					;$B8BB00  \ load current player action
 	ASL A					;$B8BB02   |
 	TAX					;$B8BB03   |
 	JMP (DATA_B8BD61,x)			;$B8BB04  /
 
 CODE_B8BB07:
-	LDA $92					;$B8BB07  \
+	LDA $92					;$B8BB07  \ load current player action
 	ASL A					;$B8BB09   |
 	TAX					;$B8BB0A   |
 	JMP (DATA_B8BDAF,x)			;$B8BB0B  /
 
 CODE_B8BB0E:
-	LDA $92					;$B8BB0E  \
+	LDA $92					;$B8BB0E  \ load current player action
 	ASL A					;$B8BB10   |
 	TAX					;$B8BB11   |
 	JMP (DATA_B8BDFD,x)			;$B8BB12  /
 
 CODE_B8BB15:
-	LDA $92					;$B8BB15  \
+	LDA $92					;$B8BB15  \ load current player action
 	ASL A					;$B8BB17   |
 	TAX					;$B8BB18   |
 	JMP (DATA_B8BE4B,x)			;$B8BB19  /
 
 CODE_B8BB1C:
-	LDA $92					;$B8BB1C  \
+	LDA $92					;$B8BB1C  \ load current player action
 	ASL A					;$B8BB1E   |
 	TAX					;$B8BB1F   |
 	JMP (DATA_B8BE99,x)			;$B8BB20  /
 
 CODE_B8BB23:
-	LDA $92					;$B8BB23  \
+	LDA $92					;$B8BB23  \ load current player action
 	ASL A					;$B8BB25   |
 	TAX					;$B8BB26   |
 	JMP (DATA_B8BEE7,x)			;$B8BB27  /
 
 CODE_B8BB2A:
-	LDA $92					;$B8BB2A  \
+	LDA $92					;$B8BB2A  \ load current player action
 	ASL A					;$B8BB2C   |
 	TAX					;$B8BB2D   |
 	JMP (DATA_B8BF35,x)			;$B8BB2E  /
 
 CODE_B8BB31:
-	LDA $92					;$B8BB31  \
+	LDA $92					;$B8BB31  \ load current player action
 	ASL A					;$B8BB33   |
 	TAX					;$B8BB34   |
 	JMP (DATA_B8BF83,x)			;$B8BB35  /
 
 CODE_B8BB38:
-	LDA $92					;$B8BB38  \
+	LDA $92					;$B8BB38  \ load current player action
 	ASL A					;$B8BB3A   |
 	TAX					;$B8BB3B   |
 	JMP (DATA_B8BFD1,x)			;$B8BB3C  /
 
 DATA_B8BB3F:
-	dw CODE_B8C020
-	dw CODE_B8C020
-	dw CODE_B8C020
-	dw CODE_B8C020
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C023
-	dw CODE_B8C020
-	dw CODE_B8C020
-	dw CODE_B8C048
-	dw CODE_B8C048
-	dw CODE_B8C049
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C052
-	dw CODE_B8C020
-	dw CODE_B8C020
-	dw CODE_B8C020
-	dw CODE_B8C048
-	dw CODE_B8C060
-	dw CODE_B8C07F
-	dw CODE_B8C09E
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C09F
-	dw CODE_B8C01F
-	dw CODE_B8C0B2
-	dw CODE_B8C01F
-	dw CODE_B8C0B5
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C0BD
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
+	dw CODE_B8C020				;00
+	dw CODE_B8C020				;01
+	dw CODE_B8C020				;02
+	dw CODE_B8C020				;03
+	dw CODE_B8C01F				;04
+	dw CODE_B8C01F				;05
+	dw CODE_B8C023				;06
+	dw CODE_B8C020				;07
+	dw CODE_B8C020				;08
+	dw CODE_B8C048				;09
+	dw CODE_B8C048				;0A
+	dw CODE_B8C049				;0B
+	dw CODE_B8C01F				;0C
+	dw CODE_B8C01F				;0D
+	dw CODE_B8C052				;0E
+	dw CODE_B8C020				;0F
+	dw CODE_B8C020				;10
+	dw CODE_B8C020				;11
+	dw CODE_B8C048				;12
+	dw CODE_B8C060				;13
+	dw CODE_B8C07F				;14
+	dw CODE_B8C09E				;15
+	dw CODE_B8C01F				;16
+	dw CODE_B8C01F				;17
+	dw CODE_B8C01F				;18
+	dw CODE_B8C01F				;19
+	dw CODE_B8C09F				;1A
+	dw CODE_B8C01F				;1B
+	dw CODE_B8C0B2				;1C
+	dw CODE_B8C01F				;1D
+	dw CODE_B8C0B5				;1E
+	dw CODE_B8C01F				;1F
+	dw CODE_B8C01F				;20
+	dw CODE_B8C0BD				;21
+	dw CODE_B8C01F				;22
+	dw CODE_B8C01F				;23
+	dw CODE_B8C01F				;24
+	dw CODE_B8C01F				;25
+	dw CODE_B8C01F				;26
 
 DATA_B8BB8D:
-	dw CODE_B8C0C7
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C13E
-	dw CODE_B8C144
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C14C
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C153
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C15D
-	dw CODE_B8C178
-	dw CODE_B8C193
-	dw CODE_B8C01F
-	dw CODE_B8C194
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C19F
-	dw CODE_B8C01F
-	dw CODE_B8C1B2
-	dw CODE_B8C01F
-	dw CODE_B8C1B5
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C1BD
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
+	dw CODE_B8C0C7				;00
+	dw CODE_B8C01F				;01
+	dw CODE_B8C01F				;02
+	dw CODE_B8C01F				;03
+	dw CODE_B8C01F				;04
+	dw CODE_B8C13E				;05
+	dw CODE_B8C144				;06
+	dw CODE_B8C01F				;07
+	dw CODE_B8C01F				;08
+	dw CODE_B8C01F				;09
+	dw CODE_B8C01F				;0A
+	dw CODE_B8C14C				;0B
+	dw CODE_B8C01F				;0C
+	dw CODE_B8C01F				;0D
+	dw CODE_B8C153				;0E
+	dw CODE_B8C01F				;0F
+	dw CODE_B8C01F				;10
+	dw CODE_B8C01F				;11
+	dw CODE_B8C01F				;12
+	dw CODE_B8C15D				;13
+	dw CODE_B8C178				;14
+	dw CODE_B8C193				;15
+	dw CODE_B8C01F				;16
+	dw CODE_B8C194				;17
+	dw CODE_B8C01F				;18
+	dw CODE_B8C01F				;19
+	dw CODE_B8C19F				;1A
+	dw CODE_B8C01F				;1B
+	dw CODE_B8C1B2				;1C
+	dw CODE_B8C01F				;1D
+	dw CODE_B8C1B5				;1E
+	dw CODE_B8C01F				;1F
+	dw CODE_B8C01F				;20
+	dw CODE_B8C1BD				;21
+	dw CODE_B8C01F				;22
+	dw CODE_B8C01F				;23
+	dw CODE_B8C01F				;24
+	dw CODE_B8C01F				;25
+	dw CODE_B8C01F				;26
 
 DATA_B8BBDB:
-	dw CODE_B8C1C7
-	dw CODE_B8C1C7
-	dw CODE_B8C220
-	dw CODE_B8C221
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C246
-	dw CODE_B8C1C7
-	dw CODE_B8C1C7
-	dw CODE_B8C1C7
-	dw CODE_B8C1C7
-	dw CODE_B8C1C7
-	dw CODE_B8C01F
-	dw CODE_B8C259
-	dw CODE_B8C268
-	dw CODE_B8C1C7
-	dw CODE_B8C1C7
-	dw CODE_B8C1C7
-	dw CODE_B8C1C7
-	dw CODE_B8C281
-	dw CODE_B8C301
-	dw CODE_B8C32A
-	dw CODE_B8C1C7
-	dw CODE_B8C349
-	dw CODE_B8C01F
-	dw CODE_B8C368
-	dw CODE_B8C1C7
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C37E
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C386
-	dw CODE_B8C394
-	dw CODE_B8C01F
-	dw CODE_B8C368
-	dw CODE_B8C39E
-	dw CODE_B8C3AA
+	dw CODE_B8C1C7				;00
+	dw CODE_B8C1C7				;01
+	dw CODE_B8C220				;02
+	dw CODE_B8C221				;03
+	dw CODE_B8C01F				;04
+	dw CODE_B8C01F				;05
+	dw CODE_B8C246				;06
+	dw CODE_B8C1C7				;07
+	dw CODE_B8C1C7				;08
+	dw CODE_B8C1C7				;09
+	dw CODE_B8C1C7				;0A
+	dw CODE_B8C1C7				;0B
+	dw CODE_B8C01F				;0C
+	dw CODE_B8C259				;0D
+	dw CODE_B8C268				;0E
+	dw CODE_B8C1C7				;0F
+	dw CODE_B8C1C7				;10
+	dw CODE_B8C1C7				;11
+	dw CODE_B8C1C7				;12
+	dw CODE_B8C281				;13
+	dw CODE_B8C301				;14
+	dw CODE_B8C32A				;15
+	dw CODE_B8C1C7				;16
+	dw CODE_B8C349				;17
+	dw CODE_B8C01F				;18
+	dw CODE_B8C368				;19
+	dw CODE_B8C1C7				;1A
+	dw CODE_B8C01F				;1B
+	dw CODE_B8C01F				;1C
+	dw CODE_B8C01F				;1D
+	dw CODE_B8C37E				;1E
+	dw CODE_B8C01F				;1F
+	dw CODE_B8C01F				;20
+	dw CODE_B8C386				;21
+	dw CODE_B8C394				;22
+	dw CODE_B8C01F				;23
+	dw CODE_B8C368				;24
+	dw CODE_B8C39E				;25
+	dw CODE_B8C3AA				;26
 
 DATA_B8BC29:
-	dw CODE_B8C3B6
-	dw CODE_B8C3B6
-	dw CODE_B8C3C1
-	dw CODE_B8C3C2
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C3E7
-	dw CODE_B8C3B6
-	dw CODE_B8C3B6
-	dw CODE_B8C3B6
-	dw CODE_B8C3B6
-	dw CODE_B8C3B6
-	dw CODE_B8C01F
-	dw CODE_B8C3F6
-	dw CODE_B8C401
-	dw CODE_B8C3B6
-	dw CODE_B8C3B6
-	dw CODE_B8C3B6
-	dw CODE_B8C3B6
-	dw CODE_B8C412
-	dw CODE_B8C491
-	dw CODE_B8C4B6
-	dw CODE_B8C3B6
-	dw CODE_B8C4D1
-	dw CODE_B8C01F
-	dw CODE_B8C4EC
-	dw CODE_B8C3B6
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C502
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C50A
-	dw CODE_B8C514
-	dw CODE_B8C01F
-	dw CODE_B8C4EC
-	dw CODE_B8C51E
-	dw CODE_B8C52B
+	dw CODE_B8C3B6				;00
+	dw CODE_B8C3B6				;01
+	dw CODE_B8C3C1				;02
+	dw CODE_B8C3C2				;03
+	dw CODE_B8C01F				;04
+	dw CODE_B8C01F				;05
+	dw CODE_B8C3E7				;06
+	dw CODE_B8C3B6				;07
+	dw CODE_B8C3B6				;08
+	dw CODE_B8C3B6				;09
+	dw CODE_B8C3B6				;0A
+	dw CODE_B8C3B6				;0B
+	dw CODE_B8C01F				;0C
+	dw CODE_B8C3F6				;0D
+	dw CODE_B8C401				;0E
+	dw CODE_B8C3B6				;0F
+	dw CODE_B8C3B6				;10
+	dw CODE_B8C3B6				;11
+	dw CODE_B8C3B6				;12
+	dw CODE_B8C412				;13
+	dw CODE_B8C491				;14
+	dw CODE_B8C4B6				;15
+	dw CODE_B8C3B6				;16
+	dw CODE_B8C4D1				;17
+	dw CODE_B8C01F				;18
+	dw CODE_B8C4EC				;19
+	dw CODE_B8C3B6				;1A
+	dw CODE_B8C01F				;1B
+	dw CODE_B8C01F				;1C
+	dw CODE_B8C01F				;1D
+	dw CODE_B8C502				;1E
+	dw CODE_B8C01F				;1F
+	dw CODE_B8C01F				;20
+	dw CODE_B8C50A				;21
+	dw CODE_B8C514				;22
+	dw CODE_B8C01F				;23
+	dw CODE_B8C4EC				;24
+	dw CODE_B8C51E				;25
+	dw CODE_B8C52B				;26
 
 DATA_B8BC77:
-	dw CODE_B8C83D
-	dw CODE_B8C01F
-	dw CODE_B8C83D
-	dw CODE_B8C83D
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C890
-	dw CODE_B8C890
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C83D
-	dw CODE_B8C83D
-	dw CODE_B8C83D
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C890
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C890
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
+	dw CODE_B8C83D				;00
+	dw CODE_B8C01F				;01
+	dw CODE_B8C83D				;02
+	dw CODE_B8C83D				;03
+	dw CODE_B8C01F				;04
+	dw CODE_B8C01F				;05
+	dw CODE_B8C01F				;06
+	dw CODE_B8C890				;07
+	dw CODE_B8C890				;08
+	dw CODE_B8C01F				;09
+	dw CODE_B8C01F				;0A
+	dw CODE_B8C01F				;0B
+	dw CODE_B8C01F				;0C
+	dw CODE_B8C01F				;0D
+	dw CODE_B8C01F				;0E
+	dw CODE_B8C83D				;0F
+	dw CODE_B8C83D				;10
+	dw CODE_B8C83D				;11
+	dw CODE_B8C01F				;12
+	dw CODE_B8C01F				;13
+	dw CODE_B8C01F				;14
+	dw CODE_B8C01F				;15
+	dw CODE_B8C01F				;16
+	dw CODE_B8C01F				;17
+	dw CODE_B8C01F				;18
+	dw CODE_B8C01F				;19
+	dw CODE_B8C01F				;1A
+	dw CODE_B8C01F				;1B
+	dw CODE_B8C01F				;1C
+	dw CODE_B8C01F				;1D
+	dw CODE_B8C890				;1E
+	dw CODE_B8C01F				;1F
+	dw CODE_B8C01F				;20
+	dw CODE_B8C01F				;21
+	dw CODE_B8C890				;22
+	dw CODE_B8C01F				;23
+	dw CODE_B8C01F				;24
+	dw CODE_B8C01F				;25
+	dw CODE_B8C01F				;26
 
 DATA_B8BCC5:
-	dw CODE_B8C55F
-	dw CODE_B8C5FA
-	dw CODE_B8C55F
-	dw CODE_B8C55F
-	dw CODE_B8C01F
-	dw CODE_B8C55F
-	dw CODE_B8C01F
-	dw CODE_B8C55F
-	dw CODE_B8C5FA
-	dw CODE_B8C55F
-	dw CODE_B8C5FA
-	dw CODE_B8C60A
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C55F
-	dw CODE_B8C5FA
-	dw CODE_B8C5FA
-	dw CODE_B8C01F
-	dw CODE_B8C65A
-	dw CODE_B8C6A4
-	dw CODE_B8C6A5
-	dw CODE_B8C705
-	dw CODE_B8C76F
-	dw CODE_B8C7D9
-	dw CODE_B8C55F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C65A
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C55F
-	dw CODE_B8C55F
-	dw CODE_B8C01F
+	dw CODE_B8C55F				;00
+	dw CODE_B8C5FA				;01
+	dw CODE_B8C55F				;02
+	dw CODE_B8C55F				;03
+	dw CODE_B8C01F				;04
+	dw CODE_B8C55F				;05
+	dw CODE_B8C01F				;06
+	dw CODE_B8C55F				;07
+	dw CODE_B8C5FA				;08
+	dw CODE_B8C55F				;09
+	dw CODE_B8C5FA				;0A
+	dw CODE_B8C60A				;0B
+	dw CODE_B8C01F				;0C
+	dw CODE_B8C01F				;0D
+	dw CODE_B8C01F				;0E
+	dw CODE_B8C55F				;0F
+	dw CODE_B8C5FA				;10
+	dw CODE_B8C5FA				;11
+	dw CODE_B8C01F				;12
+	dw CODE_B8C65A				;13
+	dw CODE_B8C6A4				;14
+	dw CODE_B8C6A5				;15
+	dw CODE_B8C705				;16
+	dw CODE_B8C76F				;17
+	dw CODE_B8C7D9				;18
+	dw CODE_B8C55F				;19
+	dw CODE_B8C01F				;1A
+	dw CODE_B8C01F				;1B
+	dw CODE_B8C65A				;1C
+	dw CODE_B8C01F				;1D
+	dw CODE_B8C01F				;1E
+	dw CODE_B8C01F				;1F
+	dw CODE_B8C01F				;20
+	dw CODE_B8C01F				;21
+	dw CODE_B8C01F				;22
+	dw CODE_B8C01F				;23
+	dw CODE_B8C55F				;24
+	dw CODE_B8C55F				;25
+	dw CODE_B8C01F				;26
 
 DATA_B8BD13:
-	dw CODE_B8C537
-	dw CODE_B8C537
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C537
-	dw CODE_B8C537
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C537
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C537
-	dw CODE_B8C537
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C537
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C537
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C537
-	dw CODE_B8C537
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
+	dw CODE_B8C537				;00
+	dw CODE_B8C537				;01
+	dw CODE_B8C01F				;02
+	dw CODE_B8C01F				;03
+	dw CODE_B8C01F				;04
+	dw CODE_B8C01F				;05
+	dw CODE_B8C01F				;06
+	dw CODE_B8C537				;07
+	dw CODE_B8C537				;08
+	dw CODE_B8C01F				;09
+	dw CODE_B8C01F				;0A
+	dw CODE_B8C537				;0B
+	dw CODE_B8C01F				;0C
+	dw CODE_B8C01F				;0D
+	dw CODE_B8C01F				;0E
+	dw CODE_B8C537				;0F
+	dw CODE_B8C537				;10
+	dw CODE_B8C01F				;11
+	dw CODE_B8C01F				;12
+	dw CODE_B8C01F				;13
+	dw CODE_B8C01F				;14
+	dw CODE_B8C01F				;15
+	dw CODE_B8C01F				;16
+	dw CODE_B8C01F				;17
+	dw CODE_B8C01F				;18
+	dw CODE_B8C01F				;19
+	dw CODE_B8C537				;1A
+	dw CODE_B8C01F				;1B
+	dw CODE_B8C01F				;1C
+	dw CODE_B8C01F				;1D
+	dw CODE_B8C537				;1E
+	dw CODE_B8C01F				;1F
+	dw CODE_B8C01F				;20
+	dw CODE_B8C537				;21
+	dw CODE_B8C537				;22
+	dw CODE_B8C01F				;23
+	dw CODE_B8C01F				;24
+	dw CODE_B8C01F				;25
+	dw CODE_B8C01F				;26
 
 DATA_B8BD61:
-	dw CODE_B8C9C8
-	dw CODE_B8CA16
-	dw CODE_B8C9C8
-	dw CODE_B8CA68
-	dw CODE_B8C01F
-	dw CODE_B8C9C8
-	dw CODE_B8C01F
-	dw CODE_B8CA87
-	dw CODE_B8CA87
-	dw CODE_B8CC70
-	dw CODE_B8CC70
-	dw CODE_B8CB35
-	dw CODE_B8C01F
-	dw CODE_B8CB64
-	dw CODE_B8C01F
-	dw CODE_B8CB68
-	dw CODE_B8CB68
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8CB80
-	dw CODE_B8CB80
-	dw CODE_B8CB80
-	dw CODE_B8C01F
-	dw CODE_B8CC70
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8CA87
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8CC74
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C9C8
-	dw CODE_B8CC74
-	dw CODE_B8CC87
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
+	dw CODE_B8C9C8				;00
+	dw CODE_B8CA16				;01
+	dw CODE_B8C9C8				;02
+	dw CODE_B8CA68				;03
+	dw CODE_B8C01F				;04
+	dw CODE_B8C9C8				;05
+	dw CODE_B8C01F				;06
+	dw CODE_B8CA87				;07
+	dw CODE_B8CA87				;08
+	dw CODE_B8CC70				;09
+	dw CODE_B8CC70				;0A
+	dw CODE_B8CB35				;0B
+	dw CODE_B8C01F				;0C
+	dw CODE_B8CB64				;0D
+	dw CODE_B8C01F				;0E
+	dw CODE_B8CB68				;0F
+	dw CODE_B8CB68				;10
+	dw CODE_B8C01F				;11
+	dw CODE_B8C01F				;12
+	dw CODE_B8CB80				;13
+	dw CODE_B8CB80				;14
+	dw CODE_B8CB80				;15
+	dw CODE_B8C01F				;16
+	dw CODE_B8CC70				;17
+	dw CODE_B8C01F				;18
+	dw CODE_B8C01F				;19
+	dw CODE_B8CA87				;1A
+	dw CODE_B8C01F				;1B
+	dw CODE_B8C01F				;1C
+	dw CODE_B8C01F				;1D
+	dw CODE_B8CC74				;1E
+	dw CODE_B8C01F				;1F
+	dw CODE_B8C01F				;20
+	dw CODE_B8C9C8				;21
+	dw CODE_B8CC74				;22
+	dw CODE_B8CC87				;23
+	dw CODE_B8C01F				;24
+	dw CODE_B8C01F				;25
+	dw CODE_B8C01F				;26
 
 DATA_B8BDAF:
-	dw CODE_B8CCBE
-	dw CODE_B8CCBE
-	dw CODE_B8CCBE
-	dw CODE_B8CCBE
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8CCBE
-	dw CODE_B8CCBE
-	dw CODE_B8CCBE
-	dw CODE_B8CCBE
-	dw CODE_B8CCBE
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8CCBE
-	dw CODE_B8CCBE
-	dw CODE_B8CCBE
-	dw CODE_B8CCBE
-	dw CODE_B8CCBE
-	dw CODE_B8CCBE
-	dw CODE_B8CCBE
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8CCBE
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
+	dw CODE_B8CCBE				;00
+	dw CODE_B8CCBE				;01
+	dw CODE_B8CCBE				;02
+	dw CODE_B8CCBE				;03
+	dw CODE_B8C01F				;04
+	dw CODE_B8C01F				;05
+	dw CODE_B8C01F				;06
+	dw CODE_B8CCBE				;07
+	dw CODE_B8CCBE				;08
+	dw CODE_B8CCBE				;09
+	dw CODE_B8CCBE				;0A
+	dw CODE_B8CCBE				;0B
+	dw CODE_B8C01F				;0C
+	dw CODE_B8C01F				;0D
+	dw CODE_B8C01F				;0E
+	dw CODE_B8CCBE				;0F
+	dw CODE_B8CCBE				;10
+	dw CODE_B8CCBE				;11
+	dw CODE_B8CCBE				;12
+	dw CODE_B8CCBE				;13
+	dw CODE_B8CCBE				;14
+	dw CODE_B8CCBE				;15
+	dw CODE_B8C01F				;16
+	dw CODE_B8C01F				;17
+	dw CODE_B8C01F				;18
+	dw CODE_B8C01F				;19
+	dw CODE_B8C01F				;1A
+	dw CODE_B8C01F				;1B
+	dw CODE_B8C01F				;1C
+	dw CODE_B8C01F				;1D
+	dw CODE_B8C01F				;1E
+	dw CODE_B8C01F				;1F
+	dw CODE_B8C01F				;20
+	dw CODE_B8CCBE				;21
+	dw CODE_B8C01F				;22
+	dw CODE_B8C01F				;23
+	dw CODE_B8C01F				;24
+	dw CODE_B8C01F				;25
+	dw CODE_B8C01F				;26
 
 DATA_B8BDFD:
-	dw CODE_B8CCC7
-	dw CODE_B8CCC7
-	dw CODE_B8CCC7
-	dw CODE_B8CCC7
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8CCC7
-	dw CODE_B8CCC7
-	dw CODE_B8CCC7
-	dw CODE_B8CCC7
-	dw CODE_B8CCC7
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8CCC7
-	dw CODE_B8CCC7
-	dw CODE_B8CCC7
-	dw CODE_B8CCC7
-	dw CODE_B8CCC7
-	dw CODE_B8CCC7
-	dw CODE_B8CCC7
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8CCC7
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
+	dw CODE_B8CCC7				;00
+	dw CODE_B8CCC7				;01
+	dw CODE_B8CCC7				;02
+	dw CODE_B8CCC7				;03
+	dw CODE_B8C01F				;04
+	dw CODE_B8C01F				;05
+	dw CODE_B8C01F				;06
+	dw CODE_B8CCC7				;07
+	dw CODE_B8CCC7				;08
+	dw CODE_B8CCC7				;09
+	dw CODE_B8CCC7				;0A
+	dw CODE_B8CCC7				;0B
+	dw CODE_B8C01F				;0C
+	dw CODE_B8C01F				;0D
+	dw CODE_B8C01F				;0E
+	dw CODE_B8CCC7				;0F
+	dw CODE_B8CCC7				;10
+	dw CODE_B8CCC7				;11
+	dw CODE_B8CCC7				;12
+	dw CODE_B8CCC7				;13
+	dw CODE_B8CCC7				;14
+	dw CODE_B8CCC7				;15
+	dw CODE_B8C01F				;16
+	dw CODE_B8C01F				;17
+	dw CODE_B8C01F				;18
+	dw CODE_B8C01F				;19
+	dw CODE_B8C01F				;1A
+	dw CODE_B8C01F				;1B
+	dw CODE_B8C01F				;1C
+	dw CODE_B8C01F				;1D
+	dw CODE_B8C01F				;1E
+	dw CODE_B8C01F				;1F
+	dw CODE_B8C01F				;20
+	dw CODE_B8CCC7				;21
+	dw CODE_B8C01F				;22
+	dw CODE_B8C01F				;23
+	dw CODE_B8C01F				;24
+	dw CODE_B8C01F				;25
+	dw CODE_B8C01F				;26
 
 DATA_B8BE4B:
-	dw CODE_B8CCDD
-	dw CODE_B8CCDD
-	dw CODE_B8CCDD
-	dw CODE_B8CCDD
-	dw CODE_B8CCDD
-	dw CODE_B8CCDD
-	dw CODE_B8CD07
-	dw CODE_B8CCDD
-	dw CODE_B8CCDD
-	dw CODE_B8CCDD
-	dw CODE_B8CCDD
-	dw CODE_B8CCDD
-	dw CODE_B8C01F
-	dw CODE_B8CCDD
-	dw CODE_B8CCDD
-	dw CODE_B8CCDD
-	dw CODE_B8CCDD
-	dw CODE_B8CCDD
-	dw CODE_B8CCDD
-	dw CODE_B8CCDD
-	dw CODE_B8CCDD
-	dw CODE_B8CCDD
-	dw CODE_B8CCDD
-	dw CODE_B8CCDD
-	dw CODE_B8CCDD
-	dw CODE_B8CCDD
-	dw CODE_B8CCDD
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8CCDD
-	dw CODE_B8CCDD
-	dw CODE_B8CCDD
-	dw CODE_B8CCDD
-	dw CODE_B8CCDD
-	dw CODE_B8CD21
-	dw CODE_B8CCDD
-	dw CODE_B8CCDD
-	dw CODE_B8CCDD
+	dw CODE_B8CCDD				;00
+	dw CODE_B8CCDD				;01
+	dw CODE_B8CCDD				;02
+	dw CODE_B8CCDD				;03
+	dw CODE_B8CCDD				;04
+	dw CODE_B8CCDD				;05
+	dw CODE_B8CD07				;06
+	dw CODE_B8CCDD				;07
+	dw CODE_B8CCDD				;08
+	dw CODE_B8CCDD				;09
+	dw CODE_B8CCDD				;0A
+	dw CODE_B8CCDD				;0B
+	dw CODE_B8C01F				;0C
+	dw CODE_B8CCDD				;0D
+	dw CODE_B8CCDD				;0E
+	dw CODE_B8CCDD				;0F
+	dw CODE_B8CCDD				;10
+	dw CODE_B8CCDD				;11
+	dw CODE_B8CCDD				;12
+	dw CODE_B8CCDD				;13
+	dw CODE_B8CCDD				;14
+	dw CODE_B8CCDD				;15
+	dw CODE_B8CCDD				;16
+	dw CODE_B8CCDD				;17
+	dw CODE_B8CCDD				;18
+	dw CODE_B8CCDD				;19
+	dw CODE_B8CCDD				;1A
+	dw CODE_B8C01F				;1B
+	dw CODE_B8C01F				;1C
+	dw CODE_B8C01F				;1D
+	dw CODE_B8CCDD				;1E
+	dw CODE_B8CCDD				;1F
+	dw CODE_B8CCDD				;20
+	dw CODE_B8CCDD				;21
+	dw CODE_B8CCDD				;22
+	dw CODE_B8CD21				;23
+	dw CODE_B8CCDD				;24
+	dw CODE_B8CCDD				;25
+	dw CODE_B8CCDD				;26
 
 DATA_B8BE99:
-	dw CODE_B8CD6F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8CDE8
-	dw CODE_B8C01F
-	dw CODE_B8CD6F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
+	dw CODE_B8CD6F				;00
+	dw CODE_B8C01F				;01
+	dw CODE_B8C01F				;02
+	dw CODE_B8C01F				;03
+	dw CODE_B8C01F				;04
+	dw CODE_B8C01F				;05
+	dw CODE_B8C01F				;06
+	dw CODE_B8C01F				;07
+	dw CODE_B8C01F				;08
+	dw CODE_B8C01F				;09
+	dw CODE_B8C01F				;0A
+	dw CODE_B8C01F				;0B
+	dw CODE_B8C01F				;0C
+	dw CODE_B8C01F				;0D
+	dw CODE_B8C01F				;0E
+	dw CODE_B8C01F				;0F
+	dw CODE_B8C01F				;10
+	dw CODE_B8C01F				;11
+	dw CODE_B8C01F				;12
+	dw CODE_B8C01F				;13
+	dw CODE_B8C01F				;14
+	dw CODE_B8C01F				;15
+	dw CODE_B8C01F				;16
+	dw CODE_B8CDE8				;17
+	dw CODE_B8C01F				;18
+	dw CODE_B8CD6F				;19
+	dw CODE_B8C01F				;1A
+	dw CODE_B8C01F				;1B
+	dw CODE_B8C01F				;1C
+	dw CODE_B8C01F				;1D
+	dw CODE_B8C01F				;1E
+	dw CODE_B8C01F				;1F
+	dw CODE_B8C01F				;20
+	dw CODE_B8C01F				;21
+	dw CODE_B8C01F				;22
+	dw CODE_B8C01F				;23
+	dw CODE_B8C01F				;24
+	dw CODE_B8C01F				;25
+	dw CODE_B8C01F				;26
 
 DATA_B8BEE7:
-	dw CODE_B8CE09
-	dw CODE_B8CE09
-	dw CODE_B8CE09
-	dw CODE_B8CE0E
-	dw CODE_B8C01F
-	dw CODE_B8CE09
-	dw CODE_B8CE0F
-	dw CODE_B8CE09
-	dw CODE_B8CE09
-	dw CODE_B8CE09
-	dw CODE_B8CE09
-	dw CODE_B8CE09
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8CE14
-	dw CODE_B8CE09
-	dw CODE_B8CE09
-	dw CODE_B8CE09
-	dw CODE_B8CE09
-	dw CODE_B8CE09
-	dw CODE_B8CE09
-	dw CODE_B8CE09
-	dw CODE_B8C01F
-	dw CODE_B8CE09
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8CE09
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8CE09
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8CE09
-	dw CODE_B8CE09
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
+	dw CODE_B8CE09				;00
+	dw CODE_B8CE09				;01
+	dw CODE_B8CE09				;02
+	dw CODE_B8CE0E				;03
+	dw CODE_B8C01F				;04
+	dw CODE_B8CE09				;05
+	dw CODE_B8CE0F				;06
+	dw CODE_B8CE09				;07
+	dw CODE_B8CE09				;08
+	dw CODE_B8CE09				;09
+	dw CODE_B8CE09				;0A
+	dw CODE_B8CE09				;0B
+	dw CODE_B8C01F				;0C
+	dw CODE_B8C01F				;0D
+	dw CODE_B8CE14				;0E
+	dw CODE_B8CE09				;0F
+	dw CODE_B8CE09				;10
+	dw CODE_B8CE09				;11
+	dw CODE_B8CE09				;12
+	dw CODE_B8CE09				;13
+	dw CODE_B8CE09				;14
+	dw CODE_B8CE09				;15
+	dw CODE_B8C01F				;16
+	dw CODE_B8CE09				;17
+	dw CODE_B8C01F				;18
+	dw CODE_B8C01F				;19
+	dw CODE_B8CE09				;1A
+	dw CODE_B8C01F				;1B
+	dw CODE_B8C01F				;1C
+	dw CODE_B8C01F				;1D
+	dw CODE_B8CE09				;1E
+	dw CODE_B8C01F				;1F
+	dw CODE_B8C01F				;20
+	dw CODE_B8CE09				;21
+	dw CODE_B8CE09				;22
+	dw CODE_B8C01F				;23
+	dw CODE_B8C01F				;24
+	dw CODE_B8C01F				;25
+	dw CODE_B8C01F				;26
 
 DATA_B8BF35:
-	dw CODE_B8CE19
-	dw CODE_B8CE19
-	dw CODE_B8CE19
-	dw CODE_B8CE19
-	dw CODE_B8C01F
-	dw CODE_B8CE1C
-	dw CODE_B8CE34
-	dw CODE_B8CE19
-	dw CODE_B8CE19
-	dw CODE_B8CE19
-	dw CODE_B8CE19
-	dw CODE_B8CE39
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8CE42
-	dw CODE_B8CE19
-	dw CODE_B8CE19
-	dw CODE_B8CE19
-	dw CODE_B8CE19
-	dw CODE_B8CE47
-	dw CODE_B8CE47
-	dw CODE_B8CE47
-	dw CODE_B8C01F
-	dw CODE_B8CE4C
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8CE57
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8CE68
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8CE68
-	dw CODE_B8CE68
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
+	dw CODE_B8CE19				;00
+	dw CODE_B8CE19				;01
+	dw CODE_B8CE19				;02
+	dw CODE_B8CE19				;03
+	dw CODE_B8C01F				;04
+	dw CODE_B8CE1C				;05
+	dw CODE_B8CE34				;06
+	dw CODE_B8CE19				;07
+	dw CODE_B8CE19				;08
+	dw CODE_B8CE19				;09
+	dw CODE_B8CE19				;0A
+	dw CODE_B8CE39				;0B
+	dw CODE_B8C01F				;0C
+	dw CODE_B8C01F				;0D
+	dw CODE_B8CE42				;0E
+	dw CODE_B8CE19				;0F
+	dw CODE_B8CE19				;10
+	dw CODE_B8CE19				;11
+	dw CODE_B8CE19				;12
+	dw CODE_B8CE47				;13
+	dw CODE_B8CE47				;14
+	dw CODE_B8CE47				;15
+	dw CODE_B8C01F				;16
+	dw CODE_B8CE4C				;17
+	dw CODE_B8C01F				;18
+	dw CODE_B8C01F				;19
+	dw CODE_B8CE57				;1A
+	dw CODE_B8C01F				;1B
+	dw CODE_B8C01F				;1C
+	dw CODE_B8C01F				;1D
+	dw CODE_B8CE68				;1E
+	dw CODE_B8C01F				;1F
+	dw CODE_B8C01F				;20
+	dw CODE_B8CE68				;21
+	dw CODE_B8CE68				;22
+	dw CODE_B8C01F				;23
+	dw CODE_B8C01F				;24
+	dw CODE_B8C01F				;25
+	dw CODE_B8C01F				;26
 
 DATA_B8BF83:
-	dw CODE_B8CE6D
-	dw CODE_B8CE6D
-	dw CODE_B8CE6D
-	dw CODE_B8CF14
-	dw CODE_B8CF14
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8CE6D
-	dw CODE_B8CE6D
-	dw CODE_B8CE6D
-	dw CODE_B8CE6D
-	dw CODE_B8CE73
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8CE6D
-	dw CODE_B8CE6D
-	dw CODE_B8CE6D
-	dw CODE_B8CE6D
-	dw CODE_B8CE6D
-	dw CODE_B8CE6D
-	dw CODE_B8CE6D
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8CE6D
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
+	dw CODE_B8CE6D				;00
+	dw CODE_B8CE6D				;01
+	dw CODE_B8CE6D				;02
+	dw CODE_B8CF14				;03
+	dw CODE_B8CF14				;04
+	dw CODE_B8C01F				;05
+	dw CODE_B8C01F				;06
+	dw CODE_B8CE6D				;07
+	dw CODE_B8CE6D				;08
+	dw CODE_B8CE6D				;09
+	dw CODE_B8CE6D				;0A
+	dw CODE_B8CE73				;0B
+	dw CODE_B8C01F				;0C
+	dw CODE_B8C01F				;0D
+	dw CODE_B8C01F				;0E
+	dw CODE_B8CE6D				;0F
+	dw CODE_B8CE6D				;10
+	dw CODE_B8CE6D				;11
+	dw CODE_B8CE6D				;12
+	dw CODE_B8CE6D				;13
+	dw CODE_B8CE6D				;14
+	dw CODE_B8CE6D				;15
+	dw CODE_B8C01F				;16
+	dw CODE_B8C01F				;17
+	dw CODE_B8C01F				;18
+	dw CODE_B8C01F				;19
+	dw CODE_B8C01F				;1A
+	dw CODE_B8C01F				;1B
+	dw CODE_B8C01F				;1C
+	dw CODE_B8C01F				;1D
+	dw CODE_B8C01F				;1E
+	dw CODE_B8C01F				;1F
+	dw CODE_B8C01F				;20
+	dw CODE_B8CE6D				;21
+	dw CODE_B8C01F				;22
+	dw CODE_B8C01F				;23
+	dw CODE_B8C01F				;24
+	dw CODE_B8C01F				;25
+	dw CODE_B8C01F				;26
 
 DATA_B8BFD1:
-	dw CODE_B8CF15
-	dw CODE_B8CF15
-	dw CODE_B8CF15
-	dw CODE_B8CF15
-	dw CODE_B8C01F
-	dw CODE_B8CF15
-	dw CODE_B8C01F
-	dw CODE_B8CF15
-	dw CODE_B8CF15
-	dw CODE_B8CF23
-	dw CODE_B8CF23
-	dw CODE_B8CF15
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8CF15
-	dw CODE_B8CF15
-	dw CODE_B8CF15
-	dw CODE_B8C01F
-	dw CODE_B8CF15
-	dw CODE_B8CF15
-	dw CODE_B8CF15
-	dw CODE_B8C01F
-	dw CODE_B8CF15
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8CF15
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8CF15
-	dw CODE_B8C01F
-	dw CODE_B8C01F
-	dw CODE_B8CF23
-	dw CODE_B8C01F
-	dw CODE_B8C01F
+	dw CODE_B8CF15				;00
+	dw CODE_B8CF15				;01
+	dw CODE_B8CF15				;02
+	dw CODE_B8CF15				;03
+	dw CODE_B8C01F				;04
+	dw CODE_B8CF15				;05
+	dw CODE_B8C01F				;06
+	dw CODE_B8CF15				;07
+	dw CODE_B8CF15				;08
+	dw CODE_B8CF23				;09
+	dw CODE_B8CF23				;0A
+	dw CODE_B8CF15				;0B
+	dw CODE_B8C01F				;0C
+	dw CODE_B8C01F				;0D
+	dw CODE_B8C01F				;0E
+	dw CODE_B8CF15				;0F
+	dw CODE_B8CF15				;10
+	dw CODE_B8CF15				;11
+	dw CODE_B8C01F				;12
+	dw CODE_B8CF15				;13
+	dw CODE_B8CF15				;14
+	dw CODE_B8CF15				;15
+	dw CODE_B8C01F				;16
+	dw CODE_B8CF15				;17
+	dw CODE_B8C01F				;18
+	dw CODE_B8C01F				;19
+	dw CODE_B8CF15				;1A
+	dw CODE_B8C01F				;1B
+	dw CODE_B8C01F				;1C
+	dw CODE_B8C01F				;1D
+	dw CODE_B8C01F				;1E
+	dw CODE_B8C01F				;1F
+	dw CODE_B8C01F				;20
+	dw CODE_B8CF15				;21
+	dw CODE_B8C01F				;22
+	dw CODE_B8C01F				;23
+	dw CODE_B8CF23				;24
+	dw CODE_B8C01F				;25
+	dw CODE_B8C01F				;26
 
 CODE_B8C01F:
 	RTS					;$B8C01F  /
