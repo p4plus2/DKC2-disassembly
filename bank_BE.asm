@@ -5,24 +5,24 @@ CODE_BEB800:
 	JMP (DATA_BEB806,x)			;$BEB803  /
 
 DATA_BEB806:
-	dw CODE_BECBA0
-	dw CODE_BECDE2
-	dw CODE_BECE8D
-	dw CODE_BECF73
-	dw CODE_BEE47F
-	dw CODE_BEE07E
-	dw CODE_BEE2D9
-	dw CODE_BEB850
-	dw CODE_BEBA99
-	dw CODE_BEE6EB
-	dw CODE_BEE8BD
-	dw CODE_BEEA8D
-	dw CODE_BEEB4E
-	dw CODE_BEEC82
-	dw CODE_BEEE38
-	dw CODE_BEEF1F
-	dw CODE_BEEF81
-	dw CODE_BEEA7F
+	dw CODE_BECBA0				;0000
+	dw CODE_BECDE2				;0002
+	dw CODE_BECE8D				;0004
+	dw CODE_BECF73				;0006
+	dw CODE_BEE47F				;0008
+	dw CODE_BEE07E				;000A
+	dw CODE_BEE2D9				;000C
+	dw CODE_BEB850				;000E
+	dw CODE_BEBA99				;0010
+	dw CODE_BEE6EB				;0012
+	dw CODE_BEE8BD				;0014
+	dw CODE_BEEA8D				;0016
+	dw CODE_BEEB4E				;0018
+	dw CODE_BEEC82				;001A
+	dw CODE_BEEE38				;001C
+	dw CODE_BEEF1F				;001E
+	dw CODE_BEEF81				;0020
+	dw CODE_BEEA7F				;0022
 
 
 CODE_BEB82A:
@@ -87,21 +87,21 @@ CODE_BEB88F:
 	LDX current_sprite			;$BEB893   |
 	LDA #$0064				;$BEB895   |
 CODE_BEB898:					;	   |
-	STA $32					;$BEB898   |
-	LDA $0000,y				;$BEB89A   |
+	STA $32					;$BEB898   | store the maximum coins the counter can hold
+	LDA $0000,y				;$BEB89A   | get coin count (Y is the address of the current coin count, this is used for all coin types)
 	STA CPU.dividen				;$BEB89D   |
-	CLC					;$BEB8A0   |
-	ADC $42,x				;$BEB8A1   |
-	CMP $32					;$BEB8A3   |
-	BCC CODE_BEB8B2				;$BEB8A5   |
-	LDA $32					;$BEB8A7   |
-	DEC A					;$BEB8A9   |
-	SBC $0000,y				;$BEB8AA   |
-	STA $42,x				;$BEB8AD   |
-	LDA $32					;$BEB8AF   |
-	DEC A					;$BEB8B1   |
-CODE_BEB8B2:					;	   |
-	STA $0000,y				;$BEB8B2   |
+	CLC					;$BEB8A0   |\ add coins to coin count (the amount is stored in sprite variable $42)
+	ADC $42,x				;$BEB8A1   |/
+	CMP $32					;$BEB8A3   |\ check if coin count exceeds maximum
+	BCC CODE_BEB8B2				;$BEB8A5   |/ if not add the coins to the total
+	LDA $32					;$BEB8A7   |\ get max coin count
+	DEC A					;$BEB8A9   | | subtract away all the coins to give
+	SBC $0000,y				;$BEB8AA   | | this ensures we end up with 0 in the sprite variable
+	STA $42,x				;$BEB8AD   |/ set coins to give to 0
+	LDA $32					;$BEB8AF   |\ get maximum coins
+	DEC A					;$BEB8B1   | | - 1
+CODE_BEB8B2:					;	   | |
+	STA $0000,y				;$BEB8B2   |/ update coin count
 	SEP #$20				;$BEB8B5   |
 	LDA #$0A				;$BEB8B7   |
 	STA CPU.divisor				;$BEB8B9   |
@@ -123,9 +123,9 @@ CODE_BEB8B2:					;	   |
 	ORA #$F000				;$BEB8DF   |
 	STA $44,x				;$BEB8E2   |
 	INC $2E,x				;$BEB8E4   |
-	LDA $4E,x				;$BEB8E6   |
-	JSL queue_sound_effect			;$BEB8E8   |
-	JML [$05A9]				;$BEB8EC  /
+	LDA $4E,x				;$BEB8E6   |\ get the collection sound (stored is sprite variable $4E)
+	JSL queue_sound_effect			;$BEB8E8   |/ play the sound
+	JML [$05A9]				;$BEB8EC  / return from sprite code
 
 CODE_BEB8EF:
 	JSL CODE_B9D100				;$BEB8EF  \
@@ -375,38 +375,38 @@ CODE_BEBACA:
 	AND #$00FF				;$BEBADB   |
 	EOR $4F,x				;$BEBADE   |
 	JSL CODE_BEC5BC				;$BEBAE0   |
-	INC $2E,x				;$BEBAE4   |
-	LDA $4C,x				;$BEBAE6   |
-	TSB $0902				;$BEBAE8   |
-	LDA $0902				;$BEBAEB   |
+	INC $2E,x				;$BEBAE4   | set kong letter sprite as collected
+	LDA $4C,x				;$BEBAE6   | get what kong letter the sprite is
+	TSB $0902				;$BEBAE8   | set the corresponding kong letter bit
+	LDA $0902				;$BEBAEB   | get collected kong letters
 	INC A					;$BEBAEE   |
-	AND #$000F				;$BEBAEF   |
-	STA $52,x				;$BEBAF2   |
-	BNE CODE_BEBAFD				;$BEBAF4   |
-	LDA #$0001				;$BEBAF6   |
-	JSL CODE_BEC64C				;$BEBAF9   |
+	AND #$000F				;$BEBAEF   |	
+	STA $52,x				;$BEBAF2   |	
+	BNE CODE_BEBAFD				;$BEBAF4   | if all the kong letters arent collected yet dont give an extra life
+	LDA #$0001				;$BEBAF6   | number of lives to give
+	JSL CODE_BEC64C				;$BEBAF9   | give extra lives
 CODE_BEBAFD:					;	   |
-	LDA $4E,x				;$BEBAFD   |
-	JSL queue_sound_effect			;$BEBAFF   |
-	LDX current_sprite			;$BEBB03   |
-	LDA $0902				;$BEBB05   |
+	LDA $4E,x				;$BEBAFD   | get the sound the kong letter should make (this is stored in a sprite variable)
+	JSL queue_sound_effect			;$BEBAFF   | play the sound
+	LDX current_sprite			;$BEBB03   | get current sprite index
+	LDA $0902				;$BEBB05   | get collected kong letters
 	LSR A					;$BEBB08   |
-	BCS CODE_BEBB0D				;$BEBB09   |
+	BCS CODE_BEBB0D				;$BEBB09   | if K was collected
 	STZ $42,x				;$BEBB0B   |
 CODE_BEBB0D:					;	   |
 	LSR A					;$BEBB0D   |
-	BCS CODE_BEBB12				;$BEBB0E   |
+	BCS CODE_BEBB12				;$BEBB0E   | if O was collected
 	STZ $44,x				;$BEBB10   |
 CODE_BEBB12:					;	   |
 	LSR A					;$BEBB12   |
-	BCS CODE_BEBB17				;$BEBB13   |
+	BCS CODE_BEBB17				;$BEBB13   | if N was collected
 	STZ $46,x				;$BEBB15   |
 CODE_BEBB17:					;	   |
 	LSR A					;$BEBB17   |
-	BCS CODE_BEBB1C				;$BEBB18   |
+	BCS CODE_BEBB1C				;$BEBB18   | if G was collected
 	STZ $48,x				;$BEBB1A   |
 CODE_BEBB1C:					;	   |
-	JML [$05A9]				;$BEBB1C  /
+	JML [$05A9]				;$BEBB1C  / return from sprite code
 
 CODE_BEBB1F:
 	JSL CODE_B9D100				;$BEBB1F  \
@@ -422,15 +422,15 @@ CODE_BEBB2A:
 	ASL A					;$BEBB37   |
 	ASL A					;$BEBB38   |
 	ASL A					;$BEBB39   |
-	LDX #$08C0				;$BEBB3A   |
-	LDY #$2401				;$BEBB3D   |
+	LDX.l #DATA_C02401>>16|$0800		;$BEBB3A   |	
+	LDY #DATA_C02401			;$BEBB3D   | kong letters top tiledata
 	PHA					;$BEBB40   |
 	JSR CODE_BEBD5C				;$BEBB41   |
 	PLA					;$BEBB44   |
 	BCS CODE_BEBB5E				;$BEBB45   |
 	ADC #$0100				;$BEBB47   |
-	LDX #$08C0				;$BEBB4A   |
-	LDY #$2501				;$BEBB4D   |
+	LDX.l #DATA_C02501>>16|$0800		;$BEBB4A   |
+	LDY #DATA_C02501			;$BEBB4D   | kong letters bottom tiledata
 	JSR CODE_BEBD5C				;$BEBB50   |
 	BCC CODE_BEBB61				;$BEBB53   |
 	LDA $1730				;$BEBB55   |
@@ -1980,31 +1980,31 @@ CODE_BEC63D:					;	   |
 	RTS					;$BEC63D  /
 
 CODE_BEC63E:
-	SEP #$20				;$BEC63E  \
-	EOR #$FF				;$BEC640   |
+	SEP #$20				;$BEC63E  \ 8 bit
+	EOR #$FF				;$BEC640   | negate number of lives to add
 	SEC					;$BEC642   |
-	ADC $0971				;$BEC643   |
-	STA $0971				;$BEC646   |
-	REP #$20				;$BEC649   |
+	ADC $0971				;$BEC643   | add negative number of lives to add
+	STA $0971				;$BEC646   | this basically sets it back to 0
+	REP #$20				;$BEC649   | 16 bit
 	RTL					;$BEC64B  /
 
 CODE_BEC64C:
-	SEP #$20				;$BEC64C  \
-	PHA					;$BEC64E   |
+	SEP #$20				;$BEC64C  \ 8 bit
+	PHA					;$BEC64E   | preserve number of lives to add
 	CLC					;$BEC64F   |
-	ADC $0971				;$BEC650   |
-	STA $0971				;$BEC653   |
-	PLA					;$BEC656   |
-	REP #$20				;$BEC657   |
+	ADC $0971				;$BEC650   | add lives to add counter
+	STA $0971				;$BEC653   | update life add counter
+	PLA					;$BEC656   | retrieve number of lives to add
+	REP #$20				;$BEC657   | 16 bit
 CODE_BEC659:					;	   |
 	CLC					;$BEC659   |
-	ADC $08BE				;$BEC65A   |
+	ADC $08BE				;$BEC65A   | add lives to current life count
 	STA $08BE				;$BEC65D   |
-	LDA $0973				;$BEC660   |
-	BNE CODE_BEC668				;$BEC663   |
+	LDA $0973				;$BEC660   | get the life display timer
+	BNE CODE_BEC668				;$BEC663   | if the timer isnt 0
 	STZ $0977				;$BEC665   |
 CODE_BEC668:					;	   |
-	LDA #$0078				;$BEC668   |
+	LDA #$0078				;$BEC668   | set life display timer
 	STA $0973				;$BEC66B   |
 	RTL					;$BEC66E  /
 
@@ -2091,35 +2091,35 @@ CODE_BEC70F:					;	   |
 	LDA $000A,y				;$BEC711   |
 	JSL CODE_B59CAE				;$BEC714   |
 CODE_BEC718:					;	   |
-	RTS					;$BEC718  /
+	RTS					;$BEC718  / return
 
 CODE_BEC719:
-	LDA $0973				;$BEC719  \
-	BEQ CODE_BEC718				;$BEC71C   |
-	DEC A					;$BEC71E   |
-	BNE CODE_BEC735				;$BEC71F   |
-	LDA $0979				;$BEC721   |
+	LDA $0973				;$BEC719  \ get the life display timer
+	BEQ CODE_BEC718				;$BEC71C   | if the timer is 0 return
+	DEC A					;$BEC71E   | otherwise decrement timer by 1
+	BNE CODE_BEC735				;$BEC71F   | if the timer isnt 0 now
+	LDA $0979				;$BEC721   | load the y position of the life counter
 	SEC					;$BEC724   |
-	SBC #$0030				;$BEC725   |
-	BCS CODE_BEC730				;$BEC728   |
-	LDA #$0000				;$BEC72A   |
+	SBC #$0030				;$BEC725   | subtract #$30 from y position
+	BCS CODE_BEC730				;$BEC728   | if the y position is >= 0
+	LDA #$0000				;$BEC72A   | otherwise set the display timer to 0
 	STA $0973				;$BEC72D   |
 CODE_BEC730:					;	   |
-	STA $0979				;$BEC730   |
+	STA $0979				;$BEC730   | update the y position
 	BRA CODE_BEC748				;$BEC733  /
 
 CODE_BEC735:
-	LDA $0979				;$BEC735  \
-	CMP #$0200				;$BEC738   |
-	BCS CODE_BEC745				;$BEC73B   |
-	ADC #$0030				;$BEC73D   |
-	STA $0979				;$BEC740   |
-	BRA CODE_BEC748				;$BEC743  /
+	LDA $0979				;$BEC735  \ load the y position of the life counter
+	CMP #$0200				;$BEC738   | final life counter y position
+	BCS CODE_BEC745				;$BEC73B   | if the counter is > the final position
+	ADC #$0030				;$BEC73D   | add #$30 to y position
+	STA $0979				;$BEC740   | update the y position of the life counter
+	BRA CODE_BEC748				;$BEC743  / since the life counter isnt in its final position dont decrement the timer
 
 CODE_BEC745:
-	DEC $0973				;$BEC745  \
+	DEC $0973				;$BEC745  \ decrement the timer
 CODE_BEC748:					;	   |
-	LDA #$20A8				;$BEC748   |
+	LDA #$20A8				;$BEC748   | load sprite image to display (/4 to get actual image number)
 	STA $0975				;$BEC74B   |
 	LDX #$1D40				;$BEC74E   |
 	LDA $0979				;$BEC751   |
@@ -2239,27 +2239,27 @@ CODE_BEC81F:
 	RTS					;$BEC84A  /
 
 CODE_BEC84B:
-	LDA $096D				;$BEC84B  \
-	CMP $096B				;$BEC84E   |
-	BNE CODE_BEC87B				;$BEC851   |
-	LDA $096F				;$BEC853   |
-	BNE CODE_BEC8A7				;$BEC856   |
-	RTS					;$BEC858  /
+	LDA $096D				;$BEC84B  \ get final banana count
+	CMP $096B				;$BEC84E   | check if final banana count = current banana count
+	BNE CODE_BEC87B				;$BEC851   | if counts are different
+	LDA $096F				;$BEC853   | get the banana display timer
+	BNE CODE_BEC8A7				;$BEC856   | if the timer isnt 0 decrement the timer
+	RTS					;$BEC858  / return
 
 CODE_BEC859:
-	SED					;$BEC859  \
-	LDA $08BC				;$BEC85A   |
-	CLC					;$BEC85D   |
+	SED					;$BEC859  \ enable decimal because bananas are stored in BCD
+	LDA $08BC				;$BEC85A   | get banana count (this one is used for the krem coin cheat)
+	CLC					;$BEC85D   | reset the counter to 0
 	SBC #$0099				;$BEC85E   |
 	STA $08BC				;$BEC861   |
-	LDA $096D				;$BEC864   |
-	CLC					;$BEC867   |
+	LDA $096D				;$BEC864   | get final banana count (this one is the target count that the counter counts to)
+	CLC					;$BEC867   | reset the counter to 0
 	SBC #$0099				;$BEC868   |
 	STA $096D				;$BEC86B   |
-	CLD					;$BEC86E   |
-	STZ $096B				;$BEC86F   |
-	LDA #$0001				;$BEC872   |
-	JSL CODE_BEC659				;$BEC875   |
+	CLD					;$BEC86E   | back to regular binary
+	STZ $096B				;$BEC86F   | set the current banana counter to 0
+	LDA #$0001				;$BEC872   | load number of extra lives to give
+	JSL CODE_BEC659				;$BEC875   | give extra lives
 	BRA CODE_BEC8A7				;$BEC879  /
 
 CODE_BEC87B:
@@ -2276,17 +2276,17 @@ CODE_BEC886:					;	   |
 	BRA CODE_BEC89F				;$BEC892  /
 
 CODE_BEC894:
-	LDA $096B				;$BEC894  \
-	CMP #$0099				;$BEC897   |
-	BCS CODE_BEC859				;$BEC89A   |
-	LDA #$0001				;$BEC89C   |
+	LDA $096B				;$BEC894  \ get current banana count
+	CMP #$0099				;$BEC897   | check if banana count is > 99
+	BCS CODE_BEC859				;$BEC89A   | if so reset the counter and give a life
+	LDA #$0001				;$BEC89C   | otherwise load number of bananas to give
 CODE_BEC89F:					;	   |
-	SED					;$BEC89F   |
-	ADC $096B				;$BEC8A0   |
+	SED					;$BEC89F   | enable decimal because bananas are stored in BCD
+	ADC $096B				;$BEC8A0   | add bananas to count
 	STA $096B				;$BEC8A3   |
-	CLD					;$BEC8A6   |
+	CLD					;$BEC8A6   | back to regular binary
 CODE_BEC8A7:					;	   |
-	DEC $096F				;$BEC8A7   |
+	DEC $096F				;$BEC8A7   | decrement banana display timer
 	LDY $70					;$BEC8AA   |
 	LDA #$0808				;$BEC8AC   |
 	STA $0000,y				;$BEC8AF   |
@@ -7561,103 +7561,104 @@ CODE_BEEF7E:					;	   |
 	JML [$05A9]				;$BEEF7E  /
 
 CODE_BEEF81:
-	LDA $08B8				;$BEEF81  \
-	BNE CODE_BEEFAD				;$BEEF84   |
-	LDY current_sprite			;$BEEF86   |
-	LDA $002E,y				;$BEEF88   |
+	LDA $08B8				;$BEEF81  \ load number of cheated krem coins
+	BNE CODE_BEEFAD				;$BEEF84   | if player already cheated skip the checks for cheat activation
+	LDY current_sprite			;$BEEF86   | get sprite index
+	LDA $002E,y				;$BEEF88   | get current cheat step
 	ASL A					;$BEEF8B   |
 	TAX					;$BEEF8C   |
-	JMP (DATA_BEEF90,x)			;$BEEF8D  /
+	JMP (DATA_BEEF90,x)			;$BEEF8D  / execute the check
 
-DATA_BEEF90:
-	dw CODE_BEEF9E
-	dw CODE_BEEFB7
-	dw CODE_BEEFD1
-	dw CODE_BEEFD9
-	dw CODE_BEEFF8
-	dw CODE_BEEFD9
-	dw CODE_BEF012
+;table for all the krem coin cheat checks
+DATA_BEEF90:					
+	dw CODE_BEEF9E				;next cheat check
+	dw CODE_BEEFB7				;wait for player to enter cabin and enable banana count check
+	dw CODE_BEEFD1				;make sure player didnt grab extra life
+	dw CODE_BEEFD9				;wait for banana bunch to be collected
+	dw CODE_BEEFF8				;wait for player to enter cabin and wait for extra life to be collected
+	dw CODE_BEEFD9				;wait for banana bunch to be collected
+	dw CODE_BEF012				;check banana count then enable cheat flag
 
 
 CODE_BEEF9E:
-	LDA $08BB				;$BEEF9E  \
+	LDA $08BB				;$BEEF9E  \ load current cheat step
 	AND #$0007				;$BEEFA1   |
-	INC A					;$BEEFA4   |
-	STA $002E,y				;$BEEFA5   |
+	INC A					;$BEEFA4   | add 1 to step counter
+	STA $002E,y				;$BEEFA5   | update step counter on cheat sprite
 	ASL A					;$BEEFA8   |
 	TAX					;$BEEFA9   |
-	JMP (DATA_BEEF90,x)			;$BEEFAA  /
+	JMP (DATA_BEEF90,x)			;$BEEFAA  / execute current step check
 
 CODE_BEEFAD:
-	LDX current_sprite			;$BEEFAD  \
-	STZ $00,x				;$BEEFAF   |
-	STZ $08BA				;$BEEFB1   |
-	JML [$05A9]				;$BEEFB4  /
+	LDX current_sprite			;$BEEFAD  \ get sprite index
+	STZ $00,x				;$BEEFAF   | delete cheat sprite
+	STZ $08BA				;$BEEFB1   | set bananas before cheat to 0
+	JML [$05A9]				;$BEEFB4  / return from sprite code
 
 CODE_BEEFB7:
-	LDA level_number			;$BEEFB7  \
-	CMP #$001B				;$BEEFB9   |
-	BNE CODE_BEEFAD				;$BEEFBC   |
-	LDA $08BC				;$BEEFBE   |
-	SEP #$20				;$BEEFC1   |
-	STA $08BA				;$BEEFC3   |
-	REP #$20				;$BEEFC6   |
+	LDA level_number			;$BEEFB7  \ get the current level
+	CMP #$001B				;$BEEFB9   | check if player is in the ship cabin
+	BNE CODE_BEEFAD				;$BEEFBC   | if the player isnt in the ship cabin disable the cheat sprite
+	LDA $08BC				;$BEEFBE   | get current banana count
+	SEP #$20				;$BEEFC1   | turn on 8 bit
+	STA $08BA				;$BEEFC3   | set bananas before cheat to current banana count
+	REP #$20				;$BEEFC6   | back to 16 bit
 	TYX					;$BEEFC8   |
-	INC $2E,x				;$BEEFC9   |
-	INC $08BB				;$BEEFCB   |
+	INC $2E,x				;$BEEFC9   | increment step counter
+	INC $08BB				;$BEEFCB   |	
 	INC $08BB				;$BEEFCE   |
 CODE_BEEFD1:					;	   |
-	LDA $0971				;$BEEFD1   |
-	BNE CODE_BEEFAD				;$BEEFD4   |
-	JML [$05A9]				;$BEEFD6  /
+	LDA $0971				;$BEEFD1   | load number of lives to give player
+	BNE CODE_BEEFAD				;$BEEFD4   | if the player collected any lives disable the cheat sprite
+	JML [$05A9]				;$BEEFD6  / return from sprite code
 
 CODE_BEEFD9:
-	LDA level_number			;$BEEFD9  \
-	CMP #$0003				;$BEEFDB   |
-	BNE CODE_BEEFAD				;$BEEFDE   |
-	LDA $08BA				;$BEEFE0   |
+	LDA level_number			;$BEEFD9  \ get the current level
+	CMP #$0003				;$BEEFDB   | check if player is in pirate panic
+	BNE CODE_BEEFAD				;$BEEFDE   | if the player isnt in pirate panic disable the cheat sprite
+	LDA $08BA				;$BEEFE0   | get banana count before cheat
 	AND #$00FF				;$BEEFE3   |
-	SED					;$BEEFE6   |
+	SED					;$BEEFE6   | set decimal flag because banana counter is binary coded decimal
 	SEC					;$BEEFE7   |
-	SBC $08BC				;$BEEFE8   |
+	SBC $08BC				;$BEEFE8   | banana count before cheat - current banana count
 	CLD					;$BEEFEB   |
-	BEQ CODE_BEF00F				;$BEEFEC   |
+	BEQ CODE_BEF00F				;$BEEFEC   | if the banana counts are the same return from sprite code
 	AND #$00FF				;$BEEFEE   |
-	CMP #$0090				;$BEEFF1   |
-	BEQ CODE_BEF025				;$BEEFF4   |
-	BRA CODE_BEEFAD				;$BEEFF6  /
+	CMP #$0090				;$BEEFF1   | check if the player collected a banana bunch
+	BEQ CODE_BEF025				;$BEEFF4   | if the player collected a banana bunch continue to next check
+	BRA CODE_BEEFAD				;$BEEFF6  / otherwise disable the cheat sprite
 
 CODE_BEEFF8:
-	LDA level_number			;$BEEFF8  \
-	CMP #$001B				;$BEEFFA   |
-	BNE CODE_BEEFAD				;$BEEFFD   |
-	LDA $08BA				;$BEEFFF   |
+	LDA level_number			;$BEEFF8  \ get the current level
+	CMP #$001B				;$BEEFFA   | check if player is in the ship cabin
+	BNE CODE_BEEFAD				;$BEEFFD   | if the player isnt in the ship cabin disable the cheat sprite
+	LDA $08BA				;$BEEFFF   | get banana count before cheat
 	AND #$00FF				;$BEF002   |
-	CMP $08BC				;$BEF005   |
-	BNE CODE_BEEFAD				;$BEF008   |
-	LDA $0971				;$BEF00A   |
-	BNE CODE_BEF025				;$BEF00D   |
+	CMP $08BC				;$BEF005   | check if the banana count now is the same as it was before the cheat
+	BNE CODE_BEEFAD				;$BEF008   | if not disable the cheat sprite
+	LDA $0971				;$BEF00A   | load number of lives to give player
+	BNE CODE_BEF025				;$BEF00D   | if the player collected any lives continue to next check
 CODE_BEF00F:					;	   |
-	JML [$05A9]				;$BEF00F  /
+	JML [$05A9]				;$BEF00F  / otherwise return from sprite code
 
 CODE_BEF012:
-	LDA $08BA				;$BEF012  \
+	LDA $08BA				;$BEF012  \ get banana count before cheat
 	AND #$00FF				;$BEF015   |
-	CMP $08BC				;$BEF018   |
-	BNE CODE_BEEFAD				;$BEF01B   |
-	LDA #$0001				;$BEF01D   |
+	CMP $08BC				;$BEF018   | check if the banana count now is the same as it was before the cheat
+	BNE CODE_BEEFAD				;$BEF01B   | if not disable the cheat sprite
+	LDA #$0001				;$BEF01D   | enable the cheat
 	TSB $0923				;$BEF020   |
-	BRA CODE_BEEFAD				;$BEF023  /
+	BRA CODE_BEEFAD				;$BEF023  / then kill the cheat sprite
 
 CODE_BEF025:
-	LDA $08BC				;$BEF025  \
-	SEP #$20				;$BEF028   |
-	STA $08BA				;$BEF02A   |
-	REP #$20				;$BEF02D   |
-	INC $08BB				;$BEF02F   |
-	LDX current_sprite			;$BEF032   |
-	STZ $00,x				;$BEF034   |
-	JML [$05A9]				;$BEF036  /
+	LDA $08BC				;$BEF025  \ get current banana count
+	SEP #$20				;$BEF028   | turn on 8 bit
+	STA $08BA				;$BEF02A   | set bananas before cheat to current banana count
+	REP #$20				;$BEF02D   | back to 16 bit
+	INC $08BB				;$BEF02F   | increment step counter
+	LDX current_sprite			;$BEF032   | get sprite index
+	STZ $00,x				;$BEF034   | kill sprite
+	JML [$05A9]				;$BEF036  / return from sprite code
 
 CODE_BEF039:
 	LDX current_sprite			;$BEF039  \
@@ -7676,50 +7677,51 @@ CODE_BEF03D:					;	   |
 	LDX current_sprite			;$BEF04E   |
 	RTL					;$BEF050  /
 
+;object movement routines
 DATA_BEF051:
-	dw CODE_BEF0A7
-	dw CODE_BEF0A8
-	dw CODE_BEF0AB
-	dw CODE_BEF0C7
-	dw CODE_BEF0E3
-	dw CODE_BEF0EC
-	dw CODE_BEF143
-	dw CODE_BEF19A
-	dw CODE_BEF1CC
-	dw CODE_BEF1D5
-	dw CODE_BEF3C3
-	dw CODE_BEF3E6
-	dw CODE_BEF4A5
-	dw CODE_BEF4AE
-	dw CODE_BEF4E8
-	dw CODE_BEF52D
-	dw CODE_BEF536
-	dw CODE_BEF567
-	dw CODE_BEF5A4
-	dw CODE_BEF5AD
-	dw CODE_BEF5B1
-	dw CODE_BEF5C3
-	dw CODE_BEF5E7
-	dw CODE_BEF603
-	dw CODE_BEF60D
-	dw CODE_BEF624
-	dw CODE_BEF449
-	dw CODE_BEF65B
-	dw CODE_BEF6C3
-	dw CODE_BEF780
-	dw CODE_BEF0A7
-	dw CODE_BEF0A7
-	dw CODE_BEF7AB
-	dw CODE_BEF7BC
-	dw CODE_BEF7EF
-	dw CODE_BEF808
-	dw CODE_BEF8EE
-	dw CODE_BEFA15
-	dw CODE_BEFA37
-	dw CODE_BEFA58
-	dw CODE_BEFA88
-	dw CODE_BEFAE6
-	dw CODE_BEFB22
+	dw CODE_BEF0A7				;00
+	dw CODE_BEF0A8				;01
+	dw CODE_BEF0AB				;02
+	dw CODE_BEF0C7				;03
+	dw CODE_BEF0E3				;04
+	dw CODE_BEF0EC				;05
+	dw CODE_BEF143				;06
+	dw CODE_BEF19A				;07
+	dw CODE_BEF1CC				;08
+	dw CODE_BEF1D5				;09
+	dw CODE_BEF3C3				;0A
+	dw CODE_BEF3E6				;0B
+	dw CODE_BEF4A5				;0C
+	dw CODE_BEF4AE				;0D
+	dw CODE_BEF4E8				;0E
+	dw CODE_BEF52D				;0F
+	dw CODE_BEF536				;10
+	dw CODE_BEF567				;11
+	dw CODE_BEF5A4				;12
+	dw CODE_BEF5AD				;13
+	dw CODE_BEF5B1				;14
+	dw CODE_BEF5C3				;15
+	dw CODE_BEF5E7				;16
+	dw CODE_BEF603				;17
+	dw CODE_BEF60D				;18
+	dw CODE_BEF624				;19
+	dw CODE_BEF449				;1A
+	dw CODE_BEF65B				;1B
+	dw CODE_BEF6C3				;1C
+	dw CODE_BEF780				;1D
+	dw CODE_BEF0A7				;1E
+	dw CODE_BEF0A7				;1F
+	dw CODE_BEF7AB				;20
+	dw CODE_BEF7BC				;21
+	dw CODE_BEF7EF				;22
+	dw CODE_BEF808				;23
+	dw CODE_BEF8EE				;24
+	dw CODE_BEFA15				;25
+	dw CODE_BEFA37				;26
+	dw CODE_BEFA58				;27
+	dw CODE_BEFA88				;28
+	dw CODE_BEFAE6				;29
+	dw CODE_BEFB22				;2A
 
 
 CODE_BEF0A7:
