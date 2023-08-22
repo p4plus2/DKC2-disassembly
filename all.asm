@@ -14,6 +14,7 @@ org $008000			;dummy org so functions work
 	incsrc vram.asm
 	incsrc structs.asm
 	incsrc mmio.asm
+	incsrc audio_constants.asm
 
 check bankcross off
 org $C00000

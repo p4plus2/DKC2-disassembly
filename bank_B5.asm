@@ -254,9 +254,9 @@ endif						;	   | |/
 	JSR .upload_spc_base_engine		;$B58191  \ Upload the core of the SPC engine
 	JSR .upload_spc_sound_engine		;$B58194   | Upload the sound processor of the SPC engine
 	JSR .upload_global_samples		;$B58197   |
-	LDA #sound_effect_data			;$B5819A   |\ Load pointer to sound effect data
+	LDA #global_sfx_data			;$B5819A   |\ Load pointer to sound effect data
 	STA $32					;$B5819D   | |
-	LDA.w #sound_effect_data>>16		;$B5819F   | |
+	LDA.w #global_sfx_data>>16		;$B5819F   | |
 	STA $34					;$B581A2   |/
 	JSR .upload_inline_spc_block		;$B581A4   | Upload the sound effect data
 	JSR .execute_spc_sound_engine		;$B581A7   | Jump to the sound engine entry
@@ -661,16 +661,16 @@ endif						;	   | |/
 
 .upload_song_sample_set
 	LDA current_song			;$B58469  \ Load currently set song
-	CLC					;$B5846B   |\ Multiply song number by 6 to song sample set offset
+	CLC					;$B5846B   |\ Multiply song number by 6 to song sample map offset
 	ROL A					;$B5846C   | | Effectively (X << 1) + (X << 2)
 	STA $32					;$B5846D   | |
 	ROL A					;$B5846F   | |
 	CLC					;$B58470   | |
 	ADC $32					;$B58471   |/
 	TAX					;$B58473   | Move offset to an index register
-	LDA.l song_sample_sets,x		;$B58474   |\ Load pointer to song sample set
+	LDA.l song_sample_maps,x		;$B58474   |\ Load pointer to song sample map
 	STA $0E					;$B58478   | |
-	LDA.l song_sample_sets+2,x		;$B5847A   | |
+	LDA.l song_sample_maps+2,x		;$B5847A   | |
 	STA $10					;$B5847E   |/
 	LDA $04					;$B58480   |\ Set next pending source directory ARAM destination
 	STA $02					;$B58482   |/
