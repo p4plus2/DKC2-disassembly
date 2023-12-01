@@ -9023,7 +9023,7 @@ CODE_B3C30B:					;	   |
 	BPL CODE_B3C30B				;$B3C310   |
 	PLB					;$B3C312   |
 	CMP #$20CB				;$B3C313   |
-	BNE CODE_B3C33B				;$B3C316   |
+	BNE CODE_B3C33B				;$B3C316   | if anti-piracy routine was tampered delete water trigger sprite
 	LDX current_sprite			;$B3C318   |
 	LDA $4E,x				;$B3C31A   |
 	STA $0D52				;$B3C31C   |
@@ -12819,8 +12819,8 @@ CODE_B3DF75:					;	   |
 	XBA					;$B3DF7C   |
 	EOR #$CCAB				;$B3DF7D   |
 	INC A					;$B3DF80   |
-	BEQ CODE_B3DF88				;$B3DF81   |
-	LDA #$FFFF				;$B3DF83   |
+	BEQ CODE_B3DF88				;$B3DF81   | if anti-piracy routine was tampered
+	LDA #$FFFF				;$B3DF83   | destroy exit number of bonus wall (sends player to map screen)
 	STA $42,x				;$B3DF86   |
 CODE_B3DF88:					;	   |
 	PLB					;$B3DF88   |

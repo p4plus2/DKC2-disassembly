@@ -5582,7 +5582,7 @@ DATA_F94F58:
 
 DATA_F94F6F:
 	db $02 : dw $0E90
-	db !animation_command_84 : dw CODE_B9E5BF
+	db !animation_command_84 : dw turn_click_clack_if_needed
 	db $02 : dw $0E94
 	db $02 : dw $0E98
 	db !animation_command_81 : dw CODE_B9E5DF
@@ -5863,7 +5863,7 @@ DATA_F9536B:
 
 DATA_F953CE:
 	db $04 : dw $091C
-	db !animation_command_84 : dw CODE_B9E692
+	db !animation_command_84 : dw turn_klomp_if_needed
 	db $04 : dw $0920
 	db $04 : dw $0924
 	db !animation_command_81 : dw CODE_B9E679
@@ -5901,7 +5901,7 @@ DATA_F95416:
 
 DATA_F9542D:
 	db $04 : dw $0AFC
-	db !animation_command_84 : dw CODE_B9E698
+	db !animation_command_84 : dw turn_kruncha_if_needed
 	db $04 : dw $0B00
 	db !animation_command_93, $02, $05
 	db $04 : dw $0B04
@@ -6054,7 +6054,7 @@ DATA_F955AB:
 	db $03 : dw $20CC
 	db $03 : dw $20D0
 	db $03 : dw $20D4
-	db !animation_command_84 : dw CODE_B9E6C0
+	db !animation_command_84 : dw turn_klampon_if_needed
 	db $03 : dw $20D8
 	db $03 : dw $20DC
 	db $03 : dw $20E0
@@ -6110,7 +6110,7 @@ DATA_F9562D:
 	db $04 : dw $20CC
 	db $04 : dw $20D0
 	db $04 : dw $20D4
-	db !animation_command_84 : dw CODE_B9E6C0
+	db !animation_command_84 : dw turn_klampon_if_needed
 	db $04 : dw $20D8
 	db $04 : dw $20DC
 	db $04 : dw $20E0
@@ -6119,7 +6119,7 @@ DATA_F9562D:
 
 DATA_F95669:
 	db $04 : dw $1F1C
-	db !animation_command_84 : dw CODE_B9E6D2
+	db !animation_command_84 : dw turn_spiny_if_needed
 	db !animation_command_93, $4E, $05
 	db $04 : dw $1F20
 	db $04 : dw $1F24
@@ -6183,7 +6183,7 @@ DATA_F956E6:
 
 DATA_F95706:
 	db $04 : dw $0DE4
-	db !animation_command_84 : dw CODE_B9E6E7
+	db !animation_command_84 : dw turn_lockjaw_if_needed
 	db $04 : dw $0DE8
 	db $04 : dw $0DEC
 	db $04 : dw $0DF0
@@ -6349,7 +6349,7 @@ DATA_F95896:
 	db $04 : dw $1A60
 	db $04 : dw $1A64
 	db $04 : dw $1A38
-	db !animation_command_84 : dw CODE_B9E7DE
+	db !animation_command_84 : dw turn_flotsam_if_needed
 	db !animation_command_80, $00
 
 DATA_F958BF:
@@ -6817,7 +6817,7 @@ DATA_F95D21:
 
 DATA_F95D3E:
 	db $02 : dw $0F70
-	db !animation_command_84 : dw CODE_B9E972
+	db !animation_command_84 : dw turn_kutlass_if_needed
 	db $02 : dw $0F70
 	db $04 : dw $0F54
 	db $04 : dw $0F58
@@ -6935,7 +6935,7 @@ DATA_F95E58:
 	db $04 : dw $2188
 	db $04 : dw $218C
 	db $04 : dw $2190
-	db !animation_command_84 : dw CODE_B9E9CB
+	db !animation_command_84 : dw turn_krook_if_needed
 	db $04 : dw $2194
 	db $04 : dw $2198
 	db $04 : dw $219C
@@ -6943,7 +6943,7 @@ DATA_F95E58:
 	db $04 : dw $21A0
 	db $04 : dw $2178
 	db $04 : dw $217C
-	db !animation_command_84 : dw CODE_B9E9CB
+	db !animation_command_84 : dw turn_krook_if_needed
 	db $04 : dw $2180
 	db $04 : dw $2184
 	db !animation_command_80, $00

@@ -9380,22 +9380,23 @@ DATA_BCEDC8:
 padbyte $00
 pad $BCFA00
 
+;special hitboxes
 DATA_BCFA00:
-	db $FD, $FF, $F0, $FF, $19, $00, $10, $00
-	db $F3, $FF, $F1, $FF, $13, $00, $10, $00
-	db $F7, $FF, $E5, $FF, $0A, $00, $1D, $00
-	db $F0, $FF, $F8, $FF, $13, $00, $14, $00
-	db $F7, $FF, $E5, $FF, $0A, $00, $1D, $00
-	db $F5, $FF, $EA, $FF, $0A, $00, $0A, $00
-	db $F5, $FF, $E8, $FF, $26, $00, $1C, $00
-	db $F5, $FF, $E8, $FF, $38, $00, $1C, $00
-	db $F7, $FF, $D5, $FF, $36, $00, $2E, $00
-	db $F1, $FF, $DD, $FF, $23, $00, $29, $00
-	db $F6, $FF, $E4, $FF, $15, $00, $19, $00
-	db $E2, $FF, $E8, $FF, $1F, $00, $23, $00
-	db $EE, $FF, $F1, $FF, $1B, $00, $14, $00
-	db $08, $00, $F8, $FF, $24, $00, $10, $00
-	db $D0, $FF, $A8, $FF, $50, $00, $60, $00
+	dw $FFFD, $FFF0, $0019, $0010		;00 object pickup range
+	dw $FFF3, $FFF1, $0013, $0010		;01 squitter mount range
+	dw $FFF7, $FFE5, $000A, $001D		;02 rattly mount range
+	dw $FFF0, $FFF8, $0013, $0014		;03 squawks mount range
+	dw $FFF7, $FFE5, $000A, $001D		;04 rambi mount range
+	dw $FFF5, $FFEA, $000A, $000A		;05 enguarde mount range
+	dw $FFF5, $FFE8, $0026, $001C		;06 enguarde attack range
+	dw $FFF5, $FFE8, $0038, $001C		;07 enguarde auto attack range
+	dw $FFF7, $FFD5, $0036, $002E		;08 rambi attack range
+	dw $FFF1, $FFDD, $0023, $0029		;09 stomp range?
+	dw $FFF6, $FFE4, $0015, $0019		;0A thrown kong attack range
+	dw $FFE2, $FFE8, $001F, $0023		;0B kleever range?
+	dw $FFEE, $FFF1, $001B, $0014		;0C rattly auto stomp range
+	dw $0008, $FFF8, $0024, $0010		;0D kutlass attack range
+	dw $FFD0, $FFA8, $0050, $0060		;0E 
 
 CODE_BCFA78:
 	STZ $09A7				;$BCFA78  \
