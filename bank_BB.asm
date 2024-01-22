@@ -2861,10 +2861,10 @@ CODE_BB929D:					;	   |
 	LDA $0523				;$BB929D   |
 	JSL CODE_B5BCA8				;$BB92A0   |
 	JSR CODE_BB886D				;$BB92A4   |
-	LDA $0517				;$BB92A7   |
-	ASL A					;$BB92AA   |
-	TAX					;$BB92AB   |
-	JSR (DATA_BB9592,x)			;$BB92AC   |
+	LDA $0517				;$BB92A7   |\
+	ASL A					;$BB92AA   | |
+	TAX					;$BB92AB   | |
+	JSR (DATA_BB9592,x)			;$BB92AC   |/ run level graphics uploader
 	LDA $0515				;$BB92AF   |
 	CMP #$0001				;$BB92B2   |
 	BNE CODE_BB92C9				;$BB92B5   |
@@ -2875,8 +2875,8 @@ CODE_BB929D:					;	   |
 	LDA #$0016				;$BB92C2   |
 	JSL VRAM_payload_handler_global		;$BB92C5   |
 CODE_BB92C9:					;	   |
-	LDX #$000A				;$BB92C9   |
-	JSR ($0515,x)				;$BB92CC   |
+	LDX #$000A				;$BB92C9   |\
+	JSR ($0515,x)				;$BB92CC   |/ setup terrain slope attributes
 	JSR CODE_BBB34D				;$BB92CF   |
 	LDA $052B				;$BB92D2   |
 	AND #$0004				;$BB92D5   |
@@ -2884,19 +2884,19 @@ CODE_BB92C9:					;	   |
 	LDA $0B86				;$BB92DA   |
 	AND #$0400				;$BB92DD   |
 	BEQ CODE_BB92FF				;$BB92E0   |
-	LDA $98					;$BB92E2   |
-	TAX					;$BB92E4   |
-	LDA $9A					;$BB92E5   |
-	AND #$00FF				;$BB92E7   |
-	TAY					;$BB92EA   |
-	LDA #$1000				;$BB92EB   |
-	JSL decompress_data			;$BB92EE   |
-	LDA #$1000				;$BB92F2   |
-	STA $98					;$BB92F5   |
-	SEP #$20				;$BB92F7   |
-	LDA #$7F				;$BB92F9   |
-	STA $9A					;$BB92FB   |
-	REP #$20				;$BB92FD   |
+	LDA $98					;$BB92E2   |\ load address of 32x32 tilemap
+	TAX					;$BB92E4   | |
+	LDA $9A					;$BB92E5   | | load bank of 32x32 tilemap
+	AND #$00FF				;$BB92E7   | |
+	TAY					;$BB92EA   |/ save tilemap location for decompression
+	LDA #$1000				;$BB92EB   |> set decompressed data location to $7F1000
+	JSL decompress_data			;$BB92EE   |> decompress 32x32 tilemap
+	LDA #$1000				;$BB92F2   |\ set 32x32 tilemap pointer to decompressed tilemap in work ram
+	STA $98					;$BB92F5   | |
+	SEP #$20				;$BB92F7   | |
+	LDA #$7F				;$BB92F9   | |
+	STA $9A					;$BB92FB   | |
+	REP #$20				;$BB92FD   |/
 CODE_BB92FF:					;	   |
 	JSR CODE_BB9493				;$BB92FF   |
 	JSR CODE_BBB0FB				;$BB9302   |
@@ -2937,10 +2937,10 @@ if !version == 1				;	   |
 	STA $17B2				;$BB9355   |
 CODE_BB9358:					;	   |
 endif						;	   |
-	LDA $0519				;$BB9358   |
-	ASL A					;$BB935B   |
-	TAX					;$BB935C   |
-	JSR (DATA_BB95BC,x)			;$BB935D   |
+	LDA $0519				;$BB9358   |\
+	ASL A					;$BB935B   | |
+	TAX					;$BB935C   | |
+	JSR (DATA_BB95BC,x)			;$BB935D   |/ run hdma init routine
 	LDA #$002C				;$BB9360   |
 	STA $0B00				;$BB9363   |
 	STZ $1730				;$BB9366   |

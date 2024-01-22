@@ -6918,2464 +6918,1849 @@ DATA_BCB600:
 
 
 DATA_BCD100:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $00, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $0000
 
 DATA_BCD10C:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $01, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $0001
 
 DATA_BCD118:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $02, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $0002
 
 DATA_BCD124:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $03, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $0003
 
 DATA_BCD130:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $04, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $0004
 
 DATA_BCD13C:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $05, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $0005
 
 DATA_BCD148:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $06, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $0006
 
 DATA_BCD154:
-	db $F6, $FF, $FA, $FF, $12, $00, $1F, $00
-	db $D8, $00, $07, $00
+        dw $FFF6, $FFFA, $0012, $001F, $00D8, $0007
 
 DATA_BCD160:
-	db $F6, $FF, $FA, $FF, $12, $00, $1F, $00
-	db $D8, $00, $08, $00
+        dw $FFF6, $FFFA, $0012, $001F, $00D8, $0008
 
 DATA_BCD16C:
-	db $F6, $FF, $FA, $FF, $12, $00, $1F, $00
-	db $D8, $00, $09, $00
+        dw $FFF6, $FFFA, $0012, $001F, $00D8, $0009
 
 DATA_BCD178:
-	db $F6, $FF, $FA, $FF, $12, $00, $1F, $00
-	db $D8, $00, $0A, $00
+        dw $FFF6, $FFFA, $0012, $001F, $00D8, $000A
 
 DATA_BCD184:
-	db $F6, $FF, $FA, $FF, $12, $00, $1F, $00
-	db $D8, $00, $0C, $00
+        dw $FFF6, $FFFA, $0012, $001F, $00D8, $000C
 
 DATA_BCD190:
-	db $F6, $FF, $FA, $FF, $12, $00, $1F, $00
-	db $D8, $00, $0D, $00
+        dw $FFF6, $FFFA, $0012, $001F, $00D8, $000D
 
 DATA_BCD19C:
-	db $F6, $FF, $FA, $FF, $12, $00, $1F, $00
-	db $D8, $00, $0E, $00
+        dw $FFF6, $FFFA, $0012, $001F, $00D8, $000E
 
 DATA_BCD1A8:
-	db $F6, $FF, $FA, $FF, $12, $00, $1F, $00
-	db $D8, $00, $10, $00
+        dw $FFF6, $FFFA, $0012, $001F, $00D8, $0010
 
 DATA_BCD1B4:
-	db $F9, $FF, $F0, $FF, $0B, $00, $0E, $00
-	db $D8, $00, $11, $00
+        dw $FFF9, $FFF0, $000B, $000E, $00D8, $0011
 
 DATA_BCD1C0:
-	db $F6, $FF, $FA, $FF, $12, $00, $1F, $00
-	db $D8, $00, $12, $00
+        dw $FFF6, $FFFA, $0012, $001F, $00D8, $0012
 
 DATA_BCD1CC:
-	db $F6, $FF, $FA, $FF, $12, $00, $1F, $00
-	db $D8, $00, $13, $00
+        dw $FFF6, $FFFA, $0012, $001F, $00D8, $0013
 
 DATA_BCD1D8:
-	db $F6, $FF, $FA, $FF, $12, $00, $1F, $00
-	db $D8, $00, $14, $00
+        dw $FFF6, $FFFA, $0012, $001F, $00D8, $0014
 
 DATA_BCD1E4:
-	db $F6, $FF, $FA, $FF, $12, $00, $1F, $00
-	db $D8, $00, $15, $00
+        dw $FFF6, $FFFA, $0012, $001F, $00D8, $0015
 
 DATA_BCD1F0:
-	db $F8, $FF, $EE, $FF, $14, $00, $15, $00
-	db $D8, $00, $16, $00
+        dw $FFF8, $FFEE, $0014, $0015, $00D8, $0016
 
 DATA_BCD1FC:
-	db $F6, $FF, $FA, $FF, $12, $00, $1F, $00
-	db $D8, $00, $17, $00
+        dw $FFF6, $FFFA, $0012, $001F, $00D8, $0017
 
 DATA_BCD208:
-	db $F8, $FF, $E2, $FF, $16, $00, $18, $00
-	db $D8, $00, $20, $00
+        dw $FFF8, $FFE2, $0016, $0018, $00D8, $0020
 
 DATA_BCD214:
-	db $EF, $FF, $EC, $FF, $1F, $00, $1E, $00
-	db $D8, $00, $21, $00
+        dw $FFEF, $FFEC, $001F, $001E, $00D8, $0021
 
 DATA_BCD220:
-	db $F3, $FF, $E8, $FF, $18, $00, $12, $00
-	db $D8, $00, $23, $00
+        dw $FFF3, $FFE8, $0018, $0012, $00D8, $0023
 
 DATA_BCD22C:
-	db $F7, $FF, $E2, $FF, $11, $00, $1B, $00
-	db $D8, $00, $24, $00
+        dw $FFF7, $FFE2, $0011, $001B, $00D8, $0024
 
 DATA_BCD238:
-	db $F9, $FF, $DE, $FF, $12, $00, $1F, $00
-	db $D8, $00, $25, $00
+        dw $FFF9, $FFDE, $0012, $001F, $00D8, $0025
 
 DATA_BCD244:
-	db $F7, $FF, $E2, $FF, $11, $00, $1B, $00
-	db $D8, $00, $26, $00
+        dw $FFF7, $FFE2, $0011, $001B, $00D8, $0026
 
 DATA_BCD250:
-	db $F7, $FF, $E2, $FF, $11, $00, $1B, $00
-	db $D8, $00, $27, $00
+        dw $FFF7, $FFE2, $0011, $001B, $00D8, $0027
 
 DATA_BCD25C:
-	db $F7, $FF, $E2, $FF, $11, $00, $1B, $00
-	db $D8, $00, $28, $00
+        dw $FFF7, $FFE2, $0011, $001B, $00D8, $0028
 
 DATA_BCD268:
-	db $F7, $FF, $E2, $FF, $11, $00, $1B, $00
-	db $D8, $00, $29, $00
+        dw $FFF7, $FFE2, $0011, $001B, $00D8, $0029
 
 DATA_BCD274:
-	db $F7, $FF, $E2, $FF, $11, $00, $1B, $00
-	db $D8, $00, $2A, $00
+        dw $FFF7, $FFE2, $0011, $001B, $00D8, $002A
 
 DATA_BCD280:
-	db $F5, $FF, $DF, $FF, $1A, $00, $23, $00
-	db $D8, $00, $2B, $00
+        dw $FFF5, $FFDF, $001A, $0023, $00D8, $002B
 
 DATA_BCD28C:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $2C, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $002C
 
 DATA_BCD298:
-	db $F7, $FF, $DE, $FF, $12, $00, $1F, $00
-	db $D8, $00, $2D, $00
+        dw $FFF7, $FFDE, $0012, $001F, $00D8, $002D
 
 DATA_BCD2A4:
-	db $F8, $FF, $E6, $FF, $14, $00, $18, $00
-	db $D8, $00, $2E, $00
+        dw $FFF8, $FFE6, $0014, $0018, $00D8, $002E
 
 DATA_BCD2B0:
-	db $FA, $FF, $E3, $FF, $11, $00, $1A, $00
-	db $D8, $00, $2F, $00
+        dw $FFFA, $FFE3, $0011, $001A, $00D8, $002F
 
 DATA_BCD2BC:
-	db $F7, $FF, $E2, $FF, $11, $00, $1B, $00
-	db $D8, $00, $31, $00
+        dw $FFF7, $FFE2, $0011, $001B, $00D8, $0031
 
 DATA_BCD2C8:
-	db $F7, $FF, $E2, $FF, $11, $00, $1B, $00
-	db $D8, $00, $32, $00
+        dw $FFF7, $FFE2, $0011, $001B, $00D8, $0032
 
 DATA_BCD2D4:
-	db $F3, $FF, $E9, $FF, $1B, $00, $17, $00
-	db $D8, $00, $33, $00
+        dw $FFF3, $FFE9, $001B, $0017, $00D8, $0033
 
 DATA_BCD2E0:
-	db $F7, $FF, $EC, $FF, $12, $00, $13, $00
-	db $D8, $00, $34, $00
+        dw $FFF7, $FFEC, $0012, $0013, $00D8, $0034
 
 DATA_BCD2EC:
-	db $F9, $FF, $E6, $FF, $12, $00, $19, $00
-	db $D8, $00, $35, $00
+        dw $FFF9, $FFE6, $0012, $0019, $00D8, $0035
 
 DATA_BCD2F8:
-	db $F6, $FF, $DE, $FF, $19, $00, $20, $00
-	db $D8, $00, $36, $00
+        dw $FFF6, $FFDE, $0019, $0020, $00D8, $0036
 
 DATA_BCD304:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $37, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $0037
 
 DATA_BCD310:
-	db $ED, $FF, $F2, $FF, $2E, $00, $0F, $00
-	db $D8, $00, $38, $00
+        dw $FFED, $FFF2, $002E, $000F, $00D8, $0038
 
 DATA_BCD31C:
-	db $ED, $FF, $F2, $FF, $24, $00, $0E, $00
-	db $D8, $00, $39, $00
+        dw $FFED, $FFF2, $0024, $000E, $00D8, $0039
 
 DATA_BCD328:
-	db $ED, $FF, $F2, $FF, $24, $00, $14, $00
-	db $D8, $03, $39, $00
+        dw $FFED, $FFF2, $0024, $0014, $03D8, $0039
 
 DATA_BCD334:
-	db $ED, $FF, $F2, $FF, $24, $00, $1A, $00
-	db $D8, $06, $39, $00
+        dw $FFED, $FFF2, $0024, $001A, $06D8, $0039
 
 DATA_BCD340:
-	db $F5, $FF, $DC, $FF, $12, $00, $22, $00
-	db $D8, $00, $3A, $00
+        dw $FFF5, $FFDC, $0012, $0022, $00D8, $003A
 
 DATA_BCD34C:
-	db $F3, $FF, $D7, $FF, $12, $00, $17, $00
-	db $D8, $00, $3B, $00
+        dw $FFF3, $FFD7, $0012, $0017, $00D8, $003B
 
 DATA_BCD358:
-	db $F5, $FF, $DE, $FF, $14, $00, $1D, $00
-	db $D8, $00, $3C, $00
+        dw $FFF5, $FFDE, $0014, $001D, $00D8, $003C
 
 DATA_BCD364:
-	db $F4, $FF, $E2, $FF, $16, $00, $20, $00
-	db $D8, $00, $3D, $00
+        dw $FFF4, $FFE2, $0016, $0020, $00D8, $003D
 
 DATA_BCD370:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $3E, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $003E
 
 DATA_BCD37C:
-	db $F0, $FF, $DA, $FF, $19, $00, $22, $00
-	db $D8, $00, $3F, $00
+        dw $FFF0, $FFDA, $0019, $0022, $00D8, $003F
 
 DATA_BCD388:
-	db $EF, $FF, $EC, $FF, $1F, $00, $1E, $00
-	db $D8, $00, $40, $00
+        dw $FFEF, $FFEC, $001F, $001E, $00D8, $0040
 
 DATA_BCD394:
-	db $F1, $FF, $E0, $FF, $1B, $00, $22, $00
-	db $D8, $00, $41, $00
+        dw $FFF1, $FFE0, $001B, $0022, $00D8, $0041
 
 DATA_BCD3A0:
-	db $EF, $FF, $C7, $FF, $1F, $00, $37, $00
-	db $D8, $00, $42, $00
+        dw $FFEF, $FFC7, $001F, $0037, $00D8, $0042
 
 DATA_BCD3AC:
-	db $E3, $FF, $BD, $FF, $2C, $00, $43, $00
-	db $D8, $00, $43, $00
+        dw $FFE3, $FFBD, $002C, $0043, $00D8, $0043
 
 DATA_BCD3B8:
-	db $F1, $FF, $DF, $FF, $1A, $00, $24, $00
-	db $D8, $00, $44, $00
+        dw $FFF1, $FFDF, $001A, $0024, $00D8, $0044
 
 DATA_BCD3C4:
-	db $F0, $FF, $E0, $FF, $1C, $00, $1E, $00
-	db $D8, $00, $47, $00
+        dw $FFF0, $FFE0, $001C, $001E, $00D8, $0047
 
 DATA_BCD3D0:
-	db $F2, $FF, $E0, $FF, $19, $00, $24, $00
-	db $D8, $00, $48, $00
+        dw $FFF2, $FFE0, $0019, $0024, $00D8, $0048
 
 DATA_BCD3DC:
-	db $F6, $FF, $FA, $FF, $12, $00, $1F, $00
-	db $D8, $00, $49, $00
+        dw $FFF6, $FFFA, $0012, $001F, $00D8, $0049
 
 DATA_BCD3E8:
-	db $EC, $FF, $D9, $FF, $22, $00, $24, $00
-	db $D8, $00, $4A, $00
+        dw $FFEC, $FFD9, $0022, $0024, $00D8, $004A
 
 DATA_BCD3F4:
-	db $F2, $FF, $D7, $FF, $19, $00, $2C, $00
-	db $D8, $00, $4B, $00
+        dw $FFF2, $FFD7, $0019, $002C, $00D8, $004B
 
 DATA_BCD400:
-	db $F2, $FF, $E6, $FF, $1A, $00, $1B, $00
-	db $D8, $00, $4C, $00
+        dw $FFF2, $FFE6, $001A, $001B, $00D8, $004C
 
 DATA_BCD40C:
-	db $F7, $FF, $E2, $FF, $11, $00, $1B, $00
-	db $D8, $00, $4D, $00
+        dw $FFF7, $FFE2, $0011, $001B, $00D8, $004D
 
 DATA_BCD418:
-	db $F7, $FF, $E2, $FF, $11, $00, $1B, $00
-	db $D8, $00, $4E, $00
+        dw $FFF7, $FFE2, $0011, $001B, $00D8, $004E
 
 DATA_BCD424:
-	db $F4, $FF, $F0, $FF, $16, $00, $17, $00
-	db $D8, $00, $4F, $00
+        dw $FFF4, $FFF0, $0016, $0017, $00D8, $004F
 
 DATA_BCD430:
-	db $F8, $FF, $DE, $FF, $12, $00, $1F, $00
-	db $D8, $00, $50, $00
+        dw $FFF8, $FFDE, $0012, $001F, $00D8, $0050
 
 DATA_BCD43C:
-	db $F3, $FF, $DE, $FF, $12, $00, $1F, $00
-	db $D8, $00, $51, $00
+        dw $FFF3, $FFDE, $0012, $001F, $00D8, $0051
 
 DATA_BCD448:
-	db $F3, $FF, $DD, $FF, $12, $00, $20, $00
-	db $D8, $00, $52, $00
+        dw $FFF3, $FFDD, $0012, $0020, $00D8, $0052
 
 DATA_BCD454:
-	db $F4, $FF, $F0, $FF, $16, $00, $17, $00
-	db $D8, $00, $53, $00
+        dw $FFF4, $FFF0, $0016, $0017, $00D8, $0053
 
 DATA_BCD460:
-	db $ED, $FF, $C9, $FF, $25, $00, $36, $00
-	db $D8, $00, $54, $00
+        dw $FFED, $FFC9, $0025, $0036, $00D8, $0054
 
 DATA_BCD46C:
-	db $F7, $FF, $E2, $FF, $11, $00, $1B, $00
-	db $D8, $00, $55, $00
+        dw $FFF7, $FFE2, $0011, $001B, $00D8, $0055
 
 DATA_BCD478:
-	db $F7, $FF, $E2, $FF, $11, $00, $1B, $00
-	db $D8, $00, $56, $00
+        dw $FFF7, $FFE2, $0011, $001B, $00D8, $0056
 
 DATA_BCD484:
-	db $F7, $FF, $E2, $FF, $11, $00, $1B, $00
-	db $D8, $00, $57, $00
+        dw $FFF7, $FFE2, $0011, $001B, $00D8, $0057
 
 DATA_BCD490:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $58, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $0058
 
 DATA_BCD49C:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $59, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $0059
 
 DATA_BCD4A8:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $5A, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $005A
 
 DATA_BCD4B4:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $5B, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $005B
 
 DATA_BCD4C0:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $5C, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $005C
 
 DATA_BCD4CC:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $5D, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $005D
 
 DATA_BCD4D8:
-	db $EA, $FF, $EE, $FF, $24, $00, $12, $00
-	db $D8, $00, $5E, $00
+        dw $FFEA, $FFEE, $0024, $0012, $00D8, $005E
 
 DATA_BCD4E4:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $5F, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $005F
 
 DATA_BCD4F0:
-	db $F5, $FF, $CF, $FF, $13, $00, $31, $00
-	db $D8, $00, $60, $00
+        dw $FFF5, $FFCF, $0013, $0031, $00D8, $0060
 
 DATA_BCD4FC:
-	db $F5, $FF, $C6, $FF, $13, $00, $3A, $00
-	db $D8, $04, $60, $00
+        dw $FFF5, $FFC6, $0013, $003A, $04D8, $0060
 
 DATA_BCD508:
-	db $F5, $FF, $C3, $FF, $13, $00, $3D, $00
-	db $D8, $05, $60, $00
+        dw $FFF5, $FFC3, $0013, $003D, $05D8, $0060
 
 DATA_BCD514:
-	db $F5, $FF, $BF, $FF, $13, $00, $41, $00
-	db $D8, $06, $60, $00
+        dw $FFF5, $FFBF, $0013, $0041, $06D8, $0060
 
 DATA_BCD520:
-	db $F5, $FF, $B9, $FF, $13, $00, $47, $00
-	db $D8, $07, $60, $00
+        dw $FFF5, $FFB9, $0013, $0047, $07D8, $0060
 
 DATA_BCD52C:
-	db $F5, $FF, $B4, $FF, $13, $00, $4C, $00
-	db $D8, $08, $60, $00
+        dw $FFF5, $FFB4, $0013, $004C, $08D8, $0060
 
 DATA_BCD538:
-	db $F5, $FF, $AE, $FF, $13, $00, $52, $00
-	db $D8, $09, $60, $00
+        dw $FFF5, $FFAE, $0013, $0052, $09D8, $0060
 
 DATA_BCD544:
-	db $F5, $FF, $A9, $FF, $13, $00, $57, $00
-	db $D8, $0A, $60, $00
+        dw $FFF5, $FFA9, $0013, $0057, $0AD8, $0060
 
 DATA_BCD550:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $61, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $0061
 
 DATA_BCD55C:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $62, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $0062
 
 DATA_BCD568:
-	db $F8, $FF, $D6, $FF, $10, $00, $10, $00
-	db $D8, $01, $62, $00
+        dw $FFF8, $FFD6, $0010, $0010, $01D8, $0062
 
 DATA_BCD574:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $08, $62, $00
+        dw $FFF8, $FFF8, $0010, $0010, $08D8, $0062
 
 DATA_BCD580:
-	db $F3, $FF, $E9, $FF, $16, $00, $17, $00
-	db $D8, $00, $63, $00
+        dw $FFF3, $FFE9, $0016, $0017, $00D8, $0063
 
 DATA_BCD58C:
-	db $F3, $FF, $E9, $FF, $16, $00, $17, $00
-	db $D8, $00, $64, $00
+        dw $FFF3, $FFE9, $0016, $0017, $00D8, $0064
 
 DATA_BCD598:
-	db $F3, $FF, $E9, $FF, $16, $00, $1D, $00
-	db $D8, $02, $64, $00
+        dw $FFF3, $FFE9, $0016, $001D, $02D8, $0064
 
 DATA_BCD5A4:
-	db $F3, $FF, $E9, $FF, $16, $00, $22, $00
-	db $D8, $04, $64, $00
+        dw $FFF3, $FFE9, $0016, $0022, $04D8, $0064
 
 DATA_BCD5B0:
-	db $F3, $FF, $E9, $FF, $16, $00, $1B, $00
-	db $D8, $05, $64, $00
+        dw $FFF3, $FFE9, $0016, $001B, $05D8, $0064
 
 DATA_BCD5BC:
-	db $F3, $FF, $E9, $FF, $16, $00, $17, $00
-	db $D8, $06, $64, $00
+        dw $FFF3, $FFE9, $0016, $0017, $06D8, $0064
 
 DATA_BCD5C8:
-	db $F3, $FF, $E9, $FF, $16, $00, $17, $00
-	db $D8, $07, $64, $00
+        dw $FFF3, $FFE9, $0016, $0017, $07D8, $0064
 
 DATA_BCD5D4:
-	db $F1, $FF, $E2, $FF, $0C, $00, $15, $00
-	db $D8, $00, $65, $00
+        dw $FFF1, $FFE2, $000C, $0015, $00D8, $0065
 
 DATA_BCD5E0:
-	db $F1, $FF, $E2, $FF, $0C, $00, $15, $00
-	db $D8, $00, $66, $00
+        dw $FFF1, $FFE2, $000C, $0015, $00D8, $0066
 
 DATA_BCD5EC:
-	db $EC, $FF, $E1, $FF, $0C, $00, $15, $00
-	db $D8, $03, $66, $00
+        dw $FFEC, $FFE1, $000C, $0015, $03D8, $0066
 
 DATA_BCD5F8:
-	db $E7, $FF, $E2, $FF, $0A, $00, $15, $00
-	db $D8, $06, $66, $00
+        dw $FFE7, $FFE2, $000A, $0015, $06D8, $0066
 
 DATA_BCD604:
-	db $F2, $FF, $EA, $FF, $1A, $00, $16, $00
-	db $D8, $00, $67, $00
+        dw $FFF2, $FFEA, $001A, $0016, $00D8, $0067
 
 DATA_BCD610:
-	db $F2, $FF, $E6, $FF, $1E, $00, $1A, $00
-	db $D8, $00, $69, $00
+        dw $FFF2, $FFE6, $001E, $001A, $00D8, $0069
 
 DATA_BCD61C:
-	db $F2, $FF, $E8, $FF, $1A, $00, $15, $00
-	db $D8, $00, $6A, $00
+        dw $FFF2, $FFE8, $001A, $0015, $00D8, $006A
 
 DATA_BCD628:
-	db $EE, $FF, $E4, $FF, $20, $00, $20, $00
-	db $D8, $00, $6B, $00
+        dw $FFEE, $FFE4, $0020, $0020, $00D8, $006B
 
 DATA_BCD634:
-	db $F8, $FF, $ED, $FF, $12, $00, $19, $00
-	db $D8, $00, $6C, $00
+        dw $FFF8, $FFED, $0012, $0019, $00D8, $006C
 
 DATA_BCD640:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $6D, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $006D
 
 DATA_BCD64C:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $6E, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $006E
 
 DATA_BCD658:
-	db $F0, $FF, $D7, $FF, $25, $00, $2C, $00
-	db $D8, $00, $6F, $00
+        dw $FFF0, $FFD7, $0025, $002C, $00D8, $006F
 
 DATA_BCD664:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $70, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $0070
 
 DATA_BCD670:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $71, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $0071
 
 DATA_BCD67C:
-	db $EF, $FF, $E1, $FF, $1A, $00, $21, $00
-	db $D8, $00, $73, $00
+        dw $FFEF, $FFE1, $001A, $0021, $00D8, $0073
 
 DATA_BCD688:
-	db $F0, $FF, $DD, $FF, $20, $00, $23, $00
-	db $D8, $00, $74, $00
+        dw $FFF0, $FFDD, $0020, $0023, $00D8, $0074
 
 DATA_BCD694:
-	db $F8, $FF, $EC, $FF, $10, $00, $10, $00
-	db $D8, $00, $75, $00
+        dw $FFF8, $FFEC, $0010, $0010, $00D8, $0075
 
 DATA_BCD6A0:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $76, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $0076
 
 DATA_BCD6AC:
-	db $F2, $FF, $D9, $FF, $29, $00, $2A, $00
-	db $D8, $00, $7A, $00
+        dw $FFF2, $FFD9, $0029, $002A, $00D8, $007A
 
 DATA_BCD6B8:
-	db $F2, $FF, $D4, $FF, $22, $00, $2E, $00
-	db $D8, $01, $7A, $00
+        dw $FFF2, $FFD4, $0022, $002E, $01D8, $007A
 
 DATA_BCD6C4:
-	db $E8, $FF, $CC, $FF, $22, $00, $36, $00
-	db $D8, $02, $7A, $00
+        dw $FFE8, $FFCC, $0022, $0036, $02D8, $007A
 
 DATA_BCD6D0:
-	db $DE, $FF, $CC, $FF, $22, $00, $36, $00
-	db $D8, $03, $7A, $00
+        dw $FFDE, $FFCC, $0022, $0036, $03D8, $007A
 
 DATA_BCD6DC:
-	db $DB, $FF, $D0, $FF, $22, $00, $30, $00
-	db $D8, $04, $7A, $00
+        dw $FFDB, $FFD0, $0022, $0030, $04D8, $007A
 
 DATA_BCD6E8:
-	db $DE, $FF, $D0, $FF, $22, $00, $30, $00
-	db $D8, $05, $7A, $00
+        dw $FFDE, $FFD0, $0022, $0030, $05D8, $007A
 
 DATA_BCD6F4:
-	db $DC, $FF, $D0, $FF, $26, $00, $22, $00
-	db $D8, $0A, $7A, $00
+        dw $FFDC, $FFD0, $0026, $0022, $0AD8, $007A
 
 DATA_BCD700:
-	db $EE, $FF, $C1, $FF, $1F, $00, $34, $00
-	db $D8, $0B, $7A, $00
+        dw $FFEE, $FFC1, $001F, $0034, $0BD8, $007A
 
 DATA_BCD70C:
-	db $F5, $FF, $D1, $FF, $2E, $00, $2A, $00
-	db $D8, $0C, $7A, $00
+        dw $FFF5, $FFD1, $002E, $002A, $0CD8, $007A
 
 DATA_BCD718:
-	db $F5, $FF, $DD, $FF, $16, $00, $2A, $00
-	db $D8, $0D, $7A, $00
+        dw $FFF5, $FFDD, $0016, $002A, $0DD8, $007A
 
 DATA_BCD724:
-	db $F0, $FF, $DB, $FF, $1C, $00, $2A, $00
-	db $D8, $0E, $7A, $00
+        dw $FFF0, $FFDB, $001C, $002A, $0ED8, $007A
 
 DATA_BCD730:
-	db $F3, $FF, $DD, $FF, $2F, $00, $28, $00
-	db $D8, $11, $7A, $00
+        dw $FFF3, $FFDD, $002F, $0028, $11D8, $007A
 
 DATA_BCD73C:
-	db $F3, $FF, $DD, $FF, $2B, $00, $28, $00
-	db $D8, $12, $7A, $00
+        dw $FFF3, $FFDD, $002B, $0028, $12D8, $007A
 
 DATA_BCD748:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $7C, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $007C
 
 DATA_BCD754:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $7D, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $007D
 
 DATA_BCD760:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $7E, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $007E
 
 DATA_BCD76C:
-	db $F3, $FF, $E2, $FF, $17, $00, $22, $00
-	db $D8, $00, $7F, $00
+        dw $FFF3, $FFE2, $0017, $0022, $00D8, $007F
 
 DATA_BCD778:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $81, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $0081
 
 DATA_BCD784:
-	db $ED, $FF, $DA, $FF, $25, $00, $28, $00
-	db $D8, $00, $82, $00
+        dw $FFED, $FFDA, $0025, $0028, $00D8, $0082
 
 DATA_BCD790:
-	db $F0, $FF, $E8, $FF, $1B, $00, $18, $00
-	db $D8, $00, $83, $00
+        dw $FFF0, $FFE8, $001B, $0018, $00D8, $0083
 
 DATA_BCD79C:
-	db $F4, $FF, $E8, $FF, $16, $00, $18, $00
-	db $D8, $02, $83, $00
+        dw $FFF4, $FFE8, $0016, $0018, $02D8, $0083
 
 DATA_BCD7A8:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $84, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $0084
 
 DATA_BCD7B4:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $85, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $0085
 
 DATA_BCD7C0:
-	db $EB, $FF, $E9, $FF, $23, $00, $19, $00
-	db $D8, $00, $86, $00
+        dw $FFEB, $FFE9, $0023, $0019, $00D8, $0086
 
 DATA_BCD7CC:
-	db $ED, $FF, $EE, $FF, $20, $00, $14, $00
-	db $D8, $00, $87, $00
+        dw $FFED, $FFEE, $0020, $0014, $00D8, $0087
 
 DATA_BCD7D8:
-	db $ED, $FF, $EE, $FF, $20, $00, $14, $00
-	db $D8, $00, $88, $00
+        dw $FFED, $FFEE, $0020, $0014, $00D8, $0088
 
 DATA_BCD7E4:
-	db $F8, $FF, $F8, $FF, $10, $00, $20, $00
-	db $D8, $00, $89, $00
+        dw $FFF8, $FFF8, $0010, $0020, $00D8, $0089
 
 DATA_BCD7F0:
-	db $E8, $FF, $CC, $FF, $2C, $00, $32, $00
-	db $D8, $00, $8A, $00
+        dw $FFE8, $FFCC, $002C, $0032, $00D8, $008A
 
 DATA_BCD7FC:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $8B, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $008B
 
 DATA_BCD808:
-	db $F6, $FF, $DC, $FF, $1C, $00, $25, $00
-	db $D8, $00, $8D, $00
+        dw $FFF6, $FFDC, $001C, $0025, $00D8, $008D
 
 DATA_BCD814:
-	db $EE, $FF, $CA, $FF, $24, $00, $3A, $00
-	db $D8, $00, $8E, $00
+        dw $FFEE, $FFCA, $0024, $003A, $00D8, $008E
 
 DATA_BCD820:
-	db $F9, $FF, $DC, $FF, $18, $00, $22, $00
-	db $D8, $00, $8F, $00
+        dw $FFF9, $FFDC, $0018, $0022, $00D8, $008F
 
 DATA_BCD82C:
-	db $F9, $FF, $E1, $FF, $1D, $00, $1D, $00
-	db $D8, $05, $8F, $00
+        dw $FFF9, $FFE1, $001D, $001D, $05D8, $008F
 
 DATA_BCD838:
-	db $F8, $FF, $E5, $FF, $21, $00, $15, $00
-	db $D8, $06, $8F, $00
+        dw $FFF8, $FFE5, $0021, $0015, $06D8, $008F
 
 DATA_BCD844:
-	db $F8, $FF, $EA, $FF, $25, $00, $14, $00
-	db $D8, $07, $8F, $00
+        dw $FFF8, $FFEA, $0025, $0014, $07D8, $008F
 
 DATA_BCD850:
-	db $F8, $FF, $E5, $FF, $25, $00, $15, $00
-	db $D8, $0A, $8F, $00
+        dw $FFF8, $FFE5, $0025, $0015, $0AD8, $008F
 
 DATA_BCD85C:
-	db $F3, $FF, $DA, $FF, $17, $00, $23, $00
-	db $D8, $00, $90, $00
+        dw $FFF3, $FFDA, $0017, $0023, $00D8, $0090
 
 DATA_BCD868:
-	db $F0, $FF, $DF, $FF, $1C, $00, $1A, $00
-	db $D8, $02, $90, $00
+        dw $FFF0, $FFDF, $001C, $001A, $02D8, $0090
 
 DATA_BCD874:
-	db $F1, $FF, $DD, $FF, $1A, $00, $1D, $00
-	db $D8, $05, $90, $00
+        dw $FFF1, $FFDD, $001A, $001D, $05D8, $0090
 
 DATA_BCD880:
-	db $F3, $FF, $DB, $FF, $17, $00, $22, $00
-	db $D8, $07, $90, $00
+        dw $FFF3, $FFDB, $0017, $0022, $07D8, $0090
 
 DATA_BCD88C:
-	db $F1, $FF, $DE, $FF, $1C, $00, $1B, $00
-	db $D8, $0B, $90, $00
+        dw $FFF1, $FFDE, $001C, $001B, $0BD8, $0090
 
 DATA_BCD898:
-	db $F2, $FF, $DE, $FF, $1A, $00, $1C, $00
-	db $D8, $0E, $90, $00
+        dw $FFF2, $FFDE, $001A, $001C, $0ED8, $0090
 
 DATA_BCD8A4:
-	db $EC, $FF, $C8, $FF, $28, $00, $40, $00
-	db $D8, $00, $91, $00
+        dw $FFEC, $FFC8, $0028, $0040, $00D8, $0091
 
 DATA_BCD8B0:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $92, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $0092
 
 DATA_BCD8BC:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $93, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $0093
 
 DATA_BCD8C8:
-	db $F6, $FF, $DB, $FF, $12, $00, $22, $00
-	db $D8, $00, $94, $00
+        dw $FFF6, $FFDB, $0012, $0022, $00D8, $0094
 
 DATA_BCD8D4:
-	db $F8, $FF, $C9, $FF, $10, $00, $1E, $00
-	db $D8, $00, $95, $00
+        dw $FFF8, $FFC9, $0010, $001E, $00D8, $0095
 
 DATA_BCD8E0:
-	db $EE, $FF, $D5, $FF, $22, $00, $2B, $00
-	db $D8, $00, $96, $00
+        dw $FFEE, $FFD5, $0022, $002B, $00D8, $0096
 
 DATA_BCD8EC:
-	db $F0, $FF, $DC, $FF, $1E, $00, $27, $00
-	db $D8, $00, $97, $00
+        dw $FFF0, $FFDC, $001E, $0027, $00D8, $0097
 
 DATA_BCD8F8:
-	db $FC, $FF, $BD, $FF, $23, $00, $20, $00
-	db $D8, $00, $98, $00
+        dw $FFFC, $FFBD, $0023, $0020, $00D8, $0098
 
 DATA_BCD904:
-	db $F7, $FF, $B6, $FF, $20, $00, $29, $00
-	db $D8, $00, $99, $00
+        dw $FFF7, $FFB6, $0020, $0029, $00D8, $0099
 
 DATA_BCD910:
-	db $EF, $FF, $B6, $FF, $20, $00, $29, $00
-	db $D8, $01, $99, $00
+        dw $FFEF, $FFB6, $0020, $0029, $01D8, $0099
 
 DATA_BCD91C:
-	db $E7, $FF, $B6, $FF, $20, $00, $29, $00
-	db $D8, $02, $99, $00
+        dw $FFE7, $FFB6, $0020, $0029, $02D8, $0099
 
 DATA_BCD928:
-	db $FE, $FF, $B7, $FF, $21, $00, $25, $00
-	db $D8, $00, $9A, $00
+        dw $FFFE, $FFB7, $0021, $0025, $00D8, $009A
 
 DATA_BCD934:
-	db $F3, $FF, $DD, $FF, $10, $00, $1F, $00
-	db $D8, $00, $9B, $00
+        dw $FFF3, $FFDD, $0010, $001F, $00D8, $009B
 
 DATA_BCD940:
-	db $D8, $FF, $D3, $FF, $1F, $00, $10, $00
-	db $D8, $00, $9C, $00
+        dw $FFD8, $FFD3, $001F, $0010, $00D8, $009C
 
 DATA_BCD94C:
-	db $F8, $FF, $E1, $FF, $12, $00, $1C, $00
-	db $D8, $00, $9D, $00
+        dw $FFF8, $FFE1, $0012, $001C, $00D8, $009D
 
 DATA_BCD958:
-	db $F8, $FF, $DE, $FF, $14, $00, $1E, $00
-	db $D8, $00, $9E, $00
+        dw $FFF8, $FFDE, $0014, $001E, $00D8, $009E
 
 DATA_BCD964:
-	db $FA, $FF, $CA, $FF, $0C, $00, $1F, $00
-	db $D8, $00, $9F, $00
+        dw $FFFA, $FFCA, $000C, $001F, $00D8, $009F
 
 DATA_BCD970:
-	db $1F, $00, $DA, $FF, $18, $00, $20, $00
-	db $D8, $00, $A7, $00
+        dw $001F, $FFDA, $0018, $0020, $00D8, $00A7
 
 DATA_BCD97C:
-	db $1C, $00, $D4, $FF, $18, $00, $20, $00
-	db $D8, $01, $A7, $00
+        dw $001C, $FFD4, $0018, $0020, $01D8, $00A7
 
 DATA_BCD988:
-	db $18, $00, $CE, $FF, $18, $00, $20, $00
-	db $D8, $02, $A7, $00
+        dw $0018, $FFCE, $0018, $0020, $02D8, $00A7
 
 DATA_BCD994:
-	db $13, $00, $CB, $FF, $18, $00, $20, $00
-	db $D8, $03, $A7, $00
+        dw $0013, $FFCB, $0018, $0020, $03D8, $00A7
 
 DATA_BCD9A0:
-	db $12, $00, $C9, $FF, $18, $00, $20, $00
-	db $D8, $04, $A7, $00
+        dw $0012, $FFC9, $0018, $0020, $04D8, $00A7
 
 DATA_BCD9AC:
-	db $0C, $00, $C6, $FF, $18, $00, $20, $00
-	db $D8, $05, $A7, $00
+        dw $000C, $FFC6, $0018, $0020, $05D8, $00A7
 
 DATA_BCD9B8:
-	db $07, $00, $C5, $FF, $18, $00, $20, $00
-	db $D8, $06, $A7, $00
+        dw $0007, $FFC5, $0018, $0020, $06D8, $00A7
 
 DATA_BCD9C4:
-	db $04, $00, $C3, $FF, $18, $00, $20, $00
-	db $D8, $07, $A7, $00
+        dw $0004, $FFC3, $0018, $0020, $07D8, $00A7
 
 DATA_BCD9D0:
-	db $FE, $FF, $C2, $FF, $18, $00, $20, $00
-	db $D8, $08, $A7, $00
+        dw $FFFE, $FFC2, $0018, $0020, $08D8, $00A7
 
 DATA_BCD9DC:
-	db $F9, $FF, $C1, $FF, $18, $00, $20, $00
-	db $D8, $09, $A7, $00
+        dw $FFF9, $FFC1, $0018, $0020, $09D8, $00A7
 
 DATA_BCD9E8:
-	db $F1, $FF, $C0, $FF, $18, $00, $20, $00
-	db $D8, $0A, $A7, $00
+        dw $FFF1, $FFC0, $0018, $0020, $0AD8, $00A7
 
 DATA_BCD9F4:
-	db $E9, $FF, $C0, $FF, $18, $00, $20, $00
-	db $D8, $0B, $A7, $00
+        dw $FFE9, $FFC0, $0018, $0020, $0BD8, $00A7
 
 DATA_BCDA00:
-	db $E3, $FF, $C2, $FF, $18, $00, $20, $00
-	db $D8, $0C, $A7, $00
+        dw $FFE3, $FFC2, $0018, $0020, $0CD8, $00A7
 
 DATA_BCDA0C:
-	db $DB, $FF, $C4, $FF, $18, $00, $20, $00
-	db $D8, $0D, $A7, $00
+        dw $FFDB, $FFC4, $0018, $0020, $0DD8, $00A7
 
 DATA_BCDA18:
-	db $D5, $FF, $C8, $FF, $18, $00, $20, $00
-	db $D8, $0E, $A7, $00
+        dw $FFD5, $FFC8, $0018, $0020, $0ED8, $00A7
 
 DATA_BCDA24:
-	db $D1, $FF, $CC, $FF, $1A, $00, $1E, $00
-	db $D8, $0F, $A7, $00
+        dw $FFD1, $FFCC, $001A, $001E, $0FD8, $00A7
 
 DATA_BCDA30:
-	db $CD, $FF, $D1, $FF, $1C, $00, $1C, $00
-	db $D8, $10, $A7, $00
+        dw $FFCD, $FFD1, $001C, $001C, $10D8, $00A7
 
 DATA_BCDA3C:
-	db $C6, $FF, $DA, $FF, $20, $00, $18, $00
-	db $D8, $11, $A7, $00
+        dw $FFC6, $FFDA, $0020, $0018, $11D8, $00A7
 
 DATA_BCDA48:
-	db $C2, $FF, $E1, $FF, $20, $00, $18, $00
-	db $D8, $12, $A7, $00
+        dw $FFC2, $FFE1, $0020, $0018, $12D8, $00A7
 
 DATA_BCDA54:
-	db $04, $00, $E1, $FF, $1E, $00, $2C, $00
-	db $D8, $00, $A8, $00
+        dw $0004, $FFE1, $001E, $002C, $00D8, $00A8
 
 DATA_BCDA60:
-	db $01, $00, $DE, $FF, $1E, $00, $2C, $00
-	db $D8, $01, $A8, $00
+        dw $0001, $FFDE, $001E, $002C, $01D8, $00A8
 
 DATA_BCDA6C:
-	db $FF, $FF, $DC, $FF, $1E, $00, $2C, $00
-	db $D8, $02, $A8, $00
+        dw $FFFF, $FFDC, $001E, $002C, $02D8, $00A8
 
 DATA_BCDA78:
-	db $FE, $FF, $DB, $FF, $1F, $00, $2C, $00
-	db $D8, $03, $A8, $00
+        dw $FFFE, $FFDB, $001F, $002C, $03D8, $00A8
 
 DATA_BCDA84:
-	db $FB, $FF, $DA, $FF, $20, $00, $2C, $00
-	db $D8, $04, $A8, $00
+        dw $FFFB, $FFDA, $0020, $002C, $04D8, $00A8
 
 DATA_BCDA90:
-	db $F9, $FF, $DA, $FF, $22, $00, $2A, $00
-	db $D8, $05, $A8, $00
+        dw $FFF9, $FFDA, $0022, $002A, $05D8, $00A8
 
 DATA_BCDA9C:
-	db $F6, $FF, $D9, $FF, $24, $00, $28, $00
-	db $D8, $06, $A8, $00
+        dw $FFF6, $FFD9, $0024, $0028, $06D8, $00A8
 
 DATA_BCDAA8:
-	db $F3, $FF, $D9, $FF, $26, $00, $28, $00
-	db $D8, $07, $A8, $00
+        dw $FFF3, $FFD9, $0026, $0028, $07D8, $00A8
 
 DATA_BCDAB4:
-	db $F0, $FF, $DA, $FF, $28, $00, $27, $00
-	db $D8, $08, $A8, $00
+        dw $FFF0, $FFDA, $0028, $0027, $08D8, $00A8
 
 DATA_BCDAC0:
-	db $EC, $FF, $DB, $FF, $28, $00, $26, $00
-	db $D8, $09, $A8, $00
+        dw $FFEC, $FFDB, $0028, $0026, $09D8, $00A8
 
 DATA_BCDACC:
-	db $EA, $FF, $DB, $FF, $28, $00, $25, $00
-	db $D8, $0A, $A8, $00
+        dw $FFEA, $FFDB, $0028, $0025, $0AD8, $00A8
 
 DATA_BCDAD8:
-	db $E5, $FF, $DD, $FF, $28, $00, $24, $00
-	db $D8, $0B, $A8, $00
+        dw $FFE5, $FFDD, $0028, $0024, $0BD8, $00A8
 
 DATA_BCDAE4:
-	db $E2, $FF, $DD, $FF, $28, $00, $24, $00
-	db $D8, $0C, $A8, $00
+        dw $FFE2, $FFDD, $0028, $0024, $0CD8, $00A8
 
 DATA_BCDAF0:
-	db $E0, $FF, $DE, $FF, $28, $00, $24, $00
-	db $D8, $0D, $A8, $00
+        dw $FFE0, $FFDE, $0028, $0024, $0DD8, $00A8
 
 DATA_BCDAFC:
-	db $DE, $FF, $DF, $FF, $28, $00, $24, $00
-	db $D8, $0E, $A8, $00
+        dw $FFDE, $FFDF, $0028, $0024, $0ED8, $00A8
 
 DATA_BCDB08:
-	db $DD, $FF, $E1, $FF, $28, $00, $24, $00
-	db $D8, $0F, $A8, $00
+        dw $FFDD, $FFE1, $0028, $0024, $0FD8, $00A8
 
 DATA_BCDB14:
-	db $DC, $FF, $E2, $FF, $28, $00, $24, $00
-	db $D8, $10, $A8, $00
+        dw $FFDC, $FFE2, $0028, $0024, $10D8, $00A8
 
 DATA_BCDB20:
-	db $DB, $FF, $E4, $FF, $28, $00, $25, $00
-	db $D8, $11, $A8, $00
+        dw $FFDB, $FFE4, $0028, $0025, $11D8, $00A8
 
 DATA_BCDB2C:
-	db $DA, $FF, $E5, $FF, $27, $00, $25, $00
-	db $D8, $12, $A8, $00
+        dw $FFDA, $FFE5, $0027, $0025, $12D8, $00A8
 
 DATA_BCDB38:
-	db $1F, $00, $DA, $FF, $18, $00, $20, $00
-	db $D8, $00, $AD, $00
+        dw $001F, $FFDA, $0018, $0020, $00D8, $00AD
 
 DATA_BCDB44:
-	db $1C, $00, $D4, $FF, $18, $00, $20, $00
-	db $D8, $01, $AD, $00
+        dw $001C, $FFD4, $0018, $0020, $01D8, $00AD
 
 DATA_BCDB50:
-	db $18, $00, $CE, $FF, $18, $00, $20, $00
-	db $D8, $02, $AD, $00
+        dw $0018, $FFCE, $0018, $0020, $02D8, $00AD
 
 DATA_BCDB5C:
-	db $13, $00, $CB, $FF, $18, $00, $20, $00
-	db $D8, $03, $AD, $00
+        dw $0013, $FFCB, $0018, $0020, $03D8, $00AD
 
 DATA_BCDB68:
-	db $12, $00, $C9, $FF, $18, $00, $20, $00
-	db $D8, $04, $AD, $00
+        dw $0012, $FFC9, $0018, $0020, $04D8, $00AD
 
 DATA_BCDB74:
-	db $0C, $00, $C6, $FF, $18, $00, $20, $00
-	db $D8, $05, $AD, $00
+        dw $000C, $FFC6, $0018, $0020, $05D8, $00AD
 
 DATA_BCDB80:
-	db $07, $00, $C5, $FF, $18, $00, $20, $00
-	db $D8, $06, $AD, $00
+        dw $0007, $FFC5, $0018, $0020, $06D8, $00AD
 
 DATA_BCDB8C:
-	db $04, $00, $C3, $FF, $18, $00, $20, $00
-	db $D8, $07, $AD, $00
+        dw $0004, $FFC3, $0018, $0020, $07D8, $00AD
 
 DATA_BCDB98:
-	db $FE, $FF, $C2, $FF, $18, $00, $20, $00
-	db $D8, $08, $AD, $00
+        dw $FFFE, $FFC2, $0018, $0020, $08D8, $00AD
 
 DATA_BCDBA4:
-	db $F9, $FF, $C1, $FF, $18, $00, $20, $00
-	db $D8, $09, $AD, $00
+        dw $FFF9, $FFC1, $0018, $0020, $09D8, $00AD
 
 DATA_BCDBB0:
-	db $F1, $FF, $C0, $FF, $18, $00, $20, $00
-	db $D8, $0A, $AD, $00
+        dw $FFF1, $FFC0, $0018, $0020, $0AD8, $00AD
 
 DATA_BCDBBC:
-	db $E9, $FF, $C0, $FF, $18, $00, $20, $00
-	db $D8, $0B, $AD, $00
+        dw $FFE9, $FFC0, $0018, $0020, $0BD8, $00AD
 
 DATA_BCDBC8:
-	db $E3, $FF, $C2, $FF, $18, $00, $20, $00
-	db $D8, $0C, $AD, $00
+        dw $FFE3, $FFC2, $0018, $0020, $0CD8, $00AD
 
 DATA_BCDBD4:
-	db $DB, $FF, $C4, $FF, $18, $00, $20, $00
-	db $D8, $0D, $AD, $00
+        dw $FFDB, $FFC4, $0018, $0020, $0DD8, $00AD
 
 DATA_BCDBE0:
-	db $D5, $FF, $C8, $FF, $18, $00, $20, $00
-	db $D8, $0E, $AD, $00
+        dw $FFD5, $FFC8, $0018, $0020, $0ED8, $00AD
 
 DATA_BCDBEC:
-	db $D1, $FF, $CC, $FF, $1A, $00, $1E, $00
-	db $D8, $0F, $AD, $00
+        dw $FFD1, $FFCC, $001A, $001E, $0FD8, $00AD
 
 DATA_BCDBF8:
-	db $CD, $FF, $D1, $FF, $1C, $00, $1C, $00
-	db $D8, $10, $AD, $00
+        dw $FFCD, $FFD1, $001C, $001C, $10D8, $00AD
 
 DATA_BCDC04:
-	db $C6, $FF, $DA, $FF, $20, $00, $18, $00
-	db $D8, $11, $AD, $00
+        dw $FFC6, $FFDA, $0020, $0018, $11D8, $00AD
 
 DATA_BCDC10:
-	db $C2, $FF, $E1, $FF, $20, $00, $18, $00
-	db $D8, $12, $AD, $00
+        dw $FFC2, $FFE1, $0020, $0018, $12D8, $00AD
 
 DATA_BCDC1C:
-	db $F1, $FF, $C4, $FF, $1D, $00, $44, $00
-	db $D8, $00, $AE, $00
+        dw $FFF1, $FFC4, $001D, $0044, $00D8, $00AE
 
 DATA_BCDC28:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $AF, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $00AF
 
 DATA_BCDC34:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $B0, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $00B0
 
 DATA_BCDC40:
-	db $F8, $FF, $DE, $FF, $10, $00, $1F, $00
-	db $D8, $00, $B1, $00
+        dw $FFF8, $FFDE, $0010, $001F, $00D8, $00B1
 
 DATA_BCDC4C:
-	db $F8, $FF, $D0, $FF, $0E, $00, $1B, $00
-	db $D8, $00, $B2, $00
+        dw $FFF8, $FFD0, $000E, $001B, $00D8, $00B2
 
 DATA_BCDC58:
-	db $EF, $FF, $DA, $FF, $1B, $00, $2B, $00
-	db $D8, $00, $B4, $00
+        dw $FFEF, $FFDA, $001B, $002B, $00D8, $00B4
 
 DATA_BCDC64:
-	db $F0, $FF, $E7, $FF, $1C, $00, $1A, $00
-	db $D8, $00, $B5, $00
+        dw $FFF0, $FFE7, $001C, $001A, $00D8, $00B5
 
 DATA_BCDC70:
-	db $F0, $FF, $E7, $FF, $17, $00, $1A, $00
-	db $D8, $01, $B5, $00
+        dw $FFF0, $FFE7, $0017, $001A, $01D8, $00B5
 
 DATA_BCDC7C:
-	db $EF, $FF, $DA, $FF, $1B, $00, $2B, $00
-	db $D8, $00, $B6, $00
+        dw $FFEF, $FFDA, $001B, $002B, $00D8, $00B6
 
 DATA_BCDC88:
-	db $E9, $FF, $C0, $FF, $25, $00, $41, $00
-	db $D8, $00, $B8, $00
+        dw $FFE9, $FFC0, $0025, $0041, $00D8, $00B8
 
 DATA_BCDC94:
-	db $E4, $FF, $C0, $FF, $27, $00, $41, $00
-	db $D8, $02, $B8, $00
+        dw $FFE4, $FFC0, $0027, $0041, $02D8, $00B8
 
 DATA_BCDCA0:
-	db $DD, $FF, $C0, $FF, $2C, $00, $41, $00
-	db $D8, $04, $B8, $00
+        dw $FFDD, $FFC0, $002C, $0041, $04D8, $00B8
 
 DATA_BCDCAC:
-	db $DD, $FF, $C0, $FF, $2C, $00, $41, $00
-	db $D8, $06, $B8, $00
+        dw $FFDD, $FFC0, $002C, $0041, $06D8, $00B8
 
 DATA_BCDCB8:
-	db $E7, $FF, $CD, $FF, $2F, $00, $32, $00
-	db $D8, $00, $B9, $00
+        dw $FFE7, $FFCD, $002F, $0032, $00D8, $00B9
 
 DATA_BCDCC4:
-	db $EF, $FF, $DA, $FF, $1B, $00, $2B, $00
-	db $D8, $00, $BA, $00
+        dw $FFEF, $FFDA, $001B, $002B, $00D8, $00BA
 
 DATA_BCDCD0:
-	db $EA, $FF, $CB, $FF, $2D, $00, $34, $00
-	db $D8, $00, $BB, $00
+        dw $FFEA, $FFCB, $002D, $0034, $00D8, $00BB
 
 DATA_BCDCDC:
-	db $E6, $FF, $C9, $FF, $2D, $00, $36, $00
-	db $D8, $00, $BC, $00
+        dw $FFE6, $FFC9, $002D, $0036, $00D8, $00BC
 
 DATA_BCDCE8:
-	db $E6, $FF, $C3, $FF, $2D, $00, $3C, $00
-	db $D8, $02, $BC, $00
+        dw $FFE6, $FFC3, $002D, $003C, $02D8, $00BC
 
 DATA_BCDCF4:
-	db $E6, $FF, $BD, $FF, $2D, $00, $42, $00
-	db $D8, $04, $BC, $00
+        dw $FFE6, $FFBD, $002D, $0042, $04D8, $00BC
 
 DATA_BCDD00:
-	db $EF, $FF, $DA, $FF, $1F, $00, $26, $00
-	db $D8, $00, $BD, $00
+        dw $FFEF, $FFDA, $001F, $0026, $00D8, $00BD
 
 DATA_BCDD0C:
-	db $F1, $FF, $D8, $FF, $1B, $00, $2B, $00
-	db $D8, $00, $BE, $00
+        dw $FFF1, $FFD8, $001B, $002B, $00D8, $00BE
 
 DATA_BCDD18:
-	db $EF, $FF, $DA, $FF, $1B, $00, $2B, $00
-	db $D8, $00, $BF, $00
+        dw $FFEF, $FFDA, $001B, $002B, $00D8, $00BF
 
 DATA_BCDD24:
-	db $F0, $FF, $E5, $FF, $24, $00, $1A, $00
-	db $D8, $00, $C0, $00
+        dw $FFF0, $FFE5, $0024, $001A, $00D8, $00C0
 
 DATA_BCDD30:
-	db $EF, $FF, $DA, $FF, $1E, $00, $25, $00
-	db $D8, $00, $C1, $00
+        dw $FFEF, $FFDA, $001E, $0025, $00D8, $00C1
 
 DATA_BCDD3C:
-	db $EF, $FF, $DA, $FF, $1B, $00, $2B, $00
-	db $D8, $00, $C2, $00
+        dw $FFEF, $FFDA, $001B, $002B, $00D8, $00C2
 
 DATA_BCDD48:
-	db $EF, $FF, $DA, $FF, $1B, $00, $2B, $00
-	db $D8, $00, $C3, $00
+        dw $FFEF, $FFDA, $001B, $002B, $00D8, $00C3
 
 DATA_BCDD54:
-	db $F2, $FF, $DE, $FF, $1A, $00, $29, $00
-	db $D8, $00, $C4, $00
+        dw $FFF2, $FFDE, $001A, $0029, $00D8, $00C4
 
 DATA_BCDD60:
-	db $F6, $FF, $E1, $FF, $12, $00, $1C, $00
-	db $D8, $00, $C5, $00
+        dw $FFF6, $FFE1, $0012, $001C, $00D8, $00C5
 
 DATA_BCDD6C:
-	db $EF, $FF, $D3, $FF, $18, $00, $16, $00
-	db $D8, $00, $C6, $00
+        dw $FFEF, $FFD3, $0018, $0016, $00D8, $00C6
 
 DATA_BCDD78:
-	db $F7, $FF, $CB, $FF, $0F, $00, $1C, $00
-	db $D8, $00, $C7, $00
+        dw $FFF7, $FFCB, $000F, $001C, $00D8, $00C7
 
 DATA_BCDD84:
-	db $F8, $FF, $DA, $FF, $10, $00, $1F, $00
-	db $D8, $00, $C8, $00
+        dw $FFF8, $FFDA, $0010, $001F, $00D8, $00C8
 
 DATA_BCDD90:
-	db $EF, $FF, $E1, $FF, $0E, $00, $1D, $00
-	db $D8, $00, $CA, $00
+        dw $FFEF, $FFE1, $000E, $001D, $00D8, $00CA
 
 DATA_BCDD9C:
-	db $00, $00, $EE, $FF, $0B, $00, $34, $00
-	db $D8, $00, $CD, $00
+        dw $0000, $FFEE, $000B, $0034, $00D8, $00CD
 
 DATA_BCDDA8:
-	db $EF, $FF, $DA, $FF, $1B, $00, $2B, $00
-	db $D8, $00, $CE, $00
+        dw $FFEF, $FFDA, $001B, $002B, $00D8, $00CE
 
 DATA_BCDDB4:
-	db $FB, $FF, $99, $FF, $07, $00, $6E, $00
-	db $D8, $0F, $CE, $00
+        dw $FFFB, $FF99, $0007, $006E, $0FD8, $00CE
 
 DATA_BCDDC0:
-	db $FB, $FF, $99, $FF, $07, $00, $7B, $00
-	db $D8, $11, $CE, $00
+        dw $FFFB, $FF99, $0007, $007B, $11D8, $00CE
 
 DATA_BCDDCC:
-	db $FB, $FF, $99, $FF, $07, $00, $87, $00
-	db $D8, $12, $CE, $00
+        dw $FFFB, $FF99, $0007, $0087, $12D8, $00CE
 
 DATA_BCDDD8:
-	db $F2, $FF, $C8, $FF, $1B, $00, $37, $00
-	db $D8, $00, $CF, $00
+        dw $FFF2, $FFC8, $001B, $0037, $00D8, $00CF
 
 DATA_BCDDE4:
-	db $F2, $FF, $D0, $FF, $21, $00, $30, $00
-	db $D8, $02, $CF, $00
+        dw $FFF2, $FFD0, $0021, $0030, $02D8, $00CF
 
 DATA_BCDDF0:
-	db $EE, $FF, $C6, $FF, $1F, $00, $39, $00
-	db $D8, $09, $CF, $00
+        dw $FFEE, $FFC6, $001F, $0039, $09D8, $00CF
 
 DATA_BCDDFC:
-	db $F0, $FF, $ED, $FF, $1A, $00, $16, $00
-	db $D8, $00, $D4, $00
+        dw $FFF0, $FFED, $001A, $0016, $00D8, $00D4
 
 DATA_BCDE08:
-	db $F2, $FF, $EC, $FF, $16, $00, $16, $00
-	db $D8, $00, $D5, $00
+        dw $FFF2, $FFEC, $0016, $0016, $00D8, $00D5
 
 DATA_BCDE14:
-	db $EF, $FF, $DA, $FF, $1B, $00, $2B, $00
-	db $D8, $00, $D6, $00
+        dw $FFEF, $FFDA, $001B, $002B, $00D8, $00D6
 
 DATA_BCDE20:
-	db $EF, $FF, $ED, $FF, $1F, $00, $16, $00
-	db $D8, $00, $D7, $00
+        dw $FFEF, $FFED, $001F, $0016, $00D8, $00D7
 
 DATA_BCDE2C:
-	db $EF, $FF, $ED, $FF, $1F, $00, $16, $00
-	db $D8, $00, $D8, $00
+        dw $FFEF, $FFED, $001F, $0016, $00D8, $00D8
 
 DATA_BCDE38:
-	db $EF, $FF, $EC, $FF, $1F, $00, $18, $00
-	db $D8, $01, $D8, $00
+        dw $FFEF, $FFEC, $001F, $0018, $01D8, $00D8
 
 DATA_BCDE44:
-	db $EF, $FF, $EC, $FF, $1F, $00, $19, $00
-	db $D8, $02, $D8, $00
+        dw $FFEF, $FFEC, $001F, $0019, $02D8, $00D8
 
 DATA_BCDE50:
-	db $EF, $FF, $EA, $FF, $1F, $00, $1D, $00
-	db $D8, $04, $D8, $00
+        dw $FFEF, $FFEA, $001F, $001D, $04D8, $00D8
 
 DATA_BCDE5C:
-	db $EF, $FF, $E8, $FF, $1F, $00, $20, $00
-	db $D8, $06, $D8, $00
+        dw $FFEF, $FFE8, $001F, $0020, $06D8, $00D8
 
 DATA_BCDE68:
-	db $EF, $FF, $E6, $FF, $1F, $00, $24, $00
-	db $D8, $08, $D8, $00
+        dw $FFEF, $FFE6, $001F, $0024, $08D8, $00D8
 
 DATA_BCDE74:
-	db $EF, $FF, $E5, $FF, $1F, $00, $26, $00
-	db $D8, $0A, $D8, $00
+        dw $FFEF, $FFE5, $001F, $0026, $0AD8, $00D8
 
 DATA_BCDE80:
-	db $F4, $FF, $F2, $FF, $1B, $00, $14, $00
-	db $D8, $00, $DD, $00
+        dw $FFF4, $FFF2, $001B, $0014, $00D8, $00DD
 
 DATA_BCDE8C:
-	db $D7, $FF, $EB, $FF, $20, $00, $20, $00
-	db $D8, $00, $DE, $00
+        dw $FFD7, $FFEB, $0020, $0020, $00D8, $00DE
 
 DATA_BCDE98:
-	db $EF, $FF, $DA, $FF, $1B, $00, $2B, $00
-	db $D8, $00, $E1, $00
+        dw $FFEF, $FFDA, $001B, $002B, $00D8, $00E1
 
 DATA_BCDEA4:
-	db $E7, $FF, $E8, $FF, $2C, $00, $16, $00
-	db $D8, $00, $E2, $00
+        dw $FFE7, $FFE8, $002C, $0016, $00D8, $00E2
 
 DATA_BCDEB0:
-	db $ED, $FF, $EA, $FF, $23, $00, $15, $00
-	db $D8, $00, $E3, $00
+        dw $FFED, $FFEA, $0023, $0015, $00D8, $00E3
 
 DATA_BCDEBC:
-	db $EF, $FF, $DA, $FF, $15, $00, $2B, $00
-	db $D8, $00, $E4, $00
+        dw $FFEF, $FFDA, $0015, $002B, $00D8, $00E4
 
 DATA_BCDEC8:
-	db $EF, $FF, $DA, $FF, $1B, $00, $2B, $00
-	db $D8, $00, $E5, $00
+        dw $FFEF, $FFDA, $001B, $002B, $00D8, $00E5
 
 DATA_BCDED4:
-	db $EF, $FF, $DA, $FF, $1B, $00, $2B, $00
-	db $D8, $00, $E6, $00
+        dw $FFEF, $FFDA, $001B, $002B, $00D8, $00E6
 
 DATA_BCDEE0:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $E8, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $00E8
 
 DATA_BCDEEC:
-	db $F7, $FF, $F8, $FF, $1D, $00, $0D, $00
-	db $D8, $00, $E9, $00
+        dw $FFF7, $FFF8, $001D, $000D, $00D8, $00E9
 
 DATA_BCDEF8:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $EA, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $00EA
 
 DATA_BCDF04:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $EB, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $00EB
 
 DATA_BCDF10:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $EC, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $00EC
 
 DATA_BCDF1C:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $ED, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $00ED
 
 DATA_BCDF28:
-	db $E1, $FF, $E2, $FF, $1D, $00, $18, $00
-	db $D8, $00, $EE, $00
+        dw $FFE1, $FFE2, $001D, $0018, $00D8, $00EE
 
 DATA_BCDF34:
-	db $E1, $FF, $E2, $FF, $1D, $00, $18, $00
-	db $D8, $00, $EF, $00
+        dw $FFE1, $FFE2, $001D, $0018, $00D8, $00EF
 
 DATA_BCDF40:
-	db $F2, $FF, $E0, $FF, $0C, $00, $1A, $00
-	db $D8, $00, $F0, $00
+        dw $FFF2, $FFE0, $000C, $001A, $00D8, $00F0
 
 DATA_BCDF4C:
-	db $F2, $FF, $DC, $FF, $0C, $00, $1A, $00
-	db $D8, $00, $F1, $00
+        dw $FFF2, $FFDC, $000C, $001A, $00D8, $00F1
 
 DATA_BCDF58:
-	db $EE, $FF, $D7, $FF, $10, $00, $1F, $00
-	db $D8, $00, $F3, $00
+        dw $FFEE, $FFD7, $0010, $001F, $00D8, $00F3
 
 DATA_BCDF64:
-	db $DF, $FF, $D7, $FF, $1D, $00, $1F, $00
-	db $D8, $06, $F3, $00
+        dw $FFDF, $FFD7, $001D, $001F, $06D8, $00F3
 
 DATA_BCDF70:
-	db $F3, $FF, $CB, $FF, $1B, $00, $34, $00
-	db $D8, $00, $F4, $00
+        dw $FFF3, $FFCB, $001B, $0034, $00D8, $00F4
 
 DATA_BCDF7C:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $F5, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $00F5
 
 DATA_BCDF88:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $F6, $00
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $00F6
 
 DATA_BCDF94:
-	db $F3, $FF, $F7, $FF, $20, $00, $0F, $00
-	db $D8, $00, $F7, $00
+        dw $FFF3, $FFF7, $0020, $000F, $00D8, $00F7
 
 DATA_BCDFA0:
-	db $F0, $FF, $F7, $FF, $20, $00, $0F, $00
-	db $D8, $01, $F7, $00
+        dw $FFF0, $FFF7, $0020, $000F, $01D8, $00F7
 
 DATA_BCDFAC:
-	db $ED, $FF, $F8, $FF, $20, $00, $11, $00
-	db $D8, $02, $F7, $00
+        dw $FFED, $FFF8, $0020, $0011, $02D8, $00F7
 
 DATA_BCDFB8:
-	db $EB, $FF, $F7, $FF, $20, $00, $11, $00
-	db $D8, $03, $F7, $00
+        dw $FFEB, $FFF7, $0020, $0011, $03D8, $00F7
 
 DATA_BCDFC4:
-	db $E7, $FF, $F7, $FF, $20, $00, $0F, $00
-	db $D8, $04, $F7, $00
+        dw $FFE7, $FFF7, $0020, $000F, $04D8, $00F7
 
 DATA_BCDFD0:
-	db $E4, $FF, $F7, $FF, $22, $00, $0F, $00
-	db $D8, $05, $F7, $00
+        dw $FFE4, $FFF7, $0022, $000F, $05D8, $00F7
 
 DATA_BCDFDC:
-	db $E4, $FF, $D6, $FF, $14, $00, $20, $00
-	db $D8, $00, $F8, $00
+        dw $FFE4, $FFD6, $0014, $0020, $00D8, $00F8
 
 DATA_BCDFE8:
-	db $F0, $FF, $F1, $FF, $15, $00, $12, $00
-	db $D8, $00, $F9, $00
+        dw $FFF0, $FFF1, $0015, $0012, $00D8, $00F9
 
 DATA_BCDFF4:
-	db $F0, $FF, $F1, $FF, $15, $00, $12, $00
-	db $D8, $00, $FA, $00
+        dw $FFF0, $FFF1, $0015, $0012, $00D8, $00FA
 
 DATA_BCE000:
-	db $E4, $FF, $DD, $FF, $15, $00, $19, $00
-	db $D8, $00, $FB, $00
+        dw $FFE4, $FFDD, $0015, $0019, $00D8, $00FB
 
 DATA_BCE00C:
-	db $F7, $FF, $DE, $FF, $12, $00, $1F, $00
-	db $D8, $00, $FC, $00
+        dw $FFF7, $FFDE, $0012, $001F, $00D8, $00FC
 
 DATA_BCE018:
-	db $F7, $FF, $DE, $FF, $12, $00, $1F, $00
-	db $D8, $00, $FD, $00
+        dw $FFF7, $FFDE, $0012, $001F, $00D8, $00FD
 
 DATA_BCE024:
-	db $F0, $FF, $F1, $FF, $15, $00, $12, $00
-	db $D8, $00, $FE, $00
+        dw $FFF0, $FFF1, $0015, $0012, $00D8, $00FE
 
 DATA_BCE030:
-	db $F4, $FF, $E2, $FF, $10, $00, $1A, $00
-	db $D8, $00, $FF, $00
+        dw $FFF4, $FFE2, $0010, $001A, $00D8, $00FF
 
 DATA_BCE03C:
-	db $EF, $FF, $DD, $FF, $2D, $00, $21, $00
-	db $D8, $00, $00, $01
+        dw $FFEF, $FFDD, $002D, $0021, $00D8, $0100
 
 DATA_BCE048:
-	db $EF, $FF, $DD, $FF, $2D, $00, $21, $00
-	db $D8, $00, $01, $01
+        dw $FFEF, $FFDD, $002D, $0021, $00D8, $0101
 
 DATA_BCE054:
-	db $EF, $FF, $DD, $FF, $33, $00, $21, $00
-	db $D8, $00, $02, $01
+        dw $FFEF, $FFDD, $0033, $0021, $00D8, $0102
 
 DATA_BCE060:
-	db $EF, $FF, $DD, $FF, $23, $00, $21, $00
-	db $D8, $00, $03, $01
+        dw $FFEF, $FFDD, $0023, $0021, $00D8, $0103
 
 DATA_BCE06C:
-	db $F0, $FF, $DD, $FF, $25, $00, $21, $00
-	db $D8, $00, $04, $01
+        dw $FFF0, $FFDD, $0025, $0021, $00D8, $0104
 
 DATA_BCE078:
-	db $F2, $FF, $DD, $FF, $1A, $00, $21, $00
-	db $D8, $01, $04, $01
+        dw $FFF2, $FFDD, $001A, $0021, $01D8, $0104
 
 DATA_BCE084:
-	db $EF, $FF, $DD, $FF, $2D, $00, $21, $00
-	db $D8, $00, $05, $01
+        dw $FFEF, $FFDD, $002D, $0021, $00D8, $0105
 
 DATA_BCE090:
-	db $EF, $FF, $D9, $FF, $2D, $00, $25, $00
-	db $D8, $02, $05, $01
+        dw $FFEF, $FFD9, $002D, $0025, $02D8, $0105
 
 DATA_BCE09C:
-	db $EF, $FF, $D3, $FF, $2D, $00, $2B, $00
-	db $D8, $03, $05, $01
+        dw $FFEF, $FFD3, $002D, $002B, $03D8, $0105
 
 DATA_BCE0A8:
-	db $EF, $FF, $D9, $FF, $2D, $00, $25, $00
-	db $D8, $04, $05, $01
+        dw $FFEF, $FFD9, $002D, $0025, $04D8, $0105
 
 DATA_BCE0B4:
-	db $EF, $FF, $DD, $FF, $2D, $00, $21, $00
-	db $D8, $05, $05, $01
+        dw $FFEF, $FFDD, $002D, $0021, $05D8, $0105
 
 DATA_BCE0C0:
-	db $F8, $FF, $E0, $FF, $11, $00, $1B, $00
-	db $D8, $00, $06, $01
+        dw $FFF8, $FFE0, $0011, $001B, $00D8, $0106
 
 DATA_BCE0CC:
-	db $F3, $FF, $F5, $FF, $16, $00, $16, $00
-	db $D8, $00, $07, $01
+        dw $FFF3, $FFF5, $0016, $0016, $00D8, $0107
 
 DATA_BCE0D8:
-	db $F0, $FF, $F1, $FF, $15, $00, $12, $00
-	db $D8, $00, $08, $01
+        dw $FFF0, $FFF1, $0015, $0012, $00D8, $0108
 
 DATA_BCE0E4:
-	db $F7, $FF, $FA, $FF, $0E, $00, $38, $00
-	db $D8, $00, $09, $01
+        dw $FFF7, $FFFA, $000E, $0038, $00D8, $0109
 
 DATA_BCE0F0:
-	db $F0, $FF, $F1, $FF, $15, $00, $12, $00
-	db $D8, $00, $0A, $01
+        dw $FFF0, $FFF1, $0015, $0012, $00D8, $010A
 
 DATA_BCE0FC:
-	db $F0, $FF, $F1, $FF, $15, $00, $12, $00
-	db $D8, $00, $0B, $01
+        dw $FFF0, $FFF1, $0015, $0012, $00D8, $010B
 
 DATA_BCE108:
-	db $F0, $FF, $F1, $FF, $15, $00, $12, $00
-	db $D8, $00, $0C, $01
+        dw $FFF0, $FFF1, $0015, $0012, $00D8, $010C
 
 DATA_BCE114:
-	db $F6, $FF, $FA, $FF, $12, $00, $35, $00
-	db $D8, $00, $0D, $01
+        dw $FFF6, $FFFA, $0012, $0035, $00D8, $010D
 
 DATA_BCE120:
-	db $F0, $FF, $F1, $FF, $15, $00, $12, $00
-	db $D8, $00, $0E, $01
+        dw $FFF0, $FFF1, $0015, $0012, $00D8, $010E
 
 DATA_BCE12C:
-	db $F0, $FF, $F1, $FF, $15, $00, $12, $00
-	db $D8, $00, $0F, $01
+        dw $FFF0, $FFF1, $0015, $0012, $00D8, $010F
 
 DATA_BCE138:
-	db $F0, $FF, $F1, $FF, $15, $00, $12, $00
-	db $D8, $00, $10, $01
+        dw $FFF0, $FFF1, $0015, $0012, $00D8, $0110
 
 DATA_BCE144:
-	db $F0, $FF, $F1, $FF, $15, $00, $12, $00
-	db $D8, $00, $11, $01
+        dw $FFF0, $FFF1, $0015, $0012, $00D8, $0111
 
 DATA_BCE150:
-	db $F3, $FF, $E6, $FF, $1C, $00, $13, $00
-	db $D8, $00, $12, $01
+        dw $FFF3, $FFE6, $001C, $0013, $00D8, $0112
 
 DATA_BCE15C:
-	db $F3, $FF, $E6, $FF, $15, $00, $13, $00
-	db $D8, $00, $13, $01
+        dw $FFF3, $FFE6, $0015, $0013, $00D8, $0113
 
 DATA_BCE168:
-	db $F2, $FF, $F1, $FF, $18, $00, $12, $00
-	db $D8, $00, $14, $01
+        dw $FFF2, $FFF1, $0018, $0012, $00D8, $0114
 
 DATA_BCE174:
-	db $F4, $FF, $E4, $FF, $0C, $00, $17, $00
-	db $D8, $00, $15, $01
+        dw $FFF4, $FFE4, $000C, $0017, $00D8, $0115
 
 DATA_BCE180:
-	db $F4, $FF, $D2, $FF, $0C, $00, $17, $00
-	db $D8, $01, $15, $01
+        dw $FFF4, $FFD2, $000C, $0017, $01D8, $0115
 
 DATA_BCE18C:
-	db $F3, $FF, $CD, $FF, $0D, $00, $17, $00
-	db $D8, $02, $15, $01
+        dw $FFF3, $FFCD, $000D, $0017, $02D8, $0115
 
 DATA_BCE198:
-	db $F1, $FF, $C8, $FF, $0D, $00, $17, $00
-	db $D8, $03, $15, $01
+        dw $FFF1, $FFC8, $000D, $0017, $03D8, $0115
 
 DATA_BCE1A4:
-	db $EC, $FF, $DD, $FF, $1F, $00, $22, $00
-	db $D8, $00, $16, $01
+        dw $FFEC, $FFDD, $001F, $0022, $00D8, $0116
 
 DATA_BCE1B0:
-	db $02, $00, $BF, $FF, $18, $00, $26, $00
-	db $D8, $00, $17, $01
+        dw $0002, $FFBF, $0018, $0026, $00D8, $0117
 
 DATA_BCE1BC:
-	db $F6, $FF, $BB, $FF, $18, $00, $2B, $00
-	db $D8, $01, $17, $01
+        dw $FFF6, $FFBB, $0018, $002B, $01D8, $0117
 
 DATA_BCE1C8:
-	db $F3, $FF, $B6, $FF, $0F, $00, $30, $00
-	db $D8, $02, $17, $01
+        dw $FFF3, $FFB6, $000F, $0030, $02D8, $0117
 
 DATA_BCE1D4:
-	db $E6, $FF, $B4, $FF, $0F, $00, $33, $00
-	db $D8, $03, $17, $01
+        dw $FFE6, $FFB4, $000F, $0033, $03D8, $0117
 
 DATA_BCE1E0:
-	db $DA, $FF, $B7, $FF, $0F, $00, $30, $00
-	db $D8, $04, $17, $01
+        dw $FFDA, $FFB7, $000F, $0030, $04D8, $0117
 
 DATA_BCE1EC:
-	db $D0, $FF, $BD, $FF, $0F, $00, $2B, $00
-	db $D8, $05, $17, $01
+        dw $FFD0, $FFBD, $000F, $002B, $05D8, $0117
 
 DATA_BCE1F8:
-	db $C6, $FF, $C8, $FF, $13, $00, $24, $00
-	db $D8, $06, $17, $01
+        dw $FFC6, $FFC8, $0013, $0024, $06D8, $0117
 
 DATA_BCE204:
-	db $BF, $FF, $D7, $FF, $16, $00, $1F, $00
-	db $D8, $07, $17, $01
+        dw $FFBF, $FFD7, $0016, $001F, $07D8, $0117
 
 DATA_BCE210:
-	db $BB, $FF, $E4, $FF, $19, $00, $19, $00
-	db $D8, $08, $17, $01
+        dw $FFBB, $FFE4, $0019, $0019, $08D8, $0117
 
 DATA_BCE21C:
-	db $BC, $FF, $F3, $FF, $23, $00, $15, $00
-	db $D8, $09, $17, $01
+        dw $FFBC, $FFF3, $0023, $0015, $09D8, $0117
 
 DATA_BCE228:
-	db $EF, $FF, $D4, $FF, $15, $00, $2F, $00
-	db $D8, $00, $18, $01
+        dw $FFEF, $FFD4, $0015, $002F, $00D8, $0118
 
 DATA_BCE234:
-	db $F8, $FF, $C1, $FF, $11, $00, $58, $00
-	db $D8, $00, $19, $01
+        dw $FFF8, $FFC1, $0011, $0058, $00D8, $0119
 
 DATA_BCE240:
-	db $F8, $FF, $C2, $FF, $0F, $00, $58, $00
-	db $D8, $02, $19, $01
+        dw $FFF8, $FFC2, $000F, $0058, $02D8, $0119
 
 DATA_BCE24C:
-	db $F3, $FF, $D9, $FF, $14, $00, $28, $00
-	db $D8, $00, $1A, $01
+        dw $FFF3, $FFD9, $0014, $0028, $00D8, $011A
 
 DATA_BCE258:
-	db $F0, $FF, $F1, $FF, $15, $00, $12, $00
-	db $D8, $00, $1B, $01
+        dw $FFF0, $FFF1, $0015, $0012, $00D8, $011B
 
 DATA_BCE264:
-	db $F3, $FF, $F4, $FF, $17, $00, $16, $00
-	db $D8, $00, $1C, $01
+        dw $FFF3, $FFF4, $0017, $0016, $00D8, $011C
 
 DATA_BCE270:
-	db $EE, $FF, $D9, $FF, $1F, $00, $26, $00
-	db $D8, $00, $1E, $01
+        dw $FFEE, $FFD9, $001F, $0026, $00D8, $011E
 
 DATA_BCE27C:
-	db $F0, $FF, $F1, $FF, $15, $00, $12, $00
-	db $D8, $00, $1F, $01
+        dw $FFF0, $FFF1, $0015, $0012, $00D8, $011F
 
 DATA_BCE288:
-	db $F0, $FF, $F1, $FF, $15, $00, $12, $00
-	db $D8, $00, $21, $01
+        dw $FFF0, $FFF1, $0015, $0012, $00D8, $0121
 
 DATA_BCE294:
-	db $F0, $FF, $F1, $FF, $15, $00, $12, $00
-	db $D8, $00, $22, $01
+        dw $FFF0, $FFF1, $0015, $0012, $00D8, $0122
 
 DATA_BCE2A0:
-	db $F4, $FF, $E9, $FF, $16, $00, $1D, $00
-	db $D8, $00, $23, $01
+        dw $FFF4, $FFE9, $0016, $001D, $00D8, $0123
 
 DATA_BCE2AC:
-	db $F3, $FF, $F4, $FF, $19, $00, $21, $00
-	db $D8, $01, $23, $01
+        dw $FFF3, $FFF4, $0019, $0021, $01D8, $0123
 
 DATA_BCE2B8:
-	db $F3, $FF, $FC, $FF, $19, $00, $28, $00
-	db $D8, $02, $23, $01
+        dw $FFF3, $FFFC, $0019, $0028, $02D8, $0123
 
 DATA_BCE2C4:
-	db $F3, $FF, $02, $00, $19, $00, $2B, $00
-	db $D8, $03, $23, $01
+        dw $FFF3, $0002, $0019, $002B, $03D8, $0123
 
 DATA_BCE2D0:
-	db $F0, $FF, $F1, $FF, $15, $00, $12, $00
-	db $D8, $00, $24, $01
+        dw $FFF0, $FFF1, $0015, $0012, $00D8, $0124
 
 DATA_BCE2DC:
-	db $F9, $FF, $E1, $FF, $0E, $00, $1C, $00
-	db $D8, $00, $25, $01
+        dw $FFF9, $FFE1, $000E, $001C, $00D8, $0125
 
 DATA_BCE2E8:
-	db $F2, $FF, $EF, $FF, $18, $00, $1E, $00
-	db $D8, $00, $26, $01
+        dw $FFF2, $FFEF, $0018, $001E, $00D8, $0126
 
 DATA_BCE2F4:
-	db $F4, $FF, $F5, $FF, $15, $00, $23, $00
-	db $D8, $01, $26, $01
+        dw $FFF4, $FFF5, $0015, $0023, $01D8, $0126
 
 DATA_BCE300:
-	db $F4, $FF, $F5, $FF, $14, $00, $32, $00
-	db $D8, $02, $26, $01
+        dw $FFF4, $FFF5, $0014, $0032, $02D8, $0126
 
 DATA_BCE30C:
-	db $F4, $FF, $FC, $FF, $14, $00, $36, $00
-	db $D8, $03, $26, $01
+        dw $FFF4, $FFFC, $0014, $0036, $03D8, $0126
 
 DATA_BCE318:
-	db $F0, $FF, $F1, $FF, $15, $00, $12, $00
-	db $D8, $00, $27, $01
+        dw $FFF0, $FFF1, $0015, $0012, $00D8, $0127
 
 DATA_BCE324:
-	db $F0, $FF, $F1, $FF, $15, $00, $12, $00
-	db $D8, $00, $28, $01
+        dw $FFF0, $FFF1, $0015, $0012, $00D8, $0128
 
 DATA_BCE330:
-	db $F1, $FF, $E5, $FF, $2E, $00, $19, $00
-	db $D8, $00, $29, $01
+        dw $FFF1, $FFE5, $002E, $0019, $00D8, $0129
 
 DATA_BCE33C:
-	db $F1, $FF, $DE, $FF, $27, $00, $1F, $00
-	db $D8, $07, $29, $01
+        dw $FFF1, $FFDE, $0027, $001F, $07D8, $0129
 
 DATA_BCE348:
-	db $F1, $FF, $DE, $FF, $2F, $00, $1F, $00
-	db $D8, $0A, $29, $01
+        dw $FFF1, $FFDE, $002F, $001F, $0AD8, $0129
 
 DATA_BCE354:
-	db $F4, $FF, $D9, $FF, $1B, $00, $26, $00
-	db $D8, $00, $2A, $01
+        dw $FFF4, $FFD9, $001B, $0026, $00D8, $012A
 
 DATA_BCE360:
-	db $EE, $FF, $E1, $FF, $20, $00, $20, $00
-	db $D8, $00, $2B, $01
+        dw $FFEE, $FFE1, $0020, $0020, $00D8, $012B
 
 DATA_BCE36C:
-	db $F6, $FF, $C7, $FF, $17, $00, $19, $00
-	db $D8, $00, $2C, $01
+        dw $FFF6, $FFC7, $0017, $0019, $00D8, $012C
 
 DATA_BCE378:
-	db $F6, $FF, $C8, $FF, $11, $00, $18, $00
-	db $D8, $00, $2D, $01
+        dw $FFF6, $FFC8, $0011, $0018, $00D8, $012D
 
 DATA_BCE384:
-	db $EE, $FF, $D5, $FF, $18, $00, $2D, $00
-	db $D8, $00, $2E, $01
+        dw $FFEE, $FFD5, $0018, $002D, $00D8, $012E
 
 DATA_BCE390:
-	db $EE, $FF, $CF, $FF, $1C, $00, $30, $00
-	db $D8, $00, $2F, $01
+        dw $FFEE, $FFCF, $001C, $0030, $00D8, $012F
 
 DATA_BCE39C:
-	db $EC, $FF, $CF, $FF, $28, $00, $30, $00
-	db $D8, $03, $2F, $01
+        dw $FFEC, $FFCF, $0028, $0030, $03D8, $012F
 
 DATA_BCE3A8:
-	db $E4, $FF, $D6, $FF, $35, $00, $29, $00
-	db $D8, $06, $2F, $01
+        dw $FFE4, $FFD6, $0035, $0029, $06D8, $012F
 
 DATA_BCE3B4:
-	db $EB, $FF, $D0, $FF, $27, $00, $2F, $00
-	db $D8, $09, $2F, $01
+        dw $FFEB, $FFD0, $0027, $002F, $09D8, $012F
 
 DATA_BCE3C0:
-	db $F0, $FF, $D0, $FF, $23, $00, $32, $00
-	db $D8, $00, $30, $01
+        dw $FFF0, $FFD0, $0023, $0032, $00D8, $0130
 
 DATA_BCE3CC:
-	db $E7, $FF, $C4, $FF, $26, $00, $36, $00
-	db $D8, $04, $30, $01
+        dw $FFE7, $FFC4, $0026, $0036, $04D8, $0130
 
 DATA_BCE3D8:
-	db $EA, $FF, $C4, $FF, $2C, $00, $36, $00
-	db $D8, $07, $30, $01
+        dw $FFEA, $FFC4, $002C, $0036, $07D8, $0130
 
 DATA_BCE3E4:
-	db $DA, $FF, $D2, $FF, $42, $00, $28, $00
-	db $D8, $09, $30, $01
+        dw $FFDA, $FFD2, $0042, $0028, $09D8, $0130
 
 DATA_BCE3F0:
-	db $DB, $FF, $D7, $FF, $36, $00, $28, $00
-	db $D8, $0A, $30, $01
+        dw $FFDB, $FFD7, $0036, $0028, $0AD8, $0130
 
 DATA_BCE3FC:
-	db $E4, $FF, $D2, $FF, $29, $00, $2D, $00
-	db $D8, $0D, $30, $01
+        dw $FFE4, $FFD2, $0029, $002D, $0DD8, $0130
 
 DATA_BCE408:
-	db $E5, $FF, $CF, $FF, $2F, $00, $31, $00
-	db $D8, $10, $30, $01
+        dw $FFE5, $FFCF, $002F, $0031, $10D8, $0130
 
 DATA_BCE414:
-	db $ED, $FF, $CE, $FF, $22, $00, $35, $00
-	db $D8, $00, $31, $01
+        dw $FFED, $FFCE, $0022, $0035, $00D8, $0131
 
 DATA_BCE420:
-	db $ED, $FF, $D2, $FF, $24, $00, $31, $00
-	db $D8, $00, $32, $01
+        dw $FFED, $FFD2, $0024, $0031, $00D8, $0132
 
 DATA_BCE42C:
-	db $EC, $FF, $D3, $FF, $1C, $00, $2C, $00
-	db $D8, $00, $33, $01
+        dw $FFEC, $FFD3, $001C, $002C, $00D8, $0133
 
 DATA_BCE438:
-	db $F1, $FF, $D3, $FF, $1A, $00, $2C, $00
-	db $D8, $00, $34, $01
+        dw $FFF1, $FFD3, $001A, $002C, $00D8, $0134
 
 DATA_BCE444:
-	db $F6, $FF, $EB, $FF, $10, $00, $18, $00
-	db $D8, $00, $35, $01
+        dw $FFF6, $FFEB, $0010, $0018, $00D8, $0135
 
 DATA_BCE450:
-	db $E0, $FF, $02, $00, $3A, $00, $10, $00
-	db $D8, $00, $36, $01
+        dw $FFE0, $0002, $003A, $0010, $00D8, $0136
 
 DATA_BCE45C:
-	db $E7, $FF, $08, $00, $34, $00, $10, $00
-	db $D8, $00, $37, $01
+        dw $FFE7, $0008, $0034, $0010, $00D8, $0137
 
 DATA_BCE468:
-	db $E7, $FF, $05, $00, $34, $00, $10, $00
-	db $D8, $01, $37, $01
+        dw $FFE7, $0005, $0034, $0010, $01D8, $0137
 
 DATA_BCE474:
-	db $E7, $FF, $04, $00, $34, $00, $10, $00
-	db $D8, $02, $37, $01
+        dw $FFE7, $0004, $0034, $0010, $02D8, $0137
 
 DATA_BCE480:
-	db $E7, $FF, $03, $00, $34, $00, $10, $00
-	db $D8, $03, $37, $01
+        dw $FFE7, $0003, $0034, $0010, $03D8, $0137
 
 DATA_BCE48C:
-	db $E7, $FF, $01, $00, $34, $00, $10, $00
-	db $D8, $04, $37, $01
+        dw $FFE7, $0001, $0034, $0010, $04D8, $0137
 
 DATA_BCE498:
-	db $E7, $FF, $FF, $FF, $34, $00, $10, $00
-	db $D8, $05, $37, $01
+        dw $FFE7, $FFFF, $0034, $0010, $05D8, $0137
 
 DATA_BCE4A4:
-	db $E7, $FF, $FD, $FF, $34, $00, $10, $00
-	db $D8, $06, $37, $01
+        dw $FFE7, $FFFD, $0034, $0010, $06D8, $0137
 
 DATA_BCE4B0:
-	db $E7, $FF, $FB, $FF, $34, $00, $10, $00
-	db $D8, $07, $37, $01
+        dw $FFE7, $FFFB, $0034, $0010, $07D8, $0137
 
 DATA_BCE4BC:
-	db $EE, $FF, $EE, $FF, $18, $00, $34, $00
-	db $D8, $00, $38, $01
+        dw $FFEE, $FFEE, $0018, $0034, $00D8, $0138
 
 DATA_BCE4C8:
-	db $EE, $FF, $EE, $FF, $18, $00, $34, $00
-	db $D8, $00, $39, $01
+        dw $FFEE, $FFEE, $0018, $0034, $00D8, $0139
 
 DATA_BCE4D4:
-	db $EE, $FF, $EE, $FF, $18, $00, $34, $00
-	db $D8, $00, $3A, $01
+        dw $FFEE, $FFEE, $0018, $0034, $00D8, $013A
 
 DATA_BCE4E0:
-	db $EB, $FF, $EC, $FF, $1B, $00, $13, $00
-	db $D8, $00, $3B, $01
+        dw $FFEB, $FFEC, $001B, $0013, $00D8, $013B
 
 DATA_BCE4EC:
-	db $F0, $FF, $D0, $FF, $23, $00, $32, $00
-	db $D8, $00, $3C, $01
+        dw $FFF0, $FFD0, $0023, $0032, $00D8, $013C
 
 DATA_BCE4F8:
-	db $EE, $FF, $EE, $FF, $18, $00, $34, $00
-	db $D8, $00, $3D, $01
+        dw $FFEE, $FFEE, $0018, $0034, $00D8, $013D
 
 DATA_BCE504:
-	db $F3, $FF, $EC, $FF, $19, $00, $19, $00
-	db $D8, $00, $3E, $01
+        dw $FFF3, $FFEC, $0019, $0019, $00D8, $013E
 
 DATA_BCE510:
-	db $EE, $FF, $EE, $FF, $18, $00, $34, $00
-	db $D8, $00, $3F, $01
+        dw $FFEE, $FFEE, $0018, $0034, $00D8, $013F
 
 DATA_BCE51C:
-	db $EE, $FF, $EE, $FF, $18, $00, $34, $00
-	db $D8, $00, $40, $01
+        dw $FFEE, $FFEE, $0018, $0034, $00D8, $0140
 
 DATA_BCE528:
-	db $ED, $FF, $DC, $FF, $25, $00, $10, $00
-	db $D8, $00, $41, $01
+        dw $FFED, $FFDC, $0025, $0010, $00D8, $0141
 
 DATA_BCE534:
-	db $ED, $FF, $DD, $FF, $25, $00, $10, $00
-	db $D8, $01, $41, $01
+        dw $FFED, $FFDD, $0025, $0010, $01D8, $0141
 
 DATA_BCE540:
-	db $ED, $FF, $DE, $FF, $25, $00, $10, $00
-	db $D8, $02, $41, $01
+        dw $FFED, $FFDE, $0025, $0010, $02D8, $0141
 
 DATA_BCE54C:
-	db $ED, $FF, $DF, $FF, $25, $00, $10, $00
-	db $D8, $03, $41, $01
+        dw $FFED, $FFDF, $0025, $0010, $03D8, $0141
 
 DATA_BCE558:
-	db $EC, $FF, $E0, $FF, $27, $00, $10, $00
-	db $D8, $04, $41, $01
+        dw $FFEC, $FFE0, $0027, $0010, $04D8, $0141
 
 DATA_BCE564:
-	db $EB, $FF, $E1, $FF, $29, $00, $10, $00
-	db $D8, $05, $41, $01
+        dw $FFEB, $FFE1, $0029, $0010, $05D8, $0141
 
 DATA_BCE570:
-	db $EB, $FF, $E2, $FF, $29, $00, $10, $00
-	db $D8, $06, $41, $01
+        dw $FFEB, $FFE2, $0029, $0010, $06D8, $0141
 
 DATA_BCE57C:
-	db $E8, $FF, $CE, $FF, $26, $00, $31, $00
-	db $D8, $00, $42, $01
+        dw $FFE8, $FFCE, $0026, $0031, $00D8, $0142
 
 DATA_BCE588:
-	db $F7, $FF, $CE, $FF, $1C, $00, $31, $00
-	db $D8, $01, $42, $01
+        dw $FFF7, $FFCE, $001C, $0031, $01D8, $0142
 
 DATA_BCE594:
-	db $F2, $FF, $CE, $FF, $25, $00, $31, $00
-	db $D8, $03, $42, $01
+        dw $FFF2, $FFCE, $0025, $0031, $03D8, $0142
 
 DATA_BCE5A0:
-	db $E9, $FF, $CE, $FF, $1C, $00, $31, $00
-	db $D8, $05, $42, $01
+        dw $FFE9, $FFCE, $001C, $0031, $05D8, $0142
 
 DATA_BCE5AC:
-	db $E3, $FF, $CE, $FF, $27, $00, $31, $00
-	db $D8, $07, $42, $01
+        dw $FFE3, $FFCE, $0027, $0031, $07D8, $0142
 
 DATA_BCE5B8:
-	db $EE, $FF, $D0, $FF, $1E, $00, $30, $00
-	db $D8, $00, $43, $01
+        dw $FFEE, $FFD0, $001E, $0030, $00D8, $0143
 
 DATA_BCE5C4:
-	db $EE, $FF, $DA, $FF, $21, $00, $25, $00
-	db $D8, $02, $43, $01
+        dw $FFEE, $FFDA, $0021, $0025, $02D8, $0143
 
 DATA_BCE5D0:
-	db $EE, $FF, $DA, $FF, $21, $00, $25, $00
-	db $D8, $00, $44, $01
+        dw $FFEE, $FFDA, $0021, $0025, $00D8, $0144
 
 DATA_BCE5DC:
-	db $EE, $FF, $DA, $FF, $21, $00, $25, $00
-	db $D8, $00, $45, $01
+        dw $FFEE, $FFDA, $0021, $0025, $00D8, $0145
 
 DATA_BCE5E8:
-	db $EE, $FF, $DA, $FF, $21, $00, $25, $00
-	db $D8, $00, $46, $01
+        dw $FFEE, $FFDA, $0021, $0025, $00D8, $0146
 
 DATA_BCE5F4:
-	db $EE, $FF, $DA, $FF, $21, $00, $25, $00
-	db $D8, $00, $47, $01
+        dw $FFEE, $FFDA, $0021, $0025, $00D8, $0147
 
 DATA_BCE600:
-	db $EE, $FF, $DA, $FF, $21, $00, $25, $00
-	db $D8, $00, $48, $01
+        dw $FFEE, $FFDA, $0021, $0025, $00D8, $0148
 
 DATA_BCE60C:
-	db $ED, $FF, $D5, $FF, $23, $00, $2E, $00
-	db $D8, $00, $49, $01
+        dw $FFED, $FFD5, $0023, $002E, $00D8, $0149
 
 DATA_BCE618:
-	db $ED, $FF, $D5, $FF, $23, $00, $2E, $00
-	db $D8, $00, $4B, $01
+        dw $FFED, $FFD5, $0023, $002E, $00D8, $014B
 
 DATA_BCE624:
-	db $ED, $FF, $D5, $FF, $23, $00, $2E, $00
-	db $D8, $00, $4D, $01
+        dw $FFED, $FFD5, $0023, $002E, $00D8, $014D
 
 DATA_BCE630:
-	db $ED, $FF, $D5, $FF, $23, $00, $2E, $00
-	db $D8, $00, $4E, $01
+        dw $FFED, $FFD5, $0023, $002E, $00D8, $014E
 
 DATA_BCE63C:
-	db $E0, $FF, $C0, $FF, $42, $00, $40, $00
-	db $D8, $00, $4F, $01
+        dw $FFE0, $FFC0, $0042, $0040, $00D8, $014F
 
 DATA_BCE648:
-	db $F8, $FF, $C7, $FF, $1D, $00, $27, $00
-	db $D8, $03, $4F, $01
+        dw $FFF8, $FFC7, $001D, $0027, $03D8, $014F
 
 DATA_BCE654:
-	db $FA, $FF, $CF, $FF, $20, $00, $23, $00
-	db $D8, $04, $4F, $01
+        dw $FFFA, $FFCF, $0020, $0023, $04D8, $014F
 
 DATA_BCE660:
-	db $FA, $FF, $BA, $FF, $24, $00, $1D, $00
-	db $D8, $05, $4F, $01
+        dw $FFFA, $FFBA, $0024, $001D, $05D8, $014F
 
 DATA_BCE66C:
-	db $EE, $FF, $EA, $FF, $22, $00, $17, $00
-	db $D8, $00, $51, $01
+        dw $FFEE, $FFEA, $0022, $0017, $00D8, $0151
 
 DATA_BCE678:
-	db $EE, $FF, $EA, $FF, $22, $00, $17, $00
-	db $D8, $00, $52, $01
+        dw $FFEE, $FFEA, $0022, $0017, $00D8, $0152
 
 DATA_BCE684:
-	db $EE, $FF, $EA, $FF, $1F, $00, $17, $00
-	db $D8, $00, $53, $01
+        dw $FFEE, $FFEA, $001F, $0017, $00D8, $0153
 
 DATA_BCE690:
-	db $EF, $FF, $DD, $FF, $33, $00, $21, $00
-	db $D8, $00, $54, $01
+        dw $FFEF, $FFDD, $0033, $0021, $00D8, $0154
 
 DATA_BCE69C:
-	db $E7, $FF, $D9, $FF, $30, $00, $2C, $00
-	db $D8, $00, $55, $01
+        dw $FFE7, $FFD9, $0030, $002C, $00D8, $0155
 
 DATA_BCE6A8:
-	db $EF, $FF, $02, $00, $08, $00, $0C, $00
-	db $D8, $00, $56, $01
+        dw $FFEF, $0002, $0008, $000C, $00D8, $0156
 
 DATA_BCE6B4:
-	db $EA, $FF, $D8, $FF, $2F, $00, $2A, $00
-	db $D8, $00, $57, $01
+        dw $FFEA, $FFD8, $002F, $002A, $00D8, $0157
 
 DATA_BCE6C0:
-	db $F1, $FF, $FC, $FF, $0F, $00, $11, $00
-	db $D8, $00, $58, $01
+        dw $FFF1, $FFFC, $000F, $0011, $00D8, $0158
 
 DATA_BCE6CC:
-	db $E4, $FF, $D3, $FF, $3C, $00, $2D, $00
-	db $D8, $00, $59, $01
+        dw $FFE4, $FFD3, $003C, $002D, $00D8, $0159
 
 DATA_BCE6D8:
-	db $E6, $FF, $E8, $FF, $0F, $00, $14, $00
-	db $D8, $00, $5A, $01
+        dw $FFE6, $FFE8, $000F, $0014, $00D8, $015A
 
 DATA_BCE6E4:
-	db $DE, $FF, $C2, $FF, $32, $00, $3D, $00
-	db $D8, $00, $5B, $01
+        dw $FFDE, $FFC2, $0032, $003D, $00D8, $015B
 
 DATA_BCE6F0:
-	db $0C, $00, $D8, $FF, $17, $00, $20, $00
-	db $D8, $00, $5C, $01
+        dw $000C, $FFD8, $0017, $0020, $00D8, $015C
 
 DATA_BCE6FC:
-	db $02, $00, $C5, $FF, $15, $00, $1E, $00
-	db $D8, $01, $5C, $01
+        dw $0002, $FFC5, $0015, $001E, $01D8, $015C
 
 DATA_BCE708:
-	db $E6, $FF, $BE, $FF, $1D, $00, $1D, $00
-	db $D8, $02, $5C, $01
+        dw $FFE6, $FFBE, $001D, $001D, $02D8, $015C
 
 DATA_BCE714:
-	db $E3, $FF, $BC, $FF, $35, $00, $41, $00
-	db $D8, $00, $5D, $01
+        dw $FFE3, $FFBC, $0035, $0041, $00D8, $015D
 
 DATA_BCE720:
-	db $D1, $FF, $C7, $FF, $35, $00, $35, $00
-	db $D8, $04, $5D, $01
+        dw $FFD1, $FFC7, $0035, $0035, $04D8, $015D
 
 DATA_BCE72C:
-	db $E3, $FF, $C8, $FF, $3C, $00, $31, $00
-	db $D8, $00, $5E, $01
+        dw $FFE3, $FFC8, $003C, $0031, $00D8, $015E
 
 DATA_BCE738:
-	db $FA, $FF, $EF, $FF, $11, $00, $11, $00
-	db $D8, $01, $5E, $01
+        dw $FFFA, $FFEF, $0011, $0011, $01D8, $015E
 
 DATA_BCE744:
-	db $12, $00, $EC, $FF, $11, $00, $11, $00
-	db $D8, $02, $5E, $01
+        dw $0012, $FFEC, $0011, $0011, $02D8, $015E
 
 DATA_BCE750:
-	db $19, $00, $E5, $FF, $1F, $00, $12, $00
-	db $D8, $03, $5E, $01
+        dw $0019, $FFE5, $001F, $0012, $03D8, $015E
 
 DATA_BCE75C:
-	db $D5, $FF, $DC, $FF, $1C, $00, $28, $00
-	db $D8, $04, $5E, $01
+        dw $FFD5, $FFDC, $001C, $0028, $04D8, $015E
 
 DATA_BCE768:
-	db $E2, $FF, $BD, $FF, $36, $00, $43, $00
-	db $D8, $00, $5F, $01
+        dw $FFE2, $FFBD, $0036, $0043, $00D8, $015F
 
 DATA_BCE774:
-	db $FC, $FF, $C5, $FF, $07, $00, $07, $00
-	db $D8, $00, $60, $01
+        dw $FFFC, $FFC5, $0007, $0007, $00D8, $0160
 
 DATA_BCE780:
-	db $E4, $FF, $C4, $FF, $2E, $00, $3B, $00
-	db $D8, $00, $61, $01
+        dw $FFE4, $FFC4, $002E, $003B, $00D8, $0161
 
 DATA_BCE78C:
-	db $EC, $FF, $C9, $FF, $34, $00, $39, $00
-	db $D8, $02, $61, $01
+        dw $FFEC, $FFC9, $0034, $0039, $02D8, $0161
 
 DATA_BCE798:
-	db $D1, $FF, $D8, $FF, $20, $00, $1D, $00
-	db $D8, $00, $62, $01
+        dw $FFD1, $FFD8, $0020, $001D, $00D8, $0162
 
 DATA_BCE7A4:
-	db $E2, $FF, $F4, $FF, $0F, $00, $14, $00
-	db $D8, $00, $63, $01
+        dw $FFE2, $FFF4, $000F, $0014, $00D8, $0163
 
 DATA_BCE7B0:
-	db $F1, $FF, $DA, $FF, $1A, $00, $24, $00
-	db $D8, $00, $64, $01
+        dw $FFF1, $FFDA, $001A, $0024, $00D8, $0164
 
 DATA_BCE7BC:
-	db $E0, $FF, $CD, $FF, $37, $00, $31, $00
-	db $D8, $00, $66, $01
+        dw $FFE0, $FFCD, $0037, $0031, $00D8, $0166
 
 DATA_BCE7C8:
-	db $E0, $FF, $DF, $FF, $38, $00, $2D, $00
-	db $D8, $03, $66, $01
+        dw $FFE0, $FFDF, $0038, $002D, $03D8, $0166
 
 DATA_BCE7D4:
-	db $EF, $FF, $DD, $FF, $33, $00, $21, $00
-	db $D8, $00, $67, $01
+        dw $FFEF, $FFDD, $0033, $0021, $00D8, $0167
 
 DATA_BCE7E0:
-	db $EF, $FF, $DD, $FF, $33, $00, $21, $00
-	db $D8, $00, $68, $01
+        dw $FFEF, $FFDD, $0033, $0021, $00D8, $0168
 
 DATA_BCE7EC:
-	db $EF, $FF, $DD, $FF, $33, $00, $21, $00
-	db $D8, $00, $69, $01
+        dw $FFEF, $FFDD, $0033, $0021, $00D8, $0169
 
 DATA_BCE7F8:
-	db $F4, $FF, $E8, $FF, $15, $00, $17, $00
-	db $D8, $00, $6A, $01
+        dw $FFF4, $FFE8, $0015, $0017, $00D8, $016A
 
 DATA_BCE804:
-	db $F4, $FF, $E8, $FF, $15, $00, $18, $00
-	db $D8, $02, $6A, $01
+        dw $FFF4, $FFE8, $0015, $0018, $02D8, $016A
 
 DATA_BCE810:
-	db $F3, $FF, $E4, $FF, $18, $00, $1A, $00
-	db $D8, $03, $6A, $01
+        dw $FFF3, $FFE4, $0018, $001A, $03D8, $016A
 
 DATA_BCE81C:
-	db $F1, $FF, $E1, $FF, $1A, $00, $1B, $00
-	db $D8, $04, $6A, $01
+        dw $FFF1, $FFE1, $001A, $001B, $04D8, $016A
 
 DATA_BCE828:
-	db $F1, $FF, $DE, $FF, $1B, $00, $1D, $00
-	db $D8, $05, $6A, $01
+        dw $FFF1, $FFDE, $001B, $001D, $05D8, $016A
 
 DATA_BCE834:
-	db $EF, $FF, $DD, $FF, $33, $00, $21, $00
-	db $D8, $00, $6B, $01
+        dw $FFEF, $FFDD, $0033, $0021, $00D8, $016B
 
 DATA_BCE840:
-	db $EF, $FF, $DD, $FF, $33, $00, $21, $00
-	db $D8, $00, $6C, $01
+        dw $FFEF, $FFDD, $0033, $0021, $00D8, $016C
 
 DATA_BCE84C:
-	db $E9, $FF, $BA, $FF, $2C, $00, $45, $00
-	db $D8, $00, $6D, $01
+        dw $FFE9, $FFBA, $002C, $0045, $00D8, $016D
 
 DATA_BCE858:
-	db $D1, $FF, $DA, $FF, $15, $00, $16, $00
-	db $D8, $00, $6E, $01
+        dw $FFD1, $FFDA, $0015, $0016, $00D8, $016E
 
 DATA_BCE864:
-	db $EF, $FF, $DD, $FF, $33, $00, $21, $00
-	db $D8, $00, $6F, $01
+        dw $FFEF, $FFDD, $0033, $0021, $00D8, $016F
 
 DATA_BCE870:
-	db $EF, $FF, $DD, $FF, $33, $00, $21, $00
-	db $D8, $00, $70, $01
+        dw $FFEF, $FFDD, $0033, $0021, $00D8, $0170
 
 DATA_BCE87C:
-	db $F9, $FF, $C1, $FF, $18, $00, $20, $00
-	db $D8, $00, $71, $01
+        dw $FFF9, $FFC1, $0018, $0020, $00D8, $0171
 
 DATA_BCE888:
-	db $1F, $00, $DA, $FF, $18, $00, $20, $00
-	db $D8, $08, $71, $01
+        dw $001F, $FFDA, $0018, $0020, $08D8, $0171
 
 DATA_BCE894:
-	db $F9, $FF, $C1, $FF, $18, $00, $20, $00
-	db $D8, $00, $72, $01
+        dw $FFF9, $FFC1, $0018, $0020, $00D8, $0172
 
 DATA_BCE8A0:
-	db $1F, $00, $DA, $FF, $18, $00, $20, $00
-	db $D8, $08, $72, $01
+        dw $001F, $FFDA, $0018, $0020, $08D8, $0172
 
 DATA_BCE8AC:
-	db $00, $00, $C3, $FF, $18, $00, $20, $00
-	db $D8, $00, $73, $01
+        dw $0000, $FFC3, $0018, $0020, $00D8, $0173
 
 DATA_BCE8B8:
-	db $EF, $FF, $DD, $FF, $33, $00, $21, $00
-	db $D8, $00, $75, $01
+        dw $FFEF, $FFDD, $0033, $0021, $00D8, $0175
 
 DATA_BCE8C4:
-	db $ED, $FF, $EF, $FF, $25, $00, $13, $00
-	db $D8, $00, $76, $01
+        dw $FFED, $FFEF, $0025, $0013, $00D8, $0176
 
 DATA_BCE8D0:
-	db $ED, $FF, $EF, $FF, $25, $00, $13, $00
-	db $D8, $00, $77, $01
+        dw $FFED, $FFEF, $0025, $0013, $00D8, $0177
 
 DATA_BCE8DC:
-	db $DC, $FF, $BC, $FF, $2C, $00, $3F, $00
-	db $D8, $00, $78, $01
+        dw $FFDC, $FFBC, $002C, $003F, $00D8, $0178
 
 DATA_BCE8E8:
-	db $F5, $FF, $DA, $FF, $26, $00, $16, $00
-	db $D8, $00, $79, $01
+        dw $FFF5, $FFDA, $0026, $0016, $00D8, $0179
 
 DATA_BCE8F4:
-	db $21, $00, $DF, $FF, $1A, $00, $14, $00
-	db $D8, $00, $7A, $01
+        dw $0021, $FFDF, $001A, $0014, $00D8, $017A
 
 DATA_BCE900:
-	db $E3, $FF, $BE, $FF, $2D, $00, $40, $00
-	db $D8, $00, $7B, $01
+        dw $FFE3, $FFBE, $002D, $0040, $00D8, $017B
 
 DATA_BCE90C:
-	db $14, $00, $D8, $FF, $0F, $00, $1E, $00
-	db $D8, $00, $7C, $01
+        dw $0014, $FFD8, $000F, $001E, $00D8, $017C
 
 DATA_BCE918:
-	db $ED, $FF, $EF, $FF, $25, $00, $13, $00
-	db $D8, $00, $7D, $01
+        dw $FFED, $FFEF, $0025, $0013, $00D8, $017D
 
 DATA_BCE924:
-	db $00, $00, $E4, $FF, $1F, $00, $1E, $00
-	db $D8, $00, $7E, $01
+        dw $0000, $FFE4, $001F, $001E, $00D8, $017E
 
 DATA_BCE930:
-	db $00, $00, $E0, $FF, $22, $00, $27, $00
-	db $D8, $01, $7E, $01
+        dw $0000, $FFE0, $0022, $0027, $01D8, $017E
 
 DATA_BCE93C:
-	db $00, $00, $DB, $FF, $21, $00, $38, $00
-	db $D8, $02, $7E, $01
+        dw $0000, $FFDB, $0021, $0038, $02D8, $017E
 
 DATA_BCE948:
-	db $00, $00, $DA, $FF, $2A, $00, $2B, $00
-	db $D8, $03, $7E, $01
+        dw $0000, $FFDA, $002A, $002B, $03D8, $017E
 
 DATA_BCE954:
-	db $00, $00, $DA, $FF, $28, $00, $25, $00
-	db $D8, $04, $7E, $01
+        dw $0000, $FFDA, $0028, $0025, $04D8, $017E
 
 DATA_BCE960:
-	db $DC, $FF, $BC, $FF, $2C, $00, $3F, $00
-	db $D8, $00, $7F, $01
+        dw $FFDC, $FFBC, $002C, $003F, $00D8, $017F
 
 DATA_BCE96C:
-	db $E8, $FF, $C8, $FF, $30, $00, $30, $00
-	db $D8, $00, $80, $01
+        dw $FFE8, $FFC8, $0030, $0030, $00D8, $0180
 
 DATA_BCE978:
-	db $EF, $FF, $DD, $FF, $33, $00, $21, $00
-	db $D8, $00, $81, $01
+        dw $FFEF, $FFDD, $0033, $0021, $00D8, $0181
 
 DATA_BCE984:
-	db $03, $00, $C4, $FF, $0E, $00, $44, $00
-	db $D8, $00, $82, $01
+        dw $0003, $FFC4, $000E, $0044, $00D8, $0182
 
 DATA_BCE990:
-	db $03, $00, $A8, $FF, $0E, $00, $60, $00
-	db $D8, $00, $83, $01
+        dw $0003, $FFA8, $000E, $0060, $00D8, $0183
 
 DATA_BCE99C:
-	db $EF, $FF, $D7, $FF, $1E, $00, $28, $00
-	db $D8, $00, $84, $01
+        dw $FFEF, $FFD7, $001E, $0028, $00D8, $0184
 
 DATA_BCE9A8:
-	db $F4, $FF, $DC, $FF, $10, $00, $1F, $00
-	db $D8, $01, $84, $01
+        dw $FFF4, $FFDC, $0010, $001F, $01D8, $0184
 
 DATA_BCE9B4:
-	db $EF, $FF, $EC, $FF, $1F, $00, $1E, $00
-	db $D8, $00, $87, $01
+        dw $FFEF, $FFEC, $001F, $001E, $00D8, $0187
 
 DATA_BCE9C0:
-	db $EF, $FF, $EC, $FF, $1F, $00, $1E, $00
-	db $D8, $00, $88, $01
+        dw $FFEF, $FFEC, $001F, $001E, $00D8, $0188
 
 DATA_BCE9CC:
-	db $EF, $FF, $DD, $FF, $33, $00, $21, $00
-	db $D8, $00, $89, $01
+        dw $FFEF, $FFDD, $0033, $0021, $00D8, $0189
 
 DATA_BCE9D8:
-	db $DC, $FF, $BC, $FF, $2C, $00, $3F, $00
-	db $D8, $00, $8A, $01
+        dw $FFDC, $FFBC, $002C, $003F, $00D8, $018A
 
 DATA_BCE9E4:
-	db $F5, $FF, $E6, $FF, $15, $00, $1B, $00
-	db $D8, $00, $8B, $01
+        dw $FFF5, $FFE6, $0015, $001B, $00D8, $018B
 
 DATA_BCE9F0:
-	db $F5, $FF, $E6, $FF, $15, $00, $1B, $00
-	db $D8, $00, $8C, $01
+        dw $FFF5, $FFE6, $0015, $001B, $00D8, $018C
 
 DATA_BCE9FC:
-	db $F5, $FF, $E6, $FF, $15, $00, $1B, $00
-	db $D8, $00, $8E, $01
+        dw $FFF5, $FFE6, $0015, $001B, $00D8, $018E
 
 DATA_BCEA08:
-	db $F5, $FF, $E6, $FF, $15, $00, $1B, $00
-	db $D8, $00, $8F, $01
+        dw $FFF5, $FFE6, $0015, $001B, $00D8, $018F
 
 DATA_BCEA14:
-	db $F5, $FF, $E6, $FF, $15, $00, $1B, $00
-	db $D8, $00, $90, $01
+        dw $FFF5, $FFE6, $0015, $001B, $00D8, $0190
 
 DATA_BCEA20:
-	db $F5, $FF, $E6, $FF, $15, $00, $1B, $00
-	db $D8, $00, $91, $01
+        dw $FFF5, $FFE6, $0015, $001B, $00D8, $0191
 
 DATA_BCEA2C:
-	db $E5, $FF, $D0, $FF, $44, $00, $38, $00
-	db $D8, $00, $92, $01
+        dw $FFE5, $FFD0, $0044, $0038, $00D8, $0192
 
 DATA_BCEA38:
-	db $00, $00, $D9, $FF, $25, $00, $21, $00
-	db $D8, $01, $92, $01
+        dw $0000, $FFD9, $0025, $0021, $01D8, $0192
 
 DATA_BCEA44:
-	db $E6, $FF, $C2, $FF, $23, $00, $42, $00
-	db $D8, $02, $92, $01
+        dw $FFE6, $FFC2, $0023, $0042, $02D8, $0192
 
 DATA_BCEA50:
-	db $C7, $FF, $95, $FF, $21, $00, $27, $00
-	db $D8, $03, $92, $01
+        dw $FFC7, $FF95, $0021, $0027, $03D8, $0192
 
 DATA_BCEA5C:
-	db $DB, $FF, $B9, $FF, $32, $00, $43, $00
-	db $D8, $04, $92, $01
+        dw $FFDB, $FFB9, $0032, $0043, $04D8, $0192
 
 DATA_BCEA68:
-	db $B7, $FF, $B5, $FF, $1E, $00, $30, $00
-	db $D8, $05, $92, $01
+        dw $FFB7, $FFB5, $001E, $0030, $05D8, $0192
 
 DATA_BCEA74:
-	db $C5, $FF, $BC, $FF, $40, $00, $43, $00
-	db $D8, $06, $92, $01
+        dw $FFC5, $FFBC, $0040, $0043, $06D8, $0192
 
 DATA_BCEA80:
-	db $B6, $FF, $AA, $FF, $1B, $00, $31, $00
-	db $D8, $07, $92, $01
+        dw $FFB6, $FFAA, $001B, $0031, $07D8, $0192
 
 DATA_BCEA8C:
-	db $F5, $FF, $E6, $FF, $15, $00, $1B, $00
-	db $D8, $00, $93, $01
+        dw $FFF5, $FFE6, $0015, $001B, $00D8, $0193
 
 DATA_BCEA98:
-	db $DD, $FF, $C3, $FF, $35, $00, $39, $00
-	db $D8, $00, $94, $01
+        dw $FFDD, $FFC3, $0035, $0039, $00D8, $0194
 
 DATA_BCEAA4:
-	db $D4, $FF, $C3, $FF, $35, $00, $39, $00
-	db $D8, $02, $94, $01
+        dw $FFD4, $FFC3, $0035, $0039, $02D8, $0194
 
 DATA_BCEAB0:
-	db $E0, $FF, $C3, $FF, $35, $00, $39, $00
-	db $D8, $06, $94, $01
+        dw $FFE0, $FFC3, $0035, $0039, $06D8, $0194
 
 DATA_BCEABC:
-	db $EA, $FF, $C3, $FF, $34, $00, $39, $00
-	db $D8, $0A, $94, $01
+        dw $FFEA, $FFC3, $0034, $0039, $0AD8, $0194
 
 DATA_BCEAC8:
-	db $0A, $00, $BC, $FF, $1A, $00, $23, $00
-	db $D8, $0B, $94, $01
+        dw $000A, $FFBC, $001A, $0023, $0BD8, $0194
 
 DATA_BCEAD4:
-	db $F2, $FF, $9D, $FF, $1A, $00, $23, $00
-	db $D8, $0C, $94, $01
+        dw $FFF2, $FF9D, $001A, $0023, $0CD8, $0194
 
 DATA_BCEAE0:
-	db $D9, $FF, $9D, $FF, $1A, $00, $23, $00
-	db $D8, $0D, $94, $01
+        dw $FFD9, $FF9D, $001A, $0023, $0DD8, $0194
 
 DATA_BCEAEC:
-	db $C4, $FF, $A6, $FF, $1C, $00, $24, $00
-	db $D8, $0E, $94, $01
+        dw $FFC4, $FFA6, $001C, $0024, $0ED8, $0194
 
 DATA_BCEAF8:
-	db $B2, $FF, $B7, $FF, $1C, $00, $29, $00
-	db $D8, $0F, $94, $01
+        dw $FFB2, $FFB7, $001C, $0029, $0FD8, $0194
 
 DATA_BCEB04:
-	db $A5, $FF, $DE, $FF, $2C, $00, $1D, $00
-	db $D8, $10, $94, $01
+        dw $FFA5, $FFDE, $002C, $001D, $10D8, $0194
 
 DATA_BCEB10:
-	db $C2, $FF, $F1, $FF, $32, $00, $19, $00
-	db $D8, $11, $94, $01
+        dw $FFC2, $FFF1, $0032, $0019, $11D8, $0194
 
 DATA_BCEB1C:
-	db $31, $00, $E8, $FF, $1E, $00, $25, $00
-	db $D8, $12, $94, $01
+        dw $0031, $FFE8, $001E, $0025, $12D8, $0194
 
 DATA_BCEB28:
-	db $3E, $00, $D8, $FF, $2B, $00, $1B, $00
-	db $D8, $13, $94, $01
+        dw $003E, $FFD8, $002B, $001B, $13D8, $0194
 
 DATA_BCEB34:
-	db $37, $00, $CE, $FF, $2B, $00, $1B, $00
-	db $D8, $14, $94, $01
+        dw $0037, $FFCE, $002B, $001B, $14D8, $0194
 
 DATA_BCEB40:
-	db $15, $00, $C1, $FF, $1D, $00, $27, $00
-	db $D8, $15, $94, $01
+        dw $0015, $FFC1, $001D, $0027, $15D8, $0194
 
 DATA_BCEB4C:
-	db $15, $00, $C1, $FF, $1D, $00, $27, $00
-	db $D8, $00, $95, $01
+        dw $0015, $FFC1, $001D, $0027, $00D8, $0195
 
 DATA_BCEB58:
-	db $EA, $FF, $EF, $FF, $21, $00, $13, $00
-	db $D8, $00, $96, $01
+        dw $FFEA, $FFEF, $0021, $0013, $00D8, $0196
 
 DATA_BCEB64:
-	db $15, $00, $C1, $FF, $1D, $00, $27, $00
-	db $D8, $00, $97, $01
+        dw $0015, $FFC1, $001D, $0027, $00D8, $0197
 
 DATA_BCEB70:
-	db $F4, $FF, $BE, $FF, $16, $00, $4B, $00
-	db $D8, $00, $98, $01
+        dw $FFF4, $FFBE, $0016, $004B, $00D8, $0198
 
 DATA_BCEB7C:
-	db $F6, $FF, $C8, $FF, $13, $00, $40, $00
-	db $D8, $01, $98, $01
+        dw $FFF6, $FFC8, $0013, $0040, $01D8, $0198
 
 DATA_BCEB88:
-	db $F4, $FF, $CB, $FF, $10, $00, $3D, $00
-	db $D8, $02, $98, $01
+        dw $FFF4, $FFCB, $0010, $003D, $02D8, $0198
 
 DATA_BCEB94:
-	db $F5, $FF, $D0, $FF, $14, $00, $40, $00
-	db $D8, $03, $98, $01
+        dw $FFF5, $FFD0, $0014, $0040, $03D8, $0198
 
 DATA_BCEBA0:
-	db $F7, $FF, $D2, $FF, $18, $00, $37, $00
-	db $D8, $04, $98, $01
+        dw $FFF7, $FFD2, $0018, $0037, $04D8, $0198
 
 DATA_BCEBAC:
-	db $F6, $FF, $DA, $FF, $14, $00, $4A, $00
-	db $D8, $05, $98, $01
+        dw $FFF6, $FFDA, $0014, $004A, $05D8, $0198
 
 DATA_BCEBB8:
-	db $F5, $FF, $E3, $FF, $14, $00, $39, $00
-	db $D8, $06, $98, $01
+        dw $FFF5, $FFE3, $0014, $0039, $06D8, $0198
 
 DATA_BCEBC4:
-	db $F2, $FF, $E3, $FF, $17, $00, $39, $00
-	db $D8, $07, $98, $01
+        dw $FFF2, $FFE3, $0017, $0039, $07D8, $0198
 
 DATA_BCEBD0:
-	db $F6, $FF, $DE, $FF, $14, $00, $2B, $00
-	db $D8, $08, $98, $01
+        dw $FFF6, $FFDE, $0014, $002B, $08D8, $0198
 
 DATA_BCEBDC:
-	db $F6, $FF, $E0, $FF, $11, $00, $29, $00
-	db $D8, $09, $98, $01
+        dw $FFF6, $FFE0, $0011, $0029, $09D8, $0198
 
 DATA_BCEBE8:
-	db $F8, $FF, $E5, $FF, $0D, $00, $37, $00
-	db $D8, $0A, $98, $01
+        dw $FFF8, $FFE5, $000D, $0037, $0AD8, $0198
 
 DATA_BCEBF4:
-	db $F6, $FF, $F4, $FF, $16, $00, $12, $00
-	db $D8, $00, $99, $01
+        dw $FFF6, $FFF4, $0016, $0012, $00D8, $0199
 
 DATA_BCEC00:
-	db $F6, $FF, $F4, $FF, $16, $00, $12, $00
-	db $D8, $00, $9A, $01
+        dw $FFF6, $FFF4, $0016, $0012, $00D8, $019A
 
 DATA_BCEC0C:
-	db $F3, $FF, $ED, $FF, $1C, $00, $16, $00
-	db $D8, $00, $9B, $01
+        dw $FFF3, $FFED, $001C, $0016, $00D8, $019B
 
 DATA_BCEC18:
-	db $F7, $FF, $E2, $FF, $11, $00, $1B, $00
-	db $D8, $00, $9C, $01
+        dw $FFF7, $FFE2, $0011, $001B, $00D8, $019C
 
 DATA_BCEC24:
-	db $F7, $FF, $E2, $FF, $11, $00, $1B, $00
-	db $D8, $00, $9D, $01
+        dw $FFF7, $FFE2, $0011, $001B, $00D8, $019D
 
 DATA_BCEC30:
-	db $F6, $FF, $F4, $FF, $16, $00, $12, $00
-	db $D8, $00, $9E, $01
+        dw $FFF6, $FFF4, $0016, $0012, $00D8, $019E
 
 DATA_BCEC3C:
-	db $F6, $FF, $F4, $FF, $16, $00, $12, $00
-	db $D8, $00, $9F, $01
+        dw $FFF6, $FFF4, $0016, $0012, $00D8, $019F
 
 DATA_BCEC48:
-	db $F6, $FF, $F4, $FF, $16, $00, $12, $00
-	db $D8, $00, $A0, $01
+        dw $FFF6, $FFF4, $0016, $0012, $00D8, $01A0
 
 DATA_BCEC54:
-	db $F9, $FF, $EA, $FF, $0E, $00, $1C, $00
-	db $D8, $00, $A1, $01
+        dw $FFF9, $FFEA, $000E, $001C, $00D8, $01A1
 
 DATA_BCEC60:
-	db $FB, $FF, $E4, $FF, $0D, $00, $1B, $00
-	db $D8, $00, $A2, $01
+        dw $FFFB, $FFE4, $000D, $001B, $00D8, $01A2
 
 DATA_BCEC6C:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $A3, $01
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $01A3
 
 DATA_BCEC78:
-	db $F4, $FF, $E6, $FF, $18, $00, $1A, $00
-	db $D8, $00, $A4, $01
+        dw $FFF4, $FFE6, $0018, $001A, $00D8, $01A4
 
 DATA_BCEC84:
-	db $F8, $FF, $F8, $FF, $10, $00, $10, $00
-	db $D8, $00, $A5, $01
+        dw $FFF8, $FFF8, $0010, $0010, $00D8, $01A5
 
 DATA_BCEC90:
-	db $F0, $FF, $DD, $FF, $20, $00, $23, $00
-	db $D8, $00, $A6, $01
+        dw $FFF0, $FFDD, $0020, $0023, $00D8, $01A6
 
 DATA_BCEC9C:
-	db $F0, $FF, $DD, $FF, $20, $00, $23, $00
-	db $D8, $00, $A7, $01
+        dw $FFF0, $FFDD, $0020, $0023, $00D8, $01A7
 
 DATA_BCECA8:
-	db $FB, $FF, $E4, $FF, $0D, $00, $1B, $00
-	db $D8, $00, $A8, $01
+        dw $FFFB, $FFE4, $000D, $001B, $00D8, $01A8
 
 DATA_BCECB4:
-	db $FB, $FF, $E4, $FF, $0D, $00, $1B, $00
-	db $D8, $00, $A9, $01
+        dw $FFFB, $FFE4, $000D, $001B, $00D8, $01A9
 
 DATA_BCECC0:
-	db $FB, $FF, $E4, $FF, $0D, $00, $1B, $00
-	db $D8, $00, $AA, $01
+        dw $FFFB, $FFE4, $000D, $001B, $00D8, $01AA
 
 DATA_BCECCC:
-	db $FB, $FF, $E4, $FF, $0D, $00, $1B, $00
-	db $D8, $00, $AB, $01
+        dw $FFFB, $FFE4, $000D, $001B, $00D8, $01AB
 
 DATA_BCECD8:
-	db $F0, $FF, $DD, $FF, $20, $00, $23, $00
-	db $D8, $00, $AC, $01
+        dw $FFF0, $FFDD, $0020, $0023, $00D8, $01AC
 
 DATA_BCECE4:
-	db $F0, $FF, $DD, $FF, $20, $00, $23, $00
-	db $D8, $00, $AD, $01
+        dw $FFF0, $FFDD, $0020, $0023, $00D8, $01AD
 
 DATA_BCECF0:
-	db $F2, $FF, $DC, $FF, $18, $00, $20, $00
-	db $D8, $00, $AE, $01
+        dw $FFF2, $FFDC, $0018, $0020, $00D8, $01AE
 
 DATA_BCECFC:
-	db $EF, $FF, $D7, $FF, $1E, $00, $28, $00
-	db $D8, $01, $AE, $01
+        dw $FFEF, $FFD7, $001E, $0028, $01D8, $01AE
 
 DATA_BCED08:
-	db $F4, $FF, $DC, $FF, $16, $00, $1F, $00
-	db $D8, $02, $AE, $01
+        dw $FFF4, $FFDC, $0016, $001F, $02D8, $01AE
 
 DATA_BCED14:
-	db $F7, $FF, $EF, $FF, $11, $00, $13, $00
-	db $D8, $00, $AF, $01
+        dw $FFF7, $FFEF, $0011, $0013, $00D8, $01AF
 
 DATA_BCED20:
-	db $F6, $FF, $D5, $FF, $16, $00, $32, $00
-	db $D8, $00, $B1, $01
+        dw $FFF6, $FFD5, $0016, $0032, $00D8, $01B1
 
 DATA_BCED2C:
-	db $F0, $FF, $D2, $FF, $0E, $00, $1A, $00
-	db $D8, $00, $B2, $01
+        dw $FFF0, $FFD2, $000E, $001A, $00D8, $01B2
 
 DATA_BCED38:
-	db $F0, $FF, $D2, $FF, $0E, $00, $1A, $00
-	db $D8, $00, $B3, $01
+        dw $FFF0, $FFD2, $000E, $001A, $00D8, $01B3
 
 DATA_BCED44:
-	db $F0, $FF, $D2, $FF, $0E, $00, $1A, $00
-	db $D8, $00, $B4, $01
+        dw $FFF0, $FFD2, $000E, $001A, $00D8, $01B4
 
 DATA_BCED50:
-	db $F0, $FF, $D2, $FF, $0E, $00, $1A, $00
-	db $D8, $00, $B5, $01
+        dw $FFF0, $FFD2, $000E, $001A, $00D8, $01B5
 
 DATA_BCED5C:
-	db $F0, $FF, $D2, $FF, $0E, $00, $1A, $00
-	db $D8, $00, $B6, $01
+        dw $FFF0, $FFD2, $000E, $001A, $00D8, $01B6
 
 DATA_BCED68:
-	db $FB, $FF, $E4, $FF, $0D, $00, $1B, $00
-	db $D8, $00, $B7, $01
+        dw $FFFB, $FFE4, $000D, $001B, $00D8, $01B7
 
 DATA_BCED74:
-	db $FB, $FF, $E4, $FF, $0D, $00, $1B, $00
-	db $D8, $00, $B8, $01
+        dw $FFFB, $FFE4, $000D, $001B, $00D8, $01B8
 
 DATA_BCED80:
-	db $E4, $FF, $CC, $FF, $36, $00, $39, $00
-	db $D8, $00, $B9, $01
+        dw $FFE4, $FFCC, $0036, $0039, $00D8, $01B9
 
 DATA_BCED8C:
-	db $FB, $FF, $E4, $FF, $0D, $00, $1B, $00
-	db $D8, $00, $BA, $01
+        dw $FFFB, $FFE4, $000D, $001B, $00D8, $01BA
 
 DATA_BCED98:
-	db $FB, $FF, $E4, $FF, $0D, $00, $1B, $00
-	db $D8, $00, $BB, $01
+        dw $FFFB, $FFE4, $000D, $001B, $00D8, $01BB
 
 DATA_BCEDA4:
-	db $FB, $FF, $E4, $FF, $0D, $00, $1B, $00
-	db $D8, $00, $BC, $01
+        dw $FFFB, $FFE4, $000D, $001B, $00D8, $01BC
 
 DATA_BCEDB0:
-	db $FB, $FF, $E4, $FF, $0D, $00, $1B, $00
-	db $D8, $00, $BD, $01
+        dw $FFFB, $FFE4, $000D, $001B, $00D8, $01BD
 
 DATA_BCEDBC:
-	db $FB, $FF, $E4, $FF, $0D, $00, $1B, $00
-	db $D8, $00, $BE, $01
+        dw $FFFB, $FFE4, $000D, $001B, $00D8, $01BE
 
 DATA_BCEDC8:
-	db $FB, $FF, $E4, $FF, $0D, $00, $1B, $00
-	db $D8, $00, $BF, $01
+        dw $FFFB, $FFE4, $000D, $001B, $00D8, $01BF
 	
 padbyte $00
 pad $BCFA00

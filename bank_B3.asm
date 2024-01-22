@@ -13,16 +13,16 @@ sprite_handler:
 	STZ $19AC				;$B3801B   |
 	STZ $19AF				;$B3801E   |
 	REP #$20				;$B38021   |
-	LDA #$00B3				;$B38023   |
-	STA $05AB				;$B38026   |
-	LDA #$00FF				;$B38029   |
-	STA $90					;$B3802C   |
+	LDA #$00B3				;$B38023   |\ Write bank of sprite return address (always B3)
+	STA $05AB				;$B38026   |/
+	LDA #$00FF				;$B38029   |\ Write bank of sprite constants for current sprite (always FF)
+	STA $90					;$B3802C   |/
 	JSL CODE_BCFA78				;$B3802E   |
-	LDA $0A36				;$B38032   |
-	AND #$0080				;$B38035   |
-	BNE CODE_B3806D				;$B38038   |
-	LDA $0A36				;$B3803A   |
-	BNE CODE_B38087				;$B3803D   |
+	LDA $0A36				;$B38032   |\
+	AND #$0080				;$B38035   | |
+	BNE CODE_B3806D				;$B38038   |/
+	LDA $0A36				;$B3803A   |\ If time is currently stopped
+	BNE CODE_B38087				;$B3803D   |/
 	LDA #.sprite_return			;$B3803F   |\ Set sprite return pointer
 	STA $05A9				;$B38042   |/
 	LDX #main_sprite_table			;$B38045   | Load sprite base pointer
@@ -11940,17 +11940,17 @@ CODE_B3D91D:
 	JMP (DATA_B3D923,x)			;$B3D920  /
 
 DATA_B3D923:
-	dw CODE_B3D939
-	dw CODE_B3D9CD
-	dw CODE_B3DAD6
-	dw CODE_B3DC21
-	dw CODE_B3DF48
-	dw CODE_B3DF48
-	dw CODE_B3E3AF
-	dw CODE_B3E4D9
-	dw CODE_B3E65C
-	dw CODE_B3E682
-	dw CODE_B3E768
+	dw CODE_B3D939				;00
+	dw CODE_B3D9CD				;02
+	dw CODE_B3DAD6				;04
+	dw CODE_B3DC21				;06
+	dw CODE_B3DF48				;08
+	dw CODE_B3DF48				;0A
+	dw CODE_B3E3AF				;0C
+	dw CODE_B3E4D9				;0E
+	dw CODE_B3E65C				;10
+	dw CODE_B3E682				;12
+	dw CODE_B3E768				;14
 
 
 CODE_B3D939:
