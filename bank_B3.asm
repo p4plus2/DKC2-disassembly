@@ -9009,21 +9009,21 @@ CODE_B3C2EF:					;	   |
 	BEQ CODE_B3C301				;$B3C2FA   |
 	CMP $0D52				;$B3C2FC   |
 	BNE CODE_B3C33B				;$B3C2FF   |
-CODE_B3C301:					;	   |
-	LDY #$8080				;$B3C301   |
-	PHY					;$B3C304   |
-	PLB					;$B3C305   |
-	LDX #$0035				;$B3C306   |
+CODE_B3C301:					;	   | Piracy check
+	LDY #$8080				;$B3C301   |\ Y = address to checksum (address so far: $??8080)
+	PHY					;$B3C304   | |
+	PLB					;$B3C305   |/ Also use Y as the bank for the checksum address (address so far: $808080)
+	LDX #$0035				;$B3C306   |> Number of bytes to checksum
 	TYA					;$B3C309   |
 	CLC					;$B3C30A   |
-CODE_B3C30B:					;	   |
-	ADC $040B,y				;$B3C30B   |
-	INY					;$B3C30E   |
-	DEX					;$B3C30F   |
-	BPL CODE_B3C30B				;$B3C310   |
+.next_byte					;	   |\ Checksum data from $80848B to $8084C2
+	ADC $040B,y				;$B3C30B   | | $808080 + $040B = $80848B (this is our actual address to run the checksum on)
+	INY					;$B3C30E   | |
+	DEX					;$B3C30F   | |
+	BPL .next_byte				;$B3C310   |/ Move onto next byte if we haven't reached the end of the data
 	PLB					;$B3C312   |
-	CMP #$20CB				;$B3C313   |
-	BNE CODE_B3C33B				;$B3C316   | if anti-piracy routine was tampered delete water trigger sprite
+	CMP #$20CB				;$B3C313   |\ This is the checksum to check against
+	BNE CODE_B3C33B				;$B3C316   |/ If checksum doesn't match the anti-piracy routine was tampered. Delete water trigger sprite
 	LDX current_sprite			;$B3C318   |
 	LDA $4E,x				;$B3C31A   |
 	STA $0D52				;$B3C31C   |
@@ -12804,24 +12804,24 @@ CODE_B3DF5F:
 	INC $2E,x				;$B3DF61   |
 	STZ $1A,x				;$B3DF63   |
 	STZ $16,x				;$B3DF65   |
-	PER RESET_start+$330000			;$B3DF67   |
-	%pea_use_dbr(RESET_start)		;$B3DF6A   |
-	PLB					;$B3DF6D   |
-	LDY #$01E6				;$B3DF6E   |
-	LDA #$0000				;$B3DF71   |
-	CLC					;$B3DF74   |
-CODE_B3DF75:					;	   |
-	EOR ($02,s),y				;$B3DF75   |
-	ROR A					;$B3DF77   |
-	DEY					;$B3DF78   |
-	DEY					;$B3DF79   |
-	BPL CODE_B3DF75				;$B3DF7A   |
-	XBA					;$B3DF7C   |
-	EOR #$CCAB				;$B3DF7D   |
-	INC A					;$B3DF80   |
-	BEQ CODE_B3DF88				;$B3DF81   | if anti-piracy routine was tampered
-	LDA #$FFFF				;$B3DF83   | destroy exit number of bonus wall (sends player to map screen)
-	STA $42,x				;$B3DF86   |
+	PER RESET_start+$330000			;$B3DF67   |\ Piracy check
+	%pea_use_dbr(RESET_start)		;$B3DF6A   | | Push address of reset routine onto stack ($8083F7)
+	PLB					;$B3DF6D   |/ Set data bank to reset routine (bank $80)
+	LDY #$01E6				;$B3DF6E   |> Y = number of bytes to XOR
+	LDA #$0000				;$B3DF71   |\ Clear A and Carry so we can use them for XOR
+	CLC					;$B3DF74   |/
+.next_word					;	   |
+	EOR ($02,s),y				;$B3DF75   |\ XOR word at $8083F7+Y (this is the reset routine, we pushed its address to the stack)
+	ROR A					;$B3DF77   |/ Revolve XOR results to the right by 1 bit after every word
+	DEY					;$B3DF78   |\ Move to next word (move backwards by 2 bytes)
+	DEY					;$B3DF79   |/
+	BPL .next_word				;$B3DF7A   |> Move onto next word if we haven't reached the end of the data
+	XBA					;$B3DF7C   |\ Swap endian of our XOR result
+	EOR #$CCAB				;$B3DF7D   | | If our result after XORing against this value +1 is 0 we passed the XOR test
+	INC A					;$B3DF80   | |
+	BEQ CODE_B3DF88				;$B3DF81   |/ If anti-piracy routine was tampered
+	LDA #$FFFF				;$B3DF83   |\ Destroy exit number of bonus wall (sends player to map screen)
+	STA $42,x				;$B3DF86   |/
 CODE_B3DF88:					;	   |
 	PLB					;$B3DF88   |
 	PLY					;$B3DF89   |
