@@ -13,16 +13,16 @@ sprite_handler:
 	STZ $19AC				;$B3801B   |
 	STZ $19AF				;$B3801E   |
 	REP #$20				;$B38021   |
-	LDA #$00B3				;$B38023   |
-	STA $05AB				;$B38026   |
-	LDA #$00FF				;$B38029   |
-	STA $90					;$B3802C   |
+	LDA #$00B3				;$B38023   |\ Write bank of sprite return address (always B3)
+	STA $05AB				;$B38026   |/
+	LDA #$00FF				;$B38029   |\ Write bank of sprite constants for current sprite (always FF)
+	STA $90					;$B3802C   |/
 	JSL CODE_BCFA78				;$B3802E   |
-	LDA $0A36				;$B38032   |
-	AND #$0080				;$B38035   |
-	BNE CODE_B3806D				;$B38038   |
-	LDA $0A36				;$B3803A   |
-	BNE CODE_B38087				;$B3803D   |
+	LDA $0A36				;$B38032   |\
+	AND #$0080				;$B38035   | |
+	BNE CODE_B3806D				;$B38038   |/
+	LDA $0A36				;$B3803A   |\ If time is currently stopped
+	BNE CODE_B38087				;$B3803D   |/
 	LDA #.sprite_return			;$B3803F   |\ Set sprite return pointer
 	STA $05A9				;$B38042   |/
 	LDX #main_sprite_table			;$B38045   | Load sprite base pointer
@@ -9009,21 +9009,21 @@ CODE_B3C2EF:					;	   |
 	BEQ CODE_B3C301				;$B3C2FA   |
 	CMP $0D52				;$B3C2FC   |
 	BNE CODE_B3C33B				;$B3C2FF   |
-CODE_B3C301:					;	   |
-	LDY #$8080				;$B3C301   |
-	PHY					;$B3C304   |
-	PLB					;$B3C305   |
-	LDX #$0035				;$B3C306   |
+CODE_B3C301:					;	   | Piracy check
+	LDY #$8080				;$B3C301   |\ Y = address to checksum (address so far: $??8080)
+	PHY					;$B3C304   | |
+	PLB					;$B3C305   |/ Also use Y as the bank for the checksum address (address so far: $808080)
+	LDX #$0035				;$B3C306   |> Number of bytes to checksum
 	TYA					;$B3C309   |
 	CLC					;$B3C30A   |
-CODE_B3C30B:					;	   |
-	ADC $040B,y				;$B3C30B   |
-	INY					;$B3C30E   |
-	DEX					;$B3C30F   |
-	BPL CODE_B3C30B				;$B3C310   |
+.next_byte					;	   |\ Checksum data from $80848B to $8084C2
+	ADC $040B,y				;$B3C30B   | | $808080 + $040B = $80848B (this is our actual address to run the checksum on)
+	INY					;$B3C30E   | |
+	DEX					;$B3C30F   | |
+	BPL .next_byte				;$B3C310   |/ Move onto next byte if we haven't reached the end of the data
 	PLB					;$B3C312   |
-	CMP #$20CB				;$B3C313   |
-	BNE CODE_B3C33B				;$B3C316   |
+	CMP #$20CB				;$B3C313   |\ This is the checksum to check against
+	BNE CODE_B3C33B				;$B3C316   |/ If checksum doesn't match the anti-piracy routine was tampered. Delete water trigger sprite
 	LDX current_sprite			;$B3C318   |
 	LDA $4E,x				;$B3C31A   |
 	STA $0D52				;$B3C31C   |
@@ -11940,17 +11940,17 @@ CODE_B3D91D:
 	JMP (DATA_B3D923,x)			;$B3D920  /
 
 DATA_B3D923:
-	dw CODE_B3D939
-	dw CODE_B3D9CD
-	dw CODE_B3DAD6
-	dw CODE_B3DC21
-	dw CODE_B3DF48
-	dw CODE_B3DF48
-	dw CODE_B3E3AF
-	dw CODE_B3E4D9
-	dw CODE_B3E65C
-	dw CODE_B3E682
-	dw CODE_B3E768
+	dw CODE_B3D939				;00
+	dw CODE_B3D9CD				;02
+	dw CODE_B3DAD6				;04
+	dw CODE_B3DC21				;06
+	dw CODE_B3DF48				;08
+	dw CODE_B3DF48				;0A
+	dw CODE_B3E3AF				;0C
+	dw CODE_B3E4D9				;0E
+	dw CODE_B3E65C				;10
+	dw CODE_B3E682				;12
+	dw CODE_B3E768				;14
 
 
 CODE_B3D939:
@@ -12276,29 +12276,35 @@ CODE_B3DB48:
 	STZ $48,x				;$B3DB54   |
 	RTS					;$B3DB56  /
 
+;wind controller varables:
+;$44,x	wind script base address (location of current wind script)
+;$46,x	wind script offset (where in the current script is being processed)
+;$48,x	wind timer (how long for wind to blow)
+;$4A,x	wind command
+
 CODE_B3DB57:
-	LDX current_sprite			;$B3DB57  \
-	DEC $48,x				;$B3DB59   |
-	BPL CODE_B3DB7B				;$B3DB5B   |
-	LDA $44,x				;$B3DB5D   |
-	STA $8E					;$B3DB5F   |
-	LDY $46,x				;$B3DB61   |
-	LDA [$8E],y				;$B3DB63   |
-	STA $4A,x				;$B3DB65   |
+	LDX current_sprite			;$B3DB57  \ \ get current sprite
+	DEC $48,x				;$B3DB59   | | decrement wind timer
+	BPL CODE_B3DB7B				;$B3DB5B   |/ if wind timer is less than 0 done processing
+	LDA $44,x				;$B3DB5D   |\ load and update wind script base address
+	STA $8E					;$B3DB5F   |/
+	LDY $46,x				;$B3DB61   | load wind script offset into Y
+	LDA [$8E],y				;$B3DB63   |\ load and update wind command
+	STA $4A,x				;$B3DB65   |/
 	INY					;$B3DB67   |
 	INY					;$B3DB68   |
-	LDA [$8E],y				;$B3DB69   |
-	STA $48,x				;$B3DB6B   |
+	LDA [$8E],y				;$B3DB69   | load new wind time
+	STA $48,x				;$B3DB6B   | set wind timer
 	INY					;$B3DB6D   |
 	INY					;$B3DB6E   |
-	LDA [$8E],y				;$B3DB6F   |
-	CMP #$0002				;$B3DB71   |
-	BNE CODE_B3DB79				;$B3DB74   |
-	LDY #$0000				;$B3DB76   |
-CODE_B3DB79:					;	   |
-	STY $46,x				;$B3DB79   |
-CODE_B3DB7B:					;	   |
-	RTS					;$B3DB7B  /
+	LDA [$8E],y				;$B3DB6F   | load wind command
+	CMP #$0002				;$B3DB71   |\ if command is 2 then
+	BNE CODE_B3DB79				;$B3DB74   | |
+	LDY #$0000				;$B3DB76   |/ loop to start of wind script
+CODE_B3DB79:					;	   |\
+	STY $46,x				;$B3DB79   | | update wind script offset
+CODE_B3DB7B:					;	   |/
+	RTS					;$B3DB7B  / return
 
 DATA_B3DB7C:
 	dw CODE_B3DB9C
@@ -12333,9 +12339,10 @@ CODE_B3DBA5:
 	SBC #$0024				;$B3DBA5  \
 	RTS					;$B3DBA8  /
 
+;parse wind command
 CODE_B3DBA9:
-	LDX current_sprite			;$B3DBA9  \
-	LDA $4A,x				;$B3DBAB   |
+	LDX current_sprite			;$B3DBA9  \ get current sprite
+	LDA $4A,x				;$B3DBAB   | get wind command
 	LSR A					;$B3DBAD   |
 	BCC CODE_B3DBDB				;$B3DBAE   |
 	AND #$2000				;$B3DBB0   |
@@ -12797,24 +12804,24 @@ CODE_B3DF5F:
 	INC $2E,x				;$B3DF61   |
 	STZ $1A,x				;$B3DF63   |
 	STZ $16,x				;$B3DF65   |
-	PER RESET_start+$330000			;$B3DF67   |
-	%pea_use_dbr(RESET_start)		;$B3DF6A   |
-	PLB					;$B3DF6D   |
-	LDY #$01E6				;$B3DF6E   |
-	LDA #$0000				;$B3DF71   |
-	CLC					;$B3DF74   |
-CODE_B3DF75:					;	   |
-	EOR ($02,s),y				;$B3DF75   |
-	ROR A					;$B3DF77   |
-	DEY					;$B3DF78   |
-	DEY					;$B3DF79   |
-	BPL CODE_B3DF75				;$B3DF7A   |
-	XBA					;$B3DF7C   |
-	EOR #$CCAB				;$B3DF7D   |
-	INC A					;$B3DF80   |
-	BEQ CODE_B3DF88				;$B3DF81   |
-	LDA #$FFFF				;$B3DF83   |
-	STA $42,x				;$B3DF86   |
+	PER RESET_start+$330000			;$B3DF67   |\ Piracy check
+	%pea_use_dbr(RESET_start)		;$B3DF6A   | | Push address of reset routine onto stack ($8083F7)
+	PLB					;$B3DF6D   |/ Set data bank to reset routine (bank $80)
+	LDY #$01E6				;$B3DF6E   |> Y = number of bytes to XOR
+	LDA #$0000				;$B3DF71   |\ Clear A and Carry so we can use them for XOR
+	CLC					;$B3DF74   |/
+.next_word					;	   |
+	EOR ($02,s),y				;$B3DF75   |\ XOR word at $8083F7+Y (this is the reset routine, we pushed its address to the stack)
+	ROR A					;$B3DF77   |/ Revolve XOR results to the right by 1 bit after every word
+	DEY					;$B3DF78   |\ Move to next word (move backwards by 2 bytes)
+	DEY					;$B3DF79   |/
+	BPL .next_word				;$B3DF7A   |> Move onto next word if we haven't reached the end of the data
+	XBA					;$B3DF7C   |\ Swap endian of our XOR result
+	EOR #$CCAB				;$B3DF7D   | | If our result after XORing against this value +1 is 0 we passed the XOR test
+	INC A					;$B3DF80   | |
+	BEQ CODE_B3DF88				;$B3DF81   |/ If anti-piracy routine wasn't tampered continue as normal
+	LDA #$FFFF				;$B3DF83   |\ Else destroy exit number of bonus wall (sends player to map screen)
+	STA $42,x				;$B3DF86   |/
 CODE_B3DF88:					;	   |
 	PLB					;$B3DF88   |
 	PLY					;$B3DF89   |

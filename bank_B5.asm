@@ -254,9 +254,9 @@ endif						;	   | |/
 	JSR .upload_spc_base_engine		;$B58191  \ Upload the core of the SPC engine
 	JSR .upload_spc_sound_engine		;$B58194   | Upload the sound processor of the SPC engine
 	JSR .upload_global_samples		;$B58197   |
-	LDA #sound_effect_data			;$B5819A   |\ Load pointer to sound effect data
+	LDA #global_sfx_data			;$B5819A   |\ Load pointer to sound effect data
 	STA $32					;$B5819D   | |
-	LDA.w #sound_effect_data>>16		;$B5819F   | |
+	LDA.w #global_sfx_data>>16		;$B5819F   | |
 	STA $34					;$B581A2   |/
 	JSR .upload_inline_spc_block		;$B581A4   | Upload the sound effect data
 	JSR .execute_spc_sound_engine		;$B581A7   | Jump to the sound engine entry
@@ -661,16 +661,16 @@ endif						;	   | |/
 
 .upload_song_sample_set
 	LDA current_song			;$B58469  \ Load currently set song
-	CLC					;$B5846B   |\ Multiply song number by 6 to song sample set offset
+	CLC					;$B5846B   |\ Multiply song number by 6 to song sample map offset
 	ROL A					;$B5846C   | | Effectively (X << 1) + (X << 2)
 	STA $32					;$B5846D   | |
 	ROL A					;$B5846F   | |
 	CLC					;$B58470   | |
 	ADC $32					;$B58471   |/
 	TAX					;$B58473   | Move offset to an index register
-	LDA.l song_sample_sets,x		;$B58474   |\ Load pointer to song sample set
+	LDA.l song_sample_maps,x		;$B58474   |\ Load pointer to song sample map
 	STA $0E					;$B58478   | |
-	LDA.l song_sample_sets+2,x		;$B5847A   | |
+	LDA.l song_sample_maps+2,x		;$B5847A   | |
 	STA $10					;$B5847E   |/
 	LDA $04					;$B58480   |\ Set next pending source directory ARAM destination
 	STA $02					;$B58482   |/
@@ -1434,8 +1434,8 @@ DATA_B58490:
 	db $00, $00, $00, $00, $00, $00, $00, $00
 
 CODE_B59C00:
-	LDY current_sprite			;$B59C00  \
-	LDX $1A,y				;$B59C02   |
+	LDY current_sprite			;$B59C00  \ load current sprite into y
+	LDX $1A,y				;$B59C02   | load sprite graphic number into x
 	LDA $1730				;$B59C04   |
 	CMP $78					;$B59C07   |
 	BCC CODE_B59C0C				;$B59C09   |
@@ -1444,24 +1444,24 @@ CODE_B59C00:
 CODE_B59C0C:
 	STX $18,y				;$B59C0C  \
 	STX $16,y				;$B59C0E   |
-	LDA $0012,y				;$B59C10   |
-	STA $32					;$B59C13   |
-	LDA.l DATA_BC8000,x			;$B59C15   |
-	STA $40					;$B59C19   |
-	LDA.l DATA_BC8002,x			;$B59C1B   |
-	STA $42					;$B59C1F   |
-	LDY #$0000				;$B59C21   |
-	LDA [$40],y				;$B59C24   |
-	STA $36					;$B59C26   |
-	LDY #$0002				;$B59C28   |
-	LDA [$40],y				;$B59C2B   |
-	STA $38					;$B59C2D   |
-	LDY #$0004				;$B59C2F   |
-	LDA [$40],y				;$B59C32   |
-	STA $3A					;$B59C34   |
-	LDY #$0006				;$B59C36   |
-	LDA [$40],y				;$B59C39   |
-	STA $3C					;$B59C3B   |
+	LDA $0012,y				;$B59C10   |\ copy oam render properties to scratch ram
+	STA $32					;$B59C13   |/
+	LDA.l DATA_BC8000,x			;$B59C15   |\
+	STA $40					;$B59C19   | | copy sprite graphic address into scratch ram
+	LDA.l DATA_BC8002,x			;$B59C1B   | |
+	STA $42					;$B59C1F   |/
+	LDY #$0000				;$B59C21   |\
+	LDA [$40],y				;$B59C24   | | copy header into scratch ram
+	STA $36					;$B59C26   | |
+	LDY #$0002				;$B59C28   | |
+	LDA [$40],y				;$B59C2B   | |
+	STA $38					;$B59C2D   | |
+	LDY #$0004				;$B59C2F   | |
+	LDA [$40],y				;$B59C32   | |
+	STA $3A					;$B59C34   | |
+	LDY #$0006				;$B59C36   | |
+	LDA [$40],y				;$B59C39   | |
+	STA $3C					;$B59C3B   |/
 	LDA #$0004				;$B59C3D   |
 	CLC					;$B59C40   |
 	SEP #$20				;$B59C41   |
@@ -2529,26 +2529,41 @@ CODE_B5A3B3:
 	LDY #$0005				;$B5A3C8   |
 	JMP CODE_B5A3ED				;$B5A3CB  /
 
+
+
+;$36		number of 16x16 tiles
+;$37		number of 8x8 tiles (group a)
+;$38		vram tile offset of 8x8 tiles (group a)
+;$39		number of 8x8 tiles (group b)
+;$3A		vram tile offset of 8x8 tiles (group b)
+;$3B		number of tiles to DMA in first DMA payload
+;$3C		vram tile offset of second DMA payload
+;$3D		number of tiles to DMA in second DMA payload (if second payload needed)
+;$3E
+;$3F
+;$40	(word)	sprite graphic address
+;$42	(word)	sprite graphic bank
+
 CODE_B5A3CE:
-	LDY #$0000				;$B5A3CE  \
-	LDA [$40],y				;$B5A3D1   |
-	STA $36					;$B5A3D3   |
-	LDY #$0002				;$B5A3D5   |
-	LDA [$40],y				;$B5A3D8   |
-	STA $38					;$B5A3DA   |
-	LDY #$0004				;$B5A3DC   |
-	LDA [$40],y				;$B5A3DF   |
-	STA $3A					;$B5A3E1   |
-	LDY #$0006				;$B5A3E3   |
-	LDA [$40],y				;$B5A3E6   |
-	STA $3C					;$B5A3E8   |
-	LDY #$0008				;$B5A3EA   |
-CODE_B5A3ED:					;	   |
-	LDA $70					;$B5A3ED   |
-	LSR A					;$B5A3EF   |
-	LSR A					;$B5A3F0   |
-	SEP #$20				;$B5A3F1   |
-	TAX					;$B5A3F3   |
+	LDY #$0000				;$B5A3CE  \\
+	LDA [$40],y				;$B5A3D1   |\
+	STA $36					;$B5A3D3   | | copy header into scratch ram
+	LDY #$0002				;$B5A3D5   | |
+	LDA [$40],y				;$B5A3D8   | |
+	STA $38					;$B5A3DA   | |
+	LDY #$0004				;$B5A3DC   | |
+	LDA [$40],y				;$B5A3DF   | |
+	STA $3A					;$B5A3E1   | |
+	LDY #$0006				;$B5A3E3   | |
+	LDA [$40],y				;$B5A3E6   | |
+	STA $3C					;$B5A3E8   |/
+	LDY #$0008				;$B5A3EA   |\
+CODE_B5A3ED:					;	   | |
+	LDA $70					;$B5A3ED   | | get next free oam slot
+	LSR A					;$B5A3EF   | |
+	LSR A					;$B5A3F0   | |
+	SEP #$20				;$B5A3F1   | |
+	TAX					;$B5A3F3   |/
 	ADC $36					;$B5A3F4   |
 	BMI CODE_B5A3FE				;$B5A3F6   |
 	REP #$20				;$B5A3F8   |
@@ -3387,7 +3402,7 @@ CODE_B5A96A:					;	   |
 	TAY					;$B5A96A   |
 	AND #$0FE0				;$B5A96B   |
 	CLC					;$B5A96E   |
-	ADC #$26A7				;$B5A96F   |
+	ADC #DATA_F526A7			;$B5A96F   |
 	STA $32					;$B5A972   |
 	LDA $17C0				;$B5A974   |
 	SEC					;$B5A977   |
@@ -3404,16 +3419,16 @@ CODE_B5A96A:					;	   |
 	AND #$0018				;$B5A988   |
 	LSR A					;$B5A98B   |
 	LSR A					;$B5A98C   |
-	ADC #$2087				;$B5A98D   |
+	ADC #DATA_F52087			;$B5A98D   |
 	STA $34					;$B5A990   |
 	TYA					;$B5A992   |
 	AND #$0018				;$B5A993   |
 	EOR #$0018				;$B5A996   |
 	LSR A					;$B5A999   |
 	LSR A					;$B5A99A   |
-	ADC #$2087				;$B5A99B   |
+	ADC #DATA_F52087			;$B5A99B   |
 	STA $36					;$B5A99E   |
-	LDA #$00F5				;$B5A9A0   |
+	LDA.w #DATA_F52087>>16			;$B5A9A0   | load bank of ship deck rigging
 	PHA					;$B5A9A3   |
 	PLB					;$B5A9A4   |
 	LDX #$195A				;$B5A9A5   |
@@ -3864,103 +3879,104 @@ CODE_B5ACB7:					;	   |
 	LDA $9A					;$B5ACEC   |
 	PHA					;$B5ACEE   |
 	PLB					;$B5ACEF   |
-	LDX #$195A				;$B5ACF0   |
-CODE_B5ACF3:					;	   |
-	LDA ($32)				;$B5ACF3   |
-	BMI CODE_B5AD53				;$B5ACF5   |
-	BIT #$4000				;$B5ACF7   |
-	BNE CODE_B5AD2B				;$B5ACFA   |
-	ASL A					;$B5ACFC   |
-	ASL A					;$B5ACFD   |
-	ASL A					;$B5ACFE   |
-	ASL A					;$B5ACFF   |
-	ASL A					;$B5AD00   |
-	ADC $34					;$B5AD01   |
-	TAY					;$B5AD03   |
-	LDA $0000,y				;$B5AD04   |
-	STA $00,x				;$B5AD07   |
-	LDA $0008,y				;$B5AD09   |
-	STA $02,x				;$B5AD0C   |
-	LDA $0010,y				;$B5AD0E   |
-	STA $04,x				;$B5AD11   |
-	LDA $0018,y				;$B5AD13   |
-CODE_B5AD16:					;	   |
-	STA $06,x				;$B5AD16   |
-	INC $32					;$B5AD18   |
-	INC $32					;$B5AD1A   |
-	TXA					;$B5AD1C   |
-	CLC					;$B5AD1D   |
-	ADC #$0008				;$B5AD1E   |
-	TAX					;$B5AD21   |
-	CMP #$19A2				;$B5AD22   |
-	BNE CODE_B5ACF3				;$B5AD25   |
+	LDX #$195A				;$B5ACF0   |> load 8x8 column buffer index into x
+.next_8x8_column				;	   |
+	LDA ($32)				;$B5ACF3   |\ get 32x32 tile and handle if tile is flipped
+	BMI .v_flipped_32x32			;$B5ACF5   | |
+	BIT #$4000				;$B5ACF7   | |
+	BNE .h_flipped_32x32			;$B5ACFA   |/
+	ASL A					;$B5ACFC   |\ calculate 8x8 tile offset
+	ASL A					;$B5ACFD   | |
+	ASL A					;$B5ACFE   | |
+	ASL A					;$B5ACFF   | |
+	ASL A					;$B5AD00   | |
+	ADC $34					;$B5AD01   | |
+	TAY					;$B5AD03   |/ 32x32 tile number * 32 + 8x8 tilemap base offset
+	LDA $0000,y				;$B5AD04   |\ get 8x8 tile
+	STA $00,x				;$B5AD07   | | copy tile to column buffer
+	LDA $0008,y				;$B5AD09   | | repeat for all tiles in current column
+	STA $02,x				;$B5AD0C   | |
+	LDA $0010,y				;$B5AD0E   | |
+	STA $04,x				;$B5AD11   | |
+	LDA $0018,y				;$B5AD13   | |
+.next_32x32_tile				;	   | |
+	STA $06,x				;$B5AD16   |/
+	INC $32					;$B5AD18   |\ update 32x32 index
+	INC $32					;$B5AD1A   |/
+	TXA					;$B5AD1C   |\
+	CLC					;$B5AD1D   | |
+	ADC #$0008				;$B5AD1E   | | update 8x8 buffer index
+	TAX					;$B5AD21   |/
+	CMP #$19A2				;$B5AD22   |\ check if we reached the end of the buffer
+	BNE .next_8x8_column			;$B5AD25   |/ if not process the next 8x8 column
 	PLB					;$B5AD27   |
 	JMP CODE_B5ADA9				;$B5AD28  /
 
-CODE_B5AD2B:
-	ASL A					;$B5AD2B  \
-	ASL A					;$B5AD2C   |
-	ASL A					;$B5AD2D   |
-	ASL A					;$B5AD2E   |
-	ASL A					;$B5AD2F   |
-	ADC $36					;$B5AD30   |
-	TAY					;$B5AD32   |
-	LDA $0000,y				;$B5AD33   |
-	EOR #$4000				;$B5AD36   |
-	STA $00,x				;$B5AD39   |
-	LDA $0008,y				;$B5AD3B   |
-	EOR #$4000				;$B5AD3E   |
-	STA $02,x				;$B5AD41   |
-	LDA $0010,y				;$B5AD43   |
-	EOR #$4000				;$B5AD46   |
-	STA $04,x				;$B5AD49   |
-	LDA $0018,y				;$B5AD4B   |
-	EOR #$4000				;$B5AD4E   |
-	BRA CODE_B5AD16				;$B5AD51  /
+.h_flipped_32x32
+	ASL A					;$B5AD2B  \ \ calculate 8x8 tile offset
+	ASL A					;$B5AD2C   | |
+	ASL A					;$B5AD2D   | |
+	ASL A					;$B5AD2E   | |
+	ASL A					;$B5AD2F   | |
+	ADC $36					;$B5AD30   | |
+	TAY					;$B5AD32   |/ 32x32 tile number * 32 + 8x8 tilemap base offset
+	LDA $0000,y				;$B5AD33   |\ get 8x8 tile
+	EOR #$4000				;$B5AD36   | | unflip x of 8x8 tile
+	STA $00,x				;$B5AD39   | | copy tile to column buffer
+	LDA $0008,y				;$B5AD3B   | | repeat for all tiles in current column
+	EOR #$4000				;$B5AD3E   | |
+	STA $02,x				;$B5AD41   | |
+	LDA $0010,y				;$B5AD43   | |
+	EOR #$4000				;$B5AD46   | |
+	STA $04,x				;$B5AD49   | |
+	LDA $0018,y				;$B5AD4B   | |
+	EOR #$4000				;$B5AD4E   |/
+	BRA .next_32x32_tile			;$B5AD51  /
 
-CODE_B5AD53:
+;32x32 v flipped
+.v_flipped_32x32
 	BIT #$4000				;$B5AD53  \
-	BNE CODE_B5AD80				;$B5AD56   |
-	ASL A					;$B5AD58   |
-	ASL A					;$B5AD59   |
-	ASL A					;$B5AD5A   |
-	ASL A					;$B5AD5B   |
-	ASL A					;$B5AD5C   |
-	ADC $34					;$B5AD5D   |
-	TAY					;$B5AD5F   |
-	LDA $0018,y				;$B5AD60   |
-	EOR #$8000				;$B5AD63   |
-	STA $00,x				;$B5AD66   |
-	LDA $0010,y				;$B5AD68   |
-	EOR #$8000				;$B5AD6B   |
-	STA $02,x				;$B5AD6E   |
-	LDA $0008,y				;$B5AD70   |
-	EOR #$8000				;$B5AD73   |
-	STA $04,x				;$B5AD76   |
-	LDA $0000,y				;$B5AD78   |
-	EOR #$8000				;$B5AD7B   |
-	BRA CODE_B5AD16				;$B5AD7E  /
+	BNE .h_v_flipped_32x32			;$B5AD56   |
+	ASL A					;$B5AD58   |\ calculate 8x8 tile offset
+	ASL A					;$B5AD59   | |
+	ASL A					;$B5AD5A   | |
+	ASL A					;$B5AD5B   | |
+	ASL A					;$B5AD5C   | |
+	ADC $34					;$B5AD5D   | |
+	TAY					;$B5AD5F   |/ 32x32 tile number * 32 + 8x8 tilemap base offset
+	LDA $0018,y				;$B5AD60   |\ get 8x8 tile
+	EOR #$8000				;$B5AD63   | | unflip y of 8x8 tile
+	STA $00,x				;$B5AD66   | | copy tile to column buffer
+	LDA $0010,y				;$B5AD68   | | repeat for all tiles in current column
+	EOR #$8000				;$B5AD6B   | |
+	STA $02,x				;$B5AD6E   | |
+	LDA $0008,y				;$B5AD70   | |
+	EOR #$8000				;$B5AD73   | |
+	STA $04,x				;$B5AD76   | |
+	LDA $0000,y				;$B5AD78   | |
+	EOR #$8000				;$B5AD7B   |/
+	BRA .next_32x32_tile			;$B5AD7E  /
 
-CODE_B5AD80:
-	ASL A					;$B5AD80  \
-	ASL A					;$B5AD81   |
-	ASL A					;$B5AD82   |
-	ASL A					;$B5AD83   |
-	ASL A					;$B5AD84   |
-	ADC $36					;$B5AD85   |
-	TAY					;$B5AD87   |
-	LDA $0018,y				;$B5AD88   |
-	EOR #$C000				;$B5AD8B   |
-	STA $00,x				;$B5AD8E   |
-	LDA $0010,y				;$B5AD90   |
-	EOR #$C000				;$B5AD93   |
-	STA $02,x				;$B5AD96   |
-	LDA $0008,y				;$B5AD98   |
-	EOR #$C000				;$B5AD9B   |
-	STA $04,x				;$B5AD9E   |
-	LDA $0000,y				;$B5ADA0   |
-	EOR #$C000				;$B5ADA3   |
-	JMP CODE_B5AD16				;$B5ADA6  /
+.h_v_flipped_32x32
+	ASL A					;$B5AD80  \ \ calculate 8x8 tile offset
+	ASL A					;$B5AD81   | |
+	ASL A					;$B5AD82   | |
+	ASL A					;$B5AD83   | |
+	ASL A					;$B5AD84   | |
+	ADC $36					;$B5AD85   | |
+	TAY					;$B5AD87   |/ 32x32 tile number * 32 + 8x8 tilemap base offset
+	LDA $0018,y				;$B5AD88   |\ get 8x8 tile
+	EOR #$C000				;$B5AD8B   | | unflip x and y of 8x8 tile
+	STA $00,x				;$B5AD8E   | | copy tile to column buffer
+	LDA $0010,y				;$B5AD90   | | repeat for all tiles in current column
+	EOR #$C000				;$B5AD93   | |
+	STA $02,x				;$B5AD96   | |
+	LDA $0008,y				;$B5AD98   | |
+	EOR #$C000				;$B5AD9B   | |
+	STA $04,x				;$B5AD9E   | |
+	LDA $0000,y				;$B5ADA0   | |
+	EOR #$C000				;$B5ADA3   |/
+	JMP .next_32x32_tile			;$B5ADA6  /
 
 CODE_B5ADA9:
 	LDA $17C0				;$B5ADA9  \
@@ -5759,7 +5775,6 @@ DATA_B5BAEF:
 	dl carnival_2_32x32_tilemap
 	dl castle_32x32_tilemap
 
-
 DATA_B5BB2E:
 	%offset(DATA_B5BB30, 2)
 	dl forest_8x8_tilemap
@@ -5784,14 +5799,28 @@ DATA_B5BB2E:
 	dl carnival_8x8_tilemap
 	dl castle_8x8_tilemap
 
-
 DATA_B5BB6D:
-	db $00, $68, $00, $38, $00, $78, $00, $70
-	db $00, $78, $00, $78, $00, $78, $00, $78
-	db $00, $78, $00, $78, $00, $78, $00, $68
-	db $00, $78, $00, $78, $00, $78, $00, $78
-	db $00, $78, $00, $78, $00, $78, $00, $78
-	db $00, $68
+	dw $6800
+	dw $3800
+	dw $7800
+	dw $7000
+	dw $7800
+	dw $7800
+	dw $7800
+	dw $7800
+	dw $7800
+	dw $7800
+	dw $7800
+	dw $6800
+	dw $7800
+	dw $7800
+	dw $7800
+	dw $7800
+	dw $7800
+	dw $7800
+	dw $7800
+	dw $7800
+	dw $6800
 
 DATA_B5BB97:
 	%offset(DATA_B5BB99, 2)
@@ -5817,14 +5846,28 @@ DATA_B5BB97:
 	dl carnival_collision
 	dl castle_collision
 
-
 DATA_B5BBD6:
-	db $A3, $00, $82, $00, $F0, $00, $AA, $00
-	db $98, $00, $90, $00, $5C, $00, $F0, $00
-	db $27, $00, $22, $00, $6E, $01, $E4, $00
-	db $09, $00, $11, $00, $5E, $01, $E1, $00
-	db $A3, $00, $5E, $01, $6E, $01, $90, $00
-	db $E4, $00
+	dw $00A3
+	dw $0082
+	dw $00F0
+	dw $00AA
+	dw $0098
+	dw $0090
+	dw $005C
+	dw $00F0
+	dw $0027
+	dw $0022
+	dw $016E
+	dw $00E4
+	dw $0009
+	dw $0011
+	dw $015E
+	dw $00E1
+	dw $00A3
+	dw $015E
+	dw $016E
+	dw $0090
+	dw $00E4
 
 DATA_B5BC00:
 	dw CODE_B5C82C
@@ -5872,38 +5915,51 @@ DATA_B5BC2A:
 	dw carnival_level_palette
 	dw castle_level_palette
 
-
 DATA_B5BC54:
-	dw $0420, $0420, $0420, $0420
-	dw $0420, $0420, $0420, $0420
-	dw $0420, $0420, $0420, $0420
-	dw $0420, $0020, $0420, $0420
-	dw $0000, $0420, $0420, $0420
+	dw $0420
+	dw $0420
+	dw $0420
+	dw $0420
+	dw $0420
+	dw $0420
+	dw $0420
+	dw $0420
+	dw $0420
+	dw $0420
+	dw $0420
+	dw $0420
+	dw $0420
+	dw $0020
+	dw $0420
+	dw $0420
+	dw $0000
+	dw $0420
+	dw $0420
+	dw $0420
 	dw $0420
 
 DATA_B5BC7E:
-	dw DATA_B5BD05
-	dw DATA_B5BD79
-	dw DATA_B5BDC5
-	dw DATA_B5BE25
-	dw DATA_B5BE8F
-	dw DATA_B5BF21
-	dw DATA_B5BF45
-	dw DATA_B5BFAF
-	dw DATA_B5BFDD
-	dw DATA_B5C03D
-	dw DATA_B5C0BB
-	dw DATA_B5C0F3
-	dw DATA_B5C153
-	dw DATA_B5C163
-	dw DATA_B5C173
-	dw DATA_B5C1C9
-	dw DATA_B5BD05
-	dw DATA_B5C21F
-	dw DATA_B5C22F
-	dw DATA_B5C28F
-	dw DATA_B5C0F3
-
+	dw DATA_B5BD05				;forest
+	dw DATA_B5BD79				;ship_hold
+	dw DATA_B5BDC5				;wasp_hive
+	dw DATA_B5BE25				;ship_deck
+	dw DATA_B5BE8F				;ship_mast
+	dw DATA_B5BF21				;carnival
+	dw DATA_B5BF45				;lava
+	dw DATA_B5BFAF				;wasp_hive
+	dw DATA_B5BFDD				;mine
+	dw DATA_B5C03D				;swamp
+	dw DATA_B5C0BB				;brambles
+	dw DATA_B5C0F3				;castle
+	dw DATA_B5C153				;k_rool_2
+	dw DATA_B5C163				;k_rool
+	dw DATA_B5C173				;ice
+	dw DATA_B5C1C9				;jungle
+	dw DATA_B5BD05				;NULL
+	dw DATA_B5C21F				;ice_2
+	dw DATA_B5C22F				;brambles_2
+	dw DATA_B5C28F				;carnival_2
+	dw DATA_B5C0F3				;castle
 
 CODE_B5BCA8:
 	PHB					;$B5BCA8  \
@@ -5937,10 +5993,10 @@ CODE_B5BCA8:
 	STA $A0					;$B5BCE4   |
 	LDA DATA_B5BC00,y			;$B5BCE6   |
 	STA $17B2				;$B5BCE9   |
-	LDA $0A8E				;$B5BCEC   |
-	BNE CODE_B5BCF7				;$B5BCEF   |
-	LDA DATA_B5BC2A,y			;$B5BCF1   |
-	STA $0A8E				;$B5BCF4   |
+	LDA $0A8E				;$B5BCEC   |\ get level palette address
+	BNE CODE_B5BCF7				;$B5BCEF   |/ if there's no palette address
+	LDA DATA_B5BC2A,y			;$B5BCF1   |\ use the default tilemap palette
+	STA $0A8E				;$B5BCF4   |/
 CODE_B5BCF7:					;	   |
 	LDA DATA_B5BC7E,y			;$B5BCF7   |
 	STA $0B84				;$B5BCFA   |
@@ -5949,235 +6005,228 @@ CODE_B5BCF7:					;	   |
 	PLB					;$B5BD03   |
 	RTL					;$B5BD04  /
 
+;forest
 DATA_B5BD05:
-	db $00, $30, $00, $02, $20, $00, $00, $2F
-	db $00, $00, $00, $02, $00, $00, $20, $2F
-	db $00, $60, $00, $00, $00, $02, $00, $00
-	db $20, $60, $E0, $88, $00, $00, $00, $02
-	db $00, $00, $00, $92, $00, $93, $00, $00
-	db $00, $01, $00, $00, $00, $92, $00, $93
-	db $00, $00, $00, $02, $00, $00, $00, $92
-	db $00, $93, $00, $00, $00, $02, $00, $00
-	db $00, $60, $E0, $88, $00, $00, $00, $02
-	db $00, $00, $E0, $88, $80, $8C, $00, $00
-	db $00, $02, $00, $00, $80, $8C, $60, $90
-	db $00, $00, $00, $02, $00, $00, $60, $90
-	db $00, $92, $00, $00, $00, $02, $00, $00
-	db $00, $93, $E0, $96, $00, $00, $00, $02
-	db $00, $00, $FF, $FF
+	dw $3000, $0200				;32x32 tilemap dimensions
+	dw $0020, $2F00, $0000, $0200, $0000	; 00 web woods
+	dw $2F20, $6000, $0000, $0200, $0000	; 01 gusty glade
+	dw $6020, $88E0, $0000, $0200, $0000	; 02 ghostly grove
+	dw $9200, $9300, $0000, $0100, $0000	; 03 
+	dw $9200, $9300, $0000, $0200, $0000	; 04 web woods room
+	dw $9200, $9300, $0000, $0200, $0000	; 05 ghostly grove bonus 1
+	dw $6000, $88E0, $0000, $0200, $0000	; 06 
+	dw $88E0, $8C80, $0000, $0200, $0000	; 07 gusty glade bonus 2
+	dw $8C80, $9060, $0000, $0200, $0000	; 08 gusty glade bonus 1/ghostly grove bonus 2
+	dw $9060, $9200, $0000, $0200, $0000	; 09 web woods bonus 2
+	dw $9300, $96E0, $0000, $0200, $0000	; 0A 
+	dw $FFFF
 
+;ship_hold
 DATA_B5BD79:
-	db $00, $0A, $00, $40, $00, $00, $00, $0A
-	db $00, $00, $A0, $08, $07, $00, $00, $00
-	db $00, $0A, $A0, $08, $00, $10, $07, $00
-	db $00, $00, $00, $0A, $00, $10, $00, $17
-	db $07, $00, $00, $00, $00, $03, $00, $17
-	db $80, $1A, $07, $00, $00, $03, $C0, $05
-	db $00, $17, $C0, $19, $07, $00, $C0, $05
-	db $40, $09, $00, $17, $00, $19, $07, $00
-	db $C0, $05, $40, $09, $00, $19, $80, $1A
-	db $07, $00, $FF, $FF
+	dw $0A00, $4000				;32x32 tilemap dimensions
+	dw $0000, $0A00, $0000, $08A0, $0007	;00 glimmer's galleon
+	dw $0000, $0A00, $08A0, $1000, $0007	;01 lava lagoon
+	dw $0000, $0A00, $1000, $1700, $0007	;02 lockjaw's locker
+	dw $0000, $0300, $1700, $1A80, $0007	;03 lockjaw's locker bonus 1
+	dw $0300, $05C0, $1700, $19C0, $0007	;04 glimmer's galleon bonus 2
+	dw $05C0, $0940, $1700, $1900, $0007	;05 lockjaw's locker/lava lagoon warp room
+	dw $05C0, $0940, $1900, $1A80, $0007	;06 glimmer's galleon bonus 1
+	dw $FFFF
 
+;wasp_hive
 DATA_B5BDC5:
-	db $00, $0A, $00, $40, $00, $00, $00, $0A
-	db $00, $00, $20, $0A, $07, $00, $00, $00
-	db $00, $0A, $80, $0A, $80, $16, $07, $00
-	db $80, $04, $80, $05, $20, $09, $20, $0A
-	db $07, $00, $80, $05, $80, $06, $20, $09
-	db $20, $0A, $07, $00, $00, $00, $80, $05
-	db $80, $16, $80, $17, $07, $00, $00, $00
-	db $80, $04, $80, $17, $80, $18, $07, $00
-	db $80, $05, $80, $06, $80, $16, $80, $18
-	db $07, $00, $80, $06, $A0, $07, $80, $16
-	db $80, $19, $07, $00, $A0, $07, $00, $0A
-	db $80, $16, $40, $1A, $07, $00, $FF, $FF
+	dw $0A00, $4000				;32x32 tilemap dimensions
+	dw $0000, $0A00, $0000, $0A20, $0007
+	dw $0000, $0A00, $0A80, $1680, $0007
+	dw $0480, $0580, $0920, $0A20, $0007
+	dw $0580, $0680, $0920, $0A20, $0007
+	dw $0000, $0580, $1680, $1780, $0007
+	dw $0000, $0480, $1780, $1880, $0007
+	dw $0580, $0680, $1680, $1880, $0007
+	dw $0680, $07A0, $1680, $1980, $0007
+	dw $07A0, $0A00, $1680, $1A40, $0007
+	dw $FFFF
 
+;ship_deck
 DATA_B5BE25:
-	db $00, $30, $00, $02, $20, $00, $00, $1C
-	db $00, $00, $00, $02, $00, $00, $00, $1C
-	db $00, $3C, $00, $00, $00, $02, $00, $00
-	db $20, $3C, $A0, $64, $00, $00, $00, $02
-	db $00, $00, $A0, $64, $A0, $65, $00, $00
-	db $00, $02, $00, $00, $A0, $64, $A0, $65
-	db $00, $00, $00, $02, $00, $00, $A0, $65
-	db $A0, $67, $00, $00, $00, $02, $00, $00
-	db $A0, $67, $A0, $6C, $00, $00, $00, $01
-	db $00, $00, $A0, $6C, $A0, $6E, $00, $00
-	db $00, $02, $00, $00, $A0, $6E, $A0, $71
-	db $00, $00, $00, $02, $00, $00, $A0, $71
-	db $80, $73, $00, $00, $00, $02, $00, $00
-	db $FF, $FF
+	dw $3000, $0200				;32x32 tilemap dimensions
+	dw $0020, $1C00, $0000, $0200, $0000
+	dw $1C00, $3C00, $0000, $0200, $0000
+	dw $3C20, $64A0, $0000, $0200, $0000
+	dw $64A0, $65A0, $0000, $0200, $0000
+	dw $64A0, $65A0, $0000, $0200, $0000
+	dw $65A0, $67A0, $0000, $0200, $0000
+	dw $67A0, $6CA0, $0000, $0100, $0000
+	dw $6CA0, $6EA0, $0000, $0200, $0000
+	dw $6EA0, $71A0, $0000, $0200, $0000
+	dw $71A0, $7380, $0000, $0200, $0000
+	dw $FFFF
 
+;ship_mast
 DATA_B5BE8F:
-	db $00, $04, $00, $40, $00, $00, $80, $01
-	db $00, $00, $00, $01, $04, $00, $00, $00
-	db $00, $04, $00, $01, $80, $17, $04, $00
-	db $00, $00, $00, $03, $40, $18, $40, $27
-	db $04, $00, $00, $00, $00, $03, $40, $27
-	db $40, $32, $04, $00, $00, $00, $80, $01
-	db $40, $32, $80, $3D, $04, $00, $40, $01
-	db $40, $02, $20, $19, $20, $1A, $04, $00
-	db $80, $01, $C0, $03, $40, $32, $A0, $36
-	db $04, $00, $80, $01, $20, $03, $A0, $36
-	db $40, $38, $04, $00, $80, $01, $80, $02
-	db $40, $38, $60, $39, $04, $00, $80, $01
-	db $60, $03, $60, $39, $00, $3B, $04, $00
-	db $80, $01, $C0, $02, $00, $3B, $40, $3E
-	db $04, $00, $00, $00, $20, $01, $80, $3D
-	db $A0, $3E, $04, $00, $00, $00, $00, $01
-	db $A0, $40, $00, $44, $04, $00, $00, $00
-	db $00, $04, $A0, $3E, $A0, $40, $04, $00
-	db $FF, $FF
+	dw $0400, $4000				;32x32 tilemap dimensions
+	dw $0000, $0180, $0000, $0100, $0004
+	dw $0000, $0400, $0100, $1780, $0004
+	dw $0000, $0300, $1840, $2740, $0004
+	dw $0000, $0300, $2740, $3240, $0004
+	dw $0000, $0180, $3240, $3D80, $0004
+	dw $0140, $0240, $1920, $1A20, $0004
+	dw $0180, $03C0, $3240, $36A0, $0004
+	dw $0180, $0320, $36A0, $3840, $0004
+	dw $0180, $0280, $3840, $3960, $0004
+	dw $0180, $0360, $3960, $3B00, $0004
+	dw $0180, $02C0, $3B00, $3E40, $0004
+	dw $0000, $0120, $3D80, $3EA0, $0004
+	dw $0000, $0100, $40A0, $4400, $0004
+	dw $0000, $0400, $3EA0, $40A0, $0004
+	dw $FFFF
 
+;carnival
 DATA_B5BF21:
-	db $00, $30, $00, $02, $00, $00, $40, $43
-	db $00, $00, $00, $02, $08, $00, $C0, $49
-	db $C0, $A8, $00, $00, $00, $02, $08, $00
-	db $40, $43, $C0, $49, $00, $00, $00, $02
-	db $08, $00, $FF, $FF
+	dw $3000, $0200				;32x32 tilemap dimensions
+	dw $0000, $4340, $0000, $0200, $0008
+	dw $49C0, $A8C0, $0000, $0200, $0008
+	dw $4340, $49C0, $0000, $0200, $0008
+	dw $FFFF
 
+;lava
 DATA_B5BF45:
-	db $00, $30, $00, $02, $00, $00, $80, $23
-	db $00, $00, $00, $02, $00, $00, $80, $23
-	db $00, $4C, $00, $00, $00, $02, $00, $00
-	db $00, $4E, $00, $80, $00, $00, $00, $02
-	db $00, $00, $00, $80, $00, $81, $00, $00
-	db $00, $02, $00, $00, $00, $4C, $00, $4E
-	db $00, $00, $00, $02, $00, $00, $00, $81
-	db $00, $87, $00, $00, $00, $02, $00, $00
-	db $00, $87, $80, $89, $00, $00, $00, $02
-	db $00, $00, $80, $89, $C0, $8B, $00, $00
-	db $00, $02, $00, $00, $C0, $8B, $C0, $91
-	db $00, $00, $00, $02, $00, $00, $C0, $91
-	db $60, $93, $00, $00, $00, $02, $00, $00
-	db $FF, $FF
+	dw $3000, $0200				;32x32 tilemap dimensions
+	dw $0000, $2380, $0000, $0200, $0000
+	dw $2380, $4C00, $0000, $0200, $0000
+	dw $4E00, $8000, $0000, $0200, $0000
+	dw $8000, $8100, $0000, $0200, $0000
+	dw $4C00, $4E00, $0000, $0200, $0000
+	dw $8100, $8700, $0000, $0200, $0000
+	dw $8700, $8980, $0000, $0200, $0000
+	dw $8980, $8BC0, $0000, $0200, $0000
+	dw $8BC0, $91C0, $0000, $0200, $0000
+	dw $91C0, $9360, $0000, $0200, $0000
+	dw $FFFF
 
+;wasp_hive
 DATA_B5BFAF:
-	db $00, $02, $00, $40, $00, $00, $00, $02
-	db $20, $02, $20, $35, $05, $00, $00, $00
-	db $00, $02, $00, $00, $20, $02, $05, $00
-	db $00, $00, $00, $01, $20, $35, $80, $37
-	db $05, $00, $00, $01, $00, $02, $20, $35
-	db $20, $38, $05, $00, $FF, $FF
+	dw $0200, $4000				;32x32 tilemap dimensions
+	dw $0000, $0200, $0220, $3520, $0005
+	dw $0000, $0200, $0000, $0220, $0005
+	dw $0000, $0100, $3520, $3780, $0005
+	dw $0100, $0200, $3520, $3820, $0005
+	dw $FFFF
 
+;mine
 DATA_B5BFDD:
-	db $00, $03, $00, $40, $00, $00, $00, $03
-	db $00, $00, $20, $1A, $04, $00, $00, $00
-	db $00, $03, $20, $1A, $A0, $2C, $04, $00
-	db $00, $00, $00, $01, $A0, $2B, $A0, $2C
-	db $04, $00, $00, $00, $00, $03, $A0, $2C
-	db $A0, $4C, $04, $00, $00, $00, $00, $03
-	db $A0, $4C, $A0, $4E, $04, $00, $00, $00
-	db $00, $03, $A0, $4E, $A0, $4F, $04, $00
-	db $00, $00, $00, $02, $A0, $4F, $E0, $56
-	db $04, $00, $00, $00, $60, $01, $E0, $56
-	db $C0, $58, $04, $00, $A0, $01, $00, $03
-	db $60, $2E, $C0, $32, $04, $00, $FF, $FF
+	dw $0300, $4000				;32x32 tilemap dimensions
+	dw $0000, $0300, $0000, $1A20, $0004
+	dw $0000, $0300, $1A20, $2CA0, $0004
+	dw $0000, $0100, $2BA0, $2CA0, $0004
+	dw $0000, $0300, $2CA0, $4CA0, $0004
+	dw $0000, $0300, $4CA0, $4EA0, $0004
+	dw $0000, $0300, $4EA0, $4FA0, $0004
+	dw $0000, $0200, $4FA0, $56E0, $0004
+	dw $0000, $0160, $56E0, $58C0, $0004
+	dw $01A0, $0300, $2E60, $32C0, $0004
+	dw $FFFF
 
 DATA_B5C03D:
-	db $00, $30, $00, $02, $00, $00, $80, $2E
-	db $00, $00, $00, $02, $00, $00, $80, $2E
-	db $A0, $57, $00, $00, $00, $02, $00, $00
-	db $C0, $32, $C0, $33, $00, $00, $00, $02
-	db $00, $00, $A0, $57, $20, $8A, $00, $00
-	db $00, $02, $00, $00, $C0, $32, $C0, $33
-	db $00, $00, $00, $02, $00, $00, $20, $8A
-	db $20, $8B, $00, $00, $00, $02, $00, $00
-	db $20, $8B, $20, $8F, $00, $00, $00, $02
-	db $00, $00, $20, $8F, $A0, $90, $00, $00
-	db $00, $02, $00, $00, $A0, $90, $A0, $92
-	db $00, $00, $00, $02, $00, $00, $A0, $92
-	db $A0, $96, $00, $00, $00, $02, $00, $00
-	db $A0, $96, $20, $9A, $00, $00, $00, $02
-	db $00, $00, $00, $58, $80, $59, $00, $00
-	db $00, $02, $00, $00, $FF, $FF
+	dw $3000, $0200				;32x32 tilemap dimensions
+	dw $0000, $2E80, $0000, $0200, $0000
+	dw $2E80, $57A0, $0000, $0200, $0000
+	dw $32C0, $33C0, $0000, $0200, $0000
+	dw $57A0, $8A20, $0000, $0200, $0000
+	dw $32C0, $33C0, $0000, $0200, $0000
+	dw $8A20, $8B20, $0000, $0200, $0000
+	dw $8B20, $8F20, $0000, $0200, $0000
+	dw $8F20, $90A0, $0000, $0200, $0000
+	dw $90A0, $92A0, $0000, $0200, $0000
+	dw $92A0, $96A0, $0000, $0200, $0000
+	dw $96A0, $9A20, $0000, $0200, $0000
+	dw $5800, $5980, $0000, $0200, $0000
+	dw $FFFF
 
 DATA_B5C0BB:
-	db $00, $0C, $00, $10, $00, $00, $60, $08
-	db $00, $00, $00, $0B, $07, $00, $00, $00
-	db $00, $0C, $00, $0B, $00, $15, $06, $00
-	db $00, $00, $00, $0C, $00, $15, $00, $1F
-	db $06, $00, $60, $08, $20, $0A, $00, $00
-	db $30, $09, $06, $00, $20, $0A, $00, $0C
-	db $00, $00, $80, $06, $06, $00, $FF, $FF
+	dw $0C00, $1000				;32x32 tilemap dimensions
+	dw $0000, $0860, $0000, $0B00, $0007
+	dw $0000, $0C00, $0B00, $1500, $0006
+	dw $0000, $0C00, $1500, $1F00, $0006
+	dw $0860, $0A20, $0000, $0930, $0006
+	dw $0A20, $0C00, $0000, $0680, $0006
+	dw $FFFF
 
 DATA_B5C0F3:
-	db $00, $02, $00, $10, $00, $00, $00, $02
-	db $00, $01, $E0, $30, $05, $00, $00, $00
-	db $00, $02, $00, $00, $00, $01, $05, $00
-	db $00, $00, $00, $02, $E0, $30, $C0, $57
-	db $05, $00, $00, $00, $00, $02, $C0, $57
-	db $A0, $7E, $05, $00, $00, $00, $00, $02
-	db $A0, $7E, $60, $82, $05, $00, $00, $00
-	db $00, $01, $60, $82, $80, $87, $05, $00
-	db $00, $00, $80, $01, $80, $87, $80, $8A
-	db $05, $00, $00, $00, $80, $01, $80, $8A
-	db $20, $96, $05, $00, $00, $00, $00, $02
-	db $20, $96, $20, $97, $05, $00, $FF, $FF
+	dw $0200, $1000				;32x32 tilemap dimensions
+	dw $0000, $0200, $0100, $30E0, $0005
+	dw $0000, $0200, $0000, $0100, $0005
+	dw $0000, $0200, $30E0, $57C0, $0005
+	dw $0000, $0200, $57C0, $7EA0, $0005
+	dw $0000, $0200, $7EA0, $8260, $0005
+	dw $0000, $0100, $8260, $8780, $0005
+	dw $0000, $0180, $8780, $8A80, $0005
+	dw $0000, $0180, $8A80, $9620, $0005
+	dw $0000, $0200, $9620, $9720, $0005
+	dw $FFFF
 
 DATA_B5C153:
-	db $00, $02, $00, $10, $00, $00, $00, $02
-	db $00, $00, $00, $01, $05, $00, $FF, $FF
+	dw $0200, $1000				;32x32 tilemap dimensions
+	dw $0000, $0200, $0000, $0100, $0005
+	dw $FFFF
 
 DATA_B5C163:
-	db $00, $02, $00, $10, $00, $00, $00, $02
-	db $00, $00, $00, $01, $05, $00, $FF, $FF
+	dw $0200, $1000				;32x32 tilemap dimensions
+	dw $0000, $0200, $0000, $0100, $0005
+	dw $FFFF
 
 DATA_B5C173:
-	db $00, $0A, $00, $10, $00, $00, $00, $0A
-	db $00, $00, $80, $06, $07, $00, $00, $00
-	db $00, $0A, $80, $06, $40, $0E, $07, $00
-	db $00, $00, $00, $0A, $40, $0E, $20, $13
-	db $07, $00, $00, $00, $60, $03, $20, $13
-	db $C0, $15, $07, $00, $60, $03, $20, $09
-	db $20, $13, $00, $16, $07, $00, $00, $00
-	db $80, $01, $00, $16, $80, $1B, $07, $00
-	db $80, $01, $60, $03, $00, $16, $60, $1A
-	db $07, $00, $60, $03, $20, $07, $00, $16
-	db $C0, $18, $07, $00, $FF, $FF
+	dw $0A00, $1000				;32x32 tilemap dimensions
+	dw $0000, $0A00, $0000, $0680, $0007
+	dw $0000, $0A00, $0680, $0E40, $0007
+	dw $0000, $0A00, $0E40, $1320, $0007
+	dw $0000, $0360, $1320, $15C0, $0007
+	dw $0360, $0920, $1320, $1600, $0007
+	dw $0000, $0180, $1600, $1B80, $0007
+	dw $0180, $0360, $1600, $1A60, $0007
+	dw $0360, $0720, $1600, $18C0, $0007
+	dw $FFFF
 
 DATA_B5C1C9:
-	db $00, $30, $00, $02, $00, $02, $E0, $36
-	db $00, $00, $00, $02, $00, $00, $00, $00
-	db $00, $02, $00, $00, $00, $02, $00, $00
-	db $E0, $36, $80, $41, $00, $00, $00, $02
-	db $00, $00, $80, $41, $80, $49, $00, $00
-	db $00, $01, $00, $00, $80, $41, $60, $44
-	db $00, $01, $00, $02, $00, $00, $80, $49
-	db $40, $77, $00, $00, $00, $02, $00, $00
-	db $40, $77, $20, $83, $00, $00, $00, $02
-	db $00, $00, $20, $83, $40, $8F, $00, $00
-	db $00, $02, $00, $00, $FF, $FF
+	dw $3000, $0200				;32x32 tilemap dimensions
+	dw $0200, $36E0, $0000, $0200, $0000
+	dw $0000, $0200, $0000, $0200, $0000
+	dw $36E0, $4180, $0000, $0200, $0000
+	dw $4180, $4980, $0000, $0100, $0000
+	dw $4180, $4460, $0100, $0200, $0000
+	dw $4980, $7740, $0000, $0200, $0000
+	dw $7740, $8320, $0000, $0200, $0000
+	dw $8320, $8F40, $0000, $0200, $0000
+	dw $FFFF
 
 DATA_B5C21F:
-	db $00, $02, $00, $10, $00, $00, $00, $02
-	db $00, $00, $60, $24, $05, $00, $FF, $FF
+	dw $0200, $1000				;32x32 tilemap dimensions
+	dw $0000, $0200, $0000, $2460, $0005
+	dw $FFFF
 
 DATA_B5C22F:
-	db $00, $0C, $00, $10, $00, $00, $00, $0C
-	db $20, $04, $A0, $09, $06, $00, $00, $00
-	db $60, $05, $00, $00, $40, $04, $06, $00
-	db $60, $05, $00, $08, $00, $00, $80, $03
-	db $06, $00, $00, $08, $80, $0B, $00, $00
-	db $A0, $02, $06, $00, $00, $08, $80, $09
-	db $A0, $02, $C0, $03, $06, $00, $00, $00
-	db $A0, $04, $A0, $09, $E0, $0A, $06, $00
-	db $00, $00, $80, $02, $E0, $0A, $C0, $0E
-	db $06, $00, $A0, $02, $00, $07, $00, $0B
-	db $60, $0E, $06, $00, $00, $07, $20, $0A
-	db $A0, $09, $40, $0F, $06, $00, $FF, $FF
+	dw $0C00, $1000				;32x32 tilemap dimensions
+	dw $0000, $0C00, $0420, $09A0, $0006
+	dw $0000, $0560, $0000, $0440, $0006
+	dw $0560, $0800, $0000, $0380, $0006
+	dw $0800, $0B80, $0000, $02A0, $0006
+	dw $0800, $0980, $02A0, $03C0, $0006
+	dw $0000, $04A0, $09A0, $0AE0, $0006
+	dw $0000, $0280, $0AE0, $0EC0, $0006
+	dw $02A0, $0700, $0B00, $0E60, $0006
+	dw $0700, $0A20, $09A0, $0F40, $0006
+	dw $FFFF
 
 DATA_B5C28F:
-	db $00, $30, $00, $02, $00, $00, $40, $55
-	db $00, $00, $00, $02, $08, $00, $40, $55
-	db $A0, $56, $00, $00, $00, $02, $08, $00
-	db $A0, $56, $80, $58, $00, $00, $00, $02
-	db $08, $00, $80, $58, $A0, $6C, $00, $00
-	db $00, $02, $08, $00, $A0, $6C, $40, $7A
-	db $00, $00, $00, $02, $08, $00, $40, $7A
-	db $E0, $8A, $00, $00, $00, $02, $08, $00
-	db $E0, $8A, $80, $93, $00, $00, $00, $02
-	db $08, $00, $FF, $FF
+	dw $3000, $0200				;32x32 tilemap dimensions
+	dw $0000, $5540, $0000, $0200, $0008
+	dw $5540, $56A0, $0000, $0200, $0008
+	dw $56A0, $5880, $0000, $0200, $0008
+	dw $5880, $6CA0, $0000, $0200, $0008
+	dw $6CA0, $7A40, $0000, $0200, $0008
+	dw $7A40, $8AE0, $0000, $0200, $0008
+	dw $8AE0, $9380, $0000, $0200, $0008
+	dw $FFFF
 
 CODE_B5C2DB:
 	LDA #$6240				;$B5C2DB  \
@@ -7129,11 +7178,11 @@ CODE_B5C941:
 	BRA CODE_B5C936				;$B5C94B  /
 
 CODE_B5C94D:
-	LDA $A6					;$B5C94D  \
-	STA $A2					;$B5C94F   |
-	LDA [$98],y				;$B5C951   |
-	TYX					;$B5C953   |
-	STA $A8					;$B5C954   |
+	LDA $A6					;$B5C94D  \ \
+	STA $A2					;$B5C94F   |/
+	LDA [$98],y				;$B5C951   |\
+	TYX					;$B5C953   | | look up and save what 32x32 tile sprite is currently on
+	STA $A8					;$B5C954   |/
 	BEQ CODE_B5C9B1				;$B5C956   |
 	BIT #$4000				;$B5C958   |
 	BEQ CODE_B5C966				;$B5C95B   |
@@ -7142,34 +7191,34 @@ CODE_B5C94D:
 	STA $A2					;$B5C962   |
 	LDA $A8					;$B5C964   |
 CODE_B5C966:					;	   |
-	AND #$3FFF				;$B5C966   |
-	CMP $A0					;$B5C969   |
-	BCS CODE_B5C9B1				;$B5C96B   |
+	AND #$3FFF				;$B5C966   |\
+	CMP $A0					;$B5C969   | |
+	BCS CODE_B5C9B1				;$B5C96B   |/ if 32x32 tile is outside the range of collision map, no collision
 	ASL A					;$B5C96D   |
 	ASL A					;$B5C96E   |
 	TAY					;$B5C96F   |
-	LDA $A2					;$B5C970   |
-	AND #$0010				;$B5C972   |
-	BEQ CODE_B5C979				;$B5C975   |
-	INY					;$B5C977   |
-	INY					;$B5C978   |
+	LDA $A2					;$B5C970   |\
+	AND #$0010				;$B5C972   | | if sprite is on left half of 32x32 tile, calculate left collision tile
+	BEQ CODE_B5C979				;$B5C975   |/
+	INY					;$B5C977   |\ otherwise sprite is on right half of 32x32 tile, calculate right collision tile
+	INY					;$B5C978   |/
 CODE_B5C979:					;	   |
-	LDA [$9C],y				;$B5C979   |
-	BIT #$8000				;$B5C97B   |
-	BEQ CODE_B5C989				;$B5C97E   |
-	LDA $A2					;$B5C980   |
-	EOR #$000F				;$B5C982   |
-	STA $A2					;$B5C985   |
-	LDA [$9C],y				;$B5C987   |
-CODE_B5C989:					;	   |
+	LDA [$9C],y				;$B5C979   |\
+	BIT #$8000				;$B5C97B   | | if the collision tile isnt flipped skip flipping
+	BEQ .no_collision_tile_flip		;$B5C97E   |/
+	LDA $A2					;$B5C980   |\
+	EOR #$000F				;$B5C982   | | otherwise flip x offset of sprite on tile
+	STA $A2					;$B5C985   | |
+	LDA [$9C],y				;$B5C987   |/
+.no_collision_tile_flip				;	   |
 	TXY					;$B5C989   |
 	BIT $A8					;$B5C98A   |
 	BVC CODE_B5C991				;$B5C98C   |
 	EOR #$8000				;$B5C98E   |
 CODE_B5C991:					;	   |
 	STA $AC					;$B5C991   |
-	AND #$00FF				;$B5C993   |
-	BEQ CODE_B5C9B1				;$B5C996   |
+	AND #$00FF				;$B5C993   |\
+	BEQ CODE_B5C9B1				;$B5C996   |/ if collision tile is 0, no collision
 	ASL A					;$B5C998   |
 	TAX					;$B5C999   |
 	LDA.l DATA_B5CA58,x			;$B5C99A   |
@@ -11806,24 +11855,24 @@ CODE_B5ED61:					;	   |
 	RTS					;$B5ED6F  /
 
 CODE_B5ED70:
-	LDX $90					;$B5ED70  \
-	BMI CODE_B5ED95				;$B5ED72   |
-	LDA #<:rare_string			;$B5ED74   |
-	STA $92					;$B5ED77   |
-	LDY #rare_string			;$B5ED79   |
-	LDA [$90],y				;$B5ED7C   |
-	CLC					;$B5ED7E   |
-	ADC $B2					;$B5ED7F   |
-	STA $B2					;$B5ED81   |
-	CPX #$021F				;$B5ED83   |
-	BCC CODE_B5ED95				;$B5ED86   |
-	ROR $90					;$B5ED88   |
-	CLC					;$B5ED8A   |
-	ADC #$2315				;$B5ED8B   |
-	CMP #$9BEA				;$B5ED8E   |
-	BEQ CODE_B5ED95				;$B5ED91   |
-	DEC $FD					;$B5ED93   |
-CODE_B5ED95:					;	   |
+	LDX $90					;$B5ED70  \> Piracy check. Load address of anti piracy routine checksum ($A00 + $90 = $A90)
+	BMI .continue				;$B5ED72   |> If address is negative the checksum is complete. The checksum is calculated 1 byte per frame
+	LDA #<:rare_string			;$B5ED74   |\
+	STA $92					;$B5ED77   | | Store address of anti piracy routine at $A90
+	LDY #rare_string			;$B5ED79   | |
+	LDA [$90],y				;$B5ED7C   |/
+	CLC					;$B5ED7E   |\
+	ADC $B2					;$B5ED7F   | | Add next byte to checksum
+	STA $B2					;$B5ED81   |/ Checksum is stored at $AB2
+	CPX #$021F				;$B5ED83   |\
+	BCC .continue				;$B5ED86   |/ If the checksum isn't done yet continue until next frame
+	ROR $90					;$B5ED88   |> Make anti piracy routine address negative to indicate we're finished with the checksum
+	CLC					;$B5ED8A   |\
+	ADC #$2315				;$B5ED8B   |/ Add this to our checksum to get the true checksum. Probably to hide the actual checksum
+	CMP #$9BEA				;$B5ED8E   |\
+	BEQ .continue				;$B5ED91   |/ If our checksum matches continue as normal
+	DEC $FD					;$B5ED93   | Else anti piracy routine was tampered, decrease level camera count by 1
+.continue					;	   |
 	STZ $92					;$B5ED95   |
 	LDA $0A36				;$B5ED97   |
 	BIT #$0080				;$B5ED9A   |

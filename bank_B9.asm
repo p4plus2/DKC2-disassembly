@@ -57,7 +57,7 @@ CODE_B9D04B:
 	LDA current_sprite			;$B9D057   |
 	PHA					;$B9D059   |
 	LDA current_player_mount		;$B9D05A   |
-	BEQ CODE_B9D071				;$B9D05C   |
+	BEQ .is_animal				;$B9D05C   |
 	STA current_sprite			;$B9D05E   |
 	LDX current_sprite			;$B9D060   |
 	LDA $00,x				;$B9D062   |
@@ -68,7 +68,7 @@ CODE_B9D04B:
 	CLC					;$B9D06A   |
 	ADC $32					;$B9D06B   |
 	JSL CODE_B9D0B8				;$B9D06D   |
-CODE_B9D071:					;	   |
+.is_animal					;	   |
 	PLA					;$B9D071   |
 	STA current_sprite			;$B9D072   |
 	PLA					;$B9D074   |
@@ -129,31 +129,31 @@ CODE_B9D0B8:
 	CLC					;$B9D0C2   |
 	ADC #$00A3				;$B9D0C3   |
 set_sprite_animation:				;	   |
-	PHB					;$B9D0C6   |
-	%pea_shift_dbr(DATA_F90000)		;$B9D0C7   |
-	PLB					;$B9D0CA   |
-	PLB					;$B9D0CB   |
+	PHB					;$B9D0C6   |\
+	%pea_shift_dbr(DATA_F90000)		;$B9D0C7   | | 
+	PLB					;$B9D0CA   | |
+	PLB					;$B9D0CB   |/
 	LDX current_sprite			;$B9D0CC   |
-	STA $36,x				;$B9D0CE   |
-	TAY					;$B9D0D0   |
-	LDA #$0100				;$B9D0D1   |
-	STA $3A,x				;$B9D0D4   |
-	STZ $38,x				;$B9D0D6   |
-	STZ $3E,x				;$B9D0D8   |
-	TYA					;$B9D0DA   |
+	STA $36,x				;$B9D0CE   |\ set animation id then preserve it in Y
+	TAY					;$B9D0D0   |/
+	LDA #$0100				;$B9D0D1   |\
+	STA $3A,x				;$B9D0D4   | | initialize animation speed
+	STZ $38,x				;$B9D0D6   | | clear graphic display time
+	STZ $3E,x				;$B9D0D8   | | clear animation routine call pointer
+	TYA					;$B9D0DA   |/ retrieve animation id from Y
 	ASL A					;$B9D0DB   |
 	ASL A					;$B9D0DC   |
 	TXY					;$B9D0DD   |
 	TAX					;$B9D0DE   |
 	LDA.l DATA_F90002,x			;$B9D0DF   |
 	STA $26					;$B9D0E3   |
-	LDA.l DATA_F90000,x			;$B9D0E5   |
-	TYX					;$B9D0E9   |
-	STA $3C,x				;$B9D0EA   |
-	TAY					;$B9D0EC   |
+	LDA.l DATA_F90000,x			;$B9D0E5   |\
+	TYX					;$B9D0E9   | | update animation script address
+	STA $3C,x				;$B9D0EA   |/
+	TAY					;$B9D0EC   |> preserve script address in Y
 	LDA $26					;$B9D0ED   |
 	STA $40,x				;$B9D0EF   |
-	BRA CODE_B9D115				;$B9D0F1  /
+	BRA process_anim_script			;$B9D0F1  /
 
 CODE_B9D0F3:
 	LDX current_sprite			;$B9D0F3  \
@@ -170,28 +170,28 @@ CODE_B9D100:
 	SEC					;$B9D104   |
 	SBC $3A,x				;$B9D105   |
 	STA $38,x				;$B9D107   |
-	BEQ CODE_B9D10D				;$B9D109   |
+	BEQ .CODE_B9D10D			;$B9D109   |
 	BPL CODE_B9D13E				;$B9D10B   |
-CODE_B9D10D:					;	   |
+.CODE_B9D10D					;	   |
 	PHB					;$B9D10D   |
 	%pea_shift_dbr(DATA_F90000)		;$B9D10E   |
 	PLB					;$B9D111   |
 	PLB					;$B9D112   |
 	LDY $3C,x				;$B9D113   |
-CODE_B9D115:					;	   |
-	DEY					;$B9D115   |
-	LDA $0000,y				;$B9D116   |
-	BMI CODE_B9D152				;$B9D119   |
-	AND #$FF00				;$B9D11B   |
-	CLC					;$B9D11E   |
-	ADC $38,x				;$B9D11F   |
-	STA $38,x				;$B9D121   |
-	BPL CODE_B9D131				;$B9D123   |
+process_anim_script:				;	   |
+	DEY					;$B9D115   |\
+	LDA $0000,y				;$B9D116   | |
+	BMI animation_command_handler		;$B9D119   |/ if a command was loaded handle the command
+	AND #$FF00				;$B9D11B   |\
+	CLC					;$B9D11E   | | otherwise a graphic draw duration was loaded
+	ADC $38,x				;$B9D11F   | |
+	STA $38,x				;$B9D121   | | update graphic
+	BPL CODE_B9D131				;$B9D123   |/
 	INY					;$B9D125   |
 	INY					;$B9D126   |
 	INY					;$B9D127   |
 	INY					;$B9D128   |
-	BRA CODE_B9D115				;$B9D129  /
+	BRA process_anim_script			;$B9D129  /
 
 CODE_B9D12B:
 	LDX current_sprite			;$B9D12B  \
@@ -228,7 +228,7 @@ CODE_B9D14F:
 	PLB					;$B9D150   |
 	RTL					;$B9D151  /
 
-CODE_B9D152:
+animation_command_handler:
 	AND #$FF00				;$B9D152  \
 	INY					;$B9D155   |
 	XBA					;$B9D156   |
@@ -249,7 +249,7 @@ CODE_B9D160:
 	TYX					;$B9D16C   |
 	STA $3C,x				;$B9D16D   |
 	TAY					;$B9D16F   |
-	BRA CODE_B9D115				;$B9D170  /
+	BRA process_anim_script			;$B9D170  /
 
 CODE_B9D172:
 	LDX current_sprite			;$B9D172  \
@@ -276,7 +276,7 @@ CODE_B9D189:
 	TYA					;$B9D191   |
 	CMP $52					;$B9D192   |
 	BNE CODE_B9D199				;$B9D194   |
-	JMP CODE_B9D115				;$B9D196  /
+	JMP process_anim_script			;$B9D196  /
 
 CODE_B9D199:
 	PLB					;$B9D199  \
@@ -287,7 +287,7 @@ CODE_B9D19B:
 	INY					;$B9D19D   |
 	LDA $0000,y				;$B9D19E   |
 	TAY					;$B9D1A1   |
-	JMP CODE_B9D115				;$B9D1A2  /
+	JMP process_anim_script			;$B9D1A2  /
 
 CODE_B9D1A5:
 	LDX current_sprite			;$B9D1A5  \
@@ -307,7 +307,7 @@ CODE_B9D1B5:
 	STA $3E,x				;$B9D1BB   |
 	INY					;$B9D1BD   |
 	INY					;$B9D1BE   |
-	JMP CODE_B9D115				;$B9D1BF  /
+	JMP process_anim_script			;$B9D1BF  /
 
 CODE_B9D1C2:
 	LDX current_sprite			;$B9D1C2  \
@@ -319,7 +319,7 @@ CODE_B9D1C2:
 	INY					;$B9D1CE   |
 	INY					;$B9D1CF   |
 	LDX current_sprite			;$B9D1D0   |
-	JMP CODE_B9D115				;$B9D1D2  /
+	JMP process_anim_script			;$B9D1D2  /
 
 CODE_B9D1D5:
 	LDX current_sprite			;$B9D1D5  \
@@ -339,7 +339,7 @@ CODE_B9D1EC:					;	   |
 	INY					;$B9D1EE   |
 	INY					;$B9D1EF   |
 	LDX current_sprite			;$B9D1F0   |
-	JMP CODE_B9D115				;$B9D1F2  /
+	JMP process_anim_script			;$B9D1F2  /
 
 CODE_B9D1F5:
 	LDX current_sprite			;$B9D1F5  \
@@ -364,11 +364,11 @@ CODE_B9D20B:
 	BCS CODE_B9D21A				;$B9D213   |
 	INY					;$B9D215   |
 	INY					;$B9D216   |
-	JMP CODE_B9D115				;$B9D217  /
+	JMP process_anim_script			;$B9D217  /
 
 CODE_B9D21A:
 	TAY					;$B9D21A  \
-	JMP CODE_B9D115				;$B9D21B  /
+	JMP process_anim_script			;$B9D21B  /
 
 CODE_B9D21E:
 	LDX current_sprite			;$B9D21E  \
@@ -407,7 +407,7 @@ CODE_B9D240:
 	STY $00,x				;$B9D251   |
 	TAY					;$B9D253   |
 	LDX current_sprite			;$B9D254   |
-	JMP CODE_B9D115				;$B9D256  /
+	JMP process_anim_script			;$B9D256  /
 
 CODE_B9D259:
 	INY					;$B9D259  \
@@ -418,7 +418,7 @@ CODE_B9D259:
 	TAX					;$B9D263   |
 	LDY $00,x				;$B9D264   |
 	LDX current_sprite			;$B9D266   |
-	JMP CODE_B9D115				;$B9D268  /
+	JMP process_anim_script			;$B9D268  /
 
 CODE_B9D26B:
 	LDX current_sprite			;$B9D26B  \
@@ -434,7 +434,7 @@ CODE_B9D26B:
 	INY					;$B9D27D   |
 	INY					;$B9D27E   |
 	INY					;$B9D27F   |
-	JMP CODE_B9D115				;$B9D280  /
+	JMP process_anim_script			;$B9D280  /
 
 CODE_B9D283:
 	LDA $0002,y				;$B9D283  \
@@ -474,7 +474,7 @@ CODE_B9D2AA:
 	INY					;$B9D2C0   |
 	INY					;$B9D2C1   |
 	INY					;$B9D2C2   |
-	JMP CODE_B9D115				;$B9D2C3  /
+	JMP process_anim_script			;$B9D2C3  /
 
 CODE_B9D2C6:
 	LDA $0002,y				;$B9D2C6  \
@@ -520,7 +520,7 @@ CODE_B9D305:
 	INY					;$B9D319   |
 	INY					;$B9D31A   |
 	INY					;$B9D31B   |
-	JMP CODE_B9D115				;$B9D31C  /
+	JMP process_anim_script			;$B9D31C  /
 
 CODE_B9D31F:
 	LDA $0002,y				;$B9D31F  \
@@ -566,7 +566,7 @@ CODE_B9D37C:					;	   |
 	CLC					;$B9D37F   |
 	ADC #$0005				;$B9D380   |
 	TAY					;$B9D383   |
-	JMP CODE_B9D115				;$B9D384  /
+	JMP process_anim_script			;$B9D384  /
 
 CODE_B9D387:
 	LDX current_sprite			;$B9D387  \
@@ -582,7 +582,7 @@ CODE_B9D387:
 	INY					;$B9D399   |
 	INY					;$B9D39A   |
 	INY					;$B9D39B   |
-	JMP CODE_B9D115				;$B9D39C  /
+	JMP process_anim_script			;$B9D39C  /
 
 CODE_B9D39F:
 	LDA $0002,y				;$B9D39F  \
@@ -627,7 +627,7 @@ if !version == 0				;	   |
 else						;	   |
 	JSR CODE_B9D3E7				;$B9D3D9   |
 endif						;	   |
-	JMP CODE_B9D115				;$B9D3DC  /
+	JMP process_anim_script			;$B9D3DC  /
 
 CODE_B9D3DF:					;	  \
 if !version == 1				;	   |
@@ -682,7 +682,7 @@ CODE_B9D41D:
 	INY					;$B9D431   |
 	INY					;$B9D432   |
 	INY					;$B9D433   |
-	JMP CODE_B9D115				;$B9D434  /
+	JMP process_anim_script			;$B9D434  /
 
 CODE_B9D437:
 	LDA $0002,y				;$B9D437  \
@@ -720,7 +720,7 @@ CODE_B9D480:					;	   |
 	CLC					;$B9D483   |
 	ADC #$0005				;$B9D484   |
 	TAY					;$B9D487   |
-	JMP CODE_B9D115				;$B9D488  /
+	JMP process_anim_script			;$B9D488  /
 
 CODE_B9D48B:
 	LDX current_sprite			;$B9D48B  \
@@ -738,7 +738,7 @@ CODE_B9D48B:
 	INY					;$B9D49F   |
 	INY					;$B9D4A0   |
 	INY					;$B9D4A1   |
-	JMP CODE_B9D115				;$B9D4A2  /
+	JMP process_anim_script			;$B9D4A2  /
 
 CODE_B9D4A5:
 	LDA $0002,y				;$B9D4A5  \
@@ -788,7 +788,7 @@ CODE_B9D4EF:
 	JMP CODE_B9D12B				;$B9D4F8  /
 
 CODE_B9D4FB:
-	JMP CODE_B9D115				;$B9D4FB  /
+	JMP process_anim_script			;$B9D4FB  /
 
 CODE_B9D4FE:
 	LDA $4E,x				;$B9D4FE  \
@@ -798,7 +798,7 @@ CODE_B9D4FE:
 	JMP CODE_B9D12B				;$B9D508  /
 
 CODE_B9D50B:
-	JMP CODE_B9D115				;$B9D50B  /
+	JMP process_anim_script			;$B9D50B  /
 
 CODE_B9D50E:
 	LDA.l $000593				;$B9D50E  \
@@ -810,7 +810,7 @@ CODE_B9D50E:
 
 CODE_B9D51C:
 	LDX current_sprite			;$B9D51C  \
-	JMP CODE_B9D115				;$B9D51E  /
+	JMP process_anim_script			;$B9D51E  /
 
 CODE_B9D521:
 	LDA $2E,x				;$B9D521  \
@@ -819,7 +819,7 @@ CODE_B9D521:
 	JMP CODE_B9D12B				;$B9D528  /
 
 CODE_B9D52B:
-	JMP CODE_B9D115				;$B9D52B  /
+	JMP process_anim_script			;$B9D52B  /
 
 CODE_B9D52E:
 	LDA.l $000593				;$B9D52E  \
@@ -831,7 +831,7 @@ CODE_B9D52E:
 
 CODE_B9D53C:
 	LDX current_sprite			;$B9D53C  \
-	JMP CODE_B9D115				;$B9D53E  /
+	JMP process_anim_script			;$B9D53E  /
 
 CODE_B9D541:
 	LDA $1E,x				;$B9D541  \
@@ -845,7 +845,7 @@ CODE_B9D541:
 	JMP CODE_B9D12B				;$B9D554  /
 
 CODE_B9D557:
-	JMP CODE_B9D115				;$B9D557  /
+	JMP process_anim_script			;$B9D557  /
 
 CODE_B9D55A:
 	LDA $24,x				;$B9D55A  \
@@ -853,7 +853,7 @@ CODE_B9D55A:
 	JMP CODE_B9D12B				;$B9D55E  /
 
 CODE_B9D561:
-	JMP CODE_B9D115				;$B9D561  /
+	JMP process_anim_script			;$B9D561  /
 
 CODE_B9D564:
 	LDA $24,x				;$B9D564  \
@@ -861,7 +861,7 @@ CODE_B9D564:
 	JMP CODE_B9D12B				;$B9D568  /
 
 CODE_B9D56B:
-	JMP CODE_B9D115				;$B9D56B  /
+	JMP process_anim_script			;$B9D56B  /
 
 CODE_B9D56E:
 	LDA $1E,x				;$B9D56E  \
@@ -878,7 +878,7 @@ CODE_B9D583:					;	   |
 	JMP CODE_B9D12B				;$B9D583  /
 
 CODE_B9D586:
-	JMP CODE_B9D115				;$B9D586  /
+	JMP process_anim_script			;$B9D586  /
 
 CODE_B9D589:
 	LDA $1E,x				;$B9D589  \
@@ -895,7 +895,7 @@ CODE_B9D59E:					;	   |
 	JMP CODE_B9D12B				;$B9D59E  /
 
 CODE_B9D5A1:
-	JMP CODE_B9D115				;$B9D5A1  /
+	JMP process_anim_script			;$B9D5A1  /
 
 CODE_B9D5A4:
 	LDA $1E,x				;$B9D5A4  \
@@ -904,7 +904,7 @@ CODE_B9D5A4:
 	JMP CODE_B9D12B				;$B9D5AB  /
 
 CODE_B9D5AE:
-	JMP CODE_B9D115				;$B9D5AE  /
+	JMP process_anim_script			;$B9D5AE  /
 
 CODE_B9D5B1:
 	LDA $1E,x				;$B9D5B1  \
@@ -918,7 +918,7 @@ CODE_B9D5C3:					;	   |
 	JMP CODE_B9D12B				;$B9D5C3  /
 
 CODE_B9D5C6:
-	JMP CODE_B9D115				;$B9D5C6  /
+	JMP process_anim_script			;$B9D5C6  /
 
 CODE_B9D5C9:
 	LDA $20,x				;$B9D5C9  \
@@ -926,7 +926,7 @@ CODE_B9D5C9:
 	JMP CODE_B9D12B				;$B9D5CD  /
 
 CODE_B9D5D0:
-	JMP CODE_B9D115				;$B9D5D0  /
+	JMP process_anim_script			;$B9D5D0  /
 
 CODE_B9D5D3:
 	LDA.l $000593				;$B9D5D3  \
@@ -946,7 +946,7 @@ CODE_B9D5E9:					;	   |
 	CMP #$0180				;$B9D5E9   |
 	BMI CODE_B9D5DC				;$B9D5EC   |
 	LDX current_sprite			;$B9D5EE   |
-	JMP CODE_B9D115				;$B9D5F0  /
+	JMP process_anim_script			;$B9D5F0  /
 
 CODE_B9D5F3:
 	LDA.l $000515				;$B9D5F3  \
@@ -3165,7 +3165,7 @@ CODE_B9E3E5:					;	   |
 	CMP #$0009				;$B9E3E7   |
 	BEQ CODE_B9E401				;$B9E3EA   |
 CODE_B9E3EC:					;	   |
-	LDA #$4C82				;$B9E3EC   |
+	LDA #DATA_F94C82			;$B9E3EC   |
 	STA $3C,x				;$B9E3EF   |
 	STZ $3E,x				;$B9E3F1   |
 	STZ $38,x				;$B9E3F3   |
@@ -3202,7 +3202,7 @@ CODE_B9E41C:					;	   |
 	CMP #$0009				;$B9E41E   |
 	BEQ CODE_B9E438				;$B9E421   |
 CODE_B9E423:					;	   |
-	LDA #$4D19				;$B9E423   |
+	LDA #DATA_F94D19			;$B9E423   |
 	STA $3C,x				;$B9E426   |
 	STZ $3E,x				;$B9E428   |
 	STZ $38,x				;$B9E42A   |
@@ -3227,7 +3227,7 @@ CODE_B9E43E:
 	LDA #$0040				;$B9E445   |
 	BIT $4A,x				;$B9E448   |
 	BNE CODE_B9E483				;$B9E44A   |
-	BRL CODE_B9D115				;$B9E44C  /
+	BRL process_anim_script			;$B9E44C  /
 
 CODE_B9E44F:
 	LDA $4A,x				;$B9E44F  \
@@ -3263,7 +3263,7 @@ CODE_B9E46D:					;	   |
 	LSR A					;$B9E47D   |
 	BCC CODE_B9E483				;$B9E47E   |
 CODE_B9E480:					;	   |
-	BRL CODE_B9D115				;$B9E480  /
+	BRL process_anim_script			;$B9E480  /
 
 CODE_B9E483:
 	BRL CODE_B9D12B				;$B9E483  /
@@ -3303,7 +3303,7 @@ CODE_B9E4BA:
 	AND #$000F				;$B9E4C5   |
 	CMP #$0005				;$B9E4C8   |
 	BCS CODE_B9E4AC				;$B9E4CB   |
-	BRL CODE_B9D115				;$B9E4CD  /
+	BRL process_anim_script			;$B9E4CD  /
 
 CODE_B9E4D0:
 	LDA #$8005				;$B9E4D0  \
@@ -3319,27 +3319,27 @@ CODE_B9E4D0:
 	CLC					;$B9E4E4   |
 	ADC #$0009				;$B9E4E5   |
 	TAY					;$B9E4E8   |
-	BRL CODE_B9D115				;$B9E4E9  /
+	BRL process_anim_script			;$B9E4E9  /
 
 CODE_B9E4EC:
 	TYA					;$B9E4EC  \
 	CLC					;$B9E4ED   |
 	ADC #$0006				;$B9E4EE   |
 	TAY					;$B9E4F1   |
-	BRL CODE_B9D115				;$B9E4F2  /
+	BRL process_anim_script			;$B9E4F2  /
 
 CODE_B9E4F5:
 	TYA					;$B9E4F5  \
 	CLC					;$B9E4F6   |
 	ADC #$0003				;$B9E4F7   |
 	TAY					;$B9E4FA   |
-	BRL CODE_B9D115				;$B9E4FB  /
+	BRL process_anim_script			;$B9E4FB  /
 
 CODE_B9E4FE:
 	TXA					;$B9E4FE  \
 	CMP $000593				;$B9E4FF   |
 	BNE CODE_B9E4A5				;$B9E503   |
-	BRL CODE_B9D115				;$B9E505  /
+	BRL process_anim_script			;$B9E505  /
 
 CODE_B9E508:
 	LDA.l $000D58				;$B9E508  \
@@ -3391,7 +3391,7 @@ CODE_B9E547:
 	LDA $24,x				;$B9E547  \
 	BMI CODE_B9E54E				;$B9E549   |
 CODE_B9E54B:					;	   |
-	JMP CODE_B9D115				;$B9E54B  /
+	JMP process_anim_script			;$B9E54B  /
 
 CODE_B9E54E:
 	JMP CODE_B9D12B				;$B9E54E  /
@@ -3401,14 +3401,14 @@ CODE_B9E551:
 	BPL CODE_B9E54B				;$B9E553   |
 	CMP #$FE00				;$B9E555   |
 	BCC CODE_B9E54E				;$B9E558   |
-	JMP CODE_B9D115				;$B9E55A  /
+	JMP process_anim_script			;$B9E55A  /
 
 CODE_B9E55D:
 	LDA $0E,x				;$B9E55D  \
 	BNE CODE_B9E54E				;$B9E55F   |
-	JMP CODE_B9D115				;$B9E561  /
+	JMP process_anim_script			;$B9E561  /
 
-CODE_B9E564:
+turn_sprite_if_needed:
 	LDA $26,x				;$B9E564  \
 	BEQ CODE_B9E575				;$B9E566   |
 	LSR A					;$B9E568   |
@@ -3455,16 +3455,16 @@ CODE_B9E59F:					;	   |
 CODE_B9E5AB:
 	LDA global_frame_counter		;$B9E5AB  \
 	AND #$003F				;$B9E5AD   |
-	BNE CODE_B9E5B9				;$B9E5B0   |
+	BNE turn_neek_if_needed			;$B9E5B0   |
 	LDA #$0524				;$B9E5B2   |
 	JSL CODE_B3A3FC				;$B9E5B5   |
-CODE_B9E5B9:					;	   |
+turn_neek_if_needed:				;	   |
 	LDY #$0170				;$B9E5B9   |
-	JMP CODE_B9E564				;$B9E5BC  /
+	JMP turn_sprite_if_needed		;$B9E5BC  /
 
-CODE_B9E5BF:
+turn_click_clack_if_needed:
 	LDY #$0165				;$B9E5BF  \
-	JMP CODE_B9E564				;$B9E5C2  /
+	JMP turn_sprite_if_needed		;$B9E5C2  /
 
 CODE_B9E5C5:
 	LDA #$FB00				;$B9E5C5  \
@@ -3497,7 +3497,7 @@ CODE_B9E5F4:
 	BCS CODE_B9E613				;$B9E5F7   |
 	LDX current_sprite			;$B9E5F9   |
 	LDY #$01F6				;$B9E5FB   |
-	JMP CODE_B9E564				;$B9E5FE  /
+	JMP turn_sprite_if_needed		;$B9E5FE  /
 
 CODE_B9E601:
 	LDA $2E,x				;$B9E601  \
@@ -3581,13 +3581,13 @@ CODE_B9E686:
 	STA $20,x				;$B9E68F   |
 	RTS					;$B9E691  /
 
-CODE_B9E692:
+turn_klomp_if_needed:
 	LDY #$0161				;$B9E692  \
-	JMP CODE_B9E564				;$B9E695  /
+	JMP turn_sprite_if_needed		;$B9E695  /
 
-CODE_B9E698:
+turn_kruncha_if_needed:
 	LDY #$0173				;$B9E698  \
-	JMP CODE_B9E564				;$B9E69B  /
+	JMP turn_sprite_if_needed		;$B9E69B  /
 
 CODE_B9E69E:
 	LDA $24,x				;$B9E69E  \
@@ -3601,7 +3601,7 @@ CODE_B9E6AA:
 	BIT $2A,x				;$B9E6AA  \
 	BPL CODE_B9E6A7				;$B9E6AC   |
 CODE_B9E6AE:					;	   |
-	BRL CODE_B9D115				;$B9E6AE  /
+	BRL process_anim_script			;$B9E6AE  /
 
 CODE_B9E6B1:
 	LDY $0593				;$B9E6B1  \
@@ -3614,9 +3614,9 @@ CODE_B9E6B1:
 	ASL A					;$B9E6BE   |
 	RTS					;$B9E6BF  /
 
-CODE_B9E6C0:
+turn_klampon_if_needed:
 	LDY #$01A0				;$B9E6C0  \
-	JMP CODE_B9E564				;$B9E6C3  /
+	JMP turn_sprite_if_needed		;$B9E6C3  /
 
 CODE_B9E6C6:
 	LDA.l $000A36				;$B9E6C6  \
@@ -3625,23 +3625,23 @@ CODE_B9E6C6:
 	SBC #$0004				;$B9E6CE   |
 	RTS					;$B9E6D1  /
 
-CODE_B9E6D2:
+turn_spiny_if_needed:
 	LDY #$01A4				;$B9E6D2  \
-	JMP CODE_B9E564				;$B9E6D5  /
+	JMP turn_sprite_if_needed		;$B9E6D5  /
 
 CODE_B9E6D8:
 	LDA $06,x				;$B9E6D8  \
 	CMP #$0160				;$B9E6DA   |
 	BCC CODE_B9E6E6				;$B9E6DD   |
 	STZ $3E,x				;$B9E6DF   |
-	LDA #$56E6				;$B9E6E1   |
+	LDA #DATA_F956E6			;$B9E6E1   |
 	STA $3C,x				;$B9E6E4   |
 CODE_B9E6E6:					;	   |
 	RTS					;$B9E6E6  /
 
-CODE_B9E6E7:
+turn_lockjaw_if_needed:
 	LDY #$0178				;$B9E6E7  \
-	JMP CODE_B9E564				;$B9E6EA  /
+	JMP turn_sprite_if_needed		;$B9E6EA  /
 
 CODE_B9E6ED:
 	LDA $12,x				;$B9E6ED  \
@@ -3653,7 +3653,7 @@ CODE_B9E6ED:
 CODE_B9E6F4:
 	LDA $26,x				;$B9E6F4  \
 	BNE CODE_B9E704				;$B9E6F6   |
-	LDA #$5798				;$B9E6F8   |
+	LDA #DATA_F95798			;$B9E6F8   |
 	STA $3C,x				;$B9E6FB   |
 	LDA #CODE_B9E705			;$B9E6FD   |
 	STA $3E,x				;$B9E700   |
@@ -3666,7 +3666,7 @@ CODE_B9E705:
 	BEQ CODE_B9E704				;$B9E707   |
 	STZ $3E,x				;$B9E709   |
 	STZ $38,x				;$B9E70B   |
-	LDA #$57AA				;$B9E70D   |
+	LDA #DATA_F957AA			;$B9E70D   |
 	STA $3C,x				;$B9E710   |
 	RTS					;$B9E712  /
 
@@ -3674,7 +3674,7 @@ CODE_B9E713:
 	LDA $2E,x				;$B9E713  \
 	CMP #$0402				;$B9E715   |
 	BNE CODE_B9E71D				;$B9E718   |
-	BRL CODE_B9D115				;$B9E71A  /
+	BRL process_anim_script			;$B9E71A  /
 
 CODE_B9E71D:
 	BRL CODE_B9D12B				;$B9E71D  /
@@ -3767,7 +3767,7 @@ CODE_B9E794:
 	CMP #$FFF0				;$B9E7AB   |
 	BCC CODE_B9E7BC				;$B9E7AE   |
 CODE_B9E7B0:					;	   |
-	JMP CODE_B9D115				;$B9E7B0  /
+	JMP process_anim_script			;$B9E7B0  /
 
 CODE_B9E7B3:
 	BIT $12,x				;$B9E7B3  \
@@ -3788,16 +3788,16 @@ CODE_B9E7BC:					;	   |
 CODE_B9E7D1:
 	LDA #CODE_B9E7D9			;$B9E7D1  \
 	STA $3E,x				;$B9E7D4   |
-	JMP CODE_B9D115				;$B9E7D6  /
+	JMP process_anim_script			;$B9E7D6  /
 
 CODE_B9E7D9:
 	STZ $26,x				;$B9E7D9  \
 	STZ $2A,x				;$B9E7DB   |
 	RTS					;$B9E7DD  /
 
-CODE_B9E7DE:
+turn_flotsam_if_needed:
 	LDY #$01AA				;$B9E7DE  \
-	JMP CODE_B9E564				;$B9E7E1  /
+	JMP turn_sprite_if_needed		;$B9E7E1  /
 
 CODE_B9E7E4:
 	STZ $3E,x				;$B9E7E4  \
@@ -3835,7 +3835,7 @@ CODE_B9E816:
 	LDA $52,x				;$B9E816  \
 	AND #$FF00				;$B9E818   |
 	BNE CODE_B9E824				;$B9E81B   |
-	LDA #$596D				;$B9E81D   |
+	LDA #DATA_F9596D			;$B9E81D   |
 	STA $3C,x				;$B9E820   |
 	STZ $3E,x				;$B9E822   |
 CODE_B9E824:					;	   |
@@ -3946,7 +3946,7 @@ CODE_B9E8DF:					;	   |
 	RTS					;$B9E8DF  /
 
 CODE_B9E8E0:
-	JMP CODE_B9E564				;$B9E8E0  /
+	JMP turn_sprite_if_needed		;$B9E8E0  /
 
 CODE_B9E8E3:
 	LDY #$019C				;$B9E8E3  \
@@ -4044,7 +4044,7 @@ CODE_B9E958:
 	CMP #$0001				;$B9E961   |
 	BNE CODE_B9E96B				;$B9E964   |
 	INC $2F,x				;$B9E966   |
-	BRL CODE_B9D115				;$B9E968  /
+	BRL process_anim_script			;$B9E968  /
 
 CODE_B9E96B:
 	BRL CODE_B9D12B				;$B9E96B  /
@@ -4053,9 +4053,9 @@ CODE_B9E96E:
 	INC $19BC				;$B9E96E  \
 	RTS					;$B9E971  /
 
-CODE_B9E972:
+turn_kutlass_if_needed:
 	LDY #$016A				;$B9E972  \
-	JMP CODE_B9E564				;$B9E975  /
+	JMP turn_sprite_if_needed		;$B9E975  /
 
 CODE_B9E978:
 	LDA $48,x				;$B9E978  \
@@ -4114,9 +4114,9 @@ CODE_B9E9BD:
 CODE_B9E9CA:					;	   |
 	RTS					;$B9E9CA  /
 
-CODE_B9E9CB:
+turn_krook_if_needed:
 	LDY #$01EF				;$B9E9CB  \
-	JMP CODE_B9E564				;$B9E9CE  /
+	JMP turn_sprite_if_needed		;$B9E9CE  /
 
 CODE_B9E9D1:
 	LDY #$000A				;$B9E9D1  \
@@ -4130,7 +4130,7 @@ CODE_B9E9D1:
 CODE_B9E9E1:
 	LDA $50,x				;$B9E9E1  \
 	BNE CODE_B9E9EE				;$B9E9E3   |
-	LDA #$5EF2				;$B9E9E5   |
+	LDA #DATA_F95EF2			;$B9E9E5   |
 	STA $3C,x				;$B9E9E8   |
 	STZ $38,x				;$B9E9EA   |
 	STZ $3E,x				;$B9E9EC   |
@@ -4254,20 +4254,19 @@ CODE_B9EAAF:
 
 CODE_B9EABE:
 	LDA $10,x				;$B9EABE  \
-	BEQ CODE_B9EACA				;$B9EAC0   |
+	BEQ turn_kloak_if_needed		;$B9EAC0   |
 	LDA #$02D2				;$B9EAC2   |
 	JSL set_sprite_animation		;$B9EAC5   |
 	RTS					;$B9EAC9  /
-
-CODE_B9EACA:
+turn_kloak_if_needed:
 	LDY #$02D1				;$B9EACA  \
-	JMP CODE_B9E564				;$B9EACD  /
+	JMP turn_sprite_if_needed		;$B9EACD  /
 
 CODE_B9EAD0:
 	LDA $4E,x				;$B9EAD0  \
 	LSR A					;$B9EAD2   |
 	BCC CODE_B9EAFB				;$B9EAD3   |
-	LDA #$6266				;$B9EAD5   |
+	LDA #DATA_F96266			;$B9EAD5   |
 	STA $3C,x				;$B9EAD8   |
 	STZ $3E,x				;$B9EADA   |
 	RTS					;$B9EADC  /
@@ -4276,7 +4275,7 @@ CODE_B9EADD:
 	LDA $4E,x				;$B9EADD  \
 	LSR A					;$B9EADF   |
 	BCS CODE_B9EAFB				;$B9EAE0   |
-	LDA #$62EC				;$B9EAE2   |
+	LDA #DATA_F962EC			;$B9EAE2   |
 	STA $3C,x				;$B9EAE5   |
 	STZ $3E,x				;$B9EAE7   |
 	RTS					;$B9EAE9  /
@@ -4297,7 +4296,7 @@ CODE_B9EAFC:
 	LDA $44,x				;$B9EAFC  \
 	BEQ CODE_B9EB23				;$B9EAFE   |
 	STZ $3E,x				;$B9EB00   |
-	LDA #$6320				;$B9EB02   |
+	LDA #DATA_F96320			;$B9EB02   |
 	STA $3C,x				;$B9EB05   |
 	RTS					;$B9EB07  /
 
@@ -4352,7 +4351,7 @@ CODE_B9EB39:
 	STA $000A86				;$B9EB5F   |
 	LDA $48,x				;$B9EB63   |
 	STA $000A88				;$B9EB65   |
-	BRL CODE_B9D115				;$B9EB69  /
+	BRL process_anim_script			;$B9EB69  /
 
 CODE_B9EB6C:
 	LDA $4A,x				;$B9EB6C  \
@@ -4378,7 +4377,7 @@ CODE_B9EB88:
 	DEC $42,x				;$B9EB8C   |
 	BNE CODE_B9EB93				;$B9EB8E   |
 CODE_B9EB90:					;	   |
-	BRL CODE_B9D115				;$B9EB90  /
+	BRL process_anim_script			;$B9EB90  /
 
 CODE_B9EB93:
 	BRL CODE_B9D12B				;$B9EB93  /
@@ -4386,12 +4385,12 @@ CODE_B9EB93:
 CODE_B9EB96:
 	LDA $42,x				;$B9EB96  \
 	BEQ CODE_B9EB93				;$B9EB98   |
-	BRL CODE_B9D115				;$B9EB9A  /
+	BRL process_anim_script			;$B9EB9A  /
 
 CODE_B9EB9D:
 	LDA $42,x				;$B9EB9D  \
 	BNE CODE_B9EB93				;$B9EB9F   |
-	BRL CODE_B9D115				;$B9EBA1  /
+	BRL process_anim_script			;$B9EBA1  /
 
 CODE_B9EBA4:
 	LDA $4E,x				;$B9EBA4  \
@@ -4447,7 +4446,7 @@ CODE_B9EC23:
 	LSR A					;$B9EC25   |
 	BCC CODE_B9EC2D				;$B9EC26   |
 	INC $46,x				;$B9EC28   |
-	BRL CODE_B9D115				;$B9EC2A  /
+	BRL process_anim_script			;$B9EC2A  /
 
 CODE_B9EC2D:
 	BRL CODE_B9D12B				;$B9EC2D  /
@@ -4461,7 +4460,7 @@ CODE_B9EC36:
 	LDA $4A,x				;$B9EC36  \
 	BIT #$0080				;$B9EC38   |
 	BEQ CODE_B9EC4A				;$B9EC3B   |
-	LDA #$654C				;$B9EC3D   |
+	LDA #DATA_F9654C			;$B9EC3D   |
 	STA $3C,x				;$B9EC40   |
 	STZ $38,x				;$B9EC42   |
 	LDA #CODE_B9EC4A			;$B9EC44   |
@@ -4472,7 +4471,7 @@ CODE_B9EC4A:
 	LDA $48,x				;$B9EC4A  \
 	CMP #$0009				;$B9EC4C   |
 	BEQ CODE_B9EC66				;$B9EC4F   |
-	LDA #$6504				;$B9EC51   |
+	LDA #DATA_F96504			;$B9EC51   |
 	STA $3C,x				;$B9EC54   |
 	STZ $3E,x				;$B9EC56   |
 	STZ $38,x				;$B9EC58   |
@@ -4538,7 +4537,7 @@ CODE_B9EC9C:
 	ADC #$0003				;$B9ECC5   |
 	TAY					;$B9ECC8   |
 	STZ $38,x				;$B9ECC9   |
-	BRL CODE_B9D115				;$B9ECCB  /
+	BRL process_anim_script			;$B9ECCB  /
 
 CODE_B9ECCE:
 	LDA $42,x				;$B9ECCE  \
@@ -4558,7 +4557,7 @@ CODE_B9ECDC:
 	STA $3E,x				;$B9ECE5   |
 	PLX					;$B9ECE7   |
 	STZ $38,x				;$B9ECE8   |
-	BRL CODE_B9D115				;$B9ECEA  /
+	BRL process_anim_script			;$B9ECEA  /
 
 CODE_B9ECED:
 	LDY $42,x				;$B9ECED  \
@@ -4609,7 +4608,7 @@ CODE_B9ED2B:					;	   |
 CODE_B9ED34:					;	   |
 	STA $3A,x				;$B9ED34   |
 	LDA $3C,x				;$B9ED36   |
-	CMP #$6600				;$B9ED38   |
+	CMP #DATA_F96600			;$B9ED38   |
 	ROR A					;$B9ED3B   |
 	EOR $26,x				;$B9ED3C   |
 	BPL CODE_B9ED6E				;$B9ED3E   |
@@ -4625,7 +4624,7 @@ CODE_B9ED34:					;	   |
 	ADC $5E					;$B9ED4F   |
 	EOR #$FFFF				;$B9ED51   |
 	SEC					;$B9ED54   |
-	ADC #$6609				;$B9ED55   |
+	ADC #DATA_F96609			;$B9ED55   |
 	STA $3C,x				;$B9ED58   |
 	RTS					;$B9ED5A  /
 
@@ -4639,7 +4638,7 @@ CODE_B9ED5B:
 	CLC					;$B9ED65   |
 	ADC $5E					;$B9ED66   |
 	CLC					;$B9ED68   |
-	ADC #$65F4				;$B9ED69   |
+	ADC #DATA_F965F4			;$B9ED69   |
 	STA $3C,x				;$B9ED6C   |
 CODE_B9ED6E:					;	   |
 	RTS					;$B9ED6E  /

@@ -2,214 +2,214 @@ DATA_FD0000:
 	%offset(DATA_FD0001, 1)
 	%offset(DATA_FD0003, 3)
 	%offset(DATA_FD0005, 5)
-	dw DATA_FD4BE2
-	dw DATA_FD4C1F
-	dw DATA_FD4C52
-	dw DATA_FD4C8A
-	dw DATA_FD4CC9
-	dw DATA_FD4D05
-	dw DATA_FD4D48
-	dw DATA_FD4D71
-	dw DATA_FD4DB8
-	dw DATA_FD4DF4
-	dw DATA_FD4E1B
-	dw DATA_FD4E50
-	dw DATA_FD4E8C
-	dw DATA_FD4EF7
-	dw DATA_FD4F1E
-	dw DATA_FD4F51
-	dw DATA_FD4F7D
-	dw DATA_FD4FB7
-	dw DATA_FD4FF7
-	dw DATA_FD501A
-	dw DATA_FD505E
-	dw DATA_FD5093
-	dw DATA_FD50C8
-	dw DATA_FD50F2
-	dw DATA_FD512A
-	dw DATA_FD5166
-	dw DATA_FD519B
-	dw DATA_FD51B5
-	dw DATA_FD51DB
-	dw DATA_FD51F5
-	dw DATA_FD5219
-	dw DATA_FD5232
-	dw DATA_FD5256
-	dw DATA_FD5270
-	dw DATA_FD528D
-	dw DATA_FD52A6
-	dw DATA_FD52DB
-	dw DATA_FD531A
-	dw DATA_FD535D
-	dw DATA_FD5377
-	dw DATA_FD5391
-	dw DATA_FD53C2
-	dw DATA_FD53EC
-	dw DATA_FD5405
-	dw DATA_FD541F
-	dw DATA_FD5454
-	dw DATA_FD5485
-	dw DATA_FD54B3
-	dw DATA_FD54E5
-	dw DATA_FD54E7
-	dw DATA_FD54E9
-	dw DATA_FD54EB
-	dw DATA_FD54ED
-	dw DATA_FD54EF
-	dw DATA_FD54F1
-	dw DATA_FD54F3
-	dw DATA_FD54F5
-	dw DATA_FD54F7
-	dw DATA_FD54F9
-	dw DATA_FD54FB
-	dw DATA_FD54FD
-	dw DATA_FD54FF
-	dw DATA_FD5501
-	dw DATA_FD5503
-	dw DATA_FD5505
-	dw DATA_FD5507
-	dw DATA_FD5509
-	dw DATA_FD550B
-	dw DATA_FD550D
-	dw DATA_FD550F
-	dw DATA_FD5511
-	dw DATA_FD5513
-	dw DATA_FD5515
-	dw DATA_FD5517
-	dw DATA_FD5519
-	dw DATA_FD551B
-	dw DATA_FD551D
-	dw DATA_FD551F
-	dw DATA_FD5521
-	dw DATA_FD5523
-	dw DATA_FD5525
-	dw DATA_FD5527
-	dw DATA_FD5529
-	dw DATA_FD552B
-	dw DATA_FD552D
-	dw DATA_FD552F
-	dw DATA_FD5531
-	dw DATA_FD5533
-	dw DATA_FD5535
-	dw DATA_FD5537
-	dw DATA_FD5539
-	dw DATA_FD553B
-	dw DATA_FD553D
-	dw DATA_FD553F
-	dw DATA_FD5541
-	dw DATA_FD5543
-	dw DATA_FD5545
-	dw DATA_FD5562
-	dw DATA_FD557B
-	dw DATA_FD55AC
-	dw DATA_FD55C9
-	dw DATA_FD55CB
-	dw DATA_FD55CD
-	dw DATA_FD55CF
-	dw DATA_FD55D1
-	dw DATA_FD55EB
-	dw DATA_FD5605
-	dw DATA_FD561F
-	dw DATA_FD563C
-	dw DATA_FD5675
-	dw DATA_FD56AE
-	dw DATA_FD56D8
-	dw DATA_FD56F2
-	dw DATA_FD570C
-	dw DATA_FD5726
-	dw DATA_FD5740
-	dw DATA_FD575A
-	dw DATA_FD5774
-	dw DATA_FD578E
-	dw DATA_FD57A8
-	dw DATA_FD57C2
-	dw DATA_FD57DC
-	dw DATA_FD57F6
-	dw DATA_FD5810
-	dw DATA_FD582A
-	dw DATA_FD5844
-	dw DATA_FD585E
-	dw DATA_FD5878
-	dw DATA_FD5892
-	dw DATA_FD58BC
-	dw DATA_FD58D6
-	dw DATA_FD58F0
-	dw DATA_FD590A
-	dw DATA_FD5924
-	dw DATA_FD593E
-	dw DATA_FD5958
-	dw DATA_FD5972
-	dw DATA_FD598C
-	dw DATA_FD59A6
-	dw DATA_FD59C0
-	dw DATA_FD59DA
-	dw DATA_FD59F4
-	dw DATA_FD5A0E
-	dw DATA_FD5A28
-	dw DATA_FD5A59
-	dw DATA_FD5A72
-	dw DATA_FD5A8C
-	dw DATA_FD5AA6
-	dw DATA_FD5AC0
-	dw DATA_FD5ADA
-	dw DATA_FD5AF4
-	dw DATA_FD5B1E
-	dw DATA_FD5B38
-	dw DATA_FD5B52
-	dw DATA_FD5B7C
-	dw DATA_FD5B95
-	dw DATA_FD5BBA
-	dw DATA_FD5BD8
-	dw DATA_FD5BF2
-	dw DATA_FD5C0C
-	dw DATA_FD5C25
-	dw DATA_FD5C3F
-	dw DATA_FD5C59
-	dw DATA_FD5C73
-	dw DATA_FD5C8D
-	dw DATA_FD5CA7
-	dw DATA_FD5CC1
-	dw DATA_FD5CDB
-	dw DATA_FD5CF5
-	dw DATA_FD5D0F
-	dw DATA_FD5D29
-	dw DATA_FD5D43
-	dw DATA_FD5D5D
-	dw DATA_FD5D77
-	dw DATA_FD5D91
-	dw DATA_FD5DAB
-	dw DATA_FD5DC5
-	dw DATA_FD5DDF
-	dw DATA_FD5DF9
-	dw DATA_FD5E13
-	dw DATA_FD5E2D
-	dw DATA_FD5E47
-	dw DATA_FD5E61
-	dw DATA_FD5E7B
-	dw DATA_FD5E95
-	dw DATA_FD5EAF
-	dw DATA_FD5ECC
-	dw DATA_FD5EE6
-	dw DATA_FD5F00
-	dw DATA_FD5F1A
-	dw DATA_FD5F34
-	dw DATA_FD5F59
-	dw DATA_FD5F72
-	dw DATA_FD5F8C
-	dw DATA_FD5FA6
-	dw DATA_FD5FC0
-	dw DATA_FD5FDA
-	dw DATA_FD5FDC
-	dw DATA_FD5FDE
-	dw DATA_FD5FE0
-	dw DATA_FD5FE2
-	dw DATA_FD5FE4
-	dw DATA_FD5FE6
-	dw DATA_FD5FE8
-	dw DATA_FD5FEA
-	dw DATA_FD5FEC
-	dw !null_pointer
-	dw !null_pointer
+	dw DATA_FD4BE2				;00
+	dw DATA_FD4C1F				;01
+	dw DATA_FD4C52				;02
+	dw DATA_FD4C8A				;03
+	dw DATA_FD4CC9				;04
+	dw DATA_FD4D05				;05
+	dw DATA_FD4D48				;06
+	dw DATA_FD4D71				;07
+	dw DATA_FD4DB8				;08
+	dw DATA_FD4DF4				;09
+	dw DATA_FD4E1B				;0A
+	dw DATA_FD4E50				;0B
+	dw DATA_FD4E8C				;0C
+	dw DATA_FD4EF7				;0D
+	dw DATA_FD4F1E				;0E
+	dw DATA_FD4F51				;0F
+	dw DATA_FD4F7D				;10
+	dw DATA_FD4FB7				;11
+	dw DATA_FD4FF7				;12
+	dw DATA_FD501A				;13
+	dw DATA_FD505E				;14
+	dw DATA_FD5093				;15
+	dw DATA_FD50C8				;16
+	dw DATA_FD50F2				;17
+	dw DATA_FD512A				;18
+	dw DATA_FD5166				;19
+	dw DATA_FD519B				;1A
+	dw DATA_FD51B5				;1B
+	dw DATA_FD51DB				;1C
+	dw DATA_FD51F5				;1D
+	dw DATA_FD5219				;1E
+	dw DATA_FD5232				;1F
+	dw DATA_FD5256				;20
+	dw DATA_FD5270				;21
+	dw DATA_FD528D				;22
+	dw DATA_FD52A6				;23
+	dw DATA_FD52DB				;24
+	dw DATA_FD531A				;25
+	dw DATA_FD535D				;26
+	dw DATA_FD5377				;27
+	dw DATA_FD5391				;28
+	dw DATA_FD53C2				;29
+	dw DATA_FD53EC				;2A
+	dw DATA_FD5405				;2B
+	dw DATA_FD541F				;2C
+	dw DATA_FD5454				;2D
+	dw DATA_FD5485				;2E
+	dw DATA_FD54B3				;2F
+	dw DATA_FD54E5				;30
+	dw DATA_FD54E7				;31
+	dw DATA_FD54E9				;32
+	dw DATA_FD54EB				;33
+	dw DATA_FD54ED				;34
+	dw DATA_FD54EF				;35
+	dw DATA_FD54F1				;36
+	dw DATA_FD54F3				;37
+	dw DATA_FD54F5				;38
+	dw DATA_FD54F7				;39
+	dw DATA_FD54F9				;3A
+	dw DATA_FD54FB				;3B
+	dw DATA_FD54FD				;3C
+	dw DATA_FD54FF				;3D
+	dw DATA_FD5501				;3E
+	dw DATA_FD5503				;3F
+	dw DATA_FD5505				;40
+	dw DATA_FD5507				;41
+	dw DATA_FD5509				;42
+	dw DATA_FD550B				;43
+	dw DATA_FD550D				;44
+	dw DATA_FD550F				;45
+	dw DATA_FD5511				;46
+	dw DATA_FD5513				;47
+	dw DATA_FD5515				;48
+	dw DATA_FD5517				;49
+	dw DATA_FD5519				;4A
+	dw DATA_FD551B				;4B
+	dw DATA_FD551D				;4C
+	dw DATA_FD551F				;4D
+	dw DATA_FD5521				;4E
+	dw DATA_FD5523				;4F
+	dw DATA_FD5525				;50
+	dw DATA_FD5527				;51
+	dw DATA_FD5529				;52
+	dw DATA_FD552B				;53
+	dw DATA_FD552D				;54
+	dw DATA_FD552F				;55
+	dw DATA_FD5531				;56
+	dw DATA_FD5533				;57
+	dw DATA_FD5535				;58
+	dw DATA_FD5537				;59
+	dw DATA_FD5539				;5A
+	dw DATA_FD553B				;5B
+	dw DATA_FD553D				;5C
+	dw DATA_FD553F				;5D
+	dw DATA_FD5541				;5E
+	dw DATA_FD5543				;5F
+	dw DATA_FD5545				;60
+	dw DATA_FD5562				;61
+	dw DATA_FD557B				;62
+	dw DATA_FD55AC				;63
+	dw DATA_FD55C9				;64
+	dw DATA_FD55CB				;65
+	dw DATA_FD55CD				;66
+	dw DATA_FD55CF				;67
+	dw DATA_FD55D1				;68
+	dw DATA_FD55EB				;69
+	dw DATA_FD5605				;6A
+	dw DATA_FD561F				;6B
+	dw DATA_FD563C				;6C
+	dw DATA_FD5675				;6D
+	dw DATA_FD56AE				;6E
+	dw DATA_FD56D8				;6F
+	dw DATA_FD56F2				;70
+	dw DATA_FD570C				;71
+	dw DATA_FD5726				;72
+	dw DATA_FD5740				;73
+	dw DATA_FD575A				;74
+	dw DATA_FD5774				;75
+	dw DATA_FD578E				;76
+	dw DATA_FD57A8				;77
+	dw DATA_FD57C2				;78
+	dw DATA_FD57DC				;79
+	dw DATA_FD57F6				;7A
+	dw DATA_FD5810				;7B
+	dw DATA_FD582A				;7C
+	dw DATA_FD5844				;7D
+	dw DATA_FD585E				;7E
+	dw DATA_FD5878				;7F
+	dw DATA_FD5892				;80
+	dw DATA_FD58BC				;81
+	dw DATA_FD58D6				;82
+	dw DATA_FD58F0				;83
+	dw DATA_FD590A				;84
+	dw DATA_FD5924				;85
+	dw DATA_FD593E				;86
+	dw DATA_FD5958				;87
+	dw DATA_FD5972				;88
+	dw DATA_FD598C				;89
+	dw DATA_FD59A6				;8A
+	dw DATA_FD59C0				;8B
+	dw DATA_FD59DA				;8C
+	dw DATA_FD59F4				;8D
+	dw DATA_FD5A0E				;8E
+	dw DATA_FD5A28				;8F
+	dw DATA_FD5A59				;90
+	dw DATA_FD5A72				;91
+	dw DATA_FD5A8C				;92
+	dw DATA_FD5AA6				;93
+	dw DATA_FD5AC0				;94
+	dw DATA_FD5ADA				;95
+	dw DATA_FD5AF4				;96
+	dw DATA_FD5B1E				;97
+	dw DATA_FD5B38				;98
+	dw DATA_FD5B52				;99
+	dw DATA_FD5B7C				;9A
+	dw DATA_FD5B95				;9B
+	dw DATA_FD5BBA				;9C
+	dw DATA_FD5BD8				;9D
+	dw DATA_FD5BF2				;9E
+	dw DATA_FD5C0C				;9F
+	dw DATA_FD5C25				;A0
+	dw DATA_FD5C3F				;A1
+	dw DATA_FD5C59				;A2
+	dw DATA_FD5C73				;A3
+	dw DATA_FD5C8D				;A4
+	dw DATA_FD5CA7				;A5
+	dw DATA_FD5CC1				;A6
+	dw DATA_FD5CDB				;A7
+	dw DATA_FD5CF5				;A8
+	dw DATA_FD5D0F				;A9
+	dw DATA_FD5D29				;AA
+	dw DATA_FD5D43				;AB
+	dw DATA_FD5D5D				;AC
+	dw DATA_FD5D77				;AD
+	dw DATA_FD5D91				;AE
+	dw DATA_FD5DAB				;AF
+	dw DATA_FD5DC5				;B0
+	dw DATA_FD5DDF				;B1
+	dw DATA_FD5DF9				;B2
+	dw DATA_FD5E13				;B3
+	dw DATA_FD5E2D				;B4
+	dw DATA_FD5E47				;B5
+	dw DATA_FD5E61				;B6
+	dw DATA_FD5E7B				;B7
+	dw DATA_FD5E95				;B8
+	dw DATA_FD5EAF				;B9
+	dw DATA_FD5ECC				;BA
+	dw DATA_FD5EE6				;BB
+	dw DATA_FD5F00				;BC
+	dw DATA_FD5F1A				;BD
+	dw DATA_FD5F34				;BE
+	dw DATA_FD5F59				;BF
+	dw DATA_FD5F72				;C0
+	dw DATA_FD5F8C				;C1
+	dw DATA_FD5FA6				;C2
+	dw DATA_FD5FC0				;C3
+	dw DATA_FD5FDA				;C4
+	dw DATA_FD5FDC				;C5
+	dw DATA_FD5FDE				;C6
+	dw DATA_FD5FE0				;C7
+	dw DATA_FD5FE2				;C8
+	dw DATA_FD5FE4				;C9
+	dw DATA_FD5FE6				;CA
+	dw DATA_FD5FE8				;CB
+	dw DATA_FD5FEA				;CC
+	dw DATA_FD5FEC				;CD
+	dw !null_pointer			;CE
+	dw !null_pointer			;CF
 
 DATA_FD01A0:
 	db $00, $00, $00, $00, $00, $00, $00, $00
@@ -356,6 +356,8 @@ error_screen_text_layer_3_palette:
 	db $52, $06, $52, $06, $52, $06, $52, $06
 	db $52, $06, $52, $06, $52, $06, $52, $06
 	db $52, $06, $52, $06, $52, $06, $52, $06
+
+gusty_glade_level_palette:
 	db $42, $0C, $00, $00, $21, $04, $63, $10
 	db $42, $0C, $83, $14, $63, $10, $21, $04
 	db $42, $0C, $02, $00, $00, $00, $21, $04
@@ -665,6 +667,8 @@ lava_level_palette:
 	db $66, $00, $88, $00, $AA, $00, $AC, $00
 	db $CE, $00, $F0, $00, $12, $01, $56, $01
 	db $BA, $01, $FE, $01, $73, $00, $9F, $00
+	
+fiery_furnace_level_palette:
 	db $02, $04, $00, $00, $24, $0C, $46, $14
 	db $02, $04, $1F, $02, $7F, $01, $BF, $00
 	db $02, $04, $25, $00, $2E, $00, $BF, $00
@@ -975,14 +979,17 @@ carnival_level_palette:
 	db $8C, $31, $10, $46, $39, $67, $FF, $7F
 	db $A7, $0C, $65, $08, $64, $04, $86, $06
 	db $29, $04, $5F, $29, $31, $04, $9F, $10
+	
 	db $00, $50, $A7, $04, $18, $63, $10, $42
 	db $AD, $35, $08, $21, $A5, $14, $84, $10
 	db $42, $08, $21, $04, $01, $05, $41, $06
 	db $ED, $37, $EA, $2B, $E0, $03, $40, $03
+	
 	db $00, $50, $A7, $04, $18, $63, $10, $42
 	db $AD, $35, $08, $21, $A5, $14, $84, $10
 	db $42, $08, $21, $04, $28, $04, $32, $04
 	db $BF, $35, $5F, $29, $1F, $00, $1A, $00
+	
 	db $00, $50, $A7, $04, $18, $63, $10, $42
 	db $AD, $35, $08, $21, $A5, $14, $84, $10
 	db $42, $08, $21, $04, $42, $08, $63, $0C
@@ -1354,7 +1361,6 @@ kannons_klaim_level_palette:
 	db $AE, $75, $F0, $7D, $52, $7E, $95, $7E
 	db $D7, $7E, $3A, $7F, $7C, $7F, $DF, $7F
 	db $20, $01
-
 DATA_FD22D0:
 	db $01, $14, $03, $2C, $25, $48, $27, $6C
 	db $4A, $40, $24, $1C, $25, $08, $23, $00
@@ -1379,15 +1385,19 @@ DATA_FD22D0:
 	db $FF, $7F, $FF, $3F, $5F, $17, $9F, $0E
 	db $1F, $02, $9F, $01, $3F, $01, $1A, $01
 	db $D5, $00, $B0, $00, $8C, $00, $48, $00
-	db $45, $00, $00, $00, $08, $01, $00, $00
-	db $B7, $02, $3B, $03, $DF, $3B, $00, $00
-	db $4C, $01, $F1, $01, $B7, $02, $00, $00
-	db $A7, $00, $4C, $01, $F1, $01, $00, $00
-	db $02, $00, $44, $00, $A7, $00, $00, $00
-	db $22, $08, $23, $10, $45, $18, $67, $24
-	db $88, $10, $CA, $00, $0D, $01, $4F, $05
-	db $B3, $09, $16, $0E, $9A, $12, $3D, $17
-	db $5D, $2B, $9E, $43, $FF, $5F, $20, $01
+	db $45, $00, $00, $00, $08, $01
+
+squawks_shaft_level_palette:
+	db $00, $00, $B7, $02, $3B, $03, $DF, $3B
+	db $00, $00, $4C, $01, $F1, $01, $B7, $02
+	db $00, $00, $A7, $00, $4C, $01, $F1, $01
+	db $00, $00, $02, $00, $44, $00, $A7, $00
+	db $00, $00, $22, $08, $23, $10, $45, $18
+	db $67, $24, $88, $10, $CA, $00, $0D, $01
+	db $4F, $05, $B3, $09, $16, $0E, $9A, $12
+	db $3D, $17, $5D, $2B, $9E, $43, $FF, $5F
+	db $20, $01
+	
 	db $05, $00, $F0, $00, $75, $01, $39, $02
 	db $72, $01, $CC, $00, $06, $00, $04, $00
 	db $06, $00, $AD, $00, $02, $08, $D9, $1D
@@ -1411,15 +1421,19 @@ DATA_FD22D0:
 	db $FF, $6B, $FF, $4F, $FF, $33, $5D, $23
 	db $BB, $12, $18, $0A, $75, $01, $33, $01
 	db $F0, $00, $AE, $00, $6A, $00, $46, $00
-	db $03, $00, $00, $00, $08, $01, $00, $00
-	db $86, $04, $CA, $08, $2E, $09, $00, $7C
-	db $CA, $08, $2E, $09, $93, $0D, $1F, $00
+	db $03, $00, $00, $00, $08, $01
+
+windy_well_level_palette:
+	db $00, $00, $86, $04, $CA, $08, $2E, $09
+	db $00, $7C, $CA, $08, $2E, $09, $93, $0D
 	db $1F, $00, $1F, $00, $1F, $00, $1F, $00
-	db $1F, $00, $1F, $00, $1F, $00, $00, $00
-	db $41, $0C, $82, $1C, $C3, $28, $25, $35
-	db $E4, $10, $05, $15, $47, $1D, $A9, $25
-	db $EA, $2D, $4C, $36, $AE, $3E, $F0, $46
-	db $52, $4F, $B4, $57, $F6, $5F, $20, $01
+	db $1F, $00, $1F, $00, $1F, $00, $1F, $00
+	db $00, $00, $41, $0C, $82, $1C, $C3, $28
+	db $25, $35, $E4, $10, $05, $15, $47, $1D
+	db $A9, $25, $EA, $2D, $4C, $36, $AE, $3E
+	db $F0, $46, $52, $4F, $B4, $57, $F6, $5F
+	db $20, $01
+	
 	db $01, $14, $45, $28, $69, $3C, $AD, $50
 	db $4A, $40, $24, $1C, $64, $10, $42, $08
 	db $A5, $18, $E7, $20, $02, $08, $D9, $1D
@@ -1766,7 +1780,6 @@ castle_level_palette:
 	db $00, $7C, $A6, $10, $85, $0C, $64, $0C
 	db $63, $08, $C8, $14, $42, $04, $09, $1D
 
-
 DATA_FD2EBE:
 	db $8D, $08, $A8, $08, $9C, $05, $0F, $05
 	db $CA, $08, $FB, $00, $FF, $03, $5F, $02
@@ -1894,7 +1907,6 @@ rattle_battle_level_palette:
 	db $A2, $24, $41, $04, $A5, $08, $48, $11
 	db $A2, $24, $C6, $08, $09, $0D, $AE, $15
 	db $A2, $24, $21, $04, $A3, $0C, $26, $15
-
 DATA_FD326E:
 	db $00, $08, $C1, $0C, $01, $11, $22, $11
 	db $63, $15, $C5, $19, $46, $1A, $67, $1A
@@ -1925,207 +1937,273 @@ DATA_FD326E:
 	db $73, $33, $86, $08, $8C, $0C, $D3, $0C
 	db $07, $0D, $25, $05, $69, $11, $EE, $15
 
+;gangplank galley base palette rgb table
+;this color table contains the starting palette for gangplank galley
+;each color is stored as 3 16 bit words (1 word for each channel R,G, and B)
 DATA_FD334E:
-	db $00, $00, $00, $00, $00, $30, $00, $02
-	db $40, $00, $00, $08, $00, $05, $60, $00
-	db $00, $08, $00, $08, $A0, $00, $00, $0C
-	db $00, $03, $80, $00, $00, $34, $00, $02
-	db $40, $00, $00, $08, $00, $07, $80, $00
-	db $00, $0C, $00, $0B, $00, $01, $00, $14
-	db $00, $03, $80, $00, $00, $34, $00, $09
-	db $A0, $00, $00, $0C, $00, $0C, $E0, $00
-	db $00, $10, $00, $12, $60, $01, $00, $18
-	db $00, $03, $80, $00, $00, $34, $00, $01
-	db $20, $00, $00, $08, $00, $05, $80, $00
-	db $00, $10, $00, $09, $00, $01, $00, $18
-	db $00, $00, $00, $00, $00, $30, $00, $01
-	db $A0, $00, $00, $3C, $00, $01, $E0, $00
-	db $00, $4C, $00, $02, $00, $01, $00, $60
-	db $00, $04, $20, $01, $00, $74, $00, $06
-	db $80, $01, $00, $78, $00, $09, $E0, $01
-	db $00, $7C, $00, $0A, $00, $02, $00, $7C
-	db $00, $0B, $20, $02, $00, $7C, $00, $0C
-	db $40, $02, $00, $7C, $00, $0E, $80, $02
-	db $00, $7C, $00, $11, $C0, $02, $00, $7C
-	db $00, $14, $00, $03, $00, $7C, $00, $17
-	db $40, $03, $00, $7C, $00, $1A, $80, $03
-	db $00, $7C, $00, $1D, $C0, $03, $00, $7C
-	db $00, $15, $A0, $02, $00, $58, $00, $01
-	db $20, $00, $00, $00, $00, $03, $40, $00
-	db $00, $04, $00, $05, $60, $00, $00, $08
-	db $00, $07, $80, $00, $00, $0C, $00, $09
-	db $C0, $00, $00, $10, $00, $0B, $E0, $00
-	db $00, $10, $00, $0D, $20, $01, $00, $14
-	db $00, $0F, $40, $01, $00, $18, $00, $11
-	db $60, $01, $00, $18, $00, $13, $80, $01
-	db $00, $1C, $00, $15, $C0, $01, $00, $20
-	db $00, $17, $00, $02, $00, $24, $00, $19
-	db $20, $02, $00, $28, $00, $1B, $40, $02
-	db $00, $2C, $00, $1D, $80, $02, $00, $30
-	db $00, $15, $A0, $02, $00, $58, $00, $18
-	db $C0, $02, $00, $58, $00, $14, $40, $02
-	db $00, $48, $00, $0F, $A0, $01, $00, $38
-	db $00, $0B, $40, $01, $00, $28, $00, $06
-	db $C0, $00, $00, $1C, $00, $04, $80, $00
-	db $00, $14, $00, $01, $20, $00, $00, $08
-	db $00, $18, $20, $02, $00, $30, $00, $12
-	db $A0, $01, $00, $24, $00, $0E, $40, $01
-	db $00, $18, $00, $15, $A0, $01, $00, $20
-	db $00, $12, $60, $01, $00, $18, $00, $0F
-	db $20, $01, $00, $14, $00, $0C, $E0, $00
-	db $00, $10, $00, $09, $A0, $00, $00, $0C
-	db $00, $15, $A0, $02, $00, $58, $00, $06
-	db $A0, $00, $00, $24, $00, $08, $20, $01
-	db $00, $44, $00, $0A, $80, $01, $00, $64
-	db $00, $08, $60, $00, $00, $0C, $00, $11
-	db $80, $00, $00, $10, $00, $1A, $A0, $00
-	db $00, $14, $00, $0F, $60, $01, $00, $1C
-	db $00, $14, $80, $01, $00, $18, $00, $19
-	db $E0, $01, $00, $1C, $00, $1D, $40, $02
-	db $00, $24, $00, $1F, $00, $03, $00, $34
-	db $00, $01, $20, $00, $00, $04, $00, $03
-	db $60, $00, $00, $0C, $00, $06, $C0, $00
-	db $00, $18, $00, $08, $00, $01, $00, $20
-	db $00, $15, $A0, $02, $00, $58, $00, $07
-	db $A0, $00, $00, $0C, $00, $0C, $00, $01
-	db $00, $14, $00, $18, $C0, $01, $00, $24
-	db $00, $1B, $C0, $01, $00, $24, $00, $1F
-	db $40, $02, $00, $30, $00, $1F, $C0, $02
-	db $00, $40, $00, $02, $20, $00, $00, $04
-	db $00, $06, $40, $00, $00, $04, $00, $0C
-	db $C0, $00, $00, $10, $00, $0F, $00, $01
-	db $00, $18, $00, $14, $60, $01, $00, $1C
-	db $00, $09, $C0, $00, $00, $20, $00, $02
-	db $40, $00, $00, $08, $00, $09, $E0, $00
-	db $00, $14, $00, $0C, $20, $01, $00, $14
-	db $00, $15, $A0, $02, $00, $58, $00, $04
-	db $A0, $00, $00, $04, $00, $07, $E0, $00
-	db $00, $00, $00, $0A, $40, $01, $00, $00
-	db $00, $10, $E0, $01, $00, $04, $00, $16
-	db $C0, $02, $00, $04, $00, $1D, $40, $03
-	db $00, $0C, $00, $01, $20, $00, $00, $00
-	db $00, $04, $40, $00, $00, $04, $00, $07
-	db $80, $00, $00, $0C, $00, $0B, $E0, $00
-	db $00, $10, $00, $0E, $20, $01, $00, $14
-	db $00, $15, $C0, $01, $00, $20, $00, $02
-	db $40, $00, $00, $0C, $00, $04, $80, $00
-	db $00, $14, $00, $06, $C0, $00, $00, $1C
-	db $00, $15, $A0, $02, $00, $58, $00, $02
-	db $40, $00, $00, $08, $00, $05, $80, $00
-	db $00, $0C, $00, $08, $C0, $00, $00, $10
-	db $00, $0C, $40, $01, $00, $20, $00, $0F
-	db $60, $01, $00, $20, $00, $13, $C0, $01
-	db $00, $28, $00, $16, $40, $02, $00, $34
-	db $00, $1A, $C0, $02, $00, $44, $00, $08
-	db $60, $00, $00, $0C, $00, $11, $80, $00
-	db $00, $10, $00, $1A, $A0, $00, $00, $14
-	db $00, $0A, $C0, $00, $00, $10, $00, $07
-	db $00, $01, $00, $04, $00, $0D, $20, $01
-	db $00, $14, $00, $13, $80, $01, $00, $1C
+	dw $0000, $0000, $3000
+	dw $0200, $0040, $0800
+	dw $0500, $0060, $0800
+	dw $0800, $00A0, $0C00
+	dw $0300, $0080, $3400
+	dw $0200, $0040, $0800
+	dw $0700, $0080, $0C00
+	dw $0B00, $0100, $1400
+	dw $0300, $0080, $3400
+	dw $0900, $00A0, $0C00
+	dw $0C00, $00E0, $1000
+	dw $1200, $0160, $1800
+	dw $0300, $0080, $3400
+	dw $0100, $0020, $0800
+	dw $0500, $0080, $1000
+	dw $0900, $0100, $1800
+	dw $0000, $0000, $3000
+	dw $0100, $00A0, $3C00
+	dw $0100, $00E0, $4C00
+	dw $0200, $0100, $6000
+	dw $0400, $0120, $7400
+	dw $0600, $0180, $7800
+	dw $0900, $01E0, $7C00
+	dw $0A00, $0200, $7C00
+	dw $0B00, $0220, $7C00
+	dw $0C00, $0240, $7C00
+	dw $0E00, $0280, $7C00
+	dw $1100, $02C0, $7C00
+	dw $1400, $0300, $7C00
+	dw $1700, $0340, $7C00
+	dw $1A00, $0380, $7C00
+	dw $1D00, $03C0, $7C00
+	dw $1500, $02A0, $5800
+	dw $0100, $0020, $0000
+	dw $0300, $0040, $0400
+	dw $0500, $0060, $0800
+	dw $0700, $0080, $0C00
+	dw $0900, $00C0, $1000
+	dw $0B00, $00E0, $1000
+	dw $0D00, $0120, $1400
+	dw $0F00, $0140, $1800
+	dw $1100, $0160, $1800
+	dw $1300, $0180, $1C00
+	dw $1500, $01C0, $2000
+	dw $1700, $0200, $2400
+	dw $1900, $0220, $2800
+	dw $1B00, $0240, $2C00
+	dw $1D00, $0280, $3000
+	dw $1500, $02A0, $5800
+	dw $1800, $02C0, $5800
+	dw $1400, $0240, $4800
+	dw $0F00, $01A0, $3800
+	dw $0B00, $0140, $2800
+	dw $0600, $00C0, $1C00
+	dw $0400, $0080, $1400
+	dw $0100, $0020, $0800
+	dw $1800, $0220, $3000
+	dw $1200, $01A0, $2400
+	dw $0E00, $0140, $1800
+	dw $1500, $01A0, $2000
+	dw $1200, $0160, $1800
+	dw $0F00, $0120, $1400
+	dw $0C00, $00E0, $1000
+	dw $0900, $00A0, $0C00
+	dw $1500, $02A0, $5800
+	dw $0600, $00A0, $2400
+	dw $0800, $0120, $4400
+	dw $0A00, $0180, $6400
+	dw $0800, $0060, $0C00
+	dw $1100, $0080, $1000
+	dw $1A00, $00A0, $1400
+	dw $0F00, $0160, $1C00
+	dw $1400, $0180, $1800
+	dw $1900, $01E0, $1C00
+	dw $1D00, $0240, $2400
+	dw $1F00, $0300, $3400
+	dw $0100, $0020, $0400
+	dw $0300, $0060, $0C00
+	dw $0600, $00C0, $1800
+	dw $0800, $0100, $2000
+	dw $1500, $02A0, $5800
+	dw $0700, $00A0, $0C00
+	dw $0C00, $0100, $1400
+	dw $1800, $01C0, $2400
+	dw $1B00, $01C0, $2400
+	dw $1F00, $0240, $3000
+	dw $1F00, $02C0, $4000
+	dw $0200, $0020, $0400
+	dw $0600, $0040, $0400
+	dw $0C00, $00C0, $1000
+	dw $0F00, $0100, $1800
+	dw $1400, $0160, $1C00
+	dw $0900, $00C0, $2000
+	dw $0200, $0040, $0800
+	dw $0900, $00E0, $1400
+	dw $0C00, $0120, $1400
+	dw $1500, $02A0, $5800
+	dw $0400, $00A0, $0400
+	dw $0700, $00E0, $0000
+	dw $0A00, $0140, $0000
+	dw $1000, $01E0, $0400
+	dw $1600, $02C0, $0400
+	dw $1D00, $0340, $0C00
+	dw $0100, $0020, $0000
+	dw $0400, $0040, $0400
+	dw $0700, $0080, $0C00
+	dw $0B00, $00E0, $1000
+	dw $0E00, $0120, $1400
+	dw $1500, $01C0, $2000
+	dw $0200, $0040, $0C00
+	dw $0400, $0080, $1400
+	dw $0600, $00C0, $1C00
+	dw $1500, $02A0, $5800
+	dw $0200, $0040, $0800
+	dw $0500, $0080, $0C00
+	dw $0800, $00C0, $1000
+	dw $0C00, $0140, $2000
+	dw $0F00, $0160, $2000
+	dw $1300, $01C0, $2800
+	dw $1600, $0240, $3400
+	dw $1A00, $02C0, $4400
+	dw $0800, $0060, $0C00
+	dw $1100, $0080, $1000
+	dw $1A00, $00A0, $1400
+	dw $0A00, $00C0, $1000
+	dw $0700, $0100, $0400
+	dw $0D00, $0120, $1400
+	dw $1300, $0180, $1C00
 
+;gangplank galley subtraction palette rgb table
+;same format as base palette
+;subtracted from base palette periodically to darken the palette throughout the level
 DATA_FD364E:
-	db $E8, $FF
-
-DATA_FD3650:
-	db $FF, $FF
-
-DATA_FD3652:
-	db $60, $00, $08, $00, $01, $00, $20, $00
-	db $10, $00, $01, $00, $20, $00, $18, $00
-	db $02, $00, $40, $00, $08, $00, $01, $00
-	db $00, $01, $08, $00, $01, $00, $20, $00
-	db $18, $00, $01, $00, $40, $00, $20, $00
-	db $03, $00, $60, $00, $08, $00, $01, $00
-	db $00, $01, $20, $00, $02, $00, $40, $00
-	db $28, $00, $03, $00, $60, $00, $38, $00
-	db $04, $00, $80, $00, $08, $00, $01, $00
-	db $00, $01, $00, $00, $00, $00, $20, $00
-	db $10, $00, $01, $00, $40, $00, $20, $00
-	db $03, $00, $80, $00, $E8, $FF, $FF, $FF
-	db $60, $00, $F0, $FF, $04, $00, $C0, $00
-	db $D8, $FF, $05, $00, $40, $01, $D0, $FF
-	db $05, $00, $C0, $01, $A0, $FF, $05, $00
-	db $00, $02, $B8, $FF, $06, $00, $A0, $02
-	db $A8, $FF, $06, $00, $20, $03, $98, $FF
-	db $05, $00, $80, $03, $90, $FF, $03, $00
-	db $80, $03, $88, $FF, $02, $00, $60, $03
-	db $90, $FF, $01, $00, $60, $03, $98, $FF
-	db $00, $00, $40, $03, $B0, $FF, $00, $00
-	db $E0, $02, $C0, $FF, $FF, $FF, $80, $02
-	db $D8, $FF, $FF, $FF, $20, $02, $F0, $FF
-	db $FF, $FF, $C0, $01, $40, $00, $08, $00
-	db $C0, $01, $08, $00, $01, $00, $00, $00
-	db $08, $00, $01, $00, $20, $00, $10, $00
-	db $01, $00, $20, $00, $18, $00, $01, $00
-	db $40, $00, $20, $00, $03, $00, $60, $00
-	db $20, $00, $03, $00, $40, $00, $28, $00
-	db $04, $00, $60, $00, $30, $00, $04, $00
-	db $80, $00, $38, $00, $04, $00, $80, $00
-	db $38, $00, $04, $00, $80, $00, $40, $00
-	db $05, $00, $A0, $00, $48, $00, $06, $00
-	db $C0, $00, $50, $00, $06, $00, $C0, $00
-	db $50, $00, $07, $00, $E0, $00, $58, $00
-	db $08, $00, $00, $01, $40, $00, $08, $00
-	db $C0, $01, $48, $00, $08, $00, $C0, $01
-	db $40, $00, $07, $00, $60, $01, $30, $00
-	db $05, $00, $20, $01, $20, $00, $04, $00
-	db $C0, $00, $10, $00, $02, $00, $80, $00
-	db $08, $00, $01, $00, $60, $00, $00, $00
-	db $00, $00, $20, $00, $48, $00, $06, $00
-	db $00, $01, $38, $00, $05, $00, $C0, $00
-	db $30, $00, $04, $00, $80, $00, $40, $00
-	db $05, $00, $A0, $00, $38, $00, $04, $00
-	db $80, $00, $30, $00, $04, $00, $60, $00
-	db $28, $00, $03, $00, $60, $00, $20, $00
-	db $02, $00, $40, $00, $40, $00, $08, $00
-	db $C0, $01, $18, $00, $02, $00, $C0, $00
-	db $18, $00, $04, $00, $60, $01, $20, $00
-	db $04, $00, $00, $02, $18, $00, $01, $00
-	db $40, $00, $38, $00, $02, $00, $60, $00
-	db $50, $00, $02, $00, $60, $00, $30, $00
-	db $04, $00, $80, $00, $40, $00, $04, $00
-	db $80, $00, $50, $00, $06, $00, $A0, $00
-	db $58, $00, $07, $00, $C0, $00, $58, $00
-	db $09, $00, $00, $01, $08, $00, $01, $00
-	db $20, $00, $08, $00, $01, $00, $40, $00
-	db $18, $00, $03, $00, $80, $00, $18, $00
-	db $03, $00, $A0, $00, $40, $00, $08, $00
-	db $C0, $01, $18, $00, $02, $00, $40, $00
-	db $20, $00, $03, $00, $60, $00, $48, $00
-	db $06, $00, $C0, $00, $50, $00, $05, $00
-	db $C0, $00, $58, $00, $07, $00, $00, $01
-	db $58, $00, $08, $00, $40, $01, $08, $00
-	db $00, $00, $20, $00, $18, $00, $01, $00
-	db $20, $00, $28, $00, $03, $00, $40, $00
-	db $30, $00, $03, $00, $80, $00, $40, $00
-	db $04, $00, $80, $00, $20, $00, $03, $00
-	db $A0, $00, $08, $00, $01, $00, $20, $00
-	db $18, $00, $03, $00, $60, $00, $20, $00
-	db $03, $00, $60, $00, $40, $00, $08, $00
-	db $C0, $01, $10, $00, $02, $00, $20, $00
-	db $18, $00, $03, $00, $00, $00, $20, $00
-	db $04, $00, $00, $00, $30, $00, $06, $00
-	db $20, $00, $40, $00, $09, $00, $20, $00
-	db $58, $00, $0A, $00, $40, $00, $08, $00
-	db $01, $00, $00, $00, $10, $00, $01, $00
-	db $20, $00, $18, $00, $01, $00, $40, $00
-	db $20, $00, $03, $00, $40, $00, $30, $00
-	db $03, $00, $60, $00, $40, $00, $05, $00
-	db $A0, $00, $08, $00, $01, $00, $40, $00
-	db $08, $00, $01, $00, $60, $00, $10, $00
-	db $02, $00, $80, $00, $40, $00, $08, $00
-	db $C0, $01, $08, $00, $01, $00, $20, $00
-	db $10, $00, $02, $00, $40, $00, $18, $00
-	db $03, $00, $60, $00, $28, $00, $04, $00
-	db $A0, $00, $30, $00, $04, $00, $A0, $00
-	db $38, $00, $06, $00, $C0, $00, $40, $00
-	db $07, $00, $00, $01, $50, $00, $09, $00
-	db $60, $01, $18, $00, $01, $00, $40, $00
-	db $38, $00, $02, $00, $60, $00, $50, $00
-	db $02, $00, $60, $00, $20, $00, $02, $00
-	db $40, $00, $18, $00, $03, $00, $20, $00
-	db $28, $00, $04, $00, $60, $00, $38, $00
-	db $04, $00, $80, $00
+%offset(DATA_FD3650, 2)
+%offset(DATA_FD3652, 4)
+	dw $FFE8, $FFFF, $0060
+	dw $0008, $0001, $0020
+	dw $0010, $0001, $0020
+	dw $0018, $0002, $0040
+	dw $0008, $0001, $0100
+	dw $0008, $0001, $0020
+	dw $0018, $0001, $0040
+	dw $0020, $0003, $0060
+	dw $0008, $0001, $0100
+	dw $0020, $0002, $0040
+	dw $0028, $0003, $0060
+	dw $0038, $0004, $0080
+	dw $0008, $0001, $0100
+	dw $0000, $0000, $0020
+	dw $0010, $0001, $0040
+	dw $0020, $0003, $0080
+	dw $FFE8, $FFFF, $0060
+	dw $FFF0, $0004, $00C0
+	dw $FFD8, $0005, $0140
+	dw $FFD0, $0005, $01C0
+	dw $FFA0, $0005, $0200
+	dw $FFB8, $0006, $02A0
+	dw $FFA8, $0006, $0320
+	dw $FF98, $0005, $0380
+	dw $FF90, $0003, $0380
+	dw $FF88, $0002, $0360
+	dw $FF90, $0001, $0360
+	dw $FF98, $0000, $0340
+	dw $FFB0, $0000, $02E0
+	dw $FFC0, $FFFF, $0280
+	dw $FFD8, $FFFF, $0220
+	dw $FFF0, $FFFF, $01C0
+	dw $0040, $0008, $01C0
+	dw $0008, $0001, $0000
+	dw $0008, $0001, $0020
+	dw $0010, $0001, $0020
+	dw $0018, $0001, $0040
+	dw $0020, $0003, $0060
+	dw $0020, $0003, $0040
+	dw $0028, $0004, $0060
+	dw $0030, $0004, $0080
+	dw $0038, $0004, $0080
+	dw $0038, $0004, $0080
+	dw $0040, $0005, $00A0
+	dw $0048, $0006, $00C0
+	dw $0050, $0006, $00C0
+	dw $0050, $0007, $00E0
+	dw $0058, $0008, $0100
+	dw $0040, $0008, $01C0
+	dw $0048, $0008, $01C0
+	dw $0040, $0007, $0160
+	dw $0030, $0005, $0120
+	dw $0020, $0004, $00C0
+	dw $0010, $0002, $0080
+	dw $0008, $0001, $0060
+	dw $0000, $0000, $0020
+	dw $0048, $0006, $0100
+	dw $0038, $0005, $00C0
+	dw $0030, $0004, $0080
+	dw $0040, $0005, $00A0
+	dw $0038, $0004, $0080
+	dw $0030, $0004, $0060
+	dw $0028, $0003, $0060
+	dw $0020, $0002, $0040
+	dw $0040, $0008, $01C0
+	dw $0018, $0002, $00C0
+	dw $0018, $0004, $0160
+	dw $0020, $0004, $0200
+	dw $0018, $0001, $0040
+	dw $0038, $0002, $0060
+	dw $0050, $0002, $0060
+	dw $0030, $0004, $0080
+	dw $0040, $0004, $0080
+	dw $0050, $0006, $00A0
+	dw $0058, $0007, $00C0
+	dw $0058, $0009, $0100
+	dw $0008, $0001, $0020
+	dw $0008, $0001, $0040
+	dw $0018, $0003, $0080
+	dw $0018, $0003, $00A0
+	dw $0040, $0008, $01C0
+	dw $0018, $0002, $0040
+	dw $0020, $0003, $0060
+	dw $0048, $0006, $00C0
+	dw $0050, $0005, $00C0
+	dw $0058, $0007, $0100
+	dw $0058, $0008, $0140
+	dw $0008, $0000, $0020
+	dw $0018, $0001, $0020
+	dw $0028, $0003, $0040
+	dw $0030, $0003, $0080
+	dw $0040, $0004, $0080
+	dw $0020, $0003, $00A0
+	dw $0008, $0001, $0020
+	dw $0018, $0003, $0060
+	dw $0020, $0003, $0060
+	dw $0040, $0008, $01C0
+	dw $0010, $0002, $0020
+	dw $0018, $0003, $0000
+	dw $0020, $0004, $0000
+	dw $0030, $0006, $0020
+	dw $0040, $0009, $0020
+	dw $0058, $000A, $0040
+	dw $0008, $0001, $0000
+	dw $0010, $0001, $0020
+	dw $0018, $0001, $0040
+	dw $0020, $0003, $0040
+	dw $0030, $0003, $0060
+	dw $0040, $0005, $00A0
+	dw $0008, $0001, $0040
+	dw $0008, $0001, $0060
+	dw $0010, $0002, $0080
+	dw $0040, $0008, $01C0
+	dw $0008, $0001, $0020
+	dw $0010, $0002, $0040
+	dw $0018, $0003, $0060
+	dw $0028, $0004, $00A0
+	dw $0030, $0004, $00A0
+	dw $0038, $0006, $00C0
+	dw $0040, $0007, $0100
+	dw $0050, $0009, $0160
+	dw $0018, $0001, $0040
+	dw $0038, $0002, $0060
+	dw $0050, $0002, $0060
+	dw $0020, $0002, $0040
+	dw $0018, $0003, $0020
+	dw $0028, $0004, $0060
+	dw $0038, $0004, $0080
 
 water_frozen_layer_3_palette:
 	db $C9, $39, $B2, $56, $FF, $7F, $FF, $7F
@@ -2278,7 +2356,6 @@ file_select_screen_palette:
 	db $EB, $08, $50, $11, $72, $11, $94, $11
 	db $D6, $15, $F8, $15, $1A, $1A, $5B, $1E
 	db $9C, $26, $BD, $2A, $FE, $32, $3F, $37
-
 DATA_FD3DAE:
 	db $08, $03, $01, $00, $02, $00, $22, $00
 	db $23, $00, $23, $00, $44, $00, $45, $00
@@ -2470,6 +2547,8 @@ secret_ending_screen_palette:
 	db $18, $09, $74, $15, $44, $08, $62, $10
 	db $46, $04, $68, $0C, $8D, $08, $F0, $08
 	db $D4, $0D, $6F, $0D, $13, $09, $CC, $08
+	
+klobber_karnage_level_palette:
 	db $21, $04, $65, $00, $A7, $04, $08, $09
 	db $21, $04, $65, $00, $A7, $04, $4A, $0D
 	db $21, $04, $A7, $04, $08, $09, $8C, $15
@@ -2502,6 +2581,8 @@ secret_ending_screen_palette:
 	db $AE, $2C, $32, $35, $D6, $3D, $7B, $4A
 	db $BD, $56, $DF, $66, $4B, $0D, $09, $05
 	db $47, $01, $AC, $22, $50, $2B, $10, $19
+
+jungle_jinx_level_palette:
 	db $21, $04, $65, $10, $A7, $14, $08, $19
 	db $21, $04, $65, $10, $A7, $14, $4A, $1D
 	db $21, $04, $A7, $14, $08, $19, $8C, $25
@@ -2534,6 +2615,8 @@ secret_ending_screen_palette:
 	db $B2, $2C, $55, $31, $F8, $35, $DC, $36
 	db $B5, $27, $FF, $37, $4A, $19, $04, $11
 	db $43, $0D, $A6, $1A, $4B, $17, $0F, $25
+
+krockhead_klamber_level_palette:
 	db $87, $04, $24, $04, $04, $00, $02, $00
 	db $87, $04, $45, $04, $24, $04, $04, $00
 	db $87, $04, $66, $04, $45, $04, $04, $00
@@ -2566,6 +2649,8 @@ secret_ending_screen_palette:
 	db $EC, $10, $A8, $08, $64, $04, $00, $00
 	db $9B, $15, $10, $0D, $48, $04, $42, $04
 	db $60, $03, $81, $02, $82, $01, $A3, $04
+
+mudhole_marsh_level_palette:
 	db $85, $14, $23, $0C, $02, $08, $01, $08
 	db $85, $14, $43, $0C, $23, $0C, $02, $08
 	db $85, $14, $64, $14, $43, $10, $23, $0C
@@ -2597,239 +2682,241 @@ secret_ending_screen_palette:
 	db $A0, $40, $F9, $18, $D5, $18, $B0, $18
 	db $AC, $18, $68, $10, $24, $0C, $00, $00
 	db $5B, $1D, $D0, $14, $08, $0C, $22, $08
-	db $80, $22, $E1, $19, $62, $15, $A4
+	db $80, $22, $E1, $19, $62, $15, $A4, $0C
 
-DATA_FD470D:
-%offset(DATA_FD470E, 1)
-%offset(DATA_FD470F, 2)
-%offset(DATA_FD4710, 3)
-%offset(DATA_FD4712, 5)
-%offset(DATA_FD4714, 7)
-%offset(DATA_FD4715, 8)
-	db $0C, $80, $38, $9C, $08, $54, $44, $0C, $08
-	db $80, $38, $9C, $38, $58, $45, $04, $08, $80
-	db $38, $9C, $08, $53, $42, $08, $08, $C0, $40
-	db $9C, $08, $44, $45, $0C, $10, $80, $38, $70
-	db $08, $54, $44, $0C, $08, $A0, $60, $84, $08
-	db $54, $44, $0C, $08, $C0, $40, $9C, $08, $54
-	db $45, $0C, $08, $C0, $40, $9C, $38, $54, $46
-	db $0C, $08, $80, $80, $30, $08, $44, $44, $0C
-	db $08, $80, $80, $95, $08, $54, $44, $0C, $08
-	db $80, $38, $9C, $38, $53, $43, $10, $08, $C0
-	db $40, $78, $38, $45, $46, $0C, $08, $C0, $40
-	db $A8, $68, $45, $46, $0C, $08, $C0, $40, $70
-	db $08, $54, $45, $0C, $08, $80, $44, $9C, $08
-	db $54, $44, $0C, $08, $C0, $38, $9C, $38, $58
-	db $45, $04, $08, $A0, $60, $84, $08, $53, $43
-	db $10, $08, $C0, $40, $9C, $38, $53, $43, $10
-	db $08
+;camera control configs
+%offset(DATA_FD470D, -1)
+DATA_FD470E:
+%offset(DATA_FD470F, 1)
+%offset(DATA_FD4710, 2)
+%offset(DATA_FD4712, 4)
+%offset(DATA_FD4714, 6)
+%offset(DATA_FD4715, 7)
+	db $80, $38, $9C, $08, $54, $44, $0C, $08	;00
+	db $80, $38, $9C, $38, $58, $45, $04, $08	;01
+	db $80, $38, $9C, $08, $53, $42, $08, $08	;02
+	db $C0, $40, $9C, $08, $44, $45, $0C, $10	;03
+	db $80, $38, $70, $08, $54, $44, $0C, $08	;04
+	db $A0, $60, $84, $08, $54, $44, $0C, $08	;05
+	db $C0, $40, $9C, $08, $54, $45, $0C, $08	;06
+	db $C0, $40, $9C, $38, $54, $46, $0C, $08	;07
+	db $80, $80, $30, $08, $44, $44, $0C, $08	;08
+	db $80, $80, $95, $08, $54, $44, $0C, $08	;09
+	db $80, $38, $9C, $38, $53, $43, $10, $08	;0A
+	db $C0, $40, $78, $38, $45, $46, $0C, $08	;0B
+	db $C0, $40, $A8, $68, $45, $46, $0C, $08	;0C
+	db $C0, $40, $70, $08, $54, $45, $0C, $08	;0D
+	db $80, $44, $9C, $08, $54, $44, $0C, $08	;0E
+	db $C0, $38, $9C, $38, $58, $45, $04, $08	;0F
+	db $A0, $60, $84, $08, $53, $43, $10, $08	;10
+	db $C0, $40, $9C, $38, $53, $43, $10, $08	;11
 
 DATA_FD479E:
-	db $0B, $00, $00, $00, $1B, $00, $0E, $43 : dw CODE_BBACFA, CODE_BBAD34
+	db $0B, $00, $00, $00, $1B, $00 : dw klobber_karnage_level_palette, CODE_BBACFA, CODE_BBAD34
 	db $30, $30, $1C, $00, $1A, $00, $0F, $00, $00
 
 DATA_FD47B3:
-	db $0B, $00, $00, $00, $1B, $00, $0E, $44 : dw CODE_BBACFA, CODE_BBAD34
+	db $0B, $00, $00, $00, $1B, $00 : dw jungle_jinx_level_palette, CODE_BBACFA, CODE_BBAD34
 	db $30, $30, $1C, $00, $1A, $00, $0F, $00, $00
 
 DATA_FD47C8:
-	db $11, $00, $03, $00, $03, $00, $0E, $45 : dw CODE_BBACE2, CODE_BBAD34
+	db $11, $00, $03, $00, $03, $00 : dw krockhead_klamber_level_palette, CODE_BBACE2, CODE_BBAD34
 	db $26, $26, $10, $00, $0F, $00, $09, $08, $10
 
 DATA_FD47DD:
-	db $11, $00, $03, $00, $03, $00, $0E, $46 : dw CODE_BBACE2, CODE_BBAD34
+	db $11, $00, $03, $00, $03, $00 : dw mudhole_marsh_level_palette, CODE_BBACE2, CODE_BBAD34
 	db $26, $26, $10, $00, $0F, $00, $09, $08, $10
 
 DATA_FD47F2:
-	db $0B, $00, $00, $00, $1B, $00, $00, $00 : dw CODE_BBACFA, CODE_BBAD34
+	db $0B, $00, $00, $00, $1B, $00 : dw !null_pointer, CODE_BBACFA, CODE_BBAD34
 	db $30, $30, $1C, $00, $1A, $00, $0F, $00, $00
 
 DATA_FD4807:
-	db $11, $00, $0E, $00, $1A, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $11, $00, $0E, $00, $1A, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $2F, $2F, $1B, $00, $19, $00, $0E, $02, $30
 
 DATA_FD481C:
-	db $11, $00, $0D, $00, $1A, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $11, $00, $0D, $00, $1A, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $31, $2F, $1D, $00, $1B, $00, $0E, $02, $30
 
 DATA_FD4831:
-	db $11, $00, $0D, $00, $1A, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $11, $00, $0D, $00, $1A, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $31, $2F, $1D, $00, $1B, $00, $11, $02, $30
 
 DATA_FD4846:
-	db $13, $00, $1A, $00, $16, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $13, $00, $1A, $00, $16, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $2B, $2B, $15, $00, $14, $00, $0B, $80, $00
 
 DATA_FD485B:
-	db $13, $00, $1A, $00, $16, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD06
+	db $13, $00, $1A, $00, $16, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD06
 	db $2B, $2B, $15, $00, $14, $00, $0B, $80, $00
 
 DATA_FD4870:
-	db $12, $00, $19, $00, $16, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $12, $00, $19, $00, $16, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $32, $31, $1E, $00, $1C, $00, $0B, $20, $00
 
 DATA_FD4885:
-	db $13, $00, $1A, $00, $16, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $13, $00, $1A, $00, $16, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $2B, $2B, $15, $00, $14, $00, $14, $82, $00
 
 DATA_FD489A:
-	db $11, $00, $00, $00, $05, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD19
+	db $11, $00, $00, $00, $05, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD19
 	db $2E, $2E, $19, $00, $17, $00, $0D, $00, $00
 
 DATA_FD48AF:
-	db $11, $00, $0B, $00, $05, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $11, $00, $0B, $00, $05, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $2A, $2A, $14, $00, $13, $00, $0C, $00, $00
 
 DATA_FD48C4:
-	db $11, $00, $00, $00, $05, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $11, $00, $00, $00, $05, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $01, $02, $01, $00, $01, $00, $00, $02, $00
 
 DATA_FD48D9:
-	db $10, $00, $16, $00, $05, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $10, $00, $16, $00, $05, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $35, $34, $21, $00, $1F, $00, $00, $02, $00
 
 DATA_FD48EE:
-	db $0F, $00, $15, $00, $05, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $0F, $00, $15, $00, $05, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $1E, $1E, $0E, $00, $0D, $00, $00, $02, $00
 
 DATA_FD4903:
-	db $0E, $00, $14, $00, $05, $00, $10, $06 : dw CODE_BBACE2, CODE_BBAD34
+	db $0E, $00, $14, $00, $05, $00 : dw gusty_glade_level_palette, CODE_BBACE2, CODE_BBAD34
 	db $1D, $1D, $0F, $00, $0E, $00, $00, $02, $80
 
 DATA_FD4918:
-	db $11, $00, $13, $00, $10, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $11, $00, $13, $00, $10, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $02, $03, $02, $00, $02, $00, $01, $02, $00
 
 DATA_FD492D:
-	db $0D, $00, $12, $00, $10, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $0D, $00, $12, $00, $10, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $02, $03, $18, $00, $02, $00, $01, $22, $00
 
 DATA_FD4942:
-	db $0C, $00, $11, $00, $10, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $0C, $00, $11, $00, $10, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $28, $28, $12, $00, $11, $00, $01, $12, $00
 
 DATA_FD4957:
-	db $11, $00, $10, $00, $0B, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $11, $00, $10, $00, $0B, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $03, $04, $03, $00, $03, $00, $02, $02, $08
 
 DATA_FD496C:
-	db $11, $00, $0F, $00, $0B, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $11, $00, $0F, $00, $0B, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $03, $04, $03, $00, $03, $00, $07, $02, $08
 
 DATA_FD4981:
-	db $11, $00, $10, $00, $0B, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $11, $00, $10, $00, $0B, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $03, $04, $03, $00, $03, $00, $07, $02, $08
 
 DATA_FD4996:
-	db $11, $00, $04, $00, $06, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $11, $00, $04, $00, $06, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $06, $07, $06, $00, $06, $00, $03, $0B, $00
 
 DATA_FD49AB:
-	db $11, $00, $17, $00, $06, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $11, $00, $17, $00, $06, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $06, $07, $1A, $00, $18, $00, $03, $0B, $00
 
 DATA_FD49C0:
-	db $04, $00, $04, $00, $12, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $04, $00, $04, $00, $12, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $06, $07, $06, $00, $06, $00, $03, $0B, $00
 
 DATA_FD49D5:
-	db $09, $00, $0A, $00, $0D, $00, $00, $00 : dw CODE_BBACEE, CODE_BBAD34
+	db $09, $00, $0A, $00, $0D, $00 : dw !null_pointer, CODE_BBACEE, CODE_BBAD34
 	db $20, $20, $07, $00, $07, $00, $06, $08, $00
 
 DATA_FD49EA:
-	db $09, $00, $0A, $00, $0D, $00, $F0, $0E : dw CODE_BBACEE, CODE_BBAD34
+	db $09, $00, $0A, $00, $0D, $00 : dw fiery_furnace_level_palette, CODE_BBACEE, CODE_BBAD34
 	db $20, $20, $07, $00, $07, $00, $06, $08, $00
 
 DATA_FD49FF:
-	db $08, $00, $09, $00, $0D, $00, $00, $00 : dw CODE_BBACEE, CODE_BBAD34
+	db $08, $00, $09, $00, $0D, $00 : dw !null_pointer, CODE_BBACEE, CODE_BBAD34
 	db $29, $29, $13, $00, $12, $00, $06, $00, $01
 
 DATA_FD4A14:
-	db $05, $00, $06, $00, $1D, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $05, $00, $06, $00, $1D, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $2D, $2D, $17, $00, $16, $00, $04, $42, $00
 
 DATA_FD4A29:
-	db $11, $00, $05, $00, $1D, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $11, $00, $05, $00, $1D, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $21, $21, $08, $00, $08, $00, $04, $42, $00
 
 DATA_FD4A3E:
-	db $07, $00, $05, $00, $1D, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $07, $00, $05, $00, $1D, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $21, $21, $08, $00, $08, $00, $04, $42, $10
 
 DATA_FD4A53:
-	db $14, $00, $05, $00, $15, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $14, $00, $05, $00, $15, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $25, $25, $0D, $00, $08, $00, $04, $02, $00
 
 DATA_FD4A68:
-	db $14, $00, $05, $00, $1D, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $14, $00, $05, $00, $1D, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $25, $25, $0D, $00, $08, $00, $04, $42, $00
 
 DATA_FD4A7D:
-	db $07, $00, $05, $00, $1D, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $07, $00, $05, $00, $1D, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $0B, $21, $08, $00, $08, $00, $04, $42, $00
 
 DATA_FD4A92:
-	db $00, $00, $00, $00, $0E, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $00, $00, $00, $00, $0E, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $22, $22, $09, $00, $09, $00, $05, $00, $40
 
 DATA_FD4AA7:
-	db $00, $00, $00, $00, $0E, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $00, $00, $00, $00, $0E, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $22, $22, $09, $00, $09, $00, $13, $00, $40
 
 DATA_FD4ABC:
-	db $06, $00, $08, $00, $17, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $06, $00, $08, $00, $17, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $2C, $2C, $16, $00, $15, $00, $13, $00, $40
 
 DATA_FD4AD1:
-	db $06, $00, $08, $00, $17, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $06, $00, $08, $00, $17, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $2C, $2C, $16, $00, $15, $00, $05, $00, $40
 
 DATA_FD4AE6:
-	db $11, $00, $18, $00, $07, $00, $8E, $24 : dw CODE_BBACE2, CODE_BBAD34
+	db $11, $00, $18, $00, $07, $00 : dw windy_well_level_palette, CODE_BBACE2, CODE_BBAD34
 	db $34, $33, $20, $00, $1E, $00, $08, $00, $80
 
 DATA_FD4AFB:
-	db $11, $00, $07, $00, $07, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $11, $00, $07, $00, $07, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $24, $24, $0C, $00, $0C, $00, $08, $00, $00
 
 DATA_FD4B10:
-	db $11, $00, $07, $00, $07, $00, $8E, $23 : dw CODE_BBACE2, CODE_BBAD34
+	db $11, $00, $07, $00, $07, $00 : dw squawks_shaft_level_palette, CODE_BBACE2, CODE_BBAD34
 	db $24, $24, $0C, $00, $0C, $00, $08, $00, $00
 
 DATA_FD4B25:
-	db $11, $00, $02, $00, $09, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $11, $00, $02, $00, $09, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $27, $27, $11, $00, $10, $00, $0A, $80, $02
 
 DATA_FD4B3A:
-	db $03, $00, $02, $00, $09, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $03, $00, $02, $00, $09, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $27, $27, $11, $00, $10, $00, $0A, $80, $02
 
 DATA_FD4B4F:
-	db $02, $00, $02, $00, $09, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $02, $00, $02, $00, $09, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $27, $27, $11, $00, $10, $00, $0A, $80, $02
 
 DATA_FD4B64:
-	db $01, $00, $01, $00, $09, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $01, $00, $01, $00, $09, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $33, $32, $1F, $00, $1D, $00, $12, $80, $02
 
 DATA_FD4B79:
-	db $11, $00, $02, $00, $09, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $11, $00, $02, $00, $09, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $27, $27, $11, $00, $10, $00, $12, $80, $02
 
 DATA_FD4B8E:
-	db $02, $00, $02, $00, $09, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $02, $00, $02, $00, $09, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $27, $27, $11, $00, $10, $00, $12, $80, $02
 
 DATA_FD4BA3:
-	db $03, $00, $02, $00, $09, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $03, $00, $02, $00, $09, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $27, $27, $11, $00, $10, $00, $12, $80, $02
 
 DATA_FD4BB8:
-	db $0A, $00, $0C, $00, $0F, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $0A, $00, $0C, $00, $0F, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $23, $23, $0A, $00, $0A, $00, $10, $04, $00
 
 DATA_FD4BCD:
-	db $11, $00, $03, $00, $03, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $11, $00, $03, $00, $03, $00 : dw !null_pointer, CODE_BBACE2, CODE_BBAD34
 	db $26, $26, $10, $00, $0F, $00, $09, $08, $10
 
 DATA_FD4BE2:
@@ -4411,70 +4498,87 @@ map_kremling_sprite_palette:
 	db $1F, $42, $FF, $7F, $95, $56, $00, $00
 	db $09, $04, $7B, $0C, $CF, $39, $30, $04
 
-
 diddy_active_sprite_palette:
 	db $66, $04, $8A, $08, $CD, $0C, $12, $0D
 	db $56, $11, $52, $1D, $D9, $2D, $7F, $3A
 	db $DF, $46, $5F, $4F, $55, $04, $7A, $08
-	db $DF, $10, $EF, $3D, $FF, $7F, $65, $08
-	db $87, $08, $89, $0C, $CC, $0C, $EF, $10
-	db $EC, $14, $50, $21, $B5, $29, $F5, $2D
-	db $35, $36, $4E, $08, $71, $08, $95, $0C
-	db $4A, $29, $5A, $6B, $66, $04, $8A, $08
-	db $CD, $0C, $12, $0D, $56, $11, $52, $1D
-	db $D9, $2D, $7F, $3A, $DF, $46, $5F, $4F
-	db $06, $7C, $C9, $7C, $6F, $7D, $EF, $3D
-	db $FF, $7F, $65, $08, $87, $08, $89, $0C
-	db $CC, $0C, $EF, $10, $EC, $14, $50, $21
-	db $B5, $29, $F5, $2D, $35, $36, $24, $54
-	db $A7, $54, $0A, $55, $4A, $29, $B5, $56
+	db $DF, $10, $EF, $3D, $FF, $7F
+	
+	db $65, $08, $87, $08, $89, $0C, $CC, $0C
+	db $EF, $10, $EC, $14, $50, $21, $B5, $29
+	db $F5, $2D, $35, $36, $4E, $08, $71, $08
+	db $95, $0C, $4A, $29, $5A, $6B
+	
+	db $66, $04, $8A, $08, $CD, $0C, $12, $0D
+	db $56, $11, $52, $1D, $D9, $2D, $7F, $3A
+	db $DF, $46, $5F, $4F, $06, $7C, $C9, $7C
+	db $6F, $7D, $EF, $3D, $FF, $7F
+	
+	db $65, $08, $87, $08, $89, $0C, $CC, $0C
+	db $EF, $10, $EC, $14, $50, $21, $B5, $29
+	db $F5, $2D, $35, $36, $24, $54, $A7, $54
+	db $0A, $55, $4A, $29, $B5, $56
+	
 	db $23, $59, $C7, $65, $6C, $76, $AD, $7A
 	db $EF, $7E, $51, $7F, $73, $7F, $96, $7F
 	db $B8, $7F, $DB, $7F, $0D, $7F, $2F, $7F
-	db $71, $7F, $8B, $7E, $FF, $7F, $23, $00
-	db $0A, $00, $11, $00, $18, $00, $1F, $00
-	db $BF, $00, $1F, $01, $7F, $01, $DF, $01
-	db $3F, $02, $55, $04, $7A, $08, $DF, $10
-	db $1F, $01, $FF, $7F, $01, $0C, $04, $28
-	db $28, $40, $2C, $5C, $51, $78, $6C, $60
-	db $B1, $68, $16, $71, $5B, $79, $BF, $7D
-	db $0B, $5C, $91, $68, $37, $75, $B1, $68
-	db $FF, $7F, $30, $19, $97, $1D, $FE, $25
-	db $7F, $2A, $FF, $32, $FF, $4A, $FF, $67
-	db $FF, $7F, $FF, $7F, $FF, $7F, $1F, $19
-	db $5F, $1D, $FF, $2D, $FF, $7F, $FF, $7F
+	db $71, $7F, $8B, $7E, $FF, $7F
+	
+	db $23, $00, $0A, $00, $11, $00, $18, $00
+	db $1F, $00, $BF, $00, $1F, $01, $7F, $01
+	db $DF, $01, $3F, $02, $55, $04, $7A, $08
+	db $DF, $10, $1F, $01, $FF, $7F
+	
+	db $01, $0C, $04, $28, $28, $40, $2C, $5C
+	db $51, $78, $6C, $60, $B1, $68, $16, $71
+	db $5B, $79, $BF, $7D, $0B, $5C, $91, $68
+	db $37, $75, $B1, $68, $FF, $7F
+	
+	db $30, $19, $97, $1D, $FE, $25, $7F, $2A
+	db $FF, $32, $FF, $4A, $FF, $67, $FF, $7F
+	db $FF, $7F, $FF, $7F, $1F, $19, $5F, $1D
+	db $FF, $2D, $FF, $7F, $FF, $7F
 
 dixie_active_sprite_palette:
 	db $24, $04, $8A, $04, $F1, $04, $5A, $09
 	db $1B, $2E, $FF, $46, $BF, $5B, $AF, $0D
 	db $98, $16, $FF, $2B, $B2, $24, $F9, $30
-	db $7F, $49, $00, $02, $FF, $7F, $44, $04
-	db $87, $04, $AB, $08, $F1, $08, $72, $21
-	db $F5, $31, $75, $3A, $2A, $0D, $D0, $11
-	db $B5, $1E, $8C, $18, $B1, $24, $15, $31
-	db $61, $05, $5A, $6B, $24, $04, $8A, $04
-	db $F1, $04, $5A, $09, $1B, $2E, $FF, $46
-	db $BF, $5B, $6F, $0C, $B8, $14, $5F, $29
-	db $09, $38, $CF, $50, $95, $69, $40, $02
-	db $FF, $7F, $44, $04, $87, $04, $AB, $08
-	db $F1, $08, $72, $21, $F5, $31, $75, $3A
-	db $6A, $0C, $90, $10, $F5, $1C, $27, $28
-	db $8A, $34, $2E, $45, $81, $05, $5A, $6B
+	db $7F, $49, $00, $02, $FF, $7F
+	
+	db $44, $04, $87, $04, $AB, $08, $F1, $08
+	db $72, $21, $F5, $31, $75, $3A, $2A, $0D
+	db $D0, $11, $B5, $1E, $8C, $18, $B1, $24
+	db $15, $31, $61, $05, $5A, $6B
+	
+	db $24, $04, $8A, $04, $F1, $04, $5A, $09
+	db $1B, $2E, $FF, $46, $BF, $5B, $6F, $0C
+	db $B8, $14, $5F, $29, $09, $38, $CF, $50
+	db $95, $69, $40, $02, $FF, $7F
+	
+	db $44, $04, $87, $04, $AB, $08, $F1, $08
+	db $72, $21, $F5, $31, $75, $3A, $6A, $0C
+	db $90, $10, $F5, $1C, $27, $28, $8A, $34
+	db $2E, $45, $81, $05, $5A, $6B
+	
 	db $23, $59, $E8, $6D, $CE, $7E, $11, $7F
 	db $54, $7F, $97, $7F, $DB, $7F, $69, $7E
 	db $ED, $7E, $71, $7F, $06, $7E, $AB, $7E
-	db $71, $7F, $8B, $7E, $FF, $7F, $24, $04
-	db $2D, $00, $16, $00, $1E, $00, $7F, $00
-	db $3F, $01, $BF, $01, $16, $00, $3C, $01
-	db $BF, $01, $FB, $00, $5D, $01, $BF, $01
-	db $5D, $01, $FF, $7F, $03, $10, $08, $34
-	db $0D, $58, $13, $7C, $B6, $7C, $59, $7D
-	db $FC, $7D, $0D, $58, $35, $6D, $FC, $7D
-	db $0D, $58, $B3, $6C, $59, $7D, $B3, $6C
-	db $FF, $7F, $CC, $14, $98, $15, $3F, $1A
-	db $FF, $22, $FF, $6B, $FF, $7F, $FF, $7F
-	db $BF, $2B, $FF, $3B, $FF, $63, $DF, $55
-	db $5F, $72, $3F, $7F, $E4, $13, $FF, $7F
+	db $71, $7F, $8B, $7E, $FF, $7F
+	
+	db $24, $04, $2D, $00, $16, $00, $1E, $00
+	db $7F, $00, $3F, $01, $BF, $01, $16, $00
+	db $3C, $01, $BF, $01, $FB, $00, $5D, $01
+	db $BF, $01, $5D, $01, $FF, $7F
+	
+	db $03, $10, $08, $34, $0D, $58, $13, $7C
+	db $B6, $7C, $59, $7D, $FC, $7D, $0D, $58
+	db $35, $6D, $FC, $7D, $0D, $58, $B3, $6C
+	db $59, $7D, $B3, $6C, $FF, $7F
+	
+	db $CC, $14, $98, $15, $3F, $1A, $FF, $22
+	db $FF, $6B, $FF, $7F, $FF, $7F, $BF, $2B
+	db $FF, $3B, $FF, $63, $DF, $55, $5F, $72
+	db $3F, $7F, $E4, $13, $FF, $7F
 
 barrel_sprite_palette:
 	db $43, $04, $65, $04, $A8, $08, $CB, $0C
@@ -5054,18 +5158,22 @@ traffic_light_sprite_palette:
 	db $42, $08, $A5, $14, $C6, $18, $E7, $1C
 	db $AD, $35, $94, $52, $08, $21, $8C, $31
 	db $73, $4E, $08, $21, $8C, $31, $73, $4E
-	db $08, $21, $8C, $31, $73, $4E, $42, $08
-	db $A5, $14, $C6, $18, $E7, $1C, $AD, $35
-	db $94, $52, $16, $00, $1F, $00, $BF, $35
-	db $08, $21, $8C, $31, $73, $4E, $08, $21
-	db $8C, $31, $73, $4E, $42, $08, $A5, $14
-	db $C6, $18, $E7, $1C, $AD, $35, $94, $52
-	db $16, $00, $1F, $00, $BF, $35, $16, $00
-	db $1F, $00, $BF, $35, $08, $21, $8C, $31
-	db $73, $4E, $42, $08, $A5, $14, $C6, $18
-	db $E7, $1C, $AD, $35, $94, $52, $16, $00
-	db $1F, $00, $BF, $35, $16, $00, $1F, $00
-	db $BF, $35, $41, $06, $E0, $03, $EC, $33
+	db $08, $21, $8C, $31, $73, $4E
+	
+	db $42, $08, $A5, $14, $C6, $18, $E7, $1C
+	db $AD, $35, $94, $52, $16, $00, $1F, $00
+	db $BF, $35, $08, $21, $8C, $31, $73, $4E
+	db $08, $21, $8C, $31, $73, $4E
+	
+	db $42, $08, $A5, $14, $C6, $18, $E7, $1C
+	db $AD, $35, $94, $52, $16, $00, $1F, $00
+	db $BF, $35, $16, $00, $1F, $00, $BF, $35
+	db $08, $21, $8C, $31, $73, $4E
+	
+	db $42, $08, $A5, $14, $C6, $18, $E7, $1C
+	db $AD, $35, $94, $52, $16, $00, $1F, $00
+	db $BF, $35, $16, $00, $1F, $00, $BF, $35
+	db $41, $06, $E0, $03, $EC, $33
 
 k_rool_blue_gas_sprite_palette:
 	db $00, $10, $20, $1C, $60, $28, $80, $34
@@ -5251,15 +5359,17 @@ wrinkly_kong_book_sprite_palette:
 	db $00, $00, $A3, $00, $27, $05, $CB, $09
 	db $6F, $0E, $13, $13, $B7, $17, $CB, $00
 	db $71, $01, $37, $02, $1C, $03, $08, $21
-	db $10, $42, $18, $63, $FF, $7F, $95, $00
-	db $96, $00, $98, $00, $9A, $00, $BC, $00
-	db $BE, $00, $DF, $00, $1F, $01, $7F, $01
-	db $BF, $01, $1F, $02, $7F, $02, $BF, $02
-	db $1F, $03, $7F, $03, $67, $00, $C8, $04
-	db $E7, $08, $07, $09, $26, $09, $45, $0D
-	db $64, $0D, $83, $0D, $6B, $11, $C2, $11
-	db $2A, $15, $E1, $15, $01, $1A, $20, $1A
-	db $40, $1E
+	db $10, $42, $18, $63, $FF, $7F
+	
+	db $95, $00, $96, $00, $98, $00, $9A, $00
+	db $BC, $00, $BE, $00, $DF, $00, $1F, $01
+	db $7F, $01, $BF, $01, $1F, $02, $7F, $02
+	db $BF, $02, $1F, $03, $7F, $03
+	
+	db $67, $00, $C8, $04, $E7, $08, $07, $09
+	db $26, $09, $45, $0D, $64, $0D, $83, $0D
+	db $6B, $11, $C2, $11, $2A, $15, $E1, $15
+	db $01, $1A, $20, $1A, $40, $1E
 
 map_cranky_wrinkly_sprite_palette:
 	db $00, $7C, $21, $00, $26, $00, $8A, $08
@@ -5460,64 +5570,64 @@ wall_forest_right_sprite_palette:
 	db $57, $22, $80, $00, $63, $04
 
 DATA_FD79E2:
-	dw DATA_FD7A56-DATA_FD79E2
-	dw DATA_FD7A86-DATA_FD79E2
-	dw DATA_FD7AB6-DATA_FD79E2
-	dw DATA_FD7ADF-DATA_FD79E2
-	dw DATA_FD7B08-DATA_FD79E2
-	dw DATA_FD7B31-DATA_FD79E2
-	dw DATA_FD7B61-DATA_FD79E2
-	dw DATA_FD7B8A-DATA_FD79E2
-	dw DATA_FD7BB3-DATA_FD79E2
-	dw DATA_FD7BDC-DATA_FD79E2
-	dw DATA_FD7C05-DATA_FD79E2
-	dw DATA_FD7C2E-DATA_FD79E2
-	dw DATA_FD7C57-DATA_FD79E2
-	dw DATA_FD7C80-DATA_FD79E2
-	dw DATA_FD7CA9-DATA_FD79E2
-	dw DATA_FD7CCF-DATA_FD79E2
-	dw DATA_FD7CCF-DATA_FD79E2
-	dw DATA_FD7CCF-DATA_FD79E2
-	dw DATA_FD7CCF-DATA_FD79E2
-	dw DATA_FD7CCF-DATA_FD79E2
-	dw DATA_FD7CCF-DATA_FD79E2
-	dw DATA_FD7CCF-DATA_FD79E2
-	dw DATA_FD7CCF-DATA_FD79E2
-	dw DATA_FD7CCF-DATA_FD79E2
-	dw DATA_FD7CCF-DATA_FD79E2
-	dw DATA_FD7CCF-DATA_FD79E2
-	dw DATA_FD7CCF-DATA_FD79E2
-	dw DATA_FD7CCF-DATA_FD79E2
-	dw DATA_FD7CCF-DATA_FD79E2
-	dw DATA_FD7CCF-DATA_FD79E2
-	dw DATA_FD7CF8-DATA_FD79E2
-	dw DATA_FD7D2C-DATA_FD79E2
-	dw DATA_FD7D55-DATA_FD79E2
-	dw DATA_FD7D7E-DATA_FD79E2
-	dw DATA_FD7DA7-DATA_FD79E2
-	dw DATA_FD7DD0-DATA_FD79E2
-	dw DATA_FD7DF9-DATA_FD79E2
-	dw DATA_FD7E22-DATA_FD79E2
-	dw DATA_FD7E4B-DATA_FD79E2
-	dw DATA_FD7E74-DATA_FD79E2
-	dw DATA_FD7E9D-DATA_FD79E2
-	dw DATA_FD7ED1-DATA_FD79E2
-	dw DATA_FD7EFD-DATA_FD79E2
-	dw DATA_FD7F26-DATA_FD79E2
-	dw DATA_FD7F4F-DATA_FD79E2
-	dw DATA_FD7F83-DATA_FD79E2
-	dw DATA_FD7FAC-DATA_FD79E2
-	dw DATA_FD7FD5-DATA_FD79E2
-	dw DATA_FD7FFE-DATA_FD79E2
-	dw DATA_FD8027-DATA_FD79E2
-	dw DATA_FD8050-DATA_FD79E2
-	dw DATA_FD8079-DATA_FD79E2
-	dw DATA_FD80A2-DATA_FD79E2
-	dw DATA_FD80C5-DATA_FD79E2
-	dw DATA_FD80EE-DATA_FD79E2
-	dw DATA_FD811A-DATA_FD79E2
-	dw DATA_FD8146-DATA_FD79E2
-	dw DATA_FD8172-DATA_FD79E2
+	dw DATA_FD7A56-DATA_FD79E2	;00
+	dw DATA_FD7A86-DATA_FD79E2	;01
+	dw DATA_FD7AB6-DATA_FD79E2	;02
+	dw DATA_FD7ADF-DATA_FD79E2	;03
+	dw DATA_FD7B08-DATA_FD79E2	;04
+	dw DATA_FD7B31-DATA_FD79E2	;05
+	dw DATA_FD7B61-DATA_FD79E2	;06
+	dw DATA_FD7B8A-DATA_FD79E2	;07
+	dw DATA_FD7BB3-DATA_FD79E2	;08
+	dw DATA_FD7BDC-DATA_FD79E2	;09
+	dw DATA_FD7C05-DATA_FD79E2	;0A
+	dw DATA_FD7C2E-DATA_FD79E2	;0B
+	dw DATA_FD7C57-DATA_FD79E2	;0C
+	dw DATA_FD7C80-DATA_FD79E2	;0D
+	dw DATA_FD7CA9-DATA_FD79E2	;0E
+	dw DATA_FD7CCF-DATA_FD79E2	;0F
+	dw DATA_FD7CCF-DATA_FD79E2	;10
+	dw DATA_FD7CCF-DATA_FD79E2	;11
+	dw DATA_FD7CCF-DATA_FD79E2	;12
+	dw DATA_FD7CCF-DATA_FD79E2	;13
+	dw DATA_FD7CCF-DATA_FD79E2	;14
+	dw DATA_FD7CCF-DATA_FD79E2	;15
+	dw DATA_FD7CCF-DATA_FD79E2	;16
+	dw DATA_FD7CCF-DATA_FD79E2	;17
+	dw DATA_FD7CCF-DATA_FD79E2	;18
+	dw DATA_FD7CCF-DATA_FD79E2	;19
+	dw DATA_FD7CCF-DATA_FD79E2	;1A
+	dw DATA_FD7CCF-DATA_FD79E2	;1B
+	dw DATA_FD7CCF-DATA_FD79E2	;1C
+	dw DATA_FD7CCF-DATA_FD79E2	;1D
+	dw DATA_FD7CF8-DATA_FD79E2	;1E
+	dw DATA_FD7D2C-DATA_FD79E2	;1F
+	dw DATA_FD7D55-DATA_FD79E2	;20
+	dw DATA_FD7D7E-DATA_FD79E2	;21
+	dw DATA_FD7DA7-DATA_FD79E2	;22
+	dw DATA_FD7DD0-DATA_FD79E2	;23
+	dw DATA_FD7DF9-DATA_FD79E2	;24
+	dw DATA_FD7E22-DATA_FD79E2	;25
+	dw DATA_FD7E4B-DATA_FD79E2	;26
+	dw DATA_FD7E74-DATA_FD79E2	;27
+	dw DATA_FD7E9D-DATA_FD79E2	;28
+	dw DATA_FD7ED1-DATA_FD79E2	;29
+	dw DATA_FD7EFD-DATA_FD79E2	;2A
+	dw DATA_FD7F26-DATA_FD79E2	;2B
+	dw DATA_FD7F4F-DATA_FD79E2	;2C
+	dw DATA_FD7F83-DATA_FD79E2	;2D
+	dw DATA_FD7FAC-DATA_FD79E2	;2E
+	dw DATA_FD7FD5-DATA_FD79E2	;2F
+	dw DATA_FD7FFE-DATA_FD79E2	;30
+	dw DATA_FD8027-DATA_FD79E2	;31
+	dw DATA_FD8050-DATA_FD79E2	;32
+	dw DATA_FD8079-DATA_FD79E2	;33
+	dw DATA_FD80A2-DATA_FD79E2	;34
+	dw DATA_FD80C5-DATA_FD79E2	;35
+	dw DATA_FD80EE-DATA_FD79E2	;36
+	dw DATA_FD811A-DATA_FD79E2	;37
+	dw DATA_FD8146-DATA_FD79E2	;38
+	dw DATA_FD8172-DATA_FD79E2	;39
 
 DATA_FD7A56:
 	dw $2100 : db $80
@@ -6203,935 +6313,468 @@ DATA_FD819A:
 	%offset(DATA_FD819E, 4)
 	%offset(DATA_FD819F, 5)
 	%offset(DATA_FD81A0, 6)
-
-	dw DATA_FD8216-DATA_FD819A
-	dw DATA_FD8217-DATA_FD819A
-	dw DATA_FD821F-DATA_FD819A
-	dw DATA_FD8235-DATA_FD819A
-	dw DATA_FD826E-DATA_FD819A
-	dw DATA_FD8292-DATA_FD819A
-	dw DATA_FD82BD-DATA_FD819A
-	dw DATA_FD82C5-DATA_FD819A
-	dw DATA_FD82E2-DATA_FD819A
-	dw DATA_FD82FF-DATA_FD819A
-	dw DATA_FD832A-DATA_FD819A
-	dw DATA_FD8347-DATA_FD819A
-	dw DATA_FD836B-DATA_FD819A
-	dw DATA_FD838F-DATA_FD819A
-	dw DATA_FD839E-DATA_FD819A
-	dw DATA_FD83AD-DATA_FD819A
-	dw DATA_FD83C3-DATA_FD819A
-	dw DATA_FD83D2-DATA_FD819A
-	dw DATA_FD83E1-DATA_FD819A
-	dw DATA_FD83F0-DATA_FD819A
-	dw DATA_FD840D-DATA_FD819A
-	dw DATA_FD841C-DATA_FD819A
-	dw DATA_FD842B-DATA_FD819A
-	dw DATA_FD8433-DATA_FD819A
-	dw DATA_FD8433-DATA_FD819A
-	dw DATA_FD8433-DATA_FD819A
-	dw DATA_FD8433-DATA_FD819A
-	dw DATA_FD8433-DATA_FD819A
-	dw DATA_FD8433-DATA_FD819A
-	dw DATA_FD8433-DATA_FD819A
-	dw DATA_FD8457-DATA_FD819A
-	dw DATA_FD847B-DATA_FD819A
-	dw DATA_FD8491-DATA_FD819A
-	dw DATA_FD84A7-DATA_FD819A
-	dw DATA_FD84D9-DATA_FD819A
-	dw DATA_FD84EF-DATA_FD819A
-	dw DATA_FD8513-DATA_FD819A
-	dw DATA_FD8537-DATA_FD819A
-	dw DATA_FD855B-DATA_FD819A
-	dw DATA_FD85A2-DATA_FD819A
-	dw DATA_FD85C6-DATA_FD819A
-	dw DATA_FD8614-DATA_FD819A
-	dw DATA_FD8623-DATA_FD819A
-	dw DATA_FD8639-DATA_FD819A
-	dw DATA_FD865D-DATA_FD819A
-	dw DATA_FD8681-DATA_FD819A
-	dw DATA_FD86A5-DATA_FD819A
-	dw DATA_FD86BB-DATA_FD819A
-	dw DATA_FD86ED-DATA_FD819A
-	dw DATA_FD8703-DATA_FD819A
-	dw DATA_FD8727-DATA_FD819A
-	dw DATA_FD8744-DATA_FD819A
-	dw DATA_FD8768-DATA_FD819A
-	dw DATA_FD878C-DATA_FD819A
-	dw DATA_FD87A9-DATA_FD819A
-	dw DATA_FD87C6-DATA_FD819A
-	dw DATA_FD87E3-DATA_FD819A
-	dw DATA_FD8807-DATA_FD819A
-	dw DATA_FD8832-DATA_FD819A
-	dw DATA_FD8856-DATA_FD819A
-	dw DATA_FD8873-DATA_FD819A
-	dw DATA_FD8890-DATA_FD819A
+	dw DATA_FD8216-DATA_FD819A	;00
+	dw DATA_FD8217-DATA_FD819A	;01
+	dw DATA_FD821F-DATA_FD819A	;02
+	dw DATA_FD8235-DATA_FD819A	;03
+	dw DATA_FD826E-DATA_FD819A	;04
+	dw DATA_FD8292-DATA_FD819A	;05
+	dw DATA_FD82BD-DATA_FD819A	;06
+	dw DATA_FD82C5-DATA_FD819A	;07
+	dw DATA_FD82E2-DATA_FD819A	;08
+	dw DATA_FD82FF-DATA_FD819A	;09
+	dw DATA_FD832A-DATA_FD819A	;0A
+	dw DATA_FD8347-DATA_FD819A	;0B
+	dw DATA_FD836B-DATA_FD819A	;0C
+	dw DATA_FD838F-DATA_FD819A	;0D
+	dw DATA_FD839E-DATA_FD819A	;0E
+	dw DATA_FD83AD-DATA_FD819A	;0F
+	dw DATA_FD83C3-DATA_FD819A	;10
+	dw DATA_FD83D2-DATA_FD819A	;11
+	dw DATA_FD83E1-DATA_FD819A	;12
+	dw DATA_FD83F0-DATA_FD819A	;13
+	dw DATA_FD840D-DATA_FD819A	;14
+	dw DATA_FD841C-DATA_FD819A	;15
+	dw DATA_FD842B-DATA_FD819A	;16
+	dw DATA_FD8433-DATA_FD819A	;17
+	dw DATA_FD8433-DATA_FD819A	;18
+	dw DATA_FD8433-DATA_FD819A	;19
+	dw DATA_FD8433-DATA_FD819A	;1A
+	dw DATA_FD8433-DATA_FD819A	;1B
+	dw DATA_FD8433-DATA_FD819A	;1C
+	dw DATA_FD8433-DATA_FD819A	;1D
+	dw DATA_FD8457-DATA_FD819A	;1E
+	dw DATA_FD847B-DATA_FD819A	;1F
+	dw DATA_FD8491-DATA_FD819A	;20
+	dw DATA_FD84A7-DATA_FD819A	;21
+	dw DATA_FD84D9-DATA_FD819A	;22
+	dw DATA_FD84EF-DATA_FD819A	;23
+	dw DATA_FD8513-DATA_FD819A	;24
+	dw DATA_FD8537-DATA_FD819A	;25
+	dw DATA_FD855B-DATA_FD819A	;26
+	dw DATA_FD85A2-DATA_FD819A	;27
+	dw DATA_FD85C6-DATA_FD819A	;28
+	dw DATA_FD8614-DATA_FD819A	;29
+	dw DATA_FD8623-DATA_FD819A	;2A
+	dw DATA_FD8639-DATA_FD819A	;2B
+	dw DATA_FD865D-DATA_FD819A	;2C
+	dw DATA_FD8681-DATA_FD819A	;2D
+	dw DATA_FD86A5-DATA_FD819A	;2E
+	dw DATA_FD86BB-DATA_FD819A	;2F
+	dw DATA_FD86ED-DATA_FD819A	;30
+	dw DATA_FD8703-DATA_FD819A	;31
+	dw DATA_FD8727-DATA_FD819A	;32
+	dw DATA_FD8744-DATA_FD819A	;33
+	dw DATA_FD8768-DATA_FD819A	;34
+	dw DATA_FD878C-DATA_FD819A	;35
+	dw DATA_FD87A9-DATA_FD819A	;36
+	dw DATA_FD87C6-DATA_FD819A	;37
+	dw DATA_FD87E3-DATA_FD819A	;38
+	dw DATA_FD8807-DATA_FD819A	;39
+	dw DATA_FD8832-DATA_FD819A	;3A
+	dw DATA_FD8856-DATA_FD819A	;3B
+	dw DATA_FD8873-DATA_FD819A	;3C
+	dw DATA_FD8890-DATA_FD819A	;3D
 
 DATA_FD8216:
 	db $00
 
 DATA_FD8217:
-	dl bank_word(hud_tiledata)
-	dw $1CC0
-	dw $0680
+	%vram_payload(hud_tiledata, $1CC0, $0680, 0)
 	db $00
 
 DATA_FD821F:
-	dl bank_word(forest_level_tiledata)
-	dw $2000|$8000
-	dw $71C0
-	dl bank_word(forest_bg_layer_3_8x8_tilemap)
-	dw $5C00|$8000
-	dw $0800
-	dl bank_word(forest_bg_layer_3_tiledata)
-	dw $6000
-	dw $1000
+	%vram_payload(forest_level_tiledata, $2000, $71C0, 1)
+	%vram_payload(forest_bg_layer_3_8x8_tilemap, $5C00, $0800, 1)
+	%vram_payload(forest_bg_layer_3_tiledata, $6000, $1000, 0)
 	db $00
 
 DATA_FD8235:
-	dl bank_word(ship_hold_level_tiledata)
-	dw $2000|$8000
-	dw $3400
-	dl bank_word(DATA_C2FAC9)
-	dw $7000|$8000
-	dw $0700
-	dl bank_word(DATA_C6FC11)
-	dw $7400|$8000
-	dw $0700
-	dl bank_word(DATA_CCFD95)
-	dw $7800|$8000
-	dw $0300
-	dl bank_word(DATA_C9FF37)
-	dw $7C00|$8000
-	dw $0300
-	dl bank_word(DATA_E9A905)
-	dw $4000|$8000
-	dw $5480
-	dl bank_word(water_layer_3_8x8_tilemap)
-	dw $6C00|$8000
-	dw $0800
-	dl bank_word(water_layer_3_tiledata)
-	dw $6A60|$8000
-	dw $0240
+	%vram_payload(ship_hold_level_tiledata, $2000, $3400, 1)
+	%vram_payload(DATA_C2FAC9, $7000, $0700, 1)
+	%vram_payload(DATA_C6FC11, $7400, $0700, 1)
+	%vram_payload(DATA_CCFD95, $7800, $0300, 1)
+	%vram_payload(DATA_C9FF37, $7C00, $0300, 1)
+	%vram_payload(DATA_E9A905, $4000, $5480, 1)
+	%vram_payload(water_layer_3_8x8_tilemap, $6C00, $0800, 1)
+	%vram_payload(water_layer_3_tiledata, $6A60, $0240, 1)
 	db $00
 
 DATA_FD826E:
-	dl bank_word(wasp_hive_bg_layer_3_8x8_tilemap)
-	dw $6800|$8000
-	dw $0800
-	dl bank_word(wasp_hive_honey_layer_1_8x8_tilemap)
-	dw $6C00|$8000
-	dw $0800
-	dl bank_word(wasp_hive_bg_layer_3_tiledata)
-	dw $7000|$8000
-	dw $1000
-	dl bank_word(wasp_hive_honey_layer_1_tiledata)
-	dw $5300|$8000
-	dw $2A00
-	dl bank_word(wasp_hive_level_tiledata)
-	dw $2000|$8000
-	dw $6600
+	%vram_payload(wasp_hive_bg_layer_3_8x8_tilemap, $6800, $0800, 1)
+	%vram_payload(wasp_hive_honey_layer_1_8x8_tilemap, $6C00, $0800, 1)
+	%vram_payload(wasp_hive_bg_layer_3_tiledata, $7000, $1000, 1)
+	%vram_payload(wasp_hive_honey_layer_1_tiledata, $5300, $2A00, 1)
+	%vram_payload(wasp_hive_level_tiledata, $2000, $6600, 1)
 	db $00
 
 DATA_FD8292:
-	dl bank_word(crocodile_isle_layer_1_tiledata)
-	dw $2000|$8000
-	dw $5F60
-	dl bank_word(crocodile_isle_layer_1_8x8_tilemap)
-	dw $78C0|$8000
-	dw $0D80
-	dl bank_word(crocodile_isle_bg_layer_2_tiledata)
-	dw $5000|$8000
-	dw $2D00
-	dl bank_word(crocodile_isle_bg_layer_2_8x8_tilemap)
-	dw $6800|$8000
-	dw $0F00
-	dl bank_word(crocodile_isle_clouds_layer_3_tiledata)
-	dw $7000|$8000
-	dw $0F00
-	dl bank_word(crocodile_isle_clouds_layer_3_8x8_tilemap)
-	dw $1B40|$8000
-	dw $0800
+	%vram_payload(crocodile_isle_layer_1_tiledata, $2000, $5F60, 1)
+	%vram_payload(crocodile_isle_layer_1_8x8_tilemap, $78C0, $0D80, 1)
+	%vram_payload(crocodile_isle_bg_layer_2_tiledata, $5000, $2D00, 1)
+	%vram_payload(crocodile_isle_bg_layer_2_8x8_tilemap, $6800, $0F00, 1)
+	%vram_payload(crocodile_isle_clouds_layer_3_tiledata, $7000, $0F00, 1)
+	%vram_payload(crocodile_isle_clouds_layer_3_8x8_tilemap, $1B40, $0800, 1)
 	db $00
 
 DATA_FD82BD:
-	dl bank_word(text_tiledata)
-	dw $6000
-	dw $0640
+	%vram_payload(text_tiledata, $6000, $0640, 0)
 	db $00
 
 DATA_FD82C5:
-	dl bank_word(ship_deck_level_tiledata)
-	dw $2000|$8000
-	dw $8000
-	dl bank_word(ship_deck_rigging_layer_3_tiledata)
-	dw $59F0
-	dw $0420
-	dl bank_word(ship_deck_ocean_layer_2_tiledata)
-	dw $6000|$8000
-	dw $2000
-	dl bank_word(ship_deck_ocean_layer_2_8x8_tilemap)
-	dw $5C00|$8000
-	dw $0800
+	%vram_payload(ship_deck_level_tiledata, $2000, $8000, 1)
+	%vram_payload(ship_deck_rigging_layer_3_tiledata, $59F0, $0420, 0)
+	%vram_payload(ship_deck_ocean_layer_2_tiledata, $6000, $2000, 1)
+	%vram_payload(ship_deck_ocean_layer_2_8x8_tilemap, $5C00, $0800, 1)
 	db $00
 
 DATA_FD82E2:
-	dl bank_word(monkey_museum_8x8_tilemap)
-	dw $7000|$8000
-	dw $0800
-	dl bank_word(monkey_museum_tiledata)
-	dw $2000|$8000
-	dw $8000
-	dl bank_word(text_tiledata)
-	dw $6000
-	dw $2000
-	dl bank_word(hud_tiledata)
-	dw $0200
-	dw $0280
+	%vram_payload(monkey_museum_8x8_tilemap, $7000, $0800, 1)
+	%vram_payload(monkey_museum_tiledata, $2000, $8000, 1)
+	%vram_payload(text_tiledata, $6000, $2000, 0)
+	%vram_payload(hud_tiledata, $0200, $0280, 0)
 	db $00
 
 DATA_FD82FF:
-	dl bank_word(funkys_flights_8x8_tilemap)
-	dw $7400|$8000
-	dw $0800
-	dl bank_word(funkys_flights_tiledata)
-	dw $2000|$8000
-	dw $4240
-	dl bank_word(text_tiledata)
-	dw $5000
-	dw $2000
-	dl bank_word(hud_tiledata)
-	dw $0200
-	dw $0280
-	dl bank_word(ship_mast_sky_bg_layer_2_tiledata)
-	dw $6000|$8000
-	dw $2000
-	dl bank_word(ship_mast_sky_bg_layer_2_8x8_tilemap)
-	dw $7C00|$8000
-	dw $0800
+	%vram_payload(funkys_flights_8x8_tilemap, $7400, $0800, 1)
+	%vram_payload(funkys_flights_tiledata, $2000, $4240, 1)
+	%vram_payload(text_tiledata, $5000, $2000, 0)
+	%vram_payload(hud_tiledata, $0200, $0280, 0)
+	%vram_payload(ship_mast_sky_bg_layer_2_tiledata, $6000, $2000, 1)
+	%vram_payload(ship_mast_sky_bg_layer_2_8x8_tilemap, $7C00, $0800, 1)
 	db $00
 
 DATA_FD832A:
-	dl bank_word(kong_kollege_8x8_tilemap)
-	dw $7000
-	dw $0800
-	dl bank_word(kong_kollege_tiledata)
-	dw $2000|$8000
-	dw $8000
-	dl bank_word(text_tiledata)
-	dw $6000
-	dw $2000
-	dl bank_word(hud_tiledata)
-	dw $0200
-	dw $0280
+	%vram_payload(kong_kollege_8x8_tilemap, $7000, $0800, 0)
+	%vram_payload(kong_kollege_tiledata, $2000, $8000, 1)
+	%vram_payload(text_tiledata, $6000, $2000, 0)
+	%vram_payload(hud_tiledata, $0200, $0280, 0)
 	db $00
 
 DATA_FD8347:
-	dl bank_word(swankys_bonus_bonanza_8x8_tilemap)
-	dw $7000|$8000
-	dw $0800
-	dl bank_word(swankys_bonus_bonanza_tiledata)
-	dw $2000|$8000
-	dw $8000
-	dl bank_word(text_tiledata)
-	dw $6000
-	dw $2000
-	dl bank_word(hud_tiledata)
-	dw $0200
-	dw $0280
-	dl bank_word(hud_tiledata)
-	dw $1CC0
-	dw $0400
+	%vram_payload(swankys_bonus_bonanza_8x8_tilemap, $7000, $0800, 1)
+	%vram_payload(swankys_bonus_bonanza_tiledata, $2000, $8000, 1)
+	%vram_payload(text_tiledata, $6000, $2000, 0)
+	%vram_payload(hud_tiledata, $0200, $0280, 0)
+	%vram_payload(hud_tiledata, $1CC0, $0400, 0)
 	db $00
 
 DATA_FD836B:
-	dl bank_word(klubbas_kiosk_8x8_tilemap)
-	dw $7000
-	dw $0800
-	dl bank_word(klubbas_kiosk_tiledata)
-	dw $2000|$8000
-	dw $6000
-	dl bank_word(text_tiledata)
-	dw $6000
-	dw $2000
-	dl bank_word(hud_tiledata)
-	dw $0200
-	dw $0280
-	dl bank_word(hud_tiledata)
-	dw $0200
-	dw $0280
+	%vram_payload(klubbas_kiosk_8x8_tilemap, $7000, $0800, 0)
+	%vram_payload(klubbas_kiosk_tiledata, $2000, $6000, 1)
+	%vram_payload(text_tiledata, $6000, $2000, 0)
+	%vram_payload(hud_tiledata, $0200, $0280, 0)
+	%vram_payload(hud_tiledata, $0200, $0280, 0)
 	db $00
 
 DATA_FD838F:
-	dl bank_word(gangplank_galleon_tiledata)
-	dw $2000|$8000
-	dw $6DC0
-	dl bank_word(gangplank_galleon_8x8_tilemap)
-	dw $7800
-	dw $0700
+	%vram_payload(gangplank_galleon_tiledata, $2000, $6DC0, 1)
+	%vram_payload(gangplank_galleon_8x8_tilemap, $7800, $0700, 0)
 	db $00
 
 DATA_FD839E:
-	dl bank_word(crocodile_cauldron_tiledata)
-	dw $2000|$8000
-	dw $7000
-	dl bank_word(crocodile_cauldron_8x8_tilemap)
-	dw $7800
-	dw $0700
+	%vram_payload(crocodile_cauldron_tiledata, $2000, $7000, 1)
+	%vram_payload(crocodile_cauldron_8x8_tilemap, $7800, $0700, 0)
 	db $00
 
 DATA_FD83AD:
-	dl bank_word(krem_quay_tiledata)
-	dw $2000|$8000
-	dw $7CA0
-	dl bank_word(krem_quay_left_8x8_tilemap)
-	dw $7000|$8000
-	dw $0700
-	dl bank_word(krem_quay_right_8x8_tilemap)
-	dw $7400|$8000
-	dw $0700
+	%vram_payload(krem_quay_tiledata, $2000, $7CA0, 1)
+	%vram_payload(krem_quay_left_8x8_tilemap, $7000, $0700, 1)
+	%vram_payload(krem_quay_right_8x8_tilemap, $7400, $0700, 1)
 	db $00
 
 DATA_FD83C3:
-	dl bank_word(krazy_kremland_bottom_tiledata)
-	dw $2000|$8000
-	dw $6E20
-	dl bank_word(krazy_kremland_bottom_8x8_tilemap)
-	dw $7800|$8000
-	dw $0700
+	%vram_payload(krazy_kremland_bottom_tiledata, $2000, $6E20, 1)
+	%vram_payload(krazy_kremland_bottom_8x8_tilemap, $7800, $0700, 1)
 	db $00
 
 DATA_FD83D2:
-	dl bank_word(gloomy_gulch_tiledata)
-	dw $2000|$8000
-	dw $6E40
-	dl bank_word(gloomy_gulch_8x8_tilemap)
-	dw $7800|$8000
-	dw $0700
+	%vram_payload(gloomy_gulch_tiledata, $2000, $6E40, 1)
+	%vram_payload(gloomy_gulch_8x8_tilemap, $7800, $0700, 1)
 	db $00
 
 DATA_FD83E1:
-	dl bank_word(k_rools_keep_tiledata)
-	dw $2000|$8000
-	dw $7FC0
-	dl bank_word(k_rools_keep_8x8_tilemap)
-	dw $7000|$8000
-	dw $0E00
+	%vram_payload(k_rools_keep_tiledata, $2000, $7FC0, 1)
+	%vram_payload(k_rools_keep_8x8_tilemap, $7000, $0E00, 1)
 	db $00
 
 DATA_FD83F0:
-	dl bank_word(lost_world_tiledata)
-	dw $2000|$8000
-	dw $6E80
-	dl bank_word(lost_world_8x8_tilemap)
-	dw $7800
-	dw $0700
-	dl bank_word(lost_world_head_layer_1_tiledata)
-	dw $7C00|$8000
-	dw $0700
-	dl bank_word(lost_world_head_layer_1_8x8_tilemap)
-	dw $6010
-	dw $0800
+	%vram_payload(lost_world_tiledata, $2000, $6E80, 1)
+	%vram_payload(lost_world_8x8_tilemap, $7800, $0700, 0)
+	%vram_payload(lost_world_head_layer_1_tiledata, $7C00, $0700, 1)
+	%vram_payload(lost_world_head_layer_1_8x8_tilemap, $6010, $0800, 0)
 	db $00
 
 DATA_FD840D:
-	dl bank_word(the_flying_krock_tiledata)
-	dw $2000|$8000
-	dw $6E40
-	dl bank_word(the_flying_krock_8x8_tilemap)
-	dw $7800
-	dw $0700
+	%vram_payload(the_flying_krock_tiledata, $2000, $6E40, 1)
+	%vram_payload(the_flying_krock_8x8_tilemap, $7800, $0700, 0)
 	db $00
 
 DATA_FD841C:
-	dl bank_word(krazy_kremland_top_tiledata)
-	dw $2000|$8000
-	dw $6960
-	dl bank_word(krazy_kremland_top_8x8_tilemap)
-	dw $7800|$8000
-	dw $0700
+	%vram_payload(krazy_kremland_top_tiledata, $2000, $6960, 1)
+	%vram_payload(krazy_kremland_top_8x8_tilemap, $7800, $0700, 1)
 	db $00
 
 DATA_FD842B:
-	dl bank_word(star_tiledata)
-	dw $1E00
-	dw $0400
+	%vram_payload(star_tiledata, $1E00, $0400, 0)
 	db $00
 
 DATA_FD8433:
-	dl bank_word(forest_level_tiledata)
-	dw $2000|$8000
-	dw $71C0
-	dl bank_word(forest_bg_layer_3_8x8_tilemap)
-	dw $5C00|$8000
-	dw $0800
-	dl bank_word(forest_bg_layer_3_tiledata)
-	dw $6000
-	dw $1000
-	dl bank_word(falling_leaves_8x8_tilemap)
-	dw $5800|$8000
-	dw $0800
-	dl bank_word(falling_leaves_tiledata)
-	dw $7010
-	dw $0800
+	%vram_payload(forest_level_tiledata, $2000, $71C0, 1)
+	%vram_payload(forest_bg_layer_3_8x8_tilemap, $5C00, $0800, 1)
+	%vram_payload(forest_bg_layer_3_tiledata, $6000, $1000, 0)
+	%vram_payload(falling_leaves_8x8_tilemap, $5800, $0800, 1)
+	%vram_payload(falling_leaves_tiledata, $7010, $0800, 0)
 	db $00
 
 DATA_FD8457:
-	dl bank_word(forest_level_tiledata)
-	dw $2000|$8000
-	dw $71C0
-	dl bank_word(forest_bg_layer_3_8x8_tilemap)
-	dw $5C00|$8000
-	dw $0800
-	dl bank_word(forest_bg_layer_3_tiledata)
-	dw $6000
-	dw $1000
-	dl bank_word(forest_light_shafts_layer_1_8x8_tilemap)
-	dw $5800|$8000
-	dw $0700
-	dl bank_word(forest_light_shafts_layer_1_tiledata)
-	dw $7000|$8000
-	dw $2000
+	%vram_payload(forest_level_tiledata, $2000, $71C0, 1)
+	%vram_payload(forest_bg_layer_3_8x8_tilemap, $5C00, $0800, 1)
+	%vram_payload(forest_bg_layer_3_tiledata, $6000, $1000, 0)
+	%vram_payload(forest_light_shafts_layer_1_8x8_tilemap, $5800, $0700, 1)
+	%vram_payload(forest_light_shafts_layer_1_tiledata, $7000, $2000, 1)
 	db $00
 
 DATA_FD847B:
-	dl bank_word(gameover_screen_8x8_tilemap)
-	dw $6C00
-	dw $0580
-	dl bank_word(DATA_FA5C41)
-	dw $72C0
-	dw $0180
-	dl bank_word(gameover_screen_tiledata)
-	dw $2000|$8000
-	dw $8000
+	%vram_payload(gameover_screen_8x8_tilemap, $6C00, $0580, 0)
+	%vram_payload(DATA_FA5C41, $72C0, $0180, 0)
+	%vram_payload(gameover_screen_tiledata, $2000, $8000, 1)
 	db $00
 
 DATA_FD8491:
-	dl bank_word(lava_level_tiledata)
-	dw $2000|$8000
-	dw $8000
-	dl bank_word(lava_fall_layer_3_tiledata)
-	dw $6000|$8000
-	dw $0800
-	dl bank_word(lava_fall_layer_3_8x8_tilemap)
-	dw $7400
-	dw $0700
+	%vram_payload(lava_level_tiledata, $2000, $8000, 1)
+	%vram_payload(lava_fall_layer_3_tiledata, $6000, $0800, 1)
+	%vram_payload(lava_fall_layer_3_8x8_tilemap, $7400, $0700, 0)
 	db $00
 
 DATA_FD84A7:
-	dl bank_word(ship_mast_level_tiledata)
-	dw $2000|$8000
-	dw $7800
-	dl bank_word(ship_mast_sky_bg_layer_2_tiledata)
-	dw $5000|$8000
-	dw $2000
-	dl bank_word(ship_mast_sky_bg_layer_2_8x8_tilemap)
-	dw $7000|$8000
-	dw $0800
-	dl bank_word(ship_mast_rain_layer_3_8x8_tilemap)
-	dw $6C00
-	dw $0200
-	dl bank_word(ship_mast_rain_layer_3_8x8_tilemap)
-	dw $6D00
-	dw $0200
-	dl bank_word(ship_mast_rain_layer_3_8x8_tilemap)
-	dw $6E00
-	dw $0200
-	dl bank_word(ship_mast_rain_layer_3_8x8_tilemap)
-	dw $6F00
-	dw $0200
+	%vram_payload(ship_mast_level_tiledata, $2000, $7800, 1)
+	%vram_payload(ship_mast_sky_bg_layer_2_tiledata, $5000, $2000, 1)
+	%vram_payload(ship_mast_sky_bg_layer_2_8x8_tilemap, $7000, $0800, 1)
+	%vram_payload(ship_mast_rain_layer_3_8x8_tilemap, $6C00, $0200, 0)
+	%vram_payload(ship_mast_rain_layer_3_8x8_tilemap, $6D00, $0200, 0)
+	%vram_payload(ship_mast_rain_layer_3_8x8_tilemap, $6E00, $0200, 0)
+	%vram_payload(ship_mast_rain_layer_3_8x8_tilemap, $6F00, $0200, 0)
 	db $00
 
 DATA_FD84D9:
-	dl bank_word(carnival_level_tiledata)
-	dw $2000|$8000
-	dw $7800
-	dl bank_word(carnival_bg_layer_2_8x8_tilemap)
-	dw $5C00|$8000
-	dw $0800
-	dl bank_word(carnival_bg_layer_2_tiledata)
-	dw $6000|$8000
-	dw $2400
+	%vram_payload(carnival_level_tiledata, $2000, $7800, 1)
+	%vram_payload(carnival_bg_layer_2_8x8_tilemap, $5C00, $0800, 1)
+	%vram_payload(carnival_bg_layer_2_tiledata, $6000, $2400, 1)
 	db $00
 
 DATA_FD84EF:
-	dl bank_word(ship_deck_cabin_tiledata)
-	dw $2000|$8000
-	dw $5220
-	dl bank_word(ship_deck_cabin_8x8_tilemap)
-	dw $7000|$8000
-	dw $0700
-	dl bank_word(text_tiledata)
-	dw $5000
-	dw $2000
-	dl bank_word(ship_deck_ocean_layer_2_tiledata)
-	dw $6000|$8000
-	dw $1FC0
-	dl bank_word(ship_deck_ocean_layer_2_8x8_tilemap)
-	dw $7800|$8000
-	dw $0700
+	%vram_payload(ship_deck_cabin_tiledata, $2000, $5220, 1)
+	%vram_payload(ship_deck_cabin_8x8_tilemap, $7000, $0700, 1)
+	%vram_payload(text_tiledata, $5000, $2000, 0)
+	%vram_payload(ship_deck_ocean_layer_2_tiledata, $6000, $1FC0, 1)
+	%vram_payload(ship_deck_ocean_layer_2_8x8_tilemap, $7800, $0700, 1)
 	db $00
 
 DATA_FD8513:
-	dl bank_word(mine_level_tiledata)
-	dw $2000|$8000
-	dw $7800
-	dl bank_word(mine_bg_layer_2_tiledata)
-	dw $6000|$8000
-	dw $23E0
-	dl bank_word(mine_bg_layer_2_8x8_tilemap)
-	dw $5C00|$8000
-	dw $0800
-	dl bank_word(sparkle_layer_3_tiledata)
-	dw $5000|$8000
-	dw $0500
-	dl bank_word(sparkle_layer_3_8x8_tilemap)
-	dw $5800|$8000
-	dw $0800
+	%vram_payload(mine_level_tiledata, $2000, $7800, 1)
+	%vram_payload(mine_bg_layer_2_tiledata, $6000, $23E0, 1)
+	%vram_payload(mine_bg_layer_2_8x8_tilemap, $5C00, $0800, 1)
+	%vram_payload(sparkle_layer_3_tiledata, $5000, $0500, 1)
+	%vram_payload(sparkle_layer_3_8x8_tilemap, $5800, $0800, 1)
 	db $00
 
 DATA_FD8537:
-	dl bank_word(ship_mast_level_tiledata)
-	dw $2000|$8000
-	dw $5E00
-	dl bank_word(ship_mast_sky_bg_layer_2_tiledata)
-	dw $5000|$8000
-	dw $2000
-	dl bank_word(ship_mast_sky_bg_layer_2_8x8_tilemap)
-	dw $7000|$8000
-	dw $0800
-	dl bank_word(ship_mast_clouds_fg_layer_3_tiledata)
-	dw $6000|$8000
-	dw $1800
-	dl bank_word(ship_mast_clouds_fg_layer_3_8x8_tilemap)
-	dw $6C00|$8000
-	dw $0800
+	%vram_payload(ship_mast_level_tiledata, $2000, $5E00, 1)
+	%vram_payload(ship_mast_sky_bg_layer_2_tiledata, $5000, $2000, 1)
+	%vram_payload(ship_mast_sky_bg_layer_2_8x8_tilemap, $7000, $0800, 1)
+	%vram_payload(ship_mast_clouds_fg_layer_3_tiledata, $6000, $1800, 1)
+	%vram_payload(ship_mast_clouds_fg_layer_3_8x8_tilemap, $6C00, $0800, 1)
 	db $00
 
 DATA_FD855B:
-	dl bank_word(swamp_level_tiledata)
-	dw $2000|$8000
-	dw $70E0
-	dl bank_word(swamp_bg_layer_3_tiledata)
-	dw $5918|$8000
-	dw $0DD0
-	dl bank_word(swamp_bg_layer_3_8x8_tilemap)
-	dw $6C80|$8000
-	dw $0700
-	dl bank_word(swamp_bg_layer_3_8x8_tilemap)
-	dw $6C60|$8000
-	dw $0700
-	dl bank_word(swamp_bg_layer_3_8x8_tilemap)
-	dw $6C40|$8000
-	dw $0700
-	dl bank_word(swamp_bg_layer_3_8x8_tilemap)
-	dw $6C20|$8000
-	dw $0700
-	dl bank_word(swamp_bg_layer_3_8x8_tilemap)
-	dw $6C00|$8000
-	dw $0700
-	dl bank_word(swamp_fg_layer_1_tiledata)
-	dw $6000|$8000
-	dw $1680
-	dl bank_word(swamp_fg_1_layer_1_8x8_tilemap)
-	dw $7000|$8000
-	dw $0400
-	dl bank_word(swamp_fg_2_layer_1_8x8_tilemap)
-	dw $7400|$8000
-	dw $0400
+	%vram_payload(swamp_level_tiledata, $2000, $70E0, 1)
+	%vram_payload(swamp_bg_layer_3_tiledata, $5918, $0DD0, 1)
+	%vram_payload(swamp_bg_layer_3_8x8_tilemap, $6C80, $0700, 1)
+	%vram_payload(swamp_bg_layer_3_8x8_tilemap, $6C60, $0700, 1)
+	%vram_payload(swamp_bg_layer_3_8x8_tilemap, $6C40, $0700, 1)
+	%vram_payload(swamp_bg_layer_3_8x8_tilemap, $6C20, $0700, 1)
+	%vram_payload(swamp_bg_layer_3_8x8_tilemap, $6C00, $0700, 1)
+	%vram_payload(swamp_fg_layer_1_tiledata, $6000, $1680, 1)
+	%vram_payload(swamp_fg_1_layer_1_8x8_tilemap, $7000, $0400, 1)
+	%vram_payload(swamp_fg_2_layer_1_8x8_tilemap, $7400, $0400, 1)
 	db $00
 
 DATA_FD85A2:
-	dl bank_word(brambles_level_tiledata)
-	dw $2000|$8000
-	dw $70E0
-	dl bank_word(brambles_sky_bg_layer_3_tiledata)
-	dw $5888|$8000
-	dw $0EF0
-	dl bank_word(brambles_sky_bg_layer_3_8x8_tilemap)
-	dw $7400|$8000
-	dw $0800
-	dl bank_word(brambles_bg_layer_2_tiledata)
-	dw $6000|$8000
-	dw $2000
-	dl bank_word(brambles_bg_layer_2_8x8_tilemap)
-	dw $7000|$8000
-	dw $0800
+	%vram_payload(brambles_level_tiledata, $2000, $70E0, 1)
+	%vram_payload(brambles_sky_bg_layer_3_tiledata, $5888, $0EF0, 1)
+	%vram_payload(brambles_sky_bg_layer_3_8x8_tilemap, $7400, $0800, 1)
+	%vram_payload(brambles_bg_layer_2_tiledata, $6000, $2000, 1)
+	%vram_payload(brambles_bg_layer_2_8x8_tilemap, $7000, $0800, 1)
 	db $00
 
 DATA_FD85C6:
-	dl bank_word(ship_hold_level_tiledata)
-	dw $2000|$8000
-	dw $3400
-	dl bank_word(DATA_C2FAC9)
-	dw $7000|$8000
-	dw $0700
-	dl bank_word(DATA_C6FC11)
-	dw $7400|$8000
-	dw $0700
-	dl bank_word(DATA_CCFD95)
-	dw $7800|$8000
-	dw $0300
-	dl bank_word(DATA_C9FF37)
-	dw $7C00|$8000
-	dw $0300
-	dl bank_word(DATA_E9A905)
-	dw $4000|$8000
-	dw $5480
-	dl bank_word(DATA_FA0AC0)
-	dw $4000
-	dw $0020
-	dl bank_word(DATA_FA0A60)
-	dw $65D0
-	dw $0040
-	dl bank_word(DATA_FA0AA0)
-	dw $6660
-	dw $0020
-	dl bank_word(DATA_FA0AE0)
-	dw $6740
-	dw $0040
-	dl bank_word(DATA_EAA93D)
-	dw $6000
-	dw $0010
+	%vram_payload(ship_hold_level_tiledata, $2000, $3400, 1)
+	%vram_payload(DATA_C2FAC9, $7000, $0700, 1)
+	%vram_payload(DATA_C6FC11, $7400, $0700, 1)
+	%vram_payload(DATA_CCFD95, $7800, $0300, 1)
+	%vram_payload(DATA_C9FF37, $7C00, $0300, 1)
+	%vram_payload(DATA_E9A905, $4000, $5480, 1)
+	%vram_payload(DATA_FA0AC0, $4000, $0020, 0)
+	%vram_payload(DATA_FA0A60, $65D0, $0040, 0)
+	%vram_payload(DATA_FA0AA0, $6660, $0020, 0)
+	%vram_payload(DATA_FA0AE0, $6740, $0040, 0)
+	%vram_payload(DATA_EAA93D, $6000, $0010, 0)
 	db $00
 
 DATA_FD8614:
-	dl bank_word(lava_level_tiledata)
-	dw $2000|$8000
-	dw $8000
-	dl bank_word(DATA_EB4B73)
-	dw $6000|$8000
-	dw $0800
+	%vram_payload(lava_level_tiledata, $2000, $8000, 1)
+	%vram_payload(DATA_EB4B73, $6000, $0800, 1)
 	db $00
 
 DATA_FD8623:
-	dl bank_word(krocodile_kore_level_tiledata)
-	dw $2000|$8000
-	dw $8000
-	dl bank_word(DATA_EAD7DE)
-	dw $74E0|$8000
-	dw $0640
-	dl bank_word(DATA_F41592)
-	dw $6800
-	dw $02C0
+	%vram_payload(krocodile_kore_level_tiledata, $2000, $8000, 1)
+	%vram_payload(DATA_EAD7DE, $74E0, $0640, 1)
+	%vram_payload(DATA_F41592, $6800, $02C0, 0)
 	db $00
 
 DATA_FD8639:
-	dl bank_word(DATA_E9A905)
-	dw $2000|$8000
-	dw $5480
-	dl bank_word(DATA_E199BE)
-	dw $2000
-	dw $2580
-	dl bank_word(DATA_E1BF3E)
-	dw $4420
-	dw $37C0
-	dl bank_word(DATA_EB4916)
-	dw $6000|$8000
-	dw $0500
-	dl bank_word(DATA_E9A745)
-	dw $66A0
-	dw $01C0
+	%vram_payload(DATA_E9A905, $2000, $5480, 1)
+	%vram_payload(DATA_E199BE, $2000, $2580, 0)
+	%vram_payload(DATA_E1BF3E, $4420, $37C0, 0)
+	%vram_payload(DATA_EB4916, $6000, $0500, 1)
+	%vram_payload(DATA_E9A745, $66A0, $01C0, 0)
 	db $00
 
 DATA_FD865D:
-	dl bank_word(carnival_level_tiledata)
-	dw $2000|$8000
-	dw $6C80
-	dl bank_word(haunted_hall_bg_layer_3_8x8_tilemap)
-	dw $5800|$8000
-	dw $1000
-	dl bank_word(haunted_hall_bg_layer_3_tiledata)
-	dw $6000|$8000
-	dw $1000
-	dl bank_word(haunted_hall_kackle_layer_2_tiledata)
-	dw $7350|$8000
-	dw $0600
-	dl bank_word(haunted_hall_kackle_layer_2_8x8_tilemap)
-	dw $6800|$8000
-	dw $0340
+	%vram_payload(carnival_level_tiledata, $2000, $6C80, 1)
+	%vram_payload(haunted_hall_bg_layer_3_8x8_tilemap, $5800, $1000, 1)
+	%vram_payload(haunted_hall_bg_layer_3_tiledata, $6000, $1000, 1)
+	%vram_payload(haunted_hall_kackle_layer_2_tiledata, $7350, $0600, 1)
+	%vram_payload(haunted_hall_kackle_layer_2_8x8_tilemap, $6800, $0340, 1)
 	db $00
 
 DATA_FD8681:
-	dl bank_word(ship_mast_level_tiledata)
-	dw $2000|$8000
-	dw $5D20
-	dl bank_word(ship_mast_sky_bg_layer_2_tiledata)
-	dw $5000|$8000
-	dw $2000
-	dl bank_word(ship_mast_sky_bg_layer_2_8x8_tilemap)
-	dw $7000|$8000
-	dw $0800
-	dl bank_word(water_layer_3_8x8_tilemap)
-	dw $6C00|$8000
-	dw $0800
-	dl bank_word(water_layer_3_tiledata)
-	dw $6A60|$8000
-	dw $0240
+	%vram_payload(ship_mast_level_tiledata, $2000, $5D20, 1)
+	%vram_payload(ship_mast_sky_bg_layer_2_tiledata, $5000, $2000, 1)
+	%vram_payload(ship_mast_sky_bg_layer_2_8x8_tilemap, $7000, $0800, 1)
+	%vram_payload(water_layer_3_8x8_tilemap, $6C00, $0800, 1)
+	%vram_payload(water_layer_3_tiledata, $6A60, $0240, 1)
 	db $00
 
 DATA_FD86A5:
-	dl bank_word(k_rool_duel_level_tiledata)
-	dw $2000|$8000
-	dw $8000
-	dl bank_word(brambles_sky_bg_layer_3_tiledata)
-	dw $6888|$8000
-	dw $0EF0
-	dl bank_word(brambles_sky_bg_layer_3_8x8_tilemap)
-	dw $7400|$8000
-	dw $0800
+	%vram_payload(k_rool_duel_level_tiledata, $2000, $8000, 1)
+	%vram_payload(brambles_sky_bg_layer_3_tiledata, $6888, $0EF0, 1)
+	%vram_payload(brambles_sky_bg_layer_3_8x8_tilemap, $7400, $0800, 1)
 	db $00
 
 DATA_FD86BB:
-	dl bank_word(ice_level_tiledata)
-	dw $2000|$8000
-	dw $5100
-	dl bank_word(ice_bg_layer_2_8x8_tilemap)
-	dw $7400|$8000
-	dw $0800
-	dl bank_word(ice_bg_layer_2_tiledata)
-	dw $5000|$8000
-	dw $2000
-	dl bank_word(ice_bg_transparent_layer_3_8x8_tilemap)
-	dw $7000
-	dw $0800
-	dl bank_word(ice_bg_transparent_layer_3_tiledata)
-	dw $6000
-	dw $1000
-	dl bank_word(water_layer_3_tiledata)
-	dw $4A60|$8000
-	dw $0240
-	dl bank_word(water_layer_3_8x8_tilemap)
-	dw $6C00|$8000
-	dw $0800
+	%vram_payload(ice_level_tiledata, $2000, $5100, 1)
+	%vram_payload(ice_bg_layer_2_8x8_tilemap, $7400, $0800, 1)
+	%vram_payload(ice_bg_layer_2_tiledata, $5000, $2000, 1)
+	%vram_payload(ice_bg_transparent_layer_3_8x8_tilemap, $7000, $0800, 0)
+	%vram_payload(ice_bg_transparent_layer_3_tiledata, $6000, $1000, 0)
+	%vram_payload(water_layer_3_tiledata, $4A60, $0240, 1)
+	%vram_payload(water_layer_3_8x8_tilemap, $6C00, $0800, 1)
 	db $00
 
 DATA_FD86ED:
-	dl bank_word(jungle_level_tiledata)
-	dw $2000|$8000
-	dw $8000
-	dl bank_word(jungle_bg_layer_3_8x8_tilemap)
-	dw $6C00|$8000
-	dw $0800
-	dl bank_word(jungle_bg_layer_3_tiledata)
-	dw $6000|$8000
-	dw $1000
+	%vram_payload(jungle_level_tiledata, $2000, $8000, 1)
+	%vram_payload(jungle_bg_layer_3_8x8_tilemap, $6C00, $0800, 1)
+	%vram_payload(jungle_bg_layer_3_tiledata, $6000, $1000, 1)
 	db $00
 
 DATA_FD8703:
-	dl bank_word(DATA_E9A905)
-	dw $2000|$8000
-	dw $5480
-	dl bank_word(DATA_E199BE)
-	dw $2000
-	dw $2580
-	dl bank_word(DATA_E1BF3E)
-	dw $4420
-	dw $37C0
-	dl bank_word(water_layer_3_8x8_tilemap)
-	dw $6C00|$8000
-	dw $0800
-	dl bank_word(water_layer_3_tiledata)
-	dw $6A60|$8000
-	dw $0240
+	%vram_payload(DATA_E9A905, $2000, $5480, 1)
+	%vram_payload(DATA_E199BE, $2000, $2580, 0)
+	%vram_payload(DATA_E1BF3E, $4420, $37C0, 0)
+	%vram_payload(water_layer_3_8x8_tilemap, $6C00, $0800, 1)
+	%vram_payload(water_layer_3_tiledata, $6A60, $0240, 1)
 	db $00
 
 DATA_FD8727:
-	dl bank_word(brambles_level_tiledata)
-	dw $2000|$8000
-	dw $70E0
-	dl bank_word(brambles_sky_bg_layer_3_tiledata)
-	dw $5888|$8000
-	dw $0EF0
-	dl bank_word(brambles_sky_bg_layer_3_8x8_tilemap)
-	dw $7400|$8000
-	dw $0800
-	dl bank_word(falling_leaves_tiledata)
-	dw $7010
-	dw $07E0
+	%vram_payload(brambles_level_tiledata, $2000, $70E0, 1)
+	%vram_payload(brambles_sky_bg_layer_3_tiledata, $5888, $0EF0, 1)
+	%vram_payload(brambles_sky_bg_layer_3_8x8_tilemap, $7400, $0800, 1)
+	%vram_payload(falling_leaves_tiledata, $7010, $07E0, 0)
 	db $00
 
 DATA_FD8744:
-	dl bank_word(mine_level_tiledata)
-	dw $2000|$8000
-	dw $6000
-	dl bank_word(mine_bg_layer_2_tiledata)
-	dw $6000|$8000
-	dw $23E0
-	dl bank_word(mine_bg_layer_2_8x8_tilemap)
-	dw $5C00|$8000
-	dw $0800
-	dl bank_word(mine_debris_layer_3_8x8_tilemap)
-	dw $5800|$8000
-	dw $0800
-	dl bank_word(mine_debris_layer_3_tiledata)
-	dw $5008
-	dw $0400
+	%vram_payload(mine_level_tiledata, $2000, $6000, 1)
+	%vram_payload(mine_bg_layer_2_tiledata, $6000, $23E0, 1)
+	%vram_payload(mine_bg_layer_2_8x8_tilemap, $5C00, $0800, 1)
+	%vram_payload(mine_debris_layer_3_8x8_tilemap, $5800, $0800, 1)
+	%vram_payload(mine_debris_layer_3_tiledata, $5008, $0400, 0)
 	db $00
 
 DATA_FD8768:
-	dl bank_word(forest_level_tiledata)
-	dw $2000|$8000
-	dw $71C0
-	dl bank_word(forest_bg_layer_3_8x8_tilemap)
-	dw $5C00|$8000
-	dw $0800
-	dl bank_word(forest_bg_layer_3_tiledata)
-	dw $6000
-	dw $1000
-	dl bank_word(forest_fog_layer_1_tiledata)
-	dw $7000
-	dw $1E00
-	dl bank_word(forest_fog_layer_1_8x8_tilemap)
-	dw $5800
-	dw $0800
+	%vram_payload(forest_level_tiledata, $2000, $71C0, 1)
+	%vram_payload(forest_bg_layer_3_8x8_tilemap, $5C00, $0800, 1)
+	%vram_payload(forest_bg_layer_3_tiledata, $6000, $1000, 0)
+	%vram_payload(forest_fog_layer_1_tiledata, $7000, $1E00, 0)
+	%vram_payload(forest_fog_layer_1_8x8_tilemap, $5800, $0800, 0)
 	db $00
 
 DATA_FD878C:
-	dl bank_word(DATA_EC83A0)
-	dw $2000|$8000
-	dw $8000
-	dl bank_word(DATA_EC7CF0)
-	dw $7400|$8000
-	dw $0800
-	dl bank_word(DATA_ED9179)
-	dw $6000|$8000
-	dw $0D80
-	dl bank_word(DATA_ED9E72)
-	dw $7800|$8000
-	dw $0800
+	%vram_payload(DATA_EC83A0, $2000, $8000, 1)
+	%vram_payload(DATA_EC7CF0, $7400, $0800, 1)
+	%vram_payload(DATA_ED9179, $6000, $0D80, 1)
+	%vram_payload(DATA_ED9E72, $7800, $0800, 1)
 	db $00
 
 DATA_FD87A9:
-	dl bank_word(DATA_EC83A0)
-	dw $2000|$8000
-	dw $8000
-	dl bank_word(DATA_EC7CF0)
-	dw $7400|$8000
-	dw $0800
-	dl bank_word(DATA_ED78D3)
-	dw $6000|$8000
-	dw $0FA0
-	dl bank_word(DATA_EDA030)
-	dw $7800|$8000
-	dw $0800
+	%vram_payload(DATA_EC83A0, $2000, $8000, 1)
+	%vram_payload(DATA_EC7CF0, $7400, $0800, 1)
+	%vram_payload(DATA_ED78D3, $6000, $0FA0, 1)
+	%vram_payload(DATA_EDA030, $7800, $0800, 1)
 	db $00
 
 DATA_FD87C6:
-	dl bank_word(DATA_EC83A0)
-	dw $2000|$8000
-	dw $8000
-	dl bank_word(DATA_EC7CF0)
-	dw $7400|$8000
-	dw $0800
-	dl bank_word(DATA_ED8584)
-	dw $6000|$8000
-	dw $0FA0
-	dl bank_word(DATA_ED9C9A)
-	dw $7800|$8000
-	dw $0800
+	%vram_payload(DATA_EC83A0, $2000, $8000, 1)
+	%vram_payload(DATA_EC7CF0, $7400, $0800, 1)
+	%vram_payload(DATA_ED8584, $6000, $0FA0, 1)
+	%vram_payload(DATA_ED9C9A, $7800, $0800, 1)
 	db $00
 
 DATA_FD87E3:
-	dl bank_word(DATA_EC83A0)
-	dw $2000|$8000
-	dw $6000
-	dl bank_word(DATA_EC7CF0)
-	dw $7800|$8000
-	dw $0800
-	dl bank_word(DATA_F40000)
-	dw $5800|$8000
-	dw $0A40
-	dl bank_word(DATA_F30700)
-	dw $7400|$8000
-	dw $0140
-	dl bank_word(DATA_FC0660)
-	dw $5000
-	dw $0E00
+	%vram_payload(DATA_EC83A0, $2000, $6000, 1)
+	%vram_payload(DATA_EC7CF0, $7800, $0800, 1)
+	%vram_payload(DATA_F40000, $5800, $0A40, 1)
+	%vram_payload(DATA_F30700, $7400, $0140, 1)
+	%vram_payload(DATA_FC0660, $5000, $0E00, 0)
 	db $00
 
 DATA_FD8807:
-	dl bank_word(video_game_hero_screen_tiledata)
-	dw $2000|$8000
-	dw $4260
-	dl bank_word(video_game_hero_screen_8x8_tilemap)
-	dw $7400|$8000
-	dw $0800
-	dl bank_word(text_tiledata)
-	dw $6000
-	dw $2000
-	dl bank_word(hud_tiledata)
-	dw $0200
-	dw $0280
-	dl bank_word(DATA_FC1060)
-	dw $0000
-	dw $0040
-	dl bank_word(DATA_FC1460)
-	dw $0020
-	dw $0040
+	%vram_payload(video_game_hero_screen_tiledata, $2000, $4260, 1)
+	%vram_payload(video_game_hero_screen_8x8_tilemap, $7400, $0800, 1)
+	%vram_payload(text_tiledata, $6000, $2000, 0)
+	%vram_payload(hud_tiledata, $0200, $0280, 0)
+	%vram_payload(DATA_FC1060, $0000, $0040, 0)
+	%vram_payload(DATA_FC1460, $0020, $0040, 0)
 	db $00
 
 DATA_FD8832:
-	dl bank_word(klubbas_kiosk_8x8_tilemap)
-	dw $7800
-	dw $0800
-	dl bank_word(klubbas_kiosk_tiledata)
-	dw $2000|$8000
-	dw $6000
-	dl bank_word(DATA_FC0660)
-	dw $0020
-	dw $12C0
-	dl bank_word(haunted_hall_kackle_layer_2_tiledata)
-	dw $7350|$8000
-	dw $0600
-	dl bank_word(haunted_hall_kackle_layer_2_8x8_tilemap)
-	dw $6800|$8000
-	dw $0340
+	%vram_payload(klubbas_kiosk_8x8_tilemap, $7800, $0800, 0)
+	%vram_payload(klubbas_kiosk_tiledata, $2000, $6000, 1)
+	%vram_payload(DATA_FC0660, $0020, $12C0, 0)
+	%vram_payload(haunted_hall_kackle_layer_2_tiledata, $7350, $0600, 1)
+	%vram_payload(haunted_hall_kackle_layer_2_8x8_tilemap, $6800, $0340, 1)
 	db $00
 
 DATA_FD8856:
-	dl bank_word(gameover_screen_8x8_tilemap)
-	dw $6C80
-	dw $0580
-	dl bank_word(gameover_screen_tiledata)
-	dw $2000|$8000
-	dw $8000
-	dl bank_word(text_tiledata)
-	dw $0000
-	dw $0CA0
-	dl bank_word(DATA_EDE455)
-	dw $7120|$8000
-	dw $0300
+	%vram_payload(gameover_screen_8x8_tilemap, $6C80, $0580, 0)
+	%vram_payload(gameover_screen_tiledata, $2000, $8000, 1)
+	%vram_payload(text_tiledata, $0000, $0CA0, 0)
+	%vram_payload(DATA_EDE455, $7120, $0300, 1)
 	db $00
 
 DATA_FD8873:
-	dl bank_word(gameover_screen_8x8_tilemap)
-	dw $6C80
-	dw $0580
-	dl bank_word(gameover_screen_tiledata)
-	dw $2000|$8000
-	dw $8000
-	dl bank_word(text_tiledata)
-	dw $0000
-	dw $0CA0
-	dl bank_word(DATA_EDE53C)
-	dw $7100|$8000
-	dw $0380
+	%vram_payload(gameover_screen_8x8_tilemap, $6C80, $0580, 0)
+	%vram_payload(gameover_screen_tiledata, $2000, $8000, 1)
+	%vram_payload(text_tiledata, $0000, $0CA0, 0)
+	%vram_payload(DATA_EDE53C, $7100, $0380, 1)
 	db $00
 
 DATA_FD8890:
-	dl bank_word(gameover_screen_8x8_tilemap)
-	dw $6C80
-	dw $0580
-	dl bank_word(gameover_screen_tiledata)
-	dw $2000|$8000
-	dw $8000
-	dl bank_word(text_tiledata)
-	dw $0000
-	dw $0CA0
-	dl bank_word(DATA_EDE653)
-	dw $7100|$8000
-	dw $0380
+	%vram_payload(gameover_screen_8x8_tilemap, $6C80, $0580, 0)
+	%vram_payload(gameover_screen_tiledata, $2000, $8000, 1)
+	%vram_payload(text_tiledata, $0000, $0CA0, 0)
+	%vram_payload(DATA_EDE653, $7100, $0380, 1)
 	db $00
 
 DATA_FD88AD:
@@ -8674,6 +8317,7 @@ DATA_FDCA13:
 DATA_FDCA3F:
 	incsrc "data/levels/bananas/haunted_hall_bonus_2_bananas.asm"
 
+;banana patterns
 DATA_FDCA83:
 	dw DATA_FDCB5D-DATA_FDCA83
 	dw DATA_FDCB60-DATA_FDCA83
@@ -9308,6 +8952,8 @@ DATA_FDCF65:
 	db $00, $00, $00, $00, $00, $00, $00, $00
 	db $00, $00, $00, $00, $00, $00, $00, $00
 
+;klank race data table
+;spawn location data, trigger data, min speed, max speed
 DATA_FDD364:
 	dw DATA_FDD4E4, DATA_FDDAD0, $0480, $0680
 	dw DATA_FDD4D6, DATA_FDDA70, $0480, $0680
@@ -9329,1495 +8975,440 @@ endif
 	db $11, $0F, $03, $00, $00, $00, $19, $19
 	db $19
 
+;spawn location data
 DATA_FDD3B6:
-	db $60, $04, $CD, $02, $20, $FD
-
+	dw $0460, $02CD, $FD20
 DATA_FDD3BC:
-	db $30, $09, $CD, $01, $50, $91, $00, $0E
-	db $AC, $02, $50, $91, $00, $11, $8D, $01
-	db $50, $91, $A0, $14, $89, $01, $50, $91
-	db $80, $1C, $8D, $02, $50, $91, $00, $26
-	db $2D, $02, $50, $91, $E0, $2C, $8D, $01
-	db $50, $91, $40, $37, $A9, $01, $50, $91
-	db $80, $44, $4D, $02, $50, $91, $80, $53
-	db $0C, $02, $50, $91, $FF, $FF
+	dw $0930, $01CD, $9150
+	dw $0E00, $02AC, $9150
+	dw $1100, $018D, $9150
+	dw $14A0, $0189, $9150
+	dw $1C80, $028D, $9150
+	dw $2600, $022D, $9150
+	dw $2CE0, $018D, $9150
+	dw $3740, $01A9, $9150
+	dw $4480, $024D, $9150
+	dw $5380, $020C, $9150
+	dw $FFFF
 
 DATA_FDD3FA:
-	db $90, $0E, $CD, $02, $00, $96, $20, $11
-	db $89, $01, $50, $91, $B0, $15, $C5, $02
-	db $50, $91, $A0, $1C, $89, $02, $50, $91
-	db $00, $27, $2D, $02, $50, $91, $40, $2E
-	db $8D, $01, $50, $91, $80, $37, $B0, $01
-	db $50, $91, $C0, $3C, $49, $01, $50, $91
-	db $00, $48, $6D, $02, $50, $91, $A0, $53
-	db $0D, $02, $50, $91, $FF, $FF
+	dw $0E90, $02CD, $9600
+	dw $1120, $0189, $9150
+	dw $15B0, $02C5, $9150
+	dw $1CA0, $0289, $9150
+	dw $2700, $022D, $9150
+	dw $2E40, $018D, $9150
+	dw $3780, $01B0, $9150
+	dw $3CC0, $0149, $9150
+	dw $4800, $026D, $9150
+	dw $53A0, $020D, $9150
+	dw $FFFF
 
 DATA_FDD438:
-	db $A8, $14, $8B, $01, $60, $9F, $70, $18
-	db $CC, $01, $60, $9F, $90, $1D, $6C, $02
-	db $60, $9F, $40, $28, $2D, $02, $60, $9F
-	db $60, $2F, $ED, $01, $60, $9F, $60, $37
-	db $AD, $01, $60, $9F, $D0, $3E, $8C, $02
-	db $60, $9F, $00, $49, $4D, $02, $60, $9F
-	db $00, $54, $11, $02, $60, $9F, $70, $5C
-	db $AD, $01, $60, $9F, $FF, $FF
+	dw $14A8, $018B, $9F60
+	dw $1870, $01CC, $9F60
+	dw $1D90, $026C, $9F60
+	dw $2840, $022D, $9F60
+	dw $2F60, $01ED, $9F60
+	dw $3760, $01AD, $9F60
+	dw $3ED0, $028C, $9F60
+	dw $4900, $024D, $9F60
+	dw $5400, $0211, $9F60
+	dw $5C70, $01AD, $9F60
+	dw $FFFF
 
 DATA_FDD476:
-	db $00, $1F, $6D, $02, $10, $A4, $E0, $22
-	db $4D, $02, $50, $91, $80, $28, $2D, $02
-	db $50, $91, $D0, $30, $4D, $02, $50, $91
-	db $C0, $38, $AC, $01, $50, $91, $80, $40
-	db $6D, $02, $50, $91, $A0, $49, $49, $02
-	db $50, $91, $40, $54, $09, $02, $50, $91
-	db $FF, $FF
+	dw $1F00, $026D, $A410
+	dw $22E0, $024D, $9150
+	dw $2880, $022D, $9150
+	dw $30D0, $024D, $9150
+	dw $38C0, $01AC, $9150
+	dw $4080, $026D, $9150
+	dw $49A0, $0249, $9150
+	dw $5440, $0209, $9150
+	dw $FFFF
 
 DATA_FDD4A8:
-	db $E0, $29, $2D, $02, $C0, $A8, $D0, $35
-	db $8D, $01, $C0, $A8, $80, $41, $6D, $02
-	db $C0, $A8, $C0, $4F, $0D, $02, $C0, $A8
-	db $FF, $FF
+	dw $29E0, $022D, $A8C0
+	dw $35D0, $018D, $A8C0
+	dw $4180, $026D, $A8C0
+	dw $4FC0, $020D, $A8C0
+	dw $FFFF
 
 DATA_FDD4C2:
-	db $70, $33, $51, $02, $70, $AD, $00, $45
-	db $4D, $02, $70, $AD, $D0, $51, $09, $02
-	db $70, $AD, $FF, $FF
+	dw $3370, $0251, $AD70
+	dw $4500, $024D, $AD70
+	dw $51D0, $0209, $AD70
+	dw $FFFF
 
 DATA_FDD4D6:
-	db $00, $3F, $8D, $02, $20, $B2, $E0, $48
-	db $54, $02, $20, $B2, $FF, $FF
+	dw $3F00, $028D, $B220
+	dw $48E0, $0254, $B220
+	dw $FFFF
 
 DATA_FDD4E4:
-	db $F0, $4E, $0D, $02, $C0, $A8, $FF, $FF
+	dw $4EF0, $020D, $A8C0
+	dw $FFFF
 
+;trigger data
 DATA_FDD4EC:
-	db $60, $04, $40, $00, $80, $00, $04, $00
-	db $88, $04, $00, $08, $04, $00, $40, $05
-	db $00, $01, $88, $06, $40, $00, $80, $04
-	db $C8, $00, $E0, $06, $00, $06, $F0, $07
-	db $00, $08, $02, $00, $00, $0C, $00, $01
-	db $F0, $0C, $00, $01, $00, $0F, $00, $01
-	db $D0, $0F, $40, $00, $00, $03, $C8, $00
-	db $80, $10, $40, $00, $E0, $01, $0A, $00
-	db $80, $12, $00, $01, $30, $14, $00, $06
-	db $60, $15, $00, $01, $E0, $15, $40, $00
-	db $00, $03, $C8, $00, $60, $18, $00, $01
-	db $78, $1A, $00, $06, $70, $1B, $00, $06
-	db $30, $1C, $00, $01, $70, $1D, $00, $01
-	db $C0, $1D, $00, $01, $80, $20, $00, $01
-	db $48, $22, $00, $06, $68, $23, $00, $06
-	db $90, $25, $00, $01, $08, $29, $00, $06
-	db $30, $2C, $00, $01, $E0, $2D, $00, $04
-	db $68, $31, $00, $06, $88, $32, $00, $06
-	db $30, $34, $00, $01, $C0, $36, $00, $06
-	db $B0, $37, $00, $01, $60, $38, $00, $04
-	db $20, $39, $00, $04, $40, $3A, $00, $01
-	db $28, $3B, $00, $04, $40, $3F, $00, $01
-	db $50, $40, $00, $01, $A0, $40, $00, $01
-	db $80, $42, $00, $06, $80, $43, $00, $06
-	db $B8, $45, $00, $04, $A0, $46, $00, $06
-	db $C0, $47, $00, $01, $10, $48, $00, $01
-	db $70, $49, $00, $01, $40, $4C, $00, $04
-	db $E0, $4C, $00, $04, $90, $4E, $00, $01
-	db $C0, $4F, $00, $01, $A0, $53, $00, $01
-	db $A0, $55, $00, $06, $A0, $56, $00, $06
-	db $A0, $57, $00, $06, $A0, $58, $00, $06
-	db $50, $59, $00, $01, $20, $5B, $00, $01
-	db $30, $5E, $00, $01, $FF, $FF
+	dw $0460, $0040, $0080, $0004
+	dw $0488, $0800, $0004
+	dw $0540, $0100
+	dw $0688, $0040, $0480, $00C8
+	dw $06E0, $0600
+	dw $07F0, $0800, $0002
+	dw $0C00, $0100
+	dw $0CF0, $0100
+	dw $0F00, $0100
+	dw $0FD0, $0040, $0300, $00C8
+	dw $1080, $0040, $01E0, $000A
+	dw $1280, $0100
+	dw $1430, $0600
+	dw $1560, $0100
+	dw $15E0, $0040, $0300, $00C8
+	dw $1860, $0100
+	dw $1A78, $0600
+	dw $1B70, $0600
+	dw $1C30, $0100
+	dw $1D70, $0100
+	dw $1DC0, $0100
+	dw $2080, $0100
+	dw $2248, $0600
+	dw $2368, $0600
+	dw $2590, $0100
+	dw $2908, $0600
+	dw $2C30, $0100
+	dw $2DE0, $0400
+	dw $3168, $0600
+	dw $3288, $0600
+	dw $3430, $0100
+	dw $36C0, $0600
+	dw $37B0, $0100
+	dw $3860, $0400
+	dw $3920, $0400
+	dw $3A40, $0100
+	dw $3B28, $0400
+	dw $3F40, $0100
+	dw $4050, $0100
+	dw $40A0, $0100
+	dw $4280, $0600
+	dw $4380, $0600
+	dw $45B8, $0400
+	dw $46A0, $0600
+	dw $47C0, $0100
+	dw $4810, $0100
+	dw $4970, $0100
+	dw $4C40, $0400
+	dw $4CE0, $0400
+	dw $4E90, $0100
+	dw $4FC0, $0100
+	dw $53A0, $0100
+	dw $55A0, $0600
+	dw $56A0, $0600
+	dw $57A0, $0600
+	dw $58A0, $0600
+	dw $5950, $0100
+	dw $5B20, $0100
+	dw $5E30, $0100
+	dw $FFFF
 
 DATA_FDD5F2:
-	db $30, $09, $40, $00, $80, $03, $50, $00
-	db $00, $0B, $00, $08, $04, $00, $00, $0C
-	db $00, $01, $F0, $0C, $00, $01, $00, $0E
-	db $40, $00, $00, $04, $50, $00
-
+	dw $0930, $0040, $0380, $0050
+	dw $0B00, $0800, $0004
+	dw $0C00, $0100
+	dw $0CF0, $0100
+	dw $0E00, $0040, $0400, $0050
 DATA_FDD610:
-	db $90, $0E, $40, $00, $00, $04, $04, $00
-	db $00, $0F, $40, $00, $80, $04, $28, $00
-	db $80, $0F, $00, $01, $00, $10, $00, $08
-	db $04, $00, $00, $11, $40, $00, $00, $04
-	db $50, $00, $20, $11, $40, $00, $00, $04
-	db $04, $00, $80, $11, $00, $08, $00, $00
-	db $80, $12, $00, $01, $30, $14, $00, $06
-	db $A0, $14, $40, $00, $00, $05, $50, $00
-	db $E0, $14, $40, $00, $00, $05, $50, $00
-	db $B0, $15, $40, $00, $00, $05, $04, $00
-	db $70, $18, $00, $01, $00, $19, $40, $00
-	db $00, $05, $0A, $00, $70, $1A, $00, $06
-	db $70, $1B, $00, $06, $30, $1C, $00, $01
-	db $80, $1C, $40, $00, $40, $05, $50, $00
-	db $A0, $1C, $40, $00, $40, $05, $04, $00
-	db $70, $1D, $00, $01, $80, $1D, $40, $00
-	db $80, $05, $0A, $00, $C0, $1D, $00, $01
-	db $80, $1E, $00, $01, $A0, $1F, $40, $00
-	db $00, $06, $50, $00, $80, $20, $00, $01
-	db $48, $22, $00, $06, $68, $23, $00, $06
-	db $90, $25, $00, $01, $D0, $25, $40, $00
-	db $00, $06, $50, $00, $00, $26, $40, $00
-	db $00, $06, $50, $00, $C0, $26, $00, $01
-	db $00, $27, $40, $00, $00, $06, $04, $00
-	db $08, $29, $00, $06, $20, $2A, $40, $00
-	db $00, $06, $50, $00, $F0, $2A, $00, $08
-	db $04, $00, $C0, $2B, $00, $08, $04, $00
-	db $28, $2C, $40, $00, $00, $06, $50, $00
-	db $30, $2C, $00, $01, $E0, $2C, $40, $00
-	db $00, $06, $50, $00, $00, $2D, $00, $08
-	db $04, $00, $E0, $2D, $00, $04, $40, $2E
-	db $40, $00, $00, $06, $04, $00, $68, $31
-	db $00, $06, $88, $32, $00, $04, $B0, $33
-	db $40, $00, $00, $06, $50, $00, $30, $34
-	db $00, $01, $C0, $36, $00, $06, $40, $37
-	db $40, $00, $00, $06, $50, $00, $80, $37
-	db $40, $00, $00, $06, $04, $00, $B0, $37
-	db $00, $01, $60, $38, $00, $04, $20, $39
-	db $00, $04, $40, $3A, $00, $01, $28, $3B
-	db $00, $04, $C0, $3C, $40, $00, $00, $06
-	db $04, $00, $40, $3F, $00, $01, $D0, $3F
-	db $40, $00, $00, $06, $50, $00, $50, $40
-	db $00, $01, $A0, $40, $00, $01, $80, $42
-	db $00, $06, $80, $43, $00, $06, $80, $44
-	db $40, $00, $00, $06, $50, $00, $B8, $45
-	db $00, $04, $A0, $46, $00, $06, $C0, $47
-	db $00, $01, $00, $48, $40, $00, $E0, $05
-	db $04, $00, $10, $48, $00, $01, $70, $49
-	db $00, $01, $40, $4C, $00, $04, $E0, $4C
-	db $00, $04, $90, $4E, $00, $01, $30, $4F
-	db $40, $00, $00, $06, $50, $00, $C0, $4F
-	db $00, $01, $80, $53, $40, $00, $00, $06
-	db $50, $00, $A0, $53, $40, $00, $00, $06
-	db $04, $00, $A0, $55, $00, $06, $A0, $56
-	db $00, $06, $A0, $57, $00, $06, $A0, $58
-	db $00, $06, $50, $59, $00, $01, $20, $5B
-	db $00, $01, $30, $5E, $00, $01, $FF, $FF
+	dw $0E90, $0040, $0400, $0004
+	dw $0F00, $0040, $0480, $0028
+	dw $0F80, $0100
+	dw $1000, $0800, $0004
+	dw $1100, $0040, $0400, $0050
+	dw $1120, $0040, $0400, $0004
+	dw $1180, $0800, $0000
+	dw $1280, $0100
+	dw $1430, $0600
+	dw $14A0, $0040, $0500, $0050
+	dw $14E0, $0040, $0500, $0050
+	dw $15B0, $0040, $0500, $0004
+	dw $1870, $0100
+	dw $1900, $0040, $0500, $000A
+	dw $1A70, $0600
+	dw $1B70, $0600
+	dw $1C30, $0100
+	dw $1C80, $0040, $0540, $0050
+	dw $1CA0, $0040, $0540, $0004
+	dw $1D70, $0100
+	dw $1D80, $0040, $0580, $000A
+	dw $1DC0, $0100
+	dw $1E80, $0100
+	dw $1FA0, $0040, $0600, $0050
+	dw $2080, $0100
+	dw $2248, $0600
+	dw $2368, $0600
+	dw $2590, $0100
+	dw $25D0, $0040, $0600, $0050
+	dw $2600, $0040, $0600, $0050
+	dw $26C0, $0100
+	dw $2700, $0040, $0600, $0004
+	dw $2908, $0600
+	dw $2A20, $0040, $0600, $0050
+	dw $2AF0, $0800, $0004
+	dw $2BC0, $0800, $0004
+	dw $2C28, $0040, $0600, $0050
+	dw $2C30, $0100
+	dw $2CE0, $0040, $0600, $0050
+	dw $2D00, $0800, $0004
+	dw $2DE0, $0400
+	dw $2E40, $0040, $0600, $0004
+	dw $3168, $0600
+	dw $3288, $0400
+	dw $33B0, $0040, $0600, $0050
+	dw $3430, $0100
+	dw $36C0, $0600
+	dw $3740, $0040, $0600, $0050
+	dw $3780, $0040, $0600, $0004
+	dw $37B0, $0100
+	dw $3860, $0400
+	dw $3920, $0400
+	dw $3A40, $0100
+	dw $3B28, $0400
+	dw $3CC0, $0040, $0600, $0004
+	dw $3F40, $0100
+	dw $3FD0, $0040, $0600, $0050
+	dw $4050, $0100
+	dw $40A0, $0100
+	dw $4280, $0600
+	dw $4380, $0600
+	dw $4480, $0040, $0600, $0050
+	dw $45B8, $0400
+	dw $46A0, $0600
+	dw $47C0, $0100
+	dw $4800, $0040, $05E0, $0004
+	dw $4810, $0100
+	dw $4970, $0100
+	dw $4C40, $0400
+	dw $4CE0, $0400
+	dw $4E90, $0100
+	dw $4F30, $0040, $0600, $0050
+	dw $4FC0, $0100
+	dw $5380, $0040, $0600, $0050
+	dw $53A0, $0040, $0600, $0004
+	dw $55A0, $0600
+	dw $56A0, $0600
+	dw $57A0, $0600
+	dw $58A0, $0600
+	dw $5950, $0100
+	dw $5B20, $0100
+	dw $5E30, $0100
+	dw $FFFF
 
 DATA_FDD7D8:
-	db $A8, $14, $40, $00, $40, $05, $04, $00
-	db $60, $15, $00, $01, $B0, $17, $00, $08
-	db $04, $00, $60, $18, $00, $01, $70, $18
-	db $40, $00, $40, $05, $04, $00, $78, $1A
-	db $00, $06, $70, $1B, $00, $06, $30, $1C
-	db $00, $01, $70, $1D, $00, $01, $90, $1D
-	db $40, $00, $40, $05, $04, $00, $C0, $1D
-	db $00, $01
-
+	dw $14A8, $0040, $0540, $0004
+	dw $1560, $0100
+	dw $17B0, $0800, $0004
+	dw $1860, $0100
+	dw $1870, $0040, $0540, $0004
+	dw $1A78, $0600
+	dw $1B70, $0600
+	dw $1C30, $0100
+	dw $1D70, $0100
+	dw $1D90, $0040, $0540, $0004
+	dw $1DC0, $0100
 DATA_FDD812:
-	db $00, $1F, $40, $00, $00, $05, $04, $00
-	db $80, $1F, $40, $00, $C0, $04, $50, $00
-	db $80, $20, $00, $01, $48, $22, $00, $06
-	db $E0, $22, $40, $00, $20, $05, $28, $00
-	db $68, $23, $00, $06, $90, $25, $00, $01
-	db $C0, $26, $00, $01, $40, $28, $40, $00
-	db $40, $05, $14, $00, $80, $28, $40, $00
-	db $40, $05, $28, $00, $08, $29, $00, $06
-	db $20, $2A, $40, $00, $40, $05, $50, $00
-	db $F0, $2A, $00, $08, $04, $00, $C0, $2B
-	db $00, $08, $04, $00, $28, $2C, $40, $00
-	db $40, $05, $50, $00, $30, $2C, $00, $01
-	db $00, $2D, $00, $08, $04, $00, $E0, $2D
-	db $00, $04, $60, $2F, $40, $00, $40, $05
-	db $14, $00, $D0, $30, $40, $00, $40, $05
-	db $28, $00, $68, $31, $00, $06, $88, $32
-	db $00, $04, $B0, $33, $40, $00, $40, $05
-	db $50, $00, $30, $34, $00, $01, $C0, $36
-	db $00, $06, $60, $37, $40, $00, $40, $05
-	db $14, $00, $B0, $37, $00, $01, $60, $38
-	db $00, $04, $C0, $38, $40, $00, $40, $05
-	db $28, $00, $20, $39, $00, $04, $40, $3A
-	db $00, $01, $28, $3B, $00, $04, $D0, $3E
-	db $40, $00, $40, $05, $14, $00, $40, $3F
-	db $00, $01, $D0, $3F, $40, $00, $40, $05
-	db $50, $00, $50, $40, $00, $01, $80, $40
-	db $40, $00, $40, $05, $28, $00, $A0, $40
-	db $00, $01, $80, $42, $00, $06, $80, $43
-	db $00, $06, $B8, $45, $00, $04, $A0, $46
-	db $00, $06, $C0, $47, $00, $01, $10, $48
-	db $00, $01, $00, $49, $40, $00, $20, $05
-	db $14, $00, $70, $49, $00, $01, $A0, $49
-	db $40, $00, $20, $05, $28, $00, $40, $4C
-	db $00, $04, $E0, $4C, $00, $04, $90, $4E
-	db $00, $01, $30, $4F, $40, $00, $40, $05
-	db $50, $00, $C0, $4F, $00, $01, $A0, $53
-	db $00, $01, $00, $54, $40, $00, $40, $05
-	db $14, $00, $40, $54, $40, $00, $40, $05
-	db $28, $00, $A0, $55, $00, $06, $A0, $56
-	db $00, $06, $A0, $57, $00, $06, $A0, $58
-	db $00, $06, $50, $59, $00, $01, $20, $5B
-	db $00, $01, $70, $5C, $40, $00, $40, $05
-	db $14, $00, $30, $5E, $00, $01, $FF, $FF
+	dw $1F00, $0040, $0500, $0004
+	dw $1F80, $0040, $04C0, $0050
+	dw $2080, $0100
+	dw $2248, $0600
+	dw $22E0, $0040, $0520, $0028
+	dw $2368, $0600
+	dw $2590, $0100
+	dw $26C0, $0100
+	dw $2840, $0040, $0540, $0014
+	dw $2880, $0040, $0540, $0028
+	dw $2908, $0600
+	dw $2A20, $0040, $0540, $0050
+	dw $2AF0, $0800, $0004
+	dw $2BC0, $0800, $0004
+	dw $2C28, $0040, $0540, $0050
+	dw $2C30, $0100
+	dw $2D00, $0800, $0004
+	dw $2DE0, $0400
+	dw $2F60, $0040, $0540, $0014
+	dw $30D0, $0040, $0540, $0028
+	dw $3168, $0600
+	dw $3288, $0400
+	dw $33B0, $0040, $0540, $0050
+	dw $3430, $0100
+	dw $36C0, $0600
+	dw $3760, $0040, $0540, $0014
+	dw $37B0, $0100
+	dw $3860, $0400
+	dw $38C0, $0040, $0540, $0028
+	dw $3920, $0400
+	dw $3A40, $0100
+	dw $3B28, $0400
+	dw $3ED0, $0040, $0540, $0014
+	dw $3F40, $0100
+	dw $3FD0, $0040, $0540, $0050
+	dw $4050, $0100
+	dw $4080, $0040, $0540, $0028
+	dw $40A0, $0100
+	dw $4280, $0600
+	dw $4380, $0600
+	dw $45B8, $0400
+	dw $46A0, $0600
+	dw $47C0, $0100
+	dw $4810, $0100
+	dw $4900, $0040, $0520, $0014
+	dw $4970, $0100
+	dw $49A0, $0040, $0520, $0028
+	dw $4C40, $0400
+	dw $4CE0, $0400
+	dw $4E90, $0100
+	dw $4F30, $0040, $0540, $0050
+	dw $4FC0, $0100
+	dw $53A0, $0100
+	dw $5400, $0040, $0540, $0014
+	dw $5440, $0040, $0540, $0028
+	dw $55A0, $0600
+	dw $56A0, $0600
+	dw $57A0, $0600
+	dw $58A0, $0600
+	dw $5950, $0100
+	dw $5B20, $0100
+	dw $5C70, $0040, $0540, $0014
+	dw $5E30, $0100
+	dw $FFFF
 
 DATA_FDD96A:
 if !version == 1
-	db $E0, $29, $40, $00, $40, $05, $04, $00
-	db $20, $2A, $40, $00, $80, $05, $50, $00
-	db $00, $2C, $40, $00, $00, $04, $50, $00
-	db $30, $2C, $00, $01, $C0, $2C, $40, $00
-	db $00, $04, $50, $00, $E0, $2D, $00, $04
-	db $68, $31, $00, $06, $88, $32, $00, $06
+	dw $29E0, $0040, $0540, $0004
 else
-	db $E0, $29, $40, $00, $00, $05, $04, $00
-	db $20, $2A, $40, $00, $80, $05, $50, $00
-	db $30, $2C, $00, $01, $E0, $2D, $00, $04
-	db $68, $31, $00, $06, $88, $32, $00, $06
+	dw $29E0, $0040, $0500, $0004
 endif
-
-DATA_FDD99A:
+	dw $2A20, $0040, $0580, $0050
 if !version == 1
-	db $70, $33, $40, $00, $00, $05, $04, $00
-	db $B0, $33, $40, $00, $C0, $05, $50, $00
-	db $30, $34, $00, $01, $D0, $35, $40, $00
-	db $40, $05, $04, $00, $20, $36, $40, $00
-	db $C0, $04, $64, $00, $C0, $36, $00, $06
-	db $40, $37, $40, $00, $00, $05, $64, $00
-	db $B0, $37, $00, $01, $00, $38, $40, $00
-	db $00, $05, $64, $00, $60, $38, $00, $04
-	db $20, $39, $00, $04, $40, $3A, $00, $01
-	db $28, $3B, $00, $04, $40, $3F, $00, $01
-	db $D0, $3F, $40, $00, $40, $05, $50, $00
-	db $50, $40, $00, $01, $A0, $40, $00, $01
-	db $80, $41, $40, $00, $40, $05, $04, $00
-	db $80, $42, $00, $06, $80, $43, $00, $06
-	db $00, $45, $40, $00, $C0, $05, $04, $00
-	db $B8, $45, $00, $04, $A0, $46, $00, $06
-	db $C0, $47, $00, $01, $10, $48, $00, $01
-	db $70, $49, $00, $01, $40, $4C, $00, $04
-	db $E0, $4C, $00, $04, $90, $4E, $00, $01
-	db $30, $4F, $40, $00, $00, $06, $50, $00
-	db $C0, $4F, $40, $00, $40, $05, $04, $00
-	db $F0, $4F, $00, $01, $D0, $51, $40, $00
-	db $C0, $05, $04, $00, $A0, $53, $00, $01
-	db $A0, $55, $00, $06, $A0, $56, $00, $06
-	db $A0, $57, $00, $06, $A0, $58, $00, $06
-	db $50, $59, $00, $01, $20, $5B, $00, $01
-	db $30, $5E, $00, $01, $FF, $FF
-else
-	db $70, $33, $40, $00, $00, $05, $04, $00
-	db $B0, $33, $40, $00, $C0, $05, $50, $00
-	db $30, $34, $00, $01, $D0, $35, $40, $00
-	db $C0, $05, $04, $00, $C0, $36, $00, $06
-	db $B0, $37, $00, $01, $60, $38, $00, $04
-	db $20, $39, $00, $04, $40, $3A, $00, $01
-	db $28, $3B, $00, $04, $40, $3F, $00, $01
-	db $D0, $3F, $40, $00, $00, $06, $50, $00
-	db $50, $40, $00, $01, $A0, $40, $00, $01
-	db $80, $41, $40, $00, $E0, $05, $04, $00
-	db $80, $42, $00, $06, $80, $43, $00, $06
-	db $00, $45, $40, $00, $E0, $05, $04, $00
-	db $B8, $45, $00, $04, $A0, $46, $00, $06
-	db $C0, $47, $00, $01, $10, $48, $00, $01
-	db $70, $49, $00, $01, $40, $4C, $00, $04
-	db $E0, $4C, $00, $04, $90, $4E, $00, $01
-	db $30, $4F, $40, $00, $00, $06, $50, $00
-	db $C0, $4F, $40, $00, $00, $06, $04, $00
-	db $F0, $4F, $00, $01, $D0, $51, $40, $00
-	db $00, $06, $04, $00, $A0, $53, $00, $01
-	db $A0, $55, $00, $06, $A0, $56, $00, $06
-	db $A0, $57, $00, $06, $A0, $58, $00, $06
-	db $50, $59, $00, $01, $20, $5B, $00, $01
-	db $30, $5E, $00, $01, $FF, $FF
+	dw $2C00, $0040, $0400, $0050
 endif
+	dw $2C30, $0100
+if !version == 1
+	dw $2CC0, $0040, $0400, $0050
+endif
+	dw $2DE0, $0400
+	dw $3168, $0600
+	dw $3288, $0600
+DATA_FDD99A:
+	dw $3370, $0040, $0500, $0004
+	dw $33B0, $0040, $05C0, $0050
+	dw $3430, $0100	
+if !version == 1
+	dw $35D0, $0040, $0540, $0004
+	dw $3620, $0040, $04C0, $0064
+else
+	dw $35D0, $0040, $05C0, $0004
+endif
+	dw $36C0, $0600
+if !version == 1
+	dw $3740, $0040, $0500, $0064
+endif
+	dw $37B0, $0100
+if !version == 1
+	dw $3800, $0040, $0500, $0064
+endif
+	dw $3860, $0400
+	dw $3920, $0400
+	dw $3A40, $0100
+	dw $3B28, $0400
+	dw $3F40, $0100
+if !version == 1
+	dw $3FD0, $0040, $0540, $0050
+else
+	dw $3FD0, $0040, $0600, $0050
+endif
+	dw $4050, $0100
+	dw $40A0, $0100
+if !version == 1
+	dw $4180, $0040, $0540, $0004
+else
+	dw $4180, $0040, $05E0, $0004
+endif
+	dw $4280, $0600
+	dw $4380, $0600
+if !version == 1
+	dw $4500, $0040, $05C0, $0004
+else
+	dw $4500, $0040, $05E0, $0004
+endif
+	dw $45B8, $0400
+	dw $46A0, $0600
+	dw $47C0, $0100
+	dw $4810, $0100
+	dw $4970, $0100
+	dw $4C40, $0400
+	dw $4CE0, $0400
+	dw $4E90, $0100
+	dw $4F30, $0040, $0600, $0050
+if !version == 1
+	dw $4FC0, $0040, $0540, $0004
+else
+	dw $4FC0, $0040, $0600, $0004
+endif
+	dw $4FF0, $0100
+if !version == 1
+	dw $51D0, $0040, $05C0, $0004
+else
+	dw $51D0, $0040, $0600, $0004
+endif
+	dw $53A0, $0100
+	dw $55A0, $0600
+	dw $56A0, $0600
+	dw $57A0, $0600
+	dw $58A0, $0600
+	dw $5950, $0100
+	dw $5B20, $0100
+	dw $5E30, $0100
+	dw $FFFF
 
 DATA_FDDA70:
-	db $00, $3F, $40, $00, $00, $06, $04, $00
-	db $40, $3F, $00, $01, $50, $40, $00, $01
-	db $A0, $40, $00, $01, $00, $41, $40, $00
-	db $00, $06, $50, $00, $D0, $41, $00, $01
-	db $80, $42, $00, $06, $80, $43, $00, $06
-	db $40, $44, $40, $00, $A0, $05, $50, $00
-	db $B8, $45, $00, $04, $A0, $46, $00, $06
-	db $C0, $47, $00, $01, $10, $48, $00, $01
-	db $E0, $48, $40, $00, $F0, $04, $28, $00
-	db $00, $49, $40, $00, $F0, $04, $28, $00
-	db $70, $49, $00, $01, $40, $4C, $00, $04
-	db $E0, $4C, $00, $04, $90, $4E, $00, $01
-
+	dw $3F00, $0040, $0600, $0004
+	dw $3F40, $0100
+	dw $4050, $0100
+	dw $40A0, $0100
+	dw $4100, $0040, $0600, $0050
+	dw $41D0, $0100
+	dw $4280, $0600
+	dw $4380, $0600
+	dw $4440, $0040, $05A0, $0050
+	dw $45B8, $0400
+	dw $46A0, $0600
+	dw $47C0, $0100
+	dw $4810, $0100
+	dw $48E0, $0040, $04F0, $0028
+	dw $4900, $0040, $04F0, $0028
+	dw $4970, $0100
+	dw $4C40, $0400
+	dw $4CE0, $0400
+	dw $4E90, $0100
 DATA_FDDAD0:
-	db $F0, $4E, $40, $00, $80, $05, $04, $00
-	db $30, $4F, $40, $00, $00, $06, $50, $00
-	db $C0, $4F, $00, $01, $A0, $53, $00, $01
-	db $00, $54, $40, $00, $E0, $05, $50, $00
-	db $70, $54, $00, $01, $A0, $55, $00, $06
-	db $A0, $56, $00, $06, $A0, $57, $00, $06
-	db $20, $58, $40, $00, $80, $05, $64, $00
-	db $A0, $58, $00, $06, $50, $59, $00, $01
-	db $80, $59, $40, $00, $F0, $04, $50, $00
-	db $20, $5B, $00, $01, $60, $5D, $00, $01
-	db $90, $5E, $00, $01, $FF, $FF
+	dw $4EF0, $0040, $0580, $0004
+	dw $4F30, $0040, $0600, $0050
+	dw $4FC0, $0100
+	dw $53A0, $0100
+	dw $5400, $0040, $05E0, $0050
+	dw $5470, $0100
+	dw $55A0, $0600
+	dw $56A0, $0600
+	dw $57A0, $0600
+	dw $5820, $0040, $0580, $0064
+	dw $58A0, $0600
+	dw $5950, $0100
+	dw $5980, $0040, $04F0, $0050
+	dw $5B20, $0100
+	dw $5D60, $0100
+	dw $5E90, $0100
+	dw $FFFF
 
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00
+padbyte $00
+pad $FE0000
