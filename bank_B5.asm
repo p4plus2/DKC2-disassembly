@@ -11855,24 +11855,24 @@ CODE_B5ED61:					;	   |
 	RTS					;$B5ED6F  /
 
 CODE_B5ED70:
-	LDX $90					;$B5ED70  \
-	BMI CODE_B5ED95				;$B5ED72   |
-	LDA #<:rare_string			;$B5ED74   |
-	STA $92					;$B5ED77   |
-	LDY #rare_string			;$B5ED79   |
-	LDA [$90],y				;$B5ED7C   |
-	CLC					;$B5ED7E   |
-	ADC $B2					;$B5ED7F   |
-	STA $B2					;$B5ED81   |
-	CPX #$021F				;$B5ED83   |
-	BCC CODE_B5ED95				;$B5ED86   |
-	ROR $90					;$B5ED88   |
-	CLC					;$B5ED8A   |
-	ADC #$2315				;$B5ED8B   |
-	CMP #$9BEA				;$B5ED8E   |
-	BEQ CODE_B5ED95				;$B5ED91   |
-	DEC $FD					;$B5ED93   | if anti-piracy routine was tampered decrease level camera count by 1
-CODE_B5ED95:					;	   |
+	LDX $90					;$B5ED70  \> Piracy check. Load address of anti piracy routine checksum ($A00 + $90 = $A90)
+	BMI .continue				;$B5ED72   |> If address is negative the checksum is complete. The checksum is calculated 1 byte per frame
+	LDA #<:rare_string			;$B5ED74   |\
+	STA $92					;$B5ED77   | | Store address of anti piracy routine at $A90
+	LDY #rare_string			;$B5ED79   | |
+	LDA [$90],y				;$B5ED7C   |/
+	CLC					;$B5ED7E   |\
+	ADC $B2					;$B5ED7F   | | Add next byte to checksum
+	STA $B2					;$B5ED81   |/ Checksum is stored at $AB2
+	CPX #$021F				;$B5ED83   |\
+	BCC .continue				;$B5ED86   |/ If the checksum isn't done yet continue until next frame
+	ROR $90					;$B5ED88   |> Make anti piracy routine address negative to indicate we're finished with the checksum
+	CLC					;$B5ED8A   |\
+	ADC #$2315				;$B5ED8B   |/ Add this to our checksum to get the true checksum. Probably to hide the actual checksum
+	CMP #$9BEA				;$B5ED8E   |\
+	BEQ .continue				;$B5ED91   |/ If our checksum matches continue as normal
+	DEC $FD					;$B5ED93   | Else anti piracy routine was tampered, decrease level camera count by 1
+.continue					;	   |
 	STZ $92					;$B5ED95   |
 	LDA $0A36				;$B5ED97   |
 	BIT #$0080				;$B5ED9A   |

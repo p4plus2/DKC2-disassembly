@@ -12819,8 +12819,8 @@ CODE_B3DF5F:
 	XBA					;$B3DF7C   |\ Swap endian of our XOR result
 	EOR #$CCAB				;$B3DF7D   | | If our result after XORing against this value +1 is 0 we passed the XOR test
 	INC A					;$B3DF80   | |
-	BEQ CODE_B3DF88				;$B3DF81   |/ If anti-piracy routine was tampered
-	LDA #$FFFF				;$B3DF83   |\ Destroy exit number of bonus wall (sends player to map screen)
+	BEQ CODE_B3DF88				;$B3DF81   |/ If anti-piracy routine wasn't tampered continue as normal
+	LDA #$FFFF				;$B3DF83   |\ Else destroy exit number of bonus wall (sends player to map screen)
 	STA $42,x				;$B3DF86   |/
 CODE_B3DF88:					;	   |
 	PLB					;$B3DF88   |
