@@ -8801,7 +8801,7 @@ CODE_BCFA9A:
 	PHD					;$BCFA9A  \
 	LDY #$09AB				;$BCFA9B   |
 	LDX current_sprite			;$BCFA9E   |
-	CPX $0593				;$BCFAA0   |
+	CPX active_kong_sprite			;$BCFAA0   |
 	BEQ CODE_BCFABA				;$BCFAA3   |
 	LDY #CODE_BCFCA5>>8			;$BCFAA5   |
 	STY $09FA				;$BCFAA8   |
@@ -8819,7 +8819,7 @@ CODE_BCFABA:					;	   |
 	PHD					;$BCFAC2   |
 	LDY #$09A3				;$BCFAC3   |
 	LDX current_sprite			;$BCFAC6   |
-	CPX $0593				;$BCFAC8   |
+	CPX active_kong_sprite			;$BCFAC8   |
 	BEQ CODE_BCFAE2				;$BCFACB   |
 	LDY #CODE_BCFCA5>>8			;$BCFACD   |
 	STY $09FA				;$BCFAD0   |
@@ -8836,7 +8836,7 @@ CODE_BCFAE2:					;	   |
 
 CODE_BCFAEA:
 	LDX current_sprite			;$BCFAEA  \
-	CPX $0593				;$BCFAEC   |
+	CPX active_kong_sprite			;$BCFAEC   |
 	BNE CODE_BCFB1C				;$BCFAEF   |
 	PHD					;$BCFAF1   |
 	LDY #$09A3				;$BCFAF2   |
@@ -8872,7 +8872,7 @@ CODE_BCFB1D:
 
 CODE_BCFB2C:
 	PHD					;$BCFB2C  \
-	LDX $0597				;$BCFB2D   |
+	LDX inactive_kong_sprite		;$BCFB2D   |
 	LDY #$09BB				;$BCFB30   |
 	LDA $09BF				;$BCFB33   |
 	BEQ CODE_BCFB41				;$BCFB36   |
@@ -9104,7 +9104,7 @@ CODE_BCFC59:					;	   |
 
 CODE_BCFCA5:
 	STA $EB					;$BCFCA5  \
-	LDX $0597				;$BCFCA7   |
+	LDX inactive_kong_sprite		;$BCFCA7   |
 	STX $6A					;$BCFCAA   |
 	LDY #$0018				;$BCFCAC   |
 	JSR check_for_collision			;$BCFCAF   |
@@ -9113,7 +9113,7 @@ CODE_BCFCA5:
 
 CODE_BCFCB5:
 	STA $EB					;$BCFCB5  \
-	LDX $0593				;$BCFCB7   |
+	LDX active_kong_sprite			;$BCFCB7   |
 	STX $6A					;$BCFCBA   |
 	LDY #$0000				;$BCFCBC   |
 	JSR check_for_collision			;$BCFCBF   |
@@ -9123,7 +9123,7 @@ CODE_BCFCB5:
 CODE_BCFCC5:
 	LDA $EB					;$BCFCC5  \
 	BEQ CODE_BCFCDB				;$BCFCC7   |
-	LDX $0593				;$BCFCC9   |
+	LDX active_kong_sprite			;$BCFCC9   |
 	CPX $6A					;$BCFCCC   |
 	BEQ CODE_BCFCDD				;$BCFCCE   |
 	STX $6A					;$BCFCD0   |
@@ -9400,9 +9400,9 @@ CODE_BCFEE0:
 
 CODE_BCFEE8:
 	LDA $6A					;$BCFEE8  \
-	CMP $0593				;$BCFEEA   |
+	CMP active_kong_sprite			;$BCFEEA   |
 	BEQ CODE_BCFF03				;$BCFEED   |
-	CMP $0597				;$BCFEEF   |
+	CMP inactive_kong_sprite		;$BCFEEF   |
 	BNE CODE_BCFEFC				;$BCFEF2   |
 	TYA					;$BCFEF4   |
 	CLC					;$BCFEF5   |

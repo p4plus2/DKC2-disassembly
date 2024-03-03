@@ -345,7 +345,7 @@ ship_mast_clouds_fg_layer_3_tiledata:
 forest_light_shafts_layer_1_tiledata:
 	incbin "data/backgrounds/graphics/forest_light_shafts_layer_1_tiledata.bin"
 
-;glimmers galleon windowing related
+;EAA93D
 DATA_EAA93D:
 	incbin "data/misc_graphics/flashlight_windowing_mask_tile.bin"
 

@@ -93,6 +93,9 @@ screen_fade_timer = $0514
 
 ;level logic (starts at $0515)
 
+active_kong_sprite = $0593
+inactive_kong_sprite = $0597
+
 pending_dma_hdma_channels = $059B
 
 active_controller = $060F

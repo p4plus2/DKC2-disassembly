@@ -260,7 +260,7 @@ CODE_BEB9F2:					;	   |
 
 CODE_BEB9F5:
 	LDX $6A					;$BEB9F5  \
-	CPX $0597				;$BEB9F7   |
+	CPX inactive_kong_sprite		;$BEB9F7   |
 	BEQ CODE_BEB9F2				;$BEB9FA   |
 	LDA #$0200				;$BEB9FC   |
 	JSL CODE_BEBE4D				;$BEB9FF   |
@@ -859,9 +859,9 @@ CODE_BEBE4D:
 	PHX					;$BEBE4D  \
 	PHA					;$BEBE4E   |
 	LDX $6A					;$BEBE4F   |
-	CPX $0593				;$BEBE51   |
+	CPX active_kong_sprite			;$BEBE51   |
 	BEQ CODE_BEBE5B				;$BEBE54   |
-	CPX $0597				;$BEBE56   |
+	CPX inactive_kong_sprite		;$BEBE56   |
 	BNE CODE_BEBE67				;$BEBE59   |
 CODE_BEBE5B:					;	   |
 	LDA $2E,x				;$BEBE5B   |
@@ -1172,7 +1172,7 @@ CODE_BEC072:
 CODE_BEC075:
 	LDA #$001E				;$BEC075  \
 	LDX $6A					;$BEC078   |
-	CPX $0593				;$BEC07A   |
+	CPX active_kong_sprite			;$BEC07A   |
 	BEQ CODE_BEC082				;$BEC07D   |
 	LDA #$001D				;$BEC07F   |
 CODE_BEC082:					;	   |
@@ -1723,7 +1723,7 @@ CODE_BEC452:
 	BEQ CODE_BEC4B7				;$BEC46B   |
 CODE_BEC46D:					;	   |
 	LDY #$0020				;$BEC46D   |
-	CPX $0597				;$BEC470   |
+	CPX inactive_kong_sprite		;$BEC470   |
 	BEQ CODE_BEC485				;$BEC473   |
 	LDY #$0023				;$BEC475   |
 	LDA $08C2				;$BEC478   |
@@ -3396,7 +3396,7 @@ CODE_BED0D4:					;	   |
 	AND #$0100				;$BED0D7   |
 	BNE CODE_BED0F6				;$BED0DA   |
 	LDX current_sprite			;$BED0DC   |
-	LDY $0593				;$BED0DE   |
+	LDY active_kong_sprite			;$BED0DE   |
 	STX $42,y				;$BED0E1   |
 	TYA					;$BED0E3   |
 	ORA #$8000				;$BED0E4   |
@@ -4165,7 +4165,7 @@ CODE_BED6BE:					;	   |
 	STA $32					;$BED6C6   |
 	LDA $90					;$BED6C8   |
 	LDY level_number			;$BED6CA   |
-	CPY #$000F				;$BED6CC   |
+	CPY #!level_rickety_race		;$BED6CC   |
 	BNE CODE_BED6D4				;$BED6CF   |
 	LDA #$00FD				;$BED6D1   |
 CODE_BED6D4:					;	   |
@@ -4382,7 +4382,7 @@ CODE_BED81B:
 	CMP $000A,y				;$BED828   |
 	BCC CODE_BED887				;$BED82B   |
 	LDY $6A					;$BED82D   |
-	CPY $0593				;$BED82F   |
+	CPY active_kong_sprite			;$BED82F   |
 	BEQ CODE_BED859				;$BED832   |
 	LDA $002E,y				;$BED834   |
 	CMP #$001F				;$BED837   |
@@ -4435,7 +4435,7 @@ CODE_BED889:
 	BPL CODE_BED887				;$BED894   |
 	LDA $44,x				;$BED896   |
 	BMI CODE_BED8B5				;$BED898   |
-	LDY $0597				;$BED89A   |
+	LDY inactive_kong_sprite		;$BED89A   |
 	LDA $06,x				;$BED89D   |
 	SEC					;$BED89F   |
 	SBC $38,x				;$BED8A0   |
@@ -4449,16 +4449,16 @@ CODE_BED889:
 	ADC $000A,y				;$BED8AF   |
 	STA $000A,y				;$BED8B2   |
 CODE_BED8B5:					;	   |
-	LDY $0597				;$BED8B5   |
+	LDY inactive_kong_sprite		;$BED8B5   |
 	JSL CODE_BEBDC1				;$BED8B8   |
 	BCC CODE_BED887				;$BED8BC   |
 	LDA #$0015				;$BED8BE   |
 	JSL CODE_B8D8BA				;$BED8C1   |
 	BCS CODE_BED887				;$BED8C5   |
 	STX $0A86				;$BED8C7   |
-	LDA $0597				;$BED8CA   |
+	LDA inactive_kong_sprite		;$BED8CA   |
 	STA $0A88				;$BED8CD   |
-	LDA $0597				;$BED8D0   |
+	LDA inactive_kong_sprite		;$BED8D0   |
 	STA $44,x				;$BED8D3   |
 	LDA #$0001				;$BED8D5   |
 	SEC					;$BED8D8   |
@@ -4516,7 +4516,7 @@ CODE_BED92E:
 	LDA $08C2				;$BED92E  \
 	AND #$4000				;$BED931   |
 	BNE CODE_BED94A				;$BED934   |
-	LDY $0593				;$BED936   |
+	LDY active_kong_sprite			;$BED936   |
 	LDA $002E,y				;$BED939   |
 	ASL A					;$BED93C   |
 	ASL A					;$BED93D   |
@@ -4702,7 +4702,7 @@ CODE_BEDA4E:
 	RTS					;$BEDA8F  /
 
 CODE_BEDA90:
-	CPY $0593				;$BEDA90  \
+	CPY active_kong_sprite			;$BEDA90  \
 	BNE CODE_BEDAB7				;$BEDA93   |
 	LDA $0048,y				;$BEDA95   |
 	CMP #$0009				;$BEDA98   |
@@ -5816,7 +5816,7 @@ CODE_BEE2DA:					;	   |
 	LDA #$8000				;$BEE2D9   |
 	TSB $0AB8				;$BEE2DC   |
 	LDX current_sprite			;$BEE2DF   |
-	LDY $0593				;$BEE2E1   |
+	LDY active_kong_sprite			;$BEE2E1   |
 	LDA $0006,Y				;$BEE2E4   |
 	SEC					;$BEE2E7   |
 	SBC $42,X				;$BEE2E8   |
@@ -6863,7 +6863,7 @@ CODE_BEEA36:
 	SEP #$20				;$BEEA3D   |
 	STZ $0D5D				;$BEEA3F   |
 	REP #$20				;$BEEA42   |
-	LDY $0593				;$BEEA44   |
+	LDY active_kong_sprite			;$BEEA44   |
 	LDA $0A,x				;$BEEA47   |
 	CMP #$01FF				;$BEEA49   |
 	BCS CODE_BEEA55				;$BEEA4C   |
@@ -6961,7 +6961,7 @@ CODE_BEEAE0:
 
 CODE_BEEAF7:
 	JSR CODE_BEEB1C				;$BEEAF7  \
-	LDY $0593				;$BEEAFA   |
+	LDY active_kong_sprite			;$BEEAFA   |
 	LDA $0006,y				;$BEEAFD   |
 	CMP #$0970				;$BEEB00   |
 	BCC CODE_BEEB19				;$BEEB03   |
@@ -7122,7 +7122,7 @@ CODE_BEEC43:					;	   |
 	BRA CODE_BEEC05				;$BEEC43  /
 
 CODE_BEEC45:
-	LDY $0593				;$BEEC45  \
+	LDY active_kong_sprite			;$BEEC45  \
 	LDA $0006,y				;$BEEC48   |
 	CMP #$0AD8				;$BEEC4B   |
 	BCC CODE_BEEC56				;$BEEC4E   |
@@ -7218,7 +7218,7 @@ CODE_BEECD6:
 	STA $50,x				;$BEECDC   |
 	INC $2F,x				;$BEECDE   |
 CODE_BEECE0:					;	   |
-	LDY $0593				;$BEECE0   |
+	LDY active_kong_sprite			;$BEECE0   |
 	LDA $0006,y				;$BEECE3   |
 	SEC					;$BEECE6   |
 	SBC $06,x				;$BEECE7   |
@@ -7400,7 +7400,7 @@ CODE_BEEE38:
 	LDX current_sprite			;$BEEE38  \
 	LDA $2E,x				;$BEEE3A   |
 	BNE CODE_BEEE9D				;$BEEE3C   |
-	LDY $0593				;$BEEE3E   |
+	LDY active_kong_sprite			;$BEEE3E   |
 	LDA $45,x				;$BEEE41   |
 	AND #$00FF				;$BEEE43   |
 	EOR #$FFFF				;$BEEE46   |
@@ -7597,7 +7597,7 @@ CODE_BEEFAD:
 
 CODE_BEEFB7:
 	LDA level_number			;$BEEFB7  \ get the current level
-	CMP #$001B				;$BEEFB9   | check if player is in the ship cabin
+	CMP #!level_pirate_panic_k_rools_cabin	;$BEEFB9   | check if player is in the ship cabin
 	BNE CODE_BEEFAD				;$BEEFBC   | if the player isnt in the ship cabin disable the cheat sprite
 	LDA $08BC				;$BEEFBE   | get current banana count
 	SEP #$20				;$BEEFC1   | turn on 8 bit
@@ -7614,7 +7614,7 @@ CODE_BEEFD1:					;	   |
 
 CODE_BEEFD9:
 	LDA level_number			;$BEEFD9  \ get the current level
-	CMP #$0003				;$BEEFDB   | check if player is in pirate panic
+	CMP #!level_pirate_panic		;$BEEFDB   | check if player is in pirate panic
 	BNE CODE_BEEFAD				;$BEEFDE   | if the player isnt in pirate panic disable the cheat sprite
 	LDA $08BA				;$BEEFE0   | get banana count before cheat
 	AND #$00FF				;$BEEFE3   |
@@ -7630,7 +7630,7 @@ CODE_BEEFD9:
 
 CODE_BEEFF8:
 	LDA level_number			;$BEEFF8  \ get the current level
-	CMP #$001B				;$BEEFFA   | check if player is in the ship cabin
+	CMP #!level_pirate_panic_k_rools_cabin	;$BEEFFA   | check if player is in the ship cabin
 	BNE CODE_BEEFAD				;$BEEFFD   | if the player isnt in the ship cabin disable the cheat sprite
 	LDA $08BA				;$BEEFFF   | get banana count before cheat
 	AND #$00FF				;$BEF002   |
@@ -8382,7 +8382,7 @@ CODE_BEF4AD:					;	   |
 	RTS					;$BEF4AD  /
 
 CODE_BEF4AE:
-	LDY $0593				;$BEF4AE  \
+	LDY active_kong_sprite			;$BEF4AE  \
 	LDA $04,x				;$BEF4B1   |
 	BEQ CODE_BEF4C8				;$BEF4B3   |
 	CMP #$8000				;$BEF4B5   |
@@ -8418,7 +8418,7 @@ CODE_BEF4E7:					;	   |
 
 CODE_BEF4E8:
 	TYX					;$BEF4E8  \
-	LDY $0593				;$BEF4E9   |
+	LDY active_kong_sprite			;$BEF4E9   |
 	LDA $05,x				;$BEF4EC   |
 	AND #$00FF				;$BEF4EE   |
 	STA $5E					;$BEF4F1   |
@@ -8629,7 +8629,7 @@ CODE_BEF631:					;	   |
 	RTS					;$BEF631  /
 
 CODE_BEF632:
-	LDY $0593				;$BEF632  \
+	LDY active_kong_sprite			;$BEF632  \
 	ASL $04,x				;$BEF635   |
 	BEQ CODE_BEF649				;$BEF637   |
 	PHP					;$BEF639   |
@@ -8721,7 +8721,7 @@ CODE_BEF6C3:
 	TAX					;$BEF6C3  \
 	BNE CODE_BEF734				;$BEF6C4   |
 	STZ $32					;$BEF6C6   |
-	LDX $0593				;$BEF6C8   |
+	LDX active_kong_sprite			;$BEF6C8   |
 	LDA $0A,x				;$BEF6CB   |
 	SEC					;$BEF6CD   |
 	SBC $000A,y				;$BEF6CE   |
@@ -8776,7 +8776,7 @@ CODE_BEF72F:					;	   |
 	BRA CODE_BEF75B				;$BEF732  /
 
 CODE_BEF734:
-	LDX $0593				;$BEF734  \
+	LDX active_kong_sprite			;$BEF734  \
 	LDA $06,x				;$BEF737   |
 	SEC					;$BEF739   |
 	SBC $0048,y				;$BEF73A   |
@@ -9042,7 +9042,7 @@ CODE_BEF90B:
 	LDA $0A,x				;$BEF90E   |
 	STA $0C,x				;$BEF910   |
 	LDY current_sprite			;$BEF912   |
-	LDX $0593				;$BEF914   |
+	LDX active_kong_sprite			;$BEF914   |
 	LDA $42,x				;$BEF917   |
 	STA $0002,y				;$BEF919   |
 CODE_BEF91C:					;	   |

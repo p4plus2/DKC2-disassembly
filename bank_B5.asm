@@ -7914,10 +7914,10 @@ DATA_B5CDBE:
 	db $11, $12, $12, $13, $14, $14, $15, $16
 
 CODE_B5CDDE:
-	LDX $0593				;$B5CDDE  \
+	LDX active_kong_sprite			;$B5CDDE  \
 	BEQ CODE_B5CDEE				;$B5CDE1   |
 	JSR CODE_B5CDEF				;$B5CDE3   |
-	LDX $0597				;$B5CDE6   |
+	LDX inactive_kong_sprite		;$B5CDE6   |
 	BEQ CODE_B5CDEE				;$B5CDE9   |
 	JSR CODE_B5CDEF				;$B5CDEB   |
 CODE_B5CDEE:					;	   |
@@ -8120,7 +8120,7 @@ CODE_B5CEF0:
 	BNE CODE_B5CF20				;$B5CF1B   |
 	JSR CODE_B5D23F				;$B5CF1D   |
 CODE_B5CF20:					;	   |
-	LDX $0593				;$B5CF20   |
+	LDX active_kong_sprite			;$B5CF20   |
 	LDA.l $000790				;$B5CF23   |
 	STA $12,x				;$B5CF27   |
 	SEP #$20				;$B5CF29   |
@@ -8417,7 +8417,7 @@ CODE_B5D280:					;	   |
 	AND #$00FF				;$B5D28A   |
 	INC A					;$B5D28D   |
 	STA $0006C5				;$B5D28E   |
-	LDY $0593				;$B5D292   |
+	LDY active_kong_sprite			;$B5D292   |
 	LDA #$CFFF				;$B5D295   |
 	AND $0012,y				;$B5D298   |
 	ORA $0003,x				;$B5D29B   |
@@ -9118,15 +9118,15 @@ CODE_B5D96E:
 	LDY #$011A				;$B5D977   |
 	JSL CODE_BB8412				;$B5D97A   |
 	LDX alternate_sprite			;$B5D97E   |
-	STX $0593				;$B5D980   |
-	STZ $0597				;$B5D983   |
+	STX active_kong_sprite			;$B5D980   |
+	STZ inactive_kong_sprite		;$B5D983   |
 	BRA CODE_B5D9BD				;$B5D986  /
 
 CODE_B5D988:
 	LDA $08A4				;$B5D988  \
 	BNE CODE_B5D99C				;$B5D98B   |
 	JSR CODE_B5D9BE				;$B5D98D   |
-	STX $0597				;$B5D990   |
+	STX inactive_kong_sprite		;$B5D990   |
 	JSR CODE_B5D9CE				;$B5D993   |
 	INC $02,x				;$B5D996   |
 	INC $02,x				;$B5D998   |
@@ -9134,16 +9134,16 @@ CODE_B5D988:
 
 CODE_B5D99C:
 	JSR CODE_B5D9CE				;$B5D99C  \
-	STX $0597				;$B5D99F   |
+	STX inactive_kong_sprite		;$B5D99F   |
 	JSR CODE_B5D9BE				;$B5D9A2   |
 	INC $02,x				;$B5D9A5   |
 	INC $02,x				;$B5D9A7   |
 CODE_B5D9A9:					;	   |
-	STX $0593				;$B5D9A9   |
+	STX active_kong_sprite			;$B5D9A9   |
 	LDA $08C2				;$B5D9AC   |
 	BIT #$4000				;$B5D9AF   |
 	BNE CODE_B5D9BD				;$B5D9B2   |
-	LDY $0597				;$B5D9B4   |
+	LDY inactive_kong_sprite		;$B5D9B4   |
 	LDA #$C000				;$B5D9B7   |
 	STA $001C,y				;$B5D9BA   |
 CODE_B5D9BD:					;	   |
@@ -10517,7 +10517,7 @@ CODE_B5E44B:					;	   |
 	RTL					;$B5E4A9  /
 
 CODE_B5E4AA:
-	LDX $0593				;$B5E4AA  \
+	LDX active_kong_sprite			;$B5E4AA  \
 	LDY #$0000				;$B5E4AD   |
 	LDA $0550				;$B5E4B0   |
 	BIT #$0030				;$B5E4B3   |
@@ -10595,7 +10595,7 @@ else						;	   |
 endif						;	   |
 	LDY $0AE8				;$B5E52B   |
 	BNE CODE_B5E533				;$B5E52E   |
-	LDY $0593				;$B5E530   |
+	LDY active_kong_sprite			;$B5E530   |
 CODE_B5E533:					;	   |
 	JSR CODE_B5E560				;$B5E533   |
 	PHD					;$B5E536   |
@@ -12891,7 +12891,7 @@ CODE_B5F36F:
 	STA $7FD632				;$B5F372   |
 	LDA #$0001				;$B5F376   |
 	STA $000D36				;$B5F379   |
-	LDA $0593				;$B5F37D   |
+	LDA active_kong_sprite			;$B5F37D   |
 	STA $000D32				;$B5F380   |
 	LDA #$0000				;$B5F384   |
 	STA $000D38				;$B5F387   |

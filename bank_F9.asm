@@ -11982,4 +11982,4 @@ DATA_F9C775:
 	incbin "data/screens/8x8_tilemaps/secret_ending_screen_layer_2_8x8_tilemap.bin"
 
 padbyte $00
-pad $FA0000
+pad $F9D000

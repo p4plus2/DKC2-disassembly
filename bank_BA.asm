@@ -899,7 +899,7 @@ CODE_BA9334:
 	BRL CODE_BA9439				;$BA935B  /
 
 CODE_BA935E:
-	LDY $0593				;$BA935E  \
+	LDY active_kong_sprite			;$BA935E  \
 	LDA $06,x				;$BA9361   |
 	CLC					;$BA9363   |
 	ADC #$0000				;$BA9364   |
@@ -913,7 +913,7 @@ CODE_BA935E:
 	BNE CODE_BA937D				;$BA9378   |
 	JSR CODE_BA9484				;$BA937A   |
 CODE_BA937D:					;	   |
-	LDY $0593				;$BA937D   |
+	LDY active_kong_sprite			;$BA937D   |
 	LDA $06,x				;$BA9380   |
 	CLC					;$BA9382   |
 	ADC #$FFF0				;$BA9383   |
@@ -939,7 +939,7 @@ CODE_BA9399:
 	BEQ CODE_BA93AA				;$BA93A5   |
 	JSR CODE_BA9484				;$BA93A7   |
 CODE_BA93AA:					;	   |
-	LDY $0593				;$BA93AA   |
+	LDY active_kong_sprite			;$BA93AA   |
 	LDA $06,x				;$BA93AD   |
 	CLC					;$BA93AF   |
 	ADC #$0010				;$BA93B0   |
@@ -952,13 +952,13 @@ CODE_BA93BC:
 	LDA $28,x				;$BA93BC  \
 	STA $26,x				;$BA93BE   |
 CODE_BA93C0:					;	   |
-	LDY $0593				;$BA93C0   |
+	LDY active_kong_sprite			;$BA93C0   |
 	LDA $0A,x				;$BA93C3   |
 	CLC					;$BA93C5   |
 	ADC #$FFF6				;$BA93C6   |
 	CMP $000A,y				;$BA93C9   |
 	BCC CODE_BA93EA				;$BA93CC   |
-	LDY $0593				;$BA93CE   |
+	LDY active_kong_sprite			;$BA93CE   |
 	LDA $0A,x				;$BA93D1   |
 	CLC					;$BA93D3   |
 	ADC #$FFF6				;$BA93D4   |
@@ -976,7 +976,7 @@ CODE_BA93E8:					;	   |
 	BRA CODE_BA9400				;$BA93E8  /
 
 CODE_BA93EA:
-	LDY $0593				;$BA93EA  \
+	LDY active_kong_sprite			;$BA93EA  \
 	LDA $0A,x				;$BA93ED   |
 	CLC					;$BA93EF   |
 	ADC #$FFF7				;$BA93F0   |
@@ -1203,7 +1203,7 @@ CODE_BA95C3:					;	   |
 	LDA #$0001				;$BA95EA   |
 	STA $24,x				;$BA95ED   |
 	STA $26,x				;$BA95EF   |
-	LDY $0593				;$BA95F1   |
+	LDY active_kong_sprite			;$BA95F1   |
 	LDA $06,x				;$BA95F4   |
 	CMP $0006,y				;$BA95F6   |
 	BCS CODE_BA9600				;$BA95F9   |
@@ -1887,7 +1887,7 @@ CODE_BA9C06:					;	   |
 	JML [$05A9]				;$BA9C0B  /
 
 CODE_BA9C0E:
-	LDX $0593				;$BA9C0E  \
+	LDX active_kong_sprite			;$BA9C0E  \
 	LDA $2E,x				;$BA9C11   |
 	ASL A					;$BA9C13   |
 	ASL A					;$BA9C14   |
@@ -1983,7 +1983,7 @@ CODE_BA9CB5:					;	   |
 	LDA #$0001				;$BA9CDD   |
 	STA $24,x				;$BA9CE0   |
 	STA $26,x				;$BA9CE2   |
-	LDY $0593				;$BA9CE4   |
+	LDY active_kong_sprite			;$BA9CE4   |
 	LDA $06,x				;$BA9CE7   |
 	CMP $0006,y				;$BA9CE9   |
 	BCS CODE_BA9CF3				;$BA9CEC   |
@@ -2180,7 +2180,7 @@ CODE_BA9E84:
 	RTS					;$BA9E90  /
 
 CODE_BA9E91:
-	LDY $0593				;$BA9E91  \
+	LDY active_kong_sprite			;$BA9E91  \
 	LDA $000A,y				;$BA9E94   |
 	CMP #$0378				;$BA9E97   |
 	BCC CODE_BA9EBE				;$BA9E9A   |
@@ -2302,7 +2302,7 @@ CODE_BA9F8C:
 	LDY #$00A4				;$BA9F93   |
 	JSL CODE_BB842C				;$BA9F96   |
 	LDX alternate_sprite			;$BA9F9A   |
-	LDY $0593				;$BA9F9C   |
+	LDY active_kong_sprite			;$BA9F9C   |
 	RTS					;$BA9F9F  /
 
 CODE_BA9FA0:
@@ -2406,7 +2406,7 @@ CODE_BAA08E:					;	   |
 	DEC $065A				;$BAA094   |
 	BNE CODE_BAA0AF				;$BAA097   |
 CODE_BAA099:					;	   |
-	LDX $0593				;$BAA099   |
+	LDX active_kong_sprite			;$BAA099   |
 	LDA $1E,x				;$BAA09C   |
 	LSR A					;$BAA09E   |
 	BCC CODE_BAA0AF				;$BAA09F   |
@@ -4509,12 +4509,12 @@ CODE_BAC1FF:					;	   |
 	LDA.l $0006A5				;$BAC211   |
 	BIT #$0008				;$BAC215   |
 	BNE CODE_BAC234				;$BAC218   |
-	LDX $0593				;$BAC21A   |
+	LDX active_kong_sprite			;$BAC21A   |
 	LDA $0A,x				;$BAC21D   |
 	SEC					;$BAC21F   |
 	SBC #$0003				;$BAC220   |
 	STA $0A,x				;$BAC223   |
-	LDX $0597				;$BAC225   |
+	LDX inactive_kong_sprite		;$BAC225   |
 	STA $0A,x				;$BAC228   |
 	LDX current_sprite			;$BAC22A   |
 	LDA $0A,x				;$BAC22C   |
@@ -4523,12 +4523,12 @@ CODE_BAC1FF:					;	   |
 	BRA CODE_BAC24C				;$BAC232  /
 
 CODE_BAC234:
-	LDX $0593				;$BAC234  \
+	LDX active_kong_sprite			;$BAC234  \
 	LDA $0A,x				;$BAC237   |
 	CLC					;$BAC239   |
 	ADC #$0003				;$BAC23A   |
 	STA $0A,x				;$BAC23D   |
-	LDX $0597				;$BAC23F   |
+	LDX inactive_kong_sprite		;$BAC23F   |
 	STA $0A,x				;$BAC242   |
 	LDX current_sprite			;$BAC244   |
 	LDA $0A,x				;$BAC246   |
@@ -4545,47 +4545,105 @@ CODE_BAC256:
 	STZ $42,x				;$BAC256  \
 	RTL					;$BAC258  /
 
+;cranky animation sequence (animation ids that play in sequence once the previous one finishes playing)
 DATA_BAC259:
-	db $C7, $01, $C7, $01, $C7, $01, $C7, $01
-	db $C9, $01, $C7, $01, $C7, $01, $C7, $01
-	db $C8, $01, $63, $00 : dw DATA_BAC259
+	dw $01C7
+	dw $01C7
+	dw $01C7
+	dw $01C7
+	dw $01C9
+	dw $01C7
+	dw $01C7
+	dw $01C7
+	dw $01C8
+	dw $0063, DATA_BAC259
 
+;funky animation sequence (animation ids that play in sequence once the previous one finishes playing)
 DATA_BAC26F:
-	db $CC, $01, $CC, $01, $CC, $01, $CC, $01
-	db $CC, $01, $CD, $01, $CA, $01, $CA, $01
-	db $CA, $01, $CA, $01, $CA, $01, $CA, $01
-	db $CE, $01, $63, $00 : dw DATA_BAC26F
+	dw $01CC
+	dw $01CC
+	dw $01CC
+	dw $01CC
+	dw $01CC
+	dw $01CD
+	dw $01CA
+	dw $01CA
+	dw $01CA
+	dw $01CA
+	dw $01CA
+	dw $01CA
+	dw $01CE
+	dw $0063, DATA_BAC26F
 
+;funky board animation sequence (animation ids that play in sequence once the previous one finishes playing)
 DATA_BAC28D:
-	db $CF, $01, $CF, $01, $CF, $01, $CF, $01
-	db $CF, $01, $D0, $01, $CB, $01, $CB, $01
-	db $CB, $01, $CB, $01, $CB, $01, $CB, $01
-	db $D1, $01, $63, $00 : dw DATA_BAC28D
+	dw $01CF
+	dw $01CF
+	dw $01CF
+	dw $01CF
+	dw $01CF
+	dw $01D0
+	dw $01CB
+	dw $01CB
+	dw $01CB
+	dw $01CB
+	dw $01CB
+	dw $01CB
+	dw $01D1
+	dw $0063, DATA_BAC28D
 
+;swanky animation sequence (animation ids that play in sequence once the previous one finishes playing)
 DATA_BAC2AB:
-	db $D6, $01
+	dw $01D6
 DATA_BAC2AD:
-	db $D3, $01, $D2, $01, $D4, $01, $D4, $01
-	db $D4, $01, $D5, $01, $63, $00 : dw DATA_BAC2AD
+	dw $01D3
+	dw $01D2
+	dw $01D4
+	dw $01D4
+	dw $01D4
+	dw $01D5
+	dw $0063, DATA_BAC2AD
 
 DATA_BAC2BD:
-	db $D7, $01, $63, $00 : dw DATA_BAC2BD
+	dw $01D7
+	dw $0063, DATA_BAC2BD
 
+;wrinkly animation sequence (animation ids that play in sequence once the previous one finishes playing)
 DATA_BAC2C3:
-	db $D9, $01
+	dw $01D9
 DATA_BAC2C5:
-	db $DA, $01, $DA, $01, $DA, $01, $DA, $01
-	db $DB, $01, $DC, $01, $DA, $01, $DA, $01
-	db $DA, $01, $DB, $01, $DD, $01, $DF, $01
-	db $DF, $01, $63, $00 : dw DATA_BAC2C5
+	dw $01DA
+	dw $01DA
+	dw $01DA
+	dw $01DA
+	dw $01DB
+	dw $01DC
+	dw $01DA
+	dw $01DA
+	dw $01DA
+	dw $01DB
+	dw $01DD
+	dw $01DF
+	dw $01DF
+	dw $0063, DATA_BAC2C5
 
 DATA_BAC2E3:
-	db $E0, $01
+	dw $01E0
 DATA_BAC2E5:
-	db $E1, $01, $E1, $01, $E1, $01, $E1, $01
-	db $E2, $01, $E3, $01, $E1, $01, $E1, $01
-	db $E1, $01, $E2, $01, $E4, $01, $E6, $01
-	db $E6, $01, $63, $00 : dw DATA_BAC2E5
+	dw $01E1
+	dw $01E1
+	dw $01E1
+	dw $01E1
+	dw $01E2
+	dw $01E3
+	dw $01E1
+	dw $01E1
+	dw $01E1
+	dw $01E2
+	dw $01E4
+	dw $01E6
+	dw $01E6
+	dw $0063, DATA_BAC2E5
 
 
 CODE_BAC303:
@@ -4617,7 +4675,7 @@ CODE_BAC328:					;	   |
 	JSL CODE_B8CF7F				;$BAC334   |
 	JSL CODE_B9D100				;$BAC338   |
 	LDA level_number			;$BAC33C   |
-	CMP #$001B				;$BAC33E   |
+	CMP #!level_pirate_panic_k_rools_cabin	;$BAC33E   |
 	BEQ CODE_BAC346				;$BAC341   |
 	JML [$05A9]				;$BAC343  /
 

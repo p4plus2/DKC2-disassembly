@@ -557,7 +557,7 @@ CODE_808712:
 	LDA $05FB				;$808731   |
 	CMP #$0002				;$808734   |
 	BNE CODE_80875E				;$808737   |
-	LDA #$000C				;$808739   |
+	LDA #!level_mainbrace_mayhem		;$808739   |
 	STA level_number			;$80873C   |
 	STA $08C8				;$80873E   |
 	LDA #$0001				;$808741   |
@@ -692,7 +692,7 @@ CODE_808837:
 CODE_80883B:
 	BNE CODE_808863				;$80883B  \
 	LDA #main_sprite_table			;$80883D   |
-	STA $0593				;$808840   |
+	STA active_kong_sprite			;$808840   |
 	LDA #main_sprite_table_end		;$808843   |
 	STA $0595				;$808846   |
 	STZ $08A4				;$808849   |
@@ -700,7 +700,7 @@ CODE_80883B:
 	INC A					;$80884F   |
 	STA $08A2				;$808850   |
 	LDA #$0E40				;$808853   |
-	STA $0597				;$808856   |
+	STA inactive_kong_sprite		;$808856   |
 	LDA #$16D8				;$808859   |
 	STA $0599				;$80885C   |
 	JSR CODE_808889				;$80885F   |
@@ -708,7 +708,7 @@ CODE_80883B:
 
 CODE_808863:
 	LDA #$0E40				;$808863  \
-	STA $0593				;$808866   |
+	STA active_kong_sprite			;$808866   |
 	LDA #$16D8				;$808869   |
 	STA $0595				;$80886C   |
 	LDA #$0001				;$80886F   |
@@ -716,7 +716,7 @@ CODE_808863:
 	INC A					;$808875   |
 	STA $08A2				;$808876   |
 	LDA #main_sprite_table			;$808879   |
-	STA $0597				;$80887C   |
+	STA inactive_kong_sprite		;$80887C   |
 	LDA #main_sprite_table_end		;$80887F   |
 	STA $0599				;$808882   |
 	JSR CODE_808889				;$808885   |
@@ -724,10 +724,10 @@ CODE_808863:
 
 CODE_808889:
 	PHX					;$808889  \
-	LDX $0593				;$80888A   |
+	LDX active_kong_sprite			;$80888A   |
 	LDA #$001E				;$80888D   |
 	STA $30,x				;$808890   |
-	LDX $0597				;$808892   |
+	LDX inactive_kong_sprite		;$808892   |
 	LDA #$0000				;$808895   |
 	STA $30,x				;$808898   |
 	PLX					;$80889A   |
@@ -1383,13 +1383,13 @@ CODE_808D8A:
 	STA $16E0				;$808DBF   |
 	LDA.l DATA_FF012C			;$808DC2   |
 	STA $16E2				;$808DC6   |
-	LDX $0593				;$808DC9   |
+	LDX active_kong_sprite			;$808DC9   |
 	LDA #$001D				;$808DCC   |
 	STA $2E,x				;$808DCF   |
 	LDA #$00E4				;$808DD1   |
 	STA $02,x				;$808DD4   |
 	JSR CODE_808DFB				;$808DD6   |
-	LDX $0597				;$808DD9   |
+	LDX inactive_kong_sprite		;$808DD9   |
 	LDA #$001E				;$808DDC   |
 	STA $2E,x				;$808DDF   |
 	LDA #$00D8				;$808DE1   |
@@ -1398,7 +1398,7 @@ CODE_808D8A:
 	LDA $08C2				;$808DE9   |
 	BIT #$4000				;$808DEC   |
 	BNE CODE_808DFA				;$808DEF   |
-	LDY $0597				;$808DF1   |
+	LDY inactive_kong_sprite		;$808DF1   |
 	LDA #$C000				;$808DF4   |
 	STA $001C,y				;$808DF7   |
 CODE_808DFA:					;	   |
@@ -1420,7 +1420,7 @@ CODE_808DFB:
 	LDA #$0000				;$808E11   |
 	JSL CODE_808837				;$808E14   |
 	JSR CODE_808E29				;$808E18   |
-	LDX $0593				;$808E1B   |
+	LDX active_kong_sprite			;$808E1B   |
 	LDA #$001D				;$808E1E   |
 	STA $2E,x				;$808E21   |
 	LDA #$00E4				;$808E23   |
@@ -1581,7 +1581,7 @@ CODE_808F68:
 	RTL					;$808F6B  /
 
 CODE_808F6C:
-	LDA #$0003				;$808F6C  \
+	LDA #!level_pirate_panic		;$808F6C  \
 	STA level_number			;$808F6F   |
 	STA $05BD				;$808F71   |
 	LDA #$0003				;$808F74   |
@@ -3007,9 +3007,9 @@ CODE_809C6F:					;	   |
 	STA.l CPU.enable_interrupts		;$809C73   |
 	REP #$20				;$809C77   |
 	LDA $84					;$809C79   |
-	CMP #$000F				;$809C7B   |
+	CMP #!music_bonus			;$809C7B   |
 	BNE CODE_809C83				;$809C7E   |
-	LDA #$030F				;$809C80   |
+	LDA #!music_bonus|$0300			;$809C80   |
 CODE_809C83:					;	   |
 	JSL play_song_with_transition		;$809C83   |
 	JMP CODE_8099A7				;$809C87  /
@@ -3295,7 +3295,7 @@ CODE_809FA2:					;	   |
 	INX					;$809FA4   |
 	CPX #$00D1				;$809FA5   |
 	BNE CODE_809FA2				;$809FA8   |
-	LDA #$0024				;$809FAA   |
+	LDA #!music_secret_ending		;$809FAA   |
 	JSL play_song				;$809FAD   |
 	LDA #$AA55				;$809FB1   |
 	STA rng_result				;$809FB4   |
@@ -6175,7 +6175,7 @@ CODE_80B9C6:
 	REP #$20				;$80B9E2   |
 	LDA $17C2				;$80B9E4   |
 	LDY level_number			;$80B9E7   |
-	CPY #$0021				;$80B9E9   |
+	CPY #!level_kleevers_kiln		;$80B9E9   |
 	BNE CODE_80B9F2				;$80B9EC   |
 	SEC					;$80B9EE   |
 	SBC #$0030				;$80B9EF   |
@@ -6299,13 +6299,13 @@ CODE_80BAB1:
 	STA $7E8025				;$80BAED   |
 	STA $7E802A				;$80BAF1   |
 	LDA level_number			;$80BAF5   |
-	CMP #$0075				;$80BAF7   |
+	CMP #!level_hot_head_hop_bonus_1	;$80BAF7   |
 	BEQ CODE_80BB1D				;$80BAFA   |
-	CMP #$0021				;$80BAFC   |
+	CMP #!level_kleevers_kiln		;$80BAFC   |
 	BEQ CODE_80BB14				;$80BAFF   |
-	CMP #$0016				;$80BB01   |
+	CMP #!level_fiery_furnace		;$80BB01   |
 	BEQ CODE_80BB14				;$80BB04   |
-	CMP #$0007				;$80BB06   |
+	CMP #!level_hot_head_hop		;$80BB06   |
 	BNE CODE_80BB26				;$80BB09   |
 	LDA $17C2				;$80BB0B   |
 	SEC					;$80BB0E   |
@@ -6594,7 +6594,7 @@ CODE_80BD2F:					;	   |
 CODE_80BDAA:
 	JSR CODE_80B731				;$80BDAA  \
 	LDA level_number			;$80BDAD   |
-	CMP #$0009				;$80BDAF   |
+	CMP #!level_krows_nest			;$80BDAF   |
 	BEQ CODE_80BDB7				;$80BDB2   |
 	JSR CODE_80CF21				;$80BDB4   |
 CODE_80BDB7:					;	   |
@@ -8714,7 +8714,7 @@ CODE_80CF57:					;	   |
 
 CODE_80CF58:
 	LDA level_number			;$80CF58  \
-	CMP #$0009				;$80CF5A   |
+	CMP #!level_krows_nest			;$80CF5A   |
 	BEQ CODE_80CF62				;$80CF5D   |
 	JSR CODE_80CF21				;$80CF5F   |
 CODE_80CF62:					;	   |
@@ -9089,14 +9089,14 @@ CODE_80D4B4:
 	JMP CODE_80D45D				;$80D4B4  /
 
 CODE_80D4B7:
-	LDX $0593				;$80D4B7  \
+	LDX active_kong_sprite			;$80D4B7  \
 	LDA $0A,x				;$80D4BA   |
 	CMP $0D4E				;$80D4BC   |
 	BMI CODE_80D4DE				;$80D4BF   |
 	LDA #$0004				;$80D4C1   |
 	TSB $08C2				;$80D4C4   |
 	BNE CODE_80D4F9				;$80D4C7   |
-	LDX $0593				;$80D4C9   |
+	LDX active_kong_sprite			;$80D4C9   |
 	STX current_sprite			;$80D4CC   |
 	LDY #$0018				;$80D4CE   |
 	JSL CODE_BB842C				;$80D4D1   |
@@ -9108,7 +9108,7 @@ CODE_80D4DE:
 	LDA #$0004				;$80D4DE  \
 	TRB $08C2				;$80D4E1   |
 	BEQ CODE_80D4F9				;$80D4E4   |
-	LDX $0593				;$80D4E6   |
+	LDX active_kong_sprite			;$80D4E6   |
 	STX current_sprite			;$80D4E9   |
 	LDY #$001A				;$80D4EB   |
 	JSL CODE_BB842C				;$80D4EE   |
@@ -9473,7 +9473,7 @@ CODE_80D7F1:
 	BPL CODE_80D7F6				;$80D7F1  \
 	LDY #DATA_80D7DC			;$80D7F3   |
 CODE_80D7F6:					;	   |
-	LDX $0593				;$80D7F6   |
+	LDX active_kong_sprite			;$80D7F6   |
 	LDA $1E,x				;$80D7F9   |
 	LSR A					;$80D7FB   |
 	BCS CODE_80D813				;$80D7FC   |
@@ -9607,7 +9607,7 @@ CODE_80D902:
 	JSL sprite_handler			;$80D915   |
 	BIT $08C2				;$80D919   |
 	BVC CODE_80D92E				;$80D91C   |
-	LDX $0597				;$80D91E   |
+	LDX inactive_kong_sprite		;$80D91E   |
 	LDA $0D54				;$80D921   |
 	CLC					;$80D924   |
 	ADC #$00C0				;$80D925   |
@@ -9628,7 +9628,7 @@ CODE_80D941:
 	LDA $0A36				;$80D941  \
 	BIT #$0082				;$80D944   |
 	BNE CODE_80D9B2				;$80D947   |
-	LDY $0593				;$80D949   |
+	LDY active_kong_sprite			;$80D949   |
 	LDA $002E,y				;$80D94C   |
 	ASL A					;$80D94F   |
 	ASL A					;$80D950   |
@@ -12738,7 +12738,7 @@ CODE_80F3FB:
 	JSL clear_noncritical_wram		;$80F409   |
 	JSL set_all_oam_offscreen		;$80F40D   |
 	JSL init_sprite_render_order_global	;$80F411   |
-	LDA #$001E				;$80F415   |
+	LDA #!music_credits			;$80F415   |
 	JSL play_song				;$80F418   |
 	STZ $1730				;$80F41C   |
 	LDA #$000E				;$80F41F   |
@@ -13341,7 +13341,7 @@ CODE_80FA7C:
 	JSL VRAM_payload_handler_global		;$80FA8D   |
 	LDA #$001F				;$80FA91   |
 	JSL set_PPU_registers_global		;$80FA94   |
-	LDA #$0014				;$80FA98   |
+	LDA #!music_game_over			;$80FA98   |
 	JSL play_song				;$80FA9B   |
 	LDA #$0100				;$80FA9F   |
 	JSR set_fade				;$80FAA2   |

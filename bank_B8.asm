@@ -91,7 +91,7 @@ work_on_active_kong:
 	LDA $0595				;$B88092  \
 	STA $66					;$B88095   |
 	TAY					;$B88097   |
-	LDX $0593				;$B88098   |
+	LDX active_kong_sprite			;$B88098   |
 	STX current_sprite			;$B8809B   |
 	LDA $54,x				;$B8809D   |
 	STA $8E					;$B8809F   |
@@ -102,13 +102,13 @@ CODE_B880A2:
 	RTL					;$B880A5  /
 
 work_on_kong_in_x:
-	CPX $0593				;$B880A6  \
+	CPX active_kong_sprite			;$B880A6  \
 	BEQ work_on_active_kong			;$B880A9   |
 work_on_inactive_kong:				;	   |
 	LDA $0599				;$B880AB   |
 	STA $66					;$B880AE   |
 	TAY					;$B880B0   |
-	LDX $0597				;$B880B1   |
+	LDX inactive_kong_sprite		;$B880B1   |
 	STX current_sprite			;$B880B4   |
 	LDA $54,x				;$B880B6   |
 	STA $8E					;$B880B8   |
@@ -117,8 +117,8 @@ work_on_inactive_kong:				;	   |
 	RTS					;$B880BB  /
 
 CODE_B880BC:
-	LDX $0593				;$B880BC  \
-	LDY $0597				;$B880BF   |
+	LDX active_kong_sprite			;$B880BC  \
+	LDY inactive_kong_sprite		;$B880BF   |
 	LDA $2E,x				;$B880C2   |
 	CMP #$0011				;$B880C4   |
 	BNE CODE_B880D1				;$B880C7   |
@@ -131,7 +131,7 @@ CODE_B880D1:					;	   |
 CODE_B880D2:
 	JSR work_on_active_kong			;$B880D2  \
 	JSR CODE_B88EBC				;$B880D5   |
-	LDX $0593				;$B880D8   |
+	LDX active_kong_sprite			;$B880D8   |
 	LDA $2E,x				;$B880DB   |
 	ASL A					;$B880DD   |
 	ASL A					;$B880DE   |
@@ -143,7 +143,7 @@ else						;	   |
 	AND #$0005				;$B880E4   |
 endif						;	   |
 	BNE CODE_B8811D				;$B880E7   |
-	LDX $0593				;$B880E9   |
+	LDX active_kong_sprite			;$B880E9   |
 	LDA $6E					;$B880EC   |
 	BNE CODE_B8811D				;$B880EE   |
 	LDA #$0069				;$B880F0   |
@@ -244,13 +244,13 @@ CODE_B881B4:
 
 CODE_B881BB:
 	LDA $0D7A				;$B881BB  \
-	CMP $0597				;$B881BE   |
+	CMP inactive_kong_sprite		;$B881BE   |
 	BEQ CODE_B881C4				;$B881C1   |
 	RTS					;$B881C3  /
 
 CODE_B881C4:
 	STZ $0D7A				;$B881C4  \
-	LDX $0597				;$B881C7   |
+	LDX inactive_kong_sprite		;$B881C7   |
 	LDA #$0022				;$B881CA   |
 	STA $2E,x				;$B881CD   |
 	LDA #$00D8				;$B881CF   |
@@ -259,7 +259,7 @@ CODE_B881C4:
 	LDX #$001C				;$B881D7   |
 	LDY #$0000				;$B881DA   |
 	JSR CODE_B8D8D5				;$B881DD   |
-	LDX $0593				;$B881E0   |
+	LDX active_kong_sprite			;$B881E0   |
 	LDA #$00E4				;$B881E3   |
 	STA $02,x				;$B881E6   |
 	RTS					;$B881E8  /
@@ -276,7 +276,7 @@ CODE_B881E9:
 	LDX current_sprite			;$B88202   |
 	LDA $0A86				;$B88204   |
 	STA $42,x				;$B88207   |
-	CPX $0593				;$B88209   |
+	CPX active_kong_sprite			;$B88209   |
 	BEQ CODE_B88222				;$B8820C   |
 	LDY $2E,x				;$B8820E   |
 	LDA #$005C				;$B88210   |
@@ -427,8 +427,8 @@ if !version == 0				;	  \
 	LDA #$001F				;$B88346   |
 	LDY #$0280				;$B88349   |
 else						;	   |
-	LDX $0593				;$B88340   |
-	LDY $0597				;$B88343   |
+	LDX active_kong_sprite			;$B88340   |
+	LDY inactive_kong_sprite		;$B88343   |
 	LDA #$0000				;$B88346   |
 	STA $1C,x				;$B88349   |
 	STA $001C,y				;$B8834B   |
@@ -454,13 +454,13 @@ CODE_B88379:
 	JSR CODE_B880BC				;$B88379  \
 	JSR work_on_active_kong			;$B8837C   |
 	LDA current_song			;$B8837F   |
-	CMP #$000D				;$B88381   |
+	CMP #!music_lava			;$B88381   |
 	BNE CODE_B8838D				;$B88384   |
 	LDA #$077E				;$B88386   |
 	JSL queue_sound_effect			;$B88389   |
 CODE_B8838D:					;	   |
 	LDA current_song			;$B8838D   |
-	CMP #$0003				;$B8838F   |
+	CMP #!music_swamp			;$B8838F   |
 	BNE CODE_B883AA				;$B88392   |
 	LDY #$0018				;$B88394   |
 	JSL CODE_BB842C				;$B88397   |
@@ -497,7 +497,7 @@ CODE_B883D5:
 	BNE CODE_B8841B				;$B883DB   |
 	JSL CODE_BEC66F				;$B883DD   |
 	LDA current_song			;$B883E1   |
-	CMP #$001F				;$B883E3   |
+	CMP #!music_k_rool			;$B883E3   |
 	BEQ CODE_B8841B				;$B883E6   |
 	BRA CODE_B88414				;$B883E8  /
 
@@ -540,7 +540,7 @@ CODE_B8842B:
 	LDX #$0540				;$B88430   |
 	LDY #$0540				;$B88433   |
 	JSR CODE_B89186				;$B88436   |
-	LDA $0597				;$B88439   |
+	LDA inactive_kong_sprite		;$B88439   |
 	STA $0D7A				;$B8843C   |
 	STZ $0D7C				;$B8843F   |
 	STZ $0D7E				;$B88442   |
@@ -582,7 +582,7 @@ CODE_B8848E:
 	JSR CODE_B880BC				;$B88493   |
 	LDA current_player_mount		;$B88496   |
 	BNE CODE_B884D7				;$B88498   |
-	LDA $0597				;$B8849A   |
+	LDA inactive_kong_sprite		;$B8849A   |
 	STA $0D7A				;$B8849D   |
 	STZ $0D7C				;$B884A0   |
 	STZ $0D7E				;$B884A3   |
@@ -639,7 +639,7 @@ CODE_B8851A:					;	   |
 	RTS					;$B8851A  /
 
 CODE_B8851B:
-	LDX $0593				;$B8851B  \
+	LDX active_kong_sprite			;$B8851B  \
 	LDA $2E,x				;$B8851E   |
 	ASL A					;$B88520   |
 	ASL A					;$B88521   |
@@ -650,14 +650,14 @@ CODE_B8851B:
 
 CODE_B8852B:
 	JSR CODE_B880BC				;$B8852B  \
-	LDX $0593				;$B8852E   |
+	LDX active_kong_sprite			;$B8852E   |
 	LDA $2E,x				;$B88531   |
 	CMP #$002C				;$B88533   |
 	BEQ CODE_B8853D				;$B88536   |
 	JSR CODE_B8851B				;$B88538   |
 	BNE CODE_B8857D				;$B8853B   |
 CODE_B8853D:					;	   |
-	LDA $0597				;$B8853D   |
+	LDA inactive_kong_sprite		;$B8853D   |
 	STA $0D7A				;$B88540   |
 	STZ $0D7C				;$B88543   |
 	STZ $0D7E				;$B88546   |
@@ -959,7 +959,7 @@ CODE_B88787:
 CODE_B88796:					;	   |
 	STZ $1E,x				;$B88796   |
 	LDA $0D7A				;$B88798   |
-	CMP $0597				;$B8879B   |
+	CMP inactive_kong_sprite		;$B8879B   |
 	BEQ CODE_B887BC				;$B8879E   |
 	LDX current_sprite			;$B887A0   |
 	LDA #$0056				;$B887A2   |
@@ -996,7 +996,7 @@ CODE_B887DD:
 	STZ $0AEE				;$B887E1   |
 	STZ $0AF2				;$B887E4   |
 	LDA $0D7A				;$B887E7   |
-	CMP $0597				;$B887EA   |
+	CMP inactive_kong_sprite		;$B887EA   |
 	BEQ CODE_B887AA				;$B887ED   |
 	JSL CODE_B9DFB2				;$B887EF   |
 	LDA #$0004				;$B887F3   |
@@ -1137,7 +1137,7 @@ CODE_B88921:
 
 CODE_B88929:
 if !version == 1
-	LDX $0593				;$B88929   |
+	LDX active_kong_sprite			;$B88929   |
 	LDA $2E,x				;$B8892C   |
 	CMP #$0023				;$B8892E   |
 	BNE CODE_B88936				;$B88931   |
@@ -1175,7 +1175,7 @@ CODE_B88959:					;	   |
 	LDA $6E					;$B88978   |
 	BNE CODE_B8898C				;$B8897A   |
 	LDA $0D7A				;$B8897C   |
-	CMP $0597				;$B8897F   |
+	CMP inactive_kong_sprite		;$B8897F   |
 	BEQ CODE_B88994				;$B88982   |
 	LDA #$001B				;$B88984   |
 	JSL CODE_B9D0B8				;$B88987   |
@@ -1241,7 +1241,7 @@ endif						;	   |
 
 CODE_B88A00:
 	JSR work_on_active_kong			;$B88A00  \
-	LDX $0593				;$B88A03   |
+	LDX active_kong_sprite			;$B88A03   |
 	LDA #$F800				;$B88A06   |
 	LDY #$FA00				;$B88A09   |
 	JSR CODE_B88A27				;$B88A0C   |
@@ -1249,7 +1249,7 @@ CODE_B88A00:
 	AND #$4000				;$B88A12   |
 	BEQ CODE_B88A26				;$B88A15   |
 	JSR work_on_inactive_kong		;$B88A17   |
-	LDX $0597				;$B88A1A   |
+	LDX inactive_kong_sprite		;$B88A1A   |
 	LDA #$FA00				;$B88A1D   |
 	LDY #$FB00				;$B88A20   |
 	JSR CODE_B88A27				;$B88A23   |
@@ -1423,7 +1423,7 @@ CODE_B88B4B:					;	   |
 	BEQ CODE_B88B56				;$B88B51   |
 	LDA #$0004				;$B88B53   |
 CODE_B88B56:					;	   |
-	LDX $0593				;$B88B56   |
+	LDX active_kong_sprite			;$B88B56   |
 	JSL CODE_BB8C44				;$B88B59   |
 	JSR work_on_active_kong			;$B88B5D   |
 	LDA $08C2				;$B88B60   |
@@ -1502,7 +1502,7 @@ CODE_B88BD9:
 	LDX alternate_sprite			;$B88C00   |
 	LDA $0A86				;$B88C02   |
 	STA $42,x				;$B88C05   |
-	LDY $0593				;$B88C07   |
+	LDY active_kong_sprite			;$B88C07   |
 	LDA $0A88				;$B88C0A   |
 	CMP #$8000				;$B88C0D   |
 	AND #$7FFF				;$B88C10   |
@@ -1536,7 +1536,7 @@ CODE_B88C33:
 	RTS					;$B88C4F  /
 
 CODE_B88C50:
-	LDX $0593				;$B88C50  \
+	LDX active_kong_sprite			;$B88C50  \
 	LDA $2E,x				;$B88C53   |
 	ASL A					;$B88C55   |
 	ASL A					;$B88C56   |
@@ -1603,7 +1603,7 @@ if !version == 1				;	   |
 	BMI CODE_B88CB6				;$B88CB1   |
 	JSR CODE_B8A186				;$B88CB3   |
 CODE_B88CB6:					;	   |
-	LDX $0593				;$B88CB6   |
+	LDX active_kong_sprite			;$B88CB6   |
 endif						;	   |
 	LDA $10,x				;$B88CB9   |
 	AND #$0100				;$B88CBB   |
@@ -1643,7 +1643,7 @@ CODE_B88D02:
 
 CODE_B88D09:
 	LDA $0D7A				;$B88D09  \
-	CMP $0597				;$B88D0C   |
+	CMP inactive_kong_sprite		;$B88D0C   |
 	BNE CODE_B88D1E				;$B88D0F   |
 	JSR work_on_inactive_kong		;$B88D11   |
 	LDA #$0029				;$B88D14   |
@@ -1857,7 +1857,7 @@ CODE_B88EBC:
 	RTS					;$B88EC2  /
 
 .holding_sprite
-	CMP $0597				;$B88EC3  \
+	CMP inactive_kong_sprite		;$B88EC3  \
 	BEQ .holding_kong			;$B88EC6   |
 	TAX					;$B88EC8   |
 if !version == 0				;	   |
@@ -1885,7 +1885,7 @@ endif						;	   |
 
 .holding_kong
 	STZ $0D7A				;$B88EEE  \
-	LDX $0597				;$B88EF1   |
+	LDX inactive_kong_sprite		;$B88EF1   |
 	LDA #$0022				;$B88EF4   |
 	STA $2E,x				;$B88EF7   |
 	LDA #$00D8				;$B88EF9   |
@@ -1894,7 +1894,7 @@ endif						;	   |
 	LDX #$001C				;$B88F01   |
 	LDY #$0000				;$B88F04   |
 	JSR CODE_B8D8D5				;$B88F07   |
-	LDX $0593				;$B88F0A   |
+	LDX active_kong_sprite			;$B88F0A   |
 	LDA #$00E4				;$B88F0D   |
 	STA $02,x				;$B88F10   |
 	CLC					;$B88F12   |
@@ -2071,7 +2071,7 @@ CODE_B89035:
 	JSR CODE_B89609				;$B89078   |
 	JSL CODE_80889C				;$B8907B   |
 	JSL CODE_BB8C19				;$B8907F   |
-	LDX $0593				;$B89083   |
+	LDX active_kong_sprite			;$B89083   |
 	LDA #$0000				;$B89086   |
 	STA $20,x				;$B89089   |
 	STA $26,x				;$B8908B   |
@@ -2087,7 +2087,7 @@ CODE_B89035:
 	RTS					;$B890A6  /
 
 CODE_B890A7:
-	LDX $0593				;$B890A7  \
+	LDX active_kong_sprite			;$B890A7  \
 	LDA #$006F				;$B890AA   |
 	STA $2E,x				;$B890AD   |
 	STZ $4A,x				;$B890AF   |
@@ -2098,7 +2098,7 @@ CODE_B890A7:
 	RTS					;$B890BB  /
 
 CODE_B890BC:
-	LDX $0593				;$B890BC  \
+	LDX active_kong_sprite			;$B890BC  \
 	LDA $10,x				;$B890BF   |
 	AND #$0100				;$B890C1   |
 	BEQ CODE_B890E0				;$B890C4   |
@@ -2125,7 +2125,7 @@ CODE_B890E1:
 	AND #$CFFF				;$B890E9   |
 	ORA #$2000				;$B890EC   |
 	STA $12,x				;$B890EF   |
-	LDY $0593				;$B890F1   |
+	LDY active_kong_sprite			;$B890F1   |
 	LDA $0010,y				;$B890F4   |
 	AND #$0100				;$B890F7   |
 	BEQ CODE_B89107				;$B890FA   |
@@ -2263,8 +2263,8 @@ CODE_B891A0:
 	RTS					;$B89200  /
 
 CODE_B89201:
-	LDX $0593				;$B89201  \
-	LDY $0597				;$B89204   |
+	LDX active_kong_sprite			;$B89201  \
+	LDY inactive_kong_sprite		;$B89204   |
 	LDA $06,x				;$B89207   |
 	SEC					;$B89209   |
 	SBC $0006,y				;$B8920A   |
@@ -2288,12 +2288,12 @@ CODE_B89220:
 	RTS					;$B89228  /
 
 CODE_B89229:
-	LDX $0593				;$B89229  \
+	LDX active_kong_sprite			;$B89229  \
 	LDA $06,x				;$B8922C   |
 	STA $72					;$B8922E   |
 	LDA $0A,x				;$B89230   |
 	STA $74					;$B89232   |
-	LDY $0597				;$B89234   |
+	LDY inactive_kong_sprite		;$B89234   |
 	LDA $0006,y				;$B89237   |
 	CMP $06,x				;$B8923A   |
 	BPL CODE_B89243				;$B8923C   |
@@ -2310,7 +2310,7 @@ CODE_B8924D:					;	   |
 	RTS					;$B8924D  /
 
 CODE_B8924E:
-	LDX $0593				;$B8924E  \
+	LDX active_kong_sprite			;$B8924E  \
 	LDA $0A,x				;$B89251   |
 	SEC					;$B89253   |
 	SBC $74					;$B89254   |
@@ -2326,7 +2326,7 @@ if !version == 1				;	   |
 	LDA #$0000				;$B89266   |
 	STA $14,x				;$B89269   |
 endif						;	   |
-	LDX $0597				;$B8926B   |
+	LDX inactive_kong_sprite		;$B8926B   |
 if !version == 1				;	   |
 	STZ $1C,x				;$B8926E   |
 endif						;	   |
@@ -2347,8 +2347,8 @@ endif						;	   |
 	LDY $0595				;$B89293   |
 	PLA					;$B89296   |
 	STA $0016,y				;$B89297   |
-	LDX $0593				;$B8929A   |
-	LDY $0597				;$B8929D   |
+	LDX active_kong_sprite			;$B8929A   |
+	LDY inactive_kong_sprite		;$B8929D   |
 	LDA $0006,y				;$B892A0   |
 	SEC					;$B892A3   |
 	SBC $06,x				;$B892A4   |
@@ -2372,7 +2372,7 @@ CODE_B892BF:					;	   |
 	STA $0D7E				;$B892C9   |
 	LDA #$FFFF				;$B892CC   |
 	STA $0D80				;$B892CF   |
-	LDA $0597				;$B892D2   |
+	LDA inactive_kong_sprite		;$B892D2   |
 	STA $0D7A				;$B892D5   |
 	JSR work_on_inactive_kong		;$B892D8   |
 	LDA #$004A				;$B892DB   |
@@ -2448,7 +2448,7 @@ CODE_B8934A:
 	LDA $08C2				;$B8936E   |
 	AND #$4000				;$B89371   |
 	BEQ CODE_B89380				;$B89374   |
-	LDX $0597				;$B89376   |
+	LDX inactive_kong_sprite		;$B89376   |
 	LDA $30,x				;$B89379   |
 	AND #$FF7F				;$B8937B   |
 	STA $30,x				;$B8937E   |
@@ -2747,7 +2747,7 @@ CODE_B895BD:
 
 CODE_B895BF:
 	LDX current_player_mount		;$B895BF  \
-	LDY $0593				;$B895C1   |
+	LDY active_kong_sprite			;$B895C1   |
 	LDA $000A,y				;$B895C4   |
 	STA $0A,x				;$B895C7   |
 	LDA $0006,y				;$B895C9   |
@@ -2764,7 +2764,7 @@ CODE_B895BF:
 	RTS					;$B895E4  /
 
 CODE_B895E5:
-	LDX $0593				;$B895E5  \
+	LDX active_kong_sprite			;$B895E5  \
 	LDY current_player_mount		;$B895E8   |
 	LDA $0012,y				;$B895EA   |
 	STA $32					;$B895ED   |
@@ -2781,7 +2781,7 @@ CODE_B895E5:
 	RTS					;$B89608  /
 
 CODE_B89609:
-	LDX $0593				;$B89609  \
+	LDX active_kong_sprite			;$B89609  \
 	LDY current_player_mount		;$B8960C   |
 	LDA $0006,y				;$B8960E   |
 	STA $32					;$B89611   |
@@ -2840,7 +2840,7 @@ CODE_B8967D:
 	STA $0591				;$B89685   |
 CODE_B89688:					;	   |
 	LDX current_sprite			;$B89688   |\ 
-	CPX $0593				;$B8968A   | |
+	CPX active_kong_sprite			;$B8968A   | |
 	BNE kong_behavior_handler		;$B8968D   |/
 	LDA #$0002				;$B8968F   |
 	TRB $0B02				;$B89692   |
@@ -3113,7 +3113,7 @@ CODE_B89979:					;	   |
 
 CODE_B8997E:
 	LDX current_sprite			;$B8997E  \
-	CPX $0593				;$B89980   |
+	CPX active_kong_sprite			;$B89980   |
 	BEQ CODE_B8996E				;$B89983   |
 	BRA CODE_B89979				;$B89985  /
 
@@ -3343,7 +3343,7 @@ kong_behavior_0B:
 
 CODE_B89B30:
 	LDA level_number			;$B89B30  \
-	CMP #$00B2				;$B89B32   |
+	CMP #!level_rambi_rumble_bonus_2	;$B89B32   |
 	BNE .return				;$B89B35   |
 	LDX current_sprite			;$B89B37   |
 	LDA #$0110				;$B89B39   |
@@ -3358,7 +3358,7 @@ CODE_B89B30:
 
 CODE_B89B49:
 	LDA level_number			;$B89B49  \
-	CMP #$002A				;$B89B4B   |
+	CMP #!level_web_woods_squitter_room	;$B89B4B   |
 	BEQ .CODE_B89B8B			;$B89B4E   |
 	CMP #$006E				;$B89B50   |
 	BEQ .CODE_B89B8B			;$B89B53   |
@@ -3373,7 +3373,7 @@ CODE_B89B49:
 	LDA.l .DATA_B89B81,x			;$B89B63   |
 	STA $32					;$B89B67   |
 	LDA level_number			;$B89B69   |
-	CMP #$009B				;$B89B6B   |
+	CMP #!level_animal_antics_squitter_area	;$B89B6B   |
 	BNE .CODE_B89B75			;$B89B6E   |
 	LDA #$00F8				;$B89B70   |
 	STA $32					;$B89B73   |
@@ -3759,7 +3759,7 @@ CODE_B89E28:
 
 CODE_B89E38:
 	LDA $0D7A				;$B89E38  \
-	CMP $0597				;$B89E3B   |
+	CMP inactive_kong_sprite		;$B89E3B   |
 	BNE CODE_B89E43				;$B89E3E   |
 	JSR CODE_B8B7F4				;$B89E40   |
 CODE_B89E43:					;	   |
@@ -3997,7 +3997,7 @@ CODE_B89FCA:
 kong_behavior_1E:
 	BRL kong_behavior_1D			;$B89FD4  /
 
-	LDX $0597				;$B89FD7   |
+	LDX inactive_kong_sprite		;$B89FD7   |
 	LDA $2E,x				;$B89FDA   |
 	CMP #$001F				;$B89FDC   |
 	BEQ CODE_B89FE8				;$B89FDF   |
@@ -4118,7 +4118,7 @@ CODE_B8A0B9:
 	JSL CODE_BCFB2C				;$B8A0B9  \
 	JSR CODE_B8A0D5				;$B8A0BD   |
 	BCS CODE_B8A0CF				;$B8A0C0   |
-	LDX $0593				;$B8A0C2   |
+	LDX active_kong_sprite			;$B8A0C2   |
 	LDA $2E,x				;$B8A0C5   |
 	CMP #$005B				;$B8A0C7   |
 	BEQ CODE_B8A0CF				;$B8A0CA   |
@@ -4129,8 +4129,8 @@ CODE_B8A0CF:
 	JMP CODE_B89979				;$B8A0D2  /
 
 CODE_B8A0D5:
-	LDX $0597				;$B8A0D5  \
-	LDY $0593				;$B8A0D8   |
+	LDX inactive_kong_sprite		;$B8A0D5  \
+	LDY active_kong_sprite			;$B8A0D8   |
 	LDA $0006,y				;$B8A0DB   |
 	SEC					;$B8A0DE   |
 	SBC $06,x				;$B8A0DF   |
@@ -4371,11 +4371,11 @@ CODE_B8A27A:
 	STA $2E,x				;$B8A2AC   |
 	LDA $02,x				;$B8A2AE   |
 	STA $5E					;$B8A2B0   |
-	LDX $0593				;$B8A2B2   |
+	LDX active_kong_sprite			;$B8A2B2   |
 	LDA $02,x				;$B8A2B5   |
 	LDX current_sprite			;$B8A2B7   |
 	STA $02,x				;$B8A2B9   |
-	LDX $0593				;$B8A2BB   |
+	LDX active_kong_sprite			;$B8A2BB   |
 	LDA $5E					;$B8A2BE   |
 	STA $02,x				;$B8A2C0   |
 	LDX current_sprite			;$B8A2C2   |
@@ -4384,7 +4384,7 @@ CODE_B8A27A:
 	JSL CODE_BCFA78				;$B8A2CC   |
 	JSR start_damaged_invincibility		;$B8A2D0   |
 	JSR disable_bullet_time			;$B8A2D3   |
-	LDX $0593				;$B8A2D6   |
+	LDX active_kong_sprite			;$B8A2D6   |
 	LDA $0D60				;$B8A2D9   |
 	STA $20,x				;$B8A2DC   |
 	LDA #$F600				;$B8A2DE   |
@@ -4533,7 +4533,7 @@ CODE_B8A3F4:					;	   |
 	CMP #$0011				;$B8A407   |
 	BEQ CODE_B8A413				;$B8A40A   |
 	LDA level_number			;$B8A40C   |
-	CMP #$00B9				;$B8A40E   |
+	CMP #!level_stronghold_showdown		;$B8A40E   |
 	BNE CODE_B8A424				;$B8A411   |
 CODE_B8A413:					;	   |
 	LDX current_sprite			;$B8A413   |
@@ -4562,7 +4562,7 @@ CODE_B8A424:					;	   |
 	BEQ CODE_B8A475				;$B8A44B   |
 	JSR CODE_B8A06B				;$B8A44D   |
 	BCC CODE_B8A469				;$B8A450   |
-	LDY $0593				;$B8A452   |
+	LDY active_kong_sprite			;$B8A452   |
 	LDA $002E,y				;$B8A455   |
 	CMP #$002C				;$B8A458   |
 	BNE CODE_B8A463				;$B8A45B   |
@@ -4606,7 +4606,7 @@ CODE_B8A475:
 
 CODE_B8A4B1:
 	LDX current_sprite			;$B8A4B1  \
-	LDY $0593				;$B8A4B3   |
+	LDY active_kong_sprite			;$B8A4B3   |
 	LDA $0006,y				;$B8A4B6   |
 	SEC					;$B8A4B9   |
 	SBC $06,x				;$B8A4BA   |
@@ -4675,7 +4675,7 @@ CODE_B8A522:
 	STZ $26,x				;$B8A528   |
 	LDA #$001E				;$B8A52A   |
 	STA $30,x				;$B8A52D   |
-	LDY $0597				;$B8A52F   |
+	LDY inactive_kong_sprite		;$B8A52F   |
 	LDA #$00D8				;$B8A532   |
 	STA $0002,y				;$B8A535   |
 	LDA $0006,y				;$B8A538   |
@@ -4726,7 +4726,7 @@ CODE_B8A592:
 	LDA $24,x				;$B8A59B   |
 	JSR CODE_B8A5F0				;$B8A59D   |
 	STA $24,x				;$B8A5A0   |
-	LDY $0597				;$B8A5A2   |
+	LDY inactive_kong_sprite		;$B8A5A2   |
 	LDA $0004,y				;$B8A5A5   |
 	STA $32					;$B8A5A8   |
 	LDA $0006,y				;$B8A5AA   |
@@ -4808,7 +4808,7 @@ CODE_B8A628:
 
 kong_behavior_31:
 	LDX current_sprite			;$B8A62D  \
-	LDY $0593				;$B8A62F   |
+	LDY active_kong_sprite			;$B8A62F   |
 	LDA $0006,y				;$B8A632   |
 	STA $06,x				;$B8A635   |
 	LDA $000A,y				;$B8A637   |
@@ -4825,7 +4825,7 @@ kong_behavior_32:
 	AND #$003F				;$B8A64E   |
 	CMP $099D				;$B8A651   |
 	BNE CODE_B8A66B				;$B8A654   |
-	LDX $0593				;$B8A656   |
+	LDX active_kong_sprite			;$B8A656   |
 	LDA $2E,x				;$B8A659   |
 	CMP #$0011				;$B8A65B   |
 	BNE CODE_B8A66B				;$B8A65E   |
@@ -4867,10 +4867,10 @@ CODE_B8A695:
 	RTL					;$B8A698  /
 
 CODE_B8A699:
-	LDX $0597				;$B8A699  \
+	LDX inactive_kong_sprite		;$B8A699  \
 	LDA #$0013				;$B8A69C   |
 	STA $2E,x				;$B8A69F   |
-	LDX $0593				;$B8A6A1   |
+	LDX active_kong_sprite			;$B8A6A1   |
 	LDA #$0034				;$B8A6A4   |
 	STA $2E,x				;$B8A6A7   |
 CODE_B8A6A9:					;	   |
@@ -5258,7 +5258,7 @@ CODE_B8A996:					;	   |
 	RTS					;$B8A996  /
 
 CODE_B8A997:
-	LDX $0593				;$B8A997  \
+	LDX active_kong_sprite			;$B8A997  \
 	LDA $2E,x				;$B8A99A   |
 	ASL A					;$B8A99C   |
 	ASL A					;$B8A99D   |
@@ -5277,7 +5277,7 @@ CODE_B8A997:
 
 CODE_B8A9BB:
 	LDX current_sprite			;$B8A9BB  \
-	LDY $0597				;$B8A9BD   |
+	LDY inactive_kong_sprite		;$B8A9BD   |
 	LDA $06,x				;$B8A9C0   |
 	STA $0006,y				;$B8A9C2   |
 	LDA $0A,x				;$B8A9C5   |
@@ -5309,7 +5309,7 @@ endif						;	   |
 
 CODE_B8AA00:
 	LDY $0599				;$B8AA00  \
-	LDX $0597				;$B8AA03   |
+	LDX inactive_kong_sprite		;$B8AA03   |
 	LDA $06,x				;$B8AA06   |
 	STA $0D66				;$B8AA08   |
 	LDA $0A,x				;$B8AA0B   |
@@ -5318,7 +5318,7 @@ CODE_B8AA00:
 	STZ $24,x				;$B8AA12   |
 	LDA #$0020				;$B8AA14   |
 	STA $42,x				;$B8AA17   |
-	LDY $0593				;$B8AA19   |
+	LDY active_kong_sprite			;$B8AA19   |
 	LDA $0006,y				;$B8AA1C   |
 	SEC					;$B8AA1F   |
 	SBC $06,x				;$B8AA20   |
@@ -5528,7 +5528,7 @@ CODE_B8ABC7:					;	   |
 	LDA $08C2				;$B8ABC7   |
 	AND #$4000				;$B8ABCA   |
 	BEQ CODE_B8ABE0				;$B8ABCD   |
-	LDX $0597				;$B8ABCF   |
+	LDX inactive_kong_sprite		;$B8ABCF   |
 	LDA #$005E				;$B8ABD2   |
 	STA $2E,x				;$B8ABD5   |
 	STZ $30,x				;$B8ABD7   |
@@ -5603,7 +5603,7 @@ CODE_B8AC51:
 kong_behavior_4C:
 	LDA #$000C				;$B8AC69  \
 	JSR process_player_action		;$B8AC6C   |
-	LDX $0597				;$B8AC6F   |
+	LDX inactive_kong_sprite		;$B8AC6F   |
 	LDA $2E,x				;$B8AC72   |
 	CMP #$004E				;$B8AC74   |
 	BEQ CODE_B8AC80				;$B8AC77   |
@@ -5625,7 +5625,7 @@ CODE_B8AC80:
 	STA $24,x				;$B8AC99   |
 	LDA #$0001				;$B8AC9B   |
 	JSL CODE_B9D0B8				;$B8AC9E   |
-	LDX $0597				;$B8ACA2   |
+	LDX inactive_kong_sprite		;$B8ACA2   |
 	LDA #$00D8				;$B8ACA5   |
 	STA $02,x				;$B8ACA8   |
 	LDA #$0022				;$B8ACAA   |
@@ -6396,7 +6396,7 @@ kong_behavior_76:
 	LDX current_sprite			;$B8B2BA   |
 	LDA $24,x				;$B8B2BC   |
 	BMI .CODE_B8B2CA			;$B8B2BE   |
-	LDY $0593				;$B8B2C0   |
+	LDY active_kong_sprite			;$B8B2C0   |
 	LDA $0A,x				;$B8B2C3   |
 	CMP $000A,y				;$B8B2C5   |
 	BPL .CODE_B8B2D4			;$B8B2C8   |
@@ -6414,7 +6414,7 @@ kong_behavior_76:
 	LDX #$0003				;$B8B2E1   |
 	LDY #$0000				;$B8B2E4   |
 	JSR CODE_B8D8D5				;$B8B2E7   |
-	LDX $0593				;$B8B2EA   |
+	LDX active_kong_sprite			;$B8B2EA   |
 	LDA #$00E4				;$B8B2ED   |
 	STA $02,x				;$B8B2F0   |
 	JSR work_on_active_kong			;$B8B2F2   |
@@ -6519,7 +6519,7 @@ CODE_B8B3C8:					;	   |
 	JMP CODE_B8997E				;$B8B3C8  /
 
 CODE_B8B3CB:
-	CPX $0597				;$B8B3CB  \
+	CPX inactive_kong_sprite		;$B8B3CB  \
 	BEQ CODE_B8B3C8				;$B8B3CE   |
 	JSR work_on_active_kong			;$B8B3D0   |
 	LDA #$0047				;$B8B3D3   |
@@ -6539,7 +6539,7 @@ CODE_B8B3EC:
 
 CODE_B8B3F0:
 	LDA level_number			;$B8B3F0  \
-	CMP #$0061				;$B8B3F2   |
+	CMP #!level_k_rool_duel			;$B8B3F2   |
 	BEQ CODE_B8B40A				;$B8B3F5   |
 	CMP #$00B9				;$B8B3F7   |
 	BEQ CODE_B8B40A				;$B8B3FA   |
@@ -6560,7 +6560,7 @@ CODE_B8B40A:					;	   |
 	STA $42,x				;$B8B420   |
 	STZ $20,x				;$B8B422   |
 	STZ $24,x				;$B8B424   |
-	LDY $0593				;$B8B426   |
+	LDY active_kong_sprite			;$B8B426   |
 	LDA $0006,y				;$B8B429   |
 	STA $06,x				;$B8B42C   |
 	LDA $17C0				;$B8B42E   |
@@ -6584,7 +6584,7 @@ CODE_B8B435:
 	STA $42,x				;$B8B452   |
 	STZ $20,x				;$B8B454   |
 	STZ $24,x				;$B8B456   |
-	LDY $0593				;$B8B458   |
+	LDY active_kong_sprite			;$B8B458   |
 	LDA $0006,y				;$B8B45B   |
 	STA $06,x				;$B8B45E   |
 	LDA $17C0				;$B8B460   |
@@ -6664,7 +6664,7 @@ CODE_B8B4CF:
 
 CODE_B8B4F7:
 	TXY					;$B8B4F7  \
-	LDX $0593				;$B8B4F8   |
+	LDX active_kong_sprite			;$B8B4F8   |
 	LDA $000A,y				;$B8B4FB   |
 	CLC					;$B8B4FE   |
 	ADC $36					;$B8B4FF   |
@@ -6748,7 +6748,7 @@ CODE_B8B584:
 	BRA CODE_B8B5A6				;$B8B584  /
 
 CODE_B8B586:
-	CPX $0597				;$B8B586  \
+	CPX inactive_kong_sprite		;$B8B586  \
 	BEQ CODE_B8B5B7				;$B8B589   |
 	LDA $2E,x				;$B8B58B   |
 	CMP #$0012				;$B8B58D   |
@@ -7121,8 +7121,8 @@ CODE_B8B7F0:
 CODE_B8B7F4:
 	LDA $0D7A				;$B8B7F4  \
 	BEQ CODE_B8B830				;$B8B7F7   |
-	LDY $0597				;$B8B7F9   |
-	LDX $0593				;$B8B7FC   |
+	LDY inactive_kong_sprite		;$B8B7F9   |
+	LDX active_kong_sprite			;$B8B7FC   |
 	LDA $0D7C				;$B8B7FF   |
 	BIT $12,x				;$B8B802   |
 	BVC CODE_B8B80A				;$B8B804   |
@@ -7317,7 +7317,7 @@ CODE_B8B8DA:
 	RTS					;$B8B93B  /
 
 .CODE_B8B93C
-	CMP $0597				;$B8B93C  \
+	CMP inactive_kong_sprite		;$B8B93C  \
 	BEQ .is_follower_kong			;$B8B93F   |
 	LDA #$000D				;$B8B941   |
 	STA $2E,x				;$B8B944   |
@@ -7363,7 +7363,7 @@ start_player_falling:				;	   |
 	RTS					;$B8B994  /
 
 .holding_sprite
-	CMP $0597				;$B8B995  \
+	CMP inactive_kong_sprite		;$B8B995  \
 	BEQ .holding_kong			;$B8B998   |
 	LDA #$000D				;$B8B99A   |
 	STA $2E,x				;$B8B99D   |
@@ -7403,7 +7403,7 @@ process_player_action:
 	AND #$00FF				;$B8B9D2   | | if screen transition is happening
 	BNE .dont_process			;$B8B9D5   |/ dont process player actions
 	LDX current_sprite			;$B8B9D7   |\
-	CPX $0593				;$B8B9D9   | | if current sprite is active kong
+	CPX active_kong_sprite			;$B8B9D9   | | if current sprite is active kong
 	BEQ .active_kong			;$B8B9DC   |/ continue to process player actions
 .dont_process					;	   |\
 	CLC					;$B8B9DE   | | dont process actions and return
@@ -9196,7 +9196,7 @@ start_player_jumping:
 	RTS					;$B8C5D7  /
 
 .holding_sprite
-	CMP $0597				;$B8C5D8  \
+	CMP inactive_kong_sprite		;$B8C5D8  \
 	BEQ .holding_kong			;$B8C5DB   |
 	LDA #$0015				;$B8C5DD   |
 	JSL CODE_B9D0B8				;$B8C5E0   |
@@ -9515,7 +9515,7 @@ team_up_action:
 	BEQ .return				;$B8C845   |
 	LDA $0D7A				;$B8C847   |
 	BEQ .not_teamed_yet			;$B8C84A   |
-	CMP $0597				;$B8C84C   |
+	CMP inactive_kong_sprite		;$B8C84C   |
 	BEQ .is_holding_kong			;$B8C84F   |
 .return						;	   |
 	RTS					;$B8C851  /
@@ -9529,7 +9529,7 @@ team_up_action:
 	JMP set_player_interaction		;$B8C85E  /
 
 .not_teamed_yet
-	LDY $0597				;$B8C861  \
+	LDY inactive_kong_sprite		;$B8C861  \
 	LDA $002E,y				;$B8C864   |
 	CMP #$002A				;$B8C867   |
 	BEQ .follower_kong_following		;$B8C86A   |
@@ -9991,7 +9991,7 @@ update_object_pickup:
 	RTS					;$B8CB96  / /
 
 .touching_ground
-	LDY $0597				;$B8CB97  \ \
+	LDY inactive_kong_sprite		;$B8CB97  \ \
 	LDA $002E,y				;$B8CB9A   | |
 	CMP #$001F				;$B8CB9D   | |
 	BEQ .return				;$B8CBA0   | | if team throw is happening stop checking for object to pick up
@@ -10180,7 +10180,7 @@ pause_game_action:
 	LDA #$2000				;$B8CCEE   |
 	BIT $08C2				;$B8CCF1   |
 	BNE .return				;$B8CCF4   |
-	LDX $0593				;$B8CCF6   |
+	LDX active_kong_sprite			;$B8CCF6   |
 	LDA $2E,x				;$B8CCF9   |
 	CMP #$0005				;$B8CCFB   |
 	BEQ .return				;$B8CCFE   |
@@ -10272,7 +10272,7 @@ swap_to_other_kong_action:
 	RTS					;$B8CD79  /
 
 .select_pressed_this_frame
-	LDY $0597				;$B8CD7A  \
+	LDY inactive_kong_sprite		;$B8CD7A  \
 	LDA $002E,y				;$B8CD7D   |
 	ASL A					;$B8CD80   |
 	ASL A					;$B8CD81   |
@@ -10349,7 +10349,7 @@ swap_to_other_kong_swimming_action:
 	LDA $08C2				;$B8CDE8  \
 	AND #$4000				;$B8CDEB   |
 	BEQ CODE_B8CE08				;$B8CDEE   |
-	LDY $0597				;$B8CDF0   |
+	LDY inactive_kong_sprite		;$B8CDF0   |
 	LDA $002E,y				;$B8CDF3   |
 	ASL A					;$B8CDF6   |
 	ASL A					;$B8CDF7   |
@@ -11477,7 +11477,7 @@ CODE_B8D4A9:
 
 CODE_B8D4AE:
 	STX $E9					;$B8D4AE  \
-	LDY $0593				;$B8D4B0   |
+	LDY active_kong_sprite			;$B8D4B0   |
 	LDA #$0100				;$B8D4B3   |
 	CMP $06,x				;$B8D4B6   |
 	BCS CODE_B8D4C3				;$B8D4B8   |
@@ -11505,12 +11505,12 @@ CODE_B8D4DD:					;	   |
 	LDY $19C8				;$B8D4E3   |
 	JSR CODE_B8D5AF				;$B8D4E6   |
 	BCC CODE_B8D508				;$B8D4E9   |
-	LDY $0593				;$B8D4EB   |
+	LDY active_kong_sprite			;$B8D4EB   |
 	SBC $000A,y				;$B8D4EE   |
 	BPL CODE_B8D508				;$B8D4F1   |
 	CMP #$FFE8				;$B8D4F3   |
 	BCS CODE_B8D508				;$B8D4F6   |
-	LDY $0593				;$B8D4F8   |
+	LDY active_kong_sprite			;$B8D4F8   |
 	LDX $E9					;$B8D4FB   |
 	LDA $000A,y				;$B8D4FD   |
 	STA $0A,x				;$B8D500   |
@@ -11519,7 +11519,7 @@ CODE_B8D4DD:					;	   |
 	RTL					;$B8D507  /
 
 CODE_B8D508:
-	LDY $0593				;$B8D508  \
+	LDY active_kong_sprite			;$B8D508  \
 	LDA $0006,y				;$B8D50B   |
 	STA $D9					;$B8D50E   |
 	CMP $19C6				;$B8D510   |
@@ -11561,7 +11561,7 @@ CODE_B8D550:
 	RTL					;$B8D554  /
 
 CODE_B8D555:
-	LDY $0593				;$B8D555  \
+	LDY active_kong_sprite			;$B8D555  \
 	LDA $0006,y				;$B8D558   |
 	STA $19C6				;$B8D55B   |
 	CMP $D9					;$B8D55E   |
@@ -12021,9 +12021,9 @@ CODE_B8D872:					;	   |
 	SEP #$20				;$B8D87A   |
 	STA $07,x				;$B8D87C   |
 	REP #$20				;$B8D87E   |
-	CPX $0597				;$B8D880   |
+	CPX inactive_kong_sprite		;$B8D880   |
 	BEQ CODE_B8D88A				;$B8D883   |
-	CPX $0593				;$B8D885   |
+	CPX active_kong_sprite			;$B8D885   |
 	BNE CODE_B8D8B9				;$B8D888   |
 CODE_B8D88A:					;	   |
 	LDA $052B				;$B8D88A   |
@@ -12097,7 +12097,7 @@ CODE_B8D8D7:					;	   |
 	STA $3A					;$B8D8D7   |\
 	STX $3C					;$B8D8D9   | | store registers in scratch
 	STY $3E					;$B8D8DB   |/
-	LDX $0597				;$B8D8DD   |\
+	LDX inactive_kong_sprite		;$B8D8DD   |\
 	LDA #$0000				;$B8D8E0   | |
 	STA $32					;$B8D8E3   | |
 	LDA $06,x				;$B8D8E5   | |
@@ -12110,7 +12110,7 @@ CODE_B8D8D7:					;	   |
 	STZ $42					;$B8D8F4   | | clear scratch ram
 	STZ $44					;$B8D8F6   | |
 	STZ $46					;$B8D8F8   |/
-	LDX $0593				;$B8D8FA   |\
+	LDX active_kong_sprite			;$B8D8FA   |\
 	LDA $06,x				;$B8D8FD   | | calculate x distance between both kongs
 	SEC					;$B8D8FF   | |
 	SBC $34					;$B8D900   |/
@@ -12247,7 +12247,7 @@ CODE_B8DA07:					;	   |
 	TYA					;$B8DA08   |
 	CMP #$001C				;$B8DA09   |
 	BPL CODE_B8DA32				;$B8DA0C   |
-	LDY $0593				;$B8DA0E   |
+	LDY active_kong_sprite			;$B8DA0E   |
 	LDA $0026,y				;$B8DA11   |
 	BNE CODE_B8DA64				;$B8DA14   |
 	LDA $0020,y				;$B8DA16   |
@@ -12295,8 +12295,8 @@ CODE_B8DA64:					;	   |
 	RTS					;$B8DA64  /
 
 CODE_B8DA65:
-	LDX $0597				;$B8DA65  \
-	LDY $0593				;$B8DA68   |
+	LDX inactive_kong_sprite		;$B8DA65  \
+	LDY active_kong_sprite			;$B8DA68   |
 	LDA $0006,y				;$B8DA6B   |
 	SEC					;$B8DA6E   |
 	SBC $06,x				;$B8DA6F   |
@@ -12840,7 +12840,7 @@ CODE_B8DDB1:
 	LDA $0E,x				;$B8DDB3   |
 	DEC A					;$B8DDB5   |
 	BPL CODE_B8DDB0				;$B8DDB6   |
-	LDY $0593				;$B8DDB8   |
+	LDY active_kong_sprite			;$B8DDB8   |
 	LDA $000A,y				;$B8DDBB   |
 	SEC					;$B8DDBE   |
 	SBC $0A,x				;$B8DDBF   |

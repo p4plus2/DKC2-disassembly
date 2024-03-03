@@ -1859,22 +1859,22 @@ CODE_BB8C14:
 	RTS					;$BB8C18  /
 
 CODE_BB8C19:
-	LDX $0597				;$BB8C19  \
+	LDX inactive_kong_sprite		;$BB8C19  \
 	LDA $12,x				;$BB8C1C   |
 	XBA					;$BB8C1E   |
 	AND #$000E				;$BB8C1F   |
 	TAX					;$BB8C22   |
 	LDA $0B64,x				;$BB8C23   |
-	LDX $0597				;$BB8C26   |
+	LDX inactive_kong_sprite		;$BB8C26   |
 	JSR CODE_BB8C50				;$BB8C29   |
 CODE_BB8C2C:					;	   |
-	LDX $0593				;$BB8C2C   |
+	LDX active_kong_sprite			;$BB8C2C   |
 	LDA $12,x				;$BB8C2F   |
 	XBA					;$BB8C31   |
 	AND #$000E				;$BB8C32   |
 	TAX					;$BB8C35   |
 	LDA $0B64,x				;$BB8C36   |
-	LDX $0593				;$BB8C39   |
+	LDX active_kong_sprite			;$BB8C39   |
 	JSR CODE_BB8C50				;$BB8C3C   |
 	RTL					;$BB8C3F  /
 
@@ -2924,14 +2924,14 @@ CODE_BB9313:					;	   |
 	STA $7FD734				;$BB933A   |
 CODE_BB933E:					;	   |
 	LDA level_number			;$BB933E   |
-	CMP #$002D				;$BB9340   |
+	CMP #!level_bramble_blast		;$BB9340   |
 	BNE CODE_BB934B				;$BB9343   |
 	LDA #CODE_B5C60B			;$BB9345   |
 	STA $17B2				;$BB9348   |
 CODE_BB934B:					;	   |
 if !version == 1				;	   |
 	LDA level_number			;$BB934B   |
-	CMP #$000D				;$BB934D   |
+	CMP #!level_kreepy_krow			;$BB934D   |
 	BNE CODE_BB9358				;$BB9350   |
 	LDA #CODE_B5C3F4			;$BB9352   |
 	STA $17B2				;$BB9355   |
@@ -2963,7 +2963,7 @@ CODE_BB9379:					;	   |
 
 CODE_BB938B:
 	LDA level_number			;$BB938B  \
-	CMP #$009A				;$BB938D   |
+	CMP #!level_animal_antics_rambi_area	;$BB938D   |
 	BNE CODE_BB939B				;$BB9390   |
 	LDA #$009B				;$BB9392   |
 	CMP $08AC				;$BB9395   |
@@ -3011,12 +3011,12 @@ CODE_BB93D5:					;	   |
 
 CODE_BB93E7:
 	LDA level_number			;$BB93E7  \
-	CMP #$00B9				;$BB93E9   |
+	CMP #!level_stronghold_showdown		;$BB93E9   |
 	BNE CODE_BB93FE				;$BB93EC   |
 	LDA $08FC				;$BB93EE   |
 	AND #$0003				;$BB93F1   |
 	BEQ CODE_BB93FE				;$BB93F4   |
-	LDA #$0016				;$BB93F6   |
+	LDA #!music_castle			;$BB93F6   |
 	JSL play_song				;$BB93F9   |
 	RTS					;$BB93FD  /
 
@@ -3071,16 +3071,16 @@ CODE_BB944F:
 
 CODE_BB9457:
 	LDA level_number			;$BB9457  \
-	CMP #$0061				;$BB9459   |
+	CMP #!level_k_rool_duel			;$BB9459   |
 	BEQ CODE_BB946B				;$BB945C   |
-	CMP #$006B				;$BB945E   |
+	CMP #!level_krocodile_kore		;$BB945E   |
 	BEQ CODE_BB946B				;$BB9461   |
-	LDA #$0015				;$BB9463   |
+	LDA #!music_big_boss			;$BB9463   |
 	JSL play_song_with_transition		;$BB9466   |
 	RTS					;$BB946A  /
 
 CODE_BB946B:
-	LDA #$001F				;$BB946B  \
+	LDA #!music_k_rool			;$BB946B  \
 	JSL play_song_with_transition		;$BB946E   |
 	RTS					;$BB9472  /
 
@@ -3375,7 +3375,7 @@ CODE_BB9798:					;	   |
 	LDA #$03				;$BB979A   |
 	LDX #$0002				;$BB979C   |
 	LDY level_number			;$BB979F   |
-	CPY #$00C3				;$BB97A1   |
+	CPY #!level_rickety_race_bonus_1	;$BB97A1   |
 	BNE CODE_BB97AB				;$BB97A4   |
 	LDA #$01				;$BB97A6   |
 	LDX #$0001				;$BB97A8   |
@@ -3451,7 +3451,7 @@ CODE_BB9828:
 	STA CPU.enable_dma			;$BB9859   |
 	REP #$20				;$BB985C   |
 	LDA level_number			;$BB985E   |
-	CMP #$0022				;$BB9860   |
+	CMP #!level_rattle_battle_rattly_room	;$BB9860   |
 	BEQ CODE_BB9866				;$BB9863   |
 	RTS					;$BB9865  /
 
@@ -3733,7 +3733,7 @@ CODE_BB9A93:
 CODE_BB9ACA:
 	JSR CODE_BBA8DD				;$BB9ACA  \
 	LDA level_number			;$BB9ACD   |
-	CMP #$0063				;$BB9ACF   |
+	CMP #!level_kudgels_kontest		;$BB9ACF   |
 	BNE CODE_BB9AD9				;$BB9AD2   |
 	LDA #$001C				;$BB9AD4   |
 	STA $78					;$BB9AD7   |
@@ -3793,7 +3793,7 @@ CODE_BB9B1E:					;	   |
 
 CODE_BB9B62:
 	LDA level_number			;$BB9B62  \
-	CMP #$0087				;$BB9B64   |
+	CMP #!level_gusty_glade_bonus_2		;$BB9B64   |
 	BEQ CODE_BB9B71				;$BB9B67   |
 	LDY #$007A				;$BB9B69   |
 	JSL CODE_BB83EF				;$BB9B6C   |
@@ -3807,7 +3807,7 @@ CODE_BB9B71:
 CODE_BB9B79:
 	LDA #$0002				;$BB9B79  \
 	LDY level_number			;$BB9B7C   |
-	CPY #$0008				;$BB9B7E   |
+	CPY #!level_red_hot_ride		;$BB9B7E   |
 	BEQ CODE_BB9B86				;$BB9B81   |
 	LDA #$0044				;$BB9B83   |
 CODE_BB9B86:					;	   |
@@ -4022,7 +4022,7 @@ CODE_BB9E18:					;	   |
 	LDA #$0201				;$BB9E3C   |
 	STA pending_dma_hdma_channels		;$BB9E3F   |
 	LDA level_number			;$BB9E42   |
-	CMP #$00BB				;$BB9E44   |
+	CMP #!level_web_woods_bonus_2		;$BB9E44   |
 	BEQ CODE_BB9E51				;$BB9E47   |
 	LDY #$00DA				;$BB9E49   |
 	JSL CODE_BB83EF				;$BB9E4C   |
@@ -4630,7 +4630,7 @@ CODE_BBA5DA:					;	   |
 
 CODE_BBA5E1:
 	LDA level_number			;$BBA5E1  \
-	CMP #$0071				;$BBA5E3   |
+	CMP #!level_gangplank_galley_bonus_2	;$BBA5E3   |
 	BNE CODE_BBA605				;$BBA5E6   |
 	LDA $17BA				;$BBA5E8   |
 	PHA					;$BBA5EB   |
@@ -5310,15 +5310,15 @@ CODE_BBAD34:
 
 CODE_BBAD98:
 	LDA level_number			;$BBAD98  \
-	CMP #$0009				;$BBAD9A   |
+	CMP #!level_krows_nest			;$BBAD9A   |
 	BEQ CODE_BBADB4				;$BBAD9D   |
-	CMP #$000D				;$BBAD9F   |
+	CMP #!level_kreepy_krow			;$BBAD9F   |
 	BEQ CODE_BBADBC				;$BBADA2   |
-	CMP #$0021				;$BBADA4   |
+	CMP #!level_kleevers_kiln		;$BBADA4   |
 	BEQ CODE_BBADC4				;$BBADA7   |
-	CMP #$0063				;$BBADA9   |
+	CMP #!level_kudgels_kontest		;$BBADA9   |
 	BEQ CODE_BBADCC				;$BBADAC   |
-	CMP #$006B				;$BBADAE   |
+	CMP #!level_krocodile_kore		;$BBADAE   |
 	BEQ CODE_BBADD4				;$BBADB1   |
 	RTS					;$BBADB3  /
 
@@ -5349,12 +5349,12 @@ CODE_BBADD4:
 
 CODE_BBADDC:
 	JSR CODE_BBAE92				;$BBADDC  \
-	LDX $0597				;$BBADDF   |
+	LDX inactive_kong_sprite		;$BBADDF   |
 	LDA #$0000				;$BBADE2   |
 	STA $30,x				;$BBADE5   |
 	LDA #$00D8				;$BBADE7   |
 	STA $02,x				;$BBADEA   |
-	LDX $0593				;$BBADEC   |
+	LDX active_kong_sprite			;$BBADEC   |
 	LDA #$001E				;$BBADEF   |
 	STA $30,x				;$BBADF2   |
 	LDA #$00E4				;$BBADF4   |
@@ -5362,7 +5362,7 @@ CODE_BBADDC:
 	LDA $6E					;$BBADF9   |
 	BNE CODE_BBAE28				;$BBADFB   |
 CODE_BBADFD:					;	   |
-	LDX $0597				;$BBADFD   |
+	LDX inactive_kong_sprite		;$BBADFD   |
 	LDA $08C2				;$BBAE00   |
 	AND #$4000				;$BBAE03   |
 	BEQ CODE_BBAE23				;$BBAE06   |
@@ -5421,7 +5421,7 @@ CODE_BBAE62:
 CODE_BBAE73:
 	JSL CODE_B8B6DC				;$BBAE73  \
 CODE_BBAE77:					;	   |
-	LDX $0597				;$BBAE77   |
+	LDX inactive_kong_sprite		;$BBAE77   |
 	JSL CODE_B8B83F				;$BBAE7A   |
 	LDA $08C2				;$BBAE7E   |
 	AND #$4000				;$BBAE81   |
@@ -5440,9 +5440,9 @@ CODE_BBAE92:
 	RTS					;$BBAE9A  /
 
 CODE_BBAE9B:
-	LDX $0593				;$BBAE9B  \
+	LDX active_kong_sprite			;$BBAE9B  \
 	JSR CODE_BBAEA8				;$BBAE9E   |
-	LDX $0597				;$BBAEA1   |
+	LDX inactive_kong_sprite		;$BBAEA1   |
 	JSR CODE_BBAEA8				;$BBAEA4   |
 	RTS					;$BBAEA7  /
 
@@ -5462,7 +5462,7 @@ CODE_BBAEB0:
 
 CODE_BBAEBD:
 	LDA current_sprite			;$BBAEBD  \
-	CMP $0593				;$BBAEBF   |
+	CMP active_kong_sprite			;$BBAEBF   |
 	BNE CODE_BBAEC8				;$BBAEC2   |
 	LDA $6E					;$BBAEC4   |
 	BNE CODE_BBAEEB				;$BBAEC6   |
@@ -6953,29 +6953,23 @@ CODE_BBB93A:
 	RTS					;$BBB93B  /
 
 DATA_BBB93C:
-	db $20, $00
-
-DATA_BBB93E:
-	db $40, $01
-
-DATA_BBB940:
-	db $20, $00
-
-DATA_BBB942:
-	db $40, $01, $28, $00, $50, $01, $28, $00
-	db $50, $01, $10, $00, $20, $01, $10, $00
-	db $00, $01, $18, $00, $30, $01, $18, $00
-	db $10, $01, $60, $00, $C0, $01, $40, $00
-	db $80, $01, $68, $00, $D0, $01, $48, $00
-	db $90, $01, $20, $00, $40, $01, $40, $00
-	db $80, $01, $28, $00, $50, $01, $48, $00
-	db $90, $01, $20, $00, $40, $01, $F8, $00
-	db $D0, $02, $28, $00, $50, $01, $00, $01
-	db $E0, $02, $F8, $00, $F0, $02, $F8, $00
-	db $D0, $02, $00, $01, $00, $03, $00, $01
-	db $E0, $02, $F8, $00, $F0, $02, $20, $00
-	db $40, $01, $00, $01, $00, $03, $28, $00
-	db $50, $01
+%offset(DATA_BBB93E, 2)
+%offset(DATA_BBB940, 4)
+%offset(DATA_BBB942, 6)
+	dw $0020, $0140, $0020, $0140
+	dw $0028, $0150, $0028, $0150
+	dw $0010, $0120, $0010, $0100
+	dw $0018, $0130, $0018, $0110
+	dw $0060, $01C0, $0040, $0180
+	dw $0068, $01D0, $0048, $0190
+	dw $0020, $0140, $0040, $0180
+	dw $0028, $0150, $0048, $0190
+	dw $0020, $0140, $00F8, $02D0
+	dw $0028, $0150, $0100, $02E0
+	dw $00F8, $02F0, $00F8, $02D0
+	dw $0100, $0300, $0100, $02E0
+	dw $00F8, $02F0, $0020, $0140
+	dw $0100, $0300, $0028, $0150
 
 DATA_BBB9AC:
 	dw CODE_BBBA2C
@@ -7972,9 +7966,13 @@ CODE_BBC062:
 	RTS					;$BBC06F  /
 
 DATA_BBC070:
-	db $00, $00, $90, $01, $94, $01, $98, $01
-	db $9C, $01, $A0, $01, $00, $00
-
+	dw $0000				;
+	dw $0190				; Squitter
+	dw $0194				; Rattly
+	dw $0198				; Squawks
+	dw $019C				; Rambi
+	dw $01A0				; Enguarde
+	dw $0000				;
 
 CODE_BBC07E:
 	LDA $0551				;$BBC07E  \
@@ -8081,7 +8079,7 @@ CODE_BBC13F:					;	   |
 
 CODE_BBC140:
 	LDX current_sprite			;$BBC140  \
-	CPX $0597				;$BBC142   |
+	CPX inactive_kong_sprite		;$BBC142   |
 	BEQ CODE_BBC14F				;$BBC145   |
 	LDA $19D4				;$BBC147   |
 	BEQ CODE_BBC174				;$BBC14A   |
@@ -8261,7 +8259,7 @@ CODE_BBC316:
 
 CODE_BBC321:
 	LDY #$0E9E				;$BBC321  \
-	LDX $0593				;$BBC324   |
+	LDX active_kong_sprite			;$BBC324   |
 	LDA $0006,y				;$BBC327   |
 	SEC					;$BBC32A   |
 	SBC $06,x				;$BBC32B   |
@@ -8301,19 +8299,19 @@ CODE_BBC368:
 	JMP CODE_BBC150				;$BBC370  /
 
 CODE_BBC373:
-	LDX $0593				;$BBC373  \
+	LDX active_kong_sprite			;$BBC373  \
 	LDA #$0180				;$BBC376   |
 	STA $06,x				;$BBC379   |
 	JMP CODE_BBC15D				;$BBC37B  /
 
 CODE_BBC37E:
-	LDX $0593				;$BBC37E  \
+	LDX active_kong_sprite			;$BBC37E  \
 	LDA #$0350				;$BBC381   |
 	STA $06,x				;$BBC384   |
 	JMP CODE_BBC15D				;$BBC386  /
 
 CODE_BBC389:
-	LDX $0593				;$BBC389  \
+	LDX active_kong_sprite			;$BBC389  \
 	LDA #$0100				;$BBC38C   |
 	STA $06,x				;$BBC38F   |
 	JMP CODE_BBC15D				;$BBC391  /
@@ -8322,8 +8320,8 @@ CODE_BBC394:
 	LDA $08C2				;$BBC394  \
 	AND #$4000				;$BBC397   |
 	BEQ CODE_BBC3AB				;$BBC39A   |
-	LDY $0597				;$BBC39C   |
-	LDX $0593				;$BBC39F   |
+	LDY inactive_kong_sprite		;$BBC39C   |
+	LDX active_kong_sprite			;$BBC39F   |
 	LDA $06,x				;$BBC3A2   |
 	SEC					;$BBC3A4   |
 	SBC #$001C				;$BBC3A5   |
@@ -8468,7 +8466,7 @@ CODE_BBC4C6:
 
 CODE_BBC4E2:
 	LDA level_number			;$BBC4E2  \
-	CMP #$0061				;$BBC4E4   |
+	CMP #!level_k_rool_duel			;$BBC4E4   |
 	BNE CODE_BBC4FC				;$BBC4E7   |
 	LDY $0654				;$BBC4E9   |
 	LDA $0006,y				;$BBC4EC   |

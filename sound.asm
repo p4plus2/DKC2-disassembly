@@ -1485,57 +1485,57 @@ DATA_0F95:
 	db $01, $02, $04, $08, $10, $20, $40, $80
 
 DATA_0FA5:
-	dw CODE_0B18		;00: end_sequence
-	dw CODE_0B72		;01: set_instrument
-	dw CODE_0BB6		;02: set_volume_l_and_r
-	dw CODE_0CD7		;03: jump_to_sequence
-	dw CODE_0CE6		;04: loop_subsequence
-	dw CODE_0D34		;05: return_from_sub
-	dw CODE_0D70		;06: set_default_duration
-	dw CODE_0D8F		;07: default_duration_off
-	dw CODE_0D9B		;08: pitch_slide_up
-	dw CODE_0DA2		;09: pitch_slide_down
-	dw CODE_0DD6		;0A: pitch_slide_off
-	dw CODE_0DEB		;0B: change_tempo
-	dw CODE_0DF8		;0C: change_tempo_rel
-	dw CODE_0E11		;0D: vibrato
-	dw CODE_0E05		;0E: vibrato_off
-	dw CODE_0E1A		;0F: vibrato_with_delay
-	dw CODE_0E45		;10: set_adsr
-	dw !null_pointer	;11: unimplemented command
-	dw CODE_0E71		;12: fine_tune
-	dw CODE_0E7B		;13: change_instr_pitch
-	dw CODE_0E88		;14: change_instr_pitch_rel
-	dw CODE_0E97		;15: set_echo
-	dw CODE_0EC4		;16: echo_on
-	dw CODE_0EDC		;17: echo_off
-	dw CODE_0EF6		;18: set_fir
-	dw CODE_0F10		;19: dsp_flag
-	dw CODE_0F23		;1A: noise_on
-	dw CODE_0F34		;1B: noise_off
-	dw CODE_0E5A		;1C: set_variable_note_1
-	dw CODE_0E64		;1D: set_variable_note_2
-	dw CODE_0C83		;1E: set_volume_presets
-	dw CODE_0CA0		;1F: echo_delay
-	dw CODE_0C02		;20: load_volume_preset_1
-	dw CODE_0CFF		;21: play_subsequence 
-	dw CODE_0B97		;22: set_voice_parameters
-	dw CODE_0BF0		;23: set_vol_single_val
-	dw CODE_0C4E		;24: set_master_volume_indirect
-	dw !null_pointer	;25: unimplemented command
-	dw CODE_0F44		;26: simple_pitch_slide_down
-	dw CODE_0F4E		;27: simple_pitch_slide_up
-	dw !null_pointer	;28: unimplemented command
-	dw !null_pointer	;29: unimplemented command
-	dw !null_pointer	;2A: unimplemented command
-	dw CODE_0F7C		;2B: long_duration_on
-	dw CODE_0F86		;2C: long_duration_off
-	dw !null_pointer	;2D: unimplemented command
-	dw !null_pointer	;2E: unimplemented command
-	dw !null_pointer	;2F: unimplemented command
-	dw CODE_0EDC		;30: echo_off (copy)
-	dw CODE_0C18		;31: load_volume_preset_2
-	dw CODE_0EDC		;32: echo_off (copy)
+	dw CODE_0B18				;00: end_sequence
+	dw CODE_0B72				;01: set_instrument
+	dw CODE_0BB6				;02: set_volume_l_and_r
+	dw CODE_0CD7				;03: jump_to_sequence
+	dw CODE_0CE6				;04: loop_subsequence
+	dw CODE_0D34				;05: return_from_sub
+	dw CODE_0D70				;06: set_default_duration
+	dw CODE_0D8F				;07: default_duration_off
+	dw CODE_0D9B				;08: pitch_slide_up
+	dw CODE_0DA2				;09: pitch_slide_down
+	dw CODE_0DD6				;0A: pitch_slide_off
+	dw CODE_0DEB				;0B: change_tempo
+	dw CODE_0DF8				;0C: change_tempo_rel
+	dw CODE_0E11				;0D: vibrato
+	dw CODE_0E05				;0E: vibrato_off
+	dw CODE_0E1A				;0F: vibrato_with_delay
+	dw CODE_0E45				;10: set_adsr
+	dw !null_pointer			;11: unimplemented command
+	dw CODE_0E71				;12: fine_tune
+	dw CODE_0E7B				;13: change_instr_pitch
+	dw CODE_0E88				;14: change_instr_pitch_rel
+	dw CODE_0E97				;15: set_echo
+	dw CODE_0EC4				;16: echo_on
+	dw CODE_0EDC				;17: echo_off
+	dw CODE_0EF6				;18: set_fir
+	dw CODE_0F10				;19: dsp_flag
+	dw CODE_0F23				;1A: noise_on
+	dw CODE_0F34				;1B: noise_off
+	dw CODE_0E5A				;1C: set_variable_note_1
+	dw CODE_0E64				;1D: set_variable_note_2
+	dw CODE_0C83				;1E: set_volume_presets
+	dw CODE_0CA0				;1F: echo_delay
+	dw CODE_0C02				;20: load_volume_preset_1
+	dw CODE_0CFF				;21: play_subsequence 
+	dw CODE_0B97				;22: set_voice_parameters
+	dw CODE_0BF0				;23: set_vol_single_val
+	dw CODE_0C4E				;24: set_master_volume_indirect
+	dw !null_pointer			;25: unimplemented command
+	dw CODE_0F44				;26: simple_pitch_slide_down
+	dw CODE_0F4E				;27: simple_pitch_slide_up
+	dw !null_pointer			;28: unimplemented command
+	dw !null_pointer			;29: unimplemented command
+	dw !null_pointer			;2A: unimplemented command
+	dw CODE_0F7C				;2B: long_duration_on
+	dw CODE_0F86				;2C: long_duration_off
+	dw !null_pointer			;2D: unimplemented command
+	dw !null_pointer			;2E: unimplemented command
+	dw !null_pointer			;2F: unimplemented command
+	dw CODE_0EDC				;30: echo_off (copy)
+	dw CODE_0C18				;31: load_volume_preset_2
+	dw CODE_0EDC				;32: echo_off (copy)
 
 CODE_100B:
 	MOV A, #$00				;$100B   |
