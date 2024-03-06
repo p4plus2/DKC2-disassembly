@@ -125,6 +125,3 @@ DATA_FA7641:
 ;$FA7A01
 DATA_FA7A01:
 	incbin "data/backgrounds/animated_graphics/ship_mast_level_flag_tiledata_frame8.bin"
-
-padbyte $00
-pad $FA8000

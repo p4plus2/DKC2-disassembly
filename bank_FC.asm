@@ -310,6 +310,3 @@ ice_collision:
 ;$FC7A58
 jungle_collision:
 	incbin "data/levels/collision_maps/jungle_collision.bin"
-
-padbyte $00
-pad $FC8000

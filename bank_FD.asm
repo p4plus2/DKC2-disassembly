@@ -9409,6 +9409,3 @@ DATA_FDDAD0:
 	dw $5D60, $0100
 	dw $5E90, $0100
 	dw $FFFF
-
-padbyte $00
-pad $FE0000

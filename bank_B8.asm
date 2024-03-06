@@ -1,10 +1,3 @@
-DATA_B88000:
-if !version == 0
-	db $12, $29, $DE, $B3
-else
-	db $B3, $DE, $12, $29
-endif
-
 ;Jump table for various Kong-to-object interaction routines (RAM address $0A82)
 player_interaction_table:
 	dw CODE_B89197				;0001: Swapping in water

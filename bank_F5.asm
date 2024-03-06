@@ -1,9 +1,3 @@
-DATA_F50000:
-if !version == 0
-	db $32, $02, $93, $12
-else
-	db $02, $12, $93, $32
-endif
 
 ;$F50004	compressed
 DATA_F50004:
@@ -200,6 +194,3 @@ DATA_F57AF3:
 ;$F57D13
 DATA_F57D13:
 	incbin "data/screens/8x8_tilemaps/the_end_text_8x8_tilemap.bin"
-	
-padbyte $00
-pad $F58000

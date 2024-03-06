@@ -117,6 +117,3 @@ DATA_F37AE8:
 ;$F37CE8
 DATA_F37CE8:
 	incbin "data/backgrounds/animated_graphics/kreepy_krow_rain_tiledata_frame8.bin"
-
-padbyte $00
-pad $F38000

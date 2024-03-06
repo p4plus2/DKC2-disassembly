@@ -21605,6 +21605,3 @@ DATA_FFFF4C:
 	dw !initcommand_success
 DATA_FFFF6A:
 endif
-
-padbyte $00
-pad $FFFFFF

@@ -45,6 +45,3 @@ DATA_F661C1:
 ;$F67D1B
 DATA_F67D1B:
 	incbin "data/screens/8x8_tilemaps/secret_ending_screen_layer_1_8x8_tilemap.bin"
-	
-padbyte $00
-pad $F68000

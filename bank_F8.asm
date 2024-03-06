@@ -21,6 +21,3 @@ nintendo_copyright_tiledata:
 ;$F82106
 k_rools_keep_tiledata:
 	incbin "data/world_maps/graphics/k_rools_keep_tiledata.bin"
-
-padbyte $00
-pad $F88000

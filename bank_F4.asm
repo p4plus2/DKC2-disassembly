@@ -69,6 +69,3 @@ DATA_F441D2:
 ;$F444D2
 gameover_screen_tiledata:
 	incbin "data/screens/graphics/gameover_screen_tiledata.bin"
-
-padbyte $00
-pad $F48000

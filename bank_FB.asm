@@ -212,6 +212,3 @@ DATA_FB6BC0:
 ;$FB6FC0
 forest_bg_layer_3_tiledata:
 	incbin "data/backgrounds/graphics/forest_bg_layer_3_tiledata.bin"
-	
-padbyte $00
-pad $FB8000
